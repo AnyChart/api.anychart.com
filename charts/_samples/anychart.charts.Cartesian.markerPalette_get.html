@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="marker"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+
+            var firstChart = anychart.marker([10, 4, 17, 20], [5, 16, 10, 3], [25, 4, 28, 11]);
+            firstChart.bounds(0, 0, "50%", "100%");
+            firstChart.markerPalette(["diamond", "line", "circle"]);
+            firstChart.container(stage);
+            firstChart.draw();
+
+            var secondChart = anychart.marker([5, 40, 6, 37], [7, 23, 9, 18], [11, 17, 12, 34]);
+            secondChart.bounds("50%", 0, "50%", "100%");
+            secondChart.yScale(firstChart.yScale());
+
+            // Gets marker palette of the first chart.
+            var firstChartMarkerPalette = firstChart.markerPalette();
+
+            secondChart.markerPalette(firstChartMarkerPalette);
+            secondChart.container(stage);
+            secondChart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

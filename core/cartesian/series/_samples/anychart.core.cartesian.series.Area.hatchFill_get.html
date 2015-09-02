@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="area"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+
+            var chart = anychart.cartesian();
+
+            var firstAreaSeries = chart.area([16, 10, 20, 9, 4]);
+            firstAreaSeries.hatchFill("zigZag", "#BDBDBD", 1, 10);
+
+            // Gets hatch fill.
+            var currentHatchFill = firstAreaSeries.hatchFill();
+
+            var secondAreaSeries = chart.area([10, 25, 1, 6, 20]);
+            secondAreaSeries.hatchFill(currentHatchFill);
+
+            chart.container(stage);
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

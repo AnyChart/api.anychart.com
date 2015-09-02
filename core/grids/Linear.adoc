@@ -5,71 +5,295 @@
  */
 anychart.core.grids.Linear;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.grids.Linear.prototype.layout
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Get/set grid layout.
- * @param {anychart.enums.Layout=} opt_value Grid layout.
- * @return {anychart.enums.Layout|anychart.core.grids.Linear} Layout or this.
+ * Getter for the current grid layout.
+ * @example anychart.core.grids.Linear.layout_get
+ * @return {anychart.enums.Layout} The current grid layout.
  */
 anychart.core.grids.Linear.prototype.layout;
 
 /**
- * Getter for axis scale.
- * @return {anychart.scales.Base} Axis scale.
+ * Setter for the grid layout.
+ * @example anychart.core.grids.Linear.layout_set
+ * @param {(anychart.enums.Layout|string)=} opt_value ["horizontal"] Grid layout.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.layout;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.grids.Linear.prototype.scale
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for grid scale.
+ * @example anychart.core.grids.Linear.scale_get
+ * @return {anychart.scales.Base} Grid scale.
  */
 anychart.core.grids.Linear.prototype.scale;
 
 /**
- * Setter for axis scale.
+ * Setter for grid scale.
+ * @example anychart.core.grids.Linear.scale_set
  * @param {anychart.scales.Base=} opt_value Value to set.
  * @return {anychart.core.grids.Linear} Self instance for method chaining.
  */
 anychart.core.grids.Linear.prototype.scale;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.grids.Linear.prototype.oddFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Get/set grid odd fill settings.
- * @param {string|anychart.graphics.vector.Fill=} opt_value Grid odd fill settings.
- * @return {string|anychart.graphics.vector.Fill|anychart.core.grids.Linear} Grid odd fill settings or Grid instance for method chaining.
+ * Getter for the current grid odd fill settings.
+ * @example anychart.core.grids.Linear.oddFill_get
+ * @return {string|anychart.graphics.vector.Fill} The current grid odd fill settings.
  */
 anychart.core.grids.Linear.prototype.oddFill;
 
 /**
- * Get/set grid even fill settings.
- * @param {string|anychart.graphics.vector.Fill=} opt_value Grid even fill settings.
- * @return {string|anychart.graphics.vector.Fill|anychart.core.grids.Linear} Grid even fill settings or Grid instance for method chaining.
+ * Sets odd fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.grids.Linear.oddFill_set_asString Using string
+ * @example anychart.core.grids.Linear.oddFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} opt_value ["#FFFFFF"] Color as an array or a string.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.oddFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.grids.Linear.oddFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.oddFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.grids.Linear.oddFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.oddFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.grids.Linear.oddFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.oddFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.grids.Linear.oddFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.oddFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.grids.Linear.prototype.evenFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current grid even fill settings.
+ * @example anychart.core.grids.Linear.evenFill_get
+ * @return {string|anychart.graphics.vector.Fill} The current grid even fill settings.
  */
 anychart.core.grids.Linear.prototype.evenFill;
 
 /**
- * Get/set grid stroke line.
- * @param {string|anychart.graphics.vector.Stroke=} opt_value Grid stroke line settings.
- * @return {string|anychart.graphics.vector.Stroke|anychart.core.grids.Linear} Grid stroke line settings or Grid instance for method chaining.
+ * Sets even fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.grids.Linear.evenFill_set_asString Using string
+ * @example anychart.core.grids.Linear.evenFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} opt_value ["#F5F5F5"] Color as an array or a string.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.evenFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.grids.Linear.evenFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.evenFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.grids.Linear.evenFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.evenFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.grids.Linear.evenFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.evenFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.grids.Linear.evenFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.evenFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.grids.Linear.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current grid stroke line.
+ * @example anychart.core.grids.Linear.stroke_get
+ * @return {string|anychart.graphics.vector.Stroke} The current grid stroke line settings.
  */
 anychart.core.grids.Linear.prototype.stroke;
 
 /**
- * Whether to draw the first line.
- * @param {boolean=} opt_value Whether grid should draw first line.
- * @return {boolean|anychart.core.grids.Linear} Whether grid should draw first line or Grid instance for method chaining.
+ * Setter for the grid stroke settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.grids.Linear.stroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["#C1C1C1"] Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.stroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.grids.Linear.prototype.drawFirstLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the first line drawing flag.
+ * @example anychart.core.grids.Linear.drawFirstLine_get
+ * @return {boolean} Drawing flag.
  */
 anychart.core.grids.Linear.prototype.drawFirstLine;
 
 /**
- * Whether to draw the last line.
- * @param {boolean=} opt_value Whether grid should draw last line.
- * @return {boolean|anychart.core.grids.Linear} Whether grid should draw first line or Grid instance for method chaining.
+ * Setter for the first line drawing flag.
+ * @example anychart.core.grids.Linear.drawFirstLine_set
+ * @param {boolean=} opt_value Whether grid should draw first line.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.drawFirstLine;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.grids.Linear.prototype.drawLastLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the last line drawing flag.
+ * @example anychart.core.grids.Linear.drawLastLine_get
+ * @return {boolean} Drawing flag
  */
 anychart.core.grids.Linear.prototype.drawLastLine;
 
 /**
- * Whether it is a minor grid or not.
- * @param {boolean=} opt_value Minor or not.
- * @return {boolean|anychart.core.grids.Linear} Is minor grid or Grid instance for method chaining.
+ * Setter for the last line drawing flag.
+ * @example anychart.core.grids.Linear.drawLastLine_set
+ * @param {boolean=} opt_value Whether grid should draw last line.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.drawLastLine;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.grids.Linear.prototype.isMinor
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the minor grid state flag.
+ * @example anychart.core.grids.Linear.isMinor_get
+ * @return {boolean} State flag.
  */
 anychart.core.grids.Linear.prototype.isMinor;
 
 /**
- * Whether marker is horizontal
- * @return {boolean} If the marker is horizontal.
+ * Setter for the minor grid state flag.
+ * @example anychart.core.grids.Linear.isMinor_set
+ * @param {boolean=} opt_value Minor or not.
+ * @return {anychart.core.grids.Linear} Self instance for method chaining.
+ */
+anychart.core.grids.Linear.prototype.isMinor;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.grids.Linear.prototype.isHorizontal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Whether an grid has horizontal layout.
+ * Layout is define by method {@link anychart.core.grids.Linear#layout}.
+ * @example anychart.core.grids.Linear.isHorizontal
+ * @return {boolean} Returns <b>true</b> if the grid's layout is horizontal.
  */
 anychart.core.grids.Linear.prototype.isHorizontal;
-

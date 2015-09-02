@@ -1,0 +1,53 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.line();
+            chart.title(null);
+
+            var secondScale = anychart.scales.ordinal();
+
+            var xAxis = chart.xAxis(1);
+            xAxis.scale(secondScale);
+            xAxis.orientation("top");
+            xAxis.title("DateTime axis");
+
+            chart.line([
+                ["A1", 2],
+                ["A2", 2.4],
+                ["A3", 1],
+                ["A4", 5]
+            ]);
+
+            var orangeSeries = chart.line([
+                ["2014-01-15", 1],
+                ["2014-06-15", 3],
+                ["2014-10-15", 2],
+                ["2014-12-15", 9]
+            ]);
+            orangeSeries.xScale(secondScale);
+
+            var greenSeries = chart.line([
+                ["2014-01-15", 6],
+                ["2014-06-15", 4],
+                ["2014-10-15", 7],
+                ["2014-12-15", 3]
+            ]);
+
+            // Gets series X scale.
+            var currentScaleOrangeSeries = orangeSeries.xScale();
+
+            greenSeries.xScale(currentScaleOrangeSeries);
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

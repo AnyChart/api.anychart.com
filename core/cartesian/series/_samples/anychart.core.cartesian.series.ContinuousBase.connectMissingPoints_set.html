@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.line();
+            var blueLine = chart.line([
+                ["A1", 1],
+                ["A2", 1.6],
+                ["A3", "missing"],
+                ["A4", 1.1],
+                ["A5", 1.9]
+            ]);
+            blueLine.connectMissingPoints(false); // disables connect a missing point
+            var redLine = chart.line([
+                ["A1", 2],
+                ["A2", 2.6],
+                ["A3", "missing"],
+                ["A4", 2.1],
+                ["A5", 2.9]
+            ]);
+            redLine.connectMissingPoints(true); // enables connect a missing point
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

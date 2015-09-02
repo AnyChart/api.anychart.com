@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.line();
+            var series = chart.line([
+                ["A1", 1],
+                ["A2", 1.6],
+                ["A3", "missing"],
+                ["A4", 1.1],
+                ["A5", 1.9]
+            ]);
+
+            // Gets flag for connect missing points.
+            var currentFlag = series.connectMissingPoints();
+
+            chart.title("Flag for connect missing points - " + currentFlag);
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

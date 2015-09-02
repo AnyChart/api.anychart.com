@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="dataGrid"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="dataGrid">
+        anychart.onDocumentReady(function() {
+            var data = [
+                {id: "1", name: "Phase 1 - Strategic Plan"},
+                {id: "2", name: "Self-Assessment"},
+                {id: "3", name: "14%", parent: "1"},
+                {id: "4", name: "25%", parent: "2"},
+                {id: "5", name: "Define business vision"},
+                {id: "6", name: "0%", parent: "5"},
+                {id: "7", "name": "Interview owners of similar businesses"}
+            ];
+
+            var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
+
+            var currentDataGrid = anychart.ui.dataGrid();
+            currentDataGrid.data(treeData);
+            currentDataGrid.titleHeight(25);
+            // Sets background fill.
+            currentDataGrid.backgroundFill(["#FFEFD5", "#CD853F"]);
+            currentDataGrid.container("container");
+            currentDataGrid.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="map"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script src="//cdn.anychart.com/geodata/countries/aus/australia.js" data-export="true"></script>
+    <script x-export="australiaMap">
+        anychart.onDocumentReady(function() {
+            var australiaMap = anychart.map();
+            australiaMap.geoData(anychart.maps.australia);
+
+            var series = australiaMap.choropleth();
+            // Sets data.
+            series.data([
+                ["AU.CT", 15],
+                ["AU.VI", 23],
+                ["AU.WA", 86],
+                ["AU.QL", 16],
+                ["AU.NS", 32],
+                ["AU.NT", 64],
+                ["AU.TS", 28],
+                ["AU.SA", 45]
+            ]);
+            series.geoIdField("code_hasc");
+
+            australiaMap.container("container");
+            australiaMap.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

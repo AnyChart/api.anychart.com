@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="bar"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+
+            var firstChart = anychart.cartesian();
+            firstChart.bounds(0, 0, "50%", "100%");
+
+            var firstBarSeries = firstChart.bar([2, 5, 3, 9, 4]);
+            firstBarSeries.hatchFill("zigZag", "#BDBDBD", 1, 10);
+
+            firstChart.container(stage);
+            firstChart.draw();
+
+            var secondChart = anychart.cartesian();
+            secondChart.bounds("50%", 0, "50%", "100%");
+
+            // Gets hatch fill of the first chart.
+            var currentHatchFillFirstChart = firstBarSeries.hatchFill();
+
+            var secondBarSeries = secondChart.bar([16, 116, 19, 46, 20]);
+            secondBarSeries.hatchFill(currentHatchFillFirstChart);
+
+            secondChart.container(stage);
+            secondChart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

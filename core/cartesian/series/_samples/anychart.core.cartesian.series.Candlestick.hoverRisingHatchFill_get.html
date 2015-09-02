@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="candlestick"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.cartesian();
+
+            var firstSeries = chart.candlestick([
+                [0, 2, 4, 1, 3],
+                [1, 3, 5, 1, 2],
+                [2, 2, 5, 1, 4]
+            ]);
+            firstSeries.hoverRisingHatchFill("zigZag");
+
+            var secondSeries = chart.candlestick([
+                [0, 3, 6, 2, 5],
+                [1, 4, 8, 2, 6],
+                [2, 3, 5, 1, 2]
+            ]);
+
+            // Gets rising hatch fill on hover state.
+            var currentHoverRisingHatchFill = firstSeries.hoverRisingHatchFill();
+
+            secondSeries.hoverRisingHatchFill(currentHoverRisingHatchFill);
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

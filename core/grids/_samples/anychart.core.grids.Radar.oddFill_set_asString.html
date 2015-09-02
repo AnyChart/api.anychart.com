@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="radar grid scale"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.radar([29, 72, 250, 330, 85, 390, 95, 15]);
+
+            var customScale = anychart.scales.linear();
+            customScale.ticks({interval: 50});
+
+            chart.yScale(customScale);
+
+            var chartGrid = chart.grid();
+            // Sets odd fill using string.
+            chartGrid.oddFill("#FFF9C4 .4");
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

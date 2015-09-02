@@ -5,9 +5,16 @@
  * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @constructor
- * @extends {anychart.core.cartesian.series.DiscreteBase}
+ * @extends {anychart.core.cartesian.series.BaseWithMarkers}
  */
 anychart.core.cartesian.series.Bubble;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.minimumSize
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * @ignoreDoc
@@ -26,6 +33,13 @@ anychart.core.cartesian.series.Bubble.prototype.minimumSize;
  */
 anychart.core.cartesian.series.Bubble.prototype.minimumSize;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.maximumSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * @ignoreDoc
  * @deprecated Use anychart.charts.Cartesian.maxBubbleSize() instead.
@@ -43,50 +57,68 @@ anychart.core.cartesian.series.Bubble.prototype.maximumSize;
  */
 anychart.core.cartesian.series.Bubble.prototype.maximumSize;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.displayNegative
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for current negative value option.
- * @return {boolean} Display negaitve setting .
+ * @example anychart.core.cartesian.series.Bubble.displayNegative_get
+ * @return {boolean} Display negative settings.
  */
 anychart.core.cartesian.series.Bubble.prototype.displayNegative;
 
 /**
- * Setter for negative value option.<br/>
- * <b>Note:</b> Negative values are sized basing on absolute value, but shown in a different color.
+ * Setter for negative value option.
+ * @detailed <b>Note:</b> Negative values are sized basing on absolute value, but shown in a different color.<br/>
  * See {@link anychart.core.cartesian.series.Bubble#negativeFill}, {@link anychart.core.cartesian.series.Bubble#negativeStroke},
- *   {@link anychart.core.cartesian.series.Bubble#negativeHatchFill}
- * @example anychart.core.cartesian.series.Bubble.displayNegative
+ * {@link anychart.core.cartesian.series.Bubble#negativeHatchFill}
+ * @example anychart.core.cartesian.series.Bubble.displayNegative_set
  * @param {boolean=} opt_value Whether to display negative value.
  * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
  */
 anychart.core.cartesian.series.Bubble.prototype.displayNegative;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.negativeStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for current stroke settings.
- * @return {anychart.graphics.vector.Stroke|Function} Current stroke settings.
+ * Getter for current negative stroke settings.
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.cartesian.series.Bubble.negativeStroke_get
+ * @return {anychart.graphics.vector.Stroke|Function} The current negative stroke settings.
  */
 anychart.core.cartesian.series.Bubble.prototype.negativeStroke;
 
 /**
- * Setter for series stroke by function.<br/>
- * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @example anychart.core.cartesian.series.Bubble.negativeStroke
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_fillFunction [function() {
+ * Setter for series negative stroke by function.
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.negativeStroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
- *    // this.sourceColor -  color returned by fill() getter.
- *    return fillValue; // type anychart.graphics.vector.Fill
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return strokeValue; // type anychart.graphics.vector.ColoredFill or anychart.graphics.vector.Stroke
  * }</code>.
  * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
  */
 anychart.core.cartesian.series.Bubble.prototype.negativeStroke;
 
 /**
- * Setter for stroke settings.
+ * Setter for negative stroke settings.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
- * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @example anychart.core.cartesian.series.Bubble.negativeStroke1
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.negativeStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
@@ -95,20 +127,31 @@ anychart.core.cartesian.series.Bubble.prototype.negativeStroke;
  */
 anychart.core.cartesian.series.Bubble.prototype.negativeStroke;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.hoverNegativeStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for current stroke settings.
- * @return {anychart.graphics.vector.Stroke|Function} Current stroke settings.
+ * Getter for current negative stroke settings on hover state.
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.cartesian.series.Bubble.hoverNegativeStroke_get
+ * @return {anychart.graphics.vector.Stroke|Function} The current stroke settings.
  */
 anychart.core.cartesian.series.Bubble.prototype.hoverNegativeStroke;
 
 /**
- * Setter for series stroke by function.<br/>
- * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @example anychart.core.cartesian.series.Bubble.hoverNegativeStroke
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_fillFunction [function() {
+ * Setter for series negative stroke on hover state by function.
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.hoverNegativeStroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
- *    // this.sourceColor -  color returned by fill() getter.
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by fill() getter.
+ *    // this.iterator - series point iterator.
  *    return fillValue; // type anychart.graphics.vector.Fill
  * }</code>.
  * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
@@ -116,12 +159,11 @@ anychart.core.cartesian.series.Bubble.prototype.hoverNegativeStroke;
 anychart.core.cartesian.series.Bubble.prototype.hoverNegativeStroke;
 
 /**
- * Setter for stroke settings.
- * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}<br/>
- * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @example anychart.core.cartesian.series.Bubble.hoverNegativeStroke1
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
+ * Setter for negative stroke settings on hover state.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.hoverNegativeStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
@@ -130,29 +172,55 @@ anychart.core.cartesian.series.Bubble.prototype.hoverNegativeStroke;
  */
 anychart.core.cartesian.series.Bubble.prototype.hoverNegativeStroke;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.negativeFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for current series fill color.
- * @return {!anychart.graphics.vector.Fill} Current fill color.
+ * Getter for current series negative fill color.
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.cartesian.series.Bubble.negativeFill_get
+ * @return {!anychart.graphics.vector.Fill} The current fill color.
  */
 anychart.core.cartesian.series.Bubble.prototype.negativeFill;
 
 /**
- * Sets fill settings using an object or a string.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs} <br/>
- * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @example anychart.core.cartesian.series.Bubble.negativeFill
- * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
+ * Sets negative fill settings using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.negativeFill_set_asString Using string
+ * @example anychart.core.cartesian.series.Bubble.negativeFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
  * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
  */
 anychart.core.cartesian.series.Bubble.prototype.negativeFill;
 
 /**
- * Fill color with opacity.<br/>
- * <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * Sets negative fill settings using function.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.negativeFill_set_asFunc
+ * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return fillValue; // type anychart.graphics.vector.Fill
+ * }</code>.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.negativeFill;
+
+/**
+ * Negative fill color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
  * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.<br/>
  * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @shortDescription Fill as a string or an object.
- * @example anychart.core.cartesian.series.Bubble.negativeFill1
+ * @example anychart.core.cartesian.series.Bubble.negativeFill_set_asOpacity
  * @param {string} color Color as a string.
  * @param {number=} opt_opacity Color opacity.
  * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
@@ -161,9 +229,9 @@ anychart.core.cartesian.series.Bubble.prototype.negativeFill;
 
 /**
  * Linear gradient fill.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}<br/>
- * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @example anychart.core.cartesian.series.Bubble.negativeFill2
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.negativeFill_set_asLinear
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
  * @param {number=} opt_angle Gradient angle.
  * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
@@ -173,10 +241,10 @@ anychart.core.cartesian.series.Bubble.prototype.negativeFill;
 anychart.core.cartesian.series.Bubble.prototype.negativeFill;
 
 /**
- * Radial gradient fill.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}<br/>
- * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @example anychart.core.cartesian.series.Bubble.negativeFill3
+ * Radial gradient negative fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.negativeFill_set_asRadial
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
  * @param {number} cx X ratio of center radial gradient.
  * @param {number} cy Y ratio of center radial gradient.
@@ -189,38 +257,64 @@ anychart.core.cartesian.series.Bubble.prototype.negativeFill;
 anychart.core.cartesian.series.Bubble.prototype.negativeFill;
 
 /**
- * Image fill.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}<br/>
- * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @example anychart.core.cartesian.series.Bubble.negativeFill4
+ * Image negative fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.negativeFill_set_asImg
  * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
  * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
  */
 anychart.core.cartesian.series.Bubble.prototype.negativeFill;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.hoverNegativeFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for current series fill color.
- * @return {!anychart.graphics.vector.Fill} Current fill color.
+ * Getter for current series negative fill color on hover state.
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.cartesian.series.Bubble.hoverNegativeFill_get
+ * @return {!anychart.graphics.vector.Fill} The current fill color.
  */
 anychart.core.cartesian.series.Bubble.prototype.hoverNegativeFill;
 
 /**
- * Sets fill settings using an object or a string.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}<br/>
- * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @example anychart.core.cartesian.series.Bubble.hoverNegativeFill
- * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
+ * Sets negative fill settings on hover state using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.hoverNegativeFill_set_asString Using string
+ * @example anychart.core.cartesian.series.Bubble.hoverNegativeFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
  * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
  */
 anychart.core.cartesian.series.Bubble.prototype.hoverNegativeFill;
 
 /**
- * Fill color with opacity.<br/>
- * <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * Sets negative fill settings on hover state using function.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.hoverNegativeFill_set_asFunc
+ * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return fillValue; // type anychart.graphics.vector.Fill
+ * }</code>.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.hoverNegativeFill;
+
+/**
+ * Negative fill color on hover state with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
  * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.<br/>
  * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @shortDescription Fill as a string or an object.
- * @example anychart.core.cartesian.series.Bubble.hoverNegativeFill1
+ * @example anychart.core.cartesian.series.Bubble.hoverNegativeFill_set_asOpacity
  * @param {string} color Color as a string.
  * @param {number=} opt_opacity Color opacity.
  * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
@@ -228,10 +322,10 @@ anychart.core.cartesian.series.Bubble.prototype.hoverNegativeFill;
 anychart.core.cartesian.series.Bubble.prototype.hoverNegativeFill;
 
 /**
- * Linear gradient fill.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}<br/>
- * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @example anychart.core.cartesian.series.Bubble.hoverNegativeFill2
+ * Linear gradient negative fill on hover state.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.hoverNegativeFill_set_asLinear
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
  * @param {number=} opt_angle Gradient angle.
  * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
@@ -241,10 +335,10 @@ anychart.core.cartesian.series.Bubble.prototype.hoverNegativeFill;
 anychart.core.cartesian.series.Bubble.prototype.hoverNegativeFill;
 
 /**
- * Radial gradient fill.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}<br/>
- * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @example anychart.core.cartesian.series.Bubble.hoverNegativeFill3
+ * Radial gradient negative fill on hover state.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.hoverNegativeFill_set_asRadial
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
  * @param {number} cx X ratio of center radial gradient.
  * @param {number} cy Y ratio of center radial gradient.
@@ -257,26 +351,35 @@ anychart.core.cartesian.series.Bubble.prototype.hoverNegativeFill;
 anychart.core.cartesian.series.Bubble.prototype.hoverNegativeFill;
 
 /**
- * Image fill.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}<br/>
- * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @example anychart.core.cartesian.series.Bubble.hoverNegativeFill4
+ * Image negative fill on hover state.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.hoverNegativeFill_set_asImg
  * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
  * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
  */
 anychart.core.cartesian.series.Bubble.prototype.hoverNegativeFill;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.negativeHatchFil
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for current hatch fill settings.
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
+ * Getter for current negative hatch fill settings.
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.cartesian.series.Bubble.negativeHatchFill_get
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The current hatch fill.
  */
 anychart.core.cartesian.series.Bubble.prototype.negativeHatchFill;
 
 /**
- * Setter for hatch fill settings.
- * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}<br/>
- * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
- * @example anychart.core.cartesian.series.Bubble.negativeHatchFill
+ * Setter for negative hatch fill settings.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * @example anychart.core.cartesian.series.Bubble.negativeHatchFill_set
  * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
  * string)=} opt_patternFillOrType PatternFill or HatchFill instance or type of hatch fill.
  * @param {string=} opt_color Color.
@@ -286,16 +389,25 @@ anychart.core.cartesian.series.Bubble.prototype.negativeHatchFill;
  */
 anychart.core.cartesian.series.Bubble.prototype.negativeHatchFill;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.hoverNegativeHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for current hatch fill settings.
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
+ * Getter for current negative hatch fill settings on hover state.
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.cartesian.series.Bubble.hoverNegativeHatchFill_get
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The current hatch fill.
  */
 anychart.core.cartesian.series.Bubble.prototype.hoverNegativeHatchFill;
 
 /**
- * Setter for hatch fill settings.
- * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}<br/>
- * <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
+ * Setter for negative hatch fill settings on hover state.
+ * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.cartesian.series.Bubble#displayNegative}.
  * @example anychart.core.cartesian.series.Bubble.hoverNegativeHatchFill
  * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
  * string)=} opt_patternFillOrType PatternFill or HatchFill instance or type of hatch fill.
@@ -306,21 +418,319 @@ anychart.core.cartesian.series.Bubble.prototype.hoverNegativeHatchFill;
  */
 anychart.core.cartesian.series.Bubble.prototype.hoverNegativeHatchFill;
 
-/** @inheritDoc */
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.hatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current hatch fill settings.
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.cartesian.series.Bubble.hatchFill_get
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The current hatch fill.
+ */
 anychart.core.cartesian.series.Bubble.prototype.hatchFill;
 
-/** @inheritDoc */
+/**
+ * Setter for hatch fill settings.
+ * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+ * @example anychart.core.cartesian.series.Bubble.hatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.hatchFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.hoverHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current hover hatch fill settings.
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.cartesian.series.Bubble.hoverHatchFill_get
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The current hover hatch fill.
+ */
 anychart.core.cartesian.series.Bubble.prototype.hoverHatchFill;
 
-/** @inheritDoc */
+/**
+ * Setter for hover hatch fill settings.
+ * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+ * @example anychart.core.cartesian.series.Bubble.hoverHatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.hoverHatchFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current series fill color.
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.cartesian.series.Bubble.fill_get
+ * @return {!anychart.graphics.vector.Fill} The current fill color.
+ */
 anychart.core.cartesian.series.Bubble.prototype.fill;
 
-/** @inheritDoc */
+/**
+ * Sets fill settings using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.cartesian.series.Bubble.fill_set_asString Using string
+ * @example anychart.core.cartesian.series.Bubble.fill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.fill;
+
+/**
+ * Sets fill settings using function.
+ * @example anychart.core.cartesian.series.Bubble.fill_set_asFunc
+ * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return fillValue; // type anychart.graphics.vector.Fill
+ * }</code>.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.fill;
+
+/**
+ * Fill color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.cartesian.series.Bubble.fill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.fill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.cartesian.series.Bubble.fill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.fill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.cartesian.series.Bubble.fill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.fill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.cartesian.series.Bubble.fill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.fill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.hoverFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current series fill color on hover state.
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.cartesian.series.Bubble.hoverFill_get
+ * @return {!anychart.graphics.vector.Fill} The current fill color.
+ */
 anychart.core.cartesian.series.Bubble.prototype.hoverFill;
 
-/** @inheritDoc */
+/**
+ * Sets fill settings on hover state using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.cartesian.series.Bubble.hoverFill_set_asString Using string
+ * @example anychart.core.cartesian.series.Bubble.hoverFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.hoverFill;
+
+/**
+ * Sets fill settings on hover state using function.
+ * @example anychart.core.cartesian.series.Bubble.hoverFill_set_asFunc
+ * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return fillValue; // type anychart.graphics.vector.Fill
+ * }</code>.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.hoverFill;
+
+/**
+ * Fill color on hover state with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.cartesian.series.Bubble.hoverFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.hoverFill;
+
+/**
+ * Linear gradient fill on hover state.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.cartesian.series.Bubble.hoverFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.hoverFill;
+
+/**
+ * Radial gradient fill on hover state.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.cartesian.series.Bubble.hoverFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.hoverFill;
+
+/**
+ * Image fill on hover state.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.cartesian.series.Bubble.hoverFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.hoverFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current stroke settings.
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.cartesian.series.Bubble.stroke_get
+ * @return {!anychart.graphics.vector.Stroke} The current stroke settings.
+ */
 anychart.core.cartesian.series.Bubble.prototype.stroke;
 
-/** @inheritDoc */
+/**
+ * Setter for series stroke by function.
+ * @example anychart.core.cartesian.series.Bubble.stroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor -  color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
+ * }</code>.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.stroke;
+
+/**
+ * Setter for stroke settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.cartesian.series.Bubble.stroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.stroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Bubble.prototype.hoverStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current stroke settings on hover state.
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.cartesian.series.Bubble.hoverStroke_get
+ * @return {!anychart.graphics.vector.Stroke} The current stroke settings.
+ */
+anychart.core.cartesian.series.Bubble.prototype.hoverStroke;
+
+/**
+ * Setter for series stroke on hover state by function.
+ * @example anychart.core.cartesian.series.Bubble.hoverStroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
+ *  return this.sourceColor;
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
+ * }</code>.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Bubble.prototype.hoverStroke;
+
+/**
+ * Setter for stroke on hover state settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.cartesian.series.Bubble.hoverStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.cartesian.series.Bubble} Self instance for method chaining.
+ */
 anychart.core.cartesian.series.Bubble.prototype.hoverStroke;
 
