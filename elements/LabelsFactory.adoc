@@ -1,6 +1,6 @@
 /**
- * Этот класс предназначен для рисования множества лейблов с одинаковым набором настроек и последующего управления этими лейблами.
- * Настройки конкретного лейбла могут быть изменены после того, как все лейблы будут нарисованы.
+ * Class for creation of sets of similar labels and management of such sets.
+ * Any individual label can be changed after all labels are displayed.
  * @constructor
  * @extends {anychart.elements.Text}
  */
@@ -9,14 +9,13 @@ anychart.elements.LabelsFactory;
 /**
  * Getter for the current element state.
  *
- * Былина о трех состояних - true, false и null.
+ * True, false and null states.
  *
- * true и false по-старинке парвда и лож.
- * А вот если установлено null, то элемент включен, но если он зависит
- * от других сущностей (например, в случае labels() и hoverLabels() в сериях), то null будет значить, что
- * состояние лейбл фактори работает в auto режиме и завит от других обстоятельсв. (Например, если у серии
- * включены обычные лейблы, а хавер лейблам выставлено состояние null, то при хавере настройка enabled возьмется из
- * обычных лейблов и хавер лейблы будут работать. А если обычные лейблы выключить, то и хавер лейблы не будут работать)
+ * True and false are self-explanatory. null state means that element is enabled,
+ * but if it depends on other entities (like, for example, labels() and hoverLabels() in series),
+ * then factory works in auto mode. For example, if series normal labels are enable,
+ * and hover labels are in null state, then upon hover hoverLabels become enabled because of normal.
+ * But if you disable normal labels – hoverLabels are disabled too.
  * @return {?boolean} The current element state.
  */
 anychart.elements.LabelsFactory.prototype.enabled;
@@ -64,16 +63,17 @@ anychart.elements.LabelsFactory.prototype.textFormatter;
 anychart.elements.LabelsFactory.prototype.positionFormatter;
 
 /**
- * Gets or sets labels position settings.
- * @param {(anychart.utils.NinePositions|string)=} opt_value Labels position settings.
- * @return {anychart.elements.LabelsFactory|anychart.utils.NinePositions|string} Labels position settings or itself for chaining call.
+ * Gets or sets labels position settings. These settings are processed by the factory handler (for example a series,
+ * or an axis) and can have different meanings from handler to handler. Try using anychart.enums.Position values.
+ * @param {string=} opt_value Labels position settings.
+ * @return {anychart.elements.LabelsFactory|string} Labels position settings or itself for chaining call.
  */
 anychart.elements.LabelsFactory.prototype.position;
 
 /**
  * Gets or sets labels anchor settings.
- * @param {(anychart.utils.NinePositions|string)=} opt_value Labels anchor settings.
- * @return {anychart.elements.LabelsFactory|anychart.utils.NinePositions} Labels anchor settings or itself for chaining call.
+ * @param {(anychart.enums.Anchor|string)=} opt_value Labels anchor settings.
+ * @return {anychart.elements.LabelsFactory|anychart.enums.Anchor} Labels anchor settings or itself for chaining call.
  */
 anychart.elements.LabelsFactory.prototype.anchor;
 
@@ -92,9 +92,9 @@ anychart.elements.LabelsFactory.prototype.offsetX;
 anychart.elements.LabelsFactory.prototype.offsetY;
 
 /**
- * Метод устанавливает поворот элемента отнонительно заданного якоря. Якори - 9-ть контрольных точек элемента
+ * Sets rotation angle around an anchor.
  * ({@link anychart.graphics.vector.Element}).
- * @param {number=} opt_value Угол поворота лейблов в градусах.
+ * @param {number=} opt_value Rotation angle in degrees.
  * @return {number|anychart.elements.LabelsFactory} Rotation angle in degrees or Itself for chaining call.
  */
 anychart.elements.LabelsFactory.prototype.rotation;
@@ -120,19 +120,19 @@ anychart.elements.LabelsFactory.prototype.serialize;
 anychart.elements.LabelsFactory.prototype.deserialize;
 
 /**
- * Очищает массив созданных лейблов.
+ * Clears an array of labels.
  * @param {number=} opt_index If set, removes only the label that label.
  * @return {anychart.elements.LabelsFactory} Returns itself for chaining.
  */
 anychart.elements.LabelsFactory.prototype.clear;
 
 /**
- * Создает новый экземпляр класса anychart.elements.LabelsFactory.Label, сохраняет его внутри фабрики
- * и возвращает.
- * @param {*} formatProvider Object witch provide info for textFormatter function.
- * @param {*} positionProvider Object witch provide info for positionFormatter function.
+ * Creates new instance of anychart.elements.LabelsFactory.Label, saves it in the factory
+ * and returns it.
+ * @param {*} formatProvider Object that provides info for textFormatter function.
+ * @param {*} positionProvider Object that provides info for positionFormatter function.
  * @param {number=} opt_index Label index.
- * @return {!anychart.elements.LabelsFactory.Label} Return new label instance.
+ * @return {!anychart.elements.LabelsFactory.Label} Returns new label instance.
  */
 anychart.elements.LabelsFactory.prototype.add;
 
@@ -144,25 +144,25 @@ anychart.elements.LabelsFactory.prototype.draw;
 
 /**
  * Measure labels using formatProvider, positionProvider and returns labels bounds.
- * @param {*} formatProvider Object witch provide info for textFormatter function.
- * @param {*} positionProvider Object witch provide info for positionFormatter function.
+ * @param {*|anychart.elements.LabelsFactory.Label} formatProviderOrLabel Object that provides info for textFormatter function.
+ * @param {*=} opt_positionProvider Object that provides info for positionFormatter function.
+ * @param {Object=} opt_settings .
  * @return {anychart.math.Rect} Labels bounds.
  */
 anychart.elements.LabelsFactory.prototype.measure;
 
 /**
- * Измеряет лейбл в его системе коррдинат и возвращает баунды как массив точек с координатами в системе координат
- * родителя.
- * @param {*} formatProvider Object witch provide info for textFormatter function.
- * @param {*} positionProvider Object witch provide info for positionFormatter function.
- * @return {Array.<number>} Возвращает набор точек, образующих баунды лейбла, в его системе
- * координат.
+ * Measures label in its coordinate system and returns bounds as an array of points in parent coordinate system.
+ * @param {*|anychart.elements.LabelsFactory.Label} formatProviderOrLabel Object that provides info for textFormatter function.
+ * @param {*=} opt_positionProvider Object that provides info for positionFormatter function.
+ * @param {Object=} opt_settings .
+ * @return {Array.<number>} Label bounds.
  */
 anychart.elements.LabelsFactory.prototype.measureWithTransform;
 
 /**
- * Этот класс предназначен для рисования множества лейблов с одинаковым набором настроек и последующего управления этими лейблами.
- * Настройки конкретного лейбла могут быть изменены после того, как все лейблы будут нарисованы.
+ * Class for creation of sets of similar labels and management of such sets.
+ * Any individual label can be changed after all labels are displayed.
  * @constructor
  * @extends {anychart.elements.Text}
  */
@@ -177,7 +177,7 @@ anychart.elements.LabelsFactory.Label.prototype.getIndex;
 /**
  * Gets or sets the Label background settings.
  * @param {anychart.elements.Background=} opt_value Background object to set.
- * @return {!(anychart.elements.LabelsFactory.Label|anychart.elements.Background)} Returns the background or itself for chaining.
+ * @return {!(anychart.elements.LabelsFactory.Label|anychart.elements.Background)} Returns background or itself for chaining.
  */
 anychart.elements.LabelsFactory.Label.prototype.background;
 
@@ -206,17 +206,17 @@ anychart.elements.LabelsFactory.Label.prototype.width;
 anychart.elements.LabelsFactory.Label.prototype.height;
 
 /**
- * Метод устанавливает поворот элемента отнонительно заданного якоря. Якори - 9-ть контрольных точек элемента
- * ({@link anychart.graphics.vector.Element}). Метод кажды раз сбрасывает предыдущую трансформацию поворота и применяет новую.
- * @param {number=} opt_value Угол поворота лейблов в градусах.
- * @return {number|anychart.elements.LabelsFactory.Label} Rotation angle in degrees or Itself for chaining call.
+ * Rotates a label around an anchor.
+ * ({@link anychart.graphics.vector.Element}). Method resets transformation and applies a new one.
+ * @param {number=} opt_value Rotation angle in degrees.
+ * @return {number|anychart.elements.LabelsFactory.Label} Rotation angle in degrees or self for chaining call.
  */
 anychart.elements.LabelsFactory.Label.prototype.rotation;
 
 /**
  * Getter for label anchor settings.
- * @param {(anychart.utils.NinePositions|string)=} opt_value .
- * @return {!anychart.elements.LabelsFactory.Label|anychart.utils.NinePositions} .
+ * @param {(anychart.enums.Anchor|string)=} opt_value .
+ * @return {!anychart.elements.LabelsFactory.Label|anychart.enums.Anchor} .
  */
 anychart.elements.LabelsFactory.Label.prototype.anchor;
 
@@ -236,8 +236,8 @@ anychart.elements.LabelsFactory.Label.prototype.offsetY;
 
 /**
  * Getter for current label position settings.
- * @param {(anychart.utils.NinePositions|string)=} opt_value .
- * @return {!anychart.elements.LabelsFactory.Label|anychart.utils.NinePositions} .
+ * @param {string=} opt_value .
+ * @return {!anychart.elements.LabelsFactory.Label|string} .
  */
 anychart.elements.LabelsFactory.Label.prototype.position;
 
@@ -254,18 +254,18 @@ anychart.elements.LabelsFactory.Label.prototype.textFormatter;
 /**
  * Gets/Sets position formatter.
  * @param {*=} opt_value Position formatter.
- * @return {*} Position formatter or itself for chaining.
+ * @return {*} Position formatter or self for chaining.
  */
 anychart.elements.LabelsFactory.Label.prototype.positionFormatter;
 
 /**
- * Приводит лейбл в исходное состояние, но оставляет созданные DOM эелемнты, только очищает у них родителя.
+ * Resets label to the initial state, but leaves DOM elements intact, but without the parent.
  */
 anychart.elements.LabelsFactory.Label.prototype.clear;
 
 /**
  * Label drawing.
- * @return {anychart.elements.LabelsFactory.Label} Returns itself for chaining.
+ * @return {anychart.elements.LabelsFactory.Label} Returns self for chaining.
  */
 anychart.elements.LabelsFactory.Label.prototype.draw;
 
