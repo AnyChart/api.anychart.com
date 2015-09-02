@@ -1,13 +1,25 @@
 /**
+ * Define Logarithmic scale.<br/>
+ * <b>Note:</b> To create instance use method {@link anychart.scales.log}.
  * @constructor
  * @extends {anychart.scales.Linear}
  */
 anychart.scales.Logarithmic;
 
 /**
- * Log base value. Affects tick values auto calculation.
- * @param {number=} opt_value Log base to set.
- * @return {anychart.scales.Logarithmic|number}
+ * Getter for Log base value.
+ * @return {number} Current Log base.
+ */
+anychart.scales.Logarithmic.prototype.logBase;
+
+/**
+ * Setter for Log base value.<br/>
+ * <b>Note:</b> Affects tick values auto calculation.
+ * @example <t>lineChart</t>
+ * chart.line([2, 16, 4, 64]);
+ * chart.yScale(anychart.scales.log().logBase(2));
+ * @param {number=} opt_value [10] Log base to set. Takes any number greater than 1.
+ * @return {anychart.scales.Logarithmic} An instance of {@link anychart.scales.Logarithmic} class for method chaining.
  */
 anychart.scales.Logarithmic.prototype.logBase;
 
@@ -18,7 +30,10 @@ anychart.scales.Logarithmic.prototype.transform;
 anychart.scales.Logarithmic.prototype.inverseTransform;
 
 /**
- * Shortcut to create a logarithmic scale.
+ * Constructor function for logarithmic scale.
+ * @example <t>lineChart</t>
+ * chart.line([2, 16, 4, 64]);
+ * chart.yScale(anychart.scales.log());
  * @return {anychart.scales.Logarithmic} Logarithmic scale.
  */
 anychart.scales.log;
