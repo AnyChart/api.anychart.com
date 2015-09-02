@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="label"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+
+            var blueRect = stage.rect(5, 5, 90, 90);
+            blueRect.stroke('1 blue');
+
+            var rectBounds = blueRect.getBounds();
+            var myLabel = anychart.ui.label();
+
+            // Gets position.
+            var currentPosition = myLabel.position();
+
+            myLabel.text("The current position is " + currentPosition);
+            myLabel.parentBounds(rectBounds);
+            myLabel.container(stage);
+            myLabel.draw();
+
+            // Red dot marks the center of this area.
+            var redCircle = stage.circle(rectBounds.left + rectBounds.width / 2, rectBounds.top + rectBounds.height / 2, 2);
+            redCircle.stroke('3 #F44336');
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

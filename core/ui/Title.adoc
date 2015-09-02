@@ -2,17 +2,8 @@
  * Title element class.<br/>
  * Title can be a part of an other complex element, such as a chart, a legend or an axis,
  * as well a self-sufficient element.<br/>
- * A title have a positione, text alignment and a background.
- * @illustration <t>simple</t>
- * var layer1= stage.layer();
- * layer1.rect(1,1,stage.width()/2-4, stage.height()-2).stroke('1 black');
- * layer1.rect(1,1,stage.width()/2-4, 50).fill('orange 0.1');
- * layer1.text(stage.width()/4 - 30, 10, 'Title').fontSize(17);
- * var layer2= stage.layer().translate(stage.width()/2 ,0);
- * layer2.rect(2,1,stage.width()/2-2, stage.height()-2).stroke('1 black');
- * layer2.rect(2,1, 50, stage.height()-2).fill('orange 0.1');
- * layer2.text(10, stage.height() /2 +20, 'Title').fontSize(17).rotateByAnchor(-90, 'center');
- * @illustrationDesc
+ * A title have a orientation, text alignment and a background.<br/>
+ * <img src='/anychart.core.ui.Title.png' height='287' width='444'/><br/>
  * Title occupies the whole part of a container (depending on the orientation by the width or the height).
  * @example anychart.core.ui.Title
  * @constructor
@@ -20,168 +11,283 @@
  */
 anychart.core.ui.Title;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Title.prototype.text
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Gets the text content for the current title.
+ * @shortDescription Title text.
+ * @category Specific settings
+ * @example anychart.core.ui.Title.text_get
  * @return {string} The current text content of the title.
  */
 anychart.core.ui.Title.prototype.text;
 
 /**
  * Sets the text content for the title.
- * @example anychart.core.ui.Title.text
- * @param {string=} opt_value ['Title text'] Value to set.
+ * @example anychart.core.ui.Title.text_set
+ * @param {string=} opt_value ["Title text"] Value to set.
  * @return {anychart.core.ui.Title} Self instance for method chaining.
  */
 anychart.core.ui.Title.prototype.text;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Title.prototype.background;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for the title background.
- * @example anychart.core.ui.Title.background
+ * Getter for the current title background.
+ * @shortDescription Background settings.
+ * @category Coloring
+ * @example anychart.core.ui.Title.background_get
  * @return {!anychart.core.ui.Background} Returns the current background.
  */
 anychart.core.ui.Title.prototype.background;
 
 /**
  * Setter for the title background.
- * @example anychart.core.ui.Title.background1
- * @param {(string|Object|null|boolean)=} opt_value [null] Value to set.
+ * @detailed Sets title background settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable title background.</li>
+ *   <li><b>string</b> - sets title background color value.</li>
+ *   <li><b>object</b> - sets title background settings.</li>
+ * </ul>
+ * @example anychart.core.ui.Title.background_set_asBool Disable/Enable background
+ * @example anychart.core.ui.Title.background_set_asString Using string
+ * @example anychart.core.ui.Title.background_set_asObj Using object
+ * @param {(string|Object|null|boolean)=} opt_value [false] Value to set.
  * @return {anychart.core.ui.Title} Self instance for method chaining.
  */
 anychart.core.ui.Title.prototype.background;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Title.prototype.width
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for the title width.
+ * @shortDescription Width settings.
+ * @category Size and Position
+ * @example anychart.core.ui.Title.width_get
  * @return {number|string|null} The current title width.
  */
 anychart.core.ui.Title.prototype.width;
 
 /**
- * Setter for the title width.<br/>
- * <b>Note:</b> If <b>null</b> is passed the width is calcualted automatically.
- * @listing
- * title.width('200px');
+ * Setter for the title width.
+ * @detailed <b>Note:</b> If <b>null</b> is passed the width is calcualted automatically.
+ * @example anychart.core.ui.Title.width_set
  * @param {(number|string|null)=} opt_value [null] Value to set.
  * @return {anychart.core.ui.Title} Self instance for method chaining.
  */
 anychart.core.ui.Title.prototype.width;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Title.prototype.height
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for the title height.
+ * Getter for the current title height.
+ * @shortDescription Height settings.
+ * @category Size and Position
+ * @example anychart.core.ui.Title.height_get
  * @return {number|string|null} The current title width.
  */
 anychart.core.ui.Title.prototype.height;
 
 /**
- * Setter for the title height.<br/>
- * <b>Note:</b> If <b>null</b> is passed the height is calcualted automatically.
- * @listing
- * title.height('200px');
+ * Setter for the title height.
+ * @detailed <b>Note:</b> If <b>null</b> is passed the height is calcualted automatically.
+ * @example anychart.core.ui.Title.height_set
  * @param {(number|string|null)=} opt_value [null] Value to set.
  * @return {anychart.core.ui.Title} Self instance for method chaining.
  */
 anychart.core.ui.Title.prototype.height;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Title.prototype.margin
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for the current title margin.<br/>
+ * Getter for the current title margin.
  * Learn more about margins at {@link anychart.core.Chart#margin}.
+ * @shortDescription Margin settings.
+ * @category Size and Position
  * @return {!anychart.core.utils.Margin} The current title margin.
  */
 anychart.core.ui.Title.prototype.margin;
 
 /**
- * Setter for the title margin in pixels using one complex value.<br/>
- * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_allValues Value to set.
+ * Setter for the title margin in pixels using one complex value.
+ * @example anychart.core.ui.Title.margin_set_asSingle
+ * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=}
+ * opt_allValues [{top: 0, right: 0, bottom: 2, left: 0}] Value to set.
  * @return {anychart.core.ui.Title} Self instance for method chaining.
  */
 anychart.core.ui.Title.prototype.margin;
 
 /**
- * Setter for the title margin in pixels using several numbers.<br/>
- * @listing
+ * Setter for the title margin in pixels using several numbers.
+ * @listing Example.
  * // 1) all 10px
  * title.margin(10);
  * // 2) top and bottom 10px, left and right 15px
- * title.margin(10, '15px');
+ * title.margin(10, "15px");
  * // 3) top 10px, left and right 15px, bottom 5px
- * title.margin(10, '15px', 5);
+ * title.margin(10, "15px", 5);
  * // 4) top 10px, right 15px, bottom 5px, left 12px
- * title.margin(10, '15px', '5px', 12);
+ * title.margin(10, "15px", "5px", 12);
+ * @example anychart.core.ui.Title.margin_set_asSeveral
  * @param {(string|number)=} opt_value1 [0] Top or top-bottom space.
  * @param {(string|number)=} opt_value2 [0] Right or right-left space.
- * @param {(string|number)=} opt_value3 [10] Bottom space.
+ * @param {(string|number)=} opt_value3 [0] Bottom space.
  * @param {(string|number)=} opt_value4 [0] Left space.
  * @return {anychart.core.ui.Title} Self instance for method chaining.
  */
 anychart.core.ui.Title.prototype.margin;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Title.prototype.padding
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for the current title padding.<br/>
  * Learn more about paddings at {@link anychart.core.Chart#padding}.
+ * @shortDescription Padding settings.
+ * @category Size and Position
  * @return {!anychart.core.utils.Padding} The current title padding.
  */
 anychart.core.ui.Title.prototype.padding;
 
 /**
- * Setter for the title padding in pixels using single value.<br/>
- * @param {(string|number|anychart.core.utils.Space)=} opt_value [null] Value to set.
+ * Setter for the title padding in pixels using single value.
+ * @example anychart.core.ui.Title.padding_set_asSingle
+ * @param {(string|number|anychart.core.utils.Space)=} opt_value [{top: 0, right: 0, bottom: 2, left: 0}] Value to set.
  * @return {anychart.core.ui.Title} Self instance for method chaining.
  */
 anychart.core.ui.Title.prototype.padding;
 
 /**
- * Setter for the title padding in pixels using several numbers.<br/>
- * @listing
+ * Setter for the title padding in pixels using several numbers.
+ * @listing Example.
  * // 1) top and bottom 10px, left and right 15px
- * title.padding(10, '15px');
+ * title.padding(10, "15px");
  * // 2) top 10px, left and right 15px, bottom 5px
- * title.padding(10, '15px', 5);
+ * title.padding(10, "15px", 5);
  * // 3) top 10px, right 15px, bottom 5px, left 12px
- * title.padding(10, '15px', '5px', 12);
- * @param {(string|number)=} opt_value1 Top or top-bottom space.
- * @param {(string|number)=} opt_value2 Right or right-left space.
- * @param {(string|number)=} opt_value3 Bottom space.
- * @param {(string|number)=} opt_value4 Left space.
+ * title.padding(10, "15px", "5px", 12);
+ * @example anychart.core.ui.Title.padding_set_asSeveral
+ * @param {(string|number)=} opt_value1 [0] Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 [0] Right or right-left space.
+ * @param {(string|number)=} opt_value3 [0] Bottom space.
+ * @param {(string|number)=} opt_value4 [0] Left space.
  * @return {anychart.core.ui.Title} Self instance for method chaining.
  */
 anychart.core.ui.Title.prototype.padding;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Title.prototype.align
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for the title align.
+ * @shortDescription Align settings.
+ * @category Size and Position
+ * @example anychart.core.ui.Title.align_get
  * @return {anychart.enums.Align} The current title align.
  */
 anychart.core.ui.Title.prototype.align;
 
 /**
  * Setter for the title align.
- * @example anychart.core.ui.Title.align
- * @param {(anychart.enums.Align|string)=} opt_value [{@link anychart.enums.Align}.CENTER] Value to set.
+ * @example anychart.core.ui.Title.align_set
+ * @param {(anychart.enums.Align|string)=} opt_value ["center"] Value to set.
  * @return {anychart.core.ui.Title} Self instance for method chaining.
  */
 anychart.core.ui.Title.prototype.align;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Title.prototype.orientation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for the title orientation.
- * @return {anychart.enums.Orientation} The orientation or the title for method chaining.
+ * Getter for the current title orientation.
+ * @shortDescription Orientation settings.
+ * @category Size and Position
+ * @example anychart.core.ui.Title.orientation_get
+ * @return {anychart.enums.Orientation} The current orientation.
  */
 anychart.core.ui.Title.prototype.orientation;
 
 /**
  * Setter for the title orientation.
- * @example anychart.core.ui.Title.orientation
- * @param {(anychart.enums.Orientation|string)=} opt_value [{@link anychart.enums.Orientation}.TOP] Value to set.
+ * @example anychart.core.ui.Title.orientation_set
+ * @param {(anychart.enums.Orientation|string)=} opt_value ["top"] Value to set.
  * @return {anychart.core.ui.Title} Self instance for method chaining.
  */
 anychart.core.ui.Title.prototype.orientation;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Title.prototype.rotation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Title rotation. Set null or NaN to automatic rotation due to title orientation.
- * @param {number=} opt_value
- * @return {anychart.core.ui.Title|number}
+ * Getter for the current title rotation.
+ * @shortDescription Rotation settings.
+ * @category Size and Position
+ * @example anychart.core.ui.Title.rotation_get
+ * @return {number} The current rotation.
  */
 anychart.core.ui.Title.prototype.rotation;
 
 /**
+ * Setter for the title rotation.
+ * @detailed <b>Note:</b> If <b>null</b> or <b>NaN</b> is passed the rotation calcualted automatically.
+ * @example anychart.core.ui.Title.rotation_set
+ * @param {number=} opt_value Value to set.
+ * @return {anychart.core.ui.Title} Self instance for method chaining.
+ */
+anychart.core.ui.Title.prototype.rotation;
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Title.prototype.getRemainingBounds
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
  * Returns the remaining (after title placement) part of the container.
+ * @category Size and Position
  * @example anychart.core.ui.Title.getRemainingBounds
  * @return {!anychart.math.Rect} Parent bounds without the space used by the title.
  */

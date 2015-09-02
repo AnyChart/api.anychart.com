@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="label"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+
+            var parentBounds = stage.rect(5, 5, 190, 70);
+            parentBounds.stroke("rgba(0,0,200,.4)");
+
+            var myLabel = anychart.ui.label();
+            myLabel.padding(5);
+            myLabel.parentBounds(parentBounds.getBounds());
+
+            // Gets offset by Y.
+            var currentOffsetY = myLabel.offsetY();
+
+            myLabel.text("The current offset by Y is " + currentOffsetY);
+            myLabel.offsetX(10);
+            myLabel.background({fill: "none", stroke: "1 #aaa"});
+            myLabel.container(stage);
+            myLabel.draw();
+
+            var redCircle = stage.circle(5, 5, 2);
+            redCircle.stroke("3 #F44336");
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

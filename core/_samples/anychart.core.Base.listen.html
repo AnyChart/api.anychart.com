@@ -4,16 +4,23 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var chart = anychart.line();
-            var line = chart.line([1, 4, 2, 6]);
-            var title = chart.title();
-            title.text("Click on line series.");
+
+            var lineSeries  = chart.line([1, 4, 2, 6]);
+
+            var myTitle = chart.title();
+            myTitle.enabled(true);
+            myTitle.text("Click on line series.");
+
             var counter = 0;
-            line.listen(anychart.enums.EventType.POINT_CLICK, function (e) {
+
+            // Sets event listener on series.
+            lineSeries.listen("pointClick", function(e) {
                 counter++;
-                title.text("You clicked " + counter + " times. Click again.");
+                myTitle.text("You clicked " + counter + " times. Click again.");
             });
+
             chart.container("container");
             chart.draw();
         });

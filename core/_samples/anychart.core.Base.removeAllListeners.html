@@ -4,22 +4,28 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var chart = anychart.line();
-            var line = chart.line([1, 4, 2, 6]);
-            var title = chart.title();
-            title.text("MouseOver the title and click on line series.");
-            var counter = 0;
-            line.listen(anychart.enums.EventType.POINT_MOUSE_OUT, function (e) {
-                title.fontColor("green");
+
+            var lineSeries = chart.line([1, 4, 2, 6]);
+
+            var myTitle = chart.title();
+            myTitle.enabled(true);
+            myTitle.text("MouseOver the title and click on line series.");
+
+            lineSeries.listen("pointMouseOut", function(e) {
+                myTitle.fontColor("#4CAF50");
             });
-            line.listen(anychart.enums.EventType.POINT_MOUSE_OVER, function (e) {
-                title.fontColor("red");
+            lineSeries.listen("pointMouseOver", function(e) {
+                myTitle.fontColor("#F44336");
             });
-            line.listen(anychart.enums.EventType.POINT_CLICK, function (e) {
-                title.text("You can\'t click here anymore.").fontColor("black");
-                line.removeAllListeners();
+            lineSeries.listen("pointClick", function(e) {
+                myTitle.text("You can\'t click here anymore.");
+                myTitle.fontColor("#000000");
+                // Removes all listeners.
+                lineSeries.removeAllListeners();
             });
+
             chart.container("container");
             chart.draw();
         });

@@ -1,4 +1,11 @@
 /**
+ * Namespace anychart.core.polar.
+ * @namespace
+ * @name anychart.core.polar
+ */
+anychart.core.polar;
+
+/**
  * Base class for all polar series.<br/>
  * Base class defines common methods, such as those for:
  * <ul>
@@ -23,13 +30,15 @@ anychart.core.polar.series.Base;
 
 /**
  * Getter for series name.
+ * @shortDescription Series name settings.
+ * @category Data
  * @example anychart.core.polar.series.Base.name_get
  * @return {string|undefined} Series name value.
  */
 anychart.core.polar.series.Base.prototype.name;
 
 /**
- * Setter for series name. <br/>
+ * Setter for series name.<br/>
  * Basically, name of series is used in Legend displaying, but it can be used in tooltips as well.
  * @example anychart.core.polar.series.Base.name_set
  * @param {string=} opt_value [undefined] Value to set.
@@ -46,6 +55,8 @@ anychart.core.polar.series.Base.prototype.name;
 
 /**
  * Getter for series meta data.
+ * @shortDescription Meta data settings.
+ * @category Data
  * @example anychart.core.polar.series.Base.meta
  * @param {*=} opt_key Metadata key.
  * @return {*} Metadata object by key.
@@ -87,6 +98,8 @@ anychart.core.polar.series.Base.prototype.meta;
 
 /**
  * Getter for series mapping.
+ * @shortDescription Data settings.
+ * @category Data
  * @example anychart.core.polar.series.Base.data_get
  * @return {!anychart.data.View} Returns current mapping.
  */
@@ -113,6 +126,8 @@ anychart.core.polar.series.Base.prototype.data;
 
 /**
  * Getter for current series X scale.
+ * @shortDescription X-scale settings.
+ * @category Scales
  * @example anychart.core.polar.series.Base.xScale_get
  * @return {anychart.scales.Base} Current series X Scale.
  */
@@ -121,7 +136,7 @@ anychart.core.polar.series.Base.prototype.xScale;
 /**
  * Setter for series X scale.
  * @example anychart.core.polar.series.Base.xScale_set
- * @param {anychart.scales.Base=} opt_value Value to set. Default linear scale.
+ * @param {anychart.scales.Base=} opt_value ["linear"] Value to set.
  * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.xScale;
@@ -135,6 +150,8 @@ anychart.core.polar.series.Base.prototype.xScale;
 
 /**
  * Getter for current series Y scale.
+ * @shortDescription Y-scale settings.
+ * @category Scales
  * @example anychart.core.polar.series.Base.yScale_get
  * @return {anychart.scales.Base} Current series Y Scale.
  */
@@ -143,7 +160,7 @@ anychart.core.polar.series.Base.prototype.yScale;
 /**
  * Setter for series Y scale.
  * @example anychart.core.polar.series.Base.yScale_set
- * @param {anychart.scales.Base=} opt_value Value to set. Default linear scale.
+ * @param {anychart.scales.Base=} opt_value ["linear"] Value to set.
  * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.yScale;
@@ -157,6 +174,8 @@ anychart.core.polar.series.Base.prototype.yScale;
 
 /**
  * Getter for current series data tooltip.
+ * @shortDescription Tooltip settings.
+ * @category Interactivity
  * @example anychart.core.polar.series.Base.tooltip_get
  * @return {!anychart.core.ui.Tooltip} Tooltip instance.
  */
@@ -164,7 +183,13 @@ anychart.core.polar.series.Base.prototype.tooltip;
 
 /**
  * Setter for series data tooltip.
- * @example anychart.core.polar.series.Base.tooltip_set
+ * @detailed Sets tooltip settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable tooltip.</li>
+ *   <li><b>object</b> - sets tooltip settings.</li>
+ * </ul>
+ * @example anychart.core.polar.series.Base.tooltip_set_asBool Disable/Enable tooltip.
+ * @example anychart.core.polar.series.Base.tooltip_set_asObj Using object
  * @param {(Object|boolean|null)=} opt_value [true] Tooltip settings.
  * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
@@ -179,6 +204,8 @@ anychart.core.polar.series.Base.prototype.tooltip;
 
 /**
  * Getter for current series data labels.
+ * @shortDescription Labels settings.
+ * @category Point Elements
  * @example anychart.core.polar.series.Base.labels_get
  * @return {!anychart.core.ui.LabelsFactory} Labels instance.
  */
@@ -186,7 +213,13 @@ anychart.core.polar.series.Base.prototype.labels;
 
 /**
  * Setter for series data labels.
- * @example anychart.core.polar.series.Base.labels_set
+ * @detailed Sets labels settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable labels.</li>
+ *   <li><b>object</b> - sets labels settings.</li>
+ * </ul>
+ * @example anychart.core.polar.series.Base.labels_set_asObj Using object
+ * @example anychart.core.polar.series.Base.labels_set_asBool Disable/Enable labels.
  * @param {(Object|boolean|null)=} opt_value [false] Series data labels settings.
  * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
@@ -200,10 +233,25 @@ anychart.core.polar.series.Base.prototype.labels;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets or sets series hover data labels.
- * @example anychart.core.polar.series.Base.hoverLabels
- * @param {(Object|boolean|null)=} opt_value [false] Series data labels settings.
- * @return {!(anychart.core.ui.LabelsFactory|anychart.core.polar.series.Base)} Labels instance or itself for chaining call.
+ * Getter for the current series hover data labels.
+ * @shortDescription Labels settings.
+ * @category Point Elements
+ * @example anychart.core.polar.series.Base.hoverLabels_get
+ * @return {anychart.core.ui.LabelsFactory} Labels instance.
+ */
+anychart.core.polar.series.Base.prototype.hoverLabels;
+
+/**
+ * Setter for the series hover data labels.
+ * @detailed Sets labels settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable labels.</li>
+ *   <li><b>object</b> - sets labels settings.</li>
+ * </ul>
+ * @example anychart.core.polar.series.Base.hoverLabels_set_asObj Using object
+ * @example anychart.core.polar.series.Base.hoverLabels_set_asBool Disable/Enable labels.
+ * @param {(Object|boolean|null)=} opt_value [null] Series data labels settings.
+ * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.hoverLabels;
 
@@ -216,6 +264,8 @@ anychart.core.polar.series.Base.prototype.hoverLabels;
 
 /**
  * Getter for current series color.
+ * @shortDescription Color settings.
+ * @category Coloring
  * @example anychart.core.polar.series.Base.color_get
  * @return {!anychart.graphics.vector.Fill} Current color.
  */
@@ -228,7 +278,7 @@ anychart.core.polar.series.Base.prototype.color;
  * image fill here - stroke doesn't accept image fill.
  * @example anychart.core.polar.series.Base.color_set_asString Using string
  * @example anychart.core.polar.series.Base.color_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value [#1D8BD1] Color as an object or a string.
+ * @param {anychart.graphics.vector.Fill} value ["#64b5f6"] Color as an object or a string.
  * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.color;
@@ -280,6 +330,8 @@ anychart.core.polar.series.Base.prototype.color;
 
 /**
  * Getter for legend item settings of series.
+ * @shortDescription Legend item settings.
+ * @category Specific settings
  * @return {anychart.core.utils.LegendItemSettings} Legend item settings.
  */
 anychart.core.polar.series.Base.prototype.legendItem;
@@ -301,6 +353,7 @@ anychart.core.polar.series.Base.prototype.legendItem;
 
 /**
  * Sets the hover state on a point or a series.
+ * @category Interactivity
  * @detailed If index is passed, hovers a point of the series by its index, else hovers all points of the series.<br/>
  * <b>Note:</b> Works only after {@link anychart.charts.Polar#draw} is called.
  * @example anychart.core.polar.series.Base.hover_set_asIndex Hovers point using index.

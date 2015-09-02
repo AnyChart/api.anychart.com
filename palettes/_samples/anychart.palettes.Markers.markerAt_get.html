@@ -6,9 +6,15 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var chart = anychart.line([2, 5, 1, 8], [6, 3, 8, 4], [10, 6, 13, 1]);
+            var firstSeries = chart.getSeries(0);
+            firstSeries.markers(true);
+            var secondSeries = chart.getSeries(1);
+            secondSeries.markers(true);
+            var thirdSeries = chart.getSeries(2);
+            thirdSeries.markers(true);
             var palette = anychart.palettes.markers();
             var getMarker = palette.markerAt(0); // get marker type by index
-            chart.title("Marker type - " + getMarker);
+            chart.title("Marker type by 0 index is " + getMarker);
             chart.markerPalette(palette);
             chart.container("container");
             chart.draw();

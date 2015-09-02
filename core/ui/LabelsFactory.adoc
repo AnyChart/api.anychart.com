@@ -15,6 +15,8 @@ anychart.core.ui.LabelsFactory;
 
 /**
  * Getter for the current element state.
+ * @shortDescription Element state (enabled or disabled).
+ * @category Interactivity
  * @detailed <b>True</b>, <b>false</b> and <b>null</b> states.
  * <b>True</b> and <b>false</b> are self-explanatory. <b>Null</b> state means that element is enabled,
  * but if it depends on other entities (like, for example, labels() and hoverLabels() in series),
@@ -29,7 +31,7 @@ anychart.core.ui.LabelsFactory.prototype.enabled;
 /**
  * Setter for the element enabled state.
  * @example anychart.core.ui.LabelsFactory.enabled_set
- * @param {(null|boolean)=} opt_value [false] Value to set.
+ * @param {(null|boolean)=} opt_value [true] Value to set.
  * @return {anychart.core.ui.LabelsFactory} Self instance for method chaining.
  */
 anychart.core.ui.LabelsFactory.prototype.enabled;
@@ -43,6 +45,8 @@ anychart.core.ui.LabelsFactory.prototype.enabled;
 
 /**
  * Getter for the current labels background settings.
+ * @shortDescription Background settings.
+ * @category Coloring
  * @example anychart.core.ui.LabelsFactory.background_get
  * @return {!anychart.core.ui.Background} The current labels background.
  */
@@ -59,7 +63,7 @@ anychart.core.ui.LabelsFactory.prototype.background;
  * @example anychart.core.ui.LabelsFactory.background_set_asBool Disable/Enable background
  * @example anychart.core.ui.LabelsFactory.background_set_asString Using string
  * @example anychart.core.ui.LabelsFactory.background_set_asObject Using object
- * @param {(string|Object|null|boolean)=} opt_value Background object to set.
+ * @param {(string|Object|null|boolean)=} opt_value [false] Background object to set.
  * @return {anychart.core.ui.LabelsFactory} Self instance for method chaining.
  */
 anychart.core.ui.LabelsFactory.prototype.background;
@@ -73,6 +77,8 @@ anychart.core.ui.LabelsFactory.prototype.background;
 
 /**
  * Getter for labels padding setting.
+ * @shortDescription Padding settings.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.padding_get
  * @return {anychart.core.utils.Padding} The current labels padding.
  */
@@ -82,7 +88,7 @@ anychart.core.ui.LabelsFactory.prototype.padding;
  * Setter for labels padding in pixels using a single value.
  * @example anychart.core.ui.LabelsFactory.padding_set_asSingle
  * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)}|number|string)=}
- * opt_value Space value, object or array.
+ * opt_value [{top: 2, right: 4, bottom: 2, left: 4}] Space value, object or array.
  * @return {anychart.core.ui.LabelsFactory} Self instance for method chaining.
  */
 anychart.core.ui.LabelsFactory.prototype.padding;
@@ -90,10 +96,10 @@ anychart.core.ui.LabelsFactory.prototype.padding;
 /**
  * Setter for labels padding setting in pixels using several value.
  * @example anychart.core.ui.LabelsFactory.padding_set_asSeveral
- * @param {(string|number)=} opt_value1 Top or top-bottom space.
- * @param {(string|number)=} opt_value2 Right or right-left space.
- * @param {(string|number)=} opt_value3 Bottom space.
- * @param {(string|number)=} opt_value4 Left space.
+ * @param {(string|number)=} opt_value1 [2] Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 [4] Right or right-left space.
+ * @param {(string|number)=} opt_value3 [2] Bottom space.
+ * @param {(string|number)=} opt_value4 [4] Left space.
  * @return {anychart.core.ui.LabelsFactory} Self instance for method chaining.
  */
 anychart.core.ui.LabelsFactory.prototype.padding;
@@ -107,6 +113,8 @@ anychart.core.ui.LabelsFactory.prototype.padding;
 
 /**
  * Getter for the current labels text formatter function.
+ * @shortDescription Text formatter function.
+ * @category Specific settings
  * @return {Function} Labels text formatter function.
  */
 anychart.core.ui.LabelsFactory.prototype.textFormatter;
@@ -114,7 +122,7 @@ anychart.core.ui.LabelsFactory.prototype.textFormatter;
 /**
  * Setter for the labels text formatter function.
  * @example anychart.core.ui.LabelsFactory.textFormatter
- * @param {Function=} opt_value Labels text formatter function.
+ * @param {Function=} opt_value [function() {return this['value'];}] Labels text formatter function.
  * @return {anychart.core.ui.LabelsFactory} Self instance for method chaining.
  */
 anychart.core.ui.LabelsFactory.prototype.textFormatter;
@@ -128,6 +136,8 @@ anychart.core.ui.LabelsFactory.prototype.textFormatter;
 
 /**
  * Getter for the current labels position formatter function.
+ * @shortDescription Position formatter function.
+ * @category Size and Position
  * @return {Function} The current labels position formatter function.
  */
 anychart.core.ui.LabelsFactory.prototype.positionFormatter;
@@ -135,7 +145,7 @@ anychart.core.ui.LabelsFactory.prototype.positionFormatter;
 /**
  * Setter for the labels position formatter function.
  * @example anychart.core.ui.LabelsFactory.positionFormatter
- * @param {Function=} opt_value Labels position formatter function.
+ * @param {Function=} opt_value [function() {return this['value'];}] Labels position formatter function.
  * @return {anychart.core.ui.LabelsFactory} Self instance for method chaining.
  */
 anychart.core.ui.LabelsFactory.prototype.positionFormatter;
@@ -149,6 +159,8 @@ anychart.core.ui.LabelsFactory.prototype.positionFormatter;
 
 /**
  * Getter for the current labels position settings.
+ * @shortDescription Position settings.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.position_get
  * @return {string} The current labels position settings.
  */
@@ -159,8 +171,8 @@ anychart.core.ui.LabelsFactory.prototype.position;
  * @detailed These settings are processed by the factory handler (for example a series,
  * or an axis) and can have different meanings from handler to handler. Try using anychart.enums.Position values.
  * @example anychart.core.ui.LabelsFactory.position_set
- * @param {string=} opt_value ['centerTop'] Labels position settings.
- * @return {anychart.core.ui.LabelsFactory|string} Self instance for method chaining.
+ * @param {string=} opt_value ["centerTop"] Labels position settings.
+ * @return {anychart.core.ui.LabelsFactory} Self instance for method chaining.
  */
 anychart.core.ui.LabelsFactory.prototype.position;
 
@@ -173,6 +185,8 @@ anychart.core.ui.LabelsFactory.prototype.position;
 
 /**
  * Getter for the current labels anchor settings.
+ * @shortDescription Anchor settings.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.anchor_get
  * @return {anychart.enums.Anchor} The current labels anchor setting.
  */
@@ -181,7 +195,7 @@ anychart.core.ui.LabelsFactory.prototype.anchor;
 /**
  * Setter for the labels anchor settings.
  * @example anychart.core.ui.LabelsFactory.anchor_set
- * @param {(anychart.enums.Anchor|string)=} opt_value ['center'] Labels anchor settings.
+ * @param {(anychart.enums.Anchor|string)=} opt_value ["center"] Labels anchor settings.
  * @return {anychart.core.ui.LabelsFactory} Self instance for method chaining.
  */
 anychart.core.ui.LabelsFactory.prototype.anchor;
@@ -195,6 +209,8 @@ anychart.core.ui.LabelsFactory.prototype.anchor;
 
 /**
  * Getter for the current labels offsetX settings.
+ * @shortDescription Offset by X.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.offsetX_get
  * @return {number|string} The current labels offsetX value.
  */
@@ -204,7 +220,7 @@ anychart.core.ui.LabelsFactory.prototype.offsetX;
 /**
  * Setter for the labels offsetX settings.
  * @example anychart.core.ui.LabelsFactory.offsetX_set
- * @param {(number|string)=} opt_value Labels offsetX settings to set.
+ * @param {(number|string)=} opt_value [0] Labels offsetX settings to set.
  * @return {anychart.core.ui.LabelsFactory} Self instance for method chaining.
  */
 anychart.core.ui.LabelsFactory.prototype.offsetX;
@@ -218,6 +234,8 @@ anychart.core.ui.LabelsFactory.prototype.offsetX;
 
 /**
  * Getter for the current labels offsetY settings.
+ * @shortDescription Offset by Y.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.offsetY_get
  * @return {number|string} The current labels offsetY value.
  */
@@ -226,7 +244,7 @@ anychart.core.ui.LabelsFactory.prototype.offsetY;
 /**
  * Setter for the labels offsetY settings.
  * @example anychart.core.ui.LabelsFactory.offsetY_set
- * @param {(number|string)=} opt_value Labels offsetY settings to set.
+ * @param {(number|string)=} opt_value [0] Labels offsetY settings to set.
  * @return {anychart.core.ui.LabelsFactory} Self instance for method chaining.
  */
 anychart.core.ui.LabelsFactory.prototype.offsetY;
@@ -240,6 +258,8 @@ anychart.core.ui.LabelsFactory.prototype.offsetY;
 
 /**
  * Getter for the current rotation angle around an anchor.
+ * @shortDescription Rotation settings.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.rotation_get
  * @return {number} The current rotation angle in degrees.
  */
@@ -262,6 +282,8 @@ anychart.core.ui.LabelsFactory.prototype.rotation;
 
 /**
  * Getter for the current labels width settings.
+ * @shortDescription Width settings.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.width_get
  * @return {number|string|null} The current labels width settings
  */
@@ -284,6 +306,8 @@ anychart.core.ui.LabelsFactory.prototype.width;
 
 /**
  * Getter for the current labels height settings.
+ * @shortDescription Height settings.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.height_get
  * @return {number|string|null} The current labels height.
  */
@@ -305,6 +329,8 @@ anychart.core.ui.LabelsFactory.prototype.height;
 
 /**
  * Getter for the current minimum font size setting for adjust text from.
+ * @shortDescription Minimum font size setting.
+ * @category Base Text Settings
  * @example anychart.core.ui.LabelsFactory.minFontSize_get
  * @return {number} The current minimum font size setting.
  */
@@ -328,6 +354,8 @@ anychart.core.ui.LabelsFactory.prototype.minFontSize;
 
 /**
  * Getter for the current maximum font size setting for adjust text to.
+ * @shortDescription Maximum font size setting.
+ * @category Base Text Settings
  * @example anychart.core.ui.LabelsFactory.maxFontSize_get
  * @return {number} The current maximum font size setting.
  */
@@ -351,6 +379,8 @@ anychart.core.ui.LabelsFactory.prototype.maxFontSize;
 
 /**
  * Getter for the current adjust font size.
+ * @shortDescription Adjusting settings.
+ * @category Advanced Text Settings
  * @example anychart.core.ui.LabelsFactory.adjustFontSize_get
  * @return {{width:boolean,height:boolean}} The current adjust font size settings.
  */
@@ -398,6 +428,7 @@ anychart.core.ui.LabelsFactory.Label;
 
 /**
  * Returns label index.
+ * @category Specific settings
  * @example anychart.core.ui.LabelsFactory.Label.getIndex
  * @return {number} The current label index.
  */
@@ -412,6 +443,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.getIndex;
 
 /**
  * Getter for current label padding.
+ * @shortDescription Padding settings.
+ * @category Size and Position
  * @return {anychart.core.utils.Padding} The current label padding.
  */
 anychart.core.ui.LabelsFactory.Label.prototype.padding;
@@ -445,6 +478,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.padding;
 
 /**
  * Getter for the current rotate a label around an anchor.
+ * @shortDescription Rotation settings.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.Label.rotation_get
  * @return {number} The current rotation angle in degrees.
  */
@@ -468,6 +503,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.rotation;
 
 /**
  * Getter for the current label background settings.
+ * @shortDescription Background settings.
+ * @category Coloring
  * @example anychart.core.ui.LabelsFactory.Label.background_get
  * @return {anychart.core.ui.Background} The current background.
  */
@@ -498,6 +535,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.background;
 
 /**
  * Getter for the current label width.
+ * @shortDescription Width settings.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.Label.width_get
  * @return {number|string|null} The current label width.
  */
@@ -520,6 +559,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.width;
 
 /**
  * Getter for the current label height.
+ * @shortDescription Height settings.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.Label.height_get
  * @return {number|string|null} The current label height.
  */
@@ -542,6 +583,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.height;
 
 /**
  * Getter for the current label anchor settings.
+ * @shortDescription Anchor settings.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.Label.anchor_get
  * @return {anychart.enums.Anchor} The current label anchor settings.
  */
@@ -564,6 +607,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.anchor;
 
 /**
  * Getter for the current label offsetX settings.
+ * @shortDescription Offset by X.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.Label.offsetX_get
  * @return {number|string} The current label offsetX settings.
  */
@@ -586,6 +631,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.offsetX;
 
 /**
  * Getter for the current label offsetY settings.
+ * @shortDescription Offset by Y.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.Label.offsetY_get
  * @return {number|string} The current label offsetY settings.
  */
@@ -608,6 +655,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.offsetY;
 
 /**
  * Gets the current minimum font size setting for adjust text from.
+ * @shortDescription Minimum font size settings.
+ * @category Base Text Settings
  * @example anychart.core.ui.LabelsFactory.Label.minFontSize_get
  * @return {number} The current font size setting.
  */
@@ -631,6 +680,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.minFontSize;
 
 /**
  * Gets the current maximum font size setting for adjust text to.
+ * @shortDescription Maximum font size settings.
+ * @category Base Text Settings
  * @example anychart.core.ui.LabelsFactory.Label.maxFontSize_get
  * @return {number} The current maximum font size setting.
  */
@@ -654,6 +705,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.maxFontSize;
 
 /**
  * Getter for the current adjust font size.
+ * @shortDescription Adjusting settings.
+ * @category Advanced Text Settings
  * @example anychart.core.ui.LabelsFactory.Label.adjustFontSize_get
  * @return {{width:boolean,height:boolean}} The current adjustFontSize settings.
  */
@@ -686,6 +739,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.adjustFontSize;
 
 /**
  * Getter for the current label position settings.
+ * @shortDescription Position settings.
+ * @category Size and Position
  * @example anychart.core.ui.LabelsFactory.Label.position_get
  * @return {string} The current label position settings.
  */
@@ -708,6 +763,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.position;
 
 /**
  * Getter for the current element state.
+ * @shortDescription Element state (enabled or disabled).
+ * @category Interactivity
  * @example anychart.core.ui.LabelsFactory.Label.enabled_get
  * @return {?boolean} The current element state.
  */
@@ -730,6 +787,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.enabled;
 
 /**
  * Gets the current text formatter.
+ * @shortDescription Text formatter.
+ * @category Specific settings
  * @return {*} The current text formatter.
  */
 anychart.core.ui.LabelsFactory.Label.prototype.textFormatter;
@@ -751,6 +810,8 @@ anychart.core.ui.LabelsFactory.Label.prototype.textFormatter;
 
 /**
  * Gets the current position formatter.
+ * @shortDescription Position formatter.
+ * @category Size and Position
  * @return {*} The current position formatter.
  */
 anychart.core.ui.LabelsFactory.Label.prototype.positionFormatter;

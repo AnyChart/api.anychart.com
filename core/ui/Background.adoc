@@ -9,25 +9,36 @@
  */
 anychart.core.ui.Background;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Background.prototype.corners
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for current corner radius.
- * @return {Array.<number>} Current corner settings.
+ * @shortDescription Corner radius.
+ * @category Specific settings
+ * @example anychart.core.ui.Background.corners_get
+ * @return {Array.<number>} The current corner settings.
  */
 anychart.core.ui.Background.prototype.corners;
 
-/** topLeft, topRight, bottomRight, bottomLeft
- * Setter for corner's radius by one value.
- * @example anychart.core.ui.Background.corners
- * @example anychart.core.ui.Background.corners1
- * @param {(number|string|Array.<number>)=} opt_value ['0px'] Value to set.<br/><b>Note:</b> If array has less than 4 elements
- *  (or string provide less than 4 values), the first value is set for all four corners.
+/**
+ * Setter for corner radius by one value.
+ * @detailed <b>Note:</b> If array has less than 4 elements(or string provide less than 4 values),
+ * the first value is set for all four corners.
+ * @example anychart.core.ui.Background.corners_set_asSingle Using single value
+ * @example anychart.core.ui.Background.corners_set_asArray Using array
+ * @param {(number|string|Array.<number>)=} opt_value [0] Value to set.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
  */
 anychart.core.ui.Background.prototype.corners;
 
 /**
  * Setter for corner radius by each value.
- * @example anychart.core.ui.Background.corners2
+ * @example anychart.core.ui.Background.corners_set_asSeveral
  * @param {(number|string)=} opt_topLeft Top left corner value.
  * @param {(number|string)=} opt_topRight Top right corner value.
  * @param {(number|string)=} opt_bottomRight Bottom left corner value.
@@ -36,23 +47,45 @@ anychart.core.ui.Background.prototype.corners;
  */
 anychart.core.ui.Background.prototype.corners;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Background.prototype.cornerType
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for current corner type.
+ * Getter for the current corner type.
+ * @shortDescription Corner type.
+ * @category Specific settings
+ * @example anychart.core.ui.Background.cornerType_get
  * @return {anychart.enums.BackgroundCornersType} Corners type.
  */
 anychart.core.ui.Background.prototype.cornerType;
 
 /**
- * Setter for corner type.
- * @example anychart.core.ui.Background.cornerType
- * @param {anychart.enums.BackgroundCornersType=} opt_value [{@link anychart.enums.BackgroundCornersType}.ROUND] Value to set.
+ * Setter for the corner type.
+ * @detailed <b>Note</b>: Set corner radius {@link anychart.core.ui.Background#corners} to display a corners shape.
+ * If a radius set to 0, no effect will be applied.
+ * @example anychart.core.ui.Background.cornerType_set
+ * @param {anychart.enums.BackgroundCornersType=} opt_value ["round"] Value to set.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
  */
 anychart.core.ui.Background.prototype.cornerType;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Background.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Returns current fill.
- * @return {!anychart.graphics.vector.Fill} Current fill settings (empty fill is always 'none').
+ * Gets the current fill.
+ * @shortDescription Fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Background.fill_get
+ * @return {!anychart.graphics.vector.Fill} Current fill settings (empty fill is always "none").
  */
 anychart.core.ui.Background.prototype.fill;
 
@@ -65,32 +98,29 @@ anychart.core.ui.Background.prototype.fill;
  * <li>{@link anychart.graphics.vector.Fill}</li>
  * <li>{@link anychart.graphics.vector.ImageFill}</li>
  * </ul>
- * or a color as a string, along with opacity, if needed, format is '<b>Color Opacity</b>',
- * e.g. 'red .5'.
- * @shortDescription Sets fill settings using an object or a string.
- * @example anychart.core.ui.Background.fill
- * @example anychart.core.ui.Background.fill1
- * @example anychart.core.ui.Background.fill2
- * @param {anychart.graphics.vector.Fill} value ['#000 0.5'] Fill as an object or a string.
+ * or a color as a string, along with opacity, if needed, format is "<b>Color Opacity</b>",
+ * e.g. "red .5".
+ * @example anychart.core.ui.Background.fill_set_asString Using string
+ * @example anychart.core.ui.Background.fill_set_asImg Using image.
+ * @param {anychart.graphics.vector.Fill} value ["#fff"] Fill as an object or a string.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
  * */
 anychart.core.ui.Background.prototype.fill;
 
 /**
- * Fill as a color with opacity.<br/>
- * <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * Fill as a color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
  * means: <b>fill</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
- * @shortDescription Fill as a string or an object.
- * @example anychart.core.ui.Background.fill3
- * @param {string} color Fill as a string.
+ * @example anychart.core.ui.Background.fill_set_asOpacity
+ * @param {string} color ["#fff"] Fill as a string.
  * @param {number=} opt_opacity Fill opacity.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
  */
 anychart.core.ui.Background.prototype.fill;
 
 /**
- * Linear gradient fill.<br/>
- * There are three modes:
+ * Linear gradient fill.
+ * @detailed There are three modes:
  * <ul>
  *  <li>ObjectBoundingBox preserving an angle</li>
  *  <li>ObjectBoundingBox no angle preservation</li>
@@ -111,42 +141,14 @@ anychart.core.ui.Background.prototype.fill;
  * In this mode gradient gets its own size and coordinates. Shapes with such gradient will be colored
  * only in those parts, which are covered by this custom gradient. Read more about this mode at
  * <a href='http://www.w3.org/TR/SVG/pservers.html#LinearGradientElementGradientUnitsAttribute'>
- * gradientUnits</a>. Angle is always preserved in this mode.</p>
- * @shortDescription Linear gradient fill.
- * @illustration <t>simple</t>
- * stage.text(0*stage.width()/6+3, 0, 'a');
- * anychart.ui.background()
- *   .fill(['0.2 black', 'white'], 45)
- *   .bounds( anychart.math.rect(0*stage.width()/6+3, 13, stage.width()/7-6, stage.height()-20) )
- *   .container(stage).draw();
- * stage.text(1*stage.width()/6-5, 0, 'b');
- * anychart.ui.background()
- *   .fill(['0.2 black', 'white'], 45, true)
- *   .bounds( anychart.math.rect(1*stage.width()/6-5, 13, stage.width()/7-6, stage.height()-20) )
- *   .container(stage).draw();
- * stage.text(2*stage.width()/6+3, 0, 'c');
- * anychart.ui.background()
- *   .fill(['red', 'blue'], 45, {left: 10, top: 20, width: 100, height: 100})
- *   .bounds( anychart.math.rect(2*stage.width()/6+3, 13, stage.width()/7-6, stage.height()-20) )
- *   .container(stage).draw();
- * anychart.ui.background()
- *   .fill(['red', 'blue'], 45, anychart.math.rect(10, 20, 100, 100))
- *   .bounds( anychart.math.rect(3*stage.width()/6-5, 13, stage.width()/7-6, stage.height()-20) )
- *   .container(stage).draw();
- * stage.text(4*stage.width()/6+3, 0, 'd');
- * anychart.ui.background()
- *   .fill(['red 0.1', 'orange', 'red 0.1'])
- *   .bounds( anychart.math.rect(4*stage.width()/6+3, 13, stage.width()/7-6, stage.height()-20) )
- *   .container(stage).draw();
- * anychart.ui.background()
- *   .fill(['red', {offset: 0.3, color: 'orange'}, 'red 0.1'])
- *   .bounds( anychart.math.rect(5*stage.width()/6-5, 13, stage.width()/7-6, stage.height()-20) )
- *   .container(stage).draw();
- * @illustrationDesc
+ * gradientUnits</a>. Angle is always preserved in this mode.</p><br/>
+ * <img src='/anychart.core.ui.Background.fill.png' height='281' width='548'/><br/>
+ * Description:
  *  a) ObjectBoundingBox no angle preservation.<br/>
  *  b) ObjectBoundingBox preserving an angle.<br/>
  *  c) UserSpaceOnUse.<br/>
- *  d) Three step gradients.<br/>
+ *  d) Three step gradients.
+ * @example anychart.core.ui.Background.fill_set_asLinear
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
  * @param {number=} opt_angle Gradient angle.
  * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
@@ -157,7 +159,7 @@ anychart.core.ui.Background.prototype.fill;
 
 /**
  * Radial gradient fill.
- * @example anychart.core.ui.Background.fill4
+ * @example anychart.core.ui.Background.fill_set_asRadial
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
  * @param {number} cx X ratio of center radial gradient.
  * @param {number} cy Y ratio of center radial gradient.
@@ -169,15 +171,25 @@ anychart.core.ui.Background.prototype.fill;
  */
 anychart.core.ui.Background.prototype.fill;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Background.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Returns current stroke.
+ * Gets the current stroke.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Background.stroke_get
  * @return {anychart.graphics.vector.Stroke} Returns current stroke.
  */
 anychart.core.ui.Background.prototype.stroke;
 
 /**
- * Sets stroke settings using one parameter.<br/>
- * Accepts:
+ * Sets stroke settings using one parameter.
+ * @detailed Accepts:
  * <ul>
  * <li>String formatted as '[thickness ]color[ opacity]':
  * <ol>
@@ -191,28 +203,28 @@ anychart.core.ui.Background.prototype.stroke;
  * <li>{@link anychart.graphics.vector.GradientKey} keys array</li>
  * <li><b>null</b> resets current stroke settings</li>
  * </ul>
- * <b>Note:</b> String parts order is significant and '3px red' is not the same as 'red 3px'.
- * @shortDescription Sets stroke settings using one parameter.
- * @example anychart.core.ui.Background.stroke
- * @example anychart.core.ui.Background.stroke1
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)} value ['#000'] Fill formatted as '[thickness ]color[ opacity]'.
+ * <b>Note:</b> String parts order is significant and "3px red" is not the same as "red 3px".
+ * @example anychart.core.ui.Background.stroke_set_asString Using string
+ * @example anychart.core.ui.Background.stroke_set_asObj Using object
+ * @example anychart.core.ui.Background.stroke_set_asArray Using array
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)} value ["none"]
+ * Stroke formatted as "[thickness ]color[ opacity]".
  * @return {anychart.core.ui.Background} Self instance for method chaining.
  */
 anychart.core.ui.Background.prototype.stroke;
 
 /**
- * Sets stroke settings.<br/>
- * <b>Note:</b> When stroke properties are set both by complex stroke object properties and by stroke() method params,
+ * Sets stroke settings.
+ * @detailed <b>Note:</b> When stroke properties are set both by complex stroke object properties and by stroke() method params,
  * object properties have priority. E.g. setting <b>shape.stroke('10 red', 5);</b> (or <b>shape.stroke({color: 'red',
  * thickness: 10}, 5);</b> will result in a red stroke with thickness 10px.
- * @shortDescription Sets stroke settings.
- * @example anychart.core.ui.Background.stroke2
+ * @example anychart.core.ui.Background.stroke_set
  * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string)} value Fill settings.
  * @param {number=} opt_thickness Line thickness. Defaults to 1 of not set.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths. Dash array contains a
  * list of white space separated lengths and percentages that specify the lengths of alternating dashes and gaps. If an
  * odd number of values is provided, then the list of values is repeated to yield an even number of values. Thus, stroke
- * dashpattern: '5 3 2' is equivalent to dashpattern: '5 3 2 5 3 2'.
+ * dashpattern: "5 3 2" is equivalent to dashpattern: "5 3 2 5 3 2".
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
  * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
  * @return {anychart.core.ui.Background} Self instance for method chaining.

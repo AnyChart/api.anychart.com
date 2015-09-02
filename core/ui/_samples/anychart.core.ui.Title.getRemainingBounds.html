@@ -1,22 +1,27 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="label"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var stage = anychart.graphics.create("container");
- // Placing the first title on the top of the Stage.
- var title1 = anychart.ui.title()
-     .text("First title")
-     .container(stage)
-     .draw();
- // Placing the second title over the remaining part - under the first title.
- anychart.ui.title()
-     .text("Second title")
-     .container(stage)
-     .parentBounds(title1.getRemainingBounds())
-     .draw();
+
+            // Placing the first title on the top of the Stage.
+            var firstTitle = anychart.ui.title();
+            firstTitle.text("First title");
+            firstTitle.container(stage);
+            firstTitle.draw();
+
+            // Gets remaining bounds.
+            var bounds = firstTitle.getRemainingBounds();
+
+            // Placing the second title over the remaining part - under the first title.
+            var secondTitle = anychart.ui.title();
+            secondTitle.text("Second title");
+            secondTitle.container(stage);
+            secondTitle.parentBounds(bounds);
+            secondTitle.draw();
         });
     </script>
 </head>

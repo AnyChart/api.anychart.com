@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="palette"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+            var palette = anychart.palettes.distinctColors();
+
+            // set colors.
+            palette.items(["#00F", "#F44336", ["#FF9800", "#F44336"], "#00C", "#00B", "#00A", "#009", "#008"]); // set colors
+
+            var colors = palette.items();
+            var len = colors.length - 1;
+            for (var i = 1; i <= len; i++) {
+                var rect = stage.rect((i - 1) * stage.width() / len, 0, stage.width() / len - .5, stage.height());
+                rect.fill(palette.colorAt(i - 1));
+                rect.stroke("1px #000");
+            }
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
