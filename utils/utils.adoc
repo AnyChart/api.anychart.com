@@ -1,0 +1,259 @@
+/**
+ @namespace
+ @name anychart.utils
+ */
+anychart.utils;
+
+/**
+ * Align enumeration.
+ * @enum {string}
+ */
+anychart.utils.Align;
+
+/**
+   * Center align.
+   */
+anychart.utils.Align.CENTER;
+
+/**
+   * Left align.
+   */
+anychart.utils.Align.LEFT;
+
+/**
+   * Right align.
+   */
+anychart.utils.Align.RIGHT;
+
+/**
+   * Top align.
+   */
+anychart.utils.Align.TOP;
+
+/**
+   * Bottom align.
+   */
+anychart.utils.Align.BOTTOM;
+
+/**
+ * Direction enumeration.
+ * @enum {string}
+ */
+anychart.utils.Direction;
+
+/**
+   * Vertical direction.
+   */
+anychart.utils.Direction.VERTICAL;
+
+/**
+   * Horizontal direction.
+   */
+anychart.utils.Direction.HORIZONTAL;
+
+/**
+ * Orientation enumeration.
+ * @enum {string}
+ */
+anychart.utils.Orientation;
+
+/**
+   * Left orientation.
+   */
+anychart.utils.Orientation.LEFT;
+
+/**
+   * Right orientation.
+   */
+anychart.utils.Orientation.RIGHT;
+
+/**
+   * Top orientation.
+   */
+anychart.utils.Orientation.TOP;
+
+/**
+   * Bottom orientation.
+   */
+anychart.utils.Orientation.BOTTOM;
+
+/**
+ * Layout enumeration.
+ * @enum {string}
+ */
+anychart.utils.Layout;
+
+/**
+   * Vertical layout.
+   */
+anychart.utils.Layout.VERTICAL;
+
+/**
+   * Horizontal layout.
+   */
+anychart.utils.Layout.HORIZONTAL;
+
+/**
+ * Nine positions enumeration.
+ * @illustration <t>simple</t>
+ * var orange = '1 orange 1';
+ * var star = stage.star5(stage.width()/2, stage.height()/3, stage.height()/4).fill('yellow', 0.5);
+ * var pathBounds = star.getBounds();
+ * stage.path().fill('none').stroke(orange)
+ *     .moveTo(pathBounds.left, pathBounds.top)
+ *     .lineTo(pathBounds.left + pathBounds.width, pathBounds.top)
+ *     .lineTo(pathBounds.left + pathBounds.width, pathBounds.top + pathBounds.height)
+ *     .lineTo(pathBounds.left, pathBounds.top + pathBounds.height)
+ *     .close();
+ * stage.text(pathBounds.left - 55, pathBounds.top - 15, 'LEFT_TOP');
+ * stage.circle(pathBounds.left, pathBounds.top, 3).fill('blue');
+ * stage.text(pathBounds.left - 78, pathBounds.top + pathBounds.height/2 - 8, 'LEFT_CENTER');
+ * stage.circle(pathBounds.left, pathBounds.top + pathBounds.height/2, 3).fill('blue');
+ * stage.text(pathBounds.left - 80, pathBounds.top + pathBounds.height, 'LEFT_BOTTOM');
+ * stage.circle(pathBounds.left, pathBounds.top + pathBounds.height, 3).fill('blue');
+ * stage.text(pathBounds.left  + pathBounds.width/2 - 10, pathBounds.top - 18, 'TOP');
+ * stage.circle(pathBounds.left + pathBounds.width/2, pathBounds.top, 3).fill('blue');
+ * stage.text(pathBounds.left + pathBounds.width/2 - 20, pathBounds.top + pathBounds.height/2 - 15, 'CENTER');
+ * stage.circle(pathBounds.left + pathBounds.width/2, pathBounds.top + pathBounds.height/2, 3).fill('blue');
+ * stage.text(pathBounds.left + pathBounds.width/2 - 23, pathBounds.top + pathBounds.height+ 2, 'BOTTOM');
+ * stage.circle(pathBounds.left + pathBounds.width/2, pathBounds.top + pathBounds.height, 3).fill('blue');
+ * stage.text(pathBounds.left + pathBounds.width + 5, pathBounds.top - 15, 'RIGHT_TOP');
+ * stage.circle(pathBounds.left + pathBounds.width, pathBounds.top, 3).fill('blue');
+ * stage.text(pathBounds.left + pathBounds.width + 5 , pathBounds.top + pathBounds.height/2 - 8, 'RIGHT_CENTER');
+ * stage.circle(pathBounds.left + pathBounds.width, pathBounds.top + pathBounds.height/2, 3).fill('blue');
+ * stage.text(pathBounds.left + pathBounds.width + 5, pathBounds.top + pathBounds.height, 'RIGHT_BOTTOM');
+ * stage.circle(pathBounds.left + pathBounds.width, pathBounds.top + pathBounds.height, 3).fill('blue');
+ * @enum {string}
+ */
+anychart.utils.NinePositions;
+
+/**
+   * Defines left-top position
+   */
+anychart.utils.NinePositions.LEFT_TOP;
+
+/**
+   * Defines top position
+   */
+anychart.utils.NinePositions.TOP;
+
+/**
+   * Defines right-top position
+   */
+anychart.utils.NinePositions.RIGHT_TOP;
+
+/**
+   * Defines left-center position
+   */
+anychart.utils.NinePositions.LEFT_CENTER;
+
+/**
+   * Defines center position
+   */
+anychart.utils.NinePositions.CENTER;
+
+/**
+   * Defines right-center position
+   */
+anychart.utils.NinePositions.RIGHT_CENTER;
+
+/**
+   * Defines left-bottom position
+   */
+anychart.utils.NinePositions.LEFT_BOTTOM;
+
+/**
+   * Defines bottom position
+   */
+anychart.utils.NinePositions.BOTTOM;
+
+/**
+   * Defines right-bottom position
+   */
+anychart.utils.NinePositions.RIGHT_BOTTOM;
+
+/**
+ * Sort enumeration.
+ * @enum {string}
+ */
+anychart.utils.Sort;
+
+/**
+   * Ascending sorting.
+   */
+anychart.utils.Sort.ASC;
+
+/**
+   * Descending sorting.
+   */
+anychart.utils.Sort.DESC;
+
+/**
+   * No sorting.
+   */
+anychart.utils.Sort.NONE;
+
+/**
+ * Public function that parses XML and returns JSON. It hides all errors in
+ * Document structure, so the result may be not as strict as expected.
+ * The function converts XML string or node to an object with attributes
+ * introduced as same named string properties. All subnodes are also converted to
+ * correspondingly named properties by the next rules:
+ * - if there is only one child with this name, it is converted into an object
+ *   an added just as an object property to the parent object.
+ * - if there are multiple children with the same name, they are also converted
+ *   to a separate objects and then added to the parent object as an array.
+ * - if there is an attribute named just like the node(s), the node(s) will
+ *   completely replace the attribute.
+ * - if there is any text value or a CDATA node or any their combination in the
+ *   node, that value is stored as a string in a property named "value" even in
+ *   cases when there is a subnode named "value" (but the node with this name
+ *   still can be found in "#children#" array mentioned below).
+ * Also some service properties are added to an object representing a node:
+ * - "#name#" property - the node name
+ * - "#children#" array property - all node children listed in order they appear
+ *   in the node
+ * - mentioned above "value" string property - contains textual value of the
+ *   node
+ * Usage sample:
+ * <code>
+ *   var a = new XMLHttpRequest();
+ *   a.open('GET', 'http://sample.com', false, "", "");
+ *   a.send(null);
+ *   // for example there was the next XML:
+ *   // <root a="123">
+ *   //   <child />
+ *   //   <child>some text value<![CDATA[   and a CDATA   ]]></child>
+ *   //   <child_other/>
+ *   // </root>
+ *   var json = anychart.utils.XML2JSON(a.responseXML);
+ * </code>
+ * json variable will have the following structure:
+ * {
+ *   #name#: "root",
+ *   #children#: [
+ *      {#name#: "child", #children#: []},
+ *      {#name#: "child", #children#: [], value: "some text value   and a CDATA   "}
+ *      {#name#: "child_other", #children#: []}
+ *   ],
+ *   a: "123",
+ *   child: [
+ *      {#name#: "child", #children#: []},
+ *      {#name#: "child", #children#: [], value: "some text value   and a CDATA   "}
+ *   ],
+ *   child_other: {#name#: "child_other", #children#: []}
+ * }
+ * @param {string|Node} xml XML source string.
+ * @return {Object|string} Transformation result JSON (may by null).
+ */
+anychart.utils.xml2json;
+
+/**
+ * Converts JSON object to an XML Node tree or String (string by default).
+ * @param {Object|string} json
+ * @param {string=} opt_rootNodeName
+ * @param {boolean=} opt_returnAsXmlNode
+ * @return {string|Node}
+ */
+anychart.utils.json2xml;
+

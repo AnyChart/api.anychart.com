@@ -1,0 +1,526 @@
+/**
+ A namespace for working with vector graphics.
+ @namespace
+ @name anychart.graphics.vector
+ */
+anychart.graphics.vector;
+
+/**
+ The list of positions for an anchor.
+ @illustration <t>stageOnly</t>
+ var orange = '1 orange 1';
+ var star = stage.star5(200, 82, 65).fill('yellow', 0.5);
+ var pathBounds = star.getBounds();
+ stage.path().fill('none').stroke(orange)
+ .moveTo(pathBounds.left, pathBounds.top)
+ .lineTo(pathBounds.left + pathBounds.width, pathBounds.top)
+ .lineTo(pathBounds.left + pathBounds.width, pathBounds.top + pathBounds.height)
+ .lineTo(pathBounds.left, pathBounds.top + pathBounds.height)
+ .close();
+ stage.text(pathBounds.left - 55, pathBounds.top - 15, 'LEFT_TOP');
+ stage.circle(pathBounds.left, pathBounds.top, 3).fill('blue');
+ stage.text(pathBounds.left - 78, pathBounds.top + pathBounds.height/2 - 8, 'LEFT_CENTER');
+ stage.circle(pathBounds.left, pathBounds.top + pathBounds.height/2, 3).fill('blue');
+ stage.text(pathBounds.left - 80, pathBounds.top + pathBounds.height, 'LEFT_BOTTOM');
+ stage.circle(pathBounds.left, pathBounds.top + pathBounds.height, 3).fill('blue');
+ stage.text(pathBounds.left  + pathBounds.width/2 - 25, pathBounds.top - 15, 'CENTER_TOP');
+ stage.circle(pathBounds.left + pathBounds.width/2, pathBounds.top, 3).fill('blue');
+ stage.text(pathBounds.left + pathBounds.width/2 - 20, pathBounds.top + pathBounds.height/2 - 15, 'CENTER');
+ stage.circle(pathBounds.left + pathBounds.width/2, pathBounds.top + pathBounds.height/2, 3).fill('blue');
+ stage.text(pathBounds.left + pathBounds.width/2 - 43, pathBounds.top + pathBounds.height, 'CENTER_BOTTOM');
+ stage.circle(pathBounds.left + pathBounds.width/2, pathBounds.top + pathBounds.height, 3).fill('blue');
+ stage.text(pathBounds.left + pathBounds.width + 5, pathBounds.top - 15, 'RIGHT_TOP');
+ stage.circle(pathBounds.left + pathBounds.width, pathBounds.top, 3).fill('blue');
+ stage.text(pathBounds.left + pathBounds.width + 5 , pathBounds.top + pathBounds.height/2 - 8, 'RIGHT_CENTER');
+ stage.circle(pathBounds.left + pathBounds.width, pathBounds.top + pathBounds.height/2, 3).fill('blue');
+ stage.text(pathBounds.left + pathBounds.width + 5, pathBounds.top + pathBounds.height, 'RIGHT_BOTTOM');
+ stage.circle(pathBounds.left + pathBounds.width, pathBounds.top + pathBounds.height, 3).fill('blue');
+ @enum {string}
+ */
+anychart.graphics.vector.Anchor;
+
+/** The left-top anchor of the element. */
+anychart.graphics.vector.Anchor.LEFT_TOP;
+
+/** The left-center anchor of the element. */
+anychart.graphics.vector.Anchor.LEFT_CENTER;
+
+/** The left-bottom anchor of the element. */
+anychart.graphics.vector.Anchor.LEFT_BOTTOM;
+
+/** The center-top anchor of the element. */
+anychart.graphics.vector.Anchor.CENTER_TOP;
+
+/** The center anchor of the element. */
+anychart.graphics.vector.Anchor.CENTER;
+
+/** The center-bottom anchor of the element. */
+anychart.graphics.vector.Anchor.CENTER_BOTTOM;
+
+/** The right-top anchor of the element. */
+anychart.graphics.vector.Anchor.RIGHT_TOP;
+
+/** The right-center anchor of the element.*/
+anychart.graphics.vector.Anchor.RIGHT_CENTER;
+
+/** The right-bottom anchor of the element. */
+anychart.graphics.vector.Anchor.RIGHT_BOTTOM;
+
+/**
+ Defines the type of the cursor.<br/>
+ To view the example, point the cursor at the description of the type.
+ @enum {string}
+ */
+anychart.graphics.vector.Cursor;
+
+/** <span style="cursor:default">Default type</span> */
+anychart.graphics.vector.Cursor.DEFAULT;
+
+/** <span style="cursor:crosshair">Crosshair type</span> */
+anychart.graphics.vector.Cursor.CROSSHAIR;
+
+/** <span style="cursor:pointer">Pointer type</span> */
+anychart.graphics.vector.Cursor.POINTER;
+
+/** <span style="cursor:move">Move type</span> */
+anychart.graphics.vector.Cursor.MOVE;
+
+/** <span style="cursor:text">Text type</span> */
+anychart.graphics.vector.Cursor.TEXT;
+
+/** <span style="cursor:wait">Wait type</span> */
+anychart.graphics.vector.Cursor.WAIT;
+
+/** <span style="cursor:help">Help type</span> */
+anychart.graphics.vector.Cursor.HELP;
+
+/** <span style="cursor:n-resize">N-resize type</span> */
+anychart.graphics.vector.Cursor.N_RESIZE;
+
+/** <span style="cursor:ne-resize">NE-resize type</span> */
+anychart.graphics.vector.Cursor.NE_RESIZE;
+
+/** <span style="cursor:e-resize">E-resize type</span> */
+anychart.graphics.vector.Cursor.E_RESIZE;
+
+/** <span style="cursor:se-resize">SE-resize type</span> */
+anychart.graphics.vector.Cursor.SE_RESIZE;
+
+/** <span style="cursor:s-resize">S-resize type</span> */
+anychart.graphics.vector.Cursor.S_RESIZE;
+
+/** <span style="cursor:sw-resize">SW-resize type</span> */
+anychart.graphics.vector.Cursor.SW_RESIZE;
+
+/** <span style="cursor:w-resize">W-resize type</span> */
+anychart.graphics.vector.Cursor.W_RESIZE;
+
+/** <span style="cursor:nw-resize">NW-resize type</span> */
+anychart.graphics.vector.Cursor.NW_RESIZE;
+
+/**
+ Gradient keys.
+ @includeDoc
+ @typedef {Object} anychart.graphics.vector.GradientKey
+ @property {number} offset Gradient key value (0 to 1).
+ @property {(string|goog.color.names)} color Key color {@link http://www.w3schools.com/html/html_colors.asp}.
+ @property {(number|undefined)} opacity Key color opacity (0 to 1).
+ */
+anychart.graphics.vector.GradientKey;
+
+/**
+ Fill.
+ @includeDoc
+ @typedef {Object} anychart.graphics.vector.SolidFill
+ @property {string} color Fill color {@link http://www.w3schools.com/html/html_colors.asp}.
+ @property {(number|undefined)} opacity Color opacity (0 to 1).
+ */
+anychart.graphics.vector.SolidFill;
+
+/**
+ Linear gradient.
+ @includeDoc
+ @typedef {Object} anychart.graphics.vector.LinearGradientFill
+ @property {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Keys list.
+ @property {(number|undefined)} angle Gradient angle.
+ @property {(boolean|!anychart.graphics.math.Rect|undefined)} mode Fill mode. See more at
+ {@link anychart.graphics.vector.Shape#fill}.
+ @property {(number|undefined)} opacity Color opacity (0 to 1).
+ */
+anychart.graphics.vector.LinearGradientFill;
+
+/**
+ Radial gradient fill.
+ @includeDoc
+ @typedef {Object} anychart.graphics.vector.RadialGradientFill
+ @property {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Keys list.
+ @property {number} cx Center X.
+ @property {number} cy Center Y.
+ @property {(anychart.graphics.math.Rect|undefined)} mode Fill mode. See more at
+ {@link anychart.graphics.vector.Shape#fill}.
+ @property {number} fx Focus X.
+ @property {number} fy Focus Y.
+ @property {(number|undefined)} opacity Color opacity (0 to 1).
+ */
+anychart.graphics.vector.RadialGradientFill;
+
+/**
+ Image fill.
+ @includeDoc
+ @typedef {Object} anychart.graphics.vector.ImageFill
+ @property {string} src Image src.
+ @property {(anychart.graphics.vector.ImageFillMode|undefined)} mode Fill mode.
+ */
+anychart.graphics.vector.ImageFill;
+
+/**
+ Any color fill.
+ @includeDoc
+ @typedef {!(
+       string |
+       anychart.graphics.vector.SolidFill |
+       anychart.graphics.vector.LinearGradientFill |
+       anychart.graphics.vector.RadialGradientFill
+     )} anychart.graphics.vector.ColoredFill
+ */
+anychart.graphics.vector.ColoredFill;
+
+/**
+ Any fill.
+ @includeDoc
+ @typedef {!(
+      string |
+      anychart.graphics.vector.ImageFill |
+      anychart.graphics.vector.SolidFill |
+      anychart.graphics.vector.LinearGradientFill |
+      anychart.graphics.vector.RadialGradientFill |
+      anychart.graphics.vector.PatternFill
+    )} anychart.graphics.vector.Fill
+ */
+anychart.graphics.vector.Fill;
+
+/**
+ Solid color line.
+ @includeDoc
+ @typedef {Object} anychart.graphics.vector.SolidStroke
+ @property {string} color Stroke color. {@link http://www.w3schools.com/html/html_colors.asp}.
+ @property {(number|undefined)} thickness Line thickness.
+ @property {(number|undefined)} opacity Color opacity (0 to 1).
+ @property {(string|undefined)} dash Dash settings. Read more at {@link anychart.graphics.vector.Shape#stroke}.
+ @property {(string|undefined)} lineJoin Line join style. More at {@link anychart.graphics.vector.StrokeLineJoin}.
+ @property {(string|undefined)} lineCap Line cap style. More at {@link anychart.graphics.vector.StrokeLineCap}.
+ */
+anychart.graphics.vector.SolidStroke;
+
+/**
+ Linear gradient stroke.
+ @includeDoc
+ @typedef {Object} anychart.graphics.vector.LinearGradientStroke
+ @property {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Keys list.
+ @property {(number|undefined)} angle Gradient angle.
+ @property {(boolean|!anychart.graphics.math.Rect|undefined)} mode Fill mode. Read more at
+ {@link anychart.graphics.vector.Shape#fill}.
+ @property {(number|undefined)} thickness Line thickness.
+ @property {(number|undefined)} opacity Color opacity (0 to 1).
+ @property {(string|undefined)} dash Dash settings. Read more at {@link anychart.graphics.vector.Shape#stroke}.
+ @property {(string|undefined)} lineJoin Line join style. More at {@link anychart.graphics.vector.StrokeLineJoin}.
+ @property {(string|undefined)} lineCap Line cap style. More at {@link anychart.graphics.vector.StrokeLineCap}.
+ */
+anychart.graphics.vector.LinearGradientStroke;
+
+/**
+ Radial gradient stroke.
+ @includeDoc
+ @typedef {Object} anychart.graphics.vector.RadialGradientStroke
+ @property {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Keys list.
+ @property {number} cx Center X.
+ @property {number} cy Center Y.
+ @property {(anychart.graphics.math.Rect|undefined)} mode Fill mode. See more at
+ {@link anychart.graphics.vector.Shape#fill}.
+ @property {number} fx Focus X.
+ @property {number} fy Focus Y.
+ @property {(number|undefined)} thickness Line thickness.
+ @property {(number|undefined)} opacity Color opacity (0 to 1).
+ @property {(string|undefined)} dash Dash settings. Read more at {@link anychart.graphics.vector.Shape#stroke}.
+ @property {(string|undefined)} lineJoin Line join style. More at {@link anychart.graphics.vector.StrokeLineJoin}.
+ @property {(string|undefined)} lineCap Line cap style. More at {@link anychart.graphics.vector.StrokeLineCap}.
+ */
+anychart.graphics.vector.RadialGradientStroke;
+
+/**
+ Any stroke.
+ @includeDoc
+ @typedef {!(
+      string |
+      anychart.graphics.vector.SolidStroke |
+      anychart.graphics.vector.LinearGradientStroke |
+      anychart.graphics.vector.RadialGradientStroke
+    )} anychart.graphics.vector.Stroke
+ */
+anychart.graphics.vector.Stroke;
+
+/**
+ Format of style the text. May be applied to plain and html texts.
+ @includeDoc
+ @typedef {Object} anychart.graphics.vector.TextStyle
+ @property {(anychart.graphics.vector.Text.FontStyle|string|undefined)} fontStyle Read more at
+ {@link anychart.graphics.vector.Text.FontStyle}.
+ @property {(anychart.graphics.vector.Text.fontVariant|string|undefined)} fontVariant Read more at
+ {@link anychart.graphics.vector.Text.FontVariant}.
+ @property {(string|undefined)} fontFamily {@link http://www.w3schools.com/cssref/pr_font_font-family.asp}.
+ @property {(string|number|undefined)} fontSize Font size.
+ @property {(number|string|undefined)} fontWeight {@link http://www.w3schools.com/cssref/pr_font_weight.asp}.
+ @property {(string|undefined)} letterSpacing Letter spacing of text.
+ @property {(anychart.graphics.vector.Text.Direction|string|undefined)} direction Read more at
+ {@link anychart.graphics.vector.Text.Direction}.
+ @property {(anychart.graphics.vector.Text.Decoration|string|undefined)} decoration Read more at
+ {@link anychart.graphics.vector.Text.Decoration}.
+ @property {(string|number|undefined)} lineHeight Line height.
+ @property {(number|undefined)} textIndent The text-indent property specifies the indentation of the first line in a
+ text-block.
+ @property {(anychart.graphics.vector.Text.VAlign|string|undefined)} vAlign vAlign. More at {@link anychart.graphics.vector.Text.VAlign}.
+ @property {(anychart.graphics.vector.Text.HAlign|string|undefined)} hAlign hAling. More at {@link anychart.graphics.vector.Text.HAlign}.
+ @property {(number|string|undefined)} width Text width.
+ @property {(number|string|undefined)} height Text height.
+ @property {(anychart.graphics.vector.Text.TextWrap|undefined)} textWrap Text wrap. More at {@link anychart.graphics.vector.Text.TextWrap}.
+ @property {(anychart.graphics.vector.Text.TextOverflow|undefined)} textOverflow Text overflow. More at
+ {@link anychart.graphics.vector.Text.TextOverflow}.
+ @property {(boolean|undefined)} selectable Whether text can be selected.
+ @property {(string|goog.color.names|undefined)} color Color. {@link http://www.w3schools.com/html/html_colors.asp}.
+ @property {(number|undefined)} opacity Color opacity (0 to 1).
+ */
+anychart.graphics.vector.TextStyle;
+
+/**
+ Text segment.
+ @includeDoc
+ @typedef {Object} anychart.graphics.vector.TextSegmentStyle
+ @property {(string|undefined)} fontStyle Font style. More at {@link anychart.graphics.vector.Text.FontStyle}.
+ @property {(string|undefined)} fontVariant Font variant. More at {@link anychart.graphics.vector.Text.FontVariant}.
+ @property {(string|undefined)} fontFamily Font family. {@link http://www.w3schools.com/cssref/pr_font_font-family.asp}.
+ @property {(string|number|undefined)} fontSize Font size.
+ @property {(number|string|undefined)} fontWeight Font weight. {@link http://www.w3schools.com/cssref/pr_font_weight.asp}.
+ @property {(string|undefined)} letterSpacing Letter spacing.
+ @property {(string|undefined)} decoration Decoration. More at {@link anychart.graphics.vector.Text.Decoration}.
+ @property {(string|goog.color.names|undefined)} color Color. {@link http://www.w3schools.com/html/html_colors.asp}.
+ @property {(number|undefined)} opacity Color opacity (0 to 1).
+ */
+anychart.graphics.vector.TextSegmentStyle;
+
+/**
+ Line joins.
+ More at: <a href='http://www.w3.org/TR/SVG/painting.html#StrokeLinejoinProperty'>StrokeLinejoinProperty</a>
+ @enum {string}
+ */
+anychart.graphics.vector.StrokeLineJoin;
+
+/**
+   @illustration <t>stageOnly</t>
+   stage.width(200).height(30)
+   .path().moveTo(stage.width()/4, 0)
+   .lineTo(stage.width()/4, stage.height()/2)
+   .lineTo(stage.width()-15, stage.height()/2)
+   .stroke({thickness: 2*stage.height()/3 , color: 'blue', opacity: 0.8, lineJoin: anychart.graphics.vector.StrokeLineJoin.MITER});
+   stage.path()
+   .moveTo(stage.width()/4, 0)
+   .lineTo(stage.width()/4, stage.height()/2)
+   .lineTo(stage.width()-15, stage.height()/2)
+   .stroke('1 yellow 1');
+   stage.circle(stage.width()/4, stage.height()/2, 3).fill('yellow');
+   */
+anychart.graphics.vector.StrokeLineJoin.MITER;
+
+/**
+   @illustration <t>stageOnly</t>
+   stage.width(200).height(30)
+   .path().moveTo(stage.width()/4, 0)
+   .lineTo(stage.width()/4, stage.height()/2)
+   .lineTo(stage.width()-15, stage.height()/2)
+   .stroke({thickness: 2*stage.height()/3 , color: 'blue', opacity: 0.8, lineJoin: anychart.graphics.vector.StrokeLineJoin.ROUND});
+   stage.path()
+   .moveTo(stage.width()/4, 0)
+   .lineTo(stage.width()/4, stage.height()/2)
+   .lineTo(stage.width()-15, stage.height()/2)
+   .stroke('1 yellow 1');
+   stage.circle(stage.width()/4, stage.height()/2, 3).fill('yellow');
+   */
+anychart.graphics.vector.StrokeLineJoin.ROUND;
+
+/**
+   @illustration <t>stageOnly</t>
+   stage.width(200).height(30)
+   .path().moveTo(stage.width()/4, 0)
+   .lineTo(stage.width()/4, stage.height()/2)
+   .lineTo(stage.width()-15, stage.height()/2)
+   .stroke({thickness: 2*stage.height()/3 , color: 'blue', opacity: 0.8, lineJoin: anychart.graphics.vector.StrokeLineJoin.BEVEL});
+   stage.path()
+   .moveTo(stage.width()/4, 0)
+   .lineTo(stage.width()/4, stage.height()/2)
+   .lineTo(stage.width()-15, stage.height()/2)
+   .stroke('1 yellow 1');
+   stage.circle(stage.width()/4, stage.height()/2, 3).fill('yellow');
+   */
+anychart.graphics.vector.StrokeLineJoin.BEVEL;
+
+/**
+ Line caps.
+ <a href='http://www.w3.org/TR/SVG/painting.html#StrokeLinecapProperty'>StrokeLinecapProperty</a>
+ @enum {string}
+ */
+anychart.graphics.vector.StrokeLineCap;
+
+/**
+   @illustration <t>stageOnly</t>
+   stage.width(200).height(30)
+   .path().moveTo(15, stage.height()/2)
+   .lineTo(stage.width()-15, stage.height()/2)
+   .stroke({thickness: stage.height()/2 , color: 'blue', opacity: 0.5, lineCap: anychart.graphics.vector.StrokeLineCap.BUTT});
+   stage.path()
+   .moveTo(15, stage.height()/2)
+   .lineTo(stage.width()-15, stage.height()/2)
+   .stroke('1 yellow 1');
+   stage.circle(15, stage.height()/2, 3).fill('yellow');
+   stage.circle(stage.width()-15, stage.height()/2, 3).fill('yellow');
+   */
+anychart.graphics.vector.StrokeLineCap.BUTT;
+
+/**
+   @illustration <t>stageOnly</t>
+   stage.width(200).height(30)
+   .path().moveTo(15, stage.height()/2)
+   .lineTo(stage.width()-15, stage.height()/2)
+   .stroke({thickness: stage.height()/2 , color: 'blue', opacity: 0.5, lineCap: anychart.graphics.vector.StrokeLineCap.ROUND});
+   stage.path()
+   .moveTo(15, stage.height()/2)
+   .lineTo(stage.width()-15, stage.height()/2)
+   .stroke('1 yellow 1');
+   stage.circle(15, stage.height()/2, 3).fill('yellow');
+   stage.circle(stage.width()-15, stage.height()/2, 3).fill('yellow');
+   */
+anychart.graphics.vector.StrokeLineCap.ROUND;
+
+/**
+   @illustration <t>stageOnly</t>
+   stage.width(200).height(30)
+   .path().moveTo(15, stage.height()/2)
+   .lineTo(stage.width()-15, stage.height()/2)
+   .stroke({thickness: stage.height()/2 , color: 'blue', opacity: 0.5, lineCap: anychart.graphics.vector.StrokeLineCap.SQUARE});
+   stage.path()
+   .moveTo(15, stage.height()/2)
+   .lineTo(stage.width()-15, stage.height()/2)
+   .stroke('1 yellow 1');
+   stage.circle(15, stage.height()/2, 3).fill('yellow');
+   stage.circle(stage.width()-15, stage.height()/2, 3).fill('yellow');
+   */
+anychart.graphics.vector.StrokeLineCap.SQUARE;
+
+/**
+ * Image fill modes.
+ * @enum {string}
+ */
+anychart.graphics.vector.ImageFillMode;
+
+/**
+   * Stretches image, proportions are not kept.
+   */
+anychart.graphics.vector.ImageFillMode.STRETCH;
+
+/**
+   * Fit by greater side.
+   */
+anychart.graphics.vector.ImageFillMode.FIT_MAX;
+
+/**
+   * Fit by lesser side.
+   */
+anychart.graphics.vector.ImageFillMode.FIT;
+
+/**
+   * Tiling.
+   */
+anychart.graphics.vector.ImageFillMode.TILE;
+
+/**
+ * Paper sizes.
+ * @enum {string}
+ */
+anychart.graphics.vector.PaperSize;
+
+/**
+   * It measures 8.5 by 11 inches (215.9 mm x 279.4 mm). US Letter size is a recognized standard adopted by the American National Standards Institute (ANSI) whereas the A4 is the International Standard (ISO) used in most countries.
+   */
+anychart.graphics.vector.PaperSize.US_LETTER;
+
+/**
+   * The base A0 size of paper is defined as having an area of 1 m2. Rounded to the nearest millimetre, the A0 paper size is 841 by 1,189 millimetres (33.1 in × 46.8 in). Successive paper sizes in the series A1, A2, A3, and so forth, are defined by halving the preceding paper size across the larger dimension.
+   */
+anychart.graphics.vector.PaperSize.A0;
+
+/**
+   * A1 measures 594 × 841 millimeters or 23.4 × 33.1 inches.
+   */
+anychart.graphics.vector.PaperSize.A1;
+
+/**
+   * A2 measures 420 × 594 millimeters or 16.5 × 23.4 inches.
+   */
+anychart.graphics.vector.PaperSize.A2;
+
+/**
+   * The A3 size print measures 29.7 x 42.0cm, 11.69 x 16.53 inches, if mounted 40.6 x 50.8cm, 15.98 x 20 inches. The A4 size print measures 21.0 x 29.7cm, 8.27 x 11.69 inches, if mounted 30.3 x 40.6cm, 11.93 x 15.98 inches.
+   */
+anychart.graphics.vector.PaperSize.A3;
+
+/**
+   * A transitional size called PA4 (210 mm × 280 mm or 8.27 in × 11.02 in) was proposed for inclusion into the ISO 216 standard in 1975. It has the height of Canadian P4 paper (215 mm × 280 mm, about 8½ in × 11 in) and the width of international A4 paper (210 mm × 297 mm or 8.27 in × 11.69 in).
+   */
+anychart.graphics.vector.PaperSize.A4;
+
+/**
+   * A5 measures 148 × 210 millimeters or 5.83 × 8.27 inches.
+   */
+anychart.graphics.vector.PaperSize.A5;
+
+/**
+   * A6 measures 105 × 148 millimeters or 4.13 × 5.83 inches. In PostScript, its dimensions are rounded off to 298 × 420 points. The matching envelope format is C6 (114 × 162 mm).
+   */
+anychart.graphics.vector.PaperSize.A6;
+
+/**
+ * Normalizes stroke params. Look at vector.Shape.fill() params for details.
+ * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
+ * @param {number=} opt_opacityOrAngleOrCx .
+ * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
+ * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
+ * @param {number=} opt_opacity .
+ * @param {number=} opt_fx .
+ * @param {number=} opt_fy .
+ * @return {!anychart.graphics.vector.Fill} .
+ */
+anychart.graphics.vector.normalizeFill;
+
+/**
+ * Normalizes stroke params. Look at vector.Shape.stroke() params for details.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_strokeOrFill Stroke fill,
+ *   if used as setter.
+ * @param {number=} opt_thickness Line thickness. Defaults to 1.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ *    Dash array contains a list of comma and/or white space separated lengths and percentages that specify the
+ *    lengths of alternating dashes and gaps. If an odd number of values is provided, then the list of values is
+ *    repeated to yield an even number of values. Thus, stroke dashpattern: 5,3,2 is equivalent to dashpattern: 5,3,2,5,3,2.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {!anychart.graphics.vector.Stroke} .
+ */
+anychart.graphics.vector.normalizeStroke;
+
+/**
+ * Normalize hatch fill.
+ * @param {(!anychart.graphics.vector.HatchFill|!anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill.HatchFillType|string|Object|null)=} opt_patternFillOrType
+ * @param {string=} opt_color
+ * @param {(string|number)=} opt_thickness
+ * @param {(string|number)=} opt_size
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill}
+ */
+anychart.graphics.vector.normalizeHatchFill;
+

@@ -1,0 +1,59 @@
+/**
+ * Color utilities namespace.
+ * @namespace
+ * @name anychart.color
+ */
+anychart.color;
+
+/**
+ * Blend two colors together, using the specified factor to indicate the weight given to the first color.
+ * @example <t>stageOnly</t>
+ * var color1 = [255, 0, 0];
+ * var color2 = [0, 0, 255];
+ * stage.rect(10, 10, stage.width() / 4, stage.height() - 20).fill('red');
+ * stage.rect(3 * stage.width() / 4 - 10, 10, stage.width() / 4, stage.height() - 20).fill('blue');
+ * var mixColor1 = anychart.color.blend(color1, color2, 0.2);
+ * var mixColor2 = anychart.color.blend(color1, color2, 0.8);
+ * stage.rect(stage.width() / 3 + 10, 10, stage.width() / 4, stage.height() / 2 - 10)
+ *     .fill('rgb('+mixColor1.join(',')+')');
+ * stage.rect(stage.width() / 3 + 10, stage.height() / 2 + 10, stage.width() / 4, stage.height() / 2 - 20)
+ *     .fill('rgb('+mixColor2.join(',')+')');
+ * @param {goog.color.Rgb} rgb1 The first color represented as RGB array of 3 numbers.
+ * @param {goog.color.Rgb} rgb2 The second color represented as RGB array of 3 numbers.
+ * @param {number} factor The weight of the first color over the second one rgb2. Values
+ *     should be in the [0, 1] range. If set to a value less than 0, factor will be set to 0.
+ *     If greater than 1, factor will be set to 1.
+ * @return {!goog.color.Rgb} Combined color represented as RGB array.
+ */
+anychart.color.blend;
+
+/**
+ * Makes color lighter by a factor.
+ * @example <t>stageOnly</t>
+ * stage.rect(10, 10, stage.width() / 3 - 10, stage.height() - 20)
+ *      .fill('red');
+ * stage.rect(stage.width() / 3 + 10, 10, stage.width() / 3 - 20, stage.height() - 20)
+ *      .fill( anychart.color.lighten('red'));
+ * stage.rect(2*stage.width() / 3 + 10, 10, stage.width() / 3 - 30, stage.height() - 20)
+ *      .fill( anychart.color.lighten('red', .8));
+ * @param {(anychart.graphics.vector.Fill|anychart.graphics.vector.Stroke)} fillOrStroke Fill or stroke to be lightened.
+ * @param {number=} opt_factor [0.3] White color blending factor.
+ * @return {(string|anychart.graphics.vector.Fill|anychart.graphics.vector.Stroke)} Hex representation of the lightened color, or Color if color can not be lighten.
+ */
+anychart.color.lighten;
+
+/**
+ * Makes color darker by a factor.
+ * @example <t>stageOnly</t>
+ * stage.rect(10, 10, stage.width() / 3 - 10, stage.height() - 20)
+ *      .fill('red');
+ * stage.rect(stage.width() / 3 + 10, 10, stage.width() / 3 - 20, stage.height() - 20)
+ *      .fill( anychart.color.darken('red'));
+ * stage.rect(2*stage.width() / 3 + 10, 10, stage.width() / 3 - 30, stage.height() - 20)
+ *      .fill( anychart.color.darken('red', .8));
+ * @param {(anychart.graphics.vector.Fill|anychart.graphics.vector.Stroke)} fillOrStroke Fill or stroke to be darkened.
+ * @param {number=} opt_factor [0.3] Black color blending factor.
+ * @return {(string|anychart.graphics.vector.Fill|anychart.graphics.vector.Stroke)} Hex representation of the darkened color, or Color if color can't be darkened.
+ */
+anychart.color.darken;
+

@@ -1,0 +1,219 @@
+/**
+ * A namespace of all functions, objects, and classes provided by AnyChart Stage.
+ * @namespace
+ * @name anychart.graphics
+ *
+ */
+anychart.graphics;
+
+/**
+ Stage types supported by AnyChart Data Visualization Toolkit.
+ @enum {string}
+ */
+anychart.graphics.StageType;
+
+/**
+   An HTML 5 element allowing to draw bitmap graphics. It is supported by the majority of modern browsers.<br/>
+   The main advantage is rendering speed. The main problem is interactivity. Canvas will be used in the cases when speed
+   is needed (or interactivity is not necessary).<br/>
+   See more at <a href="http://en.wikipedia.org/wiki/Canvas_element" target="_blank">Wiki Page</a>
+   */
+anychart.graphics.StageType.CANVAS;
+
+/**
+   A vector drawing technology compatible with the majority of modern browsers (both desktop and mobile).
+   It is used as the main drawing technology.<br/>
+   See more at <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics" target="_blank">Wiki Page</a>
+   */
+anychart.graphics.StageType.SVG;
+
+/**
+   A vector drawing technology compatible only with  Microsoft Internet Explorer (versions 6-8).
+   It is used as an alternative for SVG because SVG is not supported by IE.<br/>
+   See more at <a href="http://en.wikipedia.org/wiki/Vector_Markup_Language" target="_blank">Wiki Page</a>
+   */
+anychart.graphics.StageType.VML;
+
+/**
+ Returns the Stage type recommended for the current browser (identified by a name and version), which is selected from
+ the supported Stage types.
+ @return {anychart.graphics.StageType} A Stage type supported by the current browser.
+ */
+anychart.graphics.type;
+
+/**
+ * Creates and returns a Stage object providing instruments for cross-browser drawing with a commnon interface
+ * for <u>all</u> supported technologies.
+ * @see anychart.graphics.StageType
+ * @param {(Element|string)=} opt_container A container where all graphics will be drawn.
+ * It can be defined later, for example while rendering.
+ * @param {(string|number)=} opt_width The width of a Stage object in pixels.
+ * @param {(string|number)=} opt_height The height of a Stage object in pixels.
+ * @return {!anychart.graphics.vector.Stage} A Stage object for cross-browser drawing with a common interface for
+ * all supported technologies.
+ *
+ */
+anychart.graphics.create;
+
+/**
+ * Checks the graphics config for conform to graphics JSON scheme.
+ * @param {Object} data JSON config graphics. JSON should be conform to the graphics JSON schema.
+ * @param {!Function} callback Callback function. First parameter is a validation result.
+ */
+anychart.graphics.validate;
+
+/**
+ Sets and returns an address export server script, which is used to export to an image
+ or PDF.
+ @see anychart.graphics.vector.Stage#saveAsPDF
+ @see anychart.graphics.vector.Stage#saveAsPNG
+ @see anychart.graphics.vector.Stage#saveAsJPG
+ @param {string=} opt_address Export server script URL.
+ @return {string} Export server script URL.
+ */
+anychart.graphics.server;
+
+/**
+ Creates an instance ot the {@link anychart.graphics.vector.Rect} class.<br/>
+ <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
+ so it is necessary to set the parent element manually.
+ @example <t>stageOnly</t>
+ anychart.graphics.rect(75, 50, 150, 75).parent(stage);
+ @example <t>stageOnly</t>
+ var layer = stage.layer();
+ layer.addChild(anychart.graphics.rect(75, 50, 150, 75));
+ @param {number=} opt_x The X-coordinate (left) of the top-left corner of the rectangle.
+ @param {number=} opt_y The Y-coordinate (left) of the top-left corner of the rectangle.
+ @param {number=} opt_width The width of the rectangle.
+ @param {number=} opt_height The height of the rectangel.
+ @return {!anychart.graphics.vector.Rect} The instance of the {@link anychart.graphics.vector.Rect} class.
+ */
+anychart.graphics.rect;
+
+/**
+ Creates an instance of the {@link anychart.graphics.vector.Circle} class <br/>
+ To learn more about working with circles, see: {@link anychart.graphics.vector.Circle}
+ <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
+ so it is necessary to set the parent element manually.
+ @example <t>stageOnly</t>
+ anychart.graphics.circle(50, 50, 45).parent(stage);
+ @param {number=} opt_cx The X-coordinate of the center of the circle in pixels.
+ @param {number=} opt_cy The Y-coordinate of the center of the circle in pixels.
+ @param {number=} opt_radius The radius of the circle in pixels.
+ @return {!anychart.graphics.vector.Circle} An instance of the {@link anychart.graphics.vector.Circle} class.
+ */
+anychart.graphics.circle;
+
+/**
+ Creates an instance of the {@link anychart.graphics.vector.Layer} class.<br/>
+ <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
+ so it is necessary to set the parent element manually.
+ @example <t>stageOnly</t>
+ var layer = anychart.graphics.layer().parent(stage);
+ // a circle is added
+ layer.circle(30, 30, 40);
+ // a rectangle is added
+ layer.rect(10, 10, 50, 50);
+ @return {!anychart.graphics.vector.Layer} The instance of the{@link anychart.graphics.vector.Layer} class.
+ */
+anychart.graphics.layer;
+
+/**
+ Creates an instance of the {@link anychart.graphics.vector.Ellipse} class.<br/>
+ <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
+ so it is necessary to set the parent element manually.
+ To learn more about working with ellipses, see: {@link anychart.graphics.vector.Ellipse}
+ @example <t>stageOnly</t>
+ var ellipse = anychart.graphics.ellipse(150, 70, 70, 50).parent(stage);
+ @param {number=} opt_cx The X-coordinate of the center of the ellipse in pixels.
+ @param {number=} opt_cy The Y-coordinate of the center of the ellipse in pixels.
+ @param {number=} opt_rx The X-axis radius of the ellipse in pixels.
+ @param {number=} opt_ry The Y-axis radius of the ellipse in pixels.
+ @return {!anychart.graphics.vector.Ellipse} The instance of the {@link anychart.graphics.vector.Ellipse} class.
+ */
+anychart.graphics.ellipse;
+
+/**
+ Creates an instance of the {@link anychart.graphics.vector.Path} class.<br/>
+ <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
+ so it is necessary to set the parent element manually.
+ To learn more about working with Path, see: {@link anychart.graphics.vector.Path}
+ @example <t>stageOnly</t>
+ var path = anychart.graphics.path().parent(stage);
+ path.moveTo(110, 110)
+ .lineTo(50, 10, 50, 50, 10, 50)
+ .close();
+ @return {!anychart.graphics.vector.Path} The instance of the {@link anychart.graphics.vector.Path} class.
+ */
+anychart.graphics.path;
+
+/**
+ Creates an instance of the {@link anychart.graphics.vector.Image} class.<br/>
+ <strong>Important:</strong> anychart.graphics.vector.Stage does not delete the object you have
+ created . You should remove the object after using it.
+ @example <t>stageOnly</t>
+ anychart.graphics.image('http://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png', 105, 10, 150, 125).parent(stage);
+ @param {string=} opt_src The IRI (Internationalized Resource Identifier) of the image source.
+ @param {number=} opt_x The X-coordinate of the left-top corner of the image.
+ @param {number=} opt_y The Y-coordinate of the left-top corner of the image.
+ @param {number=} opt_width The width of the image bounds.
+ @param {number=} opt_height The height of the image bounds.
+ @return {anychart.graphics.vector.Image} The instance of the {@link anychart.graphics.vector.Image} class.
+ */
+anychart.graphics.image;
+
+/**
+ Creates, depending on the technology used, an instance of the {@link anychart.graphics.vector.Text}
+ or the{@link anychart.graphics.vector.vml.Text} class.<br/>
+ <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
+ so it is necessary to set the parent element manually.
+ @example <t>stageOnly</t>
+ var layer = stage.layer();
+ var text = anychart.graphics.text(100, 100).parent(layer);
+ text.style({fontStyle: 'italic', fontSize: '15px', color: '#00f'});
+ text.text('Simple text');
+ @example <t>stageOnly</t>
+ var layer = stage.layer();
+ var customStyle = {fontStyle: 'italic', fontSize: '15px', color: '#00f'};
+ anychart.graphics.text(200, 50, 'Plain text', customStyle).parent(layer);
+ @param {number=} opt_x The X-coordinate (left) of the top-left corner of the text bounds.
+ @param {number=} opt_y The Y-coordinate (top) of the top-left corner of the text bounds.
+ @param {string=} opt_text The text to display.
+ @param {anychart.graphics.vector.TextStyle=} opt_style Text style. See more: {@link anychart.graphics.vector.Text#style}.
+ @return {!anychart.graphics.vector.Text} An instance of the {@link anychart.graphics.vector.Text} or the {@link anychart.graphics.vector.vml.Text} class.
+ */
+anychart.graphics.text;
+
+/**
+ Creates an instance of the{@link anychart.graphics.vector.HatchFill} class in case a fill with such parameters does not
+ exist. If there is already a fill with such parameters, an instance of it is returned.<br/>
+ To learn more about working with hatch fills, see: {@link anychart.graphics.vector.HatchFill}
+ @example <t>stageOnly</t>
+ var pattern = stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.BACKWARD_DIAGONAL, 'blue 0.9', 1);
+ stage.rect(50,25, 200, 100).fill(pattern).stroke('2 black 0.9');
+ @param {anychart.graphics.vector.HatchFill.HatchFillType=} opt_type The type of the hatch fill.
+ @param {string=} opt_color The color of the the hatch combined with opacity.
+ @param {number=} opt_thickness The thickness of the hatch fill.
+ @param {number=} opt_size The size of the hatch fill.
+ @return {!anychart.graphics.vector.HatchFill} The instance of the {@link anychart.graphics.vector.HatchFill} class for method chaining.
+ */
+anychart.graphics.hatchFill;
+
+/**
+ Creates an instance of the{@link anychart.graphics.vector.PatternFill} class.<br/>
+ To learn more about working with pattern fills, see: {@link anychart.graphics.vector.PatternFill}
+ @example <t>stageOnly</t>
+ var black = '2 black 0.9';
+ var pattern = anychart.graphics.patternFill(new anychart.graphics.math.Rect(0,0,20,20));
+ var circle = stage.circle(10,10,8).fill('red').parent(pattern);
+ // A simple fill for a small rectangle..
+ stage.rect(2,2, 50, 50).fill('rgba(2,0,200,0.4)');
+ // A small rectangle with a pattern fill.
+ stage.rect(2,2, 50, 50).fill(pattern).stroke(black);
+ // A big rectangle with the same pattern fill.
+ stage.rect(50,25, 200, 100).fill(pattern).stroke(black);
+ @param {!anychart.graphics.math.Rect} bounds The bounds of the pattern. Defines the size and offset of the pattern.
+ @return {!anychart.graphics.vector.PatternFill} An instance of the {@link anychart.graphics.vector.PatternFill} class for method chaining.
+ */
+anychart.graphics.patternFill;
+

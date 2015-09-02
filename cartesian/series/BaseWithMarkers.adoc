@@ -1,0 +1,65 @@
+/**
+ * A base for all series except marker series.
+ * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ *    here as a hash map.
+ * @constructor
+ * @extends {anychart.cartesian.series.Base}
+ */
+anychart.cartesian.series.BaseWithMarkers;
+
+/**
+ * Getter for series data markers.
+ * @example <t>listingOnly</t>
+ * series.markers().size(10);
+ * @return {!anychart.elements.MarkersFactory} Markers instance.
+ */
+anychart.cartesian.series.BaseWithMarkers.prototype.markers;
+
+/**
+ * Setter for series data markers.<br/>
+ * <b>Note:</b> pass <b>'none'</b> or <b>null</b> to turn off markers.
+ * @example <t>listingOnly</t>
+ * series.markers(null);
+ * @example <t>listingOnly</t>
+ * var myMarkers = new anychart.elements.MarkersFactory()
+ *       .size(10)
+ *       .type('star5')
+ * series.markers(myMarkers);
+ * @param {(anychart.elements.MarkersFactory|Object|string|null)=} opt_value Series data markers settings.
+ * @return {!anychart.cartesian.series.BaseWithMarkers} {@link anychart.cartesian.series.BaseWithMarkers} instance for method chaining.
+ */
+anychart.cartesian.series.BaseWithMarkers.prototype.markers;
+
+/**
+ * Getter for series data markers on hover.
+ * @example <t>listingOnly</t>
+ * series.hoverMarkers().size(20);
+ * @return {!anychart.elements.MarkersFactory} Markers instance.
+ */
+anychart.cartesian.series.BaseWithMarkers.prototype.hoverMarkers;
+
+/**
+ * Setter for series data markers on hover.<br/>
+ * <b>Note:</b> pass <b>'none'</b> or <b>null</b> to turn of markers.
+ * @example <t>listingOnly</t>
+ * series.hoverMarkers(null);
+ * @example <t>listingOnly</t>
+ * var myMarkers = new anychart.elements.MarkersFactory()
+ *       .size(10)
+ *       .type('star5')
+ * series.hoverMarkers(myMarkers);
+ * @param {(anychart.elements.MarkersFactory|Object|string|null)=} opt_value Series data markers settings.
+ * @return {!anychart.cartesian.series.BaseWithMarkers} {@link anychart.cartesian.series.BaseWithMarkers} instance for method chaining.
+ */
+anychart.cartesian.series.BaseWithMarkers.prototype.hoverMarkers;
+
+/** @inheritDoc */
+anychart.cartesian.series.BaseWithMarkers.prototype.startDrawing;
+
+/** @inheritDoc */
+anychart.cartesian.series.BaseWithMarkers.prototype.drawPoint;
+
+/** @inheritDoc */
+anychart.cartesian.series.BaseWithMarkers.prototype.finalizeDrawing;
+

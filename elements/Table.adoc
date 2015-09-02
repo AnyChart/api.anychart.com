@@ -1,0 +1,356 @@
+/**
+ * Table visual element.
+ * @param {number=} opt_rowsCount Number of rows in the table.
+ * @param {number=} opt_colsCount Number of columns in the table.
+ * @constructor
+ * @extends {anychart.VisualBaseWithBounds}
+ */
+anychart.elements.Table;
+
+/**
+ * Getter and setter for table rows count.
+ * @param {number=} opt_value Rows count to set.
+ * @return {!anychart.elements.Table|number}
+ */
+anychart.elements.Table.prototype.rowsCount;
+
+/**
+ * Getter and setter for table cols count.
+ * @param {number=} opt_value Cols count to set.
+ * @return {!anychart.elements.Table|number}
+ */
+anychart.elements.Table.prototype.colsCount;
+
+/**
+ * Getter and setter for row height settings. Null sets row height to default value.
+ * @param {number} row Row number.
+ * @param {(string|number|null)=} opt_value Value to set.
+ * @return {string|number|null|anychart.elements.Table}
+ */
+anychart.elements.Table.prototype.rowHeight;
+
+/**
+ * Getter and setter for column height settings. Null sets column width to default value.
+ * @param {number} col Row number.
+ * @param {(string|number|null)=} opt_value Value to set.
+ * @return {string|number|null|anychart.elements.Table}
+ */
+anychart.elements.Table.prototype.colWidth;
+
+/**
+ * Returns cell by its row and column number.
+ * @param {number} row
+ * @param {number} col
+ * @return {anychart.elements.Table.Cell}
+ */
+anychart.elements.Table.prototype.getCell;
+
+/**
+ * Getter and setter for table cell text factory. You can setup the default text appearance for entire table.
+ * These settings apply to cells which content was setup as string or number. If you want to setup text appearance
+ * for the particular cell, set cell content as string first, and then feel free to get the content and setup it.
+ * @param {anychart.elements.LabelsFactory=} opt_value
+ * @return {anychart.elements.LabelsFactory|anychart.elements.Table}
+ */
+anychart.elements.Table.prototype.cellTextFactory;
+
+/**
+ * Cell padding settings.
+ * @param {(string|number|Object|anychart.utils.Space)=} opt_spaceOrTopOrTopAndBottom .
+ * @param {(string|number)=} opt_rightOrRightAndLeft .
+ * @param {(string|number)=} opt_bottom .
+ * @param {(string|number)=} opt_left .
+ * @return {anychart.elements.Table|anychart.utils.Padding} .
+ */
+anychart.elements.Table.prototype.cellPadding;
+
+/**
+ * Default table cell background fill getter/setter. If set, resets even and odd cell fills.
+ * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
+ * @param {number=} opt_opacityOrAngleOrCx .
+ * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
+ * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
+ * @param {number=} opt_opacity .
+ * @param {number=} opt_fx .
+ * @param {number=} opt_fy .
+ * @return {anychart.graphics.vector.Fill|anychart.elements.Table} .
+ */
+anychart.elements.Table.prototype.cellFill;
+
+/**
+ * Table cell background fill getter/setter for cells in odd rows. Use null to reset to default cell fill.
+ * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
+ * @param {number=} opt_opacityOrAngleOrCx .
+ * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
+ * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
+ * @param {number=} opt_opacity .
+ * @param {number=} opt_fx .
+ * @param {number=} opt_fy .
+ * @return {anychart.graphics.vector.Fill|anychart.elements.Table|undefined} .
+ */
+anychart.elements.Table.prototype.cellOddFill;
+
+/**
+ * Table cell background fill getter/setter for cells in even rows. Use null to reset to default cell fill.
+ * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
+ * @param {number=} opt_opacityOrAngleOrCx .
+ * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
+ * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
+ * @param {number=} opt_opacity .
+ * @param {number=} opt_fx .
+ * @param {number=} opt_fy .
+ * @return {anychart.graphics.vector.Fill|anychart.elements.Table|undefined} .
+ */
+anychart.elements.Table.prototype.cellEvenFill;
+
+/**
+ * Table cell border settings for all 4 sides simultaneously. The last usage of border(), leftBorder(), rightBorder(),
+ * topBorder() and bottomBorder() methods determines the border for the corresponding side.
+ *
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_strokeOrFill Настройки заливки
+ *    границ или просто настройки заливки.
+ * @param {number=} opt_thickness Толщина линии.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Стиль (форма) соединения меду двумя линиями.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Style of line cap.
+ * @return {anychart.elements.Table|anychart.graphics.vector.Stroke|undefined} .
+ */
+anychart.elements.Table.prototype.cellBorder;
+
+/**
+ * Left border settings for all cells. The last usage of cellBorder(), cellLeftBorder(), cellRightBorder(),
+ * cellTopBorder() and cellLeftBorder() methods determines the border for the corresponding side.
+ * As a getter returns only the side override if any. To determine table default for the left cell border use
+ * table.cellLeftBorder() || table.border().
+ *
+ * Note: If you want to reset side override, use null. If you want to remove border for the side, use 'none'.
+ *
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_strokeOrFill Настройки заливки
+ *    границ или просто настройки заливки.
+ * @param {number=} opt_thickness Толщина линии.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Стиль (форма) соединения меду двумя линиями.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Style of line cap.
+ * @return {anychart.elements.Table|anychart.graphics.vector.Stroke|undefined} .
+ */
+anychart.elements.Table.prototype.cellLeftBorder;
+
+/**
+ * Right border settings for all cells. The last usage of cellBorder(), cellLeftBorder(), cellRightBorder(),
+ * cellTopBorder() and cellRightBorder() methods determines the border for the corresponding side.
+ * As a getter returns only the side override if any. To determine table default for the right cell border use
+ * table.cellRightBorder() || table.border().
+ *
+ * Note: If you want to reset side override, use null. If you want to remove border for the side, use 'none'.
+ *
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_strokeOrFill Настройки заливки
+ *    границ или просто настройки заливки.
+ * @param {number=} opt_thickness Толщина линии.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Стиль (форма) соединения меду двумя линиями.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Style of line cap.
+ * @return {anychart.elements.Table|anychart.graphics.vector.Stroke|undefined} .
+ */
+anychart.elements.Table.prototype.cellRightBorder;
+
+/**
+ * Top border settings for all cells. The last usage of cellBorder(), cellLeftBorder(), cellRightBorder(),
+ * cellTopBorder() and cellTopBorder() methods determines the border for the corresponding side.
+ * As a getter returns only the side override if any. To determine table default for the top cell border use
+ * table.cellTopBorder() || table.border().
+ *
+ * Note: If you want to reset side override, use null. If you want to remove border for the side, use 'none'.
+ *
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_strokeOrFill Настройки заливки
+ *    границ или просто настройки заливки.
+ * @param {number=} opt_thickness Толщина линии.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Стиль (форма) соединения меду двумя линиями.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Style of line cap.
+ * @return {anychart.elements.Table|anychart.graphics.vector.Stroke|undefined} .
+ */
+anychart.elements.Table.prototype.cellTopBorder;
+
+/**
+ * Bottom border settings for all cells. The last usage of cellBorder(), cellLeftBorder(), cellRightBorder(),
+ * cellTopBorder() and cellBottomBorder() methods determines the border for the corresponding side.
+ * As a getter returns only the side override if any. To determine table default for the bottom cell border use
+ * table.cellBottomBorder() || table.border().
+ *
+ * Note: If you want to reset side override, use null. If you want to remove border for the side, use 'none'.
+ *
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_strokeOrFill Настройки заливки
+ *    границ или просто настройки заливки.
+ * @param {number=} opt_thickness Толщина линии.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Стиль (форма) соединения меду двумя линиями.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Style of line cap.
+ * @return {anychart.elements.Table|anychart.graphics.vector.Stroke|undefined} .
+ */
+anychart.elements.Table.prototype.cellBottomBorder;
+
+/**
+ * Draws the table.
+ * @return {anychart.elements.Table}
+ */
+anychart.elements.Table.prototype.draw;
+
+/**
+ * Table cell.
+ * @param {anychart.elements.Table} table
+ * @param {number} row
+ * @param {number} col
+ * @constructor
+ * @extends {goog.Disposable}
+ */
+anychart.elements.Table.Cell;
+
+/**
+ *
+ * @param {(anychart.elements.Table.CellContent|string|number)=} opt_value
+ * @return {anychart.elements.Table.CellContent|anychart.elements.Table.Cell}
+ */
+anychart.elements.Table.Cell.prototype.content;
+
+/**
+ * Returns cell row number.
+ * @return {number}
+ */
+anychart.elements.Table.Cell.prototype.getRow;
+
+/**
+ * Returns cell column number.
+ * @return {number}
+ */
+anychart.elements.Table.Cell.prototype.getCol;
+
+/**
+ * Returns cell bounds without padding counted (bounds which are used for borders drawing).
+ * @return {!anychart.math.Rect}
+ */
+anychart.elements.Table.Cell.prototype.getBounds;
+
+/**
+ * Table cell background fill getter/setter.
+ * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
+ * @param {number=} opt_opacityOrAngleOrCx .
+ * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
+ * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
+ * @param {number=} opt_opacity .
+ * @param {number=} opt_fx .
+ * @param {number=} opt_fy .
+ * @return {anychart.graphics.vector.Fill|anychart.elements.Table.Cell} .
+ */
+anychart.elements.Table.Cell.prototype.fill;
+
+/**
+ * Table cell border settings for all 4 sides simultaneously. The last usage of border(), leftBorder(), rightBorder(),
+ * topBorder() and bottomBorder() methods determines the border for the corresponding side.
+ *
+ * Note: If you want to reset cell overrides, use null. If you want to remove border from the cell, use 'none'.
+ *
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_strokeOrFill Настройки заливки
+ *    границ или просто настройки заливки.
+ * @param {number=} opt_thickness Толщина линии.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Стиль (форма) соединения меду двумя линиями.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Style of line cap.
+ * @return {anychart.elements.Table.Cell|anychart.graphics.vector.Stroke|undefined} .
+ */
+anychart.elements.Table.Cell.prototype.border;
+
+/**
+ * Left border settings for the cell. The last usage of border(), leftBorder(), rightBorder(),
+ * topBorder() and bottomBorder() methods determines the border for the corresponding side.
+ *
+ * Note: If you want to reset cell overrides, use null. If you want to remove border from the cell, use 'none'.
+ *
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_strokeOrFill Настройки заливки
+ *    границ или просто настройки заливки.
+ * @param {number=} opt_thickness Толщина линии.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Стиль (форма) соединения меду двумя линиями.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Style of line cap.
+ * @return {anychart.elements.Table.Cell|anychart.graphics.vector.Stroke|undefined} .
+ */
+anychart.elements.Table.Cell.prototype.leftBorder;
+
+/**
+ * Right border settings for the cell. The last usage of border(), leftBorder(), rightBorder(),
+ * topBorder() and bottomBorder() methods determines the border for the corresponding side.
+ *
+ * Note: If you want to reset cell overrides, use null. If you want to remove border from the cell, use 'none'.
+ *
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_strokeOrFill Настройки заливки
+ *    границ или просто настройки заливки.
+ * @param {number=} opt_thickness Толщина линии.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Стиль (форма) соединения меду двумя линиями.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Style of line cap.
+ * @return {anychart.elements.Table.Cell|anychart.graphics.vector.Stroke|undefined} .
+ */
+anychart.elements.Table.Cell.prototype.rightBorder;
+
+/**
+ * Top border settings for the cell. The last usage of border(), leftBorder(), rightBorder(),
+ * topBorder() and bottomBorder() methods determines the border for the corresponding side.
+ *
+ * Note: If you want to reset cell overrides, use null. If you want to remove border from the cell, use 'none'.
+ *
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_strokeOrFill Настройки заливки
+ *    границ или просто настройки заливки.
+ * @param {number=} opt_thickness Толщина линии.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Стиль (форма) соединения меду двумя линиями.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Style of line cap.
+ * @return {anychart.elements.Table.Cell|anychart.graphics.vector.Stroke|undefined} .
+ */
+anychart.elements.Table.Cell.prototype.topBorder;
+
+/**
+ * Bottom border settings for the cell. The last usage of border(), leftBorder(), rightBorder(),
+ * topBorder() and bottomBorder() methods determines the border for the corresponding side.
+ *
+ * Note: If you want to reset cell overrides, use null. If you want to remove border from the cell, use 'none'.
+ *
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_strokeOrFill Настройки заливки
+ *    границ или просто настройки заливки.
+ * @param {number=} opt_thickness Толщина линии.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Стиль (форма) соединения меду двумя линиями.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Style of line cap.
+ * @return {anychart.elements.Table.Cell|anychart.graphics.vector.Stroke|undefined} .
+ */
+anychart.elements.Table.Cell.prototype.bottomBorder;
+
+/**
+ * Getter and setter for cell columns span. Cells that are overlapped by cells with colSpan != 1 are not drawn.
+ * @param {number=} opt_value
+ * @return {!anychart.elements.Table.Cell|number}
+ */
+anychart.elements.Table.Cell.prototype.colSpan;
+
+/**
+ * Getter and setter for cell rows span. Cells that are overlapped by cells with rowSpan != 1 are not drawn.
+ * @param {number=} opt_value
+ * @return {!anychart.elements.Table.Cell|number}
+ */
+anychart.elements.Table.Cell.prototype.rowSpan;
+
+/**
+ * Getter and setter for table cell override of cell padding.
+ *
+ * @param {(string|number|Object|anychart.utils.Space)=} opt_spaceOrTopOrTopAndBottom .
+ * @param {(string|number)=} opt_rightOrRightAndLeft .
+ * @param {(string|number)=} opt_bottom .
+ * @param {(string|number)=} opt_left .
+ * @return {anychart.elements.Table.Cell|anychart.utils.Padding} .
+ */
+anychart.elements.Table.Cell.prototype.padding;
+
+/**
+ * Constructor function.
+ * @return {!anychart.elements.Table}
+ */
+anychart.elements.table;
+

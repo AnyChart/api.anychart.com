@@ -1,0 +1,274 @@
+/**
+ * Base class for all cartesian series.<br/>
+ * Base class defines common methods, such as those for:
+ * <ul>
+ *   <li>Binding series to a scale: <i>xScale, yScale</i></li>
+ *   <li>Base color settings: <i>color</i></li>
+ * </ul>
+ * You can also obtain <i>getIterator, getResetIterator</i> iterators here.
+ * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Series data.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ *    here as a hash map.
+ * @constructor
+ * @extends {anychart.VisualBaseWithBounds}
+ */
+anychart.cartesian.series.Base;
+
+/**
+ * Getter for series name.
+ * @return {string|undefined} Series name value.
+ */
+anychart.cartesian.series.Base.prototype.name;
+
+/**
+ * Setter for series name.
+ * @example <t>listingOnly</t>
+ * series.name('My Custom series name');
+ * @param {string=} opt_value Value to set.
+ * @return {!anychart.cartesian.series.Base} {@link anychart.cartesian.series.Base} instance for method chaining.
+ */
+anychart.cartesian.series.Base.prototype.name;
+
+/**
+ * Sets/gets series clip.
+ * @param {(boolean|anychart.math.Rect)=} opt_value Clip.
+ * @return {anychart.cartesian.series.Base|boolean|anychart.math.Rect} .
+ */
+anychart.cartesian.series.Base.prototype.clip;
+
+/**
+ * Sets/Gets series meta data.
+ * @param {*=} opt_object_or_key Object to replace metadata or metadata key.
+ * @param {*=} opt_value Meta data value.
+ * @return {*} Metadata object, key value or itself for method chaining.
+ */
+anychart.cartesian.series.Base.prototype.meta;
+
+/**
+ * Getter for series mapping.
+ * @return {!anychart.data.View} Returns current mapping.
+ */
+anychart.cartesian.series.Base.prototype.data;
+
+/**
+ * Setter for series mapping.
+ * @example <t>listingOnly</t>
+ * series.data([20, 7, 10, 14]);
+ *  // or
+ * series.data([
+ *    [1, 22, 13],
+ *    [13, 22, 23],
+ *    [17, 22, 33],
+ *    [21, 22, 43]
+ *  ]);
+ *  // or
+ * series.data([
+ *    {name: 'Point 1', value: 10},
+ *    {name: 'Point 2', value: 7},
+ *    {name: 'Point 3', value: 20},
+ *    {name: 'Point 4', value: 14}
+ *  ]);
+ *   // or
+ *  series.data(
+ *    '17;21;11.1;4\n'+
+ *    '11;11;0.21;0\n'+
+ *    '21;17;23.1;1\n'+
+ *    '10;.4;14;4.4\n',
+ *    {'rowsSeparator': '\n', columnsSeparator: ';'})
+ * @param {!(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed by first param, you can pass CSV parser settings here as a hash map.
+ * @return {!anychart.cartesian.series.Base} {@link anychart.cartesian.series.Base} instance for method chaining.
+ */
+anychart.cartesian.series.Base.prototype.data;
+
+/**
+ * Returns current mapping iterator.
+ * @return {!anychart.data.Iterator} Current series iterator.
+ */
+anychart.cartesian.series.Base.prototype.getIterator;
+
+/**
+ * Returns new default iterator for the current mapping.
+ * @return {!anychart.data.Iterator} New iterator.
+ */
+anychart.cartesian.series.Base.prototype.getResetIterator;
+
+/**
+ * Returns current position of the point on an ordinal scale.
+ * @return {number} Current x-point position.
+ */
+anychart.cartesian.series.Base.prototype.xPointPosition;
+
+/**
+ * Sets position of the point on an oridnal scale.
+ * @illustration <t>simple-h100</t>
+ * stage.path()
+ *     .moveTo(20, 50)
+ *     .lineTo(380, 50)
+ *     .moveTo(20, 55)
+ *     .lineTo(20,45)
+ *     .moveTo(100, 55)
+ *     .lineTo(100,45)
+ *     .moveTo(180, 55)
+ *     .lineTo(180,45)
+ *     .moveTo(260, 55)
+ *     .lineTo(260,45)
+ *     .stroke('2px black');
+ * stage.text(40, 60, 'Point 1');
+ * stage.text(118, 60, 'Point 2');
+ * stage.text(200, 60, 'Point 3');
+ * stage.text(350, 60, 'X-Axis');
+ * stage.path()
+ *     .moveTo(20, 20)
+ *     .lineTo(100, 20)
+ *     .stroke('blue');
+ * stage.text(12, 13, '0').color('blue');
+ * stage.text(102, 13, '1').color('blue');
+ * stage.text(142, 30, '0.7').color('blue');
+ * stage.circle(150, 47, 4).fill('lightblue');
+ * stage.text(182, 30, '0.1').color('blue');
+ * stage.circle(190, 47, 4).fill('lightblue');
+ * @illustrationDesc
+ * Points get a place on ordinal scale, the size of the place can be set manually.<br/>
+ * If there are more than one seties, place size is calculated to fit all.
+ * @return {!anychart.cartesian.series.Base} {@link anychart.cartesian.series.Base} instance for method chaining.
+ */
+anychart.cartesian.series.Base.prototype.xPointPosition;
+
+/**
+ * Draws series into the current container. If series has no scales - creates them.
+ * @example <t>listingOnly</t>
+ * series.draw(400, 200);
+ * @param {number=} opt_parentWidth [0] Optional width of the parent container for series bounds calculation.
+ * @param {number=} opt_parentHeight [0] Optional height of the parent container for series bounds calculation.
+ */
+anychart.cartesian.series.Base.prototype.draw;
+
+/**
+ * Draws a pint iterator points to.<br/>
+ * Closes polygon in a correct way if missing occured;
+ */
+anychart.cartesian.series.Base.prototype.drawPoint;
+
+/**
+ * This method is used by a parallel iterator in case series needs to
+ * draw a missing point (given series has no such X, and other
+ * series has it).
+ */
+anychart.cartesian.series.Base.prototype.drawMissing;
+
+/**
+ * Initializes sereis draw.<br/>
+ * If scale is not explicitly set - creates a default one.
+ */
+anychart.cartesian.series.Base.prototype.startDrawing;
+
+/**
+ * Finishes series draw.
+ * @example <t>listingOnly</t>
+ * series.startDrawing();
+ * while(series.getIterator().advance())
+ *   series.drawPoint();
+ * series.finalizeDrawing();
+ */
+anychart.cartesian.series.Base.prototype.finalizeDrawing;
+
+/**
+ * Getter for current series X scale.
+ * @return {anychart.scales.Base} Current series X Scale.
+ */
+anychart.cartesian.series.Base.prototype.xScale;
+
+/**
+ * Setter for series X scale.
+ * @param {anychart.scales.Base=} opt_value Value to set.
+ * @return {!anychart.cartesian.series.Base}  {@link anychart.cartesian.series.Base} instance for method chaining.
+ */
+anychart.cartesian.series.Base.prototype.xScale;
+
+/**
+ * Getter for current series Y scale.
+ * @return {anychart.scales.Base} Current series Y Scale.
+ */
+anychart.cartesian.series.Base.prototype.yScale;
+
+/**
+ * Setter for series Y scale.
+ * @param {anychart.scales.Base=} opt_value Value to set.
+ * @return {!anychart.cartesian.series.Base}  {@link anychart.cartesian.series.Base} instance for method chaining.
+ */
+anychart.cartesian.series.Base.prototype.yScale;
+
+/**
+ * Getter for current series data tooltip.
+ * @return {anychart.elements.Tooltip} Tooltip instance.
+ */
+anychart.cartesian.series.Base.prototype.tooltip;
+
+/**
+ * Setter for series data tooltip.
+ * @example <t>listingOnly</t>
+ * var tooltipSettings = new anychart.elements.Tooltip();
+ * tooltipSettings
+ *    .background()
+ *      .stroke('#bebebe').fill('#ffffff');
+ * tooltipSettings
+ *    .content()
+ *      .useHtml(true)
+ *      .padding(5);
+ * series.tooltip(labelSettings);
+ * @param {(null|string|Object|anychart.elements.Tooltip)=} opt_value Tooltip settings.
+ * <b>Note:</b> Для того, чтобы отключить tooltip необходимо передать <b>null</b> или <b>'none'</b>.
+ * @return {!anychart.cartesian.series.Base} An instance of the {@link anychart.cartesian.series.Base} class for method chaining.
+ */
+anychart.cartesian.series.Base.prototype.tooltip;
+
+/**
+ * Getter for curent series data labels.
+ * @return {anychart.elements.LabelsFactory} Labels instance.
+ */
+anychart.cartesian.series.Base.prototype.labels;
+
+/**
+ * Setter for series data labels.
+ * @example <t>listingOnly</t>
+ * var labelsSettings = new anychart.elements.LabelsFactory();
+ * labelSettings.enabled(true);
+ * labelSettings.position('center');
+ * labelSettings.anchor('center');
+ * labelSettings.fontColor('white');
+ * labelSettings.fontWeight('bold');
+ * series.labels(labelSettings);
+ * @param {(anychart.elements.LabelsFactory|Object|string|null)=} opt_value Series data labels settings.
+ * <b>Note:</b> Для того, чтобы отключить label необходимо передать <b>null</b> или <b>'none'</b>.
+ * @return {!anychart.cartesian.series.Base} An instance of the {@link anychart.cartesian.series.Base} class for method chaining.
+ */
+anychart.cartesian.series.Base.prototype.labels;
+
+/**
+ * Getter for current series color.
+ * @return {!anychart.graphics.vector.Fill} Current color.
+ */
+anychart.cartesian.series.Base.prototype.color;
+
+/**
+ * Setter for series color.<br/>
+ * Series color. Used as a base in fills, strokes and a legend.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/Elements_Fill}<br/>
+ * <b>Note:</b> <u>color</u> methods sets <u>fill</u> and <b>stroke</b> settings, which means it is not wise to pass
+ * image fill here - stroke doesn't accept image fill.
+ * @shortDescription Setter for series color by one value.
+ * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys Color or gradient.
+ * @param {number=} opt_opacityOrAngleOrCx Opacity, or gradient angle, or centerX for radial gradient.
+ * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy Fill mode
+ *  or CenterY for radial gradient.
+ * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode Opacity
+ *  or fill mode.
+ * @param {number=} opt_opacity Opacity (value from 0 to 1).
+ * @param {number=} opt_fx The focus-point x-coordinate.
+ * @param {number=} opt_fy The focus-point y-coordinate.
+ * @return {!anychart.cartesian.series.Base} {@link anychart.cartesian.series.Base} instance for method chaining.
+ */
+anychart.cartesian.series.Base.prototype.color;
+

@@ -1,0 +1,382 @@
+/**
+ Path class.<br/>
+ Path is sequence of segments of different type, it can be opened or closed.<br/>
+ To define the internal fill this rule is used <a target='_blank'
+ href="http://www.w3.org/TR/SVG/painting.html#FillProperties">EVEN-ODD</a>.<br/>
+ Path always starts with {@link anychart.graphics.vector.Path#moveTo} command.<br/>
+ <b>Do not invoke constructor directly.</b> Use {@link anychart.graphics.vector.Stage#path} or
+ {@link anychart.graphics.vector.Layer#path} to create stage or layer bound path.
+ <br/> To create unbound path use {@link anychart.graphics.path}
+ @see anychart.graphics.vector.Stage#path
+ @see anychart.graphics.vector.Layer#path
+ @see anychart.graphics.path
+ @name anychart.graphics.vector.Path
+ @constructor
+ @extends {anychart.graphics.vector.PathBase}
+ */
+anychart.graphics.vector.Path;
+
+/**
+ Resets all path operations.
+ @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ */
+anychart.graphics.vector.Path.prototype.clear;
+
+/**
+ Moves path cursor position to a specified coordinate.</br>
+ Remember that if you call the <b>moveTo</b> method a few times in a row, only the last call will be applied.
+ @param {number} x The target point’s X-coordinate.
+ @param {number} y The  target point’s Y-coordinate.
+ @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ */
+anychart.graphics.vector.Path.prototype.moveTo;
+
+/**
+ Adds specified points to the current path, drawing sequentially a straight line through the specified coordinates.
+ @param {number} x A target point’s X-coordinate.
+ @param {number} y A target point’s Y-coordinate.
+ @param {...number} var_args The target points’ coordinates: each odd parameter is interpreted as X and each even as Y.
+ @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @illustration <t>stageOnly</t>
+ stage.path().moveTo(50, 50)
+ .lineTo(100, 100, 50, 110, 50, 140, 300, 140);
+
+ stage.circle(50, 50, 3);
+ stage.text(50, 35, 'A');
+
+ stage.circle(100, 100, 3);
+ stage.text(100, 85, 'B');
+
+ stage.circle(50, 110, 3);
+ stage.text(50, 92, 'C');
+
+ stage.circle(50, 140, 3);
+ stage.text(55, 125, 'D');
+
+ stage.circle(300, 140, 3);
+ stage.text(300, 125, 'E');
+ @illustrationDesc
+ The beginning is in the point <b>A</b>(50, 50).<br/>
+ The first line is drawn from the beginning to the point <b>B</b>(100, 100).<br/>
+ Then the path goes on to the point <b>C</b>(50, 110).<br/>
+ From the point <b>C</b> it goes to the point <b>D</b>(50, 140)<br/>
+ and ends in the point <b>E</b>(300, 140).<br/>
+ @example <t>stageOnly</t>
+ stage.path().moveTo(47, 50).lineTo(363, 111);
+ @example <c>An example from the illustration</c><t>stageOnly</t>
+ stage.path().moveTo(50, 50)
+    .lineTo(100, 100, 50, 110, 50, 140, 300, 140);
+ */
+anychart.graphics.vector.Path.prototype.lineTo;
+
+/**
+ Adds specified points to the path, drawing sequentially a cubic Bézier curve from the current point to the next.
+ Each curve is defined by 3 points (6 coordinates) – two control points and an endpoint.
+ @param {number} control1X The first control point’s X-coordinate.
+ @param {number} control1Y The first control point’s Y-coordinate.
+ @param {number} control2X The second control point’s X-coordinate.
+ @param {number} control2Y The second control point’s Y-coordinate.
+ @param {number} endX The endpoint’s X-coordinate.
+ @param {number} endY The endpoint’s Y-coordinate.
+ @param {...number} var_args The coordinates, defining curves, in sets of 6: first control points, then an endpoint (in the same order as the primary parameters).
+ @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @illustration <t>stageOnly</t>
+ var A = {x: 50, y:50, lbl:'A'};
+ var B = {x: 100, y:100, lbl:'B'};
+ var C = {x: 300, y:140, lbl:'C'};
+ var P1 = {x: 50, y:100, lbl:'P1'};
+ var P2 = {x: 100, y:50, lbl:'P2'};
+ var P3 = {x: 80, y:155, lbl:'P3'};
+ var P4 = {x: 250, y:50, lbl:'P4'};
+ var points = [A, B, C, P1, P2, P3, P4];
+
+ stage.path().moveTo(A.x, A.y)
+ .curveTo(P1.x, P1.y, P2.x, P2.y, B.x, B.y)
+ .curveTo(P3.x, P3.y, P4.x, P4.y, C.x, C.y);
+
+ while(p = points.shift()){
+        stage.circle(p.x, p.y, 3);
+        stage.text(p.x, p.y - 15, p.lbl);
+    }
+
+ var green = '1 green 0.3';
+ var blue = '1 blue 0.3';
+
+ stage.path().moveTo(A.x, A.y).lineTo(P1.x, P1.y).stroke(blue);
+ stage.path().moveTo(P1.x, P1.y).lineTo(P2.x, P2.y).stroke(blue);
+ stage.path().moveTo(P2.x, P2.y).lineTo(B.x, B.y).stroke(blue);
+
+ stage.path().moveTo(B.x, B.y).lineTo(P3.x, P3.y).stroke(green);
+ stage.path().moveTo(P3.x, P3.y).lineTo(P4.x, P4.y).stroke(green);
+ stage.path().moveTo(P4.x, P4.y).lineTo(C.x, C.y).stroke(green);
+ @illustrationDesc
+ The cursor is set to the point <b>A</b>.<br/>
+ Then the curve goes to the point <b>B</b> through the inflection points <b>P1</b> and <b>P2</b>.<br/>
+ Next the curve goes to the point <b>C</b> through the inflection points <b>P3</b> and <b>P4</b>.<br/>
+ Inflection points can be placed anywhere, but there must be two of them.
+ @example <c>An example from the illustration</c><t>stageOnly</t>
+ stage.path().moveTo(50, 50)
+    .curveTo(50, 100, 100, 50, 100, 100)
+    .curveTo(80, 155, 250, 50, 300, 140);
+ @example <c>An alias for the example mentioned before</c><t>stageOnly</t>
+ stage.path().moveTo(50, 50)
+    .curveTo(50, 100, 100, 50, 100, 100, 80, 155, 250, 50, 300, 140);
+ */
+anychart.graphics.vector.Path.prototype.curveTo;
+
+/**
+ Adds specified points to the path, drawing sequentially a quadratic Bézier curve from the current point to the next.
+ Each curve is defined by 2 points (4 coordinates) – a control point and an endpoint.
+ @param {number} controlX The control point’s X-coordinate.
+ @param {number} controlY The control point’s Y-coordinate.
+ @param {number} endX The endpoint’s X-coordinate.
+ @param {number} endY The endpoint’s Y-coordinate.
+ @param {...number} var_args coordinates, defining curves, in sets of four: first the control point, then an endpoint (in the same order as the primary parameters).
+ @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @illustration <t>stageOnly</t>
+ var A = {x: 50, y:50, lbl:'A'};
+ var B = {x: 100, y:100, lbl:'B'};
+ var C = {x: 300, y:140, lbl:'C'};
+ var P1 = {x: 50, y:100, lbl:'P1'};
+ var P2 = {x: 80, y:155, lbl:'P2'};
+ var points = [A, B, C, P1, P2];
+
+ stage.path().moveTo(A.x, A.y)
+ .quadraticCurveTo(P1.x, P1.y, B.x, B.y)
+ .quadraticCurveTo(P2.x, P2.y, C.x, C.y);
+
+ while(p = points.shift()){
+                stage.circle(p.x, p.y, 3);
+                stage.text(p.x, p.y - 15, p.lbl);
+            }
+
+ var green = '1 green 0.3';
+ var blue = '1 blue 0.3';
+
+ stage.path().moveTo(A.x, A.y).lineTo(P1.x, P1.y).stroke(blue);
+ stage.path().moveTo(P1.x, P1.y).lineTo(B.x, B.y).stroke(blue);
+
+ stage.path().moveTo(B.x, B.y).lineTo(P2.x, P2.y).stroke(green);
+ stage.path().moveTo(P2.x, P2.y).lineTo(C.x, C.y).stroke(green);
+ @illustrationDesc
+ The cursor is set to the point <b>A</b>.<br/>
+ Then the curve goes to the point <b>B</b> through the inflection point <b>P1</b>.<br/>
+ Next the curve goes to the point <b>C</b> through the inflection point <b>P2</b>.<br/>
+ The inflection point can be placed anywhere, and there must be one such point.
+ @example <c>An example from the illustration</c><t>stageOnly</t>
+ stage.path().moveTo(50, 50)
+    .quadraticCurveTo(50, 100, 100, 100)
+    .quadraticCurveTo(80, 155, 300, 140);
+ @example <c>An alias for the example mentioned before</c><t>stageOnly</t>
+ stage.path().moveTo(50, 50)
+    .quadraticCurveTo(50, 100, 100, 100, 80, 155, 300, 140);
+ */
+anychart.graphics.vector.Path.prototype.quadraticCurveTo;
+
+/**
+ Adds a command to the path that draws an arc of an ellipse with radii <b>rx, ry</b> <b>rx, ry</b> from the current point to a point <b>x, y</b>. <br/>
+ The <b>largeArc</b> and <b>clockwiseArc</b> flags define which of the 4 possible arcs is drawn.<br/>
+ {@link http://www.w3.org/TR/SVG/implnote.html#ArcImplementationNotes}
+ @param {number} x The X-coordinate of the arc end.
+ @param {number} y The Y-coordinate of the arc end.
+ @param {number} rx The X-axis radius of the ellipse.
+ @param {number} ry The Y-axis radius of the ellipse.
+ @param {boolean} largeArc A flag allowing to draw either the smaller or the larger arc.
+ @param {boolean} clockwiseArc A flag allowing to draw an arc either in a clockwise or in a counterclockwise direction.
+ @return {anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @illustration <t>stageOnly</t>
+ var red = '1 red 0.6';
+ var blue = '1 blue 0.6';
+ var green = '2 green 0.6';
+ var orange = '2 orange 0.6';
+
+ var A = {x:100, y:100};
+ var B = {x:300, y:100};
+ var ellipse = {rx: 150, ry:50};
+ stage.path()
+ .moveTo(10,100)
+ .lineTo(A.x, A.y);
+
+ stage.path()
+ .moveTo(A.x, A.y)
+ .arcToByEndPoint(B.x, B.y, ellipse.rx, ellipse.ry, true, true)
+ .fill('none')
+ .stroke(red);
+
+ stage.path()
+ .moveTo(A.x, A.y)
+ .arcToByEndPoint(B.x, B.y, ellipse.rx, ellipse.ry, true, false)
+ .fill('none')
+ .stroke(blue);
+
+ stage.path()
+ .moveTo(A.x, A.y)
+ .arcToByEndPoint(B.x, B.y, ellipse.rx, ellipse.ry, false, true)
+ .fill('none')
+ .stroke(green);
+
+ stage.path()
+ .moveTo(A.x, A.y)
+ .arcToByEndPoint(B.x, B.y, ellipse.rx, ellipse.ry, false, false)
+ .fill('none')
+ .stroke(orange);
+
+ stage.circle(A.x, A.y,3);
+ stage.text(A.x, A.y-15, 'A');
+
+ stage.circle(B.x, B.y,3);
+ stage.text(B.x, B.y-15, 'B');
+ @illustrationDesc
+ There are several ways to get from point <b>A</b> a to point  <b>B</b>, given the same <b>x, y, rx, ry</b> parameters.
+ The way to get to point <b>B</b>, is defined by the pair <b>largeArc, clockwiseArc</b>:<br/>
+ <ul>
+    <li><b>largeArc</b> – defines if the larger (red and blue) or the smaller (green and yellow) arc is drawn;</li>
+    <li><b>clockwiseArc</b> – defines if the arc is drawn clockwise (red and green) or counterclockwise (yellow and blue).</li>
+ </ul>
+ @example <t>stageOnly</t>
+ stage.path()
+    .moveTo(10, 100)
+    .lineTo(100, 100)
+    .arcToByEndPoint(300, 100, 150, 50, true, true);
+ */
+anychart.graphics.vector.Path.prototype.arcToByEndPoint;
+
+/**
+ Adds a command to the path that draws an arc of an ellipse with radii <b>rx, ry</b>, starting from an angle
+ <b>fromAngle</b>, with an angular length <b>extent</b>. The positive direction is considered the direction from
+ a positive direction of the X-axis to a positive direction of the Y-axis, that is clockwise.<br/>
+ @param {number} rx The X-axis radius of the ellipse.
+ @param {number} ry The Y-axis radius of the ellipse.
+ @param {number} fromAngle The starting angle, measured in degrees in a clockwise direction.
+ @param {number} extent The angular length of the arc.
+ @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @illustration <t>stageOnly</t>
+ var green = '5 green 0.6';
+ var grey = '5 grey 0.6';
+ var small_grey = '2 grey 0.6';
+ var red = '5 red 0.6';
+
+ var main_point_x = 200;
+ var main_point_y = 100;
+ var ellipse_rx = 100;
+ var ellipse_ry = 50;
+ var ellipse_delta_x = 78;
+ var ellipse_delta_y = -30;
+
+ stage.path().moveTo(0, main_point_y).lineTo(main_point_x, main_point_y);
+
+ stage.circle(main_point_x, main_point_y, 5).stroke(red);;
+
+ var ellipse_center_x = main_point_x + ellipse_delta_x;
+ var ellipse_center_y = main_point_y + ellipse_delta_y;
+ stage.ellipse(ellipse_center_x, ellipse_center_y, ellipse_rx, ellipse_ry).fill('none').stroke(grey);
+
+ stage.circle(ellipse_center_x, ellipse_center_y, 3);
+
+ var key_point1_x = ellipse_center_x + ellipse_rx;
+ stage.circle(key_point1_x, ellipse_center_y, 3);
+
+ var key_point2_y = ellipse_center_y - ellipse_ry;
+ stage.circle(ellipse_center_x, key_point2_y, 3);
+
+ stage.path().moveTo(ellipse_center_x, ellipse_center_y)
+    .lineTo(key_point1_x, ellipse_center_y).stroke(small_grey);
+
+ stage.text(ellipse_center_x + ellipse_rx/2, ellipse_center_y, 'rx');
+
+ stage.path().moveTo(ellipse_center_x, ellipse_center_y)
+    .lineTo(ellipse_center_x, key_point2_y).stroke(small_grey);
+
+ stage.text(ellipse_center_x + 2, ellipse_center_y - ellipse_ry/2, 'ry');
+
+ stage.path().moveTo(ellipse_center_x, ellipse_center_y)
+    .lineTo(main_point_x, main_point_y).stroke(small_grey);
+
+ var key_point3_x = ellipse_center_x + ellipse_rx/4;
+ var key_point3_y = ellipse_center_y;
+ stage.circle(key_point3_x, key_point3_y, 2);
+
+ var key_point4_x = main_point_x + 2*ellipse_delta_x/3;
+ var key_point4_y = main_point_y + 2*ellipse_delta_y/3;
+ stage.circle(key_point4_x, key_point4_y, 2);
+
+ stage.path()
+    .moveTo(key_point3_x, key_point3_y)
+    .arcToByEndPoint(key_point4_x, key_point4_y, ellipse_rx/3, ellipse_ry/3, false, true)
+    .stroke(small_grey);
+
+ stage.text(key_point4_x + 5, key_point4_y, 'fromAngle');
+
+ var fromAngle = 142.5;
+ stage.path().stroke(green)
+    .moveTo(main_point_x, main_point_y).arcTo(ellipse_rx, ellipse_ry, fromAngle, 100);
+
+ stage.path().stroke(red)
+    .moveTo(main_point_x, main_point_y).arcTo(ellipse_rx, ellipse_ry, fromAngle, -100);
+ @illustrationDesc The black line marks the current path.<br/>
+ The red point is the point from which the arc is drawn.<br/>
+ According to the given parameters, an ellipse is plotted with radii <b>rx</b> and <b>ry</b>, and an angle <b>fromAngle</b>, which
+ defines the poisition of the ellipse against the red point.<br/>
+ Then an ellipse arc of a given angular length <b>extend</b> is drawn (the arc is marked green if <b>extend > 0</b>
+ and red if <b>extend < 0</b>).
+ @example <t>stageOnly</t>
+ stage.path().moveTo(0, 100)
+    .lineTo(200, 100)
+    .arcTo(100, 50, 142.5, 100);
+*/
+anychart.graphics.vector.Path.prototype.arcTo;
+
+/**
+ This method is similar to {@link anychart.graphics.vector.Path#arcTo}, but in this case the arc is approximated by Bézier curves.
+ <b>Attention!</b> The method is recommended when transformations are used: using the ordinary
+ {@link anychart.graphics.vector.Path#arcTo} and {@link anychart.graphics.vector.Path#arcToByEndPoint} methods with transformations
+ leads to productivity loss.<br/>
+ java.awt.geom.ArcIterator algorithm adoptation
+ @shortDescription This method is similar to {@link anychart.graphics.vector.Path#arcTo}, but in this case the arc is approximated
+ by Bézier curves.
+ @param {number} rx The X-axis radius of the ellipse.
+ @param {number} ry The Y-axis radius of the ellipse.
+ @param {number} fromAngle The starting angle, measured in degrees in a clockwise direction.
+ @param {number} extent The angular length of the arc.
+ @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @illustrationDesc
+ You can find an illustration of how the method works, and examples in the {@link anychart.graphics.vector.Path#arcTo} method description.<br>
+ The only difference is that this method draws an arc using a set of curves.
+ */
+anychart.graphics.vector.Path.prototype.arcToAsCurves;
+
+/**
+ Adds a command that closes the path by connecting the last point with the first straight line.
+ @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @illustration <t>stageOnly</t>
+ var A = {x:5, y:100};
+ var B = {x:230, y:25};
+
+ stage.path().moveTo(A.x, A.y).lineTo(200, 100).arcTo(100, 50, 142.5, 100);
+
+ stage.circle(A.x, A.y, 3);
+ stage.text(A.x, A.y, 'A');
+
+ stage.circle(B.x, B.y, 3);
+ stage.text(B.x, B.y, 'B');
+
+ var red = '5 red 0.6';
+ stage.path().moveTo(B.x, B.y).lineTo(A.x, A.y).stroke(red);
+ @illustrationDesc
+ Assume that some path has been being drawn. After calling the <b>close</b> method, the current point <b>B</b> will be connected with
+ the beginning of the path (point <b>A</b>) by a straight line (marked red).
+ @example <c>An example from the illustration</c><t>stageOnly</t>
+ stage.path()
+    .moveTo(0, 100)
+    .lineTo(200, 100)
+    .arcTo(100, 50, 142.5, 100)
+    .close();
+ */
+anychart.graphics.vector.Path.prototype.close;
+
+/**
+ Returns the last coordinates added to the path.
+ @return {anychart.graphics.math.Coordinate} The current coordinates of the cursor.
+ */
+anychart.graphics.vector.Path.prototype.getCurrentPoint;
+

@@ -1,0 +1,283 @@
+/**
+ * Этот класс предназначен для рисования множества лейблов с одинаковым набором настроек и последующего управления этими лейблами.
+ * Настройки конкретного лейбла могут быть изменены после того, как все лейблы будут нарисованы.
+ * @constructor
+ * @extends {anychart.elements.Text}
+ */
+anychart.elements.LabelsFactory;
+
+/**
+ * Getter for the current element state.
+ *
+ * Былина о трех состояних - true, false и null.
+ *
+ * true и false по-старинке парвда и лож.
+ * А вот если установлено null, то элемент включен, но если он зависит
+ * от других сущностей (например, в случае labels() и hoverLabels() в сериях), то null будет значить, что
+ * состояние лейбл фактори работает в auto режиме и завит от других обстоятельсв. (Например, если у серии
+ * включены обычные лейблы, а хавер лейблам выставлено состояние null, то при хавере настройка enabled возьмется из
+ * обычных лейблов и хавер лейблы будут работать. А если обычные лейблы выключить, то и хавер лейблы не будут работать)
+ * @return {?boolean} The current element state.
+ */
+anychart.elements.LabelsFactory.prototype.enabled;
+
+/**
+ * Setter for the element enabled state.
+ * @example <t>listingOnly</t>
+ * if (!element.enabled())
+ *    element.enabled(true);
+ * @param {(null|boolean)=} opt_value Value to set.
+ * @return {anychart.LabelsFactory} An instance of {@link anychart.VisualBase} class for method chaining.
+ */
+anychart.elements.LabelsFactory.prototype.enabled;
+
+/**
+ * Gets or sets the labels background settings.
+ * @param {(anychart.elements.Background|Object|null)=} opt_value Background object to set.
+ * @return {!(anychart.elements.LabelsFactory|anychart.elements.Background)} Returns the background or itself for chaining.
+ */
+anychart.elements.LabelsFactory.prototype.background;
+
+/**
+ * Labels padding.
+ * @param {(string|number|anychart.utils.Space)=} opt_spaceOrTopOrTopAndBottom Space object or top or top and bottom
+ *    space.
+ * @param {(string|number)=} opt_rightOrRightAndLeft Right or right and left space.
+ * @param {(string|number)=} opt_bottom Bottom space.
+ * @param {(string|number)=} opt_left Left space.
+ * @return {!(anychart.elements.LabelsFactory|anychart.utils.Padding)} Padding or LabelsFactory for chaining.
+ */
+anychart.elements.LabelsFactory.prototype.padding;
+
+/**
+ * Gets or sets labels text formatter function.
+ * @param {Function=} opt_value Labels text formatter function.
+ * @return {Function|anychart.elements.LabelsFactory} Labels text formatter function or Labels instance for chaining call.
+ */
+anychart.elements.LabelsFactory.prototype.textFormatter;
+
+/**
+ * Gets or sets labels position formatter function.
+ * @param {Function=} opt_value Labels position formatter function.
+ * @return {Function|anychart.elements.LabelsFactory} Labels position formatter function or Labels instance for chaining call.
+ */
+anychart.elements.LabelsFactory.prototype.positionFormatter;
+
+/**
+ * Gets or sets labels position settings.
+ * @param {(anychart.utils.NinePositions|string)=} opt_value Labels position settings.
+ * @return {anychart.elements.LabelsFactory|anychart.utils.NinePositions|string} Labels position settings or itself for chaining call.
+ */
+anychart.elements.LabelsFactory.prototype.position;
+
+/**
+ * Gets or sets labels anchor settings.
+ * @param {(anychart.utils.NinePositions|string)=} opt_value Labels anchor settings.
+ * @return {anychart.elements.LabelsFactory|anychart.utils.NinePositions} Labels anchor settings or itself for chaining call.
+ */
+anychart.elements.LabelsFactory.prototype.anchor;
+
+/**
+ * Gets or sets labels offsetX settings.
+ * @param {(number|string)=} opt_value Labels offsetX settings to set.
+ * @return {number|string|anychart.elements.LabelsFactory} Labels offsetX value or itself for chaining call.
+ */
+anychart.elements.LabelsFactory.prototype.offsetX;
+
+/**
+ * Gets or sets labels offsetY settings.
+ * @param {(number|string)=} opt_value Labels offsetY settings to set.
+ * @return {number|string|anychart.elements.LabelsFactory} Labels offsetY value or itself for chaining call.
+ */
+anychart.elements.LabelsFactory.prototype.offsetY;
+
+/**
+ * Метод устанавливает поворот элемента отнонительно заданного якоря. Якори - 9-ть контрольных точек элемента
+ * ({@link anychart.graphics.vector.Element}).
+ * @param {number=} opt_value Угол поворота лейблов в градусах.
+ * @return {number|anychart.elements.LabelsFactory} Rotation angle in degrees or Itself for chaining call.
+ */
+anychart.elements.LabelsFactory.prototype.rotation;
+
+/**
+ * LabelsFactory width settings.
+ * @param {(number|string|null)=} opt_value Width value to set.
+ * @return {!anychart.elements.LabelsFactory|number|string|null} LabelsFactory width or itself for chaining call.
+ */
+anychart.elements.LabelsFactory.prototype.width;
+
+/**
+ * LabelsFactory height settings.
+ * @param {(number|string|null)=} opt_value Height value to set.
+ * @return {!anychart.elements.LabelsFactory|number|string|null} LabelsFactory height or itself for chaining.
+ */
+anychart.elements.LabelsFactory.prototype.height;
+
+/** @inheritDoc */
+anychart.elements.LabelsFactory.prototype.serialize;
+
+/** @inheritDoc */
+anychart.elements.LabelsFactory.prototype.deserialize;
+
+/**
+ * Очищает массив созданных лейблов.
+ * @param {number=} opt_index If set, removes only the label that label.
+ * @return {anychart.elements.LabelsFactory} Returns itself for chaining.
+ */
+anychart.elements.LabelsFactory.prototype.clear;
+
+/**
+ * Создает новый экземпляр класса anychart.elements.LabelsFactory.Label, сохраняет его внутри фабрики
+ * и возвращает.
+ * @param {*} formatProvider Object witch provide info for textFormatter function.
+ * @param {*} positionProvider Object witch provide info for positionFormatter function.
+ * @param {number=} opt_index Label index.
+ * @return {!anychart.elements.LabelsFactory.Label} Return new label instance.
+ */
+anychart.elements.LabelsFactory.prototype.add;
+
+/**
+ * Labels drawing.
+ * @return {anychart.elements.LabelsFactory} Returns itself for chaining.
+ */
+anychart.elements.LabelsFactory.prototype.draw;
+
+/**
+ * Measure labels using formatProvider, positionProvider and returns labels bounds.
+ * @param {*} formatProvider Object witch provide info for textFormatter function.
+ * @param {*} positionProvider Object witch provide info for positionFormatter function.
+ * @return {anychart.math.Rect} Labels bounds.
+ */
+anychart.elements.LabelsFactory.prototype.measure;
+
+/**
+ * Измеряет лейбл в его системе коррдинат и возвращает баунды как массив точек с координатами в системе координат
+ * родителя.
+ * @param {*} formatProvider Object witch provide info for textFormatter function.
+ * @param {*} positionProvider Object witch provide info for positionFormatter function.
+ * @return {Array.<number>} Возвращает набор точек, образующих баунды лейбла, в его системе
+ * координат.
+ */
+anychart.elements.LabelsFactory.prototype.measureWithTransform;
+
+/**
+ * Этот класс предназначен для рисования множества лейблов с одинаковым набором настроек и последующего управления этими лейблами.
+ * Настройки конкретного лейбла могут быть изменены после того, как все лейблы будут нарисованы.
+ * @constructor
+ * @extends {anychart.elements.Text}
+ */
+anychart.elements.LabelsFactory.Label;
+
+/**
+ * Returns label index.
+ * @return {number}
+ */
+anychart.elements.LabelsFactory.Label.prototype.getIndex;
+
+/**
+ * Gets or sets the Label background settings.
+ * @param {anychart.elements.Background=} opt_value Background object to set.
+ * @return {!(anychart.elements.LabelsFactory.Label|anychart.elements.Background)} Returns the background or itself for chaining.
+ */
+anychart.elements.LabelsFactory.Label.prototype.background;
+
+/**
+ * Getter for current label padding.<br/>
+ * @param {(string|number|anychart.utils.Space)=} opt_spaceOrTopOrTopAndBottom .
+ * @param {(string|number)=} opt_rightOrRightAndLeft .
+ * @param {(string|number)=} opt_bottom .
+ * @param {(string|number)=} opt_left .
+ * @return {anychart.elements.LabelsFactory.Label|anychart.utils.Padding} .
+ */
+anychart.elements.LabelsFactory.Label.prototype.padding;
+
+/**
+ * Getter for label width.
+ * @param {(number|string|null)=} opt_value .
+ * @return {!anychart.elements.LabelsFactory.Label|number|string|null} .
+ */
+anychart.elements.LabelsFactory.Label.prototype.width;
+
+/**
+ * Getter for label height.
+ * @param {(number|string|null)=} opt_value .
+ * @return {!anychart.elements.LabelsFactory.Label|number|string|null} .
+ */
+anychart.elements.LabelsFactory.Label.prototype.height;
+
+/**
+ * Метод устанавливает поворот элемента отнонительно заданного якоря. Якори - 9-ть контрольных точек элемента
+ * ({@link anychart.graphics.vector.Element}). Метод кажды раз сбрасывает предыдущую трансформацию поворота и применяет новую.
+ * @param {number=} opt_value Угол поворота лейблов в градусах.
+ * @return {number|anychart.elements.LabelsFactory.Label} Rotation angle in degrees or Itself for chaining call.
+ */
+anychart.elements.LabelsFactory.Label.prototype.rotation;
+
+/**
+ * Getter for label anchor settings.
+ * @param {(anychart.utils.NinePositions|string)=} opt_value .
+ * @return {!anychart.elements.LabelsFactory.Label|anychart.utils.NinePositions} .
+ */
+anychart.elements.LabelsFactory.Label.prototype.anchor;
+
+/**
+ * Getter for current label offsetX settings.
+ * @param {(number|string)=} opt_value .
+ * @return {number|string|anychart.elements.LabelsFactory.Label} .
+ */
+anychart.elements.LabelsFactory.Label.prototype.offsetX;
+
+/**
+ * Getter for current label offsetY settings.
+ * @param {(number|string)=} opt_value .
+ * @return {number|string|anychart.elements.LabelsFactory.Label} .
+ */
+anychart.elements.LabelsFactory.Label.prototype.offsetY;
+
+/**
+ * Getter for current label position settings.
+ * @param {(anychart.utils.NinePositions|string)=} opt_value .
+ * @return {!anychart.elements.LabelsFactory.Label|anychart.utils.NinePositions} .
+ */
+anychart.elements.LabelsFactory.Label.prototype.position;
+
+/** @inheritDoc */
+anychart.elements.LabelsFactory.Label.prototype.enabled;
+
+/**
+ * Gets/Sets text formatter.
+ * @param {*=} opt_value Text formatter.
+ * @return {*} Text formatter or itself for chaining.
+ */
+anychart.elements.LabelsFactory.Label.prototype.textFormatter;
+
+/**
+ * Gets/Sets position formatter.
+ * @param {*=} opt_value Position formatter.
+ * @return {*} Position formatter or itself for chaining.
+ */
+anychart.elements.LabelsFactory.Label.prototype.positionFormatter;
+
+/**
+ * Приводит лейбл в исходное состояние, но оставляет созданные DOM эелемнты, только очищает у них родителя.
+ */
+anychart.elements.LabelsFactory.Label.prototype.clear;
+
+/**
+ * Label drawing.
+ * @return {anychart.elements.LabelsFactory.Label} Returns itself for chaining.
+ */
+anychart.elements.LabelsFactory.Label.prototype.draw;
+
+/** @inheritDoc */
+anychart.elements.LabelsFactory.Label.prototype.serialize;
+
+/** @inheritDoc */
+anychart.elements.LabelsFactory.Label.prototype.deserialize;
+
+/**
+ * Constructor function.
+ * @return {!anychart.elements.LabelsFactory}
+ */
+anychart.elements.labelsFactory;
+

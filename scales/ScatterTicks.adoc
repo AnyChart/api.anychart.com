@@ -1,0 +1,67 @@
+/**
+ * Scatter ticks mode enum.
+ * @enum {string}
+ */
+anychart.scales.ScatterTicksMode;
+
+/**
+   * Scatter ticks go with linear interval, e.g. [1, 2, 3, 4, 5]
+   */
+anychart.scales.ScatterTicksMode.LINEAR;
+
+/**
+   * Scatter ticks go with log-linear interval, e.g. [0.1, 1, 10, 100, 1000]
+   */
+anychart.scales.ScatterTicksMode.LOGARITHMIC;
+
+/**
+ * Scale ticks.
+ * @param {!anychart.scales.Linear} scale Scale to ask for a setup.
+ * @constructor
+ * @extends {anychart.Base}
+ */
+anychart.scales.ScatterTicks;
+
+/**
+ * Gets or sets ticks interval value. Note that interval value can be read only if it was set explicitly.
+ * It is returned as NaN otherwise. If opt_value is defined but is not a number or less than 0, it defaults to NaN and
+ * count() resets to 5.
+ * @param {number=} opt_value Ticks interval value if used as a getter.
+ * @return {(number|anychart.scales.ScatterTicks)} Interval value or itself for chaining.
+ */
+anychart.scales.ScatterTicks.prototype.interval;
+
+/**
+ * Gets or sets ticks count value. If opt_value is defined, but not a number or less than 2, it defaults to 5.
+ * @param {number=} opt_value Ticks interval value if used as a getter.
+ * @return {(number|anychart.scales.ScatterTicks)} Interval value or itself for method chaining.
+ */
+anychart.scales.ScatterTicks.prototype.count;
+
+/**
+ * Sets base value, by which auto ticks are arranged.
+ * @param {number=} opt_value Base value, if used as a setter.
+ * @return {(number|anychart.scales.ScatterTicks)} Base value or itself for chaining.
+ */
+anychart.scales.ScatterTicks.prototype.base;
+
+/**
+ * Setups ticks as an explicit array of fixed ticks.
+ * @param {Array} ticks Explicit ticks array.
+ * @return {!anychart.scales.ScatterTicks} Returns itself for method chaining.
+ */
+anychart.scales.ScatterTicks.prototype.set;
+
+/**
+ * Returns an array of ticks. Each tick is a value in terms of data, to make a tick on.
+ * @return {!Array} Array of ticks.
+ */
+anychart.scales.ScatterTicks.prototype.get;
+
+/**
+ * Scatter ticks mode. Linear or logarithmic.
+ * @param {(anychart.scales.ScatterTicksMode|string)=} opt_value Value to set.
+ * @return {anychart.scales.ScatterTicksMode|anychart.scales.ScatterTicks} Value or itself.
+ */
+anychart.scales.ScatterTicks.prototype.mode;
+

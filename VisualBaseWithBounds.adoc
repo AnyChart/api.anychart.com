@@ -1,0 +1,169 @@
+/**
+ * An extended base element that understands bounds settings and can handle percent values in it.
+ * @constructor
+ * @extends {anychart.VisualBase}
+ */
+anychart.VisualBaseWithBounds;
+
+/**
+ * Getter for the element bounds settings.
+ * @return {!anychart.utils.Bounds} Current bounds of the element.
+ */
+anychart.VisualBaseWithBounds.prototype.bounds;
+
+/**
+ * Sets bounds of the element using one parameter.<br/>
+ * @example <t>listingOnly</t>
+ * element.bounds( new anychart.math.Rect(0, 0, 100, 100) );
+ * @param {(anychart.utils.RectObj|anychart.math.Rect|anychart.utils.Bounds)=} opt_value Bounds of element.
+ * @return {!anychart.VisualBase} An instance of {@link anychart.VisualBase} class for method chaining.
+ */
+anychart.VisualBaseWithBounds.prototype.bounds;
+
+/**
+ * Setter for the element bounds settings.
+ * @example <t>listingOnly</t>
+ * element.bounds(0, 100, '50%', '400px');
+ * @param {(number|string)=} opt_x X-coordinate.
+ * @param {(number|string)=} opt_y Y-coordinate.
+ * @param {(number|string)=} opt_width Width.
+ * @param {(number|string)=} opt_height Height.
+ * @return {!anychart.VisualBase} An instance of {@link anychart.VisualBase} class for method chaining.
+ */
+anychart.VisualBaseWithBounds.prototype.bounds;
+
+/**
+ * Getter for element left bound settings.
+ * @return {number|string|undefined} Current element's left bound settings.
+ */
+anychart.VisualBaseWithBounds.prototype.left;
+
+/**
+ * Sets element left.<br/>
+ * @example <t>listingOnly</t>
+ * element.left(100);
+ * element.left('50%');
+ * @param {(number|string|null)=} opt_value Left bound settings for the element.
+ * @return {!anychart.VisualBaseWithBounds} Returns self for method chaining.
+ */
+anychart.VisualBaseWithBounds.prototype.left;
+
+/**
+ * Getter for element right bound settings.
+ * @return {number|string|undefined} Current element's right bound settings.
+ */
+anychart.VisualBaseWithBounds.prototype.right;
+
+/**
+ * Sets element right.<br/>
+ * @example <t>listingOnly</t>
+ * element.right(700);
+ * element.right('80%');
+ * @param {(number|string|null)=} opt_value Right bound settings for the element.
+ * @return {!anychart.VisualBaseWithBounds} Returns self for method chaining.
+ */
+anychart.VisualBaseWithBounds.prototype.right;
+
+/**
+ * Getter for element top bound settings.
+ * @return {number|string|undefined} Current element's top bound settings.
+ */
+anychart.VisualBaseWithBounds.prototype.top;
+
+/**
+ * Sets element top.<br/>
+ * @example <t>listingOnly</t>
+ * element.top(100);
+ * element.top('50%');
+ * @param {(number|string|null)=} opt_value Top bound settings for the element.
+ * @return {!anychart.VisualBaseWithBounds} Returns self for method chaining.
+ */
+anychart.VisualBaseWithBounds.prototype.top;
+
+/**
+ * Getter for element bottom bound settings.
+ * @return {number|string|undefined} Current element's bottom bound settings.
+ */
+anychart.VisualBaseWithBounds.prototype.bottom;
+
+/**
+ * Sets element bottom.<br/>
+ * @example <t>listingOnly</t>
+ * element.bottom(700);
+ * element.bottom('80%');
+ * @param {(number|string|null)=} opt_value Bottom bound settings for the element.
+ * @return {!anychart.VisualBaseWithBounds} Returns self for method chaining.
+ */
+anychart.VisualBaseWithBounds.prototype.bottom;
+
+/**
+ * Getter for element width settings.
+ * @return {number|string|undefined} Current element's width settings.
+ */
+anychart.VisualBaseWithBounds.prototype.width;
+
+/**
+ * Sets element width.<br/>
+ * @example <t>listingOnly</t>
+ * element.width(500);
+ * element.width('80%');
+ * @param {(number|string|null)=} opt_value Width settings for the element.
+ * @return {!anychart.VisualBaseWithBounds} Returns self for method chaining.
+ */
+anychart.VisualBaseWithBounds.prototype.width;
+
+/**
+ * Getter for element height settings.
+ * @return {number|string|undefined} Current element's height settings.
+ */
+anychart.VisualBaseWithBounds.prototype.height;
+
+/**
+ * Sets element height.<br/>
+ * @example <t>listingOnly</t>
+ * element.height(500);
+ * element.height('80%');
+ * @param {(number|string|null)=} opt_value Height settings for the element.
+ * @return {!anychart.VisualBaseWithBounds} Returns self for method chaining.
+ */
+anychart.VisualBaseWithBounds.prototype.height;
+
+/**
+ * Returns the current bounds.<br/>
+ * <b>Note:</b> If the width and/or height were set in percents using {@link anychart.VisualBaseWithBounds#bounds} method,
+ * we may have problems with autocalculation (size has never been never passed in pixels for any of the
+ * nesting containers). In such case we need to pass pixel size of the container
+ * using <b>containerWidth</b> and <b>containerHeight</b>. In any other case you
+ * <b>don't need to set them!</b><br/>
+ * <b>Note:</b> If this method was used as a setter then no matter what parameters set you
+ * get those passed to setter.
+ * @shortDescription Returns the current bounds.
+ * @example <t>listingOnly</t>
+ * // simple usage
+ * element.bounds(0, 10, 200, 300);
+ * element.pixelBounds(); // returns Rect with size: 200x300
+ * // container size: 400 x 100
+ * element.bounds(0, 10, '50%', '57%');
+ * element.pixelBounds(400, 100); // returns Rect with size: 200x57
+ * @example <c>Using setter</c><t>listingOnly</t>
+ * var rect = new anychart.math.Rect( 0, 0, 100, 100);
+ * element.pixelBounds(rect);
+ * element.pixelBounds(); // returns the value of variable rect.
+ * element.pixelBounds(400, 100); // returns the value of variable rect.
+ * @param {number=} opt_containerWidth The width of a container in pixels.
+ * @param {number=} opt_containerHeight Height of a container in pixels.
+ * @return {!anychart.math.Rect} Returns the rect with determined pixel bounds.
+ */
+anychart.VisualBaseWithBounds.prototype.pixelBounds;
+
+/**
+ * Sets exact pixel bounds of the element.<br/>
+ * <b>Note:</b> If you pass <b>null</b> then previous value is reset
+ * and bounds are autocalculated.
+ * @example <t>listingOnly</t>
+ * element.pixelBounds( new anychart.math.Rect( 0, 0, 100, 100) );
+ * @param {(!anychart.math.Rect|null)=} opt_value Value to set.
+ * @return {!anychart.VisualBase} An instance of {@link anychart.VisualBase} class for method chaining.
+ */
+anychart.VisualBaseWithBounds.prototype.pixelBounds;
+

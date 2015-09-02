@@ -1,0 +1,821 @@
+/**
+ Text class.<br>
+ <b>Do not invoke constructor directly.</b> Use {@link anychart.graphics.vector.Stage#text} or
+ {@link anychart.graphics.vector.Layer#text} to create layer or stage bound text.
+ <br/> Use {@link anychart.graphics.text} to create unbound text.
+ @see anychart.graphics.vector.Stage#text
+ @see anychart.graphics.vector.Layer#text
+ @see anychart.graphics.text
+ @name anychart.graphics.vector.Text
+ @param {number=} opt_x Coordinate X (Left) of left top corner of text bounds.
+ @param {number=} opt_y Coordinate Y (Top) of left top corner of text bounds.
+ @constructor
+ @extends {anychart.graphics.vector.Element}
+*/
+anychart.graphics.vector.Text;
+
+/**
+ * Text wrap mode.
+ * @enum {string}
+ */
+anychart.graphics.vector.Text.TextWrap;
+
+/**
+   No wrap.
+   @illustration <t>stageOnly</t>
+   stage.width(120).height(40);
+   var rect = stage.rect(10, 0, 100, 40);
+   stage.text(10, 1, 'sample text with wrap', {fontSize: 14, textWrap: anychart.graphics.vector.Text.TextWrap.NO_WRAP})
+     .width(rect.getWidth())
+     .height(rect.getHeight());
+   */
+anychart.graphics.vector.Text.TextWrap.NO_WRAP;
+
+/**
+   Wrap by symbol.
+   @illustration <t>stageOnly</t>
+   stage.width(120).height(40);
+   var rect = stage.rect(10, 0, 100, 40);
+   stage.text(10, 1, 'sample text with wrap', {fontSize: 14, textWrap: anychart.graphics.vector.Text.TextWrap.BY_LETTER})
+     .width(rect.getWidth())
+     .height(rect.getHeight());
+   */
+anychart.graphics.vector.Text.TextWrap.BY_LETTER;
+
+/**
+ * Defines visibility in block, of text can't be shown in the area.
+ * @enum {string}
+ */
+anychart.graphics.vector.Text.TextOverflow;
+
+/**
+   If height and width is set and text doesn't fit - it will be clipped.
+   @illustration <t>stageOnly</t>
+   stage.width(120).height(40);
+   var rect = stage.rect(20, 3, 72, 20);
+   stage.text(20, 3, 'sample text', {fontSize: 14, textOverflow: anychart.graphics.vector.Text.TextOverflow.CLIP})
+     .width(rect.getWidth())
+     .height(rect.getHeight());
+   */
+anychart.graphics.vector.Text.TextOverflow.CLIP;
+
+/**
+   Text is clipped too, but with ellipsis in the end.
+   @illustration <t>stageOnly</t>
+   stage.width(120).height(40);
+   var rect = stage.rect(20, 3, 72, 20);
+   stage.text(20, 3, 'sample text', {fontSize: 14, textOverflow: anychart.graphics.vector.Text.TextOverflow.ELLIPSIS})
+     .width(rect.getWidth())
+     .height(rect.getHeight());
+   */
+anychart.graphics.vector.Text.TextOverflow.ELLIPSIS;
+
+/**
+ * Text HAlign.
+ * @enum {string}
+ */
+anychart.graphics.vector.Text.HAlign;
+
+/**
+   Aligns the text to the left.
+   @illustration <t>stageOnly</t>
+   stage.width(250).height(40);
+
+   var rectLTR = stage.rect(0, 0, stage.width()/2, 27);
+   var rectRTL = stage.rect(stage.width()/2, 0, stage.width()/2, 27);
+
+   stage.text(rectLTR.getX(), 3, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.LEFT, direction: anychart.graphics.vector.Text.Direction.LTR})
+   .width(rectLTR.getWidth())
+   .height(rectLTR.getHeight());
+
+   stage.text(rectRTL.getX(), 2, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.LEFT, direction: anychart.graphics.vector.Text.Direction.RTL})
+   .width(rectRTL.getWidth())
+   .height(rectRTL.getHeight());
+
+   stage.text(rectLTR.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'LTR', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
+   .width(rectLTR.getWidth())
+   .height(rectLTR.getHeight());
+
+   stage.text(rectRTL.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'RTL', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
+   .width(rectLTR.getWidth())
+   .height(rectLTR.getHeight());
+   */
+anychart.graphics.vector.Text.HAlign.LEFT;
+
+/**
+   The same as left if direction is left-to-right and right if direction is right-to-left.
+   @illustration <t>stageOnly</t>
+   stage.width(250).height(40);
+
+   var rectLTR = stage.rect(0, 0, stage.width()/2, 27);
+   var rectRTL = stage.rect(stage.width()/2, 0, stage.width()/2, 27);
+
+   stage.text(rectLTR.getX(), 3, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.START, direction: anychart.graphics.vector.Text.Direction.LTR})
+     .width(rectLTR.getWidth())
+     .height(rectLTR.getHeight());
+
+   stage.text(rectRTL.getX(), 2, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.START, direction: anychart.graphics.vector.Text.Direction.RTL})
+     .width(rectRTL.getWidth())
+     .height(rectRTL.getHeight());
+
+   stage.text(rectLTR.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'LTR', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
+     .width(rectLTR.getWidth())
+     .height(rectLTR.getHeight());
+
+   stage.text(rectRTL.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'RTL', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
+     .width(rectLTR.getWidth())
+     .height(rectLTR.getHeight());
+   */
+anychart.graphics.vector.Text.HAlign.START;
+
+/**
+   The inline contents are centered within the line box.
+   @illustration <t>stageOnly</t>
+   stage.width(250).height(40);
+
+   var rectLTR = stage.rect(0, 0, stage.width()/2, 27);
+   var rectRTL = stage.rect(stage.width()/2, 0, stage.width()/2, 27);
+
+   stage.text(rectLTR.getX(), 3, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.CENTER, direction: anychart.graphics.vector.Text.Direction.LTR})
+     .width(rectLTR.getWidth())
+     .height(rectLTR.getHeight());
+
+   stage.text(rectRTL.getX(), 2, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.CENTER, direction: anychart.graphics.vector.Text.Direction.RTL})
+     .width(rectRTL.getWidth())
+     .height(rectRTL.getHeight());
+
+   stage.text(rectLTR.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'LTR', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
+     .width(rectLTR.getWidth())
+     .height(rectLTR.getHeight());
+
+   stage.text(rectRTL.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'RTL', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
+     .width(rectLTR.getWidth())
+     .height(rectLTR.getHeight());
+   */
+anychart.graphics.vector.Text.HAlign.CENTER;
+
+/**
+   The same as right if direction is left-to-right and left if direction is right-to-left.
+   @illustration <t>stageOnly</t>
+   stage.width(250).height(40);
+
+   var rectLTR = stage.rect(0, 0, stage.width()/2, 27);
+   var rectRTL = stage.rect(stage.width()/2, 0, stage.width()/2, 27);
+
+   stage.text(rectLTR.getX(), 3, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.END, direction: anychart.graphics.vector.Text.Direction.LTR})
+     .width(rectLTR.getWidth())
+     .height(rectLTR.getHeight());
+
+   stage.text(rectRTL.getX(), 2, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.END, direction: anychart.graphics.vector.Text.Direction.RTL})
+     .width(rectRTL.getWidth())
+     .height(rectRTL.getHeight());
+
+   stage.text(rectLTR.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'LTR', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
+     .width(rectLTR.getWidth())
+     .height(rectLTR.getHeight());
+
+   stage.text(rectRTL.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'RTL', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
+     .width(rectLTR.getWidth())
+     .height(rectLTR.getHeight());
+   */
+anychart.graphics.vector.Text.HAlign.END;
+
+/**
+   Aligns the text to the right.
+   @illustration <t>stageOnly</t>
+   stage.width(250).height(40);
+
+   var rectLTR = stage.rect(0, 0, stage.width()/2, 27);
+   var rectRTL = stage.rect(stage.width()/2, 0, stage.width()/2, 27);
+
+   stage.text(rectLTR.getX(), 3, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.RIGHT, direction: anychart.graphics.vector.Text.Direction.LTR})
+   .width(rectLTR.getWidth())
+   .height(rectLTR.getHeight());
+
+   stage.text(rectRTL.getX(), 2, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.RIGHT, direction: anychart.graphics.vector.Text.Direction.RTL})
+   .width(rectRTL.getWidth())
+   .height(rectRTL.getHeight());
+
+   stage.text(rectLTR.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'LTR', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
+   .width(rectLTR.getWidth())
+   .height(rectLTR.getHeight());
+
+   stage.text(rectRTL.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'RTL', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
+   .width(rectLTR.getWidth())
+   .height(rectLTR.getHeight());
+   */
+anychart.graphics.vector.Text.HAlign.RIGHT;
+
+/**
+ * Text VAilgn.
+ * @enum {string}
+ */
+anychart.graphics.vector.Text.VAlign;
+
+/**
+   vAlign top.
+   @illustration <t>stageOnly</t>
+   stage.width(120).height(30);
+   stage.rect(0, 0, stage.width(), stage.height());
+   stage.text(10, 0, 'sample text', {fontSize: 14, vAlign: 'top'})
+    .width(stage.width()).height(stage.height());
+   */
+anychart.graphics.vector.Text.VAlign.TOP;
+
+/**
+   vAlign middle.
+   @illustration <t>stageOnly</t>
+   stage.width(120).height(30);
+   stage.rect(0, 0, stage.width(), stage.height());
+   stage.text(10, 0, 'sample text', {fontSize: 14, vAlign: 'middle'})
+   .width(stage.width()).height(stage.height());
+   */
+anychart.graphics.vector.Text.VAlign.MIDDLE;
+
+/**
+   vAlign bottom.
+   @illustration <t>stageOnly</t>
+   stage.width(120).height(30);
+   stage.rect(0, 0, stage.width(), stage.height());
+   stage.text(10, 0, 'sample text', {fontSize: 14, vAlign: 'bottom'})
+   .width(stage.width()).height(stage.height());
+   */
+anychart.graphics.vector.Text.VAlign.BOTTOM;
+
+/**
+ * Text decoration.
+ * @enum {string}
+ */
+anychart.graphics.vector.Text.Decoration;
+
+/**
+   Blinking text. This value is not supported by some browser and is discussed in CSS3,
+   animation is recommended instead.
+   @illustration <t>stageOnly</t>
+   stage.width(100);
+   stage.height(25);
+   stage.text(7, 1, 'sample text', {fontSize: 14, decoration: anychart.graphics.vector.Text.Decoration.BLINK})
+   .width(stage.width()).height(stage.height());
+   */
+anychart.graphics.vector.Text.Decoration.BLINK;
+
+/**
+   Line through decoration.
+   @illustration <t>stageOnly</t>
+   stage.width(100);
+   stage.height(25);
+   stage.text(7, 1, 'sample text', {fontSize: 14, decoration: anychart.graphics.vector.Text.Decoration.LINE_THROUGH})
+   .width(stage.width()).height(stage.height());
+   */
+anychart.graphics.vector.Text.Decoration.LINE_THROUGH;
+
+/**
+   Overline decoration.
+   @illustration <t>stageOnly</t>
+   stage.width(100);
+   stage.height(25);
+   stage.text(7, 1, 'sample text', {fontSize: 14, decoration: anychart.graphics.vector.Text.Decoration.OVERLINE})
+   .width(stage.width()).height(stage.height());
+   */
+anychart.graphics.vector.Text.Decoration.OVERLINE;
+
+/**
+   Underline decoration.
+   @illustration <t>stageOnly</t>
+   stage.width(100);
+   stage.height(25);
+   stage.text(7, 1, 'sample text', {fontSize: 14, decoration: anychart.graphics.vector.Text.Decoration.UNDERLINE})
+   .width(stage.width()).height(stage.height());
+   */
+anychart.graphics.vector.Text.Decoration.UNDERLINE;
+
+/**
+   Cancels all decorations, including links underline.
+   @illustration <t>stageOnly</t>
+   stage.width(100);
+   stage.height(25);
+   stage.text(7, 1, 'sample text', {fontSize: 14, decoration: anychart.graphics.vector.Text.Decoration.NONE})
+   .width(stage.width()).height(stage.height());
+   */
+anychart.graphics.vector.Text.Decoration.NONE;
+
+/**
+ * Defines lowercase.
+ * @enum {string}
+ */
+anychart.graphics.vector.Text.FontVariant;
+
+/**
+   Leave lovercase as is.
+   @illustration <t>stageOnly</t>
+   stage.width(100);
+   stage.height(25);
+   stage.text(7, 1, 'Sample text', {fontSize: 14, fontVariant: anychart.graphics.vector.Text.FontVariant.NORMAL});
+   */
+anychart.graphics.vector.Text.FontVariant.NORMAL;
+
+/**
+   Make lowercase smaller.
+   @illustration <t>stageOnly</t>
+   stage.width(100);
+   stage.height(25);
+   stage.text(7, 1, 'Sample text', {fontSize: 14, fontVariant: anychart.graphics.vector.Text.FontVariant.SMALL_CAP});
+   */
+anychart.graphics.vector.Text.FontVariant.SMALL_CAP;
+
+/**
+ * Font style.
+ * @enum {string}
+ */
+anychart.graphics.vector.Text.FontStyle;
+
+/**
+   Normal.
+   @illustration <t>stageOnly</t>
+   stage.width(100);
+   stage.height(25);
+   stage.text(7, 1, 'Sample Text', {fontSize: 14, fontStyle: anychart.graphics.vector.Text.FontStyle.NORMAL});
+   */
+anychart.graphics.vector.Text.FontStyle.NORMAL;
+
+/**
+   Italic.
+   @illustration <t>stageOnly</t>
+   stage.width(100);
+   stage.height(25);
+   stage.text(7, 1, 'Sample Text', {fontSize: 14, fontStyle: anychart.graphics.vector.Text.FontStyle.ITALIC});
+   */
+anychart.graphics.vector.Text.FontStyle.ITALIC;
+
+/**
+   Oblique.
+   @illustration <t>stageOnly</t>
+   stage.width(100);
+   stage.height(25);
+   stage.text(7, 1, 'Sample Text', {fontSize: 14, fontStyle: anychart.graphics.vector.Text.FontStyle.OBLIQUE});
+   */
+anychart.graphics.vector.Text.FontStyle.OBLIQUE;
+
+/**
+ * Text direction.
+ * @enum {string}
+ */
+anychart.graphics.vector.Text.Direction;
+
+/**
+   Left to right.
+   @illustration <t>stageOnly</t>
+   var padding = 5;
+   stage.width(120).height(25);
+   stage.rect(0, 0, stage.width(), stage.height());
+   stage.text(0, 1, 'sample text', {fontSize: 14, direction: anychart.graphics.vector.Text.Direction.LTR})
+      .width(stage.width())
+      .height(stage.height())
+      .textIndent(padding);
+   */
+anychart.graphics.vector.Text.Direction.LTR;
+
+/**
+   Right to left.
+   @illustration <t>stageOnly</t>
+   var padding = 5;
+   stage.width(120).height(25);
+   stage.rect(0, 0, stage.width(), stage.height());
+   stage.text(0, 1, 'sample text', {fontSize: 14, direction: anychart.graphics.vector.Text.Direction.RTL})
+      .width(stage.width())
+      .height(stage.height())
+      .textIndent(padding);
+   */
+anychart.graphics.vector.Text.Direction.RTL;
+
+/**
+ Getter for X coordinate of text.
+ @return {number}
+ */
+anychart.graphics.vector.Text.prototype.x;
+
+/**
+ Setter for X coordinate of text.
+ @example <t>stageOnly</t>
+  var text = stage.text(10, 10, 'simple text');
+  text.x(100)
+ @param {number=} opt_value X coordinate.
+ @return {anychart.graphics.vector.Text}
+ */
+anychart.graphics.vector.Text.prototype.x;
+
+/**
+ Getter for Y coordinate of text.
+ @return {number}
+ */
+anychart.graphics.vector.Text.prototype.y;
+
+/**
+ Setter for Y coordinate of text.
+ @example <t>stageOnly</t>
+  var text = stage.text(10, 10, 'simple text');
+  text.y(50)
+ @param {number=} opt_value Y coordinate.
+ @return {anychart.graphics.vector.Text}
+ */
+anychart.graphics.vector.Text.prototype.y;
+
+/**
+ Returns width.<br/>
+ <b>Note:</b> it is not calculated automatically and has no default, and if it
+ was not set using setter - <b>NaN</b> is returned.
+ @return {number|string}
+ */
+anychart.graphics.vector.Text.prototype.width;
+
+/**
+ Sets width.
+ @example <t>stageOnly</t>
+  stage.text(30, 30, 'simple text')
+    .width(75);
+ @param {(number|string)=} opt_value Width.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.width;
+
+/**
+ Returns height.<br/>
+ <b>Note:</b> it is not calculated automatically and has no default, and if it
+ was not set using setter - <b>NaN</b> is returned.
+ @return {number|string}
+ */
+anychart.graphics.vector.Text.prototype.height;
+
+/**
+ Sets height.
+ @example <t>stageOnly</t>
+ stage.text(30, 30, 'simple text')
+ .height(75);
+ @param {(number|string)=} opt_value Height.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.height;
+
+/**
+ Getter for text opacity.
+ @return {number}
+ */
+anychart.graphics.vector.Text.prototype.opacity;
+
+/**
+ Setter for text opacity.
+ @example <t>stageOnly</t>
+  stage.text(30, 30, 'simple text')
+    .opacity(0.3);
+ @param {number=} opt_value Text opacity.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.opacity;
+
+/**
+ Getter for text color.
+ @return {string}
+ */
+anychart.graphics.vector.Text.prototype.color;
+
+/**
+ Setter for text color.
+ @example <t>stageOnly</t>
+ stage.text(30, 30, 'simple text')
+    .color('blue');
+ @param {string=} opt_value Text color.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.color;
+
+/**
+ Getter for font size of text.
+ @return {string|number}
+ */
+anychart.graphics.vector.Text.prototype.fontSize;
+
+/**
+ Setter for font size of text.
+ @example <t>stageOnly</t>
+  stage.text(30, 30, 'simple text').fontSize(16);
+ @param {(string|number)=} opt_value Font size.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.fontSize;
+
+/**
+ Getter for font family of text.
+ @return {string}
+ */
+anychart.graphics.vector.Text.prototype.fontFamily;
+
+/**
+ Setter for font family of text.
+ @example <t>stageOnly</t>
+  stage.text(30, 30, 'simple text').fontFamily('Tahoma');
+ @param {string=} opt_value Font family.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.fontFamily;
+
+/**
+ Getter for text direction.
+ @return {string}
+ */
+anychart.graphics.vector.Text.prototype.direction;
+
+/**
+ Setter for text direction.
+ @example <t>stageOnly</t>
+ stage.text(30, 30, 'simple text')
+    .direction( anychart.graphics.vector.Text.Direction.LTR );
+ @param {(anychart.graphics.vector.Text.Direction|string)=} opt_value Text direction.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.direction;
+
+/**
+ Getter for font style of text.
+ @return {string}
+ */
+anychart.graphics.vector.Text.prototype.fontStyle;
+
+/**
+ Setter for font style of text.
+ @example <t>stageOnly</t>
+ stage.text(30, 30, 'simple text')
+   .fontStyle(anychart.graphics.vector.Text.FontStyle.ITALIC);
+ @param {(anychart.graphics.vector.Text.FontStyle|string)=} opt_value Font style.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.fontStyle;
+
+/**
+ Getter for font variant of text.
+ @return {string}
+ */
+anychart.graphics.vector.Text.prototype.fontVariant;
+
+/**
+ Setter for font variant of text.
+ @example <t>stageOnly</t>
+ stage.text(30, 30, 'simple text')
+    .fontVariant( anychart.graphics.vector.Text.FontVariant.SMALL_CAP );
+ @param {(anychart.graphics.vector.Text.FontVariant|string)=} opt_value Font variant.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.fontVariant;
+
+/**
+ Getter for font weight of text.
+ @return {string}
+ */
+anychart.graphics.vector.Text.prototype.fontWeight;
+
+/**
+ Setter for font weight of text.
+ @example <t>stageOnly</t>
+  stage.text(30, 30, 'simple text')
+    .fontWeight('bold');
+ @param {(string|number)=} opt_value Font weight.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.fontWeight;
+
+/**
+ Getter for letter spacing of text.
+ @return {string}
+ */
+anychart.graphics.vector.Text.prototype.letterSpacing;
+
+/**
+ Setter for letter spacing of text.
+ @example <t>stageOnly</t>
+  stage.text(30, 30, 'simple text')
+    .letterSpacing(12);
+ @param {(string|number)=} opt_value Letter spacing.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.letterSpacing;
+
+/**
+ Getter for text decoration.
+ @return {string}
+ */
+anychart.graphics.vector.Text.prototype.decoration;
+
+/**
+ Setter for text decoration.
+ @example <t>stageOnly</t>
+  stage.text(30, 30, 'simple text')
+    .decoration( anychart.graphics.vector.Text.Decoration.UNDERLINE );
+ @param {(anychart.graphics.vector.Text.Decoration|string)=} opt_value Text decoration.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.decoration;
+
+/**
+ Getter for line height of text.
+ @return {string}
+ */
+anychart.graphics.vector.Text.prototype.lineHeight;
+
+/**
+ Sets line height, either as ratio or in pixels.
+ @example <t>stageOnly</t>
+  stage.text(30, 30, 'simple text \r\n by ratio value')
+    .lineHeight(0.3);
+  stage.text(130, 30, 'simple text \r\n by pixels value')
+    .lineHeight('10px');
+ @param {(string|number)=} opt_value Letter height.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.lineHeight;
+
+/**
+ Getter for text indent.
+ @return {number}
+ */
+anychart.graphics.vector.Text.prototype.textIndent;
+
+/**
+ Setter for text indent.<br/>
+ The text-indent property specifies the indentation of the first line in a text-block.
+ @example <t>stageOnly</t>
+  stage.text(0, 30, 'simple text')
+    .textIndent(7);
+ @param {number=} opt_value Text indent of text.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.textIndent;
+
+/**
+ Getter for vertical align of text.
+ @return {string}
+ */
+anychart.graphics.vector.Text.prototype.vAlign;
+
+/**
+ Setter for vertical align of text.
+ @example <t>stageOnly</t>
+   stage.rect(30, 30, 60, 50);
+   stage.text(30, 30, 'top text')
+     .height(50)
+     .width(60)
+     .vAlign(anychart.graphics.vector.Text.VAlign.TOP);
+   stage.text(30, 30, 'bottom text')
+     .height(50)
+     .width(60)
+     .vAlign(anychart.graphics.vector.Text.VAlign.BOTTOM);
+ @param {(anychart.graphics.vector.Text.VAlign|string)=} opt_value Vertical align.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.vAlign;
+
+/**
+ Getter for horizontal align of text.
+ @return {string}
+ */
+anychart.graphics.vector.Text.prototype.hAlign;
+
+/**
+ Setter for horizontal align of text.
+ @example <t>stageOnly</t>
+   stage.rect(30, 30, 160, 50);
+   stage.text(30, 30, 'left text')
+     .height(50)
+     .width(160)
+     .hAlign(anychart.graphics.vector.Text.HAlign.LEFT);
+   stage.text(30, 30, 'right text')
+     .height(50)
+     .width(160)
+     .hAlign(anychart.graphics.vector.Text.HAlign.RIGHT);
+ @param {(anychart.graphics.vector.Text.HAlign|string)=} opt_value Horizontal align.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.hAlign;
+
+/**
+ Getter for text wrap of text.
+ @return {string}
+ */
+anychart.graphics.vector.Text.prototype.textWrap;
+
+/**
+ Setter for text wrap of text.
+ @example <t>stageOnly</t>
+   stage.rect(30, 30, 90, 50);
+   stage.text(30, 30, 'simple text without wrap')
+     .height(50)
+     .width(90)
+     .textWrap(anychart.graphics.vector.Text.TextWrap.NO_WRAP);
+   stage.text(30, 50, 'simple text with wrap')
+     .height(50)
+     .width(90)
+     .textWrap(anychart.graphics.vector.Text.TextWrap.BY_LETTER);
+ @param {(anychart.graphics.vector.Text.TextWrap|string)=} opt_value Text wrap.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.textWrap;
+
+/**
+ Getter for font text overflow of text.
+ @return {string}
+ */
+anychart.graphics.vector.Text.prototype.textOverflow;
+
+/**
+ Setter for font text overflow of text.
+ @example <t>stageOnly</t>
+   stage.text(30, 30, 'simple text with ellipsis')
+     .height(50)
+     .width(90)
+     .textOverflow(anychart.graphics.vector.Text.TextOverflow.ELLIPSIS);
+ @param {(anychart.graphics.vector.Text.TextOverflow|string)=} opt_value Text overflow.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.textOverflow;
+
+/**
+ Getter for text selectable property.
+ @return {boolean}
+ */
+anychart.graphics.vector.Text.prototype.selectable;
+
+/**
+ Setter for text selectable property.<br/>
+ Defines whether text can be selected. If <b>false</b> - no selection.
+ @example <t>stageOnly</t>
+  stage.text(30, 30, 'You can\'t select this text')
+    .selectable(false);
+ @param {boolean=} opt_value Text selectable property.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.selectable;
+
+/**
+ Getter for style.
+ @return {anychart.graphics.vector.TextStyle} Style.
+ */
+anychart.graphics.vector.Text.prototype.style;
+
+/**
+ Sets style.
+ @example <t>stageOnly</t>
+ stage.text(20, 20, 'styled text')
+    .style({
+        color: 'red',
+        fontSize: 14,
+        fontWeight:'bold'
+    });
+ @param {anychart.graphics.vector.TextStyle=} opt_value Style.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.style;
+
+/**
+ Get current text.
+ @return {string} Current text.
+ */
+anychart.graphics.vector.Text.prototype.text;
+
+/**
+ Set up plain text. Text will be take as is. All symbols will be displaying in result.
+ @example <t>stageOnly</t>
+  stage.text(20, 20, 'simple text');
+ @param {string=} opt_value Plaint text.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.text;
+
+/**
+ Get current text.
+ @return {string} Current plain text.
+ */
+anychart.graphics.vector.Text.prototype.htmlText;
+
+/**
+ Set up text in HTML format. Incoming text is parsed HTML parser.
+ The tags that define style will taken into consideration and applied to the final result.
+ HTML tags supported:
+ <ul>
+  <li>&lt;br&gt; (&lt;br/&gt;)</li>
+  <li>&lt;b&gt;&lt;/b&gt;, &lt;strong&gt;&lt;/strong&gt;</li>
+  <li>&lt;i&gt;&lt;/i&gt;, &lt;em&gt;&lt;/em&gt;</li>
+  <li>&lt;span&gt;&lt;/span&gt; (font-style, font-variant, font-family, font-size, font-weight, color, letter-spacing,
+ text-decoration, opacity)</li>
+ </ul>
+ @shortDescription Set up text in HTML format. Incoming text is parsed HTML parser.
+ @example <t>stageOnly</t>
+ stage.html(10, 10,
+   'Simple <br>' +
+   '<i>Italic</i> <br/>' +
+   '<b>Bold</b> <br/>' +
+   '<span style="color: rgba(200,0,0, 0.5); font-size: 20px;">Color and Size</span> <br/>' +
+   '<i><span style="text-decoration: underline">Combined</span></i>',
+   {fontSize: '15px'});
+ @param {string=} opt_value Text with HTML tags.
+ @return {anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ */
+anychart.graphics.vector.Text.prototype.htmlText;
+
