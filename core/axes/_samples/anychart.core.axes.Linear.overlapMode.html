@@ -4,20 +4,16 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentLoad(function () {
+        anychart.onDocumentReady(function() {
             var chart = anychart.line();
-            var data = [
-                ['2002 January', 1],
-                ['2002 Febrary', 2],
-                ['2002 March', 4],
-                ['2002 April', 3],
-                ['2002 May', 2],
-                ['2002 June', 4],
-                ['2002 Jule', 5],
-                ['2002 August', 1]
-            ];
-            chart.xAxis().staggerMode(false).overlapMode(true);
-            chart.line(data);
+            var scale = anychart.scales.linear();
+            var ticks = scale.ticks();
+            ticks.interval(0.1);
+            var yAxis = chart.yAxis();
+            yAxis.overlapMode('allowOverlap'); // sets overlap mode
+            yAxis.minorLabels({rotation: 270});
+            yAxis.scale(scale);
+            chart.line([2, 8, 1, 7, 3, 9, 4, 6, 5]);
             chart.container('container');
             chart.draw();
         });

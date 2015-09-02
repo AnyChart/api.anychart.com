@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="pie legend"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var contentFormatter = function() {
+                return 'Value: ' + this.value
+            };
+            var chart = anychart.pie([8, 3, 7, 2, 9]);
+            var legend = chart.legend();
+            legend.tooltip({background: {fill: '#B2DFDB', stroke: '#26A69A'}}); // sets tooltip
+            var tooltip = legend.tooltip();
+            tooltip.contentFormatter(contentFormatter);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

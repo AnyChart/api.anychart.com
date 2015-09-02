@@ -1,19 +1,18 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="pie"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentLoad(function () {
-            var stage = anychart.graphics.create('container');
-            var data = [10, 1, 7, 10];
-            var chart = anychart.pie(data);
-            chart.fill(function () {
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.pie([10, 1, 7, 10]);
+            chart.fill(function() {
                 return 'rgba(210,' + (50 * (this.index + 1) - 10) + ',100,1)';
-            });
+            }); // sets fill
             chart.legend(null);
             chart.stroke('none');
-            chart.container(stage).draw();
+            chart.container('container');
+            chart.draw();
         });
     </script>
 </head>

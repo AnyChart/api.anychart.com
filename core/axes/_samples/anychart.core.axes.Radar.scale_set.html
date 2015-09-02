@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="radar line"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.radar();
+            var ordinal = anychart.scales.ordinal();
+            ordinal.values(['Point 1', 'Point 2', 'Point 3', 'Point 4', 'Point 5']);
+            var xAxis = chart.xAxis();
+            xAxis.scale(ordinal); // sets scale
+            chart.line([
+                {x: 'Point 1', value: 4},
+                {x: 'Point 2', value: 10},
+                {x: 'Point 3', value: -1},
+                {x: 'Point 4', value: 10},
+                {x: 'Point 5', value: 4}
+            ]);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

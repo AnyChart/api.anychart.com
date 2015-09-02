@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="pie"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var data = anychart.data.set([
+                {name: 'Point 1', value: 50},
+                {name: 'Point 2', value: 13, exploded: true},
+                {name: 'Point 3', value: 14, exploded: true}
+            ]);
+            var chart = anychart.pie(data);
+            var explode = chart.explode(); // get value
+            chart.title('Explode - ' + explode);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

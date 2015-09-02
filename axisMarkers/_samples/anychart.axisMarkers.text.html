@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="textMarker axis"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create('container');
+            var axis = anychart.axes.linear();
+            axis.scale(anychart.scales.linear());
+            axis.parentBounds(5, 65, 400, 80);
+            axis.title(false);
+            axis.container(stage);
+            axis.draw();
+            var textMarker = anychart.axisMarkers.text(); // creates a text marker
+            textMarker.parentBounds(5, 40, 400, 0);
+            textMarker.scale(anychart.scales.linear());
+            textMarker.value(0.4);
+            textMarker.layout('vertical');
+            textMarker.container(stage);
+            textMarker.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

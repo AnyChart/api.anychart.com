@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="rangeMarker axis"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create('container');
+            var axis = anychart.axes.linear();
+            axis.scale(anychart.scales.linear());
+            axis.parentBounds(5, 65, 400, 80);
+            axis.title(false);
+            axis.container(stage);
+            axis.draw();
+            var rangeMarker = anychart.axisMarkers.range();
+            rangeMarker.parentBounds(anychart.math.rect(5, 40, 400, 45)); // sets bounds
+            rangeMarker.scale(anychart.scales.linear());
+            rangeMarker.from(0.4);
+            rangeMarker.to(0.8);
+            rangeMarker.layout('vertical');
+            rangeMarker.container(stage);
+            rangeMarker.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="radar area line"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.radar();
+            var firstSeries = chart.area([1, 5, 7, 6]);
+            var secondSeries = chart.line([9, 1, 5, 4]);
+            chart.legend(true);
+            firstSeries.legendItem({text: 'Blue area', iconType: 'circle', iconFill: '#0091EA'}); // sets legend item
+            secondSeries.legendItem({text: 'Orange line', iconType: 'square', iconFill: '#FF9800'}); // sets legend item
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

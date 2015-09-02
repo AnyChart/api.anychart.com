@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="axes label"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create('container');
+            var axis = anychart.axes.polar();
+            axis.scale(anychart.scales.linear());
+            axis.container(stage);
+            axis.draw();
+            var bounds = axis.getRemainingBounds(); // get remaining bounds
+            var label = anychart.ui.label();
+            label.parentBounds(bounds);
+            label.position('center');
+            label.anchor('center');
+            label.padding(15);
+            label.background({fill: '#80CBC4 0.2'});
+            label.enabled(true);
+            label.container(stage);
+            label.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

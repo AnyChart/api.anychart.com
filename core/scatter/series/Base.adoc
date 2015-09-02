@@ -1,5 +1,5 @@
 /**
- * Base class for all scatter series.<br/>
+ * Base class for all scatter series.
  * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Series data.
  * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
@@ -17,15 +17,17 @@ anychart.core.scatter.series.Base;
 
 /**
  * Getter for series name.
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.scatter.series.Base.name_get
  * @return {string|undefined} Series name value.
  */
 anychart.core.scatter.series.Base.prototype.name;
 
 /**
- * Setter for series name. <br/>
- * Basically, name of series is used in Legend displaying, but it can be used in tooltips as well.
- * @example anychart.core.scatter.series.Base.name
- * @param {string=} opt_value Value to set.
+ * Setter for series name.
+ * @detailed Basically, name of series is used in Legend displaying, but it can be used in tooltips as well.
+ * @example anychart.core.scatter.series.Base.name_set
+ * @param {string=} opt_value [undefined] Value to set.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
  */
 anychart.core.scatter.series.Base.prototype.name;
@@ -39,13 +41,14 @@ anychart.core.scatter.series.Base.prototype.name;
 
 /**
  * Getter for series clip settings.
+ * @example anychart.core.scatter.series.Base.clip_get
  * @return {boolean|anychart.math.Rect} Current clip settings.
  */
 anychart.core.scatter.series.Base.prototype.clip;
 
 /**
  * Setter for series clip settings. Clips visible part of a series by a rectangle (or chart).
- * @example anychart.core.scatter.series.Base.clip
+ * @example anychart.core.scatter.series.Base.clip_set_asBool
  * @param {(boolean|anychart.math.Rect)=} opt_value [False, if series is created manually.<br/>True, if created via chart] Enable/disable series clip.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
  */
@@ -60,6 +63,7 @@ anychart.core.scatter.series.Base.prototype.clip;
 
 /**
  * Getter for series meta data.
+ * @example anychart.core.scatter.series.Base.meta_get
  * @param {*=} opt_key Metadata key.
  * @return {*} Metadata object by key.
  */
@@ -67,7 +71,7 @@ anychart.core.scatter.series.Base.prototype.meta;
 
 /**
  * Setter for series meta data.
- * @example anychart.core.scatter.series.Base.meta
+ * @example anychart.core.scatter.series.Base.meta_set_asObject
  * @param {*=} opt_object Object to replace metadata.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
  */
@@ -75,7 +79,7 @@ anychart.core.scatter.series.Base.prototype.meta;
 
 /**
  * Add/Replace meta data for series by key.
- * @example anychart.core.scatter.series.Base.meta1
+ * @example anychart.core.scatter.series.Base.meta_set
  * @param {string=} opt_key Metadata key.
  * @param {*=} opt_value Metadata value.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
@@ -91,36 +95,17 @@ anychart.core.scatter.series.Base.prototype.meta;
 
 /**
  * Getter for series mapping.
+ * @example anychart.core.scatter.series.Base.data_get
  * @return {!anychart.data.View} Returns current mapping.
  */
 anychart.core.scatter.series.Base.prototype.data;
 
 /**
  * Setter for series mapping.
- * @listing
- * series.data([20, 7, 10, 14]);
- *  // or
- * series.data([
- *    [1, 22, 13],
- *    [13, 22, 23],
- *    [17, 22, 33],
- *    [21, 22, 43]
- *  ]);
- *  // or
- * series.data([
- *    {name: 'Point 1', value: 10},
- *    {name: 'Point 2', value: 7},
- *    {name: 'Point 3', value: 20},
- *    {name: 'Point 4', value: 14}
- *  ]);
- *   // or
- *  series.data(
- *    '17;21;11.1;4\n'+
- *    '11;11;0.21;0\n'+
- *    '21;17;23.1;1\n'+
- *    '10;.4;14;4.4\n',
- *    {'rowsSeparator': '\n', columnsSeparator: ';'})
- * @example anychart.core.scatter.series.Base.data
+ * @example anychart.core.scatter.series.Base.data_set_asArray Using array
+ * @example anychart.core.scatter.series.Base.data_set_asArrayofArrays Using array of arrays
+ * @example anychart.core.scatter.series.Base.data_set_asArrayofObjects Using array of objects
+ * @example anychart.core.scatter.series.Base.data_set_asCSV Using CSV
  * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
  * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed by first param, you can pass CSV parser settings here as a hash map.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
@@ -136,13 +121,13 @@ anychart.core.scatter.series.Base.prototype.data;
 
 /**
  * Getter for current series X scale.
- * @return {anychart.scales.ScatterBase} Current series X Scale.
+ * @return {anychart.scales.ScatterBase} Current series X scale.
  */
 anychart.core.scatter.series.Base.prototype.xScale;
 
 /**
  * Setter for series X scale.
- * @example anychart.core.scatter.series.Base.xScale
+ * @example anychart.core.scatter.series.Base.xScale_set
  * @param {anychart.scales.Base=} opt_value Value to set.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
  */
@@ -157,13 +142,13 @@ anychart.core.scatter.series.Base.prototype.xScale;
 
 /**
  * Getter for current series Y scale.
- * @return {anychart.scales.ScatterBase} Current series Y Scale.
+ * @return {anychart.scales.ScatterBase} Current series Y scale.
  */
 anychart.core.scatter.series.Base.prototype.yScale;
 
 /**
  * Setter for series Y scale.
- * @example anychart.core.scatter.series.Base.yScale
+ * @example anychart.core.scatter.series.Base.yScale_set
  * @param {anychart.scales.ScatterBase=} opt_value Value to set.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
  */
@@ -178,15 +163,21 @@ anychart.core.scatter.series.Base.prototype.yScale;
 
 /**
  * Getter for current series data tooltip.
+ * @example anychart.core.scatter.series.Base.tooltip_get
  * @return {!anychart.core.ui.Tooltip} Tooltip instance.
  */
 anychart.core.scatter.series.Base.prototype.tooltip;
 
 /**
  * Setter for series data tooltip.
- * @example anychart.core.scatter.series.Base.tooltip
- * @param {(Object|boolean|null)=} opt_value Tooltip settings.
- * <b>Note:</b> Pass <b>null</b> or <b>'none'</b> to turn off tooltip.
+ * @detailed Sets series data tooltip settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable series data tooltip.</li>
+ *   <li><b>object</b> - sets series data tooltip settings.</li>
+ * </ul>
+ * @example anychart.core.scatter.series.Base.tooltip_set_asBool Disable/Enable tooltip
+ * @example anychart.core.scatter.series.Base.tooltip_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [true] Tooltip settings.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
  */
 anychart.core.scatter.series.Base.prototype.tooltip;
@@ -200,15 +191,21 @@ anychart.core.scatter.series.Base.prototype.tooltip;
 
 /**
  * Getter for current series data labels.
+ * @example anychart.core.scatter.series.Base.labels_get
  * @return {!anychart.core.ui.LabelsFactory} Labels instance.
  */
 anychart.core.scatter.series.Base.prototype.labels;
 
 /**
  * Setter for series data labels.
- * @example anychart.core.scatter.series.Base.labels
- * @param {(Object|boolean|null)=} opt_value Series data labels settings.
- * <b>Note:</b> Pass <b>null</b> or <b>'none'</b> to turn off a label.
+ * @detailed Sets series data labels settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable series data labels.</li>
+ *   <li><b>object</b> - sets series data labels settings.</li>
+ * </ul>
+ * @example anychart.core.scatter.series.Base.labels_set_asBool Disable/Enable labels
+ * @example anychart.core.scatter.series.Base.labels_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Series data labels settings.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
  */
 anychart.core.scatter.series.Base.prototype.labels;
@@ -221,7 +218,21 @@ anychart.core.scatter.series.Base.prototype.labels;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets or sets series hover data labels.
+ * Getter for series data hover labels.
+ * @example anychart.core.scatter.series.Base.hoverLabels_get
+ * @return {!anychart.core.ui.LabelsFactory} Labels instance.
+ */
+anychart.core.scatter.series.Base.prototype.hoverLabels;
+
+/**
+ * Setter for series data hover labels.
+ * @detailed Sets series hover data labels settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable series data hover labels.</li>
+ *   <li><b>object</b> - sets series hover data labels settings.</li>
+ * </ul>
+ * @example anychart.core.scatter.series.Base.hoverLabels_set_asBool Disable/Enable hover labels
+ * @example anychart.core.scatter.series.Base.hoverLabels_set_asObject Using object
  * @param {(Object|boolean|null)=} opt_value Series data labels settings.
  * @return {!(anychart.core.ui.LabelsFactory|anychart.core.scatter.series.Base)} Labels instance or itself for chaining call.
  */
@@ -236,28 +247,28 @@ anychart.core.scatter.series.Base.prototype.hoverLabels;
 
 /**
  * Getter for current series color.
+ * @example anychart.core.scatter.series.Base.color_get
  * @return {!anychart.graphics.vector.Fill} Current color.
  */
 anychart.core.scatter.series.Base.prototype.color;
 
 /**
- * Sets color settings using an object or a string.<br/>
- * <b>Note: </b> <u>color</u> methods sets <b>fill</b> and <b>stroke</b> settings, which means it is not wise to pass
- * image fill here - stroke doesn't accept image fill.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.scatter.series.Base.color Solid color
- * @example anychart.core.scatter.series.Base.color1 Linear gradient color
- * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
+ * Sets color settings using an object or a string.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @detailed <b>Note: </b> <u>color</u> methods sets <b>fill</b> and <b>stroke</b> settings, which means it is not wise to pass
+ * image fill here - stroke doesn't accept image fill.
+ * @example anychart.core.scatter.series.Base.color_set_asString Using string
+ * @example anychart.core.scatter.series.Base.color_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ['#1D8BD1'] Color as an object or a string.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
  */
 anychart.core.scatter.series.Base.prototype.color;
 
 /**
- * Color with opacity.<br/>
- * <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * Color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
  * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
- * @example anychart.core.scatter.series.Base.color2
+ * @example anychart.core.scatter.series.Base.color_set_asOpacity
  * @param {string} color Color as a string.
  * @param {number=} opt_opacity Color opacity.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
@@ -265,10 +276,9 @@ anychart.core.scatter.series.Base.prototype.color;
 anychart.core.scatter.series.Base.prototype.color;
 
 /**
- * Linear gradient.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.scatter.series.Base.color3
+ * Linear gradient.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.scatter.series.Base.color_set_asLinear
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
  * @param {number=} opt_angle Gradient angle.
  * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
@@ -278,10 +288,9 @@ anychart.core.scatter.series.Base.prototype.color;
 anychart.core.scatter.series.Base.prototype.color;
 
 /**
- * Radial gradient.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.scatter.series.Base.color4
+ * Radial gradient.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.scatter.series.Base.color_set_asRadial
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
  * @param {number} cx X ratio of center radial gradient.
  * @param {number} cy Y ratio of center radial gradient.
@@ -323,4 +332,25 @@ anychart.core.scatter.series.Base.prototype.error;
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
  */
 anychart.core.scatter.series.Base.prototype.error;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.scatter.series.Base.prototype.legendItem
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for legend item settings of series.
+ * @return {anychart.core.utils.LegendItemSettings} Legend item settings.
+ */
+anychart.core.scatter.series.Base.prototype.legendItem;
+
+/**
+ * Setter for legend item settings of series.
+ * @example anychart.core.scatter.series.Base.legendItem_set
+ * @param {Object=} opt_value Legend item settings object.
+ * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
+ */
+anychart.core.scatter.series.Base.prototype.legendItem;
 

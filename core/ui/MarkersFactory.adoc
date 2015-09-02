@@ -161,9 +161,8 @@ anychart.core.ui.MarkersFactory.prototype.offsetY;
 anychart.core.ui.MarkersFactory.prototype.fill;
 
 /**
- * Setter for fill settings of all markers.<br/>
- * <b>Note:</b> fill is described at
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * Setter for fill settings of all markers.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
  * @example anychart.core.ui.MarkersFactory.fill
  * @param {(anychart.graphics.vector.Fill|string)=} opt_value ['black'] Value to set.
  * @return {anychart.core.ui.MarkersFactory} Self instance for method chaining.
@@ -177,9 +176,8 @@ anychart.core.ui.MarkersFactory.prototype.fill;
 anychart.core.ui.MarkersFactory.prototype.stroke;
 
 /**
- * Setter for stroke settings of all markers.<br/>
- * <b>Note:</b> stroke is described at
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}
+ * Setter for stroke settings of all markers.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
  * @example anychart.core.ui.MarkersFactory.stroke
  * @param {(anychart.graphics.vector.Stroke|string)=} opt_value ['black'] Value to set.
  * @return {anychart.core.ui.MarkersFactory} Self instance for method chaining.
@@ -193,4 +191,105 @@ anychart.core.ui.MarkersFactory.prototype.stroke;
  * pointer events property value.
  */
 anychart.core.ui.MarkersFactory.prototype.disablePointerEvents;
+
+/**
+ * Sets rotation angle around an anchor.
+ * ({@link anychart.graphics.vector.Element}).
+ * @param {number=} opt_value Rotation angle in degrees.
+ * @return {number|anychart.core.ui.MarkersFactory} Rotation angle in degrees or Itself for chaining call.
+ */
+anychart.core.ui.MarkersFactory.prototype.rotation;
+
+/**
+ *
+ * @constructor
+ * @extends {anychart.core.VisualBase}
+ */
+anychart.core.ui.MarkersFactory.Marker;
+
+/**
+ * Gets/Sets position formatter.
+ * @param {*=} opt_value Position formatter.
+ * @return {*} Position formatter or self for chaining.
+ */
+anychart.core.ui.MarkersFactory.Marker.prototype.positionFormatter;
+
+/**
+ * Getter for current position settings of all markers.
+ * @param {(anychart.enums.Position|string)=} opt_value Markers position settings.
+ * @return {anychart.core.ui.MarkersFactory.Marker|anychart.enums.Position|string} Markers position
+ * settings or self for chaining call.
+ */
+anychart.core.ui.MarkersFactory.Marker.prototype.position;
+
+/**
+ * Getter for anchor settings of all markers.
+ * @param {(anychart.enums.Anchor|string)=} opt_value .
+ * @return {!(anychart.core.ui.MarkersFactory.Marker|anychart.enums.Anchor|string)} .
+ */
+anychart.core.ui.MarkersFactory.Marker.prototype.anchor;
+
+/**
+ * Rotates a marker around an anchor.
+ * ({@link anychart.graphics.vector.Element}). Method resets transformation and applies a new one.
+ * @param {number=} opt_value Rotation angle in degrees.
+ * @return {number|anychart.core.ui.MarkersFactory.Marker} Rotation angle in degrees or self for chaining call.
+ */
+anychart.core.ui.MarkersFactory.Marker.prototype.rotation;
+
+/**
+ * Getter for current type settings of all markers.
+ * @param {(anychart.enums.MarkerType|function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path)=} opt_value .
+ * @return {!anychart.core.ui.MarkersFactory.Marker|anychart.enums.MarkerType|function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path|string} .
+ */
+anychart.core.ui.MarkersFactory.Marker.prototype.type;
+
+/**
+ * Getter for current size settings of all markers.
+ * @param {number=} opt_value .
+ * @return {anychart.core.ui.MarkersFactory.Marker|number} .
+ */
+anychart.core.ui.MarkersFactory.Marker.prototype.size;
+
+/**
+ * Getter for current offsetX settings of all markers.
+ * @param {(number|string)=} opt_value .
+ * @return {number|string|anychart.core.ui.MarkersFactory.Marker} .
+ */
+anychart.core.ui.MarkersFactory.Marker.prototype.offsetX;
+
+/**
+ * Getter for current offsetY settings of all markers.
+ * @param {(number|string)=} opt_value .
+ * @return {number|string|anychart.core.ui.MarkersFactory.Marker} .
+ */
+anychart.core.ui.MarkersFactory.Marker.prototype.offsetY;
+
+/**
+ * Getter for current fill settings of all markers.
+ * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
+ * @param {number=} opt_opacityOrAngleOrCx .
+ * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
+ * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
+ * @param {number=} opt_opacity .
+ * @param {number=} opt_fx .
+ * @param {number=} opt_fy .
+ * @return {anychart.graphics.vector.Fill|string|anychart.core.ui.MarkersFactory.Marker} .
+ */
+anychart.core.ui.MarkersFactory.Marker.prototype.fill;
+
+/**
+ * Getter for current stroke settings of all markers.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_strokeOrFill Stroke settings,
+ *    if used as a setter.
+ * @param {number=} opt_thickness Line thickness. Defaults to 1.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ *    Dash array contains a list of comma and/or white space separated lengths and percentages that specify the
+ *    lengths of alternating dashes and gaps. If an odd number of values is provided, then the list of values is
+ *    repeated to yield an even number of values. Thus, stroke dashpattern: 5,3,2 is equivalent to dashpattern: 5,3,2,5,3,2.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.graphics.vector.Stroke|string|anychart.core.ui.MarkersFactory.Marker} .
+ */
+anychart.core.ui.MarkersFactory.Marker.prototype.stroke;
 

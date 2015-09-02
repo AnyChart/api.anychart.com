@@ -1,28 +1,29 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="axes label"/>
     <script src="../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentLoad(function () {
-            var chart = anychart.line();
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create('container');
             var axis = anychart.axes.linear();
-            axis
-                    .orientation('left')
-                    .scale(anychart.scales.ordinal().values([1, 2, 3]))
-                    .container(stage).draw();
+            axis.orientation('left');
+            var scale = anychart.scales.ordinal();
+            scale.values([1, 2, 3]);
+            axis.scale(scale);
+            axis.parentBounds(50, 50, 300, 400);
+            axis.container(stage);
+            axis.draw();
+            var bounds = axis.getRemainingBounds(); // get remaining bounds
             var label = anychart.ui.label();
-            label
-                    .parentBounds(axis.getRemainingBounds())
-                    .width('100%')
-                    .height('100%')
-                    .padding(15)
-                    .background()
-                    .enabled(true)
-                    .fill('blue 0.2')
-            label.container(stage).draw();
-            chart.container('container');
-            chart.draw();
+            label.parentBounds(bounds);
+            label.width('100%');
+            label.height('100%');
+            label.padding(15);
+            label.background({fill: '#80CBC4 0.2'});
+            label.enabled(true);
+            label.container(stage);
+            label.draw();
         });
     </script>
 </head>

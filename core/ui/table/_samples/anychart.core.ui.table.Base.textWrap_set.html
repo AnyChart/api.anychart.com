@@ -1,0 +1,26 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="table"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create('container');
+            var table = anychart.ui.table();
+            table.contents([
+                ['First cell', 2, 3],
+                [4, 'The fifth cell of the table. \n Checking method a textWrap.', 6],
+                [7, 8, 'Ninth cell']
+            ]);
+            var cell = table.getCell(1, 1);
+            cell.fontSize(20);
+            cell.textWrap('noWrap'); // sets text wrap
+            table.container(stage);
+            table.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

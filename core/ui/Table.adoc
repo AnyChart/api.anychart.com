@@ -8,6 +8,13 @@
  */
 anychart.core.ui.Table;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.CellContent
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * An instance of {@link anychart.core.ui.LabelsFactory.Label} class, {@link anychart.core.ui.MarkersFactory.Marker} class
  * or {@link anychart.core.VisualBase} class.
@@ -16,89 +23,81 @@ anychart.core.ui.Table;
  */
 anychart.core.ui.Table.CellContent;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.rowsCount
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for table rows count.
+ * @example anychart.core.ui.Table.rowsCount_get
  * @return {number} Current rows count.
  */
 anychart.core.ui.Table.prototype.rowsCount;
 
 /**
- * Setter for table rows count.<br/>
- * <b>Note:</b> Calculated from the contents if not defined explicitly.
- * @example anychart.core.ui.Table.rowsCount
+ * Setter for table rows count. Calculated from the contents if not defined explicitly.
+ * @example anychart.core.ui.Table.rowsCount_set
  * @param {number=} opt_value [5] Value to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.rowsCount;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.colsCount
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for table columns count.
+ * @example anychart.core.ui.Table.colsCount_get
  * @return {number} Current columns count.
  */
 anychart.core.ui.Table.prototype.colsCount;
 
 /**
- * Setter for table columns count..<br/>
- * <b>Note:</b> Calculated from the contents if not defined explicitly.
- * @example anychart.core.ui.Table.colsCount
+ * Setter for table columns count. <b>Note:</b> Calculated from the contents if not defined explicitly.
+ * @example anychart.core.ui.Table.colsCount_set
  * @param {number=} opt_value [4] Value to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.colsCount;
 
-/**
- * Getter for row height settings.
- * @param {number} row Row number.
- * @return {string|number|null} Current column width.
- */
-anychart.core.ui.Table.prototype.rowHeight;
 
-/**
- * Setter for row height settings. <br/>
- * <b>Note:</b> Pass <b>null</b> to set default value.
- * @example anychart.core.ui.Table.rowHeight
- * @param {number} row Row number.
- * @param {(string|number|null)=} opt_value Value to set.
- * @return {anychart.core.ui.Table} Self instance for method chaining.
- */
-anychart.core.ui.Table.prototype.rowHeight;
-
-/**
- * Getter for column width settings.
- * @param {number} col Column number.
- * @return {string|number|null} Current column width.
- */
-anychart.core.ui.Table.prototype.colWidth;
-
-/**
- * Setter for column width settings. <br/>
- * <b>Note:</b> Pass <b>null</b> to set the default value.
- * @example anychart.core.ui.Table.colWidth
- * @param {number} col Column number.
- * @param {(string|number|null)=} opt_value Value to set.
- * @return {anychart.core.ui.Table} Self instance for method chaining.
- */
-anychart.core.ui.Table.prototype.colWidth;
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.getCell
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Returns cell by its row and column number.
  * @example anychart.core.ui.Table.getCell
  * @param {number} row Row index.
- * @param {number} col Coumn index.
- * @return {anychart.core.ui.Table.Cell} An instance of class for method chaining.
+ * @param {number} col Column index.
+ * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.getCell;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.contents
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for table content.<br/>
- * <b>Note:</b> Returns cells content ignored rowSpan and colSpan.
+ * Getter for table content. <b>Note:</b> Returns cells content ignored rowSpan and colSpan.
  * @return {Array.<Array.<(anychart.core.ui.Table.CellContent)>>} Current table content.
  */
 anychart.core.ui.Table.prototype.contents;
 
 /**
- * Setter for table content.<br/>
- * <b>Note:</b> Pass <b>null</b> to drop table content.
+ * Setter for table content. <b>Note:</b> Pass <b>null</b> to drop table content.
  * @example anychart.core.ui.Table.contents
  * @param {Array.<Array.<(anychart.core.ui.Table.CellContent|string|number|undefined)>>=} opt_tableValues Values to set.
  * @param {boolean=} opt_demergeCells [false] Pass <b>true</b> to demerge all cells.
@@ -106,54 +105,44 @@ anychart.core.ui.Table.prototype.contents;
  */
 anychart.core.ui.Table.prototype.contents;
 
-/**
- * Getter for table cell text factory.
- * @return {!anychart.core.ui.LabelsFactory} Current table text factory.
- */
-anychart.core.ui.Table.prototype.cellTextFactory;
 
-/**
- * You can setup the default text appearance for entire table.
- * These settings apply to cells with content set as string or number. If you want to set text appearance
- * for the particular cell, set cell content as string first, and then feel free to get the content and tune it.
- * @example anychart.core.ui.Table.cellTextFactory
- * @shortDescription Setter for table cell text factory.
- * @param {(Object|boolean|null)=} opt_value
- * @return {!anychart.core.ui.Table}
- */
-anychart.core.ui.Table.prototype.cellTextFactory;
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.cellPadding
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for the cell padding settings.
- * @return {anychart.core.utils.Padding} An instance of class for method chaining.
+ * @return {anychart.core.ui.table.Padding} Current cell padding settings.
  */
 anychart.core.ui.Table.prototype.cellPadding;
 
 /**
- * Setter for the cell paddings in pixels using a single value.<br/>
- * @listing
+ * Setter for the cell paddings in pixels using a single value.
+ * @listing Examples for paddings
  * // all paddings 15px
  * table.cellPadding(15);
  * // all paddings 15px
  * table.cellPadding('15px');
- * // top and bottom 5px ,right and left 15px
+ * // top and bottom 5px, right and left 15px
  * table.cellPadding(anychart.utils.space(5,15));
- * @example anychart.core.ui.Table.cellPadding
+ * @example anychart.core.ui.Table.cellPadding_set_asSingle
  * @param {(null|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_value Value to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.cellPadding;
 
 /**
- * Setter for the cell paddings in pixels using several numbers.<br/>
- * @listing
+ * Setter for the cell paddings in pixels using several numbers.
+ * @listing Examples for paddings
  * // 1) top and bottom 10px, left and right 15px
  * table.cellPadding(10, '15px');
  * // 2) top 10px, left and right 15px, bottom 5px
  * table.cellPadding(10, '15px', 5);
  * // 3) top 10px, right 15px, bottom 5px, left 12px
  * table.cellPadding(10, '15px', '5px', 12);
- * @example anychart.core.ui.Table.cellPadding1
+ * @example anychart.core.ui.Table.cellPadding_set_asComplex
  * @param {(string|number)=} opt_value1 Top or top-bottom space.
  * @param {(string|number)=} opt_value2 Right or right-left space.
  * @param {(string|number)=} opt_value3 Bottom space.
@@ -162,29 +151,34 @@ anychart.core.ui.Table.prototype.cellPadding;
  */
 anychart.core.ui.Table.prototype.cellPadding;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.cellFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for current series fill color.
+ * Getter for current table fill color.
  * @return {!anychart.graphics.vector.Fill} Current fill color.
  */
 anychart.core.ui.Table.prototype.cellFill;
 
 /**
- * Sets fill settings using an object or a string.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.cellFill
- * @example anychart.core.ui.Table.cellFill1
+ * Sets fill settings using an object or a string.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Table.cellFill_set_asString Using string
+ * @example anychart.core.ui.Table.cellFill_set_asArray Using array
  * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.cellFill;
 
 /**
- * Fill color with opacity.<br/>
- * <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
  * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
- * @shortDescription Fill as a string or an object.
- * @example anychart.core.ui.Table.cellFill2
+ * @example anychart.core.ui.Table.cellFill_set_asOpacity
  * @param {string} color Color as a string.
  * @param {number=} opt_opacity Color opacity.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
@@ -192,10 +186,9 @@ anychart.core.ui.Table.prototype.cellFill;
 anychart.core.ui.Table.prototype.cellFill;
 
 /**
- * Linear gradient fill.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.cellFill3
+ * Linear gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Table.cellFill_set_asLinear
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
  * @param {number=} opt_angle Gradient angle.
  * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
@@ -205,10 +198,9 @@ anychart.core.ui.Table.prototype.cellFill;
 anychart.core.ui.Table.prototype.cellFill;
 
 /**
- * Radial gradient fill.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.cellFill4
+ * Radial gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Table.cellFill_set_asRadial
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
  * @param {number} cx X ratio of center radial gradient.
  * @param {number} cy Y ratio of center radial gradient.
@@ -221,62 +213,64 @@ anychart.core.ui.Table.prototype.cellFill;
 anychart.core.ui.Table.prototype.cellFill;
 
 /**
- * Image fill.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.cellFill5
+ * Image fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Table.cellFill_set_asImg
  * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.cellFill;
 
-/**
- * Getter for current series fill color.
- * @return {!anychart.graphics.vector.Fill} Current fill color.
- */
-anychart.core.ui.Table.prototype.cellOddFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.rowOddFill
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Sets fill settings using an object or a string.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.cellOddFill
- * @example anychart.core.ui.Table.cellOddFill1
+ * Getter for a current odd row fill color.
+ * @return {!anychart.graphics.vector.Fill} Current fill color.
+ */
+anychart.core.ui.Table.prototype.rowOddFill;
+
+/**
+ * Sets fill settings using an object or a string.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Table.rowOddFill_set_asString Using string
+ * @example anychart.core.ui.Table.rowOddFill_set_asArray
  * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.prototype.cellOddFill;
+anychart.core.ui.Table.prototype.rowOddFill;
 
 /**
- * Fill color with opacity.<br/>
- * <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
  * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
- * @shortDescription Fill as a string or an object.
- * @example anychart.core.ui.Table.cellOddFill2
+ * @example anychart.core.ui.Table.rowOddFill_set_asOpacity
  * @param {string} color Color as a string.
  * @param {number=} opt_opacity Color opacity.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.prototype.cellOddFill;
+anychart.core.ui.Table.prototype.rowOddFill;
 
 /**
- * Linear gradient fill.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.cellOddFill3
+ * Linear gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Table.rowOddFill_set_asLinear
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
  * @param {number=} opt_angle Gradient angle.
  * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
  * @param {number=} opt_opacity Gradient opacity.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.prototype.cellOddFill;
+anychart.core.ui.Table.prototype.rowOddFill;
 
 /**
- * Radial gradient fill.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.cellOddFill4
+ * Radial gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Table.rowOddFill_set_asRadial
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
  * @param {number} cx X ratio of center radial gradient.
  * @param {number} cy Y ratio of center radial gradient.
@@ -286,65 +280,67 @@ anychart.core.ui.Table.prototype.cellOddFill;
  * @param {number=} opt_fy Y ratio of focal point.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.prototype.cellOddFill;
+anychart.core.ui.Table.prototype.rowOddFill;
 
 /**
- * Image fill.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.cellOddFill5
+ * Image fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Table.rowOddFill_set_asImg
  * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.prototype.cellOddFill;
+anychart.core.ui.Table.prototype.rowOddFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.rowEvenFill
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current series fill color.
+ * Getter for a current even row fill color.
  * @return {!anychart.graphics.vector.Fill} Current fill color.
  */
-anychart.core.ui.Table.prototype.cellEvenFill;
+anychart.core.ui.Table.prototype.rowEvenFill;
 
 /**
- * Sets fill settings using an object or a string.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.cellEvenFill
- * @example anychart.core.ui.Table.cellEvenFill1
+ * Sets fill settings using an object or a string.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Table.rowEvenFill_set_asString Using string
+ * @example anychart.core.ui.Table.rowEvenFill_set_asArray Using array
  * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.prototype.cellEvenFill;
+anychart.core.ui.Table.prototype.rowEvenFill;
 
 /**
- * Fill color with opacity.<br/>
- * <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
  * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
- * @shortDescription Fill as a string or an object.
- * @example anychart.core.ui.Table.cellEvenFill2
+ * @example anychart.core.ui.Table.rowEvenFill_set_asOpacity
  * @param {string} color Color as a string.
  * @param {number=} opt_opacity Color opacity.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.prototype.cellEvenFill;
+anychart.core.ui.Table.prototype.rowEvenFill;
 
 /**
- * Linear gradient fill.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.cellEvenFill3
+ * Linear gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Table.rowEvenFill_set_asLinear
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
  * @param {number=} opt_angle Gradient angle.
  * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
  * @param {number=} opt_opacity Gradient opacity.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.prototype.cellEvenFill;
+anychart.core.ui.Table.prototype.rowEvenFill;
 
 /**
- * Radial gradient fill.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.cellEvenFill4
+ * Radial gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Table.rowEvenFill_set_asRadial
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
  * @param {number} cx X ratio of center radial gradient.
  * @param {number} cy Y ratio of center radial gradient.
@@ -354,17 +350,23 @@ anychart.core.ui.Table.prototype.cellEvenFill;
  * @param {number=} opt_fy Y ratio of focal point.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.prototype.cellEvenFill;
+anychart.core.ui.Table.prototype.rowEvenFill;
 
 /**
- * Image fill.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.cellEvenFill5
+ * Image fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Table.rowEvenFill_set_asImg
  * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.prototype.cellEvenFill;
+anychart.core.ui.Table.prototype.rowEvenFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.cellBorder
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for current cell border settings.
@@ -373,13 +375,11 @@ anychart.core.ui.Table.prototype.cellEvenFill;
 anychart.core.ui.Table.prototype.cellBorder;
 
 /**
- * Setter for cell border settings.<br/>
- * Learn more about stroke settings:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}<br/>
- * <b>Note:</b> The last usage of leftBorder(), rightBorder(), topBorder() and bottomBorder() methods determines
+ * Setter for cell border settings.
+ * {docs:Appearance_Settings/Stroke}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> The last usage of leftBorder(), rightBorder(), topBorder() and bottomBorder() methods determines
  * the border for the corresponding side.<br/>
  * <b>Note:</b> <u>lineJoin</u> settings not working here.
- * @shortDescription Setter for cell border settings.
  * @example anychart.core.ui.Table.cellBorder
  * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
  *    or stroke settings.
@@ -391,411 +391,605 @@ anychart.core.ui.Table.prototype.cellBorder;
  */
 anychart.core.ui.Table.prototype.cellBorder;
 
-/**
- * Getter for current cell left border settings.
- * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
- */
-anychart.core.ui.Table.prototype.cellLeftBorder;
 
-/**
- * Setter for cell left border settings.<br/>
- * Learn more about stroke settings:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}<br/>
- * <b>Note:</b> The last usage of leftBorder(), rightBorder(), topBorder() and bottomBorder() methods determines
- * the border for the corresponding side.<br/>
- * <b>Note:</b> <u>lineJoin</u> settings not working here.
- * @shortDescription Setter for cell left border settings.
- * @example anychart.core.ui.Table.cellLeftBorder
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
- * @param {number=} opt_thickness [1] Line thickness.
- * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
- * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
- * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
- * @return {anychart.core.ui.Table} Self instance for method chaining.
- */
-anychart.core.ui.Table.prototype.cellLeftBorder;
-
-/**
- * Getter for current cell right border settings.
- * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
- */
-anychart.core.ui.Table.prototype.cellRightBorder;
-
-/**
- * Setter for cell right border settings.<br/>
- * Learn more about stroke settings:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}<br/>
- * <b>Note:</b> The last usage of leftBorder(), rightBorder(), topBorder() and bottomBorder() methods determines
- * the border for the corresponding side.<br/>
- * <b>Note:</b> <u>lineJoin</u> settings not working here.
- * @shortDescription Setter for cell right border settings.
- * @example anychart.core.ui.Table.cellRightBorder
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
- * @param {number=} opt_thickness [1] Line thickness.
- * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
- * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
- * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
- * @return {anychart.core.ui.Table} Self instance for method chaining.
- */
-anychart.core.ui.Table.prototype.cellRightBorder;
-
-/**
- * Getter for current cell top border settings.
- * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
- */
-anychart.core.ui.Table.prototype.cellTopBorder;
-
-/**
- * Setter for cell top border settings.<br/>
- * Learn more about stroke settings:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}<br/>
- * <b>Note:</b> The last usage of leftBorder(), rightBorder(), topBorder() and bottomBorder() methods determines
- * the border for the corresponding side.<br/>
- * <b>Note:</b> <u>lineJoin</u> settings not working here.
- * @shortDescription Setter for cell top border settings.
- * @example anychart.core.ui.Table.cellTopBorder
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
- * @param {number=} opt_thickness [1] Line thickness.
- * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
- * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
- * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
- * @return {anychart.core.ui.Table} Self instance for method chaining.
- */
-anychart.core.ui.Table.prototype.cellTopBorder;
-
-/**
- * Getter for current cell bottom border settings.
- * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
- */
-anychart.core.ui.Table.prototype.cellBottomBorder;
-
-/**
- * Setter for cell bottom border settings.<br/>
- * Learn more about stroke settings:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}<br/>
- * <b>Note:</b> The last usage of leftBorder(), rightBorder(), topBorder() and bottomBorder() methods determines
- * the border for the corresponding side.<br/>
- * <b>Note:</b> <u>lineJoin</u> settings not working here.
- * @shortDescription Setter for cell bottom border settings.
- * @example anychart.core.ui.Table.cellBottomBorder
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
- * @param {number=} opt_thickness [1] Line thickness.
- * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
- * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
- * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
- * @return {anychart.core.ui.Table} Self instance for method chaining.
- */
-anychart.core.ui.Table.prototype.cellBottomBorder;
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.draw
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Draws the table.
+ * @example anychart.core.ui.Table.draw
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.draw;
 
-/**
- * Table cell.
- * @param {anychart.core.ui.Table} table
- * @param {number} row
- * @param {number} col
- * @constructor
- * @includeDoc
- * @extends {goog.Disposable}
- */
-anychart.core.ui.Table.Cell;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.getRow
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for cell content.
- * @return {anychart.core.ui.Table.CellContent} Current cell content.
+ * Returns row instance by its number. Returns null if there is no row with passed number.
+ * @example anychart.core.ui.Table.getRow
+ * @param {number} row A row by number.
+ * @return {anychart.core.ui.table.Row} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.content;
+anychart.core.ui.Table.prototype.getRow;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.getCol
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Setter for cell content.
- * @example anychart.core.ui.Table.Cell.content
- * @param {(anychart.core.ui.Table.CellContent|string|number)=} opt_value Value to set.<br/>
- *  <b>Note:</b> Numbers and strings are automaticaly set as instance of {@link anychart.core.ui.LabelsFactory.Label} class.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * Returns column instance by its number. Returns null if there is no column with passed number.
+ * @example anychart.core.ui.Table.getCol
+ * @param {number} col A column by number
+ * @return {anychart.core.ui.table.Column} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.content;
+anychart.core.ui.Table.prototype.getCol;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.rowsHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Returns current cell row number.
- * @return {number}
+ * Getter for default row height settings.
+ * @return {string|number|null} Current row height settings.
  */
-anychart.core.ui.Table.Cell.prototype.getRow;
+anychart.core.ui.Table.prototype.rowsHeight;
 
 /**
- * Returns current cell column number.
- * @return {number}
+ * Setter for row height settings.
+ * @detailed Defaults to null - divide the rest of table height between rows with null height evenly.
+ * @example anychart.core.ui.Table.rowsHeight_set
+ * @param {(string|number|null)=} opt_value [null] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.getCol;
+anychart.core.ui.Table.prototype.rowsHeight;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.rowsMinHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Returns cell bounds without padding counted (bounds which are used for borders drawing).
- * @example anychart.core.ui.Table.Cell.getBounds
- * @return {!anychart.math.Rect}
+ * Getter for default row height minimum settings
+ * @return {string|number|null} Current row height minimum settings.
  */
-anychart.core.ui.Table.Cell.prototype.getBounds;
+anychart.core.ui.Table.prototype.rowsMinHeight;
 
 /**
- * Getter for current series fill color.
- * @return {!anychart.graphics.vector.Fill} Current fill color.
+ * Setter for row height minimum settings.
+ * @detailed Defaults to null - no minimum height. The method sets a minimum height of rows, that will be to remain after a resize of table.
+ * @example anychart.core.ui.Table.rowsMinHeight_set
+ * @param {(string|number|null)=} opt_value [null] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.fill;
+anychart.core.ui.Table.prototype.rowsMinHeight;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.rowsMaxHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Sets fill settings using an object or a string.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.Cell.fill
- * @example anychart.core.ui.Table.Cell.fill1
- * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * Getter for default row height maximum settings.
+ * @return {string|number|null} Current row height maximum settings.
  */
-anychart.core.ui.Table.Cell.prototype.fill;
+anychart.core.ui.Table.prototype.rowsMaxHeight;
 
 /**
- * Fill color with opacity.<br/>
- * <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
- * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
- * @shortDescription Fill as a string or an object.
- * @example anychart.core.ui.Table.Cell.fill2
- * @param {string} color Color as a string.
- * @param {number=} opt_opacity Color opacity.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * Setter for row height maximum settings.
+ * @detailed Defaults to null - no maximum height.
+ * @example anychart.core.ui.Table.rowsMaxHeight_set
+ * @param {(string|number|null)=} opt_value [null] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.fill;
+anychart.core.ui.Table.prototype.rowsMaxHeight;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.colsWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Linear gradient fill.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.Cell.fill3
- * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
- * @param {number=} opt_angle Gradient angle.
- * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
- * @param {number=} opt_opacity Gradient opacity.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * Getter for default column width settings.
+ * @return {string|number|null} Current column width settings.
  */
-anychart.core.ui.Table.Cell.prototype.fill;
+anychart.core.ui.Table.prototype.colsWidth;
 
 /**
- * Radial gradient fill.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.Cell.fill4
- * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
- * @param {number} cx X ratio of center radial gradient.
- * @param {number} cy Y ratio of center radial gradient.
- * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
- * @param {number=} opt_opacity Opacity of the gradient.
- * @param {number=} opt_fx X ratio of focal point.
- * @param {number=} opt_fy Y ratio of focal point.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * Setter for column width settings.
+ * @detailed Defaults to null - divide the rest of table width between columns with null width evenly.
+ * @example anychart.core.ui.Table.colsWidth_set
+ * @param {(string|number|null)=} opt_value [null] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.fill;
+anychart.core.ui.Table.prototype.colsWidth;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.colsMinWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Image fill.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example anychart.core.ui.Table.Cell.fill5
- * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * Getter for default column width minimum settings.
+ * @return {string|number|null} Current column width minimum settings.
  */
-anychart.core.ui.Table.Cell.prototype.fill;
+anychart.core.ui.Table.prototype.colsMinWidth;
 
 /**
- * Getter for current cell border settings.
- * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
+ * Setter for column width minimum settings.
+ * @detailed Defaults to null - no minimum width. The method sets a minimum width of columns, that will be to remain after a resize of table.
+ * @example anychart.core.ui.Table.colsMinWidth_set
+ * @param {(string|number|null)=} opt_value [null] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.border;
+anychart.core.ui.Table.prototype.colsMinWidth;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.colsMaxWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Setter for cell border settings.<br/>
- * Learn more about stroke settings:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}<br/>
- * <b>Note:</b> Pass <b>null</b> to reset to default settings.<br/>
- * <b>Note:</b> <u>lineJoin</u> settings not working here.
- * @shortDescription Setter for cell border settings.
- * @example anychart.core.ui.Table.Cell.border
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
+ * Getter for default column width maximum settings.
+ * @return {string|number|null} Current column width maximum settings.
+ */
+anychart.core.ui.Table.prototype.colsMaxWidth;
+
+/**
+ * Setter for column width maximum settings.
+ * @detailed Defaults to null - no maximum width.
+ * @example anychart.core.ui.Table.colsMaxWidth_set
+ * @param {(string|number|null)=} opt_value [null] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
+ */
+anychart.core.ui.Table.prototype.colsMaxWidth;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.border
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for border of the table (not cells).
+ * @return {anychart.core.ui.table.Border} Current border settings.
+ */
+anychart.core.ui.Table.prototype.border;
+
+/**
+ * Setter for border of the table (not cells).
+ * @detailed Overrides this.cellBorder() settings for the borders that are on the border of the table.
+ * @example anychart.core.ui.Table.border_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
  * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.border;
+anychart.core.ui.Table.prototype.border;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.fontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current cell left border settings.
- * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
+ * Getter for text font size.
+ * @return {string|number} Current font size.
  */
-anychart.core.ui.Table.Cell.prototype.leftBorder;
+anychart.core.ui.Table.prototype.fontSize;
 
 /**
- * Setter for cell left border settings.<br/>
- * Learn more about stroke settings:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}<br/>
- * <b>Note:</b> Pass <b>null</b> to reset to default settings.<br/>
- * <b>Note:</b> <u>lineJoin</u> settings not working here.
- * @shortDescription Setter for cell left border settings.
- * @example anychart.core.ui.Table.Cell.leftBorder
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
- * @param {number=} opt_thickness [1] Line thickness.
- * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
- * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
- * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * Setter for text font size.
+ * @example anychart.core.ui.Table.fontSize_set
+ * @param {string|number=} opt_value Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.leftBorder;
+anychart.core.ui.Table.prototype.fontSize;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.fontFamily
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current cell right border settings.
- * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
+ * Getter for the font family.
+ * @return {string} The current font family.
  */
-anychart.core.ui.Table.Cell.prototype.rightBorder;
+anychart.core.ui.Table.prototype.fontFamily;
 
 /**
- * Setter for cell right border settings.<br/>
- * Learn more about stroke settings:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}<br/>
- * <b>Note:</b> Pass <b>null</b> to reset to default settings.<br/>
- * <b>Note:</b> <u>lineJoin</u> settings not working here.
- * @shortDescription Setter for cell right border settings.
- * @example anychart.core.ui.Table.Cell.rightBorder
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
- * @param {number=} opt_thickness [1] Line thickness.
- * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
- * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
- * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * Setter for font family.
+ * @example anychart.core.ui.Table.fontFamily_set
+ * @param {string=} opt_value Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.rightBorder;
+anychart.core.ui.Table.prototype.fontFamily;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.fontColor
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current cell top border settings.
- * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
+ * Getter for the text font color.
+ * @return {string} The current font color.
  */
-anychart.core.ui.Table.Cell.prototype.topBorder;
+anychart.core.ui.Table.prototype.fontColor;
 
 /**
- * Setter for cell top border settings.<br/>
- * Learn more about stroke settings:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}<br/>
- * <b>Note:</b> Pass <b>null</b> to reset to default settings.<br/>
- * <b>Note:</b> <u>lineJoin</u> settings not working here.
- * @shortDescription Setter for cell top border settings.
- * @example anychart.core.ui.Table.Cell.topBorder
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
- * @param {number=} opt_thickness [1] Line thickness.
- * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
- * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
- * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * Setter for the text font color. {@link http://www.w3schools.com/html/html_colors.asp}
+ * @example anychart.core.ui.Table.fontColor_set
+ * @param {string=} opt_value Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.topBorder;
+anychart.core.ui.Table.prototype.fontColor;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.fontOpacity
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current cell bottom border settings.
- * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
+ * Getter for the text font opacity.
+ * @return {number} The current font opacity.
  */
-anychart.core.ui.Table.Cell.prototype.bottomBorder;
+anychart.core.ui.Table.prototype.fontOpacity;
 
 /**
- * Setter for cell bottom border settings.<br/>
- * Learn more about stroke settings:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}<br/>
- * <b>Note:</b> Pass <b>null</b> to reset to default settings.<br/>
- * <b>Note:</b> <u>lineJoin</u> settings not working here.
- * @shortDescription Setter for cell bottom border settings.
- * @example anychart.core.ui.Table.Cell.bottomBorder
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
- * @param {number=} opt_thickness [1] Line thickness.
- * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
- * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
- * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * Setter for the text font opacity. Double value from 0 to 1.
+ * @example anychart.core.ui.Table.fontOpacity_set
+ * @param {number=} opt_value Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.bottomBorder;
+anychart.core.ui.Table.prototype.fontOpacity;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.fontDecoration
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for cell columns span.
- * @return {number} Current columns span.
+ * Getter for the text font decoration.
+ * @return {anychart.graphics.vector.Text.Decoration|string} The current font decoration.
  */
-anychart.core.ui.Table.Cell.prototype.colSpan;
+anychart.core.ui.Table.prototype.fontDecoration;
 
 /**
- * Setter for cell columns span.<br/>
- * <b>Note:</b> Cells that are overlapped by other cells are not drawn.
- * @example anychart.core.ui.Table.Cell.colSpan
- * @param {number=} opt_value [1] Count of cells to merge right.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * Setter for the text font decoration.
+ * @example anychart.core.ui.Table.fontDecoration_set
+ * @param {(anychart.graphics.vector.Text.Decoration|string)=} opt_value [{@link anychart.graphics.vector.Text.Decoration#NONE}] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.colSpan;
+anychart.core.ui.Table.prototype.fontDecoration;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.fontStyle
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for cell rows span.
- * @return {number} Current rows span.
+ * Getter for the text font style.
+ * @return {anychart.graphics.vector.Text.FontStyle|string} The current font style.
  */
-anychart.core.ui.Table.Cell.prototype.rowSpan;
+anychart.core.ui.Table.prototype.fontStyle;
 
 /**
- * Setter for cell rows span.<br/>
- * <b>Note:</b> Cells that are overlapped by other cells are not drawn.
- * @example anychart.core.ui.Table.Cell.rowSpan
- * @param {number=} opt_value [1] Count of cells to merge down.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * Setter for the text font style.
+ * @example anychart.core.ui.Table.fontStyle_set
+ * @param {(anychart.graphics.vector.Text.FontStyle|string)=} opt_value [{@link anychart.graphics.vector.Text.FontStyle#NORMAL}] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.rowSpan;
+anychart.core.ui.Table.prototype.fontStyle;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.fontVariant
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current cell padding settings.
- * @return {anychart.core.utils.Padding} An instance of class for method chaining.
+ * Getter for the text font variant.
+ * @return {anychart.graphics.vector.Text.FontVariant|string} The current font variant.
  */
-anychart.core.ui.Table.Cell.prototype.padding;
+anychart.core.ui.Table.prototype.fontVariant;
 
 /**
- * Setter for current cell paddings in pixels using a single value.<br/>
- * @listing
- * // all paddings 15px
- * cell.padding(15);
- * // all paddings 15px
- * cell.padding('15px');
- * // top and bottom 5px ,right and left 15px
- * cell.padding(anychart.utils.space(5,15));
- * @example anychart.core.ui.Table.Cell.padding
- * @param {(null|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_value Value to set.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * Setter for the text font variant.
+ * @example anychart.core.ui.Table.fontVariant_set
+ * @param {(anychart.graphics.vector.Text.FontVariant|string)=} opt_value [{@link anychart.graphics.vector.Text.FontVariant#NORMAL}] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
-anychart.core.ui.Table.Cell.prototype.padding;
+anychart.core.ui.Table.prototype.fontVariant;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.fontWeight
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Setter for current cell paddings in pixels using several numbers.<br/>
- * @listing
- * // 1) top and bottom 10px, left and right 15px
- * table.cellPadding(10, '15px');
- * // 2) top 10px, left and right 15px, bottom 5px
- * table.cellPadding(10, '15px', 5);
- * // 3) top 10px, right 15px, bottom 5px, left 12px
- * table.cellPadding(10, '15px', '5px', 12);
- * @example anychart.core.ui.Table.Cell.padding1
- * @param {(string|number)=} opt_value1 Top or top-bottom space.
- * @param {(string|number)=} opt_value2 Right or right-left space.
- * @param {(string|number)=} opt_value3 Bottom space.
- * @param {(string|number)=} opt_value4 Left space.
- * @return {anychart.core.ui.Table.Cell} Self instance for method chaining.
+ * Getter for the text font weight.
+ * @return {string|number} The current font weight.
  */
-anychart.core.ui.Table.Cell.prototype.padding;
+anychart.core.ui.Table.prototype.fontWeight;
 
+/**
+ * Setter for the text font weight. {@link http://www.w3schools.com/cssref/pr_font_weight.asp}
+ * @example anychart.core.ui.Table.fontWeight_set
+ * @param {(string|number)=} opt_value Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
+ */
+anychart.core.ui.Table.prototype.fontWeight;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.letterSpacing
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text letter spacing.
+ * @return {string|number} The current letter spacing.
+ */
+anychart.core.ui.Table.prototype.letterSpacing;
+
+/**
+ * Setter for the text letter spacing. {@link http://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
+ * @example anychart.core.ui.Table.letterSpacing_set
+ * @param {(string|number)=} opt_value Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
+ */
+anychart.core.ui.Table.prototype.letterSpacing;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.textDirection
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text direction.
+ * @return {anychart.graphics.vector.Text.Direction|string} Current text direction.
+ */
+anychart.core.ui.Table.prototype.textDirection;
+
+/**
+ * Setter for the text direction.
+ * @example anychart.core.ui.Table.textDirection_set
+ * @param {(anychart.graphics.vector.Text.Direction|string)=} opt_value [{@link anychart.graphics.vector.Text.Direction#LTR}] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
+ */
+anychart.core.ui.Table.prototype.textDirection;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.lineHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text line height.
+ * @return {string|number} The current text line height.
+ */
+anychart.core.ui.Table.prototype.lineHeight;
+
+/**
+ * Setter for the text line height. {@link http://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
+ * @example anychart.core.ui.Table.lineHeight_set
+ * @param {(string|number)=} opt_value Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
+ */
+anychart.core.ui.Table.prototype.lineHeight;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.textIndent
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text indent.
+ * @return {number} The current text indent.
+ */
+anychart.core.ui.Table.prototype.textIndent;
+
+/**
+ * Setter for the text indent.
+ * @example anychart.core.ui.Table.textIndent_set
+ * @param {number=} opt_value Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
+ */
+anychart.core.ui.Table.prototype.textIndent;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.vAlign
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text vertical align.
+ * @return {anychart.graphics.vector.Text.VAlign|string} The current text vertical align.
+ */
+anychart.core.ui.Table.prototype.vAlign;
+
+/**
+ * Setter for the text vertical align.
+ * @example anychart.core.ui.Table.vAlign_set
+ * @param {(anychart.graphics.vector.Text.VAlign|string)=} opt_value [{@link anychart.graphics.vector.Text.VAlign#TOP}] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
+ */
+anychart.core.ui.Table.prototype.vAlign;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.hAlign
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text horizontal align.
+ * @return {anychart.graphics.vector.Text.HAlign|string} The current text horizontal align.
+ */
+anychart.core.ui.Table.prototype.hAlign;
+
+/**
+ * Setter for the text horizontal align.
+ * @example anychart.core.ui.Table.hAlign_set
+ * @param {(anychart.graphics.vector.Text.HAlign|string)=} opt_value [{@link anychart.graphics.vector.Text.HAlign#START}] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
+ */
+anychart.core.ui.Table.prototype.hAlign;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.textWrap
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text wrap settings.
+ * @return {anychart.graphics.vector.Text.TextWrap|string} Th current text wrap settings.
+ */
+anychart.core.ui.Table.prototype.textWrap;
+
+/**
+ * Setter for the text wrap settings.
+ * @example anychart.core.ui.Table.textWrap_set
+ * @param {(anychart.graphics.vector.Text.TextWrap|string)=} opt_value [{@link anychart.graphics.vector.Text.TextWrap#BY_LETTER}] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
+ */
+anychart.core.ui.Table.prototype.textWrap;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.textOverflow
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text overflow settings.
+ * @return {anychart.graphics.vector.Text.TextOverflow|string} The current text overflow settings.
+ */
+anychart.core.ui.Table.prototype.textOverflow;
+
+/**
+ * Setter for the text overflow settings.
+ * @example anychart.core.ui.Table.textOverflow_set
+ * @param {(anychart.graphics.vector.Text.TextOverflow|string)=} opt_value [{@link anychart.graphics.vector.Text.TextOverflow#CLIP}] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
+ */
+anychart.core.ui.Table.prototype.textOverflow;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.selectable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text selectable option.
+ * @return {boolean} The current text selectable option.
+ */
+anychart.core.ui.Table.prototype.selectable;
+
+/**
+ * Setter for the text selectable.
+ * @detailed This options defines whether the text can be selected. If set to <b>false</b> one can't select the text.
+ * @example anychart.core.ui.Table.selectable_set
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
+ */
+anychart.core.ui.Table.prototype.selectable;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.disablePointerEvents
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets current state of disablePointerEvents option.
+ * @return {boolean} If pointer events are disabled.
+ */
+anychart.core.ui.Table.prototype.disablePointerEvents;
+
+/**
+ * Setter for the text disablePointerEvents option.
+ * @detailed This options defines whether the text should pass mouse events through.
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
+ */
+anychart.core.ui.Table.prototype.disablePointerEvents;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Table.prototype.useHtml
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the useHtml flag.
+ * @return {boolean} The current value of useHTML flag.
+ */
+anychart.core.ui.Table.prototype.useHtml;
+
+/**
+ * Setter for flag useHtml.
+ * @detailed This property defines whether HTML text should be parsed.
+ * @example anychart.core.ui.Table.useHtml_set
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.ui.Table} Self instance for method chaining.
+ */
+anychart.core.ui.Table.prototype.useHtml;

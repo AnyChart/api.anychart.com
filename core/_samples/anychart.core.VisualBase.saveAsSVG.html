@@ -4,18 +4,17 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentLoad(function () {
-            var chart = anychart.line();
-            chart.line([4, 2, 12]);
-            chart.label()
-                    .background(true)
-                    .text('Save image')
-                    .fontColor('#fff')
-                    .padding(5)
-                    .offsetX(5)
-                    .listen('click', function () {
-                        chart.saveAsSVG();
-                    });
+        anychart.onDocumentReady(function() {
+            var chart = anychart.line([4, 2, 12]);
+            var label = chart.label();
+            label.background(true);
+            label.text('Save image');
+            label.fontColor('#fff');
+            label.padding(5);
+            label.offsetX(5);
+            label.listen('click', function() {
+                chart.saveAsSVG(); // saves into SVG file
+            });
             chart.container('container');
             chart.draw();
         });

@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="gauges"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.circularGauge([10]);
+            chart.marker({radius: 95});
+            var axis = chart.axis();
+            var getTicks = axis.ticks();
+            getTicks.length(4);
+            getTicks.stroke(function(ticks) {
+                var color;
+                if (ticks.length >= 10) {
+                    color = '#1B5E20';
+                } else {
+                    color = '#0091EA'
+                }
+                return '2 ' + color
+            }); // sets stroke
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

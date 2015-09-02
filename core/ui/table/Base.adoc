@@ -1,0 +1,439 @@
+/**
+ * Base class for Row, Column and Cell. Contains text settings and lazy settings object initialization.
+ * Also knows about table, so it can send messages to the table.
+ * @constructor
+ * @param {!anychart.core.ui.Table} table
+ * @extends {goog.Disposable}
+ * @implements {anychart.core.ui.table.IProxyUser}
+ */
+anychart.core.ui.table.Base;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.fontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for text font size.
+ * @return {string|number} Current font size.
+ */
+anychart.core.ui.table.Base.prototype.fontSize;
+
+/**
+ * Setter for text font size.
+ * @example anychart.core.ui.table.Base.fontSize_set
+ * @param {string|number=} opt_value Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.fontSize;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.fontFamily
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the font family.
+ * @return {string} The current font family.
+ */
+anychart.core.ui.table.Base.prototype.fontFamily;
+
+/**
+ * Setter for the font family.
+ * @example anychart.core.ui.table.Base.fontFamily_set
+ * @param {string=} opt_value Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.fontFamily;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.fontColor
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text font color.
+ * @return {string} The current font color.
+ */
+anychart.core.ui.table.Base.prototype.fontColor;
+
+/**
+ * Setter for the text font color. {@link http://www.w3schools.com/html/html_colors.asp}
+ * @example anychart.core.ui.table.Base.fontColor_set
+ * @param {string=} opt_value Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.fontColor;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.fontOpacity
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text font opacity.
+ * @return {number} The current font opacity.
+ */
+anychart.core.ui.table.Base.prototype.fontOpacity;
+
+/**
+ * Setter for the text font opacity. Double value from 0 to 1.
+ * @example anychart.core.ui.table.Base.fontOpacity_set
+ * @param {number=} opt_value [1] Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.fontOpacity;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.fontDecoration
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text font decoration.
+ * @return {anychart.graphics.vector.Text.Decoration|string} The current font decoration.
+ */
+anychart.core.ui.table.Base.prototype.fontDecoration;
+
+/**
+ * Setter for the text font decoration.
+ * @example anychart.core.ui.table.Base.fontDecoration_set
+ * @param {(anychart.graphics.vector.Text.Decoration|string)=} opt_value [{@link anychart.graphics.vector.Text.Decoration#NONE}] Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.fontDecoration;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.fontStyle
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text font style.
+ * @return {anychart.graphics.vector.Text.FontStyle|string} The current font style.
+ */
+anychart.core.ui.table.Base.prototype.fontStyle;
+
+/**
+ * Setter for the text font style.
+ * @example anychart.core.ui.table.Base.fontStyle_set
+ * @param {(anychart.graphics.vector.Text.FontStyle|string)=} opt_value [{@link anychart.graphics.vector.Text.FontStyle#NORMAL}] Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.fontStyle;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.fontVariant
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text font variant.
+ * @return {anychart.graphics.vector.Text.FontVariant|string} The current font variant.
+ */
+anychart.core.ui.table.Base.prototype.fontVariant;
+
+/**
+ * Setter for the text font variant.
+ * @example anychart.core.ui.table.Base.fontVariant_set
+ * @param {(anychart.graphics.vector.Text.FontVariant|string)=} opt_value [{@link anychart.graphics.vector.Text.FontVariant#NORMAL}] Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.fontVariant;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.fontWeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text font weight.
+ * @return {string|number} The current font weight.
+ */
+anychart.core.ui.table.Base.prototype.fontWeight;
+
+/**
+ * Setter for the text font weight. {@link http://www.w3schools.com/cssref/pr_font_weight.asp}
+ * @example anychart.core.ui.table.Base.fontWeight_set
+ * @param {(string|number)=} opt_value Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.fontWeight;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.letterSpacing
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text letter spacing.
+ * @return {string|number} The current letter spacing.
+ */
+anychart.core.ui.table.Base.prototype.letterSpacing;
+
+/**
+ * Setter for the text letter spacing. {@link http://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
+ * @example anychart.core.ui.table.Base.letterSpacing_set
+ * @param {(string|number)=} opt_value Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.letterSpacing;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.textDirection
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text direction.
+ * @return {anychart.graphics.vector.Text.Direction|string} Current text direction.
+ */
+anychart.core.ui.table.Base.prototype.textDirection;
+
+/**
+ * Setter for the text direction.
+ * @example anychart.core.ui.table.Base.textDirection_set
+ * @param {(anychart.graphics.vector.Text.Direction|string)=} opt_value [{@link anychart.graphics.vector.Text.Direction#LTR}] Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.textDirection;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.lineHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text line height.
+ * @return {string|number} The current text line height.
+ */
+anychart.core.ui.table.Base.prototype.lineHeight;
+
+/**
+ * Setter for the text line height. {@link http://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
+ * @example anychart.core.ui.table.Base.lineHeight_set
+ * @param {(string|number)=} opt_value Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.lineHeight;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.textIndent
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text indent.
+ * @return {number} The current text indent.
+ */
+anychart.core.ui.table.Base.prototype.textIndent;
+
+/**
+ * Setter for the text indent.
+ * @example anychart.core.ui.table.Base.textIndent_set
+ * @param {number=} opt_value Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.textIndent;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.vAlign
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text vertical align.
+ * @return {anychart.graphics.vector.Text.VAlign|string} The current text vertical align.
+ */
+anychart.core.ui.table.Base.prototype.vAlign;
+
+/**
+ * Setter for the text vertical align.
+ * @example anychart.core.ui.table.Base.vAlign_set
+ * @param {(anychart.graphics.vector.Text.VAlign|string)=} opt_value [{@link anychart.graphics.vector.Text.VAlign#TOP}] Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.vAlign;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.hAlign
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text horizontal align.
+ * @return {anychart.graphics.vector.Text.HAlign|string} The current text horizontal align.
+ */
+anychart.core.ui.table.Base.prototype.hAlign;
+
+/**
+ * Setter for the text horizontal align.
+ * @example anychart.core.ui.table.Base.hAlign_set
+ * @param {(anychart.graphics.vector.Text.HAlign|string)=} opt_value [{@link anychart.graphics.vector.Text.HAlign#START}] Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.hAlign;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.textWrap
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text wrap settings.
+ * @return {anychart.graphics.vector.Text.TextWrap|string} The current text wrap settings.
+ */
+anychart.core.ui.table.Base.prototype.textWrap;
+
+/**
+ * Setter for the text wrap settings.
+ * @example anychart.core.ui.table.Base.textWrap_set
+ * @param {(anychart.graphics.vector.Text.TextWrap|string)=} opt_value [{@link anychart.graphics.vector.Text.TextWrap#BY_LETTER}] Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.textWrap;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.textOverflow
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text overflow settings.
+ * @return {anychart.graphics.vector.Text.TextOverflow|string} The current text overflow settings.
+ */
+anychart.core.ui.table.Base.prototype.textOverflow;
+
+/**
+ * Setter for the text overflow settings.
+ * @example anychart.core.ui.table.Base.textOverflow_set
+ * @param {(anychart.graphics.vector.Text.TextOverflow|string)=} opt_value [{@link anychart.graphics.vector.Text.TextOverflow#CLIP}] Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.textOverflow;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.selectable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text selectable option.
+ * @return {boolean} The current text selectable option.
+ */
+anychart.core.ui.table.Base.prototype.selectable;
+
+/**
+ * Setter for the text selectable.
+ * @detailed This options defines whether the text can be selected. If set to <b>false</b> one can't select the text.
+ * @example anychart.core.ui.table.Base.selectable_set
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.selectable;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.disablePointerEvents
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets current state of disablePointerEvents option.
+ * @return {boolean} If pointer events are disabled.
+ */
+anychart.core.ui.table.Base.prototype.disablePointerEvents;
+
+/**
+ * Setter for the text disablePointerEvents option.
+ * @detailed This options defines whether the text should pass mouse events through.
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.disablePointerEvents;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.useHtml
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the useHtml flag.
+ * @return {boolean} The current value of useHTML flag.
+ */
+anychart.core.ui.table.Base.prototype.useHtml;
+
+/**
+ * Setter for flag useHtml.
+ * @detailed This property defines whether HTML text should be parsed.
+ * @example anychart.core.ui.table.Base.useHtml_set
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {!anychart.core.ui.table.Base} Self instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.useHtml;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.table.Base.prototype.border
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for border settings object.
+ * @return {!anychart.core.ui.table.Border} Current border settings.
+ */
+anychart.core.ui.table.Base.prototype.border;
+
+/**
+ * Setter for cell border settings.
+ * {docs:Appearance_Settings/Stroke}Learn more about stroke settings.{docs}
+ * @detailed <b>Note:</b> Pass <b>null</b> to reset to default settings.<br/>
+ * <b>Note:</b> <u>lineJoin</u> settings not working here.
+ * @example anychart.core.ui.table.Base.border_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {!anychart.core.ui.table.Base} {@link anychart.core.ui.table.Base} instance for method chaining.
+ */
+anychart.core.ui.table.Base.prototype.border;
+

@@ -1,19 +1,19 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="scatter bubble"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentLoad(function () {
+        anychart.onDocumentReady(function() {
             var chart = anychart.scatter();
-            chart.bubble([
+            var series = chart.bubble([
                 [4, 2, 1],
                 [1, 2, -3],
                 [2, 2, 2],
-                [3, 2, 1],
-            ])
-                    .displayNegative(true)
-                    .negativeHatchFill('diamiond', 'grey', 5, 5);
+                [3, 2, 1]
+            ]);
+            series.displayNegative(true);
+            series.negativeHatchFill('percent60', '#9E9E9E', 5, 5); // sets negative hatch fill
             chart.container('container');
             chart.draw();
         });
