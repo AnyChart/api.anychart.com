@@ -1,162 +1,477 @@
 /**
- * Gantt chart implementation.
- * TODO (A.Kudryavtsev): Describe.
- * TODO (A.Kudryavtsev): Actually, must not be exported as is.
- *
- * @param {boolean=} opt_isResourcesChart - Flag if chart should be interpreted as resource chart.
+ * Gantt chart class.
  * @constructor
- * @extends {anychart.core.Chart}
+ * @extends {anychart.core.SeparateChart}
  */
 anychart.charts.Gantt;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.data
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Gets/sets chart data.
- * @param {(anychart.data.Tree|Array.<Object>)=} opt_data - Data tree or raw data.
- * @param {anychart.enums.TreeFillingMethod=} opt_fillMethod - Fill method.
- * @return {(anychart.data.Tree|anychart.charts.Gantt)} - Current value or itself for method chaining.
+ * Getter for chart data.
+ * @example anychart.charts.Gantt.data_get
+ * @return {anychart.data.Tree} Returns current data tree.
  */
 anychart.charts.Gantt.prototype.data;
 
 /**
- * Gets/sets header height.
- * @param {(number|string)=} opt_value - Value to be set.
- * @return {(anychart.charts.Gantt|number|string)} - Current value or itself for method chaining.
+ * Setter for chart data.
+ * @example anychart.charts.Gantt.data_set_asArrayOfObjects Using arrayOfObjects
+ * @example anychart.charts.Gantt.data_set_asInst Using instance
+ * @param {(anychart.data.Tree|Array.<Object>)=} opt_data Data tree or raw data.
+ * @param {(anychart.enums.TreeFillingMethod|string)=} opt_fillMethod Fill method.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
+ */
+anychart.charts.Gantt.prototype.data;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.headerHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for header height.
+ * @example anychart.charts.Gantt.headerHeight_get
+ * @return {(number|string)} Current value header height.
  */
 anychart.charts.Gantt.prototype.headerHeight;
 
 /**
- * Getter for data grid.
- * @return {anychart.core.ui.DataGrid} - Chart's data grid.
+ * Setter for header height.
+ * @example anychart.charts.Gantt.headerHeight_set
+ * @param {(number|string)=} opt_value [70] Value to set.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
-anychart.charts.Gantt.prototype.getDataGrid;
+anychart.charts.Gantt.prototype.headerHeight;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.dataGrid
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for data grid.
+ * @example anychart.charts.Gantt.dataGrid_get
+ * @return {anychart.core.ui.DataGrid} Chart's data grid.
+ */
+anychart.charts.Gantt.prototype.dataGrid;
+
+/**
+ * Setter for data grid.
+ * @example anychart.charts.Gantt.dataGrid_set_asBool
+ * @param {boolean=} opt_enabled [true] Enabled or disabled data grid.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
+ */
+anychart.charts.Gantt.prototype.dataGrid;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.getTimeline
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for timeline.
- * @return {anychart.core.gantt.Timeline} - Chart's timeline.
+ * @example anychart.charts.Gantt.getTimeline
+ * @return {anychart.core.gantt.Timeline} Chart's timeline.
  */
 anychart.charts.Gantt.prototype.getTimeline;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.rowHoverFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Gets/sets row hover fill.
- * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
- * @param {number=} opt_opacityOrAngleOrCx .
- * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
- * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
- * @param {number=} opt_opacity .
- * @param {number=} opt_fx .
- * @param {number=} opt_fy .
- * @return {anychart.graphics.vector.Fill|anychart.core.ui.DataGrid|string} - Current value or itself for method chaining.
+ * Getter for row hover fill.
+ * @example anychart.charts.Gantt.rowHoverFill_get
+ * @return {anychart.graphics.vector.Fill|string} Current value hover fill.
  */
 anychart.charts.Gantt.prototype.rowHoverFill;
 
 /**
- * Timeline zoom in.
- * @param {number=} opt_zoomFactor - Zoom factor.
- * @return {anychart.charts.Gantt} - Itself for method chaining.
+ * Sets row hover fill settings using an object or a string.
+ * @detailed Learn more about coloring at:<br/>
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}<br/>
+ * <b>Note:</b> You can't use image for row hover fill.
+ * @example anychart.charts.Gantt.rowHoverFill_set_asString Using string
+ * @example anychart.charts.Gantt.rowHoverFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ['#edf8ff'] Color as an object or a string.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
+ */
+anychart.charts.Gantt.prototype.rowHoverFill;
+
+/**
+ * Fill color with opacity.<br/>
+ * Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.Gantt.rowHoverFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
+ */
+anychart.charts.Gantt.prototype.rowHoverFill;
+
+/**
+ * Linear gradient fill.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.charts.Gantt.rowHoverFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
+ */
+anychart.charts.Gantt.prototype.rowHoverFill;
+
+/**
+ * Radial gradient fill.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.charts.Gantt.rowHoverFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
+ */
+anychart.charts.Gantt.prototype.rowHoverFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.rowSelectedFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for row selected fill.
+ * @example anychart.charts.Gantt.rowSelectedFill_get
+ * @return {anychart.graphics.vector.Fill|string} Current value row selected fill.
+ */
+anychart.charts.Gantt.prototype.rowSelectedFill;
+
+/**
+ * Sets row selected fill settings using an object or a string.
+ * @detailed Learn more about coloring at:<br/>
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}<br/>
+ * <b>Note:</b> You can't use image for row selected fill.
+ * @example anychart.charts.Gantt.rowSelectedFill_set_asString Using string
+ * @example anychart.charts.Gantt.rowSelectedFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ['#d2eafa'] Color as an object or a string.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
+ */
+anychart.charts.Gantt.prototype.rowSelectedFill;
+
+/**
+ * Fill color with opacity.<br/>
+ * Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.Gantt.rowSelectedFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
+ */
+anychart.charts.Gantt.prototype.rowSelectedFill;
+
+/**
+ * Linear gradient fill.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.charts.Gantt.rowSelectedFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
+ */
+anychart.charts.Gantt.prototype.rowSelectedFill;
+
+/**
+ * Radial gradient fill.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.charts.Gantt.rowSelectedFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
+ */
+anychart.charts.Gantt.prototype.rowSelectedFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.zoomIn
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Timeline zoom in.<br/>
+ * Method zoomIn works after calculation scale. Therefore, it should be used after method draw.
+ * @example anychart.charts.Gantt.zoomIn
+ * @param {number=} opt_zoomFactor Zoom factor.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.zoomIn;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.zoomOut
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Timeline zoom out.
- * @param {number=} opt_zoomFactor - Zoom factor.
- * @return {anychart.charts.Gantt} - Itself for method chaining.
+ * Timeline zoom out.<br/>
+ * Method zoomOut works after calculation scale. Therefore, it should be used after method draw.
+ * @example anychart.charts.Gantt.zoomOut
+ * @param {number=} opt_zoomFactor Zoom factor.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.zoomOut;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.zoomTo
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Timeline zoom to range.
- * TODO (A.Kudryavtsev): Take full behaviour description from scale's zoomTo() method.
- *
- * @param {number} startDate - Start date.
- * @param {number=} opt_endDate - End date.
- *
- * @return {anychart.charts.Gantt} - Itself for method chaining.
+ * Timeline zoom to range.<br/>
+ * @detailed Method zoomTo works after calculation scale. Therefore, it should be used after method draw.<br/>
+ * If end date doesn't set, so current visible range will be use to calculate end data of time line.
+ * @example anychart.charts.Gantt.zoomTo
+ * @param {number} startDate Start date.
+ * @param {number=} opt_endDate End date.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.zoomTo;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.fitAll
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Fits all visible data to timeline width.
- * TODO (A.Kudryavtsev): Change description.
- * @return {anychart.charts.Gantt} - Itself for method chaining.
+ * Fits all visible data to width of timeline.<br/>
+ * Method fitAll should be used after drawing chart.
+ * @example anychart.charts.Gantt.fitAll
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.fitAll;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.fitToTask
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Fits timeline visible area to task's range.
- * TODO (A.Kudryavtsev): Change description.
- * @param {string} taskId - Task id.
- * @return {anychart.charts.Gantt} - Itself for method chaining.
+ * Fits the visible area of the timeline to the range of specified tasks.
+ * @detailed Method fitToTask should be used after drawing chart. You can use this method only for gantt project chart.
+ * @example anychart.charts.Gantt.fitToTask
+ * @param {string} taskId Task id.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.fitToTask;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.scrollTo
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Performs vertical scroll to pxOffset.
- * TODO (A.Kudryavtsev): See full description in related method of controller.
- * @param {number} pxOffset - Pixel offset.
- * @return {anychart.charts.Gantt} - Itself for method chaining.
+ * Performs vertical scrolling by pixel offset.<br/>
+ * Method scrollTo should be used after drawing chart.
+ * @example anychart.charts.Gantt.scrollTo
+ * @param {number} pxOffset Value for pixel offset to set.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.scrollTo;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.scrollToRow
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Performs vertical scroll to rowIndex specified.
- * TODO (A.Kudryavtsev): See full description in related method of controller.
- * @param {number} rowIndex - Row index.
- * @return {anychart.charts.Gantt} - Itself for method chaining.
+ * Performs vertical scroll for row at the specified index.
+ * @detailed Method scrollToRow should be used after drawing chart. If index more than maximum value, then scrolling
+ * calculated at the ending index.
+ * @example anychart.charts.Gantt.scrollToRow
+ * @param {number} rowIndex Row index.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.scrollToRow;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.scrollToEnd
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Scrolls vertically to specified index.
- * @param {number=} opt_index - End index to scroll to.
- * @return {anychart.charts.Gantt} - Itself for method chaining.
+ * Scrolls vertically to specified index.<br/>
+ * Method scrollToEnd should be used after drawing chart.
+ * @example anychart.charts.Gantt.scrollToEnd
+ * @param {number=} opt_index End index to scroll to set.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.scrollToEnd;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.collapseAll
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Collapses all.
- * @return {anychart.charts.Gantt} - Itself for method chaining.
+ * Collapse all expanded tasks<br/>
+ * Method collapseAll should be used after drawing chart.
+ * @example anychart.charts.Gantt.collapseAll
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.collapseAll;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.expandAll
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Expands all.
- * @return {anychart.charts.Gantt} - Itself for method chaining.
+ * Expands all collapsed tasks.<br/>
+ * Method expandAll should be used after drawing chart.
+ * @example anychart.charts.Gantt.expandAll
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.expandAll;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.expandTask
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Expands task.
- * @param {string} taskId - Task id.
- * @return {anychart.charts.Gantt} - Itself for method chaining.
+ * Expands task by id.<br/>
+ * Method expandTask should be used after drawing chart.
+ * @example anychart.charts.Gantt.expandTask
+ * @param {string} taskId Task id.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.expandTask;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.collapseTask
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Collapses task.
- * @param {string} taskId - Task id.
- * @return {anychart.charts.Gantt} - Itself for method chaining.
+ * Collapses task by id.<br/>
+ * Method collapseTask should be used after drawing chart.
+ * @example anychart.charts.Gantt.collapseTask
+ * @param {string} taskId Task id.
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.collapseTask;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.splitterPosition
+//
+//----------------------------------------------------------------------------------------------------------------------
 /**
+ * @ignoreDoc
  * Gets/sets splitter position.
  * @param {(string|number)=} opt_value - Pixel or percent value. Actually sets a width of data grid.
  * @return {(anychart.charts.Gantt|number|string)} - Current value or itself for method chaining.
  */
 anychart.charts.Gantt.prototype.splitterPosition;
 
-/** @inheritDoc */
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Gantt.prototype.draw
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Draws gantt chart.
+ * @example anychart.charts.Gantt.draw
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
+ */
 anychart.charts.Gantt.prototype.draw;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.ganttProject
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Constructor function for gantt project chart.
- * @return {!anychart.charts.Gantt}
+ * @example anychart.ganttProject
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.ganttProject;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.ganttResource
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Constructor function for gantt resource chart.
- * @return {!anychart.charts.Gantt}
+ * @example anychart.ganttResource
+ * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.ganttResource;
+
+/**
+ * Gets data grid or enables/disables it.
+ * NOTE: In current implementation (25 Feb 2015) data grid is not configurable by JSON, can't be set directly and can't be null.
+ * @param {boolean=} opt_enabled - If data grid must be enabled/disabled.
+ * @return {(anychart.core.ui.DataGrid|anychart.charts.Gantt)} - Data grid or chart itself for method chaining.
+ */
+anychart.charts.Gantt.prototype.dataGrid;
 

@@ -1,118 +1,430 @@
 /**
- * Gantt timeline implementation.
- * TODO (A.Kudryavtsev): In current version, timeline can't be instantiated separately. That's why constructor gets controller as parameter.
- *
- * @param {anychart.core.gantt.Controller} controller - Gantt controller.
- * @param {boolean} isResourcesChart - Flag if chart that TL belongs to should be interpreted as resource chart.
+ * Gantt timeline.
  * @constructor
  * @extends {anychart.core.VisualBaseWithBounds}
  */
 anychart.core.gantt.Timeline;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.Timeline.prototype.rowFill;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Gets/sets a default rows fill. Resets odd fill and even fill.
- * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
- * @param {number=} opt_opacityOrAngleOrCx .
- * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
- * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
- * @param {number=} opt_opacity .
- * @param {number=} opt_fx .
- * @param {number=} opt_fy .
- * @return {anychart.graphics.vector.Fill|anychart.core.gantt.Timeline|string} - Current value or itself for method chaining.
+ * Getter for row hover fill.
+ * @example anychart.core.gantt.Timeline.rowFill_get
+ * @return {anychart.graphics.vector.Fill|string} Current value row fill.
  */
 anychart.core.gantt.Timeline.prototype.rowFill;
 
 /**
- * Gets/sets a default rows fill. Resets odd fill and even fill.
- * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
- * @param {number=} opt_opacityOrAngleOrCx .
- * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
- * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
- * @param {number=} opt_opacity .
- * @param {number=} opt_fx .
- * @param {number=} opt_fy .
- * @return {anychart.graphics.vector.Fill|anychart.core.gantt.Timeline|string} - Current value or itself for method chaining.
- * @deprecated - Use {@link rowFill} instead.
+ * Sets row hover fill settings using an object or a string.
+ * @detailed Resets odd fill and even fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowFill_set_asString Using string
+ * @example anychart.core.gantt.Timeline.rowFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ['#fff'] Color as an object or a string.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
  */
-anychart.core.gantt.Timeline.prototype.cellFill;
+anychart.core.gantt.Timeline.prototype.rowFill;
 
 /**
- * Gets/sets row odd fill.
- * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
- * @param {number=} opt_opacityOrAngleOrCx .
- * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
- * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
- * @param {number=} opt_opacity .
- * @param {number=} opt_fx .
- * @param {number=} opt_fy .
- * @return {anychart.graphics.vector.Fill|anychart.core.gantt.Timeline|string} - Current value or itself for method chaining.
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.gantt.Timeline.rowFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowFill;
+
+/**
+ * Linear gradient fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowFill;
+
+/**
+ * Radial gradient fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowFill;
+
+/**
+ * Image fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.Timeline.prototype.cellFill;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/** @ignoreDoc */
+anychart.core.gantt.Timeline.prototype.cellFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.Timeline.prototype.rowOddFill;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for row odd fill.
+ * @example anychart.core.gantt.Timeline.rowOddFill_get
+ * @return {anychart.graphics.vector.Fill|string} Current value row odd fill.
  */
 anychart.core.gantt.Timeline.prototype.rowOddFill;
 
 /**
- * Gets/sets row odd fill.
- * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
- * @param {number=} opt_opacityOrAngleOrCx .
- * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
- * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
- * @param {number=} opt_opacity .
- * @param {number=} opt_fx .
- * @param {number=} opt_fy .
- * @return {anychart.graphics.vector.Fill|anychart.core.gantt.Timeline|string} - Current value or itself for method chaining.
- * @deprecated - Use {@link rowOddFill} instead.
+ * Sets row odd fill settings using an object or a string.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowOddFill_set_asString Using string
+ * @example anychart.core.gantt.Timeline.rowOddFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ['#fff'] Color as an object or a string.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
  */
-anychart.core.gantt.Timeline.prototype.cellOddFill;
+anychart.core.gantt.Timeline.prototype.rowOddFill;
 
 /**
- * Gets/sets row even fill.
- * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
- * @param {number=} opt_opacityOrAngleOrCx .
- * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
- * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
- * @param {number=} opt_opacity .
- * @param {number=} opt_fx .
- * @param {number=} opt_fy .
- * @return {anychart.graphics.vector.Fill|anychart.core.gantt.Timeline|string} - Current value or itself for method chaining.
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.gantt.Timeline.rowOddFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowOddFill;
+
+/**
+ * Linear gradient fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowOddFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowOddFill;
+
+/**
+ * Radial gradient fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowOddFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowOddFill;
+
+/**
+ * Image fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowOddFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowOddFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.Timeline.prototype.cellOddFill;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/** @ignoreDoc */
+anychart.core.gantt.Timeline.prototype.cellOddFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.Timeline.prototype.rowEvenFill;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for row even fill.
+ * @example anychart.core.gantt.Timeline.rowEvenFill_get
+ * @return {anychart.graphics.vector.Fill|string} Current value row odd fill.
  */
 anychart.core.gantt.Timeline.prototype.rowEvenFill;
 
 /**
- * Gets/sets row even fill.
- * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
- * @param {number=} opt_opacityOrAngleOrCx .
- * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
- * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
- * @param {number=} opt_opacity .
- * @param {number=} opt_fx .
- * @param {number=} opt_fy .
- * @return {anychart.graphics.vector.Fill|anychart.core.gantt.Timeline|string} - Current value or itself for method chaining.
- * @deprecated - Use {@link rowEvenFill} instead.
+ * Sets row even fill settings using an object or a string.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowEvenFill_set_asString Using string
+ * @example anychart.core.gantt.Timeline.rowEvenFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ['#fff'] Color as an object or a string.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
  */
-anychart.core.gantt.Timeline.prototype.cellEvenFill;
+anychart.core.gantt.Timeline.prototype.rowEvenFill;
 
 /**
- * Gets/sets row hover fill.
- * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
- * @param {number=} opt_opacityOrAngleOrCx .
- * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
- * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
- * @param {number=} opt_opacity .
- * @param {number=} opt_fx .
- * @param {number=} opt_fy .
- * @return {anychart.graphics.vector.Fill|anychart.core.gantt.Timeline|string} - Current value or itself for method chaining.
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.gantt.Timeline.rowEvenFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowEvenFill;
+
+/**
+ * Linear gradient fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowEvenFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowEvenFill;
+
+/**
+ * Radial gradient fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowEvenFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowEvenFill;
+
+/**
+ * Image fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowEvenFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowEvenFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.Timeline.prototype.cellEvenFill;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/** @ignoreDoc */
+anychart.core.gantt.Timeline.prototype.cellEvenFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.Timeline.prototype.rowHoverFill;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for row hover fill.
+ * @example anychart.core.gantt.Timeline.rowHoverFill_get
+ * @return {anychart.graphics.vector.Fill|string} Current value row odd fill.
  */
 anychart.core.gantt.Timeline.prototype.rowHoverFill;
 
 /**
- * Gets/sets background fill.
- * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
- * @param {number=} opt_opacityOrAngleOrCx .
- * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
- * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
- * @param {number=} opt_opacity .
- * @param {number=} opt_fx .
- * @param {number=} opt_fy .
- * @return {anychart.graphics.vector.Fill|anychart.core.gantt.Timeline|string} - Current value or itself for method chaining.
+ * Sets row hover fill settings using an object or a string.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowHoverFill_set_asString Using string
+ * @example anychart.core.gantt.Timeline.rowHoverFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ['#edf8ff'] Color as an object or a string.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowHoverFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.gantt.Timeline.rowHoverFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowHoverFill;
+
+/**
+ * Linear gradient fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowHoverFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowHoverFill;
+
+/**
+ * Radial gradient fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.rowHoverFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.rowHoverFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.Timeline.prototype.backgroundFill;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for row background fill.
+ * @example anychart.core.gantt.Timeline.backgroundFill_get
+ * @return {anychart.graphics.vector.Fill|string} Current value row odd fill.
  */
 anychart.core.gantt.Timeline.prototype.backgroundFill;
+
+/**
+ * Sets row background fill settings using an object or a string.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.backgroundFill_set_asString Using string
+ * @example anychart.core.gantt.Timeline.backgroundFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ['#ccd7e1'] Color as an object or a string.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.backgroundFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.gantt.Timeline.backgroundFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.backgroundFill;
+
+/**
+ * Linear gradient fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.backgroundFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.backgroundFill;
+
+/**
+ * Radial gradient fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.backgroundFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.backgroundFill;
+
+/**
+ * Image fill.
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.gantt.Timeline.backgroundFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.backgroundFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.Timeline.prototype.tooltip;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for tooltip settings.
+ * @example anychart.core.gantt.Timeline.tooltip_get
+ * @return {!anychart.core.ui.Tooltip} Tooltip instance.
+ */
+anychart.core.gantt.Timeline.prototype.tooltip;
+
+/**
+ * Setter for tooltip.
+ * @detailed Sets tooltip settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable tooltip.</li>
+ *   <li><b>object</b> - sets tooltip settings.</li>
+ * </ul>
+ * @example anychart.core.gantt.Timeline.tooltip_set_asBool Disable/Enable tooltip
+ * @example anychart.core.gantt.Timeline.tooltip_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [true] Tooltip settings.
+ * @return {anychart.core.gantt.Timeline} Self instance for method chaining.
+ */
+anychart.core.gantt.Timeline.prototype.tooltip;
 

@@ -1,249 +1,558 @@
 /**
- * Tree data implementation.
- * @param {Array.<Object>=} opt_data - Raw data.
- * @param {anychart.enums.TreeFillingMethod=} opt_fillMethod - Fill method.
+ * Tree data model.
  * @constructor
  * @extends {anychart.core.Base}
  */
 anychart.data.Tree;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.getTraverser;
+//
+//----------------------------------------------------------------------------------------------------------------------
 /**
  * Creates tree data traverser.
- * @return {anychart.data.Traverser} - New traverser.
+ * @listing Sample for method getTraverser.
+ * var rawdata = [
+ * {name: 1, children: [
+ *     {name: 2, children: [
+ *         {name: 3},
+ *         {name: 4, children: [
+ *             {name: 5},
+ *             {name: 6}
+ *         ]}
+ *     ]},
+ *     {name: 7, children: [
+ *         {name: 8}
+ *     ]}
+ * ]}
+ * ];
+ * var treeData = anychart.data.tree(rawdata, anychart.enums.TreeFillingMethod.TREE);
+ * treeData.getTraverser(); // creates traverser
+ * @return {anychart.data.Traverser} An instance of class for method chaining.
  */
 anychart.data.Tree.prototype.getTraverser;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.addData;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Adds a data.
- * @param {Array.<Object>} data - Raw data.
- * @param {(anychart.enums.TreeFillingMethod|string)=} opt_fillingMethod - Filling method.
- * @return {anychart.data.Tree} - Itself for method chaining.
+ * @example anychart.data.Tree.addData_add_asString Using string for second parameter
+ * @example anychart.data.Tree.addData_add_asEnum Using enum for second parameter
+ * @param {Array.<Object>} data Raw data.
+ * @param {(anychart.enums.TreeFillingMethod|string)=} opt_fillingMethod Filling method.
+ * @return {anychart.data.Tree} Self instance for method chaining.
  */
 anychart.data.Tree.prototype.addData;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.createIndexOn;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Creates an index on a specified field.
- * It can't be indexed by 'parent' or 'children' fields because these fields are not available by treeItem.get(field); (@see createComparisonFunction).
- * @param {string} field - Field name.
- * @return {anychart.data.Tree} - Itself for method chaining.
+ * Creates an index on a specified field.</br>
+ * It can't be indexed by 'parent' or 'children' fields because these fields are not available by treeItem.get(field);.
+ * @listing Sample for method createIndexOn.
+ * var rawdata = [
+ * {name: 1, children: [
+ *     {name: 2, children: [
+ *         {name: 3},
+ *         {name: 4, children: [
+ *             {name: 5},
+ *             {name: 6}
+ *         ]}
+ *     ]},
+ *     {name: 7, children: [
+ *         {name: 8}
+ *     ]}
+ * ]}
+ * ];
+ * var treeData = anychart.data.tree(rawdata, anychart.enums.TreeFillingMethod.TREE);
+ * treeData.createIndexOn('name'); // creates index
+ * treeData.search('name', 5);
+ * @param {string} field Field name.
+ * @return {anychart.data.Tree} Self instance for method chaining.
  */
 anychart.data.Tree.prototype.createIndexOn;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.removeIndexOn;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Removes index on a specified field.
- * @param {string} field - Field name.
- * @return {anychart.data.Tree} - Itself for method chaining.
+ * @listing Sample for method removeIndexOn.
+ * var rawdata = [
+ * {name: 1, children: [
+ *     {name: 2, children: [
+ *         {name: 3},
+ *         {name: 4, children: [
+ *             {name: 5},
+ *             {name: 6}
+ *         ]}
+ *     ]},
+ *     {name: 7, children: [
+ *         {name: 8}
+ *     ]}
+ * ]}
+ * ];
+ * var treeData = anychart.data.tree(rawdata, anychart.enums.TreeFillingMethod.TREE);
+ * treeData.createIndexOn('name');
+ * treeData.search('name', 5);
+ * treeData.removeIndexOn('name'); // removes index
+ * @param {string} field Field name.
+ * @return {anychart.data.Tree} Self instance for method chaining.
  */
 anychart.data.Tree.prototype.removeIndexOn;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.search;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Performs a data search. Returns null of nothing is found, tree data item if here's a single result and array of
- * tree data items if here are multiple matches.
- *
- * @param {string} soughtField - Field for search. Literally means the name of field of data item.
- * @param {(string|number|boolean|function(anychart.data.Tree.DataItem, anychart.data.Tree.DataItem):number|
- * function(anychart.data.Tree.DataItem, number, Array.<anychart.data.Tree.DataItem>):number)} valueOrEvaluator -
- *  Sought value or evaluator function. Evaluator function that receives 3 arguments (the element, the index and the array).
- *  Should return a negative number, zero, or a positive number depending on whether the desired index is before, at, or
- *  after the element passed to it.
- * @param {(function(anychart.data.Tree.DataItem, anychart.data.Tree.DataItem):number|Object)=} opt_comparisonFnOrEvaluatorContext -
- *  Custom comparison function or evaluator context. Optional comparison function by which the array is ordered. Should
- *  take 2 arguments to compare, and return a negative number, zero, or a positive number depending on whether the
- *  first argument is less than, equal to, or greater than the second.
+ * Performs a data search.
+ * @detailed Returns null of nothing is found, tree data item if here's a single result and array of
+ * tree data items if here are multiple matches.</br>
+ * <b>Note:</b>: Search tree without indexing for certain key is inefficiently.
+ * @example anychart.data.Tree.search._asFuncComp
+ * @param {string} soughtField Field for search. Literally means the name of field of data item.
+ * @param {(string|number|boolean)} value Sought value.
+ * @param {(function(*,*):number)=} opt_comparisonFn Comparison function.
  * @return {(anychart.data.Tree.DataItem|Array.<anychart.data.Tree.DataItem>|null)} - Found tree data item or null or array of found tree data items.
  */
 anychart.data.Tree.prototype.search;
 
 /**
- * Performs a data search. Actually does the same as (@see search) but result is always an array.
- *
+ * Performs a data search.
+ * @detailed Returns null of nothing is found, tree data item if here's a single result and array of
+ * tree data items if here are multiple matches.</br>
+ * <b>Note:</b>: Search tree without indexing for certain key is inefficiently.
+ * @example anychart.data.Tree.search._asFuncEval
  * @param {string} soughtField - Field for search. Literally means the name of field of data item.
- * @param {(string|number|boolean|function(anychart.data.Tree.DataItem, anychart.data.Tree.DataItem):number|
- * function(anychart.data.Tree.DataItem, number, Array.<anychart.data.Tree.DataItem>):number)} valueOrEvaluator -
- *  Sought value or evaluator function. Evaluator function that receives 3 arguments (the element, the index and the array).
- *  Should return a negative number, zero, or a positive number depending on whether the desired index is before, at, or
- *  after the element passed to it.
- * @param {(function(anychart.data.Tree.DataItem, anychart.data.Tree.DataItem):number|Object)=} opt_comparisonFnOrEvaluatorContext -
- *  Custom comparison function or evaluator context. Optional comparison function by which the array is ordered. Should
- *  take 2 arguments to compare, and return a negative number, zero, or a positive number depending on whether the
- *  first argument is less than, equal to, or greater than the second.
- * @return {Array.<anychart.data.Tree.DataItem>} - Array of found tree data items.
+ * @param {function(anychart.data.Tree.DataItem, number, Array.<anychart.data.Tree.DataItem>):number} evaluator Evaluator function.
+ * @param {Object=} evaluatorContext Evaluator context.
+ * @return {(anychart.data.Tree.DataItem|Array.<anychart.data.Tree.DataItem>|null)} - Found tree data item or null or array of found tree data items.
+ */
+anychart.data.Tree.prototype.search;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.searchItems;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Performs a data search. Actually does the same as (@link anychart.data.Tree#search) but result is always an array.
+ * @example anychart.data.Tree.searchItems_asFuncComp
+ * @param {string} soughtField - Field for search. Literally means the name of field of data item.
+ * @param {(string|number|boolean)} value Sought value
+ * @param {(function(*,*):number)=} opt_comparisonFn Comparison function.
+ * @return {Array.<anychart.data.Tree.DataItem>} Array of found tree data items.
  */
 anychart.data.Tree.prototype.searchItems;
 
 /**
- * Adds a new root element.
- * @param {Object} child - Child object.
- * @return {anychart.data.Tree.DataItem} - Itself for method chaining.
+ * Performs a data search. Actually does the same as (@link anychart.data.Tree#search) but result is always an array.
+ * @example anychart.data.Tree.searchItems_asFuncEval
+ * @param {string} soughtField - Field for search. Literally means the name of field of data item.
+ * @param {(function(anychart.data.Tree.DataItem, number, Array.<anychart.data.Tree.DataItem>):number)} evaluator Evaluator function.
+ * @param {Object=} evaluatorContext Evaluator context.
+ * @return {Array.<anychart.data.Tree.DataItem>} Array of found tree data items.
+ */
+anychart.data.Tree.prototype.searchItems;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.addChild;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds a new root element and return it.
+ * @example anychart.data.Tree.addChild
+ * @param {Object} child Child object.
+ * @return {anychart.data.Tree.DataItem} An instance of class for method chaining.
  */
 anychart.data.Tree.prototype.addChild;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.addChildAt;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Inserts a new root element into a specified position.
- * @param {(Object|anychart.data.Tree.DataItem)} child - Child object.
- * @param {number} index - Position.
- * @return {anychart.data.Tree.DataItem} - Itself for method chaining.
+ * Inserts a new root element into a specified position by index and return it.
+ * @example anychart.data.Tree.addChildAt
+ * @param {(Object|anychart.data.Tree.DataItem)} child Child object.
+ * @param {number} index Position.
+ * @return {anychart.data.Tree.DataItem} An instance of class for method chaining.
  */
 anychart.data.Tree.prototype.addChildAt;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.getChildren;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Returns a copy of roots array.
- * @return {Array.<anychart.data.Tree.DataItem>} - Copy of roots array.
+ * @example anychart.data.Tree.getChildren
+ * @return {Array.<anychart.data.Tree.DataItem>} Copy of roots array.
  */
 anychart.data.Tree.prototype.getChildren;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.numChildren;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Returns a length of roots array.
- * @return {number} - Number of roots.
+ * @example anychart.data.Tree.numChildren
+ * @return {number} Number of roots.
  */
 anychart.data.Tree.prototype.numChildren;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.getChildAt;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Gets the child by index.
- * @param {number} index - Index of child to find.
- * @return {(anychart.data.Tree.DataItem|undefined)} - Child into a specified position.
+ * @example anychart.data.Tree.getChildAt
+ * @param {number} index Index of child to find.
+ * @return {(anychart.data.Tree.DataItem|undefined)} Child into a specified position.
  */
 anychart.data.Tree.prototype.getChildAt;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.removeChild;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Removes tree's root data item.
- * @param {anychart.data.Tree.DataItem} child - Child to be removed.
- * @return {anychart.data.Tree.DataItem} - Itself for method chaining.
+ * @example anychart.data.Tree.removeChild
+ * @param {anychart.data.Tree.DataItem} child Child for removal.
+ * @return {anychart.data.Tree.DataItem} An instance of class for method chaining.
  */
 anychart.data.Tree.prototype.removeChild;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.indexOfChild;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Gets index of child in a roots array.
- * @param {anychart.data.Tree.DataItem} child - Sought child.
- * @return {number} - Index of child.
+ * @example anychart.data.Tree.indexOfChild
+ * @param {anychart.data.Tree.DataItem} child Child for getting of index.
+ * @return {number} Index of child.
  */
 anychart.data.Tree.prototype.indexOfChild;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.removeChildAt;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Removes child at specified position.
- * @param {number} index - Index of item to be removed.
- * @return {?anychart.data.Tree.DataItem} - Removed item or null if item is not found.
+ * @example anychart.data.Tree.removeChildAt
+ * @param {number} index - Index of data item for removal.
+ * @return {?anychart.data.Tree.DataItem} Removed item or null if item is not found.
  */
 anychart.data.Tree.prototype.removeChildAt;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.removeChildren;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Removes children.
- * @return {anychart.data.Tree} - Itself for method chaining.
+ * Removes children of tree.
+ * @example anychart.data.Tree.removeChildren
+ * @return {anychart.data.Tree} Self instance for method chaining.
  */
 anychart.data.Tree.prototype.removeChildren;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Tree data item implementation.
- * @param {anychart.data.Tree} parentTree - Tree that contains a data item. Used as signal dispatcher in this case.
- * @param {Object} rawData - Data object.
+ * Tree data item.
  * @constructor
  */
 anychart.data.Tree.DataItem;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem.prototype.get;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Gets a value from data by key.
- * @param {string} key - Key.
- * @return {*} - Value.
+ * @example anychart.data.Tree.DataItem.get
+ * @param {string} key Key.
+ * @return {*} value Value.
  */
 anychart.data.Tree.DataItem.prototype.get;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem.prototype.set;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Sets key-value pair to the data.
- * @param {string} key - Key.
- * @param {*} value - Value.
- * @return {anychart.data.Tree.DataItem} - Itself for method chaining.
+ * @example anychart.data.Tree.DataItem.set
+ * @param {string} key Key.
+ * @param {*} value Value.
+ * @return {anychart.data.Tree.DataItem} Self instance for method chaining.
  */
 anychart.data.Tree.DataItem.prototype.set;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem.prototype.meta;
+//
+//----------------------------------------------------------------------------------------------------------------------
 /**
- * Gets/sets a meta data.
- * @param {string} key - Key.
- * @param {*=} opt_value - Value.
- * @return {*} - Value or itself for method chaining.
+ * Getter for a meta data.
+ * @example anychart.data.Tree.DataItem.meta_get
+ * @param {string} key Key.
+ * @return {*} Value.
  */
 anychart.data.Tree.DataItem.prototype.meta;
 
 /**
+ * Setter for a meta data.
+ * @example anychart.data.Tree.DataItem.meta_set
+ * @param {string} key Key.
+ * @param {*=} opt_value Value.
+ * @return {*} Value.
+ */
+anychart.data.Tree.DataItem.prototype.meta;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem.prototype.getParent;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
  * Gets a data item's parent.
- * @return {anychart.data.Tree.DataItem} - Parent.
+ * @example anychart.data.Tree.DataItem.getParent
+ * @return {anychart.data.Tree.DataItem} Parent.
  */
 anychart.data.Tree.DataItem.prototype.getParent;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem.prototype.addChild;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Adds a child.
- * @param {(Object|anychart.data.Tree.DataItem)} child - Child to be added.
- * @return {anychart.data.Tree.DataItem} - Itself for method chaining.
+ * @example anychart.data.Tree.DataItem.addChild
+ * @param {(Object|anychart.data.Tree.DataItem)} child Child for add.
+ * @return {anychart.data.Tree.DataItem} Self instance for method chaining.
  */
 anychart.data.Tree.DataItem.prototype.addChild;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem.prototype.addChildAt;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Inserts a child into a specified position.
+ * Inserts a child into a specified position.</br>
  * Please make sure that child has not inner cycles to avoid stack overflow exception.
- *
- * @param {(Object|anychart.data.Tree.DataItem)} child - Child to be added.
- * @param {number} index - Position.
- * @return {anychart.data.Tree.DataItem} - Itself for method chaining.
+ * @example anychart.data.Tree.DataItem.addChildAt
+ * @param {(Object|anychart.data.Tree.DataItem)} child Child for add.
+ * @param {number} index Position for add child.
+ * @return {anychart.data.Tree.DataItem} Self instance for method chaining.
  */
 anychart.data.Tree.DataItem.prototype.addChildAt;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem.prototype.getChildren;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Returns a copy of children array of current data item.
- * @return {Array.<anychart.data.Tree.DataItem>} - Copy of children array.
+ * @example anychart.data.Tree.DataItem.getChildren
+ * @return {Array.<anychart.data.Tree.DataItem>} Copy of children array.
  */
 anychart.data.Tree.DataItem.prototype.getChildren;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem.prototype.numChildren;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Returns a length of children array.
- * @return {number} - Number of children.
+ * @example anychart.data.Tree.DataItem.numChildren
+ * @return {number} Number of children.
  */
 anychart.data.Tree.DataItem.prototype.numChildren;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem.prototype.getChildAt;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Gets the child by index.
- * @param {number} index - Index of child to find.
- * @return {(anychart.data.Tree.DataItem|undefined)} - Child into a specified position.
+ * @example anychart.data.Tree.DataItem.getChildAt
+ * @param {number} index Index of child to find.
+ * @return {(anychart.data.Tree.DataItem|undefined)} Child into a specified position.
  */
 anychart.data.Tree.DataItem.prototype.getChildAt;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem.prototype.removeChild;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Removes data item's child.
- * @param {anychart.data.Tree.DataItem} child - Child to be removed.
- * @return {anychart.data.Tree.DataItem} - Removed element or null.
+ * @example anychart.data.Tree.DataItem.removeChild
+ * @param {anychart.data.Tree.DataItem} child Child for removal.
+ * @return {?anychart.data.Tree.DataItem} Removed element or null.
  */
 anychart.data.Tree.DataItem.prototype.removeChild;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem.prototype.removeChildAt;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Removes child at specified position.
- * @param {number} index - Index of item to be removed.
- * @return {?anychart.data.Tree.DataItem} - Removed item or null if item is not found.
+ * @example anychart.data.Tree.DataItem.removeChildAt
+ * @param {number} index Index of item for removal.
+ * @return {?anychart.data.Tree.DataItem} Removed item or null if item is not found.
  */
 anychart.data.Tree.DataItem.prototype.removeChildAt;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem.prototype.removeChildren;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Removes children.
- * @return {anychart.data.Tree.DataItem} - Itself for method chaining.
+ * @example anychart.data.Tree.DataItem.removeChildren
+ * @return {anychart.data.Tree.DataItem} Self instance for method chaining.
  */
 anychart.data.Tree.DataItem.prototype.removeChildren;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem.prototype.indexOfChild;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Gets index of child in a children array.
- * @param {anychart.data.Tree.DataItem} child - Sought child.
- * @return {number} - Index of child.
+ * @example anychart.data.Tree.DataItem.indexOfChild
+ * @param {anychart.data.Tree.DataItem} child Child for getting of index.
+ * @return {number} Index of child.
  */
 anychart.data.Tree.DataItem.prototype.indexOfChild;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.DataItem.prototype.remove;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Current item will be removed from parent's children and becomes an orphan.
+ * Removes data item.
+ * @detailed Current item will be removed from parent's children and becomes an orphan.</br>
  * If child is a root element, it will be removed from tree.
- * @return {anychart.data.Tree.DataItem} - Itself for method chaining.
+ * @example anychart.data.Tree.DataItem.removeChild
+ * @return {anychart.data.Tree.DataItem} Self instance for method chaining.
  */
 anychart.data.Tree.DataItem.prototype.remove;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.tree;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Constructor function
- * @param {Array.<Object>=} opt_data - Raw data.
- * @param {anychart.enums.TreeFillingMethod=} opt_fillMethod - Fill method.
- * @return {!anychart.data.Tree}
+ * Constructor function.
+ * @example anychart.data.tree
+ * @param {Array.<Object>=} opt_data Raw data.
+ * @param {anychart.enums.TreeFillingMethod=} opt_fillMethod Fill method.
+ * @return {anychart.data.Tree} Self instance for method chaining.
  */
 anychart.data.tree;
 

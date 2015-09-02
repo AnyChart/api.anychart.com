@@ -7,7 +7,7 @@
  * Data fields can of any type and they way you read them depends on mapping only:
  * {@link anychart.data.Set#mapAs}. Sample mappings are shown in code samples 3, 4 and 5.<br/>
  * <b>Note:</b> To create an instance of this class use method {@link anychart.data.set}.
- * @example <c>Sample 1. Data notion.</c><t>listingOnly</t>
+ * @listing Sample 1. Data notion.
  * // Col1 Col2 Col3
  *  [
  *   [110, 112, 114], // row1
@@ -22,7 +22,7 @@
  *    314, // row3
  *    414  // row4
  *  ]
- * @example <c>Sample 2. Sample data.</c><t>listingOnly</t>
+ * @listing Sample 2. Sample data.
  * // An array with numbers, strings and functions:
  *  anychart.data.set([
  *    20,
@@ -55,7 +55,7 @@
  *    22,
  *    function (params) { do_smth; return smth; }
  *  ]);
- * @example <c>Sample 3. Default data mapping. Numbers.</c><t>listingOnly</t>
+ * @listing Sample 3. Default data mapping. Numbers.
  * // 'x' is an index of an element and 'value' is its value.
  *   // Raw data         Mapped as
  *   [
@@ -65,7 +65,7 @@
  *    function(){ return 1;}    {x: 3, value: 1}
  *   ]
  *   // so this will not work with OHLC
- * @example <c>Sample 4. Default data mapping. Arrays.</c><t>listingOnly</t>
+ * @listing Sample 4. Default data mapping. Arrays.
  * // 'x' is an element with the index of 0,
  * // 'value' is an element with the index of 1,
  * // 'size' is an element with the index of 2.
@@ -86,7 +86,7 @@
  *     [
  *        [11, 21, 34, 45]         {open: 11, high: 21, low: 34, close: 45}
  *     ]
- * @example <c>Sample 5. Default data mapping. Objects.</c><t>listingOnly</t>
+ * @listing Sample 5. Default data mapping. Objects.
  * // In objects everything corresponds to the names of properties, but you can define several mappings and a priority.
  * // E.g.: 'x' can be mapped to 'x' and 'value' can be looked for
  * // in 'value', then 'y', then in 'close'.
@@ -123,7 +123,7 @@ anychart.data.Set.prototype.data;
 
 /**
  * Setter for Set data.
- * @example <t>listingOnly</t>
+ * @listing
  * // as simple arrray
  * dataSet.data([20, 7, 10, 14]);
  * // as multiple arrays
@@ -145,17 +145,9 @@ anychart.data.Set.prototype.data;
  *      'Point 1, 10; Point 2, 14; Point 3, 16',
  *      {rowsSeparator: ';', columnsSeparator: ','}
  * );
- * @example <t>lineChart</t>
- * var dataSet = anychart.data.set();
- * dataSet.data([
- *    {name: 'Point 1', value: 10},
- *    {name: 'Point 2', value: 7, fill: 'red 0.3'},
- *    {name: 'Point 3', value: 20},
- *    {name: 'Point 4', value: 14}
- * ]);
- * chart.line(dataSet);
+ * @example anychart.data.Set.data
  * @param {Array=} opt_value A value to set.
- * @return {!anychart.data.Set} The instance of {@link anychart.data.Set} class for method chaining.
+ * @return {anychart.data.Set} Self instance for method chaining.
  */
 anychart.data.Set.prototype.data;
 
@@ -163,7 +155,7 @@ anychart.data.Set.prototype.data;
  * Defines data mapping.<br/>
  * You can define mappings for the different types of data (see samples).
  * Default mapping is shown in {@link anychart.data.Set} constructor samples.
- * @example <c>Custom data mapping.</c><t>listingOnly</t>
+ * @listing Custom data mapping.
  * // Simple mapping
  *  dataSet.mapAs({
  *    'value': [0],
@@ -204,22 +196,7 @@ anychart.data.Set.prototype.data;
  *    11,                       {close: 4, value: 11}
  *    function(){ return 99;}   {close: 5, value: 99}
  *   ]
- * @example
- * var dataSet = anychart.data.set([
- *      [11, 18, 1, 'red 0.5', 'orange'],
- *      [21, 15, 2, 'green 0.5', 'blue'],
- *      [14, 16, 3, 'white', 'black'],
- *      {value: 17, x: 4, fill: 'yellow'}
- * ]);
- * var chart = anychart.bar();
- * chart.column(
- *      dataSet.mapAs({'value': [0], 'x': [2], 'fill': [3]})
- * );
- * chart.column(
- *      dataSet.mapAs({'value': [1], 'x': [2], 'fill': [4]})
- * );
- * chart.yScale().minimum(0);
- * chart.container(stage).draw();
+ * @example anychart.data.Set.mapAs
  * @param {!(Object.<Array.<number>>)=} opt_arrayMapping [{
  *   'x': &#91;0&#93;,
  *   'value': &#91;1, 0&#93;,
@@ -235,14 +212,14 @@ anychart.data.Set.prototype.data;
  *  if a row is a string, number or a function. Does not work in cases when a row is an object.
  * @param {!(Array.<string>)=} opt_indexProps [&#91;'x'&#93;] The names of the fields to be mapped to the current index
  *  if other options failed.
- * @return {!anychart.data.Mapping} The instance of {@link anychart.data.Mapping} class for method chaining.
+ * @return {anychart.data.Mapping} An instance of class for method chaining.
  */
 anychart.data.Set.prototype.mapAs;
 
 /**
  * Gets the full row of the set by the index.<br/>
  * <b>Note:</b> If there is no row for the index - returns <b>undefined</b>.
- * @example <t>listingOnly</t>
+ * @listing
  * // Data
  *  [
  *    [1, 2, 4, 7],
@@ -261,7 +238,7 @@ anychart.data.Set.prototype.row;
 /**
  * Sets the row in the set by the index.<br/>
  * <b>Note:</b> Replaces the current value, previous values is returned but it is lost completely after that!
- * @example <t>listingOnly</t>
+ * @listing
  * // Data
  *  [
  *    [1, 2, 4, 7],
@@ -277,15 +254,7 @@ anychart.data.Set.prototype.row;
  *    [2, 2, 2, 2],
  *    {'low': 4, 'high': 11}
  *  ]
- * @example <t>lineChart</t>
- * var dataSet = anychart.data.set([
- *     ['Point A', 231],
- *     ['Point B', 131],
- *     ['Point C', 212],
- *     ['Point D', 94]
- * ]);
- * dataSet.row(2, ['Point E', 10]);
- * chart.line(dataSet);
+ * @example anychart.data.Set.row
  * @param {number} rowIndex The index of the row to fetch.
  * @param {*=} opt_value The value to set.
  * @return {*} The previous value of the row.
@@ -294,91 +263,43 @@ anychart.data.Set.prototype.row;
 
 /**
  * Appends new rows to the set. Each argument is a row that will be appended to the Set.
- * @example
- * var chart = anychart.column();
- * var data = anychart.data.set([
- *     ['A1', 8],
- *     ['A2', 11],
- *     ['A3', 12],
- *     ['A4', 9]
- * ]);
- * chart.column(data);
- * chart.container(stage).draw();
- * // You can use differnet data formats.
- * data.append(
- *   {x: 'B1', value: 14},
- *   ['B2', 16]
- * );
+ * @example anychart.data.Set.append
  * @param {...*} var_args Rows to append.
- * @return {!anychart.data.Set} {@link anychart.data.Set} instance for method chaining.
+ * @return {anychart.data.Set} Self instance for method chaining.
  */
 anychart.data.Set.prototype.append;
 
 /**
  * Inserts the row to the set at the specified position.
- * @example
- * var data = anychart.data.set([
- *     ['A1', 8],
- *     ['A2', 11],
- *     ['A3', 12],
- *     ['A4', 9]
- * ]);
- * chart = anychart.column(data);
- * chart.container(stage).draw();
- * data.insert({x: 'B1', value: 14, fill: 'grey'}, 2);
+ * @example anychart.data.Set.insert
  * @param {*} row Row to insert.
  * @param {number=} opt_index [0] The index at which to insert the object. A negative index is counted from the end of an array.
- * @return {!anychart.data.Set} {@link anychart.data.Set} instance for method chaining.
+ * @return {anychart.data.Set} Self instance for method chaining.
  */
 anychart.data.Set.prototype.insert;
 
 /**
  * Removes the row by index.
- * @example
- * var chart = anychart.columnChart();
- * var data = anychart.data.set([
- *     ['A1', 8],
- *     ['A2', 11],
- *     ['A3', 12],
- *     ['A4', 9]
- * ]);
- * chart.column(data);
- * chart.container(stage).draw();
- * data.remove(2); // remove 'A3' point.
+ * @example anychart.data.Set.remove
  * @param {number} index Index of the row to remove.
- * @return {!anychart.data.Set} {@link anychart.data.Set} instance for method chaining.
+ * @return {anychart.data.Set} Self instance for method chaining.
  */
 anychart.data.Set.prototype.remove;
 
 /**
  * Returns the number of the rows in the current data set.
- * @example <t>lineChart</t>
- *  var data = anychart.data.set([
- *     ['Point A', 231],
- *     ['Point B', 131],
- *     ['Point C', 212],
- *     ['Point D', 94]
- * ]);
- * chart.title().text("rows count: " + data.getRowsCount());
- * chart.line(data)
+ * @example anychart.data.Set.getRowsCount
  * @return {number} The number of the rows in the set.
  */
 anychart.data.Set.prototype.getRowsCount;
 
 /**
  * Return instance of class {@link anychart.data.Set}.
- * @example <t>lineChart</t>
- * var data = anychart.data.set([
- *     ['Point A', 231],
- *     ['Point B', 131],
- *     ['Point C', 212],
- *     ['Point D', 94]
- * ]);
- * chart.line(data);
+ * @example anychart.data.set
  * @param {(Array|string)=} opt_data Data set raw data can be set here.
  * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
- * @return {!anychart.data.Set} The instance of {@link anychart.data.Set} class for method chaining.
+ * @return {anychart.data.Set} Self instance for method chaining.
  */
 anychart.data.set;
 

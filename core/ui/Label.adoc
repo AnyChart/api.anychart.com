@@ -9,13 +9,6 @@
  *   <li>{@link anychart.core.ui.Label#offsetX} and {@link anychart.core.ui.Label#offsetY}</li>
  *   <li>{@link anychart.core.ui.Label#parentBounds}</li>
  * </ul>
- * @example <c>Creating an autonomous label.</c><t>simple-h100</t>
- * anychart.ui.label()
- *     .text('My custom Label')
- *     .fontSize(27)
- *     .background(null)
- *     .container(stage)
- *     .draw();
  * @constructor
  * @extends {anychart.core.Text}
  */
@@ -29,14 +22,9 @@ anychart.core.ui.Label.prototype.text;
 
 /**
  * Sets text content for a label.
- * @example <t>simple-h100</t>
- * anychart.ui.label()
- *      .text('My custom label Text')
- *      .container(stage)
- *      .background(null)
- *      .draw();
+ * @example anychart.core.ui.Label.text
  * @param {string=} opt_value ['Label text'] Value to set.
- * @return {!anychart.core.ui.Label} {@link anychart.core.ui.Label} instance for method chaining.
+ * @return {anychart.core.ui.Label} Self instance for method chaining.
  */
 anychart.core.ui.Label.prototype.text;
 
@@ -49,19 +37,9 @@ anychart.core.ui.Label.prototype.background;
 
 /**
  * Setter for Label background settings.
- * @example <t>simple-h100</t>
- * var label = anychart.ui.label()
- *      .text('Label backgruond sample')
- *      .fontSize(12)
- *      .padding(10);
- * label.background()
- *          .fill(['rgb(255,250,250)', 'rgb(205,250,250)', 'rgb(255,250,250)'])
- *          .stroke('1 lightgrey')
- *          .cornerType('round')
- *          .corners(10);
- * label.container(stage).draw();
+ * @example anychart.core.ui.Label.background
  * @param {(string|Object|null|boolean)=} opt_value Value to set.
- * @return {!anychart.core.ui.Label} {@link anychart.core.ui.Label} instance for method chaining.
+ * @return {anychart.core.ui.Label} Self instance for method chaining.
  */
 anychart.core.ui.Label.prototype.background;
 
@@ -75,13 +53,13 @@ anychart.core.ui.Label.prototype.padding;
 /**
  * Setter for label padding in pixels by one value.<br/>
  * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_value [null] Value to set.
- * @return {!anychart.core.ui.Label} {@link anychart.core.ui.Label} instance for method chaining.
+ * @return {anychart.core.ui.Label} Self instance for method chaining.
  */
 anychart.core.ui.Label.prototype.padding;
 
 /**
  * Setter for label padding in pixels.<br/>
- * @example <t>listingOnly</t>
+ * @listing
  * // 1) top and bottom 10px, left and right 15px
  * label.padding(10, '15px');
  * // 2) top 10px, left and right 15px, bottom 5px
@@ -92,7 +70,7 @@ anychart.core.ui.Label.prototype.padding;
  * @param {(string|number)=} opt_value2 Right or right-left space.
  * @param {(string|number)=} opt_value3 Bottom space.
  * @param {(string|number)=} opt_value4 Left space.
- * @return {!anychart.core.ui.Label} {@link anychart.core.ui.Label} instance for method chaining.
+ * @return {anychart.core.ui.Label} Self instance for method chaining.
  */
 anychart.core.ui.Label.prototype.padding;
 
@@ -105,14 +83,9 @@ anychart.core.ui.Label.prototype.width;
 /**
  * Setter for label width.<br/>
  * <b>Note:</b> if <b>null</b> is passed, width is calculated automatically.
- * @example <t>simple-h100</t>
- * label = anychart.ui.label()
- *      .width(200);
- * // mark the area occupied by the label with a blue frame
- * label.background().enabled(true).fill('none').stroke('1 #00F');
- * label.container(stage).draw();
+ * @example anychart.core.ui.Label.width
  * @param {(number|string|null)=} opt_value [null] Value to set.
- * @return {!anychart.core.ui.Label} {@link anychart.core.ui.Label} instance for method chaining.
+ * @return {anychart.core.ui.Label} Self instance for method chaining.
  */
 anychart.core.ui.Label.prototype.width;
 
@@ -125,14 +98,9 @@ anychart.core.ui.Label.prototype.height;
 /**
  * Setter for label height.<br/>
  * <b>Note:</b> if <b>null</b> is passed, height is calculated automatically.
- * @example <t>simple-h100</t>
- * label = anychart.ui.label()
- *      .height(90);
- * // mark the area occupied by the label with a blue frame
- * label.background().enabled(true).fill('none').stroke('1 #00F');
- * label.container(stage).draw();
+ * @example anychart.core.ui.Label.height
  * @param {(number|string|null)=} opt_value [null] Value to set.
- * @return {!anychart.core.ui.Label} {@link anychart.core.ui.Label} instance for method chaining.
+ * @return {anychart.core.ui.Label} Self instance for method chaining.
  */
 anychart.core.ui.Label.prototype.height;
 
@@ -152,27 +120,7 @@ anychart.core.ui.Label.prototype.anchor;
 /**
  * Setter for label anchor settings.<br/>
  * <b>Note:</b> merges label positioning point ({@link anychart.core.ui.Label#position}) with an anchor.
- * @example <t>simple-h100</t>
- * // to the left
- * var parentBounds = stage.rect(5, 5, 100, 70).stroke('rgba(0,0,200,.4)');
- * var label = anychart.ui.label()
- *     .padding(5)
- *     .position(anychart.enums.Position.RIGHT_BOTTOM)
- *     .parentBounds(parentBounds.getBounds())
- *     .anchor(anychart.enums.Anchor.RIGHT_BOTTOM);
- * label.background().enabled(true).fill('none').stroke('1 #aaa');
- * label.container(stage).draw();
- * stage.circle(105, 75, 2).stroke('3 red');
- * // to the right
- * parentBounds = stage.rect(120, 5, 100, 70).stroke('rgba(0,0,200,.4)');
- * label = anychart.ui.label()
- *     .padding(5)
- *     .position(anychart.enums.Anchor.RIGHT_BOTTOM)
- *     .parentBounds(parentBounds.getBounds())
- *     .anchor(anychart.enums.Anchor.CENTER);
- * label.background().enabled(true).fill('none').stroke('1 #aaa');
- * label.container(stage).draw();
- * stage.circle(220, 75, 2).stroke('3 red');
+ * @example anychart.core.ui.Label.anchor
  * @illustrationDesc
  * parentBounds are markerd with blue<br/>
  * Label position in Bottom Right.<br/>
@@ -180,7 +128,7 @@ anychart.core.ui.Label.prototype.anchor;
  * Left: anchor is Bottom Right<br/>
  * Right: anchor in Center<br/>
  * @param {(anychart.enums.Anchor|string)=} opt_value [{@link anychart.enums.Anchor}.LEFT_TOP] Value to set.
- * @return {!anychart.core.ui.Label} {@link anychart.core.ui.Label} instance for method chaining.
+ * @return {anychart.core.ui.Label} Self instance for method chaining.
  */
 anychart.core.ui.Label.prototype.anchor;
 
@@ -261,18 +209,9 @@ anychart.core.ui.Label.prototype.offsetX;
  *     .lineTo(pathBounds.left + pathBounds.width, pathBounds.top + pathBounds.height);
  * @illustrationDesc
  * Arrows show offsets layout.
- * @example <t>simple-h100</t>
- * var parentBounds = stage.rect(5, 5, 100, 70).stroke('rgba(0,0,200,.4)');
- * var label = anychart.ui.label()
- *     .padding(5)
- *     .parentBounds(parentBounds.getBounds())
- *     .offsetX(10)
- *     .offsetY(5);
- * label.background().enabled(true).fill('none').stroke('1 #aaa');
- * label.container(stage).draw();
- * stage.circle(5, 5, 2).stroke('3 red');
+ * @example anychart.core.ui.Label.offsetX
  * @param {(number|string)=} opt_value [0] Value to set.
- * @return {!anychart.core.ui.Label} {@link anychart.core.ui.Label} instance for method chaining.
+ * @return {anychart.core.ui.Label} Self instance for method chaining.
  */
 anychart.core.ui.Label.prototype.offsetX;
 
@@ -285,18 +224,9 @@ anychart.core.ui.Label.prototype.offsetY;
 /**
  * Setter for label offsetY settings.
  * See illustration in {@link anychart.core.ui.Label#offsetX}.
- * @example <t>simple-h100</t>
- * var parentBounds = stage.rect(5, 5, 100, 70).stroke('rgba(0,0,200,.4)');
- * var label = anychart.ui.label()
- *     .padding(5)
- *     .parentBounds(parentBounds.getBounds())
- *     .offsetX(10)
- *     .offsetY(5);
- * label.background().enabled(true).fill('none').stroke('1 #aaa');
- * label.container(stage).draw();
- * stage.circle(5, 5, 2).stroke('3 red');
+ * @example anychart.core.ui.Label.offsetY
  * @param {(number|string)=} opt_value [0] Value to set.
- * @return {!anychart.core.ui.Label} {@link anychart.core.ui.Label} instance for method chaining.
+ * @return {anychart.core.ui.Label} Self instance for method chaining.
  */
 anychart.core.ui.Label.prototype.offsetY;
 
@@ -321,7 +251,7 @@ anychart.core.ui.Label.prototype.position;
  * Blue area is an area set in {@link anychart.core.ui.Label#parentBounds}.<br/>
  * Red dot marks the <i>CENTER</i> of this area.
  * @param {(anychart.enums.Position|string)=} opt_value [{@link anychart.enums.Position}.LEFT_TOP] Value to set.
- * @return {!anychart.core.ui.Label} {@link anychart.core.ui.Label} instance for method chaining.
+ * @return {anychart.core.ui.Label} Self instance for method chaining.
  */
 anychart.core.ui.Label.prototype.position;
 
@@ -335,7 +265,7 @@ anychart.core.ui.Label.prototype.minFontSize;
  * Sets font size setting for adjust text from.<br/>
  * <b>Note:</b> works only when adjusting is enabled. Look {@link anychart.core.ui.Label#adjustFontSize}.
  * @param {(number|string)=} opt_value Value to set.
- * @return {anychart.core.ui.Label} {@link anychart.core.ui.Label} instance for method chaining.
+ * @return {anychart.core.ui.Label} Self instance for method chaining.
  */
 anychart.core.ui.Label.prototype.minFontSize;
 
@@ -349,7 +279,7 @@ anychart.core.ui.Label.prototype.maxFontSize;
  * Sets font size setting for adjust text to.<br/>
  * <b>Note:</b> works only when adjusting is enabled. Look {@link anychart.core.ui.Label#adjustFontSize}.
  * @param {(number|string)=} opt_value Value to set.
- * @return {anychart.core.ui.Label} {@link anychart.core.ui.Label} instance for method chaining.
+ * @return {anychart.core.ui.Label} Self instance for method chaining.
  */
 anychart.core.ui.Label.prototype.maxFontSize;
 
@@ -373,33 +303,17 @@ anychart.core.ui.Label.prototype.adjustFontSize;
  * <b>Note:</b> Works only when {@link anychart.core.ui.Label#width} and {@link anychart.core.ui.Label#height} are set.<br/>
  * <b>Note: </b> {@link anychart.core.ui.Label#fontSize} does not work when adjusting is enabled.
  * @shortDescription Setter for the adjust font settings.
- * @example <t>listingOnly</t>
+ * @listing
  * label.adjustFontSize(false);
  * // the same
  * label.adjustFontSize(false, false);
  * // the same
  * label.adjustFontSize([false, false]);
- * @example <t>simple-h100</t>
- * // to the right
- * var rect;
- * rect = stage.rect(5, 5, 190, 90).fill('none').stroke('1 grey');
- * anychart.ui.label()
- *     .text('Not adjusted text')
- *     .parentBounds(rect.getBounds())
- *     .container(stage).draw();
- * // to the right
- * rect = stage.rect(205, 5, 190, 90).fill('none').stroke('1 grey');
- * anychart.ui.label()
- *     .text('Adjusted text')
- *     .adjustFontSize(true, false)
- *     .width('100%')
- *     .height('100%')
- *     .parentBounds(rect.getBounds())
- *     .container(stage).draw();
+ * @example anychart.core.ui.Label.adjustFontSize
  * @param {(boolean|Array.<boolean, boolean>|{width:boolean,height:boolean})=} opt_bothOrByWidth If only one param is set,
  *   its value goes for another too (see source code).
  * @param {boolean=} opt_byHeight Is font needs to be adjusted by height.
- * @return {!anychart.core.ui.Label} {@link anychart.core.ui.Label} instance for method chaining.
+ * @return {anychart.core.ui.Label} Self instance for method chaining.
  */
 anychart.core.ui.Label.prototype.adjustFontSize;
 

@@ -59,15 +59,7 @@ anychart.SignalEvent.prototype.targetNeedsRecalculation;
  * its key will be returned.<br/>
  * <b>Note</b> Notice that if the existing listener is one-off (added
  * using listenOnce), it will cease to be such after calling the listen() method.
- * @example <t>lineChart</t>
- * var line = chart.line([1, 4, 2, 6]);
- * var title = chart.title();
- * title.text('Click on line series.');
- * var counter = 0;
- * line.listen(anychart.enums.EventType.POINT_CLICK, function(e){
- *    counter++;
- *    title.text('You clicked ' + counter + ' times. Click again.');
- *  });
+ * @example anychart.core.Base.listen
  * @param {string|!goog.events.EventId.<EVENTOBJ>} type The event type id.
  * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener Callback
  *     method.
@@ -86,15 +78,7 @@ anychart.core.Base.prototype.listen;
  * <b>Note</b> In particular, if the handler is already registered using listen(), listenOnce()
  * <b>will not</b> make it one-off. Similarly, if a one-off listener already exists,
  * listenOnce will not change it (it wil remain one-off).
- * @example <t>lineChart</t>
- * var line = chart.line([1, 4, 2, 6]);
- * var title = chart.title();
- * title.text('Click on line series.');
- * var counter = 0;
- * line.listen(anychart.enums.EventType.POINT_CLICK, function(e){
- *    counter++;
- *    title.text('You can\'t click anymore.');
- *  });
+ * @example anychart.core.Base.listenOnce
  * @param {string|!goog.events.EventId.<EVENTOBJ>} type The event type id.
  * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener Callback
  *     method.
@@ -109,21 +93,7 @@ anychart.core.Base.prototype.listenOnce;
 
 /**
  * Removes a listener added using listen() or listenOnce() methods.
- * @example <t>lineChart</t>
- * var line = chart.line([1, 4, 2, 6]);
- * var title = chart.title();
- * title.text('Click on line series. You have 3 clicks.');
- * var counter = 0;
- * line.listen(anychart.enums.EventType.POINT_CLICK, customListener);
- * var counter = 3;
- * function customListener(e){
- *     counter--;
- *     title.text('Click on line series. You have ' + counter + ' clicks.');
- *     if (counter == 0) {
- *         line.unlisten(anychart.enums.EventType.POINT_CLICK, customListener);
- *         title.text('You have no more clicks');
- *     }
- * }
+ * @example anychart.core.Base.unlisten
  * @param {string|!goog.events.EventId.<EVENTOBJ>} type The event type id.
  * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener Callback
  *     method.
@@ -138,21 +108,7 @@ anychart.core.Base.prototype.unlisten;
 
 /**
  * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
- * @example <t>lineChart</t>
- * var line = chart.line([1, 4, 2, 6]);
- * var title = chart.title();
- * title.text('Click on line series. You have 3 clicks.');
- * var counter = 0;
- * var listenKey = line.listen(anychart.enums.EventType.POINT_CLICK, customListener);
- * var counter = 3;
- * function customListener(e){
- *     counter--;
- *     title.text('Click on line series. You have ' + counter + ' clicks.');
- *     if (counter == 0) {
- *         line.unlistenByKey(listenKey);
- *         title.text('You have no more clicks');
- *     }
- * }
+ * @example anychart.core.Base.unlistenByKey
  * @param {goog.events.ListenableKey} key The key returned by
  *     listen() or listenOnce().
  * @return {boolean} Whether any listener was removed.
@@ -161,21 +117,7 @@ anychart.core.Base.prototype.unlistenByKey;
 
 /**
  * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
- * @example <t>lineChart</t>
- * var line = chart.line([1, 4, 2, 6]);
- * var title = chart.title();
- * title.text('MouseOver the title and click on line series.');
- * var counter = 0;
- * line.listen(anychart.enums.EventType.POINT_MOUSE_OUT, function(e){
- *   title.fontColor('green');
- * });
- * line.listen(anychart.enums.EventType.POINT_MOUSE_OVER, function(e){
- *   title.fontColor('red');
- * });
- * line.listen(anychart.enums.EventType.POINT_CLICK, function(e){
- *   title.text('You can\'t click here anymore.').fontColor('black');
- *   line.removeAllListeners();
- * });
+ * @example anychart.core.Base.removeAllListeners
  * @param {string=} opt_type Type of event to remove, default is to
  *     remove all types.
  * @return {number} Number of listeners removed.

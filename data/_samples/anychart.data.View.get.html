@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentLoad(function () {
+            var data = anychart.data.set([
+                {x: 'A1', value: 8, fill: 'yellow'},
+                {x: 'A2', value: 11, fill: 'orange'},
+                {x: 'A3', value: 12, fill: 'red'},
+                {x: 'A4', value: 9, fill: 'grey'}
+            ]);
+            var chart = anychart.column(data);
+            chart.container(stage).draw();
+            var view = data.mapAs();
+            var pointX = view.get(2, 'x');
+            var pointFill = view.get(2, 'fill');
+            chart.title().text('point \'' + pointX + '\' has \'' + pointFill + '\' fill.');
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

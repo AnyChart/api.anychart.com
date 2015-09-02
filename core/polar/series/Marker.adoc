@@ -9,8 +9,16 @@
  */
 anychart.core.polar.series.Marker;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Marker.prototype.type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for current marker type settings.
+ * @example anychart.core.polar.series.Marker.type_get
  * @return {string|anychart.enums.MarkerType|function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path}
  *  Markers type settings.
  */
@@ -18,26 +26,8 @@ anychart.core.polar.series.Marker.prototype.type;
 
 /**
  * Setter for marker type settings.
- * @example <c>By Enum value.</c>
- * chart = anychart.polar();
- * chart.marker([10, 11, 17, 7, 21])
- *    .type('star4')
- *    .hoverType('star6');
- * chart.container(stage).draw();
- * @example <c>By custom function.</c>
- * chart = anychart.polar();
- * chart.marker([10, 11, 17, 7, 21])
- *    .type(function(path, x, y, size) {
- *      var point1 = {x: x + 1.2 * size, y: y - 0.4 * size};
- *      var point2 = {x: x - 0.5*size, y: y -0.5*size};
- *      path.moveTo(point1.x, point1.y)
- *          .arcToByEndPoint(point2.x, point2.y, size, size, true, true)
- *          .arcToByEndPoint(point1.x, point1.y, size / 3, size / 3, false, false)
- *          .moveTo(point1.x, point1.y)
- *          .close();
- *      return path;
- *    });
- * chart.container(stage).draw();
+ * @example anychart.core.polar.series.Marker.type_set_asEnum Using enum
+ * @example anychart.core.polar.series.Marker.type_set_asFunc Using function
  * @param {(string|anychart.enums.MarkerType|
  *  function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path)=} opt_value
  *  [{@link anychart.enums.MarkerType}.STAR5] Type or custom drawer. Function for a custom
@@ -48,12 +38,20 @@ anychart.core.polar.series.Marker.prototype.type;
  *    ... //do something
  *    return path;
  *  }</code>.
- * @return {!anychart.core.polar.series.Marker} {@link anychart.core.polar.series.Marker} instance for method chaining.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
  */
 anychart.core.polar.series.Marker.prototype.type;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Marker.prototype.hoverType
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for current hovered marker type settings.
+ * @example anychart.core.polar.series.Marker.hoverType_get
  * @return {string|anychart.enums.MarkerType|function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path}
  *  Markers type settings.
  */
@@ -61,26 +59,8 @@ anychart.core.polar.series.Marker.prototype.hoverType;
 
 /**
  * Setter for hovered marker type settings.
- * @example <c>By Enum value.</c>
- * chart = anychart.polar();
- * chart.marker([10, 11, 17, 7, 21])
- *    .type('star4')
- *    .hoverType('star6');
- * chart.container(stage).draw();
- * @example <c>By custom function.</c>
- * chart = anychart.polar();
- * chart.marker([10, 11, 17, 7, 21])
- *    .hoverType(function(path, x, y, size) {
- *      var point1 = {x: x + 1.2 * size, y: y - 0.4 * size};
- *      var point2 = {x: x - 0.5*size, y: y -0.5*size};
- *      path.moveTo(point1.x, point1.y)
- *          .arcToByEndPoint(point2.x, point2.y, size, size, true, true)
- *          .arcToByEndPoint(point1.x, point1.y, size / 3, size / 3, false, false)
- *          .moveTo(point1.x, point1.y)
- *          .close();
- *      return path;
- *    });
- * chart.container(stage).draw();
+ * @example anychart.core.polar.series.Marker.hoverType_set_asEnum Using enum
+ * @example anychart.core.polar.series.Marker.hoverType_set_asFunc Using function
  * @param {(string|anychart.enums.MarkerType|
  *  function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path)=} opt_value
  *  [{@link anychart.enums.MarkerType}.STAR5] Type or custom drawer. Function for a custom
@@ -91,59 +71,375 @@ anychart.core.polar.series.Marker.prototype.hoverType;
  *    ... //do something
  *    return path;
  *  }</code>.
- * @return {!anychart.core.polar.series.Marker} {@link anychart.core.polar.series.Marker} instance for method chaining.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
  */
 anychart.core.polar.series.Marker.prototype.hoverType;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Marker.prototype.size
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for marker size
+ * @example anychart.core.polar.series.Marker.size_get
  * @return {number} Current marker size.
  */
 anychart.core.polar.series.Marker.prototype.size;
 
 /**
  * Setter for marker size.
- * @example
- * chart = anychart.polar();
- * chart.marker([10, 11, 17, 7, 21]).size(14);
- * chart.container(stage).draw();
+ * @example anychart.core.polar.series.Marker.size_set
  * @param {number=} opt_value [10] Value to set.
- * @return {anychart.core.polar.series.Marker} {@link anychart.core.polar.series.Marker} class for method chaining.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
  */
 anychart.core.polar.series.Marker.prototype.size;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Marker.prototype.hoverSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for hovered marker size
+ * @example anychart.core.polar.series.Marker.hoverSize_get
  * @return {number} Current hovered marker size.
  */
 anychart.core.polar.series.Marker.prototype.hoverSize;
 
 /**
  * Setter for hovered marker size.
- * @example
- * chart = anychart.polar();
- * chart.marker([10, 11, 17, 7, 21]).hoverSize(14);
- * chart.container(stage).draw();
+ * @example anychart.core.polar.series.Marker.hoverSize_set
  * @param {number=} opt_value [12] Value to set.
- * @return {anychart.core.polar.series.Marker} {@link anychart.core.polar.series.Marker} instance for method chaining.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
  */
 anychart.core.polar.series.Marker.prototype.hoverSize;
 
-/** @inheritDoc */
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Marker.prototype.hatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current hatch fill settings.
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
+ */
 anychart.core.polar.series.Marker.prototype.hatchFill;
 
-/** @inheritDoc */
+/**
+ * Setter for hatch fill settings.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_HatchFill}
+ * @example anychart.core.polar.series.Marker.hatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.hatchFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Marker.prototype.hoverHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current hover hatch fill settings.
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hover hatch fill.
+ */
 anychart.core.polar.series.Marker.prototype.hoverHatchFill;
 
-/** @inheritDoc */
+/**
+ * Setter for hover hatch fill settings.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_HatchFill}
+ * @example anychart.core.polar.series.Marker.hoverHatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType [undefined] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.hoverHatchFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Marker.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current series fill color.
+ * @return {!anychart.graphics.vector.Fill} Current fill color.
+ */
 anychart.core.polar.series.Marker.prototype.fill;
 
-/** @inheritDoc */
+/**
+ * Sets fill settings using an object or a string.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.polar.series.Marker.fill_set_asString Using string
+ * @example anychart.core.polar.series.Marker.fill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.fill;
+
+/**
+ * Sets fill settings using function.
+ * @example anychart.core.polar.series.Marker.fill_set_asFunc
+ * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return fillValue; // type anychart.graphics.vector.Fill
+ * }</code>.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ chaining.
+ */
+anychart.core.polar.series.Marker.prototype.fill;
+
+/**
+ * Fill color with opacity.<br/>
+ * Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.polar.series.Marker.fill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.fill;
+
+/**
+ * Linear gradient fill.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.polar.series.Marker.fill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.fill;
+
+/**
+ * Radial gradient fill.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.polar.series.Marker.fill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.fill;
+
+/**
+ * Image fill.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.polar.series.Marker.fill_set_Img
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.fill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Marker.prototype.hoverFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current series hover fill color.
+ * @return {!anychart.graphics.vector.Fill} Current hover fill color.
+ */
 anychart.core.polar.series.Marker.prototype.hoverFill;
 
-/** @inheritDoc */
+/**
+ * Sets hover fill settings using an object or a string.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.polar.series.Marker.hoverFill_set_asString Using string
+ * @example anychart.core.polar.series.Marker.hoverFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.hoverFill;
+
+/**
+ * Sets hover fill settings using function.
+ * @example anychart.core.polar.series.Marker.hoverFill_set_asFunc
+ * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return hoverFillValue; // type anychart.graphics.vector.Fill
+ * }</code>.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ chaining.
+ */
+anychart.core.polar.series.Marker.prototype.hoverFill;
+
+/**
+ * Hover fill color with opacity.<br/>
+ * Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.polar.series.Marker.hoverFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.hoverFill;
+
+/**
+ * Linear gradient hover fill.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.polar.series.Marker.hoverFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.hoverFill;
+
+/**
+ * Radial gradient hover fill.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.polar.series.Marker.hoverFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.hoverFill;
+
+/**
+ * Image hover fill.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example anychart.core.polar.series.Marker.hoverFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.hoverFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Marker.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current stroke settings.
+ * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
+ */
 anychart.core.polar.series.Marker.prototype.stroke;
 
-/** @inheritDoc */
+/**
+ * Setter for series stroke by function.
+ * @example anychart.core.polar.series.Marker.stroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by stroke() getter.
+ *    // this.iterator - series point iterator.
+ *    return strokeValue; // type anychart.graphics.vector.Fill or anychart.graphics.vector.Stroke
+ * }</code>.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.stroke;
+
+/**
+ * Setter for stroke settings.<br/>
+ * Learn more about stroke settings:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}
+ * @example anychart.core.polar.series.Marker.stroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
+ *    or stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.stroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Marker.prototype.hoverStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current hover stroke settings.
+ * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
+ */
+anychart.core.polar.series.Marker.prototype.hoverStroke;
+
+/**
+ * Setter for series hover stroke by function.<br/>
+ * <b>Note:</b> For all ContiniousBase series (line/spline/area etc) hoverStroke works only with hoverSeries.
+ * @example anychart.core.polar.series.Marker.hoverStroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by stroke() getter.
+ *    // this.iterator - series point iterator.
+ *    return strokeValue; // type anychart.graphics.vector.Fill or anychart.graphics.vector.Stroke
+ * }</code>.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.hoverStroke;
+
+/**
+ * Setter for hover stroke settings.<br/>
+ * Learn more about stroke settings:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}<br/>
+ * <b>Note:</b> For all ContiniousBase series (line/spline/area etc) hoverStroke works only with hoverSeries.
+ * @example anychart.core.polar.series.Marker.hoverStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill [null] Fill settings
+ *    or stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.polar.series.Marker} Self instance for method chaining.
+ */
 anychart.core.polar.series.Marker.prototype.hoverStroke;
 

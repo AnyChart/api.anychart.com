@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentLoad(function () {
+            var data = anychart.data.set([
+                ['A1', 8],
+                ['A2', 11],
+                ['A3', 12],
+                ['A4', 9]
+            ]);
+            var chart = anychart.column(data);
+            chart.container('container');
+            chart.draw();
+            data.remove(2); // remove 'A3' point.
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

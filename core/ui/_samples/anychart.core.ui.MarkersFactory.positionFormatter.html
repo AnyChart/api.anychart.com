@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentLoad(function () {
+            var stage = anychart.graphics.create('container');
+            var marker = anychart.ui.markersFactory()
+                    .container(stage)
+                    .size(25)
+                    .positionFormatter(function (positionProvider, index) {
+                        return {x: 60 * (1 + index), y: 100 * Math.random() + 60};
+                    })
+                    .anchor('center');
+            for (var i = 0; i < 5; i++)
+                marker.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

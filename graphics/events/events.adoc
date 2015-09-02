@@ -11,14 +11,7 @@ anychart.graphics.events;
  its key will be returned.<br/>
  <b>Note</b> Notice that if the existing listener is one-off (added
  using listenOnce), it will cease to be such after calling the listen() method.
- @example <t>stageOnly</t>
- var text = stage.text(70, 55, 'Click on this TEXT.');
- text.style({fontStyle: 'italic', fontSize: '18px', color: '#00f', hAlign: 'middle'});
- var counter = 0;
- anychart.graphics.events.listen(text, anychart.graphics.events.EventType.CLICK, function(e){
-     counter++;
-     text.text('You clicked ' + counter + ' times.' + '\r\n' + 'Click again.');
- });
+ @example anychart.graphics.events.listen
  @param {goog.events.ListenableType} src The object to attach the event listener to.
  @param {string|Array.<string>} type The type of event or the array of types.
  @param {((function(?):?)|{handleEvent:(function(?):?)}|null)} listener The event listener or the object with the handleEvent function.
@@ -35,12 +28,7 @@ anychart.graphics.events.listen;
  <b>Note</b> In particular, if the handler is already registered using listen(), listenOnce()
  <b>will not</b> make it one-off. Similarly, if a one-off listener already exists,
  listenOnce will not change it (it wil remain one-off).
- @example <t>stageOnly</t>
- var text = stage.text(70, 55, 'Click on this TEXT.');
- text.style({fontStyle: 'italic', fontSize: '18px', color: '#00f', hAlign: 'middle'});
- anychart.graphics.events.listenOnce(text, anychart.graphics.events.EventType.CLICK, function(e){
-     text.text('You can\'t click here anymore.');
- });
+ @example anychart.graphics.events.listenOnce
  @param {goog.events.ListenableType} src The object to attach the event listener to.
  @param {string|Array.<string>} type The type of event or the array of types.
  @param {((function(?):?)|{handleEvent:(function(?):?)}|null)} listener The event listener.
@@ -52,21 +40,7 @@ anychart.graphics.events.listenOnce;
 
 /**
  Removes a listener added using listen() or listenOnce() methods.
- @example <t>stageOnly</t>
- var text = stage.text(70, 55, 'Click on this TEXT.');
- var smallText = stage.text(70, 75, 'You have 3 clicks.');
- text.style({fontStyle: 'italic', fontSize: '18px', color: '#00f', hAlign: 'middle'});
- var counter = 3;
- function customListener(e){
-        counter--;
-        smallText.text('You have ' + counter + ' clicks.');
-        if (counter == 0) {
-            anychart.graphics.events.unlisten(text, anychart.graphics.events.EventType.CLICK, customListener);
-            text.style({color: 'red'});
-            smallText.text('You have no more clicks');
-        }
-    }
- anychart.graphics.events.listen(text, anychart.graphics.events.EventType.CLICK, customListener);
+ @example anychart.graphics.events.unlisten
  @param {goog.events.ListenableType} src The object on which to stop listening to the event.
  @param {string|Array.<string>} type The type of event or the array of types of events you want to stop listening to.
  @param {((function(?):?)|{handleEvent:(function(?):?)}|null)} listener The listener to be removed.
@@ -79,22 +53,7 @@ anychart.graphics.events.unlisten;
 /**
  Removes an event listener which was added with listen() by the key
  returned by listen() or listenOnce().
- @example <t>stageOnly</t>
- var text = stage.text(70, 55, 'Click on this TEXT.');
- var smallText = stage.text(70, 75, 'You have 3 clicks.');
- text.style({fontStyle: 'italic', fontSize: '18px', color: '#00f', hAlign: 'middle'});
- var counter = 3;
- var listenerKey;
- function customListener(e){
-        counter--;
-        smallText.text('You have ' + counter + ' clicks.');
-        if (counter == 0) {
-            anychart.graphics.events.unlistenByKey(listenerKey);
-            text.style({color: 'red'});
-            smallText.text('You have no more clicks');
-        }
-    }
- listenerKey = anychart.graphics.events.listen(text, anychart.graphics.events.EventType.CLICK, customListener);
+ @example anychart.graphics.events.unlistenByKey
  @param {goog.events.Key} key The key returned by listen() for this
      event listener.
  @return {boolean} indicating whether the listener was there to remove.
@@ -104,21 +63,7 @@ anychart.graphics.events.unlistenByKey;
 /**
  Removes all listeners from an object. You can also optionally
  remove listeners of some particular type.
- @example <t>stageOnly</t>
- var text = stage.text(70, 55, 'Click on this TEXT.');
- text.style({fontStyle: 'italic', fontSize: '18px', color: 'blue', hAlign: 'middle'});
- var rect = stage.rect().setBounds(text.getBounds()).fill('white 0.00001').stroke(null);
- anychart.graphics.events.listen(rect, anychart.graphics.events.EventType.MOUSEOVER, function(e){
-        text.style({color: 'green'});
-    });
- anychart.graphics.events.listen(rect, anychart.graphics.events.EventType.MOUSEOUT, function(e){
-        text.style({color: 'blue'});
-    });
- anychart.graphics.events.listenOnce(rect, anychart.graphics.events.EventType.CLICK, function(e){
-        text.text('You can\'t click here anymore.').style({color: 'red'});
-        rect.setBounds(text.getBounds());
-        anychart.graphics.events.removeAll(rect);
-    });
+ @example anychart.graphics.events.removeAll
  @param {goog.events.ListenableType} obj Object to remove listeners from.
  @param {string=} opt_type Type of event to be removed, default is all types.
  @return {number} Number of listeners removed.

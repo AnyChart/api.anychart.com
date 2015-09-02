@@ -1,81 +1,275 @@
 /**
  * Tree data traverser.
- * @param {anychart.data.Tree} tree - Tree that current traverser belongs to.
  * @constructor
  */
 anychart.data.Traverser;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Traverser.prototype.reset;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Resets traverser.
- * @return {anychart.data.Traverser} - Itself for method chaining.
+ * Resets traverser to its zero state (before the first child).
+ * <img src='/anychart.data.Traverser.reset.png' height='296' width='372'/>
+ * @return {anychart.data.Traverser} Self instance for method chaining.
  */
 anychart.data.Traverser.prototype.reset;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Traverser.prototype.current;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Gets current tree data item.
- * @return {anychart.data.Tree.DataItem|undefined}
+ * @example anychart.data.Traverser.current
+ * @return {anychart.data.Tree.DataItem|undefined} Current data item.
  */
 anychart.data.Traverser.prototype.current;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Traverser.prototype.getDepth;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Gets depth of current data item.
- * @return {number} - Depth.
+ * @listing Sample for method getDepth.
+ * var rawdata = [
+ *  {name: 1, children: [
+ *    {name: 2, children: [
+ *      {name: 3},
+ *      {name: 4, children: [
+ *        {name: 5}, {name: 6}
+ *      ]}
+ *    ]},
+ *    {name: 7, children: [
+ *      {name: 8}, {name: 9}
+ *    ]}
+ *  ]}
+ * ];
+ * var tree = anychart.data.tree(rawdata, anychart.enums.TreeFillingMethod.AS_TREE);
+ * var traverser = tree.getTraverser();
+ * while (traverser.advance()){
+ *    if (traverser.getDepth() > 2) // get depth
+ *      console.log(traverser.get('name'));
+ *  }
+ * @return {number} Depth.
  */
 anychart.data.Traverser.prototype.getDepth;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Traverser.prototype.get;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Gets current data item's data value by field specified.
- * @param {string} key - Key of value to be got from current data item.
- * @return {*} - Value.
+ * @listing Sample for method get.
+ * var rawdata = [
+ *  {name: 1, children: [
+ *    {name: 2, children: [
+ *      {name: 3},
+ *      {name: 4, children: [
+ *        {name: 5}, {name: 6}
+ *      ]}
+ *    ]},
+ *    {name: 7, children: [
+ *      {name: 8}, {name: 9}
+ *    ]}
+ *  ]}
+ * ];
+ * var tree = anychart.data.tree(rawdata, anychart.enums.TreeFillingMethod.AS_TREE);
+ * var traverser = tree.getTraverser();
+ * while (traverser.advance()){
+ *    if (traverser.getDepth() > 2)
+ *      console.log(traverser.get('name')); // return 5 and 6
+ *  }
+ * @param {string} key Key of value to be got from current data item.
+ * @return {*} Value.
  */
 anychart.data.Traverser.prototype.get;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Traverser.prototype.set
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Sets current item's value by key specified.
+ * @example anychart.data.Traverser.set
  * @param {string} key - Key.
  * @param {*} value - Value.
- * @return {anychart.data.Traverser} - Itself for method chaining.
+ * @return {anychart.data.Traverser} Self instance for method chaining.
  */
 anychart.data.Traverser.prototype.set;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Traverser.prototype.meta;
+//
+//----------------------------------------------------------------------------------------------------------------------
 /**
- * Gets/sets a meta value.
- * @param {string} key - Key.
- * @param {*=} opt_value - Optional value.
- * @return {*} - Value or itself for method chaining if method is used as setter.
+ * Getter for a meta value.
+ * @param {string} key Key.
+ * @return {*} Value.
  */
 anychart.data.Traverser.prototype.meta;
 
 /**
- * Sets function that decides if data item must be returned while passage.
- * Note: if passed argument is passed by not a function, value will be reset to default value that always returns 'true'.
- * @param {(function(anychart.data.Tree.DataItem):boolean)=} opt_value - Function to be set.
- * @return {(function(anychart.data.Tree.DataItem):boolean|anychart.data.Traverser)} - Current decider function or itself
- *  for method chaining.
+ * Setter for a meta value.
+ * @listing Sample for method meta.
+ * var rawdata = [
+ *  {name: 1, children: [
+ *    {name: 2, children: [
+ *      {name: 3},
+ *      {name: 4, children: [
+ *        {name: 5}, {name: 6}
+ *      ]}
+ *    ]},
+ *    {name: 7, children: [
+ *      {name: 8}, {name: 9}
+ *    ]}
+ *  ]}
+ * ];
+ * var tree = anychart.data.tree(rawdata, anychart.enums.TreeFillingMethod.AS_TREE);
+ * var traverser = tree.getTraverser();
+ * var straightIndex = 0;
+ * while (traverser.advance()){
+ *    traverser.meta('index', straightIndex); // sets meta value for current tree data item.
+ *    straightIndex++; // increments straight index.
+ *  }
+ * @param {string} key Key.
+ * @param {*=} opt_value Value to set.
+ * @return {*} Value or itself for method chaining.
+ */
+anychart.data.Traverser.prototype.meta;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Traverser.prototype.nodeYieldCondition;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for decider function.
+ * @return {function(anychart.data.Tree.DataItem):boolean} Current decider function.
  */
 anychart.data.Traverser.prototype.nodeYieldCondition;
 
 /**
- * Sets function that decides if we go through data item's children while passage.
- * Note: if passed argument is passed by not a function, value will be reset to default value that always returns 'true'.
- * @param {(function(anychart.data.Tree.DataItem):boolean)=} opt_value - Function to be set.
- * @return {(function(anychart.data.Tree.DataItem):boolean|anychart.data.Traverser)} - Current decider function or itself
- *  for method chaining.
+ * Sets function that decides if data item must be returned while passage.
+ * @detailed Note: if passed argument is passed by not a function, value will be reset to default value that always returns 'true'.</br>
+ * So looks tree if nodeYieldCondition define as function(item) {return item.numChildren() > 0; };</br>
+ * <img src='/anychart.data.Traverser.nodeYieldCondition.png' height='300' width='307'/>
+ * @param {(function(anychart.data.Tree.DataItem):boolean)=} opt_value Value to set.
+ * @return {anychart.data.Traverser} Self instance for method chaining.
+ */
+anychart.data.Traverser.prototype.nodeYieldCondition;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Traverser.prototype.traverseChildrenCondition;
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter for decider function.
+ * @return {function(anychart.data.Tree.DataItem):boolean} Current decider function.
  */
 anychart.data.Traverser.prototype.traverseChildrenCondition;
 
 /**
+ * Sets function that decides if we go through data item's children while passage.
+ * @detailed Note: if passed argument is passed by not a function, value will be reset to default value that always returns 'true'.</br>
+ * So looks tree if nodeYieldCondition define as function(item) {return item.numChildren() > 2};</br>
+ * <img src='/anychart.data.Traverser.traverseChildrenCondition.png height='301' width='371''/>
+ * @param {(function(anychart.data.Tree.DataItem):boolean)=} opt_value Value to set.
+ * @return {anychart.data.Traverser} Self instance for method chaining.
+ */
+anychart.data.Traverser.prototype.traverseChildrenCondition;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Traverser.prototype.advance;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
  * Advances traverser to the next item.
- * @return {boolean} - Returns <b>True</b> if moved to the next item, otherwise returns <b>False</b>.
+ * @listing Sample for method advance.
+ * var rawdata = [
+ *  {name: 1, children: [
+ *    {name: 2, children: [
+ *      {name: 3},
+ *      {name: 4, children: [
+ *        {name: 5}, {name: 6}
+ *      ]}
+ *    ]},
+ *    {name: 7, children: [
+ *      {name: 8}, {name: 9}
+ *    ]}
+ *  ]}
+ * ];
+ * var tree = anychart.data.tree(rawdata, anychart.enums.TreeFillingMethod.AS_TREE);
+ * var traverser = tree.getTraverser();
+ * while (traverser.advance()){
+ *    //do something
+ *  }
+ * @return {boolean} Returns <b>True</b> if moved to the next item, otherwise returns <b>False</b>.
  */
 anychart.data.Traverser.prototype.advance;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Traverser.prototype.toArray;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Turns current traverser to an array of tree data items.
- * NOTE: This method resets a traverser state before turning to array and after it (be very careful in this method usage
- * while advance()-passage). Also don't forget to reset traverser after this method usage.
- *
- * @return {Array.<anychart.data.Tree.DataItem>} - Resulting array.
+ * @detailed <b>Note:</b>: This method resets a traverser state before turning to array and after it
+ * (be very careful in this method usage while advance()- passage). Also don't forget to reset traverser after this method usage.
+ * @listing Sample for method toArray.
+ * var rawdata = [
+ * {name: 1, children: [
+ *     {name: 2, children: [
+ *         {name: 3},
+ *         {name: 4, children: [
+ *             {name: 5},
+ *             {name: 6}
+ *         ]}
+ *     ]},
+ *     {name: 7, children: [
+ *         {name: 8}
+ *     ]}
+ * ]}
+ * ];
+ * var treeData = anychart.data.tree(rawdata, anychart.enums.TreeFillingMethod.TREE);
+ * var traverser = treeData.getTraverser();
+ * var traverseChildrenCondition = function(item) {return item.numChildren() >= 2;};
+ * traverser.traverseChildrenCondition(traverseChildrenCondition);
+ * var toArrayArray = traverser.toArray(); // turns traverser to an array
+ * for (var i = 0; i < toArrayArray.length; i++) {
+ *        var item = toArrayArray[i];
+ *        console.log(item.get('name'));
+ *  }
+ * @return {Array.<anychart.data.Tree.DataItem>} Resulting array.
  */
 anychart.data.Traverser.prototype.toArray;
 

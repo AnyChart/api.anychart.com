@@ -1,0 +1,25 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentLoad(function () {
+            var stage = anychart.graphics.create('container');
+            var black = '2 black 0.9';
+            var pattern = anychart.graphics.patternFill(new anychart.graphics.math.Rect(0,0,20,20));
+            var circle = stage.circle(10,10,8).fill('red').parent(pattern);
+            // A simple fill for a small rectangle..
+            stage.rect(2,2, 50, 50).fill('rgba(2,0,200,0.4)');
+            // A small rectangle with a pattern fill.
+            stage.rect(2,2, 50, 50).fill(pattern).stroke(black);
+            // A big rectangle with the same pattern fill.
+            stage.rect(50,25, 200, 100).fill(pattern).stroke(black);
+
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

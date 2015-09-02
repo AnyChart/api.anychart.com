@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentLoad(function () {
+            var stage = anychart.graphics.create('container');
+            var data = [7, 7, 7, 7, 7, 7, 7];
+            anychart.pie(data)
+                    .labels(null)
+                    .legend(null)
+                    .container(stage)
+                    .bounds(0, 0, '33%', '100%')
+                    .draw();
+            anychart.pie(data)
+                    .labels(null)
+                    .legend(null)
+                    .container(stage)
+                    .bounds('33%', 0, '33%', '100%')
+                    .palette(['#00F', '#00E', '#00D', '#00C', '#00B', '#00A', '#009', '#008'])
+                    .draw();
+            anychart.pie(data)
+                    .labels(null)
+                    .legend(null)
+                    .container(stage)
+                    .bounds('66%', 0, '33%', '100%')
+                    .palette(
+                    anychart.palettes.rangeColors()
+                            .colors(['red', 'yellow'])
+                            .count(data.length)
+            )
+                    .draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentLoad(function () {
+            var stage = anychart.graphics.create('container');
+             var table = anychart.ui.table(3,2);
+             // resize first column
+             table.colWidth(0, 100);
+             // set content to cell as string
+             table.getCell(0,0)
+               .content('text');
+             // set content to another cell as number
+             table.getCell(1,0)
+               .content(2014);
+             // set content to another cell as chart
+             table.getCell(0,1)
+               .content(anychart.line([1.1, 1.4, 1.2, 1.6]))
+               .rowSpan(3);
+             table.container(stage).draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

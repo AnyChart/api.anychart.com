@@ -19,20 +19,7 @@
  @illustrationDesc
  Elements indices (and layers indices within a stage) set Z-order.
  The 'higher' an element is, the greater its index.
- @example <t>stageOnly</t>
- // creating layers
- var layer1 = stage.layer();
- var layer2 = stage.layer();
- // add elements
- layer1.ellipse(85, 80, 35, 55).fill('blue', 0.3);
- layer1.star7(55, 79, 45).fill('red');
- // duplicate to another layer
- layer2.ellipse(85, 80, 35, 55).fill('blue', 0.3);
- layer2.star7(55, 79, 45).fill('red');
- // move the layer
- layer2.translate(180,0);
- // rotate the layer
- layer2.rotateByAnchor(130, anychart.graphics.vector.Anchor.CENTER);
+ @example anychart.graphics.vector.Layer
  @name anychart.graphics.vector.Layer
  @constructor
  @extends {anychart.graphics.vector.Element}
@@ -45,14 +32,9 @@ anychart.graphics.vector.Layer;
  All DOM changes will happen instantly, except
  {@link anychart.graphics.vector.Stage#suspend}. <br/>
  <i>Simplified version of {@link anychart.graphics.vector.Layer#addChildAt} where element is added to the end.</i>
- @example <t>stageOnly</t>
- // create a layer
- var layer1 = stage.layer();
- // add elements
- layer1.addChild(stage.ellipse(85, 80, 35, 55).fill('blue', 0.3))
- .addChild(stage.star7(55, 79, 45).fill('red'));
+ @example anychart.graphics.vector.Layer.addChild
  @param {!anychart.graphics.vector.Element} element Element to add.
- @return {!anychart.graphics.vector.Layer} {@link anychart.graphics.vector.Layer} instance for method chaining.
+ @return {anychart.graphics.vector.Layer} Self instance for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.addChild;
 
@@ -75,35 +57,16 @@ All DOM changes will happen instantly, except
  {@link anychart.graphics.vector.Layer#addChild}<br/>
  Right image does the same, but star is added to 0 index.
  <code>.addChildAt(star5, 0);</code> (see code of this image in samples).
- @example <c>Sample from the image: </c><t>stageOnly</t>
- // create layers
- var layer1 = stage.layer();
- var layer2 = stage.layer();
- // add elements
- layer1.addChild(stage.circle(75, 60, 55).fill('blue', 0.3))
- .addChild(stage.star5(55, 79, 45).fill('red'));
- layer2.addChild(stage.circle(75, 60, 55).fill('blue', 0.3))
- // add the star below the circle
- .addChildAt(stage.star5(55, 79, 45).fill('red'), 0);
- // move the second layer
- layer2.translate(150,0);
+ @example anychart.graphics.vector.Layer.addChildAt
  @param {!anychart.graphics.vector.Element} element Element to add.
  @param {number} index Element index. <br/>Only positive numbers.
- @return {!anychart.graphics.vector.Layer} {@link anychart.graphics.vector.Layer} instance for method chaining.
+ @return {anychart.graphics.vector.Layer} Self instance for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.addChildAt;
 
 /**
  Returns element by index.
- @example <t>stageOnly</t>
- // create layers
- var layer = anychart.graphics.layer();
- // add elements
- layer.ellipse(85, 80, 35, 55).fill('blue', 0.3);
- layer.rect(55, 59, 185, 45).fill('blue');
- layer.star7(55, 79, 45).fill('red');
- // show only element with index==1
- layer.getChildAt(1).parent(stage);
+ @example anychart.graphics.vector.Layer.getChildAt
  @param {number} index Element to be returned.
  @return {anychart.graphics.vector.Element} Element or null.
  */
@@ -111,17 +74,7 @@ anychart.graphics.vector.Layer.prototype.getChildAt;
 
 /**
  Looks for an element in a layer and returns index or -1, of not found.
- @example <t>stageOnly</t>
- // create layers
- var layer = new anychart.graphics.vector.Layer();
- var elementStar = layer.star7(55, 79, 45).fill('red');
- // add elements
- layer.ellipse(85, 80, 35, 55).fill('blue', 0.3);
- layer.rect(55, 79, 75, 45).fill('blue');
- // look for index
- var index = layer.indexOfChild(elementStar);
- // show only found element
- layer.getChildAt(index).parent(stage);
+ @example anychart.graphics.vector.Layer.indexOfChild
  @param {anychart.graphics.vector.Element} element Element which index we need to find.
  @return {number} Index or -1, or not found.
  */
@@ -133,15 +86,7 @@ anychart.graphics.vector.Layer.prototype.indexOfChild;
  {@link anychart.graphics.vector.Stage#suspend}. <br/>
  <b>Note:</b> this method doesn't remove element, it just breaks the link between the element and the layer.<br/>
  <i>This is an extension of {@link anychart.graphics.vector.Layer#removeChildAt} method.
- @example <t>stageOnly</t>
- // create layers
- var layer1 = stage.layer();
- var elementStar = layer1.star7(55, 79, 45).fill('red');
- // add elements
- layer1.ellipse(85, 80, 35, 55).fill('blue', 0.3)
- layer1.rect(55, 79, 75, 45).fill('blue');
- // remove only by found index
- layer1.removeChild(elementStar);
+ @example anychart.graphics.vector.Layer.removeChild
  @param {anychart.graphics.vector.Element} element Element to remove or its id.
  @return {anychart.graphics.vector.Element} Removed element or null.
  */
@@ -152,15 +97,7 @@ anychart.graphics.vector.Layer.prototype.removeChild;
  All changes in DOM will happen instantly, except
  {@link anychart.graphics.vector.Stage#suspend}. <br/>
  <b>Note:</b> this method doesn't remove element, it just breaks the link between the element and the layer.<br/>
- @example <t>stageOnly</t>
- // create layers
- var layer1 = stage.layer();
- layer1.star7(55, 79, 45).fill('red');
- // add elements
- layer1.ellipse(85, 80, 35, 55).fill('blue', 0.3);
- layer1.rect(55, 79, 75, 45).fill('blue');
- // remove by index
- layer1.removeChildAt(0);
+ @example anychart.graphics.vector.Layer.removeChildAt
  @param {number} index Index of element to be removed.
  @return {anychart.graphics.vector.Element} Removed element or null.
  */
@@ -174,43 +111,19 @@ anychart.graphics.vector.Layer.prototype.removeChildren;
 
 /**
  Swap children.
- @example <t>stageOnly</t>
- // create layers
- var layer1 = stage.layer();
- var layer2 = stage.layer();
- var stroke = '1 black 1';
- layer1.ellipse(75, 105, 55, 35).fill('green', 1).stroke(stroke);
- layer1.ellipse(95, 75, 55, 35).fill('yellow', 1).stroke(stroke);
- layer1.ellipse(115, 45, 55, 35).fill('red', 1).stroke(stroke);
- var elemRed = layer2.ellipse(115, 45, 55, 35).fill('red', 1).stroke(stroke);
- var elemYellow = layer2.ellipse(95, 75, 55, 35).fill('yellow', 1).stroke(stroke);
- layer2.ellipse(75, 105, 55, 35).fill('green', 1).stroke(stroke);
- // move layer and swap
- layer2.translate(180, 0).swapChildren(elemRed, elemYellow);
+ @example anychart.graphics.vector.Layer.swapChildren
  @param {anychart.graphics.vector.Element} element1 First element.
  @param {anychart.graphics.vector.Element} element2 Second element.
- @return {!anychart.graphics.vector.Layer} {@link anychart.graphics.vector.Layer} instance for method chaining.
+ @return {anychart.graphics.vector.Layer} Self instance for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.swapChildren;
 
 /**
  Swap children by indices.
- @example <t>stageOnly</t>
- // create layers
- var layer1 = stage.layer();
- var layer2 = stage.layer();
- var stroke = '1 black 1';
- layer1.ellipse(75, 105, 55, 35).fill('green', 1).stroke(stroke);
- layer1.ellipse(95, 75, 55, 35).fill('yellow', 1).stroke(stroke);
- layer1.ellipse(115, 45, 55, 35).fill('red', 1).stroke(stroke);
- layer2.ellipse(75, 105, 55, 35).fill('green', 1).stroke(stroke);
- layer2.ellipse(95, 75, 55, 35).fill('yellow', 1).stroke(stroke);
- layer2.ellipse(115, 45, 55, 35).fill('red', 1).stroke(stroke);
- // move layer and swap
- layer2.translate(180, 0).swapChildrenAt(0, 2);
+ @example anychart.graphics.vector.Layer.swapChildrenAt
  @param {number} index1 First element index.
  @param {number} index2 Second element index.
- @return {!anychart.graphics.vector.Layer} {@link anychart.graphics.vector.Layer} instance for method chaining.
+ @return {anychart.graphics.vector.Layer} Self instance for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.swapChildrenAt;
 
@@ -229,16 +142,16 @@ anychart.graphics.vector.Layer.prototype.numChildren;
 
 /**
  Applies function to all elements in a layer.
- @param {function(anychart.graphics.vector.Element, number):void} callback Function to be applied.
- @return {!anychart.graphics.vector.Layer} {@link anychart.graphics.vector.Layer} instance for method chaining.
+ @param {function(anychart.graphics.vector.Element):void} callback Function to be applied.
+ @return {anychart.graphics.vector.Layer} Self instance for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.forEachChild;
 
 /**
  Applies the function to all elements of a layer in the given context.
- @param {function(anychart.graphics.vector.Element, number):void} callback Function to be applied.
+ @param {function(anychart.graphics.vector.Element):void} callback Function to be applied.
  @param {Object=} opt_this <b>this</b> context for the function to be applied.
- @return {!anychart.graphics.vector.Layer} {@link anychart.graphics.vector.Layer} instance for method chaining.
+ @return {anychart.graphics.vector.Layer} Self instance for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.forEachChild;
 
@@ -247,13 +160,8 @@ anychart.graphics.vector.Layer.prototype.forEachChild;
  <strong>Note:</strong><br>anychart.graphics.vector.Layer does nothing to delete an object after it is used.
  You need to take care of used objects yourself.
  @shortDescription Invokes {@link anychart.graphics.vector.Layer} class constructor.
- @example <t>stageOnly</t>
- var layer = stage.layer();
- // add circle
- layer.circle(30, 30, 40);
- // add rectangle
- layer.rect(10, 10, 50, 50);
- @return {!anychart.graphics.vector.Layer} {@link anychart.graphics.vector.Layer} instance for method chaining.
+ @example anychart.graphics.vector.Layer.layer
+ @return {anychart.graphics.vector.Layer} Self instance for method chaining.
  @this {anychart.graphics.vector.ILayer}
  */
 anychart.graphics.vector.Layer.prototype.layer;
@@ -263,20 +171,13 @@ anychart.graphics.vector.Layer.prototype.layer;
  <strong>Note:</strong><br>anychart.graphics.vector.Layer does nothing to delete an object after it is used.
  You need to take care of used objects yourself.
  @shortDescription Invokes {@link anychart.graphics.vector.Text} class constructor.
- @example <t>stageOnly</t>
- var layer = stage.layer();
- var text = layer.text(100, 100);
- text.style({fontStyle: 'italic', fontSize: '15px', color: '#00f'});
- text.text('Simple text');
- @example <t>stageOnly</t>
- var layer = stage.layer();
- var customStyle = {fontStyle: 'italic', fontSize: '15px', color: '#00f'};
- layer.text(200, 50, 'Plain text', customStyle);
+ @example anychart.graphics.vector.Layer.text
+ @example anychart.graphics.vector.Layer.text1
  @param {number=} opt_x X-coordinate (Left) of left top corner of text bounds.
  @param {number=} opt_y Y-coordinate (Top) of left top corner of text bounds.
  @param {string=} opt_text Text to be displayed.
  @param {anychart.graphics.vector.TextStyle=} opt_style Text style. More at {@link anychart.graphics.vector.Text#style}.
- @return {!anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ @return {anychart.graphics.vector.Text} An instance of class for method chaining.
  @this {anychart.graphics.vector.ILayer}
  */
 anychart.graphics.vector.Layer.prototype.text;
@@ -288,21 +189,12 @@ anychart.graphics.vector.Layer.prototype.text;
  You need to take care of used objects yourself.
  @shortDescription Returns {@link anychart.graphics.vector.Text} constructoe and applies
   {@link anychart.graphics.vector.Text#htmlText} to handle HTML formatting.
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.html(100, 50,
- '<b>Simple <span style="color: red">text</span></b>', {
-    fontStyle: 'italic',
-    fontSize: '15px',
-    width: 140,
-    height: 50,
-    vAlign: 'middle'
-  });
+ @example anychart.graphics.vector.Layer.html
  @param {number=} opt_x X-coordinate (Left) of top left corner of text bounds.
  @param {number=} opt_y Y-coordinate (Top) of top left corner of text bounds.
  @param {string=} opt_text Text to be displayed.
  @param {anychart.graphics.vector.TextStyle=} opt_style Text style. More at {@link anychart.graphics.vector.Text#style}.
- @return {!anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} instance for method chaining.
+ @return {anychart.graphics.vector.Text} An instance of class for method chaining.
  @this {anychart.graphics.vector.ILayer}
  */
 anychart.graphics.vector.Layer.prototype.html;
@@ -312,14 +204,12 @@ anychart.graphics.vector.Layer.prototype.html;
  <strong>Note:</strong><br>anychart.graphics.vector.Layer does nothing to delete an object after it is used.
  You need to take care of used objects yourself.
  @shortDescription Invokes {@link anychart.graphics.vector.Rect} class constructor.
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.rect(75, 50, 150, 75);
+ @example anychart.graphics.vector.Layer.rect
  @param {number=} opt_x X (Left) of top left rectangle corner.
  @param {number=} opt_y Y (Top) of to left rectangle corner.
  @param {number=} opt_width Rectangle width.
  @param {number=} opt_height Rectangle height.
- @return {!anychart.graphics.vector.Rect} {@link anychart.graphics.vector.Rect} instance for method chaining.
+ @return {anychart.graphics.vector.Rect} An instance of class for method chaining.
  @this {anychart.graphics.vector.ILayer}
  */
 anychart.graphics.vector.Layer.prototype.rect;
@@ -329,9 +219,7 @@ anychart.graphics.vector.Layer.prototype.rect;
  <strong>Note:</strong><br>anychart.graphics.vector.Layer does nothing to delete an object after it is used.
  You need to take care of used objects yourself.
  @shortDescription Invokes {@link anychart.graphics.vector.Image} class constructor.
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.image('http://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png', 105, 10, 150, 125);
+ @example anychart.graphics.vector.Layer.image
  @param {string=} opt_src IRI (Internationalized Resource Identifiers) for image source.
  @param {number=} opt_x X coordinate of left-top corner image.
  @param {number=} opt_y Y coordinate of left-top corner image.
@@ -345,30 +233,21 @@ anychart.graphics.vector.Layer.prototype.image;
 /**
  Draws rectangle with rounded corners..<br/>
  Read more at {@link anychart.graphics.vector.primitives.roundedRect}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- var rect = new anychart.graphics.math.Rect(10, 20, 55, 55);
- layer.roundedRect(rect, 25, 10);
+ @example anychart.graphics.vector.Layer.roundedRect
  */
 anychart.graphics.vector.Layer.prototype.roundedRect;
 
 /**
  Draws rectangle with corners rounded inside.<br/>
  Read more at {@link anychart.graphics.vector.primitives.roundedInnerRect}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- var rect = new anychart.graphics.math.Rect(10, 20, 55, 55);
- layer.roundedInnerRect(rect, 25, 10);
+ @example anychart.graphics.vector.Layer.roundedInnerRect
  */
 anychart.graphics.vector.Layer.prototype.roundedInnerRect;
 
 /**
  Draws rectangle with cut corners.<br/>
  Read more at {@link anychart.graphics.vector.primitives.truncatedRect}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- var rect = new anychart.graphics.math.Rect(10, 20, 55, 55);
- layer.truncatedRect(rect, 25, 10);
+ @example anychart.graphics.vector.Layer.truncatedRect
  */
 anychart.graphics.vector.Layer.prototype.truncatedRect;
 
@@ -378,13 +257,11 @@ anychart.graphics.vector.Layer.prototype.truncatedRect;
  You need to take care of used objects yourself.<br/>
  Read more at {@link anychart.graphics.vector.Circle}
  @shortDescription Invokes {@link anychart.graphics.vector.Circle} class constructor.
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.circle(50, 50, 45);
+ @example anychart.graphics.vector.Layer.circle
  @param {number=} opt_cx Center X, in pixels.
  @param {number=} opt_cy Center Y, in pixels.
  @param {number=} opt_radius Radius, in pixels.
- @return {!anychart.graphics.vector.Circle} {@link anychart.graphics.vector.Circle} instance for method chaining.
+ @return {anychart.graphics.vector.Circle} An instance of class for method chaining.
  @this {anychart.graphics.vector.ILayer}
  */
 anychart.graphics.vector.Layer.prototype.circle;
@@ -395,14 +272,12 @@ anychart.graphics.vector.Layer.prototype.circle;
  You need to take care of used objects yourself.<br/>
  Read more at {@link anychart.graphics.vector.Ellipse}
  @shortDescription Invokes {@link anychart.graphics.vector.Ellipse} class constructor.
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.ellipse(150, 70, 70, 50);
+ @example anychart.graphics.vector.Layer.ellipse
  @param {number=} opt_cx Center X, in pixels.
  @param {number=} opt_cy Center Y, in pixels.
  @param {number=} opt_rx Radius X, in pixels.
  @param {number=} opt_ry Radius Y, in pixels.
- @return {!anychart.graphics.vector.Ellipse} {@link anychart.graphics.vector.Ellipse} instance for method chaining.
+ @return {anychart.graphics.vector.Ellipse} An instance of class for method chaining.
  @this {anychart.graphics.vector.ILayer}
  */
 anychart.graphics.vector.Layer.prototype.ellipse;
@@ -413,13 +288,8 @@ anychart.graphics.vector.Layer.prototype.ellipse;
  You need to take care of used objects yourself.<br/>
  Read more at: {@link anychart.graphics.vector.Path}
  @shortDescription Invokes {@link anychart.graphics.vector.Path} class constructor.
- @example <t>stageOnly</t>
- var layer = stage.layer();
- var path = layer.path();
- path.moveTo(110, 110)
-   .lineTo(50, 10, 50, 50, 10, 50)
-   .close();
- @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @example anychart.graphics.vector.Layer.path
+ @return {anychart.graphics.vector.Path} An instance of class for method chaining.
  @this {anychart.graphics.vector.ILayer}
  */
 anychart.graphics.vector.Layer.prototype.path;
@@ -427,135 +297,105 @@ anychart.graphics.vector.Layer.prototype.path;
 /**
  Draws multi-pointed star.<br/>
  Read more at {@link anychart.graphics.vector.primitives.star}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.star(50, 50, 30, 7, 8, 30);
+ @example anychart.graphics.vector.Layer.star
  */
 anychart.graphics.vector.Layer.prototype.star;
 
 /**
  Draws four-pointed star.<br/>
  Read more at {@link anychart.graphics.vector.primitives.star4}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.star4(70, 50, 30);
+ @example anychart.graphics.vector.Layer.star4
  */
 anychart.graphics.vector.Layer.prototype.star4;
 
 /**
  Draws five-pointed star.<br/>
  Read more at {@link anychart.graphics.vector.primitives.star5}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.star5(70, 50, 30);
+ @example anychart.graphics.vector.Layer.star5
  */
 anychart.graphics.vector.Layer.prototype.star5;
 
 /**
  Draws six-pointed star.<br/>
  Read more at {@link anychart.graphics.vector.primitives.star6}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.star6(70, 50, 30);
+ @example anychart.graphics.vector.Layer.star6
  */
 anychart.graphics.vector.Layer.prototype.star6;
 
 /**
  Draws seven-pointed star.<br/>
  Read more at {@link anychart.graphics.vector.primitives.star7}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.star7(70, 50, 30);
+ @example anychart.graphics.vector.Layer.star7
  */
 anychart.graphics.vector.Layer.prototype.star7;
 
 /**
  Draws ten-pointed star.<br/>
  Read more at {@link anychart.graphics.vector.primitives.star10}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.star10(70, 50, 30);
+ @example anychart.graphics.vector.Layer.star10
  */
 anychart.graphics.vector.Layer.prototype.star10;
 
 /**
  Draws a triangle heading upwards set by its circumscribed circle center and radius.<br/>
  Read more at {@link anychart.graphics.vector.primitives.triangleUp}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.triangleUp(70, 50, 30);
+ @example anychart.graphics.vector.Layer.triangleUp
  */
 anychart.graphics.vector.Layer.prototype.triangleUp;
 
 /**
  Draws a triangle heading downwards set by its circumscribed circle center and radius.<br/>
  Read more at {@link anychart.graphics.vector.primitives.triangleDown}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.triangleDown(70, 50, 30);
+ @example anychart.graphics.vector.Layer.triangleDown
  */
 anychart.graphics.vector.Layer.prototype.triangleDown;
 
 /**
  Draws a diamond set by its circumscribed circle center and radius.<br/>
  Read more at {@link anychart.graphics.vector.primitives.diamond}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.diamond(70, 50, 30);
+ @example anychart.graphics.vector.Layer.diamond
  */
 anychart.graphics.vector.Layer.prototype.diamond;
 
 /**
  Draws a cross set by its circumscribed circle center and radius.<br/>
  Read more at {@link anychart.graphics.vector.primitives.cross}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.cross(70, 50, 30);
+ @example anychart.graphics.vector.Layer.cross
  */
 anychart.graphics.vector.Layer.prototype.cross;
 
 /**
  Draws a diagonal cross set by its circumscribed circle center and radius.<br/>
  Read more at {@link anychart.graphics.vector.primitives.diagonalCross}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.diagonalCross(70, 50, 30);
+ @example anychart.graphics.vector.Layer.diagonalCross
  */
 anychart.graphics.vector.Layer.prototype.diagonalCross;
 
 /**
  Draws a thick horizontal line set by its circumscribed circle center and radius.<br/>
  Read more at {@link anychart.graphics.vector.primitives.hLine}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.hLine(70, 50, 30);
+ @example anychart.graphics.vector.Layer.hLine
  */
 anychart.graphics.vector.Layer.prototype.hLine;
 
 /**
  Draws a thick vertical line set by its circumscribed circle center and radius.<br/>
  Read more at {@link anychart.graphics.vector.primitives.vLine}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.vLine(70, 50, 30);
+ @example anychart.graphics.vector.Layer.vLine
  */
 anychart.graphics.vector.Layer.prototype.vLine;
 
 /**
  Draws sector as pie chart element.<br/>
  Read more at {@link anychart.graphics.vector.primitives.pie}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.pie(50, 100, 75, 0, 100);
+ @example anychart.graphics.vector.Layer.pie
  */
 anychart.graphics.vector.Layer.prototype.pie;
 
 /**
  Draws sector as donut chart element.<br/>
  Read more at {@link anychart.graphics.vector.primitives.donut}
- @example <t>stageOnly</t>
- var layer = stage.layer();
- layer.donut(100, 50, 75, 25, 0, 100);
+ @example anychart.graphics.vector.Layer.donut
  */
 anychart.graphics.vector.Layer.prototype.donut;
 

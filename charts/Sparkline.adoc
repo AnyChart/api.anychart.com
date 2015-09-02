@@ -1,0 +1,1275 @@
+/**
+ * Sparkline chart class.<br/>
+ * To get the chart use method {@link anychart.sparkline}.
+ * @extends {anychart.core.Chart}
+ * @constructor
+ */
+anychart.charts.Sparkline;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.xScale
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for default chart X scale.
+ * @example anychart.charts.Sparkline.xScale_get
+ * @return {!anychart.scales.Base} Default chart scale value.
+ */
+anychart.charts.Sparkline.prototype.xScale;
+
+/**
+ * Setter for default chart X scale.<br/>
+ * <b>Note:</b> This scale will be passed to all scale dependent chart elements if they don't have their own scales.
+ * @example anychart.charts.Sparkline.xScale_set_asString Using string
+ * @example anychart.charts.Sparkline.xScale_set_asInst Using instance
+ * @param {(anychart.enums.ScaleTypes|anychart.scales.Base)=} opt_value X Scale to set. Default scale ordinal.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.xScale;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.yScale
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for default chart Y scale.
+ * @example anychart.charts.Sparkline.yScale_get
+ * @return {!anychart.scales.Base} Default chart scale value.
+ */
+anychart.charts.Sparkline.prototype.yScale;
+
+/**
+ * Setter for chart Y scale.<br/>
+ * <b>Note:</b> This scale will be passed to all scale dependent chart elements if they don't have their own scales.
+ * @example anychart.charts.Sparkline.yScale_set_asString Using string
+ * @example anychart.charts.Sparkline.yScale_set_asInst Using instance
+ * @param {(anychart.enums.ScaleTypes|anychart.scales.Base)=} opt_value Y Scale to set. Default scale linear.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.yScale;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.lineMarker
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for chart line marker.
+ * @example anychart.charts.Sparkline.lineMarker_get
+ * @param {number=} opt_index Chart line marker index. If not set - creates a new instance and adds it to the end of array.
+ * @return {!anychart.core.axisMarkers.Line} Line marker instance by index.
+ */
+anychart.charts.Sparkline.prototype.lineMarker;
+
+/**
+ * Setter for chart line marker.
+ * @detailed Sets line marker settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable line marker.</li>
+ *   <li><b>object</b> - sets line marker settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.lineMarker_set_asBoolean Disable/enable line marker
+ * @example anychart.charts.Sparkline.lineMarker_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Chart line marker settings to set.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.lineMarker;
+
+/**
+ * Setter for chart line marker by index.
+ * @detailed Sets line marker settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable line marker.</li>
+ *   <li><b>object</b> - sets line marker settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.lineMarker_set_asIndexNull Disable/enable line marker
+ * @example anychart.charts.Sparkline.lineMarker_set_asIndexObject Using object
+ * @param {number=} opt_index Chart line marker index.
+ * @param {(Object|boolean|null)=} opt_value Chart line marker settings to set.<br/>
+ * <b>Note:</b> pass <b>null</b> or <b>false</b> to disable marker or <b>true</b> to enable it.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.lineMarker;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.rangeMarker
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for chart range marker.
+ * @example anychart.charts.Sparkline.rangeMarker_get
+ * @param {number=} opt_index Chart range marker index. If not set - creates a new instance and adds it to the end of array.
+ * @return {!anychart.core.axisMarkers.Range} Range marker instance by index.
+ */
+anychart.charts.Sparkline.prototype.rangeMarker;
+
+/**
+ * Setter for chart range marker.
+ * @detailed Sets range marker settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable range marker.</li>
+ *   <li><b>object</b> - sets range marker settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.rangeMarker_set_asNull Disable/enable line marker
+ * @example anychart.charts.Sparkline.rangeMarker_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Chart range marker settings to set.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.rangeMarker;
+
+/**
+ * Setter for chart range marker by index.
+ * @detailed Sets range marker settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable range marker.</li>
+ *   <li><b>object</b> - sets range marker settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.rangeMarker_set_asIndexNull Disable/enable range marker
+ * @example anychart.charts.Sparkline.rangeMarker_set_asIndexObject Using object
+ * @param {number=} opt_index Chart range marker index.
+ * @param {(Object|boolean|null)=} opt_value Chart range marker settings to set.<br/>
+ * <b>Note:</b> pass <b>null</b> or <b>false</b> to disable to disable marker.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.rangeMarker;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.textMarker
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for chart text marker.
+ * @example anychart.charts.Sparkline.textMarker_get
+ * @param {number=} opt_index Chart text marker index. If not set - creates a new instance and adds it to the end of array.
+ * @return {!anychart.core.axisMarkers.Text} Text marker instance by index.
+ */
+anychart.charts.Sparkline.prototype.textMarker;
+
+/**
+ * Setter for chart text marker.
+ * @detailed Sets range text settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable text marker.</li>
+ *   <li><b>object</b> - sets text marker settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.textMarker_set_asBoolean Disable/enable text marker
+ * @example anychart.charts.Sparkline.textMarker_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Chart text marker settings to set.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.textMarker;
+
+/**
+ * Setter for chart text marker by index.
+ * @detailed Sets range text settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable text marker.</li>
+ *   <li><b>object</b> - sets text marker settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.textMarker_set_asIndexNull Disable/enable text marker
+ * @example anychart.charts.Sparkline.textMarker_set_asIndexObject Using object
+ * @param {number=} opt_index Chart text marker index.
+ * @param {(Object|boolean|null)=} opt_value Chart text marker settings to set.<br/>
+ * <b>Note:</b> pass <b>null</b> or <b>false</b> to disable marker or <b>true</b> to enable it.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.textMarker;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.data
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for series mapping.
+ * @example anychart.charts.Sparkline.data_get
+ * @return {!anychart.data.View} Returns current mapping.
+ */
+anychart.charts.Sparkline.prototype.data;
+
+/**
+ * Setter for series mapping.
+ * @example anychart.charts.Sparkline.data_set_asArray Using array
+ * @example anychart.charts.Sparkline.data_set_asArrayofArrays Using array of arrays
+ * @example anychart.charts.Sparkline.data_set_asArrayOfObjects Using array of objects
+ * @example anychart.charts.Sparkline.data_set_asCSV Using CSV
+ * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed by first param, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.data;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.type
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for sparkline series type.
+ * @example anychart.charts.Sparkline.type_get
+ * @return {string|anychart.enums.SparklineSeriesType} Current sparkline series type.
+ */
+anychart.charts.Sparkline.prototype.type;
+
+/**
+ * Setter for sparkline series type.
+ * @example anychart.charts.Sparkline.type_set_asString Using string
+ * @example anychart.charts.Sparkline.type_set_asEnum Using enum
+ * @param {(string|anychart.enums.SparklineSeriesType)=} opt_type ['line'] Series type.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.type;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.clip
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for series clip settings.
+ * @example anychart.charts.Sparkline.clip_get
+ * @return {boolean|anychart.math.Rect} Current clip settings.
+ */
+anychart.charts.Sparkline.prototype.clip;
+
+/**
+ * Setter for series clip settings. Clips visible part of a series by a rectangle (or chart).<br/>
+ * False, if series is created manually. True, if created via chart.
+ * @example anychart.charts.Sparkline.clip_set
+ * @param {anychart.math.Rect=} opt_value [true] Enable/disable series clip.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.clip;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.pointWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current point width settings.
+ * @example anychart.charts.Sparkline.pointWidth_get
+ * @return {string|number} Point width pixel value.
+ */
+anychart.charts.Sparkline.prototype.pointWidth;
+
+/**
+ * Setter for point width settings.
+ * @example anychart.charts.Sparkline.pointWidth_set
+ * @param {(number|string)=} opt_value ['95%'] Point width pixel value.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.pointWidth;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.connectMissingPoints
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for connect missing points setting.
+ * @example anychart.charts.Sparkline.connectMissingPoints_get
+ * @return {boolean} Current setting.
+ */
+anychart.charts.Sparkline.prototype.connectMissingPoints;
+
+/**
+ * Setter for connect missing points setting.
+ * @example anychart.charts.Sparkline.connectMissingPoints_set
+ * @param {boolean=} opt_value [false] If set to <b>true</b>, the series will not be interrupted on missing points.<br/>
+ * Markers will not be drawn for missing points in both cases.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.connectMissingPoints;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current fill color.
+ * @example anychart.charts.Sparkline.fill_get
+ * @return {!anychart.graphics.vector.Fill} Current fill color.
+ */
+anychart.charts.Sparkline.prototype.fill;
+
+/**
+ * Sets fill settings using an object or a string.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.fill_set_asString Using string
+ * @example anychart.charts.Sparkline.fill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ['#87CEEB'] Color as an object or a string.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.fill;
+
+/**
+ * Fill color with opacity.<br/>
+ * Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.Sparkline.fill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.fill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.fill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.fill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.fill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.fill;
+
+/**
+ * Image fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.fill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.fill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.negativeFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current negative fill color.
+ * @example anychart.charts.Sparkline.negativeFill_get
+ * @return {!anychart.graphics.vector.Fill} Current negative fill color.
+ */
+anychart.charts.Sparkline.prototype.negativeFill;
+
+/**
+ * Sets negative fill settings using an object or a string.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.negativeFill_set_asString Using string
+ * @example anychart.charts.Sparkline.negativeFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ['#cb6762'] Color as an object or a string.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.negativeFill;
+
+/**
+ * Fill color with opacity.<br/>
+ * Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.Sparkline.negativeFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.negativeFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.negativeFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.negativeFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.negativeFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.negativeFill;
+
+/**
+ * Image fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.negativeFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.negativeFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.firstFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current first fill color.
+ * @example anychart.charts.Sparkline.firstFill_get
+ * @return {!anychart.graphics.vector.Fill} Current first fill color.
+ */
+anychart.charts.Sparkline.prototype.firstFill;
+
+/**
+ * Sets first fill settings using an object or a string.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.firstFill_set_asString Using string
+ * @example anychart.charts.Sparkline.firstFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [undefined] Color as an object or a string.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.firstFill;
+
+/**
+ * Fill color with opacity.<br/>
+ * Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.Sparkline.firstFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.firstFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.firstFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.firstFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.firstFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.firstFill;
+
+/**
+ * Image fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.firstFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.firstFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.lastFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current last fill color.
+ * @example anychart.charts.Sparkline.lastFill_get
+ * @return {!anychart.graphics.vector.Fill} Current last fill color.
+ */
+anychart.charts.Sparkline.prototype.lastFill;
+
+/**
+ * Sets last fill settings using an object or a string.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.lastFill_set_asString Using string
+ * @example anychart.charts.Sparkline.lastFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [undefined] Color as an object or a string.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.lastFill;
+
+/**
+ * Fill color with opacity.<br/>
+ * Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.Sparkline.lastFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.lastFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.lastFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.lastFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.lastFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.lastFill;
+
+/**
+ * Image fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.lastFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.lastFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.maxFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current fill color of maximum point value.
+ * @example anychart.charts.Sparkline.maxFill_get
+ * @return {!anychart.graphics.vector.Fill} Current maximum fill color.
+ */
+anychart.charts.Sparkline.prototype.maxFill;
+
+/**
+ * Sets maximum fill settings using an object or a string.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.maxFill_set_asString Using string
+ * @example anychart.charts.Sparkline.maxFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [undefined] Color as an object or a string.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.maxFill;
+
+/**
+ * Fill color with opacity.<br/>
+ * Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.Sparkline.maxFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.maxFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.maxFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.maxFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.maxFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.maxFill;
+
+/**
+ * Image fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.maxFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.maxFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.minFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current fill color of minimum point value.
+ * @example anychart.charts.Sparkline.minFill_get
+ * @return {!anychart.graphics.vector.Fill} Current minimum fill color.
+ */
+anychart.charts.Sparkline.prototype.minFill;
+
+/**
+ * Sets minimum fill settings using an object or a string.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.minFill_set_asString Using string
+ * @example anychart.charts.Sparkline.minFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [undefined] Color as an object or a string.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.minFill;
+
+/**
+ * Fill color with opacity.<br/>
+ * Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.Sparkline.minFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.minFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.minFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.minFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.minFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.minFill;
+
+/**
+ * Image fill.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.minFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.minFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current stroke settings.
+ * @example anychart.charts.Sparkline.stroke_get
+ * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
+ */
+anychart.charts.Sparkline.prototype.stroke;
+
+/**
+ * Setter for chart stroke by function.
+ * @example anychart.charts.Sparkline.stroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeOrFill [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor -  color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
+ * }</code>.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.stroke;
+
+/**
+ * Setter for stroke settings.
+ * {docs:Appearance_Settings/Stroke}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Sparkline.stroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill [#4682B4]
+ * Fill settings or stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.stroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.hatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current hatch fill settings.
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
+ */
+anychart.charts.Sparkline.prototype.hatchFill;
+
+/**
+ * Setter for hatch fill settings.
+ * {docs:Appearance_Settings/Hatch_Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.hatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType [undefined] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.hatchFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.negativeHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current negative hatch fill settings.
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
+ */
+anychart.charts.Sparkline.prototype.negativeHatchFill;
+
+/**
+ * Setter for negative hatch fill settings.
+ * {docs:Appearance_Settings/Hatch_Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.negativeHatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType [undefined] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.negativeHatchFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.firstHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current first hatch fill settings.
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
+ */
+anychart.charts.Sparkline.prototype.firstHatchFill;
+
+/**
+ * Setter for first hatch fill settings.
+ * {docs:Appearance_Settings/Hatch_Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.firstHatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType [undefined] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.firstHatchFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.lastHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current hatch fill settings.
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
+ */
+anychart.charts.Sparkline.prototype.lastHatchFill;
+
+/**
+ * Setter for hatch fill settings.
+ * {docs:Appearance_Settings/Hatch_Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.lastHatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType [undefined] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.lastHatchFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.maxHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current hatch fill settings of maximum point value.
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
+ */
+anychart.charts.Sparkline.prototype.maxHatchFill;
+
+/**
+ * Setter for maximum hatch fill settings.
+ * {docs:Appearance_Settings/Hatch_Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.maxHatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType [undefined] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.maxHatchFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.minHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current hatch fill settings of minimum point value.
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
+ */
+anychart.charts.Sparkline.prototype.minHatchFill;
+
+/**
+ * Setter for minimum hatch fill settings.
+ * {docs:Appearance_Settings/Hatch_Fill}Learn more about coloring.{docs}
+ * @example anychart.charts.Sparkline.minHatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType [undefined] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.minHatchFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.markers
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for data markers.
+ * @example anychart.charts.Sparkline.markers_get
+ * @return {!anychart.core.ui.MarkersFactory.Marker} Markers instance.
+ */
+anychart.charts.Sparkline.prototype.markers;
+
+/**
+ * Setter for series data markers.
+ * @detailed Sets markers settings depending on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable markers.</li>
+ *   <li><b>object</b> - sets markers settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.markers_set_asBoolean Disable/enable markers
+ * @example anychart.charts.Sparkline.markers_set_asObject Using object
+ * @param {(Object|boolean|null)=} [false] opt_value Series data markers settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.markers;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.negativeMarkers
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for data negative markers.
+ * @example anychart.charts.Sparkline.negativeMarkers_get
+ * @return {!anychart.core.ui.MarkersFactory.Marker} Marker instance.
+ */
+anychart.charts.Sparkline.prototype.negativeMarkers;
+
+/**
+ * Setter for data negative markers.
+ * @detailed Sets negative markers settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable negative markers.</li>
+ *   <li><b>object</b> - sets negative markers settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.negativeMarkers_set_asBoolean Disable/enable negative markers
+ * @example anychart.charts.Sparkline.negativeMarkers_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Data negative markers settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.negativeMarkers;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.firstMarkers
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for data first markers.
+ * @example anychart.charts.Sparkline.firstMarkers_get
+ * @return {!anychart.core.ui.MarkersFactory.Marker} Marker instance.
+ */
+anychart.charts.Sparkline.prototype.firstMarkers;
+
+/**
+ * Setter for data first markers.
+ * @detailed Sets first markers settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable first markers.</li>
+ *   <li><b>object</b> - sets first markers settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.firstMarkers_set_asBoolean Disable/enable first markers
+ * @example anychart.charts.Sparkline.firstMarkers_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Data first markers settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.firstMarkers;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.lastMarkers
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for data last markers.
+ * @example anychart.charts.Sparkline.lastMarkers_get
+ * @return {!anychart.core.ui.MarkersFactory.Marker} Marker instance.
+ */
+anychart.charts.Sparkline.prototype.lastMarkers;
+
+/**
+ * Setter for data last markers.
+ * @detailed Sets last markers settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable last markers.</li>
+ *   <li><b>object</b> - sets last markers settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.lastMarkers_set_asBoolean Disable/enable last markers
+ * @example anychart.charts.Sparkline.lastMarkers_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Data last markers settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.lastMarkers;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.maxMarkers
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for data markers of maximum point value.
+ * @example anychart.charts.Sparkline.maxMarkers_get
+ * @return {!anychart.core.ui.MarkersFactory.Marker} Marker instance.
+ */
+anychart.charts.Sparkline.prototype.maxMarkers;
+
+/**
+ * Setter for data maximum markers.
+ * @detailed Sets maximum markers settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable maximum markers.</li>
+ *   <li><b>object</b> - sets maximum markers settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.maxMarkers_set_asBoolean Disable/enable maximum markers
+ * @example anychart.charts.Sparkline.maxMarkers_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Data maximum markers settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.maxMarkers;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.minMarkers
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for data markers of minimum point value.
+ * @example anychart.charts.Sparkline.minMarkers_get
+ * @return {!anychart.core.ui.MarkersFactory.Marker} Marker instance.
+ */
+anychart.charts.Sparkline.prototype.minMarkers;
+
+/**
+ * Setter for data minimum markers.
+ * @detailed Sets minimum markers settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable minimum markers.</li>
+ *   <li><b>object</b> - sets minimum markers settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.minMarkers_set_asBoolean Disable/enable minimum markers
+ * @example anychart.charts.Sparkline.minMarkers_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Data minimum markers settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.minMarkers;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.labels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for data labels.
+ * @example anychart.charts.Sparkline.labels_get
+ * @return {!anychart.core.ui.LabelsFactory.Label} Label instance.
+ */
+anychart.charts.Sparkline.prototype.labels;
+
+/**
+ * Setter for series data labels.
+ * @detailed Sets labels settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable labels.</li>
+ *   <li><b>object</b> - sets labels settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.labels_set_asBoolean Disable/enable labels
+ * @example anychart.charts.Sparkline.labels_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Series data labels settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.labels;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.negativeLabels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for data negative labels.
+ * @example anychart.charts.Sparkline.negativeLabels_get
+ * @return {!anychart.core.ui.LabelsFactory.Label} Label instance.
+ */
+anychart.charts.Sparkline.prototype.negativeLabels;
+
+/**
+ * Setter for data negative labels.
+ * @detailed Sets negative labels settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable negative labels.</li>
+ *   <li><b>object</b> - sets negative labels settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.negativeLabels_set_asBoolean Disable/enable negative labels
+ * @example anychart.charts.Sparkline.negativeLabels_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Data negative labels settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.negativeLabels;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.firstLabels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for data first labels.
+ * @example anychart.charts.Sparkline.firstLabels_get
+ * @return {!anychart.core.ui.LabelsFactory.Label} Label instance.
+ */
+anychart.charts.Sparkline.prototype.firstLabels;
+
+/**
+ * Setter for data first labels.
+ * @detailed Sets first labels settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable first labels.</li>
+ *   <li><b>object</b> - sets first labels settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.firstLabels_set_asBoolean Disable/enable first labels
+ * @example anychart.charts.Sparkline.firstLabels_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Data first labels settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.firstLabels;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.lastLabels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for data last labels.
+ * @example anychart.charts.Sparkline.lastLabels_get
+ * @return {!anychart.core.ui.LabelsFactory.Label} Label instance.
+ */
+anychart.charts.Sparkline.prototype.lastLabels;
+
+/**
+ * Setter for data last labels.
+ * @detailed Sets last labels settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable last labels.</li>
+ *   <li><b>object</b> - sets last labels settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.lastLabels_set_asBoolean Disable/enable last labels
+ * @example anychart.charts.Sparkline.lastLabels_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Data last labels settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.lastLabels;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.maxLabels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for data labels of maximum point value.
+ * @example anychart.charts.Sparkline.maxLabels_get
+ * @return {!anychart.core.ui.LabelsFactory.Label} Label instance.
+ */
+anychart.charts.Sparkline.prototype.maxLabels;
+
+/**
+ * Setter for data maximum labels.
+ * @detailed Sets maximum labels settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable maximum labels.</li>
+ *   <li><b>object</b> - sets maximum labels settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.maxLabels_set_asBoolean Disable/enable maximum labels
+ * @example anychart.charts.Sparkline.maxLabels_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Data maximum labels settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.maxLabels;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sparkline.prototype.minLabels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for data labels of minimum point value.
+ * @example anychart.charts.Sparkline.minLabels_get
+ * @return {!anychart.core.ui.LabelsFactory.Label} Label instance.
+ */
+anychart.charts.Sparkline.prototype.minLabels;
+
+/**
+ * Setter for data minimum labels.
+ * @detailed Sets minimum labels settings depend on parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable minimum labels.</li>
+ *   <li><b>object</b> - sets minimum labels settings.</li>
+ * </ul>
+ * @example anychart.charts.Sparkline.minLabels_set_asBoolean Disable/enable minimum labels
+ * @example anychart.charts.Sparkline.minLabels_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Data minimum labels settings.
+ * @return {anychart.charts.Sparkline} Self instance for method chaining.
+ */
+anychart.charts.Sparkline.prototype.minLabels;
+

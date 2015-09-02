@@ -14,8 +14,16 @@
  */
 anychart.core.polar.series.Base;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Base.prototype.name
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for series name.
+ * @example anychart.core.polar.series.Base.name_get
  * @return {string|undefined} Series name value.
  */
 anychart.core.polar.series.Base.prototype.name;
@@ -23,24 +31,22 @@ anychart.core.polar.series.Base.prototype.name;
 /**
  * Setter for series name. <br/>
  * Basically, name of series is used in Legend displaying, but it can be used in tooltips as well.
- * @example
- * var formatterFunc = function(){ return this.seriesName;};
- * chart = anychart.polar();
- * chart.area([1, 4, 7, 1]).color('green');
- * chart.line([1,2,3])
- *     .name('My Custom series name')
- *     .tooltip().contentFormatter(formatterFunc);
- * chart.line([2,3,4])
- *     .tooltip().contentFormatter(formatterFunc);
- * chart.legend().enabled(true);
- * chart.container(stage).draw();
- * @param {string=} opt_value Value to set.
- * @return {!anychart.core.polar.series.Base} {@link anychart.core.polar.series.Base} instance for method chaining.
+ * @example anychart.core.polar.series.Base.name_set
+ * @param {string=} opt_value [undefined] Value to set.
+ * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.name;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Base.prototype.meta
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for series meta data.
+ * @example anychart.core.polar.series.Base.meta
  * @param {*=} opt_key Metadata key.
  * @return {*} Metadata object by key.
  */
@@ -48,177 +54,184 @@ anychart.core.polar.series.Base.prototype.meta;
 
 /**
  * Setter for series meta data.
- * @example <t>listingOnly</t>
+ * @listing Sample for series meta data.
  * chart.line([1,2,3]).meta({
  *     'location': 'QA',
  *     'source': 'http://some-url.dmn',
  *     'imageSRC': 'http://some-url.dmn/getImage.php?bySomeParam=Value'
  * });
  * @param {*=} opt_object Object to replace metadata.
- * @return {anychart.core.polar.series.Base} {@link anychart.core.polar.series.Base} instance for method chaining.
+ * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.meta;
 
 /**
  * Add/Replace meta data for series by key.
- * @example <t>listingOnly</t>
+ * @listing Sample: meta data for series by key.
  * var series = chart.line([1,2,3]);
  * series.meta('location', 'QA');
  * series.meta('source', 'http://some-url.dmn');
  * series.meta('imageSRC', 'http://some-url.dmn/getImage.php?bySomeParam=Value');
  * @param {string=} opt_key Metadata key.
  * @param {*=} opt_value Metadata value.
- * @return {anychart.core.polar.series.Base} {@link anychart.core.polar.series.Base} instance for method chaining.
+ * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.meta;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Base.prototype.data
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for series mapping.
+ * @example anychart.core.polar.series.Base.data_get
  * @return {!anychart.data.View} Returns current mapping.
  */
 anychart.core.polar.series.Base.prototype.data;
 
 /**
  * Setter for series mapping.
- * @example <t>listingOnly</t>
- * series.data([20, 7, 10, 14]);
- *  // or
- * series.data([
- *    [1, 22, 13],
- *    [13, 22, 23],
- *    [17, 22, 33],
- *    [21, 22, 43]
- *  ]);
- *  // or
- * series.data([
- *    {name: 'Point 1', value: 10},
- *    {name: 'Point 2', value: 7},
- *    {name: 'Point 3', value: 20},
- *    {name: 'Point 4', value: 14}
- *  ]);
- *   // or
- *  series.data(
- *    '17;21;11.1;4\n'+
- *    '11;11;0.21;0\n'+
- *    '21;17;23.1;1\n'+
- *    '10;.4;14;4.4\n',
- *    {'rowsSeparator': '\n', columnsSeparator: ';'})
- * @example
- * chart = anychart.polar();
- * chart.area([1, 4, 7, 1]);
- * chart.line().data([1,2,3]);
- * chart.container(stage).draw();
+ * @example anychart.core.polar.series.Base.data_set_asArray Using array
+ * @example anychart.core.polar.series.Base.data_set_asArrayofArrays Using array of arrays
+ * @example anychart.core.polar.series.Base.data_set_asArrayofObjects Using array of objects
+ * @example anychart.core.polar.series.Base.data_set_asCSV Using CSV
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
  * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed by first param, you can pass CSV parser settings here as a hash map.
- * @return {!anychart.core.polar.series.Base} {@link anychart.core.polar.series.Base} instance for method chaining.
+ * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.data;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Base.prototype.xScale
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for current series X scale.
+ * @example anychart.core.polar.series.Base.xScale_get
  * @return {anychart.scales.Base} Current series X Scale.
  */
 anychart.core.polar.series.Base.prototype.xScale;
 
 /**
  * Setter for series X scale.
- * @param {anychart.scales.Base=} opt_value Value to set.
- * @return {!anychart.core.polar.series.Base}  {@link anychart.core.polar.series.Base} instance for method chaining.
+ * @example anychart.core.polar.series.Base.xScale_set
+ * @param {anychart.scales.Base=} opt_value Value to set. Default linear scale.
+ * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.xScale;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Base.prototype.yScale
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for current series Y scale.
+ * @example anychart.core.polar.series.Base.yScale_get
  * @return {anychart.scales.Base} Current series Y Scale.
  */
 anychart.core.polar.series.Base.prototype.yScale;
 
 /**
  * Setter for series Y scale.
- * @param {anychart.scales.Base=} opt_value Value to set.
- * @return {!anychart.core.polar.series.Base}  {@link anychart.core.polar.series.Base} instance for method chaining.
+ * @example anychart.core.polar.series.Base.yScale_set
+ * @param {anychart.scales.Base=} opt_value Value to set. Default linear scale.
+ * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.yScale;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Base.prototype.tooltip
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for current series data tooltip.
- * @example
- * chart = anychart.polar();
- * chart.area([1, 4, 7, 1])
- *   .tooltip()
- *     .background()
- *       .stroke('2 #cc8800')
- *       .fill('grey 0.5');
- * chart.container(stage).draw();
+ * @example anychart.core.polar.series.Base.tooltip_get
  * @return {!anychart.core.ui.Tooltip} Tooltip instance.
  */
 anychart.core.polar.series.Base.prototype.tooltip;
 
 /**
  * Setter for series data tooltip.
- * @example
- * chart = anychart.polar();
- * chart.area([1, 4, 7, 1]).tooltip(null);
- * chart.container(stage).draw();
- * @param {(Object|boolean|null)=} opt_value Tooltip settings.
- * @return {!anychart.core.polar.series.Base} An instance of the {@link anychart.core.polar.series.Base} class for method chaining.
+ * @example anychart.core.polar.series.Base.tooltip_set
+ * @param {(Object|boolean|null)=} opt_value [true] Tooltip settings.
+ * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.tooltip;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Base.prototype.labels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for current series data labels.
- * @example
- * chart = anychart.polar();
- * chart.area([1, 4, 7, 1])
- *   .labels()
- *    .enabled(true)
- *    .fontColor('white')
- *    .fontWeight('bold');
- * chart.container(stage).draw();
+ * @example anychart.core.polar.series.Base.labels_get
  * @return {!anychart.core.ui.LabelsFactory} Labels instance.
  */
 anychart.core.polar.series.Base.prototype.labels;
 
 /**
  * Setter for series data labels.
- * @example
- * chart = anychart.polar();
- * chart.area([1, 4, 7, 1]).labels(true);
- * chart.container(stage).draw();
- * @param {(Object|boolean|null)=} opt_value Series data labels settings.
- * @return {!anychart.core.polar.series.Base} An instance of the {@link anychart.core.polar.series.Base} class for method chaining.
+ * @example anychart.core.polar.series.Base.labels_set
+ * @param {(Object|boolean|null)=} opt_value [false] Series data labels settings.
+ * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.labels;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Base.prototype.hoverLabels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Gets or sets series hover data labels.
- * @param {(Object|boolean|null)=} opt_value Series data labels settings.
+ * @example anychart.core.polar.series.Base.hoverLabels
+ * @param {(Object|boolean|null)=} opt_value [false] Series data labels settings.
  * @return {!(anychart.core.ui.LabelsFactory|anychart.core.polar.series.Base)} Labels instance or itself for chaining call.
  */
 anychart.core.polar.series.Base.prototype.hoverLabels;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.polar.series.Base.prototype.color
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for current series color.
+ * @example anychart.core.polar.series.Base.color_get
  * @return {!anychart.graphics.vector.Fill} Current color.
  */
 anychart.core.polar.series.Base.prototype.color;
 
 /**
- * Sets color settings using an object or a string.<br/>
+ * Sets color settings using an object or a string.
+ * @detailed
  * <b>Note: </b> <u>color</u> methods sets <b>fill</b> and <b>stroke</b> settings, which means it is not wise to pass
  * image fill here - stroke doesn't accept image fill.<br/>
  * Learn more about coloring at:
  * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example <c>Solid color</c>
- * chart = anychart.polar();
- * chart.area([1, 4, 7, 1]).color('green');
- * chart.container(stage).draw();
- * @example <c>Linear gradient color</c>
- * chart = anychart.polar();
- * chart.area([1, 4, 7, 1]).color(['green', 'yellow']);
- * chart.container(stage).draw();
- * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
- * @return {!anychart.core.polar.series.Base} {@link anychart.core.polar.series.Base} instance for method chaining.
+ * @example anychart.core.polar.series.Base.color_set_asString Using string
+ * @example anychart.core.polar.series.Base.color_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [#1D8BD1] Color as an object or a string.
+ * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.color;
 
@@ -226,13 +239,10 @@ anychart.core.polar.series.Base.prototype.color;
  * Color with opacity.<br/>
  * <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
  * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
- * @example
- * chart = anychart.polar();
- * chart.area([1, 4, 7, 1]).color('green', 0.4);
- * chart.container(stage).draw();
+ * @example anychart.core.polar.series.Base.color_set_asOpacity
  * @param {string} color Color as a string.
  * @param {number=} opt_opacity Color opacity.
- * @return {!anychart.core.polar.series.Base} {@link anychart.core.polar.series.Base} instance for method chaining.
+ * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.color;
 
@@ -240,15 +250,12 @@ anychart.core.polar.series.Base.prototype.color;
  * Linear gradient.<br/>
  * Learn more about coloring at:
  * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example
- * chart = anychart.polar();
- * chart.area([1, 4, 7, 1]).color(['black', 'yellow'], 45, true, 0.5);
- * chart.container(stage).draw();
+ * @example anychart.core.polar.series.Base.color_set_asLinear
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
  * @param {number=} opt_angle Gradient angle.
  * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
  * @param {number=} opt_opacity Gradient opacity.
- * @return {!anychart.core.polar.series.Base} {@link anychart.core.polar.series.Base} instance for method chaining.
+ * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.color;
 
@@ -256,10 +263,7 @@ anychart.core.polar.series.Base.prototype.color;
  * Radial gradient.<br/>
  * Learn more about coloring at:
  * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example
- * chart = anychart.polar();
- * chart.area([1, 4, 7, 1]).color(['black', 'yellow'], .5, .5, null, .9, 0.3, 0.81)
- * chart.container(stage).draw();
+ * @example anychart.core.polar.series.Base.color_set_asRadial
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
  * @param {number} cx X ratio of center radial gradient.
  * @param {number} cy Y ratio of center radial gradient.
@@ -267,7 +271,7 @@ anychart.core.polar.series.Base.prototype.color;
  * @param {number=} opt_opacity Opacity of the gradient.
  * @param {number=} opt_fx X ratio of focal point.
  * @param {number=} opt_fy Y ratio of focal point.
- * @return {!anychart.core.polar.series.Base} {@link anychart.core.polar.series.Base} instance for method chaining.
+ * @return {anychart.core.polar.series.Base} Self instance for method chaining.
  */
 anychart.core.polar.series.Base.prototype.color;
 

@@ -76,7 +76,7 @@ anychart.graphics.vector.Stage.prototype.container;
  after rendering and new container is set then upon next draw DOM
  element will move to the new container.
  @param {Element=} opt_value Container DOM element.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.container;
 
@@ -86,18 +86,7 @@ anychart.graphics.vector.Stage.prototype.container;
  To wake Stage up from this state you need to invoke {@link anychart.graphics.vector.Stage#resume} or
  {@link anychart.graphics.vector.Stage#resumeAsync}.<br/>
  Suspended rendering is much faster than instant, when there are a lot of operations with Stage.
- @example <t>stageOnly</t>
- var text = stage.text(0,0,'Click to resume').fontSize(14);
- text.x(20).y(10);
- var rect = stage.rect(0, 0, 100, 100).fill('white .01').stroke(null);
- anychart.graphics.events.listen(rect, anychart.graphics.events.EventType.CLICK, function(){
-        stage.resume();
-        text.text(null);
-        rect.fill('none');
-    });
- stage.suspend();
- stage.text(10, 10, 'new text line');
- stage.circle(stage.width()/2, stage.height()/2, 50).fill('red 0.2').stroke('2 blue');
+ @example anychart.graphics.vector.Stage.suspend
  @return {anychart.graphics.vector.Stage} Stage.
  */
 anychart.graphics.vector.Stage.prototype.suspend;
@@ -141,13 +130,13 @@ anychart.graphics.vector.Stage.prototype.resize;
 
 /**
  Returns self. We need this method to sync layer and stage api.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.getStage;
 
 /**
  Returns self. We need this method to sync layer and stage api.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.parent;
 
@@ -160,7 +149,7 @@ anychart.graphics.vector.Stage.prototype.id;
 /**
  Sets stage identifier and instantly applies it to DOM.
  @param {string=} opt_value Custom identifier.
- @return {anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.id;
 
@@ -173,7 +162,7 @@ anychart.graphics.vector.Stage.prototype.visible;
 /**
  Shows or hides stage.
  @param {boolean=} opt_isVisible Visibility.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.visible;
 
@@ -192,7 +181,7 @@ anychart.graphics.vector.Stage.prototype.data;
  <a href='http://json-schema.org/'>JSON schema</a>.
  @shortDescription Deserializes JSON object - objects are created and rendered to the stage.
  @param {Object=} opt_value JSON data to set for stage.
- @return {anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.data;
 
@@ -221,32 +210,12 @@ anychart.graphics.vector.Stage.prototype.saveAsJPG;
 anychart.graphics.vector.Stage.prototype.saveAsPDF;
 
 /**
- * Save stage as svg file.
- * @param {string=} opt_data
- * @param {string=} opt_dataType
- * @param {string=} opt_productName
- */
-anychart.graphics.vector.Stage.prototype.saveAsSVG;
-
-/**
- * Print stage.
- * @param {anychart.graphics.vector.PaperSize=} opt_paperSize
- * @param {boolean=} opt_landscape
- */
-anychart.graphics.vector.Stage.prototype.print;
-
-/**
  Invokes {@link anychart.graphics.vector.Layer} constructor<br/>
  <strong>Note:</strong><br>anychart.graphics.vector.Stage doesn't delete objects you create.
  You must delete them yourself after you finish using them.
  @shortDescription Invokes {@link anychart.graphics.vector.Layer} constructor.
- @example <t>stageOnly</t>
- var layer = stage.layer();
- // add circle
- layer.circle(30, 30, 40);
- // add rectangle
- layer.rect(10, 10, 50, 50);
- @return {!anychart.graphics.vector.Layer} {@link anychart.graphics.vector.Layer} for method chaining.
+ @example anychart.graphics.vector.Stage.layer
+ @return {anychart.graphics.vector.Layer} An instance of class for method chaining.
  @this {anychart.graphics.vector.ILayer}
  */
 anychart.graphics.vector.Stage.prototype.layer;
@@ -256,18 +225,13 @@ anychart.graphics.vector.Stage.prototype.layer;
  <strong>Note:</strong><br>anychart.graphics.vector.Stage doesn't delete objects you create.
  You must delete them yourself after you finish using them.
  @shortDescription Invokes {@link anychart.graphics.vector.Text} constructor.
- @example <t>stageOnly</t>
- var text = stage.text(100, 100);
- text.style({fontStyle: 'italic', fontSize: '15px', color: '#00f'});
- text.text('Simple text');
- @example <t>stageOnly</t>
- var customStyle = {fontStyle: 'italic', fontSize: '15px', color: '#00f'};
- stage.text(200, 50, 'Plain text', customStyle);
+ @example anychart.graphics.vector.Stage.text
+ @example anychart.graphics.vector.Stage.text1
  @param {number=} opt_x X-coordinate (Left) of left top corner of text bounds.
  @param {number=} opt_y Y-coordinate (Top) of left top corner of text bounds.
  @param {string=} opt_text Text.
  @param {anychart.graphics.vector.TextStyle=} opt_style Text style. Read more at {@link anychart.graphics.vector.Text#style}.
- @return {!anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} for method chaining.
+ @return {anychart.graphics.vector.Text} An instance of class for method chaining.
  @this {anychart.graphics.vector.ILayer}
  */
 anychart.graphics.vector.Stage.prototype.text;
@@ -279,20 +243,12 @@ anychart.graphics.vector.Stage.prototype.text;
  You must delete them yourself after you finish using them.
  @shortDescription Invokes {@link anychart.graphics.vector.Text} and applies
  {@link anychart.graphics.vector.Text#htmlText} to parse HTML.
- @example <t>stageOnly</t>
- stage.html(100, 50,
- '<b>Simple <span style="color: red">text</span></b>', {
-    fontStyle: 'italic',
-    fontSize: '15px',
-    width: 140,
-    height: 50,
-    vAlign: 'middle'
-  });
+ @example anychart.graphics.vector.Stage.html
  @param {number=} opt_x X-coordinate (Left) of left top corner of text bounds.
  @param {number=} opt_y Y-coordinate (Top) of left top corner of text bounds.
  @param {string=} opt_text Text.
  @param {anychart.graphics.vector.TextStyle=} opt_style Text style. Read more at {@link anychart.graphics.vector.Text#style}.
- @return {!anychart.graphics.vector.Text} {@link anychart.graphics.vector.Text} for method chaining.
+ @return {anychart.graphics.vector.Text} An instance of class for method chaining.
  @this {anychart.graphics.vector.ILayer}
  */
 anychart.graphics.vector.Stage.prototype.html;
@@ -302,13 +258,12 @@ anychart.graphics.vector.Stage.prototype.html;
  <strong>Note:</strong><br>anychart.graphics.vector.Stage doesn't delete objects you create.
  You must delete them yourself after you finish using them.
  @shortDescription Invokes {@link anychart.graphics.vector.Rect} constructor.
- @example <t>stageOnly</t>
- stage.rect(75, 50, 150, 75);
+ @example anychart.graphics.vector.Stage.rect
  @param {number=} opt_x X (Left) coordinate of top-left corner.
  @param {number=} opt_y Y (Top) coordinate of top-left corner.
  @param {number=} opt_width Width.
  @param {number=} opt_height Height.
- @return {!anychart.graphics.vector.Rect} {@link anychart.graphics.vector.Rect} for method chaining.
+ @return {anychart.graphics.vector.Rect} An instance of class for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.rect;
 
@@ -317,8 +272,7 @@ anychart.graphics.vector.Stage.prototype.rect;
  <strong>Note:</strong><br>anychart.graphics.vector.Stage doesn't delete objects you create.
  You must delete them yourself after you finish using them.
  @shortDescription Invokes {@link anychart.graphics.vector.Image} constructor.
- @example <t>stageOnly</t>
- stage.image('http://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png', 105, 10, 150, 125);
+ @example anychart.graphics.vector.Stage.image
  @param {string=} opt_src IRI (Internationalized Resource Identifiers) for image source.
  @param {number=} opt_x X coordinate of left-top corner image.
  @param {number=} opt_y Y coordinate of left-top corner image.
@@ -331,28 +285,21 @@ anychart.graphics.vector.Stage.prototype.image;
 /**
  Draws rectangle with rounded corners.<br/>
  Read more at {@link anychart.graphics.vector.primitives.roundedRect}
- @example <t>stageOnly</t>
- var rect = new anychart.graphics.math.Rect(10, 20, 55, 55);
- stage.roundedRect(rect, 25, 10);
+ @example anychart.graphics.vector.Stage.roundedRect
  */
 anychart.graphics.vector.Stage.prototype.roundedRect;
 
 /**
  Draws rectangle with inner rounded corners.<br/>
  Read more at {@link anychart.graphics.vector.primitives.roundedInnerRect}
- @example <t>stageOnly</t>
- var rect = new anychart.graphics.math.Rect(10, 20, 55, 55);
- stage.roundedInnerRect(rect, 25, 10);
+ @example anychart.graphics.vector.Stage.roundedInnerRect
  */
 anychart.graphics.vector.Stage.prototype.roundedInnerRect;
 
 /**
  Draws rectangle with truncated corners.<br/>
  Read more at {@link anychart.graphics.vector.primitives.truncatedRect}
- @example <t>stageOnly</t>
- var rect;
- rect = new anychart.graphics.math.Rect(10, 20, 55, 55);
- stage.truncatedRect(rect, 25, 10);
+ @example anychart.graphics.vector.Stage.truncatedRect
  */
 anychart.graphics.vector.Stage.prototype.truncatedRect;
 
@@ -362,12 +309,11 @@ anychart.graphics.vector.Stage.prototype.truncatedRect;
  You must delete them yourself after you finish using them.<br/>
  Read more at: {@link anychart.graphics.vector.Circle}
  @shortDescription Invokes {@link anychart.graphics.vector.Circle} constructor.
- @example <t>stageOnly</t>
- stage.circle(50, 50, 45);
+ @example anychart.graphics.vector.Stage.circle
  @param {number=} opt_cx Center X, in pixels.
  @param {number=} opt_cy Center Y, in pixels.
  @param {number=} opt_radius Radius, in pixels.
- @return {!anychart.graphics.vector.Circle} {@link anychart.graphics.vector.Circle} for method chaining.
+ @return {anychart.graphics.vector.Circle} An instance of class for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.circle;
 
@@ -377,13 +323,12 @@ anychart.graphics.vector.Stage.prototype.circle;
  You must delete them yourself after you finish using them.<br/>
  Read more at: {@link anychart.graphics.vector.Ellipse}
  @shortDescription Invokes {@link anychart.graphics.vector.Ellipse} constructor.
- @example <t>stageOnly</t>
- stage.ellipse(150, 70, 70, 50);
+ @example anychart.graphics.vector.Stage.ellipse
  @param {number=} opt_cx Center X, in pixels.
  @param {number=} opt_cy Center Y, in pixels.
  @param {number=} opt_rx X radius, in pixels.
  @param {number=} opt_ry Y raduis, in pixels.
- @return {!anychart.graphics.vector.Ellipse} {@link anychart.graphics.vector.Ellipse} for method chaining.
+ @return {anychart.graphics.vector.Ellipse} An instance of class for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.ellipse;
 
@@ -393,132 +338,113 @@ anychart.graphics.vector.Stage.prototype.ellipse;
  You must delete them yourself after you finish using them.<br/>
  Read more at Path: {@link anychart.graphics.vector.Path}
  @shortDescription Invokes {@link anychart.graphics.vector.Path} constructor.
- @example <t>stageOnly</t>
- var path = stage.path();
- path.moveTo(110, 110)
- .lineTo(50, 10, 50, 50, 10, 50)
- .close();
- @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} for method chaining.
+ @example anychart.graphics.vector.Stage.path
+ @return {anychart.graphics.vector.Path} An instance of class for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.path;
 
 /**
  Draws multi-pointed star.<br/>
  Read more at {@link anychart.graphics.vector.primitives.star}
- @example <t>stageOnly</t>
- stage.star(50, 50, 30, 7, 8, 30);
+ @example anychart.graphics.vector.Stage.star
  */
 anychart.graphics.vector.Stage.prototype.star;
 
 /**
  Draws four-pointed star.<br/>
  Read more at {@link anychart.graphics.vector.primitives.star4}
- @example <t>stageOnly</t>
- stage.star4(70, 50, 30);
+ @example anychart.graphics.vector.Stage.star4
  */
 anychart.graphics.vector.Stage.prototype.star4;
 
 /**
  Draws five-pointed star.<br/>
  Read more at {@link anychart.graphics.vector.primitives.star5}
- @example <t>stageOnly</t>
- stage.star5(70, 50, 30);
+ @example anychart.graphics.vector.Stage.star5
  */
 anychart.graphics.vector.Stage.prototype.star5;
 
 /**
  Draws six-pointed star.<br/>
  Read more at {@link anychart.graphics.vector.primitives.star6}
- @example <t>stageOnly</t>
- stage.star6(70, 50, 30);
+ @example anychart.graphics.vector.Stage.star6
  */
 anychart.graphics.vector.Stage.prototype.star6;
 
 /**
  Draws seven-pointed star.<br/>
  Read more at {@link anychart.graphics.vector.primitives.star7}
- @example <t>stageOnly</t>
- stage.star7(70, 50, 30);
+ @example anychart.graphics.vector.Stage.star7
  */
 anychart.graphics.vector.Stage.prototype.star7;
 
 /**
  Draws ten-pointed star.<br/>
  Read more at {@link anychart.graphics.vector.primitives.star10}
- @example <t>stageOnly</t>
- stage.star10(70, 50, 30);
+ @example anychart.graphics.vector.Stage.star10
  */
 anychart.graphics.vector.Stage.prototype.star10;
 
 /**
  Draws a triangle heading upwards set by its circumscribed circle center and radius.<br/>
  Read more at {@link anychart.graphics.vector.primitives.triangleUp}
- @example <t>stageOnly</t>
- stage.triangleUp(70, 50, 30);
+ @example anychart.graphics.vector.Stage.triangleUp
  */
 anychart.graphics.vector.Stage.prototype.triangleUp;
 
 /**
  Draws a triangle heading downwards set by it circumscribed circle center and radius.<br/>
  Read more at {@link anychart.graphics.vector.primitives.triangleDown}
- @example <t>stageOnly</t>
- stage.triangleDown(70, 50, 30);
+ @example anychart.graphics.vector.Stage.triangleDown
  */
 anychart.graphics.vector.Stage.prototype.triangleDown;
 
 /**
  Draws a diamond set by it circumscribed circle center and radius.<br/>
  Read more at {@link anychart.graphics.vector.primitives.diamond}
- @example <t>stageOnly</t>
- stage.diamond(70, 50, 30);
+ @example anychart.graphics.vector.Stage.diamond
  */
 anychart.graphics.vector.Stage.prototype.diamond;
 
 /**
  Draws a cross set by it's circumscribed circle center and radius.<br/>
  Read more at {@link anychart.graphics.vector.primitives.cross}
- @example <t>stageOnly</t>
- stage.cross(70, 50, 30);
+ @example anychart.graphics.vector.Stage.cross
  */
 anychart.graphics.vector.Stage.prototype.cross;
 
 /**
  Draws a diagonal cross set by it circumscribed circle center and radius.<br/>
  Read more at {@link anychart.graphics.vector.primitives.diagonalCross}
- @example <t>stageOnly</t>
- stage.diagonalCross(70, 50, 30);
+ @example anychart.graphics.vector.Stage.diagonalCross
  */
 anychart.graphics.vector.Stage.prototype.diagonalCross;
 
 /**
  Draws a thick horizontal line set by it circumscribed circle center and radius.<br/>
  Read more at {@link anychart.graphics.vector.primitives.hLine}
- @example <t>stageOnly</t>
- stage.hLine(70, 50, 30);
+ @example anychart.graphics.vector.Stage.hLine
  */
 anychart.graphics.vector.Stage.prototype.hLine;
 
 /**
  Draws a thick vertical line set by it circumscribed circle center and radius.<br/>
  Read more at {@link anychart.graphics.vector.primitives.vLine}
- @example <t>stageOnly</t>
- stage.vLine(70, 50, 30);
+ @example anychart.graphics.vector.Stage.vLine
  */
 anychart.graphics.vector.Stage.prototype.vLine;
 
 /**
  Draws arc as pie chart element.<br/>
  Read more at {@link anychart.graphics.vector.primitives.pie}
- @example <t>stageOnly</t>
- stage.pie(50, 100, 75, 0, 100);
+ @example anychart.graphics.vector.Stage.pie
  */
 anychart.graphics.vector.Stage.prototype.pie;
 
 /**
  Draws arc as donut chart element.<br/>
  Read more at {@link anychart.graphics.vector.primitives.donut}
- @example <t>stageOnly</t>
- stage.donut(100, 50, 75, 25, 0, 100);
+ @example anychart.graphics.vector.Stage.donut
  */
 anychart.graphics.vector.Stage.prototype.donut;
 
@@ -528,18 +454,9 @@ anychart.graphics.vector.Stage.prototype.donut;
  You must delete them yourself after you finish using them.<br/>
  Read more at: {@link anychart.graphics.vector.PatternFill}
  @shortDescription Invokes {@link anychart.graphics.vector.PatternFill} constructor.
- @example <t>stageOnly</t>
- var black = '2 black 0.9';
- var pattern = stage.pattern(new anychart.graphics.math.Rect(0,0,20,20));
- var circle = stage.circle(10,10,8).fill('red');
- // Simple fill for small rectangle.
- stage.rect(2,2, 50, 50).fill('rgba(2,0,200,0.4)');
- // Small rectangle with pattern's fill.
- stage.rect(2,2, 50, 50).fill(pattern).stroke(black);
- // Big rectangle with same pattern's fill.
- stage.rect(50,25, 200, 100).fill(pattern).stroke(black);
+ @example anychart.graphics.vector.Stage.pattern
  @param {!anychart.graphics.math.Rect} bounds Bounds of pattern. Defines size and offset of pattern.
- @return {!anychart.graphics.vector.PatternFill} {@link anychart.graphics.vector.PatternFill} for method chaining.
+ @return {anychart.graphics.vector.PatternFill} An instance of class for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.pattern;
 
@@ -551,16 +468,12 @@ anychart.graphics.vector.Stage.prototype.pattern;
  Read more at: {@link anychart.graphics.vector.HatchFill}
  @shortDescription Invokes {@link anychart.graphics.vector.HatchFill}constructor, if there is no such hatchfill
  in defs. If it already exist - returns an instance.
- @example <t>stageOnly</t>
- var black = '2 black 0.9';
- var blue = '1 blue 0.9';
- var pattern = stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.BACKWARD_DIAGONAL, blue);
- stage.rect(50,25, 200, 100).fill(pattern).stroke(black);
+ @example anychart.graphics.vector.Stage.hatchFill
  @param {anychart.graphics.vector.HatchFill.HatchFillType=} opt_type Type of hatch fill.
  @param {string=} opt_color Hatch color COMBINED WITH OPACITY.
  @param {number=} opt_thickness Hatch fill thickness.
  @param {number=} opt_size Hatch fill size.
- @return {!anychart.graphics.vector.HatchFill} {@link anychart.graphics.vector.HatchFill} for method chaining.
+ @return {anychart.graphics.vector.HatchFill} An instance of class for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.hatchFill;
 
@@ -574,7 +487,7 @@ anychart.graphics.vector.Stage.prototype.numChildren;
  Adds element.<br/>
  Similar to {@link anychart.graphics.vector.Layer#addChild}
  @param {!anychart.graphics.vector.Element} element Element.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.addChild;
 
@@ -583,7 +496,7 @@ anychart.graphics.vector.Stage.prototype.addChild;
  Similar to {@link anychart.graphics.vector.Layer#addChildAt}
  @param {!anychart.graphics.vector.Element} element Element.
  @param {number} index Child index.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.addChildAt;
 
@@ -638,7 +551,7 @@ anychart.graphics.vector.Stage.prototype.indexOfChild;
  Similar to {@link anychart.graphics.vector.Layer#swapChildren}
  @param {anychart.graphics.vector.Element} element1 First child.
  @param {anychart.graphics.vector.Element} element2 Second child.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.swapChildren;
 
@@ -647,7 +560,7 @@ anychart.graphics.vector.Stage.prototype.swapChildren;
  Similar to {@link anychart.graphics.vector.Layer#swapChildrenAt}
  @param {number} index1 First child or id.
  @param {number} index2 Second child or id.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.swapChildrenAt;
 
@@ -656,13 +569,13 @@ anychart.graphics.vector.Stage.prototype.swapChildrenAt;
  Similar to {@link anychart.graphics.vector.Layer#forEachChild}
  @param {function(anychart.graphics.vector.Element):void} callback Callback.
  @param {Object=} opt_this This element.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.forEachChild;
 
 /**
  Removes everything.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.remove;
 
@@ -702,7 +615,7 @@ anychart.graphics.vector.Stage.prototype.getBounds;
  @param {number} degrees Rotation angle.
  @param {number=} opt_cx Rotaion X.
  @param {number=} opt_cy Rotaion Y.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.rotate;
 
@@ -711,7 +624,7 @@ anychart.graphics.vector.Stage.prototype.rotate;
  Read more at: {@link anychart.graphics.vector.Element#rotateByAnchor}.
  @param {number} degrees Rotation angle.
  @param {(anychart.graphics.vector.Anchor|string)=} opt_anchor Rotation anchor.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.rotateByAnchor;
 
@@ -721,7 +634,7 @@ anychart.graphics.vector.Stage.prototype.rotateByAnchor;
  @param {number} degrees Rotation angle.
  @param {number=} opt_cx Rotaion Х.
  @param {number=} opt_cy Rotaion Y.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.setRotation;
 
@@ -730,7 +643,7 @@ anychart.graphics.vector.Stage.prototype.setRotation;
  Read more at: {@link anychart.graphics.vector.Element#setRotationByAnchor}.
  @param {number} degrees Rotation angle.
  @param {(anychart.graphics.vector.Anchor|string)=} opt_anchor Rotation anchor.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.setRotationByAnchor;
 
@@ -740,7 +653,7 @@ anychart.graphics.vector.Stage.prototype.setRotationByAnchor;
  Read more at: {@link anychart.graphics.vector.Element#translate}.
  @param {number} tx Х offset.
  @param {number} ty Y offset.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.translate;
 
@@ -761,7 +674,7 @@ anychart.graphics.vector.Stage.prototype.setPosition;
  @param {number} sy Scale Y.
  @param {number=} opt_cx Scale center Х.
  @param {number=} opt_cy Scale center Y.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.scale;
 
@@ -772,7 +685,7 @@ anychart.graphics.vector.Stage.prototype.scale;
  @param {number} sx Scale Х.
  @param {number} sy Scale Y.
  @param {(anychart.graphics.vector.Anchor|string)=} opt_anchor Scaling center anchor.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.scaleByAnchor;
 
@@ -786,7 +699,7 @@ anychart.graphics.vector.Stage.prototype.scaleByAnchor;
  @param {number} m11 Scale Y.
  @param {number} m02 Translate X.
  @param {number} m12 Translate Y.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.appendTransformationMatrix;
 
@@ -799,7 +712,7 @@ anychart.graphics.vector.Stage.prototype.appendTransformationMatrix;
  @param {number} m11 Scale Y.
  @param {number} m02 Translate X.
  @param {number} m12 Translate Y.
- @return {!anychart.graphics.vector.Stage} {@link anychart.graphics.vector.Stage} for method chaining.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.setTransformationMatrix;
 
@@ -828,22 +741,19 @@ anychart.graphics.vector.Stage.prototype.getTransformationMatrix;
  Clips a stage.
  Works only after render() is invoked.<br/>
  Read more at: {@link anychart.graphics.vector.Element#clip}.
- @param {(anychart.graphics.math.Rect|anychart.graphics.vector.Clip)=} opt_value Clipping rectangle.
- @return {anychart.graphics.vector.Element|anychart.graphics.math.Rect|anychart.graphics.vector.Clip} {@link anychart.graphics.vector.Stage} for method chaining
+ @param {anychart.graphics.math.Rect=} opt_value Clipping rectangle.
+ @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  or {@link anychart.graphics.math.rect} clipping rectangle.
  */
 anychart.graphics.vector.Stage.prototype.clip;
 
 /**
- * Creates a clip element.
- * @param {(number|Array.<number>|anychart.graphics.math.Rect|Object|null)=} opt_leftOrRect Left coordinate of bounds
- * or rect or array or object representing bounds.
- * @param {number=} opt_top Top coordinate.
- * @param {number=} opt_width Width of the rect.
- * @param {number=} opt_height Height of the rect.
- * @return {anychart.graphics.vector.Clip} Clip element.
+ Get clip bounds.
+ Works only after render() is invoked.<br/>
+ Read more at: {@link anychart.graphics.vector.Element#clip}.
+ @return {anychart.graphics.math.Rect} Clipping rectangle.
  */
-anychart.graphics.vector.Stage.prototype.createClip;
+anychart.graphics.vector.Stage.prototype.clip;
 
 /**
  Disposes Stage. Removes it from parent layer, nulls links, removes from DOM.

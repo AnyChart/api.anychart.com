@@ -1,0 +1,22 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="scatter errorSeries"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.scatter([2, 6, 4, 8]);
+            var series = chart.getSeries(0);
+            series.error(true); // enables error for mode both
+            var error = series.error();
+            error.xError(1);
+            error.valueError(1);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

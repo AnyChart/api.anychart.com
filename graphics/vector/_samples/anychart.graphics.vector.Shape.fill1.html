@@ -1,0 +1,25 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentLoad(function () {
+            var stage = anychart.graphics.create('container');
+            // getter returns {color: 'red', opacity: 0.5}
+            stage.rect(10,10,75,130).fill('red 0.5');
+            //
+            // getter returns {color: '#ff0000', opacity: 0.5}
+            stage.rect(95,10,75,130).fill('#ff0000 0.5');
+            //
+            // getter returns {color: 'red', opacity: 0.5}
+            stage.rect(180,10,75,130).fill({color: 'red', opacity: 0.5});
+            //
+            stage.rect(265,10,75,130).fill({keys:['red', 'green'], mode: true, angle: 45});
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

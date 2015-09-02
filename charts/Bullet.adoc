@@ -1,203 +1,205 @@
 /**
- * Bullet chart c§lass.<br/>
- * <b>Note:</b> Use these methods to get an instance of this class:
- *  <ul>
- *      <li>{@link anychart.bullet}</li>
- *      <li>{@link anychart.bullet}</li>
- *  </ul>
+ * Bullet chart class.<br/>
+ * <b>Note:</b> Use method {@link anychart.bullet} to get an instance of this class.
  * @constructor
- * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Bullet Chart data.
  * @extends {anychart.core.Chart}
  */
 anychart.charts.Bullet;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Bullet.prototype.data
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for chart data.
- * @return {!anychart.data.View} {@link anychart.data.View} instance for method chaining.
+ * @example anychart.charts.Bullet.data_get
+ * @return {!anychart.data.View} Returns current mapping.
  */
 anychart.charts.Bullet.prototype.data;
 
 /**
  * Setter for chart data.<br/>
  * <b>Note:</b> All data is markers values.
- * @example <c>Simple markers</c><t>simple-h100</t>
- * var bulletChart = anychart.bullet([10, 7, 11]);
- * bulletChart.range().from(0).to(6);
- * bulletChart.range(1).from(6).to(12);
- * bulletChart.container(stage).draw();
- * @example <c>Advanced markers</c><t>simple-h100</t>
- * var bulletChart = anychart.bullet([
- *    {value: 9, type: 'bar', fill: 'blue 0.5', gap: 0.3},
- *    {value: 10, type: 'X', stroke: 'blue 4'},
- * ]);
- * bulletChart.range().from(0).to(6);
- * bulletChart.range(1).from(6).to(12);
- * bulletChart.container(stage).draw();
+ * @example anychart.charts.Bullet.data_set_asArray Using array
+ * @example anychart.charts.Bullet.data_set_asArrayofObject Using object with advanced markers
  * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
  * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
- * @return {anychart.charts.Bullet} {@link anychart.charts.Bullet} instance for method chaining.
+ * @return {anychart.charts.Bullet} Self instance for method chaining.
  */
 anychart.charts.Bullet.prototype.data;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Bullet.prototype.layout
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for bullet chart layout.
+ * @example anychart.charts.Bullet.layout_get
  * @return {anychart.enums.Layout} Current chart layout.
  */
 anychart.charts.Bullet.prototype.layout;
 
 /**
  * Setter for bullet chart layout.
- * @example <t>simple-h100</t>
- * var bulletChart = anychart.bullet([17]);
- * bulletChart.layout('horizontal');
- * bulletChart.range().from(0).to(10);
- * bulletChart.range(1).from(10).to(20);
- * bulletChart.container(stage).draw();
- * @param {(string|anychart.enums.Layout)=} opt_value [{@link anychart.enums.Layout}.HORIZONTAL] Value to set.
- * @return {anychart.charts.Bullet} {@link anychart.charts.Bullet} instance for method chaining.
+ * @example anychart.charts.Bullet.layout_set_asString Using string
+ * @example anychart.charts.Bullet.layout_set_asEnum Using enum
+ * @param {(string|anychart.enums.Layout)=} opt_value ['horizontal'] Value to set.
+ * @return {anychart.charts.Bullet} Self instance for method chaining.
  */
 anychart.charts.Bullet.prototype.layout;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Bullet.prototype.isHorizontal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Whether an bullet chart is horizontal.
- * @return {boolean} If the bullet chart is horizontal.
+ * Whether an bullet chart has horizontal layout.
+ * Layout is define by method {@link anychart.charts.Bullet#layout}.
+ * @example anychart.charts.Bullet.isHorizontal
+ * @return {boolean} Returns <b>true</b> if the bullet's layout is horizontal.
  */
 anychart.charts.Bullet.prototype.isHorizontal;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Bullet.prototype.scale
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for default bullet chart scale settings.
- * @example <t>simple-h100</t>
- * var bulletChart = anychart.bullet([17]);
- * bulletChart.range().from(0).to(10);
- * bulletChart.range(1).from(10).to(20);
- * bulletChart.scale().minimum(10).maximum(15);
- * bulletChart.container(stage).draw();
- * @return {!anychart.scales.Base} {@link anychart.scales.Base} instance for method chaining.
+ * @example anychart.charts.Bullet.scale_get
+ * @return {!anychart.scales.Base} Default chart scale value.
  */
 anychart.charts.Bullet.prototype.scale;
 
 /**
  * Setter for default bullet chart scale settings.
- * @example <t>simple-h100</t>
- * var bulletChart = anychart.bullet([17]);
- * bulletChart.range().from(0).to(10);
- * bulletChart.range(1).from(10).to(20);
- * bulletChart.scale('linear');
- * bulletChart.container(stage).draw();
- * @param {(anychart.scales.Base|anychart.enums.ScaleTypes)=} opt_value Scale to set or Sclae type.<br/>
- *  Also accepts 'log', 'linear', 'dateTime' and 'ordinal' strings.
- * @return {!anychart.charts.Bullet} {@link anychart.charts.Bullet} instance for method chaining.
+ * @example anychart.charts.Bullet.scale_set_asString Using string
+ * @example anychart.charts.Bullet.scale_set_asInst Using instance
+ * @example anychart.charts.Bullet.scale_set_asEnum Using enum
+ * @param {(anychart.scales.Base|anychart.enums.ScaleTypes|string)=} opt_value Scale to set or Scale type. Default linear scale.<br/>
+ * Also accepts 'log', 'linear' and 'dateTime' strings.
+ * @return {anychart.charts.Bullet} Self instance for method chaining.
  */
 anychart.charts.Bullet.prototype.scale;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Bullet.prototype.axis
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for default bullet chart axis settings.
- * @example <t>simple-h100</t>
- * var bulletChart = anychart.bullet([17]);
- * bulletChart.range().from(0).to(10);
- * bulletChart.range(1).from(10).to(20);
- * bulletChart.axis()
- *    .orientation('top')
- *    .stroke('red')
- *    .title(null);
- * bulletChart.container(stage).draw();
- * @return {!anychart.core.axes.Linear} {@link anychart.core.axes.Linear} instance for method chaining.
+ * @example anychart.charts.Bullet.axis_get
+ * @return {!anychart.core.axes.Linear} Axis instance.
  */
 anychart.charts.Bullet.prototype.axis;
 
 /**
  * Setter for default bullet chart axis settings.
- * @example <t>simple-h100</t>
- * var bulletChart = anychart.bullet([17]);
- * bulletChart.range().from(0).to(10);
- * bulletChart.range(1).from(10).to(20);
- * bulletChart.axis(null);
- * bulletChart.container(stage).draw();
- * @param {(Object|boolean|null)=} opt_value Scale to set.
- * @return {!anychart.charts.Bullet} {@link anychart.charts.Bullet} instance for method chaining.
+ * @detailed Sets chart axis settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart axis.</li>
+ *   <li><b>object</b> - sets chart axis settings.</li>
+ * </ul>
+ * @example anychart.charts.Bullet.axis_set_asDisable Disable/Enable axis
+ * @example anychart.charts.Bullet.axis_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [true] Axis settings to set.
+ * @return {anychart.charts.Bullet} Self instance for method chaining.
  */
 anychart.charts.Bullet.prototype.axis;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Bullet.prototype.range
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for bullet chart ranges settings.
- * @example <t>simple-h100</t>
- * var bulletChart = anychart.bullet([17]);
- * bulletChart.range(0)
- *    .from(0).to(10)
- *    .fill('red 0.2')
- *    .layout('vertical');
- * bulletChart.range(1)
- *    .from(10).to(20)
- *    .fill('yellow 0.2')
- *    .layout('vertical');
- * bulletChart.container(stage).draw();
+ * @example anychart.charts.Bullet.range_get
  * @param {number=} opt_index [0] Chart range index.
- * @return {!anychart.core.axisMarkers.Range} {@link anychart.core.axisMarkers.Range} instance for method chaining.
+ * @return {!anychart.core.axisMarkers.Range} Range instance by index.
  */
 anychart.charts.Bullet.prototype.range;
 
 /**
  * Setter for bullet chart first range settings.
- * @example <t>simple-h100</t>
- * var bulletChart = anychart.bullet([17]);
- * bulletChart.range({
- *    from: 0,
- *    to: 15,
- *    fill: 'green 0.2',
- *    layout: 'vertical'
- * });
- * bulletChart.container(stage).draw();
+ * @detailed Sets chart first range settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart first range.</li>
+ *   <li><b>object</b> - sets chart first range settings.</li>
+ * </ul>
+ * @example anychart.charts.Bullet.range_set_asDisable Disable/Enable first range
+ * @example anychart.charts.Bullet.range_set_asObject Using object
  * @param {(Object|boolean|null)=} opt_value Value to set.
- * @return {!anychart.charts.Bullet} {@link anychart.charts.Bullet} instance for method chaining.
+ * @return {anychart.charts.Bullet} Self instance for method chaining.
  */
 anychart.charts.Bullet.prototype.range;
 
 /**
  * Setter for bullet chart ranges settings.
- * @example <t>simple-h100</t>
- * var bulletChart = anychart.bullet([17]);
- * bulletChart.range(0, {
- *    from: 0,
- *    to: 15,
- *    fill: 'green 0.2',
- *    layout: 'vertical'
- * });
- * bulletChart.range(1, {
- *    from: 15,
- *    to: 25,
- *    fill: 'blue 0.2',
- *    layout: 'vertical'
- * });
- * bulletChart.container(stage).draw();
+ * @detailed Sets chart ranges settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart ranges.</li>
+ *   <li><b>object</b> - sets chart ranges settings.</li>
+ * </ul>
+ * @example anychart.charts.Bullet.range_set_asIndexBool Disable/Enable range
+ * @example anychart.charts.Bullet.range_set_asIndexObject Using object
  * @param {number=} opt_index [0] Index of range.
  * @param {(Object|boolean|null)=} opt_value Value to set.
- * @return {!anychart.charts.Bullet} {@link anychart.charts.Bullet} instance for method chaining.
+ * @return {anychart.charts.Bullet} Self instance for method chaining.
  */
 anychart.charts.Bullet.prototype.range;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Bullet.prototype.rangePalette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for range palette settings.
+ * @example anychart.charts.Bullet.rangePalette_get
  * @return {!anychart.palettes.DistinctColors} Current palette.
  */
 anychart.charts.Bullet.prototype.rangePalette;
 
 /**
  * Setter for range palette settings.
- * @example <t>simple-h100</t>
- * var bulletChart = anychart.bullet([17]);
- * bulletChart.range().from(0).to(5);
- * bulletChart.range(1).from(5).to(10);
- * bulletChart.range(2).from(10).to(15);
- * bulletChart.range(3).from(15).to(20);
- * bulletChart.rangePalette(['#333', '#777', '#aaa', '#eee']);
- * bulletChart.container(stage).draw();
+ * @example anychart.charts.Bullet.rangePalette_set_asArray Using array
+ * @example anychart.charts.Bullet.rangePalette_set_asInst Using instance
+ * @example anychart.charts.Bullet.rangePalette_set_asObject Using object
  * @param {(anychart.palettes.DistinctColors|Object|Array.<string>)=} opt_value Value to set.
- * @return {!anychart.charts.Bullet} {@link anychart.charts.Bullet} instance for method chaining.
+ * @return {anychart.charts.Bullet} Self instance for method chaining.
  */
 anychart.charts.Bullet.prototype.rangePalette;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Bullet.prototype.markerPalette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for markers palette settings.
+ * @example anychart.charts.Bullet.markerPalette_get
  * @return {!anychart.palettes.Markers} Current palette.
  */
 anychart.charts.Bullet.prototype.markerPalette;
@@ -205,18 +207,25 @@ anychart.charts.Bullet.prototype.markerPalette;
 /**
  * Setter for markers palette settings.<br/>
  * <b>Note:</b> Markers sets in data().
- * @example <t>simple-h100</t>
- * var bulletChart = anychart.bullet([7,10,11,13]);
- * bulletChart.range().from(0).to(5);
- * bulletChart.range(1).from(5).to(10);
- * bulletChart.range(2).from(10).to(15);
- * bulletChart.markerPalette(['line', 'line', 'x', 'bar']);
- * bulletChart.container(stage).draw();
+ * @example anychart.charts.Bullet.markerPalette_set_asArray Using array
+ * @example anychart.charts.Bullet.markerPalette_set_asInst Using instance
+ * @example anychart.charts.Bullet.markerPalette_set_asObject Using object
  * @param {(Array.<anychart.enums.MarkerType>|Object|anychart.palettes.Markers)=} opt_value Value to set.
- * @return {!anychart.charts.Bullet} {@link anychart.charts.Bullet} instance for method chaining.
+ * @return {anychart.charts.Bullet} Self instance for method chaining.
  */
 anychart.charts.Bullet.prototype.markerPalette;
 
-/** @inheritDoc */
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Bullet.prototype.draw
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Starts the rendering of the chart into the container.
+ * @example anychart.charts.Bullet.draw
+ * @return {anychart.charts.Bullet} Self instance for method chaining.
+ */
 anychart.charts.Bullet.prototype.draw;
 

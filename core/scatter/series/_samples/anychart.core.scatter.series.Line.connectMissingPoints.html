@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentLoad(function () {
+            var chart = anychart.scatter();
+            chart.line([
+                [4.1, 12],
+                [2.3, 'missing'],
+                [3.4, 19],
+                [1.2, 22]
+            ])
+                    .name('Not connect missing')
+                    .connectMissingPoints(false);
+            chart.line([
+                [4.1, 10],
+                [2.3, 'missing'],
+                [3.4, 17],
+                [1.2, 20]
+            ])
+                    .name('Connect missing')
+                    .connectMissingPoints(true);
+
+            chart.line([
+                [4.1, 8],
+                [2.3, 6],
+                [3.4, 15],
+                [1.2, 18]
+            ])
+                    .name('Without missing')
+                    .connectMissingPoints(true);
+
+            chart.xAxis().title(null);
+            chart.yAxis().title(null);
+            chart.title(null);
+            chart.legend().enabled(true).itemsLayout('vertical');
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

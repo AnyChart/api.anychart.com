@@ -12,40 +12,19 @@ anychart.data.View;
 
 /**
  * Creates a derived view, containing just the same data set and order as this view does.
- * @example <t>lineChart</t>
- *  var data = anychart.data.set([
- *     ['Point A', 231],
- *     ['Point B', 131],
- *     ['Point C', 212],
- *     ['Point D', 94]
- * ]);
- * var view = data.mapAs();
- * var derivedView = view.derive();
- * chart.line(derivedView)
+ * @example anychart.data.View.derive
  * @return {!anychart.data.View} The new derived view.
  */
 anychart.data.View.prototype.derive;
 
 /**
  * Creates a derived view, containing only the rows that pass the filter.
- * @example <t>listingOnly</t>
+ * @listing
  *  // Filter out values lesser or equal to 3:
  *  view.filter('fieldName', function(fieldValue){
  *    return fieldValue > 3;
  *  });
- * @example <t>lineChart</t>
- *  var data = anychart.data.set([
- *     ['Point A', 231],
- *     ['Point B', 131],
- *     ['Point C', 212],
- *     ['Point D', 94],
- *     ['Point E', 194],
- *     ['Point F', 45],
- *     ['Point G', 201]
- * ]);
- * var view = data.mapAs();
- * var filteredView = view.filter('value', function(value){ return value > 100;});
- * chart.line(filteredView);
+ * @example anychart.data.View.filter
  * @param {string} fieldName A field which value will be passed to a filter function.
  * @param {function(*):boolean} func A filter function that should accept a field value and return true if the row
  *  should be included into the resulting view.
@@ -55,24 +34,12 @@ anychart.data.View.prototype.filter;
 
 /**
  * Creates a derived view that ensures sorting by a passed field.
- * @example <t>listingOnly</t>
+ * @listing
  *  // Sorting by string length:
  *  view.sort('name', function(value1, value2){
  *    return value1 > value2;
  *  });
- * @example <t>lineChart</t>
- *  var data = anychart.data.set([
- *     ['Point A', 231],
- *     ['Point B', 131],
- *     ['Point C', 212],
- *     ['Point D', 94],
- *     ['Point E', 194],
- *     ['Point F', 45],
- *     ['Point G', 201]
- * ]);
- * var view = data.mapAs();
- * var sortedView = view.sort('value', function(value1, value2){ return value1 > value2;});
- * chart.line(sortedView);
+ * @example anychart.data.View.sort
  * @param {string} fieldName A field name to make sort by.
  * @param {(anychart.enums.Sort|function(*, *):number)=} opt_comparatorOrOrder A sorting function that should accept two
  *    field values and return numeric result of the comparison or string value of anychart.enums.Sort enumeration
@@ -83,7 +50,7 @@ anychart.data.View.prototype.sort;
 
 /**
  * Concatenates two views to make a derived view that contains rows from both views.
- * @example <c>Concatenation of two Views</c><t>listingOnly</t>
+ * @listing Concatenation of two Views
  * // mainView                      additionalView
  *  [                               [
  *    [1, 3, 5],                        {x: 2, y: 5},
@@ -99,7 +66,7 @@ anychart.data.View.prototype.sort;
  *    {x: 3, y: 7},
  *    function(){ return {x: 4, y: 7}}
  *  ]
- * @example <c>Concatenation of a View and a data Set</c><t>listingOnly</t>
+ * @listing Concatenation of a View and a data Set
  * // mainView
  *  [
  *    [1, 3, 5],
@@ -118,7 +85,7 @@ anychart.data.View.prototype.sort;
  *    {x: 3, y: 7},
  *    function(){ return {x: 4, y: 7}}
  *  ]
- * @example <c>Concatenation of a View and and Array</c><t>listingOnly</t>
+ * @listing Concatenation of a View and and Array
  * // mainView
  *  [
  *    [1, 3, 5],
@@ -133,23 +100,7 @@ anychart.data.View.prototype.sort;
  *    2,
  *    2
  *  ]
- * @example <t>lineChart</t>
- *  var dataSet1 = anychart.data.set([
- *     ['Point A', 231],
- *     ['Point B', 131],
- *     ['Point C', 212],
- *     ['Point D', 94]
- *  ]);
- *  var dataSet2 = anychart.data.set([
- *     ['Point E', 194],
- *     ['Point F', 45],
- *     ['Point G', 201],
- *     ['Point H', 104]
- * ]);
- * var view1 = dataSet1.mapAs();
- * var view2 = dataSet2.mapAs();
- * var concatinatedView = view1.concat(view2);
- * chart.line(concatinatedView);
+ * @example anychart.data.View.concat
  * @param {!(anychart.data.IView|Array)} otherView A view, data set or even an array to concat with.
  * @return {!anychart.data.IView} The new derived view.
  */
@@ -159,7 +110,7 @@ anychart.data.View.prototype.concat;
  * Gets a full row of the set by an index.<br/>
  * <b>Note:</b> If there is no row with the given index, methods returns <b>undefined</b>.<br/>
  * See sample at {@link anychart.data.Set#row}
- * @example <t>listingOnly</t>
+ * @listing
  * // Data
  *  [
  *    [1, 2, 4, 7],
@@ -177,7 +128,7 @@ anychart.data.View.prototype.row;
 /**
  * Sets a row of the set by an index.<br/>
  * <b>Note:</b> Previous value of a row is returned but it is lost completely after that!.<br/>
- * @example <t>listingOnly</t>
+ * @listing
  * // Data
  *  [
  *    [1, 2, 4, 7],
@@ -186,16 +137,7 @@ anychart.data.View.prototype.row;
  *  ]
  *  view.row(2, [2, 2, 2, 2]); // returns [21, 22, 24, 27]
  *  view.row(3, {'low': 4, 'high': 11}); // returns undefined
- * @example <t>lineChart</t>
- * var dataSet = anychart.data.set([
- *     ['Point A', 231],
- *     ['Point B', 131],
- *     ['Point C', 212],
- *     ['Point D', 94]
- * ]);
- * var view = dataSet.mapAs();
- * view.row(2, ['Point E', 10]);
- * chart.line(view);
+ * @example anychart.data.View.row
  * @see anychart.data.Set#row
  * @param {number} rowIndex An index of the row to fetch.
  * @param {*=} opt_value A value to set.
@@ -205,16 +147,7 @@ anychart.data.View.prototype.row;
 
 /**
  * Returns the number of the rows in the current view.
- * @example <t>lineChart</t>
- *  var data = anychart.data.set([
- *     ['Point A', 231],
- *     ['Point B', 131],
- *     ['Point C', 212],
- *     ['Point D', 94]
- * ]);
- * var view = data.mapAs();
- * chart.title().text("rows count: " + view.getRowsCount());
- * chart.line(data)
+ * @example anychart.data.View.getRowsCount
  * @see anychart.data.Iterator#getRowsCount
  * @return {number} The number of the rows in the set.
  */
@@ -222,20 +155,7 @@ anychart.data.View.prototype.getRowsCount;
 
 /**
  * Searches fieldName by fieldValue and returns it index (or the first match).
- * @example
- * var chart = anychart.column();
- * var data = anychart.data.set([
- *     {x: 'A1', value: 8},
- *     {x: 'A2', value: 11, fill: 'orange'},
- *     {x: 'A3', value: 12},
- *     {x: 'A4', value: 9}
- * ]);
- * chart.column(data);
- * chart.container(stage).draw();
- * var view = data.mapAs();
- * var index = view.find('x', 'A2');
- * view.set(index, 'x', 'changed');
- * view.set(index, 'fill', 'grey');
+ * @example anychart.data.View.find
  * @param {string} fieldName Name of the field.
  * @param {*} fieldValue Value of the field.
  * @return {number} Index in view.
@@ -244,19 +164,7 @@ anychart.data.View.prototype.find;
 
 /**
  * Gets the value from the row by row index and field name.
- * @example
- * var data = anychart.data.set([
- *     {x: 'A1', value: 8, fill: 'yellow'},
- *     {x: 'A2', value: 11, fill: 'orange'},
- *     {x: 'A3', value: 12, fill: 'red'},
- *     {x: 'A4', value: 9, fill: 'grey'}
- * ]);
- * chart = anychart.column(data);
- * chart.container(stage).draw();
- * var view = data.mapAs();
- * var pointX = view.get(2, 'x');
- * var pointFill = view.get(2, 'fill');
- * chart.title().text('point \''+ pointX +'\' has \'' + pointFill + '\' fill.');
+ * @example anychart.data.View.get
  * @param {number} rowIndex Index of the row to get field value from.
  * @param {string} fieldName The name of the field to be fetched from the current row.
  * @return {*} The field value or undefined, if not found.
@@ -265,18 +173,7 @@ anychart.data.View.prototype.get;
 
 /**
  * Sets the value to the row field by row index and field name.
- * @example
- * var chart = anychart.columnChart();
- * var data = anychart.data.set([
- *     ['A1', 8],
- *     ['A2', 11],
- *     ['A3', 12],
- *     ['A4', 9]
- * ]);
- * chart.column(data);
- * chart.container(stage).draw();
- * var view = data.mapAs();
- * view.set(2, 'x', 'B1');
+ * @example anychart.data.View.set
  * @param {number} rowIndex
  * @param {string} fieldName
  * @param {*} value
@@ -286,19 +183,7 @@ anychart.data.View.prototype.set;
 
 /**
  * Returns a new iterator for the current view.
- * @example <t>lineChart</t>
- * var data = anychart.data.set([
- *     ['Point A', 231],
- *     ['Point B', 131],
- *     ['Point C', 212],
- *     ['Point D', 94]
- * ]);
- * var view = data.mapAs();
- * var iterator = view.getIterator();
- * // move cursor
- * iterator.select(2);
- * chart.title().text(iterator.get('x') + ' - ' + iterator.get('value'))
- * chart.line(data);
+ * @example anychart.data.View.getIterator
  * @return {!anychart.data.Iterator} New iterator.
  */
 anychart.data.View.prototype.getIterator;
@@ -306,7 +191,7 @@ anychart.data.View.prototype.getIterator;
 /**
  * Getter for a metadata value.<br/>
  * Learn how it works at {@link anychart.data.Iterator#meta}.
- * @example <t>listingOnly</t>
+ * @listing
  * // Select 'name' field in the fourth row:
  * view.meta(4, 'name');
  * @param {number} index Row index.
@@ -319,13 +204,13 @@ anychart.data.View.prototype.meta;
 /**
  * Setter for a metadata value.
  * Learn how it works at {@link anychart.data.Iterator#meta}.
- * @example <t>listingOnly</t>
+ * @listing
  * // Set value to the 'name' field in the fourth row:
  * view.meta(4, 'name', 'Jules Winnfield');
  * @param {number} index Row index.
  * @param {string} name Name of the metadata field.
  * @param {*=} opt_value Value to set.
- * @return {anychart.data.View} The instance of {@link anychart.data.View} class for method chaining.
+ * @return {anychart.data.View} Self instance for method chaining.
  * @see anychart.data.Iterator#meta
  */
 anychart.data.View.prototype.meta;

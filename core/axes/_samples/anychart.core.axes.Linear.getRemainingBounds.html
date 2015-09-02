@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentLoad(function () {
+            var chart = anychart.line();
+            var axis = anychart.axes.linear();
+            axis
+                    .orientation('left')
+                    .scale(anychart.scales.ordinal().values([1, 2, 3]))
+                    .container(stage).draw();
+            var label = anychart.ui.label();
+            label
+                    .parentBounds(axis.getRemainingBounds())
+                    .width('100%')
+                    .height('100%')
+                    .padding(15)
+                    .background()
+                    .enabled(true)
+                    .fill('blue 0.2')
+            label.container(stage).draw();
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

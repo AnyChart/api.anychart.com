@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentLoad(function () {
+        var chart = anychart.line();
+            chart.line([4, 2, 12]);
+            chart.label()
+                    .background(true)
+                    .text('Save image')
+                    .fontColor('#fff')
+                    .padding(5)
+                    .offsetX(5)
+                    .listen('click', function () {
+                        chart.saveAsPDF();
+                    });
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

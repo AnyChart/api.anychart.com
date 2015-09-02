@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="scatter errorSeries"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.scatter([
+                {x: 2, y: 2},
+                {x: 3, y: 6},
+                {x: 1, y: 4},
+                {x: 4, y: 5}
+            ]);
+            var series = chart.getSeries(0);
+            series.error({valueError: 1, valueErrorStroke: '3 #778899'}); // sets error.
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

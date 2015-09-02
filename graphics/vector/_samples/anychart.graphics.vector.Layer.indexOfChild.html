@@ -1,0 +1,26 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentLoad(function () {
+            var stage = anychart.graphics.create('container');
+// create layers
+            var layer = new anychart.graphics.vector.Layer();
+            var elementStar = layer.star7(55, 79, 45).fill('red');
+            // add elements
+            layer.ellipse(85, 80, 35, 55).fill('blue', 0.3);
+            layer.rect(55, 79, 75, 45).fill('blue');
+            // look for index
+            var index = layer.indexOfChild(elementStar);
+            // show only found element
+            layer.getChildAt(index).parent(stage);
+
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

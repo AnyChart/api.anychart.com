@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentLoad(function () {
+            var chart = anychart.scatter();
+            var formatterFunc = function () {
+                return this.seriesName;
+            };
+            var series = chart.marker([
+                [4.1, 10],
+                [2.3, 6],
+                [3.4, 17],
+                [1.2, 20]
+            ]);
+            series
+                    .name('My Custom series name')
+                    .tooltip()
+                    .contentFormatter(formatterFunc);
+            chart.legend().enabled(true);
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

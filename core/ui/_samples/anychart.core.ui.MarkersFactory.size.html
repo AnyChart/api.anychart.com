@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentLoad(function () {
+            var stage = anychart.graphics.create('container');
+ // create objects for markers factory
+ var bars = [];
+ bars.push(
+     stage.rect(10, 30, 75, 125).stroke('1 #aaa').fill('#eee'),
+     stage.rect(110, 30, 75, 125).stroke('1 #aaa').fill('#eee'),
+     stage.rect(210, 30, 75, 125).stroke('1 #aaa').fill('#eee'),
+     stage.rect(310, 30, 75, 125).stroke('1 #aaa').fill('#eee')
+ );
+ // sets global settings
+ var MMarker = anychart.ui.markersFactory()
+     .size(15)
+     .container(stage);
+ // connecting markers and objects
+ for (i in bars) {
+   var barBounds = bars[i].getBounds();
+   var positionProvider = {
+     x: barBounds.left,
+     y: barBounds.top
+   };
+   MMarker.draw(positionProvider);
+ }
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

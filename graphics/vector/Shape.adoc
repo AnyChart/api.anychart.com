@@ -9,10 +9,7 @@ anychart.graphics.vector.Shape;
 
 /**
  Returns fill.
- @example <t>stageOnly</t>
- var rect = stage.rect(0,0,100,100).fill({keys:['black', 'lightGreen'], angle: 45});
- var currentFill = rect.fill();
- stage.text(110, 10, 'Current fill angle: '+currentFill.angle);
+ @example anychart.graphics.vector.Shape.fill
  @return {!anychart.graphics.vector.Fill} Current fill (empty fill is 'none').
  */
 anychart.graphics.vector.Shape.prototype.fill;
@@ -27,19 +24,9 @@ anychart.graphics.vector.Shape.prototype.fill;
  </ul>
  Or a color as string. Can be combined with opacity: '<b>Color Opacity</b>', 'red .5').
  @shortDescription Sets fill as object or string.
- @example <t>stageOnly</t>
-   // getter returns {color: 'red', opacity: 0.5}
-   stage.rect(10,10,75,130).fill('red 0.5');
-   //
-   // getter returns {color: '#ff0000', opacity: 0.5}
-   stage.rect(95,10,75,130).fill('#ff0000 0.5');
-   //
-   // getter returns {color: 'red', opacity: 0.5}
-   stage.rect(180,10,75,130).fill({color: 'red', opacity: 0.5});
-   //
-   stage.rect(265,10,75,130).fill({keys:['red', 'green'], mode: true, angle: 45});
+ @example anychart.graphics.vector.Shape.fill1
  @param {anychart.graphics.vector.Fill} value Fill as object or string.
- @return {!anychart.graphics.vector.Shape} {@link anychart.graphics.vector.Shape} instance for method chaining.
+ @return {anychart.graphics.vector.Shape} Self instance for method chaining.
  */
 anychart.graphics.vector.Shape.prototype.fill;
 
@@ -48,14 +35,10 @@ anychart.graphics.vector.Shape.prototype.fill;
  If color is set as string, like 'red .5', it has prioruty over opt_opacity, which means
  if <b>fill</b> is set as <b>rect.fill('red 0.3', 0.7)</b>, opacity will be 0.3.
  @shortDescription Fill as string.
- @example <t>stageOnly</t>
-    // getter returns {color: 'red', opacity: 0.5}
-    stage.rect(10,10,75,130).fill('red', 0.5);
-    // getter returns {color: '#ff0000', opacity: 0.7}
-    stage.rect(95,10,75,130).fill('#ff0000', .7);
+ @example anychart.graphics.vector.Shape.fill2
  @param {string} color Color as string.
  @param {number=} opt_opacity Opacity.
- @return {!anychart.graphics.vector.Shape} {@link anychart.graphics.vector.Shape} instance for method chaining.
+ @return {anychart.graphics.vector.Shape} Self instance for method chaining.
  */
 anychart.graphics.vector.Shape.prototype.fill;
 
@@ -82,37 +65,18 @@ anychart.graphics.vector.Shape.prototype.fill;
  More about this mode at <a href='http://www.w3.org/TR/SVG/pservers.html#LinearGradientElementGradientUnitsAttribute'>
  gradientUnits</a>.
  @shortDescription Linear gradient fill.
- @example <t>stageOnly</t>
-  //ObjectBoundingBox without angle value preservation.
-  stage.rect(3, 10, stage.width()/7-6, stage.height()-20)
-    .fill(['black', 'white'], 45);
-  //ObjectBoundingBox with angle value preservation.
-  stage.rect(stage.width()/6-5, 10, stage.width()/7-6, stage.height()-20)
-    .fill(['black', 'white'], 45, true);
-  //UserSpaceOnUse
-  stage.rect(2*stage.width()/6+3, 10, stage.width()/7-6, stage.height()-20)
-    .fill(['red', 'blue'], 45, {left: 10, top: 10, width: 100, height: 100});
-  stage.rect(3*stage.width()/6-5, 10, stage.width()/7-6, stage.height()-20)
-    .fill(['red', 'blue'], 45, new anychart.graphics.math.Rect(10, 10, 100, 100));
-  // Three key gradient.
-  stage.rect(4*stage.width()/6+3, 10, stage.width()/7-6, stage.height()-20)
-    .fill(['red 0.1', 'green', 'blue 0.1']);
-  stage.rect(5*stage.width()/6-5, 10, stage.width()/7-6, stage.height()-20)
-    .fill(['red', {offset: 0.3, color: 'green'}, 'blue 0.1']);
+ @example anychart.graphics.vector.Shape.fill3
  @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
  @param {number=} opt_angle Gradient angle.
  @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
  @param {number=} opt_opacity Gradient opacity.
- @return {!anychart.graphics.vector.Shape} {@link anychart.graphics.vector.Shape} instance for method chaining.
+ @return {anychart.graphics.vector.Shape} Self instance for method chaining.
  */
 anychart.graphics.vector.Shape.prototype.fill;
 
 /**
  Radial gradient fill.
- @example <t>stageOnly</t>
- stage.rect(25, 10, 120, 120)
-  .stroke('none')
-  .fill(['black', 'white'], .5, .5, null, .9, 0.3, 0.81);
+ @example anychart.graphics.vector.Shape.fill4
  @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
  @param {number} cx X ratio of center radial gradient.
  @param {number} cy Y ratio of center radial gradient.
@@ -120,7 +84,7 @@ anychart.graphics.vector.Shape.prototype.fill;
  @param {number=} opt_opacity Opacity of the gradient.
  @param {number=} opt_fx X ratio of focal point.
  @param {number=} opt_fy Y ratio of focal point.
- @return {!anychart.graphics.vector.Shape} {@link anychart.graphics.vector.Shape} instance for method chaining.
+ @return {anychart.graphics.vector.Shape} Self instance for method chaining.
  */
 anychart.graphics.vector.Shape.prototype.fill;
 
@@ -148,25 +112,10 @@ anychart.graphics.vector.Shape.prototype.stroke;
   </ul>
   <b>Note:</b> String parts order is significant and '3px red' is not the same as 'red 3px'.
   @shortDescription Sets stroke using one parameter.
-  @example <c>String settings</c><t>stageOnly</t>
-   // control line for opacity
-   stage.rect(stage.width()/2-8, 5, 16, stage.height()-10)
-   // setting stroke
-   stage.rect(30, 0.4*stage.height()/4, stage.width()-60, stage.height()/4 - 30)
-      .stroke('red');
-   stage.rect(30, 1.4*stage.height()/4, stage.width()-60, stage.height()/4 - 30)
-      .stroke('4px ORANGE');
-   stage.rect(30, 2.4*stage.height()/4, stage.width()-60, stage.height()/4 - 30)
-      .stroke('#0f0 0.7');
-   stage.rect(30, 3.4*stage.height()/4, stage.width()-60, stage.height()/4 - 30)
-      .stroke('4 #0000FF 0.3');
-  @example <c>Object or array</c><t>stageOnly</t>
-   stage.rect(30, 0.3*stage.height()/2, stage.width()-60, stage.height()/2 - 50)
-      .stroke({color: '#f00', thickness: 2, opacity: 0.9});
-   stage.rect(30, 1.3*stage.height()/2, stage.width()-60, stage.height()/2 - 50)
-      .stroke(['red', 'green', 'blue']);
+  @example anychart.graphics.vector.Shape.stroke
+  @example anychart.graphics.vector.Shape.stroke1
   @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)} value Stroke as '[thickness ]color[ opacity]'.
-  @return {anychart.graphics.vector.Shape} {@link anychart.graphics.vector.Shape} instance for method chaining.
+  @return {anychart.graphics.vector.Shape} Self instance for method chaining.
  */
 anychart.graphics.vector.Shape.prototype.stroke;
 
@@ -176,18 +125,7 @@ anychart.graphics.vector.Shape.prototype.stroke;
  object properties have more priority. E.g. setting <b>shape.stroke('10 red', 5);</b> (or <b>shape.stroke({color: 'red',
 thickness: 10}, 5);</b> will result a red stroke with thickness 10px.
  @shortDescription Sets stroke settings.
- @example <t>stageOnly</t>
-    // control line for opacity
-    stage.rect(stage.width()/2-8, 5, 16, stage.height()-10)
-    // setting stroke
-    stage.rect(30, 0.4*stage.height()/4, stage.width()-60, stage.height()/4 - 30)
-        .stroke('red .5', 4);
-    stage.rect(30, 1.2*stage.height()/4, stage.width()-60, 0.6*stage.height()/4)
-        .stroke('5 orange .5', 1);
-    stage.rect(30, 2.2*stage.height()/4, stage.width()-60, 0.6*stage.height()/4)
-        .stroke(['red', 'green', 'blue'], 5, '5 2');
-    stage.rect(30, 3.2*stage.height()/4, stage.width()-60, 0.6*stage.height()/4)
-        .stroke({color: '#00B'}, 10, '', anychart.graphics.vector.StrokeLineJoin.ROUND, anychart.graphics.vector.StrokeLineCap.SQUARE);
+ @example anychart.graphics.vector.Shape.stroke2
   @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string)} value Stroke style, as described above.
   @param {number=} opt_thickness Line thickness. Defaults to 1.
   @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths. Dash array contains a
@@ -196,7 +134,7 @@ thickness: 10}, 5);</b> will result a red stroke with thickness 10px.
  dashpattern: '5 3 2' is equivalent to dashpattern: '5 3 2 5 3 2'.
   @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
   @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
-  @return {anychart.graphics.vector.Shape} {@link anychart.graphics.vector.Shape} instance for method chaining.
+  @return {anychart.graphics.vector.Shape} Self instance for method chaining.
  */
 anychart.graphics.vector.Shape.prototype.stroke;
 
@@ -208,10 +146,9 @@ anychart.graphics.vector.Shape.prototype.strokeThickness;
 
 /**
   Sets stroke thickness.
-  @example <t>stageOnly</t>
-    stage.rect(10, 10, 30, 30).strokeThickness(5);
+  @example anychart.graphics.vector.Shape.strokeThickness
   @param {number=} opt_value Thickness value.
-  @return {!anychart.graphics.vector.Shape} {@link anychart.graphics.vector.Shape} instance for method chaining.
+  @return {anychart.graphics.vector.Shape} Self instance for method chaining.
  */
 anychart.graphics.vector.Shape.prototype.strokeThickness;
 

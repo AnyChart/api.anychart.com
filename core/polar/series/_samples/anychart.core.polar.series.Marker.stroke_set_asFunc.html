@@ -1,0 +1,24 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="polar marker"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.polar([10, 11, 17, 7, 21, 14, 5, 9, 3]);
+            var series = chart.getSeries(0);
+            series.stroke(
+                    function() {
+                        return '3 ' + this.sourceColor;
+                    }
+            ); // sets stroke.
+            series.fill('#2F4F4F');
+            chart.container('container');
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

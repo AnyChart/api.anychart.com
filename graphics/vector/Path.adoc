@@ -18,7 +18,7 @@ anychart.graphics.vector.Path;
 
 /**
  Resets all path operations.
- @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @return {anychart.graphics.vector.Path} Self instance for method chaining.
  */
 anychart.graphics.vector.Path.prototype.clear;
 
@@ -27,7 +27,7 @@ anychart.graphics.vector.Path.prototype.clear;
  Remember that if you call the <b>moveTo</b> method a few times in a row, only the last call will be applied.
  @param {number} x The target point’s X-coordinate.
  @param {number} y The  target point’s Y-coordinate.
- @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @return {anychart.graphics.vector.Path} Self instance for method chaining.
  */
 anychart.graphics.vector.Path.prototype.moveTo;
 
@@ -36,7 +36,7 @@ anychart.graphics.vector.Path.prototype.moveTo;
  @param {number} x A target point’s X-coordinate.
  @param {number} y A target point’s Y-coordinate.
  @param {...number} var_args The target points’ coordinates: each odd parameter is interpreted as X and each even as Y.
- @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @return {anychart.graphics.vector.Path} Self instance for method chaining.
  @illustration <t>stageOnly</t>
  stage.path().moveTo(50, 50)
  .lineTo(100, 100, 50, 110, 50, 140, 300, 140);
@@ -61,11 +61,8 @@ anychart.graphics.vector.Path.prototype.moveTo;
  Then the path goes on to the point <b>C</b>(50, 110).<br/>
  From the point <b>C</b> it goes to the point <b>D</b>(50, 140)<br/>
  and ends in the point <b>E</b>(300, 140).<br/>
- @example <t>stageOnly</t>
- stage.path().moveTo(47, 50).lineTo(363, 111);
- @example <c>An example from the illustration</c><t>stageOnly</t>
- stage.path().moveTo(50, 50)
-    .lineTo(100, 100, 50, 110, 50, 140, 300, 140);
+ @example anychart.graphics.vector.Path.lineTo
+ @example anychart.graphics.vector.Path.lineTo1
  */
 anychart.graphics.vector.Path.prototype.lineTo;
 
@@ -79,7 +76,7 @@ anychart.graphics.vector.Path.prototype.lineTo;
  @param {number} endX The endpoint’s X-coordinate.
  @param {number} endY The endpoint’s Y-coordinate.
  @param {...number} var_args The coordinates, defining curves, in sets of 6: first control points, then an endpoint (in the same order as the primary parameters).
- @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @return {anychart.graphics.vector.Path} Self instance for method chaining.
  @illustration <t>stageOnly</t>
  var A = {x: 50, y:50, lbl:'A'};
  var B = {x: 100, y:100, lbl:'B'};
@@ -114,13 +111,8 @@ anychart.graphics.vector.Path.prototype.lineTo;
  Then the curve goes to the point <b>B</b> through the inflection points <b>P1</b> and <b>P2</b>.<br/>
  Next the curve goes to the point <b>C</b> through the inflection points <b>P3</b> and <b>P4</b>.<br/>
  Inflection points can be placed anywhere, but there must be two of them.
- @example <c>An example from the illustration</c><t>stageOnly</t>
- stage.path().moveTo(50, 50)
-    .curveTo(50, 100, 100, 50, 100, 100)
-    .curveTo(80, 155, 250, 50, 300, 140);
- @example <c>An alias for the example mentioned before</c><t>stageOnly</t>
- stage.path().moveTo(50, 50)
-    .curveTo(50, 100, 100, 50, 100, 100, 80, 155, 250, 50, 300, 140);
+ @example anychart.graphics.vector.Path.curveTo
+ @example anychart.graphics.vector.Path.curveTo1
  */
 anychart.graphics.vector.Path.prototype.curveTo;
 
@@ -132,7 +124,7 @@ anychart.graphics.vector.Path.prototype.curveTo;
  @param {number} endX The endpoint’s X-coordinate.
  @param {number} endY The endpoint’s Y-coordinate.
  @param {...number} var_args coordinates, defining curves, in sets of four: first the control point, then an endpoint (in the same order as the primary parameters).
- @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @return {anychart.graphics.vector.Path} Self instance for method chaining.
  @illustration <t>stageOnly</t>
  var A = {x: 50, y:50, lbl:'A'};
  var B = {x: 100, y:100, lbl:'B'};
@@ -163,13 +155,8 @@ anychart.graphics.vector.Path.prototype.curveTo;
  Then the curve goes to the point <b>B</b> through the inflection point <b>P1</b>.<br/>
  Next the curve goes to the point <b>C</b> through the inflection point <b>P2</b>.<br/>
  The inflection point can be placed anywhere, and there must be one such point.
- @example <c>An example from the illustration</c><t>stageOnly</t>
- stage.path().moveTo(50, 50)
-    .quadraticCurveTo(50, 100, 100, 100)
-    .quadraticCurveTo(80, 155, 300, 140);
- @example <c>An alias for the example mentioned before</c><t>stageOnly</t>
- stage.path().moveTo(50, 50)
-    .quadraticCurveTo(50, 100, 100, 100, 80, 155, 300, 140);
+ @example anychart.graphics.vector.Path.quadraticCurveTo
+ @example anychart.graphics.vector.Path.quadraticCurveTo1
  */
 anychart.graphics.vector.Path.prototype.quadraticCurveTo;
 
@@ -183,7 +170,7 @@ anychart.graphics.vector.Path.prototype.quadraticCurveTo;
  @param {number} ry The Y-axis radius of the ellipse.
  @param {boolean} largeArc A flag allowing to draw either the smaller or the larger arc.
  @param {boolean} clockwiseArc A flag allowing to draw an arc either in a clockwise or in a counterclockwise direction.
- @return {anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @return {anychart.graphics.vector.Path} Self instance for method chaining.
  @illustration <t>stageOnly</t>
  var red = '1 red 0.6';
  var blue = '1 blue 0.6';
@@ -233,11 +220,7 @@ anychart.graphics.vector.Path.prototype.quadraticCurveTo;
     <li><b>largeArc</b> – defines if the larger (red and blue) or the smaller (green and yellow) arc is drawn;</li>
     <li><b>clockwiseArc</b> – defines if the arc is drawn clockwise (red and green) or counterclockwise (yellow and blue).</li>
  </ul>
- @example <t>stageOnly</t>
- stage.path()
-    .moveTo(10, 100)
-    .lineTo(100, 100)
-    .arcToByEndPoint(300, 100, 150, 50, true, true);
+ @example anychart.graphics.vector.Path.arcToByEndPoint
  */
 anychart.graphics.vector.Path.prototype.arcToByEndPoint;
 
@@ -249,7 +232,7 @@ anychart.graphics.vector.Path.prototype.arcToByEndPoint;
  @param {number} ry The Y-axis radius of the ellipse.
  @param {number} fromAngle The starting angle, measured in degrees in a clockwise direction.
  @param {number} extent The angular length of the arc.
- @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @return {anychart.graphics.vector.Path} Self instance for method chaining.
  @illustration <t>stageOnly</t>
  var green = '5 green 0.6';
  var grey = '5 grey 0.6';
@@ -319,10 +302,7 @@ anychart.graphics.vector.Path.prototype.arcToByEndPoint;
  defines the poisition of the ellipse against the red point.<br/>
  Then an ellipse arc of a given angular length <b>extend</b> is drawn (the arc is marked green if <b>extend > 0</b>
  and red if <b>extend < 0</b>).
- @example <t>stageOnly</t>
- stage.path().moveTo(0, 100)
-    .lineTo(200, 100)
-    .arcTo(100, 50, 142.5, 100);
+ @example anychart.graphics.vector.Path.arcTo
 */
 anychart.graphics.vector.Path.prototype.arcTo;
 
@@ -338,7 +318,7 @@ anychart.graphics.vector.Path.prototype.arcTo;
  @param {number} ry The Y-axis radius of the ellipse.
  @param {number} fromAngle The starting angle, measured in degrees in a clockwise direction.
  @param {number} extent The angular length of the arc.
- @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @return {anychart.graphics.vector.Path} Self instance for method chaining.
  @illustrationDesc
  You can find an illustration of how the method works, and examples in the {@link anychart.graphics.vector.Path#arcTo} method description.<br>
  The only difference is that this method draws an arc using a set of curves.
@@ -347,7 +327,7 @@ anychart.graphics.vector.Path.prototype.arcToAsCurves;
 
 /**
  Adds a command that closes the path by connecting the last point with the first straight line.
- @return {!anychart.graphics.vector.Path} {@link anychart.graphics.vector.Path} instance for method chaining.
+ @return {anychart.graphics.vector.Path} Self instance for method chaining.
  @illustration <t>stageOnly</t>
  var A = {x:5, y:100};
  var B = {x:230, y:25};
@@ -365,12 +345,7 @@ anychart.graphics.vector.Path.prototype.arcToAsCurves;
  @illustrationDesc
  Assume that some path has been being drawn. After calling the <b>close</b> method, the current point <b>B</b> will be connected with
  the beginning of the path (point <b>A</b>) by a straight line (marked red).
- @example <c>An example from the illustration</c><t>stageOnly</t>
- stage.path()
-    .moveTo(0, 100)
-    .lineTo(200, 100)
-    .arcTo(100, 50, 142.5, 100)
-    .close();
+ @example anychart.graphics.vector.Path.close
  */
 anychart.graphics.vector.Path.prototype.close;
 

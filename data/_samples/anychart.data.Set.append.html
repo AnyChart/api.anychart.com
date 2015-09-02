@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentLoad(function () {
+            var chart = anychart.column();
+            var data = anychart.data.set([
+                ['A1', 8],
+                ['A2', 11],
+                ['A3', 12],
+                ['A4', 9]
+            ]);
+            chart.column(data);
+            chart.container('container');
+            chart.draw();
+            // You can use differnet data formats.
+            data.append(
+                    {x: 'B1', value: 14},
+                    ['B2', 16]
+            );
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

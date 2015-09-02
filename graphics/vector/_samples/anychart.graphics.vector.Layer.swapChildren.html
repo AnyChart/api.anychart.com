@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentLoad(function () {
+            var stage = anychart.graphics.create('container');
+// create layers
+            var layer1 = stage.layer();
+            var layer2 = stage.layer();
+            var stroke = '1 black 1';
+            layer1.ellipse(75, 105, 55, 35).fill('green', 1).stroke(stroke);
+            layer1.ellipse(95, 75, 55, 35).fill('yellow', 1).stroke(stroke);
+            layer1.ellipse(115, 45, 55, 35).fill('red', 1).stroke(stroke);
+            var elemRed = layer2.ellipse(115, 45, 55, 35).fill('red', 1).stroke(stroke);
+            var elemYellow = layer2.ellipse(95, 75, 55, 35).fill('yellow', 1).stroke(stroke);
+            layer2.ellipse(75, 105, 55, 35).fill('green', 1).stroke(stroke);
+            // move layer and swap
+            layer2.translate(180, 0).swapChildren(elemRed, elemYellow);
+
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

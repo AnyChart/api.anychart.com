@@ -14,11 +14,9 @@ anychart.scales.ScatterBase.prototype.minimum;
 
 /**
  * Setter for scale minimum.
- * @example <t>lineChart</t>
- * chart.line([1.1, 1.4, 1.2, 1.95]);
- * chart.yScale().minimum(1.3);
+ * @example anychart.scales.ScatterBase.minimum
  * @param {number=} opt_value Value to set.
- * @return {!anychart.scales.ScatterBase} An instance of {@link anychart.scales.ScatterBase} class for method chaining.
+ * @return {anychart.scales.ScatterBase} Self instance for method chaining.
  */
 anychart.scales.ScatterBase.prototype.minimum;
 
@@ -30,11 +28,9 @@ anychart.scales.ScatterBase.prototype.maximum;
 
 /**
  * Setter for scale maximum.
- * @example <t>lineChart</t>
- * chart.line([1.1, 1.4, 1.2, 1.95]);
- * chart.yScale().maximum(1.6);
+ * @example anychart.scales.ScatterBase.maximum
  * @param {number=} opt_value Value to set.
- * @return {!anychart.scales.ScatterBase} An instance of {@link anychart.scales.ScatterBase} class for method chaining.
+ * @return {anychart.scales.ScatterBase} Self instance for method chaining.
  */
 anychart.scales.ScatterBase.prototype.maximum;
 
@@ -48,11 +44,9 @@ anychart.scales.ScatterBase.prototype.minimumGap;
  * Scale minimum gap.<br/>
  * <b>Note:</b> Gap works only if scale minimum is not set explicitly using {@link anychart.scales.ScatterBase#minimum}.
  * @shortDescription Setter for scale minimum gap.
- * @example <t>lineChart</t>
- * chart.line([1.1, 1.4, 1.2, 1.95]);
- * chart.yScale().minimumGap(0.6);
+ * @example anychart.scales.ScatterBase.minimumGap
  * @param {number=} opt_value Value from 0 to 1.
- * @return {!anychart.scales.ScatterBase} {@link anychart.scales.ScatterBase} instance for method chaining.
+ * @return {anychart.scales.ScatterBase} Self instance for method chaining.
  */
 anychart.scales.ScatterBase.prototype.minimumGap;
 
@@ -66,11 +60,9 @@ anychart.scales.ScatterBase.prototype.maximumGap;
  * Scale maximum gap.<br/>
  * <b>Note:</b> Gap works only if scale minimum is not set explicitly using {@link anychart.scales.ScatterBase#maximum}.
  * @shortDescription Setter for scale maximum gap.
- * @example <t>lineChart</t>
- * chart.line([1.1, 1.4, 1.2, 1.95]);
- * chart.yScale().maximumGap(0.6);
+ * @example anychart.scales.ScatterBase.maximumGap
  * @param {number=} opt_value Value from 0 to 1.
- * @return {!anychart.scales.ScatterBase} {@link anychart.scales.ScatterBase} instance for method chaining.
+ * @return {anychart.scales.ScatterBase} Self instance for method chaining.
  */
 anychart.scales.ScatterBase.prototype.maximumGap;
 
@@ -78,20 +70,14 @@ anychart.scales.ScatterBase.prototype.maximumGap;
  * Extends the current input domain with the passed values (if such don't exist in the domain).<br/>
  * <b>Note:</b> Attention! {@link anychart.scales.Base#finishAutoCalc} drops all passed values.
  * @param {...*} var_args Values that are supposed to extend the input domain.
- * @return {!anychart.scales.ScatterBase} {@link anychart.scales.ScatterBase} instance for method chaining.
+ * @return {anychart.scales.ScatterBase} Self instance for method chaining.
  */
 anychart.scales.ScatterBase.prototype.extendDataRange;
 
 /**
  * Returns tick position ratio by its name.<br/>
  * <b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or <b>chart.draw()</b>.
- * @example
- * var chart = anychart.line();
- * chart.line([1.1, 1.4, 1.2, 1.9]);
- * chart.container(stage).draw();
- * // Trying to get to '1.25' tick position.
- * var position = chart.yScale().transform(1.25);
- * // Returns 0.25
+ * @example anychart.scales.ScatterBase.transform
  * @param {*} value Value to transform in input scope.
  * @return {number} Value transformed to scope [0, 1].
  */
@@ -100,14 +86,55 @@ anychart.scales.ScatterBase.prototype.transform;
 /**
  * Returns tick by its position ratio.<br/>
  * <b>Note:</b> returns correct values only after {@link anychart.scales.Base#finishAutoCalc} or <b>chart.draw()</b>.
- * @example
- * var chart = anychart.lineChart();
- * chart.line([1.1, 1.4, 1.2, 1.95]);
- * chart.container(stage).draw();
- * // Draw a red marker on the found tick.
- * chart.lineMarker().value(chart.yScale().inverseTransform(0.39));
+ * @example anychart.scales.ScatterBase.inverseTransform
  * @param {number} ratio Value to transform in input scope.
  * @return {*} Value transformed to output scope.
  */
 anychart.scales.ScatterBase.prototype.inverseTransform;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.scales.ScatterBase.prototype.softMinimum;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for soft minimum.
+ * @example anychart.scales.ScatterBase.softMinimum_get
+ * @return {!number} Current soft minimum.
+ */
+anychart.scales.ScatterBase.prototype.softMinimum;
+
+/**
+ * Setter for soft minimum.
+ * @detailed If data range minimum is greater than soft minimum, the soft minimum value will become the scale minimum.
+ * @example anychart.scales.ScatterBase.softMinimum_set
+ * @param {number=} opt_value [NaN] Value to set
+ * @return {anychart.scales.ScatterBase} Self instance for method chaining.
+ */
+anychart.scales.ScatterBase.prototype.softMinimum;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.scales.ScatterBase.prototype.softMaximum;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for soft maximum.
+ * @example anychart.scales.ScatterBase.softMaximum_get
+ * @return {!number} Current soft maximum.
+ */
+anychart.scales.ScatterBase.prototype.softMaximum;
+
+/**
+ * Setter for soft maximum.
+ * @detailed If data range maximum is less than soft maximum, the soft maximum value will become the scale maximum.
+ * @example anychart.scales.ScatterBase.softMaximum_set
+ * @param {number=} opt_value [NaN] Value to set
+ * @return {anychart.scales.ScatterBase} Self instance for method chaining.
+ */
+anychart.scales.ScatterBase.prototype.softMaximum;
 
