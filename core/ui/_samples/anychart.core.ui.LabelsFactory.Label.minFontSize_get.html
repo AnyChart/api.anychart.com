@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="labelsFactory"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+            var labels = anychart.ui.labelsFactory();
+            var label;
+            var getMinFontSize;
+            for (var i = 0; i < 5; i++) {
+                label = labels.add({value: i}, {value: {x: (i + 1) * 50, y: 50}}, i);
+                label.height(12);
+                label.minFontSize(9);
+                label.adjustFontSize(true);
+                label.background({fill: "#FFFFFF"});
+                getMinFontSize = label.minFontSize(); // get minimum font size
+                if (i == (getMinFontSize - 5)) {
+                    label.adjustFontSize(false);
+                }
+            }
+            labels.container(stage);
+            labels.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
+
+

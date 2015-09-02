@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="pyramid"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var dataSet = anychart.data.set([
+                {x: "Physical", value: 126},
+                {x: "Data Link", value: 125},
+                {x: "Network", value: 124},
+                {x: "Transport", value: 123},
+                {x: "Session", value: 122},
+                {x: "Presentation", value: 121},
+                {x: "Application", value: 290, label: {anchor: "centerTop"}}
+            ]);
+            var chart = anychart.pyramid();
+            var view = dataSet.mapAs();
+            var filteredView = view.filter("value", function(value) {
+                return value >= 122;
+            });
+            chart.data(filteredView); // sets data
+            chart.labels({position: "inside"});
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

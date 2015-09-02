@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="funnel"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var tooltipFormatter = function() {
+                return "Index: " + this.index + "\n" + "Value: " + this.value;
+            };
+            var chart = anychart.funnel([5, 16, 3, 20]);
+            chart.tooltip({
+                background: {
+                    stroke: "2 #CFD8DC",
+                    fill: "#ECEFF1"}
+            }); // sets settings tooltip
+            var formatter = chart.tooltip();
+            formatter.contentFormatter(tooltipFormatter);
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

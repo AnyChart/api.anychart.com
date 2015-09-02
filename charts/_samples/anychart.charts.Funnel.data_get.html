@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="funnel"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var data = anychart.data.set([
+                {name: "Point 1", value: 50},
+                {name: "Point 2", value: 13},
+                {name: "Point 3", value: 14}
+            ]);
+            var chart = anychart.funnel(data);
+            var getData = chart.data(); // get data
+            var newData = getData.concat([
+                {name: "Point 4", value: 40}
+            ]);
+            chart.data(newData);
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

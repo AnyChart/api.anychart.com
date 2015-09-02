@@ -52,8 +52,25 @@ anychart.core.polar.series.Area.prototype.hatchFill;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-/** @ignoreDoc *///
+/**
+ * Getter for current hatch fill settings on hover state.
+ * @return {anychart.graphics.PatternFill|anychart.graphics.HatchFill|Function} Current hover hatch fill.
+ */
 anychart.core.polar.series.Area.prototype.hoverHatchFill;
+
+/**
+ * Setter for hatch fill settings on hover state.
+ * {docs:Appearance_Settings/Hatch_Fill}Learn more about hatch fill settings.{docs}
+ * @example anychart.core.polar.series.Area.hoverHatchFill
+ * @param {(anychart.graphics.PatternFill|anychart.graphics.HatchFill|Function|anychart.graphics.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.core.polar.series.Area} instance for method chaining.
+ */
+anychart.core.polar.series.Area.prototype.hoverHatchFill;
+
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -146,8 +163,84 @@ anychart.core.polar.series.Area.prototype.fill;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-/** @ignoreDoc */
+/**
+ * Getter for current series fill color on hover state.
+ * @return {!anychart.graphics.vector.Fill} Current fill color.
+ */
 anychart.core.polar.series.Area.prototype.hoverFill;
+
+/**
+ * Sets fill settings on hover state using an object or a string.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.polar.series.Area.hoverFill_set_asString Using string
+ * @example anychart.core.polar.series.Area.hoverFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @return {anychart.core.polar.series.Area} Self instance for method chaining.
+ */
+anychart.core.polar.series.Area.prototype.hoverFill;
+
+/**
+ * Sets fill settings on hover state using function.
+ * @example anychart.core.polar.series.Area.hoverFill_set_asFunc
+ * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return fillValue; // type anychart.graphics.vector.Fill
+ * }</code>.
+ * @return {anychart.core.polar.series.Area} Self instance for method chaining.
+ */
+anychart.core.polar.series.Area.prototype.hoverFill;
+
+/**
+ * Fill color on hover state with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.polar.series.Area.hoverFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.polar.series.Area} Self instance for method chaining.
+ */
+anychart.core.polar.series.Area.prototype.hoverFill;
+
+/**
+ * Linear gradient fill on hover state.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.polar.series.Area.hoverFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.polar.series.Area} Self instance for method chaining.
+ */
+anychart.core.polar.series.Area.prototype.hoverFill;
+
+/**
+ * Radial gradient fill on hover state.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.polar.series.Area.hoverFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.polar.series.Area} Self instance for method chaining.
+ */
+anychart.core.polar.series.Area.prototype.hoverFill;
+
+/**
+ * Image fill on hover state.
+ * {docs:Appearance_Settings/Fill}Learn more about coloring.{docs}
+ * @example anychart.core.polar.series.Area.hoverFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.polar.series.Area} Self instance for method chaining.
+ */
+anychart.core.polar.series.Area.prototype.hoverFill;
+
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -198,6 +291,37 @@ anychart.core.polar.series.Area.prototype.stroke;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
-/** @ignoreDoc */
+/**
+ * Getter for current stroke settings on hover state.
+ * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
+ */
 anychart.core.polar.series.Area.prototype.hoverStroke;
 
+/**
+ * Setter for series stroke on hover state by function.
+ * @example anychart.core.polar.series.Area.hoverStroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by stroke() getter.
+ *    // this.iterator - series point iterator.
+ *    return strokeValue; // type anychart.graphics.vector.Fill or anychart.graphics.vector.Stroke
+ * }</code>.
+ * @return {anychart.core.polar.series.Area} Self instance for method chaining.
+ */
+anychart.core.polar.series.Area.prototype.hoverStroke;
+
+/**
+ * Setter for stroke settings on hover state.
+ * {docs:Appearance_Settings/Stroke}Learn more about coloring.{docs}
+ * @example anychart.core.polar.series.Area.hoverStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
+ *    or stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.polar.series.Area} Self instance for method chaining.
+ */
+anychart.core.polar.series.Area.prototype.hoverStroke;

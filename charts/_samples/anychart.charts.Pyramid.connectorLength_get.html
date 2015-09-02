@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="pyramid"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var dataSet = anychart.data.set([
+                {x: "Physical", value: 70},
+                {x: "Data Link", value: 60},
+                {x: "Network", value: 50},
+                {x: "Transport", value: 40},
+                {x: "Session", value: 30},
+                {x: "Presentation", value: 20},
+                {x: "Application", value: 10}
+            ]);
+            var chart = anychart.pyramid(dataSet);
+            var labels = chart.labels();
+            labels.position("outsideLeft");
+            var connectorLength = chart.connectorLength(); // get connector length
+            chart.title("Connector Length - " + connectorLength);
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

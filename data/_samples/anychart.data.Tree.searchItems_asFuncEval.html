@@ -5,7 +5,7 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         function evaluator(dataItemValue, dataItem) {
-            return (dataItemValue - 20) * dataItem.get('name').indexOf('Se');
+            return (dataItemValue - 20) * dataItem.get("name").indexOf("Se");
         }
 
         anychart.onDocumentReady(function() {
@@ -18,15 +18,15 @@
                 {"id": "6", "name": "Define the Opportunity", parent: "1", "progressValue": "27%", "actualStart": 951782400000, "actualEnd": 952992000000}
             ];
             var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
-            var dataItem = treeData.searchItems('value', evaluator); // search items
+            var dataItem = treeData.searchItems("value", evaluator); // search items
             var item = {};
             for (var i = 0; i < dataItem.length; i++) {
                 item = dataItem[i];
-                item.set('name', 'Result search: ' + item.get('name'))
+                item.set("name", "Result search: " + item.get("name"))
             }
             var chart = anychart.ganttProject();
             chart.data(treeData);
-            chart.container('container');
+            chart.container("container");
             chart.draw();
             chart.fitAll();
         });

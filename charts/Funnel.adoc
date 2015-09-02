@@ -8,17 +8,53 @@
  */
 anychart.charts.Funnel;
 
-/** @inheritDoc */
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.getType
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns chart type.
+ * @example anychart.charts.Funnel.getType
+ * @return {anychart.enums.ChartTypes} Current chart type.
+ */
 anychart.charts.Funnel.prototype.getType;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.data
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Gets current chart data.
- *
- * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
- * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed by first param, you can pass CSV parser settings here as a hash map.
- * @return {!anychart.data.View|!anychart.charts.Funnel} {@link anychart.core.cartesian.series.Base} instance for method chaining.
+ * @example anychart.charts.Funnel.data_get
+ * @return {anychart.data.View} Current data view.
  */
 anychart.charts.Funnel.prototype.data;
+
+/**
+ * Sets data for the current chart.
+ * @example anychart.charts.Funnel.data_set_asArray Using array
+ * @example anychart.charts.Funnel.data_set_asDataSet Using {@link anychart.data.Set}
+ * @example anychart.charts.Funnel.data_set_asView Using {@link anychart.data.Mapping} and {@link anychart.data.View}
+ * @example anychart.charts.Funnel.data_set_asMapping Using {@link anychart.data.Mapping}
+ * @example anychart.charts.Funnel.data_set_asCSV Using CSV
+ * @param {(anychart.data.View|anychart.data.Mapping|anychart.data.Set|Array|string)=} opt_value Value to set.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed by first param, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
+ */
+anychart.charts.Funnel.prototype.data;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.palette
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for the current funnel palette.
@@ -28,52 +64,66 @@ anychart.charts.Funnel.prototype.palette;
 
 /**
  * Setter for a funnel palette.
- * @example
- *  var data = [7, 7, 7, 7, 7, 7, 7];
- *  anychart.funnel(data)
- *     .labels(null)
- *     .legend(null)
- *     .container(stage)
- *     .bounds(0,0,'33%', '100%')
- *     .draw();
- *  anychart.funnel(data)
- *     .labels(null)
- *     .legend(null)
- *     .container(stage)
- *     .bounds('33%',0,'33%', '100%')
- *     .palette(['#00F', '#00E', '#00D', '#00C', '#00B', '#00A', '#009', '#008'])
- *     .draw();
- *  anychart.funnel(data)
- *     .labels(null)
- *     .legend(null)
- *     .container(stage)
- *     .bounds('66%',0,'33%', '100%')
- *     .palette(
- *          anychart.palettes.rangeColors()
- *              .colors(['red', 'yellow'])
- *              .count(data.length)
- *      )
- *     .draw();
+ * @example anychart.charts.Funnel.palette_set_asArray Using array
+ * @example anychart.charts.Funnel.palette_set_asRangeColors Using {@link anychart.palettes.RangeColors}
+ * @example anychart.charts.Funnel.palette_set_DistinctColors Using {@link anychart.palettes.DistinctColors}
+ * @example anychart.charts.Funnel.palette_set_asObject Using object
  * @param {(anychart.palettes.RangeColors|anychart.palettes.DistinctColors|Object|Array.<string>)=} opt_value Color palette instance.
- * @return {!anychart.charts.Funnel} An instance of {@link anychart.charts.Funnel} class for method chaining.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
  */
 anychart.charts.Funnel.prototype.palette;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.markerPalette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Chart markers palette settings.
- * @param {(anychart.palettes.Markers|Object|Array.<anychart.enums.MarkerType>)=} opt_value Chart marker palette settings to set.
- * @return {!(anychart.palettes.Markers|anychart.charts.Funnel)} Return current chart markers palette or itself for chaining call.
+ * Getter for chart markers palette settings.
+ * @return {anychart.palettes.Markers} Current chart markers palette.
  */
 anychart.charts.Funnel.prototype.markerPalette;
 
 /**
- * Chart hatch fill palette settings.
- * @param {(Array.<anychart.graphics.vector.HatchFill.HatchFillType>|Object|anychart.palettes.HatchFills)=} opt_value Chart
- * hatch fill palette settings to set.
- * @return {!(anychart.palettes.HatchFills|anychart.charts.Funnel)} Return current chart hatch fill palette or itself
- * for chaining call.
+ * Setter for chart markers palette settings.
+ * @detailed Works only with {@link anychart.charts.Funnel#markers}.
+ * @example anychart.charts.Funnel.markerPalette_set
+ * @param {(anychart.palettes.Markers|Object|Array.<anychart.enums.MarkerType>)=} opt_value Chart marker palette settings to set.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
+ */
+anychart.charts.Funnel.prototype.markerPalette;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.hatchFillPalette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for chart hatch fill palette settings.
+ * @return {anychart.palettes.HatchFills} Current chart hatch fill palette.
  */
 anychart.charts.Funnel.prototype.hatchFillPalette;
+
+/**
+ * Setter for chart hatch fill palette settings.
+ * @detailed Works only with {@link anychart.charts.Funnel#hatchFill}.
+ * @example anychart.charts.Funnel.hatchFillPalette_set
+ * @param {(Array.<anychart.graphics.vector.HatchFill.HatchFillType>|Object|anychart.palettes.HatchFills)=} opt_value Chart
+ * hatch fill palette settings to set.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
+ */
+anychart.charts.Funnel.prototype.hatchFillPalette;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for the funnel points fill in normal state.
@@ -82,18 +132,9 @@ anychart.charts.Funnel.prototype.hatchFillPalette;
 anychart.charts.Funnel.prototype.fill;
 
 /**
- * Setter for the funnel points fill in the normal state.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example
- *  var data = [10, 1, 7, 10];
- *  var chart = anychart.funnel(data);
- *  chart.fill(function(){
- *     return 'rgba(210,' + (50 * (this.index + 1) - 10) + ',100,1)';
- *  });
- *  chart.legend(null);
- *  chart.stroke('none');
- *  chart.container(stage).draw();
+ * Setter for the funnel points fill in the normal state.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Funnel.fill
  * @param {(anychart.graphics.vector.Fill|function():anychart.graphics.vector.Fill)=} opt_value [// return the fill from the default pallete.
  * function() {
  *   return this.sourceColor;
@@ -104,9 +145,16 @@ anychart.charts.Funnel.prototype.fill;
  *  // }
  *  return myFill; //anychart.graphics.vector.Fill
  * };</code>.
- * @return {!anychart.charts.Funnel} An instance of {@link anychart.charts.Funnel} class for method chaining.
+ * @return {!anychart.charts.Funnel} Self instance for method chaining.
  */
 anychart.charts.Funnel.prototype.fill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.hoverFill
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for the funnel points fill in the hover state.
@@ -115,14 +163,9 @@ anychart.charts.Funnel.prototype.fill;
 anychart.charts.Funnel.prototype.hoverFill;
 
 /**
- * Setter for the funnel points fill in the hover state.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
- * @example
- *  var data = [10, 1, 7, 10];
- *  var chart = anychart.funnel(data);
- *  chart.hoverFill(['red', 'blue']);
- *  chart.container(stage).draw();
+ * Setter for the funnel points fill in the hover state.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Funnel.hoverFill
  * @param {(anychart.graphics.vector.Fill|function():anychart.graphics.vector.Fill)=} opt_value [// return lighter fill of the default pallete.
  * function() {
  *   return anychart.color.lighten(this.sourceColor);
@@ -133,9 +176,16 @@ anychart.charts.Funnel.prototype.hoverFill;
  *  // }
  *  return myFill; //anychart.graphics.vector.Fill
  * };</code>.
- * @return {!anychart.charts.Funnel} An instance of {@link anychart.charts.Funnel} class for method chaining.
+ * @return {!anychart.charts.Funnel} Self instance for method chaining.
  */
 anychart.charts.Funnel.prototype.hoverFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.hatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for current hatch fill settings.
@@ -145,19 +195,22 @@ anychart.charts.Funnel.prototype.hatchFill;
 
 /**
  * Setter for hatch fill settings.
- * @example
- *  var data = [10, 1, 7, 10];
- *  var chart = anychart.funnel(data);
- *  chart.hatchFill('diagonalbrick');
- *  chart.container(stage).draw();
+ * @example anychart.charts.Funnel.hatchFill
  * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
- * string|boolean)=} opt_patternFillOrType PatternFill or HatchFill instance or type of hatch fill.
+ * string|boolean)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
  * @param {string=} opt_color Color.
  * @param {number=} opt_thickness Thickness.
  * @param {number=} opt_size Pattern size.
- * @return {!anychart.charts.Funnel} {@link anychart.charts.Funnel} instance for method chaining.
+ * @return {!anychart.charts.Funnel} Self instance for method chaining.
  */
 anychart.charts.Funnel.prototype.hatchFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.hoverHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for current hover hatch fill settings.
@@ -167,19 +220,22 @@ anychart.charts.Funnel.prototype.hoverHatchFill;
 
 /**
  * Setter for hover hatch fill settings.
- * @example
- *  var data = [10, 1, 7, 10];
- *  var chart = anychart.funnel(data);
- *  chart.hoverHatchFill('diagonalbrick');
- *  chart.container(stage).draw();
+ * @example anychart.charts.Funnel.hoverHatchFill
  * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
- * string|boolean)=} opt_patternFillOrType PatternFill or HatchFill instance or type of hatch fill.
+ * string|boolean)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
  * @param {string=} opt_color Color.
  * @param {number=} opt_thickness Thickness.
  * @param {number=} opt_size Pattern size.
- * @return {!anychart.charts.Funnel} {@link anychart.charts.Funnel} instance for method chaining.
+ * @return {!anychart.charts.Funnel} Self instance for method chaining.
  */
 anychart.charts.Funnel.prototype.hoverHatchFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for the funnel points stroke in the normal state.
@@ -188,14 +244,9 @@ anychart.charts.Funnel.prototype.hoverHatchFill;
 anychart.charts.Funnel.prototype.stroke;
 
 /**
- * Setter for the funnel points stroke in the normal state.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}
- * @example
- *  var data = [10, 1, 7, 10];
- *  var chart = anychart.funnel(data);
- *  chart.stroke('2 white');
- *  chart.container(stage).draw();
+ * Setter for the funnel points stroke in the normal state.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Funnel.stroke_set_asFunc
  * @param {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)=} opt_value [// return stroke from the default pallete.
  * function() {
  *   return anychart.color.darken(this.sourceColor);
@@ -206,9 +257,29 @@ anychart.charts.Funnel.prototype.stroke;
  *  // }
  *  return myStroke; //anychart.graphics.vector.Stroke
  * };</code>.
- * @return {!anychart.charts.Funnel} An instance of {@link anychart.charts.Funnel} class for method chaining.
+ * @return {!anychart.charts.Funnel}Self instance for method chaining.
  */
 anychart.charts.Funnel.prototype.stroke;
+
+/**
+ * Setter for the funnel points stroke in the normal state.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Funnel.stroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
+ */
+anychart.charts.Funnel.prototype.stroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.hoverStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for the funnel points stroke in the hover state.
@@ -217,14 +288,9 @@ anychart.charts.Funnel.prototype.stroke;
 anychart.charts.Funnel.prototype.hoverStroke;
 
 /**
- * Setter for the funnel points stroke in the hover state.<br/>
- * Learn more about coloring at:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}
- * @example
- *  var data = [10, 1, 7, 10];
- *  var chart = anychart.funnel(data);
- *  chart.hoverStroke('2 #CC0088');
- *  chart.container(stage).draw();
+ * Setter for the funnel points stroke in the hover state.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Funnel.hoverStroke_set_asFunc
  * @param {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)=} opt_value [// return stroke from the default pallete.
  * function() {
  *   return anychart.color.darken(this.sourceColor);
@@ -235,147 +301,224 @@ anychart.charts.Funnel.prototype.hoverStroke;
  *  // }
  *  return myStroke; //anychart.graphics.vector.Stroke
  * };</code>.
- * @return {!anychart.charts.Funnel} An instance of {@link anychart.charts.Funnel} class for method chaining.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
  */
 anychart.charts.Funnel.prototype.hoverStroke;
 
 /**
- * The width of the funnel in pixels or in percentage of the width of the bounds.
- * Defaults to 90%.
- * @param {(string|number)=} opt_value
- * @return {string|number|anychart.charts.Funnel}
+ * Setter for the funnel points stroke in the hover state.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Funnel.hoverStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
  */
-anychart.charts.Funnel.prototype.headWidth;
+anychart.charts.Funnel.prototype.hoverStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.baseWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * The height of the neck, the lower part of the funnel.
- * In pixels or in percentage of the height of the bounds.
- * Defaults to 25%.
- * @param {(string|number)=} opt_value
- * @return {string|number|anychart.charts.Funnel}
+ * Getter for the width of the funnel in pixels or in percentage.
+ * @example anychart.charts.Funnel.baseWidth_get
+ * @return {string|number} Current width of the funnel.
+ */
+anychart.charts.Funnel.prototype.baseWidth;
+
+/**
+ * Setter for the width of the funnel in pixels or in percentage.
+ * @example anychart.charts.Funnel.baseWidth_set
+ * @param {(string|number)=} opt_value ['90%'] Value to set
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
+ */
+anychart.charts.Funnel.prototype.baseWidth;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.neckHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the height of the neck.
+ * @example anychart.charts.Funnel.neckHeight_get
+ * @return {string|number} Current height of the neck.
  */
 anychart.charts.Funnel.prototype.neckHeight;
 
 /**
- * The width of the neck, the lower part of the funnel.
- * In pixels or in percentage of the width of the bounds.
- * Defaults to 25%.
- * @param {(string|number)=} opt_value
- * @return {string|number|anychart.charts.Funnel}
+ * Setter for the height of the neck.
+ * @example anychart.charts.Funnel.neckHeight_set
+ * @param {(string|number)=} opt_value ['25%'] Value to set.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
+ */
+anychart.charts.Funnel.prototype.neckHeight;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.neckWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the width of the neck.
+ * @example anychart.charts.Funnel.neckWidth_get
+ * @return {string|number} Current height of the neck.
  */
 anychart.charts.Funnel.prototype.neckWidth;
 
 /**
- * The distance between points in pixels (or percent) of the bounds height.
- * Defaults to 5.
- * @param {(string|number)=} opt_value
- * @return {string|number|anychart.charts.Funnel}
+ * Setter for the width of the neck.
+ * @example anychart.charts.Funnel.neckWidth_set
+ * @param {(string|number)=} opt_value ['30%'] Value to set.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
+ */
+anychart.charts.Funnel.prototype.neckWidth;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.pointsPadding
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the padding between points.
+ * @return {string|number} Current padding.
  */
 anychart.charts.Funnel.prototype.pointsPadding;
 
 /**
- * Getter for the current funnel labels.<br/>
- * It is used to access to the current (default too) settings of the labels.<br>
+ * Setter for the padding between points.
+ * @example anychart.charts.Funnel.pointsPadding
+ * @param {(string|number)=} opt_value [5] Value to set.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
+ */
+anychart.charts.Funnel.prototype.pointsPadding;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.labels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current funnel labels.
+ * @detailed It is used to access to the current (default too) settings of the labels.<br>
  * <b>Note:</b> Default labels will appear when this getter is called for the first time.
- * @example
- *  var data = [
- *    {name: 'Point 1', value: 10},
- *    {name: 'Point 2', value: 7},
- *    {name: 'Point 3', value: 20},
- *    {name: 'Point 4', value: 14}
- *  ];
- *  var chart = anychart.funnel(data);
- *  chart.labels()
- *      .position('outside')
- *      .fontSize(10)
- *      .fontColor('red');
- *  chart.container(stage).draw();
- * @return {!anychart.core.ui.LabelsFactory} An instance of {@link anychart.core.ui.LabelsFactory} class for method chaining.
+ * @example anychart.charts.Funnel.labels_get
+ * @return {!anychart.core.ui.LabelsFactory} LabelsFactory instance.
  */
 anychart.charts.Funnel.prototype.labels;
 
 /**
- * Setter for the funnel labels.<br/>
- * <b>Note:</b> positioning is done using {@link anychart.core.ui.LabelsFactory#positionFormatter} method
- * and text is formatted using {@link anychart.core.ui.LabelsFactory#textFormatter} method.
- * @example
- *  var data = [
- *    {name: 'Point 1', value: 10},
- *    {name: 'Point 2', value: 7},
- *    {name: 'Point 3', value: 20},
- *    {name: 'Point 4', value: 14}
- *  ];
- *  var chart = anychart.funnel(data);
- *  chart.labels(true);
- *  chart.container(stage).draw();
- * @param {(Object|boolean|null)=} opt_value [] LabelsFactory instance.
- * @return {!anychart.charts.Funnel} An instance of {@link anychart.charts.Funnel} class for method chaining.
+ * Setter for the funnel labels.
+ * @detailed <b>Note:</b> positioning is done using {@link anychart.core.ui.LabelsFactory#positionFormatter} method
+ * and text is formatted using {@link anychart.core.ui.LabelsFactory#textFormatter} method.<br/>
+ * Sets chart labels settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart labels.</li>
+ *   <li><b>object</b> - sets chart labels settings.</li>
+ * </ul>
+ * @example anychart.charts.Funnel.labels_set_asBool Disable/enable labels
+ * @example anychart.charts.Funnel.labels_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [true] Chart data labels settings.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
  */
 anychart.charts.Funnel.prototype.labels;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.hoverLabels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for series hover data labels.
- * @example
- *  var data = [
- *    {name: 'Point 1', value: 10},
- *    {name: 'Point 2', value: 7},
- *    {name: 'Point 3', value: 20},
- *    {name: 'Point 4', value: 14}
- *  ];
- *  var chart = anychart.funnel(data);
- *  chart.hoverLabels()
- *      .fontSize(10)
- *      .fontStyle('italic')
- *      .fontColor('red');
- *  chart.container(stage).draw();
+ * Getter for the funnel hover data labels.
+ * @example anychart.charts.Funnel.hoverLabels_get
  * @return {!anychart.core.ui.LabelsFactory} Current labels instance.
  */
 anychart.charts.Funnel.prototype.hoverLabels;
 
 /**
- * Setter for series hover data labels.
- * @example
- *  var data = [
- *    {name: 'Point 1', value: 10},
- *    {name: 'Point 2', value: 7},
- *    {name: 'Point 3', value: 20},
- *    {name: 'Point 4', value: 14}
- *  ];
- *  var chart = anychart.funnel(data);
- *  chart.hoverLabels(false);
- *  chart.container(stage).draw();
- * @param {(Object|boolean|null)=} opt_value funnel hover data labels settings.
- * @return {!anychart.charts.Funnel} {@link anychart.charts.Funnel} instance for method chaining.
+ * Setter for the funnel hover data labels.
+ * @detailed Sets chart hover labels settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart hover labels.</li>
+ *   <li><b>object</b> - sets chart hover labels settings.</li>
+ * </ul>
+ * @example anychart.charts.Funnel.hoverLabels_set_asBool Disable/enable hover labels
+ * @example anychart.charts.Funnel.hoverLabels_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value Funnel hover data labels settings.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
  */
 anychart.charts.Funnel.prototype.hoverLabels;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.overlapMode
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Allows the labels to cross other labels. ONLY for outside labels.
- * @param {(anychart.enums.LabelsOverlapMode|string)=} opt_value .
- * @return {anychart.enums.LabelsOverlapMode|anychart.charts.Funnel} .
+ * Getter for overlap mode for labels.
+ * @example anychart.charts.Funnel.overlapMode_get
+ * @return {anychart.enums.LabelsOverlapMode} Overlap mode flag.
  */
 anychart.charts.Funnel.prototype.overlapMode;
 
 /**
+ * Setter for overlap mode for labels.
+ * @detailed Allows the labels to cross other labels. ONLY for outside labels.
+ * @example anychart.charts.Funnel.overlapMode_set_asBool Disable/Enable overlap mode
+ * @example anychart.charts.Funnel.overlapMode_set_asEnum Using enum
+ * @example anychart.charts.Funnel.overlapMode_set_asString Using string
+ * @param {(anychart.enums.LabelsOverlapMode|string|boolean)=} opt_value ['noOverlap'] Value to set.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
+ */
+anychart.charts.Funnel.prototype.overlapMode;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.connectorLength
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
  * Getter for outside labels connector length.
+ * @example anychart.charts.Funnel.connectorLength_get
  * @return {number|string|null} Outside labels connector length.
  */
 anychart.charts.Funnel.prototype.connectorLength;
 
 /**
- * Setter for outside labels connector length.<br/>
- * <b>Note: </b> Works only with outside labels mode.
- * @example
- * var chart = anychart.funnel([5, 2, 1, 3, 1, 3]);
- * chart.labels()
- *   .fontColor('black')
- *   .position('outside');
- * chart.connectorLength(20);
- * chart.container(stage).draw();
- * @param {(number|string)=} opt_value [30%] Value to set.
- * @return {anychart.charts.Funnel} {@link anychart.charts.Funnel} instance for method chaining.
+ * Setter for outside labels connector length.
+ * @detailed Works only with {@link anychart.core.ui.LabelsFactory#position} for values 'outsideLeft' and 'outsideRight'.
+ * @example anychart.charts.Funnel.connectorLength_set
+ * @param {(number|string)=} opt_value [20] Value to set.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
  */
 anychart.charts.Funnel.prototype.connectorLength;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.connectorStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for outside labels connectors stroke settings.
@@ -384,111 +527,136 @@ anychart.charts.Funnel.prototype.connectorLength;
 anychart.charts.Funnel.prototype.connectorStroke;
 
 /**
- * Setter for outside labels connectors stroke settings by function.<br/>
- * <b>Note: </b> Works only with outside labels mode.
- * @example
- * var chart = anychart.funnel([5, 2, 1, 3, 1, 3]);
- * chart.labels()
- *   .fontColor('black')
- *   .position('outside');
- * chart.connectorStroke(
- *      function(){
- *        return '3 '+ this.sourceColor;
- *      }
- *   );
- * chart.container(stage).draw();
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_fillFunction [function() {
- *  return anychart.color.darken(this.sourceColor);
- * }] Function that looks like <code>function(){
- *    // this.sourceColor -  color returned by fill() getter.
- *    return fillValue; // type anychart.graphics.vector.Fill
- * }</code>.
- * @return {!anychart.charts.Funnel} {@link anychart.charts.Funnel} instance for method chaining.
- */
-anychart.charts.Funnel.prototype.connectorStroke;
-
-/**
- * Setter for outside labels connectors stroke settings.<br/>
- * Learn more about stroke settings:
- * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Stroke}<br/>
- * <b>Note: </b> Works only with outside labels mode.
- * @example
- * var chart = anychart.funnel([5, 2, 1, 3, 1, 3]);
- * chart.labels()
- *   .fontColor('black')
- *   .position('outside');
- * chart.connectorStroke('orange', 3, '5 2', 'round');
- * chart.container(stage).draw();
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
+ * Setter for outside labels connectors stroke settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Funnel.connectorStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value ['black'] Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
  * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
- * @return {!anychart.charts.Funnel} {@link anychart.charts.Funnel} instance for method chaining.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
  */
 anychart.charts.Funnel.prototype.connectorStroke;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.markers
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for data markers.
- * @example <t>listingOnly</t>
- * chart.markers().size(10);
+ * @example anychart.charts.Funnel.markers_get
  * @return {!anychart.core.ui.MarkersFactory} Markers instance.
  */
 anychart.charts.Funnel.prototype.markers;
 
 /**
- * Setter for data markers.<br/>
- * <b>Note:</b> pass <b>'none'</b> or <b>null</b> to turn off markers.
- * @example <t>funnelChart</t>
- * chart.markers(null);
- * @param {(Object|boolean|null|string)=} opt_value Data markers settings.
- * @return {!anychart.charts.Funnel} {@link anychart.charts.Funnel} instance for method chaining.
+ * Setter for data markers.
+ * @detailed Sets chart markers settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart markers.</li>
+ *   <li><b>object</b> - sets chart markers settings.</li>
+ *   <li><b>string</b> - sets chart markers type.</li>
+ * </ul>
+ * @example anychart.charts.Funnel.markers_set_asBool Disable/enable markers
+ * @example anychart.charts.Funnel.markers_set_asObject Using object
+ * @example anychart.charts.Funnel.markers_set_asString Using string
+ * @param {(Object|boolean|null|string)=} opt_value [false] Data markers settings.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
  */
 anychart.charts.Funnel.prototype.markers;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.hoverMarkers
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for series data markers on hover.
- * @example <t>listingOnly</t>
- * series.hoverMarkers().size(20);
+ * Getter for funnel points data markers on hover.
+ * @example anychart.charts.Funnel.hoverMarkers_get
  * @return {!anychart.core.ui.MarkersFactory} Markers instance.
  */
 anychart.charts.Funnel.prototype.hoverMarkers;
 
 /**
- * Setter for series data markers on hover.<br/>
- * <b>Note:</b> pass <b>'none'</b> or <b>null</b> to turn of markers.
- * @example <t>listingOnly</t>
- * series.hoverMarkers(null);
- * @example <t>lineChart</t>
- * chart.spline([1, 1.4, 1.2, 2]).hoverMarkers({size: 10, type: 'star5'});
+ * Setter for funnel points data markers on hover.
+ * @detailed Sets chart hover markers settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart hover markers.</li>
+ *   <li><b>object</b> - sets chart hover markers settings.</li>
+ *   <li><b>string</b> - sets chart hover markers type.</li>
+ * </ul>
+ * @example anychart.charts.Funnel.hoverMarkers_set_asBool Disable/enable hover markers
+ * @example anychart.charts.Funnel.hoverMarkers_set_asObject Using object
+ * @example anychart.charts.Funnel.hoverMarkers_set_asString Using string
  * @param {(Object|boolean|null|string)=} opt_value Series data markers settings.
- * @return {!anychart.charts.Funnel} {@link anychart.charts.Funnel} instance for method chaining.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
  */
 anychart.charts.Funnel.prototype.hoverMarkers;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.tooltip
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for tolltip settings.
- * @example
- * chart.tooltip()
- *     .titleFormatter(function(){
- *         return 'title [' + this.index + ']';
- *     })
- *     .title()
- *         .enabled(true);
- * chart.container(stage).draw();
- * @return {!anychart.core.ui.Tooltip} An instance of {@link anychart.core.ui.Tooltip} class for method chaining.
+ * Getter for tooltip settings.
+ * @example anychart.charts.Funnel.tooltip_get
+ * @return {anychart.core.ui.Tooltip} Tooltip instance.
  */
 anychart.charts.Funnel.prototype.tooltip;
 
 /**
- * Setter for tolltip settings.
- * @example
- * var chart = anychart.funnel([10, 14, 8, 12]);
- * chart.tooltip(false);
- * chart.container(stage).draw();
- * @param {(Object|boolean|null)=} opt_value Tooltip settings.
- * @return {!anychart.charts.Funnel} An instance of {@link anychart.charts.Funnel} class for method chaining.
+ * Setter for tooltip settings.
+ * @detailed Sets chart data tooltip settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart data tooltip.</li>
+ *   <li><b>object</b> - sets chart data tooltip settings.</li>
+ * </ul>
+ * @example anychart.charts.Funnel.tooltip_set_asBool Disable/enable tooltip
+ * @example anychart.charts.Funnel.tooltip_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [true] Tooltip settings.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
  */
 anychart.charts.Funnel.prototype.tooltip;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.hover
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Sets the hover state on a slice by index.
+ * @detailed If index is passed, hovers a slice of the chart by its index, else doesn't hovers all slices of the chart.<br/>
+ * <b>Note:</b> Works only after {@link anychart.charts.Funnel#draw} is called.
+ * @example anychart.charts.Funnel.hover
+ * @param {number=} opt_index Slice index.
+ * @return {anychart.charts.Funnel} Self instance for method chaining.
+ */
+anychart.charts.Funnel.prototype.hover;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Funnel.prototype.unhover
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes hover from all chart points.
+ * @detailed <b>Note:</b> Works only after {@link anychart.charts.Funnel#draw} is called.
+ * @example anychart.charts.Funnel.unhover
+ * @return {!anychart.core.Funnel} Self instance for method chaining.
+ */
+anychart.charts.Funnel.prototype.unhover;
+
 

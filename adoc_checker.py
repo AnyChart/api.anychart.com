@@ -91,16 +91,14 @@ def __unexistable_examples(isPath):
 #=======================================================================================================================
 def __exec_main_script():
     isPath = ''
-    checkSamples = ''
+    checkSamples = 1
     checkSamplesOnly = ''
     total = len(sys.argv)
     for i in xrange(total):
         if sys.argv[i]=='-p' and not i==total-1:
           isPath = sys.argv[i+1]
-        if sys.argv[i]=='-s':
-            checkSamples = 1
+          checkSamples = ''
         if sys.argv[i]=='-so':
-            checkSamples = 1
             checkSamplesOnly = 1
 
     if checkSamplesOnly == '':

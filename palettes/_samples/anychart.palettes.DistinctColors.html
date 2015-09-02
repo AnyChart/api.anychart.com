@@ -1,17 +1,17 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="palette"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            var stage = anychart.graphics.create('container');
-            var palette = anychart.palettes.distinctColors()
-                    .colors(['red', 'yellow', 'brown', 'green']);
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+            var palette = anychart.palettes.distinctColors(); // creates palette
+            palette.colors(["#F44336", "#FFEB3B", "#795548", "#4CAF50"]);
             for (var i = 1; i < 10; i++) {
-                stage.rect((i - 1) * stage.width() / 9, 0, stage.width() / 9 - .5, stage.height())
-                        .fill(palette.colorAt(i))
-                        .stroke('1px #000');
+                var rect = stage.rect((i - 1) * stage.width() / 9, 0, stage.width() / 9 - .5, stage.height());
+                rect.fill(palette.colorAt(i));
+                rect.stroke("1px #000");
             }
         });
     </script>

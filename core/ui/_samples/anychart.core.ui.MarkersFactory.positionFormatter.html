@@ -1,20 +1,20 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="column"/>
     <script src="../../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            var stage = anychart.graphics.create('container');
-            var marker = anychart.ui.markersFactory()
-                    .container(stage)
-                    .size(25)
-                    .positionFormatter(function (positionProvider, index) {
-                        return {x: 60 * (1 + index), y: 100 * Math.random() + 60};
-                    })
-                    .anchor('center');
-            for (var i = 0; i < 5; i++)
-                marker.draw();
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.column();
+            var series = chart.column([3, 5, 2, 8]);
+            var markers = series.markers();
+            markers.enabled(true);
+            markers.size(10);
+            markers.positionFormatter(function() {
+                return {x: this.value.x + 15, y: this.value.y - 15};
+            }); // sets position formatter
+            chart.container("container");
+            chart.draw();
         });
     </script>
 </head>

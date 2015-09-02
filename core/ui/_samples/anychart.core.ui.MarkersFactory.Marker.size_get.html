@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="markersFactory"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+            var rect = stage.rect(20, 0, 160, 100);
+            rect.stroke("#000000");
+            var markers = anychart.ui.markersFactory();
+            markers.fill("#009688");
+            for (var i = 0; i < 3; i++) {
+                var marker = markers.add({value: {x: 50 * (i + 1), y: 50}}, i);
+                marker.size(15);
+                var getSize = marker.size(); // get size
+                if (i == (getSize - 13)) {
+                    marker.size(25);
+                }
+            }
+            markers.container(stage);
+            markers.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

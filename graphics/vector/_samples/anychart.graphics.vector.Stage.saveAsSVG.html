@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content=""/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+            stage.circle(450, 360, 350);
+            stage.rect(100, 10, 700, 700);
+            var label = anychart.ui.label();
+            label.background(true);
+            label.text("Save image");
+            label.fontColor("#fff");
+            label.padding(5);
+            label.offsetX(5);
+            label.listen("click", function() {
+                stage.saveAsSVG(); // saves into SVG file
+            });
+            label.container(stage);
+            label.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

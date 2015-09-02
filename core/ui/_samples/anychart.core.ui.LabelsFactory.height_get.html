@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="column line"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+            var columnChart = anychart.column();
+            columnChart.bounds(0, 0, "100%", "50%");
+            var series = columnChart.column([12, 25, 18, 29]);
+            var labels = series.labels();
+            labels.enabled(true);
+            labels.background({fill: "#FFFFFF"});
+            labels.height(30);
+            columnChart.container(stage);
+            columnChart.draw();
+            var lineChart = anychart.line();
+            lineChart.bounds(0, "50%", "100%", "50%");
+            var lineSeries = lineChart.line([12, 25, 18, 29]);
+            var lineLabels = lineSeries.labels();
+            lineLabels.enabled(true);
+            lineLabels.background({fill: "#FFFFFF"});
+            var height = labels.height(); // get height
+            lineLabels.height(height);
+            lineChart.container(stage);
+            lineChart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="height: 100%; height: 100%"></div>
+</body>
+</html>

@@ -8,19 +8,19 @@
             var chart = anychart.line();
             var line = chart.line([1, 4, 2, 6]);
             var title = chart.title();
-            title.text('Click on line series. You have 3 clicks.');
+            title.text("Click on line series. You have 3 clicks.");
             line.listen(anychart.enums.EventType.POINT_CLICK, customListener);
             var counter = 3;
 
             function customListener(e) {
                 counter--;
-                title.text('Click on line series. You have ' + counter + ' clicks.');
+                title.text("Click on line series. You have " + counter + " clicks.");
                 if (counter == 0) {
                     line.unlisten(anychart.enums.EventType.POINT_CLICK, customListener);
-                    title.text('You have no more clicks');
+                    title.text("You have no more clicks");
                 }
             }
-            chart.container('container');
+            chart.container("container");
             chart.draw();
         });
     </script>

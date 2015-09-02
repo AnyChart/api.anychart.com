@@ -1,0 +1,26 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="labelsFactory"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+            var labels = anychart.ui.labelsFactory();
+            labels.enabled(true);
+            var label = labels.add();
+            label.offsetY(100);
+            label.offsetX(100);
+            label.background({fill: "#FFFFFF"});
+            labels.textFormatter(function() {
+                return "Get index of label: " + label.getIndex(); // get index of label
+            });
+            labels.container(stage);
+            labels.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

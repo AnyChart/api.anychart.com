@@ -1,18 +1,19 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="palette"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            var stage = anychart.graphics.create('container');
-            var palette = anychart.palettes.distinctColors()
-                    .colors(['#00F', 'red', ['orange', 'red'], '#00C', '#00B', '#00A', '#009', '#008']);
-            var len = palette.colors().length - 1;
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+            var palette = anychart.palettes.distinctColors();
+            palette.colors(["#00F", "#F44336", ["#FF9800", "#F44336"], "#00C", "#00B", "#00A", "#009", "#008"]); // set colors
+            var colors = palette.colors();
+            var len = colors.length - 1;
             for (var i = 1; i <= len; i++) {
-                stage.rect((i - 1) * stage.width() / len, 0, stage.width() / len - .5, stage.height())
-                        .fill(palette.colorAt(i - 1))
-                        .stroke('1px #000');
+                var rect = stage.rect((i - 1) * stage.width() / len, 0, stage.width() / len - .5, stage.height());
+                rect.fill(palette.colorAt(i - 1));
+                rect.stroke("1px #000");
             }
         });
     </script>
