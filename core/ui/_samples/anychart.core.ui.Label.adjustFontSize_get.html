@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="label"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+
+            var firstRectangle = stage.rect(5, 5, 190, 90);
+            firstRectangle.fill("none");
+            firstRectangle.stroke("1 grey");
+
+            var firstLabel = anychart.ui.label();
+            firstLabel.text("Adjusted text");
+            firstLabel.adjustFontSize(true);
+            firstLabel.width("100%");
+            firstLabel.height("100%");
+            firstLabel.parentBounds(firstRectangle.getBounds());
+            firstLabel.container(stage);
+            firstLabel.draw();
+
+            var secondRectangle = stage.rect(205, 5, 190, 90);
+            secondRectangle.fill("none");
+            secondRectangle.stroke("1 grey");
+
+            var secondLabel = anychart.ui.label();
+            secondLabel.text("Adjusted text");
+
+            // Gets adjusting font size.
+            var adjusting = firstLabel.adjustFontSize();
+
+            secondLabel.adjustFontSize(adjusting);
+            secondLabel.width("100%");
+            secondLabel.height("100%");
+            secondLabel.parentBounds(secondRectangle.getBounds());
+            secondLabel.container(stage);
+            secondLabel.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

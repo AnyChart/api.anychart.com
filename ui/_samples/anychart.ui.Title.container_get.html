@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="title"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+
+            var firstTitle = anychart.ui.title();
+            firstTitle.text("First title");
+            firstTitle.parentBounds(0, 0, 200, 200);
+            firstTitle.container(stage);
+            firstTitle.draw();
+
+            // Gets container.
+            var currentContainer = firstTitle.container();
+
+            var secondTitle = anychart.ui.title();
+            secondTitle.text("Second title");
+            secondTitle.parentBounds(100, 0, 200, 200);
+            secondTitle.container(currentContainer);
+            secondTitle.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

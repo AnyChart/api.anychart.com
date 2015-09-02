@@ -15,6 +15,8 @@ anychart.core.Chart;
 /**
  * Getter for the current chart margin.<br/>
  * <img src='anychart.core.Chart.prototype.margin.png' width='352' height='351'/>
+ * @shortDescription Margin settings.
+ * @category Size and Position
  * @return {!anychart.core.utils.Margin} The current chart margin.
  */
 anychart.core.Chart.prototype.margin;
@@ -26,10 +28,11 @@ anychart.core.Chart.prototype.margin;
  * chart.margin(15);
  * // all margins 15px
  * chart.margin("15px");
- * // top and bottom 5px ,right and left 15px
+ * // top and bottom 5px, right and left 15px
  * chart.margin(anychart.utils.space(5, 15));
  * @example anychart.core.Chart.margin_set_asSingle
- * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_value Value to set.
+ * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=}
+ * opt_value [{top: 0, right: 0, bottom: 0, left: 0}] Value to set.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.margin;
@@ -46,10 +49,10 @@ anychart.core.Chart.prototype.margin;
  * // 4) top 10px, right 15px, bottom 5px, left 12px
  * chart.margin(10, "15px", "5px", 12);
  * @example anychart.core.Chart.margin_set_asSeveral
- * @param {(string|number)=} opt_value1 Top or top-bottom space.
- * @param {(string|number)=} opt_value2 Right or right-left space.
- * @param {(string|number)=} opt_value3 Bottom space.
- * @param {(string|number)=} opt_value4 Left space.
+ * @param {(string|number)=} opt_value1 [0] Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 [0] Right or right-left space.
+ * @param {(string|number)=} opt_value3 [0] Bottom space.
+ * @param {(string|number)=} opt_value4 [0] Left space.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.margin;
@@ -64,6 +67,8 @@ anychart.core.Chart.prototype.margin;
 /**
  * Getter for the current chart padding.<br/>
  * <img src='anychart.core.Chart.prototype.padding.png' width='352' height='351'/>
+ * @shortDescription Padding settings.
+ * @category Size and Position
  * @return {!anychart.core.utils.Padding} Current chart padding.
  */
 anychart.core.Chart.prototype.padding;
@@ -72,10 +77,11 @@ anychart.core.Chart.prototype.padding;
  * Setter for the chart paddings in pixels using a single value.
  * @listing Example.
  * chart.padding([5, 15]);
- * @listing Example.
+ * or
  * chart.padding({left: 10, top: 20, bottom: 30, right: "40%"}});
  * @example anychart.core.Chart.padding_set_asSingle
- * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_value Value to set.
+ * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=}
+ * opt_value [{top: 0, right: 0, bottom: 0, left: 0}] Value to set.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.padding;
@@ -92,48 +98,82 @@ anychart.core.Chart.prototype.padding;
  * // 4) top 10px, right 15%, bottom 5px, left 12px
  * chart.padding(10, "15%", "5px", 12);
  * @example anychart.core.Chart.padding_set_asSeveral
- * @param {(string|number)=} opt_value1 Top or top-bottom space.
- * @param {(string|number)=} opt_value2 Right or right-left space.
- * @param {(string|number)=} opt_value3 Bottom space.
- * @param {(string|number)=} opt_value4 Left space.
+ * @param {(string|number)=} opt_value1 [0] Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 [0] Right or right-left space.
+ * @param {(string|number)=} opt_value3 [0] Bottom space.
+ * @param {(string|number)=} opt_value4 [0] Left space.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.padding;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.background
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for the current chart background.
- * @example anychart.core.Chart.background
+ * @shortDescription Background settings.
+ * @category Chart Coloring
+ * @example anychart.core.Chart.background_get
  * @return {!anychart.core.ui.Background} The current chart background.
  */
 anychart.core.Chart.prototype.background;
 
 /**
  * Setter for the chart background.
- * @example anychart.core.Chart.background1
- * @param {Object=} opt_value Background object to set.
+ * @example anychart.core.Chart.background_set
+ * @param {Object=} opt_value [{enabled: true, fill: "#fff", stroke: 'none', zIndex: 1}] Background object to set.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.background;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.title
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for chart title.
- * @example anychart.core.Chart.title
+ * @shortDescription Title settings.
+ * @category Chart Controls
+ * @example anychart.core.Chart.title_get
  * @return {!anychart.core.ui.Title} The current chart title.
  */
 anychart.core.Chart.prototype.title;
 
 /**
  * Setter for the chart title.
- * @example anychart.core.Chart.title1
- * @example anychart.core.Chart.title2
- * @param {(null|boolean|Object|string)=} opt_value Chart title text or title instance for copy settings from.
+ * @detailed Sets chart title settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart title.</li>
+ *   <li><b>string</b> - sets chart title text value.</li>
+ *   <li><b>object</b> - sets chart title settings.</li>
+ * </ul>
+ * @example anychart.core.Chart.title_set_asBool Disable/Enable title
+ * @example anychart.core.Chart.title_set_asObj Using object
+ * @example anychart.core.Chart.title_set_asString Using string
+ * @param {(null|boolean|Object|string)=} opt_value [false] Chart title text or title instance for copy settings from.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.title;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.label
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Getter for chart label.
- * @example anychart.core.Chart.label
+ * @shortDescription Label settings.
+ * @category Chart Controls
+ * @example anychart.core.Chart.label_get
  * @param {(string|number)=} opt_index [0] Index of instance.
  * @return {anychart.core.ui.Label} An instance of class for method chaining.
  */
@@ -141,46 +181,114 @@ anychart.core.Chart.prototype.label;
 
 /**
  * Setter for chart label.
- * @example anychart.core.Chart.label1
- * @param {(null|boolean|Object|string)=} opt_value Chart label instance to add by index 0.
+ * @detailed Sets chart label settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart label.</li>
+ *   <li><b>string</b> - sets chart label text value.</li>
+ *   <li><b>object</b> - sets chart label settings.</li>
+ * </ul>
+ * @example anychart.core.Chart.label_set_asBool Disable/Enable label
+ * @example anychart.core.Chart.label_set_asObj Using object
+ * @example anychart.core.Chart.label_set_asString Using string
+ * @param {(null|boolean|Object|string)=} opt_value [false] Chart label instance to add by index 0.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.label;
 
 /**
  * Setter for chart label.
- * @example anychart.core.Chart.label2
- * @param {(string|number)=} opt_index Index of instance.
- * @param {(null|boolean|Object|string)=} opt_value  Chart label instance.
+ * @detailed Sets chart label settings by index depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart label.</li>
+ *   <li><b>string</b> - sets chart label text value.</li>
+ *   <li><b>object</b> - sets chart label settings.</li>
+ * </ul>
+ * @example anychart.core.Chart.label_set_asIndexBool Disable/Enable label by index
+ * @example anychart.core.Chart.label_set_asIndexObj Using object
+ * @example anychart.core.Chart.label_set_asIndexString Using string
+ * @param {(string|number)=} opt_index Label index.
+ * @param {(null|boolean|Object|string)=} opt_value [false] Chart label settings.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.label;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.draw
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Starts the rendering of the chart into the container.
+ * @shortDescription Drawing of the chart.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.draw;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.toJson
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Return chart configuration as JSON object or string.
- * Note for documentation writers!: Google compiler thinks that "Object" has "toJSON" method that must accept string and return *.
- * To avoid this we have to put in the "wrong" params.
- * In external documentation parameter must be boolean, and method must return Object|string.
- * For the moment we have no way around this "nice feature" of the compiler.
- * @param {string=} opt_stringify Return as JSON as string.
+ * @category XML/JSON
+ * @example anychart.core.Chart.toJson
+ * @param {(object|string)=} opt_stringify Return as JSON as string.
  * @return {*} Chart JSON.
  */
 anychart.core.Chart.prototype.toJson;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.toXml
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Return chart configuration as XML string or XMLNode.
+ * @category XML/JSON
+ * @example anychart.core.Chart.toXml
  * @param {boolean=} opt_asXmlNode Return XML as XMLNode.
  * @return {string|Node} Chart configuration.
  */
 anychart.core.Chart.prototype.toXml;
 
-/** @inheritDoc */
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.container
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the element current container.
+ * @return {anychart.graphics.vector.ILayer} The current container.
+ */
+anychart.core.Chart.prototype.container;
+
+/**
+ * Setter for the element container.
+ * @detailed Each element appends all its content to this container.<br/>
+ * The order of adding is not defined, but usually it will be the order in which elements are drawn for the first time.
+ * If you need to specify the order use {@link anychart.core.VisualBase#zIndex}.
+ * @listing Example
+ * // string
+ *  element.container('containerIdentifier');
+ * // DOM-element
+ *  var domElement = document.getElementById('containerIdentifier');
+ *  element.container(domElement);
+ * // Framework-element
+ *  var fwElement = anychart.ui.title();
+ *  element.container( fwElement.container() );
+ * @example anychart.core.Chart.container_set
+ * @param {(anychart.graphics.vector.ILayer|string|Element)=} opt_value The value to set.
+ * @return {!anychart.core.Chart} Self instance for method chaining.
+ */
 anychart.core.Chart.prototype.container;
 
 
@@ -192,6 +300,8 @@ anychart.core.Chart.prototype.container;
 
 /**
  * Getter for the current animation setting.
+ * @shortDescription Animation settings
+ * @category Chart Coloring
  * @example anychart.core.Chart.animation_get
  * @return {anychart.core.utils.Animation} Returns <b>true</b> if the animation is enabled.
  */
@@ -216,8 +326,8 @@ anychart.core.Chart.prototype.animation;
  * Setter for the animation setting.
  * @detailed <b>Note</b> If you use {@link anychart.graphics.vector.Stage#suspend}, you will not see animation.
  * @example anychart.core.Chart.animation_set_dblParams
- * @param {boolean} enabled Whether to enable animation.
- * @param {number} duration Duration in milliseconds.
+ * @param {boolean} enabled [false] Whether to enable animation.
+ * @param {number} duration [1000] Duration in milliseconds.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.animation;
