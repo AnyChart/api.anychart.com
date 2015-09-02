@@ -1,21 +1,23 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="line label"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            var chart = anychart.line();
-            chart.line([4, 2, 12]);
-            chart.label()
-                    .background(true)
-                    .text("Save image")
-                    .fontColor("#fff")
-                    .padding(5)
-                    .offsetX(5)
-                    .listen("click", function () {
-                        chart.saveAsPNG();
-                    });
+        anychart.onDocumentReady(function() {
+            var chart = anychart.line([4, 2, 12]);
+
+            var currentLabel = chart.label();
+            currentLabel.background(true);
+            currentLabel.text("Save image");
+            currentLabel.fontColor("#fff");
+            currentLabel.padding(5);
+            currentLabel.offsetX(5);
+            currentLabel.listen("click", function() {
+                // Saves image into PNG file.
+                chart.saveAsPng(1000, 1000, 0.9);
+            });
+
             chart.container("container");
             chart.draw();
         });

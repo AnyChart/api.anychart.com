@@ -1,14 +1,17 @@
 /**
  * View is a representation of raw data.<br/>
- * <b>Note:</b> Default View is a view with default mapping.<br/>
- *
- * @param {!anychart.data.IView} parentView The parent view. The last view is a mapping.
+ * <b>Note:</b> Default View is a view with default mapping.
  * @constructor
- * @implements {anychart.data.IView}
- * @name anychart.data.View
  * @extends {anychart.core.Base}
  */
 anychart.data.View;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.View.prototype.derive
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Creates a derived view, containing just the same data set and order as this view does.
@@ -17,13 +20,15 @@ anychart.data.View;
  */
 anychart.data.View.prototype.derive;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.View.prototype.filter
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Creates a derived view, containing only the rows that pass the filter.
- * @listing
- *  // Filter out values lesser or equal to 3:
- *  view.filter('fieldName', function(fieldValue){
- *    return fieldValue > 3;
- *  });
  * @example anychart.data.View.filter
  * @param {string} fieldName A field which value will be passed to a filter function.
  * @param {function(*):boolean} func A filter function that should accept a field value and return true if the row
@@ -32,85 +37,60 @@ anychart.data.View.prototype.derive;
  */
 anychart.data.View.prototype.filter;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.View.prototype.sort
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Creates a derived view that ensures sorting by a passed field.
- * @listing
- *  // Sorting by string length:
- *  view.sort('name', function(value1, value2){
- *    return value1 > value2;
- *  });
- * @example anychart.data.View.sort
+ * @example anychart.data.View.sort_set_asFunc
  * @param {string} fieldName A field name to make sort by.
- * @param {(anychart.enums.Sort|function(*, *):number)=} opt_comparatorOrOrder A sorting function that should accept two
- *    field values and return numeric result of the comparison or string value of anychart.enums.Sort enumeration
- *    except NONE. Defaults to anychart.enums.Sort.ASC.
+ * @param {function(*, *):number=} opt_comparator A sorting function that should accept two field values and return
+ * numeric result of the comparison.
  * @return {!anychart.data.View} The new derived view.
  */
 anychart.data.View.prototype.sort;
 
 /**
+ * Creates a derived view that ensures sorting by a passed field.
+ * @example anychart.data.View.sort_set_asEnum
+ * @param {string} fieldName A field name to make sort by.
+ * @param {anychart.enums.Sort=} opt_order ['asc'] String value of anychart.enums.Sort enumeration except NONE.
+ * @return {!anychart.data.View} The new derived view.
+ */
+anychart.data.View.prototype.sort;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.View.prototype.concat
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
  * Concatenates two views to make a derived view that contains rows from both views.
- * @listing Concatenation of two Views
- * // mainView                      additionalView
- *  [                               [
- *    [1, 3, 5],                        {x: 2, y: 5},
- *    [5, 3, 1]                         {x: 3, y: 7},
- *  ]                                   function(){ return {x: 4, y: 7}}
- *                                  ]
- * mainView.concat(additionalView);
- * // Result mainView
- *  [
- *    [1, 3, 5],
- *    [5, 3, 1],
- *    {x: 2, y: 5},
- *    {x: 3, y: 7},
- *    function(){ return {x: 4, y: 7}}
- *  ]
- * @listing Concatenation of a View and a data Set
- * // mainView
- *  [
- *    [1, 3, 5],
- *    [5, 3, 1]
- *  ]
- * mainView.concat(anychart.data.set([
- *     {x: 2, y: 5},
- *     {x: 3, y: 7},
- *     function(){ return {x: 4, y: 7}}
- *  ]));
- * // Result mainView
- *  [
- *    [1, 3, 5],
- *    [5, 3, 1],
- *    {x: 2, y: 5},
- *    {x: 3, y: 7},
- *    function(){ return {x: 4, y: 7}}
- *  ]
- * @listing Concatenation of a View and and Array
- * // mainView
- *  [
- *    [1, 3, 5],
- *    [5, 3, 1]
- *  ]
- * mainView.concat([2, 2, 2]);
- * // Result mainView
- *  [
- *    [1, 3, 5],
- *    [5, 3, 1],
- *    2,
- *    2,
- *    2
- *  ]
- * @example anychart.data.View.concat
- * @param {!(anychart.data.IView|Array)} otherView A view, data set or even an array to concat with.
- * @return {!anychart.data.IView} The new derived view.
+ * @example anychart.data.View.concat_set_asTwoView Concatenation of two Views
+ * @example anychart.data.View.concat_set_asViewDataSet Concatenation of a View and a data Set
+ * @example anychart.data.View.concat_set_asViewArray Concatenation of a View and an Array
+ * @param {!(anychart.data.View|Array)} otherView A view, data set or even an array to concat with.
+ * @return {!anychart.data.View} The new derived view.
  */
 anychart.data.View.prototype.concat;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.View.prototype.row
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Gets a full row of the set by an index.<br/>
- * <b>Note:</b> If there is no row with the given index, methods returns <b>undefined</b>.<br/>
+ * Gets a full row of the set by an index.
+ * @detailed <b>Note:</b> If there is no row with the given index, methods returns <b>undefined</b>.
  * See sample at {@link anychart.data.Set#row}
- * @listing
+ * @listing Example.
  * // Data
  *  [
  *    [1, 2, 4, 7],
@@ -119,16 +99,16 @@ anychart.data.View.prototype.concat;
  *  ]
  *  view.row(2); // returns [21, 22, 24, 27]
  *  view.row(3); // returns undefined
- * @see anychart.data.Set#row
+ * @example anychart.data.View.row_get
  * @param {number} rowIndex An index of the row to fetch.
  * @return {*} The row.
  */
 anychart.data.View.prototype.row;
 
 /**
- * Sets a row of the set by an index.<br/>
- * <b>Note:</b> Previous value of a row is returned but it is lost completely after that!.<br/>
- * @listing
+ * Sets a row of the set by an index.
+ * @detailed <b>Note:</b> Previous value of a row is returned but it is lost completely after that!.
+ * @listing Example.
  * // Data
  *  [
  *    [1, 2, 4, 7],
@@ -137,21 +117,33 @@ anychart.data.View.prototype.row;
  *  ]
  *  view.row(2, [2, 2, 2, 2]); // returns [21, 22, 24, 27]
  *  view.row(3, {'low': 4, 'high': 11}); // returns undefined
- * @example anychart.data.View.row
- * @see anychart.data.Set#row
+ * @example anychart.data.View.row_set
  * @param {number} rowIndex An index of the row to fetch.
  * @param {*=} opt_value A value to set.
  * @return {*} Previous value of the row.
  */
 anychart.data.View.prototype.row;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.View.prototype.getRowsCount
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Returns the number of the rows in the current view.
  * @example anychart.data.View.getRowsCount
- * @see anychart.data.Iterator#getRowsCount
  * @return {number} The number of the rows in the set.
  */
 anychart.data.View.prototype.getRowsCount;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.View.prototype.find
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Searches fieldName by fieldValue and returns it index (or the first match).
@@ -162,6 +154,13 @@ anychart.data.View.prototype.getRowsCount;
  */
 anychart.data.View.prototype.find;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.View.prototype.get
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Gets the value from the row by row index and field name.
  * @example anychart.data.View.get
@@ -170,6 +169,13 @@ anychart.data.View.prototype.find;
  * @return {*} The field value or undefined, if not found.
  */
 anychart.data.View.prototype.get;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.View.prototype.set
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Sets the value to the row field by row index and field name.
@@ -181,6 +187,13 @@ anychart.data.View.prototype.get;
  */
 anychart.data.View.prototype.set;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.View.prototype.getIterator
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Returns a new iterator for the current view.
  * @example anychart.data.View.getIterator
@@ -188,30 +201,36 @@ anychart.data.View.prototype.set;
  */
 anychart.data.View.prototype.getIterator;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.View.prototype.meta
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for a metadata value.<br/>
- * Learn how it works at {@link anychart.data.Iterator#meta}.
- * @listing
- * // Select 'name' field in the fourth row:
- * view.meta(4, 'name');
+ * Getter for a metadata value. Learn how it works at {@link anychart.data.Iterator#meta}.
+ * @example anychart.data.View.meta_get
  * @param {number} index Row index.
  * @param {string} name Name of the metadata field.
  * @return {*} Current value.
- * @see anychart.data.Iterator#meta
  */
 anychart.data.View.prototype.meta;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.View.prototype.meta
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Setter for a metadata value.
- * Learn how it works at {@link anychart.data.Iterator#meta}.
- * @listing
- * // Set value to the 'name' field in the fourth row:
- * view.meta(4, 'name', 'Jules Winnfield');
+ * Setter for a metadata value. Learn how it works at {@link anychart.data.Iterator#meta}.
+ * @example anychart.data.View.meta_set
  * @param {number} index Row index.
  * @param {string} name Name of the metadata field.
  * @param {*=} opt_value Value to set.
  * @return {anychart.data.View} Self instance for method chaining.
- * @see anychart.data.Iterator#meta
  */
 anychart.data.View.prototype.meta;
 

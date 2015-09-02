@@ -4,22 +4,23 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            var data = anychart.data.set([
+        anychart.onDocumentReady(function() {
+            var firstDataSet = anychart.data.set([
                 ["Point A", 231],
                 ["Point B", 131],
                 ["Point C", 212],
-                ["Point D", 94],
+                ["Point D", 94]
+            ]);
+            var secondDataSet = anychart.data.set([
                 ["Point E", 194],
                 ["Point F", 45],
-                ["Point G", 201]
+                ["Point G", 201],
+                ["Point H", 104]
             ]);
-            var view = data.mapAs();
-            var sortedView = view.sort("value", function (value1, value2) {
-                return value1 > value2;
-            });
-
-            var chart = anychart.line(sortedView);
+            var firstView = firstDataSet.mapAs();
+            var secondView = secondDataSet.mapAs();
+            var concatenatedView = firstView.concat(secondView); // concatenates two view
+            var chart = anychart.line(concatenatedView);
             chart.container("container");
             chart.draw();
         });

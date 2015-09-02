@@ -4,16 +4,19 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            var dataSet = anychart.data.set([
+        anychart.onDocumentReady(function() {
+            var data = anychart.data.set([
                 ["Point A", 231],
                 ["Point B", 131],
                 ["Point C", 212],
                 ["Point D", 94]
             ]);
-            var view = dataSet.mapAs();
-            view.row(2, ["Point E", 10]);
-            var chart = anychart.line(view);
+            var view = data.mapAs();
+            var iterator = view.getIterator();
+            iterator.select(3);
+            var chart = anychart.line(data);
+            var getIndex = iterator.getIndex(); // get index
+            chart.title("Index - " + getIndex + "," + " value: " + iterator.get("x"));
             chart.container("container");
             chart.draw();
         });

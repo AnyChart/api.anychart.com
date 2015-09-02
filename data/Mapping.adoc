@@ -1,5 +1,5 @@
 /**
- * Soecial View which allows to map anychart.data.Set storages.
+ * Special view which allows to map anychart.data.Set storages.
  * @param {!anychart.data.Set} parentSet The data set to map.
  * @param {!Object.<Array.<number>>=} opt_arrayMapping Mapping for array rows.
  * @param {!Object.<Array.<string>>=} opt_objectMapping Mapping for object rows.
@@ -13,12 +13,75 @@
  */
 anychart.data.Mapping;
 
-/** @inheritDoc */
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Mapping.prototype.row
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets a full row of the set by an index.
+ * @detailed <b>Note:</b> If there is no row with the given index, methods returns <b>undefined</b>.
+ * @listing Example.
+ * // Data
+ *  [
+ *    [1, 2, 4, 7],
+ *    [11, 12, 14, 17],
+ *    [21, 22, 24, 27]
+ *  ]
+ *  mapping.row(2); // returns [21, 22, 24, 27]
+ *  mapping.row(3); // returns undefined
+ * @example anychart.data.Mapping.row_get
+ * @param {number} rowIndex An index of the row to fetch.
+ * @return {*} The row.
+ */
 anychart.data.Mapping.prototype.row;
 
-/** @inheritDoc */
+/**
+ * Sets a row of the set by an index.
+ * @detailed <b>Note:</b> Previous value of a row is returned but it is lost completely after that!
+ * @listing Example.
+ * // Data
+ *  [
+ *    [1, 2, 4, 7],
+ *    [11, 12, 14, 17],
+ *    [21, 22, 24, 27]
+ *  ]
+ *  mapping.row(2, [2, 2, 2, 2]); // returns [21, 22, 24, 27]
+ *  mapping.row(3, {'low': 4, 'high': 11}); // returns undefined
+ * @example anychart.data.Mapping.row_set
+ * @param {number} rowIndex An index of the row to fetch.
+ * @param {*=} opt_value A value to set.
+ * @return {*} Previous value of the row.
+ */
+anychart.data.Mapping.prototype.row;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Mapping.prototype.getRowsCount
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns the number of the rows in the current view.
+ * @example anychart.data.Mapping.getRowsCount
+ * @return {number} The number of the rows in the set.
+ */
 anychart.data.Mapping.prototype.getRowsCount;
 
-/** @inheritDoc */
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Mapping.prototype.getIterator
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns a new iterator for the current view.
+ * @example anychart.data.Mapping.getIterator
+ * @return {!anychart.data.Iterator} New iterator.
+ */
 anychart.data.Mapping.prototype.getIterator;
 

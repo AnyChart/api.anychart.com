@@ -4,7 +4,7 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var data = anychart.data.set([
                 ["Point A", 231],
                 ["Point B", 131],
@@ -12,11 +12,10 @@
                 ["Point D", 94]
             ]);
             var view = data.mapAs();
-            var iterator = view.getIterator();
-            // move cursor
+            var iterator = view.getIterator(); // get iterator
             iterator.select(2);
             var chart = anychart.line(data);
-            chart.title().text(iterator.get("x") + " - " + iterator.get("value"))
+            chart.title(iterator.get("x") + " - " + iterator.get("value"));
             chart.container("container");
             chart.draw();
         });

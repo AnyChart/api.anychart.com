@@ -1,21 +1,21 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="bubble"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var chart = anychart.line([4, 2, 12]);
+            var chart = anychart.cartesian();
+            chart.bubble([
+                [1, 25, 4],
+                [2, 15, 2],
+                [3, 20, 3],
+                [4, 11, 1]
+            ]);
+            // Sets maximum size of the bubble.
+            chart.maxBubbleSize("15%");
             chart.container("container");
             chart.draw();
-            var toSVG = chart.toSVG(); // get value
-            var result;
-            if (toSVG !== "") {
-                result = "SVG";
-            } else {
-                result = "VML";
-            }
-            chart.title(result);
         });
     </script>
 </head>

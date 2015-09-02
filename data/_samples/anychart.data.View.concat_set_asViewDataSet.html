@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var firstDataSet = anychart.data.set([
+                ["Point A", 231],
+                ["Point B", 131],
+                ["Point C", 212],
+                ["Point D", 94]
+            ]);
+            var firstView = firstDataSet.mapAs();
+            var concatenatedView = firstView.concat(anychart.data.set([
+                {x: "Point F", y: 150},
+                {x: "Point G", y: 50}
+            ])); // concatenates of the view and the dataSet
+            var chart = anychart.line(concatenatedView);
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

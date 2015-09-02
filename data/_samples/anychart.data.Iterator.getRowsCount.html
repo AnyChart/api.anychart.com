@@ -4,7 +4,7 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var data = anychart.data.set([
                 ["Point A", 231],
                 ["Point B", 131],
@@ -14,7 +14,8 @@
             var view = data.mapAs();
             var iterator = view.getIterator();
             var chart = anychart.line(data);
-            chart.title().text("rows count: " + iterator.getRowsCount());
+            var getRowsCount = iterator.getRowsCount(); // gets rows count
+            chart.title("rows count: " + getRowsCount);
             chart.container("container");
             chart.draw();
         });

@@ -8,10 +8,17 @@
  */
 anychart.data.Iterator;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Iterator.prototype.select
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Sets a passed index as the current index and returns it in case of success.
- * Can be used to move the iterator point to the particular index and then fetch values.
- * @listing
+ * @detailed Can be used to move the iterator point to the particular index and then fetch values.
+ * @listing Example.
  * // Data in some working state.
  * // Current index is marked with '=()=':
  * [ =(17.22)=, 31.23, 12.2141, 123.3231, 0.123, 34141.1, 2332.0, 12148.91]
@@ -19,14 +26,20 @@ anychart.data.Iterator;
  * [17.22, 31.23, 12.2141, 123.3231, =(0.123)=, 34141.1, 2332.0, 12148.91]
  * @example anychart.data.Iterator.select
  * @param {number} index The index to select.
- * @return {boolean} <b>True</b> Returns true only when index
- * is within a possible range, otherwise returns <b>False</b>.
+ * @return {boolean}<b>True</b> Returns true only when index is within a possible range, otherwise returns <b>False</b>.
  */
 anychart.data.Iterator.prototype.select;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Iterator.prototype.reset
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Resets the data iterator to its zero state (before the first item of the view).
- * @listing
+ * @listing Example.
  * // Data in some working state.
  * // Current index is marked with '=()=':
  * [17.22, 31.23, 12.2141, 123.3231, =(0.123)=, 34141.1, 2332.0, 12148.91]
@@ -37,9 +50,16 @@ anychart.data.Iterator.prototype.select;
  */
 anychart.data.Iterator.prototype.reset;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Iterator.prototype.advance
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Advances the iterator to the next item.
- * @listing
+ * @listing Example.
  * // Go to the beginning and then iterate through the whole set:
  * iterator.reset();
  * while(iterator.advance()){
@@ -50,10 +70,17 @@ anychart.data.Iterator.prototype.reset;
  */
 anychart.data.Iterator.prototype.advance;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Iterator.prototype.get
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Gets the value from the current row by the field name.<br/>
- * <b>Note:</b> Returns <b>undefined</b>, if no matching field found.
- * @listing
+ * Gets the value from the current row by the field name.
+ * @detailed <b>Note:</b> Returns <b>undefined</b>, if no matching field found.
+ * @listing Example.
  * // Sample data set:
  * [
  *    {name: 'Kate', age: 27, contact: 6597439},
@@ -71,20 +98,35 @@ anychart.data.Iterator.prototype.advance;
  */
 anychart.data.Iterator.prototype.get;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Iterator.prototype.getIndex
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Returns the index of the item to which iterator points to.
- * @listing
+ * @listing Example.
  * // Data in some working state.
  * // Current index is marked with '=()=':
  * [17.22, 31.23, 12.2141, 123.3231, =(0.123)=, 34141.1, 2332.0, 12148.91]
  * // iterator.getIndex() will return 4.
+ * @example anychart.data.Iterator.getIndex
  * @return {number} The index of an iterator position.
  */
 anychart.data.Iterator.prototype.getIndex;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Iterator.prototype.getRowsCount
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Returns the number of rows in the view.
- * @listing
+ * @listing Example.
  * // Data
  * [
  *    {name: 'Kate', age: 27, contact: 6597439},
@@ -98,11 +140,17 @@ anychart.data.Iterator.prototype.getIndex;
  */
 anychart.data.Iterator.prototype.getRowsCount;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Iterator.prototype.meta
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Gets the metadata value by the field name.<br/>
- * <b>Note:</b> Metadata is separated from user data,
- * it exists separately, but corresponds to it.
- * @listing
+ * Gets the metadata value by the field name.
+ * @detailed <b>Note:</b> Metadata is separated from user data, it exists separately, but corresponds to it.
+ * @listing Example.
  * // Data                                              Metadata
  * [                                                     [
  *    {name: 'Kate', age: 27, contact: 6597439},            {},
@@ -112,16 +160,16 @@ anychart.data.Iterator.prototype.getRowsCount;
  * ]                                                     ]
  * iterator.select(2);
  * iterator.meta('name'); // will return undefined.
+ * @example anychart.data.Iterator.meta_get
  * @param {string} name The name of a metadata field.
  * @return {*} Current metadata field value.
  */
 anychart.data.Iterator.prototype.meta;
 
 /**
- * Sets metadata value by the field name.<br/>
- * <b>Note:</b> Metadata is separated from user data,
- * it exists separately, but corresponds to it.
- * @listing
+ * Sets metadata value by the field name.
+ * @detailed <b>Note:</b> Metadata is separated from user data, it exists separately, but corresponds to it.
+ * @listing Example.
  * iterator.select(2);
  * iterator.meta('name', 'SampleText');
  * // After this call sample data set looks like this:
@@ -136,6 +184,7 @@ anychart.data.Iterator.prototype.meta;
  * iterator.meta('smth', null);                             {'smth': null}
  * iterator.meta('smth', undefined);                        {'smth': undefined}
  * iterator.meta('smth', function(){ do_smth; });           {'smth': function(){ do_smth; }}
+ * @example anychart.data.Iterator.meta_set
  * @param {string} name The name of a metadata field.
  * @param {*=} opt_value The value to be set.
  * @return {anychart.data.Iterator} Self instance for method chaining.

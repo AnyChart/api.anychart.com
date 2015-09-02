@@ -110,10 +110,16 @@
  * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @constructor
- * @implements {anychart.data.IView}
  * @extends {anychart.core.Base}
  */
 anychart.data.Set;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Set.prototype.data
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for the data in the Set.
@@ -123,37 +129,27 @@ anychart.data.Set.prototype.data;
 
 /**
  * Setter for Set data.
- * @listing
- * // as simple arrray
- * dataSet.data([20, 7, 10, 14]);
- * // as multiple arrays
- * dataSet.data([
- *    [1, 22, 13],
- *    [13, 22, 23],
- *    [17, 22, 33],
- *    [21, 22, 43]
- *  ]);
- * // as Objects
- * dataSet.data([
- *    {name: 'Point 1', value: 10},
- *    {name: 'Point 2', value: 7},
- *    {name: 'Point 3', value: 20},
- *    {name: 'Point 4', value: 14}
- *  ]);
- * // as CSV string
- * dataSet.data(
- *      'Point 1, 10; Point 2, 14; Point 3, 16',
- *      {rowsSeparator: ';', columnsSeparator: ','}
- * );
- * @example anychart.data.Set.data
- * @param {Array=} opt_value A value to set.
+ * @example anychart.data.Set.data_set_asArray Using array
+ * @example anychart.data.Set.data_set_asArrayofArrays Using array of arrays
+ * @example anychart.data.Set.data_set_asArrayofObjects Using array of objects
+ * @example anychart.data.Set.data_set_asCSV Using CSV
+ * @param {(Array|string)=} opt_value A value to set.
+ * @param {Object.<string, (string|boolean|undefined)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ *    here as a hash map.
  * @return {anychart.data.Set} Self instance for method chaining.
  */
 anychart.data.Set.prototype.data;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Set.prototype.mapAs
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Defines data mapping.<br/>
- * You can define mappings for the different types of data (see samples).
+ * Defines data mapping.
+ * @detailed You can define mappings for the different types of data (see samples).
  * Default mapping is shown in {@link anychart.data.Set} constructor samples.
  * @listing Custom data mapping.
  * // Simple mapping
@@ -162,7 +158,7 @@ anychart.data.Set.prototype.data;
  *    'x': [1],
  *    'fill': [2]
  *  });
- *   // Raw data          Mapped as
+ *   // Raw data                 Mapped as
  *   [
  *    [11, 1, 'red 0.5'],       {x: 1, value: 11, fill: 'red 0.5'}
  *    [21, 2, 'green 0.5'],     {x: 2, value: 21, fill: 'green 0.5'}
@@ -179,7 +175,7 @@ anychart.data.Set.prototype.data;
  *    'fill': ['fill', 'color']
  *   }, null, ['close']
  *  );
- *  // Raw data          Mapped as
+ *  // Raw data                  Mapped as
  *   [
  *    [11, 1, 'red 0.5'],       {x: 1, value: 11, fill: 'red 0.5'}
  *    [21, 2, 'green 0.5'],     {x: 2, value: 21, fill: 'green 0.5'}
@@ -216,10 +212,17 @@ anychart.data.Set.prototype.data;
  */
 anychart.data.Set.prototype.mapAs;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Set.prototype.row
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Gets the full row of the set by the index.<br/>
- * <b>Note:</b> If there is no row for the index - returns <b>undefined</b>.
- * @listing
+ * Gets the full row of the set by the index.
+ * @detailed <b>Note:</b> If there is no row for the index - returns <b>undefined</b>.
+ * @listing Example.
  * // Data
  *  [
  *    [1, 2, 4, 7],
@@ -230,15 +233,16 @@ anychart.data.Set.prototype.mapAs;
  *  dataSet.row(1); // returns {'high': 14, 'low': 3}
  *  dataSet.row(2); // returns 7
  *  dataSet.row(3); // returns undefined
+ * @example anychart.data.Set.row_get
  * @param {number} rowIndex The index of the row to fetch.
  * @return {*} The current row.
  */
 anychart.data.Set.prototype.row;
 
 /**
- * Sets the row in the set by the index.<br/>
- * <b>Note:</b> Replaces the current value, previous values is returned but it is lost completely after that!
- * @listing
+ * Sets the row in the set by the index.
+ * @detailed <b>Note:</b> Replaces the current value, previous values is returned but it is lost completely after that!
+ * @listing Example.
  * // Data
  *  [
  *    [1, 2, 4, 7],
@@ -254,12 +258,19 @@ anychart.data.Set.prototype.row;
  *    [2, 2, 2, 2],
  *    {'low': 4, 'high': 11}
  *  ]
- * @example anychart.data.Set.row
+ * @example anychart.data.Set.row_set
  * @param {number} rowIndex The index of the row to fetch.
  * @param {*=} opt_value The value to set.
  * @return {*} The previous value of the row.
  */
 anychart.data.Set.prototype.row;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Set.prototype.append
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Appends new rows to the set. Each argument is a row that will be appended to the Set.
@@ -268,6 +279,13 @@ anychart.data.Set.prototype.row;
  * @return {anychart.data.Set} Self instance for method chaining.
  */
 anychart.data.Set.prototype.append;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Set.prototype.insert
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Inserts the row to the set at the specified position.
@@ -278,6 +296,13 @@ anychart.data.Set.prototype.append;
  */
 anychart.data.Set.prototype.insert;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Set.prototype.remove
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Removes the row by index.
  * @example anychart.data.Set.remove
@@ -286,12 +311,26 @@ anychart.data.Set.prototype.insert;
  */
 anychart.data.Set.prototype.remove;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Set.prototype.getRowsCount
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Returns the number of the rows in the current data set.
  * @example anychart.data.Set.getRowsCount
  * @return {number} The number of the rows in the set.
  */
 anychart.data.Set.prototype.getRowsCount;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.set
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Return instance of class {@link anychart.data.Set}.

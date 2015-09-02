@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var data = anychart.data.set([
+                {"x": "Point A", "value": 231},
+                {"x": "Point B", "value": 131},
+                {"x": "Point C", "value": 212},
+                {"x": "Point D", "value": 94}
+            ]);
+            var view = data.mapAs();
+            view.meta(0, "name", "Maximum speed"); // sets meta for first row
+            var getMeta = view.meta(0, "name");
+            var chart = anychart.line(view);
+            chart.title("Meta for first row - " + getMeta);
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

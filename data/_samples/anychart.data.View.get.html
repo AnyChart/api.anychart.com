@@ -4,19 +4,18 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var data = anychart.data.set([
-                {x: "A1", value: 8, fill: "yellow"},
-                {x: "A2", value: 11, fill: "orange"},
-                {x: "A3", value: 12, fill: "red"},
-                {x: "A4", value: 9, fill: "grey"}
+                {x: "A1", value: 8, fill: "#F44336"},
+                {x: "A2", value: 11, fill: "#673AB7"},
+                {x: "A3", value: 12, fill: "#03A9F4"},
+                {x: "A4", value: 9, fill: "#4CAF50"}
             ]);
             var chart = anychart.column(data);
-            chart.container(stage).draw();
             var view = data.mapAs();
-            var pointX = view.get(2, "x");
-            var pointFill = view.get(2, "fill");
-            chart.title().text("point \'" + pointX + "\' has \'" + pointFill + "\' fill.");
+            var pointX = view.get(2, "x"); // get value by second row and field "x"
+            var pointFill = view.get(2, "fill");  // get value by second row and field "fill"
+            chart.title("Point \'" + pointX + "\' has \'" + pointFill + "\' fill.");
             chart.container("container");
             chart.draw();
         });

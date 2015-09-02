@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content=""/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+
+            stage.circle(450, 360, 350);
+            stage.rect(100, 10, 700, 700);
+
+            var currentLabel = anychart.ui.label();
+            currentLabel.background(true);
+            currentLabel.text("Save image");
+            currentLabel.fontColor("#fff");
+            currentLabel.padding(5);
+            currentLabel.offsetX(5);
+            currentLabel.listen("click", function() {
+                // Saves into PDF file.
+                stage.saveAsSvg(400, 300);
+            });
+            currentLabel.container(stage);
+            currentLabel.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
