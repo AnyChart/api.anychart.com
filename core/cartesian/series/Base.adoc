@@ -1,0 +1,333 @@
+/**
+ * Base class for all cartesian series.<br/>
+ * Base class defines common methods, such as those for:
+ * <ul>
+ *   <li>Binding series to a scale: <i>xScale, yScale</i></li>
+ *   <li>Base color settings: <i>color</i></li>
+ * </ul>
+ * You can also obtain <i>getIterator, getResetIterator</i> iterators here.
+ * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Series data.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ *    here as a hash map.
+ * @constructor
+ * @extends {anychart.core.VisualBaseWithBounds}
+ */
+anychart.core.cartesian.series.Base;
+
+/**
+ * Getter for series name.
+ * @return {string|undefined} Series name value.
+ */
+anychart.core.cartesian.series.Base.prototype.name;
+
+/**
+ * Setter for series name. <br/>
+ * Basically, name of series is used in Legend displaying, but it can be used in tooltips as well.
+ * @example <t>lineChart</t>
+ * var formatterFunc = function(){ return this.seriesName;};
+ * chart.line([1,2,3])
+ *     .name('My Custom series name')
+ *     .tooltip().contentFormatter(formatterFunc);
+ * chart.line([2,3,4])
+ *     .tooltip().contentFormatter(formatterFunc);
+ * chart.legend().enabled(true);
+ * @param {string=} opt_value Value to set.
+ * @return {!anychart.core.cartesian.series.Base} {@link anychart.core.cartesian.series.Base} instance for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.name;
+
+/**
+ * Getter for series clip settings.
+ * @return {boolean|anychart.math.Rect} Current clip settings.
+ */
+anychart.core.cartesian.series.Base.prototype.clip;
+
+/**
+ * Setter for series clip settings. Clips visible part of a series by a rectangle (or chart).
+ * @example <t>lineChart</t>
+ * chart.yScale().minimum(2);
+ * chart.line([1, 4, 7, 1]).clip(false);
+ * @param {(boolean|anychart.math.Rect)=} opt_value [False, if series is created manually.<br/>True, if created via chart] Enable/disable series clip.
+ * @return {anychart.core.cartesian.series.Base} {@link anychart.core.cartesian.series.Base} instance for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.clip;
+
+/**
+ * Getter for series meta data.
+ * @param {*=} opt_key Metadata key.
+ * @return {*} Metadata object by key.
+ */
+anychart.core.cartesian.series.Base.prototype.meta;
+
+/**
+ * Setter for series meta data.
+ * @example <t>lineChart</t>
+ * chart.line([1,2,3]).meta({
+ *     'location': 'QA',
+ *     'source': 'http://some-url.dmn',
+ *     'imageSRC': 'http://some-url.dmn/getImage.php?bySomeParam=Value'
+ * });
+ * @param {*=} opt_object Object to replace metadata.
+ * @return {anychart.core.cartesian.series.Base} {@link anychart.core.cartesian.series.Base} instance for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.meta;
+
+/**
+ * Add/Replace meta data for series by key.
+ * @example <t>lineChart</t>
+ * var series = chart.line([1,2,3]);
+ * series.meta('location', 'QA');
+ * series.meta('source', 'http://some-url.dmn');
+ * series.meta('imageSRC', 'http://some-url.dmn/getImage.php?bySomeParam=Value');
+ * @param {string=} opt_key Metadata key.
+ * @param {*=} opt_value Metadata value.
+ * @return {anychart.core.cartesian.series.Base} {@link anychart.core.cartesian.series.Base} instance for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.meta;
+
+/**
+ * Getter for series mapping.
+ * @return {!anychart.data.View} Returns current mapping.
+ */
+anychart.core.cartesian.series.Base.prototype.data;
+
+/**
+ * Setter for series mapping.
+ * @example <t>listingOnly</t>
+ * series.data([20, 7, 10, 14]);
+ *  // or
+ * series.data([
+ *    [1, 22, 13],
+ *    [13, 22, 23],
+ *    [17, 22, 33],
+ *    [21, 22, 43]
+ *  ]);
+ *  // or
+ * series.data([
+ *    {name: 'Point 1', value: 10},
+ *    {name: 'Point 2', value: 7},
+ *    {name: 'Point 3', value: 20},
+ *    {name: 'Point 4', value: 14}
+ *  ]);
+ *   // or
+ *  series.data(
+ *    '17;21;11.1;4\n'+
+ *    '11;11;0.21;0\n'+
+ *    '21;17;23.1;1\n'+
+ *    '10;.4;14;4.4\n',
+ *    {'rowsSeparator': '\n', columnsSeparator: ';'})
+ * @example <t>lineChart</t>
+ * chart.line().data([1,2,3]);
+ * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed by first param, you can pass CSV parser settings here as a hash map.
+ * @return {!anychart.core.cartesian.series.Base} {@link anychart.core.cartesian.series.Base} instance for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.data;
+
+/**
+ * Returns current position of the point on an ordinal scale.
+ * @return {number} Current x-point position.
+ */
+anychart.core.cartesian.series.Base.prototype.xPointPosition;
+
+/**
+ * Sets position of the point on an oridnal scale.
+ * @illustration <t>simple-h100</t>
+ * stage.path()
+ *     .moveTo(20, 50)
+ *     .lineTo(380, 50)
+ *     .moveTo(20, 55)
+ *     .lineTo(20,45)
+ *     .moveTo(100, 55)
+ *     .lineTo(100,45)
+ *     .moveTo(180, 55)
+ *     .lineTo(180,45)
+ *     .moveTo(260, 55)
+ *     .lineTo(260,45)
+ *     .stroke('2px black');
+ * stage.text(40, 60, 'Point 1');
+ * stage.text(118, 60, 'Point 2');
+ * stage.text(200, 60, 'Point 3');
+ * stage.text(350, 60, 'X-Axis');
+ * stage.path()
+ *     .moveTo(20, 20)
+ *     .lineTo(100, 20)
+ *     .stroke('blue');
+ * stage.text(12, 13, '0').color('blue');
+ * stage.text(102, 13, '1').color('blue');
+ * stage.text(142, 30, '0.7').color('blue');
+ * stage.circle(150, 47, 4).fill('lightblue');
+ * stage.text(182, 30, '0.1').color('blue');
+ * stage.circle(190, 47, 4).fill('lightblue');
+ * @illustrationDesc
+ * Points get a place on ordinal scale, the size of the place can be set manually.<br/>
+ * If there are more than one seties, place size is calculated to fit all.
+ * @example
+ * var chart = anychart.column();
+ * chart.column([1, 3, 3]).xPointPosition(0.3);
+ * chart.column([1.2, 2.3, 2.3]).xPointPosition(0.5);
+ * chart.column([1, 2.5, 1]).xPointPosition(0.7);
+ * chart.container(stage).draw();
+ * @param {number=} opt_position [0.5] Point position (in 0 to 1 range). <br/>
+ *   For bars, columns and ohlc series it's autocalculated if chart contains more than one series.
+ * @return {!anychart.core.cartesian.series.Base} {@link anychart.core.cartesian.series.Base} instance for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.xPointPosition;
+
+/**
+ * Getter for current series X scale.
+ * @return {anychart.scales.Base} Current series X Scale.
+ */
+anychart.core.cartesian.series.Base.prototype.xScale;
+
+/**
+ * Setter for series X scale.
+ * @example <t>lineChart</t>
+ * var secondScale = anychart.scales.ordinal();
+ * chart.xAxis(1)
+ *     .scale(secondScale)
+ *     .orientation('top')
+ *     .title('DateTime axis');
+ * chart.line([
+ *    ['A1', 2],
+ *    ['A2', 2.4],
+ *    ['A3', 1]
+ * ]);
+ * chart.line([
+ *    ['2014-01-01', 1],
+ *    ['2014-01-02', 2],
+ *    ['2014-01-03', 3]
+ * ]).xScale(secondScale);
+ * @param {anychart.scales.Base=} opt_value Value to set.
+ * @return {!anychart.core.cartesian.series.Base}  {@link anychart.core.cartesian.series.Base} instance for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.xScale;
+
+/**
+ * Getter for current series Y scale.
+ * @return {anychart.scales.Base} Current series Y Scale.
+ */
+anychart.core.cartesian.series.Base.prototype.yScale;
+
+/**
+ * Setter for series Y scale.
+ * @example <t>lineChart</t>
+ * var secondScale = anychart.scales.linear();
+ * chart.yAxis(1).scale(secondScale);
+ * chart.yAxis(1).orientation('right');
+ * chart.line([2, 3, 4]);
+ * chart.line([200, 213, 321]).yScale(secondScale);
+ * @param {anychart.scales.Base=} opt_value Value to set.
+ * @return {!anychart.core.cartesian.series.Base}  {@link anychart.core.cartesian.series.Base} instance for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.yScale;
+
+/**
+ * Getter for current series data tooltip.
+ * @example <t>lineChart</t>
+ * chart.line([1, 2, 1.2, 3.2]).tooltip()
+ *     .background()
+ *       .stroke('2 #cc8800').fill('grey 0.5');
+ * @return {!anychart.core.ui.Tooltip} Tooltip instance.
+ */
+anychart.core.cartesian.series.Base.prototype.tooltip;
+
+/**
+ * Setter for series data tooltip.
+ * @example <t>lineChart</t>
+ * chart.line([1, 2, 1.2, 3.2]).tooltip(false);
+ * @param {(Object|boolean|null)=} opt_value Tooltip settings.
+ * @return {!anychart.core.cartesian.series.Base} An instance of the {@link anychart.core.cartesian.series.Base} class for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.tooltip;
+
+/**
+ * Getter for current series data labels.
+ * @example <t>lineChart</t>
+ * chart.line([1,2,3]).labels()
+ *    .fontColor('white')
+ *    .fontWeight('bold');
+ * @return {!anychart.core.ui.LabelsFactory} Labels instance.
+ */
+anychart.core.cartesian.series.Base.prototype.labels;
+
+/**
+ * Setter for series data labels.
+ * @example <t>lineChart</t>
+ * chart.line([1,2,3]).labels(true);
+ * @param {(Object|boolean|null)=} opt_value Series data labels settings.
+ * @return {!anychart.core.cartesian.series.Base} An instance of the {@link anychart.core.cartesian.series.Base} class for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.labels;
+
+/**
+ * Gets or sets series hover data labels.
+ * @param {(Object|boolean|null)=} opt_value Series data labels settings.
+ * @return {!(anychart.core.ui.LabelsFactory|anychart.core.cartesian.series.Base)} Labels instance or itself for chaining call.
+ */
+anychart.core.cartesian.series.Base.prototype.hoverLabels;
+
+/**
+ * Getter for current series color.
+ * @return {!anychart.graphics.vector.Fill} Current color.
+ */
+anychart.core.cartesian.series.Base.prototype.color;
+
+/**
+ * Sets color settings using an object or a string.<br/>
+ * <b>Note: </b> <u>color</u> methods sets <b>fill</b> and <b>stroke</b> settings, which means it is not wise to pass
+ * image fill here - stroke doesn't accept image fill.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example <c>Solid color</c><t>lineChart</t>
+ * chart.column([1, 4, 7, 1]).color('green');
+ * @example <c>Linear gradient color</c><t>lineChart</t>
+ * chart.column([1, 4, 7, 1]).color(['green', 'yellow']);
+ * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
+ * @return {!anychart.core.cartesian.series.Base} {@link anychart.core.cartesian.series.Base} instance for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.color;
+
+/**
+ * Color with opacity.<br/>
+ * <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example <t>lineChart</t>
+ * chart.column([1, 4, 7, 1]).color('green', 0.4);
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {!anychart.core.cartesian.series.Base} {@link anychart.core.cartesian.series.Base} instance for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.color;
+
+/**
+ * Linear gradient.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example <t>lineChart</t>
+ * chart.column([1, 4, 7, 1]).color(['black', 'yellow'], 45, true, 0.5);
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {!anychart.core.cartesian.series.Base} {@link anychart.core.cartesian.series.Base} instance for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.color;
+
+/**
+ * Radial gradient.<br/>
+ * Learn more about coloring at:
+ * {@link http://docs.anychart.com/__VERSION__/General_settings/Elements_Fill}
+ * @example <t>lineChart</t>
+ * chart.column([1, 4, 7, 1]).color(['black', 'yellow'], .5, .5, null, .9, 0.3, 0.81)
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {!anychart.core.cartesian.series.Base} {@link anychart.core.cartesian.series.Base} instance for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.color;
+

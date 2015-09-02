@@ -1,0 +1,147 @@
+/**
+ * Class for creation of sets of similar labels and management of such sets.
+ * Any individual label can be changed after all labels are displayed.
+ * @constructor
+ * @extends {anychart.core.Text}
+ */
+anychart.core.ui.LabelsFactory;
+
+/**
+ * Getter for the current element state.
+ *
+ * True, false and null states.
+ *
+ * True and false are self-explanatory. null state means that element is enabled,
+ * but if it depends on other entities (like, for example, labels() and hoverLabels() in series),
+ * then factory works in auto mode. For example, if series normal labels are enable,
+ * and hover labels are in null state, then upon hover hoverLabels become enabled because of normal.
+ * But if you disable normal labels – hoverLabels are disabled too.
+ * @return {?boolean} The current element state.
+ */
+anychart.core.ui.LabelsFactory.prototype.enabled;
+
+/**
+ * Setter for the element enabled state.
+ * @example <t>listingOnly</t>
+ * if (!element.enabled())
+ *    element.enabled(true);
+ * @param {(null|boolean)=} opt_value Value to set.
+ * @return {!anychart.LabelsFactory} An instance of {@link anychart.core.VisualBase} class for method chaining.
+ */
+anychart.core.ui.LabelsFactory.prototype.enabled;
+
+/**
+ * Gets or sets the labels background settings.
+ * @param {(string|Object|null|boolean)=} opt_value Background object to set.
+ * @return {!(anychart.core.ui.LabelsFactory|anychart.core.ui.Background)} Returns the background or itself for chaining.
+ */
+anychart.core.ui.LabelsFactory.prototype.background;
+
+/**
+ * Labels padding.
+ * @param {(string|number|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_spaceOrTopOrTopAndBottom Space object or top or top and bottom
+ *    space.
+ * @param {(string|number)=} opt_rightOrRightAndLeft Right or right and left space.
+ * @param {(string|number)=} opt_bottom Bottom space.
+ * @param {(string|number)=} opt_left Left space.
+ * @return {!(anychart.core.ui.LabelsFactory|anychart.core.utils.Padding)} Padding or LabelsFactory for chaining.
+ */
+anychart.core.ui.LabelsFactory.prototype.padding;
+
+/**
+ * Gets or sets labels text formatter function.
+ * @param {Function=} opt_value Labels text formatter function.
+ * @return {Function|anychart.core.ui.LabelsFactory} Labels text formatter function or Labels instance for chaining call.
+ */
+anychart.core.ui.LabelsFactory.prototype.textFormatter;
+
+/**
+ * Gets or sets labels position formatter function.
+ * @param {Function=} opt_value Labels position formatter function.
+ * @return {Function|anychart.core.ui.LabelsFactory} Labels position formatter function or Labels instance for chaining call.
+ */
+anychart.core.ui.LabelsFactory.prototype.positionFormatter;
+
+/**
+ * Gets or sets labels position settings. These settings are processed by the factory handler (for example a series,
+ * or an axis) and can have different meanings from handler to handler. Try using anychart.enums.Position values.
+ * @param {string=} opt_value Labels position settings.
+ * @return {anychart.core.ui.LabelsFactory|string} Labels position settings or itself for chaining call.
+ */
+anychart.core.ui.LabelsFactory.prototype.position;
+
+/**
+ * Gets or sets labels anchor settings.
+ * @param {(anychart.enums.Anchor|string)=} opt_value Labels anchor settings.
+ * @return {anychart.core.ui.LabelsFactory|anychart.enums.Anchor} Labels anchor settings or itself for chaining call.
+ */
+anychart.core.ui.LabelsFactory.prototype.anchor;
+
+/**
+ * Gets or sets labels offsetX settings.
+ * @param {(number|string)=} opt_value Labels offsetX settings to set.
+ * @return {number|string|anychart.core.ui.LabelsFactory} Labels offsetX value or itself for chaining call.
+ */
+anychart.core.ui.LabelsFactory.prototype.offsetX;
+
+/**
+ * Gets or sets labels offsetY settings.
+ * @param {(number|string)=} opt_value Labels offsetY settings to set.
+ * @return {number|string|anychart.core.ui.LabelsFactory} Labels offsetY value or itself for chaining call.
+ */
+anychart.core.ui.LabelsFactory.prototype.offsetY;
+
+/**
+ * Sets rotation angle around an anchor.
+ * ({@link anychart.graphics.vector.Element}).
+ * @param {number=} opt_value Rotation angle in degrees.
+ * @return {number|anychart.core.ui.LabelsFactory} Rotation angle in degrees or Itself for chaining call.
+ */
+anychart.core.ui.LabelsFactory.prototype.rotation;
+
+/**
+ * LabelsFactory width settings.
+ * @param {(number|string|null)=} opt_value Width value to set.
+ * @return {!anychart.core.ui.LabelsFactory|number|string|null} LabelsFactory width or itself for chaining call.
+ */
+anychart.core.ui.LabelsFactory.prototype.width;
+
+/**
+ * LabelsFactory height settings.
+ * @param {(number|string|null)=} opt_value Height value to set.
+ * @return {!anychart.core.ui.LabelsFactory|number|string|null} LabelsFactory height or itself for chaining.
+ */
+anychart.core.ui.LabelsFactory.prototype.height;
+
+/**
+ * Class for creation of sets of similar labels and management of such sets.
+ * Any individual label can be changed after all labels are displayed.
+ * @constructor
+ * @extends {anychart.core.Text}
+ */
+anychart.core.ui.LabelsFactory.Label;
+
+/**
+ * Returns label index.
+ * @return {number}
+ */
+anychart.core.ui.LabelsFactory.Label.prototype.getIndex;
+
+/**
+ * Getter for current label padding.<br/>
+ * @param {(null|string|number|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_spaceOrTopOrTopAndBottom .
+ * @param {(string|number)=} opt_rightOrRightAndLeft .
+ * @param {(string|number)=} opt_bottom .
+ * @param {(string|number)=} opt_left .
+ * @return {anychart.core.ui.LabelsFactory.Label|anychart.core.utils.Padding} .
+ */
+anychart.core.ui.LabelsFactory.Label.prototype.padding;
+
+/**
+ * Rotates a label around an anchor.
+ * ({@link anychart.graphics.vector.Element}). Method resets transformation and applies a new one.
+ * @param {number=} opt_value Rotation angle in degrees.
+ * @return {number|anychart.core.ui.LabelsFactory.Label} Rotation angle in degrees or self for chaining call.
+ */
+anychart.core.ui.LabelsFactory.Label.prototype.rotation;
+

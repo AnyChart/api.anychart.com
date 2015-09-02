@@ -1,0 +1,149 @@
+/**
+ * Define Marker series type.<br/>
+ * <b>Note:</b> Better for use method {@link anychart.charts.Polar#marker}.
+ * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Data for the series.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ *    here as a hash map.
+ * @constructor
+ * @extends {anychart.core.polar.series.Base}
+ */
+anychart.core.polar.series.Marker;
+
+/**
+ * Getter for current marker type settings.
+ * @return {string|anychart.enums.MarkerType|function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path}
+ *  Markers type settings.
+ */
+anychart.core.polar.series.Marker.prototype.type;
+
+/**
+ * Setter for marker type settings.
+ * @example <c>By Enum value.</c>
+ * chart = anychart.polar();
+ * chart.marker([10, 11, 17, 7, 21])
+ *    .type('star4')
+ *    .hoverType('star6');
+ * chart.container(stage).draw();
+ * @example <c>By custom function.</c>
+ * chart = anychart.polar();
+ * chart.marker([10, 11, 17, 7, 21])
+ *    .type(function(path, x, y, size) {
+ *      var point1 = {x: x + 1.2 * size, y: y - 0.4 * size};
+ *      var point2 = {x: x - 0.5*size, y: y -0.5*size};
+ *      path.moveTo(point1.x, point1.y)
+ *          .arcToByEndPoint(point2.x, point2.y, size, size, true, true)
+ *          .arcToByEndPoint(point1.x, point1.y, size / 3, size / 3, false, false)
+ *          .moveTo(point1.x, point1.y)
+ *          .close();
+ *      return path;
+ *    });
+ * chart.container(stage).draw();
+ * @param {(string|anychart.enums.MarkerType|
+ *  function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path)=} opt_value
+ *  [{@link anychart.enums.MarkerType}.STAR5] Type or custom drawer. Function for a custom
+ *  marker should look like this: <code>function(path, x, y, size){
+ *    // path - anychart.graphics.vector.Path
+ *    // x, y - marker position
+ *    // size - marker size
+ *    ... //do something
+ *    return path;
+ *  }</code>.
+ * @return {!anychart.core.polar.series.Marker} {@link anychart.core.polar.series.Marker} instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.type;
+
+/**
+ * Getter for current hovered marker type settings.
+ * @return {string|anychart.enums.MarkerType|function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path}
+ *  Markers type settings.
+ */
+anychart.core.polar.series.Marker.prototype.hoverType;
+
+/**
+ * Setter for hovered marker type settings.
+ * @example <c>By Enum value.</c>
+ * chart = anychart.polar();
+ * chart.marker([10, 11, 17, 7, 21])
+ *    .type('star4')
+ *    .hoverType('star6');
+ * chart.container(stage).draw();
+ * @example <c>By custom function.</c>
+ * chart = anychart.polar();
+ * chart.marker([10, 11, 17, 7, 21])
+ *    .hoverType(function(path, x, y, size) {
+ *      var point1 = {x: x + 1.2 * size, y: y - 0.4 * size};
+ *      var point2 = {x: x - 0.5*size, y: y -0.5*size};
+ *      path.moveTo(point1.x, point1.y)
+ *          .arcToByEndPoint(point2.x, point2.y, size, size, true, true)
+ *          .arcToByEndPoint(point1.x, point1.y, size / 3, size / 3, false, false)
+ *          .moveTo(point1.x, point1.y)
+ *          .close();
+ *      return path;
+ *    });
+ * chart.container(stage).draw();
+ * @param {(string|anychart.enums.MarkerType|
+ *  function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path)=} opt_value
+ *  [{@link anychart.enums.MarkerType}.STAR5] Type or custom drawer. Function for a custom
+ *  marker should look like this: <code>function(path, x, y, size){
+ *    // path - anychart.graphics.vector.Path
+ *    // x, y - marker position
+ *    // size - marker size
+ *    ... //do something
+ *    return path;
+ *  }</code>.
+ * @return {!anychart.core.polar.series.Marker} {@link anychart.core.polar.series.Marker} instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.hoverType;
+
+/**
+ * Getter for marker size
+ * @return {number} Current marker size.
+ */
+anychart.core.polar.series.Marker.prototype.size;
+
+/**
+ * Setter for marker size.
+ * @example
+ * chart = anychart.polar();
+ * chart.marker([10, 11, 17, 7, 21]).size(14);
+ * chart.container(stage).draw();
+ * @param {number=} opt_value [10] Value to set.
+ * @return {anychart.core.polar.series.Marker} {@link anychart.core.polar.series.Marker} class for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.size;
+
+/**
+ * Getter for hovered marker size
+ * @return {number} Current hovered marker size.
+ */
+anychart.core.polar.series.Marker.prototype.hoverSize;
+
+/**
+ * Setter for hovered marker size.
+ * @example
+ * chart = anychart.polar();
+ * chart.marker([10, 11, 17, 7, 21]).hoverSize(14);
+ * chart.container(stage).draw();
+ * @param {number=} opt_value [12] Value to set.
+ * @return {anychart.core.polar.series.Marker} {@link anychart.core.polar.series.Marker} instance for method chaining.
+ */
+anychart.core.polar.series.Marker.prototype.hoverSize;
+
+/** @inheritDoc */
+anychart.core.polar.series.Marker.prototype.hatchFill;
+
+/** @inheritDoc */
+anychart.core.polar.series.Marker.prototype.hoverHatchFill;
+
+/** @inheritDoc */
+anychart.core.polar.series.Marker.prototype.fill;
+
+/** @inheritDoc */
+anychart.core.polar.series.Marker.prototype.hoverFill;
+
+/** @inheritDoc */
+anychart.core.polar.series.Marker.prototype.stroke;
+
+/** @inheritDoc */
+anychart.core.polar.series.Marker.prototype.hoverStroke;
+

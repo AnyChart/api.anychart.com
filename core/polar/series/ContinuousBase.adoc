@@ -1,0 +1,98 @@
+/**
+ * A base for all continuous series, like lines, splines, areas, etc.
+ * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Data for the series.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ *    here as a hash map.
+ * @constructor
+ * @extends {anychart.core.polar.series.Base}
+ */
+anychart.core.polar.series.ContinuousBase;
+
+/**
+ * Getter for series data markers.
+ * @example
+ * chart = anychart.polar();
+ * chart.area([1, 4, 7, 1])
+ *   .markers()
+ *     .size(10)
+ *     .type('star5');
+ * chart.container(stage).draw();
+ * @return {!anychart.core.ui.MarkersFactory} Markers instance.
+ */
+anychart.core.polar.series.ContinuousBase.prototype.markers;
+
+/**
+ * Setter for series data markers.<br/>
+ * <b>Note:</b> pass <b>'none'</b> or <b>null</b> to turn off markers.
+ * @example
+ * chart = anychart.polar();
+ * chart.area([1, 4, 7, 4]).markers(null);
+ * chart.container(stage).draw();
+ * @param {(Object|boolean|null|string)=} opt_value Series data markers settings.
+ * @return {!anychart.core.polar.series.ContinuousBase} {@link anychart.core.polar.series.ContinuousBase} instance for method chaining.
+ */
+anychart.core.polar.series.ContinuousBase.prototype.markers;
+
+/**
+ * Getter for series data markers on hover.
+ * @example
+ * chart = anychart.polar();
+ * chart.area([1, 4, 7, 1])
+ *   .hoverMarkers()
+ *     .size(10)
+ *     .type('star5');
+ * chart.container(stage).draw();
+ * @return {!anychart.core.ui.MarkersFactory} Markers instance.
+ */
+anychart.core.polar.series.ContinuousBase.prototype.hoverMarkers;
+
+/**
+ * Setter for series data markers on hover.<br/>
+ * <b>Note:</b> pass <b>'none'</b> or <b>null</b> to turn off markers.
+ * @example
+ * chart = anychart.polar();
+ * chart.area([1, 4, 7, 4]).hoverMarkers(null);
+ * chart.container(stage).draw();
+ * @param {(Object|boolean|null|string)=} opt_value Series data markers settings.
+ * @return {!anychart.core.polar.series.ContinuousBase} {@link anychart.core.polar.series.ContinuousBase} instance for method chaining.
+ */
+anychart.core.polar.series.ContinuousBase.prototype.hoverMarkers;
+
+/**
+ * Getter for series close settings.
+ * @param {boolean=} opt_value .
+ * @return {!anychart.core.polar.series.ContinuousBase|boolean} .
+ */
+anychart.core.polar.series.ContinuousBase.prototype.closed;
+
+/**
+ * Setter for series close settings.
+ * @example
+ * chart = anychart.polar();
+ * chart.line([1, 4, 7, 4]).closed(true);
+ * chart.line([2, 5, 8, 5]).closed(false);
+ * chart.container(stage).draw();
+ * @param {boolean=} opt_value .
+ * @return {!anychart.core.polar.series.ContinuousBase|boolean} .
+ */
+anychart.core.polar.series.ContinuousBase.prototype.closed;
+
+/**
+ * Getter for connect missing points setting.
+ * @return {boolean} Current setting.
+ */
+anychart.core.polar.series.ContinuousBase.prototype.connectMissingPoints;
+
+/**
+ * Setter for connect missing points setting.
+ * @example
+ * chart = anychart.radar();
+ * var blueLine = chart.line([1, 1.6, 'missing', 1.1, 1.9]).connectMissingPoints(true);
+ * var redLine = chart.line([2, 2.6, 'missing', 2.1, 2.9]).connectMissingPoints(false);
+ * chart.container(stage).draw();
+ * @param {boolean=} opt_value [false] If set to <b>true</b>, the series will not be interrupted on missing points.<br/>
+ *   Defaults to <b>false</b>. Markers will not be drawn for missing points in both cases.
+ * @return {!anychart.core.polar.series.Base} {@link anychart.core.polar.series.Base} instance for method chaining.
+ */
+anychart.core.polar.series.ContinuousBase.prototype.connectMissingPoints;
+

@@ -3,7 +3,7 @@
  * @param {Array.<Object>=} opt_data - Raw data.
  * @param {anychart.enums.TreeFillingMethod=} opt_fillMethod - Fill method.
  * @constructor
- * @extends {anychart.Base}
+ * @extends {anychart.core.Base}
  */
 anychart.data.Tree;
 
@@ -74,15 +74,15 @@ anychart.data.Tree.prototype.searchItems;
 /**
  * Adds a new root element.
  * @param {Object} child - Child object.
- * @return {anychart.data.Tree} - Itself for method chaining.
+ * @return {anychart.data.Tree.DataItem} - Itself for method chaining.
  */
 anychart.data.Tree.prototype.addChild;
 
 /**
  * Inserts a new root element into a specified position.
- * @param {Object} child - Child object.
+ * @param {(Object|anychart.data.Tree.DataItem)} child - Child object.
  * @param {number} index - Position.
- * @return {anychart.data.Tree} - Itself for method chaining.
+ * @return {anychart.data.Tree.DataItem} - Itself for method chaining.
  */
 anychart.data.Tree.prototype.addChildAt;
 
@@ -234,6 +234,7 @@ anychart.data.Tree.DataItem.prototype.indexOfChild;
 
 /**
  * Current item will be removed from parent's children and becomes an orphan.
+ * If child is a root element, it will be removed from tree.
  * @return {anychart.data.Tree.DataItem} - Itself for method chaining.
  */
 anychart.data.Tree.DataItem.prototype.remove;
