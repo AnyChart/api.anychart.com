@@ -65,8 +65,10 @@ def __check_sample_exist(dirpath, name, pattern):
             if not (os.path.isfile(os.path.join(dirpath, '_samples' ,match.group(1) + '.html'))):
                 print 'Sample not exist. In %s line %s: %s' % (os.path.join(dirpath, name), i+1, line)
 
-def __without_sample():
-    for dirpath, dirnames, files in os.walk(PROJECT_PATH):
+def __without_sample(isPath):
+    isPath = os.path.join(PROJECT_PATH, isPath)
+    print isPath
+    for dirpath, dirnames, files in os.walk(isPath):
         relativeDir = os.path.relpath(dirpath, PROJECT_PATH)
         for name in files:
             if name.lower().endswith('.adoc'):
@@ -74,6 +76,7 @@ def __without_sample():
                     for match in re.finditer('\/\*\*((?:[^*]|\*[^\/])*)\*\/\s*\n(\S*)', myfile.read()):
                         if ("@" in match.group(1)) and not ("@example" in match.group(1)) and not ("@namespace" in match.group(1)) and not ("@listing" in match.group(1)):
                             print 'No sample or listing in '+os.path.join(relativeDir,name) + '@ '+match.group(2);
+                            #a=1
                     myfile.close()
 
 def __unexistable_examples(isPath):
@@ -116,7 +119,7 @@ def __exec_main_script():
             checkSamplesListings = 1
 
     if checkSamplesListings == 1:
-        __without_sample()
+        __without_sample(isPath)
         checkSamples = 0
 
     if checkSamplesOnly == '':
