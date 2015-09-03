@@ -67,7 +67,6 @@ def __check_sample_exist(dirpath, name, pattern):
 
 def __without_sample(isPath):
     isPath = os.path.join(PROJECT_PATH, isPath)
-    print isPath
     for dirpath, dirnames, files in os.walk(isPath):
         relativeDir = os.path.relpath(dirpath, PROJECT_PATH)
         for name in files:
@@ -76,7 +75,6 @@ def __without_sample(isPath):
                     for match in re.finditer('\/\*\*((?:[^*]|\*[^\/])*)\*\/\s*\n(\S*)', myfile.read()):
                         if ("@" in match.group(1)) and not ("@example" in match.group(1)) and not ("@namespace" in match.group(1)) and not ("@listing" in match.group(1)):
                             print 'No sample or listing in '+os.path.join(relativeDir,name) + '@ '+match.group(2);
-                            #a=1
                     myfile.close()
 
 def __unexistable_examples(isPath):
