@@ -1,13 +1,19 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="polar line"/>
+    <meta name="x-cat-tags" content="polar area"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var chart = anychart.polar();
-            var series = chart.line([1, 4, 7, 1]);
-            series.tooltip(null); // disable tooltip
+
+            var series = chart.area([1, 4, 7, 2]);
+            series.labels(true);
+            // Gets labels.
+            var currentLabels = series.hoverLabels();
+            currentLabels.fontWeight("bold");
+            currentLabels.fontSize(25);
+
             chart.container("container");
             chart.draw();
         });

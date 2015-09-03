@@ -3,7 +3,7 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="map"/>
     <script src="../../../../anychart.min.js"></script>
-    <script src="//cdn.anychart.com/geodata/countries/aus/australia.js" data-export="true"></script>
+    <script src="http://cdn.anychart.com/geodata/countries/aus/australia.js" data-export="true"></script>
     <script x-export="australiaMap">
         anychart.onDocumentReady(function() {
             var dataSet = anychart.data.set([
@@ -24,9 +24,8 @@
 
             var series = australiaMap.choropleth(dataSetForSeries);
             series.geoIdField("code_hasc");
-            series.selectFill("#E0E0E0");
-            // Sets selecting on sixth point.
-            series.select(2);
+            // Sets stroke on selected state.
+            series.selectStroke("#212121", 2, "5 2", "round");
 
             australiaMap.container("container");
             australiaMap.draw();

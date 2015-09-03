@@ -1,16 +1,14 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="pie legend"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var chart = anychart.line([10, 4, 17, 20, 16, 35, 6, 15]);
-
-            var myCredits = chart.credits();
-            // Disables credits logo.
-            myCredits.logoSrc(null);
-
+            var chart = anychart.pie([8, 7, 3, 2]);
+            var legend = chart.legend();
+            var currentValue = legend.iconSize(); // get hover cursor
+            chart.title("Cursor - " + currentValue);
             chart.container("container");
             chart.draw();
         });

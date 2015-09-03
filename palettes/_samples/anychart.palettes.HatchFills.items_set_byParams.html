@@ -1,14 +1,18 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="palette pie"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var chart = anychart.line([1.1, 1.4, 1.2, 1.6]);
-            // Sets background settings.
-            chart.background({corners: 30, fill: "#FFECB3 0.5", stroke: "2 #CFD8DC"});
+            var chart = anychart.pie([2, 6, 12, 3]);
+            chart.hatchFill(true);
+            var palette = anychart.palettes.hatchFills();
 
+            // sets hatch fills
+            palette.items("divot", "grid", "forwardDiagonal", "horizontal");
+
+            chart.hatchFillPalette(palette);
             chart.container("container");
             chart.draw();
         });

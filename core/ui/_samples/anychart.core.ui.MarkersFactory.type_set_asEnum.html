@@ -6,9 +6,11 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var chart = anychart.line();
-            chart.line([3, 5, 2, 8]);
-            var series = chart.line([4, 1, 5, 3]);
-            var markers = series.markers();
+            var firstSeries = chart.line([3, 5, 2, 8]);
+            firstSeries.markers(true);
+            var secondSeries = chart.line([4, 1, 5, 3]);
+            var markers = secondSeries.markers();
+            markers.enabled(true);
             markers.size(10);
             markers.type(anychart.enums.MarkerType.STAR4); // sets type of marker
             chart.container("container");

@@ -1,4 +1,11 @@
 /**
+ * Namespace anychart.core.radar.
+ * @namespace
+ * @name anychart.core.radar
+ */
+anychart.core.radar;
+
+/**
  * Base class for all radar series.<br/>
  * Base class defines common methods, such as those for:
  * <ul>
@@ -23,6 +30,8 @@ anychart.core.radar.series.Base;
 
 /**
  * Getter for series name.
+ * @shortDescription Series name settings.
+ * @category Data
  * @example anychart.core.radar.series.Base.name_get
  * @return {string|undefined} Series name value.
  */
@@ -46,6 +55,8 @@ anychart.core.radar.series.Base.prototype.name;
 
 /**
  * Getter for series meta data.
+ * @shortDescription Meta data settings.
+ * @category Data
  * @example anychart.core.radar.series.Base.meta
  * @param {*=} opt_key Metadata key.
  * @return {*} Metadata object by key.
@@ -87,6 +98,8 @@ anychart.core.radar.series.Base.prototype.meta;
 
 /**
  * Getter for series mapping.
+ * @shortDescription Data settings.
+ * @category Data
  * @example anychart.core.radar.series.Base.data_get
  * @return {!anychart.data.View} Returns current mapping.
  */
@@ -113,6 +126,8 @@ anychart.core.radar.series.Base.prototype.data;
 
 /**
  * Getter for current series X scale.
+ * @shortDescription X-scale settings.
+ * @category Scales
  * @example anychart.core.radar.series.Base.xScale_get
  * @return {anychart.scales.Base} Current series X Scale.
  */
@@ -121,7 +136,7 @@ anychart.core.radar.series.Base.prototype.xScale;
 /**
  * Setter for series X scale.
  * @example anychart.core.radar.series.Base.xScale_set
- * @param {anychart.scales.Base=} opt_value Value to set. Default ordinal scale.
+ * @param {anychart.scales.Base=} opt_value ["ordinal"] Value to set.
  * @return {anychart.core.radar.series.Base} Self instance for method chaining.
  */
 anychart.core.radar.series.Base.prototype.xScale;
@@ -135,6 +150,8 @@ anychart.core.radar.series.Base.prototype.xScale;
 
 /**
  * Getter for current series Y scale.
+ * @shortDescription Y-scale settings.
+ * @category Scales
  * @example anychart.core.radar.series.Base.yScale_get
  * @return {anychart.scales.Base} Current series Y Scale.
  */
@@ -143,7 +160,7 @@ anychart.core.radar.series.Base.prototype.yScale;
 /**
  * Setter for series Y scale.
  * @example anychart.core.radar.series.Base.yScale_set
- * @param {anychart.scales.Base=} opt_value Value to set. Default linear scale.
+ * @param {anychart.scales.Base=} opt_value ["linear"] Value to set.
  * @return {anychart.core.radar.series.Base} Self instance for method chaining.
  */
 anychart.core.radar.series.Base.prototype.yScale;
@@ -157,6 +174,8 @@ anychart.core.radar.series.Base.prototype.yScale;
 
 /**
  * Getter for current series data tooltip.
+ * @shortDescription Tooltip settings.
+ * @category Interactivity
  * @example anychart.core.radar.series.Base.tooltip_get
  * @return {!anychart.core.ui.Tooltip} Tooltip instance.
  */
@@ -164,7 +183,13 @@ anychart.core.radar.series.Base.prototype.tooltip;
 
 /**
  * Setter for series data tooltip.
- * @example anychart.core.radar.series.Base.tooltip_set
+ * @detailed Sets tooltip settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable tooltip.</li>
+ *   <li><b>object</b> - sets tooltip settings.</li>
+ * </ul>
+ * @example anychart.core.radar.series.Base.tooltip_set_asBool Disable/Enable tooltip.
+ * @example anychart.core.radar.series.Base.tooltip_set_asObj Using object
  * @param {(Object|boolean|null)=} opt_value [true] Tooltip settings.
  * @return {anychart.core.radar.series.Base} Self instance for method chaining.
  */
@@ -179,6 +204,8 @@ anychart.core.radar.series.Base.prototype.tooltip;
 
 /**
  * Getter for current series data labels.
+ * @shortDescription Labels settings.
+ * @category Point Elements
  * @example anychart.core.radar.series.Base.labels_get
  * @return {!anychart.core.ui.LabelsFactory} Labels instance.
  */
@@ -200,10 +227,26 @@ anychart.core.radar.series.Base.prototype.labels;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets or sets series hover data labels.
- * @example anychart.core.radar.series.Base.hoverLabels
+ * Gettter for the current series hover data labels.
+ * @shortDescription Labels settings on hover state.
+ * @category Point Elements
+ * @example anychart.core.radar.series.Base.hoverLabels_get
+ * @return {anychart.core.ui.LabelsFactory} Labels instance.
+ */
+anychart.core.radar.series.Base.prototype.hoverLabels;
+
+
+/**
+ * Setter for the series hover data labels.
+ * @detailed Sets labels settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable labels.</li>
+ *   <li><b>object</b> - sets labels settings.</li>
+ * </ul>
+ * @example anychart.core.radar.series.Base.hoverLabels_set_asObj Using object
+ * @example anychart.core.radar.series.Base.hoverLabels_set_asBool Disable/Enable labels.
  * @param {(Object|boolean|null)=} opt_value [false] Series data labels settings.
- * @return {!(anychart.core.ui.LabelsFactory|anychart.core.radar.series.Base)} Labels instance or itself for chaining call.
+ * @return {anychart.core.radar.series.Base} Self instance for method chaining.
  */
 anychart.core.radar.series.Base.prototype.hoverLabels;
 
@@ -216,6 +259,8 @@ anychart.core.radar.series.Base.prototype.hoverLabels;
 
 /**
  * Getter for current series color.
+ * @shortDescription Color settings.
+ * @category Coloring
  * @example anychart.core.radar.series.Base.color_get
  * @return {!anychart.graphics.vector.Fill} Current color.
  */
@@ -224,8 +269,7 @@ anychart.core.radar.series.Base.prototype.color;
 /**
  * Sets color settings using an object or a string.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @detailed
- * <b>Note: </b> <u>color</u> methods sets <b>fill</b> and <b>stroke</b> settings, which means it is not wise to pass
+ * @detailed <b>Note: </b> <u>color</u> methods sets <b>fill</b> and <b>stroke</b> settings, which means it is not wise to pass
  * image fill here - stroke doesn't accept image fill.<br/>
  * @example anychart.core.radar.series.Base.color_set_asString Using string
  * @example anychart.core.radar.series.Base.color_set_asArray Using array
@@ -281,6 +325,8 @@ anychart.core.radar.series.Base.prototype.color;
 
 /**
  * Getter for legend item settings of series.
+ * @shortDescription Legend item settings.
+ * @category Specific settings
  * @return {anychart.core.utils.LegendItemSettings} Legend item settings.
  */
 anychart.core.radar.series.Base.prototype.legendItem;
@@ -302,6 +348,7 @@ anychart.core.radar.series.Base.prototype.legendItem;
 
 /**
  * Sets the hover state on a point or a series.
+ * @category Interactivity
  * @detailed If index is passed, hovers a point of the series by its index, else hovers all points of the series.<br/>
  * <b>Note:</b> Works only after {@link anychart.charts.Radar#draw} is called.
  * @example anychart.core.radar.series.Base.hover_set_asIndex Hovers point using index.

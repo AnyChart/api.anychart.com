@@ -6,10 +6,16 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var chart = anychart.polar();
-            var series = chart.line([1, 4, 7, 4]);
-            series.closed(false);
-            var closed = series.closed(); // get series close settings
-            chart.line([2, 5, 8, 5]).closed(closed);
+
+            var firstSeries = chart.line([1, 4, 7, 4]);
+            firstSeries.closed(false);
+
+            // Gets series close settings.
+            var closed = firstSeries.closed();
+
+            var secondSeries = chart.line([2, 5, 8, 5]);
+            secondSeries.closed(closed);
+
             chart.container("container");
             chart.draw();
         });

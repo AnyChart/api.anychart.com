@@ -16,6 +16,8 @@ anychart.core.map.series.Base;
 
 /**
  * Getter for the current color scale.
+ * @shortDescription Color scale settings.
+ * @category Coloring
  * @return {!(anychart.core.map.scale.OrdinalColor|anychart.core.map.scale.LinearColor)} The current color scale value.
  * @since 7.6.0
  */
@@ -39,6 +41,8 @@ anychart.core.map.series.Base.prototype.colorScale;
 
 /**
  * Getter for the current geo id field.
+ * @shortDescription Geo id field settings.
+ * @category Data
  * @example anychart.core.map.series.Base.geoIdField_get
  * @return {string} The current geo id filed.
  * @since 7.6.0
@@ -63,6 +67,8 @@ anychart.core.map.series.Base.prototype.geoIdField;
 
 /**
  * Getter for the current tooltip settings.
+ * @shortDescription Tooltip settings.
+ * @category Interactivity
  * @example anychart.core.map.series.Base.tooltip_get
  * @return {anychart.core.ui.Tooltip} Tooltip instance.
  * @since 7.6.0
@@ -87,12 +93,84 @@ anychart.core.map.series.Base.prototype.tooltip;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//  anychart.core.map.series.Base.prototype.color
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter for current series color.
+ * @shortDescription Color settings.
+ * @category Coloring
+ * @example anychart.core.map.series.Base.color_get
+ * @return {!anychart.graphics.vector.Fill} The current color.
+ * @since 7.6.0
+ */
+anychart.core.map.series.Base.prototype.color;
+
+/**
+ * Sets color settings using an object or a string.
+ * @detailed <b>Note: </b> <u>color</u> methods sets <b>fill</b> and <b>stroke</b> settings, which means it is not wise to pass
+ * image fill here - stroke doesn't accept image fill.<br/>
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.map.series.Base.color_set_asString Using string
+ * @example anychart.core.map.series.Base.color_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ["#64b5f6"] Color as an object or a string.
+ * @return {anychart.core.map.series.Base} Self instance for method chaining.
+ * @since 7.6.0
+ */
+anychart.core.map.series.Base.prototype.color;
+
+/**
+ * Color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.map.series.Base.color_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.map.series.Base} Self instance for method chaining.
+ * @since 7.6.0
+ */
+anychart.core.map.series.Base.prototype.color;
+
+/**
+ * Linear gradient.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.map.series.Base.color_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.map.series.Base} Self instance for method chaining.
+ * @since 7.6.0
+ */
+anychart.core.map.series.Base.prototype.color;
+
+/**
+ * Radial gradient.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.map.series.Base.color_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.map.series.Base} Self instance for method chaining.
+ * @since 7.6.0
+ */
+anychart.core.map.series.Base.prototype.color;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //  anychart.core.map.series.Base.prototype.hatchFill
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter fot the current hatch fill.
+ * @shortDescription Hatch fill settings.
+ * @category Coloring
  * @example anychart.core.map.series.Base.hatchFill_get
  * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|boolean} The current hatch fill.
  * @since 7.6.0
@@ -104,7 +182,7 @@ anychart.core.map.series.Base.prototype.hatchFill;
  * Setter for the hatch fill.
  * @example anychart.core.map.series.Base.hatchFill_set
  * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
- * string|boolean)=} opt_patternFillOrTypeOrState PatternFill or HatchFill instance or type or state of hatch fill.
+ * string|boolean)=} opt_patternFillOrTypeOrState [false] PatternFill or HatchFill instance or type or state of hatch fill.
  * @param {string=} opt_color Color.
  * @param {number=} opt_thickness Thickness.
  * @param {number=} opt_size Pattern size.
@@ -122,6 +200,8 @@ anychart.core.map.series.Base.prototype.hatchFill;
 
 /**
  * Getter for the current hatch fill on hover state.
+ * @shortDescription Hatch fill settings on hover state.
+ * @category Coloring
  * @example anychart.core.map.series.Base.hoverHatchFill_get
  * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|boolean} The current hatch fill.
  * @since 7.6.0
@@ -132,7 +212,7 @@ anychart.core.map.series.Base.prototype.hoverHatchFill;
  * Setter for the hatch fill on hover state.
  * @example anychart.core.map.series.Base.hoverHatchFill_set
  * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
- * string|boolean)=} opt_patternFillOrTypeOrState PatternFill or HatchFill instance or type or state of hatch fill.
+ * string|boolean)=} opt_patternFillOrTypeOrState [null] PatternFill or HatchFill instance or type or state of hatch fill.
  * @param {string=} opt_color Color.
  * @param {number=} opt_thickness Thickness.
  * @param {number=} opt_size Pattern size.
@@ -150,6 +230,8 @@ anychart.core.map.series.Base.prototype.hoverHatchFill;
 
 /**
  * Getter for the current hatch fill for selected point.
+ * @shortDescription Hatch fill settings for selected point.
+ * @category Coloring
  * @example anychart.core.map.series.Base.selectHatchFill_get
  * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|boolean} The current selected
  * hatch fill.
@@ -161,11 +243,11 @@ anychart.core.map.series.Base.prototype.selectHatchFill;
  * Setter for the hatch fill for selected point.
  * @example anychart.core.map.series.Base.selectHatchFill_set
  * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
- * string|boolean)=} opt_patternFillOrTypeOrState PatternFill or HatchFill instance or type or state of hatch fill.
+ * string|boolean)=} opt_patternFillOrTypeOrState [null] PatternFill or HatchFill instance or type or state of hatch fill.
  * @param {string=} opt_color Color.
  * @param {number=} opt_thickness Thickness.
  * @param {number=} opt_size Pattern size.
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|anychart.core.map.series.Base|Function|boolean} Hatch fill.
+ * @return {anychart.core.map.series.Base} Hatch fill.
  * @since 7.6.0
  */
 anychart.core.map.series.Base.prototype.selectHatchFill;
@@ -179,6 +261,8 @@ anychart.core.map.series.Base.prototype.selectHatchFill;
 
 /**
  * Getter for current series fill color.
+ * @shortDescription Fill settings.
+ * @category Coloring
  * @example anychart.core.map.series.Base.fill_get
  * @return {!anychart.graphics.vector.Fill} Current fill color.
  * @since 7.6.0
@@ -256,6 +340,8 @@ anychart.core.map.series.Base.prototype.fill;
 
 /**
  * Getter for current series fill color on hover state.
+ * @shortDescription Fill settings on hover state.
+ * @category Coloring
  * @example anychart.core.map.series.Base.hoverFill_get
  * @return {!anychart.graphics.vector.Fill} Current fill color.
  * @since 7.6.0
@@ -333,6 +419,8 @@ anychart.core.map.series.Base.prototype.hoverFill;
 
 /**
  * Getter for current series fill color for selected point.
+ * @shortDescription Fill settings for selected point.
+ * @category Coloring
  * @example anychart.core.map.series.Base.selectFill_get
  * @return {!anychart.graphics.vector.Fill} Current fill color.
  * @since 7.6.0
@@ -344,7 +432,7 @@ anychart.core.map.series.Base.prototype.selectFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.map.series.Base.selectFill_set_asString Using string
  * @example anychart.core.map.series.Base.selectFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
+ * @param {anychart.graphics.vector.Fill} value [{color: '#64b5f6'}] Color as an array or a string.
  * @return {anychart.core.map.series.Base} Self instance for method chaining.
  * @since 7.6.0
  */
@@ -410,6 +498,8 @@ anychart.core.map.series.Base.prototype.selectFill;
 
 /**
  * Getter for current stroke settings.
+ * @shortDescription Stroke settings.
+ * @category Coloring
  * @example anychart.core.map.series.Base.stroke_get
  * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
  * @since 7.6.0
@@ -419,7 +509,7 @@ anychart.core.map.series.Base.prototype.stroke;
 /**
  * Setter for series stroke by function.
  * @example anychart.core.map.series.Base.stroke_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_fillFunction [function() {
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
  *    // this.index - series index.
@@ -436,8 +526,7 @@ anychart.core.map.series.Base.prototype.stroke;
  * Setter for series stroke settings.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.core.map.series.Base.stroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_stroke [{thickness: 0.5, color: "#545f69"}] Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
@@ -450,12 +539,110 @@ anychart.core.map.series.Base.prototype.stroke;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//  anychart.core.map.series.Base.prototype.hoverStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current stroke settings on hover state.
+ * @shortDescription Stroke settings on hover state.
+ * @category Coloring
+ * @example anychart.core.map.series.Base.hoverStroke_get
+ * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
+ * @since 7.6.0
+ */
+anychart.core.map.series.Base.prototype.hoverStroke;
+
+/**
+ * Setter for series stroke on hover state by function.
+ * @example anychart.core.map.series.Base.hoverStroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by stroke() getter.
+ *    // this.iterator - series point iterator.
+ *    return strokeValue; // type anychart.graphics.vector.Fill or anychart.graphics.vector.Stroke
+ * }</code>.
+ * @return {anychart.core.map.series.Base} Self instance for method chaining.
+ * @since 7.6.0
+ */
+anychart.core.map.series.Base.prototype.hoverStroke;
+
+/**
+ * Setter for series stroke settings on hover state.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.map.series.Base.hoverStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
+ *    or stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.map.series.Base} Self instance for method chaining.
+ * @since 7.6.0
+ */
+anychart.core.map.series.Base.prototype.hoverStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.map.series.Base.prototype.selectStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current stroke settings on hover state.
+ * @shortDescription Stroke settings for selected point.
+ * @category Coloring
+ * @example anychart.core.map.series.Base.selectStroke_get
+ * @return {!anychart.graphics.vector.Stroke} Current stroke settings.
+ * @since 7.6.0
+ */
+anychart.core.map.series.Base.prototype.selectStroke;
+
+/**
+ * Setter for series stroke on hover state by function.
+ * @example anychart.core.map.series.Base.selectStroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by stroke() getter.
+ *    // this.iterator - series point iterator.
+ *    return strokeValue; // type anychart.graphics.vector.Fill or anychart.graphics.vector.Stroke
+ * }</code>.
+ * @return {anychart.core.map.series.Base} Self instance for method chaining.
+ * @since 7.6.0
+ */
+anychart.core.map.series.Base.prototype.selectStroke;
+
+/**
+ * Setter for series stroke settings on hover state.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.map.series.Base.selectStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
+ *    or stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.map.series.Base} Self instance for method chaining.
+ * @since 7.6.0
+ */
+anychart.core.map.series.Base.prototype.selectStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //  anychart.core.map.series.Base.prototype.labels
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for the current series data labels.
+ * @shortDescription Labels settings.
+ * @category Point Elements
  * @example anychart.core.map.series.Base.labels_get
  * @return {anychart.core.ui.LabelsFactory} Labels instance.
  * @since 7.6.0
@@ -486,6 +673,8 @@ anychart.core.map.series.Base.prototype.labels;
 
 /**
  * Getter for the current series hover data labels on hover state.
+ * @shortDescription Labels settings on hover state.
+ * @category Point Elements
  * @example anychart.core.map.series.Base.hoverLabels_get
  * @return {anychart.core.ui.LabelsFactory} Labels instance.
  * @since 7.6.0
@@ -501,7 +690,7 @@ anychart.core.map.series.Base.prototype.hoverLabels;
  * </ul>
  * @example anychart.core.map.series.Base.hoverLabels_set_asBool Disable/Enable labels.
  * @example anychart.core.map.series.Base.hoverLabels_set_asObj Using object
- * @param {(Object|boolean|null)=} opt_value [true] Series data labels settings.
+ * @param {(Object|boolean|null)=} opt_value [null] Series data labels settings.
  * @return {anychart.core.map.series.Base} Self instance for method chaining.
  * @since 7.6.0
  */
@@ -516,6 +705,8 @@ anychart.core.map.series.Base.prototype.hoverLabels;
 
 /**
  * Getter for the current series select data labels.
+ * @shortDescription Labels settings for selected state.
+ * @category Point Elements
  * @example anychart.core.map.series.Base.selectLabels_get
  * @return {anychart.core.ui.LabelsFactory} Labels instance.
  * @since 7.6.0
@@ -531,7 +722,7 @@ anychart.core.map.series.Base.prototype.selectLabels;
  * </ul>
  * @example anychart.core.map.series.Base.selectLabels_set_asBool Disable/Enable labels.
  * @example anychart.core.map.series.Base.selectLabels_set_asObj Using object
- * @param {(Object|boolean|null)=} opt_value [true] Series data labels settings.
+ * @param {(Object|boolean|null)=} opt_value [null] Series data labels settings.
  * @return {anychart.core.map.series.Base} Self instance for method chaining.
  * @since 7.6.0
  */
@@ -546,6 +737,7 @@ anychart.core.map.series.Base.prototype.selectLabels;
 
 /**
  * Sets the hover state on a point by index.
+ * @category Interactivity
  * @detailed If index is passed, hovers a point of the chart by its index, else doesn't hovers all points of the chart.
  * @example anychart.core.map.series.Base.hover
  * @param {number=} opt_index Point index
@@ -564,6 +756,8 @@ anychart.core.map.series.Base.prototype.hover;
 
 /**
  * Getter for series mapping.
+ * @shortDescription Data settings.
+ * @category Data
  * @example anychart.core.map.series.Base.data_get
  * @return {!anychart.data.View} Returns current mapping.
  * @since 7.6.0
@@ -587,43 +781,13 @@ anychart.core.map.series.Base.prototype.data;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.map.series.Base.prototype.unhover
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Removes hover from the series.
- * @example anychart.core.map.series.Base.unhover
- * @return {anychart.core.map.series.Base} Self instance for method chaining.
- * @since 7.6.0
- */
-anychart.core.map.series.Base.prototype.unhover;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.core.map.series.Base.prototype.unselect
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Deselects all points on series.
- * @example anychart.core.map.series.Base.unselect
- * @param {anychart.core.MouseEvent=} opt_event Event that initiate point selecting.
- * @return {anychart.core.map.series.Base} Self instance for method chaining.
- * @since 7.6.0
- */
-anychart.core.map.series.Base.prototype.unselect;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //  anychart.core.map.series.Base.prototype.select
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Imitates selects a point of the series by its index.
+ * @category Interactivity
  * @example anychart.core.map.series.Base.select
  * @param {number} index Index of the point to select.
  * @return {anychart.core.map.series.Base} Self instance for method chaining.
@@ -640,6 +804,8 @@ anychart.core.map.series.Base.prototype.select;
 
 /**
  * Getter for the current selected state of the points.
+ * @shortDescription Allows to select points or not.
+ * @category Interactivity
  * @example anychart.core.map.series.Base.allowPointsSelect_get
  * @return {null|boolean} The current selected state of the points.
  * @since 7.6.0
@@ -649,7 +815,7 @@ anychart.core.map.series.Base.prototype.allowPointsSelect;
 /**
  * Allows to select points of the series.
  * @example anychart.core.map.series.Base.allowPointsSelect_set
- * @param {?boolean=} opt_value Allow or not.
+ * @param {?boolean=} opt_value [false] Allow or not.
  * @return {anychart.core.map.series.Base} Self instance for method chaining.
  * @since 7.6.0
  */
@@ -664,6 +830,8 @@ anychart.core.map.series.Base.prototype.allowPointsSelect;
 
 /**
  * Gets legend item setting for series.
+ * @shortDescription Legend item settings.
+ * @category Specific settings
  * @example anychart.core.map.series.Base.legendItem_get
  * @return {anychart.core.utils.LegendItemSettings} Legend item settings.
  * @since 7.6.0
