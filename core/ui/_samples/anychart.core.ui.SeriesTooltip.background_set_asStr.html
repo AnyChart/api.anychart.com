@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line tooltip"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.line();
+            chart.tooltip({displayMode: 'separated', positionMode: 'point'});
+
+            var series1 = chart.column([2, 8, 3, 4, 9]);
+            var tooltipSettings1 = series1.tooltip();
+            var series2 = chart.column([2, 8, 3, 4, 9]);
+            var tooltipSettings2 = series2.tooltip();
+
+            // set background.
+            tooltipSettings1.background('#0f0 0.4');
+            tooltipSettings2.background('grey');
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
