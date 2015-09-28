@@ -1,7 +1,7 @@
 /**
  This class provide tools for cross-browser display with the single interface for
  both (SVG and VML).
- <b>Do not invoke constructor directly.</b> Use {@link anychart.graphics.create}.
+ <b>Do not invoke constructor directly.</b> Use {@link anychart.graphics#create}.
  <p><b>Note:</b><br>
  anychart.graphics.vector.Stage delegates all work with DOM elements, style and attributes
  to its renderer. You can get renderer using <a href="anychart.graphics.vector.Stage#.getRenderer">getRenderer
@@ -13,13 +13,13 @@
  type. All layers and elements you add to a stage go there, so rendering and other stuff happens
  when this layer is rendered.
  </p>
- @see anychart.graphics.create
+ @see anychart.graphics#create
  @name anychart.graphics.vector.Stage
  @param {(Element|string)=} opt_container Container. Can be set later.
  @param {(number|string)=} opt_width Stage width in pixels.
  @param {(number|string)=} opt_height Stage width in pixels.
  @constructor
- @implements {anychart.graphics.vector.ILayer}
+ @implements {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage}
  */
 anychart.graphics.vector.Stage;
 
@@ -242,7 +242,7 @@ anychart.graphics.vector.Stage.prototype.saveAsPDF;
  @shortDescription Invokes {@link anychart.graphics.vector.Layer} constructor.
  @example anychart.graphics.vector.Stage.layer
  @return {anychart.graphics.vector.Layer} An instance of class for method chaining.
- @this {anychart.graphics.vector.ILayer}
+ @this {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage}
  */
 anychart.graphics.vector.Stage.prototype.layer;
 
@@ -258,7 +258,7 @@ anychart.graphics.vector.Stage.prototype.layer;
  @param {string=} opt_text Text.
  @param {anychart.graphics.vector.TextStyle=} opt_style Text style. Read more at {@link anychart.graphics.vector.Text#style}.
  @return {anychart.graphics.vector.Text} An instance of class for method chaining.
- @this {anychart.graphics.vector.ILayer}
+ @this {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage}
  */
 anychart.graphics.vector.Stage.prototype.text;
 
@@ -275,7 +275,7 @@ anychart.graphics.vector.Stage.prototype.text;
  @param {string=} opt_text Text.
  @param {anychart.graphics.vector.TextStyle=} opt_style Text style. Read more at {@link anychart.graphics.vector.Text#style}.
  @return {anychart.graphics.vector.Text} An instance of class for method chaining.
- @this {anychart.graphics.vector.ILayer}
+ @this {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage}
  */
 anychart.graphics.vector.Stage.prototype.html;
 
@@ -769,7 +769,7 @@ anychart.graphics.vector.Stage.prototype.getTransformationMatrix;
  Read more at: {@link anychart.graphics.vector.Element#clip}.
  @param {anychart.graphics.math.Rect=} opt_value Clipping rectangle.
  @return {anychart.graphics.vector.Stage} Self instance for method chaining.
- or {@link anychart.graphics.math.rect} clipping rectangle.
+ or {@link anychart.graphics.math#rect} clipping rectangle.
  */
 anychart.graphics.vector.Stage.prototype.clip;
 
