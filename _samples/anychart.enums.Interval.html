@@ -11,11 +11,15 @@
                 {x: Date.UTC(2004, 3, 14), value: 3},
                 {x: Date.UTC(2009, 9, 16), value: 4}
             ]);
+
             var dateTimeScale = anychart.scales.dateTime();
             dateTimeScale.minimum(Date.UTC(2001, 7, 1));
             dateTimeScale.maximum(Date.UTC(2011, 8, 5));
+
             var ticks = dateTimeScale.ticks();
-            ticks.interval(anychart.enums.Interval.YEARS, 3); // set interval for ticks
+            // Sets interval for ticks.
+            ticks.interval(anychart.enums.Interval.YEAR, 3);
+
             chart.xScale(dateTimeScale);
             chart.container("container");
             chart.draw();
