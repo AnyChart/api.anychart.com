@@ -8,15 +8,22 @@
             var formatterFunc = function() {
                 return this.seriesName;
             };
+
             var chart = anychart.radar();
             chart.area([1, 4, 7, 1, 4]);
-            var series_1 = chart.line([1, 2, 3]);
-            series_1.name("My Custom series name"); //set name
-            var tooltip_1 = series_1.tooltip();
-            tooltip_1.contentFormatter(formatterFunc);
-            var series_2 = chart.line([2, 3, 4]);
-            var tooltip_2 = series_1.tooltip();
-            tooltip_2.contentFormatter(formatterFunc);
+
+            var seriesBlueLine = chart.line([1, 7, 2, 3]);
+            // Sets name.
+            seriesBlueLine.name("My Custom series name");
+
+            var blueLineTooltip = seriesBlueLine.tooltip();
+            blueLineTooltip.textFormatter(formatterFunc);
+
+            var seriesOrangeLine = chart.line([2, 3, 4, 6]);
+
+            var seriesOrangeLineTooltip = seriesOrangeLine.tooltip();
+            seriesOrangeLineTooltip.textFormatter(formatterFunc);
+
             chart.legend().enabled(true);
             chart.container("container");
             chart.draw();

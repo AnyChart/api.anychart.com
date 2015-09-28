@@ -8,12 +8,17 @@
             var formatterFunc = function() {
                 return this.seriesName;
             };
+
             var chart = anychart.cartesian();
             chart.line([2, 6, 4]);
+
             var series = chart.line([6, 2, 5]);
-            series.name("My Custom series name"); // sets name
+            // Sets name.
+            series.name("My Custom series name");
+
             var tooltip = series.tooltip();
-            tooltip.contentFormatter(formatterFunc);
+            tooltip.textFormatter(formatterFunc);
+
             chart.legend(true);
             chart.container("container");
             chart.draw();
