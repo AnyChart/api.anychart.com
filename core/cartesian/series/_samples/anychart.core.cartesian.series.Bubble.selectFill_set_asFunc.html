@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="bubble"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.cartesian();
+
+            var series = chart.bubble([
+                [1, 1.0, 2],
+                [2, 1.6, 7],
+                [3, 1.2, 4],
+                [4, 1.9, 3]
+            ]);
+            // Sets fill in hover mode using function.
+            series.selectFill(function() {
+                return this.sourceColor + " 0.5";
+            });
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

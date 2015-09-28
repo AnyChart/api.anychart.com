@@ -1,0 +1,319 @@
+/**
+ * Base class for all base series.<br/>
+ * Base class defines common methods, such as those for:
+ * <ul>
+ *   <li>Binding series to a scale: <i>xScale, yScale</i></li>
+ *   <li>Base color settings: <i>color</i></li>
+ * </ul>
+ * You can also obtain <i>getIterator, getResetIterator</i> iterators here.
+ * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Series data.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ *    here as a hash map.
+ * @constructor
+ * @extends {anychart.core.VisualBaseWithBounds}
+ */
+anychart.core.SeriesBase;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.data
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter/setter for series mapping.
+ * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {(!anychart.core.SeriesBase|!anychart.data.View)} Returns itself if used as a setter or the mapping if used as a getter.
+ */
+anychart.core.SeriesBase.prototype.data;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.meta
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Sets/gets series meta data.
+ * @param {*=} opt_object_or_key Object to replace metadata or metadata key.
+ * @param {*=} opt_value Meta data value.
+ * @return {*} Metadata object, key value or itself for method chaining.
+ */
+anychart.core.SeriesBase.prototype.meta;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.name
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Sets/gets series name.
+ * @param {string=} opt_value Series name value.
+ * @return {!(string|anychart.core.SeriesBase|undefined)} Series name value or itself for method chaining.
+ */
+anychart.core.SeriesBase.prototype.name;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.tooltip
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets/sets current series data tooltip.
+ * @param {(Object|boolean|null)=} opt_value Tooltip settings.
+ * @return {!(anychart.core.SeriesBase|anychart.core.ui.Tooltip)} Tooltip instance or itself for chaining call.
+ */
+anychart.core.SeriesBase.prototype.tooltip;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.legendItem
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Sets/Gets legend item setting for series.
+ * @param {(Object)=} opt_value Legend item settings object.
+ * @return {(anychart.core.utils.LegendItemSettings|anychart.core.SeriesBase)} Legend item settings or self for chaining.
+ */
+anychart.core.SeriesBase.prototype.legendItem;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.color
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter/setter for current series color.
+ * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
+ * @param {number=} opt_opacityOrAngleOrCx .
+ * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
+ * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
+ * @param {number=} opt_opacity .
+ * @param {number=} opt_fx .
+ * @param {number=} opt_fy .
+ * @return {!(anychart.graphics.vector.Fill|anychart.core.SeriesBase)} .
+ */
+anychart.core.SeriesBase.prototype.color;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.labels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter/setter for current series data labels.
+ * @param {(Object|boolean|null)=} opt_value Series data labels settings.
+ * @return {!(anychart.core.ui.LabelsFactory|anychart.core.SeriesBase)} Labels instance or itself for chaining call.
+ */
+anychart.core.SeriesBase.prototype.labels;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.hoverLabels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets the current series hover data labels.
+ * @shortDescription Labels settings on hover state.
+ * @category Point Elements
+ * @example anychart.core.SeriesBase.hoverLabels_get
+ * @return {anychart.core.ui.LabelsFactory} Labels instance.
+ * @since 7.7.0
+ */
+anychart.core.SeriesBase.prototype.hoverLabels;
+
+
+/**
+ * Sets the series hover data labels.
+ * @detailed Sets series hover labels settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart hover labels.</li>
+ *   <li><b>object</b> - sets chart hover labels settings.</li>
+ * </ul>
+ * @param {(Object|boolean|null)=} opt_value Series data labels settings.
+ * @example anychart.core.SeriesBase.hoverLabels_set_asBool Disable/Enable hover labels
+ * @example anychart.core.SeriesBase.hoverLabels_set_asObj Using object
+ * @return {anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.SeriesBase.prototype.hoverLabels;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.selectLabels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets the current series select data labels.
+ * @shortDescription Labels settings in selected mode.
+ * @category Point Elements
+ * @example anychart.core.SeriesBase.selectLabels_get
+ * @return {anychart.core.ui.LabelsFactory} Labels instance.
+ * @since 7.7.0
+ */
+anychart.core.SeriesBase.prototype.selectLabels;
+
+/**
+ * Sets the series select data labels.
+ * @detailed Setting selected labels settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable labels in selected state.</li>
+ *   <li><b>object</b> - sets selected labels settings.</li>
+ * </ul>
+ * @example anychart.core.SeriesBase.selectLabels_set_asBool Disable or enable selected state.
+ * @example anychart.core.SeriesBase.selectLabels_set_asObj Using object
+ * @param {(Object|boolean|null)=} opt_value Series data labels settings.
+ * @return {anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.SeriesBase.prototype.selectLabels;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.hover
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Imitates hover a point of the series by its index.
+ * If index is passed, hovers a point of the series by its index, else hovers all points of the series.
+ * @shortDescription Hover settings.
+ * @category Interactivity
+ * @example anychart.core.SeriesBase.hover_asIndex
+ * @param {number=} opt_index Point index.
+ * @return {!anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.SeriesBase.prototype.hover;
+
+
+/**
+ * Imitates hover a point of the series by several indexes.
+ * If index is passed, hovers a point of the series by its index, else hovers all points of the series.
+ * @example anychart.core.SeriesBase.hover_set_asIndexes
+ * @param {Array<number>=} opt_indexes Array of indexes.
+ * @return {!anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.SeriesBase.prototype.hover;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.unhover
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes hover from the series.
+ * @category Interactivity
+ * @example anychart.core.SeriesBase.unhover
+ * @return {!anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.SeriesBase.prototype.unhover;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.select
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Imitates selects a point of the series by its index.
+ * @shortDescription Select settings.
+ * @category Interactivity
+ * @example anychart.core.SeriesBase.select_set_asIndex
+ * @param {number=} opt_index Index of the point to select.
+ * @return {!anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.SeriesBase.prototype.select;
+
+/**
+ * Imitates selects a point of the series by several indexes.
+ * @example anychart.core.SeriesBase.select_set_asIndexes
+ * @param {(number|Array.<number>)=} opt_indexes Array of indexes of the point to select.
+ * @return {!anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.SeriesBase.prototype.select;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.unselect
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Deselects all selected points.
+ * @category Interactivity
+ * @example anychart.core.SeriesBase.unselect
+ * @return {!anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.SeriesBase.prototype.unselect;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.allowPointsSelect
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * @ignoreDoc
+ * Allows to select points of the series.
+ * @param {?boolean=} opt_value Allow or not.
+ * @return {null|boolean|anychart.core.SeriesBase} Returns allow points select state or current series instance for chaining.
+ * @deprecated Use this.selectionMode().
+ */
+anychart.core.SeriesBase.prototype.allowPointsSelect;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.SeriesBase.prototype.selectionMode
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets the current state of the series for selection mode.
+ * @shortDescription Selection mode.
+ * @category Specific settings
+ * @example anychart.core.SeriesBase.selectionMode_get
+ * @return {anychart.enums.SelectionMode|null} Selection mode.
+ * @since 7.7.0
+ */
+anychart.core.SeriesBase.prototype.selectionMode;
+
+/**
+ * Allows to select points of the series.
+ * To select multiple points, press "ctrl" and click on them.
+ * @example anychart.core.SeriesBase.selectionMode_set
+ * @param {(anychart.enums.SelectionMode|string|null)=} opt_value ["multiSelect"] Selection mode.
+ * @return {anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.SeriesBase.prototype.selectionMode;
+
