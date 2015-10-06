@@ -1,13 +1,16 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="radar line"/>
+    <meta name="x-cat-tags" content="polar marker"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var chart = anychart.radar([1, 4, 7, 1, 4]);
+            var chart = anychart.polar([10, 11, 17, 7, 21, 14, 5, 9, 3]);
+
             var series = chart.getSeries(0);
-            series.markers(null); // disable markers
+            // Sets fill in selected mode.
+            series.selectFill(["#F44336", "#FFFF00"], 90, true, 0.5);
+
             chart.container("container");
             chart.draw();
         });

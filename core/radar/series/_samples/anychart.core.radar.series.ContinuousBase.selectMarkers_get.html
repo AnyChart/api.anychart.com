@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="radar line"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.radar();
+
+            var series = chart.line([6, 1, 6, 1, 6, 1, 6, 1]);
+            series.markers(true);
+
+            // Gets markers in selected mode.
+            var selectedMarkers = series.selectMarkers();
+            selectedMarkers.enabled(true);
+            selectedMarkers.size(10);
+            selectedMarkers.type("star5");
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

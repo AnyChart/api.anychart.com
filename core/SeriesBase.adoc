@@ -22,10 +22,25 @@ anychart.core.SeriesBase;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter/setter for series mapping.
+ * Getter for series mapping.
+ * @shortDescription Data settings.
+ * @category Data
+ * @example anychart.core.SeriesBase.data_get
+ * @return {!anychart.data.View} Returns current mapping.
+ * @since 7.x
+ */
+anychart.core.SeriesBase.prototype.data;
+
+/**
+ * Setter for series mapping.
+ * @example anychart.core.SeriesBase.data_set_asArray Using array
+ * @example anychart.core.SeriesBase.data_set_asArrayofArras Using array of arrays
+ * @example anychart.core.SeriesBase.data_set_asArrayofObjects Using array of object
+ * @example anychart.core.SeriesBase.data_set_asCSV Using CSV
  * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
- * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
- * @return {(!anychart.core.SeriesBase|!anychart.data.View)} Returns itself if used as a setter or the mapping if used as a getter.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed by first param, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.x
  */
 anychart.core.SeriesBase.prototype.data;
 
@@ -37,10 +52,33 @@ anychart.core.SeriesBase.prototype.data;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Sets/gets series meta data.
- * @param {*=} opt_object_or_key Object to replace metadata or metadata key.
- * @param {*=} opt_value Meta data value.
+ * Gets series meta data.
+ * @shortDescription Series meta data settings.
+ * @category Data
+ * @example anychart.core.SeriesBase.meta_get
+ * @param {*=} opt_key Metadata key.
  * @return {*} Metadata object, key value or itself for method chaining.
+ * @since 7.x
+ */
+anychart.core.SeriesBase.prototype.meta;
+
+/**
+ * Sets series meta data using object.
+ * @example anychart.core.SeriesBase.meta_set_asObject
+ * @param {*=} opt_object Object to replace metadata.
+ * @param {*=} opt_value Meta data value.
+ * @return {anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.SeriesBase.prototype.meta;
+
+/**
+ * Sets series meta data using key.
+ * @example anychart.core.SeriesBase.meta_set
+ * @param {*=} opt_key Metadata key.
+ * @param {*=} opt_value Meta data value.
+ * @return {anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.x
  */
 anychart.core.SeriesBase.prototype.meta;
 
@@ -52,9 +90,23 @@ anychart.core.SeriesBase.prototype.meta;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Sets/gets series name.
- * @param {string=} opt_value Series name value.
- * @return {!(string|anychart.core.SeriesBase|undefined)} Series name value or itself for method chaining.
+ * Getter for the current series name.
+ * @shortDescription Series name settings.
+ * @category Data
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.SeriesBase.name_get
+ * @return {string|undefined} The current series name value.
+ * @since 7.x
+ */
+anychart.core.SeriesBase.prototype.name;
+
+/**
+ * Setter for the series name.
+ * @detailed Basically, name of series is used in Legend displaying, but it can be used in tooltips.
+ * @example anychart.core.SeriesBase.name_set
+ * @param {string=} opt_value Value to set.
+ * @return {anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.x
  */
 anychart.core.SeriesBase.prototype.name;
 
@@ -66,9 +118,27 @@ anychart.core.SeriesBase.prototype.name;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets/sets current series data tooltip.
+ * Gets the current series data tooltip.
+ * @shortDescription Tooltip settings.
+ * @category Interactivity
+ * @example anychart.core.SeriesBase.tooltip_get
+ * @return {anychart.core.ui.Tooltip} Tooltip instance.
+ * @since 7.x
+ */
+anychart.core.SeriesBase.prototype.tooltip;
+
+/**
+ * Sets series data tooltip.
+ * @detailed Sets series tooltip settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart tooltip.</li>
+ *   <li><b>object</b> - sets chart tooltip settings.</li>
+ * </ul>
+ * @example anychart.core.SeriesBase.tooltip_set_asBool Disable/Enable tooltip
+ * @example anychart.core.SeriesBase.tooltip_set_asObj Using object
  * @param {(Object|boolean|null)=} opt_value Tooltip settings.
- * @return {!(anychart.core.SeriesBase|anychart.core.ui.Tooltip)} Tooltip instance or itself for chaining call.
+ * @return {!anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.x
  */
 anychart.core.SeriesBase.prototype.tooltip;
 
@@ -80,9 +150,21 @@ anychart.core.SeriesBase.prototype.tooltip;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Sets/Gets legend item setting for series.
+ * Gets the current legend item setting for series.
+ * @shortDescription Legend item settings.
+ * @category Specific settings
+ * @example anychart.core.SeriesBase.legendItem_get
+ * @return {anychart.core.utils.LegendItemSettings} Legend item settings.
+ * @since 7.x
+ */
+anychart.core.SeriesBase.prototype.legendItem;
+
+/**
+ * Sets the legend item setting for series.
+ * @example anychart.core.SeriesBase.legendItem_set
  * @param {(Object)=} opt_value Legend item settings object.
- * @return {(anychart.core.utils.LegendItemSettings|anychart.core.SeriesBase)} Legend item settings or self for chaining.
+ * @return {anychart.core.SeriesBase} Legend item settings or self for chaining.
+ * @since 7.x
  */
 anychart.core.SeriesBase.prototype.legendItem;
 
@@ -94,15 +176,66 @@ anychart.core.SeriesBase.prototype.legendItem;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter/setter for current series color.
- * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_fillOrColorOrKeys .
- * @param {number=} opt_opacityOrAngleOrCx .
- * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
- * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
- * @param {number=} opt_opacity .
- * @param {number=} opt_fx .
- * @param {number=} opt_fy .
- * @return {!(anychart.graphics.vector.Fill|anychart.core.SeriesBase)} .
+ * Getter for current series color.
+ * @shortDescription Color settings.
+ * @category Coloring
+ * @example anychart.core.SeriesBase.color_get
+ * @return {!anychart.graphics.vector.Fill} The current series color.
+ * @since 7.x
+ */
+anychart.core.SeriesBase.prototype.color;
+
+/**
+ * Sets color settings using an object or a string.
+ * @detailed <b>Note: </b> <u>color</u> methods sets <b>fill</b> and <b>stroke</b> settings, which means it is not wise to pass
+ * image fill here - stroke doesn't accept image fill.<br/>
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.SeriesBase.color_set_asString Using string
+ * @example anychart.core.SeriesBase.color_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ["#64b5f6"] Color as an object or a string.
+ * @return {anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.SeriesBase.prototype.color;
+
+/**
+ * Color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.SeriesBase.color_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.SeriesBase.prototype.color;
+
+/**
+ * Linear gradient.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.SeriesBase.color_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.SeriesBase.prototype.color;
+
+/**
+ * Radial gradient.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.SeriesBase.color_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.x
  */
 anychart.core.SeriesBase.prototype.color;
 
@@ -114,9 +247,27 @@ anychart.core.SeriesBase.prototype.color;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter/setter for current series data labels.
+ * Getter for the current series data labels.
+ * @shortDescription Labels settings.
+ * @category Point Elements
+ * @example anychart.core.SeriesBase.labels_get
+ * @return {anychart.core.ui.LabelsFactory} Labels instance.
+ * @since 7.x
+ */
+anychart.core.SeriesBase.prototype.labels;
+
+/**
+ * Setter for the series data labels.
+ * @detailed Sets series labels settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart labels.</li>
+ *   <li><b>object</b> - sets chart labels settings.</li>
+ * </ul>
+ * @example anychart.core.SeriesBase.labels_set_asBool Disable/Enable labels
+ * @example anychart.core.SeriesBase.labels_set_asObj Using object
  * @param {(Object|boolean|null)=} opt_value Series data labels settings.
- * @return {!(anychart.core.ui.LabelsFactory|anychart.core.SeriesBase)} Labels instance or itself for chaining call.
+ * @return {anychart.core.SeriesBase} Self instance for method chaining.
+ * @since 7.x
  */
 anychart.core.SeriesBase.prototype.labels;
 

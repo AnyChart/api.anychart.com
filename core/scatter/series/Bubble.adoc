@@ -694,48 +694,322 @@ anychart.core.scatter.series.Bubble.prototype.hoverStroke;
  */
 anychart.core.scatter.series.Bubble.prototype.unhover;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.scatter.series.Bubble.prototype.selectNegativeStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter/setter for select stroke settings.
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
- * @param {number=} opt_thickness [1] Line thickness.
- * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
- * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line joint style.
- * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
- * @return {anychart.core.scatter.series.Bubble|anychart.graphics.vector.Stroke|Function} .
+ * Getter for current stroke settings in selected mode.
+ * @shortDescription Negative stroke settings in selected mode.
+ * @category Coloring
+ * @return {anychart.graphics.vector.Stroke|Function} Current stroke settings.
+ * @since 7.x
  */
 anychart.core.scatter.series.Bubble.prototype.selectNegativeStroke;
 
 /**
- * Getter/setter for select series fill color.
- * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|Function|null)=} opt_fillOrColorOrKeys .
- * @param {number=} opt_opacityOrAngleOrCx .
- * @param {(number|boolean|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number})=} opt_modeOrCy .
- * @param {(number|!anychart.graphics.math.Rect|!{left:number,top:number,width:number,height:number}|null)=} opt_opacityOrMode .
- * @param {number=} opt_opacity .
- * @param {number=} opt_fx .
- * @param {number=} opt_fy .
- * @return {anychart.graphics.vector.Fill|anychart.core.scatter.series.Bubble|Function} .
+ * Setter for series stroke in selected mode by function.
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.scatter.series.Bubble#displayNegative}.
+ * @example anychart.core.scatter.series.Bubble.selectNegativeStroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor -  color returned by stroke() getter.
+ *    // this.iterator - series point iterator.
+ *    return strokeValue; // type anychart.graphics.vector.Fill or anychart.graphics.vector.Stroke
+ * }</code>.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectNegativeStroke;
+
+/**
+ * Setter for stroke settings in selected mode.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.scatter.series.Bubble#displayNegative}.
+ * @example anychart.core.scatter.series.Bubble.selectNegativeStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
+ * @param {number=} opt_thickness Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectNegativeStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.scatter.series.Bubble.prototype.selectNegativeFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current series negative fill color in selected mode.
+ * @shortDescription Negative fill settings in selected mode.
+ * @category Coloring
+ * @return {!anychart.graphics.vector.Fill} Current fill color.
+ * @since 7.x
  */
 anychart.core.scatter.series.Bubble.prototype.selectNegativeFill;
 
 /**
- * Getter/setter for select hatch fill settings.
- * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
- * string|boolean)=} opt_patternFillOrTypeOrState PatternFill or HatchFill instance or type of hatch fill.
- * @param {string=} opt_color Color.
- * @param {number=} opt_thickness Thickness.
- * @param {number=} opt_size Pattern size.
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|anychart.core.scatter.series.Base|Function|boolean} Hatch fill.
+ * Sets fill settings in selected mode using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.scatter.series.Bubble#displayNegative}.
+ * @example anychart.core.scatter.series.Bubble.selectNegativeFill_set_asString Using string
+ * @example anychart.core.scatter.series.Bubble.selectNegativeFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectNegativeFill;
+
+/**
+ * Fill color in selected mode with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.<br/>
+ * <b>Note:</b> Works only with {@link anychart.core.scatter.series.Bubble#displayNegative}.
+ * @example anychart.core.scatter.series.Bubble.selectNegativeFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectNegativeFill;
+
+/**
+ * Linear gradient fill in selected mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.scatter.series.Bubble#displayNegative}.
+ * @example anychart.core.scatter.series.Bubble.selectNegativeFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectNegativeFill;
+
+/**
+ * Radial gradient fill in selected mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.scatter.series.Bubble#displayNegative}.
+ * @example anychart.core.scatter.series.Bubble.selectNegativeFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectNegativeFill;
+
+/**
+ * Image fill in selected mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.scatter.series.Bubble#displayNegative}.
+ * @example anychart.core.scatter.series.Bubble.selectNegativeFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectNegativeFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.scatter.series.Bubble.prototype.selectNegativeHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current hatch fill settings in selected mode.
+ * @shortDescription Negative hatch fill settings.
+ * @category Coloring
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
+ * @since 7.x
  */
 anychart.core.scatter.series.Bubble.prototype.selectNegativeHatchFill;
 
-/** @inheritDoc */
+/**
+ * Setter for hatch fill settings in selected mode.
+ * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.scatter.series.Bubble#displayNegative}.
+ * @example anychart.core.scatter.series.Bubble.selectNegativeHatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectNegativeHatchFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.scatter.series.Bubble.prototype.selectHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current hatch fill settings in selected mode.
+ * @shortDescription Hatch fill settings.
+ * @category Coloring
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
+ * @since 7.x
+ */
 anychart.core.scatter.series.Bubble.prototype.selectHatchFill;
 
-/** @inheritDoc */
+/**
+ * Setter for hatch fill settings in selected mode.
+ * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.scatter.series.Bubble#displayNegative}.
+ * @example anychart.core.scatter.series.Bubble.selectHatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectHatchFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.scatter.series.Bubble.prototype.selectFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current series fill color in selected mode.
+ * @shortDescription Fill settings in selected mode.
+ * @category Coloring
+ * @return {!anychart.graphics.vector.Fill} Current fill color.
+ * @since 7.x
+ */
 anychart.core.scatter.series.Bubble.prototype.selectFill;
 
-/** @inheritDoc */
+/**
+ * Sets fill settings in selected mode using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.scatter.series.Bubble.selectFill_set_asString Using string
+ * @example anychart.core.scatter.series.Bubble.selectFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectFill;
+
+/**
+ * Fill color in selected mode with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.scatter.series.Bubble.selectFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectFill;
+
+/**
+ * Linear gradient fill in selected mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.scatter.series.Bubble.selectFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectFill;
+
+/**
+ * Radial gradient fill in selected mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.scatter.series.Bubble.selectFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectFill;
+
+/**
+ * Image fill in selected mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.scatter.series.Bubble.selectFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.scatter.series.Bubble.prototype.selectStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current stroke settings in selected mode.
+ * @shortDescription Stroke settings in selected mode.
+ * @category Coloring
+ * @return {anychart.graphics.vector.Stroke|Function} Current stroke settings.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectStroke;
+
+/**
+ * Setter for series stroke in selected mode by function.
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.scatter.series.Bubble#displayNegative}.
+ * @example anychart.core.scatter.series.Bubble.selectStroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor -  color returned by stroke() getter.
+ *    // this.iterator - series point iterator.
+ *    return strokeValue; // type anychart.graphics.vector.Fill or anychart.graphics.vector.Stroke
+ * }</code>.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
+anychart.core.scatter.series.Bubble.prototype.selectStroke;
+
+/**
+ * Setter for stroke settings in selected mode.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @detailed <b>Note:</b> Works only with {@link anychart.core.scatter.series.Bubble#displayNegative}.
+ * @example anychart.core.scatter.series.Bubble.selectStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
+ * @param {number=} opt_thickness Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.scatter.series.Bubble} Self instance for method chaining.
+ * @since 7.x
+ */
 anychart.core.scatter.series.Bubble.prototype.selectStroke;
 

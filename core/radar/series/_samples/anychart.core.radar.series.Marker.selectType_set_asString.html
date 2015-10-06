@@ -1,13 +1,16 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="radar line"/>
+    <meta name="x-cat-tags" content="radar marker"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var chart = anychart.radar();
-            var series = chart.line([1, 4, 7, 1, 4]);
-            series.hoverMarkers(null); // disable hoverMarkers
+
+            var series = chart.marker([6, 3, 6, 1, 6, 3, 6, 1]);
+            // Sets markers type in selected mode.
+            series.selectType("star5");
+
             chart.container("container");
             chart.draw();
         });

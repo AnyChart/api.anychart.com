@@ -1,13 +1,18 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="polar line"/>
+    <meta name="x-cat-tags" content="radar line"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var chart = anychart.polar();
-            var series = chart.line([1, 4, 7, 1]);
-            series.markers(true); // enables markers
+            var chart = anychart.radar();
+
+            var series = chart.line([6, 1, 6, 1, 6, 1, 6, 1]);
+            series.markers(true);
+
+            // Sets markers in selected mode.
+            series.selectMarkers({size: 10, type: "star5"});
+
             chart.container("container");
             chart.draw();
         });
