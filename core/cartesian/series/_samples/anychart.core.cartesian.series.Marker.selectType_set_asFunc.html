@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="marker"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.cartesian();
+
+            var series = chart.marker([10, 11, 17, 7, 21]);
+            series.size(20);
+            series.selectSize(20);
+            // Sets type in selected mode using function.
+            series.selectType(function(path, x, y, size) {
+                var point1 = {x: x + 1.2 * size, y: y - 0.4 * size};
+                var point2 = {x: x - 0.5 * size, y: y - 0.5 * size};
+                path.moveTo(point1.x, point1.y)
+                        .arcToByEndPoint(point2.x, point2.y, size, size, true, true)
+                        .arcToByEndPoint(point1.x, point1.y, size / 3, size / 3, false, false)
+                        .moveTo(point1.x, point1.y)
+                        .close();
+                return path;
+            });
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

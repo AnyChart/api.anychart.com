@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="marker"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.cartesian();
+
+            var firstSeries = chart.marker([10, 11, 17, 7, 21]);
+            firstSeries.hatchFill(true);
+            firstSeries.selectHatchFill("zigZag");
+            firstSeries.size(20);
+            firstSeries.selectSize(20);
+
+            var secondSeries = chart.marker([5, 16, 25, 30, 15]);
+            secondSeries.hatchFill(true);
+            secondSeries.size(20);
+            secondSeries.selectSize(20);
+
+            // Gets hatch fill for selected mode.
+            var selectedHatchFill = firstSeries.selectHatchFill();
+
+            secondSeries.selectHatchFill(selectedHatchFill);
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

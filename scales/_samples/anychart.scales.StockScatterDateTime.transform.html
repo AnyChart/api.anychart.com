@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="stock"/>
+    <script src="../../anychart.min.js"></script>
+    <script src="http://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var dataTable = anychart.data.table();
+            dataTable.addData(get_dji_daily_short_data());
+
+            var mapping = dataTable.mapAs({value: 1});
+
+            var chart = anychart.stock();
+            chart.padding(10, 10, 10, 50);
+
+            var currentPlot = chart.plot();
+            currentPlot.line(mapping);
+
+            chart.xScale("scatter");
+            chart.container('container');
+            chart.draw();
+
+            var currentXScale = chart.xScale();
+            // Tries to get "2004-01-20" position ratio.
+            currentXScale.transform("2004-01-20", 0.5);
+            // Returns 0.008964143426294821.
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

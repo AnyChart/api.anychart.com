@@ -1,0 +1,608 @@
+/**
+ * Scroller ui element
+ * @constructor
+ * @extends {anychart.core.VisualBase}
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Scroller.prototype.thumbs
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current thumbs.
+ * @shortDescription Thumbs settings.
+ * @category Specific settings
+ * @example anychart.core.ui.Scroller.thumbs_get
+ * @return {anychart.core.ui.Scroller.Thumbs} Thumbs instance.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.thumbs;
+
+/**
+ * Setter for the thumbs settings.
+ * @detailed Sets thumbs settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable thumbs.</li>
+ *   <li><b>object</b> - sets thumbs settings.</li>
+ * </ul>
+ * @example anychart.core.ui.Scroller.thumbs_set_asBool Disable/Enable thumbs
+ * @example anychart.core.ui.Scroller.thumbs_set_asObj Using thumbs
+ * @param {(boolean|Object|null)=} opt_value [null] Thumbs settings.
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.thumbs;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Scroller.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current scroller fill.
+ * @shortDescription Fill settings.
+ * @category Coloring
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.ui.Scroller.fill_get
+ * @return {!anychart.graphics.vector.Fill} The current fill color.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.fill;
+
+/**
+ * Sets scroller fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Scroller.fill_set_asString Using string
+ * @example anychart.core.ui.Scroller.fill_set_asArray Using array
+ * @detailed Used to fill the background of selected part of the scroller.
+ * @param {anychart.graphics.vector.Fill} value ["#fff"] Color as an array or a string.
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.fill;
+
+/**
+ * Scroller fill color with opacity.
+ * @detailed Used to fill the background of selected part of the scroller.
+ * <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Scroller.fill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.fill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed Used to fill the background of selected part of the scroller.
+ * @example anychart.core.ui.Scroller.fill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.fill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed Used to fill the background of selected part of the scroller.
+ * @example anychart.core.ui.Scroller.fill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.fill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Scroller.fill_set_asImg
+ * @detailed Used to fill the background of selected part of the scroller.
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.fill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Scroller.prototype.selectedFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current scroller fill in selected mode.
+ * @shortDescription Fill settings.
+ * @category Coloring
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.ui.Scroller.selectedFill_get
+ * @return {!anychart.graphics.vector.Fill} The current fill color.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.selectedFill;
+
+/**
+ * Sets scroller fill settings in selected mode using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed Used to fill the background of selected part of the scroller.
+ * @example anychart.core.ui.Scroller.selectedFill_set_asString Using string
+ * @example anychart.core.ui.Scroller.selectedFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [{color: "#1976d2", opacity: 0.2}] Color as an array or a string.
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.selectedFill;
+
+/**
+ * Scroller fill color in selected mode with opacity.
+ * @detailed Used to fill the background of selected part of the scroller.
+ * <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Scroller.selectedFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.selectedFill;
+
+/**
+ * Linear gradient fill in selected mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed Used to fill the background of selected part of the scroller.
+ * @example anychart.core.ui.Scroller.selectedFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.selectedFill;
+
+/**
+ * Radial gradient fill in selected mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed Used to fill the background of selected part of the scroller.
+ * @example anychart.core.ui.Scroller.selectedFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.selectedFill;
+
+/**
+ * Image fill in selected mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed Used to fill the background of selected part of the scroller.
+ * @example anychart.core.ui.Scroller.selectedFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.selectedFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Scroller.prototype.outlineStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current outline stroke settings.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Scroller.outlineStroke_get
+ * @return {!anychart.graphics.vector.Stroke} The current stroke settings.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.outlineStroke;
+
+/**
+ * Setter for the outline stroke settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.ui.Scroller.outlineStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["#cecece"] Stroke settings.
+ * @param {number=} opt_thickness Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.outlineStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Scroller.prototype.height
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current scroller height.
+ * @shortDescription Scroller height.
+ * @category Size and Position
+ * @example anychart.core.ui.Scroller.height_get
+ * @return {number|string} The current scroller height.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.height;
+
+/**
+ * Setter for the scroller height.
+ * @example anychart.core.ui.Scroller.height_set
+ * @param {(number|string)=} opt_value [40] Scroller height
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.height;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Scroller.prototype.minHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Setter for the current scroller minimum height.
+ * @shortDescription Scroller minimum height.
+ * @category Size and Position
+ * @example anychart.core.ui.Scroller.minHeight_get
+ * @return {number|string|null} The current scroller minimum height.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.minHeight;
+
+/**
+ * Setter for the scroller minimum height.
+ * @example anychart.core.ui.Scroller.minHeight_set
+ * @param {(number|string|null)=} opt_value Minimum height.
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.minHeight;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Scroller.prototype.maxHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current scroller maximum height.
+ * @shortDescription Scroller maximum height.
+ * @category Size and Position
+ * @example anychart.core.ui.Scroller.maxHeight_get
+ * @return {number|string|null} The current scroller maximum height.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.maxHeight;
+
+/**
+ * Setter for the scroller maximum height.
+ * @example anychart.core.ui.Scroller.maxHeight_set
+ * @param {(number|string|null)=} opt_value Maximum height
+ * @return {anychart.core.ui.Scroller} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.prototype.maxHeight;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Scroller.Thumbs
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Thumbs settings. Doesn't draw anything, just contains settings and notifies the scroller about their change.
+ * @param {!anychart.core.ui.Scroller} scroller
+ * @constructor
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Scroller.Thumbs.prototype.enabled
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current thumbs state (enabled or disabled)
+ * @shortDescription Thumbs state (enabled or disabled).
+ * @category Interactivity
+ * @example anychart.core.ui.Scroller.Thumbs.enabled_get
+ * @return {boolean} The current thumbs state.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.enabled;
+
+/**
+ * Getter for the current thumbs state.
+ * Whether the thumbs should be drawn.
+ * @example anychart.core.ui.Scroller.Thumbs.enabled_set
+ * @param {boolean=} opt_value Value to set.
+ * @return {anychart.core.ui.Scroller.Thumbs} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.enabled;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Scroller.Thumbs.prototype.autoHide
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current auto hide.
+ * @shortDescription Auto hide
+ * @category Interactivity
+ * @example anychart.core.ui.Scroller.Thumbs.autoHide_get
+ * @return {boolean} The current auto hide.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.autoHide;
+
+/**
+ * Setter for the auto hide.
+ * Whether the thumbs should be hidden on scroller mouse out event.
+ * @example anychart.core.ui.Scroller.Thumbs.autoHide_set
+ * @param {boolean=} opt_value [false] Boolean value.
+ * @return {anychart.core.ui.Scroller.Thumbs} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.autoHide;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Scroller.Thumbs.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current thumbs fill color.
+ * @shortDescription Fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Scroller.Thumbs.fill_get
+ * @return {!anychart.graphics.vector.Fill} The current fill color.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.fill;
+
+/**
+ * Sets thumbs fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Scroller.Thumbs.fill_set_asString Using string
+ * @example anychart.core.ui.Scroller.Thumbs.fill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ["#f7f7f7"] Color as an array or a string.
+ * @return {anychart.core.ui.Scroller.Thumbs} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.fill;
+
+/**
+ * Thumbs fill color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Scroller.Thumbs.fill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Scroller.Thumbs} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.fill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Scroller.Thumbs.fill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Scroller.Thumbs} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.fill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Scroller.Thumbs.fill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Scroller.Thumbs} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.fill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Scroller.Thumbs.fill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Scroller.Thumbs} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.fill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Scroller.Thumbs.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current thumbs stroke settings.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Scroller.Thumbs.stroke_get
+ * @return {!anychart.graphics.vector.Stroke} The current stroke settings.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.stroke;
+
+/**
+ * Setter for thumbs stroke settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.ui.Scroller.Thumbs.stroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["#7c868e"] Stroke settings.
+ * @param {number=} opt_thickness Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.ui.Scroller.Thumbs} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.stroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Scroller.Thumbs.prototype.hoverFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for current thumbs fill color on hover state.
+ * @shortDescription Fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Scroller.Thumbs.hoverFill_get
+ * @return {!anychart.graphics.vector.Fill} The current fill color.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.hoverFill;
+
+/**
+ * Sets thumbs fill settings on hover state using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Scroller.Thumbs.hoverFill_set_asString Using string
+ * @example anychart.core.ui.Scroller.Thumbs.hoverFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ["#ffffff"] Color as an object or a string.
+ * @return {anychart.core.ui.Scroller.Thumbs} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.hoverFill;
+
+/**
+ * Thumbs fill color with opacity on hover state.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Scroller.Thumbs.hoverFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Scroller.Thumbs} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.hoverFill;
+
+/**
+ * Linear gradient fill on hover state.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Scroller.Thumbs.hoverFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Scroller.Thumbs} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.hoverFill;
+
+/**
+ * Radial gradient fill on hover state.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Scroller.Thumbs.hoverFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Scroller.Thumbs} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.hoverFill;
+
+/**
+ * Image fill on hover state.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Scroller.Thumbs.hoverFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Scroller.Thumbs} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.hoverFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Scroller.Thumbs.prototype.hoverStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current thumbs stroke settings on hover state.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Scroller.Thumbs.hoverStroke_get
+ * @return {!anychart.graphics.vector.Stroke} The current stroke settings.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.hoverStroke;
+
+/**
+ * Setter for thumbs stroke settings on hover state.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.ui.Scroller.Thumbs.hoverStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["#545f69"] Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.ui.Scroller.Thumbs} Self instance for method chaining.
+ * @since 7.7.0
+ */
+anychart.core.ui.Scroller.Thumbs.prototype.hoverStroke;
+

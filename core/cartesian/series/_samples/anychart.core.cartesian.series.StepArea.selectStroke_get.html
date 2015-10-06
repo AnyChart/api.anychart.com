@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="stepArea"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.cartesian();
+
+            var series = chart.stepArea([
+                [0, 125],
+                [1, 132],
+                [2, 141],
+                [3, 158],
+                [4, 133],
+                [5, 143]
+            ]);
+            series.selectStroke("#FF9800");
+
+            // Get stroke in selected mode.
+            var selectedStroke = series.selectStroke();
+
+            chart.title({fontColor: selectedStroke});
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

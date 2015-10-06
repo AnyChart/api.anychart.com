@@ -8,16 +8,22 @@
             var formatterFunc = function() {
                 return this.seriesName;
             };
+
             var chart = anychart.scatter();
+            chart.line([10, 35, 18, 25, 35, 4]);
+
             var series = chart.marker([
                 [4.1, 10],
                 [2.3, 6],
                 [3.4, 17],
                 [1.2, 20]
             ]);
-            series.name("My Custom series name"); // sets name
+            // Sets name.
+            series.name("My Custom series name");
+
             var tooltip = series.tooltip();
-            tooltip.contentFormatter(formatterFunc);
+            tooltip.textFormatter(formatterFunc);
+
             chart.legend(true);
             chart.container("container");
             chart.draw();

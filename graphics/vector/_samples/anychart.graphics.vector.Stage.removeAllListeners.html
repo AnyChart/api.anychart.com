@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content=""/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+
+            var simpleText = stage.text(50, 50);
+            simpleText.style({fontStyle: "italic", fontSize: "15px"});
+            simpleText.text("MouseOver the title and click on line series.");
+
+
+            stage.listen("mouseout", function(e) {
+                simpleText.color("#1B5E20")
+            });
+
+            stage.listen("mouseover", function(e) {
+                simpleText.color("#D50000");
+            });
+            stage.listen("click", function(e) {
+                simpleText.text("You can\'t click here anymore.");
+                simpleText.color("#212121");
+                // Removes all listeners.
+                stage.removeAllListeners();
+            });
+
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

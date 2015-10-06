@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="column"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+
+            var columnChart = anychart.column();
+            columnChart.column([5, 8, 4, 6]);
+            columnChart.column([6, 2, 5, 3]);
+            columnChart.bounds(0, 0, "50%", "100%");
+
+            var interactivityColumnChart = columnChart.interactivity();
+            interactivityColumnChart.hoverMode("byX");
+
+            columnChart.container(stage);
+            columnChart.draw();
+
+            var areaChart = anychart.bar();
+            areaChart.bar([18, 5, 12, 15]);
+            areaChart.bar([10, 25, 16, 21]);
+            areaChart.bounds("50%", 0, "50%", "100%");
+
+            // Gets hover mode of column chart.
+            var hoverModeColumnChart = interactivityColumnChart.hoverMode();
+
+            var interactivityAreaChart = areaChart.interactivity();
+            interactivityAreaChart.hoverMode(hoverModeColumnChart);
+
+            areaChart.container(stage);
+            areaChart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
