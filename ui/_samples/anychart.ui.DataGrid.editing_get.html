@@ -2,8 +2,8 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="dataGrid"/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="dataGrid">
+    <script src="../../anychart.min.js"></script>
+    <script x-export="currentDataGrid">
         anychart.onDocumentReady(function() {
             var data = [
                 {id: "1", name: "Phase 1 - Strategic Plan"},
@@ -11,14 +11,24 @@
                 {id: "3", name: "14%", parent: "1"},
                 {id: "4", name: "25%", parent: "2"},
                 {id: "5", name: "Define business vision"},
-                {id: "6", name: "0%", parent: "5"}
+                {id: "6", name: "0%", parent: "5"},
+                {id: "7", "name": "Interview owners of similar businesses"}
             ];
+
             var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
-            var dataGrid = anychart.ui.dataGrid();
-            dataGrid.data(treeData);
-            dataGrid.titleHeight(50); // sets title height.
-            dataGrid.container("container");
-            dataGrid.draw();
+
+            var currentDataGrid = anychart.ui.dataGrid();
+            currentDataGrid.data(treeData);
+            currentDataGrid.titleHeight(25);
+
+            // Gets live edit mode.
+            var mode = currentDataGrid.editing();
+
+            var firstColumn = currentDataGrid.column(1);
+            firstColumn.title("Mode - " + mode);
+
+            currentDataGrid.container("container");
+            currentDataGrid.draw();
         });
     </script>
 </head>

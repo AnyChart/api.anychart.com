@@ -1,0 +1,1951 @@
+/**
+ * Class for the gantt timeline.
+ * @param {anychart.core.ui.Controller=} opt_controller - Controller to be set. See full description in parent class.
+ * @param {boolean=} opt_isResources - Flag if TL must have a controller that works in 'Resources' mode.
+ * @constructor
+ * @extends {anychart.core.ui.BaseGrid}
+ */
+anychart.core.ui.Timeline;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.connectorPreviewStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current connector preview stroke.
+ * @shortDescription Connector preview stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.connectorPreviewStroke_get
+ * @return {anychart.graphics.vector.Stroke|string} The current connector preview stroke.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.connectorPreviewStroke;
+
+/**
+ * Setter for the connector preview stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @detailed To display connector preview you can move mouse cursor on the bar and then drag-and-drop it to desired bar.
+ * @example anychart.core.ui.Timeline.connectorPreviewStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value [{color: "#0000ff",
+ * opacity: 0.6, dash: "3 3"}] Stroke settings.
+ * @param {number=} opt_thickness Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.connectorPreviewStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.editPreviewFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current edit preview fill.
+ * @shortDescription Edit preview fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.editPreviewFill_get
+ * @return {anychart.graphics.vector.Fill|string} The current edit preview fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editPreviewFill;
+
+/**
+ * Sets fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editPreviewFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.editPreviewFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [{color: "#fff", opacity: 0.00001}] Color as an object or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editPreviewFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.editPreviewFill_set_asOpacity
+ * @param {string} color ["none"] Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editPreviewFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editPreviewFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editPreviewFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editPreviewFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editPreviewFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editPreviewFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editPreviewFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.editPreviewStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current edit preview stroke.
+ * @shortDescription Edit preview stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.editPreviewStroke_get
+ * @return {anychart.graphics.vector.Stroke|string} The current edit preview stroke.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editPreviewStroke;
+
+/**
+ * Setter for the edit preview stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.ui.Timeline.editPreviewStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value [{color: "#aaa",
+  * dash: "3 3"}] Stroke settings.
+ * @param {number=} opt_thickness Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editPreviewStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.editProgressFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current edit progress fill.
+ * @shortDescription Edit progress preview fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.editProgressFill_get
+ * @return {anychart.graphics.vector.Fill|string} The current edit progress fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editProgressFill;
+
+/**
+ * Sets fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editProgressFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.editProgressFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ["#fff"] Color as an array or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editProgressFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.editProgressFill_set_asOpacity
+ * @param {string} color ["#fff"] Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editProgressFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editProgressFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editProgressFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editProgressFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editProgressFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editProgressFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editProgressFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.editProgressStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current edit progress stroke.
+ * @shortDescription Edit progress preview stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.editProgressStroke_get
+ * @return {anychart.graphics.vector.Stroke|string} The current edit progress stroke.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editProgressStroke;
+
+/**
+ * Setter for the edit progress stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.ui.Timeline.editProgressStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["#000"] Stroke settings.
+ * @param {number=} opt_thickness Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editProgressStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.editIntervalThumbFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current edit interval thumb fill.
+ * @shortDescription Edit interval preview fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.editIntervalThumbFill_get
+ * @return {anychart.graphics.vector.Fill|string} The current edit interval fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editIntervalThumbFill;
+
+/**
+ * Sets fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editIntervalThumbFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.editIntervalThumbFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ["#fff"] Color as an array or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editIntervalThumbFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.editIntervalThumbFill_set_asOpacity
+ * @param {string} color ["#fff"] Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editIntervalThumbFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editIntervalThumbFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editIntervalThumbFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editIntervalThumbFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editIntervalThumbFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editIntervalThumbFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editIntervalThumbFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.editIntervalThumbStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current edit interval thumb stroke.
+ * @shortDescription Edit interval thumb stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.editIntervalThumbStroke_get
+ * @return {anychart.graphics.vector.Stroke|string} The current edit interval thumb stroke.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editIntervalThumbStroke;
+
+/**
+ * Setter for the edit interval thumb stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.ui.Timeline.editIntervalThumbStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["#000"] Stroke settings.
+ * @param {number=} opt_thickness Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editIntervalThumbStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.editConnectorThumbFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current edit connector thumb fill.
+ * @shortDescription Edit connector thumb fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.editConnectorThumbFill_get
+ * @return {anychart.graphics.vector.Fill|string} The current edit connector thumb fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editConnectorThumbFill;
+
+/**
+ * Sets fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editConnectorThumbFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.editConnectorThumbFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ["#fff"] Color as an array or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editConnectorThumbFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.editConnectorThumbFill_set_asOpacity
+ * @param {string} color ["#fff"] Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editConnectorThumbFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editConnectorThumbFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editConnectorThumbFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editConnectorThumbFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editConnectorThumbFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.editConnectorThumbFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editConnectorThumbFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.editConnectorThumbStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current edit connector thumb stroke.
+ * @shortDescription Edit connector thumb stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.editConnectorThumbStroke_get
+ * @return {anychart.graphics.vector.Stroke|string} The current edit connector thumb stroke.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editConnectorThumbStroke;
+
+/**
+ * Setter for the edit connector thumb stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.ui.Timeline.editConnectorThumbStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["#000"] Stroke settings.
+ * @param {number=} opt_thickness Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editConnectorThumbStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.baseFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current base fill.
+ * @shortDescription Base fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.baseFill_get
+ * @return {anychart.graphics.vector.Fill|string} The current base fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baseFill;
+
+/**
+ * Sets base fill settings using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed Base fill is a fill of simple time bar on timeline.
+ * @example anychart.core.ui.Timeline.baseFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.baseFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ["none"] Color as an object or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baseFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.baseFill_set_asOpacity
+ * @param {string} color ["none"] Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baseFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.baseFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baseFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.baseFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baseFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.baseFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baseFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.baseStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current base stroke settings.
+ * @shortDescription Base stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.baseStroke_get
+ * @return {anychart.graphics.vector.Stroke|string} The current base stroke settings.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baseStroke;
+
+/**
+ * Setter for the base stroke settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @detailed Base stroke is a stroke of simple time bar on timeline.
+ * @example anychart.core.ui.Timeline.baseStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ['#0C3F5F'] Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baseStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.baselineFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current baseline fill.
+ * @shortDescription Baseline fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.baselineFill_get
+ * @return {anychart.graphics.vector.Fill|string} The current baseline fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baselineFill;
+
+/**
+ * Sets baseline fill settings using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed Baseline fill is a fill of baseline bar on timeline.
+ * @example anychart.core.ui.Timeline.baselineFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.baselineFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [{keys: Array["#E1E1E1", "#A1A1A1"], angle: -90, mode: false, opacity: 1}]
+ * Color as an object or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baselineFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.baselineFill_set_asOpacity
+ * @param {string} color ['#ccd7e1'] Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baselineFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.baselineFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baselineFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.baselineFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baselineFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.baselineFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baselineFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.baselineStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current baseline stroke settings.
+ * @shortDescription Baseline stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.baselineStroke_get
+ * @return {anychart.graphics.vector.Stroke|string} The current baseline stroke settings.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baselineStroke;
+
+/**
+ * Setter for the baseline stroke settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @detailed Baseline stroke is a stroke of baseline bar on timeline.
+ * @example anychart.core.ui.Timeline.baselineStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ['#0C3F5F'] Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line join style.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baselineStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.progressFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current progress bar fill.
+ * @shortDescription Progress bar fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.progressFill_get
+ * @return {anychart.graphics.vector.Fill|string} The current progress bar fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.progressFill;
+
+/**
+ * Sets progress fill settings using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed Progress fill is a fill of progress bar on timeline.
+ * @example anychart.core.ui.Timeline.progressFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.progressFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [{keys: Array["#63FF78", "#3DC351", "#188E2D"], angle: -90, mode: false, opacity: 1}]
+ * Color as an object or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.progressFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.progressFill_set_asOpacity
+ * @param {string} color ['#ccd7e1'] Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.progressFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.progressFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.progressFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.progressFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.progressFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.progressFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.progressFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.progressStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current progress stroke settings.
+ * @shortDescription Progress stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.progressStroke_get
+ * @return {anychart.graphics.vector.Stroke|string} The current progress stroke settings.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.progressStroke;
+
+/**
+ * Setter for the progress bar stroke settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @detailed Progress stroke is a stroke of progress bar on timeline.
+ * @example anychart.core.ui.Timeline.progressStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["#006616"] Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line join style.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.progressStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.milestoneFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current milestone fill.
+ * @shortDescription Milestone fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.milestoneFill_get
+ * @return {anychart.graphics.vector.Fill|string} The current milestone fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.milestoneFill;
+
+/**
+ * Sets milestone fill settings using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed Milestone fill is a fill of milestone on timeline.
+ * @example anychart.core.ui.Timeline.milestoneFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.milestoneFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [{keys: Array["#FAE096", "#EB8344"], angle: -90, mode: false, opacity: 1}]
+ * Color as an object or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.milestoneFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.milestoneFill_set_asOpacity
+ * @param {string} color ['#ccd7e1'] Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.milestoneFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.milestoneFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.milestoneFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.milestoneFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.milestoneFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.milestoneFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.milestoneFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.milestoneStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current milestone stroke settings.
+ * @shortDescription Milestone stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.milestoneStroke_get
+ * @return {anychart.graphics.vector.Stroke|string} The current milestone stroke settings.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.milestoneStroke;
+
+/**
+ * Setter for the milestone stroke settings.
+ * @detailed Milestone stroke is a stroke of milestone on timeline.
+ * @example anychart.core.ui.Timeline.milestoneStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["#000000"] Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line join style.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.milestoneStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.parentFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current parent fill.
+ * @shortDescription Parent fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.parentFill_get
+ * @return {anychart.graphics.vector.Fill|string} The current parent fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.parentFill;
+
+/**
+ * Sets parent fill settings using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed Parent fill is a fill of summary (parent) task bar on timeline.
+ * @example anychart.core.ui.Timeline.parentFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.parentFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [{keys: Array["#646464", "#282828"], angle: -90, mode: false, opacity: 1}]
+ * Color as an object or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.parentFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.parentFill_set_asOpacity
+ * @param {string} color ['#ccd7e1'] Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.parentFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.parentFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.parentFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.parentFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.parentFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.parentFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.parentFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.parentStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current parent stroke settings.
+ * @shortDescription Parent stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.parentStroke_get
+ * @return {anychart.graphics.vector.Stroke|string} The current parent stroke settings.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.parentStroke;
+
+/**
+ * Setter for the parent stroke settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @detailed Parent stroke is a stroke of summary (parent) task bar on timeline.
+ * @example anychart.core.ui.Timeline.parentStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["#000000"] Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line join style.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.parentStroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.connectorFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the connector baseline fill.
+ * @shortDescription Connector fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.connectorFill_get
+ * @return {anychart.graphics.vector.Fill|string} The current baseline fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.connectorFill;
+
+/**
+ * Sets baseline fill settings using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed Connector fill is a fill of arrow of connector on timeline.
+ * @example anychart.core.ui.Timeline.connectorFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.connectorFill_set_asArray Using array
+ * @param {(!anychart.graphics.vector.Fill|!Array.<(anychart.graphics.vector.GradientKey|string)>|null)=} opt_value ["#000090"] Fill settings.
+ * @param {number=} opt_cx X ratio of center radial gradient.
+ * @param {number=} opt_cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_opacityOrMode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.connectorFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.connectorStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current connector stroke settings.
+ * @shortDescription Connector stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.connectorStroke_get
+ * @return {anychart.graphics.vector.Stroke|string} The current connector stroke settings.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.connectorStroke;
+
+/**
+ * Setter for the connector stroke settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @detailed Connector stroke is a stroke of connector's line on timeline.
+ * @example anychart.core.ui.Timeline.connectorStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["#000090"] Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line join style.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.connectorStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.selectedElementFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current selected element fill.
+ * @shortDescription Fill settings for selected element.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.selectedElementFill_get
+ * @return {anychart.graphics.vector.Fill|string} The current selected element fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.selectedElementFill;
+
+/**
+ * Sets selected element fill settings using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed Selected element fill is fill of selected element (whole data item or period) on timeline.
+ * @example anychart.core.ui.Timeline.selectedFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.selectedFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [{keys: Array["#f1b8b9", "#f07578"], angle: -90, mode: false, opacity: 1}]
+ * Color as an object or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.selectedElementFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.selectedFill_set_asOpacity
+ * @param {string} color ['#ccd7e1'] Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.selectedElementFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.selectedFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.selectedElementFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.selectedFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.selectedElementFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.selectedFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.selectedElementFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.selectedElementStroke;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current selected element on timeline stroke settings.
+ * @shortDescription Stroke settings for selected element.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.selectedElementStroke_get
+ * @return {anychart.graphics.vector.Stroke|string} The current connector stroke settings.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.selectedElementStroke;
+
+/**
+ * Setter for the selected element on timeline stroke settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @detailed Connector stroke is a stroke of connector's line on timeline.
+ * @example anychart.core.ui.Timeline.selectedElementStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["#000090"] Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line join style.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.selectedElementStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.columnStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current column stroke.
+ * @shortDescription Column stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.columnStroke_get
+ * @return {(string|anychart.graphics.vector.Stroke)} The current column stroke.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.columnStroke;
+
+/**
+ * Setter for the column stroke.
+ * @example anychart.core.ui.Timeline.columnStroke_set
+ * @param {(anychart.graphics.vector.Stroke|string)=} opt_value [{color: "#ccd7e1", thickness: 1}] Value to set.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.columnStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.minimumGap;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for minimum gap.
+ * @shortDescription Minimum gap settings.
+ * @category Size and Position
+ * @example anychart.core.ui.Timeline.minimumGap_get
+ * @return {number} Current value of minimum gap.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.minimumGap;
+
+/**
+ * Setter for minimum gap.
+ * @example anychart.core.ui.Timeline.minimumGap_set
+ * @param {number} value [0.01] Value to set.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.minimumGap;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.maximumGap;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for maximum gap.
+ * @shortDescription Maximum gap settings.
+ * @category Size and Position
+ * @example anychart.core.ui.Timeline.maximumGap_get
+ * @return {number} Current value of maximum gap.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.maximumGap;
+
+/**
+ * Setter for maximum gap.
+ * @example anychart.core.ui.Timeline.maximumGap_set
+ * @param {number} value [0.01] Value to set.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.maximumGap;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.baselineAbove
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current "baseline above" flag.
+ * @shortDescription Displaying of the baseline bar above an time bar.
+ * @category Size and Position
+ * @example anychart.core.ui.Timeline.baselineAbove_get
+ * @return {boolean} The current boolean value.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baselineAbove;
+
+/**
+ * Setter for the "baseline above" flag.
+ * @example anychart.core.ui.Timeline.baselineAbove_set
+ * @detailed If the flag is set to 'true', baseline bar will be displayed above an actual time bar.
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.baselineAbove;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.rowFill;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for row fill.
+ * @shortDescription Row fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.rowFill_get
+ * @return {anychart.graphics.vector.Fill|string} Current value row fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowFill;
+
+/**
+ * Sets row fill settings using an array or a string. Resets odd fill and even fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.rowFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ["#fff"] Color as an array or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.rowFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.rowOddFill;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for row odd fill.
+ * @shortDescription Row odd fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.rowOddFill_get
+ * @return {anychart.graphics.vector.Fill|string} Current value row odd fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowOddFill;
+
+/**
+ * Sets row odd fill settings using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowOddFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.rowOddFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ["#fff"] Color as an object or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowOddFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.rowOddFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowOddFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowOddFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowOddFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowOddFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowOddFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowOddFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowOddFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.rowEvenFill;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for row even fill.
+ * @shortDescription Row even settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.rowEvenFill_get
+ * @return {anychart.graphics.vector.Fill|string} Current value row even fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowEvenFill;
+
+/**
+ * Sets row even fill settings using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowEvenFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.rowEvenFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ["#fff"] Color as an object or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowEvenFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.rowEvenFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowEvenFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowEvenFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowEvenFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowEvenFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowEvenFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowEvenFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowEvenFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.rowHoverFill;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for row hover fill.
+ * @shortDescription Row settings on hover fill.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.rowHoverFill_get
+ * @return {anychart.graphics.vector.Fill|string} Current value row hover fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowHoverFill;
+
+/**
+ * Sets row hover fill settings using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowHoverFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.rowHoverFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value ["#edf8ff"] Color as an object or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowHoverFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.rowHoverFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowHoverFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowHoverFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowHoverFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowHoverFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowHoverFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.tooltip;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for tooltip settings.
+ * @shortDescription Tooltip settings.
+ * @category Interactivity
+ * @example anychart.core.ui.Timeline.tooltip_get
+ * @return {!anychart.core.ui.Tooltip} Tooltip instance.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.tooltip;
+
+/**
+ * Setter for tooltip.
+ * @detailed Sets tooltip settings depend on of parameter's type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable tooltip.</li>
+ *   <li><b>object</b> - sets tooltip settings.</li>
+ * </ul>
+ * @example anychart.core.ui.Timeline.tooltip_set_asBool Disable/Enable tooltip
+ * @example anychart.core.ui.Timeline.tooltip_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [true] Tooltip settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.tooltip;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.editing
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets the current live edit mode.
+ * @shortDescription Live edit mode.
+ * @category Interactivity
+ * @example anychart.core.ui.Timeline.editing_get
+ * @return {boolean} The current live edit mode.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editing;
+
+/**
+ * Enables or disables live edit mode.
+ * @example anychart.core.ui.Timeline.editing_set
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.editing;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.rowSelectedFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for row fill in selected mode.
+ * @shortDescription Row settings in selected mode.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.rowSelectedFill_get
+ * @return {anychart.graphics.vector.Fill|string} Current value row fill in selected mode.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowSelectedFill;
+
+/**
+ * Sets row fill settings in selected mode using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowSelectedFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.rowSelectedFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value [] Color as an object or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowSelectedFill;
+
+/**
+ * Fill color in selected mode with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.rowSelectedFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowSelectedFill;
+
+/**
+ * Linear gradient fill in selected mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowSelectedFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowSelectedFill;
+
+/**
+ * Radial gradient fill in selected mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowSelectedFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowSelectedFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.rowSelectedFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowSelectedFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.backgroundFill;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current background fill.
+ * @shortDescription Background fill settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.backgroundFill_get
+ * @return {anychart.graphics.vector.Fill|string} Current background fill.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.backgroundFill;
+
+/**
+ * Sets fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.backgroundFill_set_asString Using string
+ * @example anychart.core.ui.Timeline.backgroundFill_set_asArray Using array
+ * @param {!anychart.graphics.vector.Fill} value ["none"] Color as an array or a string.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.backgroundFill;
+
+/**
+ * Fill color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.ui.Timeline.backgroundFill_set_asOpacity
+ * @param {string} color ["none"] Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.backgroundFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.backgroundFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.backgroundFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.backgroundFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {!anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.backgroundFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.ui.Timeline.backgroundFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.backgroundFill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Timeline.prototype.rowStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets the current row stroke.
+ * @shortDescription Row stroke settings.
+ * @category Coloring
+ * @example anychart.core.ui.Timeline.rowStroke_get
+ * @return {(string|anychart.graphics.vector.Stroke)} The current row stroke.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowStroke;
+
+/**
+ * Setter for the row stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.ui.Timeline.rowStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["#ccd7e1"] Stroke settings.
+ * @param {number=} opt_thickness Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 7.8.0
+ */
+anychart.core.ui.Timeline.prototype.rowStroke;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.bounds;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.left;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.right;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.top;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.bottom;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.width;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.height;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.minWidth;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.minHeight;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.maxWidth;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.maxHeight;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.getPixelBounds;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.zIndex;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.enabled;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.print;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.saveAsPNG;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.saveAsJPG;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.saveAsPDF;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.saveAsSVG;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.toSVG;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.listen;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.listenOnce;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.unlisten;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.unlistenByKey;
+
+/** @inheritDoc */
+anychart.core.ui.Timeline.prototype.removeAllListeners;
+
