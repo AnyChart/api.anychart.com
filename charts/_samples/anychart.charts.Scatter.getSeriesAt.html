@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="scatter line"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var firstData = [40, 30, 40, 30, 40, 30, 40, 30];
+            var secondData = [23, 41, 23, 41, 23, 11, 23, 5];
+            var thirdData = [60, 10, 60, 15, 60, 20, 60, 25];
+
+            var chart = anychart.scatter();
+            chart.defaultSeriesType("line");
+            chart.addSeries(firstData, secondData, thirdData);
+
+            // Gets the series by index.
+            var series = chart.getSeriesAt(0);
+            series.markers(true);
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
