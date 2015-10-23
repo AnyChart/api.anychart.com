@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="actualBug map"/>
+    <meta name="x-cat-tags" content="map"/>
     <script src="../../anychart.min.js"></script>
     <script src="http://cdn.anychart.com/geodata/countries/aus/australia.js" data-export="true"></script>
     <script x-export="australiaMap">
@@ -22,17 +22,19 @@
             var australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
 
-            var currentColorScale = anychart.scales.linearColor("#E0F7FA", "#0097A7");
+            var currentColorScale = anychart.scales.ordinalColor();
+            // Sets ranges.
+            currentColorScale.ranges([
+                {from: 10, to: 30},
+                {from: 30, to: 50},
+                {from: 50, to: 90}
+            ]);
 
             var series = australiaMap.choropleth(dataSetForSeries);
             series.geoIdField("code_hasc");
             series.colorScale(currentColorScale);
 
-            // NOT VALID!!!!
-            //var settings = anychart.ui.colorRange();
-            //settings.length(50);
-            // Sets settings for the color range.
-            australiaMap.colorRange(settings);
+            australiaMap.colorRange(true);
             australiaMap.container("container");
             australiaMap.draw();
         });
