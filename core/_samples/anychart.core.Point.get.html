@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="pyramid"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.pyramid([
+                {x: "Physical ", value: 115},
+                {x: "Data Link ", value: 129},
+                {x: "Network", value: 165},
+                {x: "Transport", value: 125},
+                {x: "Session", value: 123},
+                {x: "Presentation", value: 135},
+                {x: "Application", value: 230}
+            ]);
+
+            var point = chart.getPoint(1);
+
+            // Gets field value.
+            var pointValue = point.get("value");
+            chart.title("Value of point is " + pointValue);
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
