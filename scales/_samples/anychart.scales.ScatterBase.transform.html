@@ -4,12 +4,15 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var chart = anychart.line([1.1, 1.4, 1.2, 1.9]);
             chart.container("container");
             chart.draw();
+
             // Trying to get to "1.25" tick position.
-            var position = chart.yScale().transform(1.25); // Returns 0.25
+            var currentYScale = chart.yScale();
+            currentYScale.transform(1.25);
+            // Returns 0.25
         });
     </script>
 </head>

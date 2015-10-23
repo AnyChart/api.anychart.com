@@ -4,9 +4,8 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var chart = anychart.line();
-            chart.line([
+        anychart.onDocumentReady(function () {
+            var chart = anychart.line([
                 ["A1", 1.1],
                 ["A2", 1.4],
                 ["A3", 1.2],
@@ -14,10 +13,8 @@
             ]);
 
             var scale = chart.xScale();
-
-            var currentTicks = scale.ticks();
-            // Sets interval.
-            currentTicks.interval(2);
+            // Sets values.
+            scale.values(["A1", "A2", "B1", "B2"]);
 
             chart.container("container");
             chart.draw();

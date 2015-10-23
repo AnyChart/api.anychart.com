@@ -4,12 +4,17 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var chart = anychart.line([1.1, 1.4, 1.2, 1.95]);
             chart.container("container");
             chart.draw();
+
+            var scale = chart.yScale();
+            // Trying to get a tick.
+            var position = scale.inverseTransform(0.39);
+
             // Draw a red marker on the found tick.
-            chart.lineMarker().value(chart.yScale().inverseTransform(0.39));
+            chart.lineMarker({value: position});
         });
     </script>
 </head>

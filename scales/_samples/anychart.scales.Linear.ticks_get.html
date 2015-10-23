@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line column"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+
+            var firstChart = anychart.line([1, 4, 2, 9]);
+            firstChart.bounds(0, 0, "50%", "100%");
+
+            var myYScale = firstChart.yScale();
+            myYScale.ticks([0, 1.25, 3.75, 6.25, 8.75, 11.25]);
+
+            firstChart.container(stage);
+            firstChart.draw();
+
+            var secondChart = anychart.column([1, 4, 2, 9]);
+            secondChart.bounds("50%", 0, "50%", "100%");
+
+            // Gets ticks.
+            var lineTicks = myYScale.ticks();
+
+            var currentYScale = secondChart.yScale();
+            currentYScale.ticks(lineTicks.get());
+
+            secondChart.container(stage);
+            secondChart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

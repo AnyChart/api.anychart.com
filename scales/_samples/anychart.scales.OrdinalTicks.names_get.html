@@ -4,11 +4,19 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            var chart = anychart.line([-2, 11, 2, 4]);
-            chart.yScale().ticks().count(3);
+        anychart.onDocumentReady(function() {
+            var chart = anychart.line([1.1, 1.4, 1.2, 1.9]);
+
+            var scale = chart.xScale();
+
+            var currentTicks = scale.ticks();
+
             chart.container("container");
             chart.draw();
+            // Gets names.
+            var ticksNames = currentTicks.names();
+
+            chart.title("The current names is "  + ticksNames);
         });
     </script>
 </head>

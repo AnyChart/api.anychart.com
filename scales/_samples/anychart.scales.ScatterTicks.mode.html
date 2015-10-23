@@ -4,11 +4,18 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var chart = anychart.line([0.1, 11, 2, 40]);
             chart.yScale(anychart.scales.log());
-            chart.yScale().ticks().mode("log");
-            chart.yScale().minorTicks().mode("linear");
+            chart.yAxis({minorTicks: true});
+
+            var scale = chart.yScale();
+            scale.minorTicks({mode: "linear"});
+
+            var currentTicks = scale.ticks();
+            // Sets mode.
+            currentTicks.mode("log");
+
             chart.container("container");
             chart.draw();
         });

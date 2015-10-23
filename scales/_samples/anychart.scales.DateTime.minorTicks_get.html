@@ -1,0 +1,64 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="ohlc"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+
+            var ohlcChart = anychart.financial();
+            ohlcChart.bounds(0, 0, "50%", "100%");
+            ohlcChart.ohlc([
+                [new Date("28-Aug-07"), 511.53, 514.98, 505.79, 506.40],
+                [new Date("29-Aug-07"), 507.84, 513.30, 507.23, 512.88],
+                [new Date("30-Aug-07"), 512.36, 515.40, 510.58, 511.40],
+                [new Date("31-Aug-07"), 513.10, 516.50, 511.47, 515.25],
+                [new Date("01-Sep-07"), 515.02, 528.00, 514.62, 525.15]
+            ]);
+
+            ohlcChart.xAxis({
+                ticks: true,
+                labels: false,
+                minorTicks: {stroke: "#424242"},
+                minorLabels: true
+            });
+
+            var myScale = ohlcChart.xScale();
+            myScale.minorTicks([new Date("27-Aug-07"), new Date("29-Aug-07"), new Date("31-Aug-07"), new Date("02-Sep-07")]);
+
+            ohlcChart.container(stage);
+            ohlcChart.draw();
+
+            var candlestickChart = anychart.financial();
+            candlestickChart.bounds("50%", 0, "50%", "100%");
+            candlestickChart.candlestick([
+                [new Date("28-Aug-07"), 511.53, 514.98, 505.79, 506.40],
+                [new Date("29-Aug-07"), 507.84, 513.30, 507.23, 512.88],
+                [new Date("30-Aug-07"), 512.36, 515.40, 510.58, 511.40],
+                [new Date("31-Aug-07"), 513.10, 516.50, 511.47, 515.25],
+                [new Date("01-Sep-07"), 515.02, 528.00, 514.62, 525.15]
+            ]);
+
+            candlestickChart.xAxis({
+                ticks: true,
+                labels: false,
+                minorTicks: {stroke: "#424242"},
+                minorLabels: true
+            });
+
+            // Gets minor ticks.
+            var currentTicks = myScale.minorTicks();
+
+            var scale = candlestickChart.xScale();
+            scale.minorTicks(currentTicks.get());
+
+            candlestickChart.container(stage);
+            candlestickChart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

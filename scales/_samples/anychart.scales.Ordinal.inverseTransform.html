@@ -4,7 +4,7 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var chart = anychart.line([
                 ["A1", 1.1],
                 ["A2", 1.4],
@@ -13,8 +13,10 @@
             ]);
             chart.container("container");
             chart.draw();
+
+            var scale = chart.xScale();
             // Trying to get a tick.
-            var position = chart.xScale().inverseTransform(0.375);
+            scale.inverseTransform(0.375);
             // Returns "A2".
         });
     </script>

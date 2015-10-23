@@ -4,16 +4,24 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var chart = anychart.line([
                 ["A1", 1.1],
                 ["A2", 1.4],
                 ["A3", 1.2],
-                ["A4", 1.9]
+                ["A4", 1.9],
+                ["B1", 1.1],
+                ["B2", 1.4],
+                ["B3", 1.2],
+                ["B4", 1.9]
             ]);
-            chart.xScale().values(["A1", "A2", "B1", "B2"]);
-            //the same that
-            //chart.xScale().values("A1", "A2", "B1", "B2");
+
+            var scale = chart.xScale();
+
+            // Gets a scale ticks.
+            var myTicks = scale.ticks();
+            myTicks.interval(2);
+
             chart.container("container");
             chart.draw();
         });

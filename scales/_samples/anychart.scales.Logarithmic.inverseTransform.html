@@ -5,22 +5,16 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var chart = anychart.line();
-            chart.line([
-                ["A1", 1.1],
-                ["A2", 1.4],
-                ["A3", 1.2],
-                ["A4", 1.9]
-            ]);
-
-            var scale = chart.xScale();
-
-            var currentTicks = scale.ticks();
-            // Sets interval.
-            currentTicks.interval(2);
-
+            var chart = anychart.line([2, 16, 4, 64]);
+            chart.yScale(anychart.scales.log());
             chart.container("container");
             chart.draw();
+
+            var logScale = chart.yScale();
+            // Trying to get a tick position.
+            var position = logScale.inverseTransform(0.5);
+            // Returns "10".
+            chart.lineMarker({value: position});
         });
     </script>
 </head>

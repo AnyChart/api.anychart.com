@@ -4,9 +4,15 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var chart = anychart.line([-2, 11, 2, 4]);
-            chart.yScale().ticks().interval(3);
+
+            var scale = chart.yScale();
+
+            var currentTicks = scale.ticks();
+            // Sets interval.
+            currentTicks.interval(3);
+
             chart.container("container");
             chart.draw();
         });

@@ -5,14 +5,13 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function () {
-            var data = [
-                {x: 10, myName: "Q1", value: 1.1},
-                {x: 11, myName: "Q2", value: 1.4},
-                {x: 12, myName: "Q3", value: 1.2},
-                {x: 13, myName: "Q4", value: 1.9}
-            ];
-            var chart = anychart.line(data);
-            chart.xScale().names("myName");
+            var chart = anychart.line([1, 4, 2, 9]);
+            chart.yAxis({minorTicks: {stroke: "#424242"}});
+
+            var myYScale = chart.yScale();
+            // Sets minor ticks.
+            myYScale.minorTicks([1.25, 3.75, 6.25, 8.75]);
+
             chart.container("container");
             chart.draw();
         });

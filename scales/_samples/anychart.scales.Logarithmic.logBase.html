@@ -4,9 +4,14 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var chart = anychart.line([2, 16, 4, 64]);
-            chart.yScale(anychart.scales.log().logBase(2));
+
+            var logScale = anychart.scales.log();
+            // Sets log base.
+            logScale.logBase(20);
+
+            chart.yScale(logScale);
             chart.container("container");
             chart.draw();
         });

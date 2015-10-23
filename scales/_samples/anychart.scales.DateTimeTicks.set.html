@@ -1,10 +1,10 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="financial"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var chart = anychart.financial([
                 [new Date("28-Aug-07"), 511.53, 514.98, 505.79, 506.40],
                 [new Date("29-Aug-07"), 507.84, 513.30, 507.23, 512.88],
@@ -12,9 +12,14 @@
                 [new Date("31-Aug-07"), 513.10, 516.50, 511.47, 515.25],
                 [new Date("01-Sep-07"), 515.02, 528.00, 514.62, 525.15]
             ]);
-            var axis = chart.xAxis();
-            axis.ticks(true);
-            chart.xScale().ticks().set([1188172800000, 1188432000000, 1188604800000]);
+            chart.xAxis({ticks: true});
+
+            var scale = chart.xScale();
+
+            var myTicks = scale.ticks();
+            // Sets ticks.
+            myTicks.set([1188259200000, 1188432000000, 1188604800000]);
+
             chart.container("container");
             chart.draw();
         });

@@ -4,17 +4,19 @@
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             var chart = anychart.line([
-               ["A1", 1.1],
-               ["A2", 1.4],
-               ["A3", 1.2],
-               ["A4", 1.9]
+                ["A1", 1.1],
+                ["A2", 1.4],
+                ["A3", 1.2],
+                ["A4", 1.9]
             ]);
             chart.container("container");
             chart.draw();
+
+            var scale = chart.xScale();
             // Trying to get "A2" position ratio.
-            var position = chart.xScale().transform("A2", 0.5);
+            scale.transform("A2", 0.5);
             // Returns 0.375
         });
     </script>
