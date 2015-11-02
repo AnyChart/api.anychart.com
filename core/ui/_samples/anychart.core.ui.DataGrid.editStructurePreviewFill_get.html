@@ -14,18 +14,19 @@
                 {"id": "6", "name": "Define the Opportunity", parent: "1", "progressValue": "27%", "actualStart": 951696000000, "actualEnd": 951782400000}
             ];
 
-            var treeData = anychart.data.tree(data, "asTable");
+            var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
 
             var chart = anychart.ganttProject();
             chart.data(treeData);
 
             var currentDataGrid = chart.dataGrid();
+            currentDataGrid.editing(true);
 
-            // Gets background fill.
-            var color = currentDataGrid.backgroundFill();
+            // Gets structure preview fill in edit mode.
+            var color = currentDataGrid.editStructurePreviewFill();
 
             var firstColumn = currentDataGrid.column(1);
-            firstColumn.title("Background - " + color);
+            firstColumn.title({background: {fill: color}});
 
             chart.container("container");
             chart.draw();
