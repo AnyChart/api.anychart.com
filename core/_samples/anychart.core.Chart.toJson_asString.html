@@ -13,15 +13,15 @@
             chart.container(stage);
             chart.draw();
 
-            chart.listen('chartDraw', function() {
-                // Return chart in JSON.
-                var json = chart.toJson();
+            chart.listen("chartDraw", function() {
+                // Returns chart in JSON string.
+                var json = chart.toJson(true);
+
                 chart.dispose();
 
-                var chart2 = anychart.fromJson(json);
-
-                chart2.container(stage);
-                chart2.draw();
+                var myChart = anychart.fromJson(json);
+                myChart.container(stage);
+                myChart.draw();
             });
         });
     </script>

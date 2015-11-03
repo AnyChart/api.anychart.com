@@ -2,19 +2,21 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="line"/>
-    <script src="../../anychart.min.js"></script>
+    <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var chart = anychart.cartesian();
-            chart.line([10, 4, 17, 20, 16, 35, 6, 15, 19, 25, 34, 42, 14, 64, 55, 34, 40, 25]);
-            chart.xAxis(true);
-            chart.yAxis(true);
+            var chart = anychart.line([10, 4, 17, 20, 16, 35, 6, 15, 19, 25, 34, 42, 14, 64, 55, 34, 40, 25]);
 
-            // Gets scroller.
+            var zoom = chart.xZoom();
+            zoom.setTo(0, 0.5);
+
             var myScroller = chart.xScroller();
             myScroller.enabled(true);
-            myScroller.position("beforeAxes");
 
+            // Gets inversion value.
+            var inversion = myScroller.inverted();
+
+            chart.title("Scroller inversion value is " + inversion);
             chart.container("container");
             chart.draw();
         });

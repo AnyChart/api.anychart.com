@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="bar"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+
+            var chart = anychart.bar();
+            chart.bar([10, 4, 6, 3]);
+            chart.bar([4, 6, -2, 3]);
+            chart.container(stage);
+            chart.draw();
+
+            chart.listen("chartDraw", function() {
+                // Return chart in JSON object with theme settings.
+                var json = chart.toJson(false, true);
+
+                chart.dispose();
+
+                var myChart = anychart.fromJson(json);
+                myChart.container(stage);
+                myChart.draw();
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
