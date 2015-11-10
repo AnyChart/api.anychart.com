@@ -1,38 +1,22 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="scatter"/>
+    <meta name="x-cat-tags" content="radar"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var data = [
-                [
-                    {x: 2, y: 1},
-                    {x: 3, y: 2},
-                    {x: 4, y: 3}
-                ],
-                [
-                    {x: 2, y: 2},
-                    {x: 3, y: 3},
-                    {x: 4, y: 4}
-                ],
-                [
-                    {x: 2, y: 3},
-                    {x: 3, y: 4},
-                    {x: 4, y: 1}
-                ],
-                [
-                    {x: 2, y: 4},
-                    {x: 3, y: 1},
-                    {x: 4, y: 2}
-                ]
-            ];
-            var chart = anychart.scatter.apply(this, data);
-            var series, i = 0;
-            while (series = chart.getSeries(i)) { //get series
-                series.type("circle");
-                i++;
-            }
+            var chart = anychart.scatter();
+
+            var series = chart.line([40, 30, 40, 30, 40, 30, 40, 30]);
+            series.id("green");
+
+            chart.line([23, 41, 23, 41, 23, 11, 23, 5]);
+            chart.line([60, 10, 60, 15, 60, 20, 60, 25]);
+
+            // Gets series by id.
+            var seriesById = chart.getSeries("green");
+            seriesById.stroke("#4CAF50");
+
             chart.container("container");
             chart.draw();
         });
