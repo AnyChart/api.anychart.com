@@ -5,19 +5,18 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var data = [
-                [1, 2, 3, 4],
-                [2, 3, 4, 1],
-                [3, 4, 1, 2],
-                [4, 1, 2, 3],
-                [5, 5, 5, 5]
-            ];
-            var chart = anychart.radar.apply(this, data);
-            var series, i = 0;
-            while (series = chart.getSeries(i)) { //get series
-                series.markers({enabled: true, type: "circle"});
-                i++;
-            }
+            var chart = anychart.radar();
+
+            var series = chart.line([70, 60, 70, 60, 70, 60, 70, 60]);
+            series.id("green");
+
+            chart.line([23, 51, 23, 51, 23, 51, 23, 51]);
+            chart.line([60, 10, 60, 10, 60, 10, 60, 10]);
+
+            // Gets series by id.
+            var seriesById = chart.getSeries("green");
+            seriesById.stroke("#4CAF50");
+
             chart.container("container");
             chart.draw();
         });

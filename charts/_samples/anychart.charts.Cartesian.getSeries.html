@@ -5,9 +5,21 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var chart = anychart.line([1, 2, 3, 4], [2, 3, 4, 1], [3, 4, 1, 2], [4, 1, 2, 3]);
-            var getSeries = chart.getSeries(0); // get series
-            getSeries.markers(true);
+            var chart = anychart.cartesian();
+            chart.xAxis(true);
+            chart.yAxis(true);
+
+            var series = chart.line([1, 2, 3, 4]);
+            series.id("firstSeries");
+
+            chart.line([2, 3, 4, 1]);
+            chart.line([3, 4, 1, 2]);
+            chart.line([4, 1, 2, 3]);
+
+            // Get series by id.
+            var seriesById = chart.getSeries("firstSeries");
+            seriesById.markers(true);
+
             chart.container("container");
             chart.draw();
         });

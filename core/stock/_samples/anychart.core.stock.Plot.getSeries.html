@@ -17,12 +17,15 @@
             chart.padding(10, 10, 10, 50);
 
             var currentPlot = chart.plot();
-            currentPlot.line(firstMapping);
+
+            var series = currentPlot.line(firstMapping);
+            series.id("green");
+
             currentPlot.line(secondMapping);
 
-            // Gets plot series by index.
-            var series = currentPlot.getSeries(0);
-            series.legendItem({iconType: "line"});
+            // Gets plot series by id.
+            var seriesById = currentPlot.getSeries("green");
+            seriesById.stroke("#4CAF50");
 
             chart.container('container');
             chart.draw();

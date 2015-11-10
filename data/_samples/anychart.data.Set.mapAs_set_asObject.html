@@ -6,18 +6,24 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var dataSet = anychart.data.set([
-                [11, 18, 1, "#F44336 0.5", "#E91E63 .5"],
-                [21, 15, 2, "#4CAF50 0.5", "#8BC34A"],
-                [14, 16, 3, "#03A9F4 0.5", "#00BCD4"],
-                {value: 17, x: 4, fill: "#80CBC4"}
+                {x: "7.0.0", prod: 11, dev: 18},
+                {x: "7.1.0", prod: 21, dev: 15},
+                {x: "7.1.1", prod: 14, dev: 16},
+                {x: "7.2.0", prod: 17, dev: 20}
             ]);
-            var firstData = dataSet.mapAs({"value": [0], "x": [2], "fill": [3]}); // sets mapping
-            var secondData = dataSet.mapAs({"value": [1], "x": [2], "fill": [4]}); // sets mapping
+
+            // Sets mapping for first series.
+            var firstData = dataSet.mapAs({"x": [0], "value": [1]}, {"value": ["value", "prod"]});
+            // Sets mapping for second series.
+            var secondData = dataSet.mapAs({"x": [0], "value": [2]}, {"value": ["value", "dev"]});
+
             var chart = anychart.column();
             chart.column(firstData);
             chart.column(secondData);
+
             var yScale = chart.yScale();
             yScale.minimum(0);
+
             chart.container("container");
             chart.draw();
         });
