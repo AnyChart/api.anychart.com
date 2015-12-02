@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="polar line area line"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var formatterFunc = function() {
+                return this.seriesName;
+            };
+
+            var chart = anychart.polar();
+
+            var seriesArea = chart.line([1, 4, 7, 1]);
+            seriesArea.color("#008000");
+            seriesArea.markers(true);
+
+            var seriesBlueLine = chart.line([1, 2, 3]);
+            seriesBlueLine.markers(true);
+            // Sets name.
+            seriesBlueLine.name("My Custom series name");
+
+            var blueLineTooltip = seriesBlueLine.tooltip();
+            blueLineTooltip.textFormatter(formatterFunc);
+
+            var seriesOrangeLine = chart.line([2, 3, 4]);
+            seriesOrangeLine.markers(true);
+
+            var orangeLineTooltip = seriesOrangeLine.tooltip();
+            orangeLineTooltip.textFormatter(formatterFunc);
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

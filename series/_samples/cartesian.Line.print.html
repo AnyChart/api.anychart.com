@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.line();
+            var series = chart.line([1, 1.6, 1.2, 2.1]);
+
+            var printLabel = chart.label();
+           printLabel.background({fill: "#9E9E9E"});
+           printLabel.text("Print series");
+           printLabel.fontColor("#fff");
+           printLabel.padding(3);
+           printLabel.offsetX(2);
+           printLabel.listen("click", function() {
+                // Prints series.
+                series.print("A5", true);
+            });
+
+            chart.container("container");
+            chart.draw();
+
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

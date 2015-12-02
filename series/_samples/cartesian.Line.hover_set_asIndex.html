@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.cartesian();
+
+            var firstSeries = chart.line([-6, -15, 3, 12, 32, 44]);
+            firstSeries.markers(true);
+            firstSeries.hoverMarkers({fill: "#F44336"});
+
+            var secondSeries = chart.line([-27, -19, 7, 24, 36, 40]);
+            secondSeries.markers(true);
+
+            chart.container("container");
+            chart.draw();
+            // Sets the hover mode on fourth point.
+            firstSeries.hover(3);
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

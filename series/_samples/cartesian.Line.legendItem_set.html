@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var chart = anychart.cartesian();
+
+            var firstSeries = chart.line([6, 3, 1, 8]);
+
+            var secondSeries = chart.spline([4, 6, 4, 9]);
+
+            chart.legend(true);
+
+            // Sets legend item settings.
+            firstSeries.legendItem({text: "Light blue line", iconType: "circle", iconFill: "#03A9F4"});
+            secondSeries.legendItem({text: "Blue line", iconType: "square", iconFill: "#2196F3"});
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
