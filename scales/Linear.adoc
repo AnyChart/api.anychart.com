@@ -1,7 +1,9 @@
 /**
+ * Define linear scale.
+ * <b>Note:</b> To create instance use method {@link anychart.scales#linear}.<br/>
  * Represents simple linear scale that transforms values from domain [a, b] to domain [0, 1].
  * Note that a can be greater than b. The only condition for the scale is that a != b.<br/>
- * <b>Note:</b> To create instance use method {@link anychart.scales#linear}.
+ * On a linear scale a change between two values is perceived on the basis of the difference between the values.
  * @constructor
  * @extends {anychart.scales.ScatterBase}
  */
@@ -77,14 +79,20 @@ anychart.scales.linear;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for stacked mode.
+ * Getter for the current stacked mode.
  * @example anychart.scales.Linear.stackMode_get
  * @return {anychart.enums.ScaleStackMode} Current stack mode.
  */
 anychart.scales.Linear.prototype.stackMode;
 
 /**
- * Setter for stacked mode.
+ * Setter for the stacked mode.
+ * @shortDescription Some series can be set to stack on top of each other. You can use two stacked mode: "value" and "percent".
+ * Stacked mode by "value" is calculated as: the sum values of the previous and the current series is the initial value
+ * for the drawing current series. This value is a border of the series stack.
+ * Stacked mode by "percent" is calculated as for mode "value", but each point of data draws with a relative percentage
+ * to all the points in the same category.<br/>
+ * Recommend to use stacked mode for the Bar, Column and Area series.
  * @example anychart.scales.Linear.stackMode_set
  * @param {(anychart.enums.ScaleStackMode|string)=} opt_value ["none"] Value to set.
  * @return {anychart.scales.Linear} Self instance for method chaining.
