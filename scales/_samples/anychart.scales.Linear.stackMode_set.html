@@ -5,14 +5,31 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
+            var dataSet = anychart.data.set([
+                ["P1", 9, 15, 19],
+                ["P2", 12, 10, 47],
+                ["P3", 21, 23, 26],
+                ["P4", 45, 30, 36],
+                ["P5", 8, 24, 63]
+            ]);
+
+            var firstData = dataSet.mapAs({x: [0], value: [1]});
+            var secondData = dataSet.mapAs({x: [0], value: [2]});
+            var thirdData = dataSet.mapAs({x: [0], value: [3]});
+
             var chart = anychart.column();
-            chart.column([10, 11, 10, 12]);
-            chart.column([7, 3, 4, 1]);
-            chart.column([6, 4, 8, 16]);
+            chart.column(firstData);
+            chart.column(secondData);
+            chart.column(thirdData);
 
             var myYScale = chart.yScale();
-            // Sets stack mode.
-            myYScale.stackMode("value");
+            // Sets stacked mode.
+            myYScale.stackMode("percent");
+
+            var axis = chart.yAxis(0);
+            axis.labels({textFormatter: function(info) {
+                return info.value + '%';
+            }});
 
             chart.container("container");
             chart.draw();

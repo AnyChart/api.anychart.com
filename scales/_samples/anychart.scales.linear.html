@@ -6,13 +6,21 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var chart = anychart.line([
-                ["A1", 1.1],
-                ["A2", 1.4],
-                ["A3", 1.2],
-                ["A4", 1.9]
+                [9, 11],
+                [18, 24],
+                [30, 15],
+                [45, 30]
             ]);
-            // Sets scale.
-            chart.yScale(anychart.scales.linear());
+
+            var myYScale = chart.yScale();
+            myYScale.ticks({interval: 5});
+            myYScale.minimum(0);
+
+            // Creates linear scale.
+            var linearScale = anychart.scales.linear();
+            linearScale.ticks({interval: 10});
+
+            chart.xScale(linearScale);
             chart.container("container");
             chart.draw();
         });

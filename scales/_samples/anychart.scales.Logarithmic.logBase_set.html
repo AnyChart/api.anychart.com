@@ -5,12 +5,13 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var chart = anychart.line([-11, 24, 15, 30]);
+            var chart = anychart.line([1124, 10500, 300, 102436]);
 
-            var currentYScale = chart.yScale();
-            // Sets maximum gap.
-            currentYScale.maximumGap(0.6);
+            var logScale = anychart.scales.log();
+            // Sets log base.
+            logScale.logBase(200);
 
+            chart.yScale(logScale);
             chart.container("container");
             chart.draw();
         });

@@ -7,26 +7,26 @@
         anychart.onDocumentReady(function() {
             var stage = anychart.graphics.create("container");
 
-            var firstChart = anychart.line([1, 4, 2, 9]);
-            firstChart.bounds(0, 0, "50%", "100%");
+            var lineChart = anychart.line([11, 24, 15, 30]);
+            lineChart.bounds(0, 0, "50%", "100%");
 
-            var myYScale = firstChart.yScale();
-            myYScale.ticks([0, 1.25, 3.75, 6.25, 8.75, 11.25]);
+            var myYScale = lineChart.yScale();
+            myYScale.ticks({interval: 10});
 
-            firstChart.container(stage);
-            firstChart.draw();
+            lineChart.container(stage);
+            lineChart.draw();
 
-            var secondChart = anychart.column([1, 4, 2, 9]);
-            secondChart.bounds("50%", 0, "50%", "100%");
+            var columnChart = anychart.column([11, 24, 15, 30]);
+            columnChart.bounds("50%", 0, "50%", "100%");
 
-            // Gets ticks.
+            // Gets ticks settings.
             var lineTicks = myYScale.ticks();
 
-            var currentYScale = secondChart.yScale();
+            var currentYScale = columnChart.yScale();
             currentYScale.ticks(lineTicks.get());
 
-            secondChart.container(stage);
-            secondChart.draw();
+            columnChart.container(stage);
+            columnChart.draw();
         });
     </script>
 </head>
