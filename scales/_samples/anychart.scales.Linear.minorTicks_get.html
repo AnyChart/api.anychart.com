@@ -1,36 +1,24 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line column"/>
+    <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
+    <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var stage = anychart.graphics.create("container");
+            var chart = anychart.line([11, 24, 15, 30]);
+            chart.yAxis({minorTicks: {stroke: "#424242"}});
 
-            var lineChart = anychart.line([11, 24, 15, 30]);
-            lineChart.yAxis({minorTicks: {stroke: "#424242"}});
-            lineChart.bounds(0, 0, "50%", "100%");
-
-            var myYScale = lineChart.yScale();
+            var myYScale = chart.yScale();
             myYScale.ticks({interval: 10});
-            myYScale.minorTicks({interval: 2});
-
-            lineChart.container(stage);
-            lineChart.draw();
-
-            var columnChart = anychart.column([11, 24, 15, 30]);
-            columnChart.yAxis({minorTicks: {stroke: "#424242"}});
-            columnChart.bounds("50%", 0, "50%", "100%");
 
             // Gets minor ticks.
-            var minorTicks = myYScale.minorTicks();
+            var customMinorTicks = myYScale.minorTicks();
+            customMinorTicks.interval(2);
 
-            var currentYScale = columnChart.yScale();
-            currentYScale.ticks({interval: 10});
-            currentYScale.minorTicks(minorTicks.get());
+            chart.container("container");
+            chart.draw();
 
-            columnChart.container(stage);
-            columnChart.draw();
+
         });
     </script>
 </head>
