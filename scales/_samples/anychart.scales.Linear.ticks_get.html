@@ -5,28 +5,16 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var stage = anychart.graphics.create("container");
+            var lineChart = anychart.line([10, 24, 15, 30]);
 
-            var lineChart = anychart.line([11, 24, 15, 30]);
-            lineChart.bounds(0, 0, "50%", "100%");
+            var lineYScale = lineChart.yScale();
 
-            var myYScale = lineChart.yScale();
-            myYScale.ticks({interval: 10});
+            // Gets ticks.
+            var currentTicks = lineYScale.ticks();
+            currentTicks.interval(5);
 
-            lineChart.container(stage);
+            lineChart.container("container");
             lineChart.draw();
-
-            var columnChart = anychart.column([11, 24, 15, 30]);
-            columnChart.bounds("50%", 0, "50%", "100%");
-
-            // Gets ticks settings.
-            var lineTicks = myYScale.ticks();
-
-            var currentYScale = columnChart.yScale();
-            currentYScale.ticks(lineTicks.get());
-
-            columnChart.container(stage);
-            columnChart.draw();
         });
     </script>
 </head>

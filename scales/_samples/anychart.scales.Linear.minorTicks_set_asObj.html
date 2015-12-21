@@ -5,18 +5,14 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var chart = anychart.line([
-                ["A1", 0.1],
-                ["A2", 1.4],
-                ["A3", 1.2],
-                ["A4", 1.9]
-            ]);
+            var chart = anychart.line([11, 24, 15, 30]);
+            chart.yAxis({minorTicks: {stroke: "#424242"}});
+
             var currentYScale = chart.yScale();
+            currentYScale.ticks({interval: 10});
+            // Sets minor ticks.
+            currentYScale.minorTicks({interval: 2});
 
-            // Gets flag.
-            var currentStickToZero = currentYScale.stickToZero();
-
-            chart.title("Stick to zero is " + currentStickToZero);
             chart.container("container");
             chart.draw();
         });

@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line column"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var stage = anychart.graphics.create("container");
+
+            var lineChart = anychart.line([0.1, 11, 2, 40]);
+            lineChart.yScale(anychart.scales.log());
+            lineChart.yAxis({minorTicks: {stroke: "#424242"}});
+            lineChart.bounds(0, 0, "50%", "100%");
+
+            var lineScale = lineChart.yScale();
+
+            var currentMinorTicks = lineScale.minorTicks();
+            currentMinorTicks.mode("linear");
+
+            lineChart.container(stage);
+            lineChart.draw();
+
+            var columnChart = anychart.column([10, 300, 110, 450]);
+            columnChart.yScale(anychart.scales.log());
+            columnChart.yAxis({minorTicks: {stroke: "#424242"}});
+            columnChart.bounds("50%", 0, "50%", "100%");
+
+            var columnScale = columnChart.yScale();
+
+            // Gets ticks mode.
+            var currentMode = currentMinorTicks.mode();
+
+            columnScale.minorTicks({mode: currentMode});
+            columnChart.container(stage);
+            columnChart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

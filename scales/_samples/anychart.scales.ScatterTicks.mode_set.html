@@ -7,14 +7,13 @@
         anychart.onDocumentReady(function() {
             var chart = anychart.line([0.1, 11, 2, 40]);
             chart.yScale(anychart.scales.log());
-            chart.yAxis({minorTicks: true});
+            chart.yAxis({minorTicks: {stroke: "#424242"}});
 
             var scale = chart.yScale();
-            scale.minorTicks({mode: "linear"});
 
-            var currentTicks = scale.ticks();
+            var currentMinorTicks = scale.minorTicks();
             // Sets mode.
-            currentTicks.mode("log");
+            currentMinorTicks.mode("linear");
 
             chart.container("container");
             chart.draw();
