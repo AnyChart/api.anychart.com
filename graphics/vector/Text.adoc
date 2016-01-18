@@ -1,742 +1,844 @@
 /**
- Text class.<br>
- <b>Do not invoke constructor directly.</b> Use {@link anychart.graphics.vector.Stage#text} or
- {@link anychart.graphics.vector.Layer#text} to create layer or stage bound text.
- <br/> Use {@link anychart.graphics#text} to create unbound text.
- @see anychart.graphics.vector.Stage#text
- @see anychart.graphics.vector.Layer#text
- @see anychart.graphics#text
- @name anychart.graphics.vector.Text
- @param {number=} opt_x Coordinate X (Left) of left top corner of text bounds.
- @param {number=} opt_y Coordinate Y (Top) of left top corner of text bounds.
- @constructor
- @extends {anychart.graphics.vector.Element}
-*/
+ * Text class.<br>
+ * <b>Do not invoke constructor directly.</b> Use {@link anychart.graphics.vector.Stage#text} or
+ * {@link anychart.graphics.vector.Layer#text} to create layer or stage bound text.
+ * <br/> Use {@link anychart.graphics#text} to create unbound text.<br/>
+ * See also:<br/>
+ * {@link anychart.graphics.vector.Stage#text},<br/>
+ * {@link anychart.graphics.vector.Layer#text},<br/>
+ * {@link anychart.graphics#text}
+ * @param {number=} opt_x Coordinate X (Left) of left top corner of text bounds.
+ * @param {number=} opt_y Coordinate Y (Top) of left top corner of text bounds.
+ * @constructor
+ * @extends {anychart.graphics.vector.Element}
+ */
 anychart.graphics.vector.Text;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.TextWrap
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Text wrap mode.
+ * @example anychart.graphics.vector.Text.TextWrap
  * @enum {string}
  */
 anychart.graphics.vector.Text.TextWrap;
 
 /**
-   No wrap.
-   @illustration <t>stageOnly</t>
-   stage.width(120).height(40);
-   var rect = stage.rect(10, 0, 100, 40);
-   stage.text(10, 1, 'sample text with wrap', {fontSize: 14, textWrap: anychart.graphics.vector.Text.TextWrap.NO_WRAP})
-     .width(rect.getWidth())
-     .height(rect.getHeight());
-   */
-anychart.graphics.vector.Text.TextWrap.NO_WRAP;
+ * No wrap.<br/>
+ * <img src='/anychart.graphics.vector.Text.TextWrap.NO_WRAP.png' width='118' height='52'/>
+ */
+anychart.graphics.vector.Text.TextWrap.NO_WRAP = "noWrap";
 
 /**
-   Wrap by symbol.
-   @illustration <t>stageOnly</t>
-   stage.width(120).height(40);
-   var rect = stage.rect(10, 0, 100, 40);
-   stage.text(10, 1, 'sample text with wrap', {fontSize: 14, textWrap: anychart.graphics.vector.Text.TextWrap.BY_LETTER})
-     .width(rect.getWidth())
-     .height(rect.getHeight());
-   */
-anychart.graphics.vector.Text.TextWrap.BY_LETTER;
+ * Wrap by symbol.<br/>
+ * <img src='/anychart.graphics.vector.Text.TextWrap.BY_LETTER' width='119' height='51'/>
+ */
+anychart.graphics.vector.Text.TextWrap.BY_LETTER = "byLetter";
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.TextOverflow
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Defines visibility in block, of text can't be shown in the area.
+ * @example anychart.graphics.vector.Text.TextOverflow
  * @enum {string}
  */
 anychart.graphics.vector.Text.TextOverflow;
 
 /**
-   If height and width is set and text doesn't fit - it will be clipped.
-   @illustration <t>stageOnly</t>
-   stage.width(120).height(40);
-   var rect = stage.rect(20, 3, 72, 20);
-   stage.text(20, 3, 'sample text', {fontSize: 14, textOverflow: anychart.graphics.vector.Text.TextOverflow.CLIP})
-     .width(rect.getWidth())
-     .height(rect.getHeight());
-   */
-anychart.graphics.vector.Text.TextOverflow.CLIP;
+ * If height and width is set and text doesn't fit - it will be clipped.<br/>
+ * <img src='/anychart.graphics.vector.Text.TextOverflow.CLIP.png' width='101' height='36'/>
+ */
+anychart.graphics.vector.Text.TextOverflow.CLIP = "";
 
 /**
-   Text is clipped too, but with ellipsis in the end.
-   @illustration <t>stageOnly</t>
-   stage.width(120).height(40);
-   var rect = stage.rect(20, 3, 72, 20);
-   stage.text(20, 3, 'sample text', {fontSize: 14, textOverflow: anychart.graphics.vector.Text.TextOverflow.ELLIPSIS})
-     .width(rect.getWidth())
-     .height(rect.getHeight());
-   */
-anychart.graphics.vector.Text.TextOverflow.ELLIPSIS;
+ * Text is clipped too, but with ellipsis in the end.<br/>
+ * <img src='/anychart.graphics.vector.Text.TextOverflow.ELLIPSIS.png' width='104' height='36'/>
+ */
+anychart.graphics.vector.Text.TextOverflow.ELLIPSIS = "...";
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.HAlign
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Text HAlign.
+ * Text horizontal align.
+ * @example anychart.graphics.vector.Text.HAlign
  * @enum {string}
  */
 anychart.graphics.vector.Text.HAlign;
 
 /**
-   Aligns the text to the left.
-   @illustration <t>stageOnly</t>
-   stage.width(250).height(40);
-
-   var rectLTR = stage.rect(0, 0, stage.width()/2, 27);
-   var rectRTL = stage.rect(stage.width()/2, 0, stage.width()/2, 27);
-
-   stage.text(rectLTR.getX(), 3, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.LEFT, direction: anychart.graphics.vector.Text.Direction.LTR})
-   .width(rectLTR.getWidth())
-   .height(rectLTR.getHeight());
-
-   stage.text(rectRTL.getX(), 2, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.LEFT, direction: anychart.graphics.vector.Text.Direction.RTL})
-   .width(rectRTL.getWidth())
-   .height(rectRTL.getHeight());
-
-   stage.text(rectLTR.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'LTR', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
-   .width(rectLTR.getWidth())
-   .height(rectLTR.getHeight());
-
-   stage.text(rectRTL.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'RTL', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
-   .width(rectLTR.getWidth())
-   .height(rectLTR.getHeight());
-   */
-anychart.graphics.vector.Text.HAlign.LEFT;
+ * Aligns the text to the left.<br/>
+ * <img src='/anychart.graphics.vector.Text.HAlign.LEFT.png' width='269' height='53'/>
+ */
+anychart.graphics.vector.Text.HAlign.LEFT = "left";
 
 /**
-   The same as left if direction is left-to-right and right if direction is right-to-left.
-   @illustration <t>stageOnly</t>
-   stage.width(250).height(40);
-
-   var rectLTR = stage.rect(0, 0, stage.width()/2, 27);
-   var rectRTL = stage.rect(stage.width()/2, 0, stage.width()/2, 27);
-
-   stage.text(rectLTR.getX(), 3, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.START, direction: anychart.graphics.vector.Text.Direction.LTR})
-     .width(rectLTR.getWidth())
-     .height(rectLTR.getHeight());
-
-   stage.text(rectRTL.getX(), 2, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.START, direction: anychart.graphics.vector.Text.Direction.RTL})
-     .width(rectRTL.getWidth())
-     .height(rectRTL.getHeight());
-
-   stage.text(rectLTR.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'LTR', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
-     .width(rectLTR.getWidth())
-     .height(rectLTR.getHeight());
-
-   stage.text(rectRTL.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'RTL', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
-     .width(rectLTR.getWidth())
-     .height(rectLTR.getHeight());
-   */
-anychart.graphics.vector.Text.HAlign.START;
+ * The same as left if direction is left-to-right and right if direction is right-to-left.<br/>
+ * <img src='/anychart.graphics.vector.Text.HAlign.START.png' width='269' height='50'/>
+ */
+anychart.graphics.vector.Text.HAlign.START = "start";
 
 /**
-   The inline contents are centered within the line box.
-   @illustration <t>stageOnly</t>
-   stage.width(250).height(40);
-
-   var rectLTR = stage.rect(0, 0, stage.width()/2, 27);
-   var rectRTL = stage.rect(stage.width()/2, 0, stage.width()/2, 27);
-
-   stage.text(rectLTR.getX(), 3, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.CENTER, direction: anychart.graphics.vector.Text.Direction.LTR})
-     .width(rectLTR.getWidth())
-     .height(rectLTR.getHeight());
-
-   stage.text(rectRTL.getX(), 2, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.CENTER, direction: anychart.graphics.vector.Text.Direction.RTL})
-     .width(rectRTL.getWidth())
-     .height(rectRTL.getHeight());
-
-   stage.text(rectLTR.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'LTR', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
-     .width(rectLTR.getWidth())
-     .height(rectLTR.getHeight());
-
-   stage.text(rectRTL.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'RTL', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
-     .width(rectLTR.getWidth())
-     .height(rectLTR.getHeight());
-   */
-anychart.graphics.vector.Text.HAlign.CENTER;
+ * The inline contents are centered within the line box.<br/>
+ * <img src='/anychart.graphics.vector.Text.HAlign.CENTER.png' width='271' height='55'/>
+ */
+anychart.graphics.vector.Text.HAlign.CENTER = "center";
 
 /**
-   The same as right if direction is left-to-right and left if direction is right-to-left.
-   @illustration <t>stageOnly</t>
-   stage.width(250).height(40);
-
-   var rectLTR = stage.rect(0, 0, stage.width()/2, 27);
-   var rectRTL = stage.rect(stage.width()/2, 0, stage.width()/2, 27);
-
-   stage.text(rectLTR.getX(), 3, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.END, direction: anychart.graphics.vector.Text.Direction.LTR})
-     .width(rectLTR.getWidth())
-     .height(rectLTR.getHeight());
-
-   stage.text(rectRTL.getX(), 2, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.END, direction: anychart.graphics.vector.Text.Direction.RTL})
-     .width(rectRTL.getWidth())
-     .height(rectRTL.getHeight());
-
-   stage.text(rectLTR.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'LTR', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
-     .width(rectLTR.getWidth())
-     .height(rectLTR.getHeight());
-
-   stage.text(rectRTL.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'RTL', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
-     .width(rectLTR.getWidth())
-     .height(rectLTR.getHeight());
-   */
-anychart.graphics.vector.Text.HAlign.END;
+ * The same as right if direction is left-to-right and left if direction is right-to-left.<br/>
+ * <img src='/anychart.graphics.vector.Text.HAlign.END.png' width='273' height='51'/>
+ */
+anychart.graphics.vector.Text.HAlign.END = "end";
 
 /**
-   Aligns the text to the right.
-   @illustration <t>stageOnly</t>
-   stage.width(250).height(40);
+ * Aligns the text to the right.<br/>
+ * <img src='/anychart.graphics.vector.Text.HAlign.RIGHT.png' width='266' height='52'/>
+ */
+anychart.graphics.vector.Text.HAlign.RIGHT = "right";
 
-   var rectLTR = stage.rect(0, 0, stage.width()/2, 27);
-   var rectRTL = stage.rect(stage.width()/2, 0, stage.width()/2, 27);
 
-   stage.text(rectLTR.getX(), 3, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.RIGHT, direction: anychart.graphics.vector.Text.Direction.LTR})
-   .width(rectLTR.getWidth())
-   .height(rectLTR.getHeight());
-
-   stage.text(rectRTL.getX(), 2, 'sample text', {fontSize: 14, hAlign: anychart.graphics.vector.Text.HAlign.RIGHT, direction: anychart.graphics.vector.Text.Direction.RTL})
-   .width(rectRTL.getWidth())
-   .height(rectRTL.getHeight());
-
-   stage.text(rectLTR.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'LTR', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
-   .width(rectLTR.getWidth())
-   .height(rectLTR.getHeight());
-
-   stage.text(rectRTL.getX() + rectRTL.getWidth()/2 - 5, stage.height()-10, 'RTL', {fontSize: 8, direction: anychart.graphics.vector.Text.Direction.LTR})
-   .width(rectLTR.getWidth())
-   .height(rectLTR.getHeight());
-   */
-anychart.graphics.vector.Text.HAlign.RIGHT;
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.VAlign
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Text VAilgn.
+ * Text vertical align.
+ * @example anychart.graphics.vector.Text.VAlign
  * @enum {string}
  */
 anychart.graphics.vector.Text.VAlign;
 
 /**
-   vAlign top.
-   @illustration <t>stageOnly</t>
-   stage.width(120).height(30);
-   stage.rect(0, 0, stage.width(), stage.height());
-   stage.text(10, 0, 'sample text', {fontSize: 14, vAlign: 'top'})
-    .width(stage.width()).height(stage.height());
-   */
-anychart.graphics.vector.Text.VAlign.TOP;
+ * Vertical align top.<br/>
+ * <img src='/anychart.graphics.vector.Text.VAlign.TOP.png' width='132' height='41'/>
+ */
+anychart.graphics.vector.Text.VAlign.TOP = "top";
 
 /**
-   vAlign middle.
-   @illustration <t>stageOnly</t>
-   stage.width(120).height(30);
-   stage.rect(0, 0, stage.width(), stage.height());
-   stage.text(10, 0, 'sample text', {fontSize: 14, vAlign: 'middle'})
-   .width(stage.width()).height(stage.height());
-   */
-anychart.graphics.vector.Text.VAlign.MIDDLE;
+ * Vertical align middle.<br/>
+ * <img src='/anychart.graphics.vector.Text.VAlign.MIDDLE.png' width='134' height='43'/>
+ */
+anychart.graphics.vector.Text.VAlign.MIDDLE = "middle";
 
 /**
-   vAlign bottom.
-   @illustration <t>stageOnly</t>
-   stage.width(120).height(30);
-   stage.rect(0, 0, stage.width(), stage.height());
-   stage.text(10, 0, 'sample text', {fontSize: 14, vAlign: 'bottom'})
-   .width(stage.width()).height(stage.height());
-   */
-anychart.graphics.vector.Text.VAlign.BOTTOM;
+ * Vertical align bottom.<br/>
+ * <img src='/anychart.graphics.vector.Text.VAlign.BOTTOM.png' width='132' height='42'/>
+ */
+anychart.graphics.vector.Text.VAlign.BOTTOM = "bottom";
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.Decoration
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Text decoration.
+ * @example anychart.graphics.vector.Text.Decoration
  * @enum {string}
  */
 anychart.graphics.vector.Text.Decoration;
 
 /**
-   Blinking text. This value is not supported by some browser and is discussed in CSS3,
-   animation is recommended instead.
-   @illustration <t>stageOnly</t>
-   stage.width(100);
-   stage.height(25);
-   stage.text(7, 1, 'sample text', {fontSize: 14, decoration: anychart.graphics.vector.Text.Decoration.BLINK})
-   .width(stage.width()).height(stage.height());
-   */
-anychart.graphics.vector.Text.Decoration.BLINK;
+ * Blinking text. This value is not supported by some browser and is discussed in CSS3, animation is recommended instead.
+ */
+anychart.graphics.vector.Text.Decoration.BLINK = "blink";
 
 /**
-   Line through decoration.
-   @illustration <t>stageOnly</t>
-   stage.width(100);
-   stage.height(25);
-   stage.text(7, 1, 'sample text', {fontSize: 14, decoration: anychart.graphics.vector.Text.Decoration.LINE_THROUGH})
-   .width(stage.width()).height(stage.height());
-   */
-anychart.graphics.vector.Text.Decoration.LINE_THROUGH;
+ * Line through decoration.<br/>
+ * <img src='/anychart.graphics.vector.Text.Decoration.LINE_THROUGH.png' width='111' height='31'/>
+ */
+anychart.graphics.vector.Text.Decoration.LINE_THROUGH = "line-through";
 
 /**
-   Overline decoration.
-   @illustration <t>stageOnly</t>
-   stage.width(100);
-   stage.height(25);
-   stage.text(7, 1, 'sample text', {fontSize: 14, decoration: anychart.graphics.vector.Text.Decoration.OVERLINE})
-   .width(stage.width()).height(stage.height());
-   */
-anychart.graphics.vector.Text.Decoration.OVERLINE;
+ * Overline decoration.<br/>
+ * <img src='/anychart.graphics.vector.Text.Decoration.OVERLINE.png' width='95' height='27'/>
+ */
+anychart.graphics.vector.Text.Decoration.OVERLINE = "overline";
 
 /**
-   Underline decoration.
-   @illustration <t>stageOnly</t>
-   stage.width(100);
-   stage.height(25);
-   stage.text(7, 1, 'sample text', {fontSize: 14, decoration: anychart.graphics.vector.Text.Decoration.UNDERLINE})
-   .width(stage.width()).height(stage.height());
-   */
-anychart.graphics.vector.Text.Decoration.UNDERLINE;
+ * Underline decoration.<br/>
+ * <img src='/anychart.graphics.vector.Text.Decoration.UNDERLINE.png' width='98' height='25'/>
+ */
+anychart.graphics.vector.Text.Decoration.UNDERLINE = "underline";
 
 /**
-   Cancels all decorations, including links underline.
-   @illustration <t>stageOnly</t>
-   stage.width(100);
-   stage.height(25);
-   stage.text(7, 1, 'sample text', {fontSize: 14, decoration: anychart.graphics.vector.Text.Decoration.NONE})
-   .width(stage.width()).height(stage.height());
-   */
-anychart.graphics.vector.Text.Decoration.NONE;
+ * Cancels all decorations, including links underline.<br/>
+ * <img src='/anychart.graphics.vector.Text.Decoration.NONE.png' width='99' height='25'/>
+ */
+anychart.graphics.vector.Text.Decoration.NONE = "one";
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.FontVariant
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Defines lowercase.
+ * @example anychart.graphics.vector.Text.FontVariant
  * @enum {string}
  */
 anychart.graphics.vector.Text.FontVariant;
 
 /**
-   Leave lovercase as is.
-   @illustration <t>stageOnly</t>
-   stage.width(100);
-   stage.height(25);
-   stage.text(7, 1, 'Sample text', {fontSize: 14, fontVariant: anychart.graphics.vector.Text.FontVariant.NORMAL});
-   */
-anychart.graphics.vector.Text.FontVariant.NORMAL;
+ * Leave lowercase as is.<br/>
+ * <img src='/anychart.graphics.vector.Text.FontVariant.NORMAL.png' width='105' height='25'/>
+ */
+anychart.graphics.vector.Text.FontVariant.NORMAL = "normal";
 
 /**
-   Make lowercase smaller.
-   @illustration <t>stageOnly</t>
-   stage.width(100);
-   stage.height(25);
-   stage.text(7, 1, 'Sample text', {fontSize: 14, fontVariant: anychart.graphics.vector.Text.FontVariant.SMALL_CAP});
-   */
-anychart.graphics.vector.Text.FontVariant.SMALL_CAP;
+ * Make lowercase smaller<br/>
+ * <img src='/anychart.graphics.vector.Text.FontVariant.SMALL_CAP.png' width='89' height='22'/>
+ */
+anychart.graphics.vector.Text.FontVariant.SMALL_CAP = "small-caps";
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.FontStyle
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Font style.
+ * @example anychart.graphics.vector.Text.FontStyle
  * @enum {string}
  */
 anychart.graphics.vector.Text.FontStyle;
 
 /**
-   Normal.
-   @illustration <t>stageOnly</t>
-   stage.width(100);
-   stage.height(25);
-   stage.text(7, 1, 'Sample Text', {fontSize: 14, fontStyle: anychart.graphics.vector.Text.FontStyle.NORMAL});
-   */
-anychart.graphics.vector.Text.FontStyle.NORMAL;
+ * Normal.<br/>
+ * <img src='/anychart.graphics.vector.Text.FontStyle.NORMAL.png' width='104' height='27'/>
+ */
+anychart.graphics.vector.Text.FontStyle.NORMAL = "normal";
 
 /**
-   Italic.
-   @illustration <t>stageOnly</t>
-   stage.width(100);
-   stage.height(25);
-   stage.text(7, 1, 'Sample Text', {fontSize: 14, fontStyle: anychart.graphics.vector.Text.FontStyle.ITALIC});
-   */
-anychart.graphics.vector.Text.FontStyle.ITALIC;
+ * Italic.<br/>
+ * <img src='/anychart.graphics.vector.Text.FontStyle.ITALIC.png' width='107' height='30'/>
+ */
+anychart.graphics.vector.Text.FontStyle.ITALIC = "italic";
 
 /**
-   Oblique.
-   @illustration <t>stageOnly</t>
-   stage.width(100);
-   stage.height(25);
-   stage.text(7, 1, 'Sample Text', {fontSize: 14, fontStyle: anychart.graphics.vector.Text.FontStyle.OBLIQUE});
-   */
-anychart.graphics.vector.Text.FontStyle.OBLIQUE;
+ * Oblique.<br/>
+ * <img src='/anychart.graphics.vector.Text.FontStyle.OBLIQUE.png' width='102' height='27'/>
+ */
+anychart.graphics.vector.Text.FontStyle.OBLIQUE = "oblique";
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.Direction
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Text direction.
+ * @example anychart.graphics.vector.Text.Direction
  * @enum {string}
  */
 anychart.graphics.vector.Text.Direction;
 
 /**
-   Left to right.
-   @illustration <t>stageOnly</t>
-   var padding = 5;
-   stage.width(120).height(25);
-   stage.rect(0, 0, stage.width(), stage.height());
-   stage.text(0, 1, 'sample text', {fontSize: 14, direction: anychart.graphics.vector.Text.Direction.LTR})
-      .width(stage.width())
-      .height(stage.height())
-      .textIndent(padding);
-   */
-anychart.graphics.vector.Text.Direction.LTR;
+ * Left to right.<br/>
+ * <img src='/anychart.graphics.vector.Text.Direction.LTR.png' width='140' height='38'/>
+ */
+anychart.graphics.vector.Text.Direction.LTR = "ltr";
 
 /**
-   Right to left.
-   @illustration <t>stageOnly</t>
-   var padding = 5;
-   stage.width(120).height(25);
-   stage.rect(0, 0, stage.width(), stage.height());
-   stage.text(0, 1, 'sample text', {fontSize: 14, direction: anychart.graphics.vector.Text.Direction.RTL})
-      .width(stage.width())
-      .height(stage.height())
-      .textIndent(padding);
-   */
-anychart.graphics.vector.Text.Direction.RTL;
+ * Right to left.<br/>
+ * <img src='/anychart.graphics.vector.Text.Direction.RTL.png' width='138' height='40'/>
+ */
+anychart.graphics.vector.Text.Direction.RTL = "rtl";
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.x
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- Getter for X coordinate of text.
- @return {number}
+ * Getter for the current X coordinate of text.
+ * @shortDescription X coordinate setting.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Text.x_get
+ * @return {number} The current X coordinate.
  */
 anychart.graphics.vector.Text.prototype.x;
 
 /**
- Setter for X coordinate of text.
- @example anychart.graphics.vector.Text.x
- @param {number=} opt_value X coordinate.
- @return {anychart.graphics.vector.Text}
+ * Setter for X coordinate of text.
+ * @example anychart.graphics.vector.Text.x_set
+ * @param {number=} opt_value X coordinate.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.x;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.y
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for Y coordinate of text.
- @return {number}
+ * Getter for the current Y coordinate of text.
+ * @shortDescription Y coordinate setting.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Text.y_get
+ * @return {number} The current Y coordinate.
  */
 anychart.graphics.vector.Text.prototype.y;
 
 /**
- Setter for Y coordinate of text.
- @example anychart.graphics.vector.Text.y
- @param {number=} opt_value Y coordinate.
- @return {anychart.graphics.vector.Text}
+ * Setter for Y coordinate of text.
+ * @example anychart.graphics.vector.Text.y_set
+ * @param {number=} opt_value Y coordinate.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.y;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.width
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns width.<br/>
- <b>Note:</b> it is not calculated automatically and has no default, and if it
- was not set using setter - <b>NaN</b> is returned.
- @return {number|string}
+ * Gets the current width.<br/>
+ * <b>Note:</b> it is not calculated automatically and has no default, and if it  was not set using setter - <b>NaN</b> is returned.
+ * @shortDescription Width setting.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Text.width_get
+ * @return {number|string} The current width.
  */
 anychart.graphics.vector.Text.prototype.width;
 
 /**
- Sets width.
- @example anychart.graphics.vector.Text.width
- @param {(number|string)=} opt_value Width.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Sets a width.
+ * @example anychart.graphics.vector.Text.width_set
+ * @param {(number|string)=} opt_value Width.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.width;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.height
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns height.<br/>
- <b>Note:</b> it is not calculated automatically and has no default, and if it
- was not set using setter - <b>NaN</b> is returned.
- @return {number|string}
+ * Gets the current height.<br/>
+ * <b>Note:</b> it is not calculated automatically and has no default, and if it was not set using setter - <b>NaN</b> is returned.
+ * @shortDescription Height setting.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Text.height_get
+ * @return {number|string} The current height.
  */
 anychart.graphics.vector.Text.prototype.height;
 
 /**
- Sets height.
- @example anychart.graphics.vector.Text.height
- @param {(number|string)=} opt_value Height.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Sets a height.
+ * @example anychart.graphics.vector.Text.height_set
+ * @param {(number|string)=} opt_value Height.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.height;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.opacity
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for text opacity.
- @return {number}
+ * Getter for the current text opacity.
+ * @shortDescription Opacity setting.
+ * @example anychart.graphics.vector.Text.opacity_get
+ * @return {number} The current text opacity.
  */
 anychart.graphics.vector.Text.prototype.opacity;
 
 /**
- Setter for text opacity.
- @example anychart.graphics.vector.Text.opacity
- @param {number=} opt_value Text opacity.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for text opacity.
+ * @example anychart.graphics.vector.Text.opacity_set
+ * @param {number=} opt_value Text opacity.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.opacity;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.color
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for text color.
- @return {string}
+ * Getter for the current text color.
+ * @shortDescription Color setting.
+ * @category Coloring
+ * @example anychart.graphics.vector.Text.color_get
+ * @return {string} The current text color.
  */
 anychart.graphics.vector.Text.prototype.color;
 
 /**
- Setter for text color.
- @example anychart.graphics.vector.Text.color
- @param {string=} opt_value Text color.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for text color.
+ * @example anychart.graphics.vector.Text.color_set
+ * @param {string=} opt_value ["#000"] Text color.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.color;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.fontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for font size of text.
- @return {string|number}
+ * Getter for the current font size of text.
+ * @shortDescription Font size setting.
+ * @example anychart.graphics.vector.Text.fontSize_get
+ * @return {string|number} The current font size.
  */
 anychart.graphics.vector.Text.prototype.fontSize;
 
 /**
- Setter for font size of text.
- @example anychart.graphics.vector.Text.fontSize
- @param {(string|number)=} opt_value Font size.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for font size of text.
+ * @example anychart.graphics.vector.Text.fontSize_set
+ * @param {(string|number)=} opt_value ["10px"] Font size.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.fontSize;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.fontFamily
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for font family of text.
- @return {string}
+ * Getter for the current font family of text.
+ * @shortDescription Font family setting.
+ * @example anychart.graphics.vector.Text.fontFamily_get
+ * @return {string} The current font family.
  */
 anychart.graphics.vector.Text.prototype.fontFamily;
 
 /**
- Setter for font family of text.
- @example anychart.graphics.vector.Text.fontFamily
- @param {string=} opt_value Font family.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for font family of text.
+ * @example anychart.graphics.vector.Text.fontFamily_set
+ * @param {string=} opt_value ["Verdana"] Font family.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.fontFamily;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.direction
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for text direction.
- @return {string}
+ * Getter for the current text direction.
+ * @shortDescription Text direction setting.
+ * @example anychart.graphics.vector.Text.direction_get
+ * @return {string} The current text direction
  */
 anychart.graphics.vector.Text.prototype.direction;
 
 /**
- Setter for text direction.
- @example anychart.graphics.vector.Text.direction
- @param {(anychart.graphics.vector.Text.Direction|string)=} opt_value Text direction.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for text direction.
+ * @example anychart.graphics.vector.Text.direction_set
+ * @param {(anychart.graphics.vector.Text.Direction|string)=} opt_value ["ltr"] Text direction.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.direction;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.fontStyle
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for font style of text.
- @return {string}
+ * Getter for the current font style of text.
+ * @shortDescription Font style setting.
+ * @example anychart.graphics.vector.Text.fontStyle_get
+ * @return {string} The current font style.
  */
 anychart.graphics.vector.Text.prototype.fontStyle;
 
 /**
- Setter for font style of text.
- @example anychart.graphics.vector.Text.fontStyle
- @param {(anychart.graphics.vector.Text.FontStyle|string)=} opt_value Font style.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for font style of text.
+ * @example anychart.graphics.vector.Text.fontStyle_set
+ * @param {(anychart.graphics.vector.Text.FontStyle|string)=} opt_value Font style.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.fontStyle;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.fontVariant
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for font variant of text.
- @return {string}
+ * Getter for the current font variant of text.
+ * @shortDescription Font variant setting.
+ * @example anychart.graphics.vector.Text.fontVariant_get
+ * @return {string} The current font variant
  */
 anychart.graphics.vector.Text.prototype.fontVariant;
 
 /**
- Setter for font variant of text.
- @example anychart.graphics.vector.Text.fontVariant
- @param {(anychart.graphics.vector.Text.FontVariant|string)=} opt_value Font variant.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for font variant of text.
+ * @example anychart.graphics.vector.Text.fontVariant_set
+ * @param {(anychart.graphics.vector.Text.FontVariant|string)=} opt_value Font variant.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.fontVariant;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.fontWeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for font weight of text.
- @return {string}
+ * Getter for the current font weight of text.
+ * @shortDescription Font weight setting.
+ * @example anychart.graphics.vector.Text.fontWeight_get
+ * @return {string} The current font weight.
  */
 anychart.graphics.vector.Text.prototype.fontWeight;
 
 /**
- Setter for font weight of text.
- @example anychart.graphics.vector.Text.fontWeight
- @param {(string|number)=} opt_value Font weight.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for font weight of text.
+ * @example anychart.graphics.vector.Text.fontWeight_set
+ * @param {(string|number)=} opt_value Font weight.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.fontWeight;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.letterSpacing
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for letter spacing of text.
- @return {string}
+ * Getter for the current letter spacing of text.
+ * @shortDescription Letter spacing setting.
+ * @example anychart.graphics.vector.Text.letterSpacing_get
+ * @return {string} The current letter spacing.
  */
 anychart.graphics.vector.Text.prototype.letterSpacing;
 
 /**
- Setter for letter spacing of text.
- @example anychart.graphics.vector.Text.letterSpacing
- @param {(string|number)=} opt_value Letter spacing.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for letter spacing of text.
+ * @example anychart.graphics.vector.Text.letterSpacing_set
+ * @param {(string|number)=} opt_value Letter spacing.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.letterSpacing;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.decoration
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for text decoration.
- @return {string}
+ * Getter for the current text decoration.
+ * @shortDescription Text decoration setting.
+ * @example anychart.graphics.vector.Text.decoration_get
+ * @return {string} The current text decoration.
  */
 anychart.graphics.vector.Text.prototype.decoration;
 
 /**
- Setter for text decoration.
- @example anychart.graphics.vector.Text.decoration
- @param {(anychart.graphics.vector.Text.Decoration|string)=} opt_value Text decoration.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for text decoration.
+ * @example anychart.graphics.vector.Text.decoration_set
+ * @param {(anychart.graphics.vector.Text.Decoration|string)=} opt_value Text decoration.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.decoration;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.lineHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for line height of text.
- @return {string}
+ * Getter for the current line height of text.
+ * @shortDescription Line height setting.
+ * @example anychart.graphics.vector.Text.lineHeight_get
+ * @return {string} The current line height.
  */
 anychart.graphics.vector.Text.prototype.lineHeight;
 
 /**
- Sets line height, either as ratio or in pixels.
- @example anychart.graphics.vector.Text.lineHeight
- @param {(string|number)=} opt_value Letter height.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Sets line height, either as ratio or in pixels.
+ * @example anychart.graphics.vector.Text.lineHeight_set
+ * @param {(string|number)=} opt_value Letter height.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.lineHeight;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.textIndent
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for text indent.
- @return {number}
+ * Getter for the current text indent.
+ * @shortDescription Text indent setting.
+ * @example anychart.graphics.vector.Text.textIndent_get
+ * @return {number} The current text indent.
  */
 anychart.graphics.vector.Text.prototype.textIndent;
 
 /**
- Setter for text indent.<br/>
- The text-indent property specifies the indentation of the first line in a text-block.
- @example anychart.graphics.vector.Text.textIndent
- @param {number=} opt_value Text indent of text.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for text indent.<br/>
+ * The text-indent property specifies the indentation of the first line in a text-block.
+ * @example anychart.graphics.vector.Text.textIndent_set
+ * @param {number=} opt_value Text indent of text.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.textIndent;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.vAlign
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for vertical align of text.
- @return {string}
+ * Getter for the current vertical align of text.
+ * @shortDescription Vertical align setting.
+ * @example anychart.graphics.vector.Text.vAlign_get
+ * @return {string} The current vertical align.
  */
 anychart.graphics.vector.Text.prototype.vAlign;
 
 /**
- Setter for vertical align of text.
- @example anychart.graphics.vector.Text.vAlign
- @param {(anychart.graphics.vector.Text.VAlign|string)=} opt_value Vertical align.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for vertical align of text.
+ * @example anychart.graphics.vector.Text.vAlign_set
+ * @param {(anychart.graphics.vector.Text.VAlign|string)=} opt_value Vertical align.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.vAlign;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.hAlign;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for horizontal align of text.
- @return {string}
+ * Getter for the current horizontal align of text.
+ * @shortDescription Horizontal align setting.
+ * @example anychart.graphics.vector.Text.hAlign_get
+ * @return {string} The current horizontal align.
  */
 anychart.graphics.vector.Text.prototype.hAlign;
 
 /**
- Setter for horizontal align of text.
- @example anychart.graphics.vector.Text.hAlign
- @param {(anychart.graphics.vector.Text.HAlign|string)=} opt_value Horizontal align.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for horizontal align of text.
+ * @example anychart.graphics.vector.Text.hAlign_set
+ * @param {(anychart.graphics.vector.Text.HAlign|string)=} opt_value ["start"] Horizontal align.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.hAlign;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.textWrap
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for text wrap of text.
- @return {string}
+ * Getter for the current text wrap of text.
+ * @shortDescription Text wrap setting.
+ * @example anychart.graphics.vector.Text.textWrap_get
+ * @return {string} The current text wrap.
  */
 anychart.graphics.vector.Text.prototype.textWrap;
 
 /**
- Setter for text wrap of text.
- @example anychart.graphics.vector.Text.textWrap
- @param {(anychart.graphics.vector.Text.TextWrap|string)=} opt_value Text wrap.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for text wrap of text.
+ * @example anychart.graphics.vector.Text.textWrap_set
+ * @param {(anychart.graphics.vector.Text.TextWrap|string)=} opt_value ["noWrap"] Text wrap.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.textWrap;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.textOverflow
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for font text overflow of text.
- @return {string}
+ * Getter for the current font text overflow of text.
+ * @shortDescription Text overflow setting.
+ * @example anychart.graphics.vector.Text.textOverflow_get
+ * @return {string} The current text overflow.
  */
 anychart.graphics.vector.Text.prototype.textOverflow;
 
 /**
- Setter for font text overflow of text.
- @example anychart.graphics.vector.Text.textOverflow
+ Setter for the font text overflow of text.
+ @example anychart.graphics.vector.Text.textOverflow_set
  @param {(anychart.graphics.vector.Text.TextOverflow|string)=} opt_value Text overflow.
  @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.textOverflow;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.selectable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for text selectable property.
- @return {boolean}
+ * Getter for the current text selectable property.
+ * @shortDescription Text selection setting.
+ * @example anychart.graphics.vector.Text.selectable_get
+ * @return {boolean} The current text selectable setting.
  */
 anychart.graphics.vector.Text.prototype.selectable;
 
 /**
- Setter for text selectable property.<br/>
- Defines whether text can be selected. If <b>false</b> - no selection.
- @example anychart.graphics.vector.Text.selectable
- @param {boolean=} opt_value Text selectable property.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for the text selectable property.<br/>
+ * Defines whether text can be selected. If <b>false</b> - no selection.
+ * @example anychart.graphics.vector.Text.selectable_set
+ * @param {boolean=} opt_value [true] Text selectable property.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.selectable;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.style
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for style.
- @return {anychart.graphics.vector.TextStyle} Style.
+ * Getter for the current text style.
+ * @shortDescription Text style settings.
+ * @example anychart.graphics.vector.Text.style_get
+ * @return {anychart.graphics.vector.TextStyle} The current text style.
  */
 anychart.graphics.vector.Text.prototype.style;
 
 /**
- Sets style.
- @example anychart.graphics.vector.Text.style
- @param {anychart.graphics.vector.TextStyle=} opt_value Style.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for the text style.
+ * @example anychart.graphics.vector.Text.style_set
+ * @param {anychart.graphics.vector.TextStyle=} opt_value Style.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.style;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.text
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Get current text.
- @return {string} Current text.
+ * Getter for the current text.
+ * @shortDescription Text setting.
+ * @example anychart.graphics.vector.Text.text_get
+ * @return {string} Current text.
  */
 anychart.graphics.vector.Text.prototype.text;
 
 /**
- Set up plain text. Text will be take as is. All symbols will be displaying in result.
- @example anychart.graphics.vector.Text.text
- @param {string=} opt_value Plaint text.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for the text.
+ * @detailed Set up plain text. Text will be take as is. All symbols will be displaying in result.
+ * @example anychart.graphics.vector.Text.text_set
+ * @param {string=} opt_value Plaint text.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.text;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.htmlText
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Get current text.
- @return {string} Current plain text.
+ * Getter for the current HTML format.
+ * @shortDescription HTML format.
+ * @example anychart.graphics.vector.Text.htmlText_get
+ * @return {string} Current plain text.
  */
 anychart.graphics.vector.Text.prototype.htmlText;
 
 /**
- Set up text in HTML format. Incoming text is parsed HTML parser.
- The tags that define style will taken into consideration and applied to the final result.
- HTML tags supported:
- <ul>
-  <li>&lt;br&gt; (&lt;br/&gt;)</li>
-  <li>&lt;b&gt;&lt;/b&gt;, &lt;strong&gt;&lt;/strong&gt;</li>
-  <li>&lt;i&gt;&lt;/i&gt;, &lt;em&gt;&lt;/em&gt;</li>
-  <li>&lt;span&gt;&lt;/span&gt; (font-style, font-variant, font-family, font-size, font-weight, color, letter-spacing,
- text-decoration, opacity)</li>
- </ul>
- @shortDescription Set up text in HTML format. Incoming text is parsed HTML parser.
- @example anychart.graphics.vector.Text.htmlText
- @param {string=} opt_value Text with HTML tags.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for the HTML format.
+ * @detailed Set up text in HTML format. Incoming text is parsed HTML parser.<br/>
+ * The tags that define style will taken into consideration and applied to the final result.<br/>
+ * HTML tags supported:
+ * <ul>
+ * <li>&lt;br&gt; (&lt;br/&gt;)</li>
+ * <li>&lt;b&gt;&lt;/b&gt;, &lt;strong&gt;&lt;/strong&gt;</li>
+ * <li>&lt;i&gt;&lt;/i&gt;, &lt;em&gt;&lt;/em&gt;</li>
+ * <li>&lt;span&gt;&lt;/span&gt; (font-style, font-variant, font-family, font-size, font-weight, color, letter-spacing,
+ * text-decoration, opacity)</li>
+ * </ul>
+ * @shortDescription Set up text in HTML format. Incoming text is parsed HTML parser.
+ * @example anychart.graphics.vector.Text.htmlText_set
+ * @param {string=} opt_value Text with HTML tags.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.htmlText;
 

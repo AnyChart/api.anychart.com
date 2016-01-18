@@ -1,401 +1,636 @@
 /**
- Layer class. Used to group elements.<br/>
- Elements must be grouped if you want to apply similar changes to them,
- for example transformation.<br>
- <b>Do not invoke constructor directly.</b> Use {@link anychart.graphics.vector.Stage#layer}
- to create stage bound layer.<br/> If you want to create an unbound
- layer – use {@link anychart.graphics#layer}
- @see anychart.graphics.vector.Stage#layer
- @see anychart.graphics#layer
- @illustration <t>stageOnly</t>
- var layer1 = stage.layer();
- var stroke = '1 black 1';
- layer1.ellipse(75, 105, 55, 35).fill('green', 1).stroke(stroke)
- layer1.ellipse(95, 75, 55, 35).fill('yellow', 1).stroke(stroke)
- layer1.ellipse(115, 45, 55, 35).fill('red', 1).stroke(stroke);
- layer1.text(195, 100, 'index = 0');
- layer1.text(195, 70, 'index = 1');
- layer1.text(195, 40, 'index = 2');
- @illustrationDesc
- Elements indices (and layers indices within a stage) set Z-order.
- The 'higher' an element is, the greater its index.
- @example anychart.graphics.vector.Layer
- @name anychart.graphics.vector.Layer
- @constructor
- @extends {anychart.graphics.vector.Element}
- @implements {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage}
+ * Layer class. Used to group elements.<br/>
+ * Elements must be grouped if you want to apply similar changes to them,
+ * for example transformation.<br>
+ * <b>Do not invoke constructor directly.</b> Use {@link anychart.graphics.vector.Stage#layer}
+ * to create stage bound layer.<br/> If you want to create an unbound
+ * layer – use {@link anychart.graphics#layer}<br/>
+ * See also:<br/>
+ * {@link anychart.graphics.vector.Stage#layer},<br/>
+ * {@link anychart.graphics#layer}<br/>
+ * Elements indices (and layers indices within a stage) set Z-order.<br/>
+ * The "higher" an element is, the greater its index.<br/>
+ * <img src='/anychart.graphics.vector.Layer.png' width='229' height='138'/>
+ * @example anychart.graphics.vector.Layer
+ * @constructor
+ * @extends {anychart.graphics.vector.Element}
  */
 anychart.graphics.vector.Layer;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.addChild
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Add element to a layer, to the top (maximal index). <br/>
- All DOM changes will happen instantly, except
- {@link anychart.graphics.vector.Stage#suspend}. <br/>
- <i>Simplified version of {@link anychart.graphics.vector.Layer#addChildAt} where element is added to the end.</i>
- @example anychart.graphics.vector.Layer.addChild
- @param {!anychart.graphics.vector.Element} element Element to add.
- @return {anychart.graphics.vector.Layer} Self instance for method chaining.
+ * Add element to a layer, to the top (maximal index).<br/>
+ * All DOM changes will happen instantly, except {@link anychart.graphics.vector.Stage#suspend}. <br/>
+ * <i>Simplified version of {@link anychart.graphics.vector.Layer#addChildAt} where element is added to the end.</i>
+ * @example anychart.graphics.vector.Layer.addChild
+ * @param {!anychart.graphics.vector.Element} element Element to add.
+ * @return {anychart.graphics.vector.Layer} Self instance for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.addChild;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.addChildAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Adds an element to a layer by index. <br/>
- <b>Note:</b> the greater index is - the 'higher' element is in a layer
- top element overlaps bottom elements.<br/>
-All DOM changes will happen instantly, except
- {@link anychart.graphics.vector.Stage#suspend}. <br/>
- @illustration <t>stageOnly</t>
- var layer1 = stage.layer();
- var layer2 = stage.layer();
- layer1.addChild(stage.circle(75, 60, 55).fill('blue', 0.2))
- .addChild(stage.star5(55, 79, 45).fill('red'));
- layer2.addChild(stage.circle(75, 60, 55).fill('blue', 0.2))
- .addChildAt(stage.star5(55, 79, 45).fill('red'), 0);
- layer2.translate(150,0);
- @illustrationDesc
- Left image shows sequential calls of
- {@link anychart.graphics.vector.Layer#addChild}<br/>
- Right image does the same, but star is added to 0 index.
- <code>.addChildAt(star5, 0);</code> (see code of this image in samples).
- @example anychart.graphics.vector.Layer.addChildAt
- @param {!anychart.graphics.vector.Element} element Element to add.
- @param {number} index Element index. <br/>Only positive numbers.
- @return {anychart.graphics.vector.Layer} Self instance for method chaining.
+ * Adds an element to a layer by index. <br/>
+ * <b>Note:</b> the greater index is - the 'higher' element is in a layer top element overlaps bottom elements.<br/>
+ * All DOM changes will happen instantly, except {@link anychart.graphics.vector.Stage#suspend}.<br/>
+ * Left image shows sequential calls of {@link anychart.graphics.vector.Layer#addChild}<br/>
+ * Right image does the same, but star is added to 0 index.<br/>
+ * <code>.addChildAt(star5, 0);</code> (see code of this image in samples).<br/>
+ * <img src='/anychart.graphics.vector.Layer.addChildAt.png' width='276' height='130'/>
+ * @example anychart.graphics.vector.Layer.addChildAt
+ * @param {!anychart.graphics.vector.Element} element Element to add.
+ * @param {number} index Element index. Only positive numbers.
+ * @return {anychart.graphics.vector.Layer} Self instance for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.addChildAt;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.getChildAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns element by index.
- @example anychart.graphics.vector.Layer.getChildAt
- @param {number} index Element to be returned.
- @return {anychart.graphics.vector.Element} Element or null.
+ * Returns element by index.
+ * @example anychart.graphics.vector.Layer.getChildAt
+ * @param {number} index Element to be returned.
+ * @return {anychart.graphics.vector.Element} Element or null.
  */
 anychart.graphics.vector.Layer.prototype.getChildAt;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.indexOfChild
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Looks for an element in a layer and returns index or -1, of not found.
- @example anychart.graphics.vector.Layer.indexOfChild
- @param {anychart.graphics.vector.Element} element Element which index we need to find.
- @return {number} Index or -1, or not found.
+ * Looks for an element in a layer and returns index or -1, if not found.
+ * @example anychart.graphics.vector.Layer.indexOfChild
+ * @param {anychart.graphics.vector.Element} element Element which index we need to find.
+ * @return {number} Index or -1, or not found.
  */
 anychart.graphics.vector.Layer.prototype.indexOfChild;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.removeChild
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Removes element from a layer.<br/>
- All changes in DOM will happen instantly, except
- {@link anychart.graphics.vector.Stage#suspend}. <br/>
- <b>Note:</b> this method doesn't remove element, it just breaks the link between the element and the layer.<br/>
- <i>This is an extension of {@link anychart.graphics.vector.Layer#removeChildAt} method.</i>
- @example anychart.graphics.vector.Layer.removeChild
- @param {anychart.graphics.vector.Element} element Element to remove or its id.
- @return {anychart.graphics.vector.Element} Removed element or null.
+ * Removes element from a layer.<br/>
+ * All changes in DOM will happen instantly, except {@link anychart.graphics.vector.Stage#suspend}. <br/>
+ * <b>Note:</b> this method doesn't remove element, it just breaks the link between the element and the layer.<br/>
+ * <i>This is an extension of {@link anychart.graphics.vector.Layer#removeChildAt} method.</i>
+ * @example anychart.graphics.vector.Layer.removeChild
+ * @param {anychart.graphics.vector.Element} element Element to remove or its id.
+ * @return {anychart.graphics.vector.Element} Removed element or null.
  */
 anychart.graphics.vector.Layer.prototype.removeChild;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.removeChildAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Removes element from a layer by index.<br/>
- All changes in DOM will happen instantly, except
- {@link anychart.graphics.vector.Stage#suspend}. <br/>
- <b>Note:</b> this method doesn't remove element, it just breaks the link between the element and the layer.<br/>
- @example anychart.graphics.vector.Layer.removeChildAt
- @param {number} index Index of element to be removed.
- @return {anychart.graphics.vector.Element} Removed element or null.
+ * Removes element from a layer by index.<br/>
+ * All changes in DOM will happen instantly, except {@link anychart.graphics.vector.Stage#suspend}.<br/>
+ * <b>Note:</b> this method doesn't remove element, it just breaks the link between the element and the layer.<br/>
+ * @example anychart.graphics.vector.Layer.removeChildAt
+ * @param {number} index Index of element to be removed.
+ * @return {anychart.graphics.vector.Element} Removed element or null.
  */
 anychart.graphics.vector.Layer.prototype.removeChildAt;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.removeChildren
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Remove all children from a layer.
- @return {!Array.<anychart.graphics.vector.Element>} Array of removed elements.
+ * Removes all children from a layer.
+ * @example anychart.graphics.vector.Layer.removeChildren
+ * @return {!Array.<anychart.graphics.vector.Element>} Array of removed elements.
  */
 anychart.graphics.vector.Layer.prototype.removeChildren;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.swapChildren
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Swap children.
- @example anychart.graphics.vector.Layer.swapChildren
- @param {anychart.graphics.vector.Element} element1 First element.
- @param {anychart.graphics.vector.Element} element2 Second element.
- @return {anychart.graphics.vector.Layer} Self instance for method chaining.
+ * Swaps children.
+ * @example anychart.graphics.vector.Layer.swapChildren
+ * @param {anychart.graphics.vector.Element} element1 First element.
+ * @param {anychart.graphics.vector.Element} element2 Second element.
+ * @return {anychart.graphics.vector.Layer} Self instance for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.swapChildren;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.swapChildrenAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Swap children by indices.
- @example anychart.graphics.vector.Layer.swapChildrenAt
- @param {number} index1 First element index.
- @param {number} index2 Second element index.
- @return {anychart.graphics.vector.Layer} Self instance for method chaining.
+ * Swaps children by indexes.
+ * @example anychart.graphics.vector.Layer.swapChildrenAt
+ * @param {number} index1 First element index.
+ * @param {number} index2 Second element index.
+ * @return {anychart.graphics.vector.Layer} Self instance for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.swapChildrenAt;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.hasChild
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Checks if there is such element in children set.
- @param {anychart.graphics.vector.Element} element Element.
- @return {boolean} True if it is a child.
+ * Checks if there is such element in children set.
+ * @param {anychart.graphics.vector.Element} element Element.
+ * @return {boolean} True if it is a child.
  */
 anychart.graphics.vector.Layer.prototype.hasChild;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.numChildren
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns the number of children.
- @return {number} Number of children.
+ * Returns the number of children.
+ * @example anychart.graphics.vector.Layer.numChildren
+ * @return {number} Number of children.
  */
 anychart.graphics.vector.Layer.prototype.numChildren;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.forEachChild
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Applies function to all elements in a layer.
- @param {function(anychart.graphics.vector.Element):void} callback Function to be applied.
- @return {anychart.graphics.vector.Layer} Self instance for method chaining.
+ * Applies function to all elements in a layer.
+ * @example anychart.graphics.vector.Layer.forEachChild
+ * @param {function(anychart.graphics.vector.Element):void} callback Function to be applied.
+ * @return {anychart.graphics.vector.Layer} Self instance for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.forEachChild;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.forEachChild
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Applies the function to all elements of a layer in the given context.
- @param {function(anychart.graphics.vector.Element):void} callback Function to be applied.
- @param {Object=} opt_this <b>this</b> context for the function to be applied.
- @return {anychart.graphics.vector.Layer} Self instance for method chaining.
+ * Applies the function to all elements of a layer in the given context.
+ * @param {function(anychart.graphics.vector.Element):void} callback Function to be applied.
+ * @param {Object=} opt_this <b>this</b> context for the function to be applied.
+ * @return {anychart.graphics.vector.Layer} Self instance for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.forEachChild;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.layer
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Invokes {@link anychart.graphics.vector.Layer} class constructor.<br/>
- <strong>Note:</strong><br>anychart.graphics.vector.Layer does nothing to delete an object after it is used.
- You need to take care of used objects yourself.
- @shortDescription Invokes {@link anychart.graphics.vector.Layer} class constructor.
- @example anychart.graphics.vector.Layer.layer
- @return {anychart.graphics.vector.Layer} Self instance for method chaining.
- @this {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage}
+ * Invokes {@link anychart.graphics.vector.Layer} class constructor.<br/>
+ * <strong>Note:</strong><br>{@link anychart.graphics.vector.Layer} does nothing to delete an object after it is used.
+ * You have to take care of used objects yourself.
+ * @example anychart.graphics.vector.Layer.layer
+ * @return {anychart.graphics.vector.Layer} Self instance for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.layer;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.text
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Invokes {@link anychart.graphics.vector.Text} class constructor.<br/>
- <strong>Note:</strong><br>anychart.graphics.vector.Layer does nothing to delete an object after it is used.
- You need to take care of used objects yourself.
- @shortDescription Invokes {@link anychart.graphics.vector.Text} class constructor.
- @example anychart.graphics.vector.Layer.text
- @example anychart.graphics.vector.Layer.text1
- @param {number=} opt_x X-coordinate (Left) of left top corner of text bounds.
- @param {number=} opt_y Y-coordinate (Top) of left top corner of text bounds.
- @param {string=} opt_text Text to be displayed.
- @param {anychart.graphics.vector.TextStyle=} opt_style Text style. More at {@link anychart.graphics.vector.Text#style}.
- @return {anychart.graphics.vector.Text} An instance of class for method chaining.
- @this {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage}
+ * Invokes {@link anychart.graphics.vector.Text} class constructor.<br/>
+ * <strong>Note:</strong><br>{@link anychart.graphics.vector.Layer} does nothing to delete an object after it is used.
+ * You have to take care of used objects yourself.
+ * @example anychart.graphics.vector.Layer.text_set_asCoord Text with coordinates
+ * @example anychart.graphics.vector.Layer.text_set_asSettings Text with several settings
+ * @param {number=} opt_x X-coordinate (Left) of left top corner of text bounds.
+ * @param {number=} opt_y Y-coordinate (Top) of left top corner of text bounds.
+ * @param {string=} opt_text Text to be displayed.
+ * @param {anychart.graphics.vector.TextStyle=} opt_style Text style. More at {@link anychart.graphics.vector.Text#style}.
+ * @return {anychart.graphics.vector.Text} An instance of class for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.text;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.html
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Invokes {@link anychart.graphics.vector.Text} class constructor and applies {@link anychart.graphics.vector.Text#htmlText} method
- to handle HTML formatting.<br/>
- <strong>Note:</strong><br>anychart.graphics.vector.Layer does nothing to delete an object after it is used.
- You need to take care of used objects yourself.
- @shortDescription Returns {@link anychart.graphics.vector.Text} constructoe and applies
-  {@link anychart.graphics.vector.Text#htmlText} to handle HTML formatting.
- @example anychart.graphics.vector.Layer.html
- @param {number=} opt_x X-coordinate (Left) of top left corner of text bounds.
- @param {number=} opt_y Y-coordinate (Top) of top left corner of text bounds.
- @param {string=} opt_text Text to be displayed.
- @param {anychart.graphics.vector.TextStyle=} opt_style Text style. More at {@link anychart.graphics.vector.Text#style}.
- @return {anychart.graphics.vector.Text} An instance of class for method chaining.
- @this {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage}
+ * Invokes {@link anychart.graphics.vector.Text} class constructor and applies {@link anychart.graphics.vector.Text#htmlText} method
+ * to handle HTML formatting.<br/>
+ * <strong>Note:</strong><br>{@link anychart.graphics.vector.Layer} does nothing to delete an object after it is used.
+ * You have to take care of used objects yourself.
+ * @example anychart.graphics.vector.Layer.html
+ * @param {number=} opt_x X-coordinate (Left) of top left corner of text bounds.
+ * @param {number=} opt_y Y-coordinate (Top) of top left corner of text bounds.
+ * @param {string=} opt_text Text to be displayed.
+ * @param {anychart.graphics.vector.TextStyle=} opt_style Text style. More at {@link anychart.graphics.vector.Text#style}.
+ * @return {anychart.graphics.vector.Text} An instance of class for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.html;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.rect
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Invokes {@link anychart.graphics.vector.Rect} class constructor.<br/>
- <strong>Note:</strong><br>anychart.graphics.vector.Layer does nothing to delete an object after it is used.
- You need to take care of used objects yourself.
- @shortDescription Invokes {@link anychart.graphics.vector.Rect} class constructor.
- @example anychart.graphics.vector.Layer.rect
- @param {number=} opt_x X (Left) of top left rectangle corner.
- @param {number=} opt_y Y (Top) of to left rectangle corner.
- @param {number=} opt_width Rectangle width.
- @param {number=} opt_height Rectangle height.
- @return {anychart.graphics.vector.Rect} An instance of class for method chaining.
- @this {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage}
+ * Invokes {@link anychart.graphics.vector.Rect} class constructor.<br/>
+ * <strong>Note:</strong><br>{@link anychart.graphics.vector.Layer} does nothing to delete an object after it is used.
+ * You have to take care of used objects yourself.
+ * @example anychart.graphics.vector.Layer.rect
+ * @param {number=} opt_x X (Left) of top left rectangle corner.
+ * @param {number=} opt_y Y (Top) of to left rectangle corner.
+ * @param {number=} opt_width Rectangle width.
+ * @param {number=} opt_height Rectangle height.
+ * @return {anychart.graphics.vector.Rect} An instance of class for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.rect;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.image
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Invokes {@link anychart.graphics.vector.Image} class constructor.<br/>
- <strong>Note:</strong><br>anychart.graphics.vector.Layer does nothing to delete an object after it is used.
- You need to take care of used objects yourself.
- @shortDescription Invokes {@link anychart.graphics.vector.Image} class constructor.
- @example anychart.graphics.vector.Layer.image
- @param {string=} opt_src IRI (Internationalized Resource Identifiers) for image source.
- @param {number=} opt_x X coordinate of left-top corner image.
- @param {number=} opt_y Y coordinate of left-top corner image.
- @param {number=} opt_width Width of image bounds.
- @param {number=} opt_height Height of image bounds.
- @return {anychart.graphics.vector.Image} Image object instance.
- @this {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage}
+ * Invokes {@link anychart.graphics.vector.Image} class constructor.<br/>
+ * <strong>Note:</strong><br>{@link anychart.graphics.vector.Layer} does nothing to delete an object after it is used.
+ * You need to take care of used objects yourself.
+ * @example anychart.graphics.vector.Layer.image
+ * @param {string=} opt_src IRI (Internationalized Resource Identifiers) for image source.
+ * @param {number=} opt_x X coordinate of left-top corner image.
+ * @param {number=} opt_y Y coordinate of left-top corner image.
+ * @param {number=} opt_width Width of image bounds.
+ * @param {number=} opt_height Height of image bounds.
+ * @return {anychart.graphics.vector.Image} Image object instance.
  */
 anychart.graphics.vector.Layer.prototype.image;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.roundedRect
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws rectangle with rounded corners..<br/>
- Read more at {@link anychart.graphics.vector.primitives.roundedRect}
- @example anychart.graphics.vector.Layer.roundedRect
+ * Draws rectangle with rounded corners.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.roundedRect}
+ * @example anychart.graphics.vector.Layer.roundedRect
  */
 anychart.graphics.vector.Layer.prototype.roundedRect = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.roundedInnerRect
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws rectangle with corners rounded inside.<br/>
- Read more at {@link anychart.graphics.vector.primitives.roundedInnerRect}
- @example anychart.graphics.vector.Layer.roundedInnerRect
+ * Draws rectangle with corners rounded inside.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.roundedInnerRect}
+ * @example anychart.graphics.vector.Layer.roundedInnerRect
  */
 anychart.graphics.vector.Layer.prototype.roundedInnerRect = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.truncatedRect
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws rectangle with cut corners.<br/>
- Read more at {@link anychart.graphics.vector.primitives.truncatedRect}
- @example anychart.graphics.vector.Layer.truncatedRect
+ * Draws rectangle with cut corners.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.truncatedRect}
+ * @example anychart.graphics.vector.Layer.truncatedRect
  */
 anychart.graphics.vector.Layer.prototype.truncatedRect = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.circle
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Invokes {@link anychart.graphics.vector.Circle} class constructor.<br/>
- <strong>Note:</strong><br>anychart.graphics.vector.Layer does nothing to delete an object after it is used.
- You need to take care of used objects yourself.<br/>
- Read more at {@link anychart.graphics.vector.Circle}
- @shortDescription Invokes {@link anychart.graphics.vector.Circle} class constructor.
- @example anychart.graphics.vector.Layer.circle
- @param {number=} opt_cx Center X, in pixels.
- @param {number=} opt_cy Center Y, in pixels.
- @param {number=} opt_radius Radius, in pixels.
- @return {anychart.graphics.vector.Circle} An instance of class for method chaining.
- @this {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage}
+ * Invokes {@link anychart.graphics.vector.Circle} class constructor.<br/>
+ * <strong>Note:</strong><br>{@link anychart.graphics.vector.Layer} does nothing to delete an object after it is used.
+ * You have to take care of used objects yourself.<br/>
+ * Read more at {@link anychart.graphics.vector.Circle}
+ * @example anychart.graphics.vector.Layer.circle
+ * @param {number=} opt_cx Center X, in pixels.
+ * @param {number=} opt_cy Center Y, in pixels.
+ * @param {number=} opt_radius Radius, in pixels.
+ * @return {anychart.graphics.vector.Circle} An instance of class for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.circle;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.ellipse
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Invokes {@link anychart.graphics.vector.Ellipse} class constructor.<br/>
- <strong>Note:</strong><br>anychart.graphics.vector.Layer does nothing to delete an object after it is used.
- You need to take care of used objects yourself.<br/>
- Read more at {@link anychart.graphics.vector.Ellipse}
- @shortDescription Invokes {@link anychart.graphics.vector.Ellipse} class constructor.
- @example anychart.graphics.vector.Layer.ellipse
- @param {number=} opt_cx Center X, in pixels.
- @param {number=} opt_cy Center Y, in pixels.
- @param {number=} opt_rx Radius X, in pixels.
- @param {number=} opt_ry Radius Y, in pixels.
- @return {anychart.graphics.vector.Ellipse} An instance of class for method chaining.
- @this {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage}
+ * Invokes {@link anychart.graphics.vector.Ellipse} class constructor.<br/>
+ * <strong>Note:</strong><br>{@link anychart.graphics.vector.Layer} does nothing to delete an object after it is used.
+ * You have to take care of used objects yourself.<br/>
+ * Read more at {@link anychart.graphics.vector.Ellipse}
+ * @example anychart.graphics.vector.Layer.ellipse
+ * @param {number=} opt_cx Center X, in pixels.
+ * @param {number=} opt_cy Center Y, in pixels.
+ * @param {number=} opt_rx Radius X, in pixels.
+ * @param {number=} opt_ry Radius Y, in pixels.
+ * @return {anychart.graphics.vector.Ellipse} An instance of class for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.ellipse;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.path
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Invokes {@link anychart.graphics.vector.Path} class constructor.<br/>
- <strong>Note:</strong><br>anychart.graphics.vector.Layer does nothing to delete an object after it is used.
- You need to take care of used objects yourself.<br/>
- Read more at: {@link anychart.graphics.vector.Path}
- @shortDescription Invokes {@link anychart.graphics.vector.Path} class constructor.
- @example anychart.graphics.vector.Layer.path
- @return {anychart.graphics.vector.Path} An instance of class for method chaining.
- @this {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage}
+ * Invokes {@link anychart.graphics.vector.Path} class constructor.<br/>
+ * <strong>Note:</strong><br>anychart.graphics.vector.Layer does nothing to delete an object after it is used.
+ * You have to take care of used objects yourself.<br/>
+ * Read more at: {@link anychart.graphics.vector.Path}
+ * @example anychart.graphics.vector.Layer.path
+ * @return {anychart.graphics.vector.Path} An instance of class for method chaining.
  */
 anychart.graphics.vector.Layer.prototype.path;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.star
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws multi-pointed star.<br/>
- Read more at {@link anychart.graphics.vector.primitives.star}
- @example anychart.graphics.vector.Layer.star
+ * Draws multi-pointed star.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.star}
+ * @example anychart.graphics.vector.Layer.star
  */
 anychart.graphics.vector.Layer.prototype.star = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.star4
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws four-pointed star.<br/>
- Read more at {@link anychart.graphics.vector.primitives.star4}
- @example anychart.graphics.vector.Layer.star4
+ * Draws four-pointed star.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.star4}
+ * @example anychart.graphics.vector.Layer.star4
  */
 anychart.graphics.vector.Layer.prototype.star4 = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.star5
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws five-pointed star.<br/>
- Read more at {@link anychart.graphics.vector.primitives.star5}
- @example anychart.graphics.vector.Layer.star5
+ * Draws five-pointed star.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.star5}
+ * @example anychart.graphics.vector.Layer.star5
  */
 anychart.graphics.vector.Layer.prototype.star5 = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.star6
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws six-pointed star.<br/>
- Read more at {@link anychart.graphics.vector.primitives.star6}
- @example anychart.graphics.vector.Layer.star6
+ * Draws six-pointed star.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.star6}
+ * @example anychart.graphics.vector.Layer.star6
  */
 anychart.graphics.vector.Layer.prototype.star6 = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.star7
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws seven-pointed star.<br/>
- Read more at {@link anychart.graphics.vector.primitives.star7}
- @example anychart.graphics.vector.Layer.star7
+ * Draws seven-pointed star.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.star7}
+ * @example anychart.graphics.vector.Layer.star7
  */
 anychart.graphics.vector.Layer.prototype.star7 = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.star10
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws ten-pointed star.<br/>
- Read more at {@link anychart.graphics.vector.primitives.star10}
- @example anychart.graphics.vector.Layer.star10
+ * Draws ten-pointed star.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.star10}
+ * @example anychart.graphics.vector.Layer.star10
  */
 anychart.graphics.vector.Layer.prototype.star10 = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.triangleUp
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws a triangle heading upwards set by its circumscribed circle center and radius.<br/>
- Read more at {@link anychart.graphics.vector.primitives.triangleUp}
- @example anychart.graphics.vector.Layer.triangleUp
+ * Draws a triangle heading upwards set by its circumscribed circle center and radius.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.triangleUp}
+ * @example anychart.graphics.vector.Layer.triangleUp
  */
 anychart.graphics.vector.Layer.prototype.triangleUp = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.triangleDown
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws a triangle heading downwards set by its circumscribed circle center and radius.<br/>
- Read more at {@link anychart.graphics.vector.primitives.triangleDown}
- @example anychart.graphics.vector.Layer.triangleDown
+ * Draws a triangle heading downwards set by its circumscribed circle center and radius.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.triangleDown}
+ * @example anychart.graphics.vector.Layer.triangleDown
  */
 anychart.graphics.vector.Layer.prototype.triangleDown = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.diamond
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws a diamond set by its circumscribed circle center and radius.<br/>
- Read more at {@link anychart.graphics.vector.primitives.diamond}
- @example anychart.graphics.vector.Layer.diamond
+ * Draws a diamond set by its circumscribed circle center and radius.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.diamond}
+ * @example anychart.graphics.vector.Layer.diamond
  */
 anychart.graphics.vector.Layer.prototype.diamond = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.cross
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws a cross set by its circumscribed circle center and radius.<br/>
- Read more at {@link anychart.graphics.vector.primitives.cross}
- @example anychart.graphics.vector.Layer.cross
+ * Draws a cross set by its circumscribed circle center and radius.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.cross}
+ * @example anychart.graphics.vector.Layer.cross
  */
 anychart.graphics.vector.Layer.prototype.cross = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.diagonalCross
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws a diagonal cross set by its circumscribed circle center and radius.<br/>
- Read more at {@link anychart.graphics.vector.primitives.diagonalCross}
- @example anychart.graphics.vector.Layer.diagonalCross
+ * Draws a diagonal cross set by its circumscribed circle center and radius.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.diagonalCross}
+ * @example anychart.graphics.vector.Layer.diagonalCross
  */
 anychart.graphics.vector.Layer.prototype.diagonalCross = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.hLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws a thick horizontal line set by its circumscribed circle center and radius.<br/>
- Read more at {@link anychart.graphics.vector.primitives.hLine}
- @example anychart.graphics.vector.Layer.hLine
+ * Draws a thick horizontal line set by its circumscribed circle center and radius.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.hLine}
+ * @example anychart.graphics.vector.Layer.hLine
  */
 anychart.graphics.vector.Layer.prototype.hLine = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.vLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws a thick vertical line set by its circumscribed circle center and radius.<br/>
- Read more at {@link anychart.graphics.vector.primitives.vLine}
- @example anychart.graphics.vector.Layer.vLine
+ * Draws a thick vertical line set by its circumscribed circle center and radius.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.vLine}
+ * @example anychart.graphics.vector.Layer.vLine
  */
 anychart.graphics.vector.Layer.prototype.vLine = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.pie
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws sector as pie chart element.<br/>
- Read more at {@link anychart.graphics.vector.primitives.pie}
- @example anychart.graphics.vector.Layer.pie
+ * Draws sector as pie chart element.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.pie}
+ * @example anychart.graphics.vector.Layer.pie
  */
 anychart.graphics.vector.Layer.prototype.pie = function(){};
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Layer.prototype.donut
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Draws sector as donut chart element.<br/>
- Read more at {@link anychart.graphics.vector.primitives.donut}
- @example anychart.graphics.vector.Layer.donut
+ * Draws sector as donut chart element.<br/>
+ * Read more at {@link anychart.graphics.vector.primitives.donut}
+ * @example anychart.graphics.vector.Layer.donut
  */
 anychart.graphics.vector.Layer.prototype.donut = function(){};
 

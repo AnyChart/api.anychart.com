@@ -1,24 +1,26 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content=""/>
+    <meta name="x-cat-tags" content="label"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function() {
-            var stage = anychart.graphics.create("container");
+            stage = anychart.graphics.create("container");
             stage.circle(450, 500, 350);
             stage.rect(100, 150, 700, 700);
-            var label = anychart.ui.label();
-            label.background({fill: "#9E9E9E"});
-            label.text("Print stage");
-            label.fontColor("#fff");
-            label.padding(5);
-            label.offsetX(5);
-            label.listen("click", function() {
-                stage.print(anychart.graphics.vector.PaperSize.A3); // sets paper size
+            
+            var grayLabel = anychart.ui.label();
+            grayLabel.background({fill: "#9E9E9E"});
+            grayLabel.text("Print stage");
+            grayLabel.fontColor("#fff");
+            grayLabel.padding(5);
+            grayLabel.offsetX(5);
+            grayLabel.listen("click", function() {
+                // Sets paper size.
+                stage.print(anychart.graphics.vector.PaperSize.A3);
             });
-            label.container(stage);
-            label.draw();
+            grayLabel.container(stage);
+            grayLabel.draw();
         });
     </script>
 </head>

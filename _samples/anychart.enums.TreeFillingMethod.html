@@ -3,7 +3,7 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="tags"/>
     <script src="../anychart.min.js"></script>
-    <script x-export="chart">
+    <script x-export="dataGrid">
         anychart.onDocumentReady(function() {
             var rawdata = [
                 {id: "1", name: "1"},
@@ -16,8 +16,10 @@
                 {id: "8", name: "4-8", parent: "4"},
                 {id: "9", name: "7-9", parent: "7"}
             ];
-            var tree = anychart.data.tree(rawdata, anychart.enums.TreeFillingMethod.AS_TABLE); //set filling method for tree
-            var dataGrid = anychart.ui.dataGrid();
+            // Sets filling method for tree.
+            var tree = anychart.data.tree(rawdata, anychart.enums.TreeFillingMethod.AS_TABLE);
+
+            dataGrid = anychart.ui.dataGrid();
             dataGrid.data(tree);
             dataGrid.titleHeight(25);
             dataGrid.container("container");

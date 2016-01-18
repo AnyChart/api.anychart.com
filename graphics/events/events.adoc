@@ -1,132 +1,207 @@
 /**
- A namespace of all global functions of the ACGraph event model.
- @namespace
- @name anychart.graphics.events
+ * A namespace of all global functions of the ACGraph event model.
+ * @namespace
+ * @name anychart.graphics.events
  */
 anychart.graphics.events;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.events.listen
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Adds an event listener for an event to a DOM node or to an implementing object.
- The listener can be added to an object once, and if it is added one more time,
- its key will be returned.<br/>
- <b>Note</b> Notice that if the existing listener is one-off (added
- using listenOnce), it will cease to be such after calling the listen() method.
- @example anychart.graphics.events.listen
- @param {anychart.graphics.vector.Element} src The object to attach the event listener to.
- @param {string|Array.<string>} type The type of event or the array of types.
- @param {((function(?):?)|{handleEvent:(function(?):?)}|null)} listener The event listener or the object with the handleEvent function.
- @param {boolean=} opt_capt [false] Calls event handling in the capture phase (“false” by default).
- @param {Object=} opt_handler The element in scope of which the listener is called.
- @return {Object} The unique key for the event listener.
+ * Adds an event listener for an event to a DOM node or to an implementing object.
+ * @detailed The listener can be added to an object once, and if it is added one more time,
+ * its key will be returned.<br/>
+ * <b>Note</b>: Notice that if the existing listener is one-off (added
+ * using listenOnce), it will cease to be such after calling the listen() method.
+ * @example anychart.graphics.events.listen
+ * @param {anychart.graphics.vector.Element} target The object to attach the event listener to.
+ * @param {string|Array.<string>} type The type of event or the array of types.
+ * @param {((function(?):?)|{handleEvent:(function(?):?)}|null)} listener The event listener or the object
+ * with the handleEvent function.
+ * @param {boolean=} opt_capt [false] Calls event handling in the capture phase.
+ * @param {Object=} opt_handler The element in scope of which the listener is called.
+ * @return {Object} The unique key for the event listener.
  */
 anychart.graphics.events.listen;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.events.listenOnce
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Adds an event listener for a certain event to a DOM node or to an implementing object.
- <b>After the event is called, its handler will be deleted.</b><br>
- If the event handler being added already exists, listenOnce will do nothing. <br/>
- <b>Note</b> In particular, if the handler is already registered using listen(), listenOnce()
- <b>will not</b> make it one-off. Similarly, if a one-off listener already exists,
- listenOnce will not change it (it wil remain one-off).
- @example anychart.graphics.events.listenOnce
- @param {anychart.graphics.vector.Element} src The object to attach the event listener to.
- @param {string|Array.<string>} type The type of event or the array of types.
- @param {((function(?):?)|{handleEvent:(function(?):?)}|null)} listener The event listener.
- @param {boolean=} opt_capt [false] Calls event handling in the capture phase.
- @param {Object=} opt_handler The element in scope of which the listener is called.
- @return {Object} The unique key for the event listener.
+ * Adds an event listener for a certain event to a DOM node or to an implementing object.
+ * @detailed <b>After the event is called, its handler will be deleted.</b><br>
+ * If the event handler being added already exists, listenOnce will do nothing. <br/>
+ * <b>Note</b> In particular, if the handler is already registered using listen(), listenOnce()
+ * <b>will not</b> make it one-off. Similarly, if a one-off listener already exists,
+ * listenOnce will not change it (it wil remain one-off).
+ * @example anychart.graphics.events.listenOnce
+ * @param {anychart.graphics.vector.Element} target The object to attach the event listener to.
+ * @param {string|Array.<string>} type The type of event or the array of types.
+ * @param {((function(?):?)|{handleEvent:(function(?):?)}|null)} listener The event listener.
+ * @param {boolean=} opt_capt [false] Calls event handling in the capture phase.
+ * @param {Object=} opt_handler The element in scope of which the listener is called.
+ * @return {Object} The unique key for the event listener.
  */
 anychart.graphics.events.listenOnce;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.events.unlisten
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Removes a listener added using listen() or listenOnce() methods.
- @example anychart.graphics.events.unlisten
- @param {anychart.graphics.vector.Element} src The object on which to stop listening to the event.
- @param {string|Array.<string>} type The type of event or the array of types of events you want to stop listening to.
- @param {((function(?):?)|{handleEvent:(function(?):?)}|null)} listener The listener to be removed.
- @param {boolean=} opt_capt In DOM-compatible browsers this parameter defines if the listener is called in the capture or in the bubble phase of the event.
- @param {Object=} opt_handler The element in scope of which the listener is called.
- @return {?boolean} Shows if the removed listener existed.
+ * Removes a listener added using listen() or listenOnce() methods.
+ * @example anychart.graphics.events.unlisten
+ * @param {anychart.graphics.vector.Element} target The object on which to stop listening to the event.
+ * @param {string|Array.<string>} type The type of event or the array of types of events you want to stop listening to.
+ * @param {((function(?):?)|{handleEvent:(function(?):?)}|null)} listener The listener to be removed.
+ * @param {boolean=} opt_capt In DOM-compatible browsers this parameter defines if the listener is called in the capture
+ * or in the bubble phase of the event.
+ * @param {Object=} opt_handler The element in scope of which the listener is called.
+ * @return {?boolean} Shows if the removed listener existed.
  */
 anychart.graphics.events.unlisten;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.events.unlistenByKey
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Removes an event listener which was added with listen() by the key
- returned by listen() or listenOnce().
- @example anychart.graphics.events.unlistenByKey
- @param {Object} key The key returned by listen() for this
-     event listener.
- @return {boolean} indicating whether the listener was there to remove.
+ * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
+ * @example anychart.graphics.events.unlistenByKey
+ * @param {Object} key The key returned by listen() for this event listener.
+ * @return {boolean} Indicating whether the listener was there to remove.
  */
 anychart.graphics.events.unlistenByKey;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.events.removeAll
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Removes all listeners from an object. You can also optionally
- remove listeners of some particular type.
- @example anychart.graphics.events.removeAll
- @param {anychart.graphics.vector.Element} obj Object to remove listeners from.
- @param {string=} opt_type Type of event to be removed, default is all types.
- @return {number} Number of listeners removed.
+ * Removes all listeners from an object.
+ * @detailed You can also optionally remove listeners of some particular type.
+ * @example anychart.graphics.events.removeAll
+ * @param {anychart.graphics.vector.Element} target The object to remove listeners from.
+ * @param {string=} opt_type Type of event to be removed, default is all types.
+ * @return {number} Number of listeners removed.
  */
 anychart.graphics.events.removeAll;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.events.EventType
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
-Constants for event names.
- @enum {string}
+ * Constants for event names.
+ * @example anychart.graphics.events.EventType
+ * @enum {string}
  */
 anychart.graphics.events.EventType;
 
-/** Fires on click on an element. */
-anychart.graphics.events.EventType.CLICK;
-
-/** Fires on double click on an element. */
-anychart.graphics.events.EventType.DBLCLICK;
-
-/** Fires when the mouse is down on an element. */
-anychart.graphics.events.EventType.MOUSEDOWN;
-
-/** Fires when the mouse is up on an element. */
-anychart.graphics.events.EventType.MOUSEUP;
-
-/** Fires when the mouse pointer is over an element. */
-anychart.graphics.events.EventType.MOUSEOVER;
-
-/** Fires when the mouse pointer is out of an element. */
-anychart.graphics.events.EventType.MOUSEOUT;
-
-/** Fires when mouse is moved on an element. */
-anychart.graphics.events.EventType.MOUSEMOVE;
-
-/** Fires on touchstart. */
-anychart.graphics.events.EventType.TOUCHSTART;
-
-/** Fires on touchmove. */
-anychart.graphics.events.EventType.TOUCHMOVE;
-
-/** Fires on touchend. */
-anychart.graphics.events.EventType.TOUCHEND;
+/**
+ * Fires on click on an element.
+ */
+anychart.graphics.events.EventType.CLICK = "click";
 
 /**
-   * Fires when the touch is cancelled.
-   * @see http://www.w3.org/TR/2011/WD-touch-events-20110505/#the-touchcancel-event
-   */
-anychart.graphics.events.EventType.TOUCHCANCEL;
+ *  Fires on double click on an element.
+ */
+anychart.graphics.events.EventType.DBLCLICK = "dblclick";
 
-/** Fires on tap (fast touchstart - touchend). */
-anychart.graphics.events.EventType.TAP;
+/**
+ * Fires when the mouse is down on an element.
+ */
+anychart.graphics.events.EventType.MOUSEDOWN = "mousedown";
 
-/** Fires if drag action was canceled before the START event. */
-anychart.graphics.events.EventType.DRAG_EARLY_CANCEL;
+/**
+ * Fires when the mouse is up on an element.
+ */
+anychart.graphics.events.EventType.MOUSEUP = "mouseup";
 
-/** Fires before drag. */
-anychart.graphics.events.EventType.DRAG_BEFORE;
+/**
+ *  Fires when the mouse pointer is over an element.
+ */
+anychart.graphics.events.EventType.MOUSEOVER = "mouseover";
 
-/** Fires on drag. */
-anychart.graphics.events.EventType.DRAG;
+/**
+ * Fires when the mouse pointer is out of an element.
+ */
+anychart.graphics.events.EventType.MOUSEOUT = "mouseout";
 
-/** Fires on drag start. */
-anychart.graphics.events.EventType.DRAG_START;
+/**
+ * Fires when mouse is moved on an element.
+ */
+anychart.graphics.events.EventType.MOUSEMOVE = "mousemove";
 
-/** Fires on drag end. */
-anychart.graphics.events.EventType.DRAG_END;
+/**
+ * Fires on touchstart.
+ */
+anychart.graphics.events.EventType.TOUCHSTART = "touchstart";
+
+/**
+ * Fires on touchmove.
+ */
+anychart.graphics.events.EventType.TOUCHMOVE = "touchmove";
+
+/**
+ * Fires on touchend.
+ */
+anychart.graphics.events.EventType.TOUCHEND = "touchend";
+
+/**
+ * Fires when the touch is cancelled. To learn more about working with this event type,
+ * see: {@link http://www.w3.org/TR/2011/WD-touch-events-20110505/#the-touchcancel-event}
+ */
+anychart.graphics.events.EventType.TOUCHCANCEL = "touchcancel";
+
+/**
+ * Fires on tap (fast touchstart - touchend).
+ */
+anychart.graphics.events.EventType.TAP = "tap";
+
+/**
+ * Fires if drag action was canceled before the START event.
+ */
+anychart.graphics.events.EventType.DRAG_EARLY_CANCEL = "earlycancel";
+
+/**
+ * Fires before drag.
+ */
+anychart.graphics.events.EventType.DRAG_BEFORE = "beforedrag";
+
+/**
+ * Fires on drag.
+ */
+anychart.graphics.events.EventType.DRAG = "drag";
+
+/**
+ * Fires on drag start.
+ */
+anychart.graphics.events.EventType.DRAG_START = "start";
+
+/**
+ *  Fires on drag end.
+ */
+anychart.graphics.events.EventType.DRAG_END = "end";
 

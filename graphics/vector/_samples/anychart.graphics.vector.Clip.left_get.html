@@ -1,20 +1,26 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content=""/>
+    <meta name="x-cat-tags" content="rect"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function() {
-            var stage = anychart.graphics.create("container");
-            var rect = stage.rect(20, 20, 100, 100);
-            rect.fill("#80CBC4");
-            rect.clip(stage.createClip());
-            var clip = rect.clip();
-            clip.bounds(30, 30, 50, 50);
+            stage = anychart.graphics.create("container");
+
+            var Redrect = stage.rect(20, 20, 100, 100);
+            Redrect.fill("#F44336");
+            Redrect.clip(stage.createClip());
+
+            var clipArea = Redrect.clip();
+            clipArea.bounds(30, 30, 50, 50);
+
             var greenRect = stage.rect(20, 150, 100, 100);
             greenRect.fill("#4CAF50");
             greenRect.clip(stage.createClip());
-            var left = clip.left(); // get left coordinate
+
+            // Get left coordinate.
+            var left = clipArea.left();
+
             var greenRectClip = greenRect.clip();
             greenRectClip.bounds(30, 150, 50, 50);
             greenRectClip.left(left + 45);

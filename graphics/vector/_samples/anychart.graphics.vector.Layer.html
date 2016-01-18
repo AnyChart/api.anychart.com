@@ -1,25 +1,28 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="layer"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            var stage = anychart.graphics.create("container");
-// creating layers
-            var layer1 = stage.layer();
-            var layer2 = stage.layer();
-            // add elements
-            layer1.ellipse(85, 80, 35, 55).fill("blue", 0.3);
-            layer1.star7(55, 79, 45).fill("red");
-            // duplicate to another layer
-            layer2.ellipse(85, 80, 35, 55).fill("blue", 0.3);
-            layer2.star7(55, 79, 45).fill("red");
-            // move the layer
-            layer2.translate(180,0);
-            // rotate the layer
-            layer2.rotateByAnchor(130, anychart.graphics.vector.Anchor.CENTER);
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
 
+            // Creates layers
+            var firstLayer = stage.layer();
+            var secondLayer = stage.layer();
+
+            var firstEllipse = firstLayer.ellipse(85, 80, 35, 55);
+            firstEllipse.fill("#2196F3", 0.3);
+            var firstTriangle = firstLayer.triangleUp(55, 79, 45);
+            firstTriangle.fill("#F44336");
+
+            var secondEllipse = secondLayer.ellipse(85, 80, 35, 55);
+            secondEllipse.fill("#2196F3", 0.3);
+            var secondTriangle = secondLayer.triangleUp(55, 79, 45);
+            secondTriangle.fill("#F44336");
+
+            secondLayer.translate(180, 0);
+            secondLayer.rotateByAnchor(130, "center");
         });
     </script>
 </head>

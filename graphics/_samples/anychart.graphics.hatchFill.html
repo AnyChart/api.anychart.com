@@ -1,13 +1,18 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content=""/>
     <script src="../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            var stage = anychart.graphics.create("container");
-            var pattern = stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.BACKWARD_DIAGONAL, "blue 0.9", 1);
-            stage.rect(50,25, 200, 100).fill(pattern).stroke("2 black 0.9");
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            // Creates hatch fill.
+            var pattern = stage.hatchFill("backwardDiagonal", "#2196F3 0.9", 1);
+
+            var rectangle = stage.rect(50, 25, 200, 100);
+            rectangle.fill(pattern);
+            rectangle.stroke("2 #000000 0.9");
 
         });
     </script>

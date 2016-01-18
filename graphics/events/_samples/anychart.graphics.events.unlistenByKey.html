@@ -1,26 +1,35 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="text"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            var stage = anychart.graphics.create("container");
-            var text = stage.text(70, 55, "Click on this TEXT.");
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            var largeText = stage.text(70, 55, "Click on this TEXT.");
+            largeText.style({fontStyle: "italic", fontSize: "18px", color: "#2196F3", hAlign: "middle"});
+
             var smallText = stage.text(70, 75, "You have 3 clicks.");
-            text.style({fontStyle: "italic", fontSize: "18px", color: "#00f", hAlign: "middle"});
+
             var counter = 3;
+
             var listenerKey;
-            function customListener(e){
+
+            function customListener(e) {
                 counter--;
                 smallText.text("You have " + counter + " clicks.");
                 if (counter == 0) {
+                    // Removes an event listener.
                     anychart.graphics.events.unlistenByKey(listenerKey);
-                    text.style({color: "red"});
+
+                    largeText.style({color: "#F44336"});
+
                     smallText.text("You have no more clicks");
                 }
             }
-            listenerKey = anychart.graphics.events.listen(text, anychart.graphics.events.EventType.CLICK, customListener);
+
+            listenerKey = anychart.graphics.events.listen(largeText, "click", customListener);
         });
     </script>
 </head>

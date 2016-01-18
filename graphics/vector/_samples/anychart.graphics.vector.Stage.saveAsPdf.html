@@ -5,23 +5,23 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function() {
-            var stage = anychart.graphics.create("container");
+            stage = anychart.graphics.create("container");
 
             stage.circle(450, 360, 350);
             stage.rect(100, 10, 700, 700);
 
-            var currentLabel = anychart.ui.label();
-            currentLabel.background({fill: "#9E9E9E"});
-            currentLabel.text("Save image");
-            currentLabel.fontColor("#fff");
-            currentLabel.padding(5);
-            currentLabel.offsetX(5);
-            currentLabel.listen("click", function() {
+            var grayLabel = anychart.ui.label();
+            grayLabel.background({fill: "#9E9E9E"});
+            grayLabel.text("Save image");
+            grayLabel.fontColor("#fff");
+            grayLabel.padding(5);
+            grayLabel.offsetX(5);
+            grayLabel.listen("click", function() {
                 // Saves into PDF file.
                 stage.saveAsPdf("a4", true, 100, 50);
             });
-            currentLabel.container(stage);
-            currentLabel.draw();
+            grayLabel.container(stage);
+            grayLabel.draw();
         });
     </script>
 </head>

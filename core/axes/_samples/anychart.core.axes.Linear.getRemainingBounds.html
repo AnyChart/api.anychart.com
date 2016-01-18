@@ -5,16 +5,22 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function() {
-            var stage = anychart.graphics.create("container");
+            stage = anychart.graphics.create("container");
+
             var axis = anychart.axes.linear();
             axis.orientation("left");
+
             var scale = anychart.scales.ordinal();
             scale.values([1, 2, 3]);
+
             axis.scale(scale);
             axis.parentBounds(50, 50, 300, 400);
             axis.container(stage);
             axis.draw();
-            var bounds = axis.getRemainingBounds(); // get remaining bounds
+
+            // Gets remaining bounds.
+            var bounds = axis.getRemainingBounds();
+
             var label = anychart.ui.label();
             label.parentBounds(bounds);
             label.width("100%");

@@ -1,20 +1,25 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="layer"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            var stage = anychart.graphics.create("container");
-// create layers
-            var layer1 = stage.layer();
-            var elementStar = layer1.star7(55, 79, 45).fill("red");
-            // add elements
-            layer1.ellipse(85, 80, 35, 55).fill("blue", 0.3)
-            layer1.rect(55, 79, 75, 45).fill("blue");
-            // remove only by found index
-            layer1.removeChild(elementStar);
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
 
+            var simpleLayer = stage.layer();
+
+            var elementStar = simpleLayer.star7(55, 79, 45);
+            elementStar.fill("#F44336");
+
+            var elementEllipse = simpleLayer.ellipse(85, 80, 35, 55);
+            elementEllipse.fill("#2196F3", 0.3);
+
+            var elementRect = simpleLayer.rect(55, 79, 75, 45);
+            elementRect.fill("#2196F3", 0.8);
+
+            // Removes only by found index.
+            simpleLayer.removeChild(elementStar);
         });
     </script>
 </head>

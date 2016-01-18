@@ -1,17 +1,20 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content=""/>
+    <meta name="x-cat-tags" content="rect"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function() {
-            var stage = anychart.graphics.create("container");
-            var rect = stage.rect(20, 20, 100, 100);
-            rect.fill("#80CBC4");
-            rect.clip(stage.createClip());
-            var clip = rect.clip();
-            clip.bounds(30, 30, 50, 50);
-            clip.height(25); // sets height
+            stage = anychart.graphics.create("container");
+
+            var rectangle = stage.rect(20, 20, 100, 100);
+            rectangle.fill("#80CBC4");
+            rectangle.clip(stage.createClip());
+
+            var clipArea = rectangle.clip();
+            clipArea.bounds(30, 30, 50, 50);
+            // Sets height.
+            clipArea.height(25);
         });
     </script>
 </head>

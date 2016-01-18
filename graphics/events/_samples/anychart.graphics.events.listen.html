@@ -1,17 +1,20 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="text"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            var stage = anychart.graphics.create("container");
-            var text = stage.text(70, 55, "Click on this TEXT.");
-            text.style({fontStyle: "italic", fontSize: "18px", color: "#00f", hAlign: "middle"});
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            var blueText = stage.text(70, 55, "Click on this TEXT.");
+            blueText.style({fontStyle: "italic", fontSize: "18px", color: "#2196F3", hAlign: "middle"});
+
             var counter = 0;
-            anychart.graphics.events.listen(text, anychart.graphics.events.EventType.CLICK, function (e) {
+            // Adds an event listener.
+            anychart.graphics.events.listen(blueText, "click", function(e) {
                 counter++;
-                text.text("You clicked " + counter + " times." + "\r\n" + "Click again.");
+                blueText.text("You clicked " + counter + " times. " + "Click again.");
             });
         });
     </script>

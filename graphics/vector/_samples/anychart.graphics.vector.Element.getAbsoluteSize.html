@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="rect"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            var greenRectangle = stage.rect(1, 1, 200, 200);
+            greenRectangle.stroke('1 #4CAF50');
+
+            var simpleLayer = stage.layer();
+            simpleLayer.translate(30, 20);
+
+            var blueRectangle = simpleLayer.rect(1, 1, 200, 200);
+            blueRectangle.stroke("1 #2196F3");
+
+            var greyRectangle = simpleLayer.rect(10, 10, 40, 40);
+            greyRectangle.fill("#BDBDBD");
+            greyRectangle.rotate(20);
+            greyRectangle.translate(50, 30);
+
+            // Gets absolute size of the rectangle.
+            var absoluteSize = greyRectangle.getAbsoluteSize();
+
+            var secondGreyRectangle = simpleLayer.rect();
+            secondGreyRectangle.fill("#BDBDBD");
+            secondGreyRectangle.translate(90, 50);
+            secondGreyRectangle.setX(10);
+            secondGreyRectangle.setY(10);
+            secondGreyRectangle.setSize(new anychart.graphics.math.Size(absoluteSize.getWidth(), absoluteSize.getHeight()));
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

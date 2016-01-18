@@ -1,22 +1,26 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="layer"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            var stage = anychart.graphics.create("container");
-// create layers
-            var layer = new anychart.graphics.vector.Layer();
-            var elementStar = layer.star7(55, 79, 45).fill("red");
-            // add elements
-            layer.ellipse(85, 80, 35, 55).fill("blue", 0.3);
-            layer.rect(55, 79, 75, 45).fill("blue");
-            // look for index
-            var index = layer.indexOfChild(elementStar);
-            // show only found element
-            layer.getChildAt(index).parent(stage);
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
 
+            var simpleLayer = new anychart.graphics.vector.Layer();
+
+            var elementStar = simpleLayer.star7(55, 79, 45);
+            elementStar.fill("#F44336");
+
+            simpleLayer.ellipse(85, 80, 35, 55);
+            simpleLayer.rect(55, 79, 75, 45);
+
+            // Looks for index.
+            var index = simpleLayer.indexOfChild(elementStar);
+
+            // Shows only found element.
+            var element = simpleLayer.getChildAt(index);
+            element.parent(stage);
         });
     </script>
 </head>
