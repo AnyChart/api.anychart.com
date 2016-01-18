@@ -1,0 +1,37 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="pie"/>
+    <script src="../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            anychart.format.locales.nf = {
+                'numberLocale': {
+                    'decimalsCount': 1,
+                    'decimalPoint': ':'
+                }};
+            anychart.format.inputLocale = "nf";
+
+            chart = anychart.pie([
+                {name: 'Point 1', value: 230000},
+                {name: 'Point 2', value: 204524.489354},
+                {name: 'Point 3', value: 235401.56923},
+                {name: 'Point 4', value: 132125.35}
+            ]);
+
+            var formatLabels = chart.labels();
+            formatLabels.textFormatter(function() {
+                // Parses value to number.
+                var parsedNumber = anychart.format.parseNumber(this.value);
+                return anychart.format.number(parsedNumber, "nf");
+            });
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
