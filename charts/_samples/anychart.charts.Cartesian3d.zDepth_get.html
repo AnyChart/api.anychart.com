@@ -1,11 +1,17 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="area"/>
+    <meta name="x-cat-tags" content="bar"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            chart = anychart.area([1.3, 2, 1.4], [1.1, 1.6, 1.3]);
+        anychart.onDocumentReady(function() {
+            chart = anychart.cartesian3d();
+            chart.bar([20, 7, 18, 10, 14]);
+
+            // Gets Z-axis depth.
+            var zAxisDepth = chart.zDepth();
+
+            chart.zAngle(zAxisDepth + 15);
             chart.container("container");
             chart.draw();
         });
