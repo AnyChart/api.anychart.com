@@ -16,13 +16,13 @@
 
             var indicator = dataTable.createComputer(mapping);
             // Adds output field.
-            indicator.addOutputField("customField", "uid");
+            indicator.addOutputField("customField", "customUid");
             indicator.setContext({period: 2000});
             indicator.setCalculationFunction(function(row) {
                 row.set("customField", row.get("value") + this.period);
             });
 
-            var indicatorMapping = dataTable.mapAs({value: "uid"});
+            var indicatorMapping = dataTable.mapAs({value: "customUid"});
 
             var currentPlot = chart.plot();
             currentPlot.column(mapping);
