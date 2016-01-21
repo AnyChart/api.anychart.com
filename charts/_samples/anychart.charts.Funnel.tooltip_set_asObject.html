@@ -3,19 +3,16 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="funnel"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
+    <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var tooltipFormatter = function() {
-                return "Index: " + this.index + "\n" + "Value: " + this.value;
-            };
             chart = anychart.funnel([5, 16, 3, 20]);
+            // Sets tooltip settings.
             chart.tooltip({
                 background: {
                     stroke: "2 #CFD8DC",
                     fill: "#795548"}
-            }); // sets settings tooltip
-            var formatter = chart.tooltip();
-            formatter.contentFormatter(tooltipFormatter);
+            });
+
             chart.container("container");
             chart.draw();
         });

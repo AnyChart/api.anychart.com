@@ -6,12 +6,12 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
-            var series = chart.line([2, 8, 3, 4, 9]);
+            var series = chart.line([4, 8, 3, 4, 9]);
             var tooltipSettings = series.tooltip();
 
-            // sets content text.
+            // Set text formatter.
             tooltipSettings.textFormatter(function(){
-                return this['value'] + ' - custom'
+                return "Value: " + this.value;
             });
 
             chart.container("container");

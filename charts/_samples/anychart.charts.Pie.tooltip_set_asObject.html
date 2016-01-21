@@ -5,18 +5,16 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var tooltipFormatter = function() {
-                return "Index: " + this.index + "\n" + "Value: " + this.value;
-            };
             chart = anychart.pie([10, 14, 8, 12]);
+
+            // Sets tooltip settings.
             chart.tooltip({
                 background: {
                     stroke: "2 #CFD8DC",
                     fill: "#795548"
                 }
-            }); // sets tooltip
-            var formatter = chart.tooltip();
-            formatter.contentFormatter(tooltipFormatter);
+            });
+
             chart.container("container");
             chart.draw();
         });

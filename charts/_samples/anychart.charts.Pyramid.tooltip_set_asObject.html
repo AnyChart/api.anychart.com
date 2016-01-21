@@ -5,9 +5,6 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var tooltipFormatter = function() {
-                return "Index: " + this.index + "\n" + "Value: " + this.value;
-            };
             var dataSet = anychart.data.set([
                 {x: "Physical", value: 125},
                 {x: "Data Link", value: 125},
@@ -17,14 +14,15 @@
                 {x: "Presentation", value: 125},
                 {x: "Application", value: 290, label: {anchor: "centerTop"}}
             ]);
-            chart = anychart.pyramid(dataSet);
+
+            var chart = anychart.pyramid(dataSet);
+            // Sets tooltip settings.
             chart.tooltip({
                 background: {
                     stroke: "2 #CFD8DC",
                     fill: "#795548"}
-            }); // sets settings tooltip
-            var formatter = chart.tooltip();
-            formatter.contentFormatter(tooltipFormatter);
+            });
+
             chart.labels({position: "inside"});
             chart.container("container");
             chart.draw();

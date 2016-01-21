@@ -5,14 +5,13 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line();
-            var series = chart.line([2, 8, 3, 4, 9]);
-            var tooltipSettings = series.tooltip();
+            var chart = anychart.line();
 
-            // sets content text
-            tooltipSettings.textFormatter(function(){
-                return this['value'] + ' - custom'
-            });
+            var series = chart.line([5, 8, 3, 4, 9]);
+
+            var currentTooltip = series.tooltip();
+            // Sets text formatter.
+            currentTooltip.textFormatter("Value: {%Value}");
 
             chart.container("container");
             chart.draw();
