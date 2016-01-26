@@ -5,12 +5,15 @@
     <script src="../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            anychart.format.locales.nf = {
-                'numberLocale': {
-                    'decimalsCount': 1,
-                    'decimalPoint': ':'
+            anychart.format.locales = {
+                'default': anychart.format.locales['default'],
+                "customOutputLocale": {
+                    'numberLocale': {
+                        'decimalsCount': 3,
+                        'decimalPoint': ':'
+                    }
                 }};
-            anychart.format.inputLocale = "nf";
+            anychart.format.inputLocale("customOutputLocale");
 
             chart = anychart.pie([
                 {name: 'Point 1', value: 230000},
@@ -23,7 +26,7 @@
             formatLabels.textFormatter(function() {
                 // Parses value to number.
                 var parsedNumber = anychart.format.parseNumber(this.value);
-                return anychart.format.number(parsedNumber, "nf");
+                return anychart.format.number(parsedNumber, "customOutputLocale");
             });
 
             chart.container("container");
