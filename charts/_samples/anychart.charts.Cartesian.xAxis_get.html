@@ -7,13 +7,17 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
             chart.column([1, 4, 5, 7, 2]);
-            var firstAxis = chart.xAxis(0); // get X-axis by index
-            firstAxis.orientation("top");
-            var secondAxis = chart.xAxis(1); // get X-axis by index
-            secondAxis.orientation("bottom");
-            secondAxis.title("X-Axis");
-            var thirdAxis = chart.xAxis(2); // get X-axis by index
-            thirdAxis.orientation("right");
+
+            // Get X-axis.
+            var leftXAxis = chart.xAxis(0);
+            leftXAxis.ticks({stroke: "#2196F3"});
+
+            // Get X-axis.
+            var rightXAxis = chart.xAxis(1);
+            rightXAxis.orientation("top");
+            rightXAxis.stroke("#2196F3");
+            rightXAxis.title(true);
+
             chart.container("container");
             chart.draw();
         });
