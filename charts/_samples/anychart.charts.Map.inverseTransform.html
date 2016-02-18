@@ -2,10 +2,11 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="map"/>
-    <script src="../../../../anychart.min.js"></script>
+    <script src="../../anychart.min.js"></script>
     <script src="http://cdn.anychart.com/geodata/tmp.js" data-export="true"></script>
     <script src="http://cdn.anychart.com/maps-data/france_data.js" data-export="true"></script>
     <script x-export="franceMap">
+
         anychart.onDocumentReady(function() {
             // The data that have been used for this sample can be taken from the CDN
             // http://cdn.anychart.com/maps-data/france_data.js
@@ -18,10 +19,10 @@
             franceMap.container("container");
             franceMap.draw();
 
-            var mapScale = franceMap.scale();
-            // Trying to get coordinate at latitude and longitude.
-            mapScale.inverseTransform(220, -642);
-            // Returns -26.134780836105477, 61.32077901212413]
+            // Trying to get coordinate at pixel values.
+            franceMap.inverseTransform(0, 10);
+            // Returns x: -26.45205940107163, long: -26.45205940107163, y: 47.34785681463504, lat: 47.34785681463504}
+
         });
     </script>
 </head>

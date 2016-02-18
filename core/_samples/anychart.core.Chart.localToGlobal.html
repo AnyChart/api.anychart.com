@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function () {
+            stage = anychart.graphics.create("container");
+
+            var chart = anychart.line();
+            chart.line([49, 45, 9, 4, 17, 13]);
+            chart.line([41, 23, 15, 45, 39, 27]);
+            chart.title(true);
+            chart.legend({position: "left", itemsLayout: "vertical"});
+            chart.container(stage);
+            chart.draw();
+
+            // Converts the local coordinates to global coordinates.
+            var globalCoordinates = chart.localToGlobal(0, 0);
+
+            chart.title("Global coordinates [x: " + globalCoordinates.x + ", y: " + globalCoordinates.y + "]");
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
