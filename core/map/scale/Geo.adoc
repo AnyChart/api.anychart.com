@@ -1,8 +1,6 @@
 /**
- * @ignoreDoc Not in export yet
  * Define geo scale.
  * @constructor
- * @extends {anychart.core.Base}
  */
 anychart.core.map.scale.Geo;
 
@@ -160,12 +158,16 @@ anychart.core.map.scale.Geo.prototype.extendDataRangeY;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * @ignoreDoc Not in export yet
- * Returns coordinate ratio by its name.
- * @param {*} x X value to transform in input scope.
- * @param {*} y Y value to transform in input scope.
- * @return {Array.<number>} Transformed value adjust bounds.
- * @since 7.6.0
+ * @ignoreDoc
+ * @deprecated Use anychart.charts.Map.transform() instead.
+ * Returns coordinate at latitude and longitude to pixel values.<br/>
+ * <b>Note:</b> Returns correct values only after {@link anychart.charts.Map#draw} is called.
+ * @detailed This method uses the map data, which include latitude and longitude.
+ * @category Specific settings
+ * @param {number} lon Longitude in degrees.
+ * @param {number} lat Latitude in degrees.
+ * @return {Array.<number>} Transformed value adjust bounds [x, y].
+ * @since 7.9.0
  */
 anychart.core.map.scale.Geo.prototype.transform;
 
@@ -225,4 +227,40 @@ anychart.core.map.scale.Geo.prototype.startAutoCalc;
  * @since 7.6.0
  */
 anychart.core.map.scale.Geo.prototype.finishAutoCalc;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.map.scale.Geo.prototype.inverseTransform
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * @ignoreDoc
+ * @deprecated Use anychart.charts.Map.inverseTransform() instead.
+ * Transform coordinates in pixel value to degrees values (latitude/longitude).<br/>
+ * <b>Note:</b> Returns correct values only after {@link anychart.charts.Map#draw} is called.
+ * @detailed This method uses the map data, which include latitude and longitude.
+ * @category Specific settings
+ * @param {number} x X value to transform.
+ * @param {number} y Y value to transform.
+ * @return {Array.<number>} Array of the degrees values.
+ * @since 7.9.0
+ */
+anychart.core.map.scale.Geo.prototype.inverseTransform;
+
+/** @inheritDoc */
+anychart.core.map.scale.Geo.prototype.listen;
+
+/** @inheritDoc */
+anychart.core.map.scale.Geo.prototype.listenOnce;
+
+/** @inheritDoc */
+anychart.core.map.scale.Geo.prototype.unlisten;
+
+/** @inheritDoc */
+anychart.core.map.scale.Geo.prototype.unlistenByKey;
+
+/** @inheritDoc */
+anychart.core.map.scale.Geo.prototype.removeAllListeners;
 

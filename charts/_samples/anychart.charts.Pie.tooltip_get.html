@@ -5,11 +5,12 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var chart = anychart.pie([10, 14, 8, 12]);
-            var tooltip = chart.tooltip(); // get tooltip
-            tooltip.contentFormatter(function() {
-                return "Index: " + this.index + "\n" + "Value: " + this.value;
-            });
+            chart = anychart.pie([10, 14, 8, 12]);
+
+            // Gets tooltip
+            var tooltip = chart.tooltip();
+            tooltip.textFormatter("Index: {%Index}\nValue: {%Value}");
+
             chart.container("container");
             chart.draw();
         });

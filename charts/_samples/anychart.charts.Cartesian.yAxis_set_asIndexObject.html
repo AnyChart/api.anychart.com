@@ -5,10 +5,13 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var chart = anychart.cartesian();
+            chart = anychart.cartesian();
             chart.column([1, 4, 5, 7, 2]);
-            chart.yAxis(0, {orientation: "right"}); // sets Y-axis by index
-            chart.yAxis(1, {orientation: "top", stroke: "#42A5F5", title: "Y-Axis"}); // sets Y-axis by index
+
+            // Sets Y-axis settings by index.
+            chart.yAxis(0, {ticks: {stroke: "#42A5F5"}});
+            chart.yAxis(1, {orientation: "right", stroke: "#42A5F5", title: "Y-Axis"});
+
             chart.container("container");
             chart.draw();
         });

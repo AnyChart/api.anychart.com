@@ -1,844 +1,892 @@
 /**
- <b>Abstract</b> class for all vector elements, such as groups and primitives.
- Due to the fact that this class is a child of from goog.events.EventTarget
- all its childs can work with events.<br/>
- <b>Never call a constructor directly!</b>
- @name anychart.graphics.vector.Element
- @constructor
+ * <b>Abstract</b> class for all vector elements, such as groups and primitives.<br/>
+ * Due to the fact that this class is a child of from goog.events.EventTarget
+ * all its childs can work with events.<br/>
+ * <b>Never call a constructor directly!</b>
+ * @constructor
  */
 anychart.graphics.vector.Element;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.id
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Gets element identifier. If it was not set, it will be generated and applied to the DOM.
- @return {string} Returns element identifier.
+ * Gets the current element identifier.
+ * @shortDescription Element identifier
+ * @detailed If it was not set, it will be generated and applied to the DOM.
+ * @example anychart.graphics.vector.Element.id_get
+ * @return {string} Returns element identifier.
  */
 anychart.graphics.vector.Element.prototype.id;
 
 /**
- Sets element identifier.
- @param {string=} opt_value Custom identifier.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Sets the element identifier.
+ * @param {string=} opt_value Custom identifier.
+ * @example anychart.graphics.vector.Element.id_set
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.id;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getStage
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Stage object (to which the given element is bound).
- @return {anychart.graphics.vector.Stage} Stage object.
+ * Stage object (to which the given element is bound).
+ * @example anychart.graphics.vector.Element.getStage
+ * @return {anychart.graphics.vector.Stage} Stage object.
  */
 anychart.graphics.vector.Element.prototype.getStage;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.domElement
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns DOM element if element is rendered.<br/>
- In case of Stage in Suspended state or unbound element – null is returned.
- @return {Element} DOM element.
+ * Returns DOM element if element is rendered.<br/>
+ * In case of Stage in Suspended state or unbound element – null is returned.
+ * @return {Element} DOM element.
  */
 anychart.graphics.vector.Element.prototype.domElement;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.parent
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns the parent layer.
- @return {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage} Instance of element current layer.
+ * Returns the parent layer.
+ * @shortDescription Parent layer.
+ * @example anychart.graphics.vector.Element.parent_get
+ * @return {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage} Instance of element current layer.
  */
 anychart.graphics.vector.Element.prototype.parent;
 
 /**
- Adds element to the given layer.
- @param {(anychart.graphics.vector.Layer|anychart.graphics.vector.Stage)=} opt_value Parent layer.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Adds element to the given layer.
+ * @example anychart.graphics.vector.Element.parent_set
+ * @param {(anychart.graphics.vector.Layer|anychart.graphics.vector.Stage)=} opt_value Parent layer.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.parent;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.hasParent
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Whether parent element is set.
- @return {boolean} Whether parent element is set.
+ * Whether parent element is set.
+ * @example anychart.graphics.vector.Element.hasParent
+ * @return {boolean} Whether parent element is set.
  */
 anychart.graphics.vector.Element.prototype.hasParent;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.remove
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Current element removes itself from the parent layer.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Current element removes itself from the parent layer.
+ * @example anychart.graphics.vector.Element.remove
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.remove;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.cursor
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Getter for cursor type.
- @return {?anychart.graphics.vector.Cursor} Current cursor type.
+ * Getter for the current cursor type.
+ * @shortDescription Cursor type.
+ * @example anychart.graphics.vector.Element.cursor_get
+ * @return {?anychart.graphics.vector.Cursor} Current cursor type.
  */
 anychart.graphics.vector.Element.prototype.cursor;
 
 /**
- Setter for cursor type.
- @param {anychart.graphics.vector.Cursor=} opt_value Cursor type.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Setter for the cursor type.
+ * @example anychart.graphics.vector.Element.cursor_set
+ * @param {anychart.graphics.vector.Cursor=} opt_value [null] Cursor type.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.cursor;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.rotate
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Rotates a shape around the given rotation point.
- @illustration <t>stageOnly</t>
- stage.suspend();
- var layer1 = stage.layer();
- // border
- layer1.rect(0, 0, stage.width()/2, stage.height());
- // target
- layer1.triangleDown(stage.width()/4, stage.height()/2, stage.height()/3)
-   .fill(['#444 0.2', '#888 0.2'], -90)
-   .stroke('2 #222 0.2');
- layer1.triangleDown(stage.width()/4, stage.height()/2, stage.height()/3)
-   .fill(['#00A', '#00F'], -90)
-   .stroke('2 #007')
-   .rotate(20);
- layer1.circle(0, 0, 7).fill('red');
- var layer2 = stage.layer();
- // border
- layer2.rect(0, 0, stage.width()/2, stage.height());
- // target
- layer2.triangleDown(stage.width()/4, stage.height()/2, stage.height()/3)
-   .fill(['#444 0.2', '#888 0.2'], -90)
-   .stroke('2 #222 0.2');
- layer2.triangleDown(stage.width()/4, stage.height()/2, stage.height()/3)
-   .fill(['#00A', '#00F'], -90)
-   .stroke('2 #007')
-   .rotate(20, stage.width()/4, stage.height()/2);
- layer2.circle(stage.width()/4, stage.height()/2, 7).fill('red');
- layer2.translate(stage.width()/2,0);
- stage.resume();
- @illustrationDesc
- If rotation point is not set then rotation point is <b>(0, 0)</b>.<br/>
- Left illustration shows 20 degrees rotation with the default rotation point.<br/>
- <code>.rotate(20)</code><br/>
- Right illustrarion shows 20 degrees rotation with the given rotation point.<br/>
- <code>.rotate(20, x, y)</code><br/>
- Rotation points are marked with red, initial position of shapes is marked with gray.
- @param {number} degrees Rotation angle in degrees.
- @param {number=} opt_cx Rotation point X.
- @param {number=} opt_cy Rotation point Y.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Rotates a shape around the given rotation point.
+ * @category Size and Position
+ * @detailed
+ * If rotation point is not set then rotation point is <b>(0, 0)</b>.<br/>
+ * Left illustration shows 20 degrees rotation with the default rotation point.<br/>
+ * <code>.rotate(20)</code><br/>
+ * Right illustration shows 20 degrees rotation with the given rotation point.<br/>
+ * <code>.rotate(20, x, y)</code><br/>
+ * Rotation points are marked with red, initial position of shapes is marked with gray.<br/>
+ * <img src='/anychart.graphics.vector.Element.rotate.png' width='538' height='279'/>
+ * @example anychart.graphics.vector.Element.rotate
+ * @param {number} degrees Rotation angle in degrees.
+ * @param {number=} opt_cx Rotation point X.
+ * @param {number=} opt_cy Rotation point Y.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.rotate;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.rotateByAnchor
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Rotates a shape around the given anchor.
- @illustration <t>stageOnly</t>
- stage.suspend();
- var layer1 = stage.layer();
- // border
- layer1.rect(0, 0, stage.width() / 2, stage.height());
- // target
- var triangleGray1 = layer1.triangleDown(stage.width() / 4, stage.height() / 2, stage.height() / 3)
-   .fill(['#444 0.2', '#888 0.2'], -90)
-   .stroke('2 #222 0.2');
- // draw its bounds
- layer1.rect()
-   .setBounds(triangleGray1.getBounds())
-   .stroke('1 #888 .5');
- var triangleBlue1 = layer1.triangleDown(stage.width() / 4, stage.height() / 2, stage.height() / 3)
-   .fill(['#00A', '#00F'], -90)
-   .stroke('2 #007')
-   .rotateByAnchor(90);
- // draw its bounds
- layer1.rect()
-   .setBounds(triangleBlue1.getBounds())
-   .stroke('1 #00F .5');
- var triangleBounds1 = triangleGray1.getBounds();
- layer1.circle(triangleBounds1.left + triangleBounds1.width/2, triangleBounds1.top + triangleBounds1.height/2, 7).fill('red');
- var layer2 = stage.layer();
- // border
- layer2.rect(0, 0, stage.width() / 2, stage.height());
- // target
- layer2.rect()
-       .setBounds(
-         layer2.triangleDown(stage.width() / 4, stage.height() / 2, stage.height() / 3)
-             .fill(['#444 0.2', '#888 0.2'], -90)
-             .stroke('2 #222 0.2')
-             .getBounds())
-       .stroke('1 #888 .5');
- layer2.rect()
-       .setBounds(
-          layer2.triangleDown(stage.width() / 4, stage.height() / 2, stage.height() / 3)
-             .fill(['#00A', '#00F'], -90)
-             .stroke('2 #007')
-             .rotateByAnchor(90, anychart.graphics.vector.Anchor.CENTER_TOP)
-             .getBounds())
-       .stroke('1 #00F .5');
- layer2.circle(stage.width() / 4, stage.height() / 3, 7).fill('red');
- layer2.translate(stage.width() / 2, 0);
- stage.resume();
- @illustrationDesc
- If anchor is not set <b>anychart.graphics.vector.Anchor.CENTER</b> is the default.<br/>
- Left illustration shows 90 degrees rotation around the default anchor.<br/>
- <code>.rotateByAnchor(90)</code><br/>
- Right illustration shows 90 degrees rotation around the given anchor.<br/>
- <code>.rotateByAnchor(90, anychart.graphics.vector.Anchor.CENTER_TOP)</code><br/>
- Rotation points are marked with red, initial position of shapes is marked with gray.
- @param {number} degrees Rotation angle in degress.
- @param {(anychart.graphics.vector.Anchor|string)=} opt_anchor Rotation anchor.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Rotates a shape around the given anchor.
+ * @category Size and Position
+ * @detailed If anchor is not set <b>anychart.graphics.vector.Anchor.CENTER</b> is the default.<br/>
+ * Left illustration shows 90 degrees rotation around the default anchor.<br/>
+ * <code>.rotateByAnchor(90)</code><br/>
+ * Right illustration shows 90 degrees rotation around the given anchor.<br/>
+ * <code>.rotateByAnchor(90, anychart.graphics.vector.Anchor.CENTER_TOP)</code><br/>
+ * Rotation points are marked with red, initial position of shapes is marked with gray.<br/>
+ * <img src='/anychart.graphics.vector.Element.rotateByAnchor.png' width='752' height='351'/>
+ * @example anychart.graphics.vector.Element.rotateByAnchor
+ * @param {number} degrees Rotation angle in degrees.
+ * @param {(anychart.graphics.vector.Anchor|string)=} opt_anchor Rotation anchor.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.rotateByAnchor;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.setRotation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Rotates a shape around the given point.<br/>
- <b>Note:</b> See illustration at {@link anychart.graphics.vector.Element#rotate}, the only difference
- between {@link anychart.graphics.vector.Element#rotate} and this method is the fact
- that this method resets the current transformation, and {@link anychart.graphics.vector.Element#rotate} adds rotation
- to the existing transformation.
- @shortDescription Rotatates a shape around the given point.
- @param {number} degrees Rotation angle in degrees.
- @param {number=} opt_cx Rotation point X.
- @param {number=} opt_cy Rotation point Y.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Rotates a shape around the given point.
+ * @category Size and Position
+ * @detailed <b>Note:</b> See illustration at {@link anychart.graphics.vector.Element#rotate}, the only difference
+ * between {@link anychart.graphics.vector.Element#rotate} and this method is the fact
+ * that this method resets the current transformation, and {@link anychart.graphics.vector.Element#rotate} adds rotation
+ * to the existing transformation.
+ * @example anychart.graphics.vector.Element.setRotation
+ * @param {number} degrees Rotation angle in degrees.
+ * @param {number=} opt_cx Rotation point X.
+ * @param {number=} opt_cy Rotation point Y.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.setRotation;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.setRotationByAnchor
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Rotates a shape around the given anchor.<br/>
- <b>Note:</b> See illustration at {@link anychart.graphics.vector.Element#rotateByAnchor}, the only difference
- between {@link anychart.graphics.vector.Element#rotateByAnchor} and this method is the fact
- that this method resets the current transformation, and  and {@link anychart.graphics.vector.Element#rotate} adds rotation
- to the existing transformation.
- @shortDescription  Rotates a shape around the given anchor.
- @param {number} degrees Rotation angle in degrees.
- @param {(anychart.graphics.vector.Anchor|string)=} opt_anchor Rotation anchor.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Rotates a shape around the given anchor.
+ * @category Size and Position
+ * @detailed <b>Note:</b> See illustration at {@link anychart.graphics.vector.Element#rotateByAnchor}, the only difference
+ * between {@link anychart.graphics.vector.Element#rotateByAnchor} and this method is the fact
+ * that this method resets the current transformation, and {@link anychart.graphics.vector.Element#rotate} adds rotation
+ * to the existing transformation.
+ * @example anychart.graphics.vector.Element.setRotationByAnchor
+ * @param {number} degrees Rotation angle in degrees.
+ * @param {(anychart.graphics.vector.Anchor|string)=} opt_anchor Rotation anchor.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.setRotationByAnchor;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.translate
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Moves a shape taking an account the current transformation.
- Movement happens in a shape coordinate system (not the coordinate system of the parent).
- @illustration <t>stageOnly</t>
- stage.suspend();
- stage.triangleDown(stage.width() / 4, stage.height() / 3, stage.height() / 3)
-    .fill(['#444 0.2', '#888 0.2'], -90)
-    .stroke('2 #222 0.2');
- stage.triangleDown(stage.width() / 4, stage.height() / 3, stage.height() / 3)
-    .fill(['#444 0.2', '#888 0.2'], -90)
-    .stroke('2 #222 0.2')
-    .translate(20, 10);
- stage.triangleDown(stage.width() / 4, stage.height() / 3, stage.height() / 3)
-    .fill(['#444 0.2', '#888 0.2'], -90)
-    .stroke('2 #222 0.2')
-    .translate(20, 10)
-    .translate(20, 10);
- stage.triangleDown(stage.width() / 4, stage.height() / 3, stage.height() / 3)
-    .fill(['#00A', '#00F'], -90)
-    .stroke('2 #007')
-    .translate(20, 10)
-    .translate(20, 10)
-    .translate(20, 10);
- stage.resume();
- @illustrationDesc
- Illustration shows a shape movement when <code>.translate(20, 10)</code> is invoked several times.
- @param {number} tx X movement amount.
- @param {number} ty Y movement amount.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Moves a shape taking an account the current transformation.
+ * @category Size and Position
+ * @detailed Movement happens in a shape coordinate system (not the coordinate system of the parent).<br/>
+ * Illustration shows a shape movement when <code>.translate(20, 10)</code> is invoked several times.<br/>
+ * <img src='/anychart.graphics.vector.Element.translate.png' width='381' height='243'/>
+ * @example anychart.graphics.vector.Element.translate
+ * @param {number} tx X movement amount.
+ * @param {number} ty Y movement amount.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.translate;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.setPosition
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Sets top left corner of a shape (transformation taken into account) in the coordinate system of the parent.<br/>
- <b>Note:</b> See illustration at {@link anychart.graphics.vector.Element#translate}, the only difference
- between {@link anychart.graphics.vector.Element#translate} and this method is the fact that
- that this method resets the current transformation, and  and {@link anychart.graphics.vector.Element#translate} adds movement
- to the existing transformation.
- @shortDescription Sets top left corner of a shape (transformation taken into account) in the coordinate system of the parent.
- @param {number} x X coordinate.
- @param {number} y Y coordinate.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Sets top left corner of a shape (transformation taken into account) in the coordinate system of the parent.
+ * @category Size and Position
+ * @detailed <b>Note:</b> See illustration at {@link anychart.graphics.vector.Element#translate}, the only difference
+ * between {@link anychart.graphics.vector.Element#translate} and this method is the fact that
+ * that this method resets the current transformation, and {@link anychart.graphics.vector.Element#translate} adds movement
+ * to the existing transformation.
+ * @example anychart.graphics.vector.Element.setPosition
+ * @param {number} x X coordinate.
+ * @param {number} y Y coordinate.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.setPosition;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.scale
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Scales a shape. Scaling center is set in the coordinate system of the parent.
- @illustration <t>stageOnly</t>
- stage.suspend();
- var layer1 = stage.layer();
- // border
- layer1.rect(0, 0, stage.width() / 2, stage.height());
- // target
- var triangleGray1 = layer1.triangleDown(stage.width() / 4, stage.height() / 2, stage.height() / 3)
-   .fill(['#444 0.2', '#888 0.2'], -90)
-   .stroke('2 #222 0.2');
- // draw its bounds
- layer1.rect()
-   .setBounds(triangleGray1.getBounds())
-   .stroke('1 #888 .5');
- var triangleBlue1 = layer1.triangleDown(stage.width() / 4, stage.height() / 2, stage.height() / 3)
-   .fill(['#00A', '#00F'], -90)
-   .stroke('2 #007')
-   .scale(0.5, 0.5);
- // draw its bounds
- layer1.rect()
-   .setBounds(triangleBlue1.getBounds())
-   .stroke('1 #00F .5');
- layer1.circle(0, 0, 7).fill('red');
- var layer2 = stage.layer();
- // border
- layer2.rect(0, 0, stage.width() / 2, stage.height());
- // target
- layer2.rect()
-     .setBounds(
-       layer2.triangleDown(stage.width() / 4, stage.height() / 2, stage.height() / 3)
-           .fill(['#444 0.2', '#888 0.2'], -90)
-           .stroke('2 #222 0.2')
-           .getBounds())
-         .stroke('1 #888 .5');
- layer2.rect()
-     .setBounds(
-       layer2.triangleDown(stage.width() / 4, stage.height() / 2, stage.height() / 3)
-           .fill(['#00A', '#00F'], -90)
-           .stroke('2 #007')
-           .scale(0.5, 0.5, stage.width() / 4, stage.height() / 2)
-           .getBounds())
-         .stroke('1 #00F .5');
- layer2.circle(stage.width() / 4, stage.height() / 2, 7).fill('red');
- layer2.translate(stage.width() / 2, 0);
- stage.resume();
- @illustrationDesc
- If the scaling center is not set it defaults to <b>(0, 0)</b>.<br/>
- Left illustration shows default point scaling.<br/>
- <code>.scale(0.5, 0.5,)</code><br/>
- Right illustration shows scaling with the scaling center set.<br/>
- <code>.scale(0.5, 0.5, x, y)</code><br/>
- Scaling center is marked with red, initial state is marked with gray.
- @param {number} sx X scaling factor.
- @param {number} sy Y scaling factor.
- @param {number=} opt_cx Scaling point X.
- @param {number=} opt_cy Scaling point Y.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Scales a shape. Scaling center is set in the coordinate system of the parent.
+ * @category Size and Position
+ * @detailed If the scaling center is not set it defaults to <b>(0, 0)</b>.<br/>
+ * Left illustration shows default point scaling.<br/>
+ * <code>.scale(0.5, 0.5,)</code><br/>
+ * Right illustration shows scaling with the scaling center set.<br/>
+ * <code>.scale(0.5, 0.5, x, y)</code><br/>
+ * Scaling center is marked with red, initial state is marked with gray.<br/>
+ * <img src='/anychart.graphics.vector.Element.scale.png' width='549' height='276'/>
+ * @example anychart.graphics.vector.Element.scale
+ * @param {number} sx X scaling factor.
+ * @param {number} sy Y scaling factor.
+ * @param {number=} opt_cx Scaling point X.
+ * @param {number=} opt_cy Scaling point Y.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.scale;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.scaleByAnchor
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Scales a shape. Scaling center is set as an anchor.
- @illustration <t>stageOnly</t>
- stage.suspend();
- var layer1 = stage.layer();
- // border
- layer1.rect(0, 0, stage.width() / 2, stage.height());
- // target
- var triangleGray1 = layer1.triangleDown(stage.width() / 4, stage.height() / 2, stage.height() / 3)
-   .fill(['#444 0.2', '#888 0.2'], -90)
-   .stroke('2 #222 0.2');
- // draw its bounds
- layer1.rect()
-   .setBounds(triangleGray1.getBounds())
-   .stroke('1 #888 .5');
- var triangleBlue1 = layer1.triangleDown(stage.width() / 4, stage.height() / 2, stage.height() / 3)
-   .fill(['#00A', '#00F'], -90)
-   .stroke('2 #007')
-   .scaleByAnchor(0.5, 0.5);
- // draw its bounds
- layer1.rect()
-   .setBounds(triangleBlue1.getBounds())
-   .stroke('1 #00F .5');
- var triangleBounds1 = triangleGray1.getBounds();
- layer1.circle(triangleBounds1.left + triangleBounds1.width / 2, triangleBounds1.top + triangleBounds1.height / 2, 7).fill('red');
- var layer2 = stage.layer();
- // border
- layer2.rect(0, 0, stage.width() / 2, stage.height());
- // target
- var triangleGray2 = layer2.triangleDown(stage.width() / 4, stage.height() / 2, stage.height() / 3)
-   .fill(['#444 0.2', '#888 0.2'], -90)
-   .stroke('2 #222 0.2');
- layer2.rect()
-   .setBounds(triangleGray2.getBounds())
-   .stroke('1 #888 .5');
- layer2.rect()
-   .setBounds(
-     layer2.triangleDown(stage.width() / 4, stage.height() / 2, stage.height() / 3)
-       .fill(['#00A', '#00F'], -90)
-       .stroke('2 #007')
-       .scaleByAnchor(0.5, 0.5, anychart.graphics.vector.Anchor.RIGHT_TOP)
-       .getBounds())
-   .stroke('1 #00F .5');
- var triangleBounds2 = triangleGray2.getBounds();
- layer2.circle(triangleBounds2.left + triangleBounds2.width, triangleBounds2.top, 7).fill('red');
- layer2.translate(stage.width() / 2, 0);
- stage.resume();
- @illustrationDesc
- If anchor is not set it defaults to <b>anychart.graphics.vector.Anchor.CENTER</b>.<br/>
- Left illustration shows scaling with the defaut anchor.<br/>
- <code>.scaleByAnchor(0.5, 0.5)</code><br/>
- Right illustration shows scaling with the anchor set.<br/>
- <code>.scaleByAnchor(0.5, 0.5, anychart.graphics.vector.Anchor.RIGHT_TOP)</code><br/>
- Scaling center is marked with red, initial state is marked with gray.
- @param {number} sx X scaling factor.
- @param {number} sy Y scaling factor.
- @param {(anychart.graphics.vector.Anchor|string)=} opt_anchor Scaling anchor point.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Scales a shape by anchor. Scaling center is set as an anchor.
+ * @category Size and Position
+ * @detailed If anchor is not set it defaults to <b>anychart.graphics.vector.Anchor.CENTER</b>.<br/>
+ * Left illustration shows scaling with the default anchor.<br/>
+ * <code>.scaleByAnchor(0.5, 0.5)</code><br/>
+ * Right illustration shows scaling with the anchor set.<br/>
+ * <code>.scaleByAnchor(0.5, 0.5, anychart.graphics.vector.Anchor.RIGHT_TOP)</code><br/>
+ * Scaling center is marked with red, initial state is marked with gray. <br/>
+ * <img src='/anychart.graphics.vector.Element.scaleByAnchor.png' width='548' height='274'/>
+ * @example anychart.graphics.vector.Element.scaleByAnchor
+ * @param {number} sx X scaling factor.
+ * @param {number} sy Y scaling factor.
+ * @param {(anychart.graphics.vector.Anchor|string)=} opt_anchor Scaling anchor point.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.scaleByAnchor;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.appendTransformationMatrix
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Combines the current transformation with the given transformation matrix.
- Combination is done via matrix multiplication (multiplication to the right).
- @illustration <t>stageOnly</t>
- stage.suspend();
- stage.triangleDown(stage.width() / 4, stage.height() / 3, stage.height() / 3)
-   .fill(['#444 0.2', '#888 0.2'], -90)
-   .stroke('2 #222 0.2');
- stage.triangleDown(stage.width() / 4, stage.height() / 3, stage.height() / 3)
-   .fill(['#444 0.2', '#888 0.2'], -90)
-   .stroke('2 #222 0.2')
-   .appendTransformationMatrix(0, 0.5, 1, 0, 0, 0);
- stage.triangleDown(stage.width() / 4, stage.height() / 3, stage.height() / 3)
-   .fill(['#00A', '#00F'], -90)
-   .stroke('2 #007')
-   .appendTransformationMatrix(0, 0.5, 1, 0, 0, 0)
-   .appendTransformationMatrix(0, 0.5, 1, 0, 0, 0);
- stage.resume();
- @illustrationDesc
- Illustration shows a shape transformation with the several calls of
- <code>.appendTransformationMatrix(0, 0.5, 1, 0, 0, 0)</code>
- @param {number} m00 Scale X.
- @param {number} m10 Shear Y.
- @param {number} m01 Shear X.
- @param {number} m11 Scale Y.
- @param {number} m02 Translate X.
- @param {number} m12 Translate Y.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Combines the current transformation with the given transformation matrix.
+ * @category Size and Position
+ * @detailed Combination is done via matrix multiplication (multiplication to the right).<br/>
+ * Illustration shows a shape transformation with the several calls of
+ * <code>.appendTransformationMatrix(0, 0.5, 1, 0, 0, 0)</code><br/>
+ * <img src='/anychart.graphics.vector.Element.appendTransformationMatrix.png' width='191' height='175'/>
+ * @example anychart.graphics.vector.Element.appendTransformationMatrix
+ * @param {number} m00 Scale X.
+ * @param {number} m10 Shear Y.
+ * @param {number} m01 Shear X.
+ * @param {number} m11 Scale Y.
+ * @param {number} m02 Translate X.
+ * @param {number} m12 Translate Y.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.appendTransformationMatrix;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.setTransformationMatrix
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Sets transformation matrix.<br/>
- <b>Note:</b> See illustration at {@link anychart.graphics.vector.Element#appendTransformationMatrix},
- the difference between {@link anychart.graphics.vector.Element#appendTransformationMatrix} and this method
- is that {@link anychart.graphics.vector.Element#appendTransformationMatrix} combined transformation with
- the current, and this method resets the current.
- @shortDescription Sets transformation matrix.
- @param {number} m00 Scale X.
- @param {number} m10 Shear Y.
- @param {number} m01 Shear X.
- @param {number} m11 Scale Y.
- @param {number} m02 Translate X.
- @param {number} m12 Translate Y.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Sets the transformation matrix.
+ * @category Size and Position
+ * @detailed <b>Note:</b> See illustration at {@link anychart.graphics.vector.Element#appendTransformationMatrix},
+ * the difference between {@link anychart.graphics.vector.Element#appendTransformationMatrix} and this method
+ * is that {@link anychart.graphics.vector.Element#appendTransformationMatrix} combined transformation with
+ * the current, and this method resets the current.
+ * @example anychart.graphics.vector.Element.setTransformationMatrix
+ * @param {number} m00 Scale X.
+ * @param {number} m10 Shear Y.
+ * @param {number} m01 Shear X.
+ * @param {number} m11 Scale Y.
+ * @param {number} m02 Translate X.
+ * @param {number} m12 Translate Y.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.setTransformationMatrix;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getRotationAngle
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns the current rotation angle in degrees.
- @return {number} Rotation angle.
+ * Returns the current rotation angle in degrees.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Element.getRotationAngle
+ * @return {number} Rotation angle.
  */
 anychart.graphics.vector.Element.prototype.getRotationAngle;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getTransformationMatrix
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns the current transformation matrix as an array of six elements:<br>
- [<br>
- &nbsp;&nbsp;{number} m00 Scale X.<br>
- &nbsp;&nbsp;{number} m10 Shear Y.<br>
- &nbsp;&nbsp;{number} m01 Shear X.<br>
- &nbsp;&nbsp;{number} m11 Scale Y.<br>
- &nbsp;&nbsp;{number} m02 Translate X.<br>
- &nbsp;&nbsp;{number} m12 Translate Y.<br>
- ]
- @shortDescription Returns the current transformation matrix.
- @return {Array.<number>} Transformation matrix array.
+ * Returns the current transformation matrix.
+ * @category Size and Position
+ * @detailed Matrix as an array of six elements:<br>
+ * [<br>
+ * &nbsp;&nbsp;{number} m00 Scale X.<br>
+ * &nbsp;&nbsp;{number} m10 Shear Y.<br>
+ * &nbsp;&nbsp;{number} m01 Shear X.<br>
+ * &nbsp;&nbsp;{number} m11 Scale Y.<br>
+ * &nbsp;&nbsp;{number} m02 Translate X.<br>
+ * &nbsp;&nbsp;{number} m12 Translate Y.<br>
+ * ]
+ * @example anychart.graphics.vector.Element.getTransformationMatrix
+ * @return {Array.<number>} Transformation matrix array.
  */
 anychart.graphics.vector.Element.prototype.getTransformationMatrix;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.disablePointerEvents
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Specifies under what circumstances a given graphics element can be a target element for a pointer event.
- * @param {boolean=} opt_value Pointer events property value.
- * @return {anychart.graphics.vector.Element|boolean} If opt_value defined then returns Element object for chaining else
- * returns property value.
+ * Gets the current value of the pointer events.
+ * @shortDescription Pointer events setting.
+ * @example anychart.graphics.vector.Element.disablePointerEvents_get
+ * @return {boolean} Returns property value.
  */
 anychart.graphics.vector.Element.prototype.disablePointerEvents;
 
 /**
- * Adds an event listener. A listener can only be added once to an
- * object and if it is added again the key for the listener is
- * returned. Note that if the existing listener is a one-off listener
- * (registered via listenOnce), it will no longer be a one-off
- * listener after a call to listen().
- *
+ * Disables the pointer events.
+ * @detailed Specifies under what circumstances a given graphics element can be a target element for a pointer event.
+ * @example anychart.graphics.vector.Element.disablePointerEvents_set
+ * @param {boolean=} opt_value [false] Pointer events property value.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ */
+anychart.graphics.vector.Element.prototype.disablePointerEvents;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.listen
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds an event listener.
+ * @category Events
+ * @detailed A listener can only be added once to an object and if it is added again the key for the listener is
+ * returned. Note that if the existing listener is a one-off listener (registered via listenOnce), it will no longer
+ * be a one-off listener after a call to listen().
+ * @example anychart.graphics.vector.Element.listen
  * @param {string} type The event type id.
- * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener Callback
- *     method.
- * @param {boolean=} opt_useCapture Whether to fire in capture phase
- *     (defaults to false).
- * @param {SCOPE=} opt_listenerScope Object in whose scope to call the
- *     listener.
+ * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener Callback method.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase.
+ * @param {scope=} opt_listenerScope Object in whose scope to call the listener.
  * @return {{key: number}} Unique key for the listener.
- * @template SCOPE,EVENTOBJ
  */
 anychart.graphics.vector.Element.prototype.listen;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.listenOnce
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Adds an event listener that is removed automatically after the
- * listener fired once.
- *
- * If an existing listener already exists, listenOnce will do
- * nothing. In particular, if the listener was previously registered
- * via listen(), listenOnce() will not turn the listener into a
- * one-off listener. Similarly, if there is already an existing
- * one-off listener, listenOnce does not modify the listeners (it is
- * still a once listener).
- *
+ * Adds an event listener that is removed automatically after the listener fired once.
+ * @category Events
+ * @detailed If an existing listener already exists, listenOnce will do nothing.
+ * In particular, if the listener was previously registered via listen(), listenOnce() will not turn the listener into a
+ * one-off listener. Similarly, if there is already an existing one-off listener, listenOnce does not modify
+ * the listeners (it is still a once listener).
+ * @example anychart.graphics.vector.Element.listenOnce
  * @param {string} type The event type id.
- * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener Callback
- *     method.
- * @param {boolean=} opt_useCapture Whether to fire in capture phase
- *     (defaults to false).
- * @param {SCOPE=} opt_listenerScope Object in whose scope to call the
- *     listener.
+ * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener Callback method.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase.
+ * @param {scope=} opt_listenerScope Object in whose scope to call the listener.
  * @return {{key: number}} Unique key for the listener.
- * @template SCOPE,EVENTOBJ
  */
 anychart.graphics.vector.Element.prototype.listenOnce;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.unlisten
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Removes an event listener which was added with listen() or listenOnce().
- *
+ * @category Events
+ * @example anychart.graphics.vector.Element.unlisten
  * @param {string} type The event type id.
- * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener Callback
- *     method.
- * @param {boolean=} opt_useCapture Whether to fire in capture phase
- *     (defaults to false).
- * @param {SCOPE=} opt_listenerScope Object in whose scope to call
- *     the listener.
+ * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener Callback method.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase.
+ * @param {scope=} opt_listenerScope Object in whose scope to call the listener.
  * @return {boolean} Whether any listener was removed.
- * @template SCOPE,EVENTOBJ
  */
 anychart.graphics.vector.Element.prototype.unlisten;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.unlistenByKey
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Removes an event listener which was added with listen() by the key
- * returned by listen().
- *
- * @param {{key: number}} key The key returned by
- *     listen() or listenOnce().
+ * Removes an event listener which was added with listen() by the key returned by listen().
+ * @category Events
+ * @example anychart.graphics.vector.Element.unlistenByKey
+ * @param {{key: number}} key The key returned by listen() or listenOnce().
  * @return {boolean} Whether any listener was removed.
  */
 anychart.graphics.vector.Element.prototype.unlistenByKey;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.removeAllListeners
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Removes all listeners from this listenable. If type is specified,
- * it will only remove listeners of the particular type. otherwise all
- * registered listeners will be removed.
- *
- * @param {string=} opt_type Type of event to remove, default is to
- *     remove all types.
+ * Removes all listeners from this listenable.
+ * @category Events
+ * @detailed If type is specified, it will only remove listeners of the particular type. otherwise all registered
+ * listeners will be removed.
+ * @example anychart.graphics.vector.Element.removeAllListeners
+ * @param {string=} opt_type Type of event to remove, default is to remove all types.
  * @return {number} Number of listeners removed.
  */
 anychart.graphics.vector.Element.prototype.removeAllListeners;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.zIndex
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Gets and sets element's zIndex.
- * @param {number=} opt_value Z index to set.
- * @return {number|anychart.graphics.vector.Element} Z index or itself for chaining.
+ * Gets the current element's zIndex.
+ * @shortDescription Z-index setting.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Element.zIndex_get
+ * @return {number} Z-index.
  */
 anychart.graphics.vector.Element.prototype.zIndex;
 
 /**
- Gets/sets the current visibility flag.
- @return {boolean} Returns the current visibility flag.
+ * Sets the element's zIndex.
+ * @example anychart.graphics.vector.Element.zIndex_set
+ * @param {number=} opt_value Z-index to set.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ */
+anychart.graphics.vector.Element.prototype.zIndex;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.visible
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets the current visibility flag.
+ * @shortDescription Visibility flag
+ * @category Interactivity
+ * @example anychart.graphics.vector.Element.visible_get
+ * @return {boolean} Returns the current visibility flag.
  */
 anychart.graphics.vector.Element.prototype.visible;
 
 /**
- Hides or shows an element.
- @example anychart.graphics.vector.Element.visible
- @param {boolean=} opt_isVisible Visibility flag.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Hides or shows an element.
+ * @example anychart.graphics.vector.Element.visible_set
+ * @param {boolean=} opt_isVisible [true] Visibility flag.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.visible;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.clip
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Gets/sets clipping rectangle.
- @return {anychart.graphics.math.Rect} An instance of class for method chaining.
+ * Gets the current clipping rectangle.
+ * @shortDescription Clipping setting.
+ * @return {anychart.graphics.math.Rect} An instance of class for method chaining.
  */
 anychart.graphics.vector.Element.prototype.clip;
 
 /**
- Sets clipping rectangle.
- Affects display only after render() method call.<br/>
- <b>Attention!</b> In SVG clip will transform according to transformation, and in VML
- clip will be surrounding.
- @shortDescription Sets clipping rectangle.
- @illustration <t>stageOnly</t>
- // colors
- var gray = '1 gray 0.3';
- var blue = '1 blue 0.9';
- //// Image #1
- // Gray star
- stage.star5(40, 55, 35).stroke(gray);
- // Clipping rectangle
- var rectToClip = new anychart.graphics.math.Rect(5, 20, 45, 45);
- // Star clipping
- stage.star5(40, 55, 35).clip(rectToClip);
- // Clip frame (blue)
- stage.rect().setBounds(rectToClip).fill('none').stroke(blue);
- // Label
- stage.text(10, 110, 'without');
- stage.text(10, 120, 'transformation');
- stage.text(10, 90, 'SVG/VML');
- //// Image #2
- // Gray star
- stage.star5(160, 55, 35).stroke(gray).rotateByAnchor(45, anychart.graphics.vector.Anchor.CENTER)
- // Star clipping
- stage.path()
- .moveTo(138, 48.5)
- .lineTo(142, 45.5)
- .lineTo(142, 23)
- .lineTo(161, 37)
- .lineTo(183, 29)
- .lineTo(175, 52);
- // Cliiping frame (blue)
- stage.rect(125, 20, 45, 45).fill('none').stroke(blue)
- .rotateByAnchor(45, anychart.graphics.vector.Anchor.CENTER)
- .translate(4, -12);
- // Label
- stage.text(180, 110, 'with');
- stage.text(180, 120, 'transformation');
- stage.text(160, 90, 'SVG');
- //// Image #3
- // Gray star
- stage.star5(240, 55, 35).stroke(gray).rotateByAnchor(45, anychart.graphics.vector.Anchor.CENTER);
- // Star clipping
- stage.path()
- .moveTo(206.5, 57)
- .lineTo(218, 48.5)
- .lineTo(222, 45.5)
- .lineTo(222, 23)
- .lineTo(241, 37)
- .lineTo(263, 29)
- .lineTo(255, 52)
- .lineTo(268, 68);
- stage.path()
- .moveTo(206.5, 60)
- .lineTo(225, 66)
- .lineTo(226, 68);
- // Clipping frame (gray)
- var rect = stage.rect(205, 20, 45, 45).fill('none').stroke(gray)
- .rotateByAnchor(45, anychart.graphics.vector.Anchor.CENTER)
- .translate(4, -12);
- // Clipping frame (blue)
- stage.rect().setBounds(rect.getBounds()).fill('none').stroke(blue);
- // Label
- stage.text(230, 90, 'VML');
- @param {(anychart.graphics.math.Rect|string)=} opt_value Clipping rectangle.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Sets the clipping rectangle.
+ * @detailed Affects display only after render() method call.<br/>
+ * <b>Attention!</b> In SVG clip will transform according to transformation, and in VML
+ * clip will be surrounding.<br/>
+ * <img src='/anychart.graphics.vector.Element.clip.png' width='289' height='140'/>
+ * @example anychart.graphics.vector.Element.clip_set
+ * @param {(anychart.graphics.math.Rect|string)=} opt_value Clipping rectangle.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.clip;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getX
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns X in the coordinate system of the parent.
- @return {number} X in the coordinate system of the parent.
+ * Returns X in the coordinate system of the parent.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Element.getX
+ * @return {number} X in the coordinate system of the parent.
  */
 anychart.graphics.vector.Element.prototype.getX;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getY
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns Y in the coordinate system of the parent.
- @return {number} Y in the coordinate system of the parent.
+ * Returns Y in the coordinate system of the parent.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Element.getY
+ * @return {number} Y in the coordinate system of the parent.
  */
 anychart.graphics.vector.Element.prototype.getY;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getCoordinate
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns (X,Y) in the coordinate system of the parent.
- @return {!anychart.graphics.math.Coordinate} (X,Y) in the coordinate system of the parent.
+ * Returns (X,Y) in the coordinate system of the parent.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Element.getCoordinate
+ * @return {!anychart.graphics.math.Coordinate} X, Y in the coordinate system of the parent.
  */
 anychart.graphics.vector.Element.prototype.getCoordinate;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns  width.
- @return {number} Width.
+ * Returns the width.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Element.getWidth
+ * @return {number} Width.
  */
 anychart.graphics.vector.Element.prototype.getWidth;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns height.
- @return {number} Height.
+ * Returns the height.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Element.getHeight
+ * @return {number} Height.
  */
 anychart.graphics.vector.Element.prototype.getHeight;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns size.
- @return {!anychart.graphics.math.Size} Size.
+ * Returns the size.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Element.getSize
+ * @return {!anychart.graphics.math.Size} Size.
  */
 anychart.graphics.vector.Element.prototype.getSize;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getBounds
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns bounds.
- @return {!anychart.graphics.math.Rect} Bounds.
+ * Returns the bounds.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Element.getBounds
+ * @return {!anychart.graphics.math.Rect} Bounds.
  */
 anychart.graphics.vector.Element.prototype.getBounds;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getAbsoluteX
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns an absolute X (root element coordinate system).
- @illustration <t>stageOnly</t>
-   stage.rect(1, 1, stage.width()-2, stage.height()-2)
-       .stroke('1 green');
-   stage.text(120, 1, 'root element').color('green');
-   var layer = stage.layer();
-   layer.rect(1, 1, stage.width()-2, stage.height()-2)
-       .fill('blue 0.01')
-       .stroke('1 blue');
-   layer.text(120, 1, 'layer with transformation').color('blue');
-   layer.translate(40, 20);
-   layer.rect(10, 10, 100, 40).fill("#9E9E9E")
-       .rotate(10)
-       .translate(50, 30);
-   layer.path()
-       .stroke('2 brown')
-       .moveTo(0, 90)
-       .lineTo(45, 90);
-   layer.text(10, 90, 'getX()')
-       .color('brown');
-   stage.path()
-       .stroke('1 gray')
-       .moveTo(0, 109)
-       .lineTo(85, 109);
-   stage.text(7, 90, 'getAbsoluteX()')
-       .color('black');
-   stage.circle(85, 109, 2).fill('#000')
- @return {number} Absolute X.
+ * Returns an absolute X (root element coordinate system).
+ * @category Size and Position
+ * @detailed
+ * <img src='/anychart.graphics.vector.Element.getAbsoluteX.png' width='488' height='244'/>
+ * @example anychart.graphics.vector.Element.getAbsoluteX
+ * @return {number} Absolute X.
  */
 anychart.graphics.vector.Element.prototype.getAbsoluteX;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getAbsoluteY
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns an absolute Y (root element coordinate system).
- @illustration <t>stageOnly</t>
- stage.rect(1, 1, stage.width()-2, stage.height()-2)
-     .stroke('1 green');
- stage.text(120, 1, 'root element').color('green');
- var layer = stage.layer();
- layer.rect(1, 1, stage.width()-2, stage.height()-2)
-     .fill('blue 0.01')
-     .stroke('1 blue');
- layer.text(120, 1, 'layer with transformation').color('blue');
- layer.translate(40, 20);
- layer.rect(10, 10, 100, 40).fill("#9E9E9E")
-     .rotate(10)
-     .translate(50, 30);
- layer.path()
-     .stroke('2 brown')
-     .moveTo(0, 90)
-     .lineTo(45, 90);
- layer.text(10, 40, 'getY()')
-     .color('brown');
- stage.path()
-     .stroke('1 gray')
-     .moveTo(85, 0)
-     .lineTo(85, 109);
- stage.text(7, 0, 'getAbsoluteY()')
-     .color('black');
- stage.circle(85, 109, 2).fill('#000')
- @return {number} Absolute Y.
+ * Returns an absolute Y (root element coordinate system).
+ * @category Size and Position
+ * @detailed
+ * <img src='/anychart.graphics.vector.Element.getAbsoluteY.png' width='507' height='249'/>
+ * @example anychart.graphics.vector.Element.getAbsoluteY
+ * @return {number} Absolute Y.
  */
 anychart.graphics.vector.Element.prototype.getAbsoluteY;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getAbsoluteCoordinate
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns absolute coordinates (root element coordinate system).<br/>
- See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteX} and {@link anychart.graphics.vector.Element#getAbsoluteY}
- @return {!anychart.graphics.math.Coordinate} Absolute coordinates.
+ * Returns absolute coordinates (root element coordinate system).<br/>
+ * See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteX} and {@link anychart.graphics.vector.Element#getAbsoluteY}
+ * @category Size and Position
+ * @example anychart.graphics.vector.Element.getAbsoluteCoordinate
+ * @return {!anychart.graphics.math.Coordinate} Absolute coordinates.
  */
 anychart.graphics.vector.Element.prototype.getAbsoluteCoordinate;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getAbsoluteWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns width within root bounds.
- @illustration <t>stageOnly</t>
- stage.rect(1, 1, stage.width()-2, stage.height()-2)
-     .stroke('1 green');
- stage.text(120, 1, 'root element').color('green');
- var layer = stage.layer();
- layer.rect(1, 1, stage.width()-2, stage.height()-2)
-     .fill('blue 0.01')
-     .stroke('1 blue');
- layer.text(120, 1, 'layer with transformation').color('blue');
- layer.translate(40, 20);
- layer.rect(10, 10, 100, 40).fill('gray .4')
-     .rotate(10)
-     .translate(50, 30)
-     .stroke('2 brown');
- layer.text(160, 70, 'elements bounds')
-     .color('brown');
- layer.rect(45, 49, 108, 59);
- stage.text(97, 50, 'absolute bounds')
-     .color('black');
- @return {number} Width.
+ * Returns width within root bounds.
+ * @category Size and Position
+ * @detailed
+ * <img src='/anychart.graphics.vector.Element.getAbsoluteWidth.png' width='310' height='240'/>
+ * @example anychart.graphics.vector.Element.getAbsoluteWidth
+ * @return {number} Width.
  */
 anychart.graphics.vector.Element.prototype.getAbsoluteWidth;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getAbsoluteHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns height within root bounds.
- @illustration <t>stageOnly</t>
- stage.rect(1, 1, stage.width()-2, stage.height()-2)
-    .stroke('1 green');
- stage.text(120, 1, 'root element').color('green');
- var layer = stage.layer();
- layer.rect(1, 1, stage.width()-2, stage.height()-2)
-    .fill('blue 0.01')
-    .stroke('1 blue');
- layer.text(120, 1, 'layer with transformation').color('blue');
- layer.translate(40, 20);
- layer.rect(10, 10, 100, 40).fill('gray .4')
-    .rotate(10)
-    .translate(50, 30)
-    .stroke('2 brown');
- layer.text(160, 70, 'elements bounds')
-    .color('brown');
- layer.rect(45, 49, 108, 59);
- stage.text(97, 50, 'absolute bounds')
-    .color('black');
- @return {number} Height.
+ * Returns height within root bounds.<br/>
+ * See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
+ * @category Size and Position
+ * @example anychart.graphics.vector.Element.getAbsoluteHeight
+ * @return {number} Height.
  */
 anychart.graphics.vector.Element.prototype.getAbsoluteHeight;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getAbsoluteSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns size within root bounds.<br/>
- See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth} and {@link anychart.graphics.vector.Element#getAbsoluteHeight}
- @return {!anychart.graphics.math.Size} Size.
+ * Returns size within root bounds.<br/>
+ * See illustrations at {@link anychart.graphics.vector.Element#getAbsoluteWidth}
+ * @category Size and Position
+ * @example anychart.graphics.vector.Element.getAbsoluteSize
+ * @return {!anychart.graphics.math.Size} Size.
  */
 anychart.graphics.vector.Element.prototype.getAbsoluteSize;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.getAbsoluteBounds
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Gets element bounds in absolute coordinates (root element coordinate system).
- @illustration <t>stageOnly</t>
- stage.rect(1, 1, stage.width()-2, stage.height()-2)
-     .stroke('1 green');
- stage.text(120, 1, 'root element').color('green');
- var layer = stage.layer();
- layer.rect(1, 1, stage.width()-2, stage.height()-2)
-     .fill('blue 0.01')
-     .stroke('1 blue');
- layer.text(120, 1, 'layer with transformation').color('blue');
- layer.translate(40, 20);
- layer.rect(10, 10, 100, 40).fill('gray .4')
-     .rotate(10)
-     .translate(50, 30)
-     .stroke('2 brown');
- layer.text(160, 70, 'elements bounds')
-     .color('brown');
- layer.rect(45, 49, 108, 59);
- stage.text(97, 50, 'absolute bounds')
-     .color('black');
- @return {!anychart.graphics.math.Rect} Absolute element bounds.
+ * Gets element bounds in absolute coordinates (root element coordinate system).
+ * @category Size and Position
+ * @detailed
+ * <img src='/anychart.graphics.vector.Element.getAbsoluteWidth.png' width='310' height='240'/>
+ * @example anychart.graphics.vector.Element.getAbsoluteBounds
+ * @return {!anychart.graphics.math.Rect} Absolute element bounds.
  */
 anychart.graphics.vector.Element.prototype.getAbsoluteBounds;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.drag
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Returns current state flag.
- @return {boolean|anychart.graphics.math.Rect} .
+ * Returns the current state flag.
+ * @shortDescription Dragging setting.
+ * @category Interactive
+ * @example anychart.graphics.vector.Element.drag_get
+ * @return {boolean|anychart.graphics.math.Rect} Absolute element bounds or flag.
  */
 anychart.graphics.vector.Element.prototype.drag;
 
 /**
- Turns off/on dragging (moving) of an element.<br/>
- Sets mode (true - on, false - off) or dragging area for an element,
- dragging is always on within an area.
- @shortDescription Turns off/on dragging (moving) of an element.
- @example anychart.graphics.vector.Element.drag
- @param {(boolean|anychart.graphics.math.Rect)=} opt_value Flag or a dragging area.
- @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * Turns off/on dragging (moving) of an element.
+ * @detailed Sets mode (true - on, false - off) or dragging area for an element,
+ * dragging is always on within an area.
+ * @example anychart.graphics.vector.Element.drag_set
+ * @param {(boolean|anychart.graphics.math.Rect)=} opt_value [false] Flag or a dragging area.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
  */
 anychart.graphics.vector.Element.prototype.drag;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.dispose
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Disposes element completelt. Removes it from the parent layer, sets links to null,
- removes it from DOM.
+ * Disposes element completely.
+ * Removes it from the parent layer, sets links to null, removes it from DOM.
+ * @example anychart.graphics.vector.Element.dispose
  */
 anychart.graphics.vector.Element.prototype.dispose = function(){};
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Element.prototype.vectorEffect
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets the current vector effect property of the element.
+ * @shortDescription Vector effect property
+ * @example anychart.graphics.vector.Element.vectorEffect_get
+ * @return {string} The current vector effect property.
+ * @since 7.9.0
+ */
+anychart.graphics.vector.Element.prototype.vectorEffect;
+
+/**
+ * Sets the vector effect property of the element.
+ * Learn more by <a href="http://www.w3.org/TR/2004/WD-SVG12-20041027/vectoreffects.html#vector-effect-prop">link</a>.
+ * @example anychart.graphics.vector.Element.vectorEffect_set
+ * @param {string=} opt_value Vector effect property to set.
+ * @return {anychart.graphics.vector.Element} Self instance for method chaining.
+ * @since 7.9.0
+ */
+anychart.graphics.vector.Element.prototype.vectorEffect;
 

@@ -1,17 +1,22 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="layer"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            var stage = anychart.graphics.create("container");
-// create a layer
-            var layer1 = stage.layer();
-            // add elements
-            layer1.addChild(stage.ellipse(85, 80, 35, 55).fill("blue", 0.3))
-                    .addChild(stage.star7(55, 79, 45).fill("red"));
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
 
+            var blueEllipse = stage.ellipse(85, 80, 35, 55);
+            blueEllipse.fill("#2196F3", 0.3);
+
+            var redTriangleUp = stage.star7(55, 79, 45);
+            redTriangleUp.fill("#F44336");
+
+            var simpleLayer = stage.layer();
+            // Adds elements.
+            simpleLayer.addChild(blueEllipse);
+            simpleLayer.addChild(redTriangleUp);
         });
     </script>
 </head>

@@ -5,12 +5,17 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var chart = anychart.pie([8, 3, 7, 2, 9]);
+            chart = anychart.pie([8, 3, 7, 2, 9]);
+
             var legend = chart.legend();
-            var tooltip = legend.tooltip(); // get tooltip
-            tooltip.contentFormatter(function() {
-                return "Value: " + this.value
+
+            // Get tooltip.
+            var currentTooltip = legend.tooltip();
+            currentTooltip.enabled(true);
+            currentTooltip.textFormatter(function(){
+                return "Value " + this.value
             });
+
             chart.container("container");
             chart.draw();
         });

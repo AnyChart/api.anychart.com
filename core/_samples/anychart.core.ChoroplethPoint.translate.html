@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="map"/>
+    <script src="../../anychart.min.js"></script>
+    <script src="http://cdn.anychart.com/geodata/tmp.js" data-export="true"></script>
+    <script src="http://cdn.anychart.com/maps-data/france_data.js" data-export="true"></script>
+    <script x-export="franceMap">
+        anychart.onDocumentReady(function() {
+            // The data that have been used for this sample can be taken from the CDN
+            // http://cdn.anychart.com/maps-data/france_data.js
+            var dataSet = anychart.data.set(data);
+            dataSet.mapAs({id: "id"});
+            franceMap = anychart.map();
+            franceMap.geoData(anychart.maps.france);
+
+            var series = franceMap.choropleth(dataSet);
+            franceMap.container("container");
+            franceMap.draw();
+
+            var point = series.getPoint(0);
+            // Moves point.
+            point.translate(20, 50);
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

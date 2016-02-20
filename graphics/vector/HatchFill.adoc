@@ -1,283 +1,227 @@
 /**
- HatchFill is a special pattern fill with predefined set of a primitives. Sets of a primitives does numbered and
- declared in {@link anychart.graphics.vector.HatchFill.HatchFillType} enum. Hatch fill properties will be applied to his
- children (sets of a primitives). HatchFill is a immutable fill, therefore after rendering his a properties
- can not be changed.<br/>
- <b>Do not invoke constructor directly.</b> Use {@link anychart.graphics.vector.Stage#hatchFill} or
- {@link anychart.graphics#hatchFill}
- @see anychart.graphics.vector.Stage#hatchFill
- @see anychart.graphics#hatchFill
- @name anychart.graphics.vector.HatchFill
- @param {anychart.graphics.vector.HatchFill.HatchFillType=} opt_type Hatch fill type.
- @param {string=} opt_color Hatch fill color CAN BE COMBINED WITH OPACITY.
- @param {number=} opt_thickness Hatch fill thickness.
- @param {number=} opt_size Hatch fill size.
- @constructor
- @extends {anychart.graphics.vector.PatternFill}
+ * HatchFill is a special pattern fill with predefined set of a primitives. Sets of a primitives does numbered and
+ * declared in {@link anychart.graphics.vector.HatchFill.HatchFillType} enum. Hatch fill properties will be applied to his
+ * children (sets of a primitives). HatchFill is a immutable fill, therefore after rendering his a properties
+ * can not be changed.<br/>
+ * <b>Do not invoke constructor directly.</b> Use {@link anychart.graphics.vector.Stage#hatchFill} or
+ * {@link anychart.graphics#hatchFill}.<br/>
+ * See also:<br/>
+ * {@link anychart.graphics.vector.Stage#hatchFill},<br/>
+ * {@link anychart.graphics#hatchFill}.
+ * @param {anychart.graphics.vector.HatchFill.HatchFillType=} opt_type Hatch fill type.
+ * @param {string=} opt_color Hatch fill color (can be combined with opacity).
+ * @param {number=} opt_thickness Hatch fill thickness.
+ * @param {number=} opt_size Hatch fill size.
+ * @constructor
+ * @extends {anychart.graphics.vector.PatternFill}
  */
 anychart.graphics.vector.HatchFill;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.HatchFill.HatchFillType
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Hatch Fill types.
- <b>Note!</b> VML does not support hatch due to performance issues.
- @enum {string}
+ * Hatch Fill types.
+ * <b>Note!</b> VML does not support hatch due to performance issues.
+ * @example anychart.graphics.vector.HatchFill.HatchFillType
+ * @enum {string}
  */
 anychart.graphics.vector.HatchFill.HatchFillType;
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-     .rect(0, 0, stage.width(), stage.height())
-     .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.BACKWARD_DIAGONAL));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.BACKWARD_DIAGONAL;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.BACKWARD_DIAGONAL.png' width='32' height='32'/>
+ * The hatch fill type is backward diagonal.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.BACKWARD_DIAGONAL = "backwardDiagonal";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.FORWARD_DIAGONAL));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.FORWARD_DIAGONAL;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.FORWARD_DIAGONAL.png' width='31' height='29'/>
+ * The hatch fill type is forward diagonal.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.FORWARD_DIAGONAL = "forwardDiagonal";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.HORIZONTAL));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.HORIZONTAL;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.HORIZONTAL.png' width='31' height='29'/>
+ * The hatch fill type is horizontal.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.HORIZONTAL = "horizontal";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.VERTICAL));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.VERTICAL;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.VERTICAL.png' width='31' height='29'/>
+ * The hatch fill type is vertical.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.VERTICAL = "vertical";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.DASHED_BACKWARD_DIAGONAL));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.DASHED_BACKWARD_DIAGONAL;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.DASHED_BACKWARD_DIAGONAL.png' width='32' height='29'/>
+ * The hatch fill type is dashed backward diagonal.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.DASHED_BACKWARD_DIAGONAL = "dashedBackwardDiagonal";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.GRID));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.GRID;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.GRID.png' width='30' height='29'/>
+ * The hatch fill type is grid.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.GRID = "grid";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.DASHED_FORWARD_DIAGONAL));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.DASHED_FORWARD_DIAGONAL;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.DASHED_FORWARD_DIAGONAL.png' width='28' height='26'/>
+ * The hatch fill type is dashed forward diagonal.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.DASHED_FORWARD_DIAGONAL = "dashedForwardDiagonal";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.DASHED_HORIZONTAL));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.DASHED_HORIZONTAL;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.DASHED_HORIZONTAL.png' width='29' height='29'/>
+ * The hatch fill type is dashed horizontal.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.DASHED_HORIZONTAL = "dashedHorizontal";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.DASHED_VERTICAL));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.DASHED_VERTICAL;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.DASHED_HORIZONTAL.png' width='29' height='29'/>
+ * The hatch fill type is dashed vertical.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.DASHED_VERTICAL = "dashedVertical";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.DIAGONAL_CROSS));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.DIAGONAL_CROSS;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.DIAGONAL_CROSS.png' width='29' height='28'/>
+ * The hatch fill type is diagonal cross.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.DIAGONAL_CROSS = "diagonalCross";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.DIAGONAL_BRICK));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.DIAGONAL_BRICK;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.DIAGONAL_BRICK.png' width='32' height='31'/>
+ * The hatch fill type is diagonal brick.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.DIAGONAL_BRICK = "diagonalBrick";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.DIVOT));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.DIVOT;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.DIVOT.png' width='31' height='31'/>
+ * The hatch fill type is divot.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.DIVOT = "divot";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.HORIZONTAL_BRICK));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.HORIZONTAL_BRICK;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.HORIZONTAL_BRICK.png' width='30' height='30'/>
+ * The hatch fill type is horizontal brick.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.HORIZONTAL_BRICK = "horizontalBrick";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.VERTICAL_BRICK));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.VERTICAL_BRICK;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.VERTICAL_BRICK.png' width='31' height='29'/>
+ * The hatch fill type is vertical brick.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.VERTICAL_BRICK = "verticalBrick";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.CHECKER_BOARD));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.CHECKER_BOARD;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.CHECKER_BOARD.png' width='31' height='29'/>
+ * The hatch fill type is checker board.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.CHECKER_BOARD = "checkerBoard";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.CONFETTI));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.CONFETTI;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.CONFETTI.png' width='32' height='29'/>
+ * The hatch fill type is confetti.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.CONFETTI = "confetti";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.PLAID));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.PLAID;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.PLAID.png' width='31' height='21'/>
+ * The hatch fill type is plaid.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.PLAID = "plaid";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.SOLID_DIAMOND));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.SOLID_DIAMOND;
+ * @<img src='/anychart.graphics.vector.HatchFill.HatchFillType.SOLID_DIAMOND.png' width='30' height='29'/>
+ * The hatch fill type is solid diamond
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.SOLID_DIAMOND = "solidDiamond";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.ZIG_ZAG));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.ZIG_ZAG;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.ZIG_ZAG.png' width='29' height='30'/>
+ * The hatch fill type is zig zag.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.ZIG_ZAG = "zigZag";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.WEAVE));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.WEAVE;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.WEAVE.png' width='31' height='31'/>
+ * The hatch fill type is weave.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.WEAVE = "weave";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_05));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_05;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_05.png' width='30' height='30'/>
+ * The hatch fill type is percent 05.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_05 = "percent05";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_10));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_10;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_10.png' width='29' height='30'/>
+ * The hatch fill type is percent 10.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_10 = "percent10";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_20));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_20;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_20.png' width='31' height='29'/>
+ * The hatch fill type is percent 20.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_20 = "percent20";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_25));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_25;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_25.png' width='31' height='29'/>
+ * The hatch fill type is percent 25.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_25 = "percent25";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_30));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_30;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_30.png' width='30' height='31'/>
+ * The hatch fill type is percent 30.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_30 = "percent30";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_40));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_40;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_40.png' width='27' height='27'/>
+ * The hatch fill type is percent 40.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_40 = "percent40";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_50));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_50;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_50.png' width='29' height='30'/>
+ * The hatch fill type is percent 50.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_50 = "percent50";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_60));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_60;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_60.png' width='29' height='29'/>
+ * The hatch fill type is percent 60.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_60 = "percent60";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_70));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_70;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_70.png' width='27' height='27'/>
+ * The hatch fill type is percent 70.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_70 = "percent70";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_75));
-   */
-anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_75;
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_75.png' width='29' height='28'/>
+ * The hatch fill type is percent 75.
+ */
+anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_75 = "percent75";
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_80));
-   */
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_80.png' width='30' height='30'/>
+ * The hatch fill type is percent 80.
+ */
 anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_80;
 
 /**
-   @illustration <t>stageOnly</t>
-   stage.width(200).height(30)
-   .rect(0, 0, stage.width(), stage.height())
-   .fill(stage.hatchFill(anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_90));
-   */
+ * <img src='/anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_90.png' width='29' height='29'/>
+ * The hatch fill type is percent 90.
+ */
 anychart.graphics.vector.HatchFill.HatchFillType.PERCENT_90;
 
 /** @inheritDoc */
@@ -522,4 +466,7 @@ anychart.graphics.vector.HatchFill.prototype.getAbsoluteBounds;
 
 /** @inheritDoc */
 anychart.graphics.vector.HatchFill.prototype.drag;
+
+/** @inheritDoc */
+anychart.graphics.vector.HatchFill.prototype.vectorEffect;
 

@@ -1,23 +1,29 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content=""/>
+    <meta name="x-cat-tags" content="rect"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function() {
-            var stage = anychart.graphics.create("container");
-            var rect = stage.rect(20, 20, 100, 100);
-            rect.fill("#80CBC4");
-            rect.clip(stage.createClip());
-            var clip = rect.clip();
-            clip.bounds(30, 30, 50, 50);
+            stage = anychart.graphics.create("container");
+
+            var redRect = stage.rect(20, 20, 100, 100);
+            redRect.fill("#F44336");
+            redRect.clip(stage.createClip());
+
+            var clipArea = redRect.clip();
+            clipArea.bounds(30, 30, 50, 50);
+
             var greenRect = stage.rect(20, 150, 100, 100);
             greenRect.fill("#4CAF50");
             greenRect.clip(stage.createClip());
-            var height = clip.height(); // get height
+
+            // Gets height.
+            var currentHeight = clipArea.height();
+
             var greenRectClip = greenRect.clip();
             greenRectClip.bounds(30, 150, 50, 50);
-            greenRectClip.height(height + 30);
+            greenRectClip.height(currentHeight + 30);
         });
     </script>
 </head>

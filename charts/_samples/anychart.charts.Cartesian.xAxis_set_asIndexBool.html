@@ -5,12 +5,14 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var chart = anychart.cartesian();
+            chart = anychart.cartesian();
             chart.column([1, 4, 5, 7, 2]);
-            chart.xAxis(0, {orientation: "top"});
-            chart.xAxis(1, {orientation: "bottom", title: "X-Axis"});
-            chart.xAxis(2, {orientation: "right"});
-            chart.xAxis(2, false); // disables X-axis by index
+
+            chart.xAxis(0);
+            chart.xAxis(1, {orientation: "top", title: true});
+            // Disables X-axis by index.
+            chart.xAxis(0, false);
+
             chart.container("container");
             chart.draw();
         });

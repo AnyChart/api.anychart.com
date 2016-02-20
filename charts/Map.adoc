@@ -56,8 +56,8 @@ anychart.charts.Map.prototype.colorRange;
 
 /**
  * Setter for the color range.
- * @example anychart.charts.Map.colorRange_set_asObj Using object.
- * @param {(anychart.core.ui.ColorRange|Object)=} opt_value Chart marker palette settings to set.
+ * @example anychart.charts.Map.colorRange_set
+ * @param {Object=} opt_value Color range settings to set.
  * @return {anychart.charts.Map} Self instance for method chaining.
  * @since 7.6.0
  */
@@ -580,7 +580,6 @@ anychart.charts.Map.prototype.removeAllListeners;
 
 
 
-
 //----------------------------------------------------------------------------------------------------------------------
 //
 //  anychart.charts.Map.prototype.getPlotBounds
@@ -596,4 +595,282 @@ anychart.charts.Map.prototype.removeAllListeners;
  * @since 7.8.0
  */
 anychart.charts.Map.prototype.getPlotBounds;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Map.prototype.featureTranslation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current translation feature by id.
+ * @shirtDescription Translating feature
+ * @category Size and Position
+ * @example anychart.charts.Map.featureTranslation_get
+ * @param {string} id Feature id.
+ * @return {Array.<number>} The current translating feature.
+ * @since 7.9.0
+ */
+anychart.charts.Map.prototype.featureTranslation;
+
+/**
+ * Setter for the translation feature.<br/>
+ * <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
+ * @detailed Use the map data, which include latitude and longitude.
+ * Method moves the feature from the current position to the passed x and y.
+ * @example anychart.charts.Map.featureTranslation_set
+ * @param {string} id Feature id.
+ * @param {number=} dx Offset by X coordinate.
+ * @param {number=} dy Offset by Y coordinate.
+ * @return {anychart.charts.Map} Self instance for method chaining.
+ * @since 7.9.0
+ */
+anychart.charts.Map.prototype.featureTranslation;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Map.prototype.featureScaleFactor
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current feature scale factor.<br/>
+ * <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
+ * @shortDescription Scale settings of the feature
+ * @category Size and Position
+ * @detailed This method uses the map data, which include latitude and longitude.
+ * @example anychart.charts.Map.featureScaleFactor_get
+ * @param {string} id Feature id.
+ * @return {number} The current scale of the feature.
+ * @since 7.9.0
+ */
+anychart.charts.Map.prototype.featureScaleFactor;
+
+/**
+ * Setter for the feature scale factor.<br/>
+ * <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
+ * @detailed This method uses the map data, which include latitude and longitude.
+ * @example anychart.charts.Map.featureScaleFactor_set
+ * @param {string} id Feature id.
+ * @param {number=} opt_ratio Scale ratio.
+ * @return {anychart.charts.Map} Self instance for method chaining.
+ * @since 7.9.0
+ */
+anychart.charts.Map.prototype.featureScaleFactor;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Map.prototype.featureCrs
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current crs of the feature.<br/>
+ * <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
+ * @detailed This method uses the map data, which include latitude and longitude.
+ * @shortDescription Coordinate system for the feature.
+ * @category Size and Position
+ * @example anychart.charts.Map.featureCrs_get
+ * @param {string} id Feature id.
+ * @return {string} The current crs of the feature.
+ * @since 7.9.0
+ */
+anychart.charts.Map.prototype.featureCrs;
+
+/**
+ * Setter for the crs of the feature.<br/>
+ * <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
+ * @detailed This method uses the map data, which include latitude and longitude.
+ * @example anychart.charts.Map.featureCrs_set
+ * @param {string} id Feature id.
+ * @param {string=} opt_crs String crs (coordinate system) representation.
+ * @return {anychart.charts.Map} Self instance for method chaining.
+ * @since 7.9.0
+ */
+anychart.charts.Map.prototype.featureCrs;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Map.prototype.crs
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Sets the crs (coordinate system) to map.<br/>
+ * <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
+ * @category Size and Position
+ * @detailed This method uses the map data, which include latitude and longitude.<br/>
+ * You can see some map projections at {@link http://www.spatialreference.org/ref/} or use {@link http://www.qgis.org/}
+ * @example anychart.charts.Map.crs
+ * @param {string} value String crs representation (map projection).
+ * @since 7.9.0
+ */
+anychart.charts.Map.prototype.crs;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Map.prototype.toGeoJSON
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Exports map to GeoJSON format.
+ * @category XML/JSON
+ * @example anychart.charts.Map.toGeoJSON
+ * @return {Object} Geo JSON config.
+ * @since 7.9.0
+ */
+anychart.charts.Map.prototype.toGeoJSON;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Map.prototype.zoom
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Increases map zoom on the passed value.
+ * @detailed Minimum zoom is the map bounds. Maximum zoom is autocalculated from the bounds of map.
+ * @category Interactivity
+ * @example anychart.charts.Map.zoom
+ * @param {number} value [1] Zoom value.
+ * @param {number=} opt_cx Center X value.
+ * @param {number=} opt_cy Center Y value.
+ * @return {anychart.charts.Map} Self instance for method chaining.
+ * @since 7.9.0
+ */
+anychart.charts.Map.prototype.zoom;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Map.prototype.move
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Moves focus point for map.<br/>
+ * <b>Note:</b> Works only with {@link anychart.charts.Map#zoom}
+ * @category Interactivity
+ * @example anychart.charts.Map.move
+ * @param {number} dx [0] Offset x coordinate.
+ * @param {number} dy [0] Offset y coordinate.
+ * @return {anychart.charts.Map} Self instance for method chaining.
+ * @since 7.9.0
+ */
+anychart.charts.Map.prototype.move;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Map.prototype.translateFeature
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Translates feature on passed dx and dy.<br/>
+ * <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
+ * @detailed This method uses the map data, which include latitude and longitude.
+ * @category Size and Position
+ * @example anychart.charts.Map.translateFeature
+ * @param {string} id Feature id.
+ * @param {number} dx Offset x coordinate.
+ * @param {number} dy Offset y coordinate.
+ * @return {anychart.charts.Map} Self instance for method chaining.
+ * @since 7.9.0
+ */
+anychart.charts.Map.prototype.translateFeature;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Map.prototype.transform
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns coordinate at latitude and longitude to pixel values relative map data bounds.<br/>
+ * <b>Note:</b> Returns correct values only after {@link anychart.charts.Map#draw} is called.
+ * @category Specific settings
+ * @detailed Use {@link anychart.charts.Map#localToGlobal} for convert of the returned coordinates to global coordinates
+ * (relative document).
+ * @example anychart.charts.Map.transform
+ * @param {number} xLong Longitude in degrees.
+ * @param {number} yLat Latitude in degrees.
+ * @return {Object.<string, number>} Transformed value adjust local map data bounds.
+ * @since 7.9.1
+ */
+anychart.charts.Map.prototype.transform;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Map.prototype.inverseTransform
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Transforms the local pixel coordinates to latitude/longitude.
+ * @category Specific settings
+ * @detailed Transforms the pixel coordinates in the coordinate system relative to map data bounds values in degrees (latitude/longitude)<br/>
+ * Use {@link anychart.charts.Map#globalToLocal} for convert of the global coordinates to coordinates relative map data bounds.
+ * @example anychart.charts.Map.inverseTransform
+ * @param {number} x X pixel value to transform.
+ * @param {number} y Y pixel value to transform.
+ * @return {Object.<string, number>} Object with latitude/longitude coordinates.
+ * @since 7.9.1
+ */
+anychart.charts.Map.prototype.inverseTransform;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Map.prototype.localToGlobal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Converts the local coordinates to global coordinates.
+ * <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
+ * @category Specific settings
+ * @detailed Converts local coordinates of the container or stage into global coordinates of the global document.<br/>
+ * On image below, the red point is a starting coordinate point of the chart bounds.
+ * Local coordinates work only in area of the stage (container).<br/>
+ * <img src='/anychart.charts.Map.localToGlobal.png' height='310' width='530'/>
+ * @example anychart.charts.Map.localToGlobal
+ * @param {number} xCoord Local X coordinate.
+ * @param {number} yCoord Local Y coordinate.
+ * @return {Object.<string, number>} Object with XY coordinates.
+ * @since 7.9.1
+ */
+anychart.charts.Map.prototype.localToGlobal;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Map.prototype.globalToLocal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Converts the global coordinates to local coordinates.
+ * <b>Note:</b> Works only after {@link anychart.charts.Map#draw} is called.
+ * @category Specific settings
+ * @detailed Converts global coordinates of the global document into local coordinates of the container or stage.<br/>
+ * On image below, the red point is a starting coordinate point of the chart bounds.
+ * Local coordinates work only in area of the stage (container).<br/>
+ * <img src='/anychart.charts.Map.localToGlobal.png' height='310' width='530'/>
+ * @example anychart.charts.Map.globalToLocal
+ * @param {number} xCoord Global X coordinate.
+ * @param {number} yCoord Global Y coordinate.
+ * @return {Object.<string, number>} Object with XY coordinates.
+ * @since 7.9.1
+ */
+anychart.charts.Map.prototype.globalToLocal;
 

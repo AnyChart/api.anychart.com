@@ -1,23 +1,35 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="text"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            var stage = anychart.graphics.create("container");
-            var text = stage.text(70, 55, "Click on this TEXT.");
-            text.style({fontStyle: "italic", fontSize: "18px", color: "blue", hAlign: "middle"});
-            var rect = stage.rect().setBounds(text.getBounds()).fill("white 0.00001").stroke(null);
-            anychart.graphics.events.listen(rect, anychart.graphics.events.EventType.MOUSEOVER, function(e){
-                text.style({color: "green"});
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            var blueText = stage.text(70, 55, "Click on this TEXT.");
+            blueText.style({fontStyle: "italic", fontSize: "18px", color: "#2196F3", hAlign: "middle"});
+
+            var rect = stage.rect();
+            rect.setBounds(blueText.getBounds());
+            rect.fill("#FFEBEE 0.00001");
+            rect.stroke(null);
+
+            anychart.graphics.events.listen(rect, "mouseOver", function(e) {
+                blueText.style({color: "#4CAF50"});
             });
-            anychart.graphics.events.listen(rect, anychart.graphics.events.EventType.MOUSEOUT, function(e){
-                text.style({color: "blue"});
+
+            anychart.graphics.events.listen(rect, "mouseOut", function(e) {
+                blueText.style({color: "#2196F3"});
             });
-            anychart.graphics.events.listenOnce(rect, anychart.graphics.events.EventType.CLICK, function(e){
-                text.text("You can\'t click here anymore.").style({color: "red"});
-                rect.setBounds(text.getBounds());
+
+            anychart.graphics.events.listenOnce(rect, "click", function(e) {
+                blueText.text("You can\'t click here anymore.");
+                blueText.style({color: "#F44336"});
+
+                rect.setBounds(blueText.getBounds());
+
+                // Removes all listeners.
                 anychart.graphics.events.removeAll(rect);
             });
         });

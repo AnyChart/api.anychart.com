@@ -1,5 +1,10 @@
 /**
  * Image primitive.
+ * <b>Do not invoke constructor directly.</b> Use {@link anychart.graphics.vector.Stage#image} or
+ * {@link anychart.graphics.vector.Layer#image} to make stage or layer bound image.<br/>
+ * See also:<br/>
+ * {@link anychart.graphics.vector.Stage#image},<br/>
+ * {@link anychart.graphics.vector.Layer#image}
  * @param {string=} opt_src IRI (Internationalized Resource Identifiers) for image source.
  * @param {number=} opt_x X coordinate of left-top corner image.
  * @param {number=} opt_y Y coordinate of left-top corner image.
@@ -12,145 +17,284 @@
  */
 anychart.graphics.vector.Image;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Image.Fitting
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
+ * Fitting mode.
+ * @example anychart.graphics.vector.Image.Fitting
  * @enum {string}
  */
 anychart.graphics.vector.Image.Fitting;
 
 /**
-   * aspect ratio is preserved
-   * the entire ‘viewBox’ is visible within the viewport
-   * the ‘viewBox’ is scaled up as much as possible, while still meeting the other criteria
-   */
-anychart.graphics.vector.Image.Fitting.MEET;
+ * Aspect ratio is preserved.
+ * The entire ‘viewBox’ is visible within the viewport.
+ * The ‘viewBox’ is scaled up as much as possible, while still meeting the other criteria.
+ */
+anychart.graphics.vector.Image.Fitting.MEET = "meet";
 
 /**
-   * aspect ratio is preserved
-   * the entire viewport is covered by the ‘viewBox’
-   * the ‘viewBox’ is scaled down as much as possible, while still meeting the other criteria
-   */
-anychart.graphics.vector.Image.Fitting.SLICE;
+ * Aspect ratio is preserved.
+ * The entire viewport is covered by the ‘viewBox’.
+ * The ‘viewBox’ is scaled down as much as possible, while still meeting the other criteria.
+ */
+anychart.graphics.vector.Image.Fitting.SLICE = "slice";
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Image.Align
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
+ * Align enumeration.
+ * @example anychart.graphics.vector.Image.Align
  * @enum {string}
  */
 anychart.graphics.vector.Image.Align;
 
 /**
-   * Do not force uniform scaling. Scale the graphic content of the given element non-uniformly if necessary such that the element's bounding box exactly matches the viewport rectangle.
-     (Note: if <align> is none, then the optional <meetOrSlice> value is ignored.)
-   */
-anychart.graphics.vector.Image.Align.NONE;
+ * Do not force uniform scaling. Scale the graphic content of the given element non-uniformly if necessary such
+ * that the element's bounding box exactly matches the viewport rectangle.
+ * (Note: if <align> is none, then the optional <meetOrSlice> value is ignored.)
+ */
+anychart.graphics.vector.Image.Align.NONE = "none";
 
 /**
-   * Force uniform scaling.
-     Align the <min-x> of the element's ‘viewBox’ with the smallest X value of the viewport.
-     Align the <min-y> of the element's ‘viewBox’ with the smallest Y value of the viewport.
-   */
-anychart.graphics.vector.Image.Align.X_MIN_Y_MIN;
+ * Force uniform scaling.<br/>
+ * Align the <min-x> of the element's ‘viewBox’ with the smallest X value of the viewport.<br/>
+ * Align the <min-y> of the element's ‘viewBox’ with the smallest Y value of the viewport.
+ */
+anychart.graphics.vector.Image.Align.X_MIN_Y_MIN = "xMinYMin";
 
 /**
-   * Force uniform scaling.
-     Align the midpoint X value of the element's ‘viewBox’ with the midpoint X value of the viewport.
-     Align the <min-y> of the element's ‘viewBox’ with the smallest Y value of the viewport.
-   */
-anychart.graphics.vector.Image.Align.X_MID_Y_MIN;
+ * Force uniform scaling.<br/>
+ * Align the midpoint X value of the element's ‘viewBox’ with the midpoint X value of the viewport.<br/>
+ * Align the <min-y> of the element's ‘viewBox’ with the smallest Y value of the viewport.
+ */
+anychart.graphics.vector.Image.Align.X_MID_Y_MIN = "xMidYMin";
 
 /**
-   * Force uniform scaling.
-     Align the <min-x>+<width> of the element's ‘viewBox’ with the maximum X value of the viewport.
-     Align the <min-y> of the element's ‘viewBox’ with the smallest Y value of the viewport.
-   */
-anychart.graphics.vector.Image.Align.X_MAX_Y_MIN;
+ * Force uniform scaling.<br/>
+ * Align the <min-x>+<width> of the element's ‘viewBox’ with the maximum X value of the viewport.<br/>
+ * Align the <min-y> of the element's ‘viewBox’ with the smallest Y value of the viewport.
+ */
+anychart.graphics.vector.Image.Align.X_MAX_Y_MIN = "xMaxYMin";
 
 /**
-   * Force uniform scaling.
-     Align the <min-x> of the element's ‘viewBox’ with the smallest X value of the viewport.
-     Align the midpoint Y value of the element's ‘viewBox’ with the midpoint Y value of the viewport.
-   */
-anychart.graphics.vector.Image.Align.X_MIN_Y_MID;
+ * Force uniform scaling.<br/>
+ * Align the <min-x> of the element's ‘viewBox’ with the smallest X value of the viewport.<br/>
+ * Align the midpoint Y value of the element's ‘viewBox’ with the midpoint Y value of the viewport.
+ */
+anychart.graphics.vector.Image.Align.X_MIN_Y_MID = "xMinYMid";
 
 /**
-   * Force uniform scaling.
-     Align the midpoint X value of the element's ‘viewBox’ with the midpoint X value of the viewport.
-     Align the midpoint Y value of the element's ‘viewBox’ with the midpoint Y value of the viewport.
-   */
-anychart.graphics.vector.Image.Align.X_MID_Y_MID;
+ * Force uniform scaling.<br/>
+ * Align the midpoint X value of the element's ‘viewBox’ with the midpoint X value of the viewport.<br/>
+ * Align the midpoint Y value of the element's ‘viewBox’ with the midpoint Y value of the viewport.
+ */
+anychart.graphics.vector.Image.Align.X_MID_Y_MID = "xMidYMid";
 
 /**
-   * Force uniform scaling.
-     Align the <min-x>+<width> of the element's ‘viewBox’ with the maximum X value of the viewport.
-     Align the midpoint Y value of the element's ‘viewBox’ with the midpoint Y value of the viewport.
-   */
-anychart.graphics.vector.Image.Align.X_MAX_Y_MID;
+ * Force uniform scaling.<br/>
+ * Align the <min-x>+<width> of the element's ‘viewBox’ with the maximum X value of the viewport.<br/>
+ * Align the midpoint Y value of the element's ‘viewBox’ with the midpoint Y value of the viewport.
+ */
+anychart.graphics.vector.Image.Align.X_MAX_Y_MID = "xMaxYMid";
 
 /**
-   * Force uniform scaling.
-     Align the <min-x> of the element's ‘viewBox’ with the smallest X value of the viewport.
-     Align the <min-y>+<height> of the element's ‘viewBox’ with the maximum Y value of the viewport.
-   */
-anychart.graphics.vector.Image.Align.X_MIN_Y_MAX;
+ * Force uniform scaling.<br/>
+ * Align the <min-x> of the element's ‘viewBox’ with the smallest X value of the viewport.<br/>
+ * Align the <min-y>+<height> of the element's ‘viewBox’ with the maximum Y value of the viewport.
+ */
+anychart.graphics.vector.Image.Align.X_MIN_Y_MAX = "xMinYMax";
 
 /**
-   * Force uniform scaling.
-     Align the midpoint X value of the element's ‘viewBox’ with the midpoint X value of the viewport.
-     Align the <min-y>+<height> of the element's ‘viewBox’ with the maximum Y value of the viewport.
-   */
-anychart.graphics.vector.Image.Align.X_MID_Y_MAX;
+ * Force uniform scaling.<br/>
+ * Align the midpoint X value of the element's ‘viewBox’ with the midpoint X value of the viewport.<br/>
+ * Align the <min-y>+<height> of the element's ‘viewBox’ with the maximum Y value of the viewport.
+ */
+anychart.graphics.vector.Image.Align.X_MID_Y_MAX = "xMidYMax";
 
 /**
-   * Force uniform scaling.
-     Align the <min-x>+<width> of the element's ‘viewBox’ with the maximum X value of the viewport.
-     Align the <min-y>+<height> of the element's ‘viewBox’ with the maximum Y value of the viewport.
-   */
-anychart.graphics.vector.Image.Align.X_MAX_Y_MAX;
+ * Force uniform scaling.<br/>
+ * Align the <min-x>+<width> of the element's ‘viewBox’ with the maximum X value of the viewport.<br/>
+ * Align the <min-y>+<height> of the element's ‘viewBox’ with the maximum Y value of the viewport.
+ */
+anychart.graphics.vector.Image.Align.X_MAX_Y_MAX = "xMaxYMax";
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Image.prototype.fittingMode
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Fitting mode.
- * @param {anychart.graphics.vector.Image.Fitting=} opt_value Fitting mode.
- * @return {!anychart.graphics.vector.Image|anychart.graphics.vector.Image.Fitting} Fitting mode value or this.
+ * Getter for the current fitting mode.
+ * @shortDescription Fitting mode.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Image.fittingMode_get
+ * @return {anychart.graphics.vector.Image.Fitting} Fitting mode value.
  */
 anychart.graphics.vector.Image.prototype.fittingMode;
 
 /**
- * Preserve aspect ratio.
- * @param {anychart.graphics.vector.Image.Align=} opt_value Preserve aspect ratio.
- * @return {!anychart.graphics.vector.Image|anychart.graphics.vector.Image.Align} Preserve aspect ratio value or this.
+ * Setter for the fitting mode.
+ * @example anychart.graphics.vector.Image.fittingMode_set
+ * @param {(anychart.graphics.vector.Image.Fitting|string)=} opt_value ["meet"] Fitting mode.
+ * @return {!anychart.graphics.vector.Image} Self instance for method chaining.
+ */
+anychart.graphics.vector.Image.prototype.fittingMode;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Image.prototype.align
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current align.
+ * @shortDescription Align setting.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Image.align_get
+ * @return {anychart.graphics.vector.Image.Align} Align value.
  */
 anychart.graphics.vector.Image.prototype.align;
 
 /**
- * Getter/Setter for X coordinate.
- * @param {number=} opt_value X coordinate.
- * @return {!anychart.graphics.vector.Image|number} If opt_x defined then returns Image object else X coordinate value.
+ * Setter for the align.
+ * @example anychart.graphics.vector.Image.align_set
+ * @param {anychart.graphics.vector.Image.Align=} opt_value Preserve aspect ratio.
+ * @return {!anychart.graphics.vector.Image} Self instance for method chaining.
+ */
+anychart.graphics.vector.Image.prototype.align;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Image.prototype.x
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current X coordinate.
+ * @shortDescription X coordinate setting.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Image.x_get
+ * @return {number} X coordinate value.
  */
 anychart.graphics.vector.Image.prototype.x;
 
 /**
- * Getter/Setter for Y coordinate.
- * @param {number=} opt_value Y coordinate.
- * @return {!anychart.graphics.vector.Image|number} If opt_y defined then returns Image object else Y coordinate value.
+ * Setter for X coordinate.
+ * @example anychart.graphics.vector.Image.x_set
+ * @param {number=} opt_value X coordinate.
+ * @return {!anychart.graphics.vector.Image} Self instance for method chaining.
+ */
+anychart.graphics.vector.Image.prototype.x;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Image.prototype.y
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current Y coordinate.
+ * @shortDescription Y coordinate setting.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Image.y_get
+ * @return {number} Y coordinate value.
  */
 anychart.graphics.vector.Image.prototype.y;
 
 /**
- * Getter/Setter for image width.
- * @param {number=} opt_value Image width .
- * @return {!anychart.graphics.vector.Image|number} If opt_width defined then returns Image object else image width value.
+ * Setter for the Y coordinate.
+ * @example anychart.graphics.vector.Image.y_set
+ * @param {number=} opt_value Y coordinate.
+ * @return {!anychart.graphics.vector.Image} Self instance for method chaining.
+ */
+anychart.graphics.vector.Image.prototype.y;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Image.prototype.width
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current image width.
+ * @shortDescription Width setting.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Image.width_get
+ * @return {number} Image width value.
  */
 anychart.graphics.vector.Image.prototype.width;
 
 /**
- * Getter/Setter for image height.
- * @param {number=} opt_value Image height .
- * @return {!anychart.graphics.vector.Image|number} If opt_height defined then returns Image object else image height value.
+ * Setter for the image width.
+ * @example anychart.graphics.vector.Image.width_set
+ * @param {number=} opt_value Image width.
+ * @return {anychart.graphics.vector.Image} Self instance for method chaining.
+ */
+anychart.graphics.vector.Image.prototype.width;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Image.prototype.height
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current image height.
+ * @shortDescription Height setting.
+ * @category Size and Position
+ * @example anychart.graphics.vector.Image.height_get
+ * @return {number} Image height value.
  */
 anychart.graphics.vector.Image.prototype.height;
 
 /**
- * Getter/Setter for image source. Set null value for non-display image.
+ * Setter for the image height.
+ * @example anychart.graphics.vector.Image.height_set
+ * @param {number=} opt_value Image height.
+ * @return {!anychart.graphics.vector.Image} Self instance for method chaining.
+ */
+anychart.graphics.vector.Image.prototype.height;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Image.prototype.src
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current image source.
+ * @shortDescription Image source setting.
+ * @category Coloring
+ * @example anychart.graphics.vector.Image.src_get
+ * @return {string} URL of source image.
+ */
+anychart.graphics.vector.Image.prototype.src;
+
+/**
+ * Setter for the image source.<br/>
+ * Set null value for non-display image.
+ * @example anychart.graphics.vector.Image.src_set
  * @param {string=} opt_value URL for source of image.
- * @return {anychart.graphics.vector.Image|string} If opt_src defined then returns Image object else URL of source image.
+ * @return {anychart.graphics.vector.Image} Self instance for method chaining.
  */
 anychart.graphics.vector.Image.prototype.src;
 
@@ -282,4 +426,7 @@ anychart.graphics.vector.Image.prototype.drag;
 
 /** @inheritDoc */
 anychart.graphics.vector.Image.prototype.dispose;
+
+/** @inheritDoc */
+anychart.graphics.vector.Image.prototype.vectorEffect;
 

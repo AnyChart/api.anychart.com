@@ -1,22 +1,29 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content=""/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            var stage = anychart.graphics.create("container");
-            var text = stage.text(0,0,"Click to resume").fontSize(14);
-            text.x(20).y(10);
-            var rect = stage.rect(0, 0, 100, 100).fill("white .01").stroke(null);
-            anychart.graphics.events.listen(rect, anychart.graphics.events.EventType.CLICK, function(){
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            var singleText = stage.text(20, 10, "Click to resume");
+            singleText.fontSize(14);
+
+            var rectangle = stage.rect(0, 0, 100, 100);
+            rectangle.fill("#FFFFFF 0.01");
+            rectangle.stroke(null);
+
+            anychart.graphics.events.listen(rectangle, "click", function() {
                 stage.resume();
-                text.text(null);
-                rect.fill("none");
+                singleText.text(null);
+                rectangle.fill("none");
             });
+
+            // Suspends rendering.
             stage.suspend();
-            stage.text(10, 10, "new text line");
-            stage.circle(stage.width()/2, stage.height()/2, 50).fill("red 0.2").stroke("2 blue");
+            stage.text(10, 30, "New text line");
+            stage.circle(100, 100, 50).fill("red 0.2").stroke("2 blue");
         });
     </script>
 </head>

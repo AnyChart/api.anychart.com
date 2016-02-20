@@ -6,181 +6,278 @@
  */
 anychart.graphics;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.StageType
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Stage types supported by AnyChart Data Visualization Toolkit.
- @enum {string}
+ * Stage types supported by AnyChart Data Visualization Toolkit.
+ * @enum {string}
  */
 anychart.graphics.StageType;
 
 /**
- An HTML 5 element allowing to draw bitmap graphics. It is supported by the majority of modern browsers.<br/>
- The main advantage is rendering speed. The main problem is interactivity. Canvas will be used in the cases when speed
- is needed (or interactivity is not necessary).<br/>
- See more at <a href="http://en.wikipedia.org/wiki/Canvas_element" target="_blank">Wiki Page</a>
+ * An HTML 5 element allowing to draw bitmap graphics. It is supported by the majority of modern browsers.<br/>
+ * The main advantage is rendering speed. The main problem is interactivity. Canvas will be used in the cases when speed
+ * is needed (or interactivity is not necessary).<br/>
+ * See more at <a href="http://en.wikipedia.org/wiki/Canvas_element" target="_blank">Wiki Page</a>
  */
-anychart.graphics.StageType.CANVAS;
+anychart.graphics.StageType.CANVAS = "canvas";
 
 /**
- A vector drawing technology compatible with the majority of modern browsers (both desktop and mobile).
- It is used as the main drawing technology.<br/>
- See more at <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics" target="_blank">Wiki Page</a>
+ * A vector drawing technology compatible with the majority of modern browsers (both desktop and mobile).
+ * It is used as the main drawing technology.<br/>
+ * See more at <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics" target="_blank">Wiki Page</a>
  */
-anychart.graphics.StageType.SVG;
+anychart.graphics.StageType.SVG = "svg";
 
 /**
- A vector drawing technology compatible only with  Microsoft Internet Explorer (versions 6-8).
- It is used as an alternative for SVG because SVG is not supported by IE.<br/>
- See more at <a href="http://en.wikipedia.org/wiki/Vector_Markup_Language" target="_blank">Wiki Page</a>
+ * A vector drawing technology compatible only with Microsoft Internet Explorer (versions 6-8).
+ * It is used as an alternative for SVG because SVG is not supported by IE.<br/>
+ * See more at <a href="http://en.wikipedia.org/wiki/Vector_Markup_Language" target="_blank">Wiki Page</a>
  */
-anychart.graphics.StageType.VML;
+anychart.graphics.StageType.VML = "vml";
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.type
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- Returns the Stage type recommended for the current browser (identified by a name and version), which is selected from
- the supported Stage types.
- @return {anychart.graphics.StageType} A Stage type supported by the current browser.
+ * Returns the stage type recommended for the current browser (identified by a name and version). Which is selected from
+ * the supported stage types.
+ * @return {anychart.graphics.StageType} A Stage type supported by the current browser.
  */
 anychart.graphics.type;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.create
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Creates and returns a Stage object providing instruments for cross-browser drawing with a commnon interface
- * for <u>all</u> supported technologies.
- * @see anychart.graphics.StageType
+ * Creates and returns a Stage object providing instruments for cross-browser drawing with a common interface
+ * for <u>all</u> supported technologies.<br/> More at {@link anychart.graphics.StageType}
  * @param {(Element|string)=} opt_container A container where all graphics will be drawn.
  * It can be defined later, for example while rendering.
- * @param {(string|number)=} opt_width The width of a Stage object in pixels.
- * @param {(string|number)=} opt_height The height of a Stage object in pixels.
+ * @param {(string|number)=} opt_width ["100%"] The width of a Stage object in pixels.
+ * @param {(string|number)=} opt_height ["100%"] The height of a Stage object in pixels.
  * @return {!anychart.graphics.vector.Stage} A Stage object for cross-browser drawing with a common interface for
  * all supported technologies.
- *
  */
 anychart.graphics.create;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.validate
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
+ * @ignoreDoc method doesn't exist
  * Checks the graphics config for conform to graphics JSON scheme.
  * @param {Object} data JSON config graphics. JSON should be conform to the graphics JSON schema.
  * @param {!Function} callback Callback function. First parameter is a validation result.
  */
 anychart.graphics.validate;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.server
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Sets and returns an address export server script, which is used to export to an image
- or PDF.
- @see anychart.graphics.vector.Stage#saveAsPDF
- @see anychart.graphics.vector.Stage#saveAsPNG
- @see anychart.graphics.vector.Stage#saveAsJPG
- @param {string=} opt_address Export server script URL.
- @return {string} Export server script URL.
+ * Sets and returns an address export server script, which is used to export to an image or PDF.<br/>
+ * See at:<br/>
+ * {@link anychart.graphics.vector.Stage#saveAsPdf}<br/>
+ * {@link anychart.graphics.vector.Stage#saveAsPng}<br/>
+ * {@link anychart.graphics.vector.Stage#saveAsJpg}
+ * @param {string=} opt_address Export server script URL.
+ * @return {string} Export server script URL.
  */
 anychart.graphics.server;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.rect
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Creates an instance ot the {@link anychart.graphics.vector.Rect} class.<br/>
- <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
- so it is necessary to set the parent element manually.
- @example anychart.graphics.rect
- @example anychart.graphics.rect1
- @param {number=} opt_x The X-coordinate (left) of the top-left corner of the rectangle.
- @param {number=} opt_y The Y-coordinate (left) of the top-left corner of the rectangle.
- @param {number=} opt_width The width of the rectangle.
- @param {number=} opt_height The height of the rectangel.
- @return {anychart.graphics.vector.Rect} An instance of class for method chaining.
+ * Creates an instance ot the {@link anychart.graphics.vector.Rect} class.<br/>
+ * <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
+ * so it is necessary to set the parent element manually.
+ * @example anychart.graphics.rect_stage Using stage.
+ * @example anychart.graphics.rect_layer Using layer.
+ * @param {number=} opt_x The X-coordinate (left) of the top-left corner of the rectangle.
+ * @param {number=} opt_y The Y-coordinate (left) of the top-left corner of the rectangle.
+ * @param {number=} opt_width The width of the rectangle.
+ * @param {number=} opt_height The height of the rectangle.
+ * @return {anychart.graphics.vector.Rect} An instance of class for method chaining.
  */
 anychart.graphics.rect;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.circle
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Creates an instance of the {@link anychart.graphics.vector.Circle} class <br/>
- To learn more about working with circles, see: {@link anychart.graphics.vector.Circle}
- <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
- so it is necessary to set the parent element manually.
- @example anychart.graphics.circle
- @param {number=} opt_cx The X-coordinate of the center of the circle in pixels.
- @param {number=} opt_cy The Y-coordinate of the center of the circle in pixels.
- @param {number=} opt_radius The radius of the circle in pixels.
- @return {anychart.graphics.vector.Circle} An instance of class for method chaining.
+ * Creates an instance of the {@link anychart.graphics.vector.Circle} class <br/>
+ * To learn more about working with circles, see: {@link anychart.graphics.vector.Circle}<br/>
+ * <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
+ * so it is necessary to set the parent element manually.
+ * @example anychart.graphics.circle
+ * @param {number=} opt_cx The X-coordinate of the center of the circle in pixels.
+ * @param {number=} opt_cy The Y-coordinate of the center of the circle in pixels.
+ * @param {number=} opt_radius The radius of the circle in pixels.
+ * @return {anychart.graphics.vector.Circle} An instance of class for method chaining.
  */
 anychart.graphics.circle;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.layer
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Creates an instance of the {@link anychart.graphics.vector.Layer} class.<br/>
- <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
- so it is necessary to set the parent element manually.
- @example anychart.graphics.layer
- @return {anychart.graphics.vector.Layer} An instance of class for method chaining.
+ * Creates an instance of the {@link anychart.graphics.vector.Layer} class.<br/>
+ * <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
+ * so it is necessary to set the parent element manually.
+ * @example anychart.graphics.layer
+ * @return {anychart.graphics.vector.Layer} An instance of class for method chaining.
  */
 anychart.graphics.layer;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.ellipse
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Creates an instance of the {@link anychart.graphics.vector.Ellipse} class.<br/>
- <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
- so it is necessary to set the parent element manually.
- To learn more about working with ellipses, see: {@link anychart.graphics.vector.Ellipse}
- @example anychart.graphics.ellipse
- @param {number=} opt_cx The X-coordinate of the center of the ellipse in pixels.
- @param {number=} opt_cy The Y-coordinate of the center of the ellipse in pixels.
- @param {number=} opt_rx The X-axis radius of the ellipse in pixels.
- @param {number=} opt_ry The Y-axis radius of the ellipse in pixels.
- @return {anychart.graphics.vector.Ellipse} An instance of class for method chaining.
+ * Creates an instance of the {@link anychart.graphics.vector.Ellipse} class.<br/>
+ * <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
+ * so it is necessary to set the parent element manually.<br/>
+ * To learn more about working with ellipses, see: {@link anychart.graphics.vector.Ellipse}
+ * @example anychart.graphics.ellipse
+ * @param {number=} opt_cx The X-coordinate of the center of the ellipse in pixels.
+ * @param {number=} opt_cy The Y-coordinate of the center of the ellipse in pixels.
+ * @param {number=} opt_rx The X-axis radius of the ellipse in pixels.
+ * @param {number=} opt_ry The Y-axis radius of the ellipse in pixels.
+ * @return {anychart.graphics.vector.Ellipse} An instance of class for method chaining.
  */
 anychart.graphics.ellipse;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.path
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Creates an instance of the {@link anychart.graphics.vector.Path} class.<br/>
- <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
- so it is necessary to set the parent element manually.
- To learn more about working with Path, see: {@link anychart.graphics.vector.Path}
- @example anychart.graphics.path
- @return {anychart.graphics.vector.Path} An instance of class for method chaining.
+ * Creates an instance of the {@link anychart.graphics.vector.Path} class.<br/>
+ * <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
+ * so it is necessary to set the parent element manually. <br/>
+ * To learn more about working with Path, see: {@link anychart.graphics.vector.Path}
+ * @example anychart.graphics.path
+ * @return {anychart.graphics.vector.Path} An instance of class for method chaining.
  */
 anychart.graphics.path;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.image
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Creates an instance of the {@link anychart.graphics.vector.Image} class.<br/>
- <strong>Important:</strong> anychart.graphics.vector.Stage does not delete the object you have
- created . You should remove the object after using it.
- @example anychart.graphics.image
- @param {string=} opt_src The IRI (Internationalized Resource Identifier) of the image source.
- @param {number=} opt_x The X-coordinate of the left-top corner of the image.
- @param {number=} opt_y The Y-coordinate of the left-top corner of the image.
- @param {number=} opt_width The width of the image bounds.
- @param {number=} opt_height The height of the image bounds.
- @return {anychart.graphics.vector.Image} An instance of class for method chaining.
+ * Creates an instance of the {@link anychart.graphics.vector.Image} class.<br/>
+ * <strong>Important:</strong> {@link anychart.graphics.vector.Stage} does not delete the object you have
+ * created. You should remove the object after using it.
+ * @example anychart.graphics.image
+ * @param {string=} opt_src The IRI (Internationalized Resource Identifier) of the image source.
+ * @param {number=} opt_x The X-coordinate of the left-top corner of the image.
+ * @param {number=} opt_y The Y-coordinate of the left-top corner of the image.
+ * @param {number=} opt_width The width of the image bounds.
+ * @param {number=} opt_height The height of the image bounds.
+ * @return {anychart.graphics.vector.Image} An instance of class for method chaining.
  */
 anychart.graphics.image;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.text
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Creates, depending on the technology used, an instance of the {@link anychart.graphics.vector.Text}
- or the{@link anychart.graphics.vector.vml.Text} class.<br/>
- <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
- so it is necessary to set the parent element manually.
- @example anychart.graphics.tex
- @example anychart.graphics.tex1
- @param {number=} opt_x The X-coordinate (left) of the top-left corner of the text bounds.
- @param {number=} opt_y The Y-coordinate (top) of the top-left corner of the text bounds.
- @param {string=} opt_text The text to display.
- @param {anychart.graphics.vector.TextStyle=} opt_style Text style. See more: {@link anychart.graphics.vector.Text#style}.
- @return {anychart.graphics.vector.vml.Text} An instance of class for method chaining.
+ * Creates, depending on the technology used, an instance of the {@link anychart.graphics.vector.Text}
+ * or the {@link anychart.graphics.vector.vml.Text} class.<br/>
+ * <strong>Important:</strong> When an element is created this way, a parent element is not assigned to it automatically,
+ * so it is necessary to set the parent element manually.
+ * @example anychart.graphics.text_set Text with coordinates
+ * @example anychart.graphics.text_set_Settings Text with settings.
+ * @param {number=} opt_x The X-coordinate (left) of the top-left corner of the text bounds.
+ * @param {number=} opt_y The Y-coordinate (top) of the top-left corner of the text bounds.
+ * @param {string=} opt_text The text to display.
+ * @param {anychart.graphics.vector.TextStyle=} opt_style Text style. See more: {@link anychart.graphics.vector.Text#style}.
+ * @return {anychart.graphics.vector.vml.Text} An instance of class for method chaining.
  */
 anychart.graphics.text;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.hatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Creates an instance of the{@link anychart.graphics.vector.HatchFill} class in case a fill with such parameters does not
- exist. If there is already a fill with such parameters, an instance of it is returned.<br/>
- To learn more about working with hatch fills, see: {@link anychart.graphics.vector.HatchFill}
- @example anychart.graphics.hatchFill
- @param {anychart.graphics.vector.HatchFill.HatchFillType=} opt_type The type of the hatch fill.
- @param {string=} opt_color The color of the the hatch combined with opacity.
- @param {number=} opt_thickness The thickness of the hatch fill.
- @param {number=} opt_size The size of the hatch fill.
- @return {anychart.graphics.vector.HatchFill} An instance of class for method chaining.
+ * Creates an instance of the {@link anychart.graphics.vector.HatchFill} class.<br/> In case a fill with such parameters does not
+ * exist. If there is already a fill with such parameters, an instance of it is returned.<br/>
+ * To learn more about working with hatch fills, see: {@link anychart.graphics.vector.HatchFill}
+ * @example anychart.graphics.hatchFill
+ * @param {anychart.graphics.vector.HatchFill.HatchFillType=} opt_type The type of the hatch fill.
+ * @param {string=} opt_color The color of the the hatch combined with opacity.
+ * @param {number=} opt_thickness The thickness of the hatch fill.
+ * @param {number=} opt_size The size of the hatch fill.
+ * @return {anychart.graphics.vector.HatchFill} An instance of class for method chaining.
  */
 anychart.graphics.hatchFill;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.patternFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- Creates an instance of the{@link anychart.graphics.vector.PatternFill} class.<br/>
- To learn more about working with pattern fills, see: {@link anychart.graphics.vector.PatternFill}
- @example anychart.graphics.patternFill
- @param {!anychart.graphics.math.Rect} bounds The bounds of the pattern. Defines the size and offset of the pattern.
- @return {anychart.graphics.vector.PatternFill} An instance of class for method chaining.
+ * Creates an instance of the {@link anychart.graphics.vector.PatternFill} class.<br/>
+ * To learn more about working with pattern fills, see: {@link anychart.graphics.vector.PatternFill}
+ * @example anychart.graphics.patternFill
+ * @param {!anychart.graphics.math.Rect} bounds The bounds of the pattern. Defines the size and offset of the pattern.
+ * @return {anychart.graphics.vector.PatternFill} An instance of class for method chaining.
  */
 anychart.graphics.patternFill;
 
@@ -194,7 +291,7 @@ anychart.graphics.patternFill;
 /**
  * Creates an instance of the {@link anychart.graphics.vector.Clip} class.
  * @example anychart.graphics.clip
- * @param {number=} {(Array.<number>|anychart.graphics.math.Rect|Object|null)=} opt_leftorRect Left coordinate, rect or array
+ * @param {(number|Array.<number>|anychart.graphics.math.Rect|Object|null)=} opt_leftorRect Left coordinate, rect or array
  * or object representing bounds.
  * @param {number=} opt_top Top coordinate.
  * @param {number=} opt_width Width of the rect.

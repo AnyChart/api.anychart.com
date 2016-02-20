@@ -1,24 +1,36 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="layer"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            var stage = anychart.graphics.create("container");
-// create layers
-            var layer1 = stage.layer();
-            var layer2 = stage.layer();
-            var stroke = "1 black 1";
-            layer1.ellipse(75, 105, 55, 35).fill("green", 1).stroke(stroke);
-            layer1.ellipse(95, 75, 55, 35).fill("yellow", 1).stroke(stroke);
-            layer1.ellipse(115, 45, 55, 35).fill("red", 1).stroke(stroke);
-            layer2.ellipse(75, 105, 55, 35).fill("green", 1).stroke(stroke);
-            layer2.ellipse(95, 75, 55, 35).fill("yellow", 1).stroke(stroke);
-            layer2.ellipse(115, 45, 55, 35).fill("red", 1).stroke(stroke);
-            // move layer and swap
-            layer2.translate(180, 0).swapChildrenAt(0, 2);
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
 
+            var firstLayer = stage.layer();
+            var secondLayer = stage.layer();
+
+            var firstGreenElement = firstLayer.ellipse(75, 105, 55, 35);
+            firstGreenElement.fill("#4CAF50", 1);
+
+            var firstYellowEllipse = firstLayer.ellipse(95, 75, 55, 35);
+            firstYellowEllipse.fill("#FFEB3B", 1);
+
+            var firstRedEllipse = firstLayer.ellipse(115, 45, 55, 35);
+            firstRedEllipse.fill("red", 1);
+
+            var secondGreenElement = secondLayer.ellipse(75, 105, 55, 35);
+            secondGreenElement.fill("#4CAF50", 1);
+
+            var secondYellowEllipse = secondLayer.ellipse(95, 75, 55, 35);
+            secondYellowEllipse.fill("#FFEB3B", 1);
+
+            var secondRedEllipse = secondLayer.ellipse(115, 45, 55, 35);
+            secondRedEllipse.fill("red", 1);
+
+            secondLayer.translate(180, 0);
+            // Swap children by indexes.
+            secondLayer.swapChildrenAt(0, 2);
         });
     </script>
 </head>

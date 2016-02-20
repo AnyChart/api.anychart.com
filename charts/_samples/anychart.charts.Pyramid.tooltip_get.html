@@ -15,13 +15,11 @@
                 {x: "Application", value: 290, label: {anchor: "centerTop"}}
             ]);
 
-            var chart = anychart.pyramid(dataSet);
+            chart = anychart.pyramid(dataSet);
 
-            // Get tooltip.
+            // Gets tooltip.
             var currentTooltip = chart.tooltip();
-            currentTooltip.contentFormatter(function() {
-                return "Index: " + this.index + "\n" + "Value: " + this.value;
-            });
+            currentTooltip.textFormatter("Index: {%Index}\nValue: {%Value}");
 
             chart.labels({position: "inside"});
             chart.container("container");
