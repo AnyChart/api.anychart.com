@@ -153,9 +153,10 @@ anychart.graphics.vector.Stage.prototype.container;
 /**
  * Suspends rendering (changes instant to suspended).
  * @detailed When Stage is in this state changes do not affect DOM.<br/>
- * To wake Stage up from this state you need to invoke {@link anychart.graphics.vector.Stage#resume} or
- * {@link anychart.graphics.vector.Stage#resumeAsync}.<br/>
- * Suspended rendering is much faster than instant, when there are a lot of operations with Stage.
+ * To wake Stage up from this state you need to invoke {@link anychart.graphics.vector.Stage#resume}.<br/>
+ * Suspended rendering is much faster than instant, when there are a lot of operations with Stage.<br/>
+ * This method calculates the count of calls and allows the inserted constructions correctly
+ * (suspend(); suspend(); resume(); resume() - rendering will happens on the last resume());
  * @example anychart.graphics.vector.Stage.suspend
  * @return {anychart.graphics.vector.Stage} Stage.
  */
@@ -171,26 +172,12 @@ anychart.graphics.vector.Stage.prototype.suspend;
 /**
  * Removes suspend state and applies all changes in sync (if any).<br/>
  * Read more at {@link anychart.graphics.vector.Stage#suspend}.
+ * @detailed This method calculates the count of calls and allows the inserted constructions correctly
+ * (suspend(); suspend(); resume(); resume() - rendering will happens on the last resume());
+ * @param {boolean=} opt_force [false] If set to true - this parameter resets stack suspends and calls rendering immediately.
  * @return {anychart.graphics.vector.Stage} Stage.
  */
 anychart.graphics.vector.Stage.prototype.resume;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.graphics.vector.Stage.prototype.resumeAsync
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Removes suspend state and applies all changes in async (if any).<br/>
- * Read more at {@link anychart.graphics.vector.Stage#suspend}.<br/>
- * @detailed Async rendering must be used when you have a lot of data
- * because it gives a better user experience and allows to render other.
- * elements on the page. The only disadvantage is its speed.
- * @return {anychart.graphics.vector.Stage} Stage.
- */
-anychart.graphics.vector.Stage.prototype.resumeAsync;
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -943,7 +930,7 @@ anychart.graphics.vector.Stage.prototype.swapChildren;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Swaps two children.<br/>
+ * Swaps two children by id.<br/>
  * Similar to {@link anychart.graphics.vector.Layer#swapChildrenAt}
  * @param {number} index1 First child or id.
  * @param {number} index2 Second child or id.
@@ -1008,34 +995,6 @@ anychart.graphics.vector.Stage.prototype.getX;
  * @return {number} Y of top left corner.
  */
 anychart.graphics.vector.Stage.prototype.getY;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.graphics.vector.Stage.prototype.getCoordinate
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Returns coordinates of top left corner.
- * @example anychart.graphics.vector.Stage.getCoordinate
- * @return {!anychart.graphics.math.Coordinate} Coordinates of top left corner.
- */
-anychart.graphics.vector.Stage.prototype.getCoordinate;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.graphics.vector.Stage.prototype.getSize
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Returns size.
- * @example anychart.graphics.vector.Stage.getSize
- * @return {!anychart.graphics.math.Size} Size.
- */
-anychart.graphics.vector.Stage.prototype.getSize;
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -1432,6 +1391,7 @@ anychart.graphics.vector.Stage.prototype.saveAsSvg;
 
 /**
  * Returns SVG string if type of content SVG with parameters otherwise returns empty string.
+ * @shortDescription Returns SVG string
  * @example anychart.graphics.vector.Stage.toSvg_set_asPaperSizeLandscape
  * @param {string=} opt_paperSize Paper Size.
  * @param {boolean=} opt_landscape Landscape.
@@ -1547,4 +1507,32 @@ anychart.graphics.vector.Stage.prototype.unlistenByKey;
  * @since 7.7.0
  */
 anychart.graphics.vector.Stage.prototype.removeAllListeners;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Stage.prototype.asyncMode
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current stage rendering mode.
+ * @shortDescription Stage rendering mode.
+ * @listing See listing
+ * var stage = anychart.graphics.create("container");
+ * stage.asyncMode();
+ * @return {boolean} The current mode.
+ */
+anychart.graphics.vector.Stage.prototype.asyncMode;
+
+/**
+ * Setter for the stage rendering mode.
+ * @detailed If set to true - stage is rendered in async manner allowing the
+ * page to interact while the rendering is in process. In this mode you should listen the RENDER_FINISH or
+ * STAGE_RENDERED event on the stage. To control the suspend of rendering,
+ * always use {@link anychart.graphics.vector.Stage#suspend} and {@link anychart.graphics.vector.Stage#resume}.
+ * @example anychart.graphics.vector.Stage.asyncMode_set
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.graphics.vector.Stage} Self instance for method chaining
+ */
+anychart.graphics.vector.Stage.prototype.asyncMode;
 

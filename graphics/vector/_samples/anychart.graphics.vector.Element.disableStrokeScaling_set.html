@@ -4,22 +4,16 @@
     <meta name="x-cat-tags" content=""/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             var stage = anychart.graphics.create("container");
 
             var element = stage.rect(10, 10, 100, 40);
             element.fill("#2196F3");
             element.stroke("1px #F44336");
             element.scale(2, 2);
-            element.vectorEffect("non-scaling-stroke");
 
-            // Gets vector effect.
-            var currentVectorEffect = element.vectorEffect();
-
-            var simpleText = stage.text();
-            simpleText.x(20);
-            simpleText.text("Vector effect is " + currentVectorEffect);
-            simpleText.fontSize(12);
+            // Sets vector effect.
+            element.disableStrokeScaling(true);
         });
     </script>
 </head>
