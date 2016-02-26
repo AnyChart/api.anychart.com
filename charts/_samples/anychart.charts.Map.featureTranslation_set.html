@@ -3,18 +3,32 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="map"/>
     <script src="../../anychart.min.js"></script>
-    <script src="http://cdn.anychart.com/geodata/tmp.js" data-export="true"></script>
-    <script src="http://cdn.anychart.com/maps-data/france_data.js" data-export="true"></script>
+    <script src="http://cdn.anychart.com/geodata/1.1.0/countries/france/france.js" data-export="true"></script>
     <script x-export="franceMap">
-        anychart.onDocumentReady(function() {
-            // The data that have been used for this sample can be taken from the CDN
-            // http://cdn.anychart.com/maps-data/france_data.js
-            var dataSet = anychart.data.set(data);
-            dataSet.mapAs({id: "id"});
+        anychart.onDocumentReady(function () {
+            var dataSet = anychart.data.set([
+                {size: 928, lat: 48.04677871103531, long: -2.12443548026414},
+                {size: 192, lat: 45.85025102963345, long: -0.05555902937648371},
+                {size: 963, lat: 44.13282017031969, long: -0.6331316557379023},
+                {size: 266, lat: 48.91155589239087, long: -0.2614383795630683},
+                {size: 518, lat: 45.36178266437175, long: 3.1661777399148257},
+                {size: 324, lat: 47.3951601027151, long: 4.075436176363208},
+                {size: 767, lat: 50.55433223847086, long: 2.5190009490829643},
+                {size: 478, lat: 49.83217874244316, long: 2.0566302263277305},
+                {size: 456, lat: 41.9617928275597, long: 9.042687600355316},
+                {size: 477, lat: 4.346042402087561, long: -53.23436574621244},
+                {size: 200, lat: 48.741317232748585, long: 7.532229957512638},
+                {size: 945, lat: 45.53208569742555, long: 5.531768794196096},
+                {size: 351, lat: 43.93420056617674, long: 6.207894450015418}
+            ]);
 
             franceMap = anychart.map();
             franceMap.geoData(anychart.maps.france);
-            franceMap.choropleth(dataSet);
+            franceMap.geoIdField("insee_cl");
+
+            franceMap.bubble(dataSet);
+            franceMap.maxBubbleSize("5%");
+            franceMap.minBubbleSize("3%");
             franceMap.container("container");
             franceMap.draw();
 

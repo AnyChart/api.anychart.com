@@ -3,18 +3,18 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="map"/>
     <script src="../../anychart.min.js"></script>
-    <script src="http://cdn.anychart.com/geodata/australia.js" data-export="true"></script>
+    <script src="http://cdn.anychart.com/geodata/1.1.0/countries/australia/australia.js" data-export="true"></script>
     <script x-export="australiaMap">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             var dataSet = anychart.data.set([
-                {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
-                {id: "AU.VI", value: 23, title: "Victoria"},
-                {id: "AU.WA", value: 86, title: "Western Australia"},
-                {id: "AU.QL", value: 16, title: "Queensland"},
-                {id: "AU.NS", value: 32, title: "New South Wales"},
-                {id: "AU.NT", value: 64, title: "Northern Territory"},
-                {id: "AU.TS", value: 28, title: "Tasmania"},
-                {id: "AU.SA", value: 45, title: "South Australian"}
+                {size: 15, lat: -25.4245797891887, long: 121.73003277517734},
+                {size: 23, lat: -20.842288342048022, long: 133.7146679904298},
+                {size: 86, lat: -22.779121862616446, long: 144.45737585127495},
+                {size: 16, lat: -29.779790768543343, long: 134.69909260626144},
+                {size: 32, lat: -32.04024487366401, long: 146.39502782919635},
+                {size: 4, lat: -35.61202679648162, long: 148.96827292327762},
+                {size: 28, lat: -37.16639446600688, long: 144.12947319162336},
+                {size: 10, lat: -42.18378853089303, long: 146.1923695042304}
             ]);
 
             var dataSetForSeries = dataSet.mapAs({id: "id"});
@@ -22,8 +22,11 @@
             australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
 
-            australiaMap.choropleth(dataSetForSeries);
-            australiaMap.geoIdField("code_hasc");
+            australiaMap.bubble(dataSetForSeries);
+            australiaMap.maxBubbleSize("5%");
+            australiaMap.minBubbleSize("3%");
+
+            australiaMap.geoIdField("insee_cl");
             australiaMap.container("container");
             australiaMap.draw();
 
