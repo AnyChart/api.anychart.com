@@ -4,7 +4,7 @@
     <meta name="x-cat-tags" content="column"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             var firstData = [16, 30, 45, 12, 5];
             var secondData = [1, 51, 23, 64, 12];
             var thirdData = [18, 25, 10, 20, 35];
@@ -12,13 +12,13 @@
             chart = anychart.cartesian();
             chart.defaultSeriesType("column");
             chart.addSeries(firstData, secondData, thirdData);
-            chart.xAxis(true);
-            chart.yAxis(true);
 
-            // Gets series count.
-            var seriesCount = chart.getSeriesCount();
+            // Gets series count in loop.
+            for (var i = 0; i < chart.getSeriesCount(); i++) {
+                chart.getSeriesAt(i).name((i + 1)  + " Series");
+            }
 
-            chart.title("The current series count is " + seriesCount);
+            chart.legend(true);
             chart.container("container");
             chart.draw();
         });

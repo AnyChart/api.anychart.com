@@ -4,13 +4,16 @@
     <meta name="x-cat-tags" content="column"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.cartesian();
             chart.column([1, 4, 5, 7, 2]);
-            chart.grid(0, {layout: "horizontal"});
+
             chart.minorGrid(0, {evenFill: "#E0E0E0", layout: "vertical"});
-            chart.minorGrid(1, {evenFill: "none", layout: "horizontal"});
-            chart.minorGrid(0, false); // disables minor grid by index
+            chart.minorGrid(1, {layout: "horizontal"});
+
+            // Disables minor grid by index.
+            chart.minorGrid(0, false);
+
             chart.container("container");
             chart.draw();
         });

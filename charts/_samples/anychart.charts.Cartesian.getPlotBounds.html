@@ -3,15 +3,23 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.line([1, 2, 3, 4], [2, 3, 4, 1], [3, 4, 1, 2], [4, 1, 2, 3]);
-            chart.container("container");
+    <script x-export="stage">
+        anychart.onDocumentReady(function () {
+            stage = anychart.graphics.create("container");
+
+            chart = anychart.cartesian();
+            chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+            chart.container(stage);
             chart.draw();
 
             // Gets plot bounds.
             var bounds = chart.getPlotBounds();
-            chart.title("Plot bounds is " + bounds);
+
+            var customBackground = anychart.ui.background();
+            customBackground.fill("#BDBDBD 0.2");
+            customBackground.parentBounds(bounds);
+            customBackground.container(stage);
+            customBackground.draw();
         });
     </script>
 </head>

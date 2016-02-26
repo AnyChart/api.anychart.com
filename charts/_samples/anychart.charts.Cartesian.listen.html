@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            var chart = anychart.cartesian();
+            chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+            chart.title("Click on the chart");
+
+            var counter = 0;
+
+            // Sets event listener on the chart.
+            chart.listen("click", function(e){
+                counter++;
+                chart.title("You clicked " + counter + " times. Click again.");
+            });
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

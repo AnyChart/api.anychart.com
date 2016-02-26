@@ -6,12 +6,15 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
+
+            // Adds ohlc series.
             chart.ohlc([
-                [0, 14, 24, 14, 20],
-                [1, 15, 15, 5, 10],
-                [2, 16, 16, 6, 1],
-                [3, 7, 17, 1, 10]
-            ]); // sets ohlc series
+                {x: Date.UTC(2007, 7, 28), open:511.53, high:514.98, low:505.79, close:506.40},
+                {x: Date.UTC(2007, 7, 29), open:507.84, high:513.30, low:507.23, close:512.88},
+                {x: Date.UTC(2007, 7, 30), open:512.36, high:515.40, low:510.58, close:511.40},
+                {x: Date.UTC(2007, 7, 31), open:513.10, high:516.50, low:511.47, close:515.25}
+            ]);
+
             chart.container("container");
             chart.draw();
         });

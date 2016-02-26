@@ -3,20 +3,20 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="line"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
             chart = anychart.cartesian();
             chart.line([
-                {x: "10-Dec-2004", y: 20},
-                {x: "11-Dec-2004", y: 40},
-                {x: "12-Dec-2004", y: 30}
+                {x: "10-Jan-2016", y: 20},
+                {x: "11-Jan-2016", y: 40},
+                {x: "12-Jan-2016", y: 30},
+                {x: "13-Jan-2016", y: 55}
             ]);
-            chart.xScale("dateTime"); // sets X-scale
-            var xAxis = chart.xAxis();
-            var labels = xAxis.labels();
-            labels.textFormatter(function(point) {
-                return new Date(point.value).toDateString();
-            });
+
+            // Sets X-scale.
+            chart.xScale("dateTime");
+
+            chart.xAxis();
             chart.yAxis();
             chart.container("container");
             chart.draw();

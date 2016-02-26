@@ -6,17 +6,16 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            chart.xAxis(true);
-            chart.yAxis(true);
 
             var series = chart.line([1, 2, 3, 4]);
             series.id("firstSeries");
+            series.markers(false);
 
             chart.line([2, 3, 4, 1]);
             chart.line([3, 4, 1, 2]);
             chart.line([4, 1, 2, 3]);
 
-            // Get series by id.
+            // Gets series by id.
             var seriesById = chart.getSeries("firstSeries");
             seriesById.markers(true);
 

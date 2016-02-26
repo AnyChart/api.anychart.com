@@ -7,15 +7,22 @@
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
 
-            var firstChart = anychart.marker([10, 4, 17, 20], [5, 16, 10, 3], [25, 4, 28, 11]);
+            var firstChart = anychart.cartesian();
+            firstChart.marker([10, 4, 17, 20]);
+            firstChart.marker([5, 16, 10, 3]);
+            firstChart.marker([25, 4, 28, 11]);
+
             firstChart.bounds(0, 0, "50%", "100%");
             firstChart.markerPalette(["diamond", "line", "circle"]);
             firstChart.container(stage);
             firstChart.draw();
 
-            var secondChart = anychart.marker([5, 40, 6, 37], [7, 23, 9, 18], [11, 17, 12, 34]);
+            var secondChart = anychart.cartesian();
+            secondChart.marker([5, 40, 6, 37]);
+            secondChart.marker([7, 23, 9, 18]);
+            secondChart.marker([11, 17, 12, 34]);
+
             secondChart.bounds("50%", 0, "50%", "100%");
-            secondChart.yScale(firstChart.yScale());
 
             // Gets marker palette of the first chart.
             var firstChartMarkerPalette = firstChart.markerPalette();

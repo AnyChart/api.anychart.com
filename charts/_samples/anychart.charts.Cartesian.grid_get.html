@@ -4,15 +4,18 @@
     <meta name="x-cat-tags" content="column"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.cartesian();
             chart.column([1, 4, 5, 7, 2]);
-            var firstGrid = chart.grid(); // get grid
-            firstGrid.layout(anychart.enums.Layout.HORIZONTAL);
-            var secondGrid = chart.grid(1); // get grid by index
-            secondGrid.oddFill("none");
-            secondGrid.evenFill("none");
-            secondGrid.layout(anychart.enums.Layout.VERTICAL);
+
+            // Gets grid.
+            var horizontalGrid = chart.grid();
+            horizontalGrid.layout("horizontal");
+
+            // Gets grid by index.
+            var verticalGrid = chart.grid(1);
+            verticalGrid.layout("vertical");
+
             chart.container("container");
             chart.draw();
         });
