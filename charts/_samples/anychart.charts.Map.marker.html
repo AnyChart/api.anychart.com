@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="map"/>
+    <script src="../../anychart.min.js"></script>
+    <script src="http://cdn.anychart.com/geodata/1.1.0/countries/australia/australia.js" data-export="true"></script>
+    <script x-export="australiaMap">
+        anychart.onDocumentReady(function () {
+            var dataSet = anychart.data.set([
+                {size: 15, lat: -25.758751446573896, long: 122.18216472408207},
+                {size: 23, lat: -18.506379573972872, long: 135.24294642224174},
+                {size: 86, lat: -23.12833157353524, long: 148.62674513057308},
+                {size: 16, lat: -17.897798647183976, long: 145.09867715290332},
+                {size: 32, lat: -33.2809649396655, long: 135.589751474883},
+                {size: 64, lat: -31.216760559507435, long: 116.44220156961407},
+                {size: 28, lat: -32.26380339970011, long: 151.44030365260178},
+                {size: 45, lat: -25.63226536838997, long: 152.37860865188998}
+            ]);
+
+            australiaMap = anychart.map();
+            australiaMap.geoData(anychart.maps.australia);
+
+            // Creates the marker series.
+            australiaMap.marker(dataSet);
+
+            australiaMap.container("container");
+            australiaMap.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
