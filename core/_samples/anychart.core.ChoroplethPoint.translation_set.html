@@ -3,24 +3,30 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="map"/>
     <script src="../../anychart.min.js"></script>
-    <script src="http://cdn.anychart.com/geodata/tmp.js" data-export="true"></script>
-    <script src="http://cdn.anychart.com/maps-data/france_data.js" data-export="true"></script>
+    <script src="http://cdn.anychart.com/geodata/1.1.0/countries/france/france.js" data-export="true"></script>
     <script x-export="franceMap">
-        anychart.onDocumentReady(function() {
-            // The data that have been used for this sample can be taken from the CDN
-            // http://cdn.anychart.com/maps-data/france_data.js
-            var dataSet = anychart.data.set(data);
+        anychart.onDocumentReady(function () {
+            var dataSet = anychart.data.set([
+                {id: "FR.A", title: "Strasbourg", value: 928},
+                {id: "FR.B", title: "Bordeaux", value: 192},
+                {id: "FR.C", title: "Clermont-Ferrand", value: 963},
+                {id: "FR.P", title: "Caen", value: 266},
+                {id: "FR.D", title: "Dijon", value: 518},
+                {id: "FR.E", title: "Rennes", value: 324}
+            ]);
             dataSet.mapAs({id: "id"});
+
             franceMap = anychart.map();
             franceMap.geoData(anychart.maps.france);
 
             var series = franceMap.choropleth(dataSet);
+
             franceMap.container("container");
             franceMap.draw();
 
-            var point = series.getPoint(12);
+            var point = series.getPoint(0);
             // Sets point translation.
-            point.translation(-5, 30);
+            point.translation(20, 30);
         });
     </script>
 </head>

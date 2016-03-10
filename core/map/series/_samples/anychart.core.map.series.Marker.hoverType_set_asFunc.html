@@ -22,8 +22,10 @@
             australiaMap.geoData(anychart.maps.australia);
 
             var series = australiaMap.marker(dataSet);
+            series.tooltip({title: false, separator: false});
+            series.hoverSize(20);
 
-            // Sets marker type in hover mode.
+            // Sets custom function to display hover marker.
             series.hoverType(function (path, x, y, size) {
                 var point1 = {x: x + 1.3 * size, y: y - 0.5 * size};
                 var point2 = {x: x - 0.4 * size, y: y - 0.5 * size};
@@ -35,6 +37,7 @@
                 return path;
             });
 
+            australiaMap.title("Custom hover marker displayed with custom drawing function.");
             australiaMap.container("container");
             australiaMap.draw();
         });
