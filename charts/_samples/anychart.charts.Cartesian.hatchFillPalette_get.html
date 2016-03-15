@@ -7,7 +7,7 @@
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
 
-            var barChart = anychart.cartesian();
+            var barChart = anychart.bar();
             barChart.bounds(0, 0, "50%", "100%");
 
             var firstBarSeries = barChart.bar([10, 4, 17, 20]);
@@ -21,7 +21,7 @@
             barChart.container(stage);
             barChart.draw();
 
-            var columnChart = anychart.cartesian();
+            var columnChart = anychart.column();
             columnChart.bounds("50%", 0, "50%", "100%");
 
             var firstColumnSeries = columnChart.column([10, 4, 17, 20]);
@@ -37,6 +37,11 @@
             columnChart.hatchFillPalette(barChartHatchFillPalette);
             columnChart.container(stage);
             columnChart.draw();
+
+            var currentTitle = anychart.ui.title();
+            currentTitle.text("Get and use hatchFill palette.");
+            currentTitle.container(stage);
+            currentTitle.draw();
         });
     </script>
 </head>

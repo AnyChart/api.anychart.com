@@ -7,21 +7,21 @@
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
 
-            var chart = anychart.cartesian();
-            chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
-            chart.container(stage);
-            chart.draw();
+            var сhart = anychart.line();
+            сhart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+            сhart.bounds(0, 0, "50%", "100%");
+            сhart.title("Serialize chart object to JSON with theme settings.");
+            сhart.container(stage);
+            сhart.draw();
 
-            chart.listen("chartDraw", function() {
-                // Return chart in JSON object with theme settings.
-                var json = chart.toJson(false, true);
+            // Returns chart config as JSON object with theme settings.
+            var json = сhart.toJson(false, true);
 
-                chart.dispose();
-
-                var chartFromJson = anychart.fromJson(json);
-                chartFromJson.container(stage);
-                chartFromJson.draw();
-            });
+            var chartFromJson = anychart.fromJson(json);
+            chartFromJson.bounds("50%", 0, "50%", "100%");
+            chartFromJson.title("Creates chart from JSON object with theme.");
+            chartFromJson.container(stage);
+            chartFromJson.draw();
         });
     </script>
 </head>

@@ -5,7 +5,7 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function () {
-            chart = anychart.cartesian();
+            chart = anychart.line();
             chart.line([
                 {x: "10-Jan-2016", y: 20},
                 {x: "11-Jan-2016", y: 40},
@@ -13,11 +13,12 @@
                 {x: "13-Jan-2016", y: 55}
             ]);
 
-            // Sets X-scale.
-            chart.xScale("dateTime");
+            var dateTime = anychart.scales.dateTime();
 
-            chart.xAxis();
-            chart.yAxis();
+            // Sets X-scale.
+            chart.xScale(dateTime);
+
+            chart.title("Set xScale.");
             chart.container("container");
             chart.draw();
         });

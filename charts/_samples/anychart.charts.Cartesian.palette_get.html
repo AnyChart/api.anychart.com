@@ -7,17 +7,17 @@
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
 
-            var lineChart = anychart.cartesian();
+            var lineChart = anychart.line();
             lineChart.line([1, 2, 3, 4]);
             lineChart.line([2, 3, 4, 1]);
             lineChart.line([3, 4, 1, 2]);
             lineChart.line([4, 1, 2, 3]);
             lineChart.bounds(0, 0, "50%", "100%");
-            lineChart.palette(["#64B5F6", "#FFF176", "#4DB6AC"]);
+            lineChart.palette(["#827717", "#c77532", "#998675"]);
             lineChart.container(stage);
             lineChart.draw();
 
-            var columnChart = anychart.cartesian();
+            var columnChart = anychart.column();
             columnChart.column([1, 2, 3, 4]);
             columnChart.column([2, 3, 4, 1]);
             columnChart.column([3, 4, 1, 2]);
@@ -30,6 +30,11 @@
             columnChart.palette(lineChartPalette);
             columnChart.container(stage);
             columnChart.draw();
+
+            var currentTitle = anychart.ui.title();
+            currentTitle.text("Get and use palette.");
+            currentTitle.container(stage);
+            currentTitle.draw();
         });
     </script>
 </head>

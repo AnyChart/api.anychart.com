@@ -5,23 +5,23 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function() {
-            var stage = anychart.graphics.create("container");
+            stage = anychart.graphics.create("container");
 
-            var chart = anychart.cartesian();
+            var chart = anychart.line();
             chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+            chart.bounds(0, 0, "50%", "100%");
+            chart.title("Serialize chart node to XML.");
             chart.container(stage);
             chart.draw();
 
-            chart.listen("chartDraw", function() {
-                // Returns chart in XMLNode.
-                var xml = chart.toXml(true);
+            // Returns chart config as XMLNode.
+            var xml = chart.toXml(true);
 
-                chart.dispose();
-
-                var chartFromXml = anychart.fromXml(xml);
-                chartFromXml.container(stage);
-                chartFromXml.draw();
-            });
+            var chartFromXml = anychart.fromXml(xml);
+            chartFromXml.bounds("50%", 0, "50%", "100%");
+            chartFromXml.title("Creates chart from XML node.");
+            chartFromXml.container(stage);
+            chartFromXml.draw();
         });
     </script>
 </head>

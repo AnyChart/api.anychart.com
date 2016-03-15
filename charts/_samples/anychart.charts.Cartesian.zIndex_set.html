@@ -7,21 +7,23 @@
         anychart.onDocumentReady(function () {
             stage = anychart.graphics.create("container");
 
-            var chart = anychart.cartesian();
+            var overChart = anychart.column();
+            overChart.column([10, 4, 17, 20, 16, 35, 6, 15]);
+            overChart.bounds("10%", "5%", "30%", "40%");
+
+            // Sets zIndex.
+            overChart.zIndex(1);
+
+            overChart.title("Set chart zIndex.");
+            overChart.container(stage);
+            overChart.draw();
+
+            var chart = anychart.line();
             chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
-            chart.bounds("10%", "10%", "80%", "80%");
-
-            // Sets Z-index.
-            chart.zIndex(1);
-
+            chart.bounds("0%", "0%", "100%", "100%");
+            chart.background("#E0E0E0 0.5");
             chart.container(stage);
             chart.draw();
-
-            var customBackground = anychart.ui.background();
-            customBackground.parentBounds(0, 0, "100%", "100%");
-            customBackground.fill("#2196F3 0.5");
-            customBackground.container(stage);
-            customBackground.draw();
         });
     </script>
 </head>

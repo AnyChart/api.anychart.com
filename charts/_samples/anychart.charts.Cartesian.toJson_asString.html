@@ -7,21 +7,21 @@
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
 
-            var chart = anychart.cartesian();
-            chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
-            chart.container(stage);
-            chart.draw();
+            var сhart = anychart.line();
+            сhart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+            сhart.bounds(0, 0, "50%", "100%");
+            сhart.title("Serialize chart string to JSON.");
+            сhart.container(stage);
+            сhart.draw();
 
-            chart.listen("chartDraw", function() {
-                // Returns chart in JSON string.
-                var json = chart.toJson(true);
+            // Returns chart config as JSON string.
+            var json = сhart.toJson(true);
 
-                chart.dispose();
-
-                var chartFromJson = anychart.fromJson(json);
-                chartFromJson.container(stage);
-                chartFromJson.draw();
-            });
+            var chartFromJson = anychart.fromJson(json);
+            chartFromJson.bounds("50%", 0, "50%", "100%");
+            chartFromJson.title("Creates chart from JSON string.");
+            chartFromJson.container(stage);
+            chartFromJson.draw();
         });
     </script>
 </head>

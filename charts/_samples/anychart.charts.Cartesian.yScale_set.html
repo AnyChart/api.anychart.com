@@ -5,14 +5,15 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function () {
-            chart = anychart.cartesian();
+            chart = anychart.line();
             chart.line([0.07, 0.9, 14, 2, 89]);
 
-            // Sets Y-scale.
-            chart.yScale("log");
+            var logScale = anychart.scales.log();
 
-            chart.xAxis();
-            chart.yAxis();
+            // Sets Y-scale.
+            chart.yScale(logScale);
+
+            chart.title("Set chart yScale.");
             chart.container("container");
             chart.draw();
         });
