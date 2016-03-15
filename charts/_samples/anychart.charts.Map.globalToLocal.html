@@ -3,7 +3,7 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="map"/>
     <script src="../../anychart.min.js"></script>
-    <script src="http://cdn.anychart.com/geodata/1.1.0/countries/australia/australia.js" data-export="true"></script>
+    <script src="http://cdn.anychart.com/geodata/countries/aus/australia.js" data-export="true"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function () {
             stage = anychart.graphics.create("container");
@@ -26,6 +26,7 @@
             australiaMap.title(true);
             australiaMap.colorRange({orientation: "right"});
             australiaMap.legend({position: "left"});
+            australiaMap.title("Convert the global coordinates to local coordinates.");
 
             var series = australiaMap.choropleth(dataSetForSeries);
             series.geoIdField("code_hasc");
@@ -36,7 +37,7 @@
             // Converts the global coordinates to local coordinates.
             var localCoordinates = australiaMap.globalToLocal(8, 8);
 
-            var rectangle = stage.rect(0, 0, 195, 30);
+            var rectangle = stage.rect(0, 0, 170, 30);
             rectangle.fill({opacity: 0.1});
 
             rectangle.setCoordinate(localCoordinates);
@@ -46,7 +47,7 @@
                     + localCoordinates.x + ", y: " + localCoordinates.y + "]<br>Global coordinates [x: 8, y: 8]");
             customText.parent(stage);
 
-            // Visualises local bounds.
+            // Visualizes local bounds.
             var localBounds = stage.rect();
             localBounds.setBounds(stage.getBounds());
         });
