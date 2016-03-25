@@ -7,18 +7,26 @@
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container", "100%", "100%");
 
-            var scale = anychart.scales.log(); // creates an instance of scale.
+            // Create an instance of a scale.
+            var scale = anychart.scales.log();
             scale.minimum(0.01);
             scale.maximum(1);
 
             var firstChart = anychart.bullet([0.07, 0.03]);
-            firstChart.scale(scale); // set scale.
+
+            // Set scale.
+            firstChart.scale(scale);
+
             firstChart.bounds(0, 0, "100%", "50%");
+            firstChart.title({text: "Set chart scale as an instance.", orientation: "top"});
             firstChart.container(stage);
             firstChart.draw();
 
             var secondChart = anychart.bullet([0.15, 0.1]);
-            secondChart.scale(scale); // set scale.
+
+            // Set scale.
+            secondChart.scale(scale);
+
             secondChart.bounds(0, "50%", "100%", "50%");
             secondChart.container(stage);
             secondChart.draw();

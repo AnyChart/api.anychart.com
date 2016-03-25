@@ -1,6 +1,6 @@
 /**
  * Bullet chart class.<br/>
- * <b>Note:</b> Use method {@link anychart#bullet} to get an instance of this class.
+ * <b>Note:</b> Use {@link anychart#bullet} method to get an instance of this class.
  * @constructor
  * @extends {anychart.core.Chart}
  */
@@ -14,7 +14,7 @@ anychart.charts.Bullet;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for chart data.
+ * Getter for the current chart data.
  * @shortDescription Data settings.
  * @category Data
  * @example anychart.charts.Bullet.data_get
@@ -23,10 +23,11 @@ anychart.charts.Bullet;
 anychart.charts.Bullet.prototype.data;
 
 /**
- * Setter for chart data.<br/>
+ * Setter for the chart data.<br/>
  * <b>Note:</b> All data is markers values.
  * @example anychart.charts.Bullet.data_set_asArray Using array
- * @example anychart.charts.Bullet.data_set_asArrayofObject Using object with advanced markers
+ * @example anychart.charts.Bullet.data_set_asArrayofObject Using object with added markers
+ * @example anychart.charts.Bullet.data_set_asCSV Using CSV
  * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
  * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
  * @return {anychart.charts.Bullet} Self instance for method chaining.
@@ -41,18 +42,17 @@ anychart.charts.Bullet.prototype.data;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for bullet chart layout.
- * @shortDescription Layout settings.
+ * Getter for the current chart layout.
+ * @shortDescription Layout setting.
  * @category Size and Position
  * @example anychart.charts.Bullet.layout_get
- * @return {anychart.enums.Layout} Current chart layout.
+ * @return {(anychart.enums.Layout|string)} The current chart layout.
  */
 anychart.charts.Bullet.prototype.layout;
 
 /**
- * Setter for bullet chart layout.
- * @example anychart.charts.Bullet.layout_set_asString Using string
- * @example anychart.charts.Bullet.layout_set_asEnum Using enum
+ * Setter for the chart layout.
+ * @example anychart.charts.Bullet.layout_set_asString
  * @param {(string|anychart.enums.Layout)=} opt_value ["horizontal"] Value to set.
  * @return {anychart.charts.Bullet} Self instance for method chaining.
  */
@@ -66,9 +66,9 @@ anychart.charts.Bullet.prototype.layout;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Whether an bullet chart has horizontal layout.
- * Layout is defined by method {@link anychart.charts.Bullet#layout}.
- * @shortDescription Definition of the horizontal layout.
+ * Whether a bullet chart has horizontal layout.<br/>
+ * Layout is defined by {@link anychart.charts.Bullet#layout} method.
+ * @shortDescription Whether a bullet chart has horizontal layout.
  * @category Size and Position
  * @example anychart.charts.Bullet.isHorizontal
  * @return {boolean} Returns <b>true</b> if the bullet's layout is horizontal.
@@ -92,12 +92,11 @@ anychart.charts.Bullet.prototype.isHorizontal;
 anychart.charts.Bullet.prototype.scale;
 
 /**
- * Setter for default bullet chart scale settings.
+ * Setter for the bullet chart scale settings.
  * @example anychart.charts.Bullet.scale_set_asString Using string
  * @example anychart.charts.Bullet.scale_set_asInst Using instance
- * @example anychart.charts.Bullet.scale_set_asEnum Using enum
  * @param {(anychart.scales.Base|anychart.enums.ScaleTypes|string)=} opt_value ["linear"] Scale to set or Scale type.<br/>
- * Also accepts 'log', 'linear' and 'dateTime' strings.
+ * Also accepts "log", "linear" and "dateTime" strings.
  * @return {anychart.charts.Bullet} Self instance for method chaining.
  */
 anychart.charts.Bullet.prototype.scale;
@@ -110,7 +109,7 @@ anychart.charts.Bullet.prototype.scale;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for default bullet chart axis settings.
+ * Getter for the current bullet chart axis settings.
  * @shortDescription Axis settings.
  * @category Axes and Scales
  * @example anychart.charts.Bullet.axis_get
@@ -119,7 +118,7 @@ anychart.charts.Bullet.prototype.scale;
 anychart.charts.Bullet.prototype.axis;
 
 /**
- * Setter for default bullet chart axis settings.
+ * Setter for the bullet chart axis settings.
  * @detailed Sets chart axis settings depend on of parameter's type:
  * <ul>
  *   <li><b>null/boolean</b> - disable or enable chart axis.</li>
@@ -140,7 +139,7 @@ anychart.charts.Bullet.prototype.axis;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for bullet chart ranges settings.
+ * Getter for the current bullet chart ranges settings.
  * @shortDescription Ranges settings.
  * @category Axes and Scales
  * @example anychart.charts.Bullet.range_get
@@ -150,7 +149,7 @@ anychart.charts.Bullet.prototype.axis;
 anychart.charts.Bullet.prototype.range;
 
 /**
- * Setter for bullet chart first range settings.
+ * Setter for the bullet chart first range settings.
  * @detailed Sets chart first range settings depend on of parameter's type:
  * <ul>
  *   <li><b>null/boolean</b> - disable or enable chart first range.</li>
@@ -186,7 +185,7 @@ anychart.charts.Bullet.prototype.range;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for range palette settings.
+ * Getter for the current range palette settings.
  * @shortDescription Range palette settings.
  * @category Chart Coloring
  * @example anychart.charts.Bullet.rangePalette_get
@@ -195,7 +194,7 @@ anychart.charts.Bullet.prototype.range;
 anychart.charts.Bullet.prototype.rangePalette;
 
 /**
- * Setter for range palette settings.
+ * Setter for the range palette settings.
  * @example anychart.charts.Bullet.rangePalette_set_asArray Using array
  * @example anychart.charts.Bullet.rangePalette_set_asInst Using instance
  * @example anychart.charts.Bullet.rangePalette_set_asObject Using object
@@ -212,7 +211,7 @@ anychart.charts.Bullet.prototype.rangePalette;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for markers palette settings.
+ * Getter for the current markers palette settings.
  * @shortDescription Markers palette settings.
  * @category Chart Coloring
  * @example anychart.charts.Bullet.markerPalette_get
@@ -221,7 +220,7 @@ anychart.charts.Bullet.prototype.rangePalette;
 anychart.charts.Bullet.prototype.markerPalette;
 
 /**
- * Setter for markers palette settings.<br/>
+ * Setter for the markers palette settings.<br/>
  * <b>Note:</b> Markers sets in data().
  * @example anychart.charts.Bullet.markerPalette_set_asArray Using array
  * @example anychart.charts.Bullet.markerPalette_set_asInst Using instance

@@ -6,12 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.bullet();
+
+            // Set chart data.
             chart.data([
-                {value: 9, type: "bar", fill: "#3F51B5 0.5", gap: 0.6},
-                {value: 10, type: "X", stroke: "#3F51B5 4"}
-            ]); // sets data.
+                {value: 9, type: "bar", fill: "#64b5f6 0.5", gap: 0.6},
+                {value: 12, type: "X", stroke: "#64b5f6 4"}
+            ]);
+
             chart.range({from: 0, to: 6});
             chart.range(1, {from: 6, to: 12});
+            chart.range(2, {from: 12, to: 18});
+
+            chart.title({text: "Set chart data as an object.", orientation: "top"});
+            chart.bottom("60%");
             chart.container("container");
             chart.draw();
         });

@@ -6,13 +6,20 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.bullet([8, 97, 11, 16, 20, 65]);
-            var getData = chart.data(); // get data.
-            var filterData = getData.filter("value", function(value) {
+
+            // Get chart data.
+            var currentData = chart.data();
+
+            var filterData = currentData.filter("value", function(value) {
                 return value < 15;
             });
+
             chart.data(filterData);
             chart.range({from: 0, to: 6});
             chart.range(1, {from: 6, to: 12});
+
+            chart.title({text: "Get and modify chart data.", orientation: "top"});
+            chart.bottom("60%");
             chart.container("container");
             chart.draw();
         });

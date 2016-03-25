@@ -5,12 +5,19 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.bullet([9]);
+            chart = anychart.bullet([9, 16]);
+
             chart.range({from: 0, to: 10});
             chart.range(1, {from: 10, to: 20});
-            var scale = chart.scale(); // get scale.
+            chart.range(2, {from: 20, to: 30});
+
+            // Get scale.
+            var scale = chart.scale();
             scale.minimum(5);
-            scale.maximum(15);
+            scale.maximum(26);
+
+            chart.title({text: "Get and modify chart scale.", orientation: "top"});
+            chart.bottom("60%");
             chart.container("container");
             chart.draw();
         });

@@ -1,14 +1,21 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="bullet"/>
+    <meta name="x-cat-tags" content="bullet data"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.bullet([7, 10]);
+            chart = anychart.bullet();
+
+            // Sets chart data.
+            chart.data("1|9 2|13", {"rowsSeparator": " ", columnsSeparator: "|"});
+
             chart.range({from: 0, to: 6});
             chart.range(1, {from: 6, to: 12});
-            chart.layout(anychart.enums.Layout.VERTICAL); // set layout.
+            chart.range(2, {from: 12, to: 18});
+
+            chart.title({text: "Set chart data as a CSV.", orientation: "top"});
+            chart.bottom("60%");
             chart.container("container");
             chart.draw();
         });
