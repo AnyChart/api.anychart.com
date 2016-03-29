@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="map"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script src="http://cdn.anychart.com/geodata/1.1.0/countries/australia/australia.js" data-export="true"></script>
+    <script x-export="australiaMap">
+        anychart.onDocumentReady(function() {
+            var firstDataSet = anychart.data.set([
+                {points: [-27.50, 152.85, -34.14, 143.00], stroke: "#F44336"},
+                {points: [-34.14, 143.00, -22.9, 121.52], stroke: "#F44336"}
+            ]);
+
+            var secondDataSet = anychart.data.set([
+                {points: [-27.50, 152.85, -34.14, 143.00], stroke: "#2196F3"},
+                {points: [-34.14, 143.00, -22.9, 121.52], stroke: "#2196F3"}
+            ]);
+
+            australiaMap = anychart.map();
+            australiaMap.geoData(anychart.maps.australia);
+
+            var redSeries = australiaMap.connector(firstDataSet);
+            var blueSeries = australiaMap.connector(secondDataSet);
+
+            // Set negative curvature.
+            redSeries.curvature(-0.4);
+
+            // Set positive curvature.
+            blueSeries.curvature(0.4);
+
+            australiaMap.title("Set curvature parameter.");
+            australiaMap.container("container");
+            australiaMap.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
