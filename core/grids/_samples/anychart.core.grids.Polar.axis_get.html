@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="polar grid scale axis"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.polar([129, 272, 250, 330, 200, 390, 195, 35]);
+
+            var customScale = anychart.scales.linear();
+            customScale.ticks({interval: 50});
+
+            chart.yScale(customScale);
+
+            var chartGrid = chart.grid();
+            chartGrid.enabled(true);
+            chartGrid.axis(chart.yAxis());
+
+            // Get grid axis.
+            var currentAxis = chartGrid.axis();
+
+            currentAxis.stroke("#2196F3");
+
+            chart.title("Get and modify grid axis.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

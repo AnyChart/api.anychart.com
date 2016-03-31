@@ -5,12 +5,18 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.polar([1, 4, 5, 4, 2]);
-            var grid = chart.grid(); // get grid
-            grid.stroke("#808080 0.6");
-            var grid1 = chart.grid(1); // get grid by index
-            grid1.stroke("#0000FF 0.2");
-            grid1.layout("circuit");
+            chart = anychart.polar([129, 272, 250, 330, 200, 390, 195, 35]);
+
+            // Get grid.
+            var firstGrid = chart.grid();
+            firstGrid.stroke("2 #F44336");
+
+            // Get grid by index.
+            var secondGrid = chart.grid(1);
+            secondGrid.stroke("#2196F3");
+            secondGrid.axis(chart.yAxis());
+
+            chart.title("Get and modify chart grid.");
             chart.container("container");
             chart.draw();
         });

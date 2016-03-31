@@ -11,14 +11,20 @@
                 {x: 89, y: 23},
                 {x: 48, y: 18}
             ]);
-            var firstGrid = chart.grid(); // get grid
+
+            // Gets chart grid.
+            var firstGrid = chart.grid();
             firstGrid.enabled(true);
-            firstGrid.layout(anychart.enums.Layout.HORIZONTAL);
-            firstGrid.stroke("2 #778899");
-            var secondGrid = chart.grid(1);// get grid by index
+            firstGrid.axis(chart.yAxis());
+            firstGrid.stroke("#ffcc80");
+
+            // Gets grid by index
+            var secondGrid = chart.grid(1);
             secondGrid.enabled(true);
-            secondGrid.stroke("2 #00695C");
-            secondGrid.layout(anychart.enums.Layout.VERTICAL);
+            secondGrid.stroke("#aed581");
+            firstGrid.axis(chart.xAxis());
+
+            chart.title("Get and modify chart grid.");
             chart.container("container");
             chart.draw();
         });

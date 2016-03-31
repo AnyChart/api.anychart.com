@@ -11,15 +11,21 @@
                 {x: 89, y: 23},
                 {x: 48, y: 18}
             ]);
-            var firstGrid = chart.grid();
-            firstGrid.enabled(true);
-            firstGrid.layout(anychart.enums.Layout.HORIZONTAL);
-            firstGrid.stroke("2 #778899");
-            var secondGrid = chart.grid(1);
-            secondGrid.enabled(true);
-            secondGrid.stroke("2 #00695C");
-            secondGrid.layout(anychart.enums.Layout.VERTICAL);
-            chart.grid(1, false); // disables grid by index
+
+            var verticalGrid = chart.grid();
+            verticalGrid.enabled(true);
+            verticalGrid.axis(chart.yAxis());
+            verticalGrid.stroke("#aed581");
+
+            var horizontalGrid = chart.grid(1);
+            horizontalGrid.enabled(true);
+            horizontalGrid.stroke("#00695C");
+            horizontalGrid.axis(chart.xAxis());
+
+            // Disables grid by index.
+            chart.grid(1, false);
+
+            chart.title("Disable chart grid by index.");
             chart.container("container");
             chart.draw();
         });

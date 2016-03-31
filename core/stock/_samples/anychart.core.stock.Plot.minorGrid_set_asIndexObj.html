@@ -17,9 +17,11 @@
             var currentPlot = chart.plot();
             currentPlot.line(mapping);
             currentPlot.minorGrid(0);
-            // Sets minor grid settings by 1 index.
-            currentPlot.minorGrid(1, {layout: "vertical"});
 
+            // Set minor grid settings by index 1.
+            currentPlot.minorGrid(1, {axis: currentPlot.xAxis()});
+
+            chart.title("Set minor grid parameter as an object by index.");
             chart.container('container');
             chart.draw();
         });

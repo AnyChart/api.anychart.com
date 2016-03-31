@@ -6,18 +6,22 @@
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
+
             var axis = anychart.axes.linear();
             axis.scale(anychart.scales.linear());
             axis.parentBounds(5, 65, 400, 80);
             axis.title(null);
             axis.container(stage);
             axis.draw();
+
             var lineMarker = anychart.axisMarkers.line();
             lineMarker.parentBounds(5, 18, 400, 60);
             lineMarker.scale(anychart.scales.linear());
             lineMarker.value(0.4);
-            lineMarker.layout("vertical");
-            lineMarker.container(stage); // sets container
+            lineMarker.axis(axis);
+
+            // Sets container.
+            lineMarker.container(stage);
             lineMarker.draw();
         });
     </script>

@@ -6,17 +6,20 @@
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
+
             var axis = anychart.axes.linear();
             axis.scale(anychart.scales.linear());
             axis.parentBounds(5, 65, 400, 80);
             axis.title(false);
             axis.container(stage);
             axis.draw();
+
             var textMarker = anychart.axisMarkers.text();
-            textMarker.parentBounds(anychart.math.rect(5, 40, 400, 0)); // sets bounds
+            // Sets bounds.
+            textMarker.parentBounds(anychart.math.rect(5, 40, 400, 0));
             textMarker.scale(anychart.scales.linear());
             textMarker.value(0.4);
-            textMarker.layout("vertical");
+            textMarker.axis(axis);
             textMarker.container(stage);
             textMarker.draw();
         });

@@ -6,18 +6,21 @@
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
+
             var axis = anychart.axes.linear();
             axis.scale(anychart.scales.linear());
             axis.parentBounds(5, 65, 400, 80);
             axis.title(false);
             axis.container(stage);
             axis.draw();
-            var rangeMarker = anychart.axisMarkers.range(); // creates a range marker
+
+            // Creates a range marker.
+            var rangeMarker = anychart.axisMarkers.range();
             rangeMarker.parentBounds(5, 40, 400, 40);
             rangeMarker.scale(anychart.scales.linear());
             rangeMarker.from(0.4);
             rangeMarker.to(0.8);
-            rangeMarker.layout("vertical");
+            rangeMarker.axis(axis);
             rangeMarker.container(stage);
             rangeMarker.draw();
         });

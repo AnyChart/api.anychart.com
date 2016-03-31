@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="radar grid scale"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.radar([300, 100, 400, 200, 300, 150, 450, 150]);
+
+            var customScale = anychart.scales.linear();
+            customScale.ticks({interval: 50});
+
+            chart.yScale(customScale);
+
+            var chartGrid = chart.grid();
+            chartGrid.axis(chart.yAxis());
+
+            // Get grid axis.
+            var currentAxis = chartGrid.axis();
+
+            currentAxis.stroke("#2196F3");
+
+            chart.title("Get and modify grid axis.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

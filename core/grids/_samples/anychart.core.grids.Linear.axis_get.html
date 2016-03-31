@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line grid"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.line([29, 72, 250, 330, 85, 390, 95, 15]);
+
+            var firstYScale = anychart.scales.linear();
+            firstYScale.ticks({interval: 50});
+
+            chart.yScale(firstYScale);
+
+            var secondYScale = anychart.scales.linear();
+            secondYScale.minimum(8000);
+            secondYScale.maximum(16000);
+            secondYScale.ticks({interval: 1000});
+
+            var customYAxis = chart.yAxis(1);
+            customYAxis.orientation("right");
+            customYAxis.scale(secondYScale);
+
+            var chartGrid = chart.grid();
+            chartGrid.enabled(true);
+            chartGrid.axis(customYAxis);
+
+            // Gets grid axis.
+            var gridAxis = chartGrid.axis();
+
+            gridAxis.title(true);
+
+            chart.title("Get and modify grid axis.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

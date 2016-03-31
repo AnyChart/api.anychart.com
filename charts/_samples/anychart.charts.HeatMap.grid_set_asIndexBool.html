@@ -3,7 +3,7 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="heatMap"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
+    <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.heatMap([
                 {x: "California", y: "2004", heat: 1704211},
@@ -25,11 +25,13 @@
             chart.labels(true);
             chart.fill("none");
             chart.stroke("black");
-            chart.grid(0, {layout: "vertical", evenFill: "#FFF9C4"});
-            chart.grid(1, {layout: "horizontal", evenFill: "#FFE0B2"});
+            chart.grid(0, {axis: chart.xAxis(), evenFill: "#FFF9C4"});
+            chart.grid(1, {axis: chart.yAxis(), evenFill: "#FFE0B2"});
 
-            // Disables grid by index.
+            // Disable grid by index.
             chart.grid(1, false);
+
+            chart.title("Disable grid by index.");
             chart.container("container");
             chart.draw();
         });
