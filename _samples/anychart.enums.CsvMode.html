@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line column"/>
+    <script src="../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            // Create a chart from a data array.
+            var lineChart = anychart.line([1.1, 1.4, 1.2, 1.6]);
+            lineChart.bounds(0, 0, "50%", "100%");
+            lineChart.container(stage);
+            lineChart.draw();
+
+            // Get chart data as CSV using CSV mode. CSV modes can be "raw", "grouped" and "specific".
+            var csvData = lineChart.toCsv(anychart.enums.CsvMode.SPECIFIC, {"rowsSeparator": "\n", "columnsSeparator": ",", "ignoreFirstRow": true});
+
+            // Restore the chart from the data obtained.
+            var columnChart = anychart.column(csvData);
+            columnChart.bounds("50%", 0, "50%", "100%");
+            columnChart.container(stage);
+            columnChart.draw();
+
+            var customTitle = anychart.ui.title();
+            customTitle.text("Set CSV mode.");
+            customTitle.container(stage);
+            customTitle.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
