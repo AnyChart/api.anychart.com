@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line contextMenu"/>
+    <script src="../../anychart.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.anychart.com/css/latest/anychart-ui.css">
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.column();
+
+            var series = chart.column([1, 2, 1.3, 2.9]);
+            series.selectFill("#4CAF50");
+            series.select([1, 3]);
+            series.selectHatchFill(true);
+
+            chart.listen("chartDraw", function () {
+
+                // Get selected points.
+                var points = chart.getSelectedPoints();
+
+                var point = points[0];
+                return point.selected(false);
+            });
+
+            chart.title("Get an array of the selected points and modify the point.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
