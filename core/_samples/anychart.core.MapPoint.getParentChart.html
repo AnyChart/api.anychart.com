@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="map"/>
+    <script src="../../anychart.min.js"></script>
+    <script src="http://cdn.anychart.com/geodata/1.1.0/countries/canada/canada.js" data-export="true"></script>
+    <script src="http://cdn.anychart.com/geodata/1.1.0/custom/world/world.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            // All maps created with geoData() method work only if you referenced a proper map
+            // source file as described at http://docs.anychart.com/latest/Maps/Quick_Start
+
+            var worldDataSet = anychart.data.set([
+                {id: "CA", name: "Canada", value: "A1"}
+            ]);
+
+            var canadaMap = anychart.map();
+            canadaMap.geoData(anychart.maps.canada);
+
+            chart = anychart.map();
+            chart.title("The world map");
+
+            chart.listen("drillChange", function() {
+                var path = chart.getCurrentPath();
+
+                // Get parent chart.
+                var parentChart = path[0].getParentChart();
+
+                var currentTitle = parentChart.title();
+
+                canadaMap.title(currentTitle.text() + " is a parent chart for the Canada map.");
+            });
+
+            chart.geoData(anychart.maps.world);
+            chart.choropleth(worldDataSet);
+            chart.container("container");
+            chart.draw();
+            chart.drillTo("CA", canadaMap);
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

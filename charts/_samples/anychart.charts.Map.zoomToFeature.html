@@ -4,8 +4,10 @@
     <meta name="x-cat-tags" content="map"/>
     <script src="../../anychart.min.js"></script>
     <script src="http://cdn.anychart.com/geodata/1.1.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="australiaMap">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
             var dataSet = anychart.data.set([
                 {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
                 {id: "AU.VI", value: 23, title: "Victoria"},
@@ -19,19 +21,33 @@
 
             var dataSetForSeries = dataSet.mapAs({id: "id"});
 
-            australiaMap = anychart.map();
+            var australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
             australiaMap.choropleth(dataSetForSeries);
             australiaMap.geoIdField("code_hasc");
-            australiaMap.container("container");
+            australiaMap.title("Zoom to region.");
+            australiaMap.container(stage);
             australiaMap.draw();
 
-            // Zooms map.
-            australiaMap.zoom(1.5, 10, 10);
+            var customLabel = anychart.ui.label();
+            customLabel.background({fill: "#9E9E9E"});
+            customLabel.text("Zoom to region.");
+            customLabel.fontColor("#fff");
+            customLabel.parentBounds(0, 0, 100, 100);
+            customLabel.padding(5);
+            customLabel.listen("click", function() {
+
+                // Zoom to region.
+                australiaMap.zoomToFeature("AU.NT");
+
+            });
+            customLabel.container(stage);
+            customLabel.draw();
+
         });
     </script>
 </head>
 <body>
 <div id="container" style="width: 100%; height: 100%"></div>
 </body>
-</html>         
+</html>
