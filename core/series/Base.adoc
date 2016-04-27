@@ -1,0 +1,312 @@
+/**
+ * @ignoreDoc
+ * Class that represents a series for the user.
+ * @param {!anychart.core.IChart} chart
+ * @param {!anychart.core.IPlot} plot
+ * @param {string} type
+ * @param {anychart.core.series.TypeConfig} config
+ * @constructor
+ * @extends {anychart.core.VisualBaseWithBounds}
+ * @implements {anychart.core.utils.ISeriesWithError}
+ */
+anychart.core.series.Base;
+
+/**
+ * @ignoreDoc
+ * @param {string=} opt_value
+ * @return {anychart.core.series.Base|string}
+ */
+anychart.core.series.Base.prototype.seriesType;
+
+/**
+ * @ignoreDoc
+ * Returns series index in chart.
+ * @return {number}
+ */
+anychart.core.series.Base.prototype.getIndex;
+
+/**
+ * @ignoreDoc
+ * Getter/setter for series id.
+ * @param {(string)=} opt_value Id of the series.
+ * @return {string|anychart.core.series.Base} Id or self for chaining.
+ */
+anychart.core.series.Base.prototype.id;
+
+/**
+ * @ignoreDoc
+ * Sets and gets series name.
+ * @param {string=} opt_value
+ * @return {anychart.core.series.Base|string}
+ */
+anychart.core.series.Base.prototype.name;
+
+/**
+ * @ignoreDoc
+ * Sets/gets series meta data.
+ * @param {*=} opt_object_or_key Object to replace metadata or metadata key.
+ * @param {*=} opt_value Meta data value.
+ * @return {*} Metadata object, key value or itself for method chaining.
+ */
+anychart.core.series.Base.prototype.meta;
+
+/**
+ * @ignoreDoc
+ * Get point width in case of width-based series.
+ * @return {number} Point width.
+ */
+anychart.core.series.Base.prototype.getPixelPointWidth;
+
+/**
+ * @ignoreDoc
+ * Getter/setter for yScale.
+ * @param {anychart.scales.Base=} opt_value Value to set.
+ * @return {(anychart.scales.Base|anychart.core.series.Base)} Series Y Scale or itself for chaining call.
+ */
+anychart.core.series.Base.prototype.yScale;
+
+/**
+ * @ignoreDoc
+ * Transforms x to pix coords.
+ * @param {*} value
+ * @param {number=} opt_subRangeRatio
+ * @return {number} Pix value.
+ */
+anychart.core.series.Base.prototype.transformX;
+
+/**
+ * @ignoreDoc
+ * Transforms y to pix coords.
+ * @param {*} value
+ * @param {number=} opt_subRangeRatio
+ * @return {number} Pix value.
+ */
+anychart.core.series.Base.prototype.transformY;
+
+/**
+ * @ignoreDoc
+ * Getter/Setter for an error for series.
+ * @param {(Object|null|boolean|string)=} opt_value Error.
+ * @return {(anychart.core.utils.Error|anychart.core.series.Base)} Series error or self for chaining.
+ */
+anychart.core.series.Base.prototype.error;
+
+/**
+ * @ignoreDoc
+ * Clipping settings
+ * @param {(boolean|anychart.math.Rect)=} opt_value [False, if series is created manually.<br/>True, if created via chart
+ *    Enable/disable series clip.
+ * @return {anychart.core.series.Base|boolean|anychart.math.Rect} .
+ */
+anychart.core.series.Base.prototype.clip;
+
+/**
+ * @ignoreDoc
+ * Sets/Gets legend item setting for series.
+ * @param {(Object)=} opt_value Legend item settings object.
+ * @return {(anychart.core.utils.LegendItemSettings|anychart.core.series.Base)} Legend item settings or self for chaining.
+ */
+anychart.core.series.Base.prototype.legendItem;
+
+/**
+ * @ignoreDoc
+ * Getter and setter for the tooltip.
+ * @param {(Object|boolean|null)=} opt_value Tooltip settings.
+ * @return {!(anychart.core.series.Base|anychart.core.ui.SeriesTooltip)} Tooltip instance or itself for chaining call.
+ */
+anychart.core.series.Base.prototype.tooltip;
+
+/**
+ * @ignoreDoc
+ * Getter/setter for current series data labels.
+ * @param {(Object|boolean|null)=} opt_value Series data labels settings.
+ * @return {!(anychart.core.ui.LabelsFactory|anychart.core.series.Base)} Labels instance or itself for chaining call.
+ */
+anychart.core.series.Base.prototype.labels;
+
+/**
+ * @ignoreDoc
+ * Gets or sets series hover data labels.
+ * @param {(Object|boolean|null)=} opt_value Series data labels settings.
+ * @return {!(anychart.core.ui.LabelsFactory|anychart.core.series.Base)} Labels instance or itself for chaining call.
+ */
+anychart.core.series.Base.prototype.hoverLabels;
+
+/**
+ * @ignoreDoc
+ * Gets or sets series select data labels.
+ * @param {(Object|boolean|null)=} opt_value Series data labels settings.
+ * @return {!(anychart.core.ui.LabelsFactory|anychart.core.series.Base)} Labels instance or itself for chaining call.
+ */
+anychart.core.series.Base.prototype.selectLabels;
+
+/**
+ * @ignoreDoc
+ * Getter/setter for markers.
+ * @param {(Object|boolean|null|string)=} opt_value Series data markers settings.
+ * @return {!(anychart.core.ui.MarkersFactory|anychart.core.series.Base)} Markers instance or itself for chaining call.
+ */
+anychart.core.series.Base.prototype.markers;
+
+/**
+ * @ignoreDoc
+ * Getter/setter for hoverMarkers.
+ * @param {(Object|boolean|null|string)=} opt_value Series data markers settings.
+ * @return {!(anychart.core.ui.MarkersFactory|anychart.core.series.Base)} Markers instance or itself for chaining call.
+ */
+anychart.core.series.Base.prototype.hoverMarkers;
+
+/**
+ * @ignoreDoc
+ * @param {(Object|boolean|null|string)=} opt_value Series data markers settings.
+ * @return {!(anychart.core.ui.MarkersFactory|anychart.core.series.Base)} Markers instance or itself for chaining call.
+ */
+anychart.core.series.Base.prototype.selectMarkers;
+
+/**
+ * @ignoreDoc
+ * Getter/setter for outlierMarkers.
+ * @param {(Object|boolean|null|string)=} opt_value Series data markers settings.
+ * @return {!(anychart.core.ui.MarkersFactory|anychart.core.series.Base)} Markers instance or itself for chaining call.
+ */
+anychart.core.series.Base.prototype.outlierMarkers;
+
+/**
+ * @ignoreDoc
+ * Getter/setter for hoverOutlierMarkers.
+ * @param {(Object|boolean|null|string)=} opt_value Series outliers hover markers settings.
+ * @return {!(anychart.core.ui.MarkersFactory|anychart.core.series.Base)} Markers instance or itself for chaining call.
+ */
+anychart.core.series.Base.prototype.hoverOutlierMarkers;
+
+/**
+ * @ignoreDoc
+ * Getter for series outlier markers on select.
+ * @param {(Object|boolean|null|string)=} opt_value Series outliers hover markers settings.
+ * @return {!(anychart.core.ui.MarkersFactory|anychart.core.series.Base)} Markers instance or itself for chaining call.
+ */
+anychart.core.series.Base.prototype.selectOutlierMarkers;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.bounds;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.left;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.right;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.top;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.bottom;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.width;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.height;
+
+/** @inheritDoc */
+anychart.core.series.Base.prototype.minWidth;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.minHeight;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.maxWidth;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.maxHeight;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.getPixelBounds;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.zIndex;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.enabled;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.print;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.saveAsPNG;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.saveAsJPG;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.saveAsPDF;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.saveAsSVG;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.toSVG;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.listen;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.listenOnce;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.unlisten;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.unlistenByKey;
+
+/**
+ * @ignoreDoc
+ * @inheritDoc */
+anychart.core.series.Base.prototype.removeAllListeners;
+

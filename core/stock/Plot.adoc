@@ -23,7 +23,7 @@ anychart.core.stock.Plot;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Creates and returns a new column series.
+ * Creates and returns a new Column series.
  * @shortDescription Addition of the column series.
  * @category Series
  * @example anychart.core.stock.Plot.column_table Using {@link anychart.data#table}
@@ -36,8 +36,8 @@ anychart.core.stock.Plot;
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
- * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.series.Base} An instance of class for method chaining.
+ * @param {Object=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.stock.series.Column} An instance of class for method chaining.
  * @since 7.7.0
  */
 anychart.core.stock.Plot.prototype.column;
@@ -50,7 +50,7 @@ anychart.core.stock.Plot.prototype.column;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Creates and returns a new line series.
+ * Creates and returns a new Line series.
  * @shortDescription Addition of the line series.
  * @category Series
  * @example anychart.core.stock.Plot.line_table Using {@link anychart.data#table}
@@ -63,8 +63,8 @@ anychart.core.stock.Plot.prototype.column;
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
- * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.series.Base} An instance of class for method chaining.
+ * @param {Object=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.stock.series.Line} An instance of class for method chaining.
  * @since 7.7.0
  */
 anychart.core.stock.Plot.prototype.line;
@@ -77,7 +77,7 @@ anychart.core.stock.Plot.prototype.line;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Creates and returns a new ohlc series.
+ * Creates and returns a new OHLC series.
  * @shortDescription Addition of the OHLC series.
  * @category Series
  * @example anychart.core.stock.Plot.ohlc_table Using {@link anychart.data#table}
@@ -90,8 +90,8 @@ anychart.core.stock.Plot.prototype.line;
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
- * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.series.Base} An instance of class for method chaining.
+ * @param {Object=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.stock.series.OHLC} An instance of class for method chaining.
  * @since 7.7.0
  */
 anychart.core.stock.Plot.prototype.ohlc;
@@ -686,4 +686,356 @@ anychart.core.stock.Plot.prototype.rsi;
  * @since 7.9.0
  */
 anychart.core.stock.Plot.prototype.sma;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.stock.Plot.prototype.area
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns a new Area series.
+ * @shortDescription Addition of the area series.
+ * @category Series
+ * @example anychart.core.stock.Plot.area
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data for the series.
+ * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ *   An object where keys are field names and values are objects with fields:
+ *      - 'column': number - Column index, that the field should get values from;
+ *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
+ *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
+ *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
+ * @param {Object=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.stock.series.Area} An instance of class for method chaining.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.area;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.stock.Plot.prototype.candlestick
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns a new Candlestick series.
+ * @shortDescription Addition of the candlestick series.
+ * @category Series
+ * @example anychart.core.stock.Plot.candlestick
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data for the series.
+ * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ *   An object where keys are field names and values are objects with fields:
+ *      - 'column': number - Column index, that the field should get values from;
+ *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
+ *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
+ *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
+ * @param {Object=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.stock.series.Candlestick} An instance of class for method chaining.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.candlestick;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.stock.Plot.prototype.marker
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns a new Marker series.
+ * @shortDescription Addition of the marker series.
+ * @category Series
+ * @example anychart.core.stock.Plot.marker
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data for the series.
+ * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ *   An object where keys are field names and values are objects with fields:
+ *      - 'column': number - Column index, that the field should get values from;
+ *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
+ *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
+ *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
+ * @param {Object=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.stock.series.Marker} An instance of class for method chaining.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.marker;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.stock.Plot.prototype.rangeArea
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns a new Range Area series.
+ * @shortDescription Addition of the range area series.
+ * @category Series
+ * @example anychart.core.stock.Plot.rangeArea
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data for the series.
+ * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ *   An object where keys are field names and values are objects with fields:
+ *      - 'column': number - Column index, that the field should get values from;
+ *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
+ *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
+ *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
+ * @param {Object=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.stock.series.RangeArea} An instance of class for method chaining.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.rangeArea;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.stock.Plot.prototype.rangeColumn
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns a new Range Column series.
+ * @shortDescription Addition of the range column series.
+ * @category Series
+ * @example anychart.core.stock.Plot.rangeColumn
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data for the series.
+ * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ *   An object where keys are field names and values are objects with fields:
+ *      - 'column': number - Column index, that the field should get values from;
+ *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
+ *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
+ *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
+ * @param {Object=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.stock.series.RangeColumn} An instance of class for method chaining.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.rangeColumn;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.stock.Plot.prototype.rangeSplineArea
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns a new Range Spline Area series.
+ * @shortDescription Addition of the range spline area series.
+ * @category Series
+ * @example anychart.core.stock.Plot.rangeSplineArea
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data for the series.
+ * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ *   An object where keys are field names and values are objects with fields:
+ *      - 'column': number - Column index, that the field should get values from;
+ *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
+ *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
+ *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
+ * @param {Object=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.stock.series.RangeSplineArea} An instance of class for method chaining.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.rangeSplineArea;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.stock.Plot.prototype.rangeStepArea
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns a new Range Step Area series.
+ * @shortDescription Addition of the range step area series.
+ * @category Series
+ * @example anychart.core.stock.Plot.rangeStepArea
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data for the series.
+ * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ *   An object where keys are field names and values are objects with fields:
+ *      - 'column': number - Column index, that the field should get values from;
+ *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
+ *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
+ *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
+ * @param {Object=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.stock.series.RangeStepArea} An instance of class for method chaining.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.rangeStepArea;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.stock.Plot.prototype.spline
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns a new Spline series.
+ * @shortDescription Addition of the spline series.
+ * @category Series
+ * @example anychart.core.stock.Plot.spline
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data for the series.
+ * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ *   An object where keys are field names and values are objects with fields:
+ *      - 'column': number - Column index, that the field should get values from;
+ *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
+ *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
+ *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
+ * @param {Object=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.stock.series.Spline} An instance of class for method chaining.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.spline;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.stock.Plot.prototype.splineArea
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns a new Spline Area series.
+ * @shortDescription Addition of the spline area series.
+ * @category Series
+ * @example anychart.core.stock.Plot.splineArea
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data for the series.
+ * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ *   An object where keys are field names and values are objects with fields:
+ *      - 'column': number - Column index, that the field should get values from;
+ *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
+ *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
+ *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
+ * @param {Object=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.stock.series.SplineArea} An instance of class for method chaining.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.splineArea;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.stock.Plot.prototype.stepArea
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns a new Step Area series.
+ * @shortDescription Addition of the step area series.
+ * @category Series
+ * @example anychart.core.stock.Plot.stepArea
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data for the series.
+ * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ *   An object where keys are field names and values are objects with fields:
+ *      - 'column': number - Column index, that the field should get values from;
+ *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
+ *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
+ *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
+ * @param {Object=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.stock.series.StepArea} An instance of class for method chaining.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.stepArea;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.stock.Plot.prototype.stepLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns a new Step Line series.
+ * @shortDescription Addition of the step line series.
+ * @category Series
+ * @example anychart.core.stock.Plot.stepLine
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data for the series.
+ * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ *   An object where keys are field names and values are objects with fields:
+ *      - 'column': number - Column index, that the field should get values from;
+ *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
+ *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
+ *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
+ * @param {Object=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.core.stock.series.StepLine} An instance of class for method chaining.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.stepLine;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.stock.Plot.prototype.palette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current series colors palette.
+ * @shortDescription Palette settings.
+ * @category Chart Coloring
+ * @example anychart.core.stock.Plot.palette_get
+ * @return {!(anychart.palettes.RangeColors|anychart.palettes.DistinctColors)} The current palette.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.palette;
+
+/**
+ * Setter for the series colors palette.
+ * @example anychart.core.stock.Plot.palette_set
+ * @param {(anychart.palettes.RangeColors|anychart.palettes.DistinctColors|Object|Array.<string>)=} opt_value Series colors palette settings to set..
+ * @return {!(anychart.core.stock.Plot)} Self instance for method chaining.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.palette;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.stock.Plot.prototype.markerPalette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current chart markers palette settings.
+ * @shortDescription Markers palette settings.
+ * @category Chart Coloring
+ * @example anychart.core.stock.Plot.markerPalette_get
+ * @return {!anychart.palettes.Markers} The current chart markers palette.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.markerPalette;
+
+/**
+ * Setter for the chart markers palette settings.
+ * @example anychart.core.stock.Plot.markerPalette_set
+ * @param {(anychart.palettes.Markers|Object|Array.<anychart.enums.MarkerType>)=} opt_value Chart marker palette settings to set.
+ * @return {!anychart.core.stock.Plot} Self instance for method chaining.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.markerPalette;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.stock.Plot.prototype.hatchFillPalette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current hatch fill palette settings.
+ * @shortDescription Hatch fill palette settings.
+ * @category Chart Coloring
+ * @listing See listing
+ * var currentHatchFillPalette = plot.hatchFillPalette();
+ * @return {!anychart.palettes.HatchFills} The current plot hatch fill palette.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.hatchFillPalette;
+
+/**
+ * Setter for the hatch fill palette settings.
+ * @example anychart.core.stock.Plot.hatchFillPalette
+ * @param {(Array.<anychart.graphics.vector.HatchFill.HatchFillType>|Object|anychart.palettes.HatchFills)=} opt_value Plot
+ * hatch fill palette settings to set.
+ * @return {!(anychart.palettes.HatchFills|anychart.core.stock.Plot)} Self instance for method chaining.
+ * @since 7.10.0
+ */
+anychart.core.stock.Plot.prototype.hatchFillPalette;
 
