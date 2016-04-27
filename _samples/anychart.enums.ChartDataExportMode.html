@@ -9,21 +9,21 @@
 
             // Create a chart from a data array.
             var lineChart = anychart.line([1.1, 1.4, 1.2, 1.6]);
-            lineChart.bounds(0, 0, "50%", "100%");
+            lineChart.bounds(0, 15, "50%", "100%");
             lineChart.container(stage);
             lineChart.draw();
 
-            // Get chart data as CSV using CSV mode. CSV modes can be "raw", "grouped" and "specific".
-            var csvData = lineChart.toCsv(anychart.enums.CsvMode.SPECIFIC, {"rowsSeparator": "\n", "columnsSeparator": ",", "ignoreFirstRow": true});
+            // Get chart data as CSV using data export mode. Data export modes can be "raw", "grouped" and "specific".
+            var csvData = lineChart.toCsv(anychart.enums.ChartDataExportMode.SPECIFIC, {"rowsSeparator": "\n", "columnsSeparator": ",", "ignoreFirstRow": true});
 
             // Restore the chart from the data obtained.
             var columnChart = anychart.column(csvData);
-            columnChart.bounds("50%", 0, "50%", "100%");
+            columnChart.bounds("50%", 15, "50%", "100%");
             columnChart.container(stage);
             columnChart.draw();
 
             var customTitle = anychart.ui.title();
-            customTitle.text("Set CSV mode.");
+            customTitle.text("Set data export mode.");
             customTitle.container(stage);
             customTitle.draw();
         });
