@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="scatter bubble"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="">
+        anychart.onDocumentReady(function () {
+            chart = anychart.scatter();
+
+            chart.bubble([
+                [4, 9, 10],
+                [1, 7, 6],
+                [2, 7, 15],
+                [3, 8, 20]
+            ]);
+
+            // Get statistic.
+            var bubbleMaxSize = chart.getStat("dataPlotBubbleMaxSize");
+
+            chart.title("Bubble maximum size is " + bubbleMaxSize + ".");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
