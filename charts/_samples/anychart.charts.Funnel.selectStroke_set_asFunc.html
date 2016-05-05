@@ -5,11 +5,15 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.funnel([10, 1, 7, 10]);
-            // Sets stroke using function.
+            chart = anychart.funnel([10, 5, 7, 10]);
+
+            // Sets selectStroke using function.
             chart.selectStroke(function() {
-                return "3 " + anychart.color.darken(this.sourceColor)
+                var thickness = this.index + 3;
+                return thickness.toString() + " #F44336";
             });
+
+            chart.title("Set chart selectStroke parameter as function.");
             chart.container("container");
             chart.draw();
         });

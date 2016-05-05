@@ -1,0 +1,38 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line column"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            var funnelChart = anychart.funnel([7, 7, 7, 7, 7, 7, 7]);
+            funnelChart.bounds(0, 0, "50%", "100%");
+            funnelChart.hatchFill(true);
+            funnelChart.hatchFillPalette(["divot", "grid", "vertical", "horizontal"]);
+            funnelChart.container(stage);
+            funnelChart.draw();
+
+            var pieChart = anychart.pie([7, 7, 7, 7, 7, 7, 7]);
+            pieChart.hatchFill(true);
+            pieChart.bounds("50%", 0, "50%", "100%");
+
+            // Gets hatch fill palette.
+            var funnelChartHatchFillPalette = funnelChart.hatchFillPalette();
+
+            pieChart.hatchFillPalette(funnelChartHatchFillPalette);
+            pieChart.container(stage);
+            pieChart.draw();
+
+            var customTitle = anychart.ui.title();
+            customTitle.text("Get and use chart hatchFillPalette.");
+            customTitle.container(stage);
+            customTitle.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="marker"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            var funnelChart = anychart.funnel([7, 7, 7, 7, 7, 7, 7]);
+            funnelChart.bounds(0, 0, "50%", "100%");
+            funnelChart.markers({enabled: true, size: 10});
+            funnelChart.labels(false);
+            funnelChart.markerPalette(["diamond", "star4", "star7", "diagonalCross"]);
+            funnelChart.container(stage);
+            funnelChart.draw();
+
+            var markerChart = anychart.column();
+            markerChart.marker([5, 40, 6, 37, 15]);
+            markerChart.marker([7, 23, 9, 18, 28]);
+            markerChart.marker([11, 17, 12, 34, 19]);
+            markerChart.marker([13, 7, 22, 14, 39]);
+            markerChart.bounds("50%", 0, "50%", "100%");
+
+            // Gets marker palette of the funnel chart.
+            var funnelChartMarkerPalette = funnelChart.markerPalette();
+
+            markerChart.markerPalette(funnelChartMarkerPalette);
+            markerChart.container(stage);
+            markerChart.draw();
+
+            var customTitle = anychart.ui.title();
+            customTitle.text("Get and use chart marker palette.");
+            customTitle.container(stage);
+            customTitle.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

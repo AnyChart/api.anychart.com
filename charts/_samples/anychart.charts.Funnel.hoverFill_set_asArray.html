@@ -6,9 +6,12 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.funnel([10, 1, 7, 10]);
-            chart.hoverFill(function() {
-                return "rgba(210," + (50 * (this.index + 1) - 10) + ",100,1)";
-            }); // sets the fill in the hover state
+
+            // Sets the fill in the hover state.
+            chart.hoverFill(["#90caf9", "#e6ee9c"]);
+
+            chart.stroke("none");
+            chart.title("Set chart hoverFill parameter as array.");
             chart.container("container");
             chart.draw();
         });

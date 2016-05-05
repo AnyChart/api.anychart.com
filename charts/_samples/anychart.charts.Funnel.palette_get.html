@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line column"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            var funnelChart = anychart.funnel([7, 7, 7, 7, 7, 7, 7]);
+            funnelChart.bounds(0, 0, "50%", "100%");
+            funnelChart.palette(["#90caf9", "#80cbc4", "#aed581", "#e6ee9c", "#ffcc80", "#ffab91", "#f8bbd0"]);
+            funnelChart.container(stage);
+            funnelChart.draw();
+
+            var columnChart = anychart.column();
+            columnChart.column([1, 2, 3, 4]);
+            columnChart.column([2, 3, 4, 1]);
+            columnChart.column([3, 4, 1, 2]);
+            columnChart.column([4, 1, 2, 3]);
+            columnChart.bounds("50%", 0, "50%", "100%");
+
+            // Get chart palette.
+            var funnelChartPalette = funnelChart.palette();
+
+            columnChart.palette(funnelChartPalette);
+            columnChart.container(stage);
+            columnChart.draw();
+
+            var customTitle = anychart.ui.title();
+            customTitle.text("Get and use chart palette.");
+            customTitle.container(stage);
+            customTitle.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
