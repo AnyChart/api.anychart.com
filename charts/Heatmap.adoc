@@ -1,5 +1,6 @@
 /**
- * AnyChart heatMap class.
+ * AnyChart HeatMap class.<br/>
+ * <b>Note:</b> Use {@link anychart#heatMap} method to get an instance of this class.
  * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Data for the chart.
  * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
  * @extends {anychart.core.SeparateChart}
@@ -15,19 +16,18 @@ anychart.charts.HeatMap;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for default chart X scale.
+ * Getter for the current chart X scale.
  * @shortDescription X scale settings.
  * @category Axes and Scales
  * @listing See listing
- * var chart = anychart.heatMap(data);
- * chart.xScale();
- * @return {anychart.scales.Ordinal} Default chart scale value.
+ * var currentXScale = chart.xScale();
+ * @return {anychart.scales.Ordinal} The current chart scale value.
  * @since 7.8.0
  */
 anychart.charts.HeatMap.prototype.xScale;
 
 /**
- * Setter for default chart X scale.
+ * Setter for the chart X scale.
  * @example anychart.charts.HeatMap.xScale_set
  * @param {(anychart.enums.ScaleTypes|anychart.scales.Ordinal)=} opt_value X scale to set.
  * @return {anychart.charts.HeatMap} Self instance for method chaining.
@@ -43,19 +43,18 @@ anychart.charts.HeatMap.prototype.xScale;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for default chart Y scale.
+ * Getter for the current chart Y scale.
  * @shortDescription Y scale settings.
  * @category Axes and Scales
  * @listing See listing
- * var chart = anychart.heatMap(data);
- * chart.yScale();
- * @return {anychart.scales.Ordinal} Default chart scale value.
+ * var currentYScale = chart.yScale();
+ * @return {anychart.scales.Ordinal} The current chart scale value.
  * @since 7.8.0
  */
 anychart.charts.HeatMap.prototype.yScale;
 
 /**
- * Setter for default chart Y scale.
+ * Setter for the chart Y scale.
  * @example anychart.charts.HeatMap.yScale_set
  * @param {(anychart.enums.ScaleTypes|anychart.scales.Ordinal)=} opt_value Y Scale to set.
  * @return {anychart.charts.HeatMap} Self instance for method chaining.
@@ -131,7 +130,7 @@ anychart.charts.HeatMap.prototype.grid;
 anychart.charts.HeatMap.prototype.xAxis;
 
 /**
- * Setter for chart X-axis.
+ * Setter for the chart X-axis.
  * @detailed You can use multiple axes for a chart.
  * Sets chart X-axis settings depending on parameter type:
  * <ul>
@@ -147,7 +146,7 @@ anychart.charts.HeatMap.prototype.xAxis;
 anychart.charts.HeatMap.prototype.xAxis;
 
 /**
- * Setter for chart X-axis by index.
+ * Setter for the chart X-axis by index.
  * @detailed Sets chart X-axis settings by index depending on parameter type:
  * <ul>
  *   <li><b>null/boolean</b> - disable or enable chart X-axis by index.</li>
@@ -181,7 +180,7 @@ anychart.charts.HeatMap.prototype.xAxis;
 anychart.charts.HeatMap.prototype.yAxis;
 
 /**
- * Setter for chart Y-axis.
+ * Setter for the chart Y-axis.
  * @detailed You can use multiple axes for a chart.
  * Sets chart Y-axis settings depending on parameter type:
  * <ul>
@@ -197,7 +196,7 @@ anychart.charts.HeatMap.prototype.yAxis;
 anychart.charts.HeatMap.prototype.yAxis;
 
 /**
- * Setter for chart Y-axis by index.
+ * Setter for the chart Y-axis by index.
  * @detailed Sets chart Y-axis settings by index depending on parameter type:
  * <ul>
  *   <li><b>null/boolean</b> - disable or enable chart Y-axis by index.</li>
@@ -224,8 +223,7 @@ anychart.charts.HeatMap.prototype.yAxis;
  * @shortDescription Color scale settings.
  * @category Axes and Scales
  * @listing See listing
- * var chart = anychart.heatMap(data);
- * chart.colorScale();
+ * var currentColorScale = chart.colorScale();
  * @return {anychart.scales.OrdinalColor} Color scale instance.
  * @since 7.8.0
  */
@@ -250,7 +248,7 @@ anychart.charts.HeatMap.prototype.colorScale;
 
 /**
  * Getter for the current labels display mode.
- * @shortDescription Labels display mode
+ * @shortDescription Labels display mode.
  * @category Point Elements
  * @example anychart.charts.HeatMap.labelsDisplayMode_get
  * @return {string|anychart.enums.LabelsDisplayMode} The current mode.
@@ -277,24 +275,22 @@ anychart.charts.HeatMap.prototype.labelsDisplayMode;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current fill color.
+ * Getter for the current fill color.
  * @shortDescription Fill settings.
  * @category Coloring
- * @listing See listing
- * var chart = anychart.heatMap(data);
- * chart.fill();
- * @return {anychart.graphics.vector.Fill|Function} Current fill color.
+ * @example anychart.charts.HeatMap.fill_get
+ * @return {anychart.graphics.vector.Fill|Function} The current fill color.
  * @since 7.8.0
  */
 anychart.charts.HeatMap.prototype.fill;
 
 /**
- * Sets fill settings using an object or a string.
+ * Sets fill settings using an array or a string.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @detailed <b>Note</b>: If you call a fill method, the colorScale settings will not be applied.
  * @example anychart.charts.HeatMap.fill_set_asString Using string
  * @example anychart.charts.HeatMap.fill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
  * @return {anychart.charts.HeatMap} Self instance for method chaining.
  * @since 7.8.0
  */
@@ -380,12 +376,10 @@ anychart.charts.HeatMap.prototype.fill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current fill color in hover mode.
+ * Getter for the current fill color in hover mode.
  * @shortDescription Fill settings in hover mode.
  * @category Coloring
- * @listing See listing
- * var chart = anychart.heatMap(data);
- * chart.hoverFill();
+ * @example anychart.charts.HeatMap.hoverFill_get
  * @return {anychart.graphics.vector.Fill|Function} Current fill color.
  * @since 7.8.0
  */
@@ -478,23 +472,21 @@ anychart.charts.HeatMap.prototype.hoverFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current fill color in selected mode.
+ * Getter for the current fill color in selected mode.
  * @shortDescription Fill settings in selected mode.
  * @category Coloring
- * @listing See listing
- * var chart = anychart.heatMap(data);
- * chart.selectFill();
+ * @example anychart.charts.HeatMap.selectFill_get
  * @return {anychart.graphics.vector.Fill|Function} Current fill color.
  * @since 7.8.0
  */
 anychart.charts.HeatMap.prototype.selectFill;
 
 /**
- * Sets fill settings in selected mode using an object or a string.
+ * Sets fill settings in selected mode using an array or a string.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.charts.HeatMap.selectFill_set_asString Using string
  * @example anychart.charts.HeatMap.selectFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
  * @return {anychart.charts.HeatMap} Self instance for method chaining.
  * @since 7.8.0
  */
@@ -576,13 +568,11 @@ anychart.charts.HeatMap.prototype.selectFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the stroke.
+ * Getter for the stroke settings.
  * @shortDescription Stroke settings.
  * @category Coloring
- * @listing See listing
- * var chart = anychart.heatMap(data);
- * chart.stroke();
- * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} Current stroke.
+ * @example anychart.charts.HeatMap.stroke_get
+ * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} The current stroke settings.
  * @since 7.8.0
  */
 anychart.charts.HeatMap.prototype.stroke;
@@ -591,26 +581,26 @@ anychart.charts.HeatMap.prototype.stroke;
  * Setter for the stroke using function.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.charts.HeatMap.stroke_set_asFunc
- * @param {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)=} opt_value [// return stroke from the default palette.
+ * @param {(function():anychart.graphics.vector.Stroke)=} opt_value [// return stroke from the default palette.
  * function() {
  *   return anychart.color.darken(this.sourceColor);
- * };] or Stroke, or stroke-function, which should look like:<code>function() {
+ * };] Stroke-function, which should look like:<code>function() {
  *  //  this: {
  *  //  index : number  - the index of the current point
  *  //  sourceColor : anychart.graphics.vector.Stroke - stroke of the current point
  *  // }
  *  return myStroke; //anychart.graphics.vector.Stroke
  * };</code>.
- * @return {!anychart.charts.HeatMap}Self instance for method chaining.
+ * @return {!anychart.charts.HeatMap} Self instance for method chaining.
  * @since 7.8.0
  */
 anychart.charts.HeatMap.prototype.stroke;
 
 /**
- * Setter for the stroke.
+ * Setter for the stroke settings.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.charts.HeatMap.stroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
@@ -631,9 +621,7 @@ anychart.charts.HeatMap.prototype.stroke;
  * Getter for the stroke in hover mode.
  * @shortDescription Stroke settings in hover mode.
  * @category Coloring
- * @listing See listing
- * var chart = anychart.heatMap(data);
- * chart.hoverStroke();
+ * @example anychart.charts.HeatMap.hoverStroke_get
  * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} Current stroke in the normal state.
  * @since 7.8.0
  */
@@ -643,10 +631,10 @@ anychart.charts.HeatMap.prototype.hoverStroke;
  * Setter for the stroke in hover mode using function.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.charts.HeatMap.hoverStroke_set_asFunc
- * @param {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)=} opt_value [// return stroke from the default palette.
+ * @param {(function():anychart.graphics.vector.Stroke)=} opt_value [// return stroke from the default palette.
  * function() {
  *   return anychart.color.darken(this.sourceColor);
- * };] or Stroke, or stroke-function, which should look like:<code>function() {
+ * };] Stroke-function, which should look like:<code>function() {
  *  //  this: {
  *  //  index : number  - the index of the current point
  *  //  sourceColor : anychart.graphics.vector.Stroke - stroke of the current point
@@ -680,12 +668,10 @@ anychart.charts.HeatMap.prototype.hoverStroke;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the stroke in selected mode.
+ * Getter for the current stroke in selected mode.
  * @shortDescription Stroke settings in selected mode.
  * @category Coloring
- * @listing See listing
- * var chart = anychart.heatMap(data);
- * chart.selectStroke();
+ * @example anychart.charts.HeatMap.selectStroke_get
  * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} Current stroke in the normal state.
  * @since 7.8.0
  */
@@ -698,7 +684,7 @@ anychart.charts.HeatMap.prototype.selectStroke;
  * @param {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)=} opt_value [// return stroke from the default palette.
  * function() {
  *   return anychart.color.darken(this.sourceColor);
- * };] or Stroke, or stroke-function, which should look like:<code>function() {
+ * };] Stroke-function, which should look like:<code>function() {
  *  //  this: {
  *  //  index : number  - the index of the current point
  *  //  sourceColor : anychart.graphics.vector.Stroke - stroke of the current point
@@ -732,19 +718,17 @@ anychart.charts.HeatMap.prototype.selectStroke;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current hatch fill settings.
+ * Getter for the current hatch fill settings.
  * @shortDescription Hatch fill settings.
  * @category Coloring
- * @listing See listing
- * var chart = anychart.heatMap(data);
- * chart.hatchFill();
+ * @example anychart.charts.HeatMap.hatchFill_get
  * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
  * @since 7.8.0
  */
 anychart.charts.HeatMap.prototype.hatchFill;
 
 /**
- * Setter for hatch fill settings.
+ * Setter for the hatch fill settings.
  * @example anychart.charts.HeatMap.hatchFill
  * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
  * string|boolean)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
@@ -764,19 +748,17 @@ anychart.charts.HeatMap.prototype.hatchFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current hatch fill settings in hover mode.
+ * Getter for the current hatch fill settings in hover mode.
  * @shortDescription Hatch fill settings in hover mode.
  * @category Coloring
- * @listing See listing
- * var chart = anychart.heatMap(data);
- * chart.hoverHatchFill();
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
+ * @example anychart.charts.HeatMap.hoverHatchFill_get
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The current hatch fill.
  * @since 7.8.0
  */
 anychart.charts.HeatMap.prototype.hoverHatchFill;
 
 /**
- * Setter for hatch fill settings in hover mode.
+ * Setter for the hatch fill settings in hover mode.
  * @example anychart.charts.HeatMap.hoverHatchFill
  * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
  * string|boolean)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
@@ -796,19 +778,17 @@ anychart.charts.HeatMap.prototype.hoverHatchFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current hatch fill settings in selected mode.
+ * Getter for the current hatch fill settings in selected mode.
  * @shortDescription Hatch fill settings in selected mode.
  * @category Coloring
- * @listing See listing
- * var chart = anychart.heatMap(data);
- * chart.selectHatchFill();
+ * @example anychart.charts.HeatMap.selectHatchFill_get
  * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
  * @since 7.8.0
  */
 anychart.charts.HeatMap.prototype.selectHatchFill;
 
 /**
- * Setter for hatch fill settings in selected mode.
+ * Setter for the hatch fill settings in selected mode.
  * @example anychart.charts.HeatMap.selectHatchFill
  * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
  * string|boolean)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
@@ -838,7 +818,7 @@ anychart.charts.HeatMap.prototype.selectHatchFill;
 anychart.charts.HeatMap.prototype.labels;
 
 /**
- * Setter for chart data labels.
+ * Setter for the chart data labels.
  * @detailed Sets chart labels settings depending on parameter type:
  * <ul>
  *   <li><b>null/boolean</b> - disable or enable chart labels.</li>
@@ -870,7 +850,7 @@ anychart.charts.HeatMap.prototype.labels;
 anychart.charts.HeatMap.prototype.hoverLabels;
 
 /**
- * Setter for chart data labels in hover mode.
+ * Setter for the chart data labels in hover mode.
  * @detailed Sets chart labels settings depending on parameter type:
  * <ul>
  *   <li><b>null/boolean</b> - disable or enable chart labels.</li>
@@ -902,7 +882,7 @@ anychart.charts.HeatMap.prototype.hoverLabels;
 anychart.charts.HeatMap.prototype.selectLabels;
 
 /**
- * Setter for chart data labels in selected mode.
+ * Setter for the chart data labels in selected mode.
  * @detailed Sets chart labels settings depending on parameter type:
  * <ul>
  *   <li><b>null/boolean</b> - disable or enable chart labels.</li>
@@ -924,7 +904,7 @@ anychart.charts.HeatMap.prototype.selectLabels;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for data markers.
+ * Getter for the current data markers.
  * @shortDescription Markers settings.
  * @category Point Elements
  * @example anychart.charts.HeatMap.markers_get
@@ -934,7 +914,7 @@ anychart.charts.HeatMap.prototype.selectLabels;
 anychart.charts.HeatMap.prototype.markers;
 
 /**
- * Setter for data markers.
+ * Setter for the data markers.
  * @detailed Sets chart markers settings depending on parameter type:
  * <ul>
  *   <li><b>null/boolean</b> - disable or enable chart markers.</li>
@@ -958,7 +938,7 @@ anychart.charts.HeatMap.prototype.markers;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for data markers in hover mode.
+ * Getter for the current data markers in hover mode.
  * @shortDescription Markers settings in hover mode.
  * @category Point Elements
  * @example anychart.charts.HeatMap.hoverMarkers_get
@@ -968,7 +948,7 @@ anychart.charts.HeatMap.prototype.markers;
 anychart.charts.HeatMap.prototype.hoverMarkers;
 
 /**
- * Setter for data markers in hover mode.
+ * Setter for the data markers in hover mode.
  * @detailed Sets chart markers settings depending on parameter type:
  * <ul>
  *   <li><b>null/boolean</b> - disable or enable chart markers.</li>
@@ -992,7 +972,7 @@ anychart.charts.HeatMap.prototype.hoverMarkers;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for data markers in selected mode.
+ * Getter for the current data markers in selected mode.
  * @shortDescription Markers settings in selected mode.
  * @category Point Elements
  * @example anychart.charts.HeatMap.selectMarkers_get
@@ -1002,7 +982,7 @@ anychart.charts.HeatMap.prototype.hoverMarkers;
 anychart.charts.HeatMap.prototype.selectMarkers;
 
 /**
- * Setter for data markers in selected mode.
+ * Setter for the data markers in selected mode.
  * @detailed Sets chart markers settings depending on parameter type:
  * <ul>
  *   <li><b>null/boolean</b> - disable or enable chart markers.</li>
@@ -1026,7 +1006,7 @@ anychart.charts.HeatMap.prototype.selectMarkers;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets current chart data.
+ * Getter for the current chart data.
  * @shortDescription Data settings.
  * @category Data
  * @example anychart.charts.HeatMap.data_get
@@ -1036,7 +1016,7 @@ anychart.charts.HeatMap.prototype.selectMarkers;
 anychart.charts.HeatMap.prototype.data;
 
 /**
- * Sets data for the current chart.
+ * Setter for the chart data.
  * @example anychart.charts.HeatMap.data_set_asArray Using array
  * @example anychart.charts.HeatMap.data_set_asDataSet Using {@link anychart.data.Set}
  * @example anychart.charts.HeatMap.data_set_asView Using {@link anychart.data.Mapping} and {@link anychart.data.View}
@@ -1056,7 +1036,7 @@ anychart.charts.HeatMap.prototype.data;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Sets the hover state on a point by index.
+ * Hovers point by index.
  * <b>Note:</b> Works only after {@link anychart.charts.HeatMap#draw} is called.
  * @category Interactivity
  * @detailed If index is passed, hovers a point by its index, else hovers all points.
@@ -1075,7 +1055,7 @@ anychart.charts.HeatMap.prototype.hover;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Imitates selection of the point by its index.
+ * Selects point by index.
  * <b>Note:</b> Works only after {@link anychart.charts.HeatMap#draw} is called.
  * @category Interactivity
  * @example anychart.charts.HeatMap.select

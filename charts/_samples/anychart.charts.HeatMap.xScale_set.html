@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
+    <meta name="x-cat-tags" content="heatMap"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
@@ -22,13 +22,16 @@
                 {x: "Texas", y: "2005", heat: 3732889},
                 {x: "Texas", y: "2006", heat: 4185098}
             ]);
+
             chart.labels(true);
 
-            var myScale = anychart.scales.ordinal();
-            myScale.inverted(true);
+            var customScale = anychart.scales.ordinal();
+            customScale.inverted(true);
 
-            //Sets X scale.
-            chart.xScale(myScale);
+            //Set X scale.
+            chart.xScale(customScale);
+
+            chart.title("Set chart xScale parameter.");
             chart.container("container");
             chart.draw();
         });
