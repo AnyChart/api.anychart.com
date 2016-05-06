@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="pyramid"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.pyramid([
+                {x: "Physical", value: 125},
+                {x: "Data Link", value: 125},
+                {x: "Network", value: 125},
+                {x: "Transport", value: 125},
+                {x: "Session", value: 125},
+                {x: "Presentation", value: 125},
+                {x: "Application", value: 290, label: {anchor: "centerTop"}}
+            ]);
+
+            chart.labels({position: "inside"});
+
+            // Set palette from theme.
+            chart.palette(anychart.palettes.earth);
+
+            chart.title("Set series color palette from theme.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="map"/>
+    <script src="../../anychart.min.js"></script>
+    <script src="http://cdn.anychart.com/geodata/1.1.0/countries/australia/australia.js" data-export="true"></script>
+    <script x-export="australiaMap">
+        anychart.onDocumentReady(function() {
+            var firstDataSet = anychart.data.set([
+                {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
+                {id: "AU.VI", value: 23, title: "Victoria"},
+                {id: "AU.NT", value: 64, title: "Northern Territory"},
+                {id: "AU.TS", value: 28, title: "Tasmania"},
+                {id: "AU.SA", value: 45, title: "South Australian"}
+            ]);
+
+            var secondDataSet = anychart.data.set([
+                {id: "AU.WA", value: 86, title: "Western Australia"},
+                {id: "AU.QL", value: 16, title: "Queensland"},
+                {id: "AU.NS", value: 32, title: "New South Wales"}
+            ]);
+
+            var firstDataSetForSeries = firstDataSet.mapAs({id: "id"});
+            var secondDataSetForSeries = secondDataSet.mapAs({id: "id"});
+
+            australiaMap = anychart.map();
+            australiaMap.geoData(anychart.maps.australia);
+
+            // Set palette.
+            australiaMap.palette(anychart.palettes.provence);
+
+            var firstSeries = australiaMap.choropleth(firstDataSetForSeries);
+            firstSeries.geoIdField("code_hasc");
+
+            var secondSeries = australiaMap.choropleth(secondDataSetForSeries);
+            secondSeries.geoIdField("code_hasc");
+
+            australiaMap.title("Set series color palette from theme.");
+            australiaMap.container("container");
+            australiaMap.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
