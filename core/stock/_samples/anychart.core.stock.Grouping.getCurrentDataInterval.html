@@ -2,10 +2,10 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="stock"/>
-    <script src="../../anychart.min.js"></script>
+    <script src="../../../anychart.min.js"></script>
     <script src="http://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             var dataTable = anychart.data.table();
             dataTable.addData(get_dji_daily_short_data());
 
@@ -13,17 +13,22 @@
 
             chart = anychart.stock();
             chart.padding(10, 10, 10, 50);
+            chart.title("Move the scroller.");
 
             var currentPlot = chart.plot();
-            currentPlot.line(mapping);
+            currentPlot.area(mapping);
+
+            var currentGrouping = chart.grouping();
+            currentGrouping.forced(true);
+
+            chart.listen("selectedrangechange", function(){
+
+                // Get the current data interval and use the title.
+                chart.title("Move the scroller. The current level is " + currentGrouping.getCurrentDataInterval().unit + ".");
+            });
 
             chart.container('container');
             chart.draw();
-
-            var currentXScale = chart.xScale();
-            // Gets grouping unit count.
-            currentXScale.getGroupingUnitCount();
-            // Returns 1.
         });
     </script>
 </head>

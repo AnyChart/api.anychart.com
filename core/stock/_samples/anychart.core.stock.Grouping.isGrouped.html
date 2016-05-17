@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="stock"/>
-    <script src="../../anychart.min.js"></script>
+    <script src="../../../anychart.min.js"></script>
     <script src="http://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
@@ -13,17 +13,23 @@
 
             chart = anychart.stock();
             chart.padding(10, 10, 10, 50);
+            chart.scrollerGrouping({maxVisiblePoints: 100});
 
             var currentPlot = chart.plot();
-            currentPlot.line(mapping);
+            currentPlot.area(mapping);
+
+            var currentScroller = chart.scroller();
+            currentScroller.line(mapping);
+
+            var currentGrouping = chart.grouping();
 
             chart.container('container');
             chart.draw();
 
-            var currentXScale = chart.xScale();
-            // Gets grouping unit.
-            currentXScale.getGroupingUnit();
-            // Returns "week".
+            // Get grouping state.
+            var groupedState = currentGrouping.isGrouped();
+
+            chart.title("Grouping state of the data: " + groupedState + ".");
         });
     </script>
 </head>
