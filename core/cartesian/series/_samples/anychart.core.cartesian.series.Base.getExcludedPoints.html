@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="column"/>
+    <script src="../../../../anychart.min.js"></script>
+    <link rel="stylesheet" href="../../../../anychart-ui.css">
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.column();
+
+            var series = chart.column([4, 2, 7, 1, 10, 15, 8, 4, 6, 3]);
+            series.excludePoint([0, 2, 4, 6, 9]);
+
+            // Get exclude points.
+            var points = series.getExcludedPoints();
+
+            chart.column([points[0].get("value"), points[1].get("value"), points[2].get("value"), points[3].get("value"), points[4].get("value")]);
+            chart.title("Get and use the excluded points.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
