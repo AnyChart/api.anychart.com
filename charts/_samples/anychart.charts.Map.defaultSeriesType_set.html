@@ -30,17 +30,21 @@
             australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
 
-            // Sets default series type.
+            // Set default series type.
             australiaMap.defaultSeriesType("choropleth");
 
             australiaMap.addSeries(dataSetForFirstSeries, dataSetForSecondSeries, dataSetThirdForSeries);
+
             var firstSeries = australiaMap.getSeries(0);
             firstSeries.geoIdField("code_hasc");
+
             var secondSeries = australiaMap.getSeries(1);
             secondSeries.geoIdField("code_hasc");
+
             var thirdSeries = australiaMap.getSeries(2);
             thirdSeries.geoIdField("code_hasc");
 
+            australiaMap.title("Change default series type added by addSeries method.");
             australiaMap.container("container");
             australiaMap.draw();
         });

@@ -34,15 +34,20 @@
 
             var firstSeries = australiaMap.getSeries(0);
             firstSeries.geoIdField("code_hasc");
+
             var secondSeries = australiaMap.getSeries(1);
             secondSeries.geoIdField("code_hasc");
+
             var thirdSeries = australiaMap.getSeries(2);
             thirdSeries.geoIdField("code_hasc");
 
-            // Gets the series count.
-            var count = australiaMap.getSeriesCount();
+            // Get series count in loop.
+            for (var i = 0; i < australiaMap.getSeriesCount(); i++) {
+                australiaMap.getSeriesAt(i).name((i + 1)  + " Series");
+            }
 
-            australiaMap.title("The current series count is " + count);
+            australiaMap.legend(true);
+            australiaMap.title("Get and use series count.");
             australiaMap.container("container");
             australiaMap.draw();
         });

@@ -4,9 +4,9 @@
     <meta name="x-cat-tags" content="map"/>
     <script src="../../anychart.min.js"></script>
     <script src="http://cdn.anychart.com/geodata/1.1.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="australiaMap">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
-            var stage = anychart.graphics.create("container");
+            stage = anychart.graphics.create("container");
 
             var firstDataSet = anychart.data.set([
                 {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
@@ -29,6 +29,7 @@
             var series = firstAustraliaMap.choropleth(firstDataSetForSeries);
             series.geoIdField("code_hasc");
 
+            firstAustraliaMap.title("Get and set geo JSON config.");
             firstAustraliaMap.container(stage);
             firstAustraliaMap.draw();
 
@@ -37,6 +38,7 @@
 
             var secondAustraliaMap = anychart.map();
             secondAustraliaMap.bounds(0, "50%", "100%", "50%");
+
             // Sets data from geo JSON.
             secondAustraliaMap.geoData(data);
 

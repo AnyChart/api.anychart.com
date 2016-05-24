@@ -4,8 +4,10 @@
     <meta name="x-cat-tags" content="map"/>
     <script src="../../anychart.min.js"></script>
     <script src="http://cdn.anychart.com/geodata/1.1.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="australiaMap">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
             var dataSet = anychart.data.set([
                 {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
                 {id: "AU.VI", value: 23, title: "Victoria"},
@@ -25,11 +27,18 @@
             var series = australiaMap.choropleth(dataSetForSeries);
             series.geoIdField("code_hasc");
 
-            australiaMap.container("container");
+            australiaMap.title("Get and use plot bounds object.");
+            australiaMap.container(stage);
             australiaMap.draw();
-            // Gets plot bounds.
+
+            // Get plot bounds.
             var bounds = australiaMap.getPlotBounds();
-            australiaMap.title("Plot bounds is " + bounds);
+
+            var customBackground = anychart.ui.background();
+            customBackground.fill("#BDBDBD 0.2");
+            customBackground.parentBounds(bounds);
+            customBackground.container(stage);
+            customBackground.draw();
         });
     </script>
 </head>

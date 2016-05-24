@@ -7,32 +7,36 @@
     <script x-export="franceMap">
         anychart.onDocumentReady(function () {
             var dataSet = anychart.data.set([
-                {size: 928, lat: 48.04677871103531, long: -2.12443548026414},
-                {size: 192, lat: 45.85025102963345, long: -0.05555902937648371},
-                {size: 963, lat: 44.13282017031969, long: -0.6331316557379023},
-                {size: 266, lat: 48.91155589239087, long: -0.2614383795630683},
-                {size: 518, lat: 45.36178266437175, long: 3.1661777399148257},
-                {size: 324, lat: 47.3951601027151, long: 4.075436176363208},
-                {size: 767, lat: 50.55433223847086, long: 2.5190009490829643},
-                {size: 478, lat: 49.83217874244316, long: 2.0566302263277305},
-                {size: 456, lat: 41.9617928275597, long: 9.042687600355316},
-                {size: 477, lat: 4.346042402087561, long: -53.23436574621244},
-                {size: 200, lat: 48.741317232748585, long: 7.532229957512638},
-                {size: 945, lat: 45.53208569742555, long: 5.531768794196096}
+                {id: "FR.A", value: 928},
+                {id: "FR.B", value: 192},
+                {id: "FR.C", value: 963},
+                {id: "FR.P", value: 266},
+                {id: "FR.E", value: 324},
+                {id: "FR.F", value: 767},
+                {id: "FR.G", value: 478},
+                {id: "FR.H", value: 456},
+                {id: "FR.I", value: 477},
+                {id: "FR.GP", value: 200},
+                {id: "FR.GF", value: 945}
             ]);
 
             franceMap = anychart.map();
             franceMap.geoData(anychart.maps.france);
-            franceMap.geoIdField("insee_cl");
-
-            franceMap.bubble(dataSet);
-            franceMap.maxBubbleSize("5%");
-            franceMap.minBubbleSize("3%");
+            franceMap.choropleth(dataSet);
+            franceMap.title("Scale а feature.");
             franceMap.container("container");
             franceMap.draw();
 
-            // Scales feature.
-            franceMap.featureScaleFactor("2A004", 0.002);
+            var mapLabel = franceMap.label();
+            mapLabel.background({fill: "#9E9E9E 0.3"});
+            mapLabel.text("Scale а feature.");
+            mapLabel.padding(5);
+            mapLabel.listen("click", function() {
+
+                // Scale feature.
+                franceMap.featureScaleFactor("FR.H", 0.002);
+
+            });
         });
     </script>
 </head>
