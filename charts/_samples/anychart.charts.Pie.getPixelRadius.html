@@ -3,13 +3,55 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="pie"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.pie([10, 14, 8, 12]);
-            chart.container("container");
+    <script x-export="stage">
+        var chart;
+        anychart.onDocumentReady(function () {
+            stage = anychart.graphics.create("container");
+
+            var data = anychart.data.set([
+                {name: "Point 1", value: 50},
+                {name: "Point 2", value: 13},
+                {name: "Point 3", value: 14},
+                {name: "Point 4", value: 20}
+            ]);
+
+            chart = anychart.pie(data);
+            chart.legend(false);
+            chart.title("Get and use pixel radius.");
+            chart.container(stage);
             chart.draw();
-            var pixelRadius = chart.getPixelRadius(); // get pixel radius
-            chart.title("Pixel Radius - " + pixelRadius);
+
+            var layer = stage.layer();
+            var POINTER_OFFSET = 120;
+            drawArrow(false);
+
+            var diamond;
+
+            function drawArrow(exploded) {
+                var explodeValue = chart.getPixelExplode();
+
+                // Get pixel radius.
+                var radius = chart.getPixelRadius();
+
+                var cx = chart.getCenterPoint().x;
+                var cy = chart.getCenterPoint().y;
+                var x = cx - radius - POINTER_OFFSET;
+                var y = cy;
+
+                if (exploded) {
+                    x -= explodeValue;
+                }
+                if (diamond) diamond.clear();
+                diamond = anychart.graphics.vector.primitives.diamond(layer, x + 80, y + 30, 35);
+                diamond.fill("#8BC34A");
+            }
+
+            chart.listen("pointsselect", function (e) {
+                var point = e.point;
+                if (point.index == 2) {
+                    drawArrow(point.exploded());
+                }
+            });
         });
     </script>
 </head>

@@ -1,0 +1,37 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="pie funnel"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="">
+        anychart.onDocumentReady(function () {
+            stage = anychart.graphics.create("container");
+
+            var pieChart = anychart.pie([7, 7, 7, 7, 7]);
+            pieChart.labels({fontColor: "#000000", position: "outside"});
+            pieChart.bounds(0, 0, "50%", "100%");
+            pieChart.connectorStroke("#607D8B", 2, "5 2", "round");
+            pieChart.container(stage);
+            pieChart.draw();
+
+            var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
+            funnelChart.bounds("50%", 0, "50%", "100%");
+
+            // Get connector stroke.
+            var pieConnectorStroke = pieChart.connectorStroke();
+
+            funnelChart.connectorStroke(pieConnectorStroke);
+            funnelChart.container(stage);
+            funnelChart.draw();
+
+            var customTitle = anychart.ui.title();
+            customTitle.text("Get and use chart stroke.");
+            customTitle.container(stage);
+            customTitle.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

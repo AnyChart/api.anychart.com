@@ -6,28 +6,33 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var pieInnerRadius = 40;
-            chart = anychart.pie([10, 14, 8, 12]);
+
+            chart = anychart.pie([10, 14, 8, 12, 20]);
             chart.innerRadius(pieInnerRadius + 10);
             chart.container("container");
             chart.draw();
-            var pieCenter = chart.getCenterPoint(); // get center point
+
+            // Get center point.
+            var pieCenter = chart.getCenterPoint();
+
             var labelBounds = anychart.math.rect(
                             pieCenter.x - pieInnerRadius,
                             pieCenter.y - pieInnerRadius,
                             pieCenter.x + pieInnerRadius,
                             pieCenter.y + pieInnerRadius
             );
-            var label = anychart.ui.label();
-            label.text("Pie\ninner\nlabel");
-            label.parentBounds(labelBounds);
-            label.hAlign("center");
-            label.vAlign("center");
-            label.zIndex(1);
-            label.container(chart.container());
-            label.adjustFontSize(true);
-            label.width(2 * pieInnerRadius);
-            label.height(2 * pieInnerRadius);
-            label.draw();
+
+            var customLabel = anychart.ui.label();
+            customLabel.text("Pie\ninner\nlabel");
+            customLabel.parentBounds(labelBounds);
+            customLabel.hAlign("center");
+            customLabel.vAlign("center");
+            customLabel.zIndex(1);
+            customLabel.container(chart.container());
+            customLabel.adjustFontSize(true);
+            customLabel.width(2 * pieInnerRadius);
+            customLabel.height(2 * pieInnerRadius);
+            customLabel.draw();
         });
     </script>
 </head>

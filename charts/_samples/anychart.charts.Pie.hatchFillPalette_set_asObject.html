@@ -6,11 +6,17 @@
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             var data = [7, 7, 7];
+
             chart = anychart.pie(data);
+
             chart.labels(null);
             chart.legend(null);
             chart.hatchFill(true);
-            chart.hatchFillPalette({type: ["diagonalCross", "plaid", "vertical"], thickness: 3}); // sets hatch fill palette
+
+            // Set hatch fill palette.
+            chart.hatchFillPalette({type: ["horizontal", "grid", "vertical"], thickness: 3});
+
+            chart.title("Set hatch fill palette as an object.");
             chart.container("container");
             chart.draw();
         });

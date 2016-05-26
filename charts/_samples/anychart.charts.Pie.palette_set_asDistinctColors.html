@@ -3,15 +3,22 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="pie"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
+    <script x-export="chart">
         anychart.onDocumentReady(function() {
             var data = [7, 7, 7, 7, 7, 7];
+
             chart = anychart.pie(data);
             chart.labels(null);
             chart.legend(null);
-            var palette = anychart.palettes.distinctColors(); // create palettes
-            palette.colors(["#4FC3F7", "#4DD0E1", "#4DB6AC", ["#DCEDC8", "#689F38"]]);
-            chart.palette(palette); // sets palette
+
+            // Create palette.
+            var palette = anychart.palettes.distinctColors();
+            palette.colors(["#90caf9", ["#e6ee9c", "#ffab91"], "#80cbc4", "#aed581", "#e6ee9c", "#ffcc80"]);
+
+            // Set palette.
+            chart.palette(palette);
+
+            chart.title("Set palette parameters as an instance.");
             chart.container("container");
             chart.draw();
         });

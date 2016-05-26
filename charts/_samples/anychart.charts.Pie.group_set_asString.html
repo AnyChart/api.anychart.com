@@ -6,6 +6,7 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.pie([5, 2, 1, 3, 1, 3]);
+
             var firstLabel = chart.label();
             firstLabel.background({fill: "#757575"});
             firstLabel.text("Group points");
@@ -17,6 +18,7 @@
                     return val > 2;
                 });
             });
+
             var secondLabel = chart.label(1);
             secondLabel.background({fill: "#757575"});
             secondLabel.text("Ungroup points");
@@ -25,8 +27,12 @@
             secondLabel.offsetX(5);
             secondLabel.offsetY(30);
             secondLabel.listen("click", function() {
-                chart.group("none"); // disable grouping function
+
+                // Disable grouping function.
+                chart.group("none");
             });
+
+            chart.title("Ungroup points using string.");
             chart.container("container");
             chart.draw();
         });

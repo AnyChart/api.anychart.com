@@ -6,9 +6,13 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.pie([10, 1, 7, 10]);
+
+            // Set hover stroke.
             chart.hoverStroke(function() {
-                return "3 " + anychart.color.darken(this.sourceColor)
-            }); // sets hover stroke
+                return this.index + " #9E9E9E";
+            });
+
+            chart.title("Set hoverStroke parameters as a function.");
             chart.container("container");
             chart.draw();
         });

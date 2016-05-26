@@ -3,12 +3,17 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="pie"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
+    <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.pie([10, 1, 7, 10]);
-            chart.hoverFill(function() {
-                return "rgba(210," + (50 * (this.index + 1) - 10) + ",100,1)";
-            }); // sets hover fill
+            chart = anychart.pie([10, 5, 7, 10]);
+
+            // Set fill.
+            chart.fill(function() {
+                return "rgba(100," + (50 * (this.index + 1) - 10) + ", 248, 0.6)";
+            });
+
+            chart.legend(null);
+            chart.title("Set chart fill parameter as a function.");
             chart.container("container");
             chart.draw();
         });

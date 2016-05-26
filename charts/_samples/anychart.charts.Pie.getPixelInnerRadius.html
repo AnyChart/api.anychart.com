@@ -5,11 +5,23 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.pie([10, 14, 8, 12]);
-            chart.container("container");
+            stage = anychart.graphics.create("container");
+
+            chart = anychart.pie([10, 14, 8, 12, 20]);
+            chart.innerRadius(60);
+            chart.title("Get and use pixel inner radius.");
+            chart.container(stage);
             chart.draw();
-            var pixelInnerRadius = chart.getPixelInnerRadius(); // get pixel inner radius
-            chart.title("Pixel Inner Radius - " + pixelInnerRadius);
+
+            // Get inner radius.
+            var innerRadius = chart.getPixelInnerRadius();
+
+            var pieCenter = chart.getCenterPoint();
+
+            var customCircle = anychart.graphics.circle(pieCenter.x, pieCenter.y, innerRadius);
+            customCircle.fill({src: "http://static.anychart.com/images/oceanic-airlines.png", mode: "fit"});
+            customCircle.stroke("none");
+            customCircle.parent(stage);
         });
     </script>
 </head>

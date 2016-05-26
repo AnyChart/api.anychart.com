@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="pie funnel"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function () {
+            stage = anychart.graphics.create("container");
+
+            var pieChart = anychart.pie([14, 3, 7, 10]);
+            pieChart.bounds(0, 0, "50%", "100%");
+            pieChart.hatchFill("diagonalBrick", "#424242", 0.5, 25);
+            pieChart.container(stage);
+            pieChart.draw();
+
+            var funnelChart = anychart.funnel([10, 3, 7, 10]);
+            funnelChart.bounds("50%", 0, "50%", "100%");
+
+            // Get hatchFill.
+            var pieChartHatchFill = pieChart.hatchFill();
+
+            funnelChart.hatchFill(pieChartHatchFill);
+            funnelChart.container(stage);
+            funnelChart.draw();
+
+            var customTitle = anychart.ui.title();
+            customTitle.text("Get and use chart hatchFill.");
+            customTitle.container(stage);
+            customTitle.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

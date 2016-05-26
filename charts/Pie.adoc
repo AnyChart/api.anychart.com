@@ -15,7 +15,7 @@ anychart.charts.Pie;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets current chart data.
+ * Getter for the chart data.
  * @shortDescription Data settings.
  * @category Data
  * @example anychart.charts.Pie.data_get
@@ -24,12 +24,12 @@ anychart.charts.Pie;
 anychart.charts.Pie.prototype.data;
 
 /**
- * Sets data for the current chart.
+ * Setter for the chart data.<br/>
  * Learn more about mapping at {@link anychart.data.Mapping}.
  * @example anychart.charts.Pie.data_set_asArray Using array
- * @example anychart.charts.Pie.data_set_asDataSet Using {@link anychart.data.Set}
- * @example anychart.charts.Pie.data_set_asMappingView Using {@link anychart.data.Mapping} and {@link anychart.data.View}
- * @example anychart.charts.Pie.data_set_asMapping Using a complex {@link anychart.data.Mapping}
+ * @example anychart.charts.Pie.data_set_asDataSet Using dataset.
+ * @example anychart.charts.Pie.data_set_asMappingView Using data mapping and data view.
+ * @example anychart.charts.Pie.data_set_asMapping Using a complex data mapping.
  * @example anychart.charts.Pie.data_set_asCSV Using CSV
  * @param {(anychart.data.View|anychart.data.Mapping|anychart.data.Set|Array)=} opt_value Data for the chart.
  * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed by first param, you can pass CSV
@@ -46,7 +46,7 @@ anychart.charts.Pie.prototype.data;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current pie palette.
+ * Getter for the pie palette.
  * @shortDescription Palette settings.
  * @category Chart Coloring
  * @return {!(anychart.palettes.RangeColors|anychart.palettes.DistinctColors)} Color palette instance.
@@ -74,16 +74,17 @@ anychart.charts.Pie.prototype.palette;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for chart hatch fill palette settings.
+ * Getter for the hatch fill palette settings.
  * @shortDescription Hatch fill palette settings.
  * @category Chart Coloring
+ * @example anychart.charts.Pie.hatchFillPalette_get
  * @return {anychart.palettes.HatchFills} Hatch fills palette instance
  */
 anychart.charts.Pie.prototype.hatchFillPalette;
 
 /**
- * Setter for chart hatch fill palette settings.<br/>
- * <b>Note:</b> Works only with {@link anychart.charts.Pie#hatchFill}.
+ * Setter for the hatch fill palette settings.<br/>
+ * <b>Note:</b> Works only with {@link anychart.charts.Pie#hatchFill} method.
  * @example anychart.charts.Pie.hatchFillPalette_set_asArray Using array
  * @example anychart.charts.Pie.hatchFillPalette_set_asObject Using object
  * @param {(Array.<anychart.graphics.vector.HatchFill.HatchFillType>|Object|anychart.palettes.HatchFills)=} opt_value Chart
@@ -100,24 +101,25 @@ anychart.charts.Pie.prototype.hatchFillPalette;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the pie slices fill in normal state.
+ * Getter for the pie fill.
  * @shortDescription Fill settings.
  * @category Coloring
- * @return {(anychart.graphics.vector.Fill|function():anychart.graphics.vector.Fill)} Current fill in the normal state.
+ * @example anychart.charts.Pie.fill_get
+ * @return {(anychart.graphics.vector.Fill|function():anychart.graphics.vector.Fill)} The fill in the normal state.
  */
 anychart.charts.Pie.prototype.fill;
 
 /**
- * Setter for the pie slices fill in the normal state.
+ * Setter for the pie fill.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.charts.Pie.fill
- * @param {(anychart.graphics.vector.Fill|function():anychart.graphics.vector.Fill)=} opt_value [// return the fill from the default palette.
+ * @example anychart.charts.Pie.fill_set_asFunc
+ * @param {(function():anychart.graphics.vector.Fill)=} fillFunction [// return the fill from the default palette.
  * function() {
  *   return this.sourceColor;
- * };] or Fill, or fill-function, which should look like this:<code>function() {
+ * };] Fill-function, which should look like this:<code>function() {
  *  //  this: {
- *  //  index : number  - the index of the current point
- *  //  sourceColor : anychart.graphics.vector.Fill - fill of the current point
+ *  //  index : number  - the index of the point
+ *  //  sourceColor : anychart.graphics.vector.Fill - fill of the point
  *  // }
  *  return myFill; //anychart.graphics.vector.Fill
  * };</code>.
@@ -125,6 +127,62 @@ anychart.charts.Pie.prototype.fill;
  */
 anychart.charts.Pie.prototype.fill;
 
+/**
+ * Setter for the fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Pie.fill_set_asString Using string
+ * @example anychart.charts.Pie.fill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
+ * @return {anychart.charts.Pie} Self instance for method chaining.
+ */
+anychart.charts.Pie.prototype.fill;
+
+/**
+ * Fill color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.Pie.fill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Pie} Self instance for method chaining.
+ */
+anychart.charts.Pie.prototype.fill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Pie.fill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Pie} Self instance for method chaining.
+ */
+anychart.charts.Pie.prototype.fill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Pie.fill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Pie} Self instance for method chaining.
+ */
+anychart.charts.Pie.prototype.fill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Pie.fill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.charts.Pie} Self instance for method chaining.
+ */
+anychart.charts.Pie.prototype.fill;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -133,21 +191,22 @@ anychart.charts.Pie.prototype.fill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the pie slices stroke in the normal state.
+ * Getter for the pie slices stroke.
  * @shortDescription Stroke settings.
  * @category Coloring
- * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} Current stroke in the normal state.
+ * @example anychart.charts.Pie.stroke_get
+ * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} The stroke in the normal state.
  */
 anychart.charts.Pie.prototype.stroke;
 
 /**
- * Setter for the pie slices stroke in the normal state.
+ * Setter for the pie slices stroke using function.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.charts.Pie.stroke_set_asFunc
- * @param {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)=} opt_value [// return stroke from the default palette.
+ * @param {(function():anychart.graphics.vector.Stroke)=} fillFunction [// return stroke from the default palette.
  * function() {
  *   return anychart.color.darken(this.sourceColor);
- * };] or Stroke, or stroke-function, which should look like:<code>function() {
+ * };] Stroke-function, which should look like:<code>function() {
  *  //  this: {
  *  //  index : number  - the index of the current point
  *  //  sourceColor : anychart.graphics.vector.Stroke - stroke of the current point
@@ -159,10 +218,10 @@ anychart.charts.Pie.prototype.stroke;
 anychart.charts.Pie.prototype.stroke;
 
 /**
- * Setter for the pie slices stroke in the normal state.
+ * Setter for the pie slices stroke.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.charts.Pie.stroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value ["none"] Stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["none"] Stroke settings.
  * @param {number=} opt_thickness Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
@@ -182,18 +241,19 @@ anychart.charts.Pie.prototype.stroke;
  * Getter for the pie slices fill in the hover state.
  * @shortDescription Fill settings in hover mode.
  * @category Coloring
- * @return {(anychart.graphics.vector.Fill|function():anychart.graphics.vector.Fill)} Current fill in the hover state.
+ * @example anychart.charts.Pie.hoverFill_get
+ * @return {(anychart.graphics.vector.Fill|function():anychart.graphics.vector.Fill)} The fill in the hover state.
  */
 anychart.charts.Pie.prototype.hoverFill;
 
 /**
  * Setter for the pie slices fill in the hover state.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.charts.Pie.hoverFill
- * @param {(anychart.graphics.vector.Fill|function():anychart.graphics.vector.Fill)=} opt_value [// return lighter fill of the default palette.
+ * @example anychart.charts.Pie.hoverFill_set_asFunc
+ * @param {(anychart.graphics.vector.Fill|function():anychart.graphics.vector.Fill)=} fillFunction [// return lighter fill of the default palette.
  * function() {
  *   return anychart.color.lighten(this.sourceColor);
- * };] or Fill, or fill-function, which should look like:<code>function() {
+ * };] Fill-function, which should look like:<code>function() {
  *  //  this: {
  *  //  index : number  - the index of the current point
  *  //  sourceColor : anychart.graphics.vector.Fill - fill of the current point
@@ -204,6 +264,62 @@ anychart.charts.Pie.prototype.hoverFill;
  */
 anychart.charts.Pie.prototype.hoverFill;
 
+/**
+ * Setter for the fill settings in the hover state using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Pie.hoverFill_set_asString Using string
+ * @example anychart.charts.Pie.hoverFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
+ * @return {anychart.charts.Pie} Self instance for method chaining.
+ */
+anychart.charts.Pie.prototype.hoverFill;
+
+/**
+ * Fill color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.Pie.hoverFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Pie} Self instance for method chaining.
+ */
+anychart.charts.Pie.prototype.hoverFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Pie.hoverFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Pie} Self instance for method chaining.
+ */
+anychart.charts.Pie.prototype.hoverFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Pie.hoverFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Pie} Self instance for method chaining.
+ */
+anychart.charts.Pie.prototype.hoverFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Pie.hoverFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.charts.Pie} Self instance for method chaining.
+ */
+anychart.charts.Pie.prototype.hoverFill;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -212,22 +328,22 @@ anychart.charts.Pie.prototype.hoverFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the pie slices stroke in the hover state.
+ * Getter for the pie stroke in the hover state.
  * @shortDescription Stroke settings in hover mode.
  * @category Coloring
- * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} Current stroke in the hover state.
+ * @example anychart.charts.Pie.hoverStroke_get
+ * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} The stroke in the hover state.
  */
 anychart.charts.Pie.prototype.hoverStroke;
 
 /**
- * Setter for the pie slices stroke in the hover state.
+ * Setter for the pie stroke in the hover state.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.charts.Pie.hoverStroke_set_asFunc Using function
- * @example anychart.charts.Pie.hoverStroke_set_asString Using string
- * @param {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke|string)=} opt_value [// return stroke from the default palette.
+ * @param {(function():anychart.graphics.vector.Stroke)=} strokeFunction [// return stroke from the default palette.
  * function() {
  *   return anychart.color.darken(this.sourceColor);
- * };] or Stroke, or stroke-function, which should look like:<code>function() {
+ * };] Stroke-function, which should look like:<code>function() {
  *  //  this: {
  *  //  index : number  - the index of the current point
  *  //  sourceColor : anychart.graphics.vector.Stroke - stroke of the current point
@@ -239,10 +355,10 @@ anychart.charts.Pie.prototype.hoverStroke;
 anychart.charts.Pie.prototype.hoverStroke;
 
 /**
- * Setter for the pie slices stroke in the hover state.
+ * Setter for the pie stroke in the hover state.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.charts.Pie.hoverStroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value ["none"] Stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["none"] Stroke settings.
  * @param {number=} opt_thickness Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
@@ -258,16 +374,17 @@ anychart.charts.Pie.prototype.hoverStroke;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current hatch fill settings.
+ * Getter for the hatch fill settings.
  * @shortDescription Hatch fill settings.
  * @category Coloring
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hatch fill.
+ * @example anychart.charts.Pie.hatchFill_get
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The hatch fill.
  */
 anychart.charts.Pie.prototype.hatchFill;
 
 /**
- * Setter for hatch fill settings.
- * @example anychart.charts.Pie.hatchFill
+ * Setter for the hatch fill settings.
+ * @example anychart.charts.Pie.hatchFill_set
  * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
  * string|boolean)=} [null] opt_patternFillOrType PatternFill or HatchFill instance or type of hatch fill.
  * @param {string=} opt_color Color.
@@ -285,16 +402,17 @@ anychart.charts.Pie.prototype.hatchFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current hover hatch fill settings.
+ * Getter for the hover hatch fill settings.
  * @shortDescription Hatch fill settings in hover mode.
  * @category Coloring
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Current hover hatch fill.
+ * @example anychart.charts.Pie.hoverHatchFill_get
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The hover hatch fill.
  */
 anychart.charts.Pie.prototype.hoverHatchFill;
 
 /**
- * Setter for hover hatch fill settings.
- * @example anychart.charts.Pie.hoverHatchFill
+ * Setter for the hover hatch fill settings.
+ * @example anychart.charts.Pie.hoverHatchFill_set
  * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
  * string|boolean)=} opt_patternFillOrType PatternFill or HatchFill instance or type of hatch fill.
  * @param {string=} opt_color Color.
@@ -312,7 +430,7 @@ anychart.charts.Pie.prototype.hoverHatchFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for overlap mode for labels.
+ * Getter for the overlap mode for labels.
  * @shortDescription Overlap mode for labels.
  * @category Specific settings
  * @example anychart.charts.Pie.overlapMode_get
@@ -322,10 +440,9 @@ anychart.charts.Pie.prototype.overlapMode;
 
 
 /**
- * Setter for overlap mode for labels.
+ * Setter for the overlap mode for labels.
  * @detailed Defines show label if it don't fit to bounds slice or not show. ONLY for inside labels.
  * @example anychart.charts.Pie.overlapMode_set_asBool Disable/Enable overlap mode
- * @example anychart.charts.Pie.overlapMode_set_asEnum Using enum
  * @example anychart.charts.Pie.overlapMode_set_asString Using string
  * @param {(anychart.enums.LabelsOverlapMode|string|boolean)=} opt_value ["noOverlap"] Value to set.
  * @return {anychart.charts.Pie} Self instance for method chaining.
@@ -340,7 +457,7 @@ anychart.charts.Pie.prototype.overlapMode;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current pie labels.
+ * Getter for the pie labels.
  * @shortDescription Labels settings.
  * @category Point Elements
  * @detailed It is used to access to the current (default too) settings of the labels.
@@ -374,7 +491,7 @@ anychart.charts.Pie.prototype.labels;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for pie hover data labels.
+ * Getter for the hover data labels.
  * @shortDescription Labels settings in hover mode.
  * @category Point Elements
  * @example anychart.charts.Pie.hoverLabels_get
@@ -404,7 +521,7 @@ anychart.charts.Pie.prototype.hoverLabels;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for outside labels space settings.
+ * Getter for the outside labels space settings.
  * @shortDescription Outside labels space settings.
  * @category Specific settings
  * @example anychart.charts.Pie.outsideLabelsSpace_get
@@ -413,7 +530,7 @@ anychart.charts.Pie.prototype.hoverLabels;
 anychart.charts.Pie.prototype.outsideLabelsSpace;
 
 /**
- * Setter for outside labels space settings.<br/>
+ * Setter for the outside labels space settings.<br/>
  * <b>Note:</b> Works only with outside labels mode.
  * @example anychart.charts.Pie.outsideLabelsSpace_set
  * @param {(number|string)=} opt_value [30] Value to set.
@@ -429,11 +546,11 @@ anychart.charts.Pie.prototype.outsideLabelsSpace;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for inside labels offset settings.
+ * Getter for the inside labels offset settings.
  * @shortDescription Inside labels space settings.
  * @category Point Elements
  * @example anychart.charts.Pie.insideLabelsOffset_get
- * @return {number|string|null} Current inside labels offset.
+ * @return {number|string|null} The inside labels offset.
  */
 anychart.charts.Pie.prototype.insideLabelsOffset;
 
@@ -454,7 +571,7 @@ anychart.charts.Pie.prototype.insideLabelsOffset;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for outside labels connector length.
+ * Getter for the outside labels connector length.
  * @shortDescription Labels connector length.
  * @category Specific settings
  * @example anychart.charts.Pie.connectorLength_get
@@ -463,7 +580,7 @@ anychart.charts.Pie.prototype.insideLabelsOffset;
 anychart.charts.Pie.prototype.connectorLength;
 
 /**
- * Setter for outside labels connector length.<br/>
+ * Setter for the outside labels connector length.<br/>
  * <b>Note:</b> Works only with outside labels mode.
  * @example anychart.charts.Pie.connectorLength_set
  * @param {(number|string)=} opt_value [20] Value to set.
@@ -479,7 +596,7 @@ anychart.charts.Pie.prototype.connectorLength;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for outside labels connector critical angle settings.
+ * Getter for the outside labels connector critical angle settings.
  * @shortDescription Outside labels connector critical angle settings.
  * @category Specific settings
  * @example anychart.charts.Pie.outsideLabelsCriticalAngle_get
@@ -488,7 +605,7 @@ anychart.charts.Pie.prototype.connectorLength;
 anychart.charts.Pie.prototype.outsideLabelsCriticalAngle;
 
 /**
- * Setter for outside labels connector critical angle settings.<br/>
+ * Setter for the outside labels connector critical angle settings.<br/>
  * <b>Note:</b> Works only with outside labels mode.
  * @detailed Labels with the connector angle greater than critical are not displayed.
  * @example anychart.charts.Pie.outsideLabelsCriticalAngle_set
@@ -505,15 +622,16 @@ anychart.charts.Pie.prototype.outsideLabelsCriticalAngle;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for outside labels connectors stroke settings.
+ * Getter for the outside labels connectors stroke settings.
  * @shortDescription Labels connectors stroke settings.
  * @category Coloring
- * @return {anychart.graphics.vector.Stroke} Current stroke settings.
+ * @example anychart.charts.Pie.connectorStroke_get
+ * @return {anychart.graphics.vector.Stroke} The stroke settings.
  */
 anychart.charts.Pie.prototype.connectorStroke;
 
 /**
- * Setter for outside labels connectors stroke settings.
+ * Setter for the outside labels connectors stroke settings.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs} <br/>
  * <b>Note: </b> Works only with outside labels mode.
  * @example anychart.charts.Pie.connectorStroke_set
@@ -535,15 +653,17 @@ anychart.charts.Pie.prototype.connectorStroke;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets the last values set by grouping function or null.
+ * Getter for the last values set by grouping function or null.
  * @shortDescription Grouping of the points
  * @category Data
- * @return {(null|function(*):boolean)} Current grouping function.
+ * @listing See listing
+ * var groupPoints = chart.group();
+ * @return {(null|function(*):boolean)} The current grouping function.
  */
 anychart.charts.Pie.prototype.group;
 
 /**
- * Setter for points grouping function.
+ * Setter for the points grouping function.
  * @detailed Groups point and adds final point to the end.
  * Sets points grouping function depending on parameter type:
  * <ul>
@@ -566,7 +686,7 @@ anychart.charts.Pie.prototype.group;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current pie outer radius.
+ * Getter for the pie outer radius.
  * @shortDescription Pie outer radius
  * @category Size and Position
  * @example anychart.charts.Pie.radius_get
@@ -595,7 +715,7 @@ anychart.charts.Pie.prototype.radius;
  * @shortDescription Pie inner radius for Donut chart.
  * @category Size and Position
  * @example anychart.charts.Pie.innerRadius_get
- * @return {(string|number|function(number):number)} Current inner radius of a pie/donut chart.
+ * @return {(string|number|function(number):number)} The inner radius of a pie chart.
  */
 anychart.charts.Pie.prototype.innerRadius;
 
@@ -638,8 +758,8 @@ anychart.charts.Pie.prototype.getCenterPoint;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current pie pixel outer radius.<br/>
- * <b>Note:</b> Works only after {@link anychart.charts.Pie#draw} is called.
+ * Getter for the pie pixel outer radius.<br/>
+ * <b>Note:</b> Works only after {@link anychart.charts.Pie#draw} method is called.
  * @category Size and Position
  * @example anychart.charts.Pie.getPixelRadius
  * @return {number} Pixel value of the pie radius.
@@ -654,7 +774,7 @@ anychart.charts.Pie.prototype.getPixelRadius;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current pie pixel inner radius.
+ * Getter for the pie pixel inner radius.
  * <b>Note:</b> Works only after {@link anychart.charts.Pie#draw} is called.
  * @category Size and Position
  * @example anychart.charts.Pie.getPixelInnerRadius
@@ -670,16 +790,16 @@ anychart.charts.Pie.prototype.getPixelInnerRadius;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the angle from which the first slice is drawn clockwise.
+ * Getter for the angle of the first slice.
  * @shortDescription Start angle for the first slice.
  * @category Size and Position
  * @example anychart.charts.Pie.startAngle_get
- * @return {(string|number)} Current start angle.
+ * @return {(string|number)} The start angle.
  */
 anychart.charts.Pie.prototype.startAngle;
 
 /**
- * Setter for the angle from which the first slice is drawn clockwise.
+ * Setter for the angle of the first slice.
  * @example anychart.charts.Pie.startAngle_set
  * @param {(string|number)=} opt_value [0] Value of the start angle.
  * @return {anychart.charts.Pie} Self instance for method chaining.
@@ -694,7 +814,7 @@ anychart.charts.Pie.prototype.startAngle;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the value of pie slice exploding.
+ * Getter for the value of the exploded pie slice.
  * @shortDescription Pie slice exploding.
  * @category Interactivity
  * @example anychart.charts.Pie.explode_get
@@ -703,7 +823,7 @@ anychart.charts.Pie.prototype.startAngle;
 anychart.charts.Pie.prototype.explode;
 
 /**
- * Sets the value of exploding in pixels.<br/>
+ * Setter for the value of the exploded pie slice.<br/>
  * <b>Note:</b> Works only with exploded points mode.
  * @example anychart.charts.Pie.explode_set
  * @param {(string|number)=} opt_value [15] Value of the expansion/exploding.
@@ -729,6 +849,11 @@ anychart.charts.Pie.prototype.explode;
  */
 anychart.charts.Pie.prototype.explodeSlice;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Pie.prototype.explodeSlices
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Explodes all slices.
@@ -747,7 +872,7 @@ anychart.charts.Pie.prototype.explodeSlices;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current sort setting.
+ * Getter for the sorting setting.
  * @shortDescription Sort setting.
  * @category Data
  * @example anychart.charts.Pie.sort_get
@@ -756,7 +881,7 @@ anychart.charts.Pie.prototype.explodeSlices;
 anychart.charts.Pie.prototype.sort;
 
 /**
- * Setter for the sort setting.<br/>
+ * Setter for the sorting setting.<br/>
  * Ascending, Descending and No sorting is supported.
  * @example anychart.charts.Pie.sort_set
  * @param {(anychart.enums.Sort|string)=} opt_value ["none"] Value of the sort setting.
@@ -772,7 +897,7 @@ anychart.charts.Pie.prototype.sort;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for tooltip settings.
+ * Getter for the tooltip settings.
  * @shortDescription Tooltip settings.
  * @category Interactivity
  * @example anychart.charts.Pie.tooltip_get
@@ -781,7 +906,7 @@ anychart.charts.Pie.prototype.sort;
 anychart.charts.Pie.prototype.tooltip;
 
 /**
- * Setter for tooltip settings.
+ * Setter for the tooltip settings.
  * @detailed Sets chart data tooltip settings depending on parameter type:
  * <ul>
  *   <li><b>null/boolean</b> - disable or enable chart data tooltip.</li>
@@ -805,7 +930,7 @@ anychart.charts.Pie.prototype.tooltip;
  * Returns chart type.
  * @category Specific settings
  * @example anychart.charts.Pie.getType
- * @return {string} Current chart type.
+ * @return {string} Chart type.
  */
 anychart.charts.Pie.prototype.getType;
 
@@ -833,11 +958,12 @@ anychart.charts.Pie.prototype.unhover;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Sets the hover state on a slice by index.
+ * Setter for the hover state on a slice by index.
  * @category Interactivity
  * @detailed If index is passed, hovers a slice of the chart by its index, else doesn't hovers all slices of the chart.<br/>
  * <b>Note:</b> Works only after {@link anychart.charts.Pie#draw} is called.
- * @example anychart.charts.Pie.hover
+ * @example anychart.charts.Pie.hover_set_asIndex Hover slice by index
+ * @example anychart.charts.Pie.hover Hover all chart slices
  * @param {number=} opt_index Slice index.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
@@ -851,11 +977,11 @@ anychart.charts.Pie.prototype.hover;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current displaying of the label on hover event.
+ * Getter for the displaying of the label on hover event.
  * @shortDescription Displaying of the label on hover event.
  * @category Interactivity
  * @example anychart.charts.Pie.forceHoverLabels_get
- * @return {boolean} The current displaying flag.
+ * @return {boolean} The displaying flag.
  * @since 7.5.1
  */
 anychart.charts.Pie.prototype.forceHoverLabels;
@@ -869,6 +995,22 @@ anychart.charts.Pie.prototype.forceHoverLabels;
  * @since 7.5.1
  */
 anychart.charts.Pie.prototype.forceHoverLabels;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Pie.prototype.getPixelExplode
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the explode value.<br/>
+ * <b>Note:</b> Works only after {@link anychart.charts.Pie#draw} is called.
+ * @category Size and Position
+ * @example anychart.charts.Pie.getPixelExplode
+ * @return {number} Pixel explode value.
+ * @since 7.8.0
+ */
+anychart.charts.Pie.prototype.getPixelExplode;
 
 /** @inheritDoc */
 anychart.charts.Pie.prototype.legend;
@@ -1002,23 +1144,6 @@ anychart.charts.Pie.prototype.unlistenByKey;
 /** @inheritDoc */
 anychart.charts.Pie.prototype.removeAllListeners;
 
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.charts.Pie.prototype.getPixelExplode
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Getter for the current explode value.
- * <b>Note:</b> Works only after {@link anychart.charts.Pie#draw} is called.
- * @category Size and Position
- * @example anychart.charts.Pie.getPixelExplode
- * @return {number} Pixel explode value.
- * @since 7.8.0
- */
-anychart.charts.Pie.prototype.getPixelExplode;
-
 /** @inheritDoc */
 anychart.charts.Pie.prototype.getPoint;
 
@@ -1051,4 +1176,3 @@ anychart.charts.Pie.prototype.saveAsXlsx;
 
 /** @inheritDoc */
 anychart.charts.Pie.prototype.getStat;
-
