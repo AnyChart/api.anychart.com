@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content=""/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            var base = document.createElement("base");
+            base.href = "./../../";
+            document.head.appendChild(base);
+
+            stage = anychart.graphics.create("container");
+
+            // Use relative path to url.
+            anychart.graphics.useAbsoluteReferences(false);
+
+            var gradient = [
+                {
+                    offset: 0,
+                    color: "#F44336"
+                },
+                {
+                    offset: 0.5,
+                    color: "#4CAF50"
+                },
+                {
+                    offset: 1,
+                    color: "#2196F3"
+                }
+            ];
+
+            var rectangle = stage.rect(10, 10, 100, 100);
+            rectangle.fill(gradient);
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

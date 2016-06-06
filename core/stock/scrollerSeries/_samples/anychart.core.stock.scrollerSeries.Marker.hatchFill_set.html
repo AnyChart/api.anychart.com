@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="stock"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script src="http://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var dataTable = anychart.data.table();
+            dataTable.addData(get_dji_daily_short_data());
+
+            var mapping = dataTable.mapAs({value: 1});
+
+            chart = anychart.stock();
+            chart.padding(10, 10, 10, 50);
+            chart.grouping({minPixPerPoint: 5});
+            chart.scrollerGrouping({minPixPerPoint: 5});
+
+            var currentPlot = chart.plot();
+            currentPlot.line(mapping);
+
+            var chartScroller = chart.scroller();
+            chartScroller.height("50%");
+
+            var series = chartScroller.marker(mapping);
+            series.size(6);
+
+            // Set hatch fill.
+            series.hatchFill("horizontal", "#F44336", 1, 3);
+
+            chart.title("Set hatch fill. Move the scroller.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

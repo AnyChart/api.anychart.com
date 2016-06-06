@@ -1,0 +1,56 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="column"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.cartesian();
+
+            var series = chart.line([45, 35, 43, 46, 32, 40, 30]);
+
+            var firstLabel = chart.label();
+            firstLabel.text("Switch to the column series");
+            firstLabel.background({fill: "#9E9E9E"});
+            firstLabel.padding(5);
+            firstLabel.fontColor("#fff");
+            firstLabel.listen("click", function () {
+
+                // Switch the series type.
+                series.seriesType("column");
+            });
+
+            var secondLabel = chart.label(1);
+            secondLabel.text("Switch to the area series");
+            secondLabel.background({fill: "#9E9E9E"});
+            secondLabel.padding(5);
+            secondLabel.offsetY(30);
+            secondLabel.fontColor("#fff");
+            secondLabel.listen("click", function () {
+
+                // Switch the series type.
+                series.seriesType("area");
+            });
+
+            var thirdLabel = chart.label(2);
+            thirdLabel.text("Switch to the line series");
+            thirdLabel.background({fill: "#9E9E9E"});
+            thirdLabel.padding(5);
+            thirdLabel.offsetY(60);
+            thirdLabel.fontColor("#fff");
+            thirdLabel.listen("click", function () {
+
+                // Switch the series type.
+                series.seriesType("line");
+            });
+
+            chart.title("Switch the series type.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="column"/>
+    <script src="../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.column([32, 22, 27, 40, 120, 34, 37, 100, 22]);
+
+            var currentLabel = chart.label();
+            currentLabel.background({fill: "#FFE082", stroke: "#9E9E9E"});
+            currentLabel.text("Save chart");
+            currentLabel.padding(2);
+            currentLabel.listen("click", function() {
+                chart.saveAsJpg();
+            });
+
+            // Set filename.
+            anychart.exports.filename("Custom file name.");
+
+            chart.title("Set filename for exported file.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

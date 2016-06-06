@@ -1,9 +1,6 @@
 /**
- * Define Candlestick series type.<br/>
- * <b>Note:</b> Use {@link anychart.charts.Cartesian#candlestick} method to get this series.
- * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Data for the series.
- * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
- *    here as a hash map.
+ * Define Candlestick series type.
+ * @param {!anychart.core.stock.Scroller} scroller Scroller instance
  * @constructor
  * @extends {anychart.core.stock.scrollerSeries.OHLC}
  */
@@ -17,12 +14,13 @@ anychart.core.stock.scrollerSeries.Candlestick;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current rising hatch fill settings.
+ * Getter for the rising hatch fill settings.
  * @shortDescription Rising hatch fill settings.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.scrollerSeries.Candlestick.risingHatchFill_get
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The current rising hatch fill.
+ * @listing See listing
+ * var currentRisingHatchFill = series.risingHatchFill();
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The rising hatch fill.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.risingHatchFill;
 
@@ -42,47 +40,18 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.risingHatchFill;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverRisingHatchFill
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Getter for current rising hatch fill settings in hover mode.
- * @shortDescription Rising hatch fill settings in hover mode.
- * @category Coloring
- * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverRisingHatchFill_get
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The current rising hatch fill.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverRisingHatchFill;
-
-/**
- * Setter for rising hatch fill settings in hover mode.
- * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverRisingHatchFill_set
- * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
- * string)=} opt_patternFillOrType [null] PatternFill or HatchFill instance or type of hatch fill.
- * @param {string=} opt_color Color.
- * @param {number=} opt_thickness Thickness.
- * @param {number=} opt_size Pattern size.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverRisingHatchFill;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //  anychart.core.stock.scrollerSeries.Candlestick.prototype.fallingHatchFill
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current falling hatch fill settings.
+ * Getter for the falling hatch fill settings.
  * @shortDescription Falling hatch fill settings.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.scrollerSeries.Candlestick.fallingHatchFill_get
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The current falling hatch fill.
+ * @listing See listing
+ * var currentFallingHatchFill = series.fallingHatchFill();
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The falling hatch fill.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.fallingHatchFill;
 
@@ -102,52 +71,22 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.fallingHatchFill;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverFallingHatchFill
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Getter for current falling hatch fill settings in hover mode.
- * @shortDescription Falling hatch fill settings in hover mode.
- * @category Coloring
- * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverFallingHatchFill_get
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The current falling hatch fill.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverFallingHatchFill;
-
-/**
- * Setter for falling hatch fill settings in hover mode.
- * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverFallingHatchFill_set
- * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
- * string)=} opt_patternFillOrType [null] PatternFill or HatchFill instance or type of hatch fill.
- * @param {string=} opt_color Color.
- * @param {number=} opt_thickness Thickness.
- * @param {number=} opt_size Pattern size.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverFallingHatchFill;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //  anychart.core.stock.scrollerSeries.Candlestick.prototype.risingFill
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current series rising fill color.
+ * Getter for the series rising fill color.
  * @shortDescription Rising fill settings.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
  * @example anychart.core.stock.scrollerSeries.Candlestick.risingFill_get
- * @return {!anychart.graphics.vector.Fill} The current rising fill color.
+ * @return {!anychart.graphics.vector.Fill} The rising fill color.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.risingFill;
 
 /**
- * Sets rising fill settings using an object or a string.
+ * Setter for the rising fill settings using an object or a string.
  * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
  * @example anychart.core.stock.scrollerSeries.Candlestick.risingFill_set_asString Using string
  * @example anychart.core.stock.scrollerSeries.Candlestick.risingFill_set_asArray Using array
@@ -157,7 +96,7 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.risingFill;
 anychart.core.stock.scrollerSeries.Candlestick.prototype.risingFill;
 
 /**
- * Sets rising fill settings using function.
+ * Setter for the rising fill settings using function.
  * @example anychart.core.stock.scrollerSeries.Candlestick.risingFill_set_asFunc
  * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
@@ -205,7 +144,7 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.risingFill;
  * @param {number=} opt_opacity Opacity of the gradient.
  * @param {number=} opt_fx X ratio of focal point.
  * @param {number=} opt_fy Y ratio of focal point.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.risingFill;
 
@@ -214,98 +153,9 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.risingFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.stock.scrollerSeries.Candlestick.risingFill_set_asImg
  * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.risingFill;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverRisingFill
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Getter for current series rising fill color in hover mode.
- * @shortDescription Rising fill settings in hover mode.
- * @category Coloring
- * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverRisingFill_get
- * @return {!anychart.graphics.vector.Fill} The current rising fill color.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverRisingFill;
-
-/**
- * Sets rising fill settings in hover mode using an object or a string.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverRisingFill_set_asString Using string
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverRisingFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverRisingFill;
-
-/**
- * Sets rising fill settings in hover mode using function.
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverRisingFill_set_asFunc
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
- *  return anychart.color.darken(this.sourceColor);
- * }] Function that looks like <code>function(){
- *    // this.index - series index.
- *    // this.sourceColor - color returned by fill() getter.
- *    // this.iterator - series point iterator.
- *    return fillValue; // type anychart.graphics.vector.Fill
- * }</code>.
  * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverRisingFill;
-
-/**
- * Rising fill color in hover mode with opacity.
- * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
- * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverRisingFill_set_asOpacity
- * @param {string} color Color as a string.
- * @param {number=} opt_opacity Color opacity.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverRisingFill;
-
-/**
- * Linear gradient rising fill in hover mode.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverRisingFill_set_asLinear
- * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
- * @param {number=} opt_angle Gradient angle.
- * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
- * @param {number=} opt_opacity Gradient opacity.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverRisingFill;
-
-/**
- * Radial gradient rising fill in hover mode.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverRisingFill_set_asRadial
- * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
- * @param {number} cx X ratio of center radial gradient.
- * @param {number} cy Y ratio of center radial gradient.
- * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
- * @param {number=} opt_opacity Opacity of the gradient.
- * @param {number=} opt_fx X ratio of focal point.
- * @param {number=} opt_fy Y ratio of focal point.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverRisingFill;
-
-/**
- * Image rising fill in hover mode.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverRisingFill_set_asImg
- * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverRisingFill;
+anychart.core.stock.scrollerSeries.Candlestick.prototype.risingFill;
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -315,27 +165,27 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverRisingFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current falling series fill color.
+ * Getter for the falling series fill color.
  * @shortDescription Falling fill settings.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
  * @example anychart.core.stock.scrollerSeries.Candlestick.fallingFill_get
- * @return {!anychart.graphics.vector.Fill} The current falling fill color.
+ * @return {!anychart.graphics.vector.Fill|Function} The falling fill color.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.fallingFill;
 
 /**
- * Sets falling fill settings using an object or a string.
+ * Setter for the falling fill settings using an object or a string.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.stock.scrollerSeries.Candlestick.fallingFill_set_asString Using string
  * @example anychart.core.stock.scrollerSeries.Candlestick.fallingFill_set_asArray Using array
  * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.fallingFill;
 
 /**
- * Sets falling fill settings using function.
+ * Setter for the falling fill settings using function.
  * @example anychart.core.stock.scrollerSeries.Candlestick.fallingFill_set_asFunc
  * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
@@ -356,7 +206,7 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.fallingFill;
  * @example anychart.core.stock.scrollerSeries.Candlestick.fallingFill_set_asOpacity
  * @param {string} color Color as a string.
  * @param {number=} opt_opacity Color opacity.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.fallingFill;
 
@@ -368,7 +218,7 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.fallingFill;
  * @param {number=} opt_angle Gradient angle.
  * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
  * @param {number=} opt_opacity Gradient opacity.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.fallingFill;
 
@@ -383,92 +233,18 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.fallingFill;
  * @param {number=} opt_opacity Opacity of the gradient.
  * @param {number=} opt_fx X ratio of focal point.
  * @param {number=} opt_fy Y ratio of focal point.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.fallingFill;
+ anychart.core.stock.scrollerSeries.Candlestick.prototype.fallingFill;
 
 /**
  * Image falling fill.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.stock.scrollerSeries.Candlestick.fallingFill_set_asImg
  * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.fallingFill;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverFallingFill
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Getter for current series falling fill color in hover mode.
- * @shortDescription Falling fill settings in hover mode.
- * @category Coloring
- * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverFallingFill_get
- * @return {!anychart.graphics.vector.Fill} The current falling fill color.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverFallingFill;
-
-/**
- * Sets falling fill settings in hover mode using an object or a string.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverFallingFill_set_asString Using string
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverFallingFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverFallingFill;
-
-/**
- * Falling fill color in hover mode with opacity.
- * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
- * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverFallingFill_set_asOpacity
- * @param {string} color Color as a string.
- * @param {number=} opt_opacity Color opacity.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverFallingFill;
-
-/**
- * Linear gradient falling fill in hover mode.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverFallingFill_set_asLinear
- * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
- * @param {number=} opt_angle Gradient angle.
- * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
- * @param {number=} opt_opacity Gradient opacity.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverFallingFill;
-
-/**
- * Radial gradient falling fill in hover mode.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverFallingFill_set_asRadial
- * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
- * @param {number} cx X ratio of center radial gradient.
- * @param {number} cy Y ratio of center radial gradient.
- * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
- * @param {number=} opt_opacity Opacity of the gradient.
- * @param {number=} opt_fx X ratio of focal point.
- * @param {number=} opt_fy Y ratio of focal point.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverFallingFill;
-
-/**
- * Image falling fill in hover mode.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.stock.scrollerSeries.Candlestick.hoverFallingFill_set_asImg
- * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverFallingFill;
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -478,13 +254,13 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.hoverFallingFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current rising hatch fill settings in selected mode.
+ * Getter for rising hatch fill settings in selected mode.
  * @shortDescription Rising hatch fill settings in selected mode.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.scrollerSeries.Candlestick.selectRisingHatchFill_get
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|boolean} The current rising hatch fill.
- * @since 7.7.0
+ * @listing See listing
+ * var currentSelectRisingHatchFill = series.selectRisingHatchFill();
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|boolean} The rising hatch fill.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingHatchFill;
 
@@ -497,8 +273,7 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingHatchFill;
  * @param {string=} opt_color Color.
  * @param {number=} opt_thickness Thickness.
  * @param {number=} opt_size Pattern size.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- * @since 7.7.0
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingHatchFill;
 
@@ -510,13 +285,13 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingHatchFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current falling hatch fill settings in selected mode.
+ * Getter for falling hatch fill settings in selected mode.
  * @shortDescription Falling hatch fill settings in selected mode.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.scrollerSeries.Candlestick.selectFallingHatchFill_get
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The current falling hatch fill.
- * @since 7.7.0
+ * @listing See listing
+ * var currentSelectFallingHatchFill = series.selectFallingHatchFill();
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The falling hatch fill.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingHatchFill;
 
@@ -530,7 +305,6 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingHatchFill;
  * @param {number=} opt_thickness Thickness.
  * @param {number=} opt_size Pattern size.
  * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingHatchFill;
 
@@ -542,29 +316,27 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingHatchFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current series rising fill color in selected mode.
+ * Getter for the series rising fill color in selected mode.
  * @shortDescription Rising fill settings in selected mode.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
  * @example anychart.core.stock.scrollerSeries.Candlestick.selectRisingFill_get
- * @return {!anychart.graphics.vector.Fill} The current rising fill color.
- * @since 7.7.0
+ * @return {!anychart.graphics.vector.Fill} The rising fill color.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingFill;
 
 /**
- * Sets rising fill settings in selected mode using an array or a string.
+ * Setter for the rising fill settings in selected mode using an array or a string.
  * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
  * @example anychart.core.stock.scrollerSeries.Candlestick.selectRisingFill_set_asString Using string
  * @example anychart.core.stock.scrollerSeries.Candlestick.selectRisingFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- * @since 7.7.0
+ * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingFill;
 
 /**
- * Sets rising fill settings in selected mode using function.
+ * Setter for the rising fill settings in selected mode using a function.
  * @example anychart.core.stock.scrollerSeries.Candlestick.selectRisingFill_set_asFunc
  * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
@@ -575,7 +347,6 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingFill;
  *    return fillValue; // type anychart.graphics.vector.Fill
  * }</code>.
  * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingFill;
 
@@ -586,8 +357,7 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingFill;
  * @example anychart.core.stock.scrollerSeries.Candlestick.selectRisingFill_set_asOpacity
  * @param {string} color Color as a string.
  * @param {number=} opt_opacity Color opacity.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- * @since 7.7.0
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingFill;
 
@@ -599,8 +369,7 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingFill;
  * @param {number=} opt_angle Gradient angle.
  * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
  * @param {number=} opt_opacity Gradient opacity.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- * @since 7.7.0
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingFill;
 
@@ -615,8 +384,7 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingFill;
  * @param {number=} opt_opacity Opacity of the gradient.
  * @param {number=} opt_fx X ratio of focal point.
  * @param {number=} opt_fy Y ratio of focal point.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- * @since 7.7.0
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingFill;
 
@@ -625,8 +393,7 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.stock.scrollerSeries.Candlestick.selectRisingFill_set_asImg
  * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- * @since 7.7.0
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingFill;
 
@@ -638,29 +405,27 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectRisingFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current falling series fill color in selected mode.
+ * Getter for the falling series fill color in selected mode.
  * @shortDescription Falling fill settings in selected mode.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
  * @example anychart.core.stock.scrollerSeries.Candlestick.selectFallingFill_get
- * @return {!anychart.graphics.vector.Fill} The current falling fill color.
- * @since 7.7.0
+ * @return {!anychart.graphics.vector.Fill} The falling fill color.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingFill;
 
 /**
- * Sets falling fill settings in selected mode using an array or a string.
+ * Setter for the falling fill settings in selected mode using an array or a string.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.stock.scrollerSeries.Candlestick.selectFallingFill_set_asString Using string
  * @example anychart.core.stock.scrollerSeries.Candlestick.selectFallingFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- * @since 7.7.0
+ * @param {anychart.graphics.vector.Fill} value [null] Color as an array or a string.
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingFill;
 
 /**
- * Sets falling fill settings in selected mode using function.
+ * Setter for the falling fill settings in selected mode using function.
  * @example anychart.core.stock.scrollerSeries.Candlestick.selectFallingFill_set_asFunc
  * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
@@ -671,7 +436,6 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingFill;
  *    return fillValue; // type anychart.graphics.vector.Fill
  * }</code>.
  * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingFill;
 
@@ -682,8 +446,7 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingFill;
  * @example anychart.core.stock.scrollerSeries.Candlestick.selectFallingFill_set_asOpacity
  * @param {string} color Color as a string.
  * @param {number=} opt_opacity Color opacity.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- * @since 7.7.0
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingFill;
 
@@ -695,8 +458,7 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingFill;
  * @param {number=} opt_angle Gradient angle.
  * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
  * @param {number=} opt_opacity Gradient opacity.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- * @since 7.7.0
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingFill;
 
@@ -711,8 +473,7 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingFill;
  * @param {number=} opt_opacity Opacity of the gradient.
  * @param {number=} opt_fx X ratio of focal point.
  * @param {number=} opt_fy Y ratio of focal point.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- * @since 7.7.0
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingFill;
 
@@ -721,8 +482,7 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.stock.scrollerSeries.Candlestick.selectFallingFill_set_asImg
  * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
- * @return {anychart.core.stock.scrollerSeries.Base} Self instance for method chaining.
- * @since 7.7.0
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.selectFallingFill;
 
@@ -888,3 +648,5 @@ anychart.core.stock.scrollerSeries.Candlestick.prototype.getPixelPointWidth;
 /** @inheritDoc */
 anychart.core.stock.scrollerSeries.Candlestick.prototype.getPoint;
 
+/** @inheritDoc */
+anychart.core.stock.scrollerSeries.Candlestick.prototype.seriesType;

@@ -1,11 +1,8 @@
 /**
- * Define RangeArea series type.<br/>
- * <b>Note:</b> Use {@link anychart.charts.Cartesian#rangeArea} method to get this series.
- * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Data for the series.
- * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
- *    here as a hash map.
+ * Define RangeArea series type.
+ * @param {!anychart.core.stock.Scroller} scroller Scroller instance.
  * @constructor
- * @extends {anychart.core.stock.scrollerSeries.ContinuousRangeBase}
+ * @extends {anychart.core.stock.scrollerSeries.Base}
  */
 anychart.core.stock.scrollerSeries.RangeArea;
 
@@ -16,17 +13,17 @@ anychart.core.stock.scrollerSeries.RangeArea;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current high stroke settings.
+ * Getter for the high stroke settings.
  * @shortDescription High stroke settings.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
  * @example anychart.core.stock.scrollerSeries.RangeArea.highStroke_get
- * @return {anychart.graphics.vector.Stroke|Function} The current high stroke settings.
+ * @return {anychart.graphics.vector.Stroke|Function} The high stroke settings.
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.highStroke;
 
 /**
- * Setter for series high stroke by function.
+ * Setter for the series high stroke by function.
  * @example anychart.core.stock.scrollerSeries.RangeArea.highStroke_set_asFunc
  * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
@@ -56,67 +53,22 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.highStroke;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-// anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverHighStroke
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Getter for current high stroke settings in hover mode.
- * @shortDescription High stroke settings in hover mode.
- * @category Coloring
- * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverHighStroke_get
- * @return {anychart.graphics.vector.Stroke|Function} The current high stroke settings in hover mode.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverHighStroke;
-
-/**
- * Setter for series high stroke in hover mode by function.
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverHighStroke_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
- *  return anychart.color.darken(this.sourceColor);
- * }] Function that looks like <code>function(){
- *    // this.index - series index.
- *    // this.sourceColor - color returned by fill() getter.
- *    // this.iterator - series point iterator.
- *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
- * }</code>.
- * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverHighStroke;
-
-/**
- * Setter for series high stroke settings in hover mode.
- * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverHighStroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
- * @param {number=} opt_thickness [1] Line thickness.
- * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
- * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
- * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
- * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverHighStroke;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //  anychart.core.stock.scrollerSeries.RangeArea.prototype.lowStroke
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current low stroke settings.
+ * Getter for the low stroke settings.
  * @shortDescription Low stroke settings.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
  * @example anychart.core.stock.scrollerSeries.RangeArea.lowStroke_get
- * @return {anychart.graphics.vector.Stroke|Function} The current low stroke settings.
+ * @return {anychart.graphics.vector.Stroke|Function} The low stroke settings.
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.lowStroke;
 
 /**
- * Setter for series low stroke by function.
+ * Setter for the low stroke by function.
  * @example anychart.core.stock.scrollerSeries.RangeArea.lowStroke_set_asFunc
  * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
@@ -131,7 +83,7 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.lowStroke;
 anychart.core.stock.scrollerSeries.RangeArea.prototype.lowStroke;
 
 /**
- * Setter for low stroke settings.
+ * Setter for the low stroke settings.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.core.stock.scrollerSeries.RangeArea.lowStroke_set
  * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
@@ -146,62 +98,18 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.lowStroke;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverLowStroke
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Getter for current low stroke settings in hover mode.
- * @shortDescription Low stroke settings in hover mode.
- * @category Coloring
- * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverLowStroke_get
- * @return {anychart.graphics.vector.Stroke|Function} The current low stroke settings in hover mode.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverLowStroke;
-
-/**
- * Setter for series low stroke in hover mode by function.
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverLowStroke_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
- *  return anychart.color.darken(this.sourceColor);
- * }] Function that looks like <code>function(){
- *    // this.index - series index.
- *    // this.sourceColor - color returned by fill() getter.
- *    // this.iterator - series point iterator.
- *    return strokeValue; // type anychart.graphics.vector.ColoredFill or anychart.graphics.vector.Stroke
- * }</code>.
- * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverLowStroke;
-
-/**
- * Setter for low stroke settings in hover mode.
- * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverLowStroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
- * @param {number=} opt_thickness [1] Line thickness.
- * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
- * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
- * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
- * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverLowStroke;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //  anychart.core.stock.scrollerSeries.RangeArea.prototype.hatchFill
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current hatch fill settings.
+ * Getter for the hatch fill settings.
  * @shortDescription Hatch fill settings.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.scrollerSeries.RangeArea.hatchFill_get
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The current hatch fill.
+ * @listing See listing
+ * var currentHatchFill = series.hatchFill();
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The hatch fill.
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.hatchFill;
 
@@ -221,42 +129,12 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.hatchFill;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverHatchFill
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Getter for current hover hatch fill settings.
- * @shortDescription Hatch fill settings in hover mode.
- * @category Coloring
- * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverHatchFill_get
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The current hover hatch fill.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverHatchFill;
-
-/**
- * Setter for hover hatch fill settings.
- * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverHatchFill
- * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
- * string)=} opt_patternFillOrType PatternFill or HatchFill instance or type of hatch fill.
- * @param {string=} opt_color Color.
- * @param {number=} opt_thickness Thickness.
- * @param {number=} opt_size Pattern size.
- * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverHatchFill;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //  anychart.core.stock.scrollerSeries.RangeArea.prototype.fill
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current series fill color.
+ * Getter for the series fill color.
  * @shortDescription Fill settings.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
@@ -266,7 +144,7 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverHatchFill;
 anychart.core.stock.scrollerSeries.RangeArea.prototype.fill;
 
 /**
- * Sets fill settings using an object or a string.
+ * Setter for the fill settings using an object or a string.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.stock.scrollerSeries.RangeArea.fill_set_asString Using string
  * @example anychart.core.stock.scrollerSeries.RangeArea.fill_set_asArray Using array
@@ -276,7 +154,7 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.fill;
 anychart.core.stock.scrollerSeries.RangeArea.prototype.fill;
 
 /**
- * Sets fill settings using function.
+ * Setter for the fill settings using function.
  * @example anychart.core.stock.scrollerSeries.RangeArea.fill_set_asFunc
  * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
@@ -340,113 +218,22 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.fill;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverFill
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Getter for current series hover fill color.
- * @shortDescription Fill settings in hover mode.
- * @category Coloring
- * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverFill_get
- * @return {!anychart.graphics.vector.Fill} The current fill color in hover mode.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverFill;
-
-/**
- * Sets fill settings in hover mode using an object or a string.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverFill_set_asString Using string
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverFill_set_asArray Using array
- * chart.column([1, 4, 7, 1]).hoverFill(['green', 'yellow']);
- * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
- * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverFill;
-
-/**
- * Sets fill settings in hover mode using function.
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverFill_set_asFunc
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
- *  return anychart.color.darken(this.sourceColor);
- * }] Function that looks like <code>function(){
- *    // this.index - series index.
- *    // this.sourceColor - color returned by fill() getter.
- *    // this.iterator - series point iterator.
- *    return fillValue; // type anychart.graphics.vector.Fill
- * }</code>.
- * @return {anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverFill;
-
-/**
- * Fill color in hover mode with opacity.
- * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
- * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverFill_set_asOpacity
- * @param {string} color Color as a string.
- * @param {number=} opt_opacity Color opacity.
- * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverFill;
-
-/**
- * Linear gradient fill in hover mode.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverFill_set_asLinear
- * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
- * @param {number=} opt_angle Gradient angle.
- * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
- * @param {number=} opt_opacity Gradient opacity.
- * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverFill;
-
-/**
- * Radial gradient fill in hover mode.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverFill_set_asRadial
- * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
- * @param {number} cx X ratio of center radial gradient.
- * @param {number} cy Y ratio of center radial gradient.
- * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
- * @param {number=} opt_opacity Opacity of the gradient.
- * @param {number=} opt_fx X ratio of focal point.
- * @param {number=} opt_fy Y ratio of focal point.
- * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverFill;
-
-/**
- * Image fill in hover mode.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.stock.scrollerSeries.RangeArea.hoverFill_set_asImg
- * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
- * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- */
-anychart.core.stock.scrollerSeries.RangeArea.prototype.hoverFill;
-
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //  anychart.core.stock.scrollerSeries.RangeArea.prototype.selectHighStroke
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current high stroke settings in selected mode.
+ * Getter for the high stroke settings in selected mode.
  * @shortDescription High stroke settings in selected mode.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
  * @example anychart.core.stock.scrollerSeries.RangeArea.selectHighStroke_get
- * @return {anychart.graphics.vector.Stroke|Function} The current high stroke settings.
- * @since 7.7.0
+ * @return {anychart.graphics.vector.Stroke|Function} The high stroke settings.
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectHighStroke;
 
 /**
- * Setter for series high stroke in selected mode by function.
+ * Setter for the series high stroke in selected mode by function.
  * @example anychart.core.stock.scrollerSeries.RangeArea.selectHighStroke_set_asFunc
  * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
@@ -457,12 +244,11 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.selectHighStroke;
  *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
  * }</code>.
  * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectHighStroke;
 
 /**
- * Setter for series high stroke settings in selected mode.
+ * Setter for the series high stroke settings in selected mode.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.core.stock.scrollerSeries.RangeArea.selectHighStroke_set
  * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
@@ -471,7 +257,6 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.selectHighStroke;
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
  * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
  * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectHighStroke;
 
@@ -483,18 +268,17 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.selectHighStroke;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current low stroke settings in selected mode.
+ * Getter for the low stroke settings in selected mode.
  * @shortDescription Low stroke settings in selected mode.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
  * @example anychart.core.stock.scrollerSeries.RangeArea.selectLowStroke_get
  * @return {anychart.graphics.vector.Stroke|Function} The current low stroke settings.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectLowStroke;
 
 /**
- * Setter for series low stroke in selected mode by function.
+ * Setter for the low stroke in selected mode by function.
  * @example anychart.core.stock.scrollerSeries.RangeArea.selectLowStroke_set_asFunc
  * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
@@ -505,12 +289,11 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.selectLowStroke;
  *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
  * }</code>.
  * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectLowStroke;
 
 /**
- * Setter for low stroke settings in selected mode.
+ * Setter for the low stroke settings in selected mode.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.core.stock.scrollerSeries.RangeArea.selectLowStroke_set
  * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
@@ -519,7 +302,6 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.selectLowStroke;
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
  * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
  * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectLowStroke;
 
@@ -531,13 +313,13 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.selectLowStroke;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current hatch fill settings in selected mode.
+ * Getter for the hatch fill settings in selected mode.
  * @shortDescription Hatch fill settings in selected mode.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.scrollerSeries.RangeArea.selectHatchFill_get
+ * @listing See listing
+ * var currentSelectHatchFill = series.selectHatchFill();
  * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The current hatch fill.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectHatchFill;
 
@@ -551,7 +333,6 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.selectHatchFill;
  * @param {number=} opt_thickness Thickness.
  * @param {number=} opt_size Pattern size.
  * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectHatchFill;
 
@@ -563,29 +344,27 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.selectHatchFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current series fill color in selected mode.
+ * Getter for the series fill color in selected mode.
  * @shortDescription Fill settings in selected mode.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
  * @example anychart.core.stock.scrollerSeries.RangeArea.selectFill_get
- * @return {!anychart.graphics.vector.Fill} The current fill color.
- * @since 7.7.0
+ * @return {!anychart.graphics.vector.Fill} The fill color.
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectFill;
 
 /**
- * Sets fill settings in selected mode using an array or a string.
+ * Setter for the fill settings in selected mode using an array or a string.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.stock.scrollerSeries.RangeArea.selectFill_set_asString Using string
  * @example anychart.core.stock.scrollerSeries.RangeArea.selectFill_set_asArray Using array
  * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
  * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectFill;
 
 /**
- * Sets fill settings in selected mode using function.
+ * Setter for the fill settings in selected mode using function.
  * @example anychart.core.stock.scrollerSeries.RangeArea.selectFill_set_asFunc
  * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
@@ -596,7 +375,6 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.selectFill;
  *    return fillValue; // type anychart.graphics.vector.Fill
  * }</code>.
  * @return {anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectFill;
 
@@ -608,7 +386,6 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.selectFill;
  * @param {string} color Color as a string.
  * @param {number=} opt_opacity Color opacity.
  * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectFill;
 
@@ -621,7 +398,6 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.selectFill;
  * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
  * @param {number=} opt_opacity Gradient opacity.
  * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectFill;
 
@@ -637,7 +413,6 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.selectFill;
  * @param {number=} opt_fx X ratio of focal point.
  * @param {number=} opt_fy Y ratio of focal point.
  * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectFill;
 
@@ -647,7 +422,6 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.selectFill;
  * @example anychart.core.stock.scrollerSeries.RangeArea.selectFill_set_asImg
  * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
  * @return {!anychart.core.stock.scrollerSeries.RangeArea} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.selectFill;
 
@@ -795,5 +569,5 @@ anychart.core.stock.scrollerSeries.RangeArea.prototype.getPixelPointWidth;
 /** @inheritDoc */
 anychart.core.stock.scrollerSeries.RangeArea.prototype.getPoint;
 
-
-
+/** @inheritDoc */
+anychart.core.stock.scrollerSeries.RangeArea.prototype.seriesType;

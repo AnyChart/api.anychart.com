@@ -1,0 +1,86 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="stock"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script src="http://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            var dataTable = anychart.data.table();
+            dataTable.addData(get_dji_daily_short_data());
+
+            var mapping = dataTable.mapAs({value: 1});
+
+            chart = anychart.stock();
+            chart.padding(10, 10, 10, 50);
+            chart.grouping({minPixPerPoint: 10});
+            chart.scrollerGrouping({minPixPerPoint: 10});
+            chart.bounds(200, 0, "100%", "100%");
+
+            var currentPlot = chart.plot();
+            currentPlot.line(mapping);
+
+            var chartScroller = chart.scroller();
+            chartScroller.height("20%");
+
+            var series = chartScroller.area(mapping);
+
+            chart.title("Switch the series type.");
+            chart.container(stage);
+            chart.draw();
+
+            var firstLabel = anychart.ui.label();
+            firstLabel.background({fill: "#9E9E9E"});
+            firstLabel.text("Switch to the column series");
+            firstLabel.fontColor("#fff");
+            firstLabel.padding(5);
+            firstLabel.offsetX(5);
+            firstLabel.listen("click", function() {
+
+                // Switch the series type.
+                series.seriesType("column");
+
+            });
+            firstLabel.container(stage);
+            firstLabel.draw();
+
+            var secondLabel = anychart.ui.label();
+            secondLabel.background({fill: "#9E9E9E"});
+            secondLabel.text("Switch to the line series");
+            secondLabel.fontColor("#fff");
+            secondLabel.padding(5);
+            secondLabel.offsetX(5);
+            secondLabel.offsetY(30);
+            secondLabel.listen("click", function() {
+
+                // Switch the series type.
+                series.seriesType("line");
+
+            });
+            secondLabel.container(stage);
+            secondLabel.draw();
+
+            var thirdLabel = anychart.ui.label();
+            thirdLabel.background({fill: "#9E9E9E"});
+            thirdLabel.text("Switch to the area series");
+            thirdLabel.fontColor("#fff");
+            thirdLabel.padding(5);
+            thirdLabel.offsetX(5);
+            thirdLabel.offsetY(60);
+            thirdLabel.listen("click", function() {
+
+                // Switch the series type.
+                series.seriesType("area");
+
+            });
+            thirdLabel.container(stage);
+            thirdLabel.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

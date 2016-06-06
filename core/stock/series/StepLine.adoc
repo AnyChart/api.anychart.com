@@ -1,11 +1,9 @@
 /**
- * Define StepLine series type.<br/>
- * <b>Note:</b> Use {@link anychart.charts.Cartesian#stepLine} method to get this series.
- * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Data for the series.
- * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
- *    here as a hash map.
+ * Define StepLine series type.
+ * @param {!anychart.charts.Stock} chart Stock chart instance.
+ * @param {!anychart.core.stock.Plot} plot Plot instance.
  * @constructor
- * @extends {anychart.core.stock.series.ContinuousBase}
+ * @extends {anychart.core.stock.series.Base}
  */
 anychart.core.stock.series.StepLine;
 
@@ -17,12 +15,12 @@ anychart.core.stock.series.StepLine;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current stroke settings.
+ * Getter for the stroke settings.
  * @shortDescription Stroke settings.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
  * @example anychart.core.stock.series.StepLine.stroke_get
- * @return {!anychart.graphics.vector.Stroke} The current stroke settings.
+ * @return {!anychart.graphics.vector.Stroke} The stroke settings.
  */
 anychart.core.stock.series.StepLine.prototype.stroke;
 
@@ -62,12 +60,12 @@ anychart.core.stock.series.StepLine.prototype.stroke;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current stroke settings in hover mode.
+ * Getter for the stroke settings in hover mode.
  * @shortDescription Stroke settings in hover mode.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
  * @example anychart.core.stock.series.StepLine.hoverStroke_get
- * @return {!anychart.graphics.vector.Stroke} The current stroke settings.
+ * @return {!anychart.graphics.vector.Stroke} The stroke settings.
  */
 anychart.core.stock.series.StepLine.prototype.hoverStroke;
 
@@ -111,15 +109,12 @@ anychart.core.stock.series.StepLine.prototype.hoverStroke;
  * @shortDescription Stroke settings in selected mode.
  * @category Coloring
  * @detailed This method can be used as getter only if you have set its value.
- * @example anychart.core.stock.series.StepLine.selectStroke_get
  * @return {!anychart.graphics.vector.Stroke} The current stroke settings.
- * @since 7.7.0
  */
 anychart.core.stock.series.StepLine.prototype.selectStroke;
 
 /**
  * Setter for series stroke in selected mode by function.
- * @example anychart.core.stock.series.StepLine.selectStroke_set_asFunc
  * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
@@ -129,21 +124,18 @@ anychart.core.stock.series.StepLine.prototype.selectStroke;
  *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
  * }</code>.
  * @return {!anychart.core.stock.series.StepLine} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.series.StepLine.prototype.selectStroke;
 
 /**
  * Setter for stroke settings in selected mode.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
- * @example anychart.core.stock.series.StepLine.selectStroke_set
  * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
  * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
  * @return {!anychart.core.stock.series.StepLine} Self instance for method chaining.
- * @since 7.7.0
  */
 anychart.core.stock.series.StepLine.prototype.selectStroke;
 
@@ -291,4 +283,5 @@ anychart.core.stock.series.StepLine.prototype.getPixelPointWidth;
 /** @inheritDoc */
 anychart.core.stock.series.StepLine.prototype.getPoint;
 
-
+/** @inheritDoc */
+anychart.core.stock.series.StepLine.prototype.seriesType;

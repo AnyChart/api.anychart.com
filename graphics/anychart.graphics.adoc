@@ -278,3 +278,42 @@ anychart.graphics.patternFill;
  */
 anychart.graphics.clip;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.useAbsoluteReferences
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Whether to use absolute path to svg defs.
+ * @detailed Specify useAbsoluteReferences() method before the using of all drawing functions.
+ * If you specify useAbsoluteReferences() method after all the drawing functions that use updateReferences() method.<br/>
+ * Possible values:
+ * <ul>
+ *   <li><b>true</b> - uses absolute paths. For example: url(http://anychart.com/chart.html?query=param##ac_clip_1).</li>
+ *   <li><b>false</b> - uses relative paths. For example: url(##ac_clip_1).</li>
+ *   <li><b>null</b> - auto detects paths (uses absolute paths, if  <base> tag is exists).</li>
+ * </ul>
+ * @example anychart.graphics.useAbsoluteReferences
+ * @param {?boolean=} opt_value Value to set.
+ * @return {boolean|undefined} Value.
+ * @since 7.10.0
+ */
+anychart.graphics.useAbsoluteReferences;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.updateReferences
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Update all paths to svg defs.
+ * @detailed Use updateReferences() method if you specify useAbsoluteReferences() method after the all drawn elements
+ * and after tag base. Also use to work with a dynamic URL change. Example, window.history.push. This method doesn't let to disappear reference after URL change.
+ * Affected: "fill", "stroke", "clip-path".
+ * @example anychart.graphics.updateReferences
+ * @since 7.10.0
+ */
+anychart.graphics.updateReferences = function(){};
+
