@@ -8,57 +8,41 @@
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
 
-            var dataSet = anychart.data.set([
-                {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
-                {id: "AU.VI", value: 23, title: "Victoria"},
-                {id: "AU.WA", value: 86, title: "Western Australia"},
-                {id: "AU.QL", value: 16, title: "Queensland"},
-                {id: "AU.NS", value: 32, title: "New South Wales"},
-                {id: "AU.NT", value: 64, title: "Northern Territory"},
-                {id: "AU.TS", value: 28, title: "Tasmania"},
-                {id: "AU.SA", value: 45, title: "South Australian"}
-            ]);
-
-            var dataSetForSeries = dataSet.mapAs({id: "id"});
-
             var australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
-            australiaMap.choropleth(dataSetForSeries);
+            australiaMap.unboundRegions({fill: "#64b5f6"});
             australiaMap.geoIdField("code_hasc");
             australiaMap.title("Zoom map.");
             australiaMap.container(stage);
             australiaMap.draw();
 
-            var zoomLabel = anychart.ui.label();
-            zoomLabel.background({fill: "#9E9E9E"});
-            zoomLabel.text("2x Zoom.");
-            zoomLabel.fontColor("#fff");
-            zoomLabel.parentBounds(0, 0, 100, 100);
-            zoomLabel.padding(5);
-            zoomLabel.listen("click", function() {
+            createLabel("2x Zoom", 0, function() {
 
-                // Zoom map in 2 times.
+                // Zoom map 2 times from the current.
+                // Calling ot several times.
+                // Increases zoom by a factor.
                 australiaMap.zoom(2);
-
             });
-            zoomLabel.container(stage);
-            zoomLabel.draw();
 
-            var zoomToLabel = anychart.ui.label();
-            zoomToLabel.background({fill: "#9E9E9E"});
-            zoomToLabel.text("1x Zoom.");
-            zoomToLabel.fontColor("#fff");
-            zoomToLabel.parentBounds(0, 30, 100, 100);
-            zoomToLabel.padding(5);
-            zoomToLabel.listen("click", function() {
+            createLabel("1x Zoom", 30, function() {
 
-                // ZoomTo map.
-                australiaMap.zoomTo(1);
-
+                // Set 1.2x Zoom Level.
+                // Calling it several times does not change zoom level.
+                australiaMap.zoomTo(1.2);
             });
-            zoomToLabel.container(stage);
-            zoomToLabel.draw();
         });
+
+        function createLabel(text, offset, action){
+            var label = anychart.ui.label();
+            label.text(text);
+            label.parentBounds(0, offset, 100, 100);
+            label.listen("click", action);
+            label.background({fill: "#9E9E9E"});
+            label.fontColor("#fff");
+            label.padding(5);
+            label.container(stage);
+            label.draw();
+        }
     </script>
 </head>
 <body>
