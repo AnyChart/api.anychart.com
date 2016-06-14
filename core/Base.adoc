@@ -109,7 +109,15 @@ anychart.SignalEvent.prototype.targetNeedsRecalculation;
  * @category Events
  * @example anychart.core.Base.listen
  * @param {string} type The event type id.
- * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener Callback method.
+ * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener
+ * Callback method. Function that looks like <code>function(event){
+ *    // event.actualTarget - actual event target
+ *    // event.currentTarget - current event target
+ *    // event.iterator - event iterator
+ *    // event.originalEvent - original event
+ *    // event.point - event point
+ *    // event.pointIndex - event point index
+ * }</code>.
  * @param {boolean=} opt_useCapture Whether to fire in capture phase (defaults to false).
  * @param {scope=} opt_listenerScope Object in whose scope to call the listener.
  * @return {{key: number}} Unique key for the listener.
