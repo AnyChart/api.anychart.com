@@ -6,7 +6,13 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar([100, 12, 1, 44, 14, 95]);
-            chart.yScale("log"); //set scale
+
+            var logScale = anychart.scales.log();
+
+            // Set Y-scale.
+            chart.yScale(logScale);
+
+            chart.title("Set chart yScale.");
             chart.container("container");
             chart.draw();
         });

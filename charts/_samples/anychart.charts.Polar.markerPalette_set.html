@@ -8,19 +8,18 @@
             chart = anychart.polar();
 
             var lightBlueSeries = chart.line([6, 1, 6, 1, 6, 1]);
-            lightBlueSeries.markers(true);
+            lightBlueSeries.markers({size: 10});
 
             var blueSeries = chart.line([2, 8, 2, 8, 2, 8]);
-            blueSeries.markers(true);
+            blueSeries.markers({size: 8});
 
             var orangeSeries = chart.line([10, 15, 10, 15, 10, 15]);
-            orangeSeries.markers(true);
+            orangeSeries.markers({size: 8});
 
-            // Get markers palette.
-            var getMarkerPalette = chart.markerPalette();
-            getMarkerPalette.markerAt(1, "cross");
+            // Set markers palette.
+            chart.markerPalette(["diamond", "star5", "triangleUp"]);
 
-            chart.title("Get and use marker palette.");
+            chart.title("Set marker palette.");
             chart.container("container");
             chart.draw();
         });

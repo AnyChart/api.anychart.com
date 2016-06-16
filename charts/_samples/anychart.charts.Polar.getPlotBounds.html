@@ -1,18 +1,26 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="polar"/>
+    <meta name="x-cat-tags" content="polar line"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
-            chart = anychart.polar();
+            stage = anychart.graphics.create("container");
+
+            var chart = anychart.polar();
             chart.line([6, 1, 6, 1, 6, 1]);
-            chart.container("container");
+            chart.title("Get and use plot bounds object.");
+            chart.container(stage);
             chart.draw();
 
             // Gets plot bounds.
             var bounds = chart.getPlotBounds();
-            chart.title("Plot bounds is " + bounds);
+
+            var customBackground = anychart.ui.background();
+            customBackground.fill("#BDBDBD 0.2");
+            customBackground.parentBounds(bounds);
+            customBackground.container(stage);
+            customBackground.draw();
         });
     </script>
 </head>

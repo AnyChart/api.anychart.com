@@ -13,10 +13,13 @@
             chart.defaultSeriesType("line");
             chart.addSeries(firstData, secondData, thirdData);
 
-            // Gets the series count.
-            var count = chart.getSeriesCount();
+            // Get series count in loop.
+            for (var i = 0; i < chart.getSeriesCount(); i++) {
+                chart.getSeriesAt(i).name((i + 1)  + " Series");
+            }
 
-            chart.title("The series count is " + count);
+            chart.legend(true);
+            chart.title("Get and use series count.");
             chart.container("container");
             chart.draw();
         });
