@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="actualBug anyMap"/>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            $.ajax({
+                type: "GET",
+
+                // Specify link to an SVG file.
+                url: "http://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.svg",
+                success: function (data) {
+                    chart = anychart.map();
+
+                    // Set data as an SVG.
+                    chart.geoData(data);
+
+                    chart.choropleth([
+                        {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
+                        {id: "AU.VI", value: 23, title: "Victoria"},
+                        {id: "AU.WA", value: 86, title: "Western Australia"},
+                        {id: "AU.QL", value: 16, title: "Queensland"},
+                        {id: "AU.NS", value: 32, title: "New South Wales"},
+                        {id: "AU.NT", value: 64, title: "Northern Territory"},
+                        {id: "AU.TS", value: 28, title: "Tasmania"},
+                        {id: "AU.SA", value: 45, title: "South Australian"}
+                    ]);
+
+                    chart.title("Set data as an SVG element.");
+                    chart.container("container");
+                    chart.draw();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
