@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="sparkline anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="">
+        anychart.onDocumentReady(function() {
+            var a = 0;
+
+            var stage = anychart.graphics.create("container");
+
+            var chart = anychart.sparkline([15.5, 16.6]);
+
+            stage.listenOnce('stagerendered', function(){
+                var isAsync = (a == 10);
+                alert(isAsync);
+            });
+
+            chart.container(stage);
+            chart.draw(true);
+
+            // In async mode your code will be executed before chart draw.
+            a = 10;
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
