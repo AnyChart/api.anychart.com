@@ -1,0 +1,48 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="chartEditor anyChart"/>
+    <script src="../../../anychart.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.anychart.com/fonts/2.0.0/anychart.css">
+    <link rel="stylesheet" href="http://cdn.anychart.com/css/latest/anychart-ui.css">
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            // To change the way how chart editor looks you need to change CSS.
+            // By default CSS from AnyChart CDN is used: http://cdn.anychart.com/css/latest/anychart-ui.css
+            // Download it, alter, upload to your server and link from your pages to change the look.
+
+            var data = [
+                ['Powder', 11861, 10919, 8034, 18012],
+                ['Mascara', 11261, 10419, 6134, 18712],
+                ['Lip gloss', 22998, 12043, 4572, 4008],
+                ['Foundation', 10342, 10119, 5231, 13701],
+                ['Eyeliner', 12321, 15067, 3417, 5432],
+                ['Eyeshadows', 12998, 12043, 4572, 3308],
+                ['Pomade', 8814, 9054, 4376, 9256]
+            ];
+
+            var editor = anychart.ui.chartEditorDialog();
+            editor.data(data);
+
+            // Renders the chart editor into container.
+            editor.decorate(document.getElementById("container"));
+
+            editor.visible(true);
+
+            editor.listen("complete", function(){
+                var code = editor.getResultCode();
+                if (code) {
+                    var constructorFunc = eval(code);
+                    chart = constructorFunc(data);
+                    chart.title("Renders the chart editor.");
+                    chart.container("container");
+                    chart.draw();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
