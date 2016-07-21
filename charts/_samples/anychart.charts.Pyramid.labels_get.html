@@ -3,7 +3,7 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="pyramid anyChart"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
+    <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.pyramid([
                 {x: "Physical", value: 125},
@@ -14,10 +14,14 @@
                 {x: "Presentation", value: 125},
                 {x: "Application", value: 290, label: {anchor: "centerTop"}}
             ]);
-            var labels = chart.labels(); // get labels
+
+            // Get labels.
+            var labels = chart.labels();
             labels.fontSize(10);
             labels.position("inside");
             labels.fontWeight("bold");
+
+            chart.title("Get and modify label.");
             chart.container("container");
             chart.draw();
         });

@@ -3,7 +3,7 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="pyramid anyChart"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
+    <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.pyramid([
                 {x: "Physical", value: 125},
@@ -14,9 +14,14 @@
                 {x: "Presentation", value: 125},
                 {x: "Application", value: 290, label: {anchor: "centerTop"}}
             ]);
+
             chart.labels({position: "inside"});
             chart.hatchFill(true);
-            chart.hatchFillPalette(["divot", "grid", "vertical", "horizontal", "confetti", "diagonalCross", "zigZag"]); // sets hatch fill palette
+
+            // Set hatch fill palette.
+            chart.hatchFillPalette(["divot", "grid", "vertical", "horizontal", "confetti", "diagonalCross", "zigZag"]);
+
+            chart.title("Set hatch fill parameter.");
             chart.container("container");
             chart.draw();
         });

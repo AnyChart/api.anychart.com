@@ -1,9 +1,9 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="pyramid anyChart"/>
+    <meta name="x-cat-tags" content="pyramid"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
+    <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.pyramid([
                 {x: "Physical", value: 125},
@@ -15,7 +15,12 @@
                 {x: "Application", value: 290, label: {anchor: "centerTop"}}
             ]);
             chart.labels({position: "inside"});
-            chart.pointsPadding(20); // sets padding
+            chart.stroke("#E3F2FD");
+
+            // Set color fill.
+            chart.fill(["#90caf9", "#ffcc80"]);
+
+            chart.title("Set fill parameter as an array.");
             chart.container("container");
             chart.draw();
         });

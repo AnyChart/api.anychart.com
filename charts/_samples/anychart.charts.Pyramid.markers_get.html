@@ -12,13 +12,17 @@
                 {x: "Transport", value: 125},
                 {x: "Session", value: 125},
                 {x: "Presentation", value: 125},
-                {x: "Application", value: 290, label: {anchor: "centerTop"}}
+                {x: "Application", value: 290}
             ]);
             chart = anychart.pyramid(dataSet);
-            var markers = chart.markers(); // get markers
-            markers.enabled(true);
-            markers.size(10);
-            chart.labels({position: "inside"});
+
+            // Get markers.
+            var currentMarkers = chart.markers();
+            currentMarkers.enabled(true);
+            currentMarkers.size(10);
+
+            chart.labels(false);
+            chart.title("Get and modify chart markers object.");
             chart.container("container");
             chart.draw();
         });

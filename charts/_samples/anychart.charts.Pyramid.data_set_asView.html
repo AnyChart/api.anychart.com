@@ -14,13 +14,20 @@
                 {x: "Presentation", value: 121},
                 {x: "Application", value: 290, label: {anchor: "centerTop"}}
             ]);
+
             chart = anychart.pyramid();
+
             var view = dataSet.mapAs();
+
             var filteredView = view.filter("value", function(value) {
                 return value >= 122;
             });
-            chart.data(filteredView); // sets data
+
+            // Set data.
+            chart.data(filteredView);
+
             chart.labels({position: "inside"});
+            chart.title("Set data using data view.");
             chart.container("container");
             chart.draw();
         });

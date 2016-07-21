@@ -1,22 +1,26 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="pyramid anyChart"/>
+    <meta name="x-cat-tags" content="pyramid"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var dataSet = anychart.data.set([
+            chart = anychart.pyramid([
                 {x: "Physical", value: 125},
                 {x: "Data Link", value: 125},
                 {x: "Network", value: 125},
                 {x: "Transport", value: 125},
                 {x: "Session", value: 125},
                 {x: "Presentation", value: 125},
-                {x: "Application", value: 290}
+                {x: "Application", value: 290, label: {anchor: "centerTop"}}
             ]);
-            chart = anychart.pyramid(dataSet);
-            // Sets hatch fill in selected state.
-            chart.selectHatchFill("diagonalBrick", "#424242", 0.5, 25);
+            chart.labels({position: "inside"});
+            chart.stroke("#E3F2FD");
+
+            // Set hover fill.
+            chart.hoverFill("#90caf9");
+
+            chart.title("Set hover fill parameter as a string.");
             chart.container("container");
             chart.draw();
         });

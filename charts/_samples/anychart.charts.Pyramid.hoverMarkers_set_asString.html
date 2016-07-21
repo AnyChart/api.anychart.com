@@ -12,11 +12,16 @@
                 {x: "Transport", value: 125},
                 {x: "Session", value: 125},
                 {x: "Presentation", value: 125},
-                {x: "Application", value: 290, label: {anchor: "centerTop"}}
+                {x: "Application", value: 290}
             ]);
             chart = anychart.pyramid(dataSet);
-            chart.markers("star5"); // sets type of the markers in the hover state
-            chart.labels({position: "inside"});
+            chart.markers(true);
+
+            // Set markers type in the hover state.
+            chart.hoverMarkers("star5");
+
+            chart.labels(false);
+            chart.title("Set chart hoverMarkers parameter as string.");
             chart.container("container");
             chart.draw();
         });

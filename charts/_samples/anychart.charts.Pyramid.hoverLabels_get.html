@@ -3,7 +3,7 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="pyramid anyChart"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
+    <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.pyramid([
                 {x: "Physical", value: 125},
@@ -15,10 +15,14 @@
                 {x: "Application", value: 290, label: {anchor: "centerTop"}}
             ]);
             chart.labels({position: "inside"});
-            var hoverLabels = chart.hoverLabels();  // get labels in the hover state
+
+            // Get hover labels.
+            var hoverLabels = chart.hoverLabels();
             hoverLabels.fontSize(15);
             hoverLabels.fontWeight("bold");
             hoverLabels.fontColor("#757575");
+
+            chart.title("Get and use hovelLabels.");
             chart.container("container");
             chart.draw();
         });

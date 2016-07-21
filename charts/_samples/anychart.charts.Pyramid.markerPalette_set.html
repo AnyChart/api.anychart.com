@@ -3,7 +3,7 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="pyramid anyChart"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
+    <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.pyramid([
                 {x: "Physical", value: 125},
@@ -14,9 +14,15 @@
                 {x: "Presentation", value: 125},
                 {x: "Application", value: 290, label: {anchor: "centerTop"}}
             ]);
+
             chart.markers(true);
-            chart.labels({position: "inside"});
-            chart.markerPalette(["diamond", "star4", "star7", "diagonalCross", "trapezium", "pentagon"]); // sets marker palette
+            chart.labels(false);
+            chart.markers({position: "leftTop", size: 10});
+
+            // Set marker palette.
+            chart.markerPalette(["diamond", "star4", "star7", "diagonalCross", "trapezium", "pentagon"]);
+
+            chart.title("Set marker palette.");
             chart.container("container");
             chart.draw();
         });
