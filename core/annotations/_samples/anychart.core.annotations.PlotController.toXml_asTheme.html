@@ -1,0 +1,50 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="line annotations anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function () {
+            stage = anychart.graphics.create("container");
+
+            var lineChart = anychart.line([6, 10, 18, 11, 9]);
+            lineChart.yScale().minimum(0);
+            lineChart.bounds(0, 20, "50%", "100%");
+
+            var controller = lineChart.annotations();
+            controller.line({
+                xAnchor: 1,
+                valueAnchor: 11,
+                secondXAnchor: 3,
+                secondValueAnchor: 12,
+                stroke: "2 #F44336"
+            });
+
+            lineChart.container(stage);
+            lineChart.draw();
+
+
+            var columnChart = anychart.column([6, 10, 18, 11, 9]);
+            columnChart.yScale().minimum(0);
+            columnChart.bounds("50%", 20, "50%", "100%");
+
+            // Return plot annotation in XML string with theme settings.
+            var xml = controller.toXml(false, true);
+
+            var annotation = columnChart.annotations();
+            annotation.fromXml(xml);
+
+            columnChart.container(stage);
+            columnChart.draw();
+
+            var customTitle = anychart.ui.title();
+            customTitle.text("Return plot annotation in XML object with theme settings.");
+            customTitle.container(stage);
+            customTitle.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

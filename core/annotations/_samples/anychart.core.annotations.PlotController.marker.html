@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="line annotations anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.line([6, 10, 18, 11, 9]);
+            chart.yScale().minimum(0);
+
+            var controller = chart.annotations();
+
+            // Create marker annotation.
+            controller.marker({
+                xAnchor: 2,
+                valueAnchor: 18,
+                stroke: "2 #F44336"
+            });
+
+            chart.title("Create marker annotation.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

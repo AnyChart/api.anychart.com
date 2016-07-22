@@ -1,0 +1,61 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="annotations anyStock"/>
+    <script src="../../../anychart.min.js"></script>
+    <script src="http://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var dataTable = anychart.data.table();
+            dataTable.addData(get_dji_daily_short_data());
+
+            var mapping = dataTable.mapAs({value: 1});
+
+            chart = anychart.stock();
+            chart.padding(10, 10, 10, 50);
+
+            var firstPlot = chart.plot(0);
+            firstPlot.line(mapping);
+            firstPlot.annotations([{
+                type: "rectangle",
+                xAnchor: 1107129600000,
+                valueAnchor: 9000,
+                secondXAnchor: 1131408000000,
+                secondValueAnchor: 12000,
+                fill: "#4CAF50 0.5",
+                stroke: "3 #FF9800"
+            }]);
+
+            var secondPlot = chart.plot(1);
+            secondPlot.area(mapping);
+            secondPlot.annotations([{
+                type: "ellipse",
+                xAnchor: 1167782400000,
+                valueAnchor: 11000,
+                secondXAnchor: 1199232000000,
+                secondValueAnchor: 14500,
+                fill: "#4CAF50 0.5",
+                stroke: "3 #FF9800"
+            }]);
+
+            chart.container("container");
+            chart.draw();
+
+            var selectAnnotation = firstPlot.annotations();
+
+            var annotation = chart.annotations();
+            annotation.select(selectAnnotation.getAnnotationAt(0));
+
+            // Get selected annotation.
+            var selectedAnnotation = annotation.getSelectedAnnotation();
+
+            var type = selectedAnnotation.getType();
+
+            chart.title("Get selected annotation and get type - " + type + ".");
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

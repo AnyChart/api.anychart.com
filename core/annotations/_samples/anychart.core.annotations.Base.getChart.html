@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="line annotations anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.line([6, 10, 18, 11, 9]);
+            chart.yScale().minimum(0);
+            chart.xScale("linear");
+            chart.annotations([{
+                type: "ellipse",
+                xAnchor: 1.9,
+                valueAnchor: 17,
+                secondXAnchor: 2.1,
+                secondValueAnchor: 19,
+                fill: "#673AB7 0.5",
+                stroke: "3 #FF9800"
+            }]);
+
+            var currentAnnotation = chart.annotations().getAnnotationAt(0);
+
+            // Get annotation chart.
+            var currentChart = currentAnnotation.getChart();
+
+            currentChart.title("Get annotation chart and set title.");
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

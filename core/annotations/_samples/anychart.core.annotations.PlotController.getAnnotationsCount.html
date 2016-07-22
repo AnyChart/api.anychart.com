@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="line annotations anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.line([6, 10, 18, 11, 9]);
+            chart.yScale().minimum(0);
+            chart.xScale("linear");
+
+            chart.annotations([{
+                type: "ellipse",
+                xAnchor: 1.9,
+                valueAnchor: 17,
+                secondXAnchor: 2.1,
+                secondValueAnchor: 19,
+                fill: "#4CAF50 0.5",
+                stroke: "3 #FF9800"
+            }, {
+                type: "triangle",
+                xAnchor: 2.9,
+                valueAnchor: 10.5,
+                secondXAnchor: 3.1,
+                secondValueAnchor: 10.5,
+                thirdXAnchor: 3,
+                thirdValueAnchor: 12,
+                fill: "#80deea 0.5",
+                stroke: "3 #FFD54F"
+            }]);
+
+            var controller = chart.annotations();
+
+            // Get annotations count.
+            var count = controller.getAnnotationsCount();
+
+            chart.label(0, {text: "Annotations count is " + count + ".", offsetX: "40%", offsetY: "40%"})
+            chart.title("Get annotations count.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
