@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="linearGauge anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.gauges.linear();
+            chart.data([
+                {value: 15, browser: "Opera"},
+                {value: 20, browser: "Firefox"},
+                {value: 25, browser: "Safari"},
+                {value: 30, browser: "Chrome"}
+            ]);
+
+            var barPointer = chart.bar(2);
+
+            var currentLabel = barPointer.label();
+            currentLabel.enabled(true);
+            currentLabel.offsetY(-20);
+            currentLabel.textFormatter(function() {
+
+                // Get data value.
+                return this.getDataValue("browser")
+            });
+
+            chart.title("Get and use data value.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

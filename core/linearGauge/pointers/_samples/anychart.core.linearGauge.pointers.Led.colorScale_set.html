@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="linearGauge anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+
+            var customColorScale = anychart.scales.ordinalColor();
+            customColorScale.ranges([
+                {less: 10},
+                {from: 10, to: 15},
+                {greater: 15}
+            ]);
+            customColorScale.colors(["#F44336", "#2196F3", "#4CAF50"]);
+
+            var ledPointer = chart.led(0);
+
+            // Set color scale.
+            ledPointer.colorScale(customColorScale);
+
+            chart.title("Set color scale.");
+            chart.axis({offset: "-10%"});
+            chart.scale().minimum(0);
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

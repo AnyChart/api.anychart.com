@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="linearGauge anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.gauges.linear();
+
+            // Get scale bar.
+            var customScaleBar = chart.scaleBar();
+            customScaleBar.from(0);
+            customScaleBar.to(0.8);
+            customScaleBar.points([
+                {height: 0.50, left: 0, right: 1}
+            ]);
+
+            chart.title("Get and modify scale bar.");
+            chart.axis(0, {offset: "-10%"});
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

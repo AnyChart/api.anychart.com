@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="linearGauge anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+            var pointer = chart.bar(4);
+            pointer.id("fifthBar");
+            chart.bar(3);
+            chart.bar(2);
+            chart.bar(1);
+            chart.bar(0);
+
+            // Get pointer by id.
+            var fifthPointer = chart.getPointer("fifthBar");
+            fifthPointer.hatchFill(true);
+
+            chart.title("Get and modify pointer.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="linearGauge anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+
+            var currentScaleBar = chart.scaleBar();
+            currentScaleBar.from(0);
+            currentScaleBar.to(1);
+
+            // Set fill.
+            currentScaleBar.fill({
+                src: "http://static.anychart.com/images/underwater.jpg",
+                mode: "stretch",
+                opacity: 0.5
+            });
+
+            chart.title("Set fill parameter as an image.");
+            chart.axis({offset: "-10%"});
+            chart.scale().minimum(0);
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

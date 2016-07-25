@@ -1,0 +1,710 @@
+/**
+ * Linear gauge class.<br/>
+ * <b>Note:</b> Use {@link anychart.gauges#linear} method to get an instance of this class.
+ * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Value to set.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @extends {anychart.core.SeparateChart}
+ * @constructor
+ */
+anychart.charts.LinearGauge;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.defaultPointerType
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the linear gauge pointer type by default.
+ * @shortDescription Default pointer type.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.defaultPointerType_get
+ * @return {(anychart.enums.LinearGaugePointerType|string)} Default pointer type.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.defaultPointerType;
+
+/**
+ * Setter for the linear gauge pointer type by default.
+ * @example anychart.charts.LinearGauge.defaultPointerType_set
+ * @param {(string|anychart.enums.LinearGaugePointerType)=} opt_value Default pointer type.
+ * @return {anychart.charts.LinearGauge} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.defaultPointerType;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.globalOffset
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the global offset of a linear gauge.
+ * @shortDescription Linear gauge global offset.
+ * @category Size and Position
+ * @example anychart.charts.LinearGauge.globalOffset_get
+ * @return {string|number} Global offset.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.globalOffset;
+
+/**
+ * Setter for the global offset of a linear gauge.
+ * @example anychart.charts.LinearGauge.globalOffset_set
+ * @param {(string|number)=} opt_value ["0%"] Value to set.
+ * @return {anychart.charts.LinearGauge} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.globalOffset;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.layout
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the gauge layout.
+ * @shortDescription Layout settings.
+ * @category Size and Position
+ * @example anychart.charts.LinearGauge.layout_get
+ * @return {(anychart.enums.Layout|string)} Gauge layout.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.layout;
+
+/**
+ * Setter for the gauge layout.
+ * @example anychart.charts.LinearGauge.layout_set
+ * @param {(string|anychart.enums.Layout)=} opt_value ["vertical"] Layout of gauge.
+ * @return {anychart.charts.LinearGauge} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.layout;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.markerPalette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the gauge markers palette settings.
+ * @shortDescription Markers palette settings.
+ * @category Chart Coloring
+ * @example anychart.charts.LinearGauge.markerPalette_get
+ * @return {anychart.palettes.Markers} Chart markers palette.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.markerPalette;
+
+/**
+ * Setter for the gauge markers palette settings.
+ * @example anychart.charts.LinearGauge.markerPalette_set
+ * @param {(anychart.palettes.Markers|Object|Array.<anychart.enums.MarkerType>)=} opt_value Chart marker palette settings to set.
+ * @return {anychart.charts.LinearGauge} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.markerPalette;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.palette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the gauge palette.
+ * @shortDescription Palette settings.
+ * @category Chart Coloring
+ * @example anychart.charts.LinearGauge.palette_get
+ * @return {!(anychart.palettes.RangeColors|anychart.palettes.DistinctColors)} Gauge palette.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.palette;
+
+/**
+ * Setter for the gauge palette.
+ * @example anychart.charts.LinearGauge.palette_set_asArray Using array of colors.
+ * @example anychart.charts.LinearGauge.palette_set_asFromTheme Using palette from theme
+ * @param {(anychart.palettes.RangeColors|anychart.palettes.DistinctColors|Object|Array.<string>)=} opt_value Gauge palette settings to set.
+ * @return {anychart.charts.LinearGauge} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.palette;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.hatchFillPalette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the gauge hatch fill palette settings.
+ * @shortDescription Hatch fill palette settings.
+ * @category Chart Coloring
+ * @example anychart.charts.LinearGauge.hatchFillPalette_get
+ * @return {!(anychart.palettes.HatchFills)} The gauge hatch fill palette.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.hatchFillPalette;
+
+/**
+ * Setter for the gauge hatch fill palette settings.
+ * @example anychart.charts.LinearGauge.hatchFillPalette_set
+ * @param {(Array.<acgraph.vector.HatchFill.HatchFillType>|Object|anychart.palettes.HatchFills)=} opt_value Gauge
+ * hatch fill palette settings to set.
+ * @return {!(|anychart.charts.LinearGauge)} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.hatchFillPalette;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.isVertical
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Whether a linear gauge has the vertical layout.<br/>
+ * Layout is defined by {@link anychart.charts.LinearGauge#layout} method.
+ * @category Size and Position
+ * @example anychart.charts.LinearGauge.isVertical
+ * @return {boolean} Returns true if the gauge's layout is vertical.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.isVertical;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.addPointer
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds pointers to the gauge.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.addPointer
+ * @param {...(number)} var_args Data indexes for pointers.
+ * @return {Array.<anychart.core.linearGauge.pointers.Base>} Array of created pointers.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.addPointer;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.removePointer
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes pointer by id.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.removePointer
+ * @param {number|string} id Id of the pointer.
+ * @return {anychart.charts.LinearGauge} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.removePointer;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.removePointerAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes pointer by index.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.removePointerAt
+ * @param {number} index Pointer index.
+ * @return {anychart.charts.LinearGauge} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.removePointerAt;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.removeAllPointers
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes all pointers from gauge.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.removeAllPointers
+ * @category Specific settings
+ * @return {anychart.charts.LinearGauge} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.removeAllPointers;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.getPointer
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns pointer by id.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.getPointer
+ * @param {number|string} id Id of the pointer.
+ * @return {?anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.getPointer;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.getPointerAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns pointer by index.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.getPointerAt
+ * @param {number} index Pointer index.
+ * @return {?anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.getPointerAt;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.getPointersCount
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns pointers count.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.getPointersCount
+ * @return {number} Number of pointers.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.getPointersCount;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.data
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the pointers mapping.
+ * @shortDescription Data settings.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.data_get
+ * @return {anychart.data.View} The pointers mapping.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.data;
+
+/**
+ * Setter for the pointers mapping.
+ * @example anychart.charts.LinearGauge.data_set_asArray Using array
+ * @example anychart.charts.LinearGauge.data_set_asArrayofArray Using array of arrays
+ * @example anychart.charts.LinearGauge.data_set_asArrayofObject Using array of objects
+ * @example anychart.charts.LinearGauge.data_set_asCSV Using CSV
+ * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.charts.LinearGauge} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.data;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.axis
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the gauge axis.
+ * @shortDescription Axis settings.
+ * @category Axes and Scales
+ * @example anychart.charts.LinearGauge.axis_get
+ * @param {number=} opt_index Chart axis settings to set. If not set - creates a new instance and adds it to the end of the array.
+ * @return {anychart.core.axes.LinearGauge} Axis instance by index.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.axis;
+
+/**
+ * Setter for the gauge axis.
+ * @detailed All elements (including the axis) on the linear gauge are located in the center.
+ * You can change the axis position usingg {@link anychart.core.axes.LinearGauge#offset} method.<br/>
+ * You can use multiple axes for a gauge.<br/>
+ * Sets gauge axis settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable gauge axis.</li>
+ *   <li><b>object</b> - sets gauge axis settings.</li>
+ * </ul>
+ * @example anychart.charts.LinearGauge.axis_set_asBool Disable/Enable axis
+ * @example anychart.charts.LinearGauge.axis_set_asObj Using object
+ * @param {(Object|boolean|null)=} opt_value Gauge axis settings to set.
+ * @return {anychart.charts.LinearGauge} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.axis;
+
+/**
+ * Setter for the chart axis by index.
+ * @detailed Sets gauge axis settings by index depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable the gauge axis  by index.</li>
+ *   <li><b>object</b> - sets gauge axis settings  by index.</li>
+ * </ul>
+ * @example anychart.charts.LinearGauge.axis_set_asIndexBool Disable/Enable axis by index
+ * @example anychart.charts.LinearGauge.axis_set_asIndexObj Using object
+ * @param {number=} opt_index Gauge axis index to set.
+ * @param {(Object|boolean|null)=} opt_value Gauge axis settings to set.
+ * @return {anychart.charts.LinearGauge} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.axis;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.scale
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the gauge scale.
+ * @shortDescription Scale settings.
+ * @category Axes and Scales
+ * @example anychart.charts.LinearGauge.scale_get
+ * @return {anychart.scales.Base} The gauge scale.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.scale;
+
+/**
+ * Setter for the gauge scale.
+ * @example anychart.charts.LinearGauge.scale_set
+ * @param {(anychart.enums.ScaleTypes|string|anychart.scales.Base)=} opt_value Scale to set.
+ * @return {anychart.charts.LinearGauge} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.scale;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.scaleBar
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the scale bar.
+ * @shortDescription Scale bar settings.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.scaleBar_get
+ * @param {number=} opt_index Index.
+ * @return {anychart.core.linearGauge.ScaleBar} Scale bar instance by index.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.scaleBar;
+
+/**
+ * Setter for the scale bar.
+ * @detailed Sets scale bar settings by index depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable the scale bar.</li>
+ *   <li><b>object</b> - sets scale bar settings.</li>
+ * </ul>
+ * @example anychart.charts.LinearGauge.scaleBar_set_asBool Disable/Enable scale bar
+ * @example anychart.charts.LinearGauge.scaleBar_set_asObj Using object
+ * @param {(Object|boolean|null)=} opt_value Chart scale bar settings to set.
+ * @return {anychart.charts.LinearGauge} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.scaleBar;
+
+
+/**
+ * Setter for the scale bar by index.
+ * @detailed Sets scale bar settings by index depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable a scale bar by index.</li>
+ *   <li><b>object</b> - sets scale bar settings by index.</li>
+ * </ul>
+ * @example anychart.charts.LinearGauge.scaleBar_set_asIndexBool Disable/Enable a scale bar
+ * @example anychart.charts.LinearGauge.scaleBar_set_asIndexObj Using object
+ * @param {(number)=} opt_index Index to set.
+ * @param {(Object|boolean|null)=} opt_value Chart scale bar settings to set.
+ * @return {anychart.charts.LinearGauge} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.scaleBar;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.bar
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds Bar pointer.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.bar
+ * @param {number} dataIndex Pointer data index.
+ * @return {anychart.core.linearGauge.pointers.Bar} Bar pointer.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.bar;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.led
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds Led pointer.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.led
+ * @param {number} dataIndex Pointer data index.
+ * @return {anychart.core.linearGauge.pointers.Led} An instance of class for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.led;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.marker
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds Marker pointer.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.marker
+ * @param {number} dataIndex Pointer data index.
+ * @return {anychart.core.linearGauge.pointers.Marker} An instance of class for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.marker;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.rangeBar
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds Range bar pointer.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.rangeBar
+ * @param {number} dataIndex Pointer data index.
+ * @return {anychart.core.linearGauge.pointers.RangeBar} An instance of class for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.rangeBar;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.tank
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds Tank pointer.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.tank
+ * @param {number} dataIndex Pointer data index.
+ * @return {anychart.core.linearGauge.pointers.Tank} An instance of class for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.tank;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.LinearGauge.prototype.thermometer
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds Thermometer pointer.
+ * @category Specific settings
+ * @example anychart.charts.LinearGauge.thermometer
+ * @param {number} dataIndex Pointer data index.
+ * @return {anychart.core.linearGauge.pointers.Thermometer} An instance of class for method chaining.
+ * @since 7.11.0
+ */
+anychart.charts.LinearGauge.prototype.thermometer;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.getType;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.legend;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.credits;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.margin;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.padding;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.background;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.title;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.label;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.animation;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.draw;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.toJson;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.toXml;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.interactivity;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.bounds;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.left;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.right;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.top;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.bottom;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.width;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.height;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.minWidth;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.minHeight;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.maxWidth;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.maxHeight;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.getPixelBounds;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.container;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.zIndex;
+
+/**
+ * @inheritDoc
+ * @ignoreDoc
+ */
+anychart.charts.LinearGauge.prototype.enabled;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.saveAsPng;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.saveAsJpg;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.saveAsPdf;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.saveAsSvg;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.toSvg;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.print;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.saveAsPNG;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.saveAsJPG;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.saveAsPDF;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.saveAsSVG;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.toSVG;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.listen;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.listenOnce;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.unlisten;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.unlistenByKey;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.removeAllListeners;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.getPoint;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.localToGlobal;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.globalToLocal;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.contextMenu;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.getSelectedPoints;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.toCsv;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.saveAsXml;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.saveAsJson;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.saveAsCsv;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.saveAsXlsx;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.getStat;
+
+/** @inheritDoc */
+anychart.charts.LinearGauge.prototype.draw;
+

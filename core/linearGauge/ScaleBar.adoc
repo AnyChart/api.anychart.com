@@ -1,0 +1,324 @@
+/**
+ * Base class for ScaleBar.
+ * @param {anychart.charts.LinearGauge} gauge Gauge.
+ * @extends {anychart.core.VisualBase}
+ * @constructor
+ */
+anychart.core.linearGauge.ScaleBar;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.ScaleBar.ControlPoint
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Control point type definition.
+ * @typedef {Object} anychart.core.linearGauge.ScaleBar.ControlPoint
+ * @property {number} height Scale bar height ratio (from 0 to 1).
+ * @property {number} left Scale bar left ratio (from 0 to 1).
+ * @property {number} right Scale bar right ratio (from 0 to 1).
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.ControlPoint;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.ScaleBar.prototype.from
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the starting range value.
+ * @shortDescription Starting range value.
+ * @category Size and Position
+ * @example anychart.core.linearGauge.ScaleBar.from_get
+ * @return {string|number} from or self for chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.from;
+
+/**
+ * Setter for the starting range value.
+ * @detailed If set as string value will be treated as percent ("55%") or as "min" or "max".
+ * If set as an integer will be treated as value of scale. But will not extend scale.
+ * @example anychart.core.linearGauge.ScaleBar.from_set
+ * @param {(string|number)=} opt_value Value to set. In case of string it can be "max" or "min". In case of number - ratio (from 0 to 1).
+ * @return {anychart.core.linearGauge.ScaleBar} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.from;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.ScaleBar.prototype.to
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+/**
+ * Getter for the ending range value.
+ * @shortDescription Ending range value.
+ * @category Size and Position
+ * @example anychart.core.linearGauge.ScaleBar.to_get
+ * @return {string|number} to or self for chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.to;
+
+/**
+ * Setter for the ending range value.
+ * @detailed If set as string value will be treated as percent ("55%") or as "min" or "max".
+ * If set as an integer will be treated as value of scale. But will not extend scale.
+ * @example anychart.core.linearGauge.ScaleBar.to_set
+ * @param {(string|number)=} opt_value Value to set. In case of string it can be 'max' or 'min'. In case of number - ratio (from 0 to 1).
+ * @return {anychart.core.linearGauge.ScaleBar} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.to;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.ScaleBar.prototype.scale
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the scale bar scale.
+ * @shortDescription Scale settings.
+ * @category Axes and Scales
+ * @listing See listing
+ * var currentScaleBar = chart.scaleBar();
+ * var currentScale = currentScaleBar.scale();
+ * @return {anychart.scales.Base} Scale bar scale.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.scale;
+
+/**
+ * Setter for the scale bar scale.
+ * @example anychart.core.linearGauge.ScaleBar.scale_set
+ * @param {anychart.scales.Base=} opt_value Scale.
+ * @return {anychart.scales.Base} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.scale;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.ScaleBar.prototype.colorScale
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the color scale.
+ * @shortDescription Color scale settings.
+ * @category Axes and Scales
+ * @listing See listing
+ * var currentScaleBar = chart.scaleBar();
+ * var currentColorScale = scaleBar.colorScale();
+ * @return {anychart.scales.LinearColor|anychart.scales.OrdinalColor} The color scale.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.colorScale;
+
+/**
+ * Setter for the color scale.
+ * @example anychart.core.linearGauge.ScaleBar.colorScale_set
+ * @param {(anychart.scales.LinearColor|anychart.scales.OrdinalColor)=} opt_value Сolor scale.
+ * @return {anychart.core.linearGauge.ScaleBar} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.colorScale;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.ScaleBar.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the scale bar fill color.
+ * @shortDescription Fill settings.
+ * @category Coloring
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.linearGauge.ScaleBar.fill_get
+ * @return {!anychart.graphics.vector.Fill} The fill color.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.fill;
+
+/**
+ * Setter for the fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.linearGauge.ScaleBar.fill_set_asString Using string
+ * @example anychart.core.linearGauge.ScaleBar.fill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @return {anychart.core.linearGauge.ScaleBar} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.fill;
+
+/**
+ * Fill color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.linearGauge.ScaleBar.fill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.linearGauge.ScaleBar} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.fill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.linearGauge.ScaleBar.fill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.linearGauge.ScaleBar} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.fill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.linearGauge.ScaleBar.fill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.linearGauge.ScaleBar} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.fill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.linearGauge.ScaleBar.fill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.linearGauge.ScaleBar} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.fill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.ScaleBar.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the stroke settings.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @detailed This method can be used as getter only if you have set its value.
+ * @example anychart.core.linearGauge.ScaleBar.stroke_get
+ * @return {!anychart.graphics.vector.Stroke} The current stroke settings.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.stroke;
+
+/**
+ * Setter for the stroke settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @detailed If you first set the {@link anychart.core.linearGauge.ScaleBar#fill} or
+ * {@link anychart.core.linearGauge.ScaleBar#stroke} color and then a {@link anychart.core.linearGauge.ScaleBar#colorScale},
+  * the priority will be given to the color set by {@link anychart.core.linearGauge.ScaleBar#fill} or {@link anychart.core.linearGauge.ScaleBar#stroke}.
+ * @example anychart.core.linearGauge.ScaleBar.stroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.linearGauge.ScaleBar} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.stroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.ScaleBar.prototype.points
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+/**
+ * Getter for the points.
+ * @shortDescription Points settings.
+ * @category Size and Position
+ * @listing See listing.
+ * var currentScaleBar = chart.scaleBar();
+ * var currentPoints = currentScaleBar.points();
+ * @return {Array.<anychart.core.linearGauge.ScaleBar.ControlPoint>} The points.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.points;
+
+/**
+ * Setter for the points.
+ * @example anychart.core.linearGauge.ScaleBar.points_set
+ * @param {Array.<anychart.core.linearGauge.ScaleBar.ControlPoint>=} opt_value points.
+ * @return {anychart.core.linearGauge.ScaleBar} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.points;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.ScaleBar.prototype.width
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the scale bar width.
+ * @shortDescription Width settings.
+ * @category Size and Position
+ * @example anychart.core.linearGauge.ScaleBar.width_get
+ * @return {string} Scale bar width.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.width;
+
+/**
+ * Setter for the scale bar width.
+ * @example anychart.core.linearGauge.ScaleBar.width_set
+ * @param {string=} opt_value ["10%"] Width in pixel or percent.
+ * @return {string|anychart.core.linearGauge.ScaleBar} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.width;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.ScaleBar.prototype.offset
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the scale bar offset.
+ * @shortDescription Offset settings.
+ * @category Size and Position
+ * @example anychart.core.linearGauge.ScaleBar.offset_get
+ * @return {string} The scale bar offset.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.offset;
+
+/**
+ * Setter for the scale bar offset.
+ * @example anychart.core.linearGauge.ScaleBar.offset_set
+ * @param {string=} opt_value ["0%"] Offset value in percent.
+ * @return {anychart.core.linearGauge.ScaleBar} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.linearGauge.ScaleBar.prototype.offset;
+

@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="linearGauge anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+            chart.thermometer(2);
+
+            var currentScaleBar = chart.scaleBar();
+            currentScaleBar.from(0.5);
+            currentScaleBar.to(1);
+            currentScaleBar.fill("#E0E0E0");
+
+            // Get starting range.
+            var startingRange = currentScaleBar.from();
+
+            chart.title("Starting range is " + startingRange + ".");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

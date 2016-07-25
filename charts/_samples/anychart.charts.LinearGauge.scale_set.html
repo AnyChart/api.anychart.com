@@ -1,0 +1,26 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="linearGauge anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.gauges.linear([0.05, 1, 10, 150, 100000]);
+            chart.addPointer(4, 3, 2, 1, 0);
+            chart.axis(0, {offset: "-10%"});
+
+            var logScale = anychart.scales.log();
+
+            // Set scale.
+            chart.scale(logScale);
+
+            chart.title("Set scale as an instance.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

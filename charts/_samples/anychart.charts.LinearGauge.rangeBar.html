@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="linearGauge anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var rawData = [
+                [3, 7],
+                [1, 4],
+                [1, 8],
+                [6, 7],
+                [6, 3],
+                [6, 7]
+            ];
+
+            var dataSet = anychart.data.set(rawData);
+
+            var data = dataSet.mapAs({'low': [0], 'high': [1], 'value': [1]});
+
+            chart = anychart.gauges.linear(data);
+
+            // Add range bar pointer.
+            chart.rangeBar(0);
+
+            chart.title("Add Range Bar pointer to a gauge.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
