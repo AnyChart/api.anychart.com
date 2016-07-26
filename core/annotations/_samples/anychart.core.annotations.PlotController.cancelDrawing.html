@@ -11,14 +11,18 @@
 
             var controller = chart.annotations();
 
-            chart.title("Cancel annotation drawing. Use mouse to try to paint drawing annotation.");
+            chart.title("Start drawing an annotation and click here to cancel drawing.");
+
             chart.container("container");
             chart.draw();
 
             controller.startDrawing({type: "rectangle", fill: "#4CAF50 0.4"});
 
-            // Cancel annotation drawing.
-            controller.cancelDrawing();
+            var currentTitle = chart.title();
+            currentTitle.listen("click", function() {
+                // Cancel annotation drawing.
+                controller.cancelDrawing();
+            });
         });
     </script>
 </head>

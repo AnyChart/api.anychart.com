@@ -5,7 +5,7 @@
     <script src="../../../anychart.min.js"></script>
     <script src="http://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             var dataTable = anychart.data.table();
             dataTable.addData(get_dji_daily_short_data());
 
@@ -19,14 +19,17 @@
 
             var triangleAnnotations = chart.annotations();
 
-            chart.title("Cancel annotation drawing. Use mouse to try to paint drawing annotation.");
+            chart.title("Start drawing an annotation and click here to cancel drawing.");
             chart.container("container");
             chart.draw();
 
             triangleAnnotations.startDrawing("triangle");
 
-            // Cancel annotation drawing.
-            triangleAnnotations.cancelDrawing();
+            var currentTitle = chart.title();
+            currentTitle.listen("click", function() {
+                // Cancel annotation drawing.
+                triangleAnnotations.cancelDrawing();
+            });
         });
     </script>
 </head>
