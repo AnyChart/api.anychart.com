@@ -25,12 +25,13 @@
             editor.data(data);
 
             // Renders the chart editor into container.
-            editor.decorate(document.getElementById("container"));
+            editor.decorate(document.getElementById("editorContainer"));
 
             editor.visible(true);
 
             editor.listen("complete", function(){
                 var code = editor.getResultCode();
+                console.log(code);
                 if (code) {
                     var constructorFunc = eval(code);
                     chart = constructorFunc(data);
@@ -44,5 +45,6 @@
 </head>
 <body>
 <div id="container" style="width: 100%; height: 100%"></div>
+<div id="editorContainer"></div>
 </body>
 </html>
