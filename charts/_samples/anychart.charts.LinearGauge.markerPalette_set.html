@@ -3,9 +3,11 @@
     <meta name="x-cat-tags" content="linearGauge anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
-            chart = anychart.gauges.linear([15, 20, 29, 36, 44]);
+            stage = anychart.graphics.create("container", 600, 400);
+
+            var chart = anychart.gauges.linear([15, 20, 29, 36, 44]);
             chart.bar(4);
             chart.bar(3);
             chart.bar(2);
@@ -34,7 +36,7 @@
             chart.markerPalette(["triangleUp", "diamond"]);
 
             chart.title("Set marker palette.");
-            chart.container("container");
+            chart.container(stage);
             chart.draw();
         });
     </script>

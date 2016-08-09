@@ -3,9 +3,11 @@
     <meta name="x-cat-tags" content="linearGauge anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../../anychart.min.js"></script>
-    <script x-export="chart">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
-            chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+            stage = anychart.graphics.create("container", 600, 400);
+
+            var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
 
             var currentScaleBar = chart.scaleBar();
             currentScaleBar.from(0);
@@ -15,9 +17,9 @@
             currentScaleBar.fill(["#F44336", "#4CAF50"]);
 
             chart.title("Set fill parameter as an array.");
-            chart.axis({offset: "-10%"});
+            chart.axis({offset: "-11%"});
             chart.scale().minimum(0);
-            chart.container("container");
+            chart.container(stage);
             chart.draw();
         });
     </script>

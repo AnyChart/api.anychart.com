@@ -3,14 +3,16 @@
     <meta name="x-cat-tags" content="linearGauge anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container", 600, 400);
+
             // Creates Thermometer gauge.
-            chart = anychart.gauges.thermometer([15, 20, 25, 30, 44]);
+            var chart = anychart.gauges.thermometer([15, 20, 25, 30, 44]);
 
             chart.addPointer(4);
             chart.title("Creates Thermometer gauge.");
-            chart.container("container");
+            chart.container(stage);
             chart.draw();
         });
     </script>

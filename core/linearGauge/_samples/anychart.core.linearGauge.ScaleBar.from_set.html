@@ -3,21 +3,23 @@
     <meta name="x-cat-tags" content="linearGauge anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../../anychart.min.js"></script>
-    <script x-export="chart">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
-            chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
-            chart.thermometer(2);
+            stage = anychart.graphics.create("container", 600, 400);
+
+            var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+            chart.bar(2);
 
             var currentScaleBar = chart.scaleBar();
 
             // Set starting range.
-            currentScaleBar.from(0.5);
+            currentScaleBar.from(25);
 
-            currentScaleBar.to(1);
+            currentScaleBar.to(30);
             currentScaleBar.fill("#E0E0E0");
 
             chart.title("Set starting range.");
-            chart.container("container");
+            chart.container(stage);
             chart.draw();
         });
     </script>

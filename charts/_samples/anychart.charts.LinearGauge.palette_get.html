@@ -3,9 +3,11 @@
     <meta name="x-cat-tags" content="linearGauge anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
-            chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+            stage = anychart.graphics.create("container", 600, 400);
+
+            var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
             chart.bar(4);
             chart.bar(3);
             chart.bar(2);
@@ -17,7 +19,7 @@
             currentPalette.colors(["#827717", "#c77532", "#998675", "#6b617b", "#c69c6d", "#d29b9b"]);
 
             chart.title("Get and modify gauge palette.");
-            chart.container("container");
+            chart.container(stage);
             chart.draw();
         });
     </script>

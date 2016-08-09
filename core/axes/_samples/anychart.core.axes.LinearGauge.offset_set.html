@@ -3,18 +3,20 @@
     <meta name="x-cat-tags" content="linearGauge anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container", 600, 400);
+
+            var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
             chart.addPointer(2, 1, 0);
 
             var linearAxis = chart.axis();
 
             // Set axis offset.
-            linearAxis.offset("-10%");
+            linearAxis.offset("-11%");
 
             chart.title("Set axis offset.");
-            chart.container("container");
+            chart.container(stage);
             chart.draw();
         });
     </script>

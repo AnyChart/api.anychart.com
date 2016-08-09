@@ -3,8 +3,10 @@
     <meta name="x-cat-tags" content="linearGauge anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container", 600, 400);
+
             chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
             chart.thermometer(3);
 
@@ -12,7 +14,7 @@
             var offset = chart.globalOffset();
 
             chart.title("The global offset of linear gauge is " + offset + ".");
-            chart.container("container");
+            chart.container(stage);
             chart.draw();
         });
     </script>

@@ -3,9 +3,11 @@
     <meta name="x-cat-tags" content="linearGauge anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../../anychart.min.js"></script>
-    <script x-export="chart">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
-            chart = anychart.gauges.linear();
+            stage = anychart.graphics.create("container", 600, 400);
+
+            var chart = anychart.gauges.linear();
 
             var customScaleBar = chart.scaleBar();
             customScaleBar.from(0);
@@ -15,7 +17,7 @@
             var scaleBarWidth = customScaleBar.width();
 
             chart.title("Scale bar width is " + scaleBarWidth + ".");
-            chart.container("container");
+            chart.container(stage);
             chart.draw();
         });
     </script>

@@ -3,9 +3,11 @@
     <meta name="x-cat-tags" content="linearGauge anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container", 600, 400);
+
+            var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
 
             var barPointer = chart.bar(2);
             barPointer.hoverFill("#4CAF50");
@@ -14,7 +16,7 @@
             var currentHoverFill = barPointer.hoverFill();
 
             chart.title({fontColor: currentHoverFill, text: "Get and use pointer hover fill."});
-            chart.container("container");
+            chart.container(stage);
             chart.draw();
         });
     </script>

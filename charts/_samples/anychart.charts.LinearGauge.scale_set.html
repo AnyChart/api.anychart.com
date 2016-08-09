@@ -3,11 +3,13 @@
     <meta name="x-cat-tags" content="linearGauge anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            chart = anychart.gauges.linear([0.05, 1, 10, 150, 100000]);
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container", 600, 400);
+
+            var chart = anychart.gauges.linear([0.05, 1, 10, 150, 100000]);
             chart.addPointer(4, 3, 2, 1, 0);
-            chart.axis(0, {offset: "-10%"});
+            chart.axis(0, {offset: "-11%"});
 
             var logScale = anychart.scales.log();
 
@@ -15,7 +17,7 @@
             chart.scale(logScale);
 
             chart.title("Set scale as an instance.");
-            chart.container("container");
+            chart.container(stage);
             chart.draw();
         });
     </script>

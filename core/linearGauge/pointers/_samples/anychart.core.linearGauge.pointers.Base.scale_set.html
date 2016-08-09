@@ -3,17 +3,19 @@
     <meta name="x-cat-tags" content="linearGauge anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            chart = anychart.gauges.linear([0.05, 1, 10, 150, 100000]);
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container", 600, 400);
+
+            var chart = anychart.gauges.linear([0.05, 1, 10, 150, 100000]);
 
             var barPointer = chart.bar(2);
 
             var logScale = anychart.scales.log();
 
-            chart.axis(0, {offset: "-10%"});
+            chart.axis(0, {offset: "5%"});
             chart.title("Set pointer scale.");
-            chart.container("container");
+            chart.container(stage);
             chart.draw();
 
             // Set pointer scale. See left axis.
@@ -21,6 +23,7 @@
 
             var pointerScale =  barPointer.scale();
             chart.axis(1).scale(pointerScale);
+            chart.axis(1).offset("-12%");
         });
     </script>
 </head>

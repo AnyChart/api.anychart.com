@@ -3,9 +3,11 @@
     <meta name="x-cat-tags" content="linearGauge anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            chart = anychart.gauges.linear([15, 20, 29, 36, 44]);
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container", 600, 400);
+
+            var chart = anychart.gauges.linear([15, 20, 29, 36, 44]);
             chart.bar(4);
             chart.bar(3);
             chart.bar(2);
@@ -19,7 +21,7 @@
             chart.layout("horizontal");
 
             var customAxis = chart.axis();
-            customAxis.offset(5);
+            customAxis.offset(3);
             customAxis.ticks({position: "inside"});
             customAxis.minorTicks({position: "inside"});
             customAxis.labels({offsetY: 30});
@@ -31,7 +33,7 @@
             var currentType = marker.type();
 
             chart.title("Marker type is " + currentType + ".");
-            chart.container("container");
+            chart.container(stage);
             chart.draw();
         });
     </script>

@@ -3,8 +3,10 @@
     <meta name="x-cat-tags" content="linearGauge anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container", 600, 400);
+
             var rawData = [
                 [3, 7],
                 [1, 4],
@@ -18,13 +20,13 @@
 
             var data = dataSet.mapAs({'low': [0], 'high': [1], 'value': [1]});
 
-            chart = anychart.gauges.linear(data);
+            var chart = anychart.gauges.linear(data);
 
             // Add range bar pointer.
             chart.rangeBar(0);
 
             chart.title("Add Range Bar pointer to a gauge.");
-            chart.container("container");
+            chart.container(stage);
             chart.draw();
         });
     </script>
