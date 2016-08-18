@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="line annotations anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.line([6, 10, 18, 11, 9]);
+            chart.yScale().minimum(0);
+            chart.xScale("linear");
+
+            var controller = chart.annotations();
+
+            var annotation = controller.trendChannel();
+            annotation.xAnchor(1.3);
+            annotation.valueAnchor(13);
+            annotation.secondXAnchor(2);
+            annotation.secondValueAnchor(19);
+            annotation.thirdXAnchor(2);
+            annotation.thirdValueAnchor(16);
+
+            // Set select fill.
+            annotation.selectFill(function() {
+                return this.sourceColor + " 0.8"
+            });
+
+            chart.title("Set select fill parameter as a function.");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
