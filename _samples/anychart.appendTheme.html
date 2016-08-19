@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="column anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../anychart.min.js"></script>
+    <script src="http://cdn.anychart.com/themes/latest/wines.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            anychart.theme("wines");
+
+            // Appends theme settings
+            anychart.appendTheme({
+                        column: {
+                            title: {
+                                enabled: true,
+                                text: "Appends additional theme settings"
+                            }
+                        }
+                    }
+            );
+
+            chart = anychart.column();
+
+            chart.column([21.2, 32.5, 21.3, 44.5, 21, 35.2, 67.7]);
+            chart.column([21, 97, 56, 24, 27, 30, 27]);
+            chart.column([38, 124, 75, 40, 40, 50, 39]);
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
