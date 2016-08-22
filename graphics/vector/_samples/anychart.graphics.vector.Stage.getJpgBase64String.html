@@ -1,0 +1,33 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyChart anyGantt anyStock anyMap"/>
+    <script src="../../../anychart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js" data-export="true"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function () {
+            $('#container').after(
+                    '<div style="position: absolute; top: 40px; right: 25px; width: 31%;">' +
+                    '<input style="margin-bottom: 10px;" type="button" value="getJpgBase64String" onclick="getJpgBase64String()"/>' +
+                    '<textarea style="width: 100%;" rows="5" cols="70" id="getJpgBase64String"></textarea>' + '</div>'
+            );
+
+            stage = anychart.graphics.create("container");
+            stage.circle(250, 220, 200);
+            stage.rect(0, 0, 500, 450);
+        });
+
+        function getJpgBase64String() {
+
+            // Get JPG as base64 string.
+            stage.getJpgBase64String(function (response) {
+                var base64String = document.getElementById('getJpgBase64String');
+                base64String.innerHTML = response;
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
