@@ -1,0 +1,31 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="gauges anyChart"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.circularGauge([10]);
+            chart.marker({radius: 90});
+
+            var currentAxis = chart.axis();
+            currentAxis.scale().minimum(0);
+            currentAxis.scale().maximum(20);
+
+            var currentRange = chart.range();
+            currentRange.from(0);
+            currentRange.to(15);
+
+            // Get the radius of the rounded range.
+            var radius = currentRange.cornersRounding();
+
+            chart.title("Radius for the rounding of circular ranges is " + radius);
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="gauges anyChart"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            var gauge = anychart.circularGauge([27]);
+
+            gauge.padding("10%");
+            gauge.startAngle(270);
+            gauge.sweepAngle(180);
+            gauge.fill("#fff");
+            gauge.stroke(null);
+
+            var currentAxis = gauge.axis();
+            currentAxis.radius(95);
+            currentAxis.fill('#7CFC00 .3');
+            currentAxis.width(10);
+            currentAxis.cornersRounding("50%");
+
+            currentAxis.scale().minimum(0);
+            currentAxis.scale().maximum(100);
+
+            currentAxis.ticks().length(4);
+            currentAxis.ticks().position('outside');
+
+            currentAxis.labels().position('outside');
+
+            gauge.range({
+                from: 50,
+                to: 80,
+                position: 'i',
+                fill: 'Red',
+                startSize: 10,
+                endSize: 10,
+                radius: 90
+            });
+
+            var currentRange = gauge.range();
+
+            // Set the rounding of range.
+            currentRange.cornersRounding("50%");
+
+            gauge.title("Set radius for the rounding of circular range");
+            gauge.needle();
+            gauge.container("container");
+            gauge.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

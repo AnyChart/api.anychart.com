@@ -1,0 +1,26 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="bar anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script src="http://cdn.anychart.com/js/latest/data-adapter.min.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            // To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
+            // (http://cdn.anychart.com/js/latest/data-adapter.min.js for latest or http://cdn.anychart.com/js/7.11.1/data-adapter.min.js for the versioned file)
+
+            // Load XML data and create a chart by XML data.
+            anychart.data.loadXmlFile("http://cdn.anychart.com/charts-data/data_xml.xml", function (data) {
+
+                var chart = anychart.bar(data);
+                chart.title("Load XML data and create a chart");
+                chart.container("container");
+                chart.draw();
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%;"></div>
+</body>
+</html>
