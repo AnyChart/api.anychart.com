@@ -7,10 +7,12 @@
         anychart.onDocumentReady(function() {
             chart = anychart.line([10, 4, 17, 20, 16, 35, 6, 15]);
 
-            var myCredits = chart.credits();
-            // Disables credits logo.
-            myCredits.logoSrc(null);
+            var currentCredits = chart.credits();
 
+            // Set URL.
+            var creditsUrl = currentCredits.url();
+
+            chart.title("The current credits URL is " + creditsUrl);
             chart.container("container");
             chart.draw();
         });

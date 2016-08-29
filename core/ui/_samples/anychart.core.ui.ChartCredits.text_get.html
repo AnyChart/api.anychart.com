@@ -7,10 +7,12 @@
         anychart.onDocumentReady(function() {
             chart = anychart.line([10, 4, 17, 20, 16, 35, 6, 15]);
 
-            var myCredits = chart.credits();
-            // Sets URL.
-            myCredits.url("http://www.anychart.com/buy/");
+            var currentCredits = chart.credits();
 
+            // Get text.
+            var creditsText = currentCredits.text();
+
+            chart.title("The current credits text is " + creditsText);
             chart.container("container");
             chart.draw();
         });
