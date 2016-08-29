@@ -6,11 +6,17 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.column();
-            var series = chart.column([-6, -15, 3, 12, 32, 44]);
+
+            var series = chart.column([6, 15, 3, 12, 32, 44]);
+            series.hoverFill("#F44336");
+
             chart.container("container");
             chart.draw();
-            series.hover(3);
-            series.unhover(); // disables hover
+
+            series.hover([3, 4]);
+
+            // Disables hover by index 3.
+            series.unhover(3);
         });
     </script>
 </head>

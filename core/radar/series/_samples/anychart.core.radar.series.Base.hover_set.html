@@ -1,20 +1,21 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="column anyChart"/>
+    <meta name="x-cat-tags" content="radar line anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.radar();
+            chart.line([136, 79, 149, 135, 158]);
 
-            var series = chart.column([6, 15, 3, 12, 32, 44]);
+            var series = chart.line([199, 125, 173, 33, 64]);
+            series.hoverStroke("#8BC34A");
+
             chart.container("container");
             chart.draw();
 
-            series.select([3, 4]);
-
-            // Deselects fourth point.
-            series.unselect(3);
+            // Hover series.
+            series.hover();
         });
     </script>
 </head>
