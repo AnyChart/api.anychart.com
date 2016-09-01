@@ -58,6 +58,25 @@ anychart.core.pert.Milestones.prototype.fill;
 anychart.core.pert.Milestones.prototype.fill;
 
 /**
+ * Setter for the fill using function.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.pert.Milestones.fill_set_asFunc
+ * @param {(function():anychart.graphics.vector.Fill)=} fillFunction [// return the fill from the default palette.
+ * function() {
+ *   return this.sourceColor;
+ * };] Fill-function, which should look like this:<code>function() {
+ *  //  this: {
+ *  //  index : number  - the index of the current point
+ *  //  sourceColor : anychart.graphics.vector.Fill - fill of the current point
+ *  // }
+ *  return myFill; //anychart.graphics.vector.Fill
+ * };</code>.
+ * @return {anychart.core.pert.Milestones} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.pert.Milestones.prototype.fill;
+
+/**
  * Milestones fill color with opacity. Fill as a string or an object.
  * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
  * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
@@ -136,6 +155,25 @@ anychart.core.pert.Milestones.prototype.hoverFill;
 anychart.core.pert.Milestones.prototype.hoverFill;
 
 /**
+ * Setter for the hover fill using function.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.pert.Milestones.hoverFill_set_asFunc
+ * @param {(function():anychart.graphics.vector.Fill)=} fillFunction [// return the fill from the default palette.
+ * function() {
+ *   return this.sourceColor;
+ * };] Fill-function, which should look like this:<code>function() {
+ *  //  this: {
+ *  //  index : number  - the index of the current point
+ *  //  sourceColor : anychart.graphics.vector.Fill - fill of the current point
+ *  // }
+ *  return myFill; //anychart.graphics.vector.Fill
+ * };</code>.
+ * @return {anychart.core.pert.Milestones} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.pert.Milestones.prototype.hoverFill;
+
+/**
  * Milestones fill color with opacity in hover mode. Fill as a string or an object.
  * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
  * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
@@ -203,12 +241,32 @@ anychart.core.pert.Milestones.prototype.hoverFill;
  */
 anychart.core.pert.Milestones.prototype.selectFill;
 
+
 /**
  * Setter for the fill settings for selected milestone using an array or a string.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.pert.Milestones.selectFill_set_asString Using string
  * @example anychart.core.pert.Milestones.selectFill_set_asArray Using array
  * @param {anychart.graphics.vector.Fill} value [{color: '#64b5f6'}] Color as an array or a string.
+ * @return {anychart.core.pert.Milestones} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.pert.Milestones.prototype.selectFill;
+
+/**
+ * Setter for the select fill using function.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.pert.Milestones.selectFill_set_asFunc
+ * @param {(function():anychart.graphics.vector.Fill)=} fillFunction [// return the fill from the default palette.
+ * function() {
+ *   return this.sourceColor;
+ * };] Fill-function, which should look like this:<code>function() {
+ *  //  this: {
+ *  //  index : number  - the index of the current point
+ *  //  sourceColor : anychart.graphics.vector.Fill - fill of the current point
+ *  // }
+ *  return myFill; //anychart.graphics.vector.Fill
+ * };</code>.
  * @return {anychart.core.pert.Milestones} Self instance for method chaining.
  * @since 7.11.0
  */
@@ -282,10 +340,26 @@ anychart.core.pert.Milestones.prototype.selectFill;
 anychart.core.pert.Milestones.prototype.stroke;
 
 /**
+ * Setter for tasks stroke by function.
+ * @example anychart.core.pert.Milestones.stroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor -  color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
+ * }</code>.
+ * @return {anychart.core.pert.Milestones} Self instance for method chaining.
+ * @since 7.11.0
+ */
+anychart.core.pert.Milestones.prototype.stroke;
+
+/**
  * Setter for milestones stroke.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.core.pert.Milestones.stroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
@@ -308,6 +382,22 @@ anychart.core.pert.Milestones.prototype.stroke;
  * @category Coloring
  * @example anychart.core.pert.Milestones.hoverStroke_get
  * @return {anychart.graphics.vector.Stroke} The milestones stroke in the hover state.
+ * @since 7.11.0
+ */
+anychart.core.pert.Milestones.prototype.hoverStroke;
+
+/**
+ * Setter for tasks hover stroke by function.
+ * @example anychart.core.pert.Milestones.hoverStroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor -  color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
+ * }</code>.
+ * @return {anychart.core.pert.Milestones} Self instance for method chaining.
  * @since 7.11.0
  */
 anychart.core.pert.Milestones.prototype.hoverStroke;
@@ -338,6 +428,22 @@ anychart.core.pert.Milestones.prototype.hoverStroke;
  * @category Coloring
  * @example anychart.core.pert.Milestones.selectStroke_get
  * @return {anychart.graphics.vector.Stroke} The milestones stroke in selected state.
+ * @since 7.11.0
+ */
+anychart.core.pert.Milestones.prototype.selectStroke;
+
+/**
+ * Setter for tasks select stroke by function.
+ * @example anychart.core.pert.Milestones.selectStroke_set_asFunc
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor -  color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
+ * }</code>.
+ * @return {anychart.core.pert.Milestones} Self instance for method chaining.
  * @since 7.11.0
  */
 anychart.core.pert.Milestones.prototype.selectStroke;

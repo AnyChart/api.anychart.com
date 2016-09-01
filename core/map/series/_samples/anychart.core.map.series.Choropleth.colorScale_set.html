@@ -5,7 +5,7 @@
     <script src="../../../../anychart.min.js"></script>
     <script src="http://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
     <script x-export="australiaMap">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             var dataSet = anychart.data.set([
                 {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
                 {id: "AU.VI", value: 23, title: "Victoria"},
@@ -23,13 +23,15 @@
             australiaMap.geoData(anychart.maps.australia);
 
             var series = australiaMap.choropleth(dataSetForSeries);
-            series.geoIdField("code_hasc");
-            series.selectFill("#AED581");
-            series.select([1, 2]);
 
-            // Deselects third points.
-            series.unselect(2);
+            // Set color scale.
+            series.colorScale(anychart.scales.ordinalColor([{less: 30, color: "#EC6E07"}, {
+                from: 30,
+                to: 60,
+                color: "#A1958A"
+            }, {greater: 60, color: "#64B5F6"}]));
 
+            australiaMap.title("Set color scale");
             australiaMap.container("container");
             australiaMap.draw();
         });
