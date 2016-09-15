@@ -2,40 +2,39 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="anyChart anyGantt anyStock anyMap"/>
-    <script src="../../anychart.min.js"></script>
+    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
     <script x-export="stage">
         var base = document.createElement("base");
         base.href = "./../../";
+
         document.head.appendChild(base);
 
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+        stage = acgraph.create("container");
 
-            anychart.graphics.useAbsoluteReferences(false);
+        acgraph.useAbsoluteReferences(false);
 
-            var gradient = [
-                {
-                    offset: 0,
-                    color: "#F44336"
-                },
-                {
-                    offset: 0.5,
-                    color: "#4CAF50"
-                },
-                {
-                    offset: 1,
-                    color: "#2196F3"
-                }
-            ];
+        var gradient = [
+            {
+                offset: 0,
+                color: "#F44336"
+            },
+            {
+                offset: 0.5,
+                color: "#4CAF50"
+            },
+            {
+                offset: 1,
+                color: "#2196F3"
+            }
+        ];
 
-            var rectangle = stage.rect(10, 10, 100, 100);
-            rectangle.fill(gradient);
+        var rectangle = stage.rect(10, 10, 100, 100);
+        rectangle.fill(gradient);
 
-            anychart.graphics.useAbsoluteReferences(true);
+        acgraph.useAbsoluteReferences(true);
 
-            // Update all paths.
-            anychart.graphics.updateReferences();
-        });
+        // Update all paths.
+        acgraph.updateReferences();
     </script>
 </head>
 <body>

@@ -2,21 +2,18 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="anyChart anyGantt anyStock anyMap"/>
-    <script src="../../../anychart.min.js"></script>
+    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+        stage = acgraph.create("container");
 
+        var rectangle = stage.rect(50, 50, 150, 75);
+        rectangle.fill("#A5D6A7");
+        rectangle.desc("Green rectangle.");
 
-            var rectangle = stage.rect(50, 50, 150, 75);
-            rectangle.fill("#A5D6A7");
-            rectangle.desc("Green rectangle.");
+        // Get desc text from node of the stage
+        var desc = rectangle.desc();
 
-            // Get desc text from node of the stage
-            var desc = rectangle.desc();
-
-            stage.text(65, 75, desc, {fontSize: "15px"});
-        });
+        stage.text(65, 75, desc, {fontSize: "15px"});
     </script>
 </head>
 <body>

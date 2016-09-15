@@ -2,20 +2,18 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="text anyChart anyGantt anyStock anyMap"/>
-    <script src="../../../anychart.min.js"></script>
+    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+        stage = acgraph.create("container");
 
-            var blueText = stage.text(70, 55, "Click on this TEXT.");
-            blueText.style({fontStyle: "italic", fontSize: "18px", color: "#2196F3", hAlign: "middle"});
+        var blueText = stage.text(70, 55, "Click on this TEXT.");
+        blueText.style({fontStyle: "italic", fontSize: "18px", color: "#2196F3", hAlign: "middle"});
 
-            var counter = 0;
-            // Adds an event listener.
-            anychart.graphics.events.listen(blueText, "click", function(e) {
-                counter++;
-                blueText.text("You clicked " + counter + " times. " + "Click again.");
-            });
+        var counter = 0;
+        // Adds an event listener.
+        acgraph.events.listen(blueText, "click", function (e) {
+            counter++;
+            blueText.text("You clicked " + counter + " times. " + "Click again.");
         });
     </script>
 </head>

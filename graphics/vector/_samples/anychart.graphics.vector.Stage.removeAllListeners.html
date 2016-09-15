@@ -2,28 +2,27 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="anyChart anyGantt anyStock anyMap"/>
-    <script src="../../../anychart.min.js"></script>
+    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+        stage = acgraph.create("container");
 
-            var simpleText = stage.text(50, 50);
-            simpleText.style({fontStyle: "italic", fontSize: "15px"});
-            simpleText.text("MouseOver the title and click.");
+        var simpleText = stage.text(50, 50);
+        simpleText.style({fontStyle: "italic", fontSize: "15px"});
+        simpleText.text("MouseOver the title and click.");
 
-            stage.listen("mouseout", function(e) {
-                simpleText.color("#1B5E20")
-            });
+        stage.listen("mouseout", function (e) {
+            simpleText.color("#1B5E20")
+        });
 
-            stage.listen("mouseover", function(e) {
-                simpleText.color("#D50000");
-            });
-            stage.listen("click", function(e) {
-                simpleText.text("You can\'t click here anymore.");
-                simpleText.color("#212121");
-                // Removes all listeners.
-                stage.removeAllListeners();
-            });
+        stage.listen("mouseover", function (e) {
+            simpleText.color("#D50000");
+        });
+        stage.listen("click", function (e) {
+            simpleText.text("You can\'t click here anymore.");
+            simpleText.color("#212121");
+
+            // Removes all listeners.
+            stage.removeAllListeners();
         });
     </script>
 </head>
