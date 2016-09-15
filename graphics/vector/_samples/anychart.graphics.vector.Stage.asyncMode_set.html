@@ -4,31 +4,30 @@
     <meta name="x-cat-tags" content="anyChart anyGantt anyStock anyMap"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+        stage = anychart.graphics.create("container");
 
-            // Sets rendering mode.
-            stage.asyncMode(true);
+        // Sets rendering mode.
+        stage.asyncMode(true);
 
-            // Suspends rendering.
-            stage.suspend();
+        // Suspends rendering.
+        stage.suspend();
 
-            for (var i = 0; i < 10000; i++) {
-                var left = Math.random() * stage.width()/3;
-                var top = Math.random() * stage.height()/2;
-                var radius = Math.random() * 5;
-                var circle = stage.circle(left, top, radius);
-                circle.fill({color: getRandomColor(), opacity: Math.random()});
-                circle.stroke(getRandomColor());
-            }
-            // Removes suspend state.
-            stage.resume();
-        });
+        for (var i = 0; i < 10000; i++) {
+            var left = Math.random() * stage.width() / 3;
+            var top = Math.random() * stage.height() / 2;
+            var radius = Math.random() * 5;
+            var circle = stage.circle(left, top, radius);
+            circle.fill({color: getRandomColor(), opacity: Math.random()});
+            circle.stroke(getRandomColor());
+        }
+
+        // Removes suspend state.
+        stage.resume();
 
         function getRandomColor() {
             var letters = '0123456789ABCDEF'.split('');
             var color = '#';
-            for (var i = 0; i < 6; i++ ) {
+            for (var i = 0; i < 6; i++) {
                 color += letters[Math.floor(Math.random() * 16)];
             }
             return color;

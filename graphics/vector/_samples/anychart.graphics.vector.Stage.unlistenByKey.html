@@ -4,27 +4,26 @@
     <meta name="x-cat-tags" content="anyChart anyGantt anyStock anyMap"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+        stage = anychart.graphics.create("container");
 
-            var simpleText = stage.text(50, 50);
-            simpleText.style({fontStyle: "italic", fontSize: "15px"});
-            simpleText.text("Click on line series. You have 3 clicks.");
+        var simpleText = stage.text(50, 50);
+        simpleText.style({fontStyle: "italic", fontSize: "15px"});
+        simpleText.text("Click on line series. You have 3 clicks.");
 
-            var listenKey = stage.listen("click", customListener);
+        var listenKey = stage.listen("click", customListener);
 
-            var counter = 3;
+        var counter = 3;
 
-            function customListener(e) {
-                counter--;
-                simpleText.text("Click on line series. You have " + counter + " clicks.");
-                if (counter == 0) {
-                    // Adds unlistener by key on stage.
-                    stage.unlistenByKey(listenKey);
-                    simpleText.text("You have no more clicks");
-                }
+        function customListener(e) {
+            counter--;
+            simpleText.text("Click on line series. You have " + counter + " clicks.");
+            if (counter == 0) {
+
+                // Adds unlistener by key on stage.
+                stage.unlistenByKey(listenKey);
+                simpleText.text("You have no more clicks");
             }
-        });
+        }
     </script>
 </head>
 <body>

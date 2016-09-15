@@ -4,24 +4,23 @@
     <meta name="x-cat-tags" content="anyChart anyGantt anyStock anyMap"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
-            stage.circle(450, 360, 350);
-            stage.rect(100, 10, 700, 700);
+        stage = anychart.graphics.create("container");
+        stage.circle(450, 360, 350);
+        stage.rect(100, 10, 700, 700);
 
-            var grayLabel = anychart.ui.label();
-            grayLabel.background({fill: "#9E9E9E"});
-            grayLabel.text("Save image");
-            grayLabel.fontColor("#fff");
-            grayLabel.padding(5);
-            grayLabel.offsetX(5);
-            grayLabel.listen("click", function() {
-                // Saves into JPG file.
-                stage.saveAsJpg(360, 350, 0.1, true, "Circle");
-            });
-            grayLabel.container(stage);
-            grayLabel.draw();
+        var grayLabel = anychart.ui.label();
+        grayLabel.background({fill: "#9E9E9E"});
+        grayLabel.text("Save image");
+        grayLabel.fontColor("#fff");
+        grayLabel.padding(5);
+        grayLabel.offsetX(5);
+        grayLabel.listen("click", function () {
+
+            // Saves into JPG file.
+            stage.saveAsJpg(360, 350, 0.1, true, "Circle");
         });
+        grayLabel.container(stage);
+        grayLabel.draw();
     </script>
 </head>
 <body>

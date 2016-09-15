@@ -4,25 +4,23 @@
     <meta name="x-cat-tags" content="text anyChart anyGantt anyStock anyMap"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+        stage = anychart.graphics.create("container");
 
-            var simpleText = stage.text(50, 50);
-            simpleText.style({fontStyle: "italic", fontSize: "15px"});
-            simpleText.text("Mouse over the text and click.");
-            simpleText.listen("mouseOut", function(e) {
-                simpleText.color("#1B5E20")
-            });
-            simpleText.listen("mouseOver", function(e) {
-                simpleText.color("#D50000");
-            });
-            simpleText.listen("click", function(e) {
-                simpleText.text("You can\'t click here anymore.");
-                simpleText.color("#212121");
+        var simpleText = stage.text(50, 50);
+        simpleText.style({fontStyle: "italic", fontSize: "15px"});
+        simpleText.text("Mouse over the text and click.");
+        simpleText.listen("mouseOut", function (e) {
+            simpleText.color("#1B5E20")
+        });
+        simpleText.listen("mouseOver", function (e) {
+            simpleText.color("#D50000");
+        });
+        simpleText.listen("click", function (e) {
+            simpleText.text("You can\'t click here anymore.");
+            simpleText.color("#212121");
 
-                // Removes all listeners.
-                simpleText.removeAllListeners();
-            });
+            // Removes all listeners.
+            simpleText.removeAllListeners();
         });
     </script>
 </head>
