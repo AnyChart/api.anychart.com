@@ -2,29 +2,28 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="anyChart anyGantt anyStock anyMap"/>
-    <script src="../../../anychart.min.js"></script>
+    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+        stage = acgraph.create("container");
 
-            var simpleText = stage.text(50, 50);
-            simpleText.style({fontStyle: "italic", fontSize: "15px"});
-            simpleText.text("Click on line series. You have 3 clicks.");
+        var simpleText = stage.text(50, 50);
+        simpleText.style({fontStyle: "italic", fontSize: "15px"});
+        simpleText.text("Click on line series. You have 3 clicks.");
 
-            stage.listen("click", customListener);
+        stage.listen("click", customListener);
 
-            var counter = 3;
+        var counter = 3;
 
-            function customListener(e) {
-                counter--;
-                simpleText.text("Click on line series. You have " + counter + " clicks.");
-                if (counter == 0) {
-                    // Adds unlistener on stage.
-                    stage.unlisten("click", customListener);
-                    simpleText.text("You have no more clicks");
-                }
+        function customListener(e) {
+            counter--;
+            simpleText.text("Click on line series. You have " + counter + " clicks.");
+            if (counter == 0) {
+
+                // Adds unlistener on stage.
+                stage.unlisten("click", customListener);
+                simpleText.text("You have no more clicks");
             }
-        });
+        }
     </script>
 </head>
 <body>
