@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="text anyChart anyGantt anyStock anyMap"/>
+    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
+    <script x-export="stage">
+        stage = anychart.graphics.create("container");
+
+        var textObject = stage.text(70, 55, "Click on this TEXT.");
+        textObject.style({fontStyle: "italic", fontSize: "18px", color: "#2196F3", hAlign: "middle"});
+
+        var counter = 0;
+
+        anychart.graphics.events.listen(textObject, "click", function (e) {
+            counter++;
+            textObject.text("You clicked " + counter + " times. " + "Click again.");
+        });
+
+        anychart.graphics.events.listen(textObject, "mousemove", function (e) {
+            // Prevent default event (try to select text).
+            e.preventDefault();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
