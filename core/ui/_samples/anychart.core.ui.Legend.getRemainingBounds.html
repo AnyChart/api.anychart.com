@@ -6,12 +6,17 @@
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
+
             chart = anychart.pie([8, 3, 7, 2]);
-            var legend = anychart.ui.legend();
+
+            var legend = anychart.standalones.legend();
             legend.title("My custom legend");
             legend.container(stage);
             legend.draw();
-            chartBounds = legend.getRemainingBounds(); // get remaining bounds
+
+            // Get remaining bounds.
+            var chartBounds = legend.getRemainingBounds();
+
             chart.bounds(chartBounds);
             chart.container(stage);
             chart.draw();

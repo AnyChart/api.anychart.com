@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="label anyChart anyGantt anyStock anyMap"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            var firstLabel = anychart.standalones.label();
+            firstLabel.text("First label");
+            firstLabel.parentBounds(0, 0, 200, 200);
+            firstLabel.container(stage);
+            firstLabel.draw();
+
+            // Gets container.
+            var currentContainer = firstLabel.container();
+
+            var secondLabel = anychart.standalones.label();
+            secondLabel.text("Second label");
+            secondLabel.parentBounds(100, 0, 200, 200);
+            secondLabel.container(currentContainer);
+            secondLabel.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
