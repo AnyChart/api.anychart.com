@@ -136,12 +136,12 @@ anychart.data.Tree.prototype.removeIndexOn;
  * @category Data
  * @detailed Returns null of nothing is found, tree data item if here's a single result and array of
  * tree data items if here are multiple matches.</br>
- * <b>Note:</b>: Search tree without indexing for certain key is inefficiently.
+ * <b>Note:</b> Search tree without indexing for certain key is inefficiently.
  * @example anychart.data.Tree.search._asFuncComp
  * @param {string} soughtField Field for search. Literally means the name of field of data item.
  * @param {(string|number|boolean)} value Sought value.
  * @param {(function(*,*):number)=} opt_comparisonFn Comparison function.
- * @return {(anychart.data.Tree.DataItem|Array.<anychart.data.Tree.DataItem>|null)} - Found tree data item or null or array of found tree data items.
+ * @return {(anychart.data.Tree.DataItem|Array.<anychart.data.Tree.DataItem>|null)} Found tree data item or null or array of found tree data items.
  */
 anychart.data.Tree.prototype.search;
 
@@ -167,10 +167,10 @@ anychart.data.Tree.prototype.search;
 
 /**
  * Performs a data search. Actually does the same as ({@link anychart.data.Tree#search}) but result is always an array.
- * @shortDescription Performs a items search.
+ * @shortDescription Performs an items search.
  * @category Data
  * @example anychart.data.Tree.searchItems_asFuncComp
- * @param {string} soughtField - Field for search. Literally means the name of field of data item.
+ * @param {string} soughtField Field for search. Literally means the name of field of data item.
  * @param {(string|number|boolean)} value Sought value
  * @param {(function(*,*):number)=} opt_comparisonFn Comparison function.
  * @return {Array.<anychart.data.Tree.DataItem>} Array of found tree data items.
@@ -215,7 +215,7 @@ anychart.data.Tree.prototype.addChild;
  * Inserts a new root element into a specified position by index and return it.
  * @category Data
  * @example anychart.data.Tree.addChildAt
- * @param {(Object|anychart.data.Tree.DataItem)} child Child object.
+ * @param {(Object|anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem)} child Child object.
  * @param {number} index Position.
  * @return {anychart.data.Tree.DataItem} An instance of the class for method chaining.
  */
@@ -294,7 +294,7 @@ anychart.data.Tree.prototype.removeChild;
  * Gets index of child in a roots array.
  * @category Data
  * @example anychart.data.Tree.indexOfChild
- * @param {anychart.data.Tree.DataItem} child Child for getting of index.
+ * @param {anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem} child Child for getting of index.
  * @return {number} Index of child.
  */
 anychart.data.Tree.prototype.indexOfChild;
@@ -443,7 +443,7 @@ anychart.data.Tree.DataItem.prototype.addChild;
  * Please make sure that child has not inner cycles to avoid stack overflow exception.
  * @category Data
  * @example anychart.data.Tree.DataItem.addChildAt
- * @param {(Object|anychart.data.Tree.DataItem)} child Child for add.
+ * @param {(Object|anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem)} child Child for add.
  * @param {number} index Position for add child.
  * @return {anychart.data.Tree.DataItem} Self instance for method chaining.
  */
@@ -553,7 +553,7 @@ anychart.data.Tree.DataItem.prototype.removeChildren;
  * Gets index of child in a children array.
  * @category Data
  * @example anychart.data.Tree.DataItem.indexOfChild
- * @param {anychart.data.Tree.DataItem} child Child for getting of index.
+ * @param {anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem} child Child for getting of index.
  * @return {number} Index of child.
  */
 anychart.data.Tree.DataItem.prototype.indexOfChild;
@@ -634,6 +634,12 @@ anychart.data.tree;
  */
 anychart.data.Tree.DataItem.prototype.del;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.Dependency
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
  * Type definition for dependency.
  * @typedef {Object} anychart.data.Tree.Dependency
@@ -642,6 +648,22 @@ anychart.data.Tree.DataItem.prototype.del;
  * @since 7.11.0
  */
 anychart.data.Tree.Dependency;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.mapAs
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns a new mapping for the tree.
+ * @category Data
+ * @example anychart.data.Tree.mapAs
+ * @param {Object=} opt_mapping Mapping for the tree.
+ * @return {anychart.data.TreeView} An instance of the class for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.Tree.prototype.mapAs;
 
 
 /** @inheritDoc */

@@ -1,5 +1,6 @@
 /**
  * Tree data traverser.
+ * @param {(anychart.data.Tree|anychart.data.TreeView)} tree Tree that current traverser belongs to.
  * @constructor
  */
 anychart.data.Traverser;
@@ -30,7 +31,7 @@ anychart.data.Traverser.prototype.reset;
  * Gets current tree data item.
  * @category Data
  * @example anychart.data.Traverser.current
- * @return {anychart.data.Tree.DataItem|undefined} Current data item.
+ * @return {anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem|undefined} Current data item.
  */
 anychart.data.Traverser.prototype.current;
 
@@ -184,8 +185,8 @@ anychart.data.Traverser.prototype.nodeYieldCondition;
  * @detailed Note: if passed argument is passed by not a function, value will be reset to default value that always returns 'true'.</br>
  * So looks tree if nodeYieldCondition define as function(item) {return item.numChildren() > 0; };<br/>
  * <img src='/anychart.data.Traverser.nodeYieldCondition.png' height='300' width='307'/>
- * @param {(function(anychart.data.Tree.DataItem):boolean)=} opt_value Value to set.
- * @return {anychart.data.Traverser} Self instance for method chaining.
+ * @param {(function((anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem)):boolean)=} opt_value Value to set.
+ * @return (function((anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem)):boolean|anychart.data.Traverser) Self instance for method chaining.
  */
 anychart.data.Traverser.prototype.nodeYieldCondition;
 
@@ -208,8 +209,8 @@ anychart.data.Traverser.prototype.traverseChildrenCondition;
  * @detailed Note: if passed argument is passed by not a function, value will be reset to default value that always returns 'true'.</br>
  * So looks tree if nodeYieldCondition define as function(item) {return item.numChildren() > 2};<br/>
  * <img src='/anychart.data.Traverser.traverseChildrenCondition.png' height='301' width='371'/>
- * @param {(function(anychart.data.Tree.DataItem):boolean)=} opt_value Value to set.
- * @return {anychart.data.Traverser} Self instance for method chaining.
+ * @param {(function((anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem)):boolean)=} opt_value Value to set.
+ * @return {(function((anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem)):boolean|anychart.data.Traverser)} Self instance for method chaining.
  */
 anychart.data.Traverser.prototype.traverseChildrenCondition;
 
@@ -282,7 +283,7 @@ anychart.data.Traverser.prototype.advance;
  *        var item = toArrayArray[i];
  *        console.log(item.get('name'));
  *  }
- * @return {Array.<anychart.data.Tree.DataItem>} Resulting array.
+ * @return {Array.<(anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem)>} Resulting array.
  */
 anychart.data.Traverser.prototype.toArray;
 

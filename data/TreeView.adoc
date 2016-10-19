@@ -1,0 +1,562 @@
+/**
+ * TreeView. Class of mapped tree.
+ * @param {anychart.data.Tree} tree Data tree
+ * @param {Object} mapping Data mapping
+ * @constructor
+ * @extends {anychart.core.Base}
+ */
+anychart.data.TreeView;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.prototype.getTraverser
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates tree view data traverser.
+ * @category Data
+ * @listing See listing.
+ * var rawdata = [
+ * {id: 1, children: [
+ *     {id: 2, children: [
+ *         {id: 3},
+ *         {id: 4, children: [
+ *             {id: 5},
+ *             {id: 6}
+ *         ]}
+ *     ]},
+ *     {id: 7, children: [
+ *         {id: 8}
+ *     ]}
+ * ]}
+ * ];
+ * var treeData = anychart.data.tree(rawdata, anychart.enums.TreeFillingMethod.TREE);
+ * var mapping = treeData.mapAs({"name": "id"};
+ * // Creates traverser
+ * mapping.getTraverser();
+ * @return {anychart.data.Traverser} An instance of the class for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.prototype.getTraverser;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.prototype.search
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Performs a data search.
+ * @category Data
+ * @detailed Returns null of nothing is found, tree data item if here's a single result and array of
+ * tree data items if here are multiple matches.
+ * @example anychart.data.TreeView.search
+ * @param {string} soughtField Field for search. Literally means the name of field of data item.
+ * @param {(string|number|boolean)} value Sought value.
+ * @param {(function(anychart.data.Tree.DataItem, anychart.data.Tree.DataItem):number|Object)=} opt_comparisonFn Custom comparison function. Optional comparison function by which the array is ordered. Should
+ *  take 2 arguments to compare, and return a negative number, zero, or a positive number depending on whether the
+ *  first argument is less than, equal to, or greater than the second.
+ * @return {(anychart.data.TreeView.DataItem|Array.<anychart.data.TreeView.DataItem>|null)} Found tree data item or null or array of found tree data items.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.prototype.search;
+
+/**
+ * @ignoreDoc DVF-1350
+ * Performs a data search.
+ * @detailed Returns null of nothing is found, tree data item if here's a single result and array of
+ * tree data items if here are multiple matches.
+ * @param {string} soughtField Field for search. Literally means the name of field of data item.
+ * @param {(function(anychart.data.Tree.DataItem, number, Array.<anychart.data.Tree.DataItem>):number)} evaluator Evaluator function that receives 3 arguments (the element, the index and the array).
+ *  Should return a negative number, zero, or a positive number depending on whether the desired index is before, at, or
+ *  after the element passed to it.
+ * @param {Object=} opt_EvaluatorContext Evaluator context.
+ * @return {(anychart.data.TreeView.DataItem|Array.<anychart.data.TreeView.DataItem>|null)} Found tree data item or null or array of found tree data items.
+ */
+anychart.data.TreeView.prototype.search;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.prototype.searchItems
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Performs a data item search.
+ * @detailed Performs a data search. Actually does the same as ({@link anychart.data.TreeView#search}) but result is always an array.
+ * @shortDescription Performs a items search.
+ * @category Data
+ * @example anychart.data.TreeView.searchItems
+ * @param {string} soughtField  Field for search. Literally means the name of field of data item.
+ * @param {(string|number|boolean)} value Sought value.
+ * @param {(function(anychart.data.Tree.DataItem, anychart.data.Tree.DataItem):number|Object)=} opt_comparisonFn Custom comparison function.
+ * @return {Array.<anychart.data.TreeView.DataItem>} Array of found tree data items.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.prototype.searchItems;
+
+/**
+ * @ignoreDoc DVF-1350
+ * Performs a data item search.
+ * @detailed Performs a data search. Actually does the same as ({@link anychart.data.TreeView#search}) but result is always an array.
+ * @param {string} soughtField Field for search. Literally means the name of field of data item.
+ * @param {(function(anychart.data.Tree.DataItem, number, Array.<anychart.data.Tree.DataItem>):number)} evaluator Evaluator function. Evaluator function that receives 3 arguments (the element, the index and the array).
+ * @param {Object=} opt_evaluatorContext Evaluator context.
+ * @return {Array.<anychart.data.TreeView.DataItem>} Array of found tree data items.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.prototype.searchItems;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.prototype.addData
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds a data.
+ * @category Data
+ * @example anychart.data.TreeView.addData
+ * @param {(Array.<Object>|string)} data Raw data or CSV-string. If string is passed, second parameter will be
+ *  interpreted as fields mapping.
+ * @param {(anychart.enums.TreeFillingMethod|Object)=} opt_fillMethodOrCsvMapping Fill method or CSV mapping object.
+ *  This parameter is interpreted as mapping object if first parameter is string. Mapping object should have structure
+ *  like
+ *  <code>
+ *    //'nameOfField': index_of_column
+ *    mapping = {
+ *      'id': 0,
+ *      'name': 1,
+ *      'value': 15
+ *    };
+ *  </code>.
+ * @param {(Object|Array.<anychart.data.Tree.Dependency>)=} opt_csvSettingsOrDeps CSV settings object or dependencies data.
+ *  If is CSV settings object, should fields like
+ *  rowsSeparator - string or undefined, if it is undefined, it will not be set.
+ *  columnsSeparator - string or undefined, if it is undefined, it will not be set.
+ *  ignoreTrailingSpaces - boolean or undefined, if it is undefined, it will not be set.
+ *  ignoreFirstRow - boolean or undefined, if it is undefined, it will not be set.<br/>
+ *
+ *  If is dependencies data, should take an array like this:
+ *   <code>
+ *     var dependencies = [
+ *      {from: 0, to: 3}, //ids
+ *      {from: 0, to: 4},
+ *      {from: 1, to: 2},
+ *      {from: 4, to: 5}
+ *     ];
+ *   </code>
+ * @return {anychart.data.TreeView} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.prototype.addData;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.prototype.addChild
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds a child.
+ * @category Data
+ * @example anychart.data.TreeView.addChild
+ * @param {(Object|anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem)} child Child to set.
+ * @return {anychart.data.TreeView.DataItem} An instance of the class for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.prototype.addChild;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.prototype.addChildAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Inserts a child into a specified position.
+ * @category Data
+ * @detailed Please make sure that child has not inner cycles to avoid stack overflow exception.
+ * @example anychart.data.TreeView.addChildAt
+ * @param {(Object|anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem)} child Child to set.
+ * @param {number} index Position.
+ * @return {anychart.data.TreeView.DataItem} An instance of the class for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.prototype.addChildAt;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.prototype.removeChild
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes data item's child.
+ * @category Data
+ * @example anychart.data.TreeView.removeChild
+ * @param {anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem} child Child for removal..
+ * @return {anychart.data.TreeView.DataItem} An instance of the class for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.prototype.removeChild;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.prototype.removeChildAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes child at specified position.
+ * @category Data
+ * @example anychart.data.TreeView.removeChildAt
+ * @param {number} index Index of item to be removed.
+ * @return {?anychart.data.TreeView.DataItem} Removed item or null if item is not found.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.prototype.removeChildAt;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.prototype.removeChildren
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes children.
+ * @category Data
+ * @example anychart.data.TreeView.removeChildren
+ * @return {anychart.data.TreeView} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.prototype.removeChildren;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.prototype.indexOfChild
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets index of child in a children array.
+ * @category Data
+ * @example anychart.data.TreeView.indexOfChild
+ * @param {anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem} child Child for getting of index.
+ * @return {number} Index of child.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.prototype.indexOfChild;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.prototype.getChildren
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns a roots array.
+ * @category Data
+ * @example anychart.data.TreeView.getChildren
+ * @return {Array.<anychart.data.TreeView.DataItem>} Copy of roots array.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.prototype.getChildren;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.prototype.numChildren
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns a length of roots array.
+ * @category Data
+ * @example anychart.data.TreeView.numChildren
+ * @return {number} Number of roots.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.prototype.numChildren;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.prototype.getChildAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets the child by index.
+ * @category Data
+ * @example anychart.data.TreeView.getChildAt
+ * @param {number} index Index of child to find.
+ * @return {(anychart.data.TreeView.DataItem|undefined)} Child into a specified position.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.prototype.getChildAt;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Mapped data item class.
+ * @param {anychart.data.TreeView} treeView Tree view.
+ * @param {anychart.data.Tree.DataItem} dataItem Data item to map.
+ * @param {?anychart.data.TreeView.DataItem} parentView Parent mapped data item or tree.
+ * @constructor
+ */
+anychart.data.TreeView.DataItem;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// anychart.data.TreeView.DataItem.prototype.addChild
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds a child.
+ * @category Data
+ * @example anychart.data.TreeView.DataItem.addChild
+ * @param {(Object|anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem)} child Child to set.
+ * @return {anychart.data.TreeView.DataItem} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.addChild;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem.prototype.addChildAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Inserts a child into a specified position.
+ * @category Data
+ * @detailed Please make sure that child has not inner cycles to avoid stack overflow exception.
+ * @example anychart.data.TreeView.DataItem.addChildAt
+ * @param {(Object|anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem)} child Child for add.
+ * @param {number} index Position for add child.
+ * @return {anychart.data.TreeView.DataItem} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.addChildAt;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem.prototype.remove
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes data item.
+ * @category Data
+ * @detailed Current item will be removed from parent's children and becomes an orphan.
+ * If child is a root element, it will be removed from tree.
+ * @example anychart.data.TreeView.DataItem.remove
+ * @return {anychart.data.TreeView.DataItem} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.remove;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem.prototype.removeChild
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes data item's child.
+ * @category Data
+ * @example anychart.data.TreeView.DataItem.removeChild
+ * @param {anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem} child Child to be removed.
+ * @return {anychart.data.TreeView.DataItem} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.removeChild;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem.prototype.removeChildAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes child at specified position.
+ * @category Data
+ * @example anychart.data.TreeView.DataItem.removeChildAt
+ * @param {number} index Index of item for removal.
+ * @return {?anychart.data.TreeView.DataItem} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.removeChildAt;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem.prototype.removeChildren
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes children.
+ * @category Data
+ * @example anychart.data.TreeView.DataItem.removeChildren
+ * @return {anychart.data.TreeView.DataItem} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.removeChildren;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem.prototype.indexOfChild
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets index of child in a children array.
+ * @category Data
+ * @example anychart.data.TreeView.DataItem.indexOfChild
+ * @param {anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem} child Child for getting of index.
+ * @return {number} Index of child.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.indexOfChild;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem.prototype.getChildren
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns a copy of children array of current data item.
+ * @category Data
+ * @example anychart.data.TreeView.DataItem.getChildren
+ * @return {Array.<anychart.data.TreeView.DataItem>} Copy of children array.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.getChildren;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem.prototype.numChildren
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns a length of children array.
+ * @category Data
+ * @example anychart.data.TreeView.DataItem.numChildren
+ * @return {number} Number of children.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.numChildren;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem.prototype.getChildAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets the child by index.
+ * @category Data
+ * @example anychart.data.TreeView.DataItem.getChildAt
+ * @param {number} index Index of child to find.
+ * @return {(anychart.data.TreeView.DataItem|undefined)} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.getChildAt;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem.prototype.get
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets value from data by path specified using mapping.
+ * @category Data
+ * @example anychart.data.TreeView.DataItem.get
+ * @param {...*} var_args Arguments.
+ * @return {*} Value or undefined if path is invalid.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.get;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem.prototype.set
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Sets value to the data by path.
+ * @category Data
+ * @example anychart.data.TreeView.DataItem.set
+ * @param {...*} var_args Arguments.
+ * @return {anychart.data.TreeView.DataItem} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.set;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem.prototype.del
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes from data by path specified using mapping.
+ * @category Data
+ * @example anychart.data.TreeView.DataItem.del
+ * @param {...*} var_args Arguments.
+ * @return {anychart.data.TreeView.DataItem} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.del;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem.prototype.meta
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for a meta data.
+ * @category Data
+ * @example anychart.data.TreeView.DataItem.meta_get
+ * @param {string} key Key.
+ * @return {*} Value.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.meta;
+
+/**
+ * Setter for a meta data.
+ * @example anychart.data.TreeView.DataItem.meta_set
+ * @param {string} key Key.
+ * @param {*=} opt_value Value.
+ * @return {*} Value.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.meta;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TreeView.DataItem.prototype.getParent
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets a data item's parent.
+ * @category Data
+ * @example anychart.data.TreeView.DataItem.getParent
+ * @return {?anychart.data.TreeView.DataItem} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.data.TreeView.DataItem.prototype.getParent;
+
