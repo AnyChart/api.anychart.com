@@ -1,154 +1,77 @@
 /**
- * Tooltip class.
+ * Class for the tooltip.
  * @constructor
- * @extends {anychart.core.Base}
+ * @extends {anychart.core.VisualBaseWithBounds}
  */
 anychart.core.ui.Tooltip;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.ui.Tooltip.titleFormatter;
+//  anychart.core.ui.Tooltip.prototype.adjustFontSize
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for title text formatter function.
- * @category Specific settings
- * @shortDescription Function to format title text.
- * @listing
- * var currentTooltipSettings = series.tooltip();
- * var currentFormatter = currentTooltipSettings.titleFormatter();
- * @return {Function} Function to format title text.
+ * Getter for the adjusting font size.
+ * @shortDescription Maximum font size setting.
+ * @category Text Settings
+ * @detailed Returns an array of two elements <b>[isAdjustByWidth, isAdjustByHeight]</b>.
+ *  <ul>
+ *    <li>[false, false] - do not adjust (adjust is off )</li>
+ *    <li>[true, false] - adjust width</li>
+ *    <li>[false, true] - adjust height</li>
+ *    <li>[true, true] - adjust the first suitable value.</li>
+ * </ul>
+ * @listing See listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.adjustFontSize();
+ * @return {number} An adjusted font size.
+ * @since 7.12.0
  */
-anychart.core.ui.Tooltip.prototype.titleFormatter;
+anychart.core.ui.Tooltip.prototype.adjustFontSize;
 
 /**
- * Setter for title text formatter function.
- * @example anychart.core.ui.Tooltip.titleFormatter_set
- * @param {Function=} opt_value [function() {return this.seriesName;}] Function to format title text.
+ *
+ * Setter for the adjusting font size.
+ * @detailed Minimal and maximal font sizes can be configured using:
+ * {@link anychart.core.ui.Tooltip#minFontSize} and {@link anychart.core.ui.Tooltip#maxFontSize} methods.<br/>
+ * <b>Note: </b> {@link anychart.core.ui.Tooltip#fontSize} does not work when adjusting is enabled.
+ * @example anychart.core.ui.Tooltip.adjustFontSize
+ * @param {(boolean|Array.<boolean, boolean>|{width:boolean,height:boolean})=} opt_adjustOrAdjustByWidth Is font needs to be adjusted in case of 1 argument and adjusted by width in case of 2 arguments.
+ * @param {boolean=} opt_adjustByHeight Is font needs to be adjusted by height.
  * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
  */
-anychart.core.ui.Tooltip.prototype.titleFormatter;
+anychart.core.ui.Tooltip.prototype.adjustFontSize;
+
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.ui.Tooltip.textFormatter;
+//  anychart.core.ui.Tooltip.allowLeaveChart;
 //
 //----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Getter for the current formatter content text for union tooltip.
+ * Getter for the leaving tooltip from chart.
  * @category Specific settings
- * @shortDescription Function to format content text.
+ * @shortDescription Leaving chart settings.
  * @listing
- * var currentTooltipSettings = series.tooltip();
- * var currentFormatter = currentTooltipSettings.textFormatter();
- * @return {Function|string} Function to format title text.
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.allowLeaveChart();
+ * @return {boolean} Settings.
+ * @since 7.12.0
  */
-anychart.core.ui.Tooltip.prototype.textFormatter;
+anychart.core.ui.Tooltip.prototype.allowLeaveChart;
 
 /**
- * Setter for the formatter content text for union tooltip.
- * @example anychart.core.ui.Tooltip.textFormatter_set_asFunc Using function
- * @example anychart.core.ui.Tooltip.textFormatter_set_asString Using string
- * @param {Function|string=} opt_value [function() {return this.x+": "+this.valuePrefix+this.value+this.valuePostfix;}]
- * Function or string token to format content text.
+ * Setter for the leaving tooltip from chart.
+ * <b>Note</b>: Works only for the <b>chart</b> tooltip.
+ * @example anychart.core.ui.Tooltip.allowLeaveChart_set
+ * @param {boolean} opt_value [true] Allow or disallow tooltip to leave chart when moving.
  * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
  */
-anychart.core.ui.Tooltip.prototype.textFormatter;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.core.ui.Tooltip.title;
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Getter for tooltip's title visual settings.
- * @category Specific settings
- * @shortDescription Tooltip's title visual settings.
- * @return {!anychart.core.ui.Title} An instance of the class for method chaining.
- */
-anychart.core.ui.Tooltip.prototype.title;
-
-/**
- * Setter for tooltip's title visual settings.
- * @category Specific settings
- * @param {(null|boolean|Object|string)=} opt_value [false] Tooltip settings.
- * @return {!anychart.core.ui.Tooltip} Self instance for method chaining.
- */
-anychart.core.ui.Tooltip.prototype.title;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.core.ui.Tooltip.titleFormatter;
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Tooltip title separator.
- * @category Specific settings
- * @param {(Object|boolean|null)=} opt_value [false] Tooltip separator settings.
- * @return {!(anychart.core.ui.Separator|anychart.core.ui.Tooltip)} Separator instance or itself for method chaining.
- */
-anychart.core.ui.Tooltip.prototype.separator;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.core.ui.Tooltip.titleFormatter;
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-
-/**
- * Tooltip background.
- * @category Coloring
- * @param {(string|Object|null|boolean)=} opt_value [false] Tooltip background settings.
- * @return {!(anychart.core.ui.Background|anychart.core.ui.Tooltip)} Background instance or itself for method chaining.
- */
-anychart.core.ui.Tooltip.prototype.background;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.core.ui.Tooltip.titleFormatter;
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Tooltip padding.
- * @category Size and Position
- * @param {(string|number|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=}
- * opt_value [{top: 5, right: 10, bottom: 5, left: 10}] Tooltip padding settings.
- * @return {!(anychart.core.utils.Padding|anychart.core.ui.Tooltip)} Padding instance or itself for method chaining.
- */
-anychart.core.ui.Tooltip.prototype.padding;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.core.ui.Tooltip.titleFormatter;
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Offset by X of tooltip position.
- * @category Size and Position
- * @param {number=} opt_value [10] New value of X offset of tooltip position.
- * @return {!(number|anychart.core.ui.Tooltip)} X offset of tooltip position of itself for method chaining.
- */
-anychart.core.ui.Tooltip.prototype.offsetX;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.core.ui.Tooltip.titleFormatter;
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Y offset of tooltip position.
- * @category Size and Position
- * @param {number=} opt_value [10] New value of Y offset of tooltip position.
- * @return {!(number|anychart.core.ui.Tooltip)} Y offset of tooltip position of itself for method chaining.
- */
-anychart.core.ui.Tooltip.prototype.offsetY;
+anychart.core.ui.Tooltip.prototype.allowLeaveChart;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -157,67 +80,357 @@ anychart.core.ui.Tooltip.prototype.offsetY;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets or sets Tooltip anchor settings.
+ * Getter for the tooltip anchor.
+ * @shortDescription Anchor settings.
  * @category Size and Position
- * @param {(anychart.enums.Anchor|string)=} opt_value ["leftTop"] Tooltip anchor settings.
- * @return {!(anychart.core.ui.Tooltip|anychart.enums.Anchor)} Tooltip anchor settings or itself for method chaining.
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.anchor();
+ * @return {anychart.enums.Anchor|string} Tooltip anchor settings.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.anchor;
+
+/**
+ * Setter for the tooltip anchor.
+ * @example anychart.core.ui.Tooltip.anchor_set
+ * @param {(anychart.enums.Anchor|string)=} opt_value ["centerBottom"] Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
  */
 anychart.core.ui.Tooltip.prototype.anchor;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.ui.Tooltip.titleFormatter;
+//  anychart.core.ui.Tooltip.background;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Sets/gets delay in milliseconds before tooltip becomes invisible on visible(false) call.
+ * Getter for tooltip background settings.
+ * @shortDescription Background settings.
+ * @category Visual settings
+ * @listing See listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.background();
+ * @return {anychart.core.ui.Background} An instance of the class for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.background;
+
+/**
+ * Setter for tooltip background settings.
+ * @detailed Setter for background settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable background.</li>
+ *   <li><b>object</b> - sets background settings.</li>
+ *   <li><b>string</b> - sets fill settings.</li>
+ * </ul>
+ * @example anychart.core.ui.Tooltip.background_set_asBool Enable/Disable background
+ * @example anychart.core.ui.Tooltip.background_set_asObj Using object
+ * @example anychart.core.ui.Tooltip.background_set_asStr Using string
+ * @param {(null|boolean|Object|string)} opt_value Background settings.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.background;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.disablePointerEvents;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the pointer events settings.
+ * @shortDescription Pointer events settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.disablePointerEvents();
+ * @return {boolean} The pointer events settings.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.disablePointerEvents;
+
+/**
+ * Setter for the pointer events setting.
+ * @param {boolean} opt_value [false] Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.disablePointerEvents;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.displayMode;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for display mode settings.
  * @category Specific settings
- * @param {number=} opt_value [0] Delay in milliseconds before tooltip becomes invisible on visible(false) call.
- * @return {!(number|anychart.core.ui.Tooltip)} delay in milliseconds before tooltip becomes invisible on visible(false) call or itself for method chaining.
+ * @shortDescription Display mode settings.
+ * @listing See listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.displayMode();
+ * @return {anychart.enums.TooltipDisplayMode} Display mode.
+ * @since 7.12.0
  */
-anychart.core.ui.Tooltip.prototype.hideDelay;
+anychart.core.ui.Tooltip.prototype.displayMode;
+
+/**
+ * Setter for display mode settings.
+ * <b>Note</b>: Works only for the <b>chart</b> tooltip.
+ * @param {(anychart.enums.TooltipDisplayMode|string)=} opt_value ["single"] Value to set.
+ * @example anychart.core.ui.Tooltip.displayMode_set
+ * @return {!anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.displayMode;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.ui.Tooltip.titleFormatter;
+//  anychart.core.ui.Tooltip.fontColor;
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter for font color settings.
+ * @shortDescription Font color settings.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.fontSize();
+ * @return {string} Font color settings.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.fontColor;
+
+/**
+ * Setter for font color settings.
+ * @example anychart.core.ui.Tooltip.fontColor
+ * @param {string} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.fontColor;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.fontDecoration;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Enabled for tooltip.
- * @category Interactivity
- * @param {boolean=} opt_value [true] Value to set.
- * @return {anychart.core.ui.Tooltip|boolean}
+ * Getter for font decoration settings.
+ * @shortDescription Font decoration setting.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.fontDecoration();
+ * @return {anychart.graphics.vector.Text.Decoration} Font decoration settings.
+ * @since 7.12.0
  */
-anychart.core.ui.Tooltip.prototype.enabled;
+anychart.core.ui.Tooltip.prototype.fontDecoration;
 
+/**
+ * Setter for font decoration settings.
+ * @example anychart.core.ui.Tooltip.fontDecoration
+ * @param {anychart.graphics.vector.Text.Decoration|string} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.fontDecoration;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.ui.Tooltip.titleFormatter;
+//  anychart.core.ui.Tooltip.fontFamily;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets/Sets value prefix.
- * @param {string=} opt_value
- * @return {string|anychart.core.ui.Tooltip}
+ * Getter for font family settings.
+ * @shortDescription Font family settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.fontSize();
+ * @return {string} Font family settings.
+ * @since 7.12.0
  */
-anychart.core.ui.Tooltip.prototype.valuePrefix;
+anychart.core.ui.Tooltip.prototype.fontFamily;
+
+/**
+ * Setter for font family settings.
+ * @example anychart.core.ui.Tooltip.fontFamily
+ * @param {string} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.fontFamily;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.ui.Tooltip.titleFormatter;
+//  anychart.core.ui.Tooltip.fontOpacity;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets/Sets value postfix.
- * @param {string=} opt_value
- * @return {string|anychart.core.ui.Tooltip}
+ * Getter for font opacity settings.
+ * @shortDescription Font opacity settings.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.fontOpacity();
+ * @return {number} Font opacity settings.
+ * @since 7.12.0
  */
-anychart.core.ui.Tooltip.prototype.valuePostfix;
+anychart.core.ui.Tooltip.prototype.fontOpacity;
+
+/**
+ * Setter for font opacity settings.
+ * @example anychart.core.ui.Tooltip.fontOpacity
+ * @param {number} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.fontOpacity;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.fontSize;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font size settings.
+ * @shortDescription Font size settings.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.fontSize();
+ * @return {number} Font size settings.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.fontSize;
+
+/**
+ * Setter for font size settings.
+ * @example anychart.core.ui.Tooltip.fontSize
+ * @param {(number|string)=} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.fontSize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.fontStyle;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font style settings.
+ * @shortDescription Font style settings.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.fontStyle();
+ * @return {anychart.graphics.vector.Text.FontStyle} Font style settings.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.fontStyle;
+
+/**
+ * Setter for font style settings.
+ * @example anychart.core.ui.Tooltip.fontStyle
+ * @param {string|anychart.graphics.vector.Text.FontStyle} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.fontStyle;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.fontVariant;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font variant settings.
+ * @shortDescription Font variant settings.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.fontVariant();
+ * @return {anychart.graphics.vector.Text.FontVariant} Font variant settings.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.fontVariant;
+
+/**
+ * Setter for font variant settings.
+ * @example anychart.core.ui.Tooltip.fontVariant
+ * @param {string|anychart.graphics.vector.Text.FontVariant} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.fontVariant;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.fontWeight;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font weight settings.
+ * @shortDescription Font weight settings.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.fontWeight();
+ * @return {string|number} Font weight settings.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.fontWeight;
+
+/**
+ * Setter for font weight settings.
+ * @example anychart.core.ui.Tooltip.fontWeight
+ * @param {string|number} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.fontWeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.hAlign;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for text horizontal align settings.
+ * @shortDescription Text horizontal align settings.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.hAlign();
+ * @return {anychart.graphics.vector.Text.HAlign} Horizontal align settings.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.hAlign;
+
+/**
+ * Setter for the text horizontal align settings.
+ * @example anychart.core.ui.Tooltip.hAlign
+ * @param {string|anychart.graphics.vector.Text.HAlign} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.hAlign;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -226,48 +439,781 @@ anychart.core.ui.Tooltip.prototype.valuePostfix;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Hides tooltip.
+ * Hides tooltips with delay.
+ * @category Specific settings
+ * @example anychart.core.ui.Tooltip.hide
  * @param {boolean=} opt_force Ignore tooltips hide delay.
- * @return {!anychart.core.ui.Tooltip} Itself for method chaining.
+ * @param {anychart.core.MouseEvent=} opt_event Event that initiate tooltip hiding.
+ * @return {boolean} Returns true if the tooltip was hidden.
+ * @since 7.10.0
  */
 anychart.core.ui.Tooltip.prototype.hide;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.hideDelay;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for delay in milliseconds before union tooltip item becomes hidden.
+ * @category Specific settings
+ * @shortDescription Hide delay settings.
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.hideDelay();
+ * @return {number} Hide delay settings.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.hideDelay;
+
+/**
+ * Setter for the delay in milliseconds before a tooltip becomes hidden.
+ * @example anychart.core.ui.Tooltip.hideDelay_set
+ * @param {number} opt_value [0] Delay in milliseconds.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.hideDelay;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  deprecated
+//  anychart.core.ui.Tooltip.letterSpacing;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * @deprecated Not need any more.
- * @ignoreDoc
- * Allow tooltip to leave screen when moving.
- * @category Interactivity
- * @param {boolean=} opt_value [false] Allow tooltip to leave screen when moving.
- * @return {!(boolean|anychart.core.ui.Tooltip)} Allow tooltip to leave screen when moving or itself for method chaining.
+ * Getter for text letter spacing settings.
+ * @shortDescription Text letter spacing settings.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.letterSpacing();
+ * @return {number} Letter spacing settings.
+ * @since 7.12.0
  */
-anychart.core.ui.Tooltip.prototype.allowLeaveScreen;
+anychart.core.ui.Tooltip.prototype.letterSpacing;
 
 /**
- * @deprecated Use positionMode.
- * @ignoreDoc
- * Defines whether tooltip follows the mouse or not.
- * @category Specific settings
- * @param {boolean=} opt_value [true] Follow the mouse or not.
- * @return {!(boolean|anychart.core.ui.Tooltip)} Follow the mouse or itself for method chaining.
+ * Setter for text letter spacing settings.
+ * @example anychart.core.ui.Tooltip.letterSpacing
+ * @param {number} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
  */
-anychart.core.ui.Tooltip.prototype.isFloating;
+anychart.core.ui.Tooltip.prototype.letterSpacing;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.lineHeight;
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
- * @deprecated Not need any more here.
- * @ignoreDoc
- * Tooltip content.
- * @category Specific settings
- * @param {(Object|boolean|null|string)=} opt_value [true] Content settings.
- * @return {!(anychart.core.ui.Label|anychart.core.ui.Tooltip)} Labels instance or itself for method chaining.
+ * Getter for text line height settings.
+ * @shortDescription Text line height setting.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.lineHeight();
+ * @return {number|string} Line height settings.
+ * @since 7.12.0
  */
-anychart.core.ui.Tooltip.prototype.content;
+anychart.core.ui.Tooltip.prototype.lineHeight;
+
+/**
+ * Setter for text line height settings.
+ * @example anychart.core.ui.Tooltip.lineHeight
+ * @param {number|string} opt_value ["normal"] Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.lineHeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.prototype.maxFontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for maximum font size settings for adjust text from.
+ * @shortDescription Maximum font size settings.
+ * @category Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.maxFontSize();
+ * @return {number} Maximum font size.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.maxFontSize;
+
+/**
+ * Setter for maximum font size settings for adjust text from.
+ * @detailed <b>Note:</b> works only when adjusting is enabled. Look {@link anychart.core.ui.Tooltip#adjustFontSize}.
+ * @example anychart.core.ui.Tooltip.maxFontSize
+ * @param {(number|string)=} opt_value [9] Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.maxFontSize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.prototype.minFontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for minimum font size settings for adjust text from.
+ * @shortDescription Minimum font size settings.
+ * @category Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.minFontSize();
+ * @return {number} Minimum font size.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.minFontSize;
+
+/**
+ * Setter for minimum font size settings for adjust text from.
+ * @detailed <b>Note:</b> works only when adjusting is enabled. Look {@link anychart.core.ui.Tooltip#adjustFontSize}.
+ * @example anychart.core.ui.Tooltip.minFontSize
+ * @param {(number|string)=} opt_value [9] Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.minFontSize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.offsetX;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the tooltip offset by X.
+ * @category Size and Position
+ * @shortDescription X offset settings.
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.offsetX();
+ * @return {number} Tooltip offset by X.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.offsetX;
+
+/**
+ * Setter for union tooltip offsetX.
+ * @example anychart.core.ui.Tooltip.offsetX
+ * @param {number} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.offsetX;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.offsetY;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the tooltip offset by Y.
+ * @category Size and Position
+ * @shortDescription Y offset settings.
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.offsetY();
+ * @return {number} Tooltip offset by Y.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.offsetY;
+
+/**
+ * Setter for the tooltip offset by Y.
+ * @example anychart.core.ui.Tooltip.offsetY
+ * @param {number} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.offsetY;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.prototype.padding
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the tooltip padding.
+ * @shortDescription Padding settings.
+ * @category Size and Position
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.padding();
+ * @return {!anychart.core.utils.Padding} Tooltip padding.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.padding;
+
+/**
+ * Setter for tooltip padding in pixels by one value.
+ * @example anychart.core.ui.Tooltip.padding_set_asSingle
+ * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=}
+ * opt_value [{top: 5, right: 10, bottom: 5, left: 10}] Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.padding;
+
+/**
+ * Setter for tooltip padding in pixels.
+ * @listing Example
+ * // 1) top and bottom 10px, left and right 15px
+ * label.padding(10, '15px');
+ * // 2) top 10px, left and right 15px, bottom 5px
+ * label.padding(10, '15px', 5);
+ * // 3) top 10px, right 15px, bottom 5px, left 12px
+ * label.padding(10, '15px', '5px', 12);
+ * @example anychart.core.ui.Tooltip.padding_set_asSeveral
+ * @param {(string|number)=} opt_value1 [5] Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 [10] Right or right-left space.
+ * @param {(string|number)=} opt_value3 [5] Bottom space.
+ * @param {(string|number)=} opt_value4 [10] Left space.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.padding;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.position;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for union tooltip position.
+ * @category Size and Position
+ * @shortDescription Position settings.
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.position();
+ * @return {anychart.enums.Position|string} Tooltip position.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.position;
+
+/**
+ * Setter for union tooltip position.<br/>
+ * <b>Note:</b> Do not works with position mode <b>FLOAT</b>.
+ * @example anychart.core.ui.Tooltip.position
+ * @param {(anychart.enums.Position|string)=} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.position;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.positionMode;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for all tooltips position mode.
+ * @category Size and Position
+ * @shortDescription Position mode settings.
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.positionMode();
+ * @return {string} Position mode.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.positionMode;
+
+/**
+ * Setter for all tooltips position mode.
+ * @example anychart.core.ui.Tooltip.positionMode
+ * @param {string|anychart.enums.TooltipPositionMode} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.positionMode;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.selectable;
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter for the text selectable option.
+ * @shortDescription Text selectable option.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.selectable();
+ * @return {boolean} Text selectable value.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.selectable;
+
+/**
+ * Setter for the text selectable option.
+ * @example anychart.core.ui.Tooltip.selectable
+ * @param {boolean} opt_value [false] Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.selectable;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.separator;
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter for union tooltip separator.
+ * @category Visual settings
+ * @shortDescription Separator settings.
+ * @example anychart.core.ui.Tooltip.separator_get
+ * @return {anychart.core.ui.Separator} An instance of the class for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.separator;
+
+/**
+ * Setter for union tooltip separator.
+ * @detailed Setter for separator settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disables separator.</li>
+ *   <li><b>object</b> - sets separator settings.</li>
+ * </ul>
+ * @param {(null|boolean|Object)} opt_value Separator settings.
+ * @example anychart.core.ui.Tooltip.separator_set_asBool Using Boolean
+ * @example anychart.core.ui.Tooltip.separator_set_asObj Using Object
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.separator;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.textDirection;
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter for the text direction settings.
+ * @shortDescription Text direction settings.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.fontOpacity();
+ * @return {anychart.graphics.vector.Text.Direction} Text direction settings.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.textDirection;
+
+/**
+ * Setter for text direction settings.
+ * @example anychart.core.ui.Tooltip.textDirection
+ * @param {string|anychart.graphics.vector.Text.Direction} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.textDirection;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.textFormatter;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for function content text for union tooltip.
+ * @category Specific settings
+ * @shortDescription Function to format content text.
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentFormatter = currentTooltipSettings.textFormatter();
+ * @return {Function} Function to format title text.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.textFormatter;
+
+/**
+ * Setter for function content text for union tooltip.
+ * @example anychart.core.ui.Tooltip.textFormatter_set_asFunc Using function
+ * @example anychart.core.ui.Tooltip.textFormatter_set_asString Using string
+ * @param {Function=} opt_value [function() {return this['formattedValues'].join('\n');}]
+ * Function or string token to format content text. Function that looks like <code>function(){
+ *    // this.formattedValues - formatted values for tooltip
+ *    // this.valuePostfix - tooltip postfix value
+ *    // this.valuePrefix - tooltip prefix value
+ *    // this.allPoints - array of the all points
+ *    // this.points - array of the series points
+ *    // this.clientX - X coordinate of the mouse
+ *    // this.clientY - Y coordinate of the mouse
+ *    return textFormatterValue; // type Function
+ * }</code>.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.textFormatter;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.textIndent;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for text indent settings.
+ * @shortDescription Text indent settings.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.textIndent();
+ * @return {number} Text indent settings.
+ */
+anychart.core.ui.Tooltip.prototype.textIndent;
+
+/**
+ * Setter for text indent settings.
+ * @example anychart.core.ui.Tooltip.textIndent
+ * @param {number} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.textIndent;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.prototype.textOverflow
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for text overflow settings.
+ * @shortDescription Text overflow settings.
+ * @category Content Text Settings
+ * @return {anychart.graphics.vector.Text.TextOverflow} Text overflow settings
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.textOverflow;
+
+/**
+ * Setter for text overflow settings.
+ * @example anychart.core.ui.Tooltip.textOverflow
+ * @param {anychart.graphics.vector.Text.TextOverflow|string=} opt_value Value to set
+ * @return {!anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.textOverflow;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.textSettings
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the full text appearance settings.
+ * @shortDescription Font opacity setting.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.textSettings();
+ * @return {(Object|string|number|boolean)} Text settings.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.textSettings;
+
+/**
+ * Setter for the full text appearance settings.
+ * @param {Object} opt_value Few text settings.
+ * @example anychart.core.ui.Tooltip.textSettings_set_asObj
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.textSettings;
+
+/**
+ * Setter for the custom text appearance settings.
+ * @param {string} opt_name Text settings name.
+ * @param {string|number|boolean} opt_value Value to set.
+ * @example anychart.core.ui.Tooltip.textSettings_set_asNumber
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.textSettings;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.textWrap
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter for text wrap settings.
+ * @shortDescription Text wrap setting.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.textWrap();
+ * @return {anychart.graphics.vector.Text.TextWrap} Text wrap settings.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.textWrap;
+
+/**
+ * Setter for text wrap settings.
+ * @example anychart.core.ui.Tooltip.textWrap
+ * @param {string|anychart.graphics.vector.Text.TextWrap} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.textWrap;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.title
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for union tooltip title visual settings.
+ * @category Visual settings
+ * @shortDescription Title settings.
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.title();
+ * @return {anychart.core.ui.Title} An instance of the class for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.title;
+
+/**
+ * Setter for union tooltip title visual settings.
+ * @detailed Setter for title settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/false</b> - disable title.</li>
+ *   <li><b>object</b> - Setter for title settings.</li>
+ * </ul>
+ * <b>Note:</b> use method {@link anychart.core.ui.Tooltip#titleFormatter} to set title text.
+ * @example anychart.core.ui.Tooltip.title_set_asBool Using Boolean
+ * @example anychart.core.ui.Tooltip.title_set_asObj Using Object
+ * @param {(null|boolean|Object)} opt_value Title settings.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.title;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.titleFormatter
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the function to format title.
+ * @category Specific settings
+ * @shortDescription Function to format title text.
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentFormatter = currentTooltipSettings.titleFormatter();
+ * @return {Function} Function to format title text.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.titleFormatter;
+
+/**
+ * Setter for the function to format title.<br/>
+ * <b>Note:</b> Use {@link anychart.core.ui.Tooltip#title} method to set title visual settings.
+ * @example anychart.core.ui.Tooltip.titleFormatter
+ * @param {Function=} opt_value [function() {return 'Tooltip';}]
+ * Function to format title text. Function that looks like <code>function(){
+ *    // this.clientX - X coordinate of the mouse
+ *    // this.clientY - Y coordinate of the mouse
+ *    // this.formattedValues - array of the formatted values for the tooltip
+ *    // this.points - array of the series points
+ *    // this.allPoints - array of the all points
+ *    // this.titleText - tooltip title text
+ *    return titleFormatterValue; // type Function
+ * }</code>.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.titleFormatter;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.useHtml
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the useHTML flag.
+ * @shortDescription Use HTML option.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.useHtml();
+ * @return {boolean} UseHTML flag.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.useHtml;
+
+/**
+ * Setter for the useHTML flag.
+ * @example anychart.core.ui.Tooltip.useHtml_set
+ * @param {boolean} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.useHtml;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.vAlign;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for text vertical align settings.
+ * @shortDescription Text vertical align settings.
+ * @category Content Text Settings
+ * @listing
+ * var currentTooltipSettings = chart.tooltip();
+ * var currentValue = currentTooltipSettings.vAlign();
+ * @return {anychart.graphics.vector.Text.VAlign} Vertical align.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.vAlign;
+
+/**
+ * Setter for text vertical align settings.
+ * @example anychart.core.ui.Tooltip.vAlign
+ * @param {string|anychart.graphics.vector.Text.VAlign} opt_value Value to set.
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.vAlign;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.valuePostfix;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for tooltip postfix value.
+ * @category Specific settings
+ * @shortDescription Postfix settings.
+ * @listing See listing
+ * var currentTooltipSettings = series.tooltip();
+ * var currentValue = currentTooltipSettings.valuePostfix();
+ * @return {string} Postfix settings.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.valuePostfix;
+
+/**
+ * Setter for tooltip postfix value.
+ * @param {string} opt_value [''] Value to set.
+ * @example anychart.core.ui.Tooltip.valuePostfix
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.valuePostfix;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Tooltip.valuePrefix;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for tooltip prefix value.
+ * @category Specific settings
+ * @shortDescription Prefix settings.
+ * @listing See listing
+ * var currentTooltipSettings = series.tooltip();
+ * var currentValue = currentTooltipSettings.valuePrefix();
+ * @return {string} Current prefix settings.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.valuePrefix;
+
+/**
+ * Setter for tooltip prefix value.
+ * @param {string} opt_value [''] Value to set.
+ * @example anychart.core.ui.Tooltip.valuePrefix
+ * @return {anychart.core.ui.Tooltip} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.ui.Tooltip.prototype.valuePrefix;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.bounds;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.left;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.right;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.top;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.bottom;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.width;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.height;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.getPixelBounds;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.minWidth;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.minHeight;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.maxWidth;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.maxHeight;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.zIndex;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.enabled;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.print;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.saveAsPNG;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.saveAsJPG;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.saveAsPDF;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.saveAsSVG;
+
+/** @inheritDoc */
+anychart.core.ui.Tooltip.prototype.toSVG;
 
 /** @inheritDoc */
 anychart.core.ui.Tooltip.prototype.listen;

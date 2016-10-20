@@ -5,27 +5,23 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function () {
-            var dataSet = anychart.data.set([
-                ["John", 10000, 12000],
-                ["Jake", 12000, 15000],
-                ["Peter", 18000, 16000],
-                ["James", 11000, 13000],
-                ["Mary", 9000, 19000]
+            var data = anychart.data.set([
+                ["John", 10000],
+                ["Jake", 12000],
+                ["Peter", 18000],
+                ["James", 11000],
+                ["Mary", 9000]
             ]);
-
-            var data = dataSet.mapAs({x: [0], value: [1]});
 
             chart = anychart.column(data);
 
             var currentTooltip = chart.tooltip();
             currentTooltip.displayMode("union");
 
-            // Set text formatter.
-            currentTooltip.textFormatter(function(){
-                return "Column " + this['formattedValues']
-            });
+            // Disable title.
+            currentTooltip.title(false);
 
-            chart.title("Set text formatter parameter as a function");
+            chart.title("Disable tooltip title");
             chart.container("container");
             chart.draw();
         });

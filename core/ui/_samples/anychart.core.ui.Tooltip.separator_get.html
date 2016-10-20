@@ -1,16 +1,16 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="column tooltip anyChart"/>
+    <meta name="x-cat-tags" content="line anyChart"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function () {
             var dataSet = anychart.data.set([
-                ["John", 10000, 12000],
-                ["Jake", 12000, 15000],
-                ["Peter", 18000, 16000],
-                ["James", 11000, 13000],
-                ["Mary", 9000, 19000]
+                ["John" , 10000, 12000],
+                ["Jake" , 12000, 15000],
+                ["Peter" , 18000, 16000],
+                ["James" , 11000, 13000],
+                ["Mary" , 9000, 19000]
             ]);
 
             var data = dataSet.mapAs({x: [0], value: [1]});
@@ -18,14 +18,13 @@
             chart = anychart.column(data);
 
             var currentTooltip = chart.tooltip();
-            currentTooltip.displayMode("union");
 
-            // Set text formatter.
-            currentTooltip.textFormatter(function(){
-                return "Column " + this['formattedValues']
-            });
+            // Get tooltip separator.
+            var separatorSettings = currentTooltip.separator();
+            separatorSettings.fill(["#F44336", "#FFEB3B"]);
+            separatorSettings.height(4);
 
-            chart.title("Set text formatter parameter as a function");
+            chart.title("Get and modify tooltip separator");
             chart.container("container");
             chart.draw();
         });

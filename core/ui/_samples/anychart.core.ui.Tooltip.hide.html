@@ -1,0 +1,51 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="column tooltip anyChart"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function () {
+            stage = anychart.graphics.create("container");
+
+            var data = anychart.data.set([
+                ["John", 10000],
+                ["Jake", 12000],
+                ["Peter", 18000],
+                ["James", 11000],
+                ["Mary", 9000]
+            ]);
+
+            var chart = anychart.column(data);
+            chart.bounds(0, "1%", "100%", "100%");
+
+            var tooltipSettings = chart.tooltip();
+            tooltipSettings.displayMode("union");
+            tooltipSettings.positionMode("point");
+            tooltipSettings.hideDelay(4000);
+
+            chart.title("Hover a point then click the button");
+            chart.container(stage);
+            chart.draw();
+
+            var customLabel = anychart.standalones.label();
+            customLabel.background({fill: "#9E9E9E"});
+            customLabel.text("Hide tooltip.");
+            customLabel.fontColor("#fff");
+            customLabel.parentBounds(0, 0, 100, 100);
+            customLabel.padding(5);
+            customLabel.zIndex(1000);
+            customLabel.listen("click", function() {
+
+                // Hide tooltip.
+                tooltipSettings.hide(true);
+
+            });
+            customLabel.container(stage);
+            customLabel.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
