@@ -19,20 +19,31 @@
 
             var dataSetForSeries = dataSet.mapAs({id: "id"});
 
-            australiaMap =  anychart.map();
+            australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
+            australiaMap.choropleth(dataSetForSeries);
 
-            var series = australiaMap.choropleth(dataSetForSeries);
-            australiaMap.geoIdField("code_hasc");
+            var mapAxes = australiaMap.axes();
+            mapAxes.top(true);
+            mapAxes.left(true);
 
+            var mapScale = australiaMap.scale();
+
+            // Set maximum X.
+            mapScale.maximumX(145);
+
+            // Set minimum X.
+            mapScale.minimumX(110);
+
+            // Set maximum Y.
+            mapScale.maximumY(-9);
+
+            // Set minimum Y.
+            mapScale.minimumY(-40);
+
+            australiaMap.title("Set the maximum and minimum for X and Y");
             australiaMap.container("container");
             australiaMap.draw();
-
-            var point = series.getPoint(2);
-
-            // Gets point crs.
-            var currentCrs = point.crs();
-            // Do something.
         });
     </script>
 </head>

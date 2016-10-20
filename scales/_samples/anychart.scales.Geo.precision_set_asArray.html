@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyMap"/>
+    <script src="../../anychart.min.js"></script>
+    <script src="http://cdn.anychart.com/geodata/1.2.0/custom/world_source/world_source.js" data-export="true"></script>
+    <script x-export="worldMap">
+        anychart.onDocumentReady(function() {
+            worldMap = anychart.map();
+            worldMap.geoData(anychart.maps.world_source);
+            worldMap.crs("bonne");
+            worldMap.axes(true);
+            worldMap.grids(true);
+
+            var mapScale = worldMap.scale();
+
+            // Set precision.
+            mapScale.precision([20, 20]);
+
+            worldMap.title("Set precision parameter as an array");
+            worldMap.container("container");
+            worldMap.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

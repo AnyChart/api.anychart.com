@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="anyMap"/>
-    <script src="../../anychart.min.js"></script>
+    <script src="../../../anychart.min.js"></script>
     <script src="http://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
     <script x-export="australiaMap">
         anychart.onDocumentReady(function() {
@@ -19,20 +19,24 @@
 
             var dataSetForSeries = dataSet.mapAs({id: "id"});
 
-            australiaMap =  anychart.map();
+            australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
+            australiaMap.choropleth(dataSetForSeries);
+            australiaMap.axes(true);
+            australiaMap.scale().yTicks({interval: 5});
 
-            var series = australiaMap.choropleth(dataSetForSeries);
-            australiaMap.geoIdField("code_hasc");
+            var mapGrids = australiaMap.grids();
 
+            var horizontalGrids = mapGrids.horizontal();
+            horizontalGrids.enabled(true);
+            horizontalGrids.zIndex(45);
+
+            // Set grid even fill.
+            horizontalGrids.evenFill(["#FFFFFF", "#FF5722 0.5"], 0.5, 0.4, null, 0.8, 0.8, 0.31);
+
+            australiaMap.title("Set grid even fill as a radial gradient");
             australiaMap.container("container");
             australiaMap.draw();
-
-            var point = series.getPoint(2);
-
-            // Gets point crs.
-            var currentCrs = point.crs();
-            // Do something.
         });
     </script>
 </head>

@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="anyMap"/>
-    <script src="../../../../anychart.min.js"></script>
+    <script src="../../anychart.min.js"></script>
     <script src="http://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
     <script x-export="australiaMap">
         anychart.onDocumentReady(function () {
@@ -19,12 +19,14 @@
             australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
             australiaMap.marker(dataSet);
+            australiaMap.axes(true);
 
             var currentScale = australiaMap.scale();
 
             // Sets gap.
             currentScale.gap(0.2);
 
+            australiaMap.title("Set gap settings");
             australiaMap.container("container");
             australiaMap.draw();
         });

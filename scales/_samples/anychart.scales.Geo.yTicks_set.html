@@ -19,20 +19,21 @@
 
             var dataSetForSeries = dataSet.mapAs({id: "id"});
 
-            australiaMap =  anychart.map();
+            australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
+            australiaMap.choropleth(dataSetForSeries);
 
-            var series = australiaMap.choropleth(dataSetForSeries);
-            australiaMap.geoIdField("code_hasc");
+            var mapAxes = australiaMap.axes();
+            mapAxes.left(true);
 
+            var mapScale = australiaMap.scale();
+
+            // Set Y ticks.
+            mapScale.yTicks({interval: 5});
+
+            australiaMap.title("Set yTicks object");
             australiaMap.container("container");
             australiaMap.draw();
-
-            var point = series.getPoint(2);
-
-            // Gets point crs.
-            var currentCrs = point.crs();
-            // Do something.
         });
     </script>
 </head>
