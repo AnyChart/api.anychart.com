@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyStock"/>
+    <script src="../../anychart.min.js"></script>
+    <script src="http://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            var dataTable = anychart.data.table();
+            dataTable.addData(get_dji_daily_short_data());
+
+            var mapping = dataTable.mapAs({value: 1});
+
+            chart = anychart.stock();
+
+            var currentPlot = chart.plot();
+            currentPlot.line(mapping);
+
+            var rangeSelector = anychart.ui.rangeSelector();
+
+            // Set custom ranges for range selector.
+            rangeSelector.ranges([{
+                'text': 'Vocation 2006',
+                'startDate': '2006 May 16',
+                'endDate': '2006 Jul 29'
+            }, {
+                'text': 'Vocation 2007',
+                'startDate': '2007 Feb 1',
+                'endDate': '2007 Mar 8'
+            }, {
+                'text': 'Vocation 2008',
+                'startDate': '2008 Oct 15',
+                'endDate': '2008 Nov 4'
+            }]);
+
+            chart.title("Set custom ranges for range selector");
+            chart.container("container");
+            chart.draw();
+
+            rangeSelector.render(chart);
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
