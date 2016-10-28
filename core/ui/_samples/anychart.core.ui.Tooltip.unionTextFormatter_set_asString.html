@@ -13,18 +13,20 @@
                 ["Mary", 9000, 19000]
             ]);
 
-            var data = dataSet.mapAs({x: [0], value: [1]});
+            var firstData = dataSet.mapAs({x: [0], value: [1]});
+            var secondData = dataSet.mapAs({x: [0], value: [2]});
 
-            chart = anychart.column(data);
+            chart = anychart.column();
+            chart.column(firstData).name("First series");
+            chart.column(secondData).name("Second series");
 
             var currentTooltip = chart.tooltip();
+            currentTooltip.displayMode("union");
 
-            // Set text formatter.
-            currentTooltip.textFormatter(function(){
-                return "Column " + this.value;
-            });
+            // Set text formatter for union tooltip.
+            currentTooltip.textFormatter("Value: {%Value}");
 
-            chart.title("Set text formatter parameter as a function");
+            chart.title("Set union text formatter parameter as a string token");
             chart.container("container");
             chart.draw();
         });

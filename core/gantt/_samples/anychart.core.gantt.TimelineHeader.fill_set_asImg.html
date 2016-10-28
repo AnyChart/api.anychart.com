@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="anyGantt"/>
-    <script src="../../anychart.min.js"></script>
+    <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var data = [
@@ -14,12 +14,27 @@
                 {"id": "6", "name": "Define the Opportunity", parent: "1", "progressValue": "27%", "actualStart": 951696000000, "actualEnd": 951782400000},
                 {"id": "7", "name": "Research the market and competition", parent: "6", "progressValue": "0%", "actualStart": 951523200000, "actualEnd": 951609600000, "connectTo": "8", "connectorType": "FinishStart"}
             ];
+
             chart = anychart.ganttProject();
-            chart.data(data, "astable");
+            chart.data(data, "asTable");
+
+            var timeline = chart.getTimeline();
+
+            var currentHeader = timeline.header();
+            currentHeader.topLevel({tileFill: "none"});
+            currentHeader.midLevel({tileFill: "none"});
+            currentHeader.lowLevel({tileFill: "none"});
+
+            // Set background fill.
+            currentHeader.backgroundFill({
+                src: "http://static.anychart.com/images/underwater.jpg",
+                mode: "stretch",
+                opacity: 0.2
+            });
+
             chart.container("container");
             chart.draw();
             chart.fitAll();
-            chart.zoomTo(951350400000, 951609600000); // sets zoom to range
         });
     </script>
 </head>
