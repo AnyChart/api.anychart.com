@@ -1,0 +1,175 @@
+/**
+ * Calendar scale.
+ * <b>Note:</b> To create instance use {@link anychart.scales#calendar} method.
+ * @constructor
+ * @extends {anychart.core.Base}
+ */
+anychart.scales.Calendar;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.scales.Calendar.prototype.weekendRange
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the regular weekend days.
+ * @shortDescription Settings for regular weekend days.
+ * @category Special
+ * @return {Array.<number>} The current weekend days.
+ * @since 7.12.0
+ */
+anychart.scales.Calendar.prototype.weekendRange;
+
+/**
+ * Setter for the regular weekend days.
+ * @listing Sets weekends
+ * var calendar = anychart.scales.calendar();
+ * calendar.weekendRange([0,6]);
+ * @param {Array.<number>} var_value Holidays. 0 - monday, ... , 6 - sunday. Day number does not depend on localization.
+ * @return {anychart.scales.Calendar} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.scales.Calendar.prototype.weekendRange;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.scales.Calendar.prototype.timezoneOffset
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the timezone offset.
+ * @shortDescription Timezone offset settings.
+ * @category Special
+ * @return {Array.<number>} The current timezone offset in minutes.
+ * @since 7.12.0
+ */
+anychart.scales.Calendar.prototype.timezoneOffset;
+
+/**
+ * Setter for the timezone offset for the output availabilities.
+ * @listing Sets timezone offset
+ * var calendar = anychart.scales.calendar();
+ * calendar.timezoneOffset(-4*60); // Sets - 4 hours.
+ * @param {Number} var_value Offset in minutes.
+ * @return {anychart.scales.Calendar} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.scales.Calendar.prototype.timezoneOffset;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.scales.Calendar.prototype.availabilities
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the availabilities for the calendar.
+ * @shortDescription Availabilities settings.
+ * @category Special
+ * @return {Array.<anychart.scales.Calendar.Availability>} The current availabilities.
+ * @since 7.12.0
+ */
+anychart.scales.Calendar.prototype.availabilities;
+
+/**
+ * Setter for the availabilities for the calendar.
+ * @listing Sets weekends
+ * var calendar = anychart.scales.calendar();
+ * calendar.availabilities([
+ *   {each:'day', from: '10:00', to: '18:00'},
+ *   {each:'day', from: '14:00', to: '15:00', isWorking: false}
+ * ]);
+ * @param {Array.<anychart.scales.Calendar.Availability>} opt_value Array of availabilities. Next availability has more priority than previous.
+ * @return {anychart.scales.Calendar} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.scales.Calendar.prototype.availabilities;
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.scales.Calendar.prototype.getWorkingSchedule
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the working time in passed datetime interval.
+ * @detailed Returns intervals of working days between two passed dates. The result is an array of whole day schedules for each
+ * day in the passed range. Schedule for each day is represented as an array of tuples [startTime, endTime] each tuple
+ * represents an interval of working time. The end of the day is considered at 23:59. All timestamps are shifted
+ * according to the {@link anychart.scales.calendar#timezoneOffset} of the calendar (so the day is considered starting at -offset hours UTC and last for
+ * exactly 24 hours).
+ * @category Special
+ * @listing Getting wokring time
+ * var calendar = anychart.scales.calendar();
+ * calendar.availabilities([
+ *   {each:'day', from: '10:00', to: '18:00'},
+ *   {each:'day', from: '14:00', to: '15:00', isWorking: false}
+ * ]);
+ * var getWorkingTime =  calendar.getWorkingSchedule(Date.UTC(2016, 0, 31), Date.UTC(2016, 1, 1));
+ * // [
+ * //  [
+ * //    [Date.UTC(2016, 0, 31,10), Date.UTC(2016, 0, 31,14)],
+ * //    [Date.UTC(2016, 0, 31,15), Date.UTC(2016, 0, 31,18)]
+ * //  ],[
+ * //    [Date.UTC(2016, 1, 1,10), Date.UTC(2016, 1, 1,14)],
+ * //    [Date.UTC(2016, 1, 1,15), Date.UTC(2016, 1, 1,18)]
+ * // ]
+ * @param {number} startDate Start date in UTC format.
+ * @param {number} endDate End date in UTC format.
+ * @return {Array.<Array.<Array.<number>>>} An array of arrays of tuples.
+ * @since 7.12.0
+ */
+anychart.scales.Calendar.prototype.getWorkingSchedule;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.scales.calendar
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Constructor function for the calendar.
+ * @listing Create two calendars
+ * var parentCalendar = anychart.scales.calendar();
+ * parentCalendar.availabilities([
+ *   // Set some availabilities
+ * ]);
+ * var childCalendar = anychart.scales.calendar(parentCalendar);
+ * // Child calendar include parent's availabilities.
+ * childCalendar.availabilities([
+ *   // Set advanced availabilities
+ * ]);
+ * @param {anychart.scales.Calendar=} opt_parentCalendar Instance of parent calendar.
+ * @return {anychart.scales.Calendar} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.scales.calendar;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.scales.Calendar.Availability
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Type definition for availabilities.
+ * @typedef {Object} anychart.scales.Calendar.Availability
+ * @property {boolean} isWorking Define work time
+ * @property {anychart.enums.AvailabilityPeriod|undefined} each
+ * @property {Date|number|string|undefined} from
+ * @property {Date|number|string|undefined} to
+ * @property {Date|number|string|undefined} on
+ * @property {Date|number|string|undefined} starts Define
+ * @property {Date|number|string|undefined} ends
+ * @since 7.12.0
+ */
+anychart.scales.Calendar.Availability;

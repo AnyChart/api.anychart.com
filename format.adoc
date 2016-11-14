@@ -11,7 +11,6 @@ anychart.format;
 //  anychart.format.subs
 //
 //----------------------------------------------------------------------------------------------------------------------
-
 /**
  * Formats for string substitution.
  * For example: subs("foo%s hot%s", "bar", "dog") becomes "foobar hotdog".
@@ -28,13 +27,130 @@ anychart.format.subs;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//  anychart.format.getMessage
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Returns localized message if the translation is provided in messages section of output locale.
+ * @category Specific settings
+ * @example anychart.format.getMessage
+ * @param {anychart.enums.Interval} keyword Keyword.
+ * @return {string} Message from current locale by keyword or a keyword itself if a message doesn't exist.
+ * @since 7.12.0
+ */
+anychart.format.getMessage;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.format.getIntervalIdentifier
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Get interval identifier by unit name.
+ * @category Date settings
+ * @listing Use anychart.format.getIntervalIdentifier
+ * anychart.format.getIntervalIdentifier('day','year');
+ * anychart.format.getIntervalIdentifier('d','y');
+ * // returns 'year_day'
+ * @param {anychart.enums.Interval} intervalUnit Name of unit interval.
+ * @param {anychart.enums.Interval=} opt_parentIntervalUnit Name of parent unit interval.
+ * @return {string} Correct interval identifier by unit name.
+ * @since 7.12.0
+ */
+anychart.format.getIntervalIdentifier;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.format.getDateTimeFormat
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Gets datatime format from locale by identifier and index.
+ * To get all formats use {@link anychart.format.getDateTimeFormats}.
+ * @category Date settings
+ * @listing anychart.format.getDateTimeFormat
+ * // for example in 'de-de' locale defined
+ * // 'year_day': ['EEEE, y MMMM dd', 'yy MM dd', 'yyyy MMMM dd']
+ * var identifier = anychart.format.getIntervalIdentifier('days','years');
+ * var format = anychart.format.getDateTimeFormat(identifier, 2, 'de-de');
+ * // format = 'yyyy MMMM dd'
+ * @param {string} identifier Use {@link anychart.format.getIntervalIdentifier} to get correct identifier
+ * @param {number=} opt_index [0] If locale has more than one format.
+ * @param {anychart.format.Locale=} opt_locale Locale to be used.
+ * @return {string}
+ */
+anychart.format.getDateTimeFormat;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.format.getDateTimeFormat
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Gets all datatime formats from locale by identifier.
+ * To get one format by index use {@link anychart.format.getDateTimeFormat}.
+ * @listing anychart.format.getDateTimeFormat
+ * // for example in 'de-de' locale defined
+ * // 'year_day': ['EEEE, y MMMM dd', 'yy MM dd', 'yyyy MMMM dd']
+ * var identifier = anychart.format.getIntervalIdentifier('days','years');
+ * var allFormats = anychart.format.getDateTimeFormat(identifier, 'de-de');
+ * // allFormats = ['EEEE, y MMMM dd', 'yy MM dd', 'yyyy MMMM dd']
+ * @param {string} identifier Use {@link anychart.format.getIntervalIdentifier} to get correct identifier
+ * @param {anychart.format.Locale=} opt_locale Locale to be used.
+ * @since 7.12.0
+ * @category Date settings
+ * @return {string}
+ */
+anychart.format.getDateTimeFormats;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.format.date
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Formats date by pattern.<br>
+ * The same that anychart.format.dateTime but with the {@link anychart.format.outputDateFormat} as default datetime format.
+ * @category Formatters
+ * @example anychart.format.date
+ * @param {number|Date} date UTC timestamp or Date object.
+ * @param {number=} opt_timeZone Adjust with time zone. Indicate minutes WEST of UTC to be used as a constant time zone offset.
+ * @param {(string|anychart.format.Locale)=} opt_locale Locale to be used.
+ * @return {string} Formatted value.
+ */
+anychart.format.date;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.format.time
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Formats time by pattern.<br>
+ * The same that anychart.format.dateTime but with the {@link anychart.format.outputTimeFormat} as default datetime format.
+ * @category Formatters
+ * @example anychart.format.time
+ * @param {number|Date} date UTC timestamp or Date object.
+ * @param {number=} opt_timeZone Adjust with time zone. Indicate minutes WEST of UTC to be used as a constant time zone offset.
+ * @param {(string|anychart.format.Locale)=} opt_locale Locale to be used.
+ * @return {string} Formatted value.
+ */
+anychart.format.time;
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //  anychart.format.dateTime
 //
 //----------------------------------------------------------------------------------------------------------------------
-
 /**
- * Formats date by pattern.
- * @category Specific settings
+ * Formats date time by pattern.
+ * @category Formatters
  * @example anychart.format.dateTime
  * @param {number|Date} date UTC timestamp or Date object.
  * @param {string=} opt_format Format of date ['yyyy.MM.dd'].
@@ -51,11 +167,10 @@ anychart.format.dateTime;
 //  anychart.format.number
 //
 //----------------------------------------------------------------------------------------------------------------------
-
 /**
  * Formats number with given settings.
  * @shortDescription Formats number.
- * @category Specific settings
+ * @category Formatters
  * @example anychart.format.number
  * @param {number} number Number for formatting.
  * @param {(number|anychart.format.NumberLocale|string)=} opt_decimalsCountOrLocal [2] Desired number of decimals or localization.
@@ -72,7 +187,6 @@ anychart.format.number;
 
 /**
  * Formats number using object.
- * @category Specific settings
  * @example anychart.format.number_set_asObj
  * @param {number} number Number for formatting.
  * @param {Object} opt_settings Object with settings.
@@ -87,7 +201,6 @@ anychart.format.number;
 //  anychart.format.locales
 //
 //----------------------------------------------------------------------------------------------------------------------
-
 /**
  * Contains a list of the used localizations. <br/>
  * By default contains localization "en-en". See the full localizations list by <a href="http://cdn.anychart.com/#locales">link</a>.
@@ -107,9 +220,9 @@ anychart.format.locales;
 //  anychart.format.inputLocale
 //
 //----------------------------------------------------------------------------------------------------------------------
-
 /**
- * Input format setting to be used.
+ * Input format settings to be used.
+ * @category Locale settings
  * @example anychart.format.inputLocale
  * @param {(string|anychart.format.Locale)=} opt_value Localization name or settings.
  * @return {string|anychart.format.Locale} The current localization name or settings.
@@ -124,16 +237,52 @@ anychart.format.inputLocale;
 //  anychart.format.inputDateTimeFormat
 //
 //----------------------------------------------------------------------------------------------------------------------
-
 /**
  * Input date time format.
- * Has more priority than the format of localization.
+ * Has priority over the format of localization.
  * @example anychart.format.inputDateTimeFormat
  * @param {string=} opt_value Input date time format for parsing
  * @return {string} The current date time format.
+ * @category Date settings
  * @since 7.9.0
  */
 anychart.format.inputDateTimeFormat;
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.format.inputBaseDate
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter for the input base date.
+ * @shortDescription Input base date settings.
+ * @category Date settings
+ * @return {Date} The input base date.
+ * @since 7.12.0
+ * @return {Date}
+ */
+anychart.format.inputBaseDate;
+
+/**
+ * Setter for the input base date.
+ * @detailed
+ * All dates are parsed by the anychart.format.parseDate in case of lacking of any date time parts like year or month
+ * will use parts of this base date.<br/>
+ * Defaults to a first millisecond of current UTC month.
+ * @listing
+ * anychart.format.inputBaseDate(Date.UTC(2010, 10, 15, 16, 23, 10, 113));
+ * // Try to parse
+ * anychart.format.parseDateTime("13:31:16", "HH:mm:ss");
+ * // Returns Date.UTC(2010, 10, 15, 13, 31, 16, 113)
+ * @example anychart.format.inputBaseDate
+ * @param {Date|number} value
+ * @return {Date} The input base date.
+ * @since 7.12.0
+ */
+anychart.format.inputBaseDate;
+
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -141,9 +290,9 @@ anychart.format.inputDateTimeFormat;
 //  anychart.format.outputLocale
 //
 //----------------------------------------------------------------------------------------------------------------------
-
 /**
- * Output format setting to be used.
+ * Output format settings to be used.
+ * @category Locale settings
  * @example anychart.format.outputLocale
  * @param {(string|anychart.format.Locale)=} opt_value Localization name (from {@link anychart.format#locales}) or object of localization for output.
  * @return {string|anychart.format.Locale} The current localization name or settings.
@@ -154,16 +303,96 @@ anychart.format.outputLocale;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//  anychart.format.outputDateFormat
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter only current output date format.
+ * @detailed
+ * Has priority over the localization format.<br>
+ * <b>NOTE</b>: does not depend on {@link anychart.format.outputDateTimeFormat}.<br>
+ * Priority to return date format:
+ * <ol>
+ *   <li>Value from the setter</li>
+ *   <li>Value from the 'dateFormat' field in the outputLocale</li>
+ *   <li>Value from the 'dateFormat' field in the default locale</li>
+ *   <li>'yyyy.MM.dd'</li>
+ * </ol>
+ * @return {string} The output date format.
+ * @since 7.12.0
+ */
+anychart.format.outputDateFormat;
+
+/**
+ * Setter only output date format.
+ * @example anychart.format.outputDateFormat
+ * @param {string=} opt_value Date format for parsing.
+ * @since 7.12.0
+ */
+anychart.format.outputDateFormat;
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.format.outputTimeFormat
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter only current output time format.
+ * @category Date settings
+ * @detailed
+ * Has priority over the format of localization.<br>
+ * <b>NOTE</b>: independed from {@link anychart.format.outputDateTimeFormat}.<br>
+ * Priority to return date format:
+ * <ol>
+ *   <li>Value from setter</li>
+ *   <li>Value from field 'timeFormat' in outputLocale</li>
+ *   <li>Value from field 'timeFormat' in default locale</li>
+ *   <li>'HH:mm:ss'</li>
+ * </ol>
+ * @return {string} The current time format.
+ * @since 7.12.0
+ */
+anychart.format.outputTimeFormat;
+
+/**
+ * Setter only output time format.
+ * @example anychart.format.outputTimeFormat
+ * @param {string=} opt_value Time format for parsing
+ * @since 7.12.0
+ */
+anychart.format.outputTimeFormat;
+
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //  anychart.format.outputDateTimeFormat
 //
 //----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter for the output date and time format.
+ * @detailed
+ * Has priority over the format of localization.<br>
+ * Priority to return date format:
+ * <ol>
+ *   <li>Value from setter</li>
+ *   <li>Value from field 'dateTimeFormat' in outputLocale</li>
+ *   <li>Value from field 'dateTimeFormat' in default locale</li>
+ *   <li>'yyyy.MM.dd'</li>
+ * </ol>
+ * @category Date settings
+ * @return {string} The date time format.
+ * @since 7.9.0
+ */
+anychart.format.outputDateTimeFormat;
 
 /**
- * Output date time format.
- * Has more priority than the format of localization.
+ * Output date and time format.
+ * Has priority over the format of localization.
  * @example anychart.format.outputDateTimeFormat
- * @param {string=} opt_value Date time format for parsing
- * @return {string} The current date time format.
+ * @param {string=} opt_value Date time format for parsing.
  * @since 7.9.0
  */
 anychart.format.outputDateTimeFormat;
@@ -174,11 +403,11 @@ anychart.format.outputDateTimeFormat;
 //  anychart.format.outputTimezone
 //
 //----------------------------------------------------------------------------------------------------------------------
-
 /**
  * Output offset in minutes.
- * Adjusts time zone by passed value in minutes. Indicate minutes WEST of UTC to be used as a constant time zone offset.
+ * Adjusts time zone by value in minutes. Indicate minutes WEST of UTC to be used as the constant time zone offset.
  * @example anychart.format.outputTimezone
+ * @category Date settings
  * @param {number=} opt_value Value for adjusting time zone in minutes.
  * @return {number} The current value.
  * @since 7.9.0
@@ -191,18 +420,17 @@ anychart.format.outputTimezone;
 //  anychart.format.parseDateTime
 //
 //----------------------------------------------------------------------------------------------------------------------
-
 /**
  * Parses input value to date.
- * @category Specific settings
+ * @category Parsers
  * @example anychart.format.parseDateTime
  * @param {*} value Input value.
- * @param {string=} opt_format Format to be parsed. If is undefined, anychart.format.inputDateTimeFormat will be used.
- * @param {Date=} opt_dateHolder Date object to hold the parsed date. Used for case if input value doesn't contain
- *  information about year or month or something like that. If parsing process ends successfully, this object will
- *  contain totally the same values of date time units as return value.<br/>
- *  NOTE: If is undefined, Date.UTC(currentYear, currentMoth) will be used.
- * @param {(string|anychart.format.Locale)=} opt_locale Locale to be used. If not set, anychart.format.inputLocale will
+ * @param {string=} opt_format Format to be parsed. If undefined, anychart.format.inputDateTimeFormat is be used.
+ * @param {Date=} opt_baseDate Date object to hold the parsed date. Used in cases when input value doesn't contain
+ * information about a year or a month or else. If parsing is successful this object contains absolutely the same values
+ * of date time units as the return value.<br/>
+ *  <b>NOTE</b>: If not Date, Date.UTC(currentYear, currentMoth) is be used.
+ * @param {(string|anychart.format.Locale)=} opt_locale Locale to be used. If not set, anychart.format.inputLocale is
  *  be used.
  * @return {?Date} Parsed date or null if got wrong input value.
  * @since 7.9.0
@@ -215,10 +443,9 @@ anychart.format.parseDateTime;
 //  anychart.format.parseNumber
 //
 //----------------------------------------------------------------------------------------------------------------------
-
 /**
- * Parses passed value to number considering locale.
- * @category Specific settings
+ * Parses value to number according to locale set.
+ * @category Parsers
  * @example anychart.format.parseNumber
  * @param {*} value Value to be parsed.
  * @param {(anychart.format.NumberLocale|string)=} opt_locale Number locale to be used. If not
@@ -234,9 +461,8 @@ anychart.format.parseNumber;
 //  anychart.format.NumberLocale
 //
 //----------------------------------------------------------------------------------------------------------------------
-
 /**
- * Type definition for number local.
+ * Type definition for number locale.
  * @typedef {Object} anychart.format.NumberLocale
  * @property {number} decimalsCount Desired number of decimals
  * @property {string} decimalPoint String to modify the decimal separator
@@ -250,6 +476,7 @@ anychart.format.NumberLocale;
 
 /**
  * Type definition for date time localization.
+ * The default locale is EN-US (see AnyChart CDN: https://cdn.anychart.com/#locales)
  * @typedef {Object} anychart.format.DateTimeLocale
  * @property {Array.<string>} eras Eras value.
  * @property {Array.<string>} erasNames Eras names
@@ -268,20 +495,21 @@ anychart.format.NumberLocale;
  * @property {Array.<string>} shortQuarters Short quarters
  * @property {Array.<string>} quarters Quarters
  * @property {Array.<string>} ampms AM/PM time
- * @property {Array.<string>} dateFormats Date formats
- * @property {Array.<string>} timeFormats Time formats
- * @property {Array.<string>} dateTimeFormats Date time formats
  * @property {number} firstDayOfWeek First day of week
  * @property {Array.<number>} weekendRange Weekend range
  * @property {number} firstWeekCutOfDay First week cut of day
+ * @property {Object.<string|Array.<string>>} formats All available formats
+ * @property {string} dateFormats Date formats
+ * @property {string} timeFormats Time formats
+ * @property {string} dateTimeFormats Date time formats
  */
 anychart.format.DateTimeLocale;
 
 /**
  * Type definition for localization.
  * @typedef {Object} anychart.format.Locale
- * @property {(anychart.format.DateTimeLocale)} dateTimeLocale Date time local.
- * @property {(anychart.format.NumberLocale)} numberLocale Number local.
+ * @property {(anychart.format.DateTimeLocale)} dateTimeLocale Date time locale.
+ * @property {(anychart.format.NumberLocale)} numberLocale Number locale.
+ * @property {(Object.<string, string>)} messages Messages locale.
  */
 anychart.format.Locale;
-
