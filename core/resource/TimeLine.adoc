@@ -1,0 +1,524 @@
+/**
+ * Resource Chart Timeline element.
+ * @constructor
+ * @extends {anychart.core.VisualBaseWithBounds}
+ */
+anychart.core.resource.TimeLine;
+
+
+/**
+ * Time line level definition.
+ * @typedef {Object} anychart.core.resource.TimeLine.Level
+ * @property ({anychart.enums.Interval|undefined}) unit Interval unit
+ * @property {(number|undefined)} count Interval count
+ * @property {(string|Array.<string>|undefined)} formats Date formats
+ * @property  {(number|string|undefined)} height Level height
+ * @property  {Object.<{
+ *      fill: (anychart.graphics.vector.Fill|undefined),
+ *      padding: (Object|Array|number|string|null|undefined),
+ *      minFontSize: (number|undefined),
+ *      maxFontSize: (number|undefined),
+ *      adjustFontSize: (boolean|Array.<boolean, boolean>|{width:boolean,height:boolean}|undefined),
+ *      fontSize: (number|undefined),
+ *      fontFamily: (string|undefined),
+ *      fontColor: (string|undefined),
+ *      fontOpacity: (number|undefined),
+ *      fontDecoration: (string|undefined),
+ *      fontStyle: (anychart.enums.FontStyle|string|undefined),
+ *      fontVariant: (anychart.enums.FontVariant|string|undefined),
+ *      fontWeight: (string|number|undefined),
+ *      letterSpacing: (number|string|undefined),
+ *      textDirection: (string|undefined),
+ *      lineHeight: (number|string|undefined),
+ *      textIndent: (number|undefined),
+ *      vAlign: (anychart.enums.VAlign|string|undefined),
+ *      hAlign: (anychart.enums.HAlign|string|undefined),
+ *      textWrap: (anychart.enums.TextWrap|string|undefined),
+ *      textOverflow: (anychart.graphics.vector.Text.TextOverflow|string|undefined),
+ *      selectable: (boolean|undefined),
+ *      disablePointerEvents: (boolean|undefined),
+ *      useHtml: (boolean|undefined),
+ *      textFormatter: (Function|undefined)
+ *   }>} holiday Holiday settings,
+ *  @property {(anychart.graphics.vector.Fill|undefined)} fill Level fill
+ *  @property {(Object|Array|number|string|null|undefined)} padding Level padding
+ *  @property {(number|undefined)} minFontSize Minimum font size
+ *  @property {(number|undefined)} maxFontSize Maximum font size
+ *  @property {(boolean|Array.<boolean, boolean>|{width:boolean,height:boolean}|undefined)} adjustFontSize Adjust font size
+ *  @property {(number|undefined)} fontSize Level font size
+ *  @property {(string|undefined)} fontFamily Level font family
+ *  @property {(string|undefined)} fontColor Level font color
+ *  @property {(number|undefined)} fontOpacity Level font opacity
+ *  @property {(string|undefined)} fontDecoration Level font decoration
+ *  @property {(anychart.enums.FontStyle|string|undefined)} fontStyle Level font style
+ *  @property {(anychart.enums.FontVariant|string|undefined)} fontVariant Level font variant
+ *  @property {(string|number|undefined)} fontWeight Level font weight
+ *  @property {(number|string|undefined)} letterSpacing Level letter spacing
+ *  @property {(string|undefined)} textDirection Level text direction
+ *  @property {(number|string|undefined)} lineHeight Level line height
+ *  @property {(number|undefined)} textIndent Level text indent
+ *  @property {(anychart.enums.VAlign|string|undefined)} vAlign Vertical align
+ *  @property {(anychart.enums.HAlign|string|undefined)} hAlign Horizontal align
+ *  @property {(anychart.enums.TextWrap|string|undefined)} textWrap Text wrap mode
+ *  @property {(anychart.graphics.vector.Text.TextOverflow|string|undefined)} textOverflow Text overflow
+ *  @property {(boolean|undefined)} selectable Whether text can be selected.
+ *  @property {(boolean|undefined)} disablePointerEvents DisablePointerEvents option
+ *  @property {(boolean|undefined)} useHtml UseHtml flag
+ *  @property {(Function|undefined)} textFormatter Text formatter
+ */
+anychart.core.resource.TimeLine.Level;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.TimeLine.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the stroke.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @listing See listing
+ * var currentTimeLine = chart.timeLine();
+ * var currentStroke = currentTimeLine.stroke();
+ * @return {anychart.graphics.vector.Stroke} The stroke.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.stroke;
+
+/**
+ * Setter for the stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.resource.TimeLine.stroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.resource.TimeLine} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.stroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.TimeLine.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the fill color.
+ * @shortDescription Fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var currentTimeLine = chart.timeLine();
+ * var currentFill = currentTimeLine.fill();
+ * @return {!anychart.graphics.vector.Fill} The fill color.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.fill;
+
+/**
+ * Setter for fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.TimeLine.fill_set_asString Using string
+ * @example anychart.core.resource.TimeLine.fill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @return {anychart.core.resource.TimeLine} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.fill;
+
+/**
+ * Fill color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.resource.TimeLine.fill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.resource.TimeLine} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.fill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.TimeLine.fill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.resource.TimeLine} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.fill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.TimeLine.fill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.resource.TimeLine} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.fill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.TimeLine.fill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.resource.TimeLine} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.fill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.TimeLine.prototype.levelHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the level height.
+ * @listing See listing
+ * var currentTimeLine = chart.timeLine();
+ * var currentHeight = currentTimeLine.levelHeight();
+ * @return {number} The level height.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.levelHeight;
+
+/**
+ * Setter for the level height.
+ * @example anychart.core.resource.TimeLine.levelHeight
+ * @param {number} value Level height.
+ * @return {anychart.core.resource.TimeLine} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.levelHeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.TimeLine.prototype.drawTopLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the top line drawing flag.
+ * @shortDescription Drawing of the top line.
+ * @category Specific settings
+ * @listing See listing
+ * var currentGrid = chart.grid();
+ * var flag = currentGrid.drawTopLine();
+ * @return {boolean} Drawing flag.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.drawTopLine;
+
+/**
+ * Setter for the top line drawing flag.
+ * @example anychart.core.resource.TimeLine.drawTopLine
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.drawTopLine;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.TimeLine.prototype.drawRightLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the right line drawing flag.
+ * @shortDescription Drawing of the right line.
+ * @category Specific settings
+ * @listing See listing
+ * var currentGrid = chart.grid();
+ * var flag = currentGrid.drawRightLine();
+ * @return {boolean} Drawing flag.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.drawRightLine;
+
+/**
+ * Setter for the right line drawing flag.
+ * @example anychart.core.resource.TimeLine.drawRightLine
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.drawRightLine;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// anychart.core.resource.TimeLine.prototype.drawBottomLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the bottom line drawing flag.
+ * @shortDescription Drawing of the bottom line.
+ * @category Specific settings
+ * @listing See listing
+ * var currentGrid = chart.grid();
+ * var flag = currentGrid.drawBottomLine();
+ * @return {boolean} Drawing flag.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.drawBottomLine;
+
+/**
+ * Setter for the bottom line drawing flag.
+ * @example anychart.core.resource.TimeLine.drawBottomLine
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.drawBottomLine;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.TimeLine.prototype.drawLeftLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the left line drawing flag.
+ * @shortDescription Drawing of the left line.
+ * @category Specific settings
+ * @listing See listing
+ * var currentGrid = chart.grid();
+ * var flag = currentGrid.drawLeftLine();
+ * @return {boolean} Drawing flag.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.drawLeftLine;
+
+/**
+ * Setter for the left line drawing flag.
+ * @example anychart.core.resource.TimeLine.drawLeftLine
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.drawLeftLine;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.TimeLine.prototype.background
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+/**
+ * Getter for the background.
+ * @shortDescription Background settings.
+ * @category Coloring
+ * @example anychart.core.resource.TimeLine.background_get
+ * @return {anychart.core.ui.Background} Background settings.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.background;
+
+/**
+ * Setter for the background.
+ * @detailed Sets background settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable background.</li>
+ *   <li><b>object</b> - sets background settings.</li>
+ *   <li><b>string</b> - sets background color.</li>
+ * </ul>
+ * @example anychart.core.resource.TimeLine.background_set_asBool Disable/Enable background
+ * @example anychart.core.resource.TimeLine.background_set_asObj Using object
+ * @example anychart.core.resource.TimeLine.background_set_asString Using string
+ * @param {(string|Object|null|boolean)=} opt_value Value to set
+ * @return {anychart.core.resource.TimeLine} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.background;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.TimeLine.prototype.padding
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the padding.
+ * @shortDescription Padding settings
+ * @category Size and Position
+ * @example anychart.core.resource.TimeLine.padding_get
+ * @return {anychart.core.utils.Padding} Padding.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.padding;
+
+/**
+ * Setter for paddings in pixels using a single value.
+ * @listing Examples for paddings
+ * // all paddings 15px
+ * timeLine.padding(15);
+ * // all paddings 15px
+ * timeLine.padding('15px');
+ * // top and bottom 5px ,right and left 15px
+ * timeLine.padding(anychart.utils.padding(5,15));
+ * @example anychart.core.resource.TimeLine.padding_set_asSingle
+ * @param {(null|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_value Value to set.
+ * @return {!anychart.core.resource.TimeLine} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.padding;
+
+/**
+ * Setter for paddings in pixels using several numbers.
+ * @listing Examples for paddings
+ * // 1) top and bottom 10px, left and right 15px
+ * timeLine.padding(10, '15px');
+ * // 2) top 10px, left and right 15px, bottom 5px
+ * timeLine.padding(10, '15px', 5);
+ * // 3) top 10px, right 15px, bottom 5px, left 12px
+ * timeLine.padding(10, '15px', '5px', 12);
+ * @example anychart.core.resource.TimeLine.padding_set_asSeveral
+ * @param {(string|number)=} opt_value1 Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 Right or right-left space.
+ * @param {(string|number)=} opt_value3 Bottom space.
+ * @param {(string|number)=} opt_value4 Left space.
+ * @return {!anychart.core.resource.TimeLine} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.padding;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.TimeLine.prototype.holidays
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for holidays.
+ * @shortDescription Padding settings
+ * @category Specific settings
+ * @return {anychart.core.resource.TimeLineLevelHolidaysSettings} Holidays settings.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.holidays;
+
+/**
+ * Setter for holidays settings.
+ * @example anychart.core.resource.TimeLine.holidays_set
+ * @param {Object=} opt_value Value to set.
+ * @return {anychart.core.resource.TimeLine} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.holidays;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.TimeLine.prototype.overlay
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the overlay element.
+ * @shortDescription Overlay element.
+ * @category Specific settings
+ * @listing See listing
+ * var element = timeLine.overlay();
+ * @return {anychart.core.ui.Overlay} Overlay element.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.overlay;
+
+/**
+ * Setter for the overlay element.
+ * @example anychart.core.resource.TimeLine.overlay
+ * @param {(Object|null|boolean)=} opt_value Value to set.
+ * @return {anychart.core.resource.TimeLine} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.TimeLine.prototype.overlay;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.bounds;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.left;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.right;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.top;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.bottom;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.width;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.height;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.minWidth;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.minHeight;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.maxWidth;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.maxHeight;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.getPixelBounds;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.zIndex;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.enabled;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.print;
+
+/** @ignoreDoc */
+anychart.core.resource.TimeLine.prototype.saveAsPNG;
+
+/** @ignoreDoc */
+anychart.core.resource.TimeLine.prototype.saveAsJPG;
+
+/** @ignoreDoc */
+anychart.core.resource.TimeLine.prototype.saveAsPDF;
+
+/** @ignoreDoc */
+anychart.core.resource.TimeLine.prototype.saveAsSVG;
+
+/** @ignoreDoc */
+anychart.core.resource.TimeLine.prototype.toSVG;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.listen;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.listenOnce;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.unlisten;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.unlistenByKey;
+
+/** @inheritDoc */
+anychart.core.resource.TimeLine.prototype.removeAllListeners;
