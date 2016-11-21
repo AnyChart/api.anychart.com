@@ -1,0 +1,796 @@
+/**
+ * Resource chart class.
+ * @constructor
+ * @extends {anychart.core.Chart}
+ */
+anychart.charts.Resource;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.ZoomLevel
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Type definition for zoom level.
+ * @typedef {Object} anychart.charts.Resource.ZoomLevel
+ * @property {(string|undefined)} id Level identifier.
+ * @property {Array.<anychart.core.resource.TimeLine.Level>} levels Levels list.
+ * @property {(anychart.enums.Interval|undefined)} unit Interval.
+ * @property {(number|undefined)} count Unit count.
+ * @property {number} unitPixSize Unit size.
+ */
+anychart.charts.Resource.ZoomLevel;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.data
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart data.
+ * @shortDescription Data settings.
+ * @category Data
+ * @listing See listing
+ * var currentData = chart.data();
+ * @return {!anychart.data.View} Data mapping.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.data;
+
+/**
+ * Setter for the chart data.
+ * Learn more about mapping at {@link anychart.data.Mapping}.
+ * @example anychart.charts.Resource.data_set_asArray Using array
+ * @example anychart.charts.Resource.data_set_asDataset Using dataset
+ * @example anychart.charts.Resource.data_set_asMapping Using mapping
+ * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @return {(!anychart.charts.Resource)} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.data;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.xScale
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the X scale.
+ * @shortDescription X scale settings.
+ * @category Axes and Scales
+ * @example anychart.charts.Resource.xScale_get
+ * @return {anychart.scales.DateTimeWithCalendar} Default chart scale.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.xScale;
+
+/**
+ * Setter for the X scale.
+ * @example anychart.charts.Resource.xScale_set
+ * @param {Object=} opt_value Value to set
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.xScale;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.horizontalScrollBar
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the horizontal scrollbar.
+ * @shortDescription Horizontal scrollbar settings.
+ * @category Specific settings
+ * @example anychart.charts.Resource.horizontalScrollBar_get
+ * @return {anychart.core.ui.Scroller} Scrollbar instance.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.horizontalScrollBar;
+
+/**
+ * Setter for the horizontal scrollbar.
+ * @detailed Sets scrollbar settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable scrollbar.</li>
+ *   <li><b>object</b> - sets scrollbar settings.</li>
+ * </ul>
+ * @example anychart.charts.Resource.horizontalScrollBar_set_asObj Using object
+ * @example anychart.charts.Resource.horizontalScrollBar_set_asBool Enable/Disable horizontal scrollbar
+ * @param {(Object|null|boolean)=} opt_value Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.horizontalScrollBar;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.verticalScrollBar
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the vertical scrollbar.
+ * @shortDescription Vertical scrollbar settings.
+ * @category Specific settings
+ * @example anychart.charts.Resource.verticalScrollBar_get
+ * @return {anychart.core.ui.Scroller} Scrollbar instance.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.verticalScrollBar;
+
+/**
+ * Setter for the vertical scrollbar.
+ * @detailed Sets scrollbar settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable scrollbar.</li>
+ *   <li><b>object</b> - sets scrollbar settings.</li>
+ * </ul>
+ * @example anychart.charts.Resource.verticalScrollBar_set_asObj Using object
+ * @example anychart.charts.Resource.verticalScrollBar_set_asBool Enable/Disable vertical scrollbar
+ * @param {(Object|null|boolean)=} opt_value Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.verticalScrollBar;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.timeTrackingMode
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the time tracking mode.
+ * @shortDescription Time tracking mode.
+ * @category Specific settings
+ * @listing See listing
+ * var mode = chart.timeTrackingMode();
+ * @return {anychart.enums.TimeTrackingMode} The time tracking mode.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.timeTrackingMode;
+
+/**
+ * Setter for the time tracking mode.
+ * @example anychart.charts.Resource.timeTrackingMode_set
+ * @param {(anychart.enums.TimeTrackingMode|string)=} opt_value ["activityPerResource"] Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.timeTrackingMode;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.defaultMinutesPerDay
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for default minutes per day.
+ * @shortDescription Time tracking mode.
+ * @category Specific settings
+ * @listing See listing
+ * var time = chart.defaultMinutesPerDay();
+ * @return {number} Minutes per day.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.defaultMinutesPerDay;
+
+/**
+ * Setter for default minutes per day.
+ * <b>Note:</b> Use method when number of minutes per day isn't specified in the data.
+ * @example anychart.charts.Resource.defaultMinutesPerDay
+ * @param {number=} opt_value [60] Minutes per day.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.defaultMinutesPerDay;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.pixPerHour
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for hours row height in pixels.
+ * @shortDescription Hours row height settings.
+ * @category Size and Position
+ * @listing See listing
+ * var height = chart.pixPerHour();
+ * @return {number} The hour height in pixel
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.pixPerHour;
+
+/**
+ * Setter for hours row height in pixels.
+ * @example anychart.charts.Resource.pixPerHour_set
+ * @param {number=} opt_value [25] Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.pixPerHour;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.minRowHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the minimal row height.
+ * @shortDescription Minimal row height settings.
+ * @category Size and Position
+ * @listing See listing
+ * var minHeight = chart.minRowHeight();
+ * @return {number} Minimal row height
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.minRowHeight;
+
+/**
+ * Setter for the minimal row height.
+ * @example anychart.charts.Resource.minRowHeight_set
+ * @param {number=} opt_value [50] Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.minRowHeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.splitterStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the splitter stroke.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @listing See listing
+ * var stroke = chart.splitterStroke();
+ * @return {anychart.graphics.vector.Stroke} Splitter stroke settings.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.splitterStroke;
+
+/**
+ * Setter for the splitter stroke.
+ * @example anychart.charts.Resource.splitterStroke
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line joint style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.splitterStroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.cellPadding
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the cell padding.
+ * @shortDescription Cell padding settings.
+ * @category Size and Position
+ * @example anychart.charts.Resource.cellPadding_get
+ * @return {anychart.core.utils.Padding} Cell padding.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.cellPadding;
+
+/**
+ * Setter for cell paddings in pixels using a single value.
+ * @listing Examples for paddings
+ * // all paddings 15px
+ * chart.padding(15);
+ * // all paddings 15px
+ * chart.padding('15px');
+ * // top and bottom 5px ,right and left 15px
+ * chart.padding(anychart.utils.padding(5,15));
+ * @example anychart.charts.Resource.cellPadding_set_asSingle
+ * @param {(null|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_value Value to set.
+ * @return {!anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.cellPadding;
+
+/**
+ * Setter for cell paddings in pixels using several numbers.
+ * @listing Examples for paddings
+ * // 1) top and bottom 10px, left and right 15px
+ * chart.cellPadding(10, '15px');
+ * // 2) top 10px, left and right 15px, bottom 5px
+ * chart.cellPadding(10, '15px', 5);
+ * // 3) top 10px, right 15px, bottom 5px, left 12px
+ * chart.cellPadding(10, '15px', '5px', 12);
+ * @example anychart.charts.Resource.cellPadding_set_asSeveral
+ * @param {(string|number)=} opt_value1 Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 Right or right-left space.
+ * @param {(string|number)=} opt_value3 Bottom space.
+ * @param {(string|number)=} opt_value4 Left space.
+ * @return {!anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.cellPadding;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.activities
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the activities settings.
+ * @shortDescription Activities settings.
+ * @category Specific settings
+ * @example anychart.charts.Resource.activities_get
+ * @return {anychart.core.resource.Activities} Activities settings.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.activities;
+
+/**
+ * Setter for the activities settings.
+ * @example anychart.charts.Resource.activities_set
+ * @param {(Object)=} opt_value Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.activities;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.conflicts
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the conflicts settings.
+ * @shortDescription Conflicts settings.
+ * @category Specific settings
+ * @example anychart.charts.Resource.conflicts_get
+ * @return {anychart.core.resource.Conflicts} Conflicts settings
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.conflicts;
+
+/**
+ * Setter for the conflicts settings.
+ * @example anychart.charts.Resource.conflicts_set
+ * @param {Object=} opt_value Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.conflicts;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.calendar
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the calendar.
+ * @shortDescription Calendar settings.
+ * @category Specific settings
+ * @example anychart.charts.Resource.calendar_get
+ * @return {anychart.scales.Calendar} Calendar.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.calendar;
+
+/**
+ * Setter for calendar.
+ * @example anychart.charts.Resource.calendar_set
+ * @param {Object=} opt_value Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.calendar;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.timeLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the time line.
+ * @shortDescription TimeLine settings.
+ * @category Specific settings
+ * @example anychart.charts.Resource.timeLine_get
+ * @return {anychart.core.resource.TimeLine} Time line.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.timeLine;
+
+/**
+ * Setter for the time line.
+ * @detailed Sets time line settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable time line.</li>
+ *   <li><b>object</b> - sets time line settings.</li>
+ * </ul>
+ * @example anychart.charts.Resource.timeLine_set_asBool Enable/Disable time line.
+ * @example anychart.charts.Resource.timeLine_set_asObj Using object
+ * @param {(Object|null|boolean)=} opt_value Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.timeLine;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.logo
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the logo.
+ * @shortDescription Logo settings.
+ * @category Coloring
+ * @example anychart.charts.Resource.logo_get
+ * @return {anychart.core.resource.Logo} Logo settings
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.logo;
+
+/**
+ * Setter for the logo.
+ * @example anychart.charts.Resource.logo_set
+ * @param {(Object)=} opt_value Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.logo;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.grid
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the grid.
+ * @shortDescription Grid settings.
+ * @category Specific settings
+ * @example anychart.charts.Resource.grid_get
+ * @return {anychart.core.resource.Grid} Grid instance.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.grid;
+
+/**
+ * Setter for the grid.
+ * @detailed Sets grid settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable grid.</li>
+ *   <li><b>object</b> - sets grid settings.</li>
+ * </ul>
+ * @example anychart.charts.Resource.grid_set_asObj Using object
+ * @example anychart.charts.Resource.grid_set_asBool Enable/Disable grid
+ * @param {(Object|null|boolean)=} opt_value Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.grid;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.zoomLevels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for zoom levels set.
+ * @shortDescription Zoom levels settings.
+ * @category Interactivity
+ * @listing See listing
+ * var levels = chart.zoomLevels();
+ * @return {Array.<anychart.charts.Resource.ZoomLevel>} The zoom levels set.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.zoomLevels;
+
+/**
+ * Setter for zoom levels set.
+ * @example anychart.charts.Resource.zoomLevels_set
+ * @param {Array.<anychart.charts.Resource.ZoomLevel>=} opt_value Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.zoomLevels;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.zoomLevel
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+/**
+ * Getter for the zoom level.
+ * Returns current zoom level identifier or index, if no identifier specified at current zoom level.
+ * @shortDescription Zoom level settings.
+ * @category Interactivity
+ * @listing See listing
+ * var level = chart.zoomLevel();
+ * @return {number|string} The zoom level.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.zoomLevel;
+
+/**
+ * Setter for the zoom level.
+ * Zooms chart to the level denoted by the passed index or identifier.
+ * @example anychart.charts.Resource.zoomLevel_set
+ * @param {(number|string)=} opt_indexOrId Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.zoomLevel;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.timeLineHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the time line height.
+ * @shortDescription Time line height settings.
+ * @category Size and Position
+ * @listing See listing
+ * var height = chart.timeLineHeight();
+ * @return {number|string} The time line height
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.timeLineHeight;
+
+/**
+ * Setter for the time line height.
+ * @example anychart.charts.Resource.timeLineHeight_set
+ * @param {(number|string)=} opt_value [52] Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.timeLineHeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.resourceListWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the resource list width.
+ * @shortDescription Time line height settings.
+ * @category Size and Position
+ * @listing See listing
+ * var width = chart.resourceListWidth();
+ * @return {number|string} Time line height.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.resourceListWidth;
+
+/**
+ * Setter for the resource list width.
+ * @example anychart.charts.Resource.resourceListWidth_set
+ * @param {(number|string)=} opt_value [260] Value to set
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.resourceListWidth;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.overlay
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the overlay element.
+ * @shortDescription Overlay element.
+ * @category Specific settings
+ * @listing See listing
+ * var element = chart.overlay();
+ * @return {anychart.core.ui.Overlay} Overlay element.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.overlay;
+
+/**
+ * Setter for the overlay element.
+ * @detailed The overlay method creates a DIV Element by specified bounds and saves its bounds for resize of the chart.
+ * @example anychart.charts.Resource.overlay_set
+ * @param {(Object|null|boolean)=} opt_value Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.charts.Resource.prototype.overlay;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.getType;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.margin;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.padding;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.background;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.title;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.label;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.tooltip;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.animation;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.draw;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.toJson;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.toXml;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.bounds;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.left;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.right;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.top;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.bottom;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.width;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.height;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.minWidth;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.minHeight;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.maxWidth;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.maxHeight;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.getPixelBounds;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.container;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.zIndex;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.enabled;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsPng;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsJpg;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsPdf;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsSvg;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.toSvg;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.print;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsPNG;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsJPG;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsPDF;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsSVG;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.toSVG;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.listen;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.listenOnce;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.unlisten;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.unlistenByKey;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.removeAllListeners;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.localToGlobal;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.globalToLocal;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.contextMenu;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.getSelectedPoints;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.toCsv;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsXml;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsJson;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsCsv;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsXlsx;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.contextMenu;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.getSelectedPoints;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.toCsv;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsXml;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsJson;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsCsv;
+
+/** @inheritDoc */
+anychart.charts.Resource.prototype.saveAsXlsx;

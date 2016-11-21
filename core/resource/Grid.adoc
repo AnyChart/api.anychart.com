@@ -1,0 +1,763 @@
+/**
+ * Resource Chart grid.
+ * @constructor
+ * @extends {anychart.core.VisualBaseWithBounds}
+ */
+anychart.core.resource.Grid;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.background
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the background.
+ * @shortDescription Background settings.
+ * @category Coloring
+ * @example anychart.core.resource.Grid.background_get
+ * @return {anychart.core.ui.Background} Background settings.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.background;
+
+/**
+ * Setter for the background.
+ * @detailed Sets background settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable background.</li>
+ *   <li><b>object</b> - sets background settings.</li>
+ *   <li><b>string</b> - sets background color.</li>
+ * </ul>
+ * @example anychart.core.resource.Grid.background_set_asBool Disable/Enable background
+ * @example anychart.core.resource.Grid.background_set_asObj Using object
+ * @example anychart.core.resource.Grid.background_set_asString Using string
+ * @param {(string|Object|null|boolean)=} opt_value Value to set.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.background;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.overlay
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the overlay element.
+ * @shortDescription Overlay element.
+ * @category Specific settings
+ * @listing See listing
+ * var element = grid.overlay();
+ * @return {anychart.core.ui.Overlay} Overlay element.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.overlay;
+
+/**
+ * Setter for the overlay element.
+ * @example anychart.core.resource.Grid.overlay
+ * @param {(Object|null|boolean)=} opt_value Value to set.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.overlay;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.horizontalStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the horizontal stroke.
+ * @shortDescription Horizontal stroke settings.
+ * @category Coloring
+ * @listing See listing
+ * var currentGrid = chart.grid();
+ * var strokeSettings = currentGrid.horizontalStroke();
+ * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} The horizontal stroke.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.horizontalStroke;
+
+/**
+ * Setter for the horizontal stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.resource.Grid.horizontalStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.horizontalStroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.verticalStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the vertical stroke.
+ * @shortDescription Vertical stroke settings.
+ * @category Coloring
+ * @listing See listing
+ * var currentGrid = chart.grid();
+ * var strokeSettings = currentGrid.verticalStroke();
+ * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} The vertical stroke.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.verticalStroke;
+
+/**
+ * Setter for the vertical stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.resource.Grid.verticalStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.verticalStroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.oddFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the odd fill color.
+ * @shortDescription Odd fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var currentGrid = chart.grid();
+ * var oddFillSettings = currentGrid.oddFill();
+ * @return {!anychart.graphics.vector.Fill} The odd fill color.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddFill;
+
+/**
+ * Setter for odd fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.oddFill_set_asString Using string
+ * @example anychart.core.resource.Grid.oddFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddFill;
+
+/**
+ * Odd fill color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.resource.Grid.oddFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddFill;
+
+/**
+ * Linear gradient odd fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.oddFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddFill;
+
+/**
+ * Radial gradient odd fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.oddFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddFill;
+
+/**
+ * Image odd fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.oddFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.evenFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the even fill color.
+ * @shortDescription Even fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var currentGrid = chart.grid();
+ * var evenFillSettings = currentGrid.evenFill();
+ * @return {!anychart.graphics.vector.Fill} The odd fill color.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenFill;
+
+/**
+ * Setter for even fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.evenFill_set_asString Using string
+ * @example anychart.core.resource.Grid.evenFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenFill;
+
+/**
+ * Even fill color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.resource.Grid.evenFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenFill;
+
+/**
+ * Linear gradient even fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.evenFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenFill;
+
+/**
+ * Radial gradient even fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.evenFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenFill;
+
+/**
+ * Image even fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.evenFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.oddHolidayFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the odd holiday fill color.
+ * @shortDescription Odd holiday fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var currentGrid = chart.grid();
+ * var oddHolidayFillSettings = currentGrid.oddHolidayFill();
+ * @return {!anychart.graphics.vector.Fill} The odd fill color.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddHolidayFill;
+
+/**
+ * Setter for odd holiday fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.oddHolidayFill_set_asString Using string
+ * @example anychart.core.resource.Grid.oddHolidayFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddHolidayFill;
+
+/**
+ * Odd holiday fill color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.resource.Grid.oddHolidayFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddHolidayFill;
+
+/**
+ * Linear gradient odd holiday fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.oddHolidayFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddHolidayFill;
+
+/**
+ * Radial gradient odd holiday fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.oddHolidayFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddHolidayFill;
+
+/**
+ * Image odd holiday fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.oddHolidayFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddHolidayFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.evenHolidayFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the even holiday fill color.
+ * @shortDescription Even holiday fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var currentGrid = chart.grid();
+ * var evenHolidayFillSettings = currentGrid.evenHolidayFill();
+ * @return {!anychart.graphics.vector.Fill} The even fill color.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenHolidayFill;
+
+/**
+ * Setter for even holiday fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.evenHolidayFill_set_asString Using string
+ * @example anychart.core.resource.Grid.evenHolidayFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenHolidayFill;
+
+/**
+ * Odd holiday fill color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.resource.Grid.evenHolidayFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenHolidayFill;
+
+/**
+ * Linear gradient even holiday fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.evenHolidayFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenHolidayFill;
+
+/**
+ * Radial gradient even holiday fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.evenHolidayFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenHolidayFill;
+
+/**
+ * Image even holiday fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.resource.Grid.evenHolidayFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenHolidayFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.oddHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for odd hatch fill settings.
+ * @shortDescription Odd hatch fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var currentActivities = chart.activities();
+ * var currentHatchFill = currentActivities.oddHatchFill();
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The odd hatch fill.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddHatchFill;
+
+/**
+ * Setter for odd hatch fill settings.
+ * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+ * @example anychart.core.resource.Grid.oddHatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddHatchFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.evenHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for even hatch fill settings.
+ * @shortDescription Even hatch fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var currentActivities = chart.activities();
+ * var currentHatchFill = currentActivities.evenHatchFill();
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The even hatch fill.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenHatchFill;
+
+/**
+ * Setter for even hatch fill settings.
+ * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+ * @example anychart.core.resource.Grid.evenHatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenHatchFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.oddHolidayHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for odd holiday hatch fill settings.
+ * @shortDescription Odd holiday hatch fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var currentActivities = chart.activities();
+ * var currentHatchFill = currentActivities.oddHolidayHatchFill();
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The odd holiday hatch fill.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddHolidayHatchFill;
+
+/**
+ * Setter for odd holiday hatch fill settings.
+ * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+ * @example anychart.core.resource.Grid.oddHolidayHatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.oddHolidayHatchFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.evenHolidayHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for even holiday hatch fill settings.
+ * @shortDescription Even holiday hatch fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var currentActivities = chart.activities();
+ * var currentHatchFill = currentActivities.evenHolidayHatchFill();
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The even holiday hatch fill.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenHolidayHatchFill;
+
+/**
+ * Setter for even holiday hatch fill settings.
+ * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+ * @example anychart.core.resource.Grid.evenHolidayHatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.evenHolidayHatchFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.drawTopLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the top line drawing flag.
+ * @shortDescription Drawing of the top line.
+ * @category Specific settings
+ * @listing See listing
+ * var currentGrid = chart.grid();
+ * var flag = currentGrid.drawTopLine();
+ * @return {boolean} Drawing flag.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.drawTopLine;
+
+/**
+ * Setter for the top line drawing flag.
+ * @example anychart.core.resource.Grid.drawTopLine
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.drawTopLine;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.drawRightLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the right line drawing flag.
+ * @shortDescription Drawing of the right line.
+ * @category Specific settings
+ * @listing See listing
+ * var currentGrid = chart.grid();
+ * var flag = currentGrid.drawRightLine();
+ * @return {boolean} Drawing flag.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.drawRightLine;
+
+/**
+ * Setter for the right line drawing flag.
+ * @example anychart.core.resource.Grid.drawRightLine
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.drawRightLine;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.drawBottomLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the bottom line drawing flag.
+ * @shortDescription Drawing of the bottom line.
+ * @category Specific settings
+ * @listing See listing
+ * var currentGrid = chart.grid();
+ * var flag = currentGrid.drawBottomLine();
+ * @return {boolean} Drawing flag.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.drawBottomLine;
+
+/**
+ * Setter for the bottom line drawing flag.
+ * @example anychart.core.resource.Grid.drawBottomLine
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.drawBottomLine;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.resource.Grid.prototype.drawLeftLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the left line drawing flag.
+ * @shortDescription Drawing of the left line.
+ * @category Specific settings
+ * @listing See listing
+ * var currentGrid = chart.grid();
+ * var flag = currentGrid.drawLeftLine();
+ * @return {boolean} Drawing flag.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.drawLeftLine;
+
+/**
+ * Setter for the left line drawing flag.
+ * @example anychart.core.resource.Grid.drawLeftLine
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 7.12.0
+ */
+anychart.core.resource.Grid.prototype.drawLeftLine;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.bounds;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.left;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.right;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.top;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.bottom;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.width;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.height;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.getPixelBounds;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.minWidth;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.minWidth;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.minHeight;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.maxWidth;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.maxHeight;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.zIndex;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.enabled;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.print;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.saveAsPNG;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.saveAsJPG;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.saveAsPDF;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.saveAsSVG;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.toSVG;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.listen;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.listenOnce;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.unlisten;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.unlistenByKey;
+
+/** @inheritDoc */
+anychart.core.resource.Grid.prototype.removeAllListeners;

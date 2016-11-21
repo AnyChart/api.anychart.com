@@ -4,18 +4,25 @@
     <meta name="x-cat-tags" content="table anyChart anyGantt anyStock anyMap"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             stage = anychart.graphics.create("container");
+
             var table = anychart.standalones.table();
             table.contents([
                 [1, 2, 3],
                 [4, null, 6],
                 [7, 8, 9]
             ]);
+
             var cell = table.getCell(1, 1);
+
             var label = anychart.standalones.label();
-            cell.content(label.background({fill: "#B2DFDB"}));
-            cell.padding(-50, 0, 0, -25); // sets padding
+
+            cell.content(label.background("#C8E6C9"));
+
+            // Set padding by one value.
+            cell.padding(-50, 0, 0, -25);
+
             table.container(stage);
             table.draw();
         });

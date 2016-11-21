@@ -6,17 +6,24 @@
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
+
             var table = anychart.standalones.table();
             table.contents([
                 [1, null, 3],
                 [4, 5, 6],
                 [7, 8, 9]
             ]);
+
             var cell = table.getCell(0, 1);
+
             var label = anychart.standalones.label();
-            cell.content(label.background({fill: "#B2DFDB"}));
+            cell.content(label.background("#C8E6C9"));
+
             var column = table.getCol(1);
-            column.cellPadding(20); // sets padding
+
+            // Set padding by one value.
+            column.cellPadding(20);
+
             table.container(stage);
             table.draw();
         });

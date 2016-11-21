@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="resourceList anyChart anyGantt anyStock anyMap"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="list">
+        anychart.onDocumentReady(function () {
+            var data = getData();
+
+            list = anychart.standalones.resourceList(data);
+
+            list.parentBounds(0, 0, 600, 600);
+            list.container("container");
+
+            // Drawing resource list.
+            list.draw();
+        });
+        function getData() {
+            return [
+                {
+                    "name": "Vasil Kiryienka",
+                    "description": "Rider"
+                },
+                {
+                    "name": "Elia Viviani",
+                    "description": "Rider"
+                },
+                {
+                    "name": "Ben Swift",
+                    "description": "Rider"
+                },
+                {
+                    "name": "Michal Kwiatkowski",
+                    "description": "Rider"
+                },
+                {
+                    "name": "Alex Peters",
+                    "description": "Rider"
+                }
+            ];
+        }
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
