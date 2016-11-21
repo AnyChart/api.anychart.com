@@ -4,13 +4,17 @@
     <meta name="x-cat-tags" content="line anyChart"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.line([6, 2, 12]);
 
-            // Set chart padding.
-            chart.padding(10, "15px", "5px", 12);
+            // Get chart padding.
+            var currentPadding = chart.padding();
 
-            chart.title("Set chart padding by several values");
+            currentPadding.top(10);
+            currentPadding.right("15px");
+            currentPadding.bottom("5px");
+            currentPadding.left(12);
+
             chart.container("container");
             chart.draw();
         });

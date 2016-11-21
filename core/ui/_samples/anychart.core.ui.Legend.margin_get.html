@@ -4,15 +4,20 @@
     <meta name="x-cat-tags" content="pie legend anyChart"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.pie([8, 3, 7, 2]);
 
             var legend = chart.legend();
 
-            // Set padding.
-            legend.padding(40);
+            // Get margin.
+            var currentMargin = legend.margin();
 
-            chart.title("Set padding by one value");
+            currentMargin.top(100);
+            currentMargin.right("600px");
+            currentMargin.bottom("10px");
+            currentMargin.left(50);
+
+            chart.title("Get and modify margin");
             chart.container("container");
             chart.draw();
         });

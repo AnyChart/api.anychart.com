@@ -4,13 +4,18 @@
     <meta name="x-cat-tags" content="line anyChart"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.line([6, 2, 12]);
 
-            // Set chart padding.
-            chart.padding(10, "15px", "5px", 12);
+            // Get chart margin.
+            var currentMargin = chart.margin();
 
-            chart.title("Set chart padding by several values");
+            currentMargin.top(100);
+            currentMargin.right("150px");
+            currentMargin.bottom("5px");
+            currentMargin.left(12);
+
+            chart.title("Get and modify chart margin");
             chart.container("container");
             chart.draw();
         });

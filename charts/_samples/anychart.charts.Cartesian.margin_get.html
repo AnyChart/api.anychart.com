@@ -1,16 +1,22 @@
 <html>
 <head>
-  <meta name="x-cat-tags" content="line anyChart"/>
+    <meta name="x-cat-tags" content="line anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.line();
             chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
 
-            chart.padding(20);
+            // Get chart margin.
+            var currentMargin = chart.margin();
 
-            chart.title("Set chart padding by one value");
+            currentMargin.top(100);
+            currentMargin.right("15px");
+            currentMargin.bottom("5px");
+            currentMargin.left(12);
+
+            chart.title("Set chart margin parameters.");
             chart.container("container");
             chart.draw();
         });

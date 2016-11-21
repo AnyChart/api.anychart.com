@@ -9,20 +9,26 @@
 
             var table = anychart.standalones.table();
             table.contents([
-                [1, null, 3],
-                [4, 5, 6],
+                [1, 2, 3],
+                [4, null, 6],
                 [7, 8, 9]
             ]);
 
-            var cell = table.getCell(0, 1);
+            var cell = table.getCell(1, 1);
 
             var label = anychart.standalones.label();
+
             cell.content(label.background("#C8E6C9"));
 
-            var column = table.getCol(1);
+            var row = table.getRow(1);
 
-            // Set padding by one value.
-            column.cellPadding(20);
+            // Get padding.
+            var padding = row.cellPadding();
+
+            padding.top(15);
+            padding.right(0);
+            padding.bottom(0);
+            padding.left(-5);
 
             table.container(stage);
             table.draw();

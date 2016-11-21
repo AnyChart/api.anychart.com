@@ -6,12 +6,18 @@
     <script x-export="axis">
         anychart.onDocumentReady(function() {
             axis = anychart.standalones.axes.linear();
+
             axis.scale(anychart.scales.linear());
 
-            // Set padding.
-            axis.padding(50);
+            // Get padding.
+            var currentPadding = axis.padding();
 
-            axis.title("Set padding by one value");
+            currentPadding.top(20);
+            currentPadding.right("400px");
+            currentPadding.bottom("5px");
+            currentPadding.left(52);
+
+            axis.title("Get and modify padding");
             axis.container("container");
             axis.draw();
         });
