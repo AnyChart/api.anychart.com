@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="colorRange anyChart anyGantt anyStock anyMap"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function () {
+            stage = anychart.graphics.create("container");
+
+            customColorRange = anychart.standalones.colorRange();
+            customColorRange.parentBounds(0, 0, 400, 50);
+            customColorRange.container(stage);
+            customColorRange.draw();
+
+            // Get container.
+            var currentContainer = customColorRange.container();
+
+            var brownBackground = anychart.standalones.background();
+            brownBackground.fill("#EF9A9A");
+            brownBackground.parentBounds(0, 0, 400, 50);
+            brownBackground.container(currentContainer);
+            brownBackground.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
