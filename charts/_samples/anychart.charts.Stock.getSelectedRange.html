@@ -22,7 +22,18 @@
             // Get object with selected range.
             var range = chart.getSelectedRange();
 
-            chart.title("Get selected range object \n First selected value: " + range.firstSelected + "\n Last selected value: " + range.lastSelected);
+            chart.title("Get selected range object \n First selected value: "
+                    + anychart.format.dateTime(range.firstSelected, "dd/MM/yy hh:mm")
+                    + "\n Last selected value: "
+                    + anychart.format.dateTime(range.lastSelected, "dd/MM/yy hh:mm"));
+
+            chart.scroller().listen("scrollerChange", function(){
+                var range = chart.getSelectedRange();
+                chart.title("Get selected range object \n First selected value: "
+                        + anychart.format.dateTime(range.firstSelected, "dd/MM/yy hh:mm")
+                        + "\n Last selected value: "
+                        + anychart.format.dateTime(range.lastSelected, "dd/MM/yy hh:mm"));
+            });
 
             chart.container("container");
             chart.draw();
