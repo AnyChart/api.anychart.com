@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="anyStock"/>
-    <script src="../../../anychart.min.js"></script>
+    <script src="../../../../anychart.min.js"></script>
     <script src="http://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
@@ -14,7 +14,7 @@
             mapping.addField('high', 2, 'max');
             mapping.addField('low', 3, 'min');
             mapping.addField('close', 4, 'last');
-            mapping.addField('value', 3, 'last');
+            mapping.addField('value', 4, 'last');
 
             chart = anychart.stock();
             chart.padding(10, 10, 10, 50);
@@ -22,12 +22,13 @@
             var currentPlot = chart.plot();
             currentPlot.ohlc(mapping);
 
-            var currentScroller = chart.scroller();
-            currentScroller.height("20%");
+            var amaIndicator = currentPlot.ama(mapping);
 
-            // Creates SMA indicator.
-            currentScroller.sma(mapping, 19, "line");
+            // Get series type for indicator.
+            var indicatorSeries = amaIndicator.series();
+            indicatorSeries.stroke("#009688");
 
+            chart.title("Get and modify AMA indicator series");
             chart.container("container");
             chart.draw();
         });

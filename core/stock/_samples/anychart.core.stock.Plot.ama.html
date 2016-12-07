@@ -22,12 +22,10 @@
             var currentPlot = chart.plot();
             currentPlot.ohlc(mapping);
 
-            var currentScroller = chart.scroller();
-            currentScroller.height("20%");
+            // Creates AMA indicator.
+            currentPlot.ama(mapping, 5, 3, 40, "line");
 
-            // Creates SMA indicator.
-            currentScroller.sma(mapping, 19, "line");
-
+            chart.title("Create AMA indicator");
             chart.container("container");
             chart.draw();
         });

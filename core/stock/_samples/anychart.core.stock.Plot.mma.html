@@ -22,12 +22,10 @@
             var currentPlot = chart.plot();
             currentPlot.ohlc(mapping);
 
-            var currentScroller = chart.scroller();
-            currentScroller.height("20%");
+            // Creates MMA indicator.
+            currentPlot.mma(mapping, 10, "spline");
 
-            // Creates SMA indicator.
-            currentScroller.sma(mapping, 19, "line");
-
+            chart.title("Create MMA indicator");
             chart.container("container");
             chart.draw();
         });
