@@ -1,0 +1,26 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="stick anyChart"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.cartesian();
+
+            var series = chart.stick([2, 5, 3, 9, 4]);
+
+            // Set stroke.
+            series.stroke(function() {
+                return "3 " + anychart.color.darken(this.sourceColor);
+            });
+
+            chart.title("Set stroke as a function");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

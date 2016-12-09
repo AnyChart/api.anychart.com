@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="stepLine anyChart"/>
+    <script src="../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.cartesian();
+
+            var series = chart.stepLine([
+                [0, 2, 3],
+                [1, 3, 6],
+                [2, 2, 4],
+                [3, 5, 8]
+            ]);
+            series.markers(true);
+
+            // Set step direction.
+            series.stepDirection(anychart.enums.StepDirection.FORWARD);
+
+            chart.title("Set step direction");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyStock"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var csv = "2001/01/01|10295.8496, 2001/01/02|10185.9297, 2001/01/03|10066.6699, 2001/01/04|10065.4102, 2001/01/05|10049.5596, 2001/01/06|10218.3701, 2001/01/07|10212.9102," +
+                    " 2001/01/08|10327.6299, 2001/01/09|10380.8896, 2001/01/10|10357.5195, 2001/01/11|10375.3301, 2001/01/12|10470.5898, 2001/01/13|10553.7598, 2001/01/14|10569.2598," +
+                    " 2001/01/15|10482.7695, 2001/01/16|10444.3799, 2001/01/17|10516.0498, 2001/01/18|10378.0996, 2001/01/19|10377.9502, 2001/01/20|10398.3203, 2001/01/21|10451.6201," +
+                    " 2001/01/22|10437.8496, 2001/01/23|10311.8701, 2001/01/24|10314.9902, 2001/01/25|10463.1104, 2001/01/26|10472.9102, 2001/01/27|10445.3799, 2001/01/28|10476.6699," +
+                    " 2001/01/29|10339.4102, 2001/01/30|10273.0596, 2001/01/31|10227.2695, 2001/02/01|10314.3203, 2001/02/02|10316.9805, 2001/02/03|10308.2002, 2001/02/04|10240.6201, 2001/02/05|10116.2803";
+
+            var dataTable = anychart.data.table();
+            dataTable.addData(csv, 0, {"rowsSeparator": ", ", columnsSeparator: "|"});
+
+            var mapping = dataTable.mapAs({value: 1});
+
+            chart = anychart.stock();
+            chart.padding(10, 10, 10, 50);
+
+            var currentPlot = chart.plot();
+            currentPlot.line(mapping);
+
+            var currentScroller = chart.scroller();
+
+            // Adds stick series.
+            currentScroller.stick(mapping);
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

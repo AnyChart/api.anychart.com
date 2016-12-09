@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="stick anyStock"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script src="http://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var dataTable = anychart.data.table();
+            dataTable.addData(get_dji_daily_short_data());
+
+            var mapping = dataTable.mapAs({value: 1});
+
+            chart = anychart.stock();
+            chart.grouping({minPixPerPoint: 5});
+            chart.padding(10, 10, 10, 50);
+
+            var currentPlot = chart.plot();
+
+            var series = currentPlot.stick(mapping);
+
+            // Set hover stroke.
+            series.hoverStroke(function() {
+                return "2 " + anychart.color.darken(this.sourceColor)
+            });
+
+            chart.title("Set hover stroke parameter as a function");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

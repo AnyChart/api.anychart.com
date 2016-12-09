@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyStock"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var csv = "1|10295.8496, 2|10185.9297, 3|10066.6699, 4|10065.4102, 5|10049.5596, 6|10218.3701, 7|10212.9102," +
+                    " 8|10327.6299, 9|10380.8896, 10|10357.5195, 11|10375.3301, 12|10470.5898, 13|10553.7598, 14|10569.2598," +
+                    " 15|10482.7695, 16|10444.3799, 17|10516.0498, 18|10378.0996, 19|10377.9502, 20|10398.3203, 21|10451.6201," +
+                    " 22|10437.8496, 23|10311.8701, 24|10314.9902, 25|10463.1104, 26|10472.9102, 27|10445.3799, 28|10476.6699," +
+                    " 29|10339.4102, 30|10273.0596, 31|10227.2695, 32|10314.3203, 33|10316.9805, 34|10308.2002, 35|10240.6201, 36|10116.2803";
+
+            var dataTable = anychart.data.table();
+            dataTable.addData(csv, 0, {"rowsSeparator": ", ", columnsSeparator: "|"});
+
+            var mapping = dataTable.mapAs({value: 1});
+
+            chart = anychart.stock();
+            chart.padding(10, 10, 10, 50);
+
+            var currentPlot = chart.plot();
+
+            // Adds Jump Line series.
+            currentPlot.jumpLine(mapping);
+
+            chart.title("Add Jump Line series to a plot");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
