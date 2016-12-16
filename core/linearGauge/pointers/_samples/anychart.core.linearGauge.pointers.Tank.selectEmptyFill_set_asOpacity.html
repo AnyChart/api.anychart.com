@@ -1,0 +1,26 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="linearGauge anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container", 600, 400);
+
+            var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+
+            var tankPointer = chart.tank(2);
+
+            // Set select fill for the empty part of a tank.
+            tankPointer.selectEmptyFill("#FF9800", 0.3);
+
+            chart.title("Set select fill with opacity for the empty part of a tank");
+            chart.container(stage);
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

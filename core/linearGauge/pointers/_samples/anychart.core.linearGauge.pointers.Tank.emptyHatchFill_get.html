@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="linearGauge anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container", 600, 400);
+
+            var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+
+            var tankPointer = chart.tank(2);
+            tankPointer.emptyHatchFill("backwardDiagonal", "#BDBDBD", 1, 4);
+
+            // Get hatch fill for the empty part of a tank.
+            var currentEmptyHatchFill = tankPointer.emptyHatchFill();
+
+            tankPointer.hatchFill(currentEmptyHatchFill);
+
+            chart.title("Get and use hatch fill for the empty part of a tank");
+            chart.container(stage);
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
