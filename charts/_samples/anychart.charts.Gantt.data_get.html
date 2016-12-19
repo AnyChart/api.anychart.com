@@ -13,17 +13,27 @@
                 {"id": "5", "name": "Decide whether to proceed", parent: "2", "progressValue": "0%", "actualStart": 951609600000, "actualEnd": 951696000000, "connectTo": "6", "connectorType": "FinishStart"},
                 {"id": "6", "name": "Define the Opportunity", parent: "1", "progressValue": "27%", "actualStart": 951696000000, "actualEnd": 951782400000}
             ];
+
             var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
+
             chart = anychart.ganttProject();
             chart.data(treeData);
-            var getData = chart.data(); // get data
+
+            // Get data.
+            var getData = chart.data();
+
             var newData = [
                 {"id": "7", "name": "Research the market and competition", parent: "6", "progressValue": "0%", "actualStart": 951523200000, "actualEnd": 951609600000, "connectTo": "8", "connectorType": "FinishStart"}
             ];
+
             var addData = getData.addData(newData, anychart.enums.TreeFillingMethod.AS_TABLE);
+
             chart.data(addData);
+
+            chart.title("Get and use data");
             chart.container("container");
             chart.draw();
+
             chart.fitAll();
         });
     </script>
