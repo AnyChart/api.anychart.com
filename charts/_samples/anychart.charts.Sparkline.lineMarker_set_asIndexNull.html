@@ -5,10 +5,15 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.sparkline([5, 50, 10, 60, 20, 70, 30]);
+            chart = anychart.sparkline([5, 50, -10, 60, -20, 70, 30]);
+
             chart.lineMarker(0);
-            chart.lineMarker(1, {value: 30, stroke: "#4CAF50"});
-            chart.lineMarker(0, null); // turn off marker by index 1.
+            chart.lineMarker(1, {value: 30, stroke: "#F44336"});
+
+            // Disable marker by index 0.
+            chart.lineMarker(0, null);
+
+            chart.title({text: "Disable chart line marker by index", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

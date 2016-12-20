@@ -5,8 +5,15 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.sparkline([5, 50, 10, 60, 20, 70, 30]);
-            chart.lineMarker(true); // enable line marker
+            chart = anychart.sparkline([5, 50, -10, 60, -20, 70]);
+
+            // Generally speaking such construction is useless, but it may be used to turn zero line in a chart in the most compact way.
+            // To enable/disable lineMarkers it is recommended to create them by index ( like chart.lineMarker(0); ) and then use enabled(true|false) method:
+            // marker = chart.lineMarker(0);
+            // marker.enabled(true);
+            chart.lineMarker(true);
+
+            chart.title({text: "Enable chart line marker", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

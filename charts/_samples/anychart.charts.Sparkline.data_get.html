@@ -6,11 +6,16 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([5, 50, 10, 60, 20, 70, 30]);
-            var seriesData = chart.data(); // get data
+
+            // Get data.
+            var seriesData = chart.data();
+
             var filterData = seriesData.filter("value", function(value) {
                 return value > 15;
             });
+
             chart.data(filterData);
+            chart.title({text: "Get and modify chart data", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

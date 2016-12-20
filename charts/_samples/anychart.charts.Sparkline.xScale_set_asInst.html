@@ -5,12 +5,13 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function() {
-            var stage = anychart.graphics.create("container", "100%", "100%");
+            stage = anychart.graphics.create("container", "100%", "100%");
+
             var scale = anychart.scales.linear();
             scale.minimum(5);
             scale.maximum(40);
 
-            chart = anychart.sparkline([
+            var firstChart = anychart.sparkline([
                 {x: 1, y: 5},
                 {x: 5, y: 50},
                 {x: 16, y: 10},
@@ -18,12 +19,14 @@
                 {x: 25, y: 15},
                 {x: 30, y: 40}
             ]);
-            chart.xScale(scale); // sets xScale.
-            chart.bounds(0, 0, "100%", "5%");
-            chart.container(stage);
-            chart.draw();
 
-            chart1 = anychart.sparkline([
+            // Set XScale.
+            firstChart.xScale(scale);
+            firstChart.bounds(0, "5%", "100%", "5%");
+            firstChart.container(stage);
+            firstChart.draw();
+
+            var secondChart = anychart.sparkline([
                 {x: 9, y: 25},
                 {x: 10, y: 5},
                 {x: 13, y: 30},
@@ -31,10 +34,20 @@
                 {x: 20, y: 35},
                 {x: 35, y: 60}
             ]);
-            chart1.xScale(scale); // sets xScale.
-            chart1.bounds(0, "10%", "100%", "5%");
-            chart1.container(stage);
-            chart1.draw();
+
+            secondChart.type("column");
+
+            // Set X-scale.
+            secondChart.xScale(scale);
+            secondChart.bounds(0, "10%", "100%", "5%");
+            secondChart.container(stage);
+            secondChart.draw();
+
+            var customTitle = anychart.standalones.title();
+            customTitle.text("Set XScale");
+            customTitle.orientation("top");
+            customTitle.container(stage);
+            customTitle.draw();
         });
     </script>
 </head>

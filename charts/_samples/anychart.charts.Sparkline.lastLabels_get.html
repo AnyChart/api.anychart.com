@@ -6,9 +6,13 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([50, 15, 10, 60, 20, 70, 30]);
-            var lastLabels = chart.lastLabels(); // get last labels
-            lastLabels.enabled(true);
-            lastLabels.fontSize(8);
+
+            // Get label for the last point.
+            var currentLastLabels = chart.lastLabels();
+            currentLastLabels.enabled(true);
+            currentLastLabels.fontSize(8);
+
+            chart.title({text: "Get and modify label for the last point", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

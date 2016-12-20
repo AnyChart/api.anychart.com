@@ -6,9 +6,13 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([50, 15, 10, 60, 20, 70, 30]);
-            var minLabels = chart.minLabels(); // get minimum labels
-            minLabels.enabled(true);
-            minLabels.fontSize(9);
+
+            // Get label for the minimum point.
+            var currentMinLabels = chart.minLabels();
+            currentMinLabels.enabled(true);
+            currentMinLabels.fontSize(9);
+
+            chart.title({text: "Get and modify label for the minimum point", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

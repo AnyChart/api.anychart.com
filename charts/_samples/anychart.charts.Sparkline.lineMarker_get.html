@@ -6,9 +6,13 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([5, 50, 10, 60, 20, 70, 30]);
-            var lineMarker = chart.lineMarker(); // get line marker
-            lineMarker.value(30);
-            lineMarker.stroke("#4CAF50");
+
+            // Get line marker.
+            var currentLineMarker = chart.lineMarker();
+            currentLineMarker.value(30);
+            currentLineMarker.stroke("#F44336");
+
+            chart.title({text: "Get and modify line marker object", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

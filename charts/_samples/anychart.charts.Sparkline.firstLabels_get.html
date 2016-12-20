@@ -6,9 +6,13 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([50, 15, 10, 60, 20, 70, 30]);
-            var firstLabels = chart.firstLabels(); // get first labels
-            firstLabels.enabled(true);
-            firstLabels.fontSize(8);
+
+            // Get label for first point.
+            var currentFirstLabels = chart.firstLabels();
+            currentFirstLabels.enabled(true);
+            currentFirstLabels.fontSize(8);
+
+            chart.title({text: "Get and modify labels for first point", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

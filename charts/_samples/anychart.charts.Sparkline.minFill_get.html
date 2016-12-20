@@ -8,8 +8,11 @@
             chart = anychart.sparkline([50, 15, 20, 60, 20, 70, 30]);
             chart.type("column");
             chart.minFill("#4CAF50");
-            var getMinFill = chart.minFill(); // get fill of minimum point
-            chart.title({fontColor: getMinFill, orientation: "top"});
+
+            // Get fill for the minimum point.
+            var currentMinFill = chart.minFill();
+
+            chart.title({text: "Get and use fill for the minimum point", fontColor: currentMinFill, orientation: "top"});
             chart.container("container");
             chart.draw();
         });

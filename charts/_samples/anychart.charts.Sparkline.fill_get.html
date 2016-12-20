@@ -6,11 +6,15 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([5, 50, 10, 60, 70, 30]);
+
             chart.type("column");
             chart.container("container");
             chart.draw();
-            var getFill = chart.fill(); // get fill color
-            chart.title({fontColor: getFill, orientation: "top"});
+
+            // Get fill color.
+            var currentFill = chart.fill();
+
+            chart.title({text: "Get and use chart fill", fontColor: currentFill, orientation: "top"});
         });
     </script>
 </head>

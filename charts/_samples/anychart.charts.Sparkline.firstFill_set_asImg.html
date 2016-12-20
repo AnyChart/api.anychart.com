@@ -4,14 +4,18 @@
     <meta name="x-cat-tags" content="sparkline column anyChart"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.sparkline([70, 5, 10, 60, 20, 50, 30]);
             chart.type("column");
+
+            // Set image first fill
             chart.firstFill({
                 src: "http://static.anychart.com/images/underwater.jpg",
                 mode: anychart.graphics.vector.ImageFillMode.STRETCH
-            }); // sets image first fill
+            });
+
             chart.height("50%");
+            chart.title({text: "Set image fill for the first point", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

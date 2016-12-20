@@ -6,23 +6,36 @@
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             var stage = anychart.graphics.create("container", "100%", "100%");
+
             var scale = anychart.scales.log();
             scale.minimum(5);
             scale.maximum(100);
 
-            chart = anychart.sparkline([5, 50, 10, 60, 15, 40]);
-            chart.yScale(scale); // sets yScale.
-            chart.bounds("0%", 0, "50%", "5%");
-            chart.height("10%");
-            chart.container(stage);
-            chart.draw();
+            var firstChart = anychart.sparkline([5, 50, 10, 60, 15, 40]);
 
-            chart1 = anychart.sparkline([30, 5, 30, 10, 35, 15]);
-            chart1.yScale(scale); // sets yScale.
-            chart1.bounds("50%", 0, "50%", "5%");
-            chart1.height("10%");
-            chart1.container(stage);
-            chart1.draw();
+            // Set YScale.
+            firstChart.yScale(scale);
+
+            firstChart.bounds("0%", 0, "50%", "5%");
+            firstChart.height("10%");
+            firstChart.container(stage);
+            firstChart.draw();
+
+            var secondChart = anychart.sparkline([30, 5, 30, 10, 35, 15]);
+
+            // Set YScale.
+            secondChart.yScale(scale);
+
+            secondChart.bounds("50%", 0, "50%", "5%");
+            secondChart.height("10%");
+            secondChart.container(stage);
+            secondChart.draw();
+
+            var customTitle = anychart.standalones.title();
+            customTitle.text("Set YScale");
+            customTitle.orientation("top");
+            customTitle.container(stage);
+            customTitle.draw();
         });
     </script>
 </head>

@@ -6,10 +6,14 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([50, 15, 10, 60, 20, 65, 30]);
-            var maxLabels = chart.maxLabels(); // get maximum labels
-            maxLabels.enabled(true);
-            maxLabels.fontSize(9);
+
+            // Get label for the maximum point.
+            var currentMaxLabels = chart.maxLabels();
+            currentMaxLabels.enabled(true);
+            currentMaxLabels.fontSize(9);
+
             chart.height("9%");
+            chart.title({text: "Get and modify label for the maximum point", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

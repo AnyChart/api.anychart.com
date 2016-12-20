@@ -4,12 +4,15 @@
     <meta name="x-cat-tags" content="sparkline column anyChart"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.sparkline([50, 5, 10, 60, 20, 70, 30]);
             chart.type("column");
-            chart.firstFill("#008000");
-            var getFirstFill = chart.firstFill(); // get first fill color
-            chart.title({fontColor: getFirstFill, orientation: "top"});
+            chart.firstFill("#4CAF50");
+
+            // Get fill color for the first point.
+            var currentFirstFill = chart.firstFill();
+
+            chart.title({text: "Get and use fill for the first point", fontColor: currentFirstFill, orientation: "top"});
             chart.container("container");
             chart.draw();
         });

@@ -6,10 +6,14 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([5, 50, 10, 60, 20, 70, 30]);
-            var rangeMarker = chart.rangeMarker(); // get range marker
-            rangeMarker.from(20);
-            rangeMarker.to(50);
-            rangeMarker.fill("#0000FF .1");
+
+            // Get range marker.
+            var currentRangeMarker = chart.rangeMarker();
+            currentRangeMarker.from(20);
+            currentRangeMarker.to(30);
+            currentRangeMarker.fill("#FFCDD2");
+
+            chart.title({text: "Get and modify range marker object", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

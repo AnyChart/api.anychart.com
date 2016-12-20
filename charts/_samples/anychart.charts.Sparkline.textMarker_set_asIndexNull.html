@@ -6,9 +6,14 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([5, 50, 10, 60, 20, 70, 30]);
+
             chart.textMarker(0, {value: 50, text: "Marker 0"});
-            chart.textMarker(1, {value: 2, text: "Marker 1"});
-            chart.textMarker(0, null); // turn off first text marker by index.
+            chart.textMarker(1, {value: 20, text: "Marker 1"});
+
+            // Disable text marker by index 0.
+            chart.textMarker(0, null);
+
+            chart.title({text: "Disable chart text marker by index", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

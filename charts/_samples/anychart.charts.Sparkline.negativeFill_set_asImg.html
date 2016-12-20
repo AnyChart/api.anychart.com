@@ -7,10 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([2, 10, -7, 2, -9, 6, -15, 3]);
             chart.type("column");
+
+            // Set image fill for negative points.
             chart.negativeFill({
                 src: "http://static.anychart.com/images/underwater.jpg",
-                mode: anychart.graphics.vector.ImageFillMode.STRETCH
-            }); // sets image fill
+                mode: anychart.graphics.vector.ImageFillMode.STRETCH,
+                opacity: 0.4
+            });
+
+            chart.title({text: "Set image fill for negative points", orientation: "top"});
             chart.height("50%");
             chart.container("container");
             chart.draw();

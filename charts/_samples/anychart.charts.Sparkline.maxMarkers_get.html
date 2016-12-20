@@ -6,9 +6,14 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([50, 15, 10, 60, 20, 70, 30]);
-            var maxMarkers = chart.maxMarkers(); // get maximum markers
-            maxMarkers.enabled(true);
-            maxMarkers.size(5);
+
+            // Get maximum marker.
+            var currentMaxMarkers = chart.maxMarkers();
+            currentMaxMarkers.enabled(true);
+            currentMaxMarkers.size(5);
+            currentMaxMarkers.fill("#4CAF50");
+
+            chart.title({text: "Get and modify marker for the maximum point", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

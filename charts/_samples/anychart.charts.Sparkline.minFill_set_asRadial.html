@@ -4,10 +4,14 @@
     <meta name="x-cat-tags" content="sparkline column anyChart"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.sparkline([50, 15, 20, 60, 20, 70, 30]);
             chart.type("column");
-            chart.minFill(["#FAFAFA", "#757575"], .5, .5, null, .9, 0.3, 0.81); // sets radial gradient fill color for minimum point
+
+            // Set radial gradient fill color for the minimum point
+            chart.minFill(["#FAFAFA", "#757575"], 0.5, 0.5, null, 0.9, 0.3, 0.81);
+
+            chart.title({text: "Set radial gradient fill for the minimum point", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

@@ -6,9 +6,14 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([50, 15, 10, 60, 20, 70, 30]);
-            var markers = chart.lastMarkers(); // get last markers
-            markers.enabled(true);
-            markers.size(5);
+
+            // Get last markers.
+            var currentLastMarkers = chart.lastMarkers();
+            currentLastMarkers.enabled(true);
+            currentLastMarkers.size(5);
+            currentLastMarkers.fill("#4CAF50");
+
+            chart.title({text: "Get and modify markers for the last point", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

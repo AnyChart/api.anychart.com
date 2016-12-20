@@ -6,9 +6,14 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([5, 50, 10, 60, 20, 70, 30]);
+
             chart.rangeMarker(0, {from: 10, to: 40, fill: "#FFA500 0.2"});
-            chart.rangeMarker(1, {from: 50, to: 70, fill: "#008000 0.2"});
-            chart.rangeMarker(0, null); // turn off range marker by index.
+            chart.rangeMarker(1, {from: 50, to: 60, fill: "#008000 0.2"});
+
+            // Disable range marker by index 0.
+            chart.rangeMarker(0, null);
+
+            chart.title({text: "Disable chart range marker by index", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

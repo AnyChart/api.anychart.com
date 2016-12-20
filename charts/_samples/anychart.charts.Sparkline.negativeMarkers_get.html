@@ -7,9 +7,14 @@
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([50, -15, 10, 60, 20, 70, -30]);
             chart.type("column");
-            var negativeMarkers = chart.negativeMarkers(); // get negative markers
-            negativeMarkers.enabled(true);
-            negativeMarkers.size(5);
+
+            // Get markers for negative points.
+            var currentNegativeMarkers = chart.negativeMarkers();
+            currentNegativeMarkers.enabled(true);
+            currentNegativeMarkers.size(5);
+            currentNegativeMarkers.fill("#4CAF50");
+
+            chart.title({text: "Get and modify markers for negative points", orientation: "top"});
             chart.container("container");
             chart.draw();
         });

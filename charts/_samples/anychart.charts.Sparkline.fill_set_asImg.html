@@ -6,12 +6,17 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.sparkline([1, 4, 7, 1]);
+
             chart.type("column");
+
+            // Set image fill.
             chart.fill({
                 src: "http://static.anychart.com/images/underwater.jpg",
-                mode: anychart.graphics.vector.ImageFillMode.STRETCH
-            }); // sets image fill
-            chart.height("50%");
+                mode: anychart.graphics.vector.ImageFillMode.STRETCH,
+                opacity: 0.3
+            });
+
+            chart.title({text: "Set image fill", orientation: "top"});
             chart.container("container");
             chart.draw();
         });
