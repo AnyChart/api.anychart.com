@@ -7,29 +7,30 @@
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
 
-            var axis = anychart.standalones.axes.linear();
-            axis.orientation("left");
+            var customAxis = anychart.standalones.axes.linear();
+            customAxis.orientation("left");
 
-            var scale = anychart.scales.ordinal();
-            scale.values([1, 2, 3]);
+            var customScale = anychart.scales.ordinal();
+            customScale.values([1, 2, 3]);
 
-            axis.scale(scale);
-            axis.parentBounds(50, 50, 300, 400);
-            axis.container(stage);
-            axis.draw();
+            customAxis.scale(customScale);
+            customAxis.parentBounds(50, 50, 300, 400);
+            customAxis.container(stage);
+            customAxis.draw();
 
-            // Gets remaining bounds.
-            var bounds = axis.getRemainingBounds();
+            // Get remaining bounds.
+            var bounds = customAxis.getRemainingBounds();
 
-            var label = anychart.standalones.label();
-            label.parentBounds(bounds);
-            label.width("100%");
-            label.height("100%");
-            label.padding(15);
-            label.background({fill: "#80CBC4 0.2"});
-            label.enabled(true);
-            label.container(stage);
-            label.draw();
+            var customLabel = anychart.standalones.label();
+            customLabel.text("Get and use remaining bounds");
+            customLabel.parentBounds(bounds);
+            customLabel.width("100%");
+            customLabel.height("100%");
+            customLabel.padding(15);
+            customLabel.background({fill: "#80CBC4 0.2"});
+            customLabel.enabled(true);
+            customLabel.container(stage);
+            customLabel.draw();
         });
     </script>
 </head>

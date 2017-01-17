@@ -6,8 +6,13 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line([1.1, 1.4, 1.9, 1.6]);
-            var yAxis = chart.yAxis();
-            yAxis.drawFirstLabel(false); // disables first label
+
+            var currentYAxis = chart.yAxis();
+
+            // Disable first label.
+            currentYAxis.drawFirstLabel(false);
+
+            chart.title("Disable first label on the axis");
             chart.container("container");
             chart.draw();
         });

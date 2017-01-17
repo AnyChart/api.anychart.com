@@ -5,14 +5,17 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line([1.1, 1.6, 1.4, 1.9]);
-            
+            chart = anychart.line();
+            chart.spline([1.1, 1.6, 1.4, 1.9]);
+
             var currentYAxis = chart.yAxis();
 
-            // Enable minor labels.
-            currentYAxis.minorLabels(true);
+            var axisTicks = currentYAxis.ticks();
 
-            chart.title("Enable minor labels");
+            // Set stroke.
+            axisTicks.stroke("#F44336", 2);
+
+            chart.title("Set stroke settings via several parameter");
             chart.container("container");
             chart.draw();
         });

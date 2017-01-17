@@ -6,8 +6,13 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line([1.1, 1.6, 1.4, 1.9]);
-            var yAxis = chart.yAxis();
-            yAxis.title({text: "New title for my axis", fontSize: 16}); // sets title
+
+            var currentYAxis = chart.yAxis();
+
+            // Set title settings.
+            currentYAxis.title({text: "New title for the axis", fontSize: 16});
+
+            chart.title("Set title parameters as an object");
             chart.container("container");
             chart.draw();
         });

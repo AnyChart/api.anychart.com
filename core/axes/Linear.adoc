@@ -1,5 +1,5 @@
 /**
- * Axis Class.<br/>
+ * Linear axis class.<br/>
  * Any axis must be bound to a scale.<br/>
  * To obtain a new instance of Axis use {@link anychart.axes#linear}.
  * @constructor
@@ -18,6 +18,7 @@ anychart.core.axes.Linear;
  * Getter for the axis title.
  * @shortDescription Title settings.
  * @category Specific settings
+ * @example anychart.core.axes.Linear.title_get
  * @return {!anychart.core.ui.Title} Axis title.
  */
 anychart.core.axes.Linear.prototype.title;
@@ -169,7 +170,10 @@ anychart.core.axes.Linear.prototype.minorTicks;
  * Getter for axis stroke settings.
  * @shortDescription Stroke settings.
  * @category Coloring
- * @return {!anychart.graphics.vector.Stroke} Axis line stroke settings.
+ * @listing See listing
+ * var currentAxis = chart.yAxis();
+ * var axisStroke = currentAxis.stroke();
+ * @return {!anychart.graphics.vector.Stroke} Axis stroke settings.
  */
 anychart.core.axes.Linear.prototype.stroke;
 
@@ -177,11 +181,11 @@ anychart.core.axes.Linear.prototype.stroke;
  * Setter for axis stroke settings.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.core.axes.Linear.stroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value ["#eaeaea"] Stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value ["#CECECE"] Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
- * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin ['round'] Line join style.
- * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap ['square'] Line cap style.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
  * @return {anychart.core.axes.Linear} Self instance for method chaining.
  */
 anychart.core.axes.Linear.prototype.stroke;
@@ -194,15 +198,18 @@ anychart.core.axes.Linear.prototype.stroke;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for axis orientation.
+ * Getter for the axis orientation.
  * @shortDescription Axis orientation.
  * @category Size and Position
+ * @listing See listing
+ * var currentAxis = chart.yAxis();
+ * var axisOrientation = currentAxis.orientation();
  * @return {anychart.enums.Orientation} Axis orientation.
  */
 anychart.core.axes.Linear.prototype.orientation;
 
 /**
- * Setter for axis orientation.
+ * Setter for the axis orientation.
  * @example anychart.core.axes.Linear.orientation_set
  * @param {(string|anychart.enums.Orientation)=} opt_value ["top"] Value to set.
  * @return {anychart.core.axes.Linear} Self instance for method chaining.
@@ -217,15 +224,18 @@ anychart.core.axes.Linear.prototype.orientation;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for axis scale.
+ * Getter for the axis scale.
  * @shortDescription Scale settings.
  * @category Specific settings
+ * @listing See listing
+ * var currentAxis = chart.yAxis();
+ * var axisScale = currentAxis.scale();
  * @return {anychart.scales.Base} Axis scale.
  */
 anychart.core.axes.Linear.prototype.scale;
 
 /**
- * Setter for axis scale.
+ * Setter for the axis scale.
  * @example anychart.core.axes.Linear.scale_set
  * @param {anychart.scales.Base=} opt_value Value to set.
  * @return {anychart.core.axes.Linear} Self instance for method chaining.
@@ -240,15 +250,18 @@ anychart.core.axes.Linear.prototype.scale;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for axis width.
+ * Getter for the axis width.
  * @shortDescription Axis width.
  * @category Size and Position
- * @return {number|string|null} The current axis width.
+ * @listing See listing
+ * var currentYAxis = chart.yAxis();
+ * var axisWidth = currentYAxis.width();
+ * @return {number|string|null} Axis width.
  */
 anychart.core.axes.Linear.prototype.width;
 
 /**
- * Setter for axis width.
+ * Setter for the axis width.
  * @example anychart.core.axes.Linear.width_set
  * @param {(number|string)=} opt_value [null] Value to set.
  * @return {anychart.core.axes.Linear} Self instance for method chaining.
@@ -281,6 +294,9 @@ anychart.core.axes.Linear.prototype.getRemainingBounds;
  * Getter for the first label drawing flag.
  * @shortDescription Drawing of the first label.
  * @category Specific settings
+ * @listing See listing
+ * var currentAxis = chart.yAxis();
+ * var flag = currentAxis.drawFirstLabel();
  * @return {boolean} Drawing flag.
  */
 anychart.core.axes.Linear.prototype.drawFirstLabel;
@@ -304,6 +320,9 @@ anychart.core.axes.Linear.prototype.drawFirstLabel;
  * Getter for the last label drawing flag.
  * @shortDescription Drawing of the last label.
  * @category Specific settings
+ * @listing See listing
+ * var currentAxis = chart.yAxis();
+ * var flag = currentAxis.drawLastLabel();
  * @return {boolean} Drawing flag.
  */
 anychart.core.axes.Linear.prototype.drawLastLabel;
@@ -324,15 +343,16 @@ anychart.core.axes.Linear.prototype.drawLastLabel;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for overlap mode for labels.
+ * Getter for labels overlap mode.
  * @shortDescription Overlap mode for labels.
  * @category Specific settings
- * @return {anychart.enums.LabelsOverlapMode} Overlap mode flag.
+ * @example anychart.core.axes.Linear.overlapMode_get
+ * @return {anychart.enums.LabelsOverlapMode} Overlap mode.
  */
 anychart.core.axes.Linear.prototype.overlapMode;
 
 /**
- * Setter for overlap mode for labels.
+ * Setter for labels overlap mode.
  * @example anychart.core.axes.Linear.overlapMode
  * @param {(anychart.enums.LabelsOverlapMode|string)=} opt_value ["noOverlap"] Value to set.
  * @return {anychart.core.axes.Linear} Self instance for method chaining.
@@ -347,15 +367,18 @@ anychart.core.axes.Linear.prototype.overlapMode;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for stagger mode state.
+ * Getter for the stagger mode state.
  * @shortDescription Stagger mode state.
  * @category Specific settings
- * @return {boolean} Current stagger mode state.
+ * @listing See listing
+ * var currentAxis = chart.yAxis();
+ * var flag = currentAxis.staggerMode();
+ * @return {boolean} Stagger mode state.
  */
 anychart.core.axes.Linear.prototype.staggerMode;
 
 /**
- * Setter for stagger mode state.
+ * Setter for the stagger mode state.
  * @example anychart.core.axes.Linear.staggerMode
  * @param {boolean=} opt_value [true] On/off stagger mode.
  * @return {anychart.core.axes.Linear} Self instance for method chaining.
@@ -373,7 +396,10 @@ anychart.core.axes.Linear.prototype.staggerMode;
  * Getter for stagger lines.
  * @shortDescription Stagger lines.
  * @category Specific settings
- * @return {?number} Current stagger line settings.
+ * @listing See listing
+ * var currentAxis = chart.yAxis();
+ * var lines = currentAxis.staggerLines();
+ * @return {?number} Stagger line settings.
  */
 anychart.core.axes.Linear.prototype.staggerLines;
 
@@ -381,7 +407,7 @@ anychart.core.axes.Linear.prototype.staggerLines;
  * Setter for stagger lines.<br/>
  * <b>Note:</b> pass <b>null</b> to enable autocalculation.
  * @example anychart.core.axes.Linear.staggerLines
- * @param {?number=} opt_value [null] Count of stager lines.
+ * @param {?number=} opt_value [null] Count of stagger lines.
  * @return {anychart.core.axes.Linear} Self instance for method chaining.
  */
 anychart.core.axes.Linear.prototype.staggerLines;
@@ -397,7 +423,10 @@ anychart.core.axes.Linear.prototype.staggerLines;
  * Getter for maximum stagger lines.
  * @shortDescription Maximum stagger lines.
  * @category Specific settings
- * @return {?number} Current stagger line settings.
+ * @listing See listing
+ * var currentAxis = chart.yAxis();
+ * var maxLines = currentAxis.staggerMaxLines();
+ * @return {?number} Stagger line settings.
  */
 anychart.core.axes.Linear.prototype.staggerMaxLines;
 
@@ -433,19 +462,19 @@ anychart.core.axes.Linear.prototype.enabled;
 /** @inheritDoc */
 anychart.core.axes.Linear.prototype.print;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axes.Linear.prototype.saveAsPNG;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axes.Linear.prototype.saveAsJPG;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axes.Linear.prototype.saveAsPDF;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axes.Linear.prototype.saveAsSVG;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axes.Linear.prototype.toSVG;
 
 /** @inheritDoc */

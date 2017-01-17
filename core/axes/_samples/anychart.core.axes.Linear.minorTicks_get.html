@@ -6,10 +6,15 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line([1.1, 1.6, 1.4, 1.9]);
-            var yAxis = chart.yAxis();
-            var minorTicks = yAxis.minorTicks(); // get minor ticks
-            minorTicks.stroke("3 #4DB6AC");
-            minorTicks.length(5);
+
+            var currentYAxis = chart.yAxis();
+
+            // Get minor ticks.
+            var minorTicksSettings = currentYAxis.minorTicks();
+            minorTicksSettings.stroke("3 #4DB6AC");
+            minorTicksSettings.length(5);
+
+            chart.title("Get and modify minor ticks");
             chart.container("container");
             chart.draw();
         });

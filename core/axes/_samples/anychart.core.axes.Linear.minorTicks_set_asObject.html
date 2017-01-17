@@ -6,8 +6,13 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line([1.1, 1.6, 1.4, 1.9]);
-            var yAxis = chart.yAxis();
-            yAxis.minorTicks({stroke: "2 #4DB6AC", length: 5}); // disables minor ticks
+
+            var currentYAxis = chart.yAxis();
+
+            // Set minor ticks settings.
+            currentYAxis.minorTicks({stroke: "2 #4DB6AC", length: 5});
+
+            chart.title("Set minor labels parameters as an object");
             chart.container("container");
             chart.draw();
         });

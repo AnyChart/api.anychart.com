@@ -6,8 +6,13 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line([1.1, 1.4, 1.9, 1.6]);
-            var yAxis = chart.yAxis();
-            yAxis.drawLastLabel(false); // disables last label
+
+            var currentYAxis = chart.yAxis();
+
+            // Disable last label.
+            currentYAxis.drawLastLabel(false);
+
+            chart.title("Disable last label");
             chart.container("container");
             chart.draw();
         });

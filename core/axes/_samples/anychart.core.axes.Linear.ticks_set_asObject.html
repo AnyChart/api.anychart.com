@@ -6,8 +6,13 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line([1.1, 1.6, 1.4, 1.9]);
-            var yAxis = chart.yAxis();
-            yAxis.ticks({stroke: "2 #4DB6AC", length: 10}); // sets ticks
+
+            var currentYAxis = chart.yAxis();
+
+            // Set ticks settings.
+            currentYAxis.ticks({stroke: "2 #4DB6AC", length: 10});
+
+            chart.title("Set ticks parameters as an object");
             chart.container("container");
             chart.draw();
         });

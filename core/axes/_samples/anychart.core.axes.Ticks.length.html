@@ -7,9 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.line();
             chart.spline([1.1, 1.6, 1.4, 1.9]);
-            var yAxis = chart.yAxis();
-            var ticks = yAxis.ticks();
-            ticks.length(10); // sets length
+
+            var currentYAxis = chart.yAxis();
+
+            var axisTicks = currentYAxis.ticks();
+
+            // Set ticks length.
+            axisTicks.length(10);
+
+            chart.title("Set ticks length");
             chart.container("container");
             chart.draw();
         });

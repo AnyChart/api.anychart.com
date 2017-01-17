@@ -7,9 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.line();
             chart.spline([1.1, 1.6, 1.4, 1.9]);
-            var yAxis = chart.yAxis();
-            var ticks = yAxis.ticks();
-            ticks.stroke("2 #F44336 .7"); // sets stroke
+
+            var currentYAxis = chart.yAxis();
+
+            var axisTicks = currentYAxis.ticks();
+
+            // Set stroke.
+            axisTicks.stroke("2 #F44336 0.7");
+
+            chart.title("Set stroke settings via single parameter");
             chart.container("container");
             chart.draw();
         });

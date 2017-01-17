@@ -6,11 +6,17 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line([1, 6, 4, 9]);
-            var yAxis = chart.yAxis();
-            var minorLabels = yAxis.minorLabels(); // get minor labels
-            minorLabels.enabled(true);
-            minorLabels.fontSize(14);
-            minorLabels.rotation(-90);
+
+            var currentYAxis = chart.yAxis();
+
+            // Get minor labels.
+            var minorLabelsSettings = currentYAxis.minorLabels();
+
+            minorLabelsSettings.enabled(true);
+            minorLabelsSettings.fontSize(14);
+            minorLabelsSettings.rotation(-90);
+
+            chart.title("Get and modify minor labels");
             chart.container("container");
             chart.draw();
         });

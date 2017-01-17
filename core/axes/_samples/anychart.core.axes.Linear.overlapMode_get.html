@@ -5,14 +5,15 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line([1.1, 1.6, 1.4, 1.9]);
-            
+            chart = anychart.line();
+            chart.line([2, 8, 1, 7, 3, 9, 4]);
+
             var currentYAxis = chart.yAxis();
 
-            // Enable minor labels.
-            currentYAxis.minorLabels(true);
+            // Get overlap mode.
+            var mode = currentYAxis.overlapMode();
 
-            chart.title("Enable minor labels");
+            chart.title("Overlap mode is " + "\"" + mode + "\"");
             chart.container("container");
             chart.draw();
         });

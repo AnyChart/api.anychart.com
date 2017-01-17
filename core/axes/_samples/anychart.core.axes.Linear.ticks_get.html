@@ -6,10 +6,16 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line([1.1, 1.6, 1.4, 1.9]);
-            var yAxis = chart.yAxis();
-            var ticks = yAxis.ticks(); // get ticks
-            ticks.stroke("3 #4DB6AC");
-            ticks.length(5);
+
+            var currentYAxis = chart.yAxis();
+
+            // Get ticks.
+            var axisTicks = currentYAxis.ticks();
+
+            axisTicks.stroke("3 #4DB6AC");
+            axisTicks.length(5);
+
+            chart.title("Get and modify ticks");
             chart.container("container");
             chart.draw();
         });

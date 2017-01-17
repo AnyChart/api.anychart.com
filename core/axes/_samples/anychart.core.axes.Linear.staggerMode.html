@@ -6,15 +6,22 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
-            var scale = anychart.scales.linear();
-            var ticks = scale.ticks();
-            ticks.interval(0.1);
-            var yAxis = chart.yAxis();
-            yAxis.overlapMode("allowOverlap");
-            yAxis.minorLabels({rotation: 270});
-            yAxis.scale(scale);
-            yAxis.staggerMode(true); // sets stagger mode
+
+            var customScale = anychart.scales.linear();
+
+            var currentTicks = customScale.ticks();
+            currentTicks.interval(0.1);
+
+            var currentYAxis = chart.yAxis();
+            currentYAxis.overlapMode("allowOverlap");
+            currentYAxis.minorLabels({rotation: 270});
+            currentYAxis.scale(customScale);
+
+            // Enable stagger mode.
+            currentYAxis.staggerMode(true);
+
             chart.line([2, 8, 1, 7, 3, 9, 4, 6, 5]);
+            chart.title("Enable stagger mode");
             chart.container("container");
             chart.draw();
         });

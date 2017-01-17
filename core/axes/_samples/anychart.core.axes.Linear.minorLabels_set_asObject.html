@@ -6,8 +6,13 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line([1.1, 1.6, 1.4, 1.9]);
-            var yAxis = chart.yAxis();
-            yAxis.minorLabels({fontSize: 8, rotation: -90}); // sets minor labels
+
+            var currentYAxis = chart.yAxis();
+
+            // Set minor labels.
+            currentYAxis.minorLabels({fontSize: 8, rotation: -90});
+
+            chart.title("Set minor labels parameters as an object");
             chart.container("container");
             chart.draw();
         });

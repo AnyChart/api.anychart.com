@@ -6,13 +6,14 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line([1.1, 1.6, 1.4, 1.9]);
-            
+
             var currentYAxis = chart.yAxis();
 
-            // Enable minor labels.
-            currentYAxis.minorLabels(true);
+            // Get title.
+            var titleSettings = currentYAxis.title();
+            titleSettings.enabled(true);
+            titleSettings.text("Axis title");
 
-            chart.title("Enable minor labels");
             chart.container("container");
             chart.draw();
         });

@@ -6,15 +6,22 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
-            var scale = anychart.scales.linear();
-            var ticks = scale.ticks();
-            ticks.interval(0.1);
-            var yAxis = chart.yAxis();
-            yAxis.minorLabels({rotation: 270});
-            yAxis.scale(scale);
-            yAxis.staggerMode(true);
-            yAxis.staggerMaxLines(3); // sets stagger maximum lines
+
+            var customScale = anychart.scales.linear();
+
+            var currentTicks = customScale.ticks();
+            currentTicks.interval(0.1);
+
+            var currentYAxis = chart.yAxis();
+            currentYAxis.minorLabels({rotation: 270});
+            currentYAxis.scale(customScale);
+            currentYAxis.staggerMode(true);
+
+            // Set stagger maximum lines.
+            currentYAxis.staggerMaxLines(3);
+
             chart.line([2, 8, 1, 7, 3, 9, 4, 6, 5]);
+            chart.title("Set stagger maximum lines");
             chart.container("container");
             chart.draw();
         });
