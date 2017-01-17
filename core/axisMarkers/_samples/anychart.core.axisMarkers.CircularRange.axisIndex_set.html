@@ -7,19 +7,28 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 90});
+
             var firstAxis = chart.axis();
+
             var firstScale = firstAxis.scale();
             firstScale.minimum(0);
             firstScale.maximum(20);
+
             var secondAxis = chart.axis(1);
             secondAxis.radius(70);
+
             var secondScale = secondAxis.scale();
             secondScale.minimum(0);
             secondScale.maximum(20);
-            var range = chart.range();
-            range.from(5);
-            range.to(16);
-            range.axisIndex(1); // sets axis index
+
+            var rangeSettings = chart.range();
+            rangeSettings.from(5);
+            rangeSettings.to(16);
+
+            // Set axis index.
+            rangeSettings.axisIndex(1);
+
+            chart.title("Set axis index");
             chart.container("container");
             chart.draw();
         });

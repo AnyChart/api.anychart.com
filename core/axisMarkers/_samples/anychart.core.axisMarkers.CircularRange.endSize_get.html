@@ -7,16 +7,22 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 90});
-            var axis = chart.axis();
-            var scale = axis.scale();
-            scale.minimum(0);
-            scale.maximum(20);
-            var range = chart.range();
-            range.from(5);
-            range.to(16);
-            range.endSize(15);
-            var getEndSize = range.endSize(); // get end size
-            chart.title("Start size - " + getEndSize);
+
+            var currentAxis = chart.axis();
+
+            var scaleSettings = currentAxis.scale();
+            scaleSettings.minimum(0);
+            scaleSettings.maximum(20);
+
+            var rangeSettings = chart.range();
+            rangeSettings.from(5);
+            rangeSettings.to(16);
+            rangeSettings.endSize(15);
+
+            // Get end size.
+            var size = rangeSettings.endSize();
+
+            chart.title("Start size is " + size);
             chart.container("container");
             chart.draw();
         });

@@ -7,15 +7,21 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 90});
-            var axis = chart.axis();
-            var scale = axis.scale();
-            scale.minimum(0);
-            scale.maximum(20);
-            var range = chart.range();
-            range.from(5);
-            range.to(16);
-            var getFrom = range.from(); // get starting range
-            chart.title("Starting range - " + getFrom);
+
+            var currentAxis = chart.axis();
+
+            var scaleSettings = currentAxis.scale();
+            scaleSettings.minimum(0);
+            scaleSettings.maximum(20);
+
+            var rangeSettings = chart.range();
+            rangeSettings.from(5);
+            rangeSettings.to(16);
+
+            // Get starting range.
+            var startingValue = rangeSettings.from();
+            
+            chart.title("Starting range is " + startingValue);
             chart.container("container");
             chart.draw();
         });

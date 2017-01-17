@@ -3,19 +3,19 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="gauges anyChart"/>
     <script src="../../../anychart.min.js"></script>
-    <script x-export="gauge">
+    <script x-export="chart">
         anychart.onDocumentReady(function () {
-            gauge = anychart.circularGauge([27]);
+            chart = anychart.circularGauge([27]);
 
-            gauge.padding("10%");
-            gauge.startAngle(270);
-            gauge.sweepAngle(180);
-            gauge.fill("#fff");
-            gauge.stroke(null);
+            chart.padding("10%");
+            chart.startAngle(270);
+            chart.sweepAngle(180);
+            chart.fill("#fff");
+            chart.stroke(null);
 
-            var currentAxis = gauge.axis();
+            var currentAxis = chart.axis();
             currentAxis.radius(95);
-            currentAxis.fill('#7CFC00 .3');
+            currentAxis.fill("#7CFC00 0.3");
             currentAxis.width(10);
             currentAxis.cornersRounding("50%");
 
@@ -23,29 +23,29 @@
             currentAxis.scale().maximum(100);
 
             currentAxis.ticks().length(4);
-            currentAxis.ticks().position('outside');
+            currentAxis.ticks().position("outside");
 
-            currentAxis.labels().position('outside');
+            currentAxis.labels().position("outside");
 
-            gauge.range({
+            chart.range({
                 from: 50,
                 to: 80,
-                position: 'i',
-                fill: 'Red',
+                position: "inside",
+                fill: "#F44336",
                 startSize: 10,
                 endSize: 10,
                 radius: 90
             });
 
-            var currentRange = gauge.range();
+            var currentRange = chart.range();
 
             // Set the rounding of range.
             currentRange.cornersRounding("50%");
 
-            gauge.title("Set radius for the rounding of circular range");
-            gauge.needle();
-            gauge.container("container");
-            gauge.draw();
+            chart.title("Set radius for the rounding of circular range");
+            chart.needle();
+            chart.container("container");
+            chart.draw();
         });
     </script>
 </head>
