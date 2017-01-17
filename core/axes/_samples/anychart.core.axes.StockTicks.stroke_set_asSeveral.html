@@ -18,11 +18,15 @@
             currentPlot.line(mapping);
 
             var plotXAxis = currentPlot.xAxis();
+            plotXAxis.labels({anchor: "leftTop"});
 
-            // Set background fill.
-            plotXAxis.background("#FFCDD2");
+            var ticksSettings = plotXAxis.ticks();
+            ticksSettings.enabled(true);
 
-            chart.title("Set axis background parameter as a string");
+            // Set ticks stroke.
+            ticksSettings.stroke("#F44336", 0.6);
+
+            chart.title("Set ticks stroke via several parameter");
             chart.container("container");
             chart.draw();
         });

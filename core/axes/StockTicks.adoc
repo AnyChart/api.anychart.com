@@ -14,17 +14,26 @@ anychart.core.axes.StockTicks;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Returns a current stroke settings.
+ * Getter for stroke settings.
  * @shortDescription Stroke settings.
  * @category Coloring
  * @example anychart.core.axes.StockTicks.stroke_get
- * @return {anychart.graphics.vector.Stroke} Returns the current stroke settings.
+ * @return {anychart.graphics.vector.Stroke} Returns stroke settings.
  * @since 7.7.0
  */
 anychart.core.axes.StockTicks.prototype.stroke;
 
 /**
- * Sets stroke settings via single parameter.<br/>
+ * Setter for stroke settings via single parameter.<br/>
+ * <img src='/anychart.core.axes.Ticks.stroke.png' height='66' width='413'/>
+ * @example anychart.core.axes.StockTicks.stroke_set_asSingle
+ * @param {(anychart.graphics.vector.Stroke)=} opt_value ["#CECECE"] Stroke style as '[thickness ]color[ opacity]'.
+ * @return {anychart.core.axes.Ticks} Self instance for method chaining.
+ */
+anychart.core.axes.StockTicks.prototype.stroke;
+
+/**
+ * Setter for stroke settings via several parameter.<br/>
  * <img src='/anychart.core.axes.RadialTicks.stroke.png' height='66' width='413'/><br/>
  * @detailed The following options are acceptable:
  * <ul>
@@ -41,8 +50,12 @@ anychart.core.axes.StockTicks.prototype.stroke;
  *  <li><b>null</b> - reset current stroke settings.</li>
  * </ul>
  * <b>Note:</b> String parts order is significant and '3px red' is not the same as 'red 3px'.
- * @example anychart.core.axes.StockTicks.stroke_set
- * @param {(anychart.graphics.vector.Stroke)=} opt_value Stroke style as '[thickness ]color[ opacity]'.
+ * @example anychart.core.axes.StockTicks.stroke_set_asSeveral
+ * @param {string=} opt_value Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
  * @return {anychart.core.axes.StockTicks} Self instance for method chaining.
  * @since 7.7.0
  */

@@ -4,6 +4,7 @@
     <meta name="x-cat-tags" content="anyStock"/>
     <script src="../../../anychart.min.js"></script>
     <script src="http://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <link rel="stylesheet" href="http://static.anychart.com/css/develop/anychart-ui.min.css" />
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var dataTable = anychart.data.table();
@@ -18,11 +19,16 @@
             currentPlot.line(mapping);
 
             var plotXAxis = currentPlot.xAxis();
+            plotXAxis.enabled(true);
 
-            // Gets background settings.
-            var myBackground = plotXAxis.background();
-            myBackground.fill("#BBDEFB");
+            // Get background settings.
+            var currentBackground = plotXAxis.background();
 
+            currentBackground.enabled(true);
+            currentBackground.fill("#FFCDD2");
+            currentBackground.stroke("#F44336");
+
+            chart.title("Get and modify axis background");
             chart.container("container");
             chart.draw();
         });
