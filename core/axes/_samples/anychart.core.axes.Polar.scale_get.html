@@ -5,17 +5,18 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.polar();
-            chart.line([6, 1, 6, 1, 6, 1]);
+            chart = anychart.polar([6, 1, 6, 1, 6, 1]);
+
+            chart.title("Get and modify axis scale");
+            chart.container("container");
+            chart.draw();
 
             var currentXAxis = chart.xAxis();
 
-            // Disable labels.
-            currentXAxis.labels(false);
+            // Get scale.
+            var scaleSettings = currentXAxis.scale();
 
-            chart.title("Disable axis labels");
-            chart.container("container");
-            chart.draw();
+            scaleSettings.inverted(true);
         });
     </script>
 </head>

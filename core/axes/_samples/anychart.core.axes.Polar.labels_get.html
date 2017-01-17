@@ -6,11 +6,17 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
-            chart.line([1.1, 1.6, 1.4, 1.9]);
-            var xAxis = chart.xAxis();
-            var labels = xAxis.labels(); // get labels
-            labels.fontColor("#00897B");
-            labels.fontWeight("bold");
+            chart.line([6, 1, 6, 1, 6, 1]);
+
+            var currentXAxis = chart.xAxis();
+
+            // Get labels.
+            var labelsSettings = currentXAxis.labels();
+
+            labelsSettings.fontColor("#00897B");
+            labelsSettings.fontWeight("bold");
+
+            chart.title("Get and modify axis labels");
             chart.container("container");
             chart.draw();
         });

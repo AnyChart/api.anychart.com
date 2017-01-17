@@ -7,13 +7,21 @@
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
             chart.line([1, 6, 4, 9, 15, 6, 3]);
-            var xAxis = chart.xAxis();
-            xAxis.minorLabels(true);
+
+            var currentXAxis = chart.xAxis();
+            currentXAxis.minorLabels(true);
+
             var scale = anychart.scales.linear();
-            var ticks = scale.ticks();
-            ticks.interval(0.04);
-            xAxis.scale(scale);
-            xAxis.overlapMode("allowOverlap"); // sets overlap mode
+
+            var ticksSettings = scale.ticks();
+            ticksSettings.interval(0.04);
+
+            currentXAxis.scale(scale);
+
+            // Set overlap mode.
+            currentXAxis.overlapMode("allowOverlap");
+
+            chart.title("Set overlap mode");
             chart.container("container");
             chart.draw();
         });

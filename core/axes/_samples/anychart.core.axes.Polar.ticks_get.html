@@ -6,12 +6,18 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
-            chart.line([1.1, 1.6, 1.4, 1.9]);
-            var xAxis = chart.xAxis();
-            var ticks = xAxis.ticks(); // get ticks
-            ticks.enabled(true);
-            ticks.stroke("2 #00897B");
-            ticks.length(5);
+            chart.line([6, 1, 6, 1, 6, 1]);
+
+            var currentXAxis = chart.xAxis();
+
+            // Get ticks.
+            var ticksSettings = currentXAxis.ticks();
+
+            ticksSettings.enabled(true);
+            ticksSettings.stroke("2 #00897B");
+            ticksSettings.length(5);
+
+            chart.title("Get and modify ticks");
             chart.container("container");
             chart.draw();
         });

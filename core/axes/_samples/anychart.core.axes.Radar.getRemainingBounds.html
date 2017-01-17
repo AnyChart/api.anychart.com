@@ -5,25 +5,27 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function() {
-             stage = anychart.graphics.create("container");
+            stage = anychart.graphics.create("container");
 
             var axis = anychart.standalones.axes.radar();
             axis.scale(anychart.scales.linear());
             axis.container(stage);
             axis.draw();
 
-            // Gets remaining bounds.
+            // Get remaining bounds.
             var bounds = axis.getRemainingBounds();
 
-            var label = anychart.standalones.label();
-            label.parentBounds(bounds);
-            label.position("center");
-            label.anchor("center");
-            label.padding(15);
-            label.background({fill: "#80CBC4 0.2"});
-            label.enabled(true);
-            label.container(stage);
-            label.draw();
+            var rectangle = stage.rect(bounds.left, bounds.top, bounds.width, bounds.height);
+            rectangle.fill("#90CAF9 0.3");
+
+            var customLabel = anychart.standalones.label();
+            customLabel.text("Get and use remaining bounds");
+            customLabel.parentBounds(bounds);
+            customLabel.position("center");
+            customLabel.anchor("center");
+            customLabel.enabled(true);
+            customLabel.container(stage);
+            customLabel.draw();
         });
     </script>
 </head>

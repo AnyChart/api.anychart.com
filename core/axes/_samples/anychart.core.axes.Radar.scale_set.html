@@ -6,10 +6,15 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
+
             var ordinal = anychart.scales.ordinal();
             ordinal.values(["Point 1", "Point 2", "Point 3", "Point 4", "Point 5"]);
-            var xAxis = chart.xAxis();
-            xAxis.scale(ordinal); // sets scale
+
+            var currentXAxis = chart.xAxis();
+
+            // Set scale.
+            currentXAxis.scale(ordinal);
+
             chart.line([
                 {x: "Point 1", value: 4},
                 {x: "Point 2", value: 10},
@@ -17,6 +22,8 @@
                 {x: "Point 4", value: 10},
                 {x: "Point 5", value: 4}
             ]);
+
+            chart.title("Set axis scale");
             chart.container("container");
             chart.draw();
         });

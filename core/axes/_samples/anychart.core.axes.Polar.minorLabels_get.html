@@ -6,12 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
-            chart.line([1.1, 1.6, 1.4, 1.9]);
-            var xAxis = chart.xAxis();
-            var minorLabels = xAxis.minorLabels(); // get minor labels
-            minorLabels.enabled(true);
-            minorLabels.fontSize(14);
-            minorLabels.fontColor("#009688");
+            chart.line([6, 1, 6, 1, 6, 1]);
+
+            var currentXAxis = chart.xAxis();
+
+            // Get minor labels.
+            var minorLabelsSettings = currentXAxis.minorLabels();
+
+            minorLabelsSettings.enabled(true);
+            minorLabelsSettings.fontSize(14);
+            minorLabelsSettings.fontColor("#009688");
+
+
+            chart.title("Get and modify minor labels");
             chart.container("container");
             chart.draw();
         });

@@ -1,21 +1,23 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="polar line anyChart"/>
+    <meta name="x-cat-tags" content="radar line anyChart"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.polar();
+            chart = anychart.radar();
             chart.line([6, 1, 6, 1, 6, 1]);
 
             var currentXAxis = chart.xAxis();
 
-            // Disable labels.
-            currentXAxis.labels(false);
-
-            chart.title("Disable axis labels");
+            chart.title("Get and modify axis scale");
             chart.container("container");
             chart.draw();
+
+            // Get scale.
+            var scaleSettings = currentXAxis.scale();
+
+            scaleSettings.inverted(true);
         });
     </script>
 </head>
