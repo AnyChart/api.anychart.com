@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="area line anyChart"/>
+    <script src="../../../../anychart.min.js"></script>
+    <link rel="stylesheet" href="../../../../anychart-ui.css">
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.line();
+
+            var series = chart.line([
+                {x: "Point 1", value: 20},
+                {x: "Point 2", value: 25},
+                {x: "Point 3", value: 12},
+                {x: "Point 4", value: 20}
+            ]);
+
+            // Set series vertical direction.
+            series.isVertical(true);
+            // Editing series does not involve axis orientation changing.
+            // Axes should be modified independently or with the anychart.VerticalArea and anychart.VerticalLine constructors.
+
+            chart.xAxis({orientation: "left"});
+            chart.yAxis({orientation: "bottom"});
+            chart.title("Set vertical direction for the series");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
