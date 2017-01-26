@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="pareto rangeMarker anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.pareto();
+            chart.data([
+                ["Avalanche", 45],
+                ["Fall", 30],
+                ["Disappearance", 27],
+                ["Exposure", 16],
+                ["Exhaustion", 15],
+                ["Illness", 10]
+            ]);
+
+            chart.yAxis(1).scale().ticks().interval(10);
+
+            // Set range marker by index.
+            chart.rangeMarker(0, {from: 0, to: 28.6, fill: "#2BC0E4 0.5", axis: chart.yAxis()});
+
+            // Set range marker by index.
+            chart.rangeMarker(1, {from: 0, to: 80, fill: "#EAECC6 0.5", axis: chart.yAxis(1)});
+
+            chart.title("Set chart range marker parameters as an object by index");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

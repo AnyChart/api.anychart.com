@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="pareto anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.pareto();
+            chart.data([
+                ["January", 10],
+                ["February", 0.8],
+                ["March", 0.6],
+                ["April", 0.5],
+                ["May", 0.3]
+            ]);
+
+            chart.title("Set chart yScale");
+            chart.container("container");
+            chart.draw();
+
+            var logScale = anychart.scales.log();
+            logScale.minimum(0);
+
+            // Set Y-Scale.
+            chart.yScale(logScale);
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

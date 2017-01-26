@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="pareto anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.pareto();
+            chart.data([
+                ["Avalanche", 45],
+                ["Fall", 30],
+                ["Disappearance", 27],
+                ["Exposure", 16],
+                ["Exhaustion", 15],
+                ["Illness", 10]
+            ]);
+
+            chart.yAxis(1).scale().ticks().interval(10);
+
+            // Get range marker.
+            var leftRangeMarker = chart.rangeMarker();
+            leftRangeMarker.from(0);
+            leftRangeMarker.to(28.6);
+            leftRangeMarker.axis(chart.yAxis());
+            leftRangeMarker.fill("#F44336 0.3");
+
+            var rightRangeMarker = chart.rangeMarker(1);
+            rightRangeMarker.from(0);
+            rightRangeMarker.to(80);
+            rightRangeMarker.axis(chart.yAxis(1));
+
+            chart.title("Get and modify range marker object");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

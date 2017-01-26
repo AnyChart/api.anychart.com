@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="pareto anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.pareto();
+            chart.data([
+                ["Avalanche", 45],
+                ["Fall", 30],
+                ["Disappearance", 27],
+                ["Exposure", 16],
+                ["Exhaustion", 15],
+                ["Illness", 10]
+            ]);
+
+            chart.yAxis(1).scale().ticks().interval(10);
+
+            chart.lineMarker(0, {value: 28.6, axis: chart.yAxis()});
+            chart.lineMarker(1, {value: 80, axis: chart.yAxis(1)});
+
+            // Disables first marker by index.
+            chart.lineMarker(0, false);
+
+            chart.title("Disable chart line marker by index");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

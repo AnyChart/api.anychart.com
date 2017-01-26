@@ -1,0 +1,38 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="pareto anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.pareto();
+            chart.data([
+                ['Parking Difficult', 95],
+                ['Sales Rep was Rude', 60],
+                ['Poor Lighting', 45],
+                ['Layout Confusing', 37],
+                ['Sizes Limited', 30],
+                ['Clothing Faded', 27],
+                ['Clothing Shrank', 18]
+            ]);
+
+            chart.yAxis(1).scale().ticks().interval(10);
+
+            // Set text marker by index.
+            chart.textMarker(0, {value: 62.4, text: "20% Effort", anchor: "leftBottom", axis: chart.yAxis()});
+
+            // Set text marker by index.
+            chart.textMarker(1, {value: 80, text: "80% Results", anchor: "leftBottom", axis: chart.yAxis(1)});
+
+            chart.lineMarker({value: 62.4, axis: chart.yAxis()});
+            chart.lineMarker(1, {value: 80, axis: chart.yAxis(1)});
+            chart.title("Set chart text marker parameters as an object by index");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
