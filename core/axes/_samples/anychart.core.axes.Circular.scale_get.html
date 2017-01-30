@@ -7,10 +7,16 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            var getScale = axis.scale(); // get scale
-            getScale.minimum(0);
-            getScale.maximum(20);
+
+            var currentAxis = chart.axis();
+
+            // Get scale.
+            var scaleSettings = currentAxis.scale();
+
+            scaleSettings.minimum(0);
+            scaleSettings.maximum(20);
+
+            chart.title("Get and modify scale");
             chart.container("container");
             chart.draw();
         });

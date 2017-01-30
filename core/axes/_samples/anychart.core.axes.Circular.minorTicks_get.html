@@ -7,10 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([9]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            var getMinorTicks = axis.minorTicks(); // get minor ticks
-            getMinorTicks.enabled(true);
-            getMinorTicks.fill("#2E7D32");
+
+            var currentAxis = chart.axis();
+
+            // Get minor ticks.
+            var minorTicksSettings = currentAxis.minorTicks();
+            minorTicksSettings.enabled(true);
+            minorTicksSettings.fill("#2E7D32");
+
+            chart.title("Get and modify minor ticks");
             chart.container("container");
             chart.draw();
         });

@@ -7,10 +7,18 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 90});
-            var axis = chart.axis();
-            var getTicks = axis.ticks();
-            getTicks.length(7);
-            getTicks.stroke("#0091EA", 1, "5 2", "round"); // sets stroke
+
+            var currentAxis = chart.axis();
+
+            var ticksSettings = currentAxis.ticks();
+            ticksSettings.length(7);
+            ticksSettings.fill("#F8FFAE");
+            ticksSettings.type("pentagon");
+
+            // Set stroke.
+            ticksSettings.stroke("#43C6AC", 2, "5 2", "round");
+
+            chart.title("Set stroke parameters");
             chart.container("container");
             chart.draw();
         });

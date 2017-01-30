@@ -7,9 +7,13 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            var getOverLapMode = axis.overlapMode(); // get overlap mode
-            chart.title("Mode OverLapMode - " + getOverLapMode);
+
+            var currentAxis = chart.axis();
+
+            // Get overlap mode.
+            var mode = currentAxis.overlapMode();
+
+            chart.title("Overlap mode is " + "\"" + mode + "\"");
             chart.container("container");
             chart.draw();
         });

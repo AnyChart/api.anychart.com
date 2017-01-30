@@ -7,9 +7,13 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            var getDrawLastLabel = axis.drawLastLabel(); // get drawing flag
-            chart.title("Draw Last Label - " + getDrawLastLabel);
+
+            var currentAxis = chart.axis();
+
+            // Get the value of the drawing last label.
+            var flag = currentAxis.drawLastLabel();
+
+            chart.title("First label drawing is " + flag);
             chart.container("container");
             chart.draw();
         });

@@ -7,10 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            var getTicks = axis.ticks();
-            var getFill = getTicks.fill(); // get fill
-            chart.title("Ticks fill - " + getFill);
+
+            var currentAxis = chart.axis();
+
+            var ticksSettings = currentAxis.ticks();
+
+            // Get fill.
+            var ticksFill = ticksSettings.fill();
+
+            chart.title({fontColor: ticksFill, text: "Get and use ticks fill"});
             chart.container("container");
             chart.draw();
         });

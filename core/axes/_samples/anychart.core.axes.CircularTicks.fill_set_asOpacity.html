@@ -7,10 +7,16 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 90});
-            var axis = chart.axis();
-            var getTicks = axis.ticks();
-            getTicks.length(8);
-            getTicks.fill("#004D40", .5); // sets fill with opacity
+
+            var currentAxis = chart.axis();
+
+            var ticksSettings = currentAxis.ticks();
+            ticksSettings.length(4);
+
+            // Set fill with opacity.
+            ticksSettings.fill("#004D40", 0.5);
+
+            chart.title("Set ticks fill with opacity");
             chart.container("container");
             chart.draw();
         });

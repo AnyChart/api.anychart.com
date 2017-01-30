@@ -7,10 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            var getTicks = axis.ticks();
-            var getPosition = getTicks.position(); // get ticks position
-            chart.title("Ticks position - " + getPosition);
+
+            var currentAxis = chart.axis();
+
+            var ticksSettings = currentAxis.ticks();
+
+            // Get ticks position.
+            var ticksPosition = ticksSettings.position();
+
+            chart.title("Ticks position is " + ticksPosition);
             chart.container("container");
             chart.draw();
         });

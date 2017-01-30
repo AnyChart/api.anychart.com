@@ -7,11 +7,16 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            var getTicks = axis.ticks();
-            getTicks.stroke("#00897B");
-            var getStroke = getTicks.stroke(); // get stroke
-            chart.title({fontColor: getStroke});
+
+            var currentAxis = chart.axis();
+
+            var ticksSettings = currentAxis.ticks();
+            ticksSettings.stroke("#F44336");
+
+            // Get stroke.
+            var ticksStroke = ticksSettings.stroke();
+
+            chart.title({fontColor: ticksStroke, text: "Get and use ticks stroke"});
             chart.container("container");
             chart.draw();
         });

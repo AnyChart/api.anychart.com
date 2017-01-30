@@ -7,9 +7,14 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            axis.sweepAngle(300);
-            axis.drawLastLabel(false); // disables last label
+
+            var currentAxis = chart.axis();
+            currentAxis.sweepAngle(300);
+
+            // Disable last label.
+            currentAxis.drawLastLabel(false);
+
+            chart.title("Disable the last label on the axis");
             chart.container("container");
             chart.draw();
         });

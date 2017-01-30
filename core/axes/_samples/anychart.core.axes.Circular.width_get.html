@@ -7,10 +7,14 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            axis.width(6);
-            var getWidth = axis.width(); // get width
-            chart.title("Axis width - " + getWidth);
+
+            var currentAxis = chart.axis();
+            currentAxis.width(6);
+
+            // Get width.
+            var widthSettings = currentAxis.width();
+
+            chart.title("Axis width is " + widthSettings);
             chart.container("container");
             chart.draw();
         });

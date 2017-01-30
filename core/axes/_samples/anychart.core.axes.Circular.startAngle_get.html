@@ -7,10 +7,14 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            axis.startAngle(90);
-            var getStartAngle = axis.startAngle(); // get start angle
-            chart.title("Start angle - " + getStartAngle);
+
+            var currentAxis = chart.axis();
+            currentAxis.startAngle(90);
+
+            // Get start angle.
+            var startAngleSettings = currentAxis.startAngle();
+
+            chart.title("Start angle is " + startAngleSettings);
             chart.container("container");
             chart.draw();
         });

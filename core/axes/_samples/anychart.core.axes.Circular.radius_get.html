@@ -7,10 +7,14 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 85});
-            var axis = chart.axis();
-            axis.radius(90);
-            var getRadius = axis.radius(); // get radius
-            chart.title("Radius - " + getRadius);
+
+            var currentAxis = chart.axis();
+            currentAxis.radius(90);
+
+            // Get radius.
+            var radiusSettings = currentAxis.radius();
+
+            chart.title("Radius is " + radiusSettings);
             chart.container("container");
             chart.draw();
         });

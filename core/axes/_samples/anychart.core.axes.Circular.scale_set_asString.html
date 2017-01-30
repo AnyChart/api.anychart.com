@@ -7,11 +7,17 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 90});
-            var axis = chart.axis();
-            axis.scale("log"); // sets scale
-            var scale = axis.scale();
-            scale.minimum(0.1);
-            scale.maximum(100);
+
+            var currentAxis = chart.axis();
+
+            // Set scale.
+            currentAxis.scale("log");
+
+            var scaleSettings = currentAxis.scale();
+            scaleSettings.minimum(0.1);
+            scaleSettings.maximum(100);
+
+            chart.title("Set axis scale parameter as a string");
             chart.container("container");
             chart.draw();
         });

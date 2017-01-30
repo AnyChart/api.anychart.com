@@ -7,10 +7,16 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            var getTicks = axis.ticks();
-            getTicks.length(8);
-            getTicks.fill(["#000000", "#FFFF00"], 45, true, 0.5); // sets linear gradient fill color
+
+            var currentAxis = chart.axis();
+
+            var ticksSettings = currentAxis.ticks();
+            ticksSettings.length(4);
+
+            // Set fill.
+            ticksSettings.fill(["#00c3ff", "#ffff1c"], 90, true, 0.8);
+
+            chart.title("Set ticks fill as a linear gradient");
             chart.container("container");
             chart.draw();
         });

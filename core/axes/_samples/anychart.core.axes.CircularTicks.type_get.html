@@ -7,10 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            var getTicks = axis.ticks();
-            var getType = getTicks.type(); // get ticks type
-            chart.title("Ticks type - " + getType);
+
+            var currentAxis = chart.axis();
+            
+            var ticksSettings = currentAxis.ticks();
+
+            // Get ticks type.
+            var ticksType = ticksSettings.type();
+
+            chart.title("Ticks type is " + ticksType);
             chart.container("container");
             chart.draw();
         });

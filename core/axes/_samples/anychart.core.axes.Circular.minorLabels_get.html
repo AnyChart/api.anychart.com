@@ -7,9 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([9]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            var getMinorLabels = axis.minorLabels(); // get minor labels
-            getMinorLabels.enabled(true);
+
+            var currentAxis = chart.axis();
+
+            // Get minor labels.
+            var minorLabelsSettings = currentAxis.minorLabels();
+
+            minorLabelsSettings.enabled(true);
+
+            chart.title("Get and modify axis minor labels");
             chart.container("container");
             chart.draw();
         });

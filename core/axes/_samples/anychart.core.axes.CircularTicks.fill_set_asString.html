@@ -7,9 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            var getTicks = axis.ticks();
-            getTicks.fill("#2962FF"); // sets fill
+
+            var currentAxis = chart.axis();
+
+            var ticksSettings = currentAxis.ticks();
+
+            // Set fill.
+            ticksSettings.fill("#F44336");
+
+            chart.title("Set ticks fill parameter as a string");
             chart.container("container");
             chart.draw();
         });

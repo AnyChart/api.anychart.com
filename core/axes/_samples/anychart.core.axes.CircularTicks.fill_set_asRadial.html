@@ -7,10 +7,17 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 90});
-            var axis = chart.axis();
-            var getTicks = axis.ticks();
-            getTicks.length(8);
-            getTicks.fill(["#F57F17", "#FFFF00"], .5, .5, null, .9, 0.3, 0.81); // sets radial gradient fill color
+
+            var currentAxis = chart.axis();
+
+            var ticksSettings = currentAxis.ticks();
+            ticksSettings.length(6);
+            ticksSettings.type("circle");
+
+            // Set fill.
+            ticksSettings.fill(["#FFFFFF", "#424242"], 0.5, 0.5, null, 0.9, 0.3, 0.81);
+
+            chart.title("Set ticks fill as a radial gradient");
             chart.container("container");
             chart.draw();
         });

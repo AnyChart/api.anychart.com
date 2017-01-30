@@ -7,9 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 90});
-            var axis = chart.axis();
-            var getTicks = axis.ticks();
-            getTicks.length(5); // sets length
+
+            var currentAxis = chart.axis();
+
+            var ticksSettings = currentAxis.ticks();
+
+            // Set length.
+            ticksSettings.length(5);
+
+            chart.title("Set ticks length");
             chart.container("container");
             chart.draw();
         });

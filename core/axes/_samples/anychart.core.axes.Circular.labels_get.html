@@ -7,9 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 95});
-            var axis = chart.axis();
-            var getLabels = axis.labels(); // get labels
-            getLabels.background({fill: "#FAFAFA"});
+
+            var currentAxis = chart.axis();
+
+            // Get labels.
+            var labelsSettings = currentAxis.labels();
+
+            labelsSettings.background({fill: "#FAFAFA"});
+
+            chart.title("Get and modify axis labels");
             chart.container("container");
             chart.draw();
         });

@@ -7,10 +7,16 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([10]);
             chart.marker({radius: 90});
-            var axis = chart.axis();
-            var getTicks = axis.ticks();
-            getTicks.length(8);
-            getTicks.hatchFill("divot", "#808080", 2, 5); // sets hatch fill
+
+            var currentAxis = chart.axis();
+
+            var ticksSettings = currentAxis.ticks();
+            ticksSettings.length(8);
+
+            // Set hatch fill.
+            ticksSettings.hatchFill("forwardDiagonal", "#E0E0E0", 2, 5);
+
+            chart.title("Set ticks hatch fill parameters");
             chart.container("container");
             chart.draw();
         });

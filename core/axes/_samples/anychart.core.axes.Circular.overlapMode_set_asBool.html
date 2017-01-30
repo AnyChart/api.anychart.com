@@ -7,12 +7,18 @@
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([60]);
             chart.marker({radius: 90});
-            var axis = chart.axis();
-            var scale = axis.scale();
-            scale.minimum(0);
-            scale.maximum(60);
-            scale.ticks({interval: 1});
-            axis.overlapMode(true); // sets allow overlap mode
+
+            var currentAxis = chart.axis();
+
+            var scaleSettings = currentAxis.scale();
+            scaleSettings.minimum(0);
+            scaleSettings.maximum(60);
+            scaleSettings.ticks({interval: 1});
+
+            // Enable overlap mode.
+            currentAxis.overlapMode(true);
+
+            chart.title("Enable overlap mode");
             chart.container("container");
             chart.draw();
         });
