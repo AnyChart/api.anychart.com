@@ -3,6 +3,7 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="anyMap"/>
     <script src="../../anychart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
     <script src="http://cdn.anychart.com/geodata/1.2.0/countries/mongolia/mongolia.js" data-export="true"></script>
     <script src="http://cdn.anychart.com/geodata/1.2.0/countries/canada/canada.js" data-export="true"></script>
     <script src="http://cdn.anychart.com/geodata/1.2.0/custom/world/world.js" data-export="true"></script>
@@ -10,6 +11,9 @@
         anychart.onDocumentReady(function () {
             // All maps created with geoData() method work only if you referenced a proper map
             // source file as described at http://docs.anychart.com/latest/Maps/Quick_Start
+
+            // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+            // See http://docs.anychart.com/latest/Maps/Map_Projections to learn more.
 
             var worldDataSet = anychart.data.set([
                 {id: "CA", name: "Canada", value: "A1"},
@@ -24,10 +28,10 @@
             chart.choropleth(worldDataSet);
 
             chart.listen("drillChange", function(){
-                var path = chart.getCurrentPath();
+                var path = chart.getDrilldownPath();
 
                 // Get properties.
-                var properties = path[0].getProperties();
+                var properties = path[1].getProperties();
 
                 canadaMap.title("Get properties. The continent is " + properties["continent"] + ".");
             });
