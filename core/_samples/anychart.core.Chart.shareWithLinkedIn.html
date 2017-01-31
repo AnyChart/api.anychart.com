@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function () {
+            stage = anychart.graphics.create("container");
+
+            var chart = anychart.line([6, 48, 6, 44, 8, 29, 9, 23, 9, 17]);
+
+            chart.left("5%");
+            chart.title("Share with LinkedIn");
+            chart.container(stage);
+            chart.draw();
+
+            var customLabel = anychart.standalones.label();
+            customLabel.background({fill: "#9E9E9E"});
+            customLabel.text("Get the sharing dialog");
+            customLabel.fontColor("#fff");
+            customLabel.padding(5);
+            customLabel.offsetX(5);
+            customLabel.listen("mouseOver", function () {
+                document.body.style.cursor = "pointer";
+            });
+            customLabel.listen("mouseOut", function () {
+                document.body.style.cursor = "auto";
+            });
+            customLabel.listen("click", function () {
+
+                // Share chart with LinkedIn.
+                chart.shareWithLinkedIn("ANYCHART.COM", "Line chart");
+            });
+            customLabel.container(stage);
+            customLabel.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

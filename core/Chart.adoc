@@ -388,7 +388,7 @@ anychart.core.Chart.prototype.tooltip;
 /**
  * Saves the current chart as PNG image.
  * @example anychart.core.Chart.saveAsPng
- * @param {number=} opt_width Image width.
+ * @param {(number|Object)=} opt_width Image width or object with options.
  * @param {number=} opt_height Image height.
  * @param {number=} opt_quality Image quality in ratio 0-1.
  * @param {string=} opt_filename File name to save.
@@ -404,7 +404,7 @@ anychart.core.Chart.prototype.saveAsPng;
 /**
  * Saves the current chart as JPEG image.
  * @example anychart.core.Chart.saveAsJpg
- * @param {number=} opt_width Image width.
+ * @param {(number|Object)=} opt_width Image width or object with options.
  * @param {number=} opt_height Image height.
  * @param {number=} opt_quality Image quality in ratio 0-1.
  * @param {boolean=} opt_forceTransparentWhite Force transparent to white or not.
@@ -421,7 +421,7 @@ anychart.core.Chart.prototype.saveAsJpg;
 /**
  * Saves the current chart as PDF image.
  * @example anychart.core.Chart.saveAsPdf
- * @param {string=} opt_paperSize Any paper format like 'a0', 'tabloid', 'b4', etc.
+ * @param {(number|string|Object)=} opt_paperSizeOrWidthOrOptions Any paper format like 'a0', 'tabloid', 'b4', etc or width, or object with options.
  * @param {boolean=} opt_landscape Define, is landscape.
  * @param {number=} opt_x Offset X.
  * @param {number=} opt_y Offset Y.
@@ -438,7 +438,7 @@ anychart.core.Chart.prototype.saveAsPdf;
 /**
  * Saves the current chart as SVG image.
  * @example anychart.core.Chart.saveAsSvg_set_asPaperSizeLandscape
- * @param {string=} opt_paperSize Paper Size.
+ * @param {(string|Object)=} opt_paperSize Paper Size or object with options.
  * @param {boolean=} opt_landscape Landscape.
  * @param {string=} opt_filename File name to save.
  */
@@ -463,7 +463,7 @@ anychart.core.Chart.prototype.saveAsSvg;
  * @shortDescription Returns SVG string.
  * @detailed Returns SVG string if type of content is SVG otherwise returns empty string.
  * @example anychart.core.Chart.toSvg_set_asPaperSizeLandscape
- * @param {string=} opt_paperSize Paper Size.
+ * @param {(string|Object)=} opt_paperSize Paper Size or object of options.
  * @param {boolean=} opt_landscape Landscape.
  * @return {string} SVG content or empty string.
  * @since 7.5.1
@@ -748,7 +748,7 @@ anychart.core.Chart.prototype.a11y;
 /**
  * Shares a chart as a PNG file and returns a link to the shared image.
  * @example anychart.core.Chart.shareAsPng
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
+ * @param {(function(string)|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
  * @param {boolean=} opt_asBase64 Share as base64 file.
  * @param {number=} opt_width Image width.
@@ -768,7 +768,7 @@ anychart.core.Chart.prototype.shareAsPng;
 /**
  * Shares a chart as a JPG file and returns a link to the shared image.
  * @example anychart.core.Chart.shareAsJpg
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
+ * @param {(function(string)|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
  * @param {boolean=} opt_asBase64 Share as base64 file.
  * @param {number=} opt_width Image width.
@@ -789,7 +789,7 @@ anychart.core.Chart.prototype.shareAsJpg;
 /**
  * Shares a chart as a SVG file and returns a link to the shared image.
  * @example anychart.core.Chart.shareAsSvg
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
+ * @param {(function(string)|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
  * @param {boolean=} opt_asBase64 Share as base64 file.
  * @param {(string|number)=} opt_paperSizeOrWidth Paper Size or width.
@@ -808,7 +808,7 @@ anychart.core.Chart.prototype.shareAsSvg;
 /**
  * Shares a chart as a PDF file and returns a link to the shared image.
  * @example anychart.core.Chart.shareAsPdf
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
+ * @param {(function(string)|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
  * @param {boolean=} opt_asBase64 Share as base64 file.
  * @param {(number|string)=} opt_paperSizeOrWidth Any paper format like 'a0', 'tabloid', 'b4', etc.
@@ -829,7 +829,7 @@ anychart.core.Chart.prototype.shareAsPdf;
 /**
  * Returns PNG as base64 string.
  * @example anychart.core.Chart.getPngBase64String
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
+ * @param {(function(string)|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
  * @param {number=} opt_width Image width.
  * @param {number=} opt_height Image height.
@@ -847,7 +847,7 @@ anychart.core.Chart.prototype.getPngBase64String;
 /**
  * Returns JPG as base64 string.
  * @example anychart.core.Chart.getJpgBase64String
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
+ * @param {(function(string)|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
  * @param {number=} opt_width Image width.
  * @param {number=} opt_height Image height.
@@ -866,7 +866,7 @@ anychart.core.Chart.prototype.getJpgBase64String;
 /**
  * Returns SVG as base64 string.
  * @example anychart.core.Chart.getSvgBase64String
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
+ * @param {(function(string)|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
  * @param {(string|number)=} opt_paperSizeOrWidth Paper Size or width.
  * @param {(boolean|string)=} opt_landscapeOrHeight Landscape or height.
@@ -883,7 +883,7 @@ anychart.core.Chart.prototype.getSvgBase64String;
 /**
  * Returns PDF as base64 string.
  * @example anychart.core.Chart.getPdfBase64String
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
+ * @param {(function(string)|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
  * @param {(number|string)=} opt_paperSizeOrWidth Any paper format like 'a0', 'tabloid', 'b4', etc.
  * @param {(number|boolean)=} opt_landscapeOrWidth Define, is landscape.
@@ -892,6 +892,70 @@ anychart.core.Chart.prototype.getSvgBase64String;
  * @since 7.11.1
  */
 anychart.core.Chart.prototype.getPdfBase64String;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.shareWithFacebook
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens Facebook sharing dialog.
+ * @category Export
+ * @example anychart.core.Chart.shareWithFacebook
+ * @param {(string|Object)=} opt_captionOrOptions Caption for the main link or object with options.
+ * @param {string=} opt_link The URL is attached to the publication.
+ * @param {string=} opt_name The title for the attached link.
+ * @param {string=} opt_description Description for the attached link.
+ * @since 7.13.0
+ */
+anychart.core.Chart.prototype.shareWithFacebook;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.shareWithTwitter
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens Twitter sharing dialog.
+ * @category Export
+ * @example anychart.core.Chart.shareWithTwitter
+ * @since 7.13.0
+ */
+anychart.core.Chart.prototype.shareWithTwitter = function(){};
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.shareWithLinkedIn
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens LinkedIn sharing dialog.
+ * @category Export
+ * @example anychart.core.Chart.shareWithLinkedIn
+ * @param {(string|Object)=} opt_captionOrOptions Caption for publication or object with options. If not set 'AnyChart' will be used.
+ * @param {string=} opt_description Description.
+ * @since 7.13.0
+ */
+anychart.core.Chart.prototype.shareWithLinkedIn;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.shareWithPinterest
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens Pinterest sharing dialog.
+ * @category Export
+ * @example anychart.core.Chart.shareWithPinterest
+ * @param {(string|Object)=} opt_linkOrOptions Attached link or object with options. If not set, the image URL will be used.
+ * @param {string=} opt_description Description.
+ * @since 7.13.0
+ */
+anychart.core.Chart.prototype.shareWithPinterest;
 
 /** @inheritDoc */
 anychart.core.Chart.prototype.bounds;
