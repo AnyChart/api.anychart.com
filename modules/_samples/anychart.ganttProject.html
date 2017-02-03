@@ -5,21 +5,27 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var data = [
-                {"id": "1", "name": "Phase 1 - Strategic Plan", "progressValue": "14%", "actualStart": 951350400000, "actualEnd": 954201600000},
-                {"id": "2", "name": "Self-Assessment", parent: "1", "progressValue": "25%", "actualStart": 951350400000, "actualEnd": 951955200000},
-                {"id": "3", "name": "Define business vision", parent: "2", "progressValue": "0%", "actualStart": 951408000000, "actualEnd": 951440400000, "connectTo": "4", "connectorType": "FinishStart"},
-                {"id": "4", "name": "Identify available skills, information and support", parent: "2", "progressValue": "0%", "actualStart": 951494400000, "actualEnd": 951526800000, "connectTo": "5", "connectorType": "FinishStart"},
-                {"id": "5", "name": "Decide whether to proceed", parent: "2", "progressValue": "0%", "actualStart": 951753600000, "actualEnd": 951786000000, "connectTo": "7", "connectorType": "FinishStart"},
-                {"id": "6", "name": "Define the Opportunity", parent: "1", "progressValue": "27%", "actualStart": 951782400000, "actualEnd": 952992000000},
-                {"id": "7", "name": "Research the market and competition", parent: "6", "progressValue": "0%", "actualStart": 951840000000, "actualEnd": 951872400000, "connectTo": "8", "connectorType": "FinishStart"}
-            ];
+            var data = getData();
 
-            // Creates gantt project chart.
+            // Creates Gantt project chart.
             chart = anychart.ganttProject();
             chart.data(data, "asTable");
+
+            chart.title("Create a Gantt Project chart");
             chart.container("container");
             chart.draw();
+
+            function getData() {
+                return [
+                    {"id": "1", "name": "Phase 1 - Strategic Plan", "progressValue": "14%", "actualStart": 951350400000, "actualEnd": 954201600000},
+                    {"id": "2", "name": "Self-Assessment", parent: "1", "progressValue": "25%", "actualStart": 951350400000, "actualEnd": 951955200000},
+                    {"id": "3", "name": "Define business vision", parent: "2", "progressValue": "0%", "actualStart": 951408000000, "actualEnd": 951440400000, "connectTo": "4", "connectorType": "FinishStart"},
+                    {"id": "4", "name": "Identify available skills, information and support", parent: "2", "progressValue": "0%", "actualStart": 951494400000, "actualEnd": 951526800000, "connectTo": "5", "connectorType": "FinishStart"},
+                    {"id": "5", "name": "Decide whether to proceed", parent: "2", "progressValue": "0%", "actualStart": 951753600000, "actualEnd": 951786000000, "connectTo": "7", "connectorType": "FinishStart"},
+                    {"id": "6", "name": "Define the Opportunity", parent: "1", "progressValue": "27%", "actualStart": 951782400000, "actualEnd": 952992000000},
+                    {"id": "7", "name": "Research the market and competition", parent: "6", "progressValue": "0%", "actualStart": 951840000000, "actualEnd": 951872400000, "connectTo": "8", "connectorType": "FinishStart"}
+                ];
+            }
         });
     </script>
 </head>

@@ -5,40 +5,45 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var data = [
-                {
-                    "id": "1",
-                    "name": "Server 1",
-                    "broken": "11%",
-                    "maintance": "20%",
-                    "working": "69%",
-                    "periods": [
-                        {"id": "1_1", "style": "working", "fill": "#008000 0.7", "stroke": "none", "hoverFill": "green", "hoverStroke": "cyan", "start": 1201795200000, "end": 1201934691000},
-                        {"id": "1_2", "style": "maintance", "fill": "#FFFF00 0.7", "stroke": "none", "hoverFill": "yellow", "hoverStroke": "cyan", "start": 1201934691000, "end": 1201997175000},
-                        {"id": "1_3", "style": "working", "fill": "#008000 0.7", "stroke": "none", "hoverFill": "green", "hoverStroke": "cyan", "start": 1201997175000, "end": 1202304539000},
-                    ]
-                },
-                {
-                    "id": "2",
-                    "name": "Server 2",
-                    "broken": "9%",
-                    "maintance": "25%",
-                    "working": "66%",
-                    "periods": [
-                        {"id": "2_1", "style": "working", "fill": "#008000 0.7", "stroke": "none", "hoverFill": "green", "hoverStroke": "cyan", "start": 1201795200000, "end": 1201859302000},
-                        {"id": "2_2", "style": "working", "fill": "#008000 0.7", "stroke": "none", "hoverFill": "red", "hoverStroke": "cyan", "start": 1201859302000, "end": 1201908412000},
-                        {"id": "2_3", "style": "working", "fill": "#008000 0.7", "stroke": "none", "hoverFill": "green", "hoverStroke": "cyan", "start": 1201908412000, "end": 1201974133000},
-                        {"id": "2_4", "style": "maintance", "fill": "#FFFF00 0.7", "stroke": "none", "hoverFill": "yellow", "hoverStroke": "cyan", "start": 1201974133000, "end": 1202028840000},
-                    ]
-                }
-            ];
+            var data = getData();
 
-            // Creates gantt resource chart.
+            // Creates Gantt Resource chart.
             chart = anychart.ganttResource();
             chart.data(data, anychart.enums.TreeFillingMethod.AS_TABLE);
+
+            chart.title("Create a Gantt Resource chart");
             chart.container("container");
             chart.draw();
             chart.fitAll();
+
+            function getData() {
+                return [
+                    {
+                        "id": "1",
+                        "name": "Server 1",
+                        "broken": "11%",
+                        "maintance": "20%",
+                        "working": "69%",
+                        "periods": [
+                            {"id": "1_1", "style": "working", "fill": "#008000 0.7", "stroke": "none", "hoverFill": "green", "hoverStroke": "cyan", "start": 1201795200000, "end": 1201934691000},
+                            {"id": "1_2", "style": "maintance", "fill": "#FFFF00 0.7", "stroke": "none", "hoverFill": "yellow", "hoverStroke": "cyan", "start": 1201934691000, "end": 1201997175000},
+                            {"id": "1_3", "style": "working", "fill": "#008000 0.7", "stroke": "none", "hoverFill": "green", "hoverStroke": "cyan", "start": 1201997175000, "end": 1202304539000},
+                        ]
+                    },
+                    {
+                        "id": "2",
+                        "name": "Server 2",
+                        "broken": "9%",
+                        "maintance": "25%",
+                        "working": "66%",
+                        "periods": [
+                            {"id": "2_1", "style": "working", "fill": "#008000 0.7", "stroke": "none", "hoverFill": "green", "hoverStroke": "cyan", "start": 1201795200000, "end": 1201859302000},
+                            {"id": "2_2", "style": "working", "fill": "#008000 0.7", "stroke": "none", "hoverFill": "red", "hoverStroke": "cyan", "start": 1201859302000, "end": 1201908412000},
+                            {"id": "2_3", "style": "working", "fill": "#008000 0.7", "stroke": "none", "hoverFill": "green", "hoverStroke": "cyan", "start": 1201908412000, "end": 1201974133000},
+                            {"id": "2_4", "style": "maintance", "fill": "#FFFF00 0.7", "stroke": "none", "hoverFill": "yellow", "hoverStroke": "cyan", "start": 1201974133000, "end": 1202028840000},
+                        ]
+                    }
+                ];}
         });
     </script>
 </head>

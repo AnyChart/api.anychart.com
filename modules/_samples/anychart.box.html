@@ -5,13 +5,16 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
+            // Creates Box chart.
             chart = anychart.box([
                 {x: "p1", low: 760, q1: 801, median: 848, q3: 895, high: 965, outliers: [650]},
-                ["p2", 733, 853, 939, 980, 1080],
-                ["p3", 714, 762, 817, 870, 918],
-                ["p4", 724, 802, 806, 871, 950],
-                ["p5", 834, 836, 864, 882, 910, [710, 970, 980]]
-            ]); // sets data
+                {x: "p2", low: 733, q1: 853, median: 939, q3: 980, high: 1080},
+                {x: "p3", low: 714, q1: 762, median: 817, q3: 870, high: 918},
+                {x: "p4", low: 724, q1: 802, median: 806, q3: 871, high: 950},
+                {x: "p5", low: 834, q1: 836, median: 864, q3: 882, high: 910, outliers: [710, 970, 980]}
+            ]);
+
+            chart.title("Create a Box chart");
             chart.container("container");
             chart.draw();
         });

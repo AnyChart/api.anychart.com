@@ -6,14 +6,17 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.circularGauge([7.5]);
-            var needle = chart.needle();
-            needle.axisIndex(1);
+
+            var currentNeedle = chart.needle();
+            currentNeedle.axisIndex(1);
+
             chart.axis();
             chart.axis(1, {radius: "50%"});
 
             // Disable first axis.
             chart.axis(false);
 
+            chart.title("Disable first axis");
             chart.container("container");
             chart.draw();
         });

@@ -1,21 +1,25 @@
 <html>
 <head>
-  <meta name="x-cat-tags" content="gauges anyChart"/>
+    <meta name="x-cat-tags" content="gauges anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.circularGauge();
-            chart.data([7.5]);
+            chart.data([{value: 7.5}]);
             chart.axis();
-            chart.needle();
 
-            // Get data.
+            chart.needle();
+            chart.needle(1);
+
             var getData = chart.data();
 
-            var getRowsCount = getData.getRowsCount();
+            // Add new element by adding new element to data array.
+            var newData = getData.concat([{value: 10}]);
 
-            chart.title("RowsCount - " + getRowsCount);
+            chart.data(newData);
+
+            chart.title("Get and modify chart data");
             chart.container("container");
             chart.draw();
         });
