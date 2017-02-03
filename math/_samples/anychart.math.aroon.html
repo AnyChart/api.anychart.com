@@ -7,14 +7,14 @@
     <script x-export="chart">
         anychart.onDocumentReady(function () {
             var dataTable = anychart.data.table();
+
+            // The data used in this sample can be obtained from the CDN
+            // http://cdn.anychart.com/csv-data/dji-daily-short.js
             dataTable.addData(get_dji_daily_short_data());
 
             var mapping = dataTable.mapAs();
-            mapping.addField('open', 1, 'first');
             mapping.addField('high', 2, 'max');
             mapping.addField('low', 3, 'min');
-            mapping.addField('close', 4, 'last');
-            mapping.addField('value', 3, 'last');
 
             chart = anychart.stock();
 
@@ -23,10 +23,12 @@
             // Create computer.
             var computer = dataTable.createComputer(mapping);
 
-            // Set init context.
-            computer.setContext(anychart.math.aroon.initContext(10));
+            var context = anychart.math.aroon.initContext(10);
 
-            // Call start function.
+            // Set init context.
+            computer.setContext(context);
+
+            // Set start calculation function.
             computer.setStartFunction(anychart.math.aroon.startFunction);
 
             // Calculation function.
@@ -35,9 +37,9 @@
             computer.addOutputField('upResult');
             computer.addOutputField('downResult');
 
-            var currentPlot = chart.plot();
-            currentPlot.line(dataTable, {value: computer.getFieldIndex('downResult')});
-            currentPlot.line(dataTable, {value: computer.getFieldIndex('upResult')});
+            var plot = chart.plot();
+            plot.line(dataTable, {value: computer.getFieldIndex('upResult')}).name("Aroon up");
+            plot.line(dataTable, {value: computer.getFieldIndex('downResult')}).name("Aroon down");
 
             chart.container("container");
             chart.draw();

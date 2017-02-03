@@ -26,17 +26,17 @@
             australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
 
-            var currentColorScale = anychart.scales.linearColor("#E0F7FA", "#0097A7");
+            var colorScale = anychart.scales.linearColor("#E0F7FA", "#0097A7");
 
             var series = australiaMap.choropleth(dataSetForSeries);
             series.geoIdField("code_hasc");
-            series.colorScale(currentColorScale);
+            series.colorScale(colorScale);
 
             // Get the color range.
-            var currentColorRange = australiaMap.colorRange();
-            currentColorRange.enabled(true);
-            var currentMarker = currentColorRange.marker();
-            currentMarker.type("diamond");
+            var colorRange = australiaMap.colorRange();
+            colorRange.enabled(true);
+            var marker = colorRange.marker();
+            marker.type("diamond");
 
             australiaMap.title("Get and modify color range.");
             australiaMap.container("container");

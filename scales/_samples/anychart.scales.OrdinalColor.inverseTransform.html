@@ -26,8 +26,8 @@
             australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
 
-            var currentColorScale = anychart.scales.ordinalColor();
-            currentColorScale.ranges([
+            var colorScale = anychart.scales.ordinalColor();
+            colorScale.ranges([
                 {from: 10, to: 30},
                 {from: 30, to: 50},
                 {from: 50, to: 90}
@@ -36,11 +36,11 @@
 
             var series = australiaMap.choropleth(dataSetForSeries);
             series.geoIdField("code_hasc");
-            series.colorScale(currentColorScale);
+            series.colorScale(colorScale);
 
-            var currentColorRange = australiaMap.colorRange();
-            currentColorRange.enabled(true);
-            var colorRangeTicks = currentColorRange.ticks();
+            var colorRange = australiaMap.colorRange();
+            colorRange.enabled(true);
+            var colorRangeTicks = colorRange.ticks();
             colorRangeTicks.enabled(true);
             colorRangeTicks.stroke("#000000");
 
@@ -48,7 +48,7 @@
             australiaMap.draw();
 
             // Trying to get a tick.
-            var tickValue = currentColorScale.transform(45);
+            var tickValue = colorScale.transform(45);
 
             australiaMap.title("Tick value is " + tickValue + ".");
         });

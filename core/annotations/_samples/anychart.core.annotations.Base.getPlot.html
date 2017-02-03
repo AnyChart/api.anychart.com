@@ -14,20 +14,20 @@
             chart = anychart.stock();
             chart.padding(10, 10, 10, 50);
 
-            var currentPlot = chart.plot();
-            currentPlot.line(mapping);
+            var plot = chart.plot();
+            plot.line(mapping);
 
             chart.title("Get annotation plot and enable grid.");
             chart.container("container");
             chart.draw();
 
-            var triangleAnnotations = currentPlot.annotations();
+            var triangleAnnotations = plot.annotations();
             triangleAnnotations.startDrawing("triangle");
 
-            var currentAnnotation = currentPlot.annotations().getAnnotationAt(0);
+            var annotation = plot.annotations().getAnnotationAt(0);
 
             // Get annotation plot.
-            var annotationPlot = currentAnnotation.getPlot();
+            var annotationPlot = annotation.getPlot();
 
             annotationPlot.grid(true);
         });

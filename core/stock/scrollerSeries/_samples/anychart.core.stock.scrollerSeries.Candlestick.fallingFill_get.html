@@ -22,19 +22,19 @@
             chart.grouping({minPixPerPoint: 20});
             chart.scrollerGrouping({minPixPerPoint: 20});
 
-            var currentPlot = chart.plot();
-            currentPlot.line(lineMapping);
+            var plot = chart.plot();
+            plot.line(lineMapping);
 
-            var chartScroller = chart.scroller();
-            chartScroller.height("50%");
+            var scroller = chart.scroller();
+            scroller.height("50%");
 
-            var series = chartScroller.candlestick(candlestickMapping);
+            var series = scroller.candlestick(candlestickMapping);
             series.fallingFill("#F44336");
 
             // Get falling fill.
-            var currentFallingFill = series.fallingFill();
+            var fallingFill = series.fallingFill();
 
-            chart.title({fontColor: currentFallingFill, text: "Get and use falling fill. Move the scroller."});
+            chart.title({fontColor: fallingFill, text: "Get and use falling fill. Move the scroller."});
             chart.container("container");
             chart.draw();
         });

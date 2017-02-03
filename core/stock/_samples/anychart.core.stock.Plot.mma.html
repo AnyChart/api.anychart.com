@@ -7,6 +7,9 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var dataTable = anychart.data.table();
+
+            // The data used in this sample can be obtained from the CDN
+            // http://cdn.anychart.com/csv-data/dji-daily-short.js
             dataTable.addData(get_dji_daily_short_data());
 
             var mapping = dataTable.mapAs();
@@ -19,11 +22,11 @@
             chart = anychart.stock();
             chart.padding(10, 10, 10, 50);
 
-            var currentPlot = chart.plot();
-            currentPlot.ohlc(mapping);
+            var plot = chart.plot();
+            plot.ohlc(mapping);
 
             // Creates MMA indicator.
-            currentPlot.mma(mapping, 10, "spline");
+            plot.mma(mapping, 10, "spline");
 
             chart.title("Create MMA indicator");
             chart.container("container");

@@ -15,16 +15,16 @@
             chart.padding(10, 10, 10, 50);
             chart.title("Move the scroller.");
 
-            var currentPlot = chart.plot();
-            currentPlot.area(mapping);
+            var plot = chart.plot();
+            plot.area(mapping);
 
-            var currentGrouping = chart.grouping();
-            currentGrouping.forced(true);
+            var grouping = chart.grouping();
+            grouping.forced(true);
 
             chart.listen("selectedrangechange", function(){
 
                 // Get the current data interval and use the title.
-                chart.title("Move the scroller. The current level is " + currentGrouping.getCurrentDataInterval().unit + ".");
+                chart.title("Move the scroller. The current level is " + grouping.getCurrentDataInterval().unit + ".");
             });
 
             chart.container("container");

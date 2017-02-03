@@ -14,18 +14,18 @@
             chart = anychart.stock();
             chart.padding(10, 10, 10, 50);
 
-            var currentPlot = chart.plot();
-            currentPlot.line(mapping);
+            var plot = chart.plot();
+            plot.line(mapping);
 
-            chartScroller = chart.scroller();
+            var scroller = chart.scroller();
 
-            var series = chartScroller.column(mapping);
+            var series = scroller.column(mapping);
             series.selectedFill("#607D8B");
 
             // Gets fill in selected mode.
-            var currentSelectedFill = series.selectFill();
+            var selectFill = series.selectFill();
 
-            chart.title({fontColor: currentSelectedFill});
+            chart.title({fontColor: selectFill});
             chart.container("container");
             chart.draw();
         });

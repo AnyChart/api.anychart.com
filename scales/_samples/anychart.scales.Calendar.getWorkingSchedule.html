@@ -11,14 +11,14 @@
             chart.zoomLevel(1);
             chart.data(data);
 
-            var currentCalendar = chart.calendar();
-            currentCalendar.availabilities([
+            var calendar = chart.calendar();
+            calendar.availabilities([
                 {each: 'day', from: '10:00', to: '18:00'},
                 {each: 'day', from: '14:00', to: '15:00', isWorking: false}
             ]);
 
             // Get working time.
-            var getWorkingTime = currentCalendar.getWorkingSchedule(Date.UTC(2016, 10, 1), Date.UTC(2016, 10, 30));
+            var getWorkingTime = calendar.getWorkingSchedule(Date.UTC(2016, 10, 1), Date.UTC(2016, 10, 30));
 
             chart.container("container");
             chart.draw();

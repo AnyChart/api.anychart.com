@@ -15,25 +15,25 @@
             chart.padding(10, 50, 10, 50);
             chart.title("Get and modify grid axis.");
 
-            var currentPlot = chart.plot();
-            currentPlot.line(mapping);
+            var plot = chart.plot();
+            plot.line(mapping);
 
             var secondYScale = anychart.scales.linear();
             secondYScale.minimum(8000);
             secondYScale.maximum(16000);
             secondYScale.ticks({interval: 1000});
 
-            var customYAxis = currentPlot.yAxis(1);
+            var customYAxis = plot.yAxis(1);
             customYAxis.orientation("right");
             customYAxis.scale(secondYScale);
 
-            var plotGrid = currentPlot.grid();
+            var plotGrid = plot.grid();
             plotGrid.axis(customYAxis);
 
             // Get grid axis.
-            var currentAxis = plotGrid.axis();
+            var axis = plotGrid.axis();
 
-            currentAxis.stroke("#2196F3");
+            axis.stroke("#2196F3");
 
             chart.container("container");
             chart.draw();

@@ -26,8 +26,8 @@
             australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
 
-            var currentColorScale = anychart.scales.ordinalColor();
-            currentColorScale.ranges([
+            var colorScale = anychart.scales.ordinalColor();
+            colorScale.ranges([
                 {from: 10, to: 30},
                 {from: 30, to: 50},
                 {from: 50, to: 90}
@@ -35,16 +35,16 @@
 
             var series = australiaMap.choropleth(dataSetForSeries);
             series.geoIdField("code_hasc");
-            series.colorScale(currentColorScale);
+            series.colorScale(colorScale);
 
             australiaMap.colorRange(true);
             australiaMap.container("container");
             australiaMap.draw();
 
             // Gets index by value.
-            var currentValue = currentColorScale.getIndexByValue(86);
+            var value  = colorScale.getIndexByValue(86);
 
-            australiaMap.title("Index by value 86 is " + currentValue + ".");
+            australiaMap.title("Index by value 86 is " + value  + ".");
         });
     </script>
 </head>

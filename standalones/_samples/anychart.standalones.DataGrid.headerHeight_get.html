@@ -3,7 +3,7 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="dataGrid anyChart anyGantt anyStock anyMap"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="currentDataGrid">
+    <script x-export="dataGrid">
         anychart.onDocumentReady(function() {
             var data = [
                 {id: "1", name: "Phase 1 - Strategic Plan"},
@@ -17,17 +17,17 @@
 
             var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
 
-            currentDataGrid = anychart.standalones.dataGrid();
-            currentDataGrid.data(treeData);
+            dataGrid = anychart.standalones.dataGrid();
+            dataGrid.data(treeData);
 
             // Gets header height.
-            var size = currentDataGrid.headerHeight();
+            var size = dataGrid.headerHeight();
 
-            var currentColumn = currentDataGrid.column(1);
-            currentColumn.title("Header height - " + size);
+            var column = dataGrid.column(1);
+            column.title("Header height - " + size);
 
-            currentDataGrid.container("container");
-            currentDataGrid.draw();
+            dataGrid.container("container");
+            dataGrid.draw();
         });
     </script>
 </head>

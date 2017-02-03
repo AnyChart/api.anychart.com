@@ -89,7 +89,7 @@ anychart.core.stock.Scroller.prototype.xAxis;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.Column} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.Column} An instance of the created series.
  * @since 7.7.0
  */
 anychart.core.stock.Scroller.prototype.column;
@@ -116,7 +116,7 @@ anychart.core.stock.Scroller.prototype.column;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.Line} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.Line} An instance of the created series.
  * @since 7.7.0
  */
 anychart.core.stock.Scroller.prototype.line;
@@ -143,7 +143,7 @@ anychart.core.stock.Scroller.prototype.line;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.OHLC} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.OHLC} An instance of the created series.
  * @since 7.7.0
  */
 anychart.core.stock.Scroller.prototype.ohlc;
@@ -160,7 +160,7 @@ anychart.core.stock.Scroller.prototype.ohlc;
  * @category Series
  * @example anychart.core.stock.Scroller.getSeries
  * @param {number|string} id Id of the series.
- * @return {anychart.core.stock.scrollerSeries.Base} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.Base} An instance of the created series.
  * @since 7.7.0
  */
 anychart.core.stock.Scroller.prototype.getSeries;
@@ -223,7 +223,7 @@ anychart.core.stock.Scroller.prototype.addSeries;
  * @category Specific Series Settings
  * @example anychart.core.stock.Scroller.getSeriesAt
  * @param {number} index Index of the series.
- * @return {?anychart.core.stock.scrollerSeries.Base} An instance of the class for method chaining.
+ * @return {?anychart.core.stock.scrollerSeries.Base} An instance of the created series.
  * @since 7.8.0
  */
 anychart.core.stock.Scroller.prototype.getSeriesAt;
@@ -371,13 +371,13 @@ anychart.core.stock.Scroller.prototype.allowRangeChange;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Creates EMA (Exponential Moving Average) indicator on the chart.
+ * Creates EMA (Exponential Moving Average) indicator on the scroller.
  * @category Specific Series Settings
  * @example anychart.core.stock.Scroller.ema
  * @param {!anychart.data.TableMapping} mapping Data mapping.
  * @param {number=} opt_period [20] Period.
  * @param {(string|anychart.enums.StockSeriesType)=} opt_seriesType ["line"] Series type for EMA indicator (type as "line", "column", "ohlc").
- * @return {anychart.core.stock.indicators.EMA} An instance of the class for method chaining.
+ * @return {anychart.core.stock.indicators.EMA} An instance of the created series.
  * @since 7.9.0
  */
 anychart.core.stock.Scroller.prototype.ema;
@@ -390,7 +390,7 @@ anychart.core.stock.Scroller.prototype.ema;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Creates MACD (Moving Average Convergence Divergence) indicator on the chart.
+ * Creates MACD (Moving Average Convergence Divergence) indicator on the scroller.
  * @category Specific Series Settings
  * @detailed MACD indicator shows the difference between fast and slow smoothing.
  * @example anychart.core.stock.Scroller.macd
@@ -401,7 +401,7 @@ anychart.core.stock.Scroller.prototype.ema;
  * @param {(string|anychart.enums.StockSeriesType)=} opt_macdSeriesType ["line"] Series type for MACD indicator (type as "line", "column", "ohlc").
  * @param {(string|anychart.enums.StockSeriesType)=} opt_signalSeriesType ["line"] Series type for signal (type as "line", "column", "ohlc").
  * @param {(string|anychart.enums.StockSeriesType)=} opt_histogramSeriesType ["column"] Series type for histogram (type as "line", "column", "ohlc").
- * @return {anychart.core.stock.indicators.MACD} An instance of the class for method chaining.
+ * @return {anychart.core.stock.indicators.MACD} An instance of the created series.
  * @since 7.9.0
  */
 anychart.core.stock.Scroller.prototype.macd;
@@ -414,13 +414,13 @@ anychart.core.stock.Scroller.prototype.macd;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Creates RoC (Rate of Change) indicator on the chart.
+ * Creates RoC (Rate of Change) indicator on the scroller.
  * @category Specific Series Settings
  * @example anychart.core.stock.Scroller.roc
  * @param {!anychart.data.TableMapping} mapping Data mapping.
  * @param {number=} opt_period [20] Period.
  * @param {(string|anychart.enums.StockSeriesType)=} opt_seriesType ["line"] Series type for Roc indicator (type as "line", "column", "ohlc").
- * @return {anychart.core.stock.indicators.RoC} An instance of the class for method chaining.
+ * @return {anychart.core.stock.indicators.RoC} An instance of the created series.
  * @since 7.9.0
  */
 anychart.core.stock.Scroller.prototype.roc;
@@ -433,13 +433,13 @@ anychart.core.stock.Scroller.prototype.roc;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Creates RSI (Relative Strength Index) indicator on the chart.
+ * Creates RSI (Relative Strength Index) indicator on the scroller.
  * @category Specific Series Settings
  * @example anychart.core.stock.Scroller.rsi
  * @param {!anychart.data.TableMapping} mapping Data mapping.
  * @param {number=} opt_period [14] Period.
  * @param {(string|anychart.enums.StockSeriesType)=} opt_seriesType ["line"] Series type for RSI indicator (type as "line", "column", "ohlc").
- * @return {anychart.core.stock.indicators.RSI} An instance of the class for method chaining.
+ * @return {anychart.core.stock.indicators.RSI} An instance of the created series.
  * @since 7.9.0
  */
 anychart.core.stock.Scroller.prototype.rsi;
@@ -452,13 +452,13 @@ anychart.core.stock.Scroller.prototype.rsi;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Creates SMA (Simple Moving Average) indicator on the chart.
+ * Creates SMA (Simple Moving Average) indicator on the scroller.
  * @category Specific Series Settings
  * @example anychart.core.stock.Scroller.sma
  * @param {!anychart.data.TableMapping} mapping Data mapping.
  * @param {number=} opt_period [20] Period.
  * @param {(string|anychart.enums.StockSeriesType)=} opt_seriesType ["line"] Series type for SMA indicator (type as "line", "column", "ohlc").
- * @return {anychart.core.stock.indicators.SMA} An instance of the class for method chaining.
+ * @return {anychart.core.stock.indicators.SMA} An instance of the created series.
  * @since 7.9.0
  */
 anychart.core.stock.Scroller.prototype.sma;
@@ -483,7 +483,7 @@ anychart.core.stock.Scroller.prototype.sma;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.Area} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.Area} An instance of the created series.
  * @since 7.10.0
  */
 anychart.core.stock.Scroller.prototype.area;
@@ -508,7 +508,7 @@ anychart.core.stock.Scroller.prototype.area;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.Candlestick} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.Candlestick} An instance of the created series.
  * @since 7.10.0
  */
 anychart.core.stock.Scroller.prototype.candlestick;
@@ -533,7 +533,7 @@ anychart.core.stock.Scroller.prototype.candlestick;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.Marker} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.Marker} An instance of the created series.
  * @since 7.10.0
  */
 anychart.core.stock.Scroller.prototype.marker;
@@ -558,7 +558,7 @@ anychart.core.stock.Scroller.prototype.marker;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.RangeArea} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.RangeArea} An instance of the created series.
  * @since 7.10.0
  */
 anychart.core.stock.Scroller.prototype.rangeArea;
@@ -583,7 +583,7 @@ anychart.core.stock.Scroller.prototype.rangeArea;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.RangeColumn} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.RangeColumn} An instance of the created series.
  * @since 7.10.0
  */
 anychart.core.stock.Scroller.prototype.rangeColumn;
@@ -608,7 +608,7 @@ anychart.core.stock.Scroller.prototype.rangeColumn;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.RangeSplineArea} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.RangeSplineArea} An instance of the created series.
  * @since 7.10.0
  */
 anychart.core.stock.Scroller.prototype.rangeSplineArea;
@@ -633,7 +633,7 @@ anychart.core.stock.Scroller.prototype.rangeSplineArea;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.RangeStepArea} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.RangeStepArea} An instance of the created series.
  * @since 7.10.0
  */
 anychart.core.stock.Scroller.prototype.rangeStepArea;
@@ -658,7 +658,7 @@ anychart.core.stock.Scroller.prototype.rangeStepArea;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.Spline} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.Spline} An instance of the created series.
  * @since 7.10.0
  */
 anychart.core.stock.Scroller.prototype.spline;
@@ -683,7 +683,7 @@ anychart.core.stock.Scroller.prototype.spline;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.SplineArea} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.SplineArea} An instance of the created series.
  * @since 7.10.0
  */
 anychart.core.stock.Scroller.prototype.splineArea;
@@ -708,7 +708,7 @@ anychart.core.stock.Scroller.prototype.splineArea;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.StepArea} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.StepArea} An instance of the created series.
  * @since 7.10.0
  */
 anychart.core.stock.Scroller.prototype.stepArea;
@@ -733,7 +733,7 @@ anychart.core.stock.Scroller.prototype.stepArea;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.StepLine} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.StepLine} An instance of the created series.
  * @since 7.10.0
  */
 anychart.core.stock.Scroller.prototype.stepLine;
@@ -752,7 +752,7 @@ anychart.core.stock.Scroller.prototype.stepLine;
  * @param {number=} opt_period [20] Period
  * @param {anychart.enums.StockSeriesType=} opt_upSeriesType ["line"] Up Series type for the Aroon indicator.
  * @param {anychart.enums.StockSeriesType=} opt_downSeriesType ["line"] Down Series type for the Aroon indicator.
- * @return {anychart.core.stock.indicators.Aroon} An instance of the class for method chaining.
+ * @return {anychart.core.stock.indicators.Aroon} An instance of the created series.
  * @since 7.12.0
  */
 anychart.core.stock.Scroller.prototype.aroon;
@@ -772,7 +772,7 @@ anychart.core.stock.Scroller.prototype.aroon;
  * @param {number=} opt_fastPeriod [2] Fast period.
  * @param {number=} opt_slowPeriod [30] Slow period.
  * @param {(anychart.enums.StockSeriesType|string)=} opt_seriesType ["line"] Series type for AMA indicator.
- * @return {anychart.core.stock.indicators.AMA} An instance of the class for method chaining.
+ * @return {anychart.core.stock.indicators.AMA} An instance of the created series.
  * @since 7.13.0
  */
 anychart.core.stock.Scroller.prototype.ama;
@@ -790,7 +790,7 @@ anychart.core.stock.Scroller.prototype.ama;
  * @param {!anychart.data.TableMapping} mapping Data mapping.
  * @param {number=} opt_period [20] Period.
  * @param {(anychart.enums.StockSeriesType|string)=} opt_seriesType ["line"] Series type for MMA indicator.
- * @return {anychart.core.stock.indicators.MMA} An instance of the class for method chaining.
+ * @return {anychart.core.stock.indicators.MMA} An instance of the created series.
  * @since 7.13.0
  */
 anychart.core.stock.Scroller.prototype.mma;
@@ -808,7 +808,7 @@ anychart.core.stock.Scroller.prototype.mma;
  * @param {number=} opt_deviation [2] The multiplier applied to the moving average to compute upper and lower bands of the indicator.
  * @param {(anychart.enums.StockSeriesType|string)=} opt_upSeriesType ["line"] Up Series type for the Bollinger Bands indicator.
  * @param {(anychart.enums.StockSeriesType|string)=} opt_downSeriesType ["line"] Down Series type for the Bollinger Bands indicator.
- * @return {anychart.core.stock.indicators.BBands} An instance of the class for method chaining.
+ * @return {anychart.core.stock.indicators.BBands} An instance of the created series.
  * @since 7.13.0
  */
 anychart.core.stock.Scroller.prototype.bbands;
@@ -826,7 +826,7 @@ anychart.core.stock.Scroller.prototype.bbands;
  * @param {number=} opt_period [20] Moving average period value.
  * @param {number=} opt_deviation [2] The multiplier applied to the moving average to compute upper and lower bands of the indicator.
  * @param {(anychart.enums.StockSeriesType|string)=} opt_seriesType ["line"] Series type for the %B indicator.
- * @return {anychart.core.stock.indicators.BBandsB} An instance of the class for method chaining.
+ * @return {anychart.core.stock.indicators.BBandsB} An instance of the created series.
  * @since 7.13.0
  */
 anychart.core.stock.Scroller.prototype.bbandsB;
@@ -844,7 +844,7 @@ anychart.core.stock.Scroller.prototype.bbandsB;
  * @param {number=} opt_period [20] Moving average period value.
  * @param {number=} opt_deviation [2] The multiplier applied to the moving average to compute upper and lower bands of the indicator.
  * @param {(anychart.enums.StockSeriesType|string)=} opt_seriesType ["line"] Series type for the Bollinger Bands Width indicator.
- * @return {anychart.core.stock.indicators.BBandsWidth} An instance of the class for method chaining.
+ * @return {anychart.core.stock.indicators.BBandsWidth} An instance of the created series.
  * @since 7.13.0
  */
 anychart.core.stock.Scroller.prototype.bbandsWidth;
@@ -870,7 +870,7 @@ anychart.core.stock.Scroller.prototype.bbandsWidth;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.JumpLine} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.JumpLine} An instance of the created series.
  * @since 7.13.0
  */
 anychart.core.stock.Scroller.prototype.jumpLine;
@@ -896,7 +896,7 @@ anychart.core.stock.Scroller.prototype.jumpLine;
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
  * @param {Object=} opt_csvSettings CSV parser settings if the string is passed.
- * @return {anychart.core.stock.scrollerSeries.Stick} An instance of the class for method chaining.
+ * @return {anychart.core.stock.scrollerSeries.Stick} An instance of the created series.
  * @since 7.13.0
  */
 anychart.core.stock.Scroller.prototype.stick;

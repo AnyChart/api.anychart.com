@@ -16,9 +16,13 @@
             var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
             var traverser = treeData.getTraverser();
             traverser.advance();
-            var cur = traverser.current(); // get current data item
-            cur.set("name", "Current: " + cur.get("name"));
+
+            // Get current data item
+            var dataItem = traverser.current();
+            dataItem.set("name", "Current: " + dataItem.get("name"));
+
             chart = anychart.ganttProject();
+
             chart.data(treeData);
             chart.container("container");
             chart.draw();

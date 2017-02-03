@@ -26,17 +26,17 @@
             australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
 
-            var currentColorScale = anychart.scales.ordinalColor();
+            var colorScale = anychart.scales.ordinalColor();
             // Sets colors.
-            currentColorScale.colors(["#C5CAE9", "#5C6BC0"]);
-            currentColorScale.ranges([
+            colorScale.colors(["#C5CAE9", "#5C6BC0"]);
+            colorScale.ranges([
                 {from: 15, to: 45},
                 {from: 45, to: 90}
             ]);
 
             var series = australiaMap.choropleth(dataSetForSeries);
             series.geoIdField("code_hasc");
-            series.colorScale(currentColorScale);
+            series.colorScale(colorScale);
 
             australiaMap.colorRange(true);
             australiaMap.container("container");

@@ -20,18 +20,18 @@
             chart = anychart.stock();
             chart.padding(10, 10, 10, 50);
 
-            var currentPlot = chart.plot();
-            currentPlot.line(lineMapping);
+            var plot = chart.plot();
+            plot.line(lineMapping);
 
-            chartScroller = chart.scroller();
-            chartScroller.height("20%");
+            scroller = chart.scroller();
+            scroller.height("20%");
 
-            var series = chartScroller.ohlc(ohlcMapping);
+            var series = scroller.ohlc(ohlcMapping);
 
             // Get rising stroke settings in selected stroke.
-            var currentSelectRisingStroke = series.selectedRisingStroke();
+            var selectRisingStroke = series.selectedRisingStroke();
 
-            chart.title({background: {stroke: currentSelectRisingStroke}});
+            chart.title({background: {stroke: selectRisingStroke}});
             chart.container("container");
             chart.draw();
         });

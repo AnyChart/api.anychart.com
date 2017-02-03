@@ -7,6 +7,9 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var dataTable = anychart.data.table();
+
+            // The data used in this sample can be obtained from the CDN
+            // http://cdn.anychart.com/csv-data/dji-daily-short.js
             dataTable.addData(get_dji_daily_short_data());
 
             var mapping = dataTable.mapAs();
@@ -15,10 +18,10 @@
             chart = anychart.stock();
             chart.padding(10, 10, 10, 50);
 
-            var currentPlot = chart.plot();
-            currentPlot.line(mapping);
+            var plot = chart.plot();
+            plot.line(mapping);
 
-            var mmaIndicator = currentPlot.mma(mapping);
+            var mmaIndicator = plot.mma(mapping);
 
             // Set series type for indicator.
             mmaIndicator.series("spline");

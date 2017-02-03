@@ -26,20 +26,20 @@
             australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
 
-            var currentColorScale = anychart.scales.ordinalColor();
-            currentColorScale.ranges([
+            var colorScale = anychart.scales.ordinalColor();
+            colorScale.ranges([
                 {from: 10, to: 30},
                 {from: 30, to: 50},
                 {from: 50, to: 90}
             ]);
 
             // Gets range by value.
-            var settingsProcessedRanges = currentColorScale.getRangeByValue(16);
+            var settingsProcessedRanges = colorScale.getRangeByValue(16);
             // After that you can do something with the object.
 
             var series = australiaMap.choropleth(dataSetForSeries);
             series.geoIdField("code_hasc");
-            series.colorScale(currentColorScale);
+            series.colorScale(colorScale);
 
             australiaMap.colorRange(true);
             australiaMap.container("container");

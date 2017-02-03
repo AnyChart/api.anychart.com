@@ -7,6 +7,9 @@
     <script x-export="chart">
         anychart.onDocumentReady(function () {
             var dataTable = anychart.data.table();
+
+            // The data used in this sample can be obtained from the CDN
+            // http://cdn.anychart.com/csv-data/dji-daily-short.js
             dataTable.addData(get_dji_daily_short_data());
 
             var mapping = dataTable.mapAs();
@@ -23,10 +26,12 @@
             // Create computer.
             var computer = dataTable.createComputer(mapping);
 
-            // Set init context.
-            computer.setContext(anychart.math.mma.initContext(10));
+            var context = anychart.math.mma.initContext(10);
 
-            // Call start function.
+            // Set init context.
+            computer.setContext(context);
+
+            // Set start calculation function.
             computer.setStartFunction(anychart.math.mma.startFunction);
 
             // Calculation function.
@@ -35,7 +40,8 @@
             var indicatorMapping = dataTable.mapAs({value: computer.addOutputField("result")});
 
             var plot = chart.plot();
-            plot.line(indicatorMapping);
+            plot.ohlc(mapping).name("DJI");
+            plot.line(indicatorMapping).name("MMA(10)");
 
             chart.container("container");
             chart.draw();

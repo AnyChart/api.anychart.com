@@ -22,19 +22,19 @@
             chart.scrollerGrouping({minPixPerPoint: 5});
             chart.padding(10, 10, 10, 50);
 
-            var currentPlot = chart.plot();
-            currentPlot.ohlc(ohlcMapping);
+            var plot = chart.plot();
+            plot.ohlc(ohlcMapping);
 
-            var chartScroller = chart.scroller();
-            chartScroller.height("20%");
+            var scroller = chart.scroller();
+            scroller.height("20%");
 
-            var series = chartScroller.stepLine(stepMapping);
+            var series = scroller.stepLine(stepMapping);
             series.selectStroke("#F44336");
 
             // Get select stroke.
-            var currentSelectStroke = series.selectStroke();
+            var selectStroke = series.selectStroke();
 
-            chart.title({fontColor: currentSelectStroke, text: "Get and use select stroke."});
+            chart.title({fontColor: selectStroke, text: "Get and use select stroke."});
             chart.container("container");
             chart.draw();
         });

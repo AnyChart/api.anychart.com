@@ -26,19 +26,19 @@
             australiaMap = anychart.map();
             australiaMap.geoData(anychart.maps.australia);
 
-            var currentColorScale = anychart.scales.linearColor();
+            var colorScale = anychart.scales.linearColor();
 
             var series = australiaMap.choropleth(dataSetForSeries);
             series.geoIdField("code_hasc");
-            series.colorScale(currentColorScale);
+            series.colorScale(colorScale);
 
             australiaMap.container("container");
             australiaMap.draw();
 
             // Gets color by value.
-            var currentColor = currentColorScale.valueToColor(45);
+            var color = colorScale.valueToColor(45);
 
-            australiaMap.title({fontColor: currentColor});
+            australiaMap.title({fontColor: color});
         });
     </script>
 </head>

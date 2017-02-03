@@ -22,19 +22,19 @@
             chart.grouping({minPixPerPoint: 20});
             chart.scrollerGrouping({minPixPerPoint: 20});
 
-            var currentPlot = chart.plot();
-            currentPlot.line(lineMapping);
+            var plot = chart.plot();
+            plot.line(lineMapping);
 
-            var chartScroller = chart.scroller();
-            chartScroller.height("50%");
+            var scroller = chart.scroller();
+            scroller.height("50%");
 
-            var series = chartScroller.candlestick(candlestickMapping);
+            var series = scroller.candlestick(candlestickMapping);
             series.risingFill("#4CAF50");
 
             // Get rising fill.
-            var currentRisingFill = series.risingFill();
+            var risingFill = series.risingFill();
 
-            chart.title({fontColor: currentRisingFill, text: "Get and use rising fill."});
+            chart.title({fontColor: risingFill, text: "Get and use rising fill."});
             chart.container("container");
             chart.draw();
         });
