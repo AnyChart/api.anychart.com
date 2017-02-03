@@ -1,0 +1,99 @@
+/**
+ * Namespace anychart.math.kdj<br/>
+ * {docs:Stock_Charts/Technical_Indicators/Mathematical_Description}Learn more about indicator mathematics.{docs}
+ * @namespace {anychart.math.kdj}
+ * @name anychart.math.kdj
+ */
+anychart.math.kdj;
+
+
+/**
+ * Type definition for the context.
+ * @typedef {Object} anychart.math.kdj.Context
+ * @property {!anychart.math.CycledQueue} highQueue High cycle queue.
+ * @property {!anychart.math.CycledQueue} lowQueue Low cycle queue.
+ * @property {number} kPeriod  Indicator %K period.
+ * @property {anychart.enums.MovingAverageType} kMAType Indicator %K smoothing type.
+ * @property {(anychart.math.sma.Context|anychart.math.ema.Context|Object)} kMAContext EMA or SMA context to calculate smoothing %K.
+ * @property {Function} kMACalculate Calculation function for the smoothed %K.
+ * @property {anychart.enums.MovingAverageType} dMAType Indicator %D smoothing type.
+ * @property {(anychart.math.sma.Context|anychart.math.ema.Context|Object)} dMAContext EMA or SMA context to calculate %D.
+ * @property {Function} dMACalculate Calculation %D function
+ * @property {number} kMultiplier The %K multiplier to calculate the % J values.
+ * @property {number} dMultiplier The %D multiplier to calculate the % J values.
+ * @property {Function} dispose Dispose function.
+ */
+anychart.math.kdj.Context;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.math.kdj.initContext
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates a context for KDJ indicator calculation.
+ * @example anychart.math.kdj
+ * @param {number=} opt_kPeriod [14] Indicator %K period.
+ * @param {number=} opt_kMAPeriod [5] Indicator %K smoothing period.
+ * @param {number=} opt_dPeriod [3] Indicator %D period.
+ * @param {anychart.enums.MovingAverageType=} opt_kMAType [EMA] Indicator %K smoothing type.
+ * @param {anychart.enums.MovingAverageType=} opt_dMAType [EMA] Indicator %D smoothing type.
+ * @param {number=} opt_kMultiplier [-2] %K multiplier.
+ * @param {number=} opt_dMultiplier [3] %D multiplier.
+ * @return {anychart.math.kdj.Context} Context.
+ * @since 7.13.0
+ */
+anychart.math.kdj.initContext;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.math.kdj.startFunction
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Start calculation function for KDJ indicator calculation.
+ * @example anychart.math.kdj
+ * @param {anychart.math.kdj.Context} context Context.
+ * @since 7.13.0
+ */
+anychart.math.kdj.startFunction;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.math.kdj.calculationFunction
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Calculates KDJ.
+ * @example anychart.math.kdj
+ * @param {anychart.data.TableComputer.RowProxy} row Row proxy.
+ * @param {anychart.math.kdj.Context} context Context.
+ * @since 7.13.0
+ */
+anychart.math.kdj.calculationFunction;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.math.kdj.createComputer
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates a KDJ computer for the given table mapping.
+ * @example anychart.math.kdj
+ * @param {anychart.data.TableMapping} mapping Data mapping.
+ * @param {number=} opt_kPeriod [14] Indicator %K period.
+ * @param {number=} opt_kMAPeriod [5] Indicator %K smoothing period.
+ * @param {number=} opt_dPeriod [5] Indicator %D period.
+ * @param {anychart.enums.MovingAverageType=} opt_kMAType [EMA] Indicator %K smoothing type.
+ * @param {anychart.enums.MovingAverageType=} opt_dMAType [EMA] Indicator %D smoothing type.
+ * @param {number=} opt_kMultiplier [-2] The %K multiplier to calculate the % J values.
+ * @param {number=} opt_dMultiplier [3] The %D multiplier to calculate the % J values.
+ * @return {anychart.data.TableComputer} Table computer.
+ * @since 7.13.0
+ */
+anychart.math.kdj.createComputer;
+

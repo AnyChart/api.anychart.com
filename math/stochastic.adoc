@@ -1,0 +1,92 @@
+/**
+ * Namespace anychart.math.stochastic<br/>
+ * {docs:Stock_Charts/Technical_Indicators/Mathematical_Description}Learn more about indicator mathematics.{docs}
+ * @namespace {anychart.math.stochastic}
+ * @name anychart.math.stochastic
+ */
+anychart.math.stochastic;
+
+/**
+ * Type definition for the context.
+ * @typedef {Object} anychart.math.stochastic.Context
+ * @property {!anychart.math.CycledQueue} highQueue High cycle queue.
+ * @property {!anychart.math.CycledQueue} lowQueue Low cycle queue.
+ * @property {number} kPeriod  Indicator %K period.
+ * @property {anychart.enums.MovingAverageType} kMAType Indicator %K smoothing type.
+ * @property {(anychart.math.sma.Context|anychart.math.ema.Context|Object)} kMAContext EMA or SMA context to calculate smoothing %K.
+ * @property {Function} kMACalculate Calculation function for the smoothed %K.
+ * @property {anychart.enums.MovingAverageType} dMAType Indicator %D smoothing type.
+ * @property {(anychart.math.sma.Context|anychart.math.ema.Context|Object)} dMAContext EMA or SMA context to calculate %D.
+ * @property {Function} dMACalculate Calculation %D function.
+ * @property {Function} dispose Dispose function.
+ */
+anychart.math.stochastic.Context;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.math.stochastic.initContext
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates a context for Stochastic indicator calculation.
+ * @example anychart.math.stochastic
+ * @param {number=} opt_kPeriod [14] Indicator %K period.
+ * @param {number=} opt_kMAPeriod [1] Indicator %K smoothing period.
+ * @param {number=} opt_dPeriod [3] Indicator D period. Defaults to 3.
+ * @param {anychart.enums.MovingAverageType=} opt_kMAType ["sma"] Indicator %K smoothing type.
+ * @param {anychart.enums.MovingAverageType=} opt_dMAType ["sma"] Indicator %D smoothing type.
+ * @return {anychart.math.stochastic.Context} Context.
+ * @since 7.13.0
+ */
+anychart.math.stochastic.initContext;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.math.stochastic.startFunction
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Start calculation function for Stochastic indicator calculation.
+ * @example anychart.math.stochastic
+ * @param {anychart.math.stochastic.Context} context Context.
+ * @since 7.13.0
+ */
+anychart.math.stochastic.startFunction;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.math.stochastic.calculationFunction
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Calculates Stochastic.
+ * @example anychart.math.stochastic
+ * @param {anychart.data.TableComputer.RowProxy} row Row proxy.
+ * @param {anychart.math.stochastic.Context} context Context.
+ * @since 7.13.0
+ */
+anychart.math.stochastic.calculationFunction;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.math.stochastic.createComputer
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates a Stochastic computer for the given table mapping.
+ * @example anychart.math.stochastic
+ * @param {anychart.data.TableMapping} mapping Data mapping.
+ * @param {number=} opt_kPeriod [14] Indicator %K period.
+ * @param {number=} opt_kMAPeriod [1] Indicator %K smoothing period.
+ * @param {number=} opt_dPeriod [3] Indicator %D period.
+ * @param {anychart.enums.MovingAverageType=} opt_kMAType [SMA] Indicator %K smoothing type.
+ * @param {anychart.enums.MovingAverageType=} opt_dMAType [SMA] Indicator %D smoothing type.
+ * @return {anychart.data.TableComputer} Table computer.
+ * @since 7.13.0
+ */
+anychart.math.stochastic.createComputer;
+
