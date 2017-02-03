@@ -5,15 +5,22 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line([5, 9, 2, 6]);
+            chart = anychart.scatter();
+            chart.line([5, 9, 2, 6]);
+
             var rangeMarker = chart.rangeMarker();
-            rangeMarker.from(4);
-            rangeMarker.to(6);
+            rangeMarker.from(0.7);
+            rangeMarker.to(1.2);
+            rangeMarker.layout("vertical");
+
+            // Set image fill.
             rangeMarker.fill({
                 src: "http://static.anychart.com/images/oceanic-airlines.png",
                 mode: "stretch",
-                opacity: .1
-            }); // sets image fill
+                opacity: 0.1
+            });
+
+            chart.title("Set range marker fill as an image");
             chart.container("container");
             chart.draw();
         });

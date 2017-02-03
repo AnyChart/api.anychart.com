@@ -6,10 +6,14 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line([5, 9, 2, 6]);
+
             var textMarker = chart.textMarker();
             textMarker.value(5);
-            var layout = textMarker.layout(); // get layout
-            chart.title("Align - " + layout);
+
+            // Get layout.
+            var currentLayout = textMarker.layout();
+
+            chart.title("The text marker align is " + currentLayout);
             chart.container("container");
             chart.draw();
         });

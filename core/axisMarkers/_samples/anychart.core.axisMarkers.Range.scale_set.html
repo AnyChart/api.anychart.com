@@ -6,12 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line([5, 9, 2, 6]);
+
             var yAxis = chart.yAxis();
+
             var scale = yAxis.scale();
-            var rangeMarker = chart.rangeMarker();
-            rangeMarker.from(4);
-            rangeMarker.to(6);
-            rangeMarker.scale(scale); // sets scale
+
+            var rangeMarkerSettings = chart.rangeMarker();
+            rangeMarkerSettings.from(4);
+            rangeMarkerSettings.to(6);
+
+            // Set scale.
+            rangeMarkerSettings.scale(scale);
+
+            chart.title("Set range marker scale");
             chart.container("container");
             chart.draw();
         });

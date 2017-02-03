@@ -6,11 +6,18 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line([5, 9, 2, 6]);
+
             var yAxis = chart.yAxis();
+
             var scale = yAxis.scale();
-            var textMarker = chart.textMarker();
-            textMarker.value(5);
-            textMarker.scale(scale); // sets scale
+
+            var textMarkerSettings = chart.textMarker();
+            textMarkerSettings.value(5);
+
+            // Set scale.
+            textMarkerSettings.scale(scale);
+
+            chart.title("Set text marker scale");
             chart.container("container");
             chart.draw();
         });

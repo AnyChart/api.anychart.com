@@ -6,11 +6,15 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line([5, 9, 2, 6]);
+            
             var rangeMarker = chart.rangeMarker();
             rangeMarker.from(4);
             rangeMarker.to(6);
-            var layout = rangeMarker.layout(); // get layout
-            chart.title("Current layout - " + layout);
+
+            // Get layout.
+            var currentLayout = rangeMarker.layout();
+
+            chart.title("The range marker layout is " + currentLayout);
             chart.container("container");
             chart.draw();
         });
