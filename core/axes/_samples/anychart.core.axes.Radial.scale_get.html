@@ -6,10 +6,16 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar([1.1, 1.6, 1.4, 1.9]);
+
             var yAxis = chart.yAxis();
-            yAxis.scale(anychart.scales.log()); // sets scale
+
+            chart.title("Get and modify scale");
             chart.container("container");
             chart.draw();
+
+            // Get scale.
+            var scaleSettings = yAxis.scale();
+            scaleSettings.inverted(true);
         });
     </script>
 </head>

@@ -6,11 +6,17 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
-            chart.line([1.1, 1.6, 1.4, 1.9]);
+            chart.line([6, 1, 6, 1, 6, 1]);
+
             var yAxis = chart.yAxis();
-            var ticks = yAxis.ticks();
-            ticks.length(10); // sets length
-            ticks.stroke("2 #F44336");
+
+            var ticksSettings = yAxis.ticks();
+
+            // Set ticks length.
+            ticksSettings.length(10);
+            ticksSettings.stroke("2 #F44336");
+
+            chart.title("Set axis ticks length");
             chart.container("container");
             chart.draw();
         });

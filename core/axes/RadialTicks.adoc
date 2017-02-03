@@ -14,10 +14,13 @@ anychart.core.axes.RadialTicks;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current ticks length.
+ * Getter for ticks length.
  * @shortDescription Ticks length.
  * @category Size and Position
- * @return {number} Length of ticks.
+ * @listing See listing
+ * var ticksSettings = currentYAxis.ticks();
+ * var lengthValue = ticksSettings.length()
+ * @return {number} Ticks length.
  */
 anychart.core.axes.RadialTicks.prototype.length;
 
@@ -38,16 +41,27 @@ anychart.core.axes.RadialTicks.prototype.length;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Returns a current stroke settings.
+ * Getter for ticks stroke.
  * @shortDescription Stroke settings.
  * @category Coloring
- * @return {anychart.graphics.vector.Stroke} Returns the current stroke settings.
+ * @listing
+ * var ticksSettings = currentYAxis.ticks();
+ * var strokeSettings = ticksSettings.stroke();
+ * @return {anychart.graphics.vector.Stroke} Returns ticks stroke settings.
  */
 anychart.core.axes.RadialTicks.prototype.stroke;
 
 /**
- * Sets stroke settings via single parameter.<br/>
+ * Setter for stroke settings via single parameter.<br/>
  * <img src='/anychart.core.axes.RadialTicks.stroke.png' height='66' width='413'/><br/>
+ * @example anychart.core.axes.RadialTicks.stroke_set_asSingle
+ * @param {(anychart.graphics.vector.Stroke)=} opt_value ["#CECECE"] Stroke style as '[thickness ]color[ opacity]'.
+ * @return {anychart.core.axes.Ticks} Self instance for method chaining.
+ */
+anychart.core.axes.RadialTicks.prototype.stroke;
+
+/**
+ * Setter for stroke settings via several parameter.<br/>
  * The following options are acceptable:
  * <ul>
  *  <li>String formatted as '[thickness ]color[ opacity]':
@@ -63,8 +77,12 @@ anychart.core.axes.RadialTicks.prototype.stroke;
  *  <li><b>null</b> - reset current stroke settings.</li>
  * </ul>
  * <b>Note:</b> String parts order is significant and '3px red' is not the same as 'red 3px'.
- * @example anychart.core.axes.RadialTicks.stroke
- * @param {(anychart.graphics.vector.Stroke)=} opt_value ["#b9b9b9"] Fill style as '[thickness ]color[ opacity]'.
+ * @example anychart.core.axes.RadialTicks.stroke_set_asSeveral
+ * @param {string=} opt_value Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
  * @return {anychart.core.axes.RadialTicks} Self instance for method chaining.
  */
 anychart.core.axes.RadialTicks.prototype.stroke;
@@ -78,19 +96,19 @@ anychart.core.axes.RadialTicks.prototype.enabled;
 /** @inheritDoc */
 anychart.core.axes.RadialTicks.prototype.print;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axes.RadialTicks.prototype.saveAsPNG;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axes.RadialTicks.prototype.saveAsJPG;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axes.RadialTicks.prototype.saveAsPDF;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axes.RadialTicks.prototype.saveAsSVG;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axes.RadialTicks.prototype.toSVG;
 
 /** @inheritDoc */

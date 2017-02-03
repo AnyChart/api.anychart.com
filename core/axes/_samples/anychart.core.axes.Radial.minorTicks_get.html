@@ -6,12 +6,17 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
-            chart.line([1.1, 1.6, 1.4, 1.9]);
+            chart.line([6, 1, 6, 1, 6, 1]);
+
             var yAxis = chart.yAxis();
-            var minorTicks = yAxis.minorTicks(); // get minor ticks
-            minorTicks.enabled(true);
-            minorTicks.stroke("2 #00897B");
-            minorTicks.length(5);
+
+            // Get minor ticks.
+            var minorTicksSettings = yAxis.minorTicks();
+            minorTicksSettings.enabled(true);
+            minorTicksSettings.stroke("2 #F44336");
+            minorTicksSettings.length(5);
+
+            chart.title("Get and modify minor ticks");
             chart.container("container");
             chart.draw();
         });
