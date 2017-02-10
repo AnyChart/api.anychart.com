@@ -1,5 +1,5 @@
 /**
- * Gantt chart line marker.
+ * Gantt line marker.
  * @constructor
  * @extends {anychart.core.VisualBase}
  */
@@ -13,26 +13,18 @@ anychart.core.axisMarkers.GanttLine;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current scale.
+ * Getter for the Gantt chart line marker scale.
  * @shortDescription Scale settings.
- * @category Specific settings
- * @listing See listing
- * var chart = anychart.ganttProject();
- * chart.data(data, "asTable");
- * chart.editing(true);
- * var currentTimeLine = chart.getTimeline();
- * var customLineMarker = currentTimeLine.lineMarker();
- * customLineMarker.value(951408000000);
- * // Gets scale.
- * customLineMarker.scale();
- * @return {anychart.scales.GanttDateTime} The current scale.
+ * @category Axes and Scales
+ * @example anychart.core.axisMarkers.GanttLine.scale_get
+ * @return {anychart.scales.GanttDateTime} The Gantt chart line marker scale.
  * @since 7.9.0
  */
 anychart.core.axisMarkers.GanttLine.prototype.scale;
 
 /**
- * Getter for the scale.
- * <b>Note:</b> The scale method will not work here, only "dateTime" scale are available in Gantt Chart.
+ * Setter for the Gantt chart line marker scale.<br/>
+ * <b>Note:</b> The scale() method will not work here, only "dateTime" scale are available in Gantt Chart.
  * {docs:Gantt_Chart/Timeline#special_features}Learn more about scale.{docs}
  * @param {anychart.scales.GanttDateTime=} opt_value Scale.
  * @return {anychart.core.axisMarkers.GanttLine} Self instance for method chaining.
@@ -48,21 +40,21 @@ anychart.core.axisMarkers.GanttLine.prototype.scale;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets line marker stroke.
+ * Getter for the Gantt chart line marker stroke.
  * @shortDescription Stroke settings.
  * @category Coloring
  * @listing See listing
  * var currentTimeLine = chart.getTimeline();
  * var customLineMarker = currentTimeLine.lineMarker();
- * customLineMarker.value(951408000000);
- * customLineMarker.stroke();
- * @return {!anychart.graphics.vector.Stroke} Line marker stroke settings.
+ * customLineMarker.value("2000-02-29 00:00:00");
+ * var strokeSettings = customLineMarker.stroke();
+ * @return {!anychart.graphics.vector.Stroke} Gantt line marker stroke settings.
  * @since 7.9.0
  */
 anychart.core.axisMarkers.GanttLine.prototype.stroke;
 
 /**
- * Sets line marker stroke.
+ * Setter for the Gantt chart line marker stroke.
  * @example anychart.core.axisMarkers.GanttLine.stroke_set
  * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["#7c868e 1"] Stroke settings.
  * @param {number=} opt_thickness [2] Line thickness.
@@ -82,20 +74,20 @@ anychart.core.axisMarkers.GanttLine.prototype.stroke;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current line marker value.
- * @shortDescription Line marker value setting.
+ * Getter for the Gantt chart line marker value.
+ * @shortDescription Value settings.
  * @category Specific settings
  * @listing See listing
  * var currentTimeLine = chart.getTimeline();
  * var customLineMarker = currentTimeLine.lineMarker();
- * customLineMarker.value();
- * @return {number|anychart.enums.GanttDateTimeMarkers} The current line marker value.
+ * var currentValue = customLineMarker.value();
+ * @return {number|anychart.enums.GanttDateTimeMarkers} The Gantt chart line marker value.
  * @since 7.9.0
  */
 anychart.core.axisMarkers.GanttLine.prototype.value;
 
 /**
- * Setter for the line marker value.
+ * Setter for the Gantt chart line marker value.
  * @example anychart.core.axisMarkers.GanttLine.value_set
  * @param {(number|anychart.enums.GanttDateTimeMarkers|string)=} opt_value Line marker value settings.
  * @return {anychart.core.axisMarkers.GanttLine} Self instance for method chaining.
@@ -111,27 +103,23 @@ anychart.core.axisMarkers.GanttLine.prototype.value;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current line marker layout.
- * @shortDescription Line marker layout.
+ * Getter for the Gantt chart line marker layout.
+ * @shortDescription Layout settings.
  * @category Size and Position
  * @listing See listing
- * var chart = anychart.ganttProject();
- * chart.data(data, "asTable");
- * chart.editing(true);
  * var currentTimeLine = chart.getTimeline();
  * var customLineMarker = currentTimeLine.lineMarker();
- * customLineMarker.value(951408000000);
- * // Gets vertical layout.
- * customLineMarker.layout();
- * @return {anychart.enums.Layout|string} Vertical layout.
+ * customLineMarker.value("2000-02-29 00:00:00");
+ * var layoutSettings = customLineMarker.layout();
+ * @return {anychart.enums.Layout|string} The Gantt chart line marker layout.
  * @since 7.9.0
  */
 anychart.core.axisMarkers.GanttLine.prototype.layout;
 
 /**
- * Setter for the line marker layout.
+ * Setter for the Gantt chart line marker layout.<br/>
  * <b>Note:</b> The layout method will not work here, only "vertical" layout are available in Gantt Chart.
- * @param {(anychart.enums.Layout|string)=} opt_value LineMarker layout.
+ * @param {(anychart.enums.Layout|string)=} opt_value ["vertical"] Line marker layout.
  * @return {anychart.core.axisMarkers.GanttLine} Self instance for method chaining.
  * @since 7.9.0
  */
@@ -145,11 +133,11 @@ anychart.core.axisMarkers.GanttLine.prototype.layout;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Whether a line marker has horizontal layout.
- * <b>Note:</b> Any type of Gantt diagram will return "false", because markers in Gantts can be only vertical.<br/>
- * Layout is define by {@link anychart.core.axisMarkers.GanttLine#layout} method.
+ * Whether a line marker has horizontal layout.<br/>
+ * <b>Note:</b> Any type of Gantt diagram will return "false", because markers in Gantt charts can be only vertical.<br/>
+ * Layout is defined by {@link anychart.core.axisMarkers.GanttLine#layout} method.
  * @category Size and Position
- * @return {boolean} Returns <b>false</b>, because markers in Gantts can be only vertical.
+ * @return {boolean} Returns <b>false</b>, because markers in Gantt charts can be only vertical.
  */
 anychart.core.axisMarkers.GanttLine.prototype.isHorizontal;
 
@@ -162,19 +150,19 @@ anychart.core.axisMarkers.GanttLine.prototype.enabled;
 /** @inheritDoc */
 anychart.core.axisMarkers.GanttLine.prototype.print;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axisMarkers.GanttLine.prototype.saveAsPNG;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axisMarkers.GanttLine.prototype.saveAsJPG;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axisMarkers.GanttLine.prototype.saveAsPDF;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axisMarkers.GanttLine.prototype.saveAsSVG;
 
-/** @inheritDoc */
+/** @ignoreDoc */
 anychart.core.axisMarkers.GanttLine.prototype.toSVG;
 
 /** @inheritDoc */

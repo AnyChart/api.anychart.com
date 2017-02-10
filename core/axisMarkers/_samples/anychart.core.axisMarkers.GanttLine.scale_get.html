@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="rangeMarker anyGantt"/>
+    <meta name="x-cat-tags" content="lineMarker anyGantt"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
@@ -11,15 +11,17 @@
             chart.data(data, "asTable");
             chart.editing(true);
 
-            var timeLine = chart.getTimeline();
+            var currentTimeLine = chart.getTimeline();
 
-            var customRangeMarker = timeLine.rangeMarker();
-            customRangeMarker.from("2000-02-25 00:00:00");
+            var customLineMarker = currentTimeLine.lineMarker();
+            customLineMarker.value("2000-02-25 00:00:00");
 
-            // Set ending value.
-            customRangeMarker.to("2000-02-26 00:00:00");
+            // Get line marker scale.
+            var scaleSettings = customLineMarker.scale();
 
-            chart.title("Set ending value as a number");
+            scaleSettings.minimum(Date.UTC(2000, 1, 23));
+
+            chart.title("Get and modify line marker scale");
             chart.container("container");
             chart.draw();
             chart.fitAll();
