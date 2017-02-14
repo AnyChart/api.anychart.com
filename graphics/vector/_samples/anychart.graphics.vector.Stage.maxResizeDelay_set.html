@@ -1,0 +1,78 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyChart anyGantt anyStock anyMap"/>
+    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
+    <script x-export="">
+            var mainContainer = document.getElementById('container');
+
+            // Creates three sub-container.
+            var subContainer1 = document.createElement('div');
+            subContainer1.style.height='33%';
+            mainContainer.appendChild(subContainer1);
+
+            var subContainer2 = document.createElement('div');
+            subContainer2.style.height='33%';
+            mainContainer.appendChild(subContainer2);
+
+            var subContainer3 = document.createElement('div');
+            subContainer3.style.height='33%';
+            mainContainer.appendChild(subContainer3);
+
+            var firstStage = acgraph.create(subContainer1);
+
+            // Set max resize delay.
+            firstStage.maxResizeDelay(20);
+
+            var rect = firstStage.rect();
+            rect.setBounds(firstStage.getBounds());
+            rect.fill("#A5D6A7");
+
+            firstStage.listen("stageresize", function () {
+               rect.setBounds(firstStage.getBounds());
+            });
+
+            var secondStage = acgraph.create(subContainer2);
+
+            // Set max resize delay.
+            secondStage.maxResizeDelay(300);
+
+            var secondRect = secondStage.rect().setBounds(secondStage.getBounds()).fill("#C5E1A5");
+
+            secondStage.listen("stageresize", function () {
+                secondRect.setBounds(secondStage.getBounds());
+            });
+
+            var thirdStage = acgraph.create(subContainer3);
+
+            // Set max resize delay.
+            thirdStage.maxResizeDelay(1000);
+
+            var thirdRect = thirdStage.rect().setBounds(thirdStage.getBounds()).fill("#E6EE9C");
+
+            thirdStage.listen("stageresize", function () {
+                thirdRect.setBounds(thirdStage.getBounds());
+            });
+
+            var label = anychart.standalones.label();
+            label.background({fill: "#9E9E9E"});
+            label.text("Click to resize container");
+            label.fontColor("#fff");
+            label.padding(5);
+            label.offsetX(5);
+            label.offsetY(5);
+
+            var contaninerWidth = 50;
+            label.listen('click',function(){
+                contaninerWidth+=10;
+                mainContainer.style.width = contaninerWidth+'%';
+            });
+
+            label.container(firstStage);
+            label.draw();
+    </script>
+</head>
+<body>
+<div id="container" style="width: 50%; height:100%"></div>
+</body>
+</html>
