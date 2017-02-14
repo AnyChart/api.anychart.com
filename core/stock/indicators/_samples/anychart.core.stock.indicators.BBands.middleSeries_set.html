@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="anyStock"/>
-    <script src="../../../anychart.min.js"></script>
+    <script src="../../../../anychart.min.js"></script>
     <script src="http://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
@@ -14,7 +14,7 @@
             mapping.addField('high', 2, 'max');
             mapping.addField('low', 3, 'min');
             mapping.addField('close', 4, 'last');
-            mapping.addField('value', 3, 'last');
+            mapping.addField('value', 4, 'last');
 
             chart = anychart.stock();
             chart.padding(10, 10, 10, 50);
@@ -22,13 +22,12 @@
             var plot = chart.plot();
             plot.ohlc(mapping);
 
-            var scroller = chart.scroller();
-            scroller.height("20%");
+            var bbandsIndicator = plot.bbands(mapping);
 
-            // Creates Bollinger Bands indicator.
-            scroller.bbands(mapping, 10, 15, "line", "spline", "line");
+            // Set type for Middle Series.
+            bbandsIndicator.middleSeries("spline");
 
-            chart.title("Create Bollinger Bands indicator");
+            chart.title("Set Middle Series type");
             chart.container("container");
             chart.draw();
         });

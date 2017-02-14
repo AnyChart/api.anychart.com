@@ -36,13 +36,15 @@
             // Calculation function.
             computer.setCalculationFunction(anychart.math.bbands.calculationFunction);
 
-            computer.addOutputField('upResult');
-            computer.addOutputField('downResult');
+            computer.addOutputField('upperResult');
+            computer.addOutputField('lowerResult');
+            computer.addOutputField('middleResult');
 
             var plot = chart.plot();
             plot.ohlc(mapping).name("DJI");
-            plot.line(dataTable, {value: computer.getFieldIndex('upResult')}).name("BBands U");
-            plot.line(dataTable, {value: computer.getFieldIndex('downResult')}).name("BBands L");
+            plot.line(dataTable, {value: computer.getFieldIndex('upperResult')}).name("BBands U");
+            plot.line(dataTable, {value: computer.getFieldIndex('lowerResult')}).name("BBands L");
+            plot.line(dataTable, {value: computer.getFieldIndex('middleResult')}).name("BBands M");
 
             chart.container("container");
             chart.draw();
