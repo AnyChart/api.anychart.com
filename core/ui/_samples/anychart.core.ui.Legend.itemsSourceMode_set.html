@@ -1,16 +1,28 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="pie legend anyChart"/>
+    <meta name="x-cat-tags" content="column legend anyChart"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line();
-            chart.line([8, 7, 3, 2]);
-            chart.line([6, 1, 2, 5]);
+            chart = anychart.column();
+
+            chart.column([
+                {x: "Oil shales", value: 11},
+                {x: "Heavy oil", value: 3},
+                {x: "Tar sands", value: 2},
+                {x: "Proven reserves", value: 8},
+                {x: "Future additions", value: 15}
+            ]);
+
             chart.legend(true);
+
             var legend = chart.legend();
-            legend.itemsSourceMode("categories"); // sets mode
+
+            // Set mode.
+            legend.itemsSourceMode("categories");
+
+            chart.title("Set items source mode");
             chart.container("container");
             chart.draw();
         });

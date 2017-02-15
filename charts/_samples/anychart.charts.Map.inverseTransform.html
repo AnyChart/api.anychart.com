@@ -10,39 +10,35 @@
             // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
             // See http://docs.anychart.com/latest/Maps/Map_Projections to learn more.
 
-            var dataSet = anychart.data.set([
-                {size: 928, lat: 48.04677871103531, long: -2.12443548026414},
-                {size: 192, lat: 45.85025102963345, long: -0.05555902937648371},
-                {size: 963, lat: 44.13282017031969, long: -0.6331316557379023},
-                {size: 266, lat: 48.91155589239087, long: -0.2614383795630683},
-                {size: 518, lat: 45.36178266437175, long: 3.1661777399148257},
-                {size: 324, lat: 47.3951601027151, long: 4.075436176363208},
-                {size: 767, lat: 50.55433223847086, long: 2.5190009490829643},
-                {size: 478, lat: 49.83217874244316, long: 2.0566302263277305},
-                {size: 456, lat: 41.9617928275597, long: 9.042687600355316},
-                {size: 477, lat: 4.346042402087561, long: -53.23436574621244},
-                {size: 200, lat: 48.741317232748585, long: 7.532229957512638},
-                {size: 945, lat: 45.53208569742555, long: 5.531768794196096},
-                {size: 351, lat: 43.93420056617674, long: 6.207894450015418}
-            ]);
+            map = anychart.map();
+            map.geoData(anychart.maps.france);
 
-            franceMap = anychart.map();
-            franceMap.geoData(anychart.maps.france);
-            franceMap.geoIdField("insee_cl");
+            map.title("Click anywhere on the map to drop a pin\nClick this title to remove all pins");
 
-            franceMap.bubble(dataSet);
-            franceMap.maxBubbleSize("5%");
-            franceMap.minBubbleSize("3%");
+            map.listen("click", function (e) {
 
-            franceMap.container("container");
-            franceMap.draw();
+                // Getting pixel coordinates
+                var localCord = map.globalToLocal(e.clientX, e.clientY);
 
-            // Trying to get coordinate at latitude/longitude values.
-            var latLongValue = franceMap.inverseTransform(0, 10);
+                // Transforming pixel to latitude and longitude.
+                var latLong = map.inverseTransform(localCord.x, localCord.y);
 
-            franceMap.title("Get latitude/longitude values - \n x: " + latLongValue.x + "\n y: " + + latLongValue.y +
-                    "\n long: " + + latLongValue.long + "\n lat: " + + latLongValue.lat);
+                // Adding new point to a marker series.
+                dataSetMarker.append({lat: latLong.lat.toFixed(2), long: latLong.long.toFixed(2)});
+            });
 
+            var dataSetMarker = anychart.data.set([]);
+
+            var series = map.marker(dataSetMarker);
+            series.labels().textFormatter("({%lat}, {%long})");
+
+            map.title().listen("click", function(e) {
+                dataSetMarker.data(null);
+                e.stopPropagation();
+            });
+
+            map.container("container");
+            map.draw();
         });
     </script>
 </head>

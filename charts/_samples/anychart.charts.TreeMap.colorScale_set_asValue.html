@@ -10,8 +10,8 @@
                     children:[
                         {name: "Asia", children:[
                             {name: "Eastern Asia", children:[
-                                {name:"Mongolia", value: 1564116, capital: 'Ulan-Bator'},
-                                {name: "China", value: 1564116, capital: 'Beijing'},
+                                {name: "Mongolia", value: 1464116, capital: 'Ulan-Bator'},
+                                {name: "China", value: 1364116, capital: 'Beijing'},
                                 {name: "Southern Korea", value: 1564116, capital: 'Seoul'},
                                 {name: "Northern Korea", value: 120540, capital: 'Pyongyang'},
                                 {name: "Japan", value: 1564116, capital: 'Tokio'}
@@ -29,19 +29,20 @@
             ]);
 
             chart = anychart.treeMap(data, "asTree");
+            chart.maxDepth(3);
 
             // Create color scale.
             var customColorScale = anychart.scales.ordinalColor();
             customColorScale.ranges([
                 {less: 500000},
-                {from: 500000, to: 1000000},
-                {greater: 1000000}
+                {from: 500000, to: 1500000},
+                {greater: 1500000}
             ]);
 
             // Set color scale.
             chart.colorScale(customColorScale);
 
-            chart.title("Set color scale.");
+            chart.title("Set color scale using value");
             chart.container("container");
             chart.draw();
         });
