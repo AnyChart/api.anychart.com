@@ -12,26 +12,23 @@
         // Suspends rendering.
         stage.suspend();
 
-        for (var i = 0; i < 10000; i++) {
-            var x = Math.random() * stage.width() / 3;
-            var y = Math.random() * stage.height() / 2;
-            var radius = Math.random() * 5;
-            var circle = stage.circle(x, y, radius);
-            circle.fill({color: getRandomColor(), opacity: Math.random()});
-            circle.stroke(getRandomColor());
+        var radius = 10;
+        var widthCount = Math.floor(stage.width() / (2 * radius));
+        var heightCount = Math.floor(stage.height() / (2 * radius));
+        var colors = ["#F44336", "#4CAF50", "#2196F3"];
+        var colorIndex = 0;
+
+        for (var i = 0; i < widthCount; i++) {
+            for (var j = 0; j < heightCount; j++) {
+                var circle = stage.circle(radius + i * 2 * radius, radius + j * 2 * radius, radius);
+                circle.stroke(colors[colorIndex]);
+                colorIndex++;
+                if (colorIndex >= colors.length) colorIndex=0;
+            }
         }
 
         // Removes suspend state.
         stage.resume();
-
-        function getRandomColor() {
-            var letters = '0123456789ABCDEF'.split('');
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
-        }
     </script>
 </head>
 <body>

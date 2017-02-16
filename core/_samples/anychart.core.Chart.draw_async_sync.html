@@ -13,16 +13,16 @@
 
             createLabel("Rerender async", 20, function () {
                 disposeCharts(charts);
-
                 // Set rendering mode to async.
                 createCharts(charts, true);
             });
 
             createLabel("Rerender in sync", 150, function () {
                 disposeCharts(charts);
-
-                // Set rendering mode to sync.
-                createCharts(charts, false);
+                setTimeout(function(){
+                    // Set rendering mode to sync.
+                    createCharts(charts, false);
+                }, 100);
             });
 
             var customTitle = anychart.standalones.title();
@@ -34,7 +34,7 @@
             function createCharts(charts, sync) {
                 for (var i = 0; i < 15; i++) {
                     for (var j = 2; j < 15; j++) {
-                        pieChart = anychart.pie([Math.random(), Math.random(), Math.random()]);
+                        pieChart = anychart.pie([20, 30, 50]);
                         pieChart.bounds(i * 10 + "%", j * 10 + "%", "10%", "10%");
                         pieChart.labels(false);
                         pieChart.legend(false);

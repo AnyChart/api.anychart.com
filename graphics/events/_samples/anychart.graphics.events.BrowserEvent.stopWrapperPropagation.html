@@ -15,10 +15,10 @@
 
         stage = acgraph.create("container");
 
-        var customLayer = stage.layer();
-        customLayer.rect(0, 0, 500, 300).fill("#FFFFFF 0.01");
+        var layer = stage.layer();
+        layer.rect(0, 0, 500, 300).fill("#FFFFFF 0.01");
 
-        var textObject = customLayer.text(70, 55, "Click on this TEXT.");
+        var textObject = layer.text(70, 55, "Click on this TEXT.");
         textObject.style({fontSize: "18px"});
         textObject.selectable(false);
 
@@ -32,7 +32,7 @@
             e.stopWrapperPropagation();
         });
 
-        customLayer.listen("click", function (e) {
+        layer.listen("click", function (e) {
             counter++;
             textObject.text("You clicked " + counter + " times. " + "Click again.");
             textObject.color(getRandomColor());
