@@ -6,17 +6,29 @@
     <script src="http://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var dataTable = anychart.data.table();
-            dataTable.addData(get_dji_daily_short_data());
+            var table = anychart.data.table(0);
 
-            var mapping = dataTable.mapAs({value: 1});
+            table.addData([
+                ['2015-12-24T12:00:00', 511, 413],
+                ['2015-12-25T12:00:00', 212, 413],
+                ['2015-12-26T12:00:00', 311, 413],
+                ['2015-12-27T12:00:00', 411, 413],
+                ['2015-12-28T12:00:00', 611, 413, "#FF0000"],
+                ['2015-12-29T12:00:00', 512, 413],
+                ['2015-12-30T12:00:00', 411, 413],
+                ['2015-12-31T12:00:00', 311, 413],
+                ['2016-01-01T12:00:00', 510, 413]
+            ]);
+
+            var mapping = table.mapAs({value: 1, fill: 3});
 
             // Creates a stock chart.
-            chart = anychart.stock();
-            chart.padding(10, 10, 10, 50);
+            chart = anychart.stock(true);
 
-            var plot = chart.plot();
-            plot.line(mapping);
+            var plot = chart.plot(0);
+
+            var series = plot.column(mapping);
+            series.name("Volume");
 
             chart.container("container");
             chart.draw();
