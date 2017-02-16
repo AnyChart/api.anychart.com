@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyGantt"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var data = getData();
+
+            chart = anychart.ganttProject();
+            chart.data(data, "asTable");
+            chart.editing(true);
+
+            var timeLine = chart.getTimeline();
+            timeLine.editing(true);
+
+            // Set start connector horizontal offset.
+            timeLine.editStartConnectorMarkerHorizontalOffset(-10);
+
+            // Set finish connector horizontal offset.
+            timeLine.editFinishConnectorMarkerHorizontalOffset(10);
+
+            chart.title("Set edit start/finish connector marker horizontal offset");
+            chart.container("container");
+            chart.draw();
+            chart.fitAll();
+        });
+
+        function getData(){
+            return [
+                {"id": "1", "name": "Phase 1 - Strategic Plan", "progressValue": "14%", "actualStart": "2000-02-24 08:00:00", "actualEnd": "2000-02-27 08:00:00"},
+                {"id": "2", "name": "Self-Assessment", parent: "1", "progressValue": "25%", "actualStart": "2000-02-24 08:00:00", "actualEnd": "2000-02-29 08:00:00", "baselineStart": "2000-02-27 08:00:00", "baselineEnd": "2000-02-28 08:00:00"},
+                {"id": "3", "name": "Define business vision", parent: "2", "progressValue": "0%", "actualStart": "2000-02-25 00:00:00", "actualEnd": "2000-02-25 09:00:00", "connectTo": "4", "connectorType": "FinishStart"},
+                {"id": "4", "name": "Identify available skills, information and support", parent: "2", "progressValue": "0%", "actualStart": "2000-02-26 00:00:00", "actualEnd": "2000-02-26 09:00:00", "connectTo": "5", "connectorType": "FinishStart"},
+                {"id": "5", "name": "Decide whether to proceed", parent: "2", "progressValue": "0%", "actualStart": "2000-02-27 08:00:00", "actualEnd": "2000-02-28 08:00:00", "connectTo": "6", "connectorType": "FinishStart"},
+                {"id": "6", "name": "Define the Opportunity", parent: "1", "progressValue": "27%", "actualStart": "2000-02-28 08:00:00", "actualEnd": "2000-02-29 08:00:00"},
+                {"id": "7", "name": "Research the market and competition", parent: "6", "progressValue": "0%", "actualStart": "2000-02-26 08:00:00", "actualEnd": "2000-02-27 08:00:00", "connectTo": "8", "connectorType": "FinishStart"}
+            ];
+        }
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
