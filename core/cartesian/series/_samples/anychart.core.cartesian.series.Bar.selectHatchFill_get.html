@@ -3,30 +3,40 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="bar anyChart"/>
     <script src="../../../../anychart.min.js"></script>
-    <script x-export="stage">
+    <script x-export="chart">
         anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+            chart = anychart.cartesian();
 
-            var firstChart = anychart.cartesian();
-            firstChart.bounds(0, 0, "50%", "100%");
-
-            var firstBarSeries = firstChart.bar([2, 5, 3, 9, 4]);
+            var firstBarSeries = chart.bar([
+                {x: "January", value: 16},
+                {x: "February", value: 10},
+                {x: "March", value: 20},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
             firstBarSeries.selectHatchFill("zigZag", "#BDBDBD", 1, 10);
 
-            firstChart.container(stage);
-            firstChart.draw();
+            // Selects series.
+            firstBarSeries.select();
 
-            var secondChart = anychart.cartesian();
-            secondChart.bounds("50%", 0, "50%", "100%");
+            // Gets hatch fill settings in selected mode.
+            var hatchFill = firstBarSeries.selectHatchFill();
 
-            // Gets hatch fill in selected mode of the first chart.
-            var selectHatchFillFirstChart = firstBarSeries.selectHatchFill();
+            var secondBarSeries = chart.bar([
+                {x: "January", value: 10},
+                {x: "February", value: 25},
+                {x: "March", value: 1},
+                {x: "April", value: 6},
+                {x: "May", value: 20}
+            ]);
+            secondBarSeries.selectHatchFill(hatchFill);
 
-            var secondBarSeries = secondChart.bar([16, 116, 19, 46, 20]);
-            secondBarSeries.selectHatchFill(selectHatchFillFirstChart);
+            // Selects series.
+            secondBarSeries.select();
 
-            secondChart.container(stage);
-            secondChart.draw();
+            chart.title("Get and use select hatch fill");
+            chart.container("container");
+            chart.draw();
         });
     </script>
 </head>

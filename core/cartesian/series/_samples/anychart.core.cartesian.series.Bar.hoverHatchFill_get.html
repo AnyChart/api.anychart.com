@@ -7,26 +7,38 @@
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
 
-            var firstChart = anychart.cartesian();
-            firstChart.bounds(0, 0, "50%", "100%");
+            var chart = anychart.cartesian();
 
-            var firstBarSeries = firstChart.bar([2, 5, 3, 9, 4]);
-            firstBarSeries.hoverHatchFill("zigZag", "#BDBDBD", 1, 10);
+            var firstBarSeries = chart.bar([
+                {x: "January", value: 16},
+                {x: "February", value: 10},
+                {x: "March", value: 20},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+            firstBarSeries.hatchFill("zigZag", "#EEEEEE", 1, 10);
 
-            firstChart.container(stage);
-            firstChart.draw();
+            // Hovers series.
+            firstBarSeries.hover();
 
-            var secondChart = anychart.cartesian();
-            secondChart.bounds("50%", 0, "50%", "100%");
+            // Get hatch fill.
+            var hatchFill = firstBarSeries.hatchFill();
 
-            // Gets hatch fill of the first chart.
-            var hoverHatchFillFirstChart = firstBarSeries.hoverHatchFill();
+            var secondSeries = chart.bar([
+                {x: "January", value: 10},
+                {x: "February", value: 25},
+                {x: "March", value: 4},
+                {x: "April", value: 6},
+                {x: "May", value: 20}
+            ]);
+            secondSeries.hatchFill(hatchFill);
 
-            var secondBarSeries = secondChart.bar([16, 116, 19, 46, 20]);
-            secondBarSeries.hoverHatchFill(hoverHatchFillFirstChart);
+            // Hovers series.
+            secondSeries.hover();
 
-            secondChart.container(stage);
-            secondChart.draw();
+            chart.title("Get and use hatch fill");
+            chart.container(stage);
+            chart.draw();
         });
     </script>
 </head>

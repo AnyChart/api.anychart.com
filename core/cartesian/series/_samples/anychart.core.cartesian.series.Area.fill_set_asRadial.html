@@ -6,8 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.area([2, 5, 3, 9, 4]);
-            series.fill(["#FEFEFE", "#424242"], 0.6, 0.5, null, 0.8, 0.9, 0.31); // sets radial gradient fill
+
+            var series = chart.area([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // Set radial gradient fill.
+            series.fill(["#FEFEFE", "#424242"], 0.6, 0.5, null, 0.8, 0.76, 0.09);
+
+            chart.title("Set series fill as a radial gradient");
             chart.container("container");
             chart.draw();
         });

@@ -7,15 +7,22 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.area([2, 5, 3, 9, 4]);
-            series.selectStroke("#F44336");
+            var series = chart.area([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+            series.selectStroke("2 #F44336");
 
             // Gets stroke for selected mode.
             var selectSeriesStroke = series.selectStroke();
+
             // Selects series.
             series.select();
 
-            chart.title({fontColor: selectSeriesStroke});
+            chart.title({text: "Get and use select stroke", fontColor: selectSeriesStroke.color});
             chart.container("container");
             chart.draw();
         });

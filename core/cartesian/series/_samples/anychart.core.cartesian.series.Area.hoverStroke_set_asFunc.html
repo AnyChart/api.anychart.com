@@ -6,13 +6,24 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.area([2, 5, 3, 9, 4]);
-            // Sets hover stroke.
+
+            var series = chart.area([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // Set hover stroke.
             series.hoverStroke(function() {
                 return "3 " + anychart.color.darken(this.sourceColor);
             });
+
             // Hovers series.
             series.hover();
+
+            chart.title("Set hover stroke parameter as a function");
             chart.container("container");
             chart.draw();
         });

@@ -7,12 +7,21 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.area([2, 5, 3, 9, 4]);
-            // Sets fill for selected mode using array.
+            var series = chart.area([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // Set fill for selected mode using array.
             series.selectFill(["#7986CB", "#C5CAE9"]);
+
             // Selects series.
             series.select();
 
+            chart.title("Set select fill parameter as an array");
             chart.container("container");
             chart.draw();
         });

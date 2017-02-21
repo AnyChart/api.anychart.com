@@ -1,36 +1,43 @@
-<html>
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="area anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             stage = anychart.graphics.create("container");
 
-            var firstChart = anychart.cartesian();
-            firstChart.bounds(0, 0, "50%", "100%");
+            var chart = anychart.cartesian();
 
-            var firstAreaSeries = firstChart.area([2, 5, 3, 9, 4]);
-            firstAreaSeries.hoverHatchFill("zigZag", "#BDBDBD", 1, 10);
+            var firstAreaSeries = chart.area([
+                {x: "January", value: 16},
+                {x: "February", value: 10},
+                {x: "March", value: 20},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+            firstAreaSeries.hatchFill("zigZag", "#616161", 1, 10);
+
             // Hovers series.
             firstAreaSeries.hover();
 
-            firstChart.container(stage);
-            firstChart.draw();
+            // Get hatch fill.
+            var hatchFill = firstAreaSeries.hatchFill();
 
-            var secondChart = anychart.cartesian();
-            secondChart.bounds("50%", 0, "50%", "100%");
+            var secondAreaSeries = chart.area([
+                {x: "January", value: 10},
+                {x: "February", value: 25},
+                {x: "March", value: 1},
+                {x: "April", value: 6},
+                {x: "May", value: 20}
+            ]);
+            secondAreaSeries.hatchFill(hatchFill);
 
-            // Gets hatch fill in hover mode of the first chart.
-            var hoverHatchFillFirstChart = firstAreaSeries.hoverHatchFill();
-
-            var secondAreaSeries = secondChart.area([16, 116, 19, 46, 20]);
-            secondAreaSeries.hoverHatchFill(hoverHatchFillFirstChart);
             // Hovers series.
             secondAreaSeries.hover();
 
-            secondChart.container(stage);
-            secondChart.draw();
+            chart.title("Get and use hatch fill");
+            chart.container(stage);
+            chart.draw();
         });
     </script>
 </head>

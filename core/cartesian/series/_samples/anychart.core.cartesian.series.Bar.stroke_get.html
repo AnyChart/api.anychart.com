@@ -7,13 +7,19 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.bar([2, 5, 3, 9, 4]);
+            var series = chart.bar([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
             series.stroke("#F44336");
 
-            // Gets stroke of the series.
+            // Get stroke.
             var seriesStroke = series.stroke();
 
-            chart.title({fontColor: seriesStroke});
+            chart.title({fontColor: seriesStroke, text: "Get and use stroke"});
             chart.container("container");
             chart.draw();
         });

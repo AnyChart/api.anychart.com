@@ -6,12 +6,22 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.area([2, 5, 3, 9, 4]);
-            // Sets hatchFill in hover state.
-            series.hoverHatchFill("horizontal", "#BDBDBD", 1, 5);
+
+            var series = chart.area([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // Set hatch fill in hover state.
+            series.hoverHatchFill("horizontal", "#616161", 1, 5);
+
             // Hovers series.
             series.hover();
 
+            chart.title("Set hover hatch fill parameters");
             chart.container("container");
             chart.draw();
         });

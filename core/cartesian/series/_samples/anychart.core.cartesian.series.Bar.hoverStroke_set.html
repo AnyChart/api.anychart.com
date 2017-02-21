@@ -6,8 +6,22 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.bar([2, 5, 3, 9, 4]);
-            series.hoverStroke("#F44336", 3, "5 2", "round"); // sets hover stroke
+
+            var series = chart.bar([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // Set hover stroke.
+            series.hoverStroke("#F44336", 3, "5 2", "round");
+
+            // Hovers series.
+            series.hover();
+
+            chart.title("Set hover stroke parameters");
             chart.container("container");
             chart.draw();
         });

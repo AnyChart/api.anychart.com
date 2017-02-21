@@ -7,19 +7,34 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var firstAreaSeries = chart.area([16, 10, 20, 9, 4]);
+            var firstAreaSeries = chart.area([
+                {x: "January", value: 16},
+                {x: "February", value: 10},
+                {x: "March", value: 20},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
             firstAreaSeries.selectHatchFill("zigZag", "#BDBDBD", 1, 10);
+
             // Selects series.
             firstAreaSeries.select();
 
             // Gets hatch fill settings in selected mode.
             var hatchFill = firstAreaSeries.selectHatchFill();
 
-            var secondAreaSeries = chart.area([10, 25, 1, 6, 20]);
+            var secondAreaSeries = chart.area([
+                {x: "January", value: 10},
+                {x: "February", value: 25},
+                {x: "March", value: 1},
+                {x: "April", value: 6},
+                {x: "May", value: 20}
+            ]);
             secondAreaSeries.selectHatchFill(hatchFill);
+
             // Selects series.
             secondAreaSeries.select();
 
+            chart.title("Get and use select hatch fill");
             chart.container("container");
             chart.draw();
         });

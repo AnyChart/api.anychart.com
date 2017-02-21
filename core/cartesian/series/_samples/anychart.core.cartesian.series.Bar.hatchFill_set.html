@@ -6,8 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.bar([2, 5, 3, 9, 4]);
-            series.hatchFill("horizontal", "#BDBDBD", 1, 5); // sets hatchFill
+
+            var series = chart.bar([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // Set hatch fill.
+            series.hatchFill("horizontal", "#424242", 1, 5);
+
+            chart.title("Set hatch fill parameters");
             chart.container("container");
             chart.draw();
         });

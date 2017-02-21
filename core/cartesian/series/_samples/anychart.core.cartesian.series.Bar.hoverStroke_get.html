@@ -7,13 +7,19 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.bar([2, 5, 3, 9, 4]);
+            var series = chart.bar([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
             series.hoverStroke("#F44336");
 
-            // Gets stroke of the series.
+            // Get hover stroke of the series.
             var hoverSeriesStroke = series.hoverStroke();
 
-            chart.title({fontColor: hoverSeriesStroke});
+            chart.title({text: "Get and use hover stroke", fontColor: hoverSeriesStroke});
             chart.container("container");
             chart.draw();
         });

@@ -6,8 +6,21 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.bar([2, 5, 3, 9, 4]);
+
+            var series = chart.bar([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // Set hover fill.
             series.hoverFill(["#263238", "#FFFFFF"], 45, true, 0.5); // sets linear gradient hover fill
+
+            series.hover();
+
+            chart.title("Set hover fill as a linear gradient");
             chart.container("container");
             chart.draw();
         });

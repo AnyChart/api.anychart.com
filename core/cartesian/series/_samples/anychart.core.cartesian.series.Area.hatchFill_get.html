@@ -9,15 +9,28 @@
 
             var chart = anychart.cartesian();
 
-            var firstAreaSeries = chart.area([16, 10, 20, 9, 4]);
-            firstAreaSeries.hatchFill("zigZag", "#BDBDBD", 1, 10);
+            var firstAreaSeries = chart.area([
+                {x: "January", value: 16},
+                {x: "February", value: 10},
+                {x: "March", value: 20},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+            firstAreaSeries.hatchFill("zigZag", "#616161", 1, 10);
 
-            // Gets hatch fill.
+            // Get hatch fill.
             var hatchFill = firstAreaSeries.hatchFill();
 
-            var secondAreaSeries = chart.area([10, 25, 1, 6, 20]);
+            var secondAreaSeries = chart.area([
+                {x: "January", value: 10},
+                {x: "February", value: 25},
+                {x: "March", value: 1},
+                {x: "April", value: 6},
+                {x: "May", value: 20}
+            ]);
             secondAreaSeries.hatchFill(hatchFill);
 
+            chart.title("Get and use hatch fill");
             chart.container(stage);
             chart.draw();
         });

@@ -7,14 +7,25 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.bar([2, 5, 3, 9, 4]);
-            // Sets fill in selected mode using image.
+            var series = chart.bar([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // Set select fill.
             series.selectFill({
                 src: "http://static.anychart.com/images/underwater.jpg",
                 mode: "stretch",
                 opacity: 0.5
             });
 
+            // Selects series.
+            series.select();
+
+            chart.title("Set select fill parameter as an image");
             chart.container("container");
             chart.draw();
         });

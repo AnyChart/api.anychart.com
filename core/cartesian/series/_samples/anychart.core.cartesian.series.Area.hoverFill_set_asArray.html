@@ -7,12 +7,21 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.area([2, 5, 3, 9, 4]);
-            // Sets hover fill.
-            series.hoverFill(["#004D40", "#E0F2F1"]);
+            var series = chart.area([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // Set hover fill.
+            series.hoverFill(["#EAECC6", "#2BC0E4"]);
+
             // Hovers series.
             series.hover();
 
+            chart.title("Set series hover fill as an array");
             chart.container("container");
             chart.draw();
         });

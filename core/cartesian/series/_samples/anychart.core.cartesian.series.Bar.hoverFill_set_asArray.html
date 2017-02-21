@@ -6,8 +6,21 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.bar([2, 5, 3, 9, 4]);
-            series.hoverFill(["#004D40", "#E0F2F1"]); // sets hover fill
+
+            var series = chart.bar([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // Set hover fill.
+            series.hoverFill(["#EAECC6", "#2BC0E4"]);
+
+            series.hover();
+
+            chart.title("Set hover fill parameter as an array");
             chart.container("container");
             chart.draw();
         });

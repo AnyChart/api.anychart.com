@@ -7,13 +7,22 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.bar([2, 5, 3, 9, 4]);
-            series.selectFill("#9575CD");
+            var series = chart.bar([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+            series.selectFill("#F44336");
 
-            // Gets fill of the series.
+            // Get series select fill.
             var selectFill = series.selectFill();
 
-            chart.title({fontColor: selectFill});
+            // Selects series.
+            series.select();
+
+            chart.title({fontColor: selectFill, text: "Get and use select fill"});
             chart.container("container");
             chart.draw();
         });

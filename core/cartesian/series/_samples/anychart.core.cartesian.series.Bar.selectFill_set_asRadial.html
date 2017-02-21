@@ -7,11 +7,22 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.bar([2, 5, 8, 9, 4]);
+            var series = chart.bar([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
             series.stroke("none");
-            // Sets fill for hover mode using radial gradient.
+
+            // Set select fill.
             series.selectFill(["#FEFEFE", "#424242"], 0.69, 0.59, anychart.math.rect(20, 50, 400, 400), 0.8, 0.9, 0.84);
 
+            // Selects series.
+            series.select();
+
+            chart.title("Set select fill as a radial gradient");
             chart.container("container");
             chart.draw();
         });

@@ -7,15 +7,22 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.area([2, 5, 3, 9, 4]);
+            var series = chart.area([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
             series.hoverFill("#64B5F6");
+
             // Hovers series.
             series.hover();
 
-            // Gets fill in hover mode of the series.
+            // Get fill in hover mode of the series.
             var hoverFill = series.hoverFill();
 
-            chart.title({fontColor: hoverFill});
+            chart.title({text: "Get and use hover fill", fontColor: hoverFill});
             chart.container("container");
             chart.draw();
         });

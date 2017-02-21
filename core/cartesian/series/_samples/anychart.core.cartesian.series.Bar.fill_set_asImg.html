@@ -6,12 +6,23 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.bar([2, 5, 3, 9, 4]);
+
+            var series = chart.bar([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // Set fill.
             series.fill({
                 src: "http://static.anychart.com/images/underwater.jpg",
                 mode: "stretch",
                 opacity: 0.5
-            }); // sets image fill
+            });
+
+            chart.title();
             chart.container("container");
             chart.draw();
         });

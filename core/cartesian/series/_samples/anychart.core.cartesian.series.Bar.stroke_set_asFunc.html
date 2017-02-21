@@ -6,10 +6,21 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.bar([2, 5, 3, 9, 4]);
+
+            var series = chart.bar([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // Set stroke.
             series.stroke(function() {
                 return "3 " + anychart.color.darken(this.sourceColor);
-            }); // sets stroke
+            });
+
+            chart.title("Set stroke parameter as a function");
             chart.container("container");
             chart.draw();
         });
