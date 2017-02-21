@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line anyChart"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.column();
+
+            var series = chart.line([10, 20, 15, 30, 5]);
+
+            var currentRendering = series.rendering();
+            currentRendering.point(drawer);
+            currentRendering.needsZero(true);
+
+            // Enable width.
+            currentRendering.needsWidth(true);
+
+            chart.title("Enable width for the series");
+            chart.container("container");
+            chart.draw();
+        });
+        function drawer() {
+            if (this.missing) {
+                return;
+            }
+            var shapes = this.getShapesGroup(this.pointState);
+
+            var value = this.value - this.pointWidth / 20;
+
+            shapes["stroke"]
+                    .moveTo(this.x, this.zero)
+                    .lineTo(this.x, value - 70)
+                    .lineTo(this.x + 50, value - 40)
+                    .lineTo(this.x, value)
+                    .lineTo(this.x + 50, value + 30)
+                    .close(this.x, this.zero);
+        }
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

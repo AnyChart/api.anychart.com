@@ -1,0 +1,438 @@
+/**
+ * Series renderer settings class.
+ * @param {anychart.core.stock.series.Base|anychart.core.cartesian.series.Base|anychart.core.stock.scrollerSeries.Base} series Series instance.
+ * @constructor
+ * @extends {anychart.core.Base}
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.series.RenderingSettings.prototype.shapes
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for shapes settings.
+ * @shortDescription Shapes settings.
+ * @category Specific settings
+ * @example anychart.core.series.RenderingSettings.shapes_get_set
+ * @return {Array.<anychart.core.series.RenderingSettings.ShapeConfig>} Shapes settings.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.shapes;
+
+/**
+ * Setter for the shapes settings.
+ * @example anychart.core.series.RenderingSettings.shapes_get_set
+ * @param {?Array.<anychart.core.series.RenderingSettings.ShapeConfig>=} opt_value Value to set.
+ * @return {anychart.core.series.RenderingSettings} Self instance for method chaining.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.shapes;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.series.RenderingSettings.prototype.start
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the start.
+ * @shortDescription Start settings.
+ * @category Specific settings
+ * @listing See listing
+ * var currentRendering = series.rendering();
+ * var startFunction = currentRendering.start();
+ * @return {function} The start function.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.start;
+
+/**
+ * Setter for the start.
+ * @param {function=} opt_startFunction Function that looks like
+ * <code>function(anychart.core.series.RenderingSettings.Context){
+ * this.anychart.core.series.RenderingSettings.Context
+ * // The context contains fields:
+ * // series - Chart series (anychart.core.stock.series.Base|anychart.core.cartesian.series.Base|anychart.core.stock.scrollerSeries.Base).
+ * // seriesState - State of entire series (anychart.PointState).
+ * return startValue;
+ * }</code>
+ * @return {anychart.core.series.RenderingSettings} Self instance for method chaining.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.start;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.series.RenderingSettings.prototype.finish
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the finish.
+ * @shortDescription Finish settings.
+ * @category Specific settings
+ * @listing See listing
+ * var currentRendering = series.rendering();
+ * var finishFunction = currentRendering.finish();
+ * @return {function} The finish function.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.finish;
+
+/**
+ * Setter for the finish.
+ * @param {function=} opt_finishFunction Function that looks like
+ * <code>function(anychart.core.series.RenderingSettings.Context){
+ * this.anychart.core.series.RenderingSettings.Context
+ * // The context contains fields:
+ * // series - Chart series (anychart.core.stock.series.Base|anychart.core.cartesian.series.Base|anychart.core.stock.scrollerSeries.Base).
+ * // seriesState - State of entire series (anychart.PointState).
+ * return finishValue;
+ * }</code>
+ * @return {anychart.core.series.RenderingSettings} Self instance for method chaining.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.finish;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.series.RenderingSettings.prototype.point
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the point.
+ * @shortDescription Point settings.
+ * @category Specific settings
+ * @listing See listing
+ * var currentRendering = series.rendering();
+ * var pointFunction = currentRendering.point();
+ * @return {function} The point function.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.point;
+
+/**
+ * Setter for the point.
+ * @example anychart.core.series.RenderingSettings.point_set
+ * @param {function=} opt_pointFunction Function that looks like
+ * <code>function(anychart.core.series.RenderingSettings.PointContext){
+ * this.anychart.core.series.RenderingSettings.PointContext
+ * // The context contains fields:
+ * // size - The size value if series is Bubble.
+ * // x - The pixel X coordinate of the point center.
+ * // pointState - Point state (anychart.PointState).
+ * // missing - Whether the point is missing.
+ * // categoryWidth - The category width if XScale is ordinal. Otherwise 1.
+ * // pointWidth - The point width, if needsWidth() value is true. Otherwise undefined.
+ * // zero - Zero value by YScale, if needsZero() value is true.
+ * return pointValue;
+ * }</code>
+ * @return {anychart.core.series.RenderingSettings} Self instance for method chaining.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.point;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.series.RenderingSettings.prototype.updatePoint
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the update of a point.
+ * @shortDescription Point update settings
+ * @category Specific settings
+ * @listing See listing
+ * var currentRendering = series.rendering();
+ * var updatePointFunction = currentRendering.updatePoint();
+ * @return {function} Self instance for method chaining.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.updatePoint;
+
+/**
+ * Setter for the update of a point.
+ * Change the point shape when the state changes.
+ * @example anychart.core.series.RenderingSettings.updatePoint_set
+ * @param {function=} opt_pointFunction Function that looks like
+ * <code>function(anychart.core.series.RenderingSettings.PointContext){
+ * this.anychart.core.series.RenderingSettings.PointContext
+ * // The context contains fields:
+ * // size - The size value if series is Bubble.
+ * // x - The pixel X coordinate of the point center.
+ * // pointState - Point state (anychart.PointState).
+ * // missing - Whether the point is missing.
+ * // categoryWidth - The category width if XScale is ordinal. Otherwise 1.
+ * // pointWidth - The point width, if needsWidth() value is true. Otherwise undefined.
+ * // zero - Zero value by YScale, if needsZero() value is true.
+ * // shapes - Shapes group of the point.
+ * return updatePointValue;
+ * }</code>
+ * @return {anychart.core.series.RenderingSettings} Self instance for method chaining.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.updatePoint;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.series.RenderingSettings.prototype.needsZero
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for zero value.
+ * @shortDescription Zero settings
+ * @category Specific settings
+ * @listing See listing
+ * var currentRendering = series.rendering();
+ * var zeroFlag = currentRendering.needsZero();
+ * @return {boolean} Zero value.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.needsZero;
+
+/**
+ * Setter for zero value.
+ * @detailed <b>Note:</b> By default, zero value is disabled for the next series:
+ * <ul>
+ *   <li>Box</li>
+ *   <li>Bubble</li>
+ *   <li>Candlestick</li>
+ *   <li>Line</li>
+ *   <li>Marker</li>
+ *   <li>OHLC</li>
+ *   <li>RangeArea</li>
+ *   <li>RangeBar</li>
+ *   <li>RangeColumn</li>
+ *   <li>RangeSplineArea</li>
+ *   <li>RangeStepArea</li>
+ *   <li>Spline</li>
+ *   <li>StepLine</li>
+ * </ul>
+ * Set <b>needsZero(true)</b> to start working with it.
+ * @example anychart.core.series.RenderingSettings.needsZero_set
+ * @param {boolean=} opt_value Whether the series has zero value.
+ * @return {anychart.core.series.RenderingSettings} Self instance for method chaining.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.needsZero;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// anychart.core.series.RenderingSettings.prototype.needsWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for points width.
+ * @shortDescription Points width settings
+ * @category Specific settings
+ * @listing See listing
+ * var currentRendering = series.rendering();
+ * var widthFlag = currentRendering.needsWidth();
+ * @return {boolean} Points width.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.needsWidth;
+
+/**
+ * Setter for points width.
+ * @detailed <b>Note:</b> By default, points width is disabled for the next series:
+ * <ul>
+ *   <li>Area</li>
+ *   <li>Area3d</li>
+ *   <li>Bubble</li>
+ *   <li>Line</li>
+ *   <li>Marker</li>
+ *   <li>RangeArea</li>
+ *   <li>RangeSplineArea</li>
+ *   <li>RangeStepArea</li>
+ *   <li>Spline</li>
+ *   <li>SplineArea</li>
+ *   <li>StepArea</li>
+ *   <li>StepLine</li>
+ * </ul>
+ * Set <b>needsWidth(true)</b> to start working with it.
+ * @example anychart.core.series.RenderingSettings.needsWidth_set
+ * @param {boolean=} opt_value Whether the series has points width.
+ * @return {anychart.core.series.RenderingSettings} Self instance for method chaining.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.needsWidth;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.series.RenderingSettings.prototype.yValues
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for YScale values.
+ * @shortDescription YScale values settings.
+ * @category Specific settings
+ * @listing See listing
+ * var currentRendering = series.rendering();
+ * var currentYValues = currentRendering.yValues();
+ * @return {Array.<string>} An array of columns names for the YScale.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.yValues;
+
+/**
+ * Setter for YScale values.
+ * @example anychart.core.series.RenderingSettings.yValues_set
+ * @param {Array.<string>} opt_value An array of columns names.
+ * @return {anychart.core.series.RenderingSettings} Self instance for method chaining.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.prototype.yValues;
+
+/** @inheritDoc */
+anychart.core.series.RenderingSettings.prototype.listen;
+
+/** @inheritDoc */
+anychart.core.series.RenderingSettings.prototype.listenOnce;
+
+/** @inheritDoc */
+anychart.core.series.RenderingSettings.prototype.unlisten;
+
+/** @inheritDoc */
+anychart.core.series.RenderingSettings.prototype.unlistenByKey;
+
+/** @inheritDoc */
+anychart.core.series.RenderingSettings.prototype.removeAllListeners;
+
+
+//------------------------------------------------------------------------------
+//
+//  Context
+//
+//------------------------------------------------------------------------------
+
+/**
+ * Rendering functions context.
+ * @param {anychart.core.stock.series.Base|anychart.core.cartesian.series.Base|anychart.core.stock.scrollerSeries.Base} series Series.
+ * @constructor
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.Context;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.series.RenderingSettings.Context.prototype.getShapesGroup
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Generates a shapes group.
+ * @category Specific settings
+ * @param {anychart.PointState=} opt_state Point state.
+ * @param {number=} opt_baseZIndex Z-index. Z-index is added to zIndex from configuration of shapes.
+ * @param {Object.<string>=} opt_restrictShapes Restricts shapes.
+ * @return {Object.<string, anychart.graphics.vector.Shape>} A shapes group.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.Context.prototype.getShapesGroup;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.series.RenderingSettings.Context.prototype.getStat
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Fetch statistics value by its key or a whole object if no key provided.
+ * @category Data
+ * @param {string=} opt_key Key.
+ * @return {*} Value by key.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.Context.prototype.getStat;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.series.RenderingSettings.PointContext
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Rendering functions context.
+ * @param {anychart.core.series.Base} series Series.
+ * @param {anychart.data.Iterator|anychart.data.TableIterator} point Point iterator.
+ * @param {number} pointState Point state.
+ * @param {Object=} opt_updateShapes The update shapes.
+ * @constructor
+ * @extends {anychart.core.series.RenderingSettings.Context}
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.PointContext;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.series.RenderingSettings.PointContext.prototype.getDataValue
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns data value by name.
+ * @category Data
+ * @example anychart.core.series.RenderingSettings.PointContext.getDataValue
+ * @param {string} name Value name.
+ * @return {*} Value by name
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.PointContext.prototype.getDataValue;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.series.RenderingSettings.PointContext.prototype.getStackedValue
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns stacked value if the series is stacked.
+ * @category Data
+ * @example anychart.core.series.RenderingSettings.PointContext.getStackedValue
+ * @return {*} Value.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.PointContext.prototype.getStackedValue;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.series.RenderingSettings.PointContext.prototype.getStackedZero
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns stacked zero value if the series is stacked.
+ * @category Data
+ * @example anychart.core.series.RenderingSettings.PointContext.getStackedZero
+ * @return {*} Value.
+ * @since 7.13.0
+ */
+anychart.core.series.RenderingSettings.PointContext.prototype.getStackedZero;
+
+/** @inheritDoc */
+anychart.core.series.RenderingSettings.PointContext.prototype.getShapesGroup;
+
+/** @inheritDoc */
+anychart.core.series.RenderingSettings.PointContext.prototype.getStat;
+
+/**
+ * Shape config.
+ * @typedef {object} anychart.core.series.RenderingSettings.ShapeConfig
+ * @property {string} name Shape name.
+ * @property {anychart.enums.ShapeType} shapeType Shape type ("path", "circle", "ellipse" or "rect").
+ * @property {?Array.<string>} fillNames Fill names.
+ * @property {?Array.<string>} strokeNames Stroke names.
+ * @property {boolean} isHatchFill Whether this shape is shape for the hatchFill.
+ * @property {number} zIndex ZIndex for the balance of shapes relative to each other.
+ */
+anychart.core.series.RenderingSettings.ShapeConfig;
+

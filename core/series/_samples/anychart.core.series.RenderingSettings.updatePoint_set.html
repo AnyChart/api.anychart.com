@@ -1,0 +1,53 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line anyChart"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.column();
+
+            var series = chart.column([10, 20, 15, 30, 5]);
+            series.hatchFill(true);
+
+            var currentRendering = series.rendering();
+            currentRendering.point(drawer);
+
+            // Set the update point.
+            currentRendering.updatePoint(drawer);
+
+            chart.title("Set the update point");
+            chart.container("container");
+            chart.draw();
+        });
+        function drawer() {
+            if (this.missing) {
+                return;
+            }
+            var shapes = this.shapes || this.getShapesGroup(this.pointState);
+
+            var leftX = this.x - this.pointWidth / 2;
+            var rightX = leftX + this.pointWidth;
+
+            if (this.pointState > 0) {
+                shapes["path"]
+                        .clear()
+                        .moveTo(this.x, this.zero)
+                        .lineTo(leftX, this.value)
+                        .lineTo(rightX, this.value)
+                        .close();
+            } else {
+                shapes["path"]
+                        .clear()
+                        .moveTo(leftX, this.zero)
+                        .lineTo(this.x, this.value)
+                        .lineTo(rightX, this.zero)
+                        .close();
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

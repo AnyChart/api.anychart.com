@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line anyChart"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.column();
+
+            var series = chart.line([10, 20, 15, 30, 9]);
+
+            var currentRendering = series.rendering();
+            currentRendering.point(drawer);
+
+            // Enable zero value.
+            currentRendering.needsZero(true);
+
+            chart.title("Enable zero value for the series");
+            chart.container("container");
+            chart.draw();
+        });
+        function drawer() {
+            if (this.missing) {
+                return;
+            }
+            var shapes = this.getShapesGroup(this.pointState);
+
+            shapes["stroke"]
+                    .moveTo(this.x, this.zero)
+                    .lineTo(this.x, this.value-70)
+                    .lineTo(this.x + 50, this.value - 40)
+                    .lineTo(this.x, this.value)
+                    .lineTo(this.x+50, this.value+30)
+                    .close(this.x, this.zero);
+        }
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
