@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="column legend anyChart"/>
+    <script src="../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.column();
+
+            chart.data([
+                ["Apples", 21, 99, 19, 72, 94, 71],
+                ["Pears", 41, 7, 71, 10, 27, 79],
+                ["Bananas", 9, 15, 77, 58, 97, 79],
+                ["Grapes", 71, 34, 40, 21, 72, 6],
+                ["Oranges", 6, 29, 11, 46, 19, 49]
+            ]);
+
+            var legend = chart.legend();
+            legend.enabled(true);
+            legend.maxWidth("20%");
+
+            // Set items layout.
+            legend.itemsLayout(anychart.enums.LegendLayout.HORIZONTAL_EXPANDABLE);
+
+            var seriesName = ["Florida", "Texas", "Arizona", "Nevada", "Oregon", "Idaho"];
+
+            for (var i = 0; i < chart.getSeriesCount(); i++) {
+                chart.getSeriesAt(i).name(seriesName[i]);
+            }
+
+            chart.title("Set items layout");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

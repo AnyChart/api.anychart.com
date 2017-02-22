@@ -5,10 +5,21 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.pie([8, 3, 7, 2]);
+            chart = anychart.pie([
+                {x: "Apples", value: 99},
+                {x: "Pears", value: 72},
+                {x: "Bananas", value: 94},
+                {x: "Grapes", value: 41},
+                {x: "Oranges", value: 71},
+                {x: "Pineapple", value: 27}
+            ]);
+
             var legend = chart.legend();
-            var layout = legend.itemsLayout(); // get layout
-            chart.title("Items layout - " + layout);
+
+            // Get layout.
+            var layout = legend.itemsLayout();
+
+            chart.title("Items layout is " + layout);
             chart.container("container");
             chart.draw();
         });

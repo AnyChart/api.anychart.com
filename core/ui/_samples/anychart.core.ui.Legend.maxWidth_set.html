@@ -1,0 +1,87 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="column legend anyChart"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function () {
+            stage = anychart.graphics.create("container");
+
+            var data = [
+                ["Apples", 21, 99, 19, 72, 94, 71],
+                ["Pears", 41, 7, 71, 10, 27, 79],
+                ["Bananas", 9, 15, 77, 58, 97, 79],
+                ["Grapes", 71, 34, 40, 21, 72, 6],
+                ["Oranges", 6, 29, 11, 46, 19, 49]
+            ];
+
+            chart = anychart.column();
+
+            var series = anychart.data.mapAsTable(data, "value");
+
+            for (var i in series) {
+                chart.column(series[i]);
+            }
+
+            var legend = chart.legend();
+            legend.enabled(true);
+
+            // Set maximum width.
+            legend.maxWidth("40%");
+
+            var seriesName = ["Florida", "Texas", "Arizona", "Nevada", "Oregon", "Idaho"];
+
+            for (var j = 0; j < chart.getSeriesCount(); j++) {
+                chart.getSeriesAt(j).name(seriesName[j]);
+            }
+
+            chart.title("Set a maximum width for the legend");
+            chart.container(stage);
+            chart.draw();
+
+            var labelRemove = anychart.standalones.label();
+            labelRemove.background({fill: "#9E9E9E"});
+            labelRemove.text("Click to remove 1 series");
+            labelRemove.fontColor("#fff");
+            labelRemove.padding(5);
+            labelRemove.offsetX(5);
+            labelRemove.offsetY(5);
+            labelRemove.listen("mouseOver", function () {
+                document.body.style.cursor = "pointer";
+            });
+            labelRemove.listen("mouseOut", function () {
+                document.body.style.cursor = "auto";
+            });
+            labelRemove.listen("click",function(){
+                chart.removeSeriesAt(chart.getSeriesCount() - 1);
+            });
+            labelRemove.container(stage);
+            labelRemove.draw();
+
+            var labelAdd = anychart.standalones.label();
+            labelAdd.background({fill: "#9E9E9E"});
+            labelAdd.text("Click to add 7 series");
+            labelAdd.fontColor("#fff");
+            labelAdd.padding(5);
+            labelAdd.offsetX(180);
+            labelAdd.offsetY(5);
+            labelAdd.listen("mouseOver", function () {
+                document.body.style.cursor = "pointer";
+            });
+            labelAdd.listen("mouseOut", function () {
+                document.body.style.cursor = "auto";
+            });
+            labelAdd.listen("click",function(){
+                for (var i in series) {
+                    chart.column(series[i]);
+                }
+            });
+            labelAdd.container(stage);
+            labelAdd.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
