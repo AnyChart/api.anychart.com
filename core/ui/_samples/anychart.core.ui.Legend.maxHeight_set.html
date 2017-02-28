@@ -36,51 +36,40 @@
             for (var j = 0; j < chart.getSeriesCount(); j++) {
                 chart.getSeriesAt(j).name(seriesName[j]);
             }
-            
+
+            chart.top(50);
             chart.title("Set a maximum height for the legend");
             chart.container(stage);
             chart.draw();
 
-            var labelRemove = anychart.standalones.label();
-            labelRemove.background({fill: "#9E9E9E"});
-            labelRemove.text("Click to remove 1 series");
-            labelRemove.fontColor("#fff");
-            labelRemove.padding(5);
-            labelRemove.offsetX(5);
-            labelRemove.offsetY(5);
-            labelRemove.listen("mouseOver", function () {
-                document.body.style.cursor = "pointer";
-            });
-            labelRemove.listen("mouseOut", function () {
-                document.body.style.cursor = "auto";
-            });
-            labelRemove.listen("click",function(){
+            createLabel("Click to remove 1 series", 0, function(){
                 chart.removeSeriesAt(chart.getSeriesCount() - 1);
             });
-            labelRemove.container(stage);
-            labelRemove.draw();
 
-            var labelAdd = anychart.standalones.label();
-            labelAdd.background({fill: "#9E9E9E"});
-            labelAdd.text("Click to add 7 series");
-            labelAdd.fontColor("#fff");
-            labelAdd.padding(5);
-            labelAdd.offsetX(180);
-            labelAdd.offsetY(5);
-            labelAdd.listen("mouseOver", function () {
-                document.body.style.cursor = "pointer";
-            });
-            labelAdd.listen("mouseOut", function () {
-                document.body.style.cursor = "auto";
-            });
-            labelAdd.listen("click",function(){
+            createLabel("Click to add 7 series", 40, function(){
                 for (var i in series) {
                     chart.column(series[i]);
                 }
             });
-            labelAdd.container(stage);
-            labelAdd.draw();
         });
+
+        function createLabel(text, offset, action) {
+            customLabel = anychart.standalones.label();
+            customLabel.text(text);
+            customLabel.parentBounds(0, offset, 100, 100);
+            customLabel.listen("click", action);
+            customLabel.background({fill: "#9E9E9E"});
+            customLabel.fontColor("#fff");
+            customLabel.padding(5);
+            customLabel.listen("mouseOver", function () {
+                document.body.style.cursor = "pointer";
+            });
+            customLabel.listen("mouseOut", function () {
+                document.body.style.cursor = "auto";
+            });
+            customLabel.container(stage);
+            customLabel.draw();
+        }
     </script>
 </head>
 <body>
