@@ -5,14 +5,29 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.pie([8, 7, 3, 2]);
+            chart = anychart.pie([
+                {x: "Chrome", value: 8},
+                {x: "Firefox", value: 7},
+                {x: "Safari", value: 3},
+                {x: "IE", value: 2}
+            ]);
+
             var legend = chart.legend();
+
+            // Set items settings.
             legend.items([
-                {index: 0, text: "Chrome", iconType: "circle", iconStroke: "#01579B", iconFill: "#0091EA"},
-                {index: 1, text: "Firefox", iconFill: "#F44336", iconHatchFill: "divot"},
-                {index: 2, text: "Safari", iconFill: "#4CAF50"},
-                {index: 3, text: "IE", iconMarkerType: "circle", iconMarkerFill: "#FFEB3B", iconType: "line"}
-            ]); // sets settings items
+                {index: 0, text: "Chrome", iconType: "circle", iconStroke: "2 #F44336", iconFill: "#0091EA"},
+                {index: 1, text: "Firefox", iconFill: "#1976D2", iconHatchFill: "dashedBackwardDiagonal"},
+                {index: 2, text: "Safari", iconFill: "#FF5722"},
+                {index: 3, text: "IE", iconMarkerType: "square", iconMarkerFill: "#FFEB3B", iconType: "line"}
+            ]);
+
+            legend.listen("click", function(e) {
+                var point = chart.getPoint(e.itemIndex);
+                chart.explodeSlice(e.itemIndex, !point.exploded());
+            });
+
+            chart.title("Set items settings");
             chart.container("container");
             chart.draw();
         });
