@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyMap"/>
+    <script src="../../anychart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
+    <script src="http://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function () {
+            // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+            // See http://docs.anychart.com/latest/Maps/Map_Projections to learn more.
+
+            stage = anychart.graphics.create("container");
+
+            australiaMap = anychart.map();
+            australiaMap.geoData(anychart.maps.australia);
+            australiaMap.unboundRegions({fill: "#64b5f6"});
+            australiaMap.title("Set maximum zoom level. \n Click on label to zoom the map");
+            australiaMap.maxZoomLevel(9);
+            australiaMap.container(stage);
+            australiaMap.draw();
+
+            createLabel("x2 Zoom", 0, function () {
+                australiaMap.zoom(2);
+            });
+        });
+
+        function customListener(e) {
+            var level = australiaMap.getZoomLevel();
+            australiaMap.title().text(level + " x Zoom");
+            if (level === 9) {
+                customLabel.unlisten(anychart.enums.EventType.POINT_CLICK, customListener);
+                australiaMap.title().text("Maximum zoom level");
+            }
+        }
+
+        function createLabel(text, offset, action) {
+            customLabel = anychart.standalones.label();
+            customLabel.text(text);
+            customLabel.parentBounds(0, offset, 100, 100);
+            customLabel.listen("click", action);
+            customLabel.background({fill: "#9E9E9E"});
+            customLabel.fontColor("#fff");
+            customLabel.padding(5);
+            customLabel.listen("mouseOver", function () {
+                document.body.style.cursor = "pointer";
+            });
+            customLabel.listen("mouseOut", function () {
+                document.body.style.cursor = "auto";
+            });
+            customLabel.listen("click", customListener);
+            customLabel.container(stage);
+            customLabel.draw();
+        }
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

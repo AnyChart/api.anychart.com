@@ -1,0 +1,37 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.scatter();
+            chart.line([1.1, 1.4, 1.2, 1.7]);
+            chart.yAxis().overlapMode(true);
+            chart.yAxis().minorTicks(true);
+
+            var scale = chart.yScale();
+
+            // Set maximum ticks count.
+            scale.maxTicksCount(50);
+
+            var ticks = scale.ticks();
+
+            // Set 8 ticks.
+            ticks.interval(0.1);
+
+            var minorTicks = scale.minorTicks();
+
+            // Expected 80 ticks. But maxTicksCount() drops this settings.
+            minorTicks.interval(0.01);
+
+            chart.title("Set maximum ticks count");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
