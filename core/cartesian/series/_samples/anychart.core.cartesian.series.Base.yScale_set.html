@@ -4,15 +4,36 @@
     <meta name="x-cat-tags" content="line anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.line();
-            var seriesScale = anychart.scales.linear();
+
+            var scale = anychart.scales.linear();
+            scale.maximum(10);
+            scale.ticks({interval: 2});
+
             var leftAxis = chart.yAxis(1);
-            leftAxis.scale(seriesScale);
+            leftAxis.scale(scale);
+
             chart.yAxis(1, {orientation: "right"});
-            chart.line([2, 3, 4]);
-            var series = chart.line([200, 113, 321]);
-            series.yScale(seriesScale); // sets Y scale
+
+            chart.line([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 1},
+                {x: "April", value: 3}
+            ]).name("Sales forecast");
+
+
+            var series = chart.line([
+                {x: "January", value: 5},
+                {x: "February", value: 2},
+                {x: "March", value: 4},
+                {x: "April", value: 1}
+            ]).name("Real sales");
+
+            // Set Y scale.
+            series.yScale(scale);
+
             chart.container("container");
             chart.draw();
         });

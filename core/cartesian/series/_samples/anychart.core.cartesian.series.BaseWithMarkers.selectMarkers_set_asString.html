@@ -7,11 +7,20 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.column([6, 2, 5, 3, 8, 6]);
+            var series = chart.column([
+                {x: "January", value: 4},
+                {x: "February", value: 2},
+                {x: "March", value: 7},
+                {x: "April", value: 1},
+                {x: "May", value: 10}
+            ]);
             series.markers(true);
-            // Sets type for selected marker.
+
+
+            // Set select markers type.
             series.selectMarkers("line");
 
+            chart.title("Set select markers type");
             chart.container("container");
             chart.draw();
         });

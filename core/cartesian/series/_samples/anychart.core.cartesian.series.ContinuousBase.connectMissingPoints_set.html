@@ -6,22 +6,31 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
+
             var blueLine = chart.line([
-                ["A1", 1],
-                ["A2", 1.6],
-                ["A3", "missing"],
-                ["A4", 1.1],
-                ["A5", 1.9]
+                {x: "January", value: 1},
+                {x: "February", value: 1.6},
+                {x: "March", value: "missing"},
+                {x: "April", value: 1.1},
+                {x: "May", value: 1.9}
             ]);
-            blueLine.connectMissingPoints(false); // disables connect a missing point
+
+            // Disable connect a missing point.
+            blueLine.connectMissingPoints(false);
+
             var redLine = chart.line([
-                ["A1", 2],
-                ["A2", 2.6],
-                ["A3", "missing"],
-                ["A4", 2.1],
-                ["A5", 2.9]
+                {x: "January", value: 2},
+                {x: "February", value: 2.6},
+                {x: "March", value: "missing"},
+                {x: "April", value: 2.1},
+                {x: "May", value: 2.9}
             ]);
-            redLine.connectMissingPoints(true); // enables connect a missing point
+            redLine.color("#F44336");
+
+            // Enable connect a missing point.
+            redLine.connectMissingPoints(true);
+
+            chart.title("Enable connect a missing point");
             chart.container("container");
             chart.draw();
         });

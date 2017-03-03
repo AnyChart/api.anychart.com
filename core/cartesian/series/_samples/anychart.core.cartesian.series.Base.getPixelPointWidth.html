@@ -5,14 +5,21 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.column();
 
-            var series = chart.column([6, 2, 5, 3, 8, 6]);
+            var series = chart.column([
+                {x: "January", value: 1},
+                {x: "February", value: 5},
+                {x: "March", value: 1},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+            series.name("Sales");
 
             chart.container("container");
             chart.draw();
 
-            // Gets pixel point width.
+            // Get pixel point width.
             var width = series.getPixelPointWidth();
             chart.title("Pixel point width is " + width);
         });

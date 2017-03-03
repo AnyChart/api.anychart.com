@@ -1,15 +1,26 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="cartesian line errorSeries anyChart"/>
+    <meta name="x-cat-tags" content="line errorSeries anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line([2, 6, 4, 8]);
+            chart = anychart.line([
+                {x: "January", value: 2},
+                {x: "February", value: 6},
+                {x: "March", value: 4},
+                {x: "April", value: 8}
+            ]);
+
             var series = chart.getSeries(0);
+            series.name("Sales");
             series.error(1);
-            var error = series.error(); // get error.
+
+            // Get series error.
+            var error = series.error();
             error.mode("y");
+
+            chart.title("Get and modify series error");
             chart.container("container");
             chart.draw();
         });

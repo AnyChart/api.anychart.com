@@ -7,15 +7,22 @@
         anychart.onDocumentReady(function() {
             chart = anychart.column();
 
-            var series = chart.column([6, 15, 3, 12, 32, 44]);
+            var series = chart.column([
+                {x: "January", value: 6},
+                {x: "February", value: 16},
+                {x: "March", value: 4},
+                {x: "April", value: 12},
+                {x: "May", value: 5}
+            ]);
             series.hoverFill("#F44336");
 
+            chart.title("Disable hover by array of indexes");
             chart.container("container");
             chart.draw();
 
             series.hover([2, 3, 4]);
 
-            // Disables hover by indexes 2 and 4.
+            // Disable hover by indexes 2 and 4.
             series.unhover([2, 4]);
         });
     </script>

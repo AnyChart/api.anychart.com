@@ -7,13 +7,21 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.column([6, 2, 5, 3, 8, 6]);
+            var series = chart.column([
+                {x: "January", value: 1},
+                {x: "February", value: 5},
+                {x: "March", value: 1},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+            series.name("Sales");
 
             chart.container("container");
             chart.draw();
+
             // Transforms to pixel coordinates.
-            series.transformX(2, 0.5);
-            // Returns 793.3333333333333
+            series.transformX("February", 0.5);
+            // Returns 463.30000000000007
         });
     </script>
 </head>

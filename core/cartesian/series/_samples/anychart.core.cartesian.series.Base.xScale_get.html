@@ -6,42 +6,21 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
-            chart.title(null);
 
-            var secondScale = anychart.scales.ordinal();
-
-            var xAxis = chart.xAxis(1);
-            xAxis.scale(secondScale);
-            xAxis.orientation("top");
-            xAxis.title("DateTime axis");
-
-            chart.line([
-                ["A1", 2],
-                ["A2", 2.4],
-                ["A3", 1],
-                ["A4", 5]
+            var series = chart.line([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 1},
+                {x: "April", value: 3}
             ]);
+            series.name("Sales");
 
-            var orangeSeries = chart.line([
-                ["2014-01-15", 1],
-                ["2014-06-15", 3],
-                ["2014-10-15", 2],
-                ["2014-12-15", 9]
-            ]);
-            orangeSeries.xScale(secondScale);
+            // Get series X scale.
+            var scale = series.xScale();
 
-            var greenSeries = chart.line([
-                ["2014-01-15", 6],
-                ["2014-06-15", 4],
-                ["2014-10-15", 7],
-                ["2014-12-15", 3]
-            ]);
+            scale.inverted(true);
 
-            // Gets series X scale.
-            var scaleOrangeSeries = orangeSeries.xScale();
-
-            greenSeries.xScale(scaleOrangeSeries);
-
+            chart.title("Get and modify X scale");
             chart.container("container");
             chart.draw();
         });

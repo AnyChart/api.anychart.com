@@ -8,14 +8,25 @@
         anychart.onDocumentReady(function() {
             chart = anychart.column();
 
-            var series = chart.column([4, 2, 7, 1, 10, 15, 8, 4, 6, 3]);
+            var series = chart.column([
+                {x: 0, value: 4},
+                {x: 2, value: 2},
+                {x: 3, value: 7},
+                {x: 4, value: 1},
+                {x: 5, value: 10},
+                {x: 6, value: 6},
+                {x: 7, value: 8},
+                {x: 8, value: 4},
+                {x: 9, value: 6},
+                {x: 10, value: 3}
+            ]);
             series.excludePoint([0, 2, 4, 6, 9]);
 
             // Get exclude points.
             var points = series.getExcludedPoints();
 
             chart.column([points[0].get("value"), points[1].get("value"), points[2].get("value"), points[3].get("value"), points[4].get("value")]);
-            chart.title("Get and use the excluded points.");
+            chart.title("Get and use the excluded points");
             chart.container("container");
             chart.draw();
         });

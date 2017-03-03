@@ -7,12 +7,18 @@
         anychart.onDocumentReady(function() {
             chart = anychart.bar();
 
-            var series = chart.bar([0.3, 1.6, 1.2, 1.9]);
+            var series = chart.bar([
+                {x: "January", value: 0.3},
+                {x: "February", value: 1.6},
+                {x: "March", value: 1.2},
+                {x: "April", value: 1.9},
+                {x: "May", value: 1}
+            ]);
 
-            // Gets the point width.
+            // Get the point width.
             var pointWidth = series.pointWidth();
 
-            chart.title("The current point width - " + pointWidth);
+            chart.title("The point width is " + pointWidth);
             chart.container("container");
             chart.draw();
         });

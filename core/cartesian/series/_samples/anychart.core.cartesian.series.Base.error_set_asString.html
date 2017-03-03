@@ -5,10 +5,20 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line([2, 6, 4, 8]);
-            chart.xScale("linear");
+            chart = anychart.line([
+                {x: "January", value: 1},
+                {x: "February", value: 5},
+                {x: "March", value: 1},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
             var series = chart.getSeries(0);
-            series.error("10%"); // sets error.
+
+            // Set series error.
+            series.error("20%");
+
+            chart.title("Set series error");
             chart.container("container");
             chart.draw();
         });

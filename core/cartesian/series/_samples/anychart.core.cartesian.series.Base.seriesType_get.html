@@ -7,13 +7,19 @@
         anychart.onDocumentReady(function () {
             chart = anychart.cartesian();
 
-            var series = chart.line([45, 35, 43, 46, 32, 40, 30]);
+            var series = chart.line([
+                {x: "January", value: 4},
+                {x: "February", value: 2},
+                {x: "March", value: 7},
+                {x: "April", value: 1},
+                {x: "May", value: 10}
+            ]);
             series.seriesType("column");
 
-            // Get the series type to switch
+            // Get the series type to switch.
             var seriesType = series.seriesType();
 
-            chart.title("The current series type is " + seriesType + ".");
+            chart.title("Series type is " + seriesType);
             chart.container("container");
             chart.draw();
         });

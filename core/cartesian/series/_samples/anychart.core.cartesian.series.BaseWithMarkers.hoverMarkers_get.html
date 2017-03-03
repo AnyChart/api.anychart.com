@@ -6,10 +6,21 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.spline([1, 1.4, 1.2, 2]);
+
+            var series = chart.spline([
+                {x: "January", value: 4},
+                {x: "February", value: 2},
+                {x: "March", value: 7},
+                {x: "April", value: 1},
+                {x: "May", value: 10}
+            ]);
             series.markers(true);
-            var hoverMarkers = series.hoverMarkers(); // get hover markers
+
+            // Get hover markers.
+            var hoverMarkers = series.hoverMarkers();
             hoverMarkers.size(10);
+
+            chart.title("Get and modify hover markers");
             chart.container("container");
             chart.draw();
         });

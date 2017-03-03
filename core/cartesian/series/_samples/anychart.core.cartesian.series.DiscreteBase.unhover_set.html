@@ -7,14 +7,22 @@
         anychart.onDocumentReady(function() {
             chart = anychart.column();
 
-            var series = chart.column([6, 15, 3, 12, 32, 44]);
+            var series = chart.column([
+                {x: "January", value: 6},
+                {x: "February", value: 16},
+                {x: "March", value: 4},
+                {x: "April", value: 12},
+                {x: "May", value: 5}
+            ]);
+            series.hoverFill("#F44336");
 
+            chart.title("Disable hover");
             chart.container("container");
             chart.draw();
 
-            series.hover(3);
+            series.hover(1);
 
-            // Disables hover.
+            // Disable hover.
             series.unhover();
         });
     </script>

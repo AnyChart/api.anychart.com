@@ -4,20 +4,21 @@
     <meta name="x-cat-tags" content="line anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.line();
+
             var series = chart.line([
-                ["A1", 1],
-                ["A2", 1.6],
-                ["A3", "missing"],
-                ["A4", 1.1],
-                ["A5", 1.9]
+                {x: "January", value: 1},
+                {x: "February", value: 1.6},
+                {x: "March", value: "missing"},
+                {x: "April", value: 1.1},
+                {x: "May", value: 1.9}
             ]);
 
-            // Gets flag for connect missing points.
+            // Get flag for the connect missing points.
             var flag = series.connectMissingPoints();
 
-            chart.title("Flag for connect missing points - " + flag);
+            chart.title("Connect missing points is " + flag);
             chart.container("container");
             chart.draw();
         });

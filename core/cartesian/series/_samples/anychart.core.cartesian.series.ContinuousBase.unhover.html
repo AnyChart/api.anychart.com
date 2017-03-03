@@ -6,11 +6,24 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
-            var series = chart.line([-6, -15, 3, 12, 32, 44]);
+
+            var series = chart.line([
+                {x: "January", value: 1},
+                {x: "February", value: 1.6},
+                {x: "March", value: 1.1},
+                {x: "April", value: 2.1},
+                {x: "May", value: 1.3}
+            ]);
+            series.hoverStroke("#F44336");
+
+            chart.title("Disable hover state");
             chart.container("container");
             chart.draw();
+
             series.hover();
-            series.unhover(); // disables hover
+
+            // Disable hover.
+            series.unhover();
         });
     </script>
 </head>

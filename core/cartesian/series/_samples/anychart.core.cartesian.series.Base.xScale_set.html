@@ -4,25 +4,34 @@
     <meta name="x-cat-tags" content="line anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.line();
-            chart.title(null);
+
             var secondScale = anychart.scales.ordinal();
+
             var xAxis = chart.xAxis(1);
             xAxis.scale(secondScale);
             xAxis.orientation("top");
-            xAxis.title("DateTime axis");
+
             chart.line([
-                ["A1", 2],
-                ["A2", 2.4],
-                ["A3", 1]
-            ]);
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 1},
+                {x: "April", value: 3}
+            ]).name("Sales forecast");
+
             var series = chart.line([
-                ["2014-01-01", 1],
-                ["2014-01-02", 3],
-                ["2014-01-03", 2]
+                {x: "2017-01-01", value: 5},
+                {x: "2017-02-01", value: 2},
+                {x: "2017-03-01", value: 4},
+                {x: "2017-04-01", value: 1}
             ]);
-            series.xScale(secondScale); // sets X scale
+            series.name("Real sales");
+
+            // Set X scale.
+            series.xScale(secondScale);
+
+            chart.title("Set series X scale");
             chart.container("container");
             chart.draw();
         });

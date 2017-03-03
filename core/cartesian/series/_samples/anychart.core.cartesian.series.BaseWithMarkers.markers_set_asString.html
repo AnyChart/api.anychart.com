@@ -6,8 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.spline([1, 1.4, 1.2, 2]);
-            series.markers("star5"); // sets markers type
+
+            var series = chart.spline([
+                {x: "January", value: 4},
+                {x: "February", value: 2},
+                {x: "March", value: 7},
+                {x: "April", value: 1},
+                {x: "May", value: 10}
+            ]);
+
+            // Set markers type.
+            series.markers("star5");
+
+            chart.title("Set markers type");
             chart.container("container");
             chart.draw();
         });

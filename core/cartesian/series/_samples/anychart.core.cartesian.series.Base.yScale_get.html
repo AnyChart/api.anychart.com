@@ -7,23 +7,20 @@
         anychart.onDocumentReady(function() {
             chart = anychart.line();
 
-            var seriesScale = anychart.scales.linear();
+            var series = chart.line([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 1},
+                {x: "April", value: 3}
+            ]);
+            series.name("Sales");
 
-            var leftAxis = chart.yAxis(1);
-            leftAxis.scale(seriesScale);
+            // Get series X scale.
+            var scale = series.yScale();
 
-            chart.yAxis(1, {orientation: "right"});
-            chart.line([2, 6, 4]);
+            scale.inverted(true);
 
-            var orangeSeries = chart.line([200, 113, 321]);
-            orangeSeries.yScale(seriesScale);
-
-            // Gets series Y scale.
-            var scaleOrangeSeries = orangeSeries.yScale();
-
-            var greenSeries = chart.line([567, 236, 854]);
-            greenSeries.yScale(scaleOrangeSeries);
-
+            chart.title("Get and modify Y scale");
             chart.container("container");
             chart.draw();
         });

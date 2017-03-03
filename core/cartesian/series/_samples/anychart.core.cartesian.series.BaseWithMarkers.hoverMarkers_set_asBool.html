@@ -6,9 +6,20 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.spline([1, 1.4, 1.2, 2]);
+
+            var series = chart.spline([
+                {x: "January", value: 4},
+                {x: "February", value: 2},
+                {x: "March", value: 7},
+                {x: "April", value: 1},
+                {x: "May", value: 10}
+            ]);
             series.markers(true);
-            series.hoverMarkers(false); // disables hover markers
+
+            // Disables hover markers.
+            series.hoverMarkers(false);
+
+            chart.title("Disables hover markers");
             chart.container("container");
             chart.draw();
         });

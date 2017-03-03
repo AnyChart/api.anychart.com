@@ -5,15 +5,26 @@
     <script src="../../../../anychart.min.js"></script>
     <link rel="stylesheet" href="../../../../anychart-ui.css">
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.column();
 
-            var series = chart.column([4, 2, 7, 1, 10, 6, 8, 4, 6, 3]);
+            var series = chart.column([
+                {x: "January", value: 4},
+                {x: "February", value: 2},
+                {x: "March", value: 7},
+                {x: "April", value: 1},
+                {x: "May", value: 10},
+                {x: "June", value: 6},
+                {x: "July", value: 8},
+                {x: "August", value: 4},
+                {x: "September", value: 6},
+                {x: "October", value: 3}
+            ]);
 
-            // Excludes the points.
+            // Exclude the points.
             series.excludePoint([0, 4, 9]);
 
-            chart.title("Excludes three points by indexes.");
+            chart.title("Exclude three points by indexes");
             chart.container("container");
             chart.draw();
         });

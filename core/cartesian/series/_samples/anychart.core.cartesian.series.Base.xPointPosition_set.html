@@ -6,15 +6,39 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.column();
-            var firstSeries = chart.column([1, 3, 3]);
-            // Sets position of the point.
+
+            var firstSeries = chart.column([
+                {x: "January", value: 6},
+                {x: "February", value: 4},
+                {x: "March", value: 3}
+            ]);
+            firstSeries.name("Apples");
+
+            // Set point position.
             firstSeries.xPointPosition(0.3);
-            var secondSeries = chart.column([1.2, 2.3, 2.3]);
-            // Sets position of the point.
+
+            var secondSeries = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 1}
+            ]);
+            secondSeries.name("Pineapples");
+
+            // Set point position.
             secondSeries.xPointPosition(0.5);
-            var thirdSeries = chart.column([1, 2.5, 1]);
-            // Sets position of the point.
+
+            var thirdSeries = chart.column([
+                {x: "January", value: 3},
+                {x: "February", value: 7},
+                {x: "March", value: 3}
+            ]);
+
+            thirdSeries.name("Bananas");
+
+            // Set point position.
             thirdSeries.xPointPosition(0.7);
+
+            chart.title("Set point position");
             chart.container("container");
             chart.draw();
         });
