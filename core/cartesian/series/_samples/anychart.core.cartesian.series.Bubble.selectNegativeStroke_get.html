@@ -5,22 +5,25 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.bubble();
 
             var series = chart.bubble([
-                [1, 1.0, 2],
-                [2, 1.6, -7],
-                [3, 1.2, -4],
-                [4, 1.9, 3]
+                {x: 1, value: 1.0, size: 2},
+                {x: 2, value: 1.6, size: -7},
+                {x: 3, value: 1.2, size: -4},
+                {x: 4, value: 1.9, size: 3}
             ]);
 
             series.displayNegative(true);
-            series.selectNegativeStroke("#64B5F6");
+            series.selectNegativeStroke("4 #FF3D00");
 
-            // Gets negative stroke in selected mode.
+            // Get select negative stroke.
             var selectedNegativeStroke = series.selectNegativeStroke();
 
-            chart.title({fontColor: selectedNegativeStroke});
+            // Selects series.
+            series.select();
+
+            chart.title({text: "Get and use select negative stroke", fontColor: selectedNegativeStroke.color});
             chart.container("container");
             chart.draw();
         });

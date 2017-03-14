@@ -5,21 +5,24 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.bubble();
 
             var series = chart.bubble([
-                [1, 1.0, 2],
-                [2, 1.6, 7],
-                [3, 1.2, 4],
-                [4, 1.9, 3]
+                {x: 1, value: 1.0, size: 2},
+                {x: 2, value: 1.6, size: 7},
+                {x: 3, value: 1.2, size: 4},
+                {x: 4, value: 1.9, size: 3}
             ]);
 
-            series.selectStroke("#4CAF50");
+            series.selectStroke("4 #4CAF50");
 
-            // Gets stroke for selected mode.
+            // Get select stroke.
             var selectedHoverStroke = series.selectStroke();
 
-            chart.title({fontColor: selectedHoverStroke});
+            // Selects series.
+            series.select();
+
+            chart.title({text: "Get and use select stroke", fontColor: selectedHoverStroke.color});
             chart.container("container");
             chart.draw();
         });

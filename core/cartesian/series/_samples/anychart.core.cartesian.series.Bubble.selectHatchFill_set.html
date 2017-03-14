@@ -5,17 +5,22 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.bubble();
 
             var series = chart.bubble([
-                [0, 2, 1],
-                [1, 2, 3],
-                [2, 2, 2],
-                [3, 2, 1]
+                {x: 1, value: 1.0, size: 2},
+                {x: 2, value: 1.6, size: 7},
+                {x: 3, value: 1.2, size: 4},
+                {x: 4, value: 1.9, size: 3}
             ]);
-            // Sets hatch fill in selected mode.
-            series.selectHatchFill("horizontal", "#673AB7", 1, 10);
 
+            // Set select hatch fill.
+            series.selectHatchFill("horizontal", "#FFFFFF", 1, 10);
+
+            // Selects series.
+            series.select();
+
+            chart.title("Set select hatch fill parameters");
             chart.container("container");
             chart.draw();
         });

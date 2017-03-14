@@ -6,15 +6,21 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var data = [
-                [1, 760, 801, 848, 895, 965] ,
-                [2, 733, 853, 939, 980, 1080, [1120, 630]],
-                [3, 760, 801, 848, 895, 965, [650]],
-                [4, 724, 802, 806, 871, 950, [1000, 600]]
+                {x: "January", low: 760, q1: 801, median: 848, q3: 895, high: 965},
+                {x: "February", low: 733, q1: 853, median: 939, q3: 980, high: 1080, outliers: [1120, 630]},
+                {x: "March", low: 760, q1: 801, median: 848, q3: 895, high: 965, outliers: [650]},
+                {x: "April", low: 724, q1: 802, median: 806, q3: 871, high: 950, outliers: [1000, 600]}
             ];
+
             chart = anychart.box(data);
+
             var series = chart.getSeries(0);
-            var getOutlierMarkers = series.outlierMarkers(); // get outlier markers
-            getOutlierMarkers.fill("#4CAF50");
+
+            // Get outlier markers.
+            var outlierMarkers = series.outlierMarkers();
+            outlierMarkers.fill("#4CAF50");
+
+            chart.title("Get and modify outlier markers");
             chart.container("container");
             chart.draw();
         });

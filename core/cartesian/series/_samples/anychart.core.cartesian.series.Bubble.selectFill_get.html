@@ -5,20 +5,24 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.bubble();
 
             var series = chart.bubble([
-                [0, 2, 1],
-                [1, 2, 3],
-                [2, 2, 2],
-                [3, 2, 1]
+                {x: 1, value: 1.0, size: 2},
+                {x: 2, value: 1.6, size: 7},
+                {x: 3, value: 1.2, size: 4},
+                {x: 4, value: 1.9, size: 3}
             ]);
-            series.selectFill("#7986CB");
 
-            // Gets fill in selected mode.
+            series.selectFill("#0288d1");
+
+            // Selects series.
+            series.select();
+
+            // Get fill in selected mode.
             var selectedFill = series.selectFill();
 
-            chart.title({fontColor: selectedFill});
+            chart.title({text: "Get and use select fill", fontColor: selectedFill});
             chart.container("container");
             chart.draw();
         });

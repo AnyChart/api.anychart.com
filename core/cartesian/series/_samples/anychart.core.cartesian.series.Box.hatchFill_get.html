@@ -6,30 +6,31 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var firstData = [
-                [1, 760, 801, 848, 895, 965] ,
-                [2, 733, 853, 939, 980, 1080, [1120, 630]],
-                [3, 760, 801, 848, 895, 965, [650]],
-                [4, 724, 802, 806, 871, 950, [1000, 600]]
+                {x: "January", low: 760, q1: 801, median: 848, q3: 895, high: 965},
+                {x: "February", low: 733, q1: 853, median: 939, q3: 980, high: 1080, outliers: [1120, 630]},
+                {x: "March", low: 760, q1: 801, median: 848, q3: 895, high: 965, outliers: [650]},
+                {x: "April", low: 724, q1: 802, median: 806, q3: 871, high: 950, outliers: [1000, 600]}
             ];
 
             var secondData = [
-                [1, 660, 801, 948, 995, 1065] ,
-                [2, 633, 853, 1039, 1080, 1180, [1120, 630]],
-                [3, 660, 801, 948, 995, 1065, [650]],
-                [4, 624, 802, 906, 971, 1050, [1000, 600]]
+                {x: "January", low: 660, q1: 801, median: 948, q3: 995, high: 1065},
+                {x: "February", low: 633, q1: 853, median: 1039, q3: 1080, high: 1180, outliers: [1120, 630]},
+                {x: "March", low: 660, q1: 801, median: 948, q3: 995, high: 1065, outliers: [650]},
+                {x: "April", low: 624, q1: 802, median: 906, q3: 971, high: 1050, outliers: [1000, 600]}
             ];
 
-            chart = anychart.cartesian();
+            chart = anychart.box();
 
             var series = chart.box(firstData);
             series.hatchFill("zigZag");
 
-            // Gets series hatch fill.
+            // Get series hatch fill.
             var hatchFill = series.hatchFill();
 
             var boxSeries = chart.box(secondData);
             boxSeries.hatchFill(hatchFill);
 
+            chart.title("Get and use hatch fill");
             chart.container("container");
             chart.draw();
         });

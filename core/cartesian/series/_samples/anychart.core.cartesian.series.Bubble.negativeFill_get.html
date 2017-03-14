@@ -5,22 +5,22 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.bubble();
 
             var series = chart.bubble([
-                [1, 1.0, 2],
-                [2, 1.6, -7],
-                [3, 1.2, -4],
-                [4, 1.9, 3]
+                {x: 1, value: 1.0, size: 2},
+                {x: 2, value: 1.6, size: -7},
+                {x: 3, value: 1.2, size: -4},
+                {x: 4, value: 1.9, size: 3}
             ]);
 
             series.displayNegative(true);
-            series.negativeFill("#0D47A1");
+            series.negativeFill("#4CAF50");
 
-            // Gets series negative fill.
+            // Get series negative fill.
             var negativeFill = series.negativeFill();
 
-            chart.title({fontColor: negativeFill});
+            chart.title({text: "Get and use negative fill", fontColor: negativeFill});
             chart.container("container");
             chart.draw();
         });
