@@ -5,28 +5,35 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.area();
 
             var firstSeries = chart.splineArea([
-                [0, 3],
-                [1, 6],
-                [2, 4],
-                [3, 8]
+                {x: "January", value: 16},
+                {x: "February", value: 10},
+                {x: "March", value: 20},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
             ]);
             firstSeries.selectHatchFill("zigZag");
 
             var secondSeries = chart.splineArea([
-                [0, 4],
-                [1, 3],
-                [2, 5],
-                [3, 6]
+                {x: "January", value: 10},
+                {x: "February", value: 25},
+                {x: "March", value: 1},
+                {x: "April", value: 6},
+                {x: "May", value: 20}
             ]);
 
-            // Gets hatch fill in selected mode.
+            // Get select hatch fill.
             var selectedHatchFill = firstSeries.selectHatchFill();
 
             secondSeries.selectHatchFill(selectedHatchFill);
 
+            // Selects series.
+            firstSeries.select();
+            secondSeries.select();
+
+            chart.title("Get and use select hatch fill");
             chart.container("container");
             chart.draw();
         });

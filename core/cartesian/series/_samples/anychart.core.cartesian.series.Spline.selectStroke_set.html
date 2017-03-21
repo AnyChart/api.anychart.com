@@ -5,12 +5,24 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.line();
 
-            var series = chart.spline([5, 6, 9, 6, 8, 4]);
-            // Sets stroke in selected mode.
-            series.selectStroke("#3F51B5", 3, "5 2", "round");
+            var series = chart.spline([
+                {x: "January", value: 5},
+                {x: "February", value: 6},
+                {x: "March", value: 9},
+                {x: "April", value: 6},
+                {x: "May", value: 8},
+                {x: "June", value: 4}
+            ]);
 
+            // Set select stroke.
+            series.selectStroke("#F44336", 3, "5 2", "round");
+
+            // Select series.
+            series.select();
+
+            chart.title("Set select stroke parameters");
             chart.container("container");
             chart.draw();
         });

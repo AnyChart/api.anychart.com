@@ -5,14 +5,24 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.area();
+
             var series = chart.splineArea([
-                [0, 2, 3],
-                [1, 3, 6],
-                [2, 2, 4],
-                [3, 5, 8]
+                {x: "January", value: 5},
+                {x: "February", value: 6},
+                {x: "March", value: 9},
+                {x: "April", value: 6},
+                {x: "May", value: 8},
+                {x: "June", value: 4}
             ]);
-            series.hoverFill(["#263238", "#FFFFFF"], 45, true, 0.5); // sets linear gradient fill on hover
+
+            // Set hover fill.
+            series.hoverFill(["#263238", "#FFFFFF"], 45, true, 0.5);
+
+            // Hover series.
+            series.hover();
+
+            chart.title("Set hover fill as a linear gradient");
             chart.container("container");
             chart.draw();
         });

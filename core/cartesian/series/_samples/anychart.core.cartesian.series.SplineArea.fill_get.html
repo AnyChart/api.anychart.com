@@ -5,20 +5,22 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.area();
 
             var series = chart.splineArea([
-                [0, 2],
-                [1, 3],
-                [2, 2],
-                [3, 5]
+                {x: "January", value: 5},
+                {x: "February", value: 6},
+                {x: "March", value: 9},
+                {x: "April", value: 6},
+                {x: "May", value: 8},
+                {x: "June", value: 4}
             ]);
             series.fill("#64B5F6");
 
-            // Gets series fill.
+            // Get series fill.
             var fill = series.fill();
 
-            chart.title({fontColor: fill});
+            chart.title({text: "Get and use series fill", fontColor: fill});
             chart.container("container");
             chart.draw();
         });
