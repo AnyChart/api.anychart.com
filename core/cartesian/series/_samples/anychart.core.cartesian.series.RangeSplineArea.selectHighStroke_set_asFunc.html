@@ -5,19 +5,28 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.area();
 
             var series = chart.rangeSplineArea([
-                [0, 2, 3],
-                [1, 3, 6],
-                [2, 2, 4],
-                [3, 1, 5]
+                {x: "January", low: 3093, high: 19522},
+                {x: "February", low: 4205, high: 32622},
+                {x: "March", low: 4019, high: 41612},
+                {x: "April", low: 4920, high: 53752},
+                {x: "May", low: 12684, high: 31917},
+                {x: "June", low: 14924, high: 42052},
+                {x: "July", low: 7933, high: 69812},
+                {x: "August", low: 15573, high: 59922}
             ]);
-            // Sets high stroke in selected mode.
+
+            // Set select high stroke.
             series.selectHighStroke(function() {
                 return "4 " + anychart.color.lighten(this.sourceColor);
             });
 
+            // Selects series.
+            series.select();
+
+            chart.title("Set select high stroke parameter as a function");
             chart.container("container");
             chart.draw();
         });
