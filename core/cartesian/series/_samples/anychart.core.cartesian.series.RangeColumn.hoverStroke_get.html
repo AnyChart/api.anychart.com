@@ -5,20 +5,27 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.column();
 
             var series = chart.rangeColumn([
-                [0, 2, 3],
-                [1, 3, 6],
-                [2, 2, 4],
-                [3, 1, 5]
+                {x: "January", low: 3093, high: 19522},
+                {x: "February", low: 4205, high: 32622},
+                {x: "March", low: 4019, high: 41612},
+                {x: "April", low: 4920, high: 53752},
+                {x: "May", low: 12684, high: 31917},
+                {x: "June", low: 14924, high: 42052},
+                {x: "July", low: 7933, high: 69812},
+                {x: "August", low: 15573, high: 59922}
             ]);
             series.hoverStroke("#F44336");
 
-            // Gets series stroke in hover mode.
+            // Get hover stroke.
             var hoverStroke = series.hoverStroke();
 
-            chart.title({fontColor: hoverStroke});
+            // Hover series.
+            series.hover();
+
+            chart.title({text: "Get and use hover stroke", fontColor: hoverStroke});
             chart.container("container");
             chart.draw();
         });
