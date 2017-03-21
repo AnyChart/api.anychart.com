@@ -5,21 +5,25 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
-            var series = chart.stepArea([
-                [0, 125],
-                [1, 132],
-                [2, 141],
-                [3, 158],
-                [4, 133],
-                [5, 143]
-            ]);
-            series.hoverStroke("#F44336");
+            chart = anychart.area();
 
-            // Get series stroke in hover mode.
+            var series = chart.stepArea([
+                {x: "January", value: 125},
+                {x: "February", value: 132},
+                {x: "March", value: 141},
+                {x: "April", value: 158},
+                {x: "May", value: 133},
+                {x: "June", value: 143}
+            ]);
+            series.hoverStroke("#F44336 3");
+
+            // Get hover series stroke.
             var hoverStroke = series.hoverStroke();
 
-            chart.title({fontColor: hoverStroke});
+            // Hovers series.
+            series.hover();
+
+            chart.title({text: "Get and use hover stroke", fontColor: hoverStroke.color});
             chart.container("container");
             chart.draw();
         });

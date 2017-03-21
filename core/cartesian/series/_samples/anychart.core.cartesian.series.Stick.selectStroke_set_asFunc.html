@@ -5,14 +5,26 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.column();
 
-            var series = chart.stick([2, 5, 3, 9, 4]);
+            var series = chart.stick([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4},
+                {x: "June", value: 10},
+                {x: "Jule", value: 27},
+                {x: "August", value: 17}
+            ]);
 
             // Set select stroke.
             series.selectStroke(function() {
                 return "3 " + anychart.color.darken(this.sourceColor);
             });
+
+            // Selects series.
+            series.select();
 
             chart.title("Set select stroke as function");
             chart.container("container");

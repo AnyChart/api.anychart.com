@@ -5,32 +5,37 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.area();
 
             var firstSeries = chart.stepArea([
-                [0, 125],
-                [1, 132],
-                [2, 141],
-                [3, 158],
-                [4, 133],
-                [5, 143]
+                {x: "January", value: 125},
+                {x: "February", value: 132},
+                {x: "March", value: 146},
+                {x: "April", value: 158},
+                {x: "May", value: 133},
+                {x: "June", value: 143}
             ]);
-            firstSeries.hoverHatchFill("zigZag");
+            firstSeries.hoverHatchFill("backwardDiagonal");
 
             var secondSeries = chart.stepArea([
-                [0, 51],
-                [1, 91],
-                [2, 34],
-                [3, 47],
-                [4, 63],
-                [5, 58]
+                {x: "January", value: 51},
+                {x: "February", value: 91},
+                {x: "March", value: 34},
+                {x: "April", value: 47},
+                {x: "May", value: 63},
+                {x: "June", value: 58}
             ]);
 
-            // Gets hatch fill in hover mode.
+            // Get hover hatch fill.
             var hoverHatchFill = firstSeries.hoverHatchFill();
 
             secondSeries.hoverHatchFill(hoverHatchFill);
 
+            // Hovers series.
+            firstSeries.hover();
+            secondSeries.hover();
+
+            chart.title("Get and use hover hatch fill");
             chart.container("container");
             chart.draw();
         });

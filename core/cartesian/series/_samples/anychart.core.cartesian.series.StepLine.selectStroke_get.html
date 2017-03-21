@@ -5,20 +5,25 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.line();
 
             var series = chart.stepLine([
-                [0, 3],
-                [1, 6],
-                [2, 4],
-                [3, 8]
+                {x: "January", value: 125},
+                {x: "February", value: 132},
+                {x: "March", value: 141},
+                {x: "April", value: 158},
+                {x: "May", value: 133},
+                {x: "June", value: 143}
             ]);
-            series.selectStroke("#4DB6AC");
+            series.selectStroke("#F44336");
 
-            // Gets series stroke in selected mode.
+            // Get select stroke.
             var selectedStroke = series.selectStroke();
 
-            chart.title({fontColor: selectedStroke});
+            // Selects series.
+            series.select();
+
+            chart.title({text: "Get and use select stroke", fontColor: selectedStroke});
             chart.container("container");
             chart.draw();
         });

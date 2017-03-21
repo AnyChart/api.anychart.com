@@ -5,14 +5,21 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.area();
+
             var series = chart.stepArea([
-                [0, 2, 3],
-                [1, 3, 6],
-                [2, 2, 4],
-                [3, 5, 8]
+                {x: "January", value: 125},
+                {x: "February", value: 132},
+                {x: "March", value: 146},
+                {x: "April", value: 158},
+                {x: "May", value: 133},
+                {x: "June", value: 143}
             ]);
-            series.fill(["#FEFEFE", "#424242"], 0.6, 0.5, null, 0.8, 0.9, 0.89); // sets radial gradient fill
+
+            // Set fill.
+            series.fill(["#FEFEFE", "#424242"], 0.5, 0.5, null, 0.8, 0.5, 0.5);
+
+            chart.title("Set fill as a radial gradient");
             chart.container("container");
             chart.draw();
         });
