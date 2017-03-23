@@ -5,30 +5,42 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.area();
 
             var firstSeries = chart.rangeArea([
-                [0, 2, 3],
-                [1, 3, 6],
-                [2, 2, 4],
-                [3, 5, 8]
+                {x: "January", low: 3093, high: 12522},
+                {x: "February", low: 4205, high: 14622},
+                {x: "March", low: 4019, high: 10612},
+                {x: "April", low: 4920, high: 9752},
+                {x: "May", low: 5795, high: 8839},
+                {x: "June", low: 8327, high: 9842},
+                {x: "July", low: 7933, high: 9812},
+                {x: "August", low: 13573, high: 16922},
+                {x: "September", low: 14924, high: 15052},
+                {x: "October", low: 12684, high: 15917}
             ]);
-            firstSeries.hoverHatchFill("zigZag");
-            // Hovers series.
-            firstSeries.hover();
+            firstSeries.hoverHatchFill("zigZag", "#FFFFFF", 1, 20);
 
             var secondSeries = chart.rangeArea([
-                [0, 6, 8],
-                [1, 7, 10],
-                [2, 6, 8],
-                [3, 4, 11]
+                {x: "January", high: 3093, low: 493},
+                {x: "February", high: 4205, low: 205},
+                {x: "March", high: 4019, low: 119},
+                {x: "April", high: 4920, low: 920},
+                {x: "May", high: 5795, low: 795},
+                {x: "June", high: 8327, low: 327},
+                {x: "July", high: 7933, low: 933},
+                {x: "August", high: 13573, low: 3573},
+                {x: "September", high: 14924, low: 3924},
+                {x: "October", high: 12684, low: 1684}
             ]);
 
-            // Gets hatch fill in hover mode.
+            // Get hover hatch fill.
             var hoverHatchFill = firstSeries.hoverHatchFill();
 
             secondSeries.hoverHatchFill(hoverHatchFill);
+
             // Hovers series.
+            firstSeries.hover();
             secondSeries.hover();
 
             chart.container("container");
