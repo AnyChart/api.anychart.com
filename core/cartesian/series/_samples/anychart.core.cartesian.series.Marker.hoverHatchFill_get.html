@@ -7,18 +7,40 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var firstSeries = chart.marker([10, 11, 17, 7, 21]);
-            firstSeries.hatchFill(true);
-            firstSeries.hoverHatchFill("zigZag");
+            var firstSeries = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21},
+                {x: 6, value: 4}
+            ]);
+            firstSeries.hoverHatchFill("backwardDiagonal", "#FFFFFF");
+            firstSeries.hoverSize(20);
 
-            var secondSeries = chart.marker([5, 16, 25, 30, 15]);
+            // Hovers series.
+            firstSeries.hover();
 
-            // Gets hatch fill in hover mode.
+            var secondSeries = chart.marker([
+                {x: 1, value: 5},
+                {x: 2, value: 16},
+                {x: 3, value: 25},
+                {x: 4, value: 30},
+                {x: 5, value: 15},
+                {x: 6, value: 4}
+            ]);
+            secondSeries.hoverSize(20);
+
+            // Get hatch fill in hover mode.
             var hoverHatchFill = firstSeries.hoverHatchFill();
 
             secondSeries.hatchFill(true);
             secondSeries.hoverHatchFill(hoverHatchFill);
 
+            // Hovers series.
+            secondSeries.hover();
+
+            chart.title("Get and use hover hatch fill");
             chart.container("container");
             chart.draw();
         });

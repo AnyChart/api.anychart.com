@@ -6,11 +6,24 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.marker([10, 11, 17, 7, 21]);
+
+            var series = chart.marker([
+                {x: 1, value: 5},
+                {x: 2, value: 6},
+                {x: 3, value: 9},
+                {x: 4, value: 6},
+                {x: 5, value: 8},
+                {x: 6, value: 4}
+            ]);
+
+            // Set series fill.
             series.fill(function() {
                 return this.sourceColor + " 0.4";
-            }); //sets fill
+            });
+
             series.size(20);
+
+            chart.title("Set series fill parameter as a function");
             chart.container("container");
             chart.draw();
         });

@@ -7,14 +7,24 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.marker([10, 11, 17, 7, 21]);
-            series.selectStroke("#4CAF50");
-            series.size(20);
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21},
+                {x: 6, value: 4}
+            ]);
+            series.selectStroke("#F44336", 2);
+            series.selectSize(20);
 
-            // Gets stroke for selected mode.
-            var selectedStroke = series.selectStroke();
+            // Get select stroke.
+            var selectStroke = series.selectStroke();
 
-            chart.title({fontColor: selectedStroke});
+            // Selects series.
+            series.select();
+
+            chart.title({text: "Get and use select stroke", fontColor: selectStroke.color});
             chart.container("container");
             chart.draw();
         });

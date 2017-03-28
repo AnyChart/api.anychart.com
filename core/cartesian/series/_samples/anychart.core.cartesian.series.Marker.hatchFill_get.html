@@ -4,19 +4,36 @@
     <meta name="x-cat-tags" content="marker anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.cartesian();
 
-            var firstSeries = chart.marker([10, 11, 17, 7, 21]);
+            var firstSeries = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21},
+                {x: 6, value: 4}
+            ]);
             firstSeries.hatchFill("zigZag");
+            firstSeries.size(20);
 
-            var secondSeries = chart.marker([5, 16, 25, 30, 15]);
+            var secondSeries = chart.marker([
+                {x: 1, value: 5},
+                {x: 2, value: 16},
+                {x: 3, value: 25},
+                {x: 4, value: 30},
+                {x: 5, value: 15},
+                {x: 6, value: 4}
+            ]);
+            secondSeries.size(20);
 
-            // Gets hatch fill of the first series.
+            // Get hatch fill of the first series.
             var hatchFill = firstSeries.hatchFill();
 
             secondSeries.hatchFill(hatchFill);
 
+            chart.title("Get and use hatch fill");
             chart.container("container");
             chart.draw();
         });

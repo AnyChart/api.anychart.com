@@ -7,12 +7,22 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.marker([10, 11, 17, 7, 21]);
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21},
+                {x: 6, value: 4}
+            ]);
 
-            // Gets marker size in hover mode.
+            // Get marker hover size.
             var hoverSize = series.hoverSize();
 
-            chart.title("The current marker size on hover - " + hoverSize);
+            // Hover series.
+            series.hover();
+
+            chart.title("Marker size on hover is " + hoverSize);
             chart.container("container");
             chart.draw();
         });

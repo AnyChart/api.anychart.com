@@ -6,8 +6,24 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.marker([10, 11, 17, 7, 21]);
-            series.hoverStroke("#F44336", 2, "5 2", "round"); // sets stroke on hover
+
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21},
+                {x: 6, value: 4}
+            ]);
+            series.hoverSize(20);
+
+            // Set hover stroke.
+            series.hoverStroke("#F44336", 2, "5 2", "round");
+
+            // Hover series.
+            series.hover();
+
+            chart.title("Set hover stroke parameters");
             chart.container("container");
             chart.draw();
         });

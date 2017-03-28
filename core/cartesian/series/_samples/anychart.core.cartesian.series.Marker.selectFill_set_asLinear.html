@@ -7,11 +7,23 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.marker([10, 11, 17, 7, 21]);
-            series.size(20);
-            // Sets fill settings in selected mode using linear gradient.
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21}
+            ]);
+
+            series.selectSize(20);
+
+            // Set select fill.
             series.selectFill(["#263238", "#FFFFFF"], 45, true, 0.5);
 
+            // Selects series.
+            series.select();
+
+            chart.title("Set select fill as a linear gradient");
             chart.container("container");
             chart.draw();
         });

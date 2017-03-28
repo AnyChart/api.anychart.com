@@ -7,11 +7,22 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.marker([10, 11, 17, 15, 21]);
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21},
+                {x: 6, value: 4}
+            ]);
+            series.hoverSize(20);
             series.hoverType("star4");
 
-            // Gets marker type in hover mode.
+            // Get marker hover type.
             var hoverType = series.hoverType();
+
+            // Hover series.
+            series.hover();
 
             chart.title("The marker type on hover is a " + hoverType);
             chart.container("container");

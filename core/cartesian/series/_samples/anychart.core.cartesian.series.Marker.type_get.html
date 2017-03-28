@@ -7,12 +7,20 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.marker([10, 11, 17, 15, 21]);
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21},
+                {x: 6, value: 4}
+            ]);
+            series.size(20);
 
-            // Gets marker type.
+            // Get marker type.
             var type = series.type();
 
-            chart.title("The marker type is a " + type);
+            chart.title("Marker type is a " + type);
             chart.container("container");
             chart.draw();
         });

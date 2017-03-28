@@ -7,10 +7,17 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.marker([10, 11, 17, 7, 21]);
-            series.size(20);
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21},
+                {x: 6, value: 4}
+            ]);
             series.selectSize(20);
-            // Sets type in selected mode using function.
+
+            // Set custom function used to draw a custom select marker.
             series.selectType(function(path, x, y, size) {
                 var point1 = {x: x + 1.2 * size, y: y - 0.4 * size};
                 var point2 = {x: x - 0.5 * size, y: y - 0.5 * size};
@@ -22,6 +29,10 @@
                 return path;
             });
 
+            // Selects series.
+            series.select();
+
+            chart.title("Custom select marker displayed with custom drawing function");
             chart.container("container");
             chart.draw();
         });

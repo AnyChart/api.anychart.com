@@ -7,14 +7,21 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.marker([10, 11, 17, 7, 21]);
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21},
+                {x: 6, value: 4}
+            ]);
+            series.size(20);
+            series.stroke("#F44336", 2);
 
-            series.stroke("#F44336");
-
-            // Gets series stroke.
+            // Get series stroke.
             var stroke = series.stroke();
 
-            chart.title({fontColor: stroke});
+            chart.title({text: "Get and use series stroke", fontColor: stroke.color});
             chart.container("container");
             chart.draw();
         });

@@ -7,13 +7,24 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.marker([10, 11, 17, 15, 21]);
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21},
+                {x: 6, value: 4}
+            ]);
+            series.selectSize(20);
             series.selectType("star4");
 
-            // Gets marker type for selected mode.
+            // Get marker select type.
             var selectedType = series.selectType();
 
-            chart.title("The marker type in selected mode is a " + selectedType);
+            // Selects series.
+            series.select();
+
+            chart.title("Select marker type is a " + selectedType);
             chart.container("container");
             chart.draw();
         });

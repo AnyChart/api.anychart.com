@@ -6,9 +6,18 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.marker([10, 11, 17, 7, 21]);
+
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21}
+            ]);
             series.size(20);
             series.hoverSize(20);
+
+            // Set custom function used to draw a custom hover marker.
             series.hoverType(function(path, x, y, size) {
                 var point1 = {x: x + 1.2 * size, y: y - 0.4 * size};
                 var point2 = {x: x - 0.5 * size, y: y - 0.5 * size};
@@ -18,7 +27,12 @@
                         .moveTo(point1.x, point1.y)
                         .close();
                 return path;
-            }); // sets type
+            });
+
+            // Hover series.
+            series.hover();
+
+            chart.title("Custom hover marker displayed with custom drawing function");
             chart.container("container");
             chart.draw();
         });

@@ -5,9 +5,19 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.line();
 
-            var series = chart.jumpLine([5, 6, 9, 6, 8, 4]);
+            var series = chart.jumpLine([
+                {x: "January", value: 5},
+                {x: "February", value: 6},
+                {x: "March", value: 9},
+                {x: "April", value: 6},
+                {x: "May", value: 8},
+                {x: "June", value: 4}
+            ]);
+
+            // Hovers series.
+            series.hover();
 
             // Set hover stroke.
             series.hoverStroke("#26A69A", 2, "5 2", "round");

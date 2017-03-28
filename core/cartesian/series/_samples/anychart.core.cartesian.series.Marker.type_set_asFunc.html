@@ -5,12 +5,19 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.marker([10, 11, 17, 7, 21, 15]);
-            chart.title("Custom marker displayed with custom drawing function.");
+            chart = anychart.cartesian();
 
-            var series = chart.getSeries(0);
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21},
+                {x: 6, value: 4}
+            ]);
+            series.size(20);
 
-            // Sets custom function used to draw a custom marker
+            // Set custom function used to draw a custom marker.
             series.type(function(path, x, y, size) {
                 var point1 = {x: x + 1.2 * size, y: y - 0.5 * size};
                 var point2 = {x: x - 0.5 * size, y: y - 0.5 * size};
@@ -21,6 +28,8 @@
                         .close();
                 return path;
             });
+
+            chart.title("Custom marker displayed with custom drawing function");
             chart.container("container");
             chart.draw();
         });

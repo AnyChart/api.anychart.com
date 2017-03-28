@@ -7,13 +7,20 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.marker([10, 11, 17, 7, 21]);
-            series.fill("#4CAF50");
+            var series = chart.marker([
+                {x: 1, value: 5},
+                {x: 2, value: 6},
+                {x: 3, value: 9},
+                {x: 4, value: 6},
+                {x: 5, value: 8},
+                {x: 6, value: 4}
+            ]);
+            series.fill("#F44336");
 
-            // Gets series fill.
+            // Get series fill.
             var fill = series.fill();
 
-            chart.title({fontColor: fill});
+            chart.title({text: "Get and use series fill", fontColor: fill});
             chart.container("container");
             chart.draw();
         });

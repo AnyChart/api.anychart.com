@@ -6,13 +6,28 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.marker([10, 11, 17, 7, 21]);
+
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21},
+                {x: 6, value: 4}
+            ]);
+            series.hoverSize(20);
+
+            // Set hover fill.
             series.hoverFill({
                 src: "http://static.anychart.com/images/underwater.jpg",
                 mode: "stretch",
                 opacity: 0.5
-            }); // sets image fill on hover
-            series.hoverSize(20);
+            });
+
+            // Hovers series.
+            series.hover();
+
+            chart.title("Set hover fill parameters as a function");
             chart.container("container");
             chart.draw();
         });

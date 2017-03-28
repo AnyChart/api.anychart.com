@@ -7,13 +7,24 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.marker([10, 11, 17, 7, 21]);
-            series.size(20);
-            // Sets fill settings in selected mode using function.
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21}
+            ]);
+            series.selectSize(20);
+
+            // Set select fill.
             series.selectFill(function() {
                 return this.sourceColor + " 0.2";
             });
 
+            // Selects series.
+            series.select();
+
+            chart.title("Set select fill parameter as a function");
             chart.container("container");
             chart.draw();
         });

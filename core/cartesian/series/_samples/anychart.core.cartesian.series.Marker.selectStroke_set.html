@@ -7,11 +7,23 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.marker([10, 11, 17, 7, 21]);
-            series.size(20);
-            // Sets stroke settings in selected mode.
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21},
+                {x: 6, value: 4}
+            ]);
+            series.selectSize(20);
+
+            // Set select stroke.
             series.selectStroke("#F44336", 2, "5 2", "round");
 
+            // Selects series.
+            series.select();
+
+            chart.title("Set select stroke parameters");
             chart.container("container");
             chart.draw();
         });

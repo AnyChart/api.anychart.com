@@ -6,13 +6,26 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
-            var series = chart.marker([10, 11, 17, 7, 21]);
+
+            var series = chart.marker([
+                {x: 1, value: 5},
+                {x: 2, value: 6},
+                {x: 3, value: 9},
+                {x: 4, value: 6},
+                {x: 5, value: 8},
+                {x: 6, value: 4}
+            ]);
+
+            // Set image fill.
             series.fill({
                 src: "http://static.anychart.com/images/underwater.jpg",
                 mode: "stretch",
                 opacity: 0.5
-            }); // sets image fill
+            });
+
             series.size(20);
+
+            chart.title("Set series fill as an image");
             chart.container("container");
             chart.draw();
         });

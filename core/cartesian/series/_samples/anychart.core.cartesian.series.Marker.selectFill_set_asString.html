@@ -7,10 +7,22 @@
         anychart.onDocumentReady(function() {
             chart = anychart.cartesian();
 
-            var series = chart.marker([10, 11, 17, 7, 21]);
-            // Sets fill in selected mode using string.
-            series.selectFill("#5C6BC0");
+            var series = chart.marker([
+                {x: 1, value: 10},
+                {x: 2, value: 11},
+                {x: 3, value: 17},
+                {x: 4, value: 7},
+                {x: 5, value: 21}
+            ]);
+            series.selectSize(20);
 
+            // Set select fill.
+            series.selectFill("#F44336");
+
+            // Selects series.
+            series.select();
+
+            chart.title("Set select fill parameter as a string");
             chart.container("container");
             chart.draw();
         });
