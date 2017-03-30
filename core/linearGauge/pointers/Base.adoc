@@ -15,7 +15,7 @@ anychart.core.linearGauge.pointers.Base;
 
 /**
  * Getter for the pointer name.
- * @shortDescription Pointer name settings
+ * @shortDescription Pointer name settings.
  * @category Data
  * @example anychart.core.linearGauge.pointers.Base.name_get
  * @return {string} The pointer name.
@@ -42,7 +42,7 @@ anychart.core.linearGauge.pointers.Base.prototype.name;
 
 /**
  * Getter for the data index.
- * @shortDescription Pointer name settings
+ * @shortDescription Pointer name settings.
  * @category Data
  * @example anychart.core.linearGauge.pointers.Base.dataIndex_get
  * @return {number} Data index.
@@ -81,7 +81,7 @@ anychart.core.linearGauge.pointers.Base.prototype.getGauge;
 
 /**
  * Getter for the pointer scale.
- * @shortDescription Scale settings
+ * @shortDescription Scale settings.
  * @category Axes and Scales
  * @example anychart.core.linearGauge.pointers.Base.scale_get
  * @return {anychart.scales.Base} Pointer scale.
@@ -202,13 +202,13 @@ anychart.core.linearGauge.pointers.Base.prototype.selectLabel;
  * @shortDescription Color settings.
  * @category Coloring
  * @example anychart.core.linearGauge.pointers.Base.color_get
- * @return {!anychart.graphics.vector.Fill} The current series color.
+ * @return {!anychart.graphics.vector.Fill} The pointer color.
  * @since 7.11.0
  */
 anychart.core.linearGauge.pointers.Base.prototype.color;
 
 /**
- * Setter for the color settings using an array or a string.
+ * Setter for color settings using an array or a string.
  * @detailed <b>Note: </b> <u>color</u> methods sets <b>fill</b> and <b>stroke</b> settings, which means it is not wise to pass
  * image fill here - stroke doesn't accept image fill.<br/>
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
@@ -269,17 +269,17 @@ anychart.core.linearGauge.pointers.Base.prototype.color;
 
 
 /**
- * Getter for the fill color.
+ * Getter for the pointer fill color.
  * @shortDescription Fill settings.
  * @category Coloring
  * @example anychart.core.linearGauge.pointers.Base.fill_get
- * @return {!(anychart.graphics.vector.Fill|Function)} Pointer fill color.
+ * @return {anychart.graphics.vector.Fill|Function} Pointer fill color.
  * @since 7.11.0
  */
 anychart.core.linearGauge.pointers.Base.prototype.fill;
 
 /**
- * Setter for the fill settings using an array or a string.
+ * Setter for fill settings using an array or a string.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.linearGauge.pointers.Base.fill_set_asString Using string
  * @example anychart.core.linearGauge.pointers.Base.fill_set_asArray Using array
@@ -351,7 +351,7 @@ anychart.core.linearGauge.pointers.Base.prototype.fill;
  * @shortDescription Fill settings.
  * @category Coloring
  * @example anychart.core.linearGauge.pointers.Base.hoverFill_get
- * @return {!(anychart.graphics.vector.Fill|Function)} Pointer fill color.
+ * @return {!(anychart.graphics.vector.Fill|Function)} Pointer hover fill color.
  * @since 7.11.0
  */
 anychart.core.linearGauge.pointers.Base.prototype.hoverFill;
@@ -435,7 +435,7 @@ anychart.core.linearGauge.pointers.Base.prototype.hoverFill;
 anychart.core.linearGauge.pointers.Base.prototype.selectFill;
 
 /**
- * Setter for the select fill settings using an object or a string.
+ * Setter for the select fill settings using an array or a string.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.linearGauge.pointers.Base.selectFill_set_asString Using string
  * @example anychart.core.linearGauge.pointers.Base.selectFill_set_asArray Using array
@@ -535,7 +535,7 @@ anychart.core.linearGauge.pointers.Base.prototype.stroke;
  * Setter for the  pointer stroke using several parameters.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.core.linearGauge.pointers.Base.stroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_color Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
@@ -585,7 +585,7 @@ anychart.core.linearGauge.pointers.Base.prototype.hoverStroke;
  * Setter for the pointer hover stroke using several parameters.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.core.linearGauge.pointers.Base.hoverStroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_color Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to hoverStroke paths.
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
@@ -615,7 +615,7 @@ anychart.core.linearGauge.pointers.Base.prototype.selectStroke;
  * Setter for the pointer select stroke using function.
  * {docs:Graphics/Stroke_Settings}Learn more about selectStroke settings.{docs}
  * @example anychart.core.linearGauge.pointers.Base.selectStroke_set_asFunc
- * @param {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)=} opt_value [// return selectStroke from the default palette.
+ * @param {function():anychart.graphics.vector.Stroke=} opt_value [// return selectStroke from the default palette.
  * function() {
  *   return anychart.color.darken(this.sourceColor);
  * };] or Stroke, or Stroke-function, which should look like:<code>function() {
@@ -634,7 +634,7 @@ anychart.core.linearGauge.pointers.Base.prototype.selectStroke;
  * Setter for the pointer select stroke using several parameters.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.core.linearGauge.pointers.Base.selectStroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value Stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_color Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to selectStroke paths.
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
@@ -651,7 +651,7 @@ anychart.core.linearGauge.pointers.Base.prototype.selectStroke;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the pointer hatch fill settings.
+ * Getter for pointer hatch fill settings.
  * @shortDescription Hatch fill settings.
  * @category Coloring
  * @example anychart.core.linearGauge.pointers.Base.hatchFill_get
@@ -661,7 +661,7 @@ anychart.core.linearGauge.pointers.Base.prototype.selectStroke;
 anychart.core.linearGauge.pointers.Base.prototype.hatchFill;
 
 /**
- * Setter for the hatch fill settings.
+ * Setter for hatch fill settings.
  * @example anychart.core.linearGauge.pointers.Base.hatchFill_set
  * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
  * string|boolean)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
@@ -681,17 +681,17 @@ anychart.core.linearGauge.pointers.Base.prototype.hatchFill;
 
 
 /**
- * Getter for the pointer hover hatch fill settings.
+ * Getter for pointer hover hatch fill settings.
  * @shortDescription Hatch fill settings.
  * @category Coloring
  * @example anychart.core.linearGauge.pointers.Base.hoverHatchFill_get
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The pointer hatch fill.
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Pointer hover hatch fill settings.
  * @since 7.11.0
  */
 anychart.core.linearGauge.pointers.Base.prototype.hoverHatchFill;
 
 /**
- * Setter for the hover hatch fill settings.
+ * Setter for hover hatch fill settings.
  * @example anychart.core.linearGauge.pointers.Base.hoverHatchFill_set
  * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
  * string|boolean)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
@@ -710,7 +710,7 @@ anychart.core.linearGauge.pointers.Base.prototype.hoverHatchFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the pointer select hatch fill settings.
+ * Getter for pointer select hatch fill settings.
  * @shortDescription Hatch fill settings.
  * @category Coloring
  * @example anychart.core.linearGauge.pointers.Base.selectHatchFill_get
@@ -765,7 +765,7 @@ anychart.core.linearGauge.pointers.Base.prototype.width;
 
 /**
  * Getter for the pointer offset.
- * @shortDescription Offset settings
+ * @shortDescription Offset settings.
  * @category Size and Position
  * @example anychart.core.linearGauge.pointers.Base.offset_get
  * @return {string} The pointer offset.
@@ -789,8 +789,8 @@ anychart.core.linearGauge.pointers.Base.prototype.offset;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the legend item setting.
- * @shortDescription Legend item setting
+ * Getter for the legend item settings.
+ * @shortDescription Legend item settings.
  * @category Specific settings
  * @example anychart.core.linearGauge.pointers.Base.legendItem_get
  * @return {anychart.core.utils.LegendItemSettings} Legend item settings.
@@ -800,7 +800,7 @@ anychart.core.linearGauge.pointers.Base.prototype.legendItem;
 
 
 /**
- * Setter for the legend item setting.
+ * Setter for the legend item settings.
  * @example anychart.core.linearGauge.pointers.Base.legendItem_set
  * @param {(Object)=} opt_value Legend item settings object.
  * @return {anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
