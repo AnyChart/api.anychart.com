@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="column tooltip anyChart"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function () {
+            stage = anychart.graphics.create("container");
+
+            var rect = stage.rect(0, 0, stage.width(), stage.height());
+            rect.fill("#2BC0E4");
+
+            chart = anychart.column([
+                {x: "John", value: 10000},
+                {x: "Jake", value: 12000},
+                {x: "Peter", value: 18000},
+                {x: "James", value: 11000},
+                {x: "Mary", value: 9000}
+            ]);
+
+            chart.margin("15%");
+            chart.background("#EAECC6");
+
+            var tooltip = chart.tooltip();
+
+            // Let tooltips to leave the screen bounds.
+            tooltip.allowLeaveScreen(true);
+
+            // Let tooltips to leave the stage bounds.
+            tooltip.allowLeaveStage(true);
+
+            // Let tooltips to leave the chart bounds.
+            tooltip.allowLeaveChart(true);
+
+            var series = chart.getSeries(0);
+            series.tooltip().textFormatter("This tooltip can be demonstrated out of the chart, stage, screen, if this becomes necessary to show it all");
+
+            chart.title("Tooltips can leave the chart, the stage and the screen bounds");
+            chart.container(stage);
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
