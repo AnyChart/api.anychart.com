@@ -5,10 +5,25 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
-            var series = chart.column([2, 5, 3, 9, 4]);
+            chart = anychart.column();
+
+            var series = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 6},
+                {x: "May", value: 4}
+            ]);
+
             series.stroke("none");
-            series.hoverFill(["#FEFEFE", "#424242"], 0.69, 0.59, anychart.math.rect(20, 200, 400, 400), 0.8, 0.7, 0.84); // sets radial gradient fill on hover
+
+            // Hovers series.
+            series.hover();
+
+            // Set hover fill.
+            series.hoverFill(["#FEFEFE", "#424242"], 0.59, 0.49, null, 0.8, 0.8, 0.14);
+
+            chart.title("Set hover fill as a radial gradient");
             chart.container("container");
             chart.draw();
         });

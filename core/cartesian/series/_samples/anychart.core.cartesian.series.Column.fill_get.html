@@ -4,16 +4,23 @@
     <meta name="x-cat-tags" content="column anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+        anychart.onDocumentReady(function () {
+            chart = anychart.column();
 
-            var series = chart.column([2, 5, 3, 9, 4]);
-            series.fill("#4CAF50");
+            var series = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
 
-            // Gets series fill.
+            series.fill("#80cbc4");
+
+            // Get series fill.
             var fill = series.fill();
 
-            chart.title({fontColor: fill});
+            chart.title({text: "Get and use series fill", fontColor: fill});
             chart.container("container");
             chart.draw();
         });

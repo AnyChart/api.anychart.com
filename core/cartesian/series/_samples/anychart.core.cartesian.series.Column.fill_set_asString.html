@@ -5,9 +5,20 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
-            var series = chart.column([2, 5, 3, 9, 4]);
-            series.fill("#4CAF50"); // sets fill
+            chart = anychart.column();
+
+            var series = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // Set fill.
+            series.fill("#4CAF50");
+
+            chart.title("Set fill parameter as a string");
             chart.container("container");
             chart.draw();
         });

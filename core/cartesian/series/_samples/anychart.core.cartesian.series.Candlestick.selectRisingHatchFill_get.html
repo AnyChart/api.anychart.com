@@ -8,23 +8,35 @@
             chart = anychart.cartesian();
 
             var firstSeries = chart.candlestick([
-                [0, 2, 4, 1, 3],
-                [1, 3, 5, 1, 2],
-                [2, 2, 5, 1, 4]
+                {x: Date.UTC(2017, 7, 28), open: 511.53, high: 514.98, low: 505.79, close: 506.40},
+                {x: Date.UTC(2017, 7, 29), open: 507.84, high: 513.30, low: 507.23, close: 512.88},
+                {x: Date.UTC(2017, 7, 30), open: 512.36, high: 515.40, low: 510.58, close: 511.40},
+                {x: Date.UTC(2017, 7, 31), open: 513.10, high: 516.50, low: 511.47, close: 515.25},
+                {x: Date.UTC(2017, 8, 4),  open: 515.02, high: 528.00, low: 514.62, close: 525.15}
             ]);
             firstSeries.selectRisingHatchFill("zigZag");
+            firstSeries.selectRisingFill("#FFC107");
 
             var secondSeries = chart.candlestick([
-                [0, 3, 6, 2, 5],
-                [1, 4, 8, 2, 6],
-                [2, 3, 5, 1, 2]
+                {x: Date.UTC(2017, 7, 28), open: 522.95, high: 523.10, low: 519.50, close: 520.52},
+                {x: Date.UTC(2017, 7, 29), open: 522.60, high: 524.69, low: 515.27, close: 517.55},
+                {x: Date.UTC(2017, 7, 30), open: 522.49, high: 522.91, low: 522.38, close: 522.61},
+                {x: Date.UTC(2017, 7, 31), open: 522.81, high: 523.83, low: 520.51, close: 521.73},
+                {x: Date.UTC(2017, 8, 4),  open: 523.30, high: 524.50, low: 523.20, close: 523.97}
             ]);
 
-            // Gets rising hatch fill for selected mode.
+            secondSeries.selectRisingFill("#FF8F00");
+
+            // Selects series.
+            firstSeries.select();
+            secondSeries.select();
+
+            // Get rising hatch fill for selected mode.
             var selectedRisingHatchFill = firstSeries.selectRisingHatchFill();
 
             secondSeries.selectRisingHatchFill(selectedRisingHatchFill);
 
+            chart.title("Get and use select rising hatch fill");
             chart.container("container");
             chart.draw();
         });

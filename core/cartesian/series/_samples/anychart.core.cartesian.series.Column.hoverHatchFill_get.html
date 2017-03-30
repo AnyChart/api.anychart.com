@@ -5,18 +5,35 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.column();
 
-            var firstSeries = chart.column([2, 5, 3, 9, 4]);
+            var firstSeries = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 4},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
             firstSeries.hoverHatchFill("zigZag");
 
-            var secondSeries = chart.column([5, 2, 9, 3, 6]);
+            var secondSeries = chart.column([
+                {x: "January", value: 5},
+                {x: "February", value: 2},
+                {x: "March", value: 7},
+                {x: "April", value: 3},
+                {x: "May", value: 6}
+            ]);
 
-            // Gets hatch fill in hover mode.
+            // Hovers series.
+            firstSeries.hover();
+            secondSeries.hover();
+
+            // Get hatch fill in hover mode.
             var hoverHatchFill = firstSeries.hoverHatchFill();
 
             secondSeries.hoverHatchFill(hoverHatchFill);
 
+            chart.title("Get and use hover hatch fill");
             chart.container("container");
             chart.draw();
         });

@@ -4,19 +4,32 @@
     <meta name="x-cat-tags" content="column anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+        anychart.onDocumentReady(function () {
+            chart = anychart.column();
 
-            var firstSeries = chart.column([2, 5, 3, 9, 4]);
+            var firstSeries = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
             firstSeries.hatchFill("zigZag");
 
-            var secondSeries = chart.column([5, 2, 9, 3, 6]);
+            var secondSeries = chart.column([
+                {x: "January", value: 5},
+                {x: "February", value: 2},
+                {x: "March", value: 9},
+                {x: "April", value: 3},
+                {x: "May", value: 6}
+            ]);
 
-            // Gets hatch fill.
+            // Get hatch fill.
             var hatchFill = firstSeries.hatchFill();
 
             secondSeries.hatchFill(hatchFill);
 
+            chart.title("Get and use hatch fill");
             chart.container("container");
             chart.draw();
         });

@@ -5,18 +5,35 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.column();
 
-            var firstSeries = chart.column([2, 5, 3, 9, 4]);
-            firstSeries.selectHatchFill("zigZag");
+            var firstSeries = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 4},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+            firstSeries.selectHatchFill("zigZag", "#FFFFFF", 1, 30);
 
-            var secondSeries = chart.column([5, 2, 9, 3, 6]);
+            var secondSeries = chart.column([
+                {x: "January", value: 5},
+                {x: "February", value: 2},
+                {x: "March", value: 7},
+                {x: "April", value: 3},
+                {x: "May", value: 6}
+            ]);
 
-            // Gets hatch fill for selected mode.
+            // Selects series.
+            firstSeries.select();
+            secondSeries.select();
+
+            // Get hatch fill.
             var selectedHatchFill = firstSeries.selectHatchFill();
 
             secondSeries.selectHatchFill(selectedHatchFill);
 
+            chart.title("Get adn use select hatch fill");
             chart.container("container");
             chart.draw();
         });

@@ -5,12 +5,23 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.column();
 
-            var series = chart.column([2, 5, 3, 9, 4]);
-            // Sets fill settings in selected mode with opacity.
+            var series = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // Selects series.
+            series.select();
+
+            // Set select fill.
             series.selectFill("#3F51B5", 0.4);
 
+            chart.title("Set select fill with opacity");
             chart.container("container");
             chart.draw();
         });

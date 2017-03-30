@@ -5,15 +5,24 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.column();
 
-            var series = chart.column([2, 5, 3, 9, 4]);
+            var series = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
             series.selectFill("#7986CB");
 
-            // Gets fill for selected mode..
-            var selectedFill = series.selectFill();
+            // Selects series.
+            series.select();
 
-            chart.title({fontColor: selectedFill});
+            // Get fill for selected mode.
+            var selectFill = series.selectFill();
+
+            chart.title({text: "Get and use select fill", fontColor: selectFill});
             chart.container("container");
             chart.draw();
         });
