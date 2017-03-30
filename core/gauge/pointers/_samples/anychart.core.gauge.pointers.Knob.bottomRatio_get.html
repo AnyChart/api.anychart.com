@@ -7,9 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.gauges.circular([7]);
             chart.axis();
+
             var knob = chart.knob();
-            var getBottomRatio = knob.bottomRatio(); // get bottom ratio
-            knob.bottomRatio(getBottomRatio + 0.2);
+
+            // Get bottom ratio.
+            var bottomRatio = knob.bottomRatio();
+
+            knob.bottomRatio(bottomRatio + 0.2);
+
+            chart.title("Get and use bottom ratio");
             chart.container("container");
             chart.draw();
         });

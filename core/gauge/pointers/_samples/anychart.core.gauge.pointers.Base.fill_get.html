@@ -7,9 +7,14 @@
         anychart.onDocumentReady(function() {
             chart = anychart.gauges.circular([7, 8]);
             chart.axis();
+
             var needle = chart.needle();
-            var getFill = needle.fill(); // get fill
-            chart.title({fontColor: getFill});
+            needle.fill("#F44336");
+
+            // Get fill.
+            var fill = needle.fill();
+
+            chart.title({title: "Get and use fill", fontColor: fill});
             chart.container("container");
             chart.draw();
         });

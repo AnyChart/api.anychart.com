@@ -7,9 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.gauges.circular([7]);
             chart.axis();
+
             var knob = chart.knob();
-            var getVerticesCurvature = knob.verticesCurvature(); // get vertices curvature
-            knob.verticesCurvature(getVerticesCurvature + 1);
+
+            // Get vertices curvature.
+            var verticesCurvature = knob.verticesCurvature();
+
+            knob.verticesCurvature(verticesCurvature + 1);
+
+            chart.title("Get and use vertices curvature");
             chart.container("container");
             chart.draw();
         });

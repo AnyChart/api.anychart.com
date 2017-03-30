@@ -5,13 +5,17 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.gauges.circular([7.5]);
+            chart = anychart.gauges.circular();
             chart.axis();
+
             var cap = chart.cap();
             cap.enabled(true);
             cap.fill("#BDBDBD");
-            var getFill = cap.fill(); // get cap fill
-            chart.title({fontColor: getFill});
+
+            // Get cap fill.
+            var fill = cap.fill();
+
+            chart.title({text: "Get and use cap fill", fontColor: fill});
             chart.container("container");
             chart.draw();
         });

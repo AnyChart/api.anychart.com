@@ -7,11 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.gauges.circular();
             chart.axis();
+
             var cap = chart.cap();
             cap.enabled(true);
             cap.stroke("#D50000");
-            var getStroke = cap.stroke(); // get cap stroke
-            chart.title({fontColor: getStroke});
+
+            // Get cap stroke.
+            var stroke = cap.stroke();
+
+            chart.title({text: "Get and use stroke", fontColor: stroke});
             chart.container("container");
             chart.draw();
         });

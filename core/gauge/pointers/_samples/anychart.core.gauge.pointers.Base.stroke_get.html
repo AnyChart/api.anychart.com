@@ -7,9 +7,14 @@
         anychart.onDocumentReady(function() {
             chart = anychart.gauges.circular([7.5]);
             chart.axis();
+
             var bar = chart.bar();
-            var getStroke = bar.stroke(); // get stroke
-            chart.title({fontColor: getStroke});
+            bar.stroke("3 #F44336");
+
+            // Get stroke.
+            var stroke = bar.stroke();
+
+            chart.title({text: "Get and use stroke", fontColor: stroke.color});
             chart.container("container");
             chart.draw();
         });

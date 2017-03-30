@@ -7,9 +7,15 @@
         anychart.onDocumentReady(function() {
             chart = anychart.gauges.circular([7]);
             chart.axis();
+
             var knob = chart.knob();
-            var getTopRatio = knob.topRatio(); // get top ratio
-            knob.topRatio(getTopRatio + 0.2);
+
+            // Get top ratio.
+            var topRatio = knob.topRatio();
+
+            knob.topRatio(topRatio + 0.2);
+
+            chart.title("Get and use top ratio");
             chart.container("container");
             chart.draw();
         });

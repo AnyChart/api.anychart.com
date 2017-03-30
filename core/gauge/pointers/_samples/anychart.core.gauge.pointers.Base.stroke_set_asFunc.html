@@ -8,7 +8,7 @@
             function pointerStroke(pointer) {
                 var color;
                 if (pointer.angle <= 60) {
-                    color = "#263238";
+                    color = "#F44336";
                 } else {
                     color = "#4CAF50"
                 }
@@ -17,10 +17,18 @@
 
             chart = anychart.gauges.circular([7, 8]);
             chart.axis();
+
             var firstNeedle = chart.needle();
-            firstNeedle.stroke(pointerStroke); // sets stroke
+
+            // Set stroke.
+            firstNeedle.stroke(pointerStroke);
+
             var secondNeedle = chart.needle(1);
-            secondNeedle.stroke(pointerStroke); // sets stroke
+
+            // Set stroke.
+            secondNeedle.stroke(pointerStroke);
+
+            chart.title("Set stroke parameter as a function");
             chart.container("container");
             chart.draw();
         });
