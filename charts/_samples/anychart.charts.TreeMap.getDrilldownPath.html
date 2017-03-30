@@ -4,44 +4,72 @@
     <meta name="x-cat-tags" content="treeMap anyChart"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
+            var breadcrumbs = document.createElement("div");
+            breadcrumbs.setAttribute("id", "breadcrumbs");
+            breadcrumbs.style.cssText = "margin: 10px 0 0 10px;";
+
+            document.body.insertBefore(breadcrumbs, document.body.childNodes[0]);
+
             var data = [
-                {id: 'Eurasia', parent: null},
-                {id: 'Asia', parent: 'Eurasia'},
-                {id: 'Eastern Asia', parent: 'Asia'},
-                {id: 'Mongolia', parent: 'Eastern Asia', value: 1564116, capital: 'Ulan-Bator'},
-                {id: 'China', parent: 'Eastern Asia', value: 1564116, capital: 'Beijing'},
-                {id: 'Southern Korea', parent: 'Eastern Asia', value: 1564116, capital: 'Seoul'},
-                {id: 'Northern Korea', parent: 'Eastern Asia', value: 120540, capital: 'Pyongyang'},
-                {id: 'Japan', parent: 'Eastern Asia', value: 1564116, capital: 'Tokio'},
-                {id: 'Europe', parent: 'Eurasia'},
-                {id: 'Northern Europe', parent: 'Europe'},
-                {id: 'Finland', parent: 'Northern Europe', value: 338424, capital: 'Helsinki'},
-                {id: 'Great Britain', parent: 'Northern Europe', value: 209331, capital: 'London'},
-                {id: 'Ireland', parent: 'Northern Europe', value: 84421, capital: 'Dublin'},
-                {id: 'Scandinavia', parent: 'Northern Europe', value: 928057}];
+                {id: "Eurasia", parent: null},
+                {id: "Asia", parent: "Eurasia"},
+                {id: "Eastern Asia", parent: "Asia"},
+                {id: "Mongolia", parent: "Eastern Asia", value: 1564116, capital: "Ulan-Bator"},
+                {id: "China", parent: "Eastern Asia", value: 1564116, capital: "Beijing"},
+                {id: "Southern Korea", parent: "Eastern Asia", value: 1564116, capital: "Seoul"},
+                {id: "Northern Korea", parent: "Eastern Asia", value: 120540, capital: "Pyongyang"},
+                {id: "Japan", parent: "Eastern Asia", value: 1564116, capital: "Tokio"},
+                {id: "Europe", parent: "Eurasia"},
+                {id: "Northern Europe", parent: "Europe"},
+                {id: "Finland", parent: "Northern Europe", value: 338424, capital: "Helsinki"},
+                {id: "Great Britain", parent: "Northern Europe", value: 209331, capital: "London"},
+                {id: "Ireland", parent: "Northern Europe", value: 84421, capital: "Dublin"},
+                {id: "Scandinavia", parent: "Northern Europe", value: 928057}];
 
             chart = anychart.treeMap();
 
             var treeData = anychart.data.tree(data, "asTable");
+
             chart.data(treeData);
 
-            var item = treeData.search("id", "Asia");
+            // Listen for draw event and update path in "bread crumbs".
+            chart.listen("chartDraw", function() {
+                printPath(chart.getDrilldownPath());
+            });
 
+            chart.title().orientation("bottom");
+            chart.title().padding(10);
+
+            chart.labels().textFormatter("{%id}");
             chart.container("container");
             chart.draw();
-
-            chart.drillTo(item);
-
-            // Returns current path.
-            var path = chart.getDrilldownPath();
-
-            var asiaPoint = path[path.length-1];
-
-            chart.drillUp();
-
-            asiaPoint.hovered(true);
         });
+
+        function printPath(path) {
+            var crumbs = document.getElementById("breadcrumbs");
+
+            var link;
+
+            var text = "";
+
+            crumbs.innerHTML = "";
+
+            for (var i = 0; i < path.length; i++) {
+                link = document.createElement("a");
+                text = path[i].get("id");
+                link.innerHTML = text;
+                crumbs.appendChild(link);
+                crumbs.appendChild(document.createTextNode(" \\ "));
+
+                if (i + 1 == path.length) continue;
+                link.setAttribute("href", "#");
+                link.addEventListener("click", function() {
+                    chart.drillTo(this.innerHTML);
+                });
+            }
+            return text;
+        }
     </script>
 </head>
 <body>
