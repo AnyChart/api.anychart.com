@@ -5,7 +5,7 @@
     <script src="../../../anychart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
     <script src="http://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="australiaMap">
+    <script x-export="map">
         anychart.onDocumentReady(function() {
             // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
             // See http://docs.anychart.com/latest/Maps/Map_Projections to learn more.
@@ -23,23 +23,23 @@
 
             var dataSetForSeries = dataSet.mapAs({id: "id"});
 
-            australiaMap = anychart.map();
-            australiaMap.geoData(anychart.maps.australia);
-            australiaMap.choropleth(dataSetForSeries);
-            australiaMap.axes(true);
-            australiaMap.scale().yTicks({interval: 3});
-            australiaMap.scale().xTicks({interval: 3});
+            map = anychart.map();
+            map.geoData(anychart.maps.australia);
+            map.choropleth(dataSetForSeries);
+            map.axes(true);
+            map.scale().yTicks({interval: 3});
+            map.scale().xTicks({interval: 3});
 
-            var mapGrids = australiaMap.grids();
+            var mapGrids = map.grids();
             mapGrids.enabled(true);
             mapGrids.zIndex(45);
 
             // Set grid odd fill.
             mapGrids.oddFill(["#FFFFFF", "#FF5722 0.5"], 0.5, 0.4, null, 0.8, 0.8, 0.31);
 
-            australiaMap.title("Set grid odd fill as a radial gradient");
-            australiaMap.container("container");
-            australiaMap.draw();
+            map.title("Set grid odd fill as a radial gradient");
+            map.container("container");
+            map.draw();
         });
     </script>
 </head>

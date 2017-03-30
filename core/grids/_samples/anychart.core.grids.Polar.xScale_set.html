@@ -7,18 +7,20 @@
         anychart.onDocumentReady(function() {
             chart = anychart.polar([29, 72, 250, 330]);
 
-            // Creates custom scale.
+            // Create custom scale.
             var customScale = anychart.scales.linear();
             customScale.minimum(1);
             customScale.maximum(4);
             customScale.ticks({interval: 0.2});
 
-            grid = chart.grid();
+            var grid = chart.grid();
             grid.enabled(true);
-            grid.layout('radial');
-            // Sets custom grid xScale.
+            grid.layout("radial");
+            
+            // Set custom grid X-scale.
             grid.xScale(customScale);
 
+            chart.title("Set custom grid X-scale");
             chart.container("container");
             chart.draw();
         });

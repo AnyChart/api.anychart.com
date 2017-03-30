@@ -5,20 +5,21 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.polar([29, 72, 250, 330, 85, 390, 95, 15]);
+            chart = anychart.polar([129, 272, 250, 330, 85, 390, 95, 15]);
 
             var customScale = anychart.scales.linear();
             customScale.ticks({interval: 50});
 
             chart.yScale(customScale);
 
-            grid = chart.grid();
+            var grid = chart.grid();
             grid.enabled(true);
             grid.layout("circuit");
-            // Gets drawing flag.
+
+            // Get drawing flag.
             var drawingFlag = grid.drawLastLine();
 
-            chart.title("Drawing of the last line - " + drawingFlag);
+            chart.title("Drawing of the last line is " + drawingFlag);
             chart.container("container");
             chart.draw();
         });

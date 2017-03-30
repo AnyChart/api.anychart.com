@@ -5,19 +5,21 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.polar([29, 72, 250, 330, 85, 390, 95, 15]);
+            chart = anychart.polar([129, 272, 250, 330, 85, 390, 95, 15]);
 
             var customScale = anychart.scales.linear();
             customScale.ticks({interval: 50});
 
             chart.yScale(customScale);
 
-            grid = chart.grid();
+            var grid = chart.grid();
             grid.enabled(true);
             grid.layout("circuit");
-            // Sets odd fill.
-            grid.oddFill(["#FFFDE7 .1", "#FFF9C4"], 45, true, 0.8);
 
+            // Set odd fill.
+            grid.oddFill(["#F8FFAE", "#43C6AC"], 90, true, 0.5);
+
+            chart.title("Set odd fill as a linear gradient");
             chart.container("container");
             chart.draw();
         });

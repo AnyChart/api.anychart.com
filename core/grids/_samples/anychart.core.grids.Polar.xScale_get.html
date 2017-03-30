@@ -15,28 +15,33 @@
             customScale.maximum(4);
             customScale.ticks({interval: 0.1});
 
-            var markergrid = markerChart.grid();
-            markergrid.enabled(true);
-            markergrid.layout('radial');
-            markergrid.xScale(customScale);
+            var markerGrid = markerChart.grid();
+            markerGrid.enabled(true);
+            markerGrid.layout("radial");
+            markerGrid.xScale(customScale);
 
             markerChart.container(stage);
             markerChart.draw();
 
             var lineChart = anychart.polar();
-            lineChart.line([29, -72, 250, 330, 85, 390, 95, 15]);
+            lineChart.line([6, 1, 6, 1, 6, 1]);
             lineChart.bounds("50%", 0, "50%", "100%");
 
-            // Gets grid scale of the first chart.
-            var gridScale = markergrid.xScale();
+            // Get grid scale of the first chart.
+            var gridScale = markerGrid.xScale();
 
-            var linegrid = lineChart.grid();
-            linegrid.enabled(true);
-            linegrid.layout('radial');
-            linegrid.xScale(gridScale);
+            var lineGrid = lineChart.grid();
+            lineGrid.enabled(true);
+            lineGrid.layout("radial");
+            lineGrid.xScale(gridScale);
 
             lineChart.container(stage);
             lineChart.draw();
+
+            var title = anychart.standalones.title();
+            title.text("Get and use grid scale");
+            title.container(stage);
+            title.draw();
         });
     </script>
 </head>

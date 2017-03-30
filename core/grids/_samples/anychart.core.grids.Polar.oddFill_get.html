@@ -5,22 +5,22 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.polar([29, 72, 250, 330, 85, 390, 95, 15]);
+            chart = anychart.polar([129, 272, 250, 330, 85, 390, 95, 15]);
 
             var customScale = anychart.scales.linear();
             customScale.ticks({interval: 50});
 
             chart.yScale(customScale);
 
-            grid = chart.grid();
+            var grid = chart.grid();
             grid.enabled(true);
             grid.layout("circuit");
             grid.oddFill("#BDBDBD 0.3");
 
-            // Gets odd fill of the grid.
+            // Get grid odd fill.
             var oddFill = grid.oddFill();
 
-            chart.title({fontColor: anychart.color.darken(oddFill)});
+            chart.title({text: "Get and use grid odd fill", fontColor: anychart.color.darken(oddFill)});
             chart.container("container");
             chart.draw();
         });

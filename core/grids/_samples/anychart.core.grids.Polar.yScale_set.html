@@ -5,20 +5,22 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.polar([29, -72, 250, 330, 85, 390, 95, 15]);
+            chart = anychart.polar([29, 250, 330, 85, 390, 95, 15]);
 
-            // Creates custom scale scale.
+            // Create custom scale scale.
             var customScale = anychart.scales.linear();
             customScale.minimum(10);
             customScale.maximum(500);
             customScale.ticks({interval: 50});
 
-            grid = chart.grid();
+            var grid = chart.grid();
             grid.enabled(true);
             grid.layout("circuit");
-            // Sets custom grid yScale.
+
+            // Set custom grid Y-scale.
             grid.yScale(customScale);
 
+            chart.title("Set custom grid Y-scale");
             chart.container("container");
             chart.draw();
         });

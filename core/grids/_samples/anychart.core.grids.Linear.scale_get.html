@@ -8,32 +8,37 @@
             stage = anychart.graphics.create("container");
 
             var lineChart = anychart.line([29, 72, 250, 330, 85, 390, 95, 15]);
-            lineChart.bounds(0, 0, "50%", "100%");
+            lineChart.bounds(0, 20, "50%", "100%");
 
             var customScale = anychart.scales.linear();
             customScale.minimum(0);
             customScale.maximum(400);
             customScale.ticks({interval: 40});
 
-            var linegrid = lineChart.grid();
-            linegrid.enabled(true);
-            linegrid.scale(customScale);
+            var lineGrid = lineChart.grid();
+            lineGrid.enabled(true);
+            lineGrid.scale(customScale);
 
             lineChart.container(stage);
             lineChart.draw();
 
             var columnChart = anychart.column([10, 150, 223, 344, 35, 390, 55, 21]);
-            columnChart.bounds("50%", 0, "50%", "100%");
+            columnChart.bounds("50%", 20, "50%", "100%");
 
-            // Gets grid scale of the line chart.
-            var gridScale = linegrid.scale();
+            // Get grid scale of the line chart.
+            var gridScale = lineGrid.scale();
 
-            var columngrid = columnChart.grid();
-            columngrid.enabled(true);
-            columngrid.scale(gridScale);
+            var columnGrid = columnChart.grid();
+            columnGrid.enabled(true);
+            columnGrid.scale(gridScale);
 
             columnChart.container(stage);
             columnChart.draw();
+
+            var title = anychart.standalones.title();
+            title.text("Get and use grid scale");
+            title.container(stage);
+            title.draw();
         });
     </script>
 </head>
