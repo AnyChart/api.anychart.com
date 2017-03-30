@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="radar area anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.radar();
+
+            var firstSeries = chart.area([
+                {x: "Strength", value: 10},
+                {x: "Agility", value: 15},
+                {x: "Stamina", value: 10},
+                {x: "Intellect", value: 15},
+                {x: "Spirit", value: 10}
+            ]);
+            firstSeries.hatchFill(true);
+
+            var secondSeries = chart.area([
+                {x: "Strength", value: 8},
+                {x: "Agility", value: 2},
+                {x: "Stamina", value: 8},
+                {x: "Intellect", value: 2},
+                {x: "Spirit", value: 8}
+            ]);
+            secondSeries.hatchFill(true);
+
+            // Set hatch fill palette.
+            chart.hatchFillPalette(["backwardDiagonal", "horizontalBrick"]);
+
+            chart.title("Set chart hatch fill palette");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

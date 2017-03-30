@@ -1,0 +1,73 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content=""/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="">
+        anychart.onDocumentReady(function () {
+            stage = anychart.graphics.create("container");
+
+            var firstChart = anychart.radar();
+            firstChart.bounds(0, 0, "50%", "100%");
+
+            var firstSeries = firstChart.area([
+                {x: "Strength", value: 10},
+                {x: "Agility", value: 15},
+                {x: "Stamina", value: 10},
+                {x: "Intellect", value: 15},
+                {x: "Spirit", value: 10}
+            ]);
+            firstSeries.hatchFill(true);
+
+            var secondSeries = firstChart.area([
+                {x: "Strength", value: 8},
+                {x: "Agility", value: 2},
+                {x: "Stamina", value: 8},
+                {x: "Intellect", value: 2},
+                {x: "Spirit", value: 8}
+            ]);
+            secondSeries.hatchFill(true);
+
+            firstChart.hatchFillPalette(["backwardDiagonal", "horizontalBrick"]);
+            firstChart.container(stage);
+            firstChart.draw();
+
+            var secondChart = anychart.radar();
+            secondChart.bounds("50%", 0, "50%", "100%");
+
+            var firstAreaSeries = secondChart.area([
+                {x: "Strength", value: 8},
+                {x: "Agility", value: 2},
+                {x: "Stamina", value: 8},
+                {x: "Intellect", value: 2},
+                {x: "Spirit", value: 8}
+            ]);
+            firstAreaSeries.hatchFill(true);
+
+            var secondAreaSeries = secondChart.area([
+                {x: "Strength", value: 1},
+                {x: "Agility", value: 5},
+                {x: "Stamina", value: 1},
+                {x: "Intellect", value: 5},
+                {x: "Spirit", value: 1}
+            ]);
+            secondAreaSeries.hatchFill(true);
+
+            // Get hatch fill palette.
+            var palette = firstChart.hatchFillPalette();
+
+            secondChart.hatchFillPalette(palette);
+            secondChart.container(stage);
+            secondChart.draw();
+
+            var title = anychart.standalones.title();
+            title.text("Get and use hatch fill palette");
+            title.container(stage);
+            title.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
