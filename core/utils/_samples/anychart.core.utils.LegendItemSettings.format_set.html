@@ -1,0 +1,46 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line anyChart"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.line();
+
+            var firstSeries = chart.line([
+                {x: 0, value: 22},
+                {x: 1, value: 34},
+                {x: 2, value: 16},
+                {x: 3, value: 12},
+                {x: 4, value: 41},
+                {x: 5, value: 47}
+            ]);
+
+            chart.line([
+                {x: 0, value: 39},
+                {x: 1, value: 28},
+                {x: 2, value: 21},
+                {x: 3, value: 18},
+                {x: 4, value: 24},
+                {x: 5, value: 29}
+            ]);
+
+            chart.legend(true);
+
+            var legendItem = firstSeries.legendItem();
+
+            // Set text formatter.
+            legendItem.format(function(){
+                return '[formatted]';
+            });
+
+            chart.title("Set text formatter");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

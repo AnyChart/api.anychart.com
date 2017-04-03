@@ -1,0 +1,43 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="radar line anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.radar();
+
+            var lineSeries = chart.line([
+                {x: 0, value: 6},
+                {x: 1, value: 1},
+                {x: 2, value: 6},
+                {x: 3, value: 1},
+                {x: 4, value: 6},
+                {x: 5, value: 1}
+            ]);
+
+            var markerSeries = chart.marker([
+                {x: 0, value: 7},
+                {x: 1, value: 4},
+                {x: 2, value: 7},
+                {x: 3, value: 4},
+                {x: 4, value: 7},
+                {x: 5, value: 4}
+            ]);
+
+            // Set chart select labels settings.
+            chart.selectLabels({fontColor: "#ff0000"});
+
+            chart.title("Set chart select labels parameter as an object");
+            chart.container("container");
+            chart.draw();
+
+            lineSeries.select([0, 2, 4]);
+            markerSeries.select([1, 3, 5]);
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

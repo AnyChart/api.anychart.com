@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="scatter line anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.scatter();
+            chart.xScale().minimum(-1);
+
+            var firstSeries = chart.line([
+                {x: 0, value: 22},
+                {x: 1, value: 34},
+                {x: 2, value: 16},
+                {x: 3, value: 12},
+                {x: 4, value: 41},
+                {x: 5, value: 47}
+            ]);
+
+            var secondSeries = chart.line([
+                {x: 0, value: 39},
+                {x: 1, value: 28},
+                {x: 2, value: 21},
+                {x: 3, value: 18},
+                {x: 4, value: 24},
+                {x: 5, value: 29}
+            ]);
+
+            // Enable chart hover labels.
+            chart.hoverLabels(true);
+
+            chart.title("Enable chart hover labels");
+            chart.container("container");
+            chart.draw();
+
+            firstSeries.hover([0, 2, 4]);
+            secondSeries.hover([1, 3, 5]);
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

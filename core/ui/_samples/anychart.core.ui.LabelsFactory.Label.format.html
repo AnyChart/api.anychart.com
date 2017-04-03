@@ -1,0 +1,37 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="labelsFactory anyChart anyGantt anyStock anyMap"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            var labels = anychart.standalones.labelsFactory();
+
+            var label;
+
+            for (var i = 0; i < 5; i++) {
+                label = labels.add({value: i}, {value: {x: (i + 1) * 50, y: 50}}, i);
+                if (i == 0) {
+                    // Set text formatter.
+                    label.format(function() {
+                        return "Zero (0)"
+                    });
+                }
+                else if (i == 2) {
+                    // Set text formatter.
+                    label.format(function() {
+                        return "Third (2)"
+                    });
+                }
+            }
+            labels.container(stage);
+            labels.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

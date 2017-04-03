@@ -1,0 +1,38 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="column anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.column3d();
+
+            chart.column([
+                {x: "January", value: 10},
+                {x: "February", value: 4},
+                {x: "March", value: 17},
+                {x: "April", value: 20}
+            ]);
+
+            chart.column([
+                {x: "January", value: 16},
+                {x: "February", value: 35},
+                {x: "March", value: 6},
+                {x: "April", value: 15}
+            ]);
+
+            // Get chart labels.
+            var labels = chart.labels();
+            labels.enabled(true);
+            labels.fontColor("#F00000");
+
+            chart.title("Get and modify chart labels");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
