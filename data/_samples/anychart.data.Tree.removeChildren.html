@@ -3,8 +3,10 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="dataGrid anyChart anyGantt anyStock anyMap"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="dataGrid">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
             var data = [
                 {id: "1", name: "1"},
                 {id: "2", name: "2"},
@@ -13,11 +15,14 @@
                 {id: "5", name: "5"}
             ];
             var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
-            treeData.removeChildren(); // removes children of tree.
-            dataGrid = anychart.standalones.dataGrid();
+
+            // Removes children of tree.
+            treeData.removeChildren();
+
+            var dataGrid = anychart.standalones.dataGrid();
             dataGrid.data(treeData);
             dataGrid.headerHeight(25);
-            dataGrid.container("container");
+            dataGrid.container(stage);
             dataGrid.draw();
         });
     </script>

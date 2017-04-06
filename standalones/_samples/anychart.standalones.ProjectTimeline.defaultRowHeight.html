@@ -3,20 +3,22 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="dataGrid anyChart anyGantt anyStock anyMap"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="timeLine">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
             var data = getData();
 
             var treeData = anychart.data.tree(data, "asTable");
 
-            timeLine = anychart.standalones.projectTimeline();
+            var timeLine = anychart.standalones.projectTimeline();
 
             timeLine.data(treeData);
 
             // Set default row height.
             timeLine.defaultRowHeight(30);
 
-            timeLine.container("container");
+            timeLine.container(stage);
             timeLine.draw();
         });
         function getData(){

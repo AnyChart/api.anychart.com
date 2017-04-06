@@ -3,12 +3,16 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="title anyChart anyGantt anyStock anyMap"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="customTitle">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
-            customTitle = anychart.standalones.title();
+            stage = anychart.graphics.create("container");
+
+            var customTitle = anychart.standalones.title();
+
             // Sets parent bounds.
             customTitle.parentBounds(anychart.math.rect(100, 0, 200, 200));
-            customTitle.container("container");
+
+            customTitle.container(stage);
             customTitle.draw();
         });
     </script>

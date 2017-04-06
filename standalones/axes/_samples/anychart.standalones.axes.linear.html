@@ -3,14 +3,16 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="axes anyChart anyGantt anyStock anyMap"/>
     <script src="../../../anychart.min.js"></script>
-    <script x-export="axis">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
             // Creates axis.
-            axis = anychart.standalones.axes.linear();
+            var axis = anychart.standalones.axes.linear();
 
             axis.scale(anychart.scales.linear());
             axis.parentBounds(10, 10, 500, 50);
-            axis.container("container");
+            axis.container(stage);
             axis.draw();
         });
     </script>

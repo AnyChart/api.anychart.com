@@ -3,9 +3,11 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="legend anyChart anyGantt anyStock anyMap"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="legend">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
-            legend = anychart.standalones.legend();
+            stage = anychart.graphics.create("container");
+
+            var legend = anychart.standalones.legend();
             legend.itemsLayout("vertical");
             legend.parentBounds(0, 0, 150, 160);
             legend.items([
@@ -14,7 +16,9 @@
                 {index: 2, text: "Safari"},
                 {index: 3, text: "IE"}
             ]);
-            legend.container("container"); // sets container
+
+            // Set container.
+            legend.container("container");
             legend.draw();
         });
     </script>

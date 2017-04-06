@@ -3,13 +3,16 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="background anyChart anyGantt anyStock anyMap"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="customBackground">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
-            customBackground = anychart.standalones.background();
+            stage = anychart.graphics.create("container");
+
+            var customBackground = anychart.standalones.background();
             customBackground.fill("#9E9E9E");
+
             // Sets parent bounds.
             customBackground.parentBounds(anychart.math.rect(0, 0, 200, 200));
-            customBackground.container("container");
+            customBackground.container(stage);
             customBackground.draw();
         });
     </script>

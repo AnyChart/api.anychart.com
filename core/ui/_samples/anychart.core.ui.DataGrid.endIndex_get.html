@@ -13,15 +13,22 @@
                 {"id": "5", "name": "Decide whether to proceed", parent:"2", "progressValue": "0%", "actualStart": 951609600000, "actualEnd": 951696000000, "connectTo": "6", "connectorType": "FinishStart"},
                 {"id": "6", "name": "Define the Opportunity", parent:"1", "progressValue": "27%", "actualStart": 951696000000, "actualEnd": 951782400000}
             ];
+
             var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
+
             chart = anychart.ganttProject();
             chart.data(treeData);
-            dataGrid = chart.dataGrid();
+
+            var dataGrid = chart.dataGrid();
             chart.container("container");
             chart.draw();
-            var getEndIndex = dataGrid.endIndex(); // get end index.
+
+            // Get end index.
+            var getEndIndex = dataGrid.endIndex();
+
             var column = dataGrid.column(1);
-            column.title("End Index - " + getEndIndex);
+            column.title("End index is " + getEndIndex);
+
             chart.fitAll();
         });
     </script>

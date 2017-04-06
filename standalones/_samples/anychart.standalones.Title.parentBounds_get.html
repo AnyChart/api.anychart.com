@@ -3,17 +3,19 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="background anyChart anyGantt anyStock anyMap"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="customTitle">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
-            customTitle = anychart.standalones.title();
+            stage = anychart.graphics.create("container");
+
+            var customTitle = anychart.standalones.title();
             customTitle.parentBounds(0, 0, 300, 200);
 
-            // Gets parent bounds.
+            // Get parent bounds.
             var parentBounds = customTitle.parentBounds();
 
             customTitle.text("Parent bounds: \n left - " + parentBounds.left + "\ntop - " + parentBounds.top +
                     "\nwidth - " + parentBounds.width + "\nheight - " + parentBounds.height);
-            customTitle.container("container");
+            customTitle.container(stage);
             customTitle.draw();
         });
     </script>

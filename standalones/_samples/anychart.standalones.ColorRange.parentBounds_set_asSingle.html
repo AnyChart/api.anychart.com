@@ -3,14 +3,16 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="colorRange anyChart anyGantt anyStock anyMap"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="customColorRange">
+    <script x-export="stage">
         anychart.onDocumentReady(function () {
-            customColorRange = anychart.standalones.colorRange();
+            stage = anychart.graphics.create("container");
+
+            var customColorRange = anychart.standalones.colorRange();
 
             // Set parent bounds.
             customColorRange.parentBounds(anychart.math.rect(0, 0, 400, 50));
 
-            customColorRange.container("container");
+            customColorRange.container(stage);
             customColorRange.draw();
         });
     </script>

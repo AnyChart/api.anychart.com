@@ -5,6 +5,8 @@
     <script src="../anychart.min.js"></script>
     <script x-export="dataGrid">
         anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
             var rawdata = [
                 {id: "1", name: "1"},
                 {id: "2", name: "2"},
@@ -19,10 +21,10 @@
             // Sets filling method for tree.
             var tree = anychart.data.tree(rawdata, anychart.enums.TreeFillingMethod.AS_TABLE);
 
-            dataGrid = anychart.standalones.dataGrid();
+            var dataGrid = anychart.standalones.dataGrid();
             dataGrid.data(tree);
             dataGrid.headerHeight(25);
-            dataGrid.container("container");
+            dataGrid.container(stage);
             dataGrid.draw();
         });
     </script>

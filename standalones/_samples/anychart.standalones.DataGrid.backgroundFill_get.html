@@ -3,8 +3,10 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="dataGrid anyChart anyGantt anyStock anyMap"/>
     <script src="../../anychart.min.js"></script>
-    <script x-export="dataGrid">
+    <script x-export="stage">
         anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
             var data = [
                 {id: "1", name: "Phase 1 - Strategic Plan"},
                 {id: "2", name: "Self-Assessment"},
@@ -17,17 +19,17 @@
 
             var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
 
-            dataGrid = anychart.standalones.dataGrid();
+            var dataGrid = anychart.standalones.dataGrid();
             dataGrid.data(treeData);
             dataGrid.headerHeight(25);
 
-            // Gets background fill.
+            // Get background fill.
             var backgroundFill = dataGrid.backgroundFill();
 
             var column = dataGrid.column(1);
-            column.title("Background fill - " + backgroundFill);
+            column.title("Background fill is " + backgroundFill);
 
-            dataGrid.container("container");
+            dataGrid.container(stage);
             dataGrid.draw();
         });
     </script>
