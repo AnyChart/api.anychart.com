@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="line anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var data = anychart.data.set([
+                {x: "January", value: 20, browser: "Opera"},
+                {x: "February", value: 55, browser: "Firefox"},
+                {x: "March", value: 30, browser: "Safari"},
+                {x: "April", value: 65, browser: "Chrome"}
+            ]);
+
+            chart = anychart.line();
+
+            var series = chart.line(data);
+            series.meta("description", "Attendance statistics");
+
+            var labels = series.labels();
+            labels.enabled(true);
+            labels.anchor("bottom");
+            labels.offsetY("3");
+            labels.format(function() {
+
+                // Get meta.
+                return this.getMeta("description");
+            });
+
+            chart.title("Get meta by field path");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

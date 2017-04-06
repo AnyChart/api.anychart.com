@@ -5,7 +5,7 @@
     <script src="../../anychart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
     <script src="http://cdn.anychart.com/geodata/1.2.0/countries/france/france.js" data-export="true"></script>
-    <script x-export="franceMap">
+    <script x-export="map">
         anychart.onDocumentReady(function () {
             // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
             // See http://docs.anychart.com/latest/Maps/Map_Projections to learn more.
@@ -20,19 +20,20 @@
             ]);
             dataSet.mapAs({id: "id"});
 
-            franceMap = anychart.map();
-            franceMap.geoData(anychart.maps.france);
+            map = anychart.map();
+            map.geoData(anychart.maps.france);
 
-            var series = franceMap.choropleth(dataSet);
+            var series = map.choropleth(dataSet);
             series.labels({format: (function() {
-                return this.getDataValue("title");
+                return this.getData("title");
             })});
 
-            franceMap.container("container");
-            franceMap.draw();
+            map.container("container");
+            map.draw();
 
             var point = series.getPoint(0);
-            // Sets Y center for the point label.
+
+            // Set Y center for the point label.
             point.middleY(-0.4);
         });
     </script>

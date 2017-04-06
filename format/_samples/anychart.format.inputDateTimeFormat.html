@@ -1,0 +1,68 @@
+<html>
+<head>
+  <meta name="x-cat-tags" content="anyGantt"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            // Sets input date time format.
+            anychart.format.inputDateTimeFormat("yyyy MMM d");
+
+            var data = [
+                {"id": "1", "name": "Phase 1 - Strategic Plan"},
+                {"id": "2", "name": "Self-Assessment", parent: "1"},
+                {
+                    "id": "3",
+                    "name": "Define business vision",
+                    parent: "2",
+                    "progressValue": "0%",
+                    "actualStart": "2016 Feb 4",
+                    "actualEnd": "2016 Feb 25",
+                    "connectTo": "4",
+                    "connectorType": "FinishStart"
+                },
+                {
+                    "id": "4",
+                    "name": "Identify available skills, information and support",
+                    parent: "2",
+                    "progressValue": "0%",
+                    "actualStart": "2016 Mar 5",
+                    "actualEnd": "2016 Mar 15",
+                    "connectTo": "5",
+                    "connectorType": "FinishStart"
+                },
+                {
+                    "id": "5",
+                    "name": "Decide whether to proceed",
+                    parent: "2",
+                    "progressValue": "0%",
+                    "actualStart": "2016 Apr 2",
+                    "actualEnd": "2016 Apr 20",
+                    "connectTo": "6",
+                    "connectorType": "FinishStart"
+                },
+                {"id": "6", "name": "Define the Opportunity", parent: "1"},
+                {
+                    "id": "7",
+                    "name": "Research the market and competition",
+                    parent: "6",
+                    "progressValue": "0%",
+                    "actualStart": "2016 Mar 9",
+                    "actualEnd": "2016 Mar 30",
+                    "connectTo": "8",
+                    "connectorType": "FinishStart"
+                }
+            ];
+
+            chart = anychart.ganttProject();
+            chart.data(data, "asTable");
+            chart.container("container");
+            chart.draw();
+            chart.fitAll();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

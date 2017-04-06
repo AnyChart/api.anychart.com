@@ -1,0 +1,132 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="dataGrid anyGantt"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            var data = getData();
+
+            chart = anychart.ganttResource();
+            chart.data(data, anychart.enums.TreeFillingMethod.AS_TABLE);
+
+            var tooltip = chart.getTimeline().tooltip();
+            tooltip.format(function () {
+
+                // Get data.
+                var result = this.getData("periods", this.periodIndex, "state");
+
+                return result === void 0 ? "No state specified" : result;
+            });
+
+            chart.title("Get Gantt Resource data using several parameters");
+            chart.container("container");
+            chart.draw();
+            chart.fitAll();
+
+            function getData() {
+                return [
+                    {
+                        "id": "1",
+                        "name": "Server 1",
+                        "broken": "11%",
+                        "maintance": "20%",
+                        "working": "69%",
+                        "periods": [
+                            {
+                                "id": "1_1",
+                                "style": "working",
+                                "fill": "#008000 0.7",
+                                "stroke": "none",
+                                "hoverFill": "green",
+                                "hoverStroke": "cyan",
+                                "start": 1201795200000,
+                                "end": 1201934691000,
+                                "state": "Alaska"
+                            },
+                            {
+                                "id": "1_2",
+                                "style": "maintance",
+                                "fill": "#FFFF00 0.7",
+                                "stroke": "none",
+                                "hoverFill": "yellow",
+                                "hoverStroke": "cyan",
+                                "start": 1201934691000,
+                                "end": 1201997175000,
+                                "state": "Idaho"
+                            },
+                            {
+                                "id": "1_3",
+                                "style": "working",
+                                "fill": "#008000 0.7",
+                                "stroke": "none",
+                                "hoverFill": "green",
+                                "hoverStroke": "cyan",
+                                "start": 1201997175000,
+                                "end": 1202304539000,
+                                "state": "Arizona"
+                            },
+                        ]
+                    },
+                    {
+                        "id": "2",
+                        "name": "Server 2",
+                        "broken": "9%",
+                        "maintance": "25%",
+                        "working": "66%",
+                        "periods": [
+                            {
+                                "id": "2_1",
+                                "style": "working",
+                                "fill": "#008000 0.7",
+                                "stroke": "none",
+                                "hoverFill": "green",
+                                "hoverStroke": "cyan",
+                                "start": 1201795200000,
+                                "end": 1201859302000,
+                                "state": "Virginia"
+                            },
+                            {
+                                "id": "2_2",
+                                "style": "working",
+                                "fill": "#008000 0.7",
+                                "stroke": "none",
+                                "hoverFill": "red",
+                                "hoverStroke": "cyan",
+                                "start": 1201859302000,
+                                "end": 1201908412000,
+                                "state": "Illinois"
+                            },
+                            {
+                                "id": "2_3",
+                                "style": "working",
+                                "fill": "#008000 0.7",
+                                "stroke": "none",
+                                "hoverFill": "green",
+                                "hoverStroke": "cyan",
+                                "start": 1201908412000,
+                                "end": 1201974133000,
+                                "state": "California"
+                            },
+                            {
+                                "id": "2_4",
+                                "style": "maintance",
+                                "fill": "#FFFF00 0.7",
+                                "stroke": "none",
+                                "hoverFill": "yellow",
+                                "hoverStroke": "cyan",
+                                "start": 1201974133000,
+                                "end": 1202028840000,
+                                "state": "Colorado"
+                            },
+                        ]
+                    }
+                ];
+            }
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
