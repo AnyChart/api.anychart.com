@@ -5,7 +5,7 @@
     <script src="../../../../anychart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
     <script src="http://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="australiaMap">
+    <script x-export="map">
         anychart.onDocumentReady(function() {
             // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
             // See http://docs.anychart.com/latest/Maps/Map_Projections to learn more.
@@ -23,17 +23,18 @@
 
             var dataSetForSeries = dataSet.mapAs({id: "id"});
 
-            australiaMap = anychart.map();
-            australiaMap.geoData(anychart.maps.australia);
+            map = anychart.map();
+            map.geoData(anychart.maps.australia);
 
-            var series = australiaMap.bubble(dataSetForSeries);
-            series.geoIdField("code_hasc");
+            var series = map.bubble(dataSetForSeries);
             series.displayNegative(true);
-            // Sets negative fill.
+
+            // Set negative fill.
             series.negativeFill(["#3F51B5", "#C5CAE9"], 90, true, 0.5);
 
-            australiaMap.container("container");
-            australiaMap.draw();
+            map.title("Set negative fill as a linear gradient");
+            map.container("container");
+            map.draw();
         });
     </script>
 </head>

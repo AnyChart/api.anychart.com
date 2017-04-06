@@ -41,8 +41,7 @@
             firstAustraliaMap.geoData(anychart.maps.australia);
 
             var series = firstAustraliaMap.choropleth(firstDataSetForSeries);
-            series.geoIdField("code_hasc");
-            series.hatchFill("backwardDiagonal", "#9E9E9E", 1.5, 50);
+            series.hatchFill("backwardDiagonal", "#FFFFFF", 1.5, 50);
 
             firstAustraliaMap.container(stage);
             firstAustraliaMap.draw();
@@ -54,18 +53,22 @@
             secondAustraliaMap.geoData(anychart.maps.australia);
 
             var secondSeries = secondAustraliaMap.choropleth(secondDataSetForSeries);
-            secondSeries.geoIdField("code_hasc");
 
             var color = anychart.scales.linearColor("#8BC34A");
             secondSeries.colorScale(color);
 
-            // Gets hatch fill.
+            // Get hatch fill.
             var hatchFill = series.hatchFill();
 
             secondSeries.hatchFill(hatchFill);
 
             secondAustraliaMap.container(stage);
             secondAustraliaMap.draw();
+
+            var title = anychart.standalones.title();
+            title.text("Get amd use hatch fill");
+            title.container(stage);
+            title.draw();
         });
     </script>
 </head>

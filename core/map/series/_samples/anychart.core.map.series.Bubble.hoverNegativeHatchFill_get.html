@@ -41,7 +41,7 @@
             firstAustraliaMap.geoData(anychart.maps.australia);
 
             var series = firstAustraliaMap.bubble(firstDataSetForSeries);
-            series.geoIdField("code_hasc");
+            series.hover();
             series.displayNegative(true);
             series.hoverNegativeHatchFill("backwardDiagonal", "#9E9E9E", 1.5, 10);
 
@@ -55,16 +55,21 @@
             secondAustraliaMap.geoData(anychart.maps.australia);
 
             var secondSeries = secondAustraliaMap.bubble(secondDataSetForSeries);
-            secondSeries.geoIdField("code_hasc");
+            secondSeries.hover();
             secondSeries.displayNegative(true);
 
-            // Gets negative hatch fill on hover.
+            // Get hover negative hatch fill.
             var hoverNegativeHatchFill = series.hoverNegativeHatchFill();
 
             secondSeries.hoverNegativeHatchFill(hoverNegativeHatchFill);
 
             secondAustraliaMap.container(stage);
             secondAustraliaMap.draw();
+
+            var title = anychart.standalones.title();
+            title.text("Get and use hover negative hatch fill");
+            title.container(stage);
+            title.draw();
         });
     </script>
 </head>

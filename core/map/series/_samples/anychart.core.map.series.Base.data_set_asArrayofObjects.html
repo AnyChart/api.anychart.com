@@ -5,15 +5,15 @@
     <script src="../../../../anychart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
     <script src="http://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="australiaMap">
+    <script x-export="map">
         anychart.onDocumentReady(function() {
             // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
             // See http://docs.anychart.com/latest/Maps/Map_Projections to learn more.
 
-            australiaMap = anychart.map();
-            australiaMap.geoData(anychart.maps.australia);
+            map = anychart.map();
+            map.geoData(anychart.maps.australia);
 
-            var series = australiaMap.choropleth();
+            var series = map.choropleth();
 
             // Set data.
             series.data([
@@ -26,11 +26,10 @@
                 {id: "AU.TS", value: 28},
                 {id: "AU.SA", value: 45}
             ]);
-            series.geoIdField("code_hasc");
 
-            australiaMap.title("Set data as an array of objects");
-            australiaMap.container("container");
-            australiaMap.draw();
+            map.title("Set data as an array of objects");
+            map.container("container");
+            map.draw();
         });
     </script>
 </head>

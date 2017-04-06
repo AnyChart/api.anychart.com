@@ -5,7 +5,7 @@
     <script src="../../../../anychart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
     <script src="http://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="australiaMap">
+    <script x-export="map">
         anychart.onDocumentReady(function() {
             // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
             // See http://docs.anychart.com/latest/Maps/Map_Projections to learn more.
@@ -27,23 +27,22 @@
             var firstView = firstDataSet.mapAs({id: "id"});
             var secondView = secondDataSet.mapAs({id: "id"});
 
-            australiaMap = anychart.map();
-            australiaMap.geoData(anychart.maps.australia);
-            australiaMap.legend(true);
+            map = anychart.map();
+            map.geoData(anychart.maps.australia);
+            map.legend(true);
 
-            var firstSeries = australiaMap.choropleth(firstView);
-            firstSeries.geoIdField("code_hasc");
+            var firstSeries = map.choropleth(firstView);
 
-            // Gets legend item.
+            // Get legend item.
             var seriesLegendItem = firstSeries.legendItem();
             seriesLegendItem.iconType("circle");
             seriesLegendItem.text("Custom legend item");
 
-            var secondSeries = australiaMap.choropleth(secondView);
-            secondSeries.geoIdField("code_hasc");
+            map.choropleth(secondView);
 
-            australiaMap.container("container");
-            australiaMap.draw();
+            map.title("Get and modify legend item");
+            map.container("container");
+            map.draw();
         });
     </script>
 </head>
