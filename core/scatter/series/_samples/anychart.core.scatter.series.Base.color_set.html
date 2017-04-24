@@ -4,15 +4,22 @@
     <meta name="x-cat-tags" content="scatter marker anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.scatter();
+
             var series = chart.marker([
-                [4.1, 10],
-                [2.3, 6],
-                [3.4, 17],
-                [1.2, 20]
+                {x: 1, value: 10},
+                {x: 2, value: 6},
+                {x: 3, value: 17},
+                {x: 4, value: 20},
+                {x: 5, value: 23},
+                {x: 6, value: 15}
             ]);
-            series.color(["#000000", "#FFEB3B"], .5, .5, null, .9, 0.3, 0.81); // sets color
+
+            // Set color.
+            series.color("#4CAF50");
+
+            chart.title("Set series color");
             chart.container("container");
             chart.draw();
         });

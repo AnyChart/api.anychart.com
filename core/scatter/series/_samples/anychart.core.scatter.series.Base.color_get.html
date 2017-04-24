@@ -6,14 +6,20 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
+
             var series = chart.marker([
-                [4.1, 10],
-                [2.3, 6],
-                [3.4, 17],
-                [1.2, 20]
+                {x: 1, value: 10},
+                {x: 2, value: 6},
+                {x: 3, value: 17},
+                {x: 4, value: 20},
+                {x: 5, value: 23},
+                {x: 6, value: 15}
             ]);
-            var getColor = series.color(); // get color
-            chart.title({fontColor: getColor});
+
+            // Get color.
+            var color = series.color();
+
+            chart.title({text: "Get and use color", fontColor: color});
             chart.container("container");
             chart.draw();
         });
