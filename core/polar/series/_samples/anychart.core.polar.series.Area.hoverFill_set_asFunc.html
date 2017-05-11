@@ -6,10 +6,18 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
-            var series = chart.area([0.3, 3, 2.2, 1.7]);
+
+            var series = chart.area([10, 5, 10, 5, 10, 5, 10, 5]);
+
+            // Set hover fill.
             series.hoverFill(function() {
-                return this.sourceColor + " .5"
-            }); // sets fill on hover
+                return this.sourceColor + " 0.5"
+            });
+
+            // Hover series.
+            series.hover();
+
+            chart.title("Set hover fill parameter as a function");
             chart.container("container");
             chart.draw();
         });

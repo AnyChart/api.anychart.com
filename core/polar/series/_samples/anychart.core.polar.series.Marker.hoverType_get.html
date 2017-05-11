@@ -6,12 +6,20 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar([10, 11, 17, 7, 21]);
+
             var series = chart.getSeries(0);
+            series.hoverSize(20);
             series.hoverType("star6");
-            var hoverType = series.hoverType(); // get current hovered marker type settings
-            chart.title("Hover marker type  is " + hoverType);
+
+            // Get hover type.
+            var hoverType = series.hoverType();
+
+            chart.title("Hover marker type is " + hoverType);
             chart.container("container");
             chart.draw();
+
+            // Hovers series.
+            series.hover();
         });
     </script>
 </head>

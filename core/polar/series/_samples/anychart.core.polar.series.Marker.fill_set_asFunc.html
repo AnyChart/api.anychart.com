@@ -6,10 +6,16 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar([10, 11, 17, 7, 21, 14, 5, 9, 3]);
+
             var series = chart.getSeries(0);
+            series.size(20);
+
+            // Set fill.
             series.fill(function() {
-                return this.sourceColor + " .5"
-            }); // sets fill.
+                return this.sourceColor + " 0.5"
+            });
+
+            chart.title("Set fill parameter as a function");
             chart.container("container");
             chart.draw();
         });

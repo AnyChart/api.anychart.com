@@ -6,10 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar([10, 11, 17, 7, 21]);
+
             var series = chart.getSeries(0);
-            series.type(anychart.enums.MarkerType.TRIANGLE_DOWN); // set marker type by enum value
+            series.hoverSize(20);
+
+            // Set hover type.
+            series.hoverType("triangleDown");
+
+            chart.title("Set hover type parameter as a string");
             chart.container("container");
             chart.draw();
+
+            // Hovers series.
+            series.hover();
         });
     </script>
 </head>

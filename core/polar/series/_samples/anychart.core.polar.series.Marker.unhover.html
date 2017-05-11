@@ -6,12 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
+
             var series = chart.marker([10, 11, 17, 7, 21, 14, 5, 9, 3]);
+            series.size(20);
             series.hoverFill("#008000");
+
+            chart.title("Disable hover state");
             chart.container("container");
             chart.draw();
+
             series.hover(3);
-            series.unhover(); // disabled hover
+
+            // Disable hover.
+            series.unhover();
         });
     </script>
 </head>

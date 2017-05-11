@@ -6,10 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar([10, 11, 17, 7, 21, 14, 5, 9, 3]);
+
             var series = chart.getSeries(0);
-            series.hoverFill(["#000000", "#FFFF00"], .5, .5, null, .9, 0.3, 0.81); // sets radial gradient hover fill.
+            series.hoverSize(20);
+
+            // Set hover fill.
+            series.hoverFill(["#ffffff", "#000000"], 0.5, 0.5, null, 0.6, 0.3, 0.81);
+
+            chart.title("Set hover fill as a radial gradient");
             chart.container("container");
             chart.draw();
+
+            // Hovers series.
+            series.hover();
         });
     </script>
 </head>

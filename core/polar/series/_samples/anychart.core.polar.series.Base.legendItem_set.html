@@ -6,11 +6,16 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
-            var firstSeries = chart.marker([1, 4, 7, 1]);
-            var secondSeries = chart.line([5, 3, 9, 2]);
             chart.legend(true);
-            firstSeries.legendItem({text: "Light blue marker", iconType: "circle", iconFill: "#2196F3"}); // sets legend item
-            secondSeries.legendItem({text: "Blue line", iconType: "square", iconFill: "#03A9F4"}); // sets legend item
+
+            var firstSeries = chart.marker([5, 9, 8, 10, 7, 23, 20, 16]);
+            var secondSeries = chart.line([10, 5, 10, 5, 10, 5, 10, 5]);
+
+            // Set legend item.
+            firstSeries.legendItem({text: "Light blue marker", iconType: "circle", iconFill: "#2196F3 0.4"});
+            secondSeries.legendItem({text: "Blue line", iconType: "square", iconFill: "#03A9F4"});
+
+            chart.title("Set legend item settings");
             chart.container("container");
             chart.draw();
         });

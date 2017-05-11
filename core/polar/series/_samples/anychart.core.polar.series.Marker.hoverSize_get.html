@@ -6,11 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar([10, 11, 17, 7, 21]);
+
             var series = chart.getSeries(0);
-            var hoverSize = series.hoverSize(); // get hoverSize
+            series.hoverSize(20);
+
+            // Get hover size.
+            var hoverSize = series.hoverSize();
+
             chart.title("Hover marker size is " + hoverSize);
             chart.container("container");
             chart.draw();
+
+            // Hovers series.
+            series.hover();
         });
     </script>
 </head>

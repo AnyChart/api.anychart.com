@@ -6,12 +6,18 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
-            var series = chart.area([0.3, 3, 2.2, 1.7]);
-            series.hoverStroke(
-                    function() {
-                        return "3 " + this.sourceColor;
-                    }
-            ); // set stroke on hover.
+
+            var series = chart.area([10, 5, 10, 5, 10, 5, 10, 5]);
+
+            // Set hover stroke.
+            series.hoverStroke(function() {
+                return "3 " + anychart.color.darken(this.sourceColor);
+            });
+
+            // Hover series.
+            series.hover();
+
+            chart.title("Set hover stroke parameter as a function");
             chart.container("container");
             chart.draw();
         });

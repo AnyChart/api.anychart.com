@@ -6,7 +6,11 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar([10, 11, 15, 7, 21]);
+
             var series = chart.getSeries(0);
+            series.size(20);
+
+            // Set custom function to display marker.
             series.type(function(path, x, y, size) {
                 var point1 = {x: x + 1.2 * size, y: y - 0.4 * size};
                 var point2 = {x: x - 0.5 * size, y: y - 0.5 * size};
@@ -16,7 +20,9 @@
                         .moveTo(point1.x, point1.y)
                         .close();
                 return path;
-            }); // set marker type by custom function
+            });
+
+            chart.title("Custom marker displayed with custom drawing function");
             chart.container("container");
             chart.draw();
         });

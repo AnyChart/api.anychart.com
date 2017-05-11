@@ -6,14 +6,21 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar([10, 11, 17, 7, 21, 14, 5, 9, 3]);
+
             var series = chart.getSeries(0);
-            series.hoverStroke(
-                    function() {
-                        return "3 #BDBDBD";
-                    }
-            ); // sets hover stroke.
+            series.hoverSize(20);
+
+            // Set hover stroke.
+            series.hoverStroke(function() {
+                return "3 " + anychart.color.darken(this.sourceColor);
+            });
+
+            chart.title("Set hover stroke");
             chart.container("container");
             chart.draw();
+
+            // Hovers series.
+            series.hover();
         });
     </script>
 </head>

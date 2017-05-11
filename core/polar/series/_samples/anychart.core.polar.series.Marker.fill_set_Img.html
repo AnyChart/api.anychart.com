@@ -4,12 +4,20 @@
     <meta name="x-cat-tags" content="polar marker anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.polar([10, 11, 17, 7, 21, 14, 5, 9, 3]);
+
             var series = chart.getSeries(0);
+            series.size(20);
+
+            // Set fill.
             series.fill({
                 src: "https://static.anychart.com/images/underwater.jpg",
-                mode: anychart.graphics.vector.ImageFillMode.STRETCH}); // sets image fill.
+                mode: anychart.graphics.vector.ImageFillMode.STRETCH,
+                opacity: 0.5
+            });
+
+            chart.title("Set fill as an image");
             chart.container("container");
             chart.draw();
         });

@@ -6,11 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
-            var series = chart.line([5, 6, 8, 3, 10]);
+
+            var series = chart.marker([5, 9, 8, 10, 7, 23, 20, 16]);
             series.labels(true);
-            series.hoverLabels({fontSize: 20, fontStyle: "bold", fontColor: "#A0522D"}); // set hover labels
+
+            // Set hover labels.
+            series.hoverLabels({fontSize: 20, fontStyle: "bold", fontColor: "#A0522D"});
+
+            chart.title("Set hover labels parameters");
             chart.container("container");
             chart.draw();
+
+            // Hovers points.
+            series.hover([5, 6, 7]);
         });
     </script>
 </head>
