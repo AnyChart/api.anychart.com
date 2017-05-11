@@ -6,25 +6,55 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var formatterFunc = function() {
-                return this.seriesName;
+                return "%SeriesName"
             };
 
             chart = anychart.radar();
-            chart.area([1, 4, 7, 1, 4]);
 
-            var seriesBlueLine = chart.line([1, 7, 2, 3]);
-            // Sets name.
+            chart.area([
+                {x: "January", value: 3},
+                {x: "February", value: 6},
+                {x: "March", value: 3},
+                {x: "April", value: 6},
+                {x: "May", value: 3},
+                {x: "June", value: 6},
+                {x: "Jule", value: 3},
+                {x: "August", value: 6}
+            ]);
+
+            var seriesBlueLine = chart.line([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 2},
+                {x: "April", value: 5},
+                {x: "May", value: 2},
+                {x: "June", value: 5},
+                {x: "Jule", value: 2},
+                {x: "August", value: 5}
+            ]);
+
+            // Set name.
             seriesBlueLine.name("My Custom series name");
 
             var blueLineTooltip = seriesBlueLine.tooltip();
             blueLineTooltip.format(formatterFunc);
 
-            var seriesOrangeLine = chart.line([2, 3, 4, 6]);
+            var seriesOrangeLine = chart.line([
+                {x: "January", value: 7},
+                {x: "February", value: 5},
+                {x: "March", value: 7},
+                {x: "April", value: 5},
+                {x: "May", value: 7},
+                {x: "June", value: 5},
+                {x: "Jule", value: 7},
+                {x: "August", value: 5}
+            ]);
 
             var seriesOrangeLineTooltip = seriesOrangeLine.tooltip();
             seriesOrangeLineTooltip.format(formatterFunc);
 
             chart.legend().enabled(true);
+            chart.title("Set name");
             chart.container("container");
             chart.draw();
         });

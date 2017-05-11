@@ -4,13 +4,38 @@
     <meta name="x-cat-tags" content="radar area line anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.radar();
-            var firstSeries = chart.area([1, 5, 7, 6]);
-            var secondSeries = chart.line([9, 1, 5, 4]);
+
+            var firstSeries = chart.line([
+                {x: "January", value: 3},
+                {x: "February", value: 6},
+                {x: "March", value: 3},
+                {x: "April", value: 6},
+                {x: "May", value: 3},
+                {x: "June", value: 6},
+                {x: "Jule", value: 3},
+                {x: "August", value: 6}
+            ]);
+
+            var secondSeries = chart.area([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 2},
+                {x: "April", value: 5},
+                {x: "May", value: 2},
+                {x: "June", value: 5},
+                {x: "Jule", value: 2},
+                {x: "August", value: 5}
+            ]);
+
             chart.legend(true);
-            firstSeries.legendItem({text: "Light blue area", iconType: "circle", iconFill: "#03A9F4"}); // sets legend item
-            secondSeries.legendItem({text: "Blue line", iconType: "square", iconFill: "#2196F3"}); // sets legend item
+
+            // Set legend item.
+            firstSeries.legendItem({text: "Light blue area", iconType: "circle", iconFill: "#03A9F4"});
+            secondSeries.legendItem({text: "Blue line", iconType: "square", iconFill: "#2196F3"});
+
+            chart.title("Set legend item");
             chart.container("container");
             chart.draw();
         });

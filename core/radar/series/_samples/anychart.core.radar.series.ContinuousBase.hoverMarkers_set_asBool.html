@@ -7,13 +7,27 @@
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
 
-            var series = chart.line([6, 1, 6, 1, 6, 1, 6, 1]);
+            var series = chart.line([
+                {x: "January", value: 7},
+                {x: "February", value: 4},
+                {x: "March", value: 7},
+                {x: "April", value: 4},
+                {x: "May", value: 7},
+                {x: "June", value: 4},
+                {x: "July", value: 7},
+                {x: "August", value: 4}
+            ]);
             series.markers(true);
-            // Disables markers in hover mode.
+
+            // Disables hover markers.
             series.hoverMarkers(false);
 
+            chart.title("Disable hover markers");
             chart.container("container");
             chart.draw();
+
+            // Hovers points.
+            series.hover([2, 4, 6]);
         });
     </script>
 </head>

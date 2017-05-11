@@ -6,8 +6,26 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
-            var series = chart.area([1, 4, 3, 1]);
-            series.hoverFill(["#FFFFFF", "#808080"], .65, .46, null, .9, .61, 0.4); // sets radial gradient fill on hover
+            chart.yScale().minimum(0);
+
+            var series = chart.area([
+                {x: "January", value: 7},
+                {x: "February", value: 4},
+                {x: "March", value: 7},
+                {x: "April", value: 4},
+                {x: "May", value: 7},
+                {x: "June", value: 4},
+                {x: "July", value: 7},
+                {x: "August", value: 4}
+            ]);
+
+            // Set hover fill.
+            series.hoverFill(["#FFFFFF", "#808080"], 0.5, 0.5, null, 0.9, 0.5, 0.5);
+
+            // Hovers series.
+            series.hover();
+
+            chart.title("Set hover fill as a radial gradient");
             chart.container("container");
             chart.draw();
         });

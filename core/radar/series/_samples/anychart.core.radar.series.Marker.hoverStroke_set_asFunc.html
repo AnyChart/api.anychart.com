@@ -4,16 +4,32 @@
     <meta name="x-cat-tags" content="radar marker anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.radar();
-            var series = chart.marker([10, 11, 17, 7, 21]);
-            series.hoverStroke(
-                    function() {
-                        return "5 #9E9E9E";
-                    }
-            ); // sets stroke
+
+            var series = chart.marker([
+                {x: "January", value: 10},
+                {x: "February", value: 17},
+                {x: "March", value: 11},
+                {x: "April", value: 7},
+                {x: "May", value: 21},
+                {x: "June", value: 13},
+                {x: "July", value: 23},
+                {x: "August", value: 14}
+            ]);
+            series.hoverSize(14);
+
+            // Set hover stroke.
+            series.hoverStroke(function () {
+                return "3 " + anychart.color.darken(this.sourceColor);
+            });
+
+            chart.title("Set hover stroke parameter as a function");
             chart.container("container");
             chart.draw();
+
+            // Hovers series.
+            series.hover();
         });
     </script>
 </head>

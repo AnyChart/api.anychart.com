@@ -4,7 +4,7 @@
     <meta name="x-cat-tags" content="radar marker anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function () {
+        anychart.onDocumentReady(function() {
             chart = anychart.radar();
 
             var series = chart.marker([
@@ -17,17 +17,15 @@
                 {x: "July", value: 23},
                 {x: "August", value: 14}
             ]);
-            series.size(14);
-            series.fill("#808080");
 
-            // Set stroke.
-            series.stroke(function () {
-                return "3 " + this.sourceColor;
-            });
+            // Set hover marker type.
+            series.hoverType("star6");
 
-            chart.title("Set stroke parameter as a function");
             chart.container("container");
             chart.draw();
+
+            // Hovers series.
+            series.hover();
         });
     </script>
 </head>

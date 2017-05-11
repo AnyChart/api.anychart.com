@@ -5,11 +5,24 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.radar([4, 8, 6, 9]);
+            chart = anychart.radar([
+                {x: "January", value: 3},
+                {x: "February", value: 6},
+                {x: "March", value: 3},
+                {x: "April", value: 6},
+                {x: "May", value: 3},
+                {x: "June", value: 6},
+                {x: "Jule", value: 3},
+                {x: "August", value: 6}
+            ]);
+
             var series = chart.getSeries(0);
             series.name("My Custom series name");
-            var getName = series.name(); // get name
-            chart.title(getName);
+
+            // Get name.
+            var name = series.name();
+
+            chart.title(name);
             chart.container("container");
             chart.draw();
         });

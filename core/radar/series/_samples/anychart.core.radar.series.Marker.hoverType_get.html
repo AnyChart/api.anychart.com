@@ -6,12 +6,29 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
-            var series = chart.marker([10, 11, 17, 7, 21]);
+
+            var series = chart.marker([
+                {x: "January", value: 10},
+                {x: "February", value: 17},
+                {x: "March", value: 11},
+                {x: "April", value: 7},
+                {x: "May", value: 21},
+                {x: "June", value: 13},
+                {x: "July", value: 23},
+                {x: "August", value: 14}
+            ]);
+
             series.hoverType("star6");
-            var hoverType = series.hoverType(); // get current hovered marker type settings
-            chart.title("Hover marker type - " + hoverType);
+
+            // Get hover marker type.
+            var hoverType = series.hoverType();
+
+            chart.title("Hover marker type is " + hoverType);
             chart.container("container");
             chart.draw();
+
+            // Hovers series.
+            series.hover();
         });
     </script>
 </head>

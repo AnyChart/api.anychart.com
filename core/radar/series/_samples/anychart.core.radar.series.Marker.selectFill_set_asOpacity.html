@@ -7,12 +7,27 @@
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
 
-            var series = chart.marker([6, 3, 6, 1, 6, 3, 6, 1]);
-            // Sets fill in selected mode.
-            series.selectFill("#3F51B5", 0.4);
+            var series = chart.marker([
+                {x: "January", value: 10},
+                {x: "February", value: 17},
+                {x: "March", value: 11},
+                {x: "April", value: 7},
+                {x: "May", value: 21},
+                {x: "June", value: 13},
+                {x: "July", value: 23},
+                {x: "August", value: 14}
+            ]);
+            series.selectSize(10);
 
+            // Set select fill.
+            series.selectFill("#F44336", 0.4);
+
+            chart.title("Set select fill with opacity");
             chart.container("container");
             chart.draw();
+
+            // Select series.
+            series.select();
         });
     </script>
 </head>

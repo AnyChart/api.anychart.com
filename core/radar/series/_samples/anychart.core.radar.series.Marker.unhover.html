@@ -5,12 +5,27 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.radar([10, 11, 17, 7, 21, 14, 5, 9, 3]);
-            var series = chart.getSeries(0);
+            chart = anychart.radar();
+
+            var series = chart.marker([
+                {x: "January", value: 10},
+                {x: "February", value: 17},
+                {x: "March", value: 11},
+                {x: "April", value: 7},
+                {x: "May", value: 21},
+                {x: "June", value: 13},
+                {x: "July", value: 23},
+                {x: "August", value: 14}
+            ]);
+
+            chart.title("Disable hover state");
             chart.container("container");
             chart.draw();
+
             series.hover();
-            series.unhover(); // disabled hover
+
+            // Disable hover.
+            series.unhover();
         });
     </script>
 </head>

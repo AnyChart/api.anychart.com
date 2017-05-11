@@ -6,11 +6,27 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
-            var series = chart.marker([10, 11, 17, 7, 21]);
-            var hoverSize = series.hoverSize(); // get hoverSize
+
+            var series = chart.marker([
+                {x: "January", value: 10},
+                {x: "February", value: 17},
+                {x: "March", value: 11},
+                {x: "April", value: 7},
+                {x: "May", value: 21},
+                {x: "June", value: 13},
+                {x: "July", value: 23},
+                {x: "August", value: 14}
+            ]);
+
+            // Get hover size.
+            var hoverSize = series.hoverSize();
+
             chart.title("Hover marker size is " + hoverSize);
             chart.container("container");
             chart.draw();
+
+            // Hovers series.
+            series.hover();
         });
     </script>
 </head>

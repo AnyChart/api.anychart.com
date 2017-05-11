@@ -4,16 +4,30 @@
     <meta name="x-cat-tags" content="radar line anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.radar();
 
-            var series = chart.line([6, 1, 6, 1, 6, 1, 6, 1]);
+            var series = chart.line([
+                {x: "January", value: 7},
+                {x: "February", value: 4},
+                {x: "March", value: 7},
+                {x: "April", value: 4},
+                {x: "May", value: 7},
+                {x: "June", value: 4},
+                {x: "July", value: 7},
+                {x: "August", value: 4}
+            ]);
             series.markers(true);
-            // Sets markers settings in hover mode.
+
+            // Set hover markers.
             series.hoverMarkers({type: "star4", size: 8});
 
+            chart.title("Set hover markers parameter as an object");
             chart.container("container");
             chart.draw();
+
+            // Hovers points.
+            series.hover([2, 4, 6]);
         });
     </script>
 </head>

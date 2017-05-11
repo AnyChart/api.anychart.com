@@ -6,11 +6,29 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
-            var series = chart.area([1, 4, 3, 1]);
+
+            var series = chart.area([
+                {x: "January", value: 7},
+                {x: "February", value: 4},
+                {x: "March", value: 7},
+                {x: "April", value: 4},
+                {x: "May", value: 7},
+                {x: "June", value: 4},
+                {x: "July", value: 7},
+                {x: "August", value: 4}
+            ]);
+
+            // Set hover fill.
             series.hoverFill({
                 src: "https://static.anychart.com/images/underwater.jpg",
-                mode: anychart.graphics.vector.ImageFillMode.STRETCH
-            }); // sets image fill on hover.
+                mode: anychart.graphics.vector.ImageFillMode.STRETCH,
+                opacity: 0.5
+            });
+
+            // Hovers series.
+            series.hover();
+
+            chart.title("Set hover fill as an image");
             chart.container("container");
             chart.draw();
         });

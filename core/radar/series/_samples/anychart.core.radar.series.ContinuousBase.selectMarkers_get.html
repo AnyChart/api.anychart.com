@@ -7,17 +7,30 @@
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
 
-            var series = chart.line([6, 1, 6, 1, 6, 1, 6, 1]);
-            series.markers(true);
+            var series = chart.line([
+                {x: "January", value: 7},
+                {x: "February", value: 4},
+                {x: "March", value: 7},
+                {x: "April", value: 4},
+                {x: "May", value: 7},
+                {x: "June", value: 4},
+                {x: "July", value: 7},
+                {x: "August", value: 4}
+            ]);
 
-            // Gets markers in selected mode.
+            // Get select markers.
             var selectedMarkers = series.selectMarkers();
+
             selectedMarkers.enabled(true);
             selectedMarkers.size(10);
             selectedMarkers.type("star5");
 
+            chart.title("Get and modify select markers");
             chart.container("container");
             chart.draw();
+
+            // Selects points.
+            series.select([0, 2, 4]);
         });
     </script>
 </head>

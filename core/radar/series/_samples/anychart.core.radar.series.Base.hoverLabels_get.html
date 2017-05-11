@@ -6,14 +6,30 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
-            var series = chart.line([5, 6, 8, 3, 10]);
-            var hoverLabel = series.hoverLabels(); // Gets hover labels.
+
+            var series = chart.line([
+                {x: "January", value: 3},
+                {x: "February", value: 6},
+                {x: "March", value: 3},
+                {x: "April", value: 6},
+                {x: "May", value: 3},
+                {x: "June", value: 6}
+            ]);
+
+            // Get hover labels.
+            var hoverLabel = series.hoverLabels();
+
             hoverLabel.enabled(true);
             hoverLabel.fontSize(20);
             hoverLabel.fontStyle("bold");
-            hoverLabel.fontColor("#A0522D");
+            hoverLabel.fontColor("#F44336");
+
+            chart.title("Get and modify hover labels");
             chart.container("container");
             chart.draw();
+
+            // Hovers points.
+            series.hover([0, 1, 5, 6]);
         });
     </script>
 </head>

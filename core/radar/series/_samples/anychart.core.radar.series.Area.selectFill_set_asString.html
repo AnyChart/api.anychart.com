@@ -7,10 +7,24 @@
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
 
-            var series = chart.area([4, 3, 3, 3]);
-            // Sets fill in selected mode.
-            series.selectFill("#9FA8DA 0.7");
+            var series = chart.area([
+                {x: "January", value: 7},
+                {x: "February", value: 4},
+                {x: "March", value: 7},
+                {x: "April", value: 4},
+                {x: "May", value: 7},
+                {x: "June", value: 4},
+                {x: "July", value: 7},
+                {x: "August", value: 4}
+            ]);
 
+            // Set fill in selected mode.
+            series.selectFill("#4CAF50");
+
+            // Selects series.
+            series.select();
+
+            chart.title("Set select fill parameter as a string");
             chart.container("container");
             chart.draw();
         });
