@@ -6,8 +6,25 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
-            var series = chart.area([1, 4, 3, 1]);
-            series.hoverHatchFill("horizontal", "#708090", 2, 6); // sets hatch fill on hover
+
+            var series = chart.area([
+                {x: "January", value: 7},
+                {x: "February", value: 4},
+                {x: "March", value: 7},
+                {x: "April", value: 4},
+                {x: "May", value: 7},
+                {x: "June", value: 4},
+                {x: "July", value: 7},
+                {x: "August", value: 4}
+            ]);
+
+            // Set hover hatch fill.
+            series.hoverHatchFill("backwardDiagonal", "#EEEEEE", 2, 6);
+
+            // Hovers series.
+            series.hover();
+
+            chart.title("Set hover hatch fill");
             chart.container("container");
             chart.draw();
         });

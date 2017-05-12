@@ -6,11 +6,17 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
-            var blueLine = chart.line([1, 1.6, "missing", 1.1, 1.9]);
+
+            var blueLine = chart.line([7, 4, 7, "missing", 7, 4, 7, 4]);
             blueLine.connectMissingPoints(false);
-            var connectMissingPoints = blueLine.connectMissingPoints(); // get connect missing points setting
-            var redLine = chart.line([2, 2.6, 2.1, "missing", 2.9]);
+
+            // Get connectMissingPoints mode.
+            var connectMissingPoints = blueLine.connectMissingPoints();
+
+            var redLine = chart.line([10, 5, 10, "missing", 10, 5, 10, 5]);
             redLine.connectMissingPoints(connectMissingPoints);
+
+            chart.title("Get and use connectMissingPoints mode");
             chart.container("container");
             chart.draw();
         });

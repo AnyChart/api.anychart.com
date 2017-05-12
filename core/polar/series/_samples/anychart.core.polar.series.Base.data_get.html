@@ -6,12 +6,17 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
-            var series = chart.line([1, 5, 6, 9, 2, 3, 6]);
-            var data1 = series.data(); // get data
-            var data2 = data1.filter("value", function(value) {
+
+            var series = chart.line([10, 5, 10, 5, 10, 5, 10, 5]);
+
+            // Get data.
+            var data = series.data();
+
+            var newData = data.filter("value", function(value) {
                 return value > 5;
             });
-            chart.line(data2);
+            chart.line(newData);
+            chart.title("Get and modify data");
             chart.container("container");
             chart.draw();
         });

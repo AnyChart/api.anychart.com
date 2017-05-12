@@ -7,16 +7,20 @@
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
 
-            var series = chart.area([0.3, 3, 2.2, 1.7]);
+            var series = chart.area([10, 5, 10, 5, 10, 5, 10, 5]);
             series.markers({fill: "#F44336"});
-            // Sets fill in selected mode.
+
+            // Set select fill.
             series.selectFill({
                 src: "https://static.anychart.com/images/underwater.jpg",
                 mode: "stretch",
                 opacity: 0.5
             });
-            // Click on marker.
 
+            // Select series.
+            series.select();
+
+            chart.title("Set select fill as an image");
             chart.container("container");
             chart.draw();
         });

@@ -5,12 +5,23 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.radar([6, 1, 6, 1, 6, 1, 6, 1]);
+            chart = anychart.radar([
+                {x: "January", value: 7},
+                {x: "February", value: 4},
+                {x: "March", value: 7},
+                {x: "April", value: 4},
+                {x: "May", value: 7},
+                {x: "June", value: 4},
+                {x: "July", value: 7},
+                {x: "August", value: 4}
+            ]);
 
             var series = chart.getSeries(0);
-            // Enables markers.
+
+            // Enable markers.
             series.markers(true);
 
+            chart.title("Enable markers");
             chart.container("container");
             chart.draw();
         });

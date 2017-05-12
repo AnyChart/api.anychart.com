@@ -7,14 +7,18 @@
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
 
-            var series = chart.area([0.3, 3, 2.2, 1.7]);
+            var series = chart.area([10, 5, 10, 5, 10, 5, 10, 5]);
             series.markers({fill: "#F44336"});
-            // Sets fill in selected mode.
-            series.selectFill(function() {
-                return this.sourceColor + " .5"
-            });
-            // Click on marker.
 
+            // Set select fill.
+            series.selectFill(function() {
+                return this.sourceColor + " 0.5"
+            });
+
+            // Select series.
+            series.select();
+
+            chart.title("Set select fill parameter as a function");
             chart.container("container");
             chart.draw();
         });

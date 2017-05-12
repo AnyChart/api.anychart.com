@@ -6,9 +6,22 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
-            var series = chart.area([1, 4, 7, 1]);
-            var color = series.color(); //get color
-            chart.title({fontColor: color});
+
+            var series = chart.area([
+                {x: "January", value: 7},
+                {x: "February", value: 4},
+                {x: "March", value: 7},
+                {x: "April", value: 4},
+                {x: "May", value: 7},
+                {x: "June", value: 4},
+                {x: "July", value: 7},
+                {x: "August", value: 4}
+            ]);
+
+            // Get color.
+            var color = series.color();
+
+            chart.title({title: "Get and use color", fontColor: color});
             chart.container("container");
             chart.draw();
         });

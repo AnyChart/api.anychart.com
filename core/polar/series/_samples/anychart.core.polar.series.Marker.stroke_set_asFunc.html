@@ -6,13 +6,17 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar([10, 11, 17, 7, 21, 14, 5, 9, 3]);
+
             var series = chart.getSeries(0);
-            series.stroke(
-                    function() {
-                        return "3 " + this.sourceColor;
-                    }
-            ); // sets stroke.
+            series.selectSize(20);
+
+            // Set stroke.
+            series.stroke(function() {
+                return "3 " + this.sourceColor;
+            });
             series.fill("#2F4F4F");
+
+            chart.title("Set stroke parameter as a function");
             chart.container("container");
             chart.draw();
         });

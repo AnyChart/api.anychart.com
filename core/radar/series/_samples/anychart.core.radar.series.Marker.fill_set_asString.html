@@ -6,8 +6,23 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
-            var series = chart.marker([10, 11, 17, 7, 21]);
-            series.fill("#008000"); // sets solid fill
+
+            var series = chart.marker([
+                {x: "January", value: 10},
+                {x: "February", value: 17},
+                {x: "March", value: 11},
+                {x: "April", value: 7},
+                {x: "May", value: 21},
+                {x: "June", value: 13},
+                {x: "July", value: 23},
+                {x: "August", value: 14}
+            ]);
+            series.size(10);
+
+            // Set fill.
+            series.fill("#008000");
+
+            chart.title("Set fill parameters as a string");
             chart.container("container");
             chart.draw();
         });

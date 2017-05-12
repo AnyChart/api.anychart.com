@@ -6,10 +6,27 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
-            var series = chart.area([1, 4, 3, 1]);
+
+            var series = chart.area([
+                {x: "January", value: 7},
+                {x: "February", value: 4},
+                {x: "March", value: 7},
+                {x: "April", value: 4},
+                {x: "May", value: 7},
+                {x: "June", value: 4},
+                {x: "July", value: 7},
+                {x: "August", value: 4}
+            ]);
+
+            // Set hover fill.
             series.hoverFill(function() {
-                return this.sourceColor + " .5"
-            }); // sets fill on hover.
+                return this.sourceColor + " 0.5"
+            });
+
+            // Hovers series.
+            series.hover();
+
+            chart.title("Set hover fill parameter as a function");
             chart.container("container");
             chart.draw();
         });

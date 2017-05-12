@@ -43,7 +43,7 @@ anychart.charts.Polar.prototype.startAngle;
  * @shortDescription X-scale settings.
  * @category Axes and Scales
  * @example anychart.charts.Polar.xScale_get
- * @return {!anychart.scales.ScatterBase} Default chart scale value.
+ * @return {anychart.scales.Base} Default chart scale value.
  */
 anychart.charts.Polar.prototype.xScale;
 
@@ -51,7 +51,7 @@ anychart.charts.Polar.prototype.xScale;
  * Setter for the chart X scale.
  * @detailed <b>Note:</b> This scale will be passed to all scale dependent chart elements if they don't have their own scales.
  * @example anychart.charts.Polar.xScale_set
- * @param {(anychart.enums.ScatterScaleTypes|anychart.scales.ScatterBase)=} opt_value ["linear"] X Scale to set.
+ * @param {(anychart.enums.ScaleTypes|anychart.scales.Base)=} opt_value X Scale to set.
  * @return {anychart.charts.Polar} Self instance for method chaining.
  */
 anychart.charts.Polar.prototype.xScale;
@@ -419,6 +419,8 @@ anychart.charts.Polar.prototype.defaultSeriesType;
 
 /**
  * Setter for the polar default series type.
+ * @detailed Setting the default type using this method affects only series created using addSeries() method after the default is set.
+ * All series created prior to that do not change the type.
  * @example anychart.charts.Polar.defaultSeriesType_set
  * @param {(string|anychart.enums.PolarSeriesType)=} opt_value Default series type.
  * @return {anychart.charts.Polar} Self instance for method chaining.
@@ -630,10 +632,194 @@ anychart.charts.Polar.prototype.selectLabels;
  * @example anychart.charts.Polar.selectLabels_set_asBool Enable/Disable chart labels
  * @example anychart.charts.Polar.selectLabels_set_asObj Using object
  * @param {(Object|boolean|null)=} opt_value Series data labels settings.
- * @return {anychart.core.ui.LabelsFactory} Labels instance. 
+ * @return {anychart.charts.Polar} Self instance for method chaining.
  * @since 7.13.1 
  */
 anychart.charts.Polar.prototype.selectLabels;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Polar.prototype.sortPointsByX
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the sortPointsByX mode.
+ * @shortDescription SortPointsByX mode
+ * @category Specific settings
+ * @listing See listing
+ * var mode = chart.sortPointsByX();
+ * @return {boolean} SortPointsByX mode.
+ * @since 7.13.1 
+ */
+anychart.charts.Polar.prototype.sortPointsByX;
+
+/**
+ * Setter for the sortPointsByX mode.
+ * If the points of series should be sorted by X before drawing.
+ * @detailed If the value is "false" then chart behaves as Scatter, if "true" then chart behaves as Cartesian: points are sorted and series can be stacked.
+ * @example anychart.charts.Polar.sortPointsByX
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.charts.Polar} Self instance for method chaining.
+ * @since 7.13.1 
+ */
+anychart.charts.Polar.prototype.sortPointsByX;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Polar.prototype.barsPadding
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the space between bars on the ordinal scale by ratio of bars width.
+ * @shortDescription Settings for the space between bars.
+ * @category Specific Series Settings
+ * @listing See listing
+ * var barsPadding = chart.barsPadding();
+ * @return {number} Bars padding.
+ * @since 7.13.1 
+ */
+anychart.charts.Polar.prototype.barsPadding;
+
+/**
+ * Setter for the space between bars on the ordinal scale by ratio of bars width.
+ * @example anychart.charts.Polar.barsPadding_set
+ * @param {number=} opt_value [0] Value to set.
+ * @return {anychart.charts.Polar} Self instance for method chaining.
+ * @since 7.13.1 
+ */
+anychart.charts.Polar.prototype.barsPadding;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Polar.prototype.barGroupsPadding
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the space between bar groups on the ordinal scale by ratio of bars width.
+ * @shortDescription Settings for the space between bar groups.
+ * @category Specific Series Settings
+ * @listing See listing
+ * var barsPadding = chart.barGroupsPadding();
+ * @return {number} Bar groups padding.
+ * @since 7.13.1 
+ */
+anychart.charts.Polar.prototype.barGroupsPadding;
+
+/**
+ * Setter for the space between bar groups on the ordinal scale by ratio of bars width.
+ * @example anychart.charts.Polar.barGroupsPadding_set
+ * @param {number=} opt_value [0] Value to set.
+ * @return {anychart.charts.Polar} Self instance for method chaining.
+ * @since 7.13.1 
+ */
+anychart.charts.Polar.prototype.barGroupsPadding;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.RadarPolarChart.prototype.innerRadius
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the inner radius.
+ * @shortDescription Polar inner radius.
+ * @category Size and Position
+ * @listing See listing
+ * var innerRadius =  chart.innerRadius();
+ * @return {number|string} Inner radius.
+ * @since 7.13.1 
+ */
+anychart.charts.Polar.prototype.innerRadius;
+
+/**
+ * Setter for the inner radius in pixels or percent of main radius.
+ * @example anychart.charts.Polar.innerRadius
+ * @param {(number|string)=} opt_value [0] Value to set.
+ * @return {anychart.charts.Polar} Self instance for method chaining.
+ * @since 7.13.1 
+ */
+anychart.charts.Polar.prototype.innerRadius;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Polar.prototype.column
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds Column series.
+ * @shortDescription Adds Column series.
+ * @category Series
+ * @example anychart.charts.Polar.column
+ * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings [true] If CSV string is passed, you can pass CSV parser settings
+ *    here as a hash map.
+ * @return {anychart.core.polar.series.Column} An instance of the created series.
+ * @since 7.13.1 
+ */
+anychart.charts.Polar.prototype.column;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Polar.prototype.rangeColumn
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds Range Column series.
+ * @shortDescription Adds Range Column series.
+ * @category Series
+ * @example anychart.charts.Polar.rangeColumn
+ * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings [true] If CSV string is passed, you can pass CSV parser settings
+ *    here as a hash map.
+ * @return {anychart.core.polar.series.RangeColumn} An instance of the created series.
+ * @since 7.13.1 
+ */
+anychart.charts.Polar.prototype.rangeColumn;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Polar.prototype.area
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds Polygon series.
+ * @shortDescription Adds Polygon series.
+ * @category Series
+ * @example anychart.charts.Polar.polygon
+ * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings [true] If CSV string is passed, you can pass CSV parser settings
+ *    here as a hash map.
+ * @return {anychart.core.polar.series.Polygon} An instance of the created series.
+ * @since 7.13.1 
+ */
+anychart.charts.Polar.prototype.polygon;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Polar.prototype.polyline
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds Polyline series.
+ * @shortDescription Adds Polyline series.
+ * @category Series
+ * @example anychart.charts.Polar.polyline
+ * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings [true] If CSV string is passed, you can pass CSV parser settings
+ *    here as a hash map.
+ * @return {anychart.core.polar.series.Polyline} An instance of the created series.
+ * @since 7.13.1 
+ */
+anychart.charts.Polar.prototype.polyline;
 
 /** @inheritDoc */
 anychart.charts.Polar.prototype.legend;

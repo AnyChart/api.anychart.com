@@ -7,15 +7,20 @@
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
 
-            var series = chart.area([1, 4, 7, 2]);
+            var series = chart.marker([5, 9, 8, 10, 7, 23, 20, 16]);
             series.labels(true);
-            // Gets labels.
-            var labels = series.hoverLabels();
-            labels.fontWeight("bold");
-            labels.fontSize(25);
 
+            // Get hover labels.
+            var hoverLabels = series.hoverLabels();
+            hoverLabels.fontWeight("bold");
+            hoverLabels.fontSize(25);
+
+            chart.title("Get and modify labels");
             chart.container("container");
             chart.draw();
+
+            // Hovers points.
+            series.hover([5, 6, 7]);
         });
     </script>
 </head>

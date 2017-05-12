@@ -5,16 +5,19 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            var firstData = [40, 30, 40, 30, 40, 30, 40, 30];
-            var secondData = [23, 41, 23, 41, 23, 11, 23, 5];
-            var thirdData = [60, 10, 60, 15, 60, 20, 60, 25];
+            var data1 = [40, 30, 40, 30, 40, 30, 40, 30];
+            var data2 = [23, 41, 23, 41, 23, 11, 23, 5];
+            var data3 = [60, 10, 60, 15, 60, 20, 60, 25];
 
             chart = anychart.scatter();
 
-            // Sets default series type.
+            chart.addSeries(data1);
+
+            // Set default series type.
             chart.defaultSeriesType("line");
 
-            chart.addSeries(firstData, secondData, thirdData);
+            chart.addSeries(data2, data3);
+            chart.title("Change default series type added by addSeries method");
             chart.container("container");
             chart.draw();
         });

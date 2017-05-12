@@ -6,15 +6,24 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar([10, 11, 17, 7, 21, 14, 5, 9, 3]);
+
             var series = chart.getSeries(0);
+            series.hoverSize(20);
+
+            // Set hover fill.
             series.hoverFill({
                 src: "https://static.anychart.com/images/underwater.jpg",
-                mode: anychart.graphics.vector.ImageFillMode.STRETCH
-            }); // sets image hover fill.
+                mode: anychart.graphics.vector.ImageFillMode.STRETCH,
+                opacity: 0.5
+            });
+
+            chart.title("Set hover fill as an image");
             chart.container("container");
             chart.draw();
-        })
-        ;
+
+            // Hovers series.
+            series.hover();
+        });
     </script>
 </head>
 <body>

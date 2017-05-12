@@ -7,15 +7,28 @@
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
 
-            var series = chart.marker([6, 3, 6, 1, 6, 3, 6, 1]);
+            var series = chart.marker([
+                {x: "January", value: 10},
+                {x: "February", value: 17},
+                {x: "March", value: 11},
+                {x: "April", value: 7},
+                {x: "May", value: 21},
+                {x: "June", value: 13},
+                {x: "July", value: 23},
+                {x: "August", value: 14}
+            ]);
+            series.selectSize(15);
             series.selectType("star5");
 
-            // Gets marker type in selected mode.
+            // Get select marker type.
             var selectedTypeMarker = series.selectType();
 
             chart.title("Marker type is " + selectedTypeMarker);
             chart.container("container");
             chart.draw();
+
+            // Select series.
+            series.select();
         });
     </script>
 </head>

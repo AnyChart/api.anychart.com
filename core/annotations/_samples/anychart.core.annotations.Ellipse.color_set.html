@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="line annotations anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.line([6, 10, 18, 11, 9]);
+            chart.yScale().minimum(0);
+            chart.xScale("linear");
+
+            var controller = chart.annotations();
+
+            var annotation = controller.ellipse();
+            annotation.xAnchor(1.9);
+            annotation.valueAnchor(17);
+            annotation.secondXAnchor(2.1);
+            annotation.secondValueAnchor(19);
+
+            // Set color.
+            annotation.color("#4CAF50");
+
+            chart.title("Set annotation color");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

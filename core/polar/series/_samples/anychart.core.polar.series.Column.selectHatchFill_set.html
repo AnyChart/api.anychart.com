@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="polar column anyChart"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.polar();
+
+            var series = chart.column([
+                {x: 1, value: 4},
+                {x: 2, value: 2},
+                {x: 3, value: 8},
+                {x: 4, value: 5},
+                {x: 5, value: 3},
+                {x: 6, value: 9}
+            ]);
+
+            // Set select hatch fill.
+            series.selectHatchFill("backwardDiagonal", "#FFFFFF", 2, 6);
+
+            // selects series.
+            series.select();
+
+            chart.xScale("ordinal").sortPointsByX(true);
+            chart.title("Set hatch fill parameters");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

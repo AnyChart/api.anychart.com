@@ -6,10 +6,28 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
-            var series = chart.marker([10, 11, 17, 7, 21]);
-            series.hoverStroke("#FFA500", 3, "5 2", "round"); // sets  hover stroke
+
+            var series = chart.marker([
+                {x: "January", value: 10},
+                {x: "February", value: 17},
+                {x: "March", value: 11},
+                {x: "April", value: 7},
+                {x: "May", value: 21},
+                {x: "June", value: 13},
+                {x: "July", value: 23},
+                {x: "August", value: 14}
+            ]);
+            series.hoverSize(14);
+
+            // Set hover stroke.
+            series.hoverStroke("#F44336", 3, "5 2", "round");
+
+            chart.title("Set hover stroke parameters");
             chart.container("container");
             chart.draw();
+
+            // Hovers series.
+            series.hover();
         });
     </script>
 </head>

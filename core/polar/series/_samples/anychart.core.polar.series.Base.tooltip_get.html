@@ -4,15 +4,21 @@
     <meta name="x-cat-tags" content="polar area anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.polar();
-            var series = chart.area([1, 4, 7, 1]);
+
+            var series = chart.area([10, 5, 10, 5, 10, 5, 10, 5]);
             series.markers({enabled: true});
-            var tooltip = series.tooltip(); // get tooltip
-            var background = tooltip.background({
+
+            // Get tooltip.
+            var tooltip = series.tooltip();
+
+            tooltip.background({
                 stroke: "2 #cc8800",
                 fill: "#808080 0.5"
             });
+
+            chart.title("Get and modify tooltip");
             chart.container("container");
             chart.draw();
         });

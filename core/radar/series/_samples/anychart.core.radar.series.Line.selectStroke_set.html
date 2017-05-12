@@ -7,12 +7,26 @@
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
 
-            var series = chart.line([6, 6, 6, 6, 6, 6]);
-            // Sets stroke in selected mode.
+            var series = chart.line([
+                {x: "January", value: 7},
+                {x: "February", value: 4},
+                {x: "March", value: 7},
+                {x: "April", value: 4},
+                {x: "May", value: 7},
+                {x: "June", value: 4},
+                {x: "July", value: 7},
+                {x: "August", value: 4}
+            ]);
+
+            // Set select stroke.
             series.selectStroke("#3F51B5", 3, "5 2", "round");
 
+            chart.title("Set select stroke parameters");
             chart.container("container");
             chart.draw();
+
+            // Hovers series.
+            series.select();
         });
     </script>
 </head>

@@ -6,15 +6,31 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
-            chart.line([136, 79, 149, 135, 158]);
 
-            var series = chart.line([199, 125, 173, 33, 64]);
+            chart.line([
+                {x: "January", value: 3},
+                {x: "February", value: 6},
+                {x: "March", value: 3},
+                {x: "April", value: 6},
+                {x: "May", value: 3},
+                {x: "June", value: 6}
+            ]);
+
+            var series = chart.line([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 2},
+                {x: "April", value: 5},
+                {x: "May", value: 2},
+                {x: "June", value: 5}
+            ]);
             series.hoverStroke("#8BC34A");
 
+            chart.title("Hovers series");
             chart.container("container");
             chart.draw();
 
-            // Hover series.
+            // Hovers series.
             series.hover();
         });
     </script>

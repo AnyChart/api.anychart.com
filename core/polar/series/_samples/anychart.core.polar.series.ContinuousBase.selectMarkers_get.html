@@ -7,16 +7,20 @@
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
 
-            var series = chart.line([1, 4, 7, 1]);
+            var series = chart.line([10, 5, 10, 5, 10, 5, 10, 5]);
             series.markers(true);
 
-            // Gets markers in selected mode
+            // Get select markers.
             var hoverMarkers = series.selectMarkers();
             hoverMarkers.size(10);
             hoverMarkers.type("star5");
 
+            chart.title("Get and modify select markers");
             chart.container("container");
             chart.draw();
+
+            // Selects points.
+            series.select([0, 2, 4, 6]);
         });
     </script>
 </head>

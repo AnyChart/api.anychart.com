@@ -9,27 +9,27 @@
             var table = anychart.data.table(0);
 
             table.addData([
-                ['2015-12-24T12:00:00', 511, 413],
-                ['2015-12-25T12:00:00', 212, 413],
-                ['2015-12-26T12:00:00', 311, 413],
-                ['2015-12-27T12:00:00', 411, 413],
-                ['2015-12-28T12:00:00', 611, 413, "#FF0000"],
-                ['2015-12-29T12:00:00', 512, 413],
-                ['2015-12-30T12:00:00', 411, 413],
-                ['2015-12-31T12:00:00', 311, 413],
-                ['2016-01-01T12:00:00', 510, 413]
+                ['2015-12-24', 511],
+                ['2015-12-25', 212],
+                ['2015-12-26', 311],
+                ['2015-12-27', 411],
+                ['2015-12-28', 611, "#FF0000"],
+                ['2015-12-29', 512],
+                ['2015-12-30', 411],
+                ['2015-12-31', 311],
+                ['2016-01-01', 510]
             ]);
 
-            var mapping = table.mapAs({value: 1, fill: 3});
+            var mapping = table.mapAs({value: 1, fill: 2});
 
             // Creates a stock chart.
             chart = anychart.stock(true);
 
             var plot = chart.plot(0);
 
-            var series = plot.column(mapping);
-            series.name("Volume");
+            plot.column(mapping).name("Volume");
 
+            chart.title("Create a Stock chart");
             chart.container("container");
             chart.draw();
         });

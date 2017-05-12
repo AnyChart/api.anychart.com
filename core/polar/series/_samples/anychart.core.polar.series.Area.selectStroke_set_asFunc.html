@@ -4,19 +4,21 @@
     <meta name="x-cat-tags" content="polar area anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.polar();
 
-            var series = chart.area([0.3, 3, 2.2, 1.7]);
+            var series = chart.area([10, 5, 10, 5, 10, 5, 10, 5]);
             series.markers({fill: "#F44336"});
-            // Sets stroke in selected mode.
-            series.selectStroke(
-                    function() {
-                        return "3 " + anychart.color.darken(this.sourceColor);
-                    }
-            );
-            // Click on marker.
 
+            // Set select stroke.
+            series.selectStroke(function() {
+                return "3 " + anychart.color.darken(this.sourceColor);
+            });
+
+            // Select series.
+            series.select();
+
+            chart.title("Set select stroke parameter as a function");
             chart.container("container");
             chart.draw();
         });

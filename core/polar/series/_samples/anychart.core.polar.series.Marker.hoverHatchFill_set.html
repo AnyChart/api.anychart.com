@@ -6,11 +6,20 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar([10, 11, 17, 7, 21, 14, 5, 9, 3]);
+
             var series = chart.getSeries(0);
+            series.hoverSize(20);
             series.hatchFill("horizontal");
-            series.hoverHatchFill("vertical", "green", 2, 6);// sets hover hatch fill.
+
+            // Set hover hatch fill.
+            series.hoverHatchFill("backwardDiagonal", "#ffffff", 2, 10);
+
+            chart.title("Set hover hatch fill parameters");
             chart.container("container");
             chart.draw();
+
+            // Hovers series.
+            series.hover();
         });
     </script>
 </head>

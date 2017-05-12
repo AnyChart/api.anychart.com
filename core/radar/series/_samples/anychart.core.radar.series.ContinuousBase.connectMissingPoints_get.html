@@ -6,11 +6,35 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
-            var blueLine = chart.line([1, 1.6, "missing", 1.1, 1.9]);
+
+            var blueLine = chart.line([
+                {x: "January", value: 7},
+                {x: "February", value: 4},
+                {x: "March", value: 7},
+                {x: "April", value: "missing"},
+                {x: "May", value: 7},
+                {x: "June", value: 4},
+                {x: "July", value: 7},
+                {x: "August", value: 4}
+            ]);
             blueLine.connectMissingPoints(false);
-            var connectMissingPoints = blueLine.connectMissingPoints(); // get connect missing points setting
-            var redLine = chart.line([2, 2.6, 2.1, "missing", 2.9]);
+
+            // Get connectMissingPoints mode.
+            var connectMissingPoints = blueLine.connectMissingPoints();
+
+            var redLine = chart.line([
+                {x: "January", value: 10},
+                {x: "February", value: 5},
+                {x: "March", value: 10},
+                {x: "April", value: "missing"},
+                {x: "May", value: 10},
+                {x: "June", value: 5},
+                {x: "July", value: 10},
+                {x: "August", value: 5}
+            ]);
             redLine.connectMissingPoints(connectMissingPoints);
+
+            chart.title("Get and use connectMissingPoints mode");
             chart.container("container");
             chart.draw();
         });

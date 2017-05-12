@@ -4,24 +4,38 @@
     <meta name="x-cat-tags" content="radar line anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.radar();
+
             var blueLine = chart.line([
-                ["A1", 1],
-                ["A2", 1.6],
-                ["A3", "missing"],
-                ["A4", 1.1],
-                ["A5", 1.9]
+                {x: "January", value: 7},
+                {x: "February", value: 4},
+                {x: "March", value: 7},
+                {x: "April", value: "missing"},
+                {x: "May", value: 7},
+                {x: "June", value: 4},
+                {x: "July", value: 7},
+                {x: "August", value: 4}
             ]);
-            blueLine.connectMissingPoints(false); // set connect missing points setting
+
+            // Set connectMissingPoints mode.
+            blueLine.connectMissingPoints(false);
+
             var redLine = chart.line([
-                ["A1", 2],
-                ["A2", 2.6],
-                ["A3", "missing"],
-                ["A4", 2.1],
-                ["A5", 2.9]
+                {x: "January", value: 10},
+                {x: "February", value: 5},
+                {x: "March", value: 10},
+                {x: "April", value: "missing"},
+                {x: "May", value: 10},
+                {x: "June", value: 5},
+                {x: "July", value: 10},
+                {x: "August", value: 5}
             ]);
-            redLine.connectMissingPoints(true); // set connect missing points setting
+
+            // Set connectMissingPoints mode.
+            redLine.connectMissingPoints(true);
+
+            chart.title("Set connectMissingPoints mode");
             chart.container("container");
             chart.draw();
         });

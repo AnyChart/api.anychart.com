@@ -7,10 +7,24 @@
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
 
-            var series = chart.area([4, 3, 3, 3]);
-            // Sets hatch fill in selected mode.
-            series.selectHatchFill("horizontal", "#708090", 1.5, 10);
+            var series = chart.area([
+                {x: "January", value: 7},
+                {x: "February", value: 4},
+                {x: "March", value: 7},
+                {x: "April", value: 4},
+                {x: "May", value: 7},
+                {x: "June", value: 4},
+                {x: "July", value: 7},
+                {x: "August", value: 4}
+            ]);
 
+            // Set hatch fill in selected mode.
+            series.selectHatchFill("backwardDiagonal", "#FFFFFF", 2, 20);
+
+            // Selects series.
+            series.select();
+
+            chart.title("Set select hatch fill parameters");
             chart.container("container");
             chart.draw();
         });

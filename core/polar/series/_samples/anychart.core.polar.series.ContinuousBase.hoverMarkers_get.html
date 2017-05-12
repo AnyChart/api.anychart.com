@@ -6,13 +6,21 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.polar();
-            var series = chart.line([1, 4, 7, 1]);
+
+            var series = chart.line([7, 4, 7, 4, 7, 4, 7, 4]);
             series.markers(true);
-            var hoverMarkers = series.hoverMarkers(); // get hoverMarkers
+
+            // Get hover markers.
+            var hoverMarkers = series.hoverMarkers();
             hoverMarkers.size(10);
             hoverMarkers.type("star5");
+
+            chart.title("Get and modify hover markers");
             chart.container("container");
             chart.draw();
+
+            // Hovers points.
+            series.hover([0, 2, 4, 6]);
         });
     </script>
 </head>

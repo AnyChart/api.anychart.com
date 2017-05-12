@@ -6,13 +6,28 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
-            var series = chart.area([1, 4, 7, 1]);
+
+            var series = chart.area([
+                {x: "January", value: 3},
+                {x: "February", value: 6},
+                {x: "March", value: 3},
+                {x: "April", value: 6},
+                {x: "May", value: 3},
+                {x: "June", value: 6},
+                {x: "Jule", value: 3},
+                {x: "August", value: 6}
+            ]);
             series.markers({enabled: true});
-            var tooltip = series.tooltip(); // get tooltip
-            var background = tooltip.background({
+
+            // Get tooltip.
+            var tooltip = series.tooltip();
+
+            tooltip.background({
                 stroke: "2 #cc8800",
                 fill: "#808080 0.5"
             });
+
+            chart.title("Get and modify tooltip");
             chart.container("container");
             chart.draw();
         });

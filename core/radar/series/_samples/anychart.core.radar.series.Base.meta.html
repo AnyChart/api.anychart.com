@@ -6,9 +6,23 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.radar();
-            var series = chart.line([1, 5, 2, 6, 3]);
+
+            var series = chart.line([
+                {x: "January", value: 3},
+                {x: "February", value: 6},
+                {x: "March", value: 3},
+                {x: "April", value: 6},
+                {x: "May", value: 3},
+                {x: "June", value: 6},
+                {x: "Jule", value: 3},
+                {x: "August", value: 6}
+            ]);
+
             series.meta({"fieldName": "Custom settings meta"});
-            var getMeta = series.meta("fieldName"); // get meta
+
+            // Get meta.
+            var getMeta = series.meta("fieldName");
+
             chart.title(getMeta);
             chart.container("container");
             chart.draw();

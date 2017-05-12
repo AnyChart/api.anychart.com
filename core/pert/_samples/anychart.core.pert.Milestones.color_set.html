@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="pert anyChart"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            var data = [
+                {id: "A1", duration: 1, name: "Task A"},
+                {id: "A2", duration: 3, name: "Task B"},
+                {id: "A3", duration: 3, name: "Task C"},
+                {id: "A4", duration: 1, name: "Task D"},
+                {id: "A5", duration: 2, name: "Task AD", dependsOn: ["A1", "A4"]},
+                {id: "A6", duration: 2, name: "Task BC", dependsOn: ["A2", "A3"]}
+            ];
+
+            chart = anychart.pert();
+            chart.data(data, "asTable");
+
+            var milestones = chart.milestones();
+
+            // Set color.
+            milestones.color("#8BC34A");
+
+            chart.title("Set milestones color");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
