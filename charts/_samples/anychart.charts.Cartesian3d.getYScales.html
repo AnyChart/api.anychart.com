@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="line column anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var data = anychart.data.set([
+                ["January", 10, 20, 14, 25],
+                ["February", 5, 50, 28, 41],
+                ["March", 17, 30, 55, 34],
+                ["April", 20, 90, 26, 17],
+                ["May", 16, 49, 31, 36]
+            ]);
+
+            var seriesData_1 = data.mapAs({x: 0, value: 1});
+            var seriesData_2 = data.mapAs({x: 0, value: 2});
+            var seriesData_3 = data.mapAs({x: 0, value: 3});
+            var seriesData_4 = data.mapAs({x: 0, value: 4});
+
+            chart = anychart.column3d();
+
+            var yScale1 = anychart.scales.linear();
+            yScale1.stackMode("value");
+
+            var yScale2 = anychart.scales.linear();
+            yScale2.stackMode("value");
+
+            chart.column(seriesData_1).yScale(yScale1);
+            chart.column(seriesData_2).yScale(yScale1);
+            chart.column(seriesData_3).yScale(yScale2);
+            chart.column(seriesData_4).yScale(yScale2);
+
+            chart.yAxis().scale(yScale1);
+
+            chart.title("Get and use Y scales");
+            chart.container("container");
+            chart.draw();
+
+            // Get y scales.
+            var scales = chart.getYScales();
+
+            for (var i = 0; i < scales.length; i++) {
+                scales[i].minimum(chart.getStat("yScalesMin"));
+                scales[i].maximum(chart.getStat("yScalesMax"));
+            }
+
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
