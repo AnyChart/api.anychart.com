@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyStock"/>
+    <script src="../../anychart.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            var dataTable = anychart.data.table();
+
+            // The data used in this sample can be obtained from the CDN
+            // https://cdn.anychart.com/csv-data/dji-daily-short.js
+            dataTable.addData(get_dji_daily_short_data());
+
+            var mapping = dataTable.mapAs();
+            mapping.addField('open', 1, 'first');
+            mapping.addField('high', 2, 'max');
+            mapping.addField('low', 3, 'min');
+            mapping.addField('close', 4, 'last');
+            mapping.addField('volume', 5, 'average');
+
+            chart = anychart.stock();
+            chart.padding(10, 10, 10, 50);
+
+            // Create computer.
+            var computer = dataTable.createComputer(mapping);
+
+            var context = anychart.math.cho.initContext(5, 15);
+
+            // Set init context.
+            computer.setContext(context);
+
+            // Set start calculation function.
+            computer.setStartFunction(anychart.math.cho.startFunction);
+
+            // Calculation function.
+            computer.setCalculationFunction(anychart.math.cho.calculationFunction);
+
+            var indicatorMapping = dataTable.mapAs({value: computer.addOutputField("result")});
+
+            var plot = chart.plot();
+            plot.line(indicatorMapping).name("CHO(5, 15)");
+
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

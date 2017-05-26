@@ -1,0 +1,53 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyStock"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var dataTable = anychart.data.table();
+            dataTable.addData(get_dji_daily_short_data());
+
+            var mapping = dataTable.mapAs();
+            mapping.addField('open', 1, 'first');
+            mapping.addField('high', 2, 'max');
+            mapping.addField('low', 3, 'min');
+            mapping.addField('close', 4, 'last');
+            mapping.addField('volume', 5, 'average');
+
+            chart = anychart.stock();
+            chart.padding(10, 10, 10, 50);
+
+            var plot = chart.plot();
+            plot.ohlc(mapping);
+
+            var indicatorPlot = chart.plot(1);
+            indicatorPlot.yScale().minimum(-300);
+            indicatorPlot.yScale().maximum(300);
+            indicatorPlot.yScale().ticks().interval(100);
+
+            var cciIndicator = indicatorPlot.cci(mapping);
+
+            var controller = indicatorPlot.annotations();
+            controller.rectangle({
+                xAnchor: '2004-01-02',
+                valueAnchor: 100,
+                secondXAnchor: '2009-07-02',
+                secondValueAnchor: -100,
+                fill: "#F44336 0.3"
+            });
+
+            // Get period.
+            var indicatorPeriod = cciIndicator.period();
+
+            chart.title("Indicator period is " + indicatorPeriod);
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
