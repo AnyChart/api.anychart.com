@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="mekko anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            var dataSet = anychart.data.set([
+                ["Spring", 20, 2],
+                ["Summer", 30, 30],
+                ["Autumn", 100, 110],
+                ["Winter", 40, 10]
+            ]);
+
+            chart = anychart.mekko();
+
+            var data1 = dataSet.mapAs({x: 0, value: 1});
+            var data2 = dataSet.mapAs({x: 0, value: 2});
+
+            chart.mekko(data1);
+            chart.mekko(data2);
+
+            // Set X axis settings.
+            chart.xAxis({orientation: "top", title: true});
+
+            chart.title("Set X axis parameters as an object");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

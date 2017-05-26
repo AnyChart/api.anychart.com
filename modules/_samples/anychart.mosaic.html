@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="mekko anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            var dataSet = anychart.data.set([
+                ["Spring", 20, 40],
+                ["Summer", 30, 43],
+                ["Autumn", 100, 67],
+                ["Winter", 40, 15]
+            ]);
+
+            var map1 = dataSet.mapAs({x: 0, value: 1});
+            var map2 = dataSet.mapAs({x: 0, value: 2});
+
+            // Creates Mosaic chart.
+            chart = anychart.mosaic();
+            chart.labels().enabled(true).fontColor("#fff");
+
+            chart.mekko(map2).name("Speed");
+            chart.mekko(map1).name("Heart rate");
+
+            chart.title("Create a Mosaic chart");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
