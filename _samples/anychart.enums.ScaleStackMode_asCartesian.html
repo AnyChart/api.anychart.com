@@ -1,13 +1,18 @@
 <html>
 <head>
-  <meta name="x-cat-tags" content="column anyChart"/>
     <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="column anyChart"/>
     <script src="../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.column([2, 8, 4, 10], [4, 10, 6, 14], [8, 18, 14, 24]);
+
             var scale = chart.yScale();
-            scale.stackMode(anychart.enums.ScaleStackMode.VALUE); //set stack mode for scale
+
+            // Set stack mode for scale.
+            scale.stackMode(anychart.enums.ScaleStackMode.VALUE);
+
+            chart.title("Set stack mode for the scale");
             chart.container("container");
             chart.draw();
         });

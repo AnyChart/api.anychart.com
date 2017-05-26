@@ -1,0 +1,42 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyStock"/>
+    <script src="../anychart.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var dataTable1 = anychart.data.table();
+            var dataTable2 = anychart.data.table();
+            var dataTable3 = anychart.data.table();
+
+            dataTable1.addData(get_dji_daily_short_data());
+            dataTable2.addData(get_dji_daily_short_data());
+            dataTable3.addData(get_dji_daily_short_data());
+
+            var mapping1 = dataTable1.mapAs({value: 1});
+            var mapping2 = dataTable2.mapAs({value: 2});
+            var mapping3 = dataTable3.mapAs({value: 3});
+
+            chart = anychart.stock();
+
+            var plot = chart.plot();
+            plot.area(mapping1).name("Grateful");
+            plot.area(mapping2).name("Neutral");
+            plot.area(mapping3).name("Disgruntled");
+
+            var scale = plot.yScale();
+
+            // Set stack mode for scale.
+            scale.stackMode("value");
+
+            chart.title("Set stack mode for the scale");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
