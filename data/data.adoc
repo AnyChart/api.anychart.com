@@ -48,3 +48,62 @@ anychart.data.mapAsTable;
  */
 anychart.data.buildMapping;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.TextParsingSettings
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Settings for parsing text.
+ * @typedef {Object} anychart.data.TextParsingSettings
+ * @property {(anychart.enums.TextParsingMode|undefined)} mode Mode selector.
+ * @property {(string|undefined)} rowsSeparator Rows separator. Defaults to '\n' for CSV mode.
+ * @property {(string|undefined)} columnsSeparator Columns separator. Defaults to ',' for CSV mode.
+ * @property {(boolean|undefined)} ignoreTrailingSpaces Whether to ignore trailing spaces. Defaults to false for CSV mode.
+ * @property {(boolean|undefined)} ignoreFirstRow Whether to ignore first row. Defaults to false for CSV mode.
+ * @property {(number|undefined)} minLength Minimum length. Defaults to 0, inclusive min length for the byWord mode. If the check fails - drops the word from parsing.
+ * @property {(number|undefined)} maxLength Maximum length. Defaults to NaN, inclusive max length for the byWord mode. If the check fails - drops the word from parsing.
+ * @property {(number|undefined)} cutLength Cut length. Defaults to NaN. If not NaN - cuts all words by this length and then applies frequency check.
+ * @property {(Array.<string>|undefined)} ignoreItems Array of ignore items.
+ * @property {(number|undefined)} maxItems Number of top frequent words to put to result.
+ * @since 7.14.0
+ */
+anychart.data.TextParsingSettings;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.parseText
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Text parsing.
+ * @example anychart.data.parseText
+ * @param {string} text Text to parsing.
+ * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_settings Parsing settings.
+ * @return {?Array.<Array.<string|number>>} Array of arrays.
+ * @since 7.14.0
+ */
+anychart.data.parseText;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.DataSettings
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Type definition for table data.
+ * @typedef {Object} anychart.data.DataSettings
+ * @property {(string|undefined)} caption Table caption.
+ * @property {(Array.<string>|undefined)} header Table header.
+ * @property {(Array|undefined)} rows Table rows.
+ * @property {(string|undefined)} text Defines data as string to be parsed. Has less priority than rows.
+ * @property {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings|undefined)} textSettings Defines text parsing settings. Defaults to "csv".
+ * @since 7.11.1
+ */
+anychart.data.DataSettings;
+
+
+
