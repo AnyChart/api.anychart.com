@@ -1,28 +1,22 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="bar anyChart"/>
+    <meta name="x-cat-tags" content="waterFall anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+            chart = anychart.waterfall([166, 43, -79, -46, 84, NaN]);
 
-            var series = chart.bar([
-                {x: "January", value: 2},
-                {x: "February", value: 5},
-                {x: "March", value: 3},
-                {x: "April", value: 9},
-                {x: "May", value: 4}
-            ]);
+            var series = chart.getSeries(0);
 
-            // Set fill.
-            series.fill({
+            // Set rising fill.
+            series.risingFill({
                 src: "https://static.anychart.com/images/underwater.jpg",
                 mode: "stretch",
-                opacity: 0.5
+                opacity: 0.6
             });
 
-            chart.title("Set fill as an image");
+            chart.title("Set rising fill as an image");
             chart.container("container");
             chart.draw();
         });

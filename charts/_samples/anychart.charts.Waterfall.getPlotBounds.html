@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="waterFall anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            var chart = anychart.waterfall([166, 43, -79, -46, 84, NaN]);
+
+            chart.title("Get and use plot bounds object");
+            chart.container(stage);
+            chart.draw();
+
+            // Get plot bounds.
+            var bounds = chart.getPlotBounds();
+
+            var customBackground = anychart.standalones.background();
+            customBackground.fill("#BDBDBD 0.2");
+            customBackground.parentBounds(bounds);
+            customBackground.container(stage);
+            customBackground.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

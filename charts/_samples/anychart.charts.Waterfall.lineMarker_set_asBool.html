@@ -1,0 +1,26 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="waterFall anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.waterfall([166, 43, -79, -46, 84, NaN]);
+            chart.yScale().minimum(-60);
+
+            // Generally speaking such construction is useless, but it may be used to turn zero line in a chart in the most compact way.
+            // To enable/disable lineMarkers it is recommended to create them by index ( like chart.lineMarker(0); ) and then use enabled(true|false) method:
+            // marker = chart.lineMarker(0);
+            // marker.enabled(true);
+            chart.lineMarker(true);
+
+            chart.title("Enable chart line marker");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
