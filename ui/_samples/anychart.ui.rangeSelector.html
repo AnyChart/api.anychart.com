@@ -1,0 +1,65 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyStock"/>
+    <script src="../../anychart.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            var dataTable = anychart.data.table();
+            dataTable.addData(get_dji_daily_short_data());
+
+            var mapping = dataTable.mapAs({value: 1});
+
+            chart = anychart.stock();
+
+            var plot = chart.plot();
+            plot.line(mapping);
+
+            // Create range selector.
+            var rangeSelector = anychart.ui.rangeSelector();
+
+            rangeSelector.ranges([{
+                'text': 'Vacation 2006',
+                'startDate': '2006 May 16',
+                'endDate': '2006 Jul 29'
+            }, {
+                'text': 'Vacation 2007',
+                'startDate': '2007 Feb 1',
+                'endDate': '2007 Mar 8'
+            }, {
+                'text': 'Vacation 2008',
+                'startDate': '2008 Oct 15',
+                'endDate': '2008 Nov 4'
+            }, {
+                'type': "Unit",
+                'unit': "Day",
+                'count': 10,
+                'anchor': "firstDate",
+                'text': "10 DAYS"
+            },{
+                'type': "Unit",
+                'unit': "quarter",
+                'count': 2,
+                'anchor': "firstDate",
+                'text': "6 MONTHS"
+            },{
+                'type': "Unit",
+                'unit': "year",
+                'count': 2,
+                'anchor': "lastDate",
+                'text': "2 YEARS"
+            }]);
+
+            chart.title("Create range selector");
+            chart.container("container");
+            chart.draw();
+
+            rangeSelector.render(chart);
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
