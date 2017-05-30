@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="venn anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+
+            // Creates data set.
+            var dataSet = anychart.data.set([
+                {x: "A", value: 20},
+                {x: "B", value: 12},
+                {x: "C", value: 17},
+                {x: "A&B", value: 4},
+                {x: "B&C", value: 5},
+                {x: "A&C", value: 7},
+                {x: "A&B&C", value: 1}
+            ]);
+
+            chart = anychart.venn();
+
+            var view = dataSet.mapAs();
+
+            var filteredView = view.filter("value", function(value) {
+                return value >= 5;
+            });
+
+            // Set data.
+            chart.data(filteredView);
+
+            chart.title("Set chart data using a filtered view");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

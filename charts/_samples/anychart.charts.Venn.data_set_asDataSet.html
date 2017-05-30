@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="venn anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+
+            // Creates data set.
+            var dataSet = anychart.data.set([
+                {x: "A", value: 20, name: "Technologist"},
+                {x: "B", value: 12, name: "Statistician"},
+                {x: "C", value: 17, name: "Marketer"},
+                {x: "A&B", value: 4, name: "Analytics Consultant"},
+                {x: "B&C", value: 5, name: "PPC Specialist"},
+                {x: "A&C", value: 6, name: "Social Media Marketer"},
+                {x: "A&B&C", value: 7, name: "SEO"}
+            ]);
+
+            chart = anychart.venn();
+
+            var data = dataSet.mapAs({"x": 2, "value": 1});
+
+            // Set data.
+            chart.data(data);
+
+            chart.intersections().labels().format(function () {
+                return this.name;
+            });
+
+            chart.title("Set chart data as a data set");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

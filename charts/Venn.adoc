@@ -1,0 +1,1168 @@
+/**
+ * Venn chart class.
+ * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Chart data.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @constructor
+ * @extends {anychart.core.SeparateChart}
+ */
+anychart.charts.Venn;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.dataSeparator
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the data separator.
+ * @shortDescription Data separator settings.
+ * @category Data
+ * @listing See listing
+ * var dataSeparator = chart.dataSeparator();
+ * @return {string} Symbol for the data separator.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.dataSeparator;
+
+/**
+ * Setter for the data separator.
+ * @example anychart.charts.Venn.dataSeparator_set
+ * @param {string=} opt_value ["&"] Symbol to set.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.dataSeparator;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.intersections
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for intersections settings.
+ * @shortDescription Intersections settings.
+ * @category Specific settings
+ * @example anychart.charts.Venn.intersections_get
+ * @return {anychart.core.venn.Intersections} Intersections settings.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.intersections;
+
+/**
+ * Setter for intersections settings.
+ * @example anychart.charts.Venn.intersections_set
+ * @param {Object=} opt_value Object with intersections settings.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.intersections;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the fill color.
+ * @shortDescription Fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var chart = anychart.venn(data);
+ * var fill = chart.fill();
+ * @return {anychart.graphics.vector.Fill|Function} Fill color.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.fill;
+
+/**
+ * Setter for fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note</b>: If you call a fill method, the colorScale settings will not be applied.
+ * @example anychart.charts.Venn.fill_set_asString Using string
+ * @example anychart.charts.Venn.fill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.fill;
+
+/**
+ * Setter for fill settings using function.
+ * @detailed <b>Note</b>: If you call a fill method, the colorScale settings will not be applied.
+ * @example anychart.charts.Venn.fill_set_asFunc
+ * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.value - current value.
+ *    // this.sourceColor - color returned by fill() getter.
+ *    // this.colorScale - chart color scale.
+ *    return fillValue; // type anychart.graphics.vector.Fill
+ * }</code>.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.fill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * <b>Note</b>: If you call a fill method, the colorScale settings will not be applied.
+ * @example anychart.charts.Venn.fill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.fill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note</b>: If you call a fill method, the colorScale settings will not be applied.
+ * @example anychart.charts.Venn.fill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.fill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note</b>: If you call a fill method, the colorScale settings will not be applied.
+ * @example anychart.charts.Venn.fill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.fill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @detailed <b>Note</b>: If you call a fill method, the colorScale settings will not be applied.
+ * @example anychart.charts.Venn.fill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.fill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.hoverFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the fill color in hover mode.
+ * @shortDescription Fill settings in hover mode.
+ * @category Coloring
+ * @listing See listing
+ * var chart = anychart.venn(data);
+ * var hoverFill = chart.hoverFill();
+ * @return {anychart.graphics.vector.Fill|Function} Hover fill color.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverFill;
+
+/**
+ * Setter for fill settings in hover mode using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Venn.hoverFill_set_asString Using string
+ * @example anychart.charts.Venn.hoverFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverFill;
+
+/**
+ * Sets fill settings in hover mode using function.
+ * @example anychart.charts.Venn.hoverFill_set_asFunc
+ * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return fillValue; // type anychart.graphics.vector.Fill
+ * }</code>.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverFill;
+
+/**
+ * Fill color in hover mode with opacity.
+ * Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.Venn.hoverFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverFill;
+
+/**
+ * Linear gradient fill in hover mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Venn.hoverFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverFill;
+
+/**
+ * Radial gradient fill in hover mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Venn.hoverFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverFill;
+
+/**
+ * Image fill in hover mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Venn.hoverFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.selectFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the fill color in selected mode.
+ * @shortDescription Fill settings in selected mode.
+ * @category Coloring
+ * @listing See listing
+ * var chart = anychart.venn(data);
+ * var selectFill = chart.selectFill();
+ * @return {anychart.graphics.vector.Fill|Function} Select fill color.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectFill;
+
+/**
+ * Setter for fill settings in selected mode using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Venn.selectFill_set_asString Using string
+ * @example anychart.charts.Venn.selectFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectFill;
+
+/**
+ * Setter for fill settings in selected mode using function.
+ * @example anychart.charts.Venn.selectFill_set_asFunc
+ * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.index - series index.
+ *    // this.sourceColor - color returned by fill() getter.
+ *    // this.iterator - series point iterator.
+ *    return fillValue; // type anychart.graphics.vector.Fill
+ * }</code>.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectFill;
+
+/**
+ * Fill color in selected mode with opacity.
+ * Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.Venn.selectFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectFill;
+
+/**
+ * Linear gradient fill in selected mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Venn.selectFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectFill;
+
+/**
+ * Radial gradient fill in selected mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Venn.selectFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectFill;
+
+/**
+ * Image fill in selected mode.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Venn.selectFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.hatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for hatch fill settings.
+ * @shortDescription Hatch fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var hatchFill = chart.hatchFill();
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Hatch fill.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hatchFill;
+
+/**
+ * Setter for hatch fill settings.
+ * @example anychart.charts.Venn.hatchFill_set
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string|boolean)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {!anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hatchFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.hoverHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for hatch fill settings in hover mode.
+ * @shortDescription Hatch fill settings in hover mode.
+ * @category Coloring
+ * @listing See listing
+ * var hoverHatchFill = chart.hoverHatchFill();
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Hover hatch fill.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverHatchFill;
+
+/**
+ * Setter for hatch fill settings in hover mode.
+ * @example anychart.charts.Venn.hoverHatchFill
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string|boolean)=} opt_patternFillOrType [true] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {!anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverHatchFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.selectHatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for hatch fill settings in selected state.
+ * @shortDescription Hatch fill settings in selected state.
+ * @category Coloring
+ * @listing See listing
+ * var selectHatchFill = chart.selectHatchFill();
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|boolean} The current hatch fill.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectHatchFill;
+
+/**
+ * Setter for hatch fill settings in selected state.
+ * @example anychart.charts.Venn.selectHatchFill
+ * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
+ * string|boolean)=} opt_patternFillOrTypeOrState [false] PatternFill or HatchFill instance or type or state of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectHatchFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the stroke.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @listing See listing
+ * var chart = anychart.venn(data);
+ * var stroke = chart.stroke();
+ * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} The stroke.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.stroke;
+
+/**
+ * Setter for the stroke using function.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Venn.stroke_set_asFunc
+ * @param {(function():anychart.graphics.vector.Stroke)=} opt_fillFunction [// return stroke from the default palette.
+ * function() {
+ *   return anychart.color.darken(this.sourceColor);
+ * };] Stroke-function, which should look like:<code>function() {
+ *  // this.value - data value
+ *  // this.sourceColor - stroke of the current point
+ *  // this.colorScale - the current color scale settings
+ *  // }
+ *  return strokeValue; //anychart.graphics.vector.Stroke
+ * };</code>.
+ * @return {!anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.stroke;
+
+/**
+ * Setter for the stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Venn.stroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_color Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.stroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.hoverStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the stroke in the hover state.
+ * @shortDescription Stroke settings in hover mode.
+ * @category Coloring
+ * @listing See listing
+ * var chart = anychart.venn(data);
+ * var hoverStroke = chart.hoverStroke();
+ * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} Hover stroke settings.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverStroke;
+
+/**
+ * Setter for the stroke using function in the hover state.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Venn.hoverStroke_set_asFunc
+ * @param {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)=} opt_value [// return stroke from the default palette.
+ * function() {
+ *   return anychart.color.darken(this.sourceColor);
+ * };] or Stroke, or stroke-function, which should look like:<code>function() {
+ *  //  this: {
+ *  //  index : number  - the index of the current point
+ *  //  sourceColor : anychart.graphics.vector.Stroke - stroke of the current point
+ *  // }
+ *  return myStroke; //anychart.graphics.vector.Stroke
+ * };</code>.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverStroke;
+
+/**
+ * Setter for the points stroke in the hover state.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Venn.hoverStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_color Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverStroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.selectStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the stroke in selected mode.
+ * @shortDescription Stroke settings in selected mode.
+ * @category Coloring
+ * @listing See listing
+ * var chart = anychart.venn(data);
+ * var selectStroke = chart.selectStroke();
+ * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} Select stroke.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectStroke;
+
+/**
+ * Setter for the stroke in selected mode using function.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Venn.selectStroke_set_asFunc
+ * @param {(function():anychart.graphics.vector.Stroke)=} opt_strokeFunction [// return stroke from the default palette.
+ * function() {
+ *   return anychart.color.darken(this.sourceColor);
+ * };] Stroke-function, which should look like:<code>function() {
+ *  // this.value - data value data value
+ *  // this.sourceColor - stroke of the current point
+ *  // this.colorScale - the current color scale settings
+ *  // }
+ *  return strokeValue; //anychart.graphics.vector.Stroke
+ * };</code>.
+ * @return {!anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectStroke;
+
+/**
+ * Setter for the stroke in selected mode.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Venn.selectStroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_color Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectStroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.palette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the venn palette.
+ * @shortDescription Palette settings.
+ * @category Chart Coloring
+ * @listing See listing
+ * var palette = chart.palette();
+ * @return {!(anychart.palettes.RangeColors|anychart.palettes.DistinctColors)} Color palette instance.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.palette;
+
+/**
+ * Setter for the venn palette.
+ * <b>Note</b>: You can use predefined palettes from {@link anychart.palettes}.
+ * @example anychart.charts.Venn.palette_set_asArray Using array
+ * @example anychart.charts.Venn.palette_set_asRangeColors Using range colors
+ * @example anychart.charts.Venn.palette_set_DistinctColors Using distinct colors
+ * @example anychart.charts.Venn.palette_set_asObject Using object
+ * @example anychart.charts.Venn.palette_set_asFromTheme Using palette from theme
+ * @param {(anychart.palettes.RangeColors|anychart.palettes.DistinctColors|Object|Array.<string>)=} opt_value Color palette instance.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.palette;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.hatchFillPalette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for chart hatch fill palette settings.
+ * @shortDescription Hatch fill palette settings.
+ * @category Chart Coloring
+ * @listing See listing
+ * var hatchFillPalette = chart.hatchFillPalette();
+ * @return {anychart.palettes.HatchFills} Chart hatch fill palette.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hatchFillPalette;
+
+/**
+ * Setter for the chart hatch fill palette settings.
+ * @detailed Works only with {@link anychart.charts.Venn#hatchFill}.
+ * @example anychart.charts.Venn.hatchFillPalette_set
+ * @param {(Array.<anychart.graphics.vector.HatchFill.HatchFillType>|Object|anychart.palettes.HatchFills)=} opt_value Chart
+ * hatch fill palette settings to set.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hatchFillPalette;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.markerPalette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for chart markers palette settings.
+ * @shortDescription Markers palette settings.
+ * @category Chart Coloring
+ * @listing See listing
+ * var markerPalette = chart.markerPalette();
+ * @return {anychart.palettes.Markers} Chart markers palette.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.markerPalette;
+
+/**
+ * Setter for chart markers palette settings.
+ * @detailed Works only with {@link anychart.charts.Venn#markers}.
+ * @example anychart.charts.Venn.markerPalette_set
+ * @param {(anychart.palettes.Markers|Object|Array.<anychart.enums.MarkerType>)=} opt_value Chart marker palette settings to set.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.markerPalette;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.labels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for venn labels settings.
+ * @shortDescription Labels settings.
+ * @category Point Elements
+ * @detailed It is used to access to the current (default too) settings of the labels.<br>
+ * <b>Note:</b> Default labels will appear when this getter is called for the first time.
+ * @example anychart.charts.Venn.labels_get
+ * @return {!anychart.core.ui.LabelsFactory} LabelsFactory instance.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.labels;
+
+/**
+ * Setter for venn labels settings.
+ * @detailed <b>Note:</b> positioning is done using {@link anychart.core.ui.LabelsFactory#positionFormatter} method
+ * and text is formatted using {@link anychart.core.ui.LabelsFactory#textFormatter} method.<br/>
+ * Sets chart labels settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart labels.</li>
+ *   <li><b>object</b> - sets chart labels settings.</li>
+ * </ul>
+ * @example anychart.charts.Venn.labels_set_asBool Disable/enable labels
+ * @example anychart.charts.Venn.labels_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [true] Chart data labels settings.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.labels;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.hoverLabels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for venn hover data labels.
+ * @shortDescription Labels settings in hover mode.
+ * @category Point Elements
+ * @example anychart.charts.Venn.hoverLabels_get
+ * @return {!anychart.core.ui.LabelsFactory} Labels instance.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverLabels;
+
+/**
+ * Setter for venn hover data labels.
+ * @detailed Sets chart hover labels settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart hover labels.</li>
+ *   <li><b>object</b> - sets chart hover labels settings.</li>
+ * </ul>
+ * @example anychart.charts.Venn.hoverLabels_set_asBool Disable/enable hover labels
+ * @example anychart.charts.Venn.hoverLabels_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [null] Venn hover data labels settings.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverLabels;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.selectLabels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for select data labels.
+ * @shortDescription Labels settings in selected mode.
+ * @category Point Elements
+ * @example anychart.charts.Venn.selectLabels_get
+ * @return {!anychart.core.ui.LabelsFactory} Labels instance.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectLabels;
+
+/**
+ * Setter for select data labels.
+ * @detailed Sets selected labels settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable labels in selected state.</li>
+ *   <li><b>object</b> - sets selected labels settings.</li>
+ * </ul>
+ * @example anychart.charts.Venn.selectLabels_set_asBool Disable or enable selected state.
+ * @example anychart.charts.Venn.selectLabels_set_asObj Using object
+ * @param {(Object|boolean|null)=} opt_value Series data labels settings.
+ * @return {!anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectLabels;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.markers
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for data markers.
+ * @shortDescription Markers settings.
+ * @category Point Elements
+ * @example anychart.charts.Venn.markers_get
+ * @return {!anychart.core.ui.MarkersFactory} Markers instance.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.markers;
+
+/**
+ * Setter for data markers.
+ * @detailed Sets chart markers settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart markers.</li>
+ *   <li><b>object</b> - sets chart markers settings.</li>
+ *   <li><b>string</b> - sets chart markers type.</li>
+ * </ul>
+ * @example anychart.charts.Venn.markers_set_asBool Disable/enable markers
+ * @example anychart.charts.Venn.markers_set_asObject Using object
+ * @example anychart.charts.Venn.markers_set_asString Using string
+ * @param {(Object|boolean|null|string)=} opt_value [false] Data markers settings.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.markers;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.hoverMarkers
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for hover data markers.
+ * @shortDescription Markers settings in hover mode.
+ * @category Point Elements
+ * @example anychart.charts.Venn.hoverMarkers_get
+ * @return {!anychart.core.ui.MarkersFactory} Markers instance.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverMarkers;
+
+/**
+ * Setter for hover data markers.
+ * @detailed Sets chart hover markers settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart hover markers.</li>
+ *   <li><b>object</b> - sets chart hover markers settings.</li>
+ *   <li><b>string</b> - sets chart hover markers type.</li>
+ * </ul>
+ * @example anychart.charts.Venn.hoverMarkers_set_asBool Disable/enable hover markers
+ * @example anychart.charts.Venn.hoverMarkers_set_asObject Using object
+ * @example anychart.charts.Venn.hoverMarkers_set_asString Using string
+ * @param {(Object|boolean|null|string)=} opt_value [null] Series data markers settings.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hoverMarkers;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.selectMarkers
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for select data markers.
+ * @shortDescription Markers settings in selected mode.
+ * @category Point Elements
+ * @example anychart.charts.Venn.selectMarkers_get
+ * @return {anychart.core.ui.MarkersFactory} Markers instance.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectMarkers;
+
+/**
+ * Setter for select data markers.
+ * @detailed Setting selected markers settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable markers in selected state.</li>
+ *   <li><b>object</b> - sets selected markers settings.</li>
+ *    <li><b>string</b> - sets selected markers type.</li>
+ * </ul>
+ * @example anychart.charts.Venn.selectMarkers_set_asBool Disable or enable selected state.
+ * @example anychart.charts.Venn.selectMarkers_set_asObj Using object
+ * @example anychart.charts.Venn.selectMarkers_set_asString Using string
+ * @param {(Object|boolean|null|string)=} opt_value Series data markers settings.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.selectMarkers;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.data
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart data.
+ * @shortDescription Data settings.
+ * @category Data
+ * @listing See listing
+ * var data = chart.data();
+ * @return {anychart.data.View} Data view.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.data;
+
+/**
+ * Setter for the data for the chart.
+ * @example anychart.charts.Venn.data_set_asArray Using array
+ * @example anychart.charts.Venn.data_set_asDataSet Using data set
+ * @example anychart.charts.Venn.data_set_asView Using data mapping and data view
+ * @example anychart.charts.Venn.data_set_asMapping Using data mapping
+ * @example anychart.charts.Venn.data_set_asCSV Using CSV
+ * @example anychart.charts.Venn.data_set_asObj Using table data
+ * @param {(anychart.data.View|anychart.data.Mapping|anychart.data.Set|Array|string|anychart.data.TableData)=} opt_value Value to set.
+ * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed by first param, you can pass CSV parser settings here as a hash map.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.data;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.hover
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Hovers points.
+ * @shortDescription Hover settings.
+ * @category Interactivity
+ * @example anychart.charts.Venn.hover
+ * @return {!anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hover;
+
+/**
+ * Hovers point by index.
+ * @example anychart.charts.Venn.hover_asIndex
+ * @param {number=} opt_index Point index.
+ * @return {!anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hover;
+
+/**
+ * Hovers points by indexes.
+ * @example anychart.charts.Venn.hover_set_asIndexes
+ * @param {Array<number>=} opt_indexes Array of indexes.
+ * @return {!anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.hover;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.unhover
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes hover from the series point or series.
+ * @category Interactivity
+ * @example anychart.charts.Venn.unhover
+ * @param {(number|Array<number>)=} opt_indexOrIndexes Point index or array of indexes.
+ * @return {anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.unhover;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.select
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Selects point by index.
+ * @shortDescription Select settings.
+ * @category Interactivity
+ * @example anychart.charts.Venn.select_set_asIndex
+ * @param {number=} opt_index Index of the point to select.
+ * @return {!anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.select;
+
+/**
+ * Selects point by indexes.
+ * @example anychart.charts.Venn.select_set_asIndexes
+ * @param {(number|Array.<number>)=} opt_indexes Array of indexes of the point to select.
+ * @return {!anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.select;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Venn.prototype.unselect
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Deselects all selected points.
+ * @category Interactivity
+ * @example anychart.charts.Venn.unselect_set
+ * @return {!anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.unselect;
+
+/**
+ * Deselects selected point by index.
+ * @example anychart.charts.Venn.unselect_set_asIndex
+ * @param {(number)=} opt_index Index of the point to select.
+ * @return {!anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.unselect;
+
+/**
+ * Deselects selected points by indexes.
+ * @category Interactivity
+ * @example anychart.charts.Venn.unselect_set_asIndexes
+ * @param {(Array.<number>)=} opt_indexes An array of indexes of the point to select.
+ * @return {!anychart.charts.Venn} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.charts.Venn.prototype.unselect;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.tooltip;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.legend;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.credits;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.margin;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.padding;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.background;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.title;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.label;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.draw;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.toJson;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.toXml;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.bounds;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.left;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.right;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.top;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.bottom;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.width;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.height;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.minWidth;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.minHeight;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.maxWidth;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.maxHeight;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.getPixelBounds;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.container;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.zIndex;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.saveAsPng;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.saveAsJpg;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.saveAsPdf;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.saveAsSvg;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.toSvg;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.print;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.listen;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.listenOnce;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.unlisten;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.unlistenByKey;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.removeAllListeners;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.localToGlobal;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.globalToLocal;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.contextMenu;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.getSelectedPoints;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.toCsv;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.saveAsXml;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.saveAsJson;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.saveAsCsv;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.saveAsXlsx;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.getStat;
+
+/** @inheritDoc */
+anychart.charts.Venn.prototype.getType;
