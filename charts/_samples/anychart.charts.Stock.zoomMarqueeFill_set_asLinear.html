@@ -1,0 +1,34 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyStock"/>
+    <script src="../../anychart.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var dataTable = anychart.data.table();
+            dataTable.addData(get_dji_daily_short_data());
+
+            var mapping = dataTable.mapAs({value: 1});
+
+            chart = anychart.stock();
+            chart.padding(10, 10, 10, 50);
+
+            var plot = chart.plot();
+            plot.line(mapping);
+
+            chart.title("Set zoom marquee fill as a linear gradient. Use mouse to draw zoom marquee");
+            chart.container("container");
+            chart.draw();
+
+            // Set zoom marquee fill.
+            chart.zoomMarqueeFill(["#263238", "#FFFFFF"], 90, true, 0.5);
+
+            chart.startZoomMarquee(true, true);
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

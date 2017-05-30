@@ -684,7 +684,7 @@ anychart.core.Chart.prototype.getStat;
  * @param {string=} opt_title Title to set.
  * @param {boolean=} opt_asString Defines output: HTML string if True, DOM element if False.
  * @return {Element|string|null} HTML table instance with a11y style (invisible), HTML string or null if parsing chart to table fails.
- * @since 7.11.0
+ * @since 7.14.0
  */
 anychart.core.Chart.prototype.toA11yTable;
 
@@ -702,7 +702,7 @@ anychart.core.Chart.prototype.toA11yTable;
  * @param {string=} opt_title Title to set.
  * @param {boolean=} opt_asString Defines output: HTML string if True, DOM element if False.
  * @return {Element|string|null} HTML table instance, HTML string or null if parsing chart to table fails.
- * @since 7.11.0
+ * @since 7.14.0
  */
 anychart.core.Chart.prototype.toHtmlTable;
 
@@ -719,7 +719,7 @@ anychart.core.Chart.prototype.toHtmlTable;
  * @listing See listing.
  * var currentStateOfAccsessibility = chart.a11y();
  * @return {anychart.core.utils.ChartA11y} Accessibility settings object.
- * @since 7.11.0
+ * @since 7.14.0
  */
 anychart.core.Chart.prototype.a11y;
 
@@ -735,7 +735,7 @@ anychart.core.Chart.prototype.a11y;
  * @example anychart.core.Chart.a11y_set_asBool Enable/disable accessibility
  * @param {(boolean|Object)=} opt_value Whether to enable accessibility or object with settings.
  * @return {anychart.core.Chart} Self instance for method chaining.
- * @since 7.11.0
+ * @since 7.14.0
  */
 anychart.core.Chart.prototype.a11y;
 
@@ -956,6 +956,153 @@ anychart.core.Chart.prototype.shareWithLinkedIn;
  * @since 7.13.0
  */
 anychart.core.Chart.prototype.shareWithPinterest;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.startSelectMarquee
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Starts select marquee drawing.
+ * <b>Note:</b> Works only after {@link anychart.core.Chart#draw} is called.
+ * @category Interactivity
+ * @example anychart.core.Chart.startSelectMarquee
+ * @param {boolean=} opt_repeat Whether to start select marquee drawing.
+ * @return {anychart.core.Chart} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.core.Chart.prototype.startSelectMarquee;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.selectMarqueeFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the select marquee fill.
+ * @shortDescription Select marquee fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var selectMarqueeFill = chart.selectMarqueeFill();
+ * @return {anychart.graphics.vector.Fill} Select marquee fill.
+ * @since 7.14.0
+ */
+anychart.core.Chart.prototype.selectMarqueeFill;
+
+/**
+ * Setter for fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.Chart.selectMarqueeFill_set_asString Using string
+ * @example anychart.core.Chart.selectMarqueeFill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @return {anychart.core.Chart} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.core.Chart.prototype.selectMarqueeFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.Chart.selectMarqueeFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.Chart} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.core.Chart.prototype.selectMarqueeFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.Chart.selectMarqueeFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.Chart} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.core.Chart.prototype.selectMarqueeFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.Chart.selectMarqueeFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.Chart} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.core.Chart.prototype.selectMarqueeFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.Chart.selectMarqueeFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.Chart} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.core.Chart.prototype.selectMarqueeFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.selectMarqueeStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the select marquee stroke.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @listing See listing.
+ * var selectMarqueeStroke = chart.selectMarqueeStroke();
+ * @return {anychart.graphics.vector.Stroke} Select marquee stroke.
+ * @since 7.14.0
+ */
+anychart.core.Chart.prototype.selectMarqueeStroke;
+
+/**
+ * Setter for the select marquee stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.Chart.selectMarqueeStroke
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_color Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.Chart} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.core.Chart.prototype.selectMarqueeStroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.Chart.prototype.inMarquee
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets marquee process running value.
+ * @return {boolean} Returns true if there is a marquee process running.
+ * @since 7.14.0
+ */
+anychart.core.Chart.prototype.inMarquee;
+
+/**
+ * Stops current marquee action if any.
+ * @return {anychart.core.Chart} Self instance for method chaining.
+ * @since 7.14.0
+ */
+anychart.core.Chart.prototype.cancelMarquee;
 
 /** @inheritDoc */
 anychart.core.Chart.prototype.bounds;

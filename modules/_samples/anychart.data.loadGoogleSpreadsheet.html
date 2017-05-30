@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="actualBug x-export line anyChart"/>
+    <script src="../../anychart.min.js"></script>
+    <script src="https://cdn.anychart.com/js/latest/data-adapter.min.js" data-export="true"></script>
+    <script x-export="">
+        anychart.onDocumentReady(function () {
+            // To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
+            // (https://cdn.anychart.com/js/latest/data-adapter.min.js for latest or https://cdn.anychart.com/js/7.11.1/data-adapter.min.js for the versioned file)
+
+            // Load Google Spreadsheet data and create a chart by GoogleSpreadsheet data.
+            // https://docs.google.com/spreadsheets/d/1FzX9tOlUnJZsat-wjZpj6nRjiGl7aXPt0j-8GyHM2Bk/
+            anychart.data.loadGoogleSpreadsheet({
+                key: '1FzX9tOlUnJZsat-wjZpj6nRjiGl7aXPt0j-8GyHM2Bk',
+                sheet: 2
+            }, function (data) {
+                chart = anychart.line();
+
+                chart.data(data);
+
+                var labels = chart.yAxis().labels();
+                labels.useHtml(true);
+                labels.format('{%Value}&#8451;');
+
+                chart.container('container');
+                chart.draw();
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%;"></div>
+</body>
+</html>
