@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="table anyChart anyGantt anyStock anyMap"/>
+    <script src="../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = anychart.graphics.create("container");
+
+            var table1 = anychart.standalones.table();
+            table1.contents([
+                [1, 2, 3, 4],
+                [5, 6, 7, 8],
+                [9, 10, 11]
+            ]);
+            table1.bounds("5%", 10, "95%", "100%");
+            table1.container(stage);
+            table1.draw();
+
+            // Get table data as CSV.
+            var csvData = table1.toCsv();
+
+            var label = anychart.standalones.label();
+            label.background({stroke: "#9E9E9E"});
+            label.text("CSV data" + "\n" + csvData);
+            label.padding(2);
+            label.container(stage);
+            label.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
