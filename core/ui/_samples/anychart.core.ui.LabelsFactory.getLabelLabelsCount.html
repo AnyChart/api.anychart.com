@@ -1,0 +1,54 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="column anyChart"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.column();
+
+            var series = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 8},
+                {x: "March", value: 1},
+                {x: "April", value: 7},
+                {x: "May", value: 3},
+                {x: "June", value: 9},
+                {x: "July", value: 4},
+                {x: "August", value: 6},
+                {x: "September", value: 5}
+            ]);
+
+            var xAxis = chart.xAxis();
+
+            chart.title("Get and modify label");
+            chart.container("container");
+            chart.draw();
+
+            chart.listen("chartDraw", function () {
+
+                // Get labels count.
+                var count = xAxis.labels().getLabelsCount();
+
+                for (var i = 0; i < count; i++) {
+                    if ((i % 2) > 0) {
+                        color = "#CD4A2D"
+                    } else {
+                        color = "#4C4C4C"
+                    }
+
+                    // Get label by index.
+                    var label = xAxis.labels().getLabel(i);
+                    if (label) {
+                        label.fontColor(color);
+                        label.draw();
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
