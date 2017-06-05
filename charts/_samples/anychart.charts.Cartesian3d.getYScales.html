@@ -37,14 +37,16 @@
             chart.container("container");
             chart.draw();
 
-            // Get y scales.
-            var scales = chart.getYScales();
+            globalMax = chart.getStat("yScalesMax");
+            globalMin = chart.getStat("yScalesMin");
 
-            for (var i = 0; i < scales.length; i++) {
-                scales[i].minimum(chart.getStat("yScalesMin"));
-                scales[i].maximum(chart.getStat("yScalesMax"));
+            // Get all Y scales.
+            var yScales = chart.getYScales();
+
+            for (var i = 0; i < yScales.length; i++) {
+                yScales[i].minimum(globalMin);
+                yScales[i].maximum(globalMax);
             }
-
         });
     </script>
 </head>

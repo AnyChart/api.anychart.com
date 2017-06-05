@@ -4,23 +4,28 @@
     <meta name="x-cat-tags" content="line anyChart"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.line();
 
-            var customScale = anychart.scales.linear();
-
-            var ticks = customScale.ticks();
-            ticks.interval(0.1);
+            chart.line([
+                {x: "January", value: 2},
+                {x: "February", value: 8},
+                {x: "March", value: 1},
+                {x: "April", value: 7},
+                {x: "May", value: 3},
+                {x: "June", value: 9},
+                {x: "July", value: 4},
+                {x: "August", value: 6},
+                {x: "September", value: 5}
+            ]);
 
             var yAxis = chart.yAxis();
-            yAxis.minorLabels({rotation: 270});
-            yAxis.scale(customScale);
             yAxis.staggerMode(true);
 
             // Set stagger maximum lines.
-            yAxis.staggerMaxLines(3);
+            yAxis.staggerMaxLines(4);
 
-            chart.line([2, 8, 1, 7, 3, 9, 4, 6, 5]);
+            chart.yScale().ticks().interval(0.2);
             chart.title("Set stagger maximum lines");
             chart.container("container");
             chart.draw();
