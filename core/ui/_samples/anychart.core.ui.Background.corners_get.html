@@ -5,13 +5,20 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+            chart = anychart.line([
+                {x: "January", value: 20},
+                {x: "February", value: 50},
+                {x: "March", value: 30},
+                {x: "April", value: 90},
+                {x: "May", value: 40}
+            ]);
 
             var background = chart.background();
 
+            // Get corners radius.
             var cornersRadius = background.corners();
 
-            chart.title("The current corners radius is " + cornersRadius);
+            chart.title("Corners radius is " + cornersRadius);
             chart.container("container");
             chart.draw();
         });

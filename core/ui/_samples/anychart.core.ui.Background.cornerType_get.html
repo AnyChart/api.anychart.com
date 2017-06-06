@@ -5,16 +5,22 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+            chart = anychart.line([
+                {x: "January", value: 20},
+                {x: "February", value: 50},
+                {x: "March", value: 30},
+                {x: "April", value: 90},
+                {x: "May", value: 40}
+            ]);
 
             var background = chart.background();
-            background.fill("#B0BEC5");
+            background.fill("#B0BEC5 0.3");
             background.corners(30);
 
-            // Gets corner type.
+            // Get corner type.
             var cornerType = background.cornerType();
 
-            chart.title("The current corner type is " + cornerType + ".");
+            chart.title("Corner type is " + cornerType);
             chart.container("container");
             chart.draw();
         });
