@@ -6,17 +6,27 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
+
             var series = chart.line([
-                [4.1, 10],
-                [2.3, 6],
-                [3.4, 17],
-                [1.2, 20]
+                {x: 1.2, value: 2},
+                {x: 2.3, value: 6},
+                {x: 3.4, value: 4},
+                {x: 4.1, value: 8}
             ]);
+
             series.markers(true);
-            var getMarkers = series.hoverMarkers(); // get hover markers
-            getMarkers.size(10);
+
+            // Get hover markers.
+            var hoverMarkers = series.hoverMarkers();
+
+            hoverMarkers.size(10);
+            hoverMarkers.fill("#F44336");
+
+            chart.title("Get and modify hover markers");
             chart.container("container");
             chart.draw();
+
+            series.hover([1, 3]);
         });
     </script>
 </head>

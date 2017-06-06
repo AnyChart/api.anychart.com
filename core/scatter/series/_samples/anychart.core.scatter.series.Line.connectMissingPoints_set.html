@@ -4,33 +4,43 @@
     <meta name="x-cat-tags" content="scatter line anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.scatter();
-            var firstSeries = chart.line([
-                [4.1, 12],
-                [2.3, "missing"],
-                [3.4, 19],
-                [1.2, 22]
+
+            var series1 = chart.line([
+                {x: 4.1, y: 12},
+                {x: 2.3, y: "missing"},
+                {x: 3.4, y: 19},
+                {x: 1.2, y: 22}
             ]);
-            firstSeries.markers(true);
-            firstSeries.name("Not connect missing");
-            firstSeries.connectMissingPoints(false); // sets flag
-            var secondSeries = chart.line([
-                [4.1, 10],
-                [2.3, "missing"],
-                [3.4, 17],
-                [1.2, 20]
+            series1.markers(true);
+            series1.name("Not connect missing");
+
+            // Set flag.
+            series1.connectMissingPoints(false);
+
+            var series2 = chart.line([
+                {x: 4.1, y: 10},
+                {x: 2.3, y: "missing"},
+                {x: 3.4, y: 17},
+                {x: 1.2, y: 20}
             ]);
-            secondSeries.name("Connect missing");
-            secondSeries.connectMissingPoints(true); // sets flag
-            var thirdSeries = chart.line([
-                [4.1, 8],
-                [2.3, 6],
-                [3.4, 15],
-                [1.2, 18]
+            series2.name("Connect missing");
+
+            // Set flag
+            series2.connectMissingPoints(true);
+
+            var series3 = chart.line([
+                {x: 4.1, y: 8},
+                {x: 2.3, y: 6},
+                {x: 3.4, y: 15},
+                {x: 1.2, y: 18}
             ]);
-            thirdSeries.name("Without missing");
-            thirdSeries.connectMissingPoints(true); // sets flag
+            series3.name("Without missing");
+
+            // Set flag.
+            series3.connectMissingPoints(true);
+
             chart.xAxis({title: null});
             chart.yAxis({title: null});
             chart.title(null);

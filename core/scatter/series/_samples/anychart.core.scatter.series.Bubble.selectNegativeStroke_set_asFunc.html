@@ -4,25 +4,27 @@
     <meta name="x-cat-tags" content="scatter bubble anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.scatter();
 
             var series = chart.bubble([
-                [1, 1.0, 2],
-                [2, 1.6, -7],
-                [3, 1.2, -4],
-                [4, 1.9, 3]
+                {x: 4, y: 2, size: 1},
+                {x: 1, y: 2, size: -3},
+                {x: 2, y: 2, size: 2},
+                {x: 3, y: 2, size: -4}
             ]);
             series.displayNegative(true);
-            // Sets negative stroke in selected mode.
-            series.selectNegativeStroke(
-                    function() {
-                        return "5 " + anychart.color.lighten(this.sourceColor);
-                    }
-            );
 
+            // Set negative stroke in selected mode.
+            series.selectNegativeStroke(function () {
+                return "5 " + anychart.color.lighten(this.sourceColor);
+            });
+
+            chart.title("Set select negative stroke parameter as a function");
             chart.container("container");
             chart.draw();
+
+            series.select();
         });
     </script>
 </head>

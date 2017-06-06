@@ -6,13 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
+            chart.xScale().minimum(0);
+
             var series = chart.bubble([
-                [4, 2, 1],
-                [1, 2, -3],
-                [2, 2, 2],
-                [3, 2, 1]
+                {x: 4, y: 2, size: 1},
+                {x: 1, y: 2, size: 3},
+                {x: 2, y: 2, size: 2},
+                {x: 3, y: 2, size: 4}
             ]);
-            series.fill(["#F44336", "#FF9800"]); // sets fill
+
+            // Set fill.
+            series.fill(["#2BC0E4", "#EAECC6"]);
+
+            chart.title("Set fill parameter as an array");
             chart.container("container");
             chart.draw();
         });

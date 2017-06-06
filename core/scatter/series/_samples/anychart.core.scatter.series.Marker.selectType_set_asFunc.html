@@ -8,14 +8,14 @@
             chart = anychart.scatter();
 
             var series = chart.marker([
-                [1, 1],
-                [2, 23],
-                [3, 4],
-                [4, 45],
-                [5, 4],
-                [6, 33]
+                {x: 1.2, value: 2},
+                {x: 2.3, value: 6},
+                {x: 3.4, value: 4},
+                {x: 4.1, value: 8}
             ]);
-            // Sets type in selected mode.
+            series.selectSize(20);
+
+            // Set custom function used to draw a custom marker.
             series.selectType(function(path, x, y, size) {
                 var point1 = {x: x + 1.2 * size, y: y - 0.4 * size};
                 var point2 = {x: x - 0.5 * size, y: y - 0.5 * size};
@@ -27,8 +27,11 @@
                 return path;
             });
 
+            chart.title("Custom marker displayed with custom drawing function");
             chart.container("container");
             chart.draw();
+
+            series.select();
         });
     </script>
 </head>

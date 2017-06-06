@@ -6,24 +6,31 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
+
             var series = chart.marker([
-                [4.1, 12],
-                [2.3, 6],
-                [3.4, 19],
-                [1.2, 22]
+                {x: 1.2, value: 2},
+                {x: 2.3, value: 6},
+                {x: 3.4, value: 4},
+                {x: 4.1, value: 8}
             ]);
-            series.hoverType(function(path, x, y, size) {
+
+            // Set custom function used to draw a custom hover marker.
+            series.hoverType(function (path, x, y, size) {
                 var point1 = {x: x + 1.2 * size, y: y - 0.4 * size};
                 var point2 = {x: x - 0.5 * size, y: y - 0.5 * size};
                 path.moveTo(point1.x, point1.y)
-                        .arcToByEndPoint(point2.x, point2.y, size, size, true, true)
-                        .arcToByEndPoint(point1.x, point1.y, size / 3, size / 3, false, false)
-                        .moveTo(point1.x, point1.y)
-                        .close();
+                    .arcToByEndPoint(point2.x, point2.y, size, size, true, true)
+                    .arcToByEndPoint(point1.x, point1.y, size / 3, size / 3, false, false)
+                    .moveTo(point1.x, point1.y)
+                    .close();
                 return path;
-            }); // sets hover type
+            });
+
+            chart.title("Custom hover marker displayed with custom drawing function");
             chart.container("container");
             chart.draw();
+
+            series.hover();
         });
     </script>
 </head>

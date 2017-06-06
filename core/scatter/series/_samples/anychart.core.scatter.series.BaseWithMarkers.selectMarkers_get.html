@@ -8,22 +8,24 @@
             chart = anychart.scatter();
 
             var series = chart.line([
-                [1, 1],
-                [2, 23],
-                [3, 4],
-                [4, 45],
-                [5, 4],
-                [6, 33]
+                {x: 1.2, value: 2},
+                {x: 2.3, value: 6},
+                {x: 3.4, value: 4},
+                {x: 4.1, value: 8}
             ]);
 
             series.markers(true);
 
-            // Gets markers in selected mode.
+            // Get markers in selected mode.
             var selectedMarkers = series.selectMarkers();
+
             selectedMarkers.size(10);
 
+            chart.title("Get and modify select markers");
             chart.container("container");
             chart.draw();
+
+            series.select([1, 3]);
         });
     </script>
 </head>

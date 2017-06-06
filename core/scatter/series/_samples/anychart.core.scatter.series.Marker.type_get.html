@@ -6,14 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
+
             var series = chart.marker([
-                [4.1, 12],
-                [2.3, 6],
-                [3.4, 19],
-                [1.2, 22]
+                {x: 1.2, value: 2},
+                {x: 2.3, value: 6},
+                {x: 3.4, value: 4},
+                {x: 4.1, value: 8}
             ]);
-            var getType = series.type(); // get type
-            chart.title("Marker type is " + getType);
+            series.size(20);
+
+            // Get marker type.
+            var type = series.type();
+
+            chart.title("Marker type is " + type);
             chart.container("container");
             chart.draw();
         });

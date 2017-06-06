@@ -4,23 +4,30 @@
     <meta name="x-cat-tags" content="scatter marker anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.scatter([
-                [10, 0.1],
-                [6, 2.3],
-                [17, 100],
-                [20, 10]
+                {x: 10, y: 0.1},
+                {x: 6, y: 2.3},
+                {x: 17, y: 100},
+                {x: 20, y: 10}
             ]);
-            var secondScale = anychart.scales.log();
+
+            var logScale = anychart.scales.log();
+
             chart.yAxis(1, {orientation: "right", stroke: "#F44336"});
-            chart.yAxis(1).scale(secondScale);
+            chart.yAxis(1).scale(logScale);
+
             var series = chart.marker([
-                [4.4, 30],
-                [2.8, 6],
-                [3.0, 127],
-                [1.5, 620]
+                {x: 4.4, y: 30},
+                {x: 2.8, y: 6},
+                {x: 3.0, y: 127},
+                {x: 1.5, y: 620}
             ]);
-            series.yScale(secondScale); // sets yScale
+
+            // Set Y scale.
+            series.yScale(logScale);
+
+            chart.title("Set Y scale");
             chart.container("container");
             chart.draw();
         });

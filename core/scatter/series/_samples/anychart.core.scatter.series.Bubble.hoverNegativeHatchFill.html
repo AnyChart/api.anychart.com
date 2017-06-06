@@ -6,16 +6,24 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
+
             var series = chart.bubble([
-                [4, 2, 1],
-                [1, 2, -3],
-                [2, 2, 2],
-                [3, 2, 1]
+                {x: 4, y: 2, size: 1},
+                {x: 1, y: 2, size: -3},
+                {x: 2, y: 2, size: 2},
+                {x: 3, y: 2, size: -4}
             ]);
+
             series.displayNegative(true);
-            series.hoverNegativeHatchFill("percent60", "#9E9E9E", 5, 5); // sets hover negative hatch fill
+
+            // Set hover negative hatch fill.
+            series.hoverNegativeHatchFill("backwardDiagonal", "#FFFFFF", 2, 20);
+
+            chart.title("Set hover negative hatch fill parameters");
             chart.container("container");
             chart.draw();
+
+            series.hover();
         });
     </script>
 </head>

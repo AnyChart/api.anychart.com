@@ -5,9 +5,19 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.scatter([2, 6, 4, 8]);
+            chart = anychart.scatter([
+                {x: 2, y: 2},
+                {x: 3, y: 6},
+                {x: 1, y: 4},
+                {x: 4, y: 5}
+            ]);
+
             var series = chart.getSeries(0);
-            series.error("20%"); // sets error.
+
+            // Set error.
+            series.error("20%");
+
+            chart.title("Set error parameter as a string");
             chart.container("container");
             chart.draw();
         });
