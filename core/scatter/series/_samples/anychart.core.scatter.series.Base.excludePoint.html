@@ -8,12 +8,21 @@
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
 
-            var series = chart.line([4, 2, 7, 1, 10, 6, 8, 4, 6, 3]);
+            var series = chart.line([
+                {x: 1, y: 2},
+                {x: 2, y: 6},
+                {x: 3, y: 4},
+                {x: 4, y: 5},
+                {x: 5, y: 10},
+                {x: 6, y: 6},
+                {x: 7, y: 8},
+                {x: 8, y: 5}
+            ]);
 
             // Excludes points.
-            series.excludePoint([0, 4, 9]);
+            series.excludePoint([2, 3]);
 
-            chart.title("Exclude three points by indexes.");
+            chart.title("Exclude three points by indexes");
             chart.container("container");
             chart.draw();
         });

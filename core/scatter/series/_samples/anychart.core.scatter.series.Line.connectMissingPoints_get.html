@@ -6,15 +6,20 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
+
             var series = chart.line([
-                [4.1, 12],
-                [2.3, "missing"],
-                [3.4, 19],
-                [1.2, 22]
+                {x: 1.2, value: 20},
+                {x: 2.3, value: 17},
+                {x: 3.4, value: "missing"},
+                {x: 4.1, value: 10},
+                {x: 5, value: 15}
             ]);
             series.markers(true);
-            var connectMissingPoints = series.connectMissingPoints(); // get flag
-            chart.title("Connect Missing Points - " + connectMissingPoints);
+
+            // Get connectMissingPoints mode.
+            var connectMissingPoints = series.connectMissingPoints();
+
+            chart.title("ConnectMissingPoints mode is " + connectMissingPoints);
             chart.container("container");
             chart.draw();
         });

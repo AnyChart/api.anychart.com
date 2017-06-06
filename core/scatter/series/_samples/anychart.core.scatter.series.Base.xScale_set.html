@@ -6,21 +6,27 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter([
-                [0.1, 10],
-                [2.3, 6],
-                [100, 17],
-                [10, 20]
+                {x: 1.2, y: 2},
+                {x: 2.3, y: 6},
+                {x: 3.4, y: 4},
+                {x: 4.1, y: 8}
             ]);
-            var secondScale = anychart.scales.log();
+            var logScale = anychart.scales.log();
+
             chart.xAxis(1, {stroke: "#F44336", orientation: "top", title: null});
-            chart.xAxis(1).scale(secondScale);
+            chart.xAxis(1).scale(logScale);
+
             var series = chart.marker([
-                [4.1, 12],
-                [32.3, 14],
-                [163.4, 6],
-                [761.2, 12]
+                {x: 4.1, y: 12},
+                {x: 32.3, y: 14},
+                {x: 163.4, y: 6},
+                {x: 761.2, y: 12}
             ]);
-            series.xScale(secondScale); // sets xScale
+
+            // Set X scale.
+            series.xScale(logScale);
+
+            chart.title("Set X scale");
             chart.container("container");
             chart.draw();
         });

@@ -6,13 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
+
             var series = chart.marker([
-                [4.1, 12],
-                [2.3, 6],
-                [3.4, 19],
-                [1.2, 22]
+                {x: 1.2, value: 2},
+                {x: 2.3, value: 6},
+                {x: 3.4, value: 4},
+                {x: 4.1, value: 8}
             ]);
-            series.fill(["#000000", "#FFEB3B"], 45, true, 0.5); // sets fill
+            series.size(14);
+
+            // Set fill.
+            series.fill(["#16A085", "#F4D03F"], 270, true, 0.5);
+
+            chart.title("Set fill as a linear gradient");
             chart.container("container");
             chart.draw();
         });

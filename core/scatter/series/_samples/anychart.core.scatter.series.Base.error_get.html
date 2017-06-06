@@ -5,11 +5,22 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.scatter([2, 6, 4, 8]);
+            chart = anychart.scatter([
+                {x: 1.2, value: 2},
+                {x: 2.3, value: 6},
+                {x: 3.4, value: 4},
+                {x: 4.1, value: 8}
+            ]);
+
             var series = chart.getSeries(0);
             series.error(1);
-            var error = series.error(); // get error.
+
+            // Get error.
+            var error = series.error();
+
             error.mode("both");
+
+            chart.title("Ger and modify error");
             chart.container("container");
             chart.draw();
         });

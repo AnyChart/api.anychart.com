@@ -6,14 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
-            var series = chart.marker([
-                [4.1, 10],
-                [2.3, 6],
-                [3.4, 17],
-                [1.2, 20]
+            chart.yScale().minimum(0);
+
+            var series = chart.line([
+                {x: 1.2, value: 20},
+                {x: 2.3, value: -1},
+                {x: 3.4, value: 17},
+                {x: 4.1, value: 10},
             ]);
-            var getClip = series.clip(); // get clip
-            chart.title("Clip - " + getClip);
+
+            // Get clip.
+            var clip = series.clip();
+
+            chart.title("Clip is " + clip);
             chart.container("container");
             chart.draw();
         });

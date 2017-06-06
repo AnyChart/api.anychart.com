@@ -6,16 +6,24 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
+
             var series = chart.marker([
-                [4.1, 12],
-                [2.3, 6],
-                [3.4, 19],
-                [1.2, 22]
+                {x: 1.2, value: 2},
+                {x: 2.3, value: 6},
+                {x: 3.4, value: 4},
+                {x: 4.1, value: 8}
             ]);
             series.hatchFill(true);
-            series.hoverHatchFill("percent60", "#9E9E9E", 5, 5); // sets hover hatch fill
+            series.hoverSize(14);
+
+            // Set hover hatch fill.
+            series.hoverHatchFill("backwardDiagonal", "#FFFFFF", 2, 5);
+
+            chart.title("Set hover hatch fill parameters");
             chart.container("container");
             chart.draw();
+
+            series.hover();
         });
     </script>
 </head>

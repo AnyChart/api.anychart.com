@@ -4,16 +4,21 @@
     <meta name="x-cat-tags" content="scatter bubble anyChart"/>
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.scatter();
+            chart.xScale().minimum(0);
+
             var series = chart.bubble([
-                [4, 2, -1],
-                [1, 2, 3],
-                [2, 2, 2],
-                [3, 2, 1]
+                {x: 4, y: 2, size: -1},
+                {x: 1, y: 2, size: 3},
+                {x: 2, y: 2, size: 2},
+                {x: 3, y: 2, size: 1}
             ]);
-            var getDisplayNegative = series.displayNegative(); // get display negative
-            chart.title("Display negative - " + getDisplayNegative);
+
+            // Get display negative mode.
+            var displayNegative = series.displayNegative();
+
+            chart.title("Display negative is " + displayNegative);
             chart.container("container");
             chart.draw();
         });

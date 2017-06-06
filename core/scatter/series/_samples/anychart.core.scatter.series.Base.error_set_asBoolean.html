@@ -5,12 +5,23 @@
     <script src="../../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.scatter([2, 6, 4, 8]);
+            chart = anychart.scatter([
+                {x: 1.2, value: 2},
+                {x: 2.3, value: 6},
+                {x: 3.4, value: 4},
+                {x: 4.1, value: 8}
+            ]);
+
             var series = chart.getSeries(0);
-            series.error(true); // enables error for mode both
+
+            // Enables error for mode both.
+            series.error(true);
+
             var error = series.error();
             error.xError(1);
             error.valueError(1);
+
+            chart.title("Enable error for mode both");
             chart.container("container");
             chart.draw();
         });

@@ -8,18 +8,21 @@
             chart = anychart.scatter();
 
             var series = chart.marker([
-                [1, 1],
-                [2, 23],
-                [3, 4],
-                [4, 45],
-                [5, 4],
-                [6, 33]
+                {x: 1.2, value: 2},
+                {x: 2.3, value: 6},
+                {x: 3.4, value: 4},
+                {x: 4.1, value: 8}
             ]);
-            // Sets fill in selected mode.
+            series.selectSize(20);
+
+            // Set select fill.
             series.selectFill(["#F44336", "#FF9800"]);
 
+            chart.title("Set select series type");
             chart.container("container");
             chart.draw();
+
+            series.select();
         });
     </script>
 </head>
