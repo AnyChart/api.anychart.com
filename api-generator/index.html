@@ -1,0 +1,112 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="x-cat-tags" content="actualBug"/>
+    <script src="../../ACDVF/libs/closure-library/closure/goog/base.js"></script>
+    <script src="../../ACDVF/src/deps.js"></script>
+    <link href="../../ACDVF/out/anychart-ui.min.css" type="text/css" rel="stylesheet">
+    <script>
+        goog.require("anychart.themes.defaultTheme");
+        goog.require("anychart.modules.anychart_bundle");
+    </script>
+    <script src="utils/anytest.min.js"></script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+<script type="text/javascript">
+
+    var excludedNS = [
+        'anychart.themes.defaultTheme',
+        'anychart.modules',
+        'anychart.format.locales.default'
+    ];
+
+    function isEmpty(obj){
+        if (typeof obj == 'object') for(var a in obj){return false;}
+        else return false;
+        return true;
+    }
+
+    var result = {};
+    function getResultTemplate() {
+        return {
+            constant: [],
+            functions: [],
+            objects: [],
+            properties: [],
+            fields: 0
+        };
+    }
+
+    function registerElement(path, name, type){
+        (result[path][type]).push(name);
+        result[path]['fields']++;
+    }
+
+    var walkingMap = {};
+    function objectResearch(obj, path){
+        if (walkingMap[path]) return;
+        walkingMap[path] = true;
+        if (!result[path]) result[path]=getResultTemplate();
+        for(var p in obj){
+//            if (isEmpty(obj[p])){if (p.substr(-1)!='+') console.log('error',p);}
+            if (isEmpty(obj[p]) || p.substr(-1)=="_") continue;
+
+            // recursive call
+            if (typeof obj[p] == 'object' && !Array.isArray(obj[p]) && excludedNS.indexOf(path+'.'+p)==-1 && p.toUpperCase() != p){
+                objectResearch(obj[p], path+'.'+p);
+                continue;
+            }
+
+            // recursive call
+            var fl = p.substr(0,1);
+            var sl = p.substr(1,1);
+            // seek class
+            if (typeof obj[p] == 'function' && fl.toUpperCase() == fl && sl.toLowerCase() == sl){
+                //console.log('class', p);
+                objectResearch(obj[p].prototype, path+'.'+p);
+                objectResearch(obj[p], path+'.'+p);
+                continue;
+            }
+
+            if (obj[p+'+']){
+                if (p.toUpperCase() == p){
+                    registerElement(path, p, 'constant');
+                    continue;
+                }
+                if (typeof obj[p] == 'function'){
+                    var pBody = (obj[p]).toString();
+                    registerElement(path, p+pBody.substr(8, pBody.indexOf('{')-8), 'functions');
+                    continue;
+                }
+                registerElement(path, p, 'properties');
+            }
+        }
+    }
+    objectResearch(anychart,'anychart');
+
+    function clearify(result) {
+        for (var r in result) {
+            if (result.hasOwnProperty(r)) {
+                if (!result[r].fields) delete(result[r]);
+                else {
+                    var fields = 0;
+                    for (var i in result[r]) {
+                        fields++;
+                        if (!result[r][i].length) {
+                            delete(result[r][i]);
+                            fields--;
+                        }else result[r][i] = result[r][i].sort();
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    console.log(JSON.stringify(clearify(result)));
+    console.log('exit');
+</script>
+</body>
+</html>

@@ -7,14 +7,22 @@
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
 
-            var series = chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+            var series = chart.line([
+                {x: 0, value: 20},
+                {x: 1, value: 50},
+                {x: 2, value: 30},
+                {x: 3, value: 90},
+                {x: 4, value: 40}
+            ]);
             series.markers(true);
 
             var crosshair = chart.crosshair();
             crosshair.enabled(true);
-            // Sets display mode.
+
+            // Set display mode.
             crosshair.displayMode("sticky");
 
+            chart.title("Set display mode");
             chart.container("container");
             chart.draw();
         });

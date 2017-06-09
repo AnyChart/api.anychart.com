@@ -5,12 +5,20 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+            chart = anychart.line([
+                {x: "January", value: 20},
+                {x: "February", value: 50},
+                {x: "March", value: 30},
+                {x: "April", value: 90},
+                {x: "May", value: 40}
+            ]);
 
             var background = chart.background();
-            // Sets fill.
-            background.fill(["#FEFEFE", "#424242"], 0.8, 0.2, null, 0.7, 0.67, 0.2);
 
+            // Set fill.
+            background.fill(["#FEFEFE", "#424242"], 0.5, 0.5, null, 0.4, 0.5, 0.5);
+
+            chart.title("Set fill as a radial gradient");
             chart.container("container");
             chart.draw();
         });
