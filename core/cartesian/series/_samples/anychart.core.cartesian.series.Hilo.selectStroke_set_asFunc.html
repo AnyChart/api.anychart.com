@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="column anyChart"/>
+    <script src="../../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+
+            chart = anychart.hilo();
+
+            var series = chart.hilo([
+                {x: "January", high: 3, low: 1},
+                {x: "February", high: 5, low: 2},
+                {x: "March", high: 4, low: 3},
+                {x: "April", high: 9, low: 5},
+                {x: "May", high: 4, low: 1}
+            ]);
+
+            // Set select stroke.
+            series.selectStroke(function() {
+                return "3 " + anychart.color.darken(this.sourceColor);
+            });
+
+            chart.title("Set select stroke parameter as a function");
+            chart.container("container");
+            chart.draw();
+
+            series.select();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
