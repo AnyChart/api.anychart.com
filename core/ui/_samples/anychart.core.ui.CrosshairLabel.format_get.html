@@ -6,7 +6,13 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
-            chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+            chart.line([
+                {x: 0, value: 20},
+                {x: 1, value: 50},
+                {x: 2, value: 30},
+                {x: 3, value: 90},
+                {x: 4, value: 40}
+            ]);
             chart.left("5%");
 
             var crosshair = chart.crosshair();
@@ -17,12 +23,13 @@
                 return "Value is " + this.value
             });
 
-            // Get text formatter.
+            // Get format.
             var format = crosshairYLabel.format();
 
             var crosshairXLabel = crosshair.xLabel();
             crosshairXLabel.format(format);
 
+            chart.title("Get and use format");
             chart.container("container");
             chart.draw();
         });

@@ -6,17 +6,25 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
-            chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+            chart.line([
+                {x: 0, value: 20},
+                {x: 1, value: 50},
+                {x: 2, value: 30},
+                {x: 3, value: 90},
+                {x: 4, value: 40}
+            ]);
 
             var crosshair = chart.crosshair();
             crosshair.enabled(true);
 
             var crosshairXLabel = crosshair.xLabel();
+            crosshairXLabel.fontColor("#424242");
 
-            // Gets background.
+            // Get background.
             var background = crosshairXLabel.background();
             background.enabled(false);
 
+            chart.title("Get and modify background");
             chart.container("container");
             chart.draw();
         });

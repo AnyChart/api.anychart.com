@@ -6,13 +6,21 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
-            chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+            chart.line([
+                {x: 0, value: 20},
+                {x: 1, value: 50},
+                {x: 2, value: 30},
+                {x: 3, value: 90},
+                {x: 4, value: 40}
+            ]);
 
             var crosshair = chart.crosshair();
             crosshair.enabled(true);
-            // Sets x-label settings.
+
+            // Set X-label settings.
             crosshair.xLabel({background: {fill: "#CFD8DC", stroke: "#455A64"}, fontColor: "black"});
 
+            chart.title("Set X-label parameter as an object");
             chart.container("container");
             chart.draw();
         });
