@@ -4,14 +4,18 @@
     <meta name="x-cat-tags" content="scatter bubble anyChart"/>
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.scatter();
+
+            // Adds bubble series.
             chart.bubble([
-                [4, 4, 10],
-                [1, 5, 6],
-                [2, 6, 13],
-                [3, 7, 15]
-            ]); // adds bubble series
+                {x: 4, value: 4, size: 10},
+                {x: 1, value: 5, size: 6},
+                {x: 2, value: 6, size: 13},
+                {x: 3, value: 7, size: 15},
+            ]);
+
+            chart.title("Add Bubble series to a chart");
             chart.container("container");
             chart.draw();
         });

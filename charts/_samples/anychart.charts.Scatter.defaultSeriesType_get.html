@@ -5,12 +5,23 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.scatter([23, 41, 23, 41, 23, 11, 23, 5]);
+            chart = anychart.scatter([
+                {x: 0, value: 23},
+                {x: 1, value: 41},
+                {x: 2, value: 23},
+                {x: 3, value: 41},
+                {x: 4, value: 23},
+                {x: 5, value: 11},
+                {x: 6, value: 23},
+                {x: 7, value: 5}
+                ]);
 
-            // Gets default series type.
+            chart.xScale().minimum(-1);
+
+            // Get default series type.
             var type = chart.defaultSeriesType();
 
-            chart.title("The current series type is " + type);
+            chart.title("Series type is " + type);
             chart.container("container");
             chart.draw();
         });

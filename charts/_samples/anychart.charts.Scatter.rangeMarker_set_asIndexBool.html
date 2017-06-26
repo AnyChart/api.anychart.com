@@ -6,14 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter([
-                {x: 2, y: 21},
-                {x: 14, y: 24},
-                {x: 89, y: 23},
-                {x: 48, y: 18}
+                {x: 2, value: 21},
+                {x: 14, value: 24},
+                {x: 89, value: 23},
+                {x: 48, value: 18}
             ]);
+
             chart.rangeMarker({from: 20, to: 21, fill: "#BBDEFB"});
             chart.rangeMarker(1, {from: 22, to: 23, fill: "#B2DFDB 0.4"});
-            chart.rangeMarker(1, false); // disables range marker by index
+
+            // Disable range marker by index.
+            chart.rangeMarker(1, false);
+
+            chart.title("Disable range marker by index");
             chart.container("container");
             chart.draw();
         });

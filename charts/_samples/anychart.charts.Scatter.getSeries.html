@@ -7,16 +7,45 @@
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
 
-            var series = chart.line([40, 30, 40, 30, 40, 30, 40, 30]);
+            var series = chart.line([
+                {x: 0, value: 40},
+                {x: 1, value: 30},
+                {x: 2, value: 40},
+                {x: 3, value: 30},
+                {x: 4, value: 40},
+                {x: 5, value: 30},
+                {x: 6, value: 40},
+                {x: 7, value: 30}
+            ]);
             series.id("green");
 
-            chart.line([23, 41, 23, 41, 23, 11, 23, 5]);
-            chart.line([60, 10, 60, 15, 60, 20, 60, 25]);
+            chart.line([
+                {x: 0, value: 23},
+                {x: 1, value: 41},
+                {x: 2, value: 23},
+                {x: 3, value: 41},
+                {x: 4, value: 23},
+                {x: 5, value: 11},
+                {x: 6, value: 23},
+                {x: 7, value: 5}
+            ]);
+            
+            chart.line([
+                {x: 0, value: 60},
+                {x: 1, value: 10},
+                {x: 2, value: 60},
+                {x: 3, value: 15},
+                {x: 4, value: 60},
+                {x: 5, value: 20},
+                {x: 6, value: 60},
+                {x: 7, value: 25}
+            ]);
 
-            // Gets series by id.
+            // Get series by id.
             var seriesById = chart.getSeries("green");
             seriesById.stroke("#4CAF50");
 
+            chart.title("Get and modify series by id");
             chart.container("container");
             chart.draw();
         });

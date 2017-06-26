@@ -6,16 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
+
             chart.bubble([
-                [1, 25, 4],
-                [2, 15, 2],
-                [3, 20, 3],
-                [4, 11, 1]
+                {x: 1, value: 25, size: 4},
+                {x: 2, value: 15, size: 2},
+                {x: 3, value: 20, size: 3},
+                {x: 4, value: 11, size: 1}
             ]);
-            // Gets minimum size of the bubble.
+
+            // Get minimum size of the bubble.
             var minSize = chart.minBubbleSize();
 
-            chart.title("The current minimum bubble size is " + minSize);
+            chart.title("Minimum bubble size is " + minSize);
+
             chart.container("container");
             chart.draw();
         });

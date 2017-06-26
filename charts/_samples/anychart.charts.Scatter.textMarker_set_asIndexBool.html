@@ -6,14 +6,19 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter([
-                {x: 2, y: 21},
-                {x: 14, y: 24},
-                {x: 89, y: 23},
-                {x: 48, y: 18}
+                {x: 2, value: 21},
+                {x: 14, value: 24},
+                {x: 89, value: 23},
+                {x: 48, value: 18}
             ]);
+
             chart.textMarker(0, {value: 21, text: "Marker 0"});
             chart.textMarker(1, {value: 22, text: "Marker 1"});
-            chart.textMarker(1, false); // disables text marker by index
+
+            // Disables text marker by index.
+            chart.textMarker(1, false);
+
+            chart.title("Disable text marker by index");
             chart.container("container");
             chart.draw();
         });
