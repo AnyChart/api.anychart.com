@@ -9,6 +9,7 @@
             // extend custom messages
             // 標題 means "title", "caption" in Chinese and Japanese
             anychart.format.locales['default'].messages['title']='標題';
+            anychart.format.locales['default'].messages['custom'] = "Value";
 
             chart = anychart.pie([
                 {name: 'Point 1', value: 230000},
@@ -23,7 +24,7 @@
 
             var labels = chart.labels();
             labels.format(function() {
-                return anychart.format.getMessage('custom') + ':' + anychart.format.number(this.value, 3, ".", ",")
+                return anychart.format.getMessage('custom') + ': ' + anychart.format.number(this.value, 3, ".", ",")
             });
 
             chart.container("container");
