@@ -14,19 +14,17 @@
                 {"id": "6", "name": "Define the Opportunity", parent: "1", "progressValue": "27%", "actualStart": 951696000000, "actualEnd": 951782400000}
             ];
 
-            var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
+            var treeData = anychart.data.tree(data, "asTable");
 
             chart = anychart.ganttProject();
             chart.data(treeData);
 
             var dataGrid = chart.dataGrid();
 
-            // Gets live edit mode.
+            // Get live edit mode.
             var mode = dataGrid.editing();
 
-            var firstColumn = dataGrid.column(1);
-            firstColumn.title("Mode - " + mode);
-
+            chart.title("Get live edit mode. Mode is " + mode);
             chart.container("container");
             chart.draw();
             chart.fitAll();
