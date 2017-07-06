@@ -6,11 +6,11 @@
     <script x-export="chart">
         anychart.onDocumentReady(function () {
             var data = anychart.data.set([
-                ["John", 10000],
-                ["Jake", 12000],
-                ["Peter", 18000],
-                ["James", 11000],
-                ["Mary", 9000]
+                ["Cycling", 10],
+                ["Swimming", 12],
+                ["Run", 18],
+                ["Hiking", 11],
+                ["Alpinism", 9]
             ]);
 
             chart = anychart.column(data);
@@ -18,11 +18,12 @@
             var tooltip = chart.tooltip();
             tooltip.width(100);
             tooltip.height(70);
+            tooltip.format("MonthlyTraining: {%Value} hours");
 
-            // Set text-wrap settings.
-            tooltip.textWrap("noWrap");
+            // Set word-wrap mode.
+            tooltip.wordWrap("break-word");
 
-            chart.title("Set text-wrap settings");
+            chart.title("Set word-wrap mode");
             chart.container("container");
             chart.draw();
         });

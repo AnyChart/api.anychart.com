@@ -14,39 +14,54 @@
  */
 anychart.graphics.vector.Text;
 
-
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.graphics.vector.Text.TextWrap
+//  anychart.graphics.vector.Text.WordWrap
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Text wrap mode.
- * @example anychart.graphics.vector.Text.TextWrap
+ * Text word-break mode.
  * @enum {string}
  */
-anychart.graphics.vector.Text.TextWrap;
+anychart.graphics.vector.Text.WordBreak;
 
 /**
- * No wrap.<br/>
- * <img src='/anychart.graphics.vector.Text.TextWrap.NO_WRAP.png' width='118' height='52'/>
+ * Break words according to their usual rules.
  */
-anychart.graphics.vector.Text.TextWrap.NO_WRAP = "noWrap";
+anychart.graphics.vector.Text.WordWrap.NORMAL = "normal";
 
 /**
- * Wrap by symbol.<br/>
- * <img src='/anychart.graphics.vector.Text.TextWrap.BY_LETTER.png' width='119' height='51'/>
- *
+ * Don't allow word breaks for CJK text. Non-CJK text behavior is the same as for normal.
  */
-anychart.graphics.vector.Text.TextWrap.BY_LETTER = "byLetter";
+anychart.graphics.vector.Text.WordWrap.KEEP_ALL = "keep-all";
 
 /**
- * Wrap by word.<br/>
- * <img src='/anychart.graphics.vector.Text.TextWrap.BY_WORD.png' width='108' height='51'/>
+ * Word breaks may be inserted between any character.
  */
-anychart.graphics.vector.Text.TextWrap.BY_WORD = "byWord";
+anychart.graphics.vector.Text.WordWrap.BREAK_ALL = "break-all";
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.WordWrap
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Text word-wrap mode.
+ * @enum {string}
+ */
+anychart.graphics.vector.Text.WordWrap;
+
+/**
+ * Indicates that lines may only break at normal word break points.
+ */
+anychart.graphics.vector.Text.WordWrap.NORMAL = "normal";
+
+/**
+ * Indicates that normally unbreakable words may be broken at arbitrary points if there are no otherwise acceptable break points in the line.
+ */
+anychart.graphics.vector.Text.WordWrap.BREAK_WORD = "break-word";
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -701,25 +716,53 @@ anychart.graphics.vector.Text.prototype.hAlign;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.graphics.vector.Text.prototype.textWrap
+//  anychart.graphics.vector.Text.prototype.wordBreak
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current text wrap of text.
- * @shortDescription Text wrap setting.
- * @example anychart.graphics.vector.Text.textWrap_get
- * @return {string} The current text wrap.
+ * Getter for word break of text.
+ * More at: <a href='https://www.w3schools.com/cssref/css3_pr_word-break.asp'>Word-break Property</a>
+ * @shortDescription Text word-break mode.
+ * @example anychart.graphics.vector.Text.wordBreak_get
+ * @return {string|anychart.graphics.vector.Text.WordBreak} Text word-break mode.
+ * @since 8.0.0
  */
-anychart.graphics.vector.Text.prototype.textWrap;
+anychart.graphics.vector.Text.prototype.wordBreak;
 
 /**
- * Setter for text wrap of text.
- * @example anychart.graphics.vector.Text.textWrap_set
- * @param {(anychart.graphics.vector.Text.TextWrap|string)=} opt_value ["noWrap"] Text wrap.
+ * Setter for word break of text.
+ * @example anychart.graphics.vector.Text.wordBreak_set
+ * @param {(string|anychart.graphics.vector.Text.WordBreak)=} opt_value ["normal"] Word-break mode.
  * @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * @since 8.0.0
  */
-anychart.graphics.vector.Text.prototype.textWrap;
+anychart.graphics.vector.Text.prototype.wordBreak;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.graphics.vector.Text.prototype.wordWrap
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for word-wrap of text.
+ * @shortDescription Text word-wrap mode.
+ * @example anychart.graphics.vector.Text.wordWrap_get
+ * @return {string|anychart.graphics.vector.Text.WordWrap} Text word-wrap mode.
+ * @since 8.0.0
+ */
+anychart.graphics.vector.Text.prototype.wordWrap;
+
+/**
+ * Setter for word-wrap of text.
+ * More at: <a href='https://www.w3schools.com/cssref/css3_pr_word-wrap.asp'>Word-wrap Property</a>
+ * @example anychart.graphics.vector.Text.wordWrap_set
+ * @param {(string|anychart.graphics.vector.Text.WordWrap)=} opt_value ["normal"] Word-wrap mode.
+ * @return {string|anychart.graphics.vector.Text} Self instance for method chaining.
+ * @since 8.0.0
+ */
+anychart.graphics.vector.Text.prototype.wordWrap;
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -729,18 +772,18 @@ anychart.graphics.vector.Text.prototype.textWrap;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current font text overflow of text.
+ * Getter for the text overflow mode.
  * @shortDescription Text overflow setting.
  * @example anychart.graphics.vector.Text.textOverflow_get
- * @return {string} The current text overflow.
+ * @return {string} Text overflow.
  */
 anychart.graphics.vector.Text.prototype.textOverflow;
 
 /**
- Setter for the font text overflow of text.
- @example anychart.graphics.vector.Text.textOverflow_set
- @param {(anychart.graphics.vector.Text.TextOverflow|string)=} opt_value Text overflow.
- @return {anychart.graphics.vector.Text} Self instance for method chaining.
+ * Setter for the text overflow mode.
+ * @example anychart.graphics.vector.Text.textOverflow_set
+ * @param {(anychart.graphics.vector.Text.TextOverflow|string)=} opt_value Text overflow.
+ * @return {anychart.graphics.vector.Text} Self instance for method chaining.
  */
 anychart.graphics.vector.Text.prototype.textOverflow;
 

@@ -1,0 +1,35 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="column tooltip anyChart"/>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            var data = anychart.data.set([
+                ["Cycling", 10],
+                ["Swimming", 12],
+                ["Run", 18],
+                ["Hiking", 11],
+                ["Alpinism", 9]
+            ]);
+
+            chart = anychart.column(data);
+
+            var tooltip = chart.tooltip();
+            tooltip.width(110);
+            tooltip.height(75);
+            tooltip.format("Monthly Training: {%Value} hours");
+
+            // Set word-break mode.
+            tooltip.wordBreak("break-all");
+
+            chart.title("Set word-break mode");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

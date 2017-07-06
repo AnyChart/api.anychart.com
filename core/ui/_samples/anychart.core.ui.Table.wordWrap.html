@@ -2,26 +2,24 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="table anyChart anyGantt anyStock anyMap"/>
-    <script src="../../../../anychart.min.js"></script>
+    <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
 
             var table = anychart.standalones.table();
             table.contents([
-                ["First cell", 2, 3],
-                [4, "The fifth cell of the table. Checking method a textOverflow. Something text", 6],
-                [7, 8, "Ninth cell"]
+                ["Set word-wrap mode. This title contains averyveryveryveryveryverylongword", 2, 3, 4],
+                [5, 6, 7, 8],
+                [9, 10, 11, 12]
             ]);
+            table.fontSize(18);
+
+            // Set word-wrap mode.
+            table.wordWrap("normal");
 
             table.colsWidth(150);
-            table.rowsHeight(100);
-
-            var cell = table.getCell(1, 1);
-            cell.fontSize(18);
-
-            // Set text overflow mode.
-            cell.textOverflow(">>>>");
+            table.rowsHeight(150);
 
             table.container(stage);
             table.draw();

@@ -5,15 +5,21 @@
     <script src="../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line([2, 8, 3, 4, 9], [5, 2, 6, 1]);
+            chart = anychart.line([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
 
             var title = chart.title();
             title.enabled(true);
 
-            // Gets text wrap settings.
-            var textWrap = title.textWrap();
+            // Get word-wrap mode.
+            var mode = title.wordWrap();
 
-            title.text("The current text wrap is " + textWrap);
+            title.text("Get word-wrap mode. Word-wrap mode is " + mode);
 
             chart.container("container");
             chart.draw();

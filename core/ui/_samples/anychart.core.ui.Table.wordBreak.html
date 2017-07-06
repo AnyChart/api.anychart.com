@@ -2,19 +2,25 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="table anyChart anyGantt anyStock anyMap"/>
-    <script src="../../../../anychart.min.js"></script>
+    <script src="../../../anychart.min.js"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
+
             var table = anychart.standalones.table();
             table.contents([
-                ["First cell", 2, 3],
-                [4, "The fifth cell of the table. \n Checking method a textWrap.", 6],
-                [7, 8, "Ninth cell"]
+                ["Set word-break mode. This title contains some text. Word breaks between any character", 2, 3, 4],
+                [5, 6, 7, 8],
+                [9, 10, 11, 12]
             ]);
-            var cell = table.getCell(1, 1);
-            cell.fontSize(20);
-            cell.textWrap("noWrap"); // sets text wrap
+            table.fontSize(18);
+
+            // Set word-break mode.
+            table.wordBreak("break-all");
+
+            table.colsWidth(150);
+            table.rowsHeight(200);
+
             table.container(stage);
             table.draw();
         });

@@ -8,20 +8,18 @@
             stage = anychart.graphics.create("container");
 
             var table = anychart.standalones.table();
+            table.colsWidth(150);
+            table.rowsHeight(150);
             table.contents([
-                ["First cell", 2, 3],
-                [4, "The fifth cell of the table. Checking method a textOverflow. Something text", 6],
-                [7, 8, "Ninth cell"]
+                [1, 2, 3],
+                ["Word-wrap mode is \"normal\". Thistitlecontainssometext.", "Word-wrap mode is \"break-word\". Thistitlecontainssometext.", 6],
+                [7, 8, 9]
             ]);
 
-            table.colsWidth(150);
-            table.rowsHeight(100);
+            var cell = table.getCell(1, 0);
 
-            var cell = table.getCell(1, 1);
-            cell.fontSize(18);
-
-            // Set text overflow mode.
-            cell.textOverflow(">>>>");
+            // Set word-wrap mode.
+            cell.wordWrap("normal");
 
             table.container(stage);
             table.draw();
