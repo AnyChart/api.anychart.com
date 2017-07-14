@@ -1,46 +1,43 @@
 <html>
 <head>
-    <meta name="x-cat-tags" content="line annotations anyChart"/>
+    <meta name="x-cat-tags" content="stock annotations anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../../anychart.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function () {
-            stage = anychart.graphics.create("container");
+            var dataTable = anychart.data.table();
+            dataTable.addData(get_dji_daily_short_data());
 
-            var lineChart = anychart.line([6, 10, 18, 11, 9]);
-            lineChart.yScale().minimum(0);
-            lineChart.bounds(0, 20, "50%", "100%");
+            var mapping = dataTable.mapAs({value: 1});
 
-            var controller = lineChart.annotations();
+            chart = anychart.stock();
+            chart.padding(10, 10, 10, 50);
+
+            var plot1 = chart.plot();
+            plot1.line(mapping);
+
+            var controller = plot1.annotations();
             controller.line({
-                xAnchor: 1,
-                valueAnchor: 11,
-                secondXAnchor: 3,
-                secondValueAnchor: 12,
+                xAnchor: 1107129600000,
+                valueAnchor: 9000,
+                secondXAnchor: 1131408000000,
+                secondValueAnchor: 12000,
                 stroke: "2 #F44336"
             });
 
-            lineChart.container(stage);
-            lineChart.draw();
-
-
-            var columnChart = anychart.column([6, 10, 18, 11, 9]);
-            columnChart.yScale().minimum(0);
-            columnChart.bounds("50%", 20, "50%", "100%");
+            var plot2 = chart.plot(1);
+            plot2.column(mapping);
 
             // Return plot annotation in JSON object with theme settings.
             var json = controller.toJson(false, true);
 
-            var annotation = columnChart.annotations();
+            var annotation = plot2.annotations();
             annotation.fromJson(json);
 
-            columnChart.container(stage);
-            columnChart.draw();
-
-            var customTitle = anychart.standalones.title();
-            customTitle.text("Return plot annotation in JSON object with theme settings.");
-            customTitle.container(stage);
-            customTitle.draw();
+            chart.title("Return plot annotation in JSON object with theme settings");
+            chart.container("container");
+            chart.draw();
         });
     </script>
 </head>
