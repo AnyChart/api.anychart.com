@@ -6,17 +6,23 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
+
             var series = chart.line([
                 {x: 0, value: 3,
+
+                    // Set fill.
                     marker: {fill: {
                         src: "https://static.anychart.com/images/beach.png",
-                        mode: anychart.graphics.vector.ImageFillMode.STRETCH
-                    }}}, // sets image fill
+                        mode: "stretch"
+                    }}},
                 {x: 1, value: 5},
                 {x: 2, value: 2},
                 {x: 3, value: 8}
             ]);
+
             series.markers({size: 10});
+
+            chart.title("Set marker fill as an image");
             chart.container("container");
             chart.draw();
         });

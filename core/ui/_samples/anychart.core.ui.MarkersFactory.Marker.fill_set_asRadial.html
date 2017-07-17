@@ -6,14 +6,18 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
+
             var series = chart.line([
                 {x: 0, value: 3,
-                    marker: {fill: {keys: ["#FFFFFF", "#808080"], cx: .55, cy: .56, mode: null, opacity: .9, fx: .61, fy: 0.4}}}, // sets radial gradient fill
+                    // Set fill.
+                    marker: {fill: {keys: ["#FFFFFF", "#808080"], cx: 0.5, cy: 0.5, mode: null, opacity: 0.9, fx: 0.5, fy: 0.5}}},
                 {x: 1, value: 5},
                 {x: 2, value: 2},
                 {x: 3, value: 8}
             ]);
             series.markers({size: 10});
+
+            chart.title("Set marker fill as a radial gradient");
             chart.container("container");
             chart.draw();
         });

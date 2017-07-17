@@ -4,14 +4,25 @@
     <meta name="x-cat-tags" content="column anyChart"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.column();
-            var series = chart.column([3, 5, 2, 8]);
+
+            var series = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
             var markers = series.markers();
             markers.enabled(true);
             markers.size(10);
-            var offsetY = markers.offsetY(); // get offset by Y
-            chart.title("Offset by Y - " + offsetY);
+
+            // Get offset by Y.
+            var offsetY = markers.offsetY();
+
+            chart.title("Offset by Y is " + offsetY);
             chart.container("container");
             chart.draw();
         });

@@ -6,12 +6,23 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
-            var series = chart.line([4, 1, 5, 3]);
+
+            var series = chart.line([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
             var markers = series.markers();
             markers.enabled(true);
             markers.size(10);
-            var getStroke = markers.stroke();// get stroke
-            chart.title({fontColor: getStroke});
+
+            // Get stroke.
+            var stroke = markers.stroke();
+
+            chart.title({text: "Get and use stroke", fontColor: stroke});
             chart.container("container");
             chart.draw();
         });

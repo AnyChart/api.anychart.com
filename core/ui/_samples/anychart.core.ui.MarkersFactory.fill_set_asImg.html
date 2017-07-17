@@ -6,14 +6,26 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
-            var series = chart.line([3, 5, 2, 8]);
+
+            var series = chart.line([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
             var markers = series.markers();
             markers.enabled(true);
             markers.size(10);
+
+            // Set image fill.
             markers.fill({
                 src: "https://static.anychart.com/images/beach.png",
-                mode: anychart.graphics.vector.ImageFillMode.STRETCH
-            }); // sets image fill
+                mode: "stretch"
+            });
+
+            chart.title("Set fill as an image");
             chart.container("container");
             chart.draw();
         });

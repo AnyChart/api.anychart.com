@@ -6,10 +6,21 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.column();
-            var series = chart.column([3, 5, 2, 8]);
+
+            var series = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
             var markers = series.markers();
-            var enabledState = markers.enabled(); // get enabled state
-            chart.title("Current state of markers - " + enabledState);
+
+            // Get enabled state.
+            var enabledState = markers.enabled();
+
+            chart.title("Enabled state of markers is " + enabledState);
             chart.container("container");
             chart.draw();
         });

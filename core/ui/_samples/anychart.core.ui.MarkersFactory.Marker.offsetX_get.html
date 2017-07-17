@@ -6,16 +6,21 @@
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
+
             var rect = stage.rect(20, 0, 160, 100);
             rect.stroke("#000000");
+
             var markers = anychart.standalones.markersFactory();
             markers.size(25);
             markers.fill("#009688");
+
             for (var i = 0; i < 3; i++) {
                 var marker = markers.add({value: {x: 50 * (i + 1), y: 50}}, i);
                 marker.offsetX(15);
-                var getOffsetX = marker.offsetX(); // get offset by X
-                if (i == (getOffsetX - 13)) {
+
+                // Get offset by X.
+                var offsetX = marker.offsetX();
+                if (i == (offsetX - 13)) {
                     marker.offsetX(25);
                 }
             }

@@ -5,10 +5,21 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.pie([8, 3, 7, 2, 9]);
+            chart = anychart.pie([
+                {x: "Cycling", value: 10},
+                {x: "Swimming", value: 12},
+                {x: "Run", value: 18},
+                {x: "Hiking", value: 11},
+                {x: "Alpinism", value: 9}
+            ]);
+
             var legend = chart.legend();
             legend.width(170);
-            legend.paginator({orientation: "bottom"}); // sets paginator
+
+            // Set paginator.
+            legend.paginator({orientation: "bottom"});
+
+            chart.title("Set paginator settings");
             chart.container("container");
             chart.draw();
         });

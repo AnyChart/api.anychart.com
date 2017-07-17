@@ -5,9 +5,20 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.pie([8, 3, 7, 2]);
+            chart = anychart.pie([
+                {x: "Cycling", value: 10},
+                {x: "Swimming", value: 12},
+                {x: "Run", value: 18},
+                {x: "Hiking", value: 11},
+                {x: "Alpinism", value: 9}
+            ]);
+
             var legend = chart.legend();
-            legend.itemsSpacing(30); // sets items spacing
+
+            // Set items spacing.
+            legend.itemsSpacing(30);
+
+            chart.title("Set items spacing");
             chart.container("container");
             chart.draw();
         });

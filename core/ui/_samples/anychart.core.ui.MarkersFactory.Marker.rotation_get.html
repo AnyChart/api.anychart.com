@@ -6,14 +6,18 @@
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
+
             var markers = anychart.standalones.markersFactory();
             markers.size(25);
             markers.fill("#009688");
+
             for (var i = 0; i < 3; i++) {
                 var marker = markers.add({value: {x: 50 * (i + 1), y: 50}}, i);
                 marker.rotation(2);
-                var getRotation = marker.rotation(); // get rotation
-                if (i == getRotation) {
+
+                // Get rotation.
+                var rotation = marker.rotation();
+                if (i == rotation) {
                     marker.rotation(45);
                 }
             }

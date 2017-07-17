@@ -6,15 +6,20 @@
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
+
             var rect = stage.rect(20, 0, 160, 100);
             rect.stroke("#000000");
+
             var markers = anychart.standalones.markersFactory();
             markers.fill("#009688");
+
             for (var i = 0; i < 3; i++) {
                 var marker = markers.add({value: {x: 50 * (i + 1), y: 50}}, i);
                 marker.size(15);
-                var getSize = marker.size(); // get size
-                if (i == (getSize - 13)) {
+
+                // Get size.
+                var size = marker.size();
+                if (i == (size - 13)) {
                     marker.size(25);
                 }
             }

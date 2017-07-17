@@ -6,15 +6,19 @@
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
+
             var rect = stage.rect(20, 0, 160, 100);
             rect.stroke("#000000");
+
             var markers = anychart.standalones.markersFactory();
             markers.size(25);
             markers.fill("#009688");
+
             for (var i = 0; i < 3; i++) {
                 var marker = markers.add({value: {x: 50 * (i + 1), y: 50}}, i);
-                var getAnchor = marker.anchor(); // get anchor
-                if ((i == 0) && (getAnchor = "center")) {
+                // Get anchor.
+                var anchor = marker.anchor();
+                if ((i == 0) && (anchor = "center")) {
                     marker.anchor("rightBottom");
                 }
             }

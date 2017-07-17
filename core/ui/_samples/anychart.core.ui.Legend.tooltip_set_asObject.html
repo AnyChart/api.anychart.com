@@ -5,18 +5,25 @@
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.pie([8, 3, 7, 2, 9]);
+            chart = anychart.pie([
+                {x: "Cycling", value: 10},
+                {x: "Swimming", value: 12},
+                {x: "Run", value: 18},
+                {x: "Hiking", value: 11},
+                {x: "Alpinism", value: 9}
+            ]);
 
             var legend = chart.legend();
             
-            // Sets tooltip settings.
-            legend.tooltip({background: {stroke: "2 #CFD8DC", fill: "#795548"}});
+            // Set tooltip settings.
+            legend.tooltip({enabled: true, background: {stroke: "2 #CFD8DC", fill: "#795548"}});
 
             var tooltip = legend.tooltip();
             tooltip.format(function(){
                 return "Value " + this.value
             });
 
+            chart.title("Set tooltip parameter as an object");
             chart.container("container");
             chart.draw();
         });

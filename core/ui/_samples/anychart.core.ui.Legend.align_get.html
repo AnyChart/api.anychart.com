@@ -4,11 +4,21 @@
     <meta name="x-cat-tags" content="pie legend anyChart"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.pie([8, 3, 7, 2]);
+        anychart.onDocumentReady(function () {
+            chart = anychart.pie([
+                {x: "Cycling", value: 10},
+                {x: "Swimming", value: 12},
+                {x: "Run", value: 18},
+                {x: "Hiking", value: 11},
+                {x: "Alpinism", value: 9}
+            ]);
+
             var legend = chart.legend();
-            var align = legend.align(); // get align
-            chart.title("Align - " + align);
+
+            // Get align.
+            var align = legend.align();
+
+            chart.title("Get legend align. Align is a " + align);
             chart.container("container");
             chart.draw();
         });

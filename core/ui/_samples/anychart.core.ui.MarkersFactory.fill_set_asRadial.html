@@ -6,11 +6,23 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
-            var series = chart.line([3, 5, 2, 8]);
+
+            var series = chart.line([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
             var markers = series.markers();
             markers.enabled(true);
-            markers.size(10);
-            markers.fill(["#FFFFFF", "#808080"], .55, .56, null, .9, .61, 0.4); // sets radial gradient fill
+            markers.size(15);
+
+            // Set fill.
+            markers.fill(["#FFFFFF", "#808080"], 0.5, 0.5, null, 0.9, 0.5, 0.5);
+
+            chart.title("Set fill as a radial gradient");
             chart.container("container");
             chart.draw();
         });

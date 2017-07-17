@@ -4,15 +4,25 @@
     <meta name="x-cat-tags" content="pie legend anyChart"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.pie([8, 7, 3, 2]);
+        anychart.onDocumentReady(function () {
+            chart = anychart.pie([
+                {x: 0, value: 8},
+                {x: 1, value: 7},
+                {x: 2, value: 3},
+                {x: 3, value: 2}
+            ]);
+
             var legend = chart.legend();
+
+            // Use legend item provider.
             legend.items([
                 {index: 0, text: "Chrome", iconType: "circle", iconStroke: "#01579B", iconFill: "#0091EA"},
                 {index: 1, text: "Firefox", iconFill: "#F44336", iconHatchFill: "divot"},
                 {index: 2, text: "Safari", iconFill: "#4CAF50"},
                 {index: 3, text: "IE", iconMarkerType: "circle", iconMarkerFill: "#FFEB3B", iconType: "line"}
-            ]); // uses legend item provider
+            ]);
+
+            chart.title("Use legend item provider");
             chart.container("container");
             chart.draw();
         });
