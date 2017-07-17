@@ -7,10 +7,16 @@
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
 
+            var parentBounds = stage.rect(5, 5, 100, 70);
+            parentBounds.stroke("rgba(0,0,200,.4)");
+
             var label = anychart.standalones.label();
             label.background(true);
-            // Sets label padding.
-            label.padding(10, "15px", "5px", 12);
+            label.parentBounds(parentBounds.getBounds());
+
+            // Set label padding.
+            label.padding(20, "20px", "15px", 15);
+
             label.container(stage);
             label.draw();
         });

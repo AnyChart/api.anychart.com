@@ -4,13 +4,25 @@
     <meta name="x-cat-tags" content="column anyChart"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.column();
-            var series = chart.column([12, 25, 18, 29]);
+
+            var series = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
             var labels = series.labels();
             labels.enabled(true);
             labels.background({fill: "#FFFFFF"});
-            labels.height(50); // sets height
+
+            // Set height.
+            labels.height(50);
+
+            chart.title("Set height");
             chart.container("container");
             chart.draw();
         });

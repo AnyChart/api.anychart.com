@@ -4,21 +4,26 @@
     <meta name="x-cat-tags" content="column anyChart"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.column();
+
             var series = chart.column([
-                {x: 0, value: 5, label: {maxFontSize: 15, adjustFontSize: true}}, // sets maximum font size
-                {x: 1, value: 5},
-                {x: 2, value: 2},
-                {x: 3, value: 8}
+
+                // Set maximum font size.
+                {x: "January", value: 5, label: {maxFontSize: 15, adjustFontSize: true}},
+                {x: "February", value: 5},
+                {x: "March", value: 2},
+                {x: "April", value: 8}
             ]);
+
             var labels = series.labels();
             labels.enabled(true);
-            labels.background("#FFFFFF");
             labels.height(30);
-            labels.format(function() {
+            labels.format(function () {
                 return "Value: " + this.value
             });
+
+            chart.title("Set maximum font size");
             chart.container("container");
             chart.draw();
         });

@@ -6,15 +6,21 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.column();
+
             var series = chart.column([
-                {x: 0, value: 3, label: {padding: {top: 10, right: "15px", bottom: "5px", left: 12}}}, // sets padding
-                {x: 1, value: 5},
-                {x: 2, value: 2},
-                {x: 3, value: 8}
+
+                // Set padding.
+                {x: "January",value: 3, label: {padding: {top: 10, right: "15px", bottom: "5px", left: 12}}},
+                {x: "February", value: 5},
+                {x: "March", value: 2},
+                {x: "April", value: 8}
             ]);
+
             var labels = series.labels();
             labels.enabled(true);
             labels.background({fill: "#FFFFFF"});
+
+            chart.title("Set padding");
             chart.container("container");
             chart.draw();
         });

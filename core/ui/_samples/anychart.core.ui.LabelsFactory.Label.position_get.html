@@ -6,15 +6,20 @@
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
+
             var labels = anychart.standalones.labelsFactory();
+
             var label;
-            var getPosition;
+            var position;
+
             for (var i = 0; i < 5; i++) {
                 label = labels.add({value: i}, {value: {x: (i + 1) * 50, y: 50}}, i);
                 label.position("rightTop");
                 label.background(true);
-                getPosition = label.position(); // get position
-                if ((i == 2) && (getPosition = "rightTop")) {
+
+                // Get position.
+                position = label.position();
+                if ((i == 2) && (position = "rightTop")) {
                     label.background({fill: "#FFFFFF", stroke: "#000000"});
                 }
             }

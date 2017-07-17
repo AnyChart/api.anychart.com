@@ -4,17 +4,23 @@
     <meta name="x-cat-tags" content="column anyChart"/>
     <script src="../../../anychart.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.column();
+
             var series = chart.column([
-                {x: 0, value: 3, label: {padding: 10}}, // sets padding
-                {x: 1, value: 5},
-                {x: 2, value: 2},
-                {x: 3, value: 8}
+
+                // Set padding.
+                {x: "January", value: 3, label: {padding: 10}},
+                {x: "February", value: 5},
+                {x: "March", value: 2},
+                {x: "April", value: 8}
             ]);
+
             var labels = series.labels();
             labels.enabled(true);
-            labels.background({fill: "#FFFFFF"});
+            labels.background({fill: "#2196F3 0.4"});
+
+            chart.title("Set label padding");
             chart.container("container");
             chart.draw();
         });

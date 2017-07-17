@@ -6,7 +6,15 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.column();
-            var series = chart.column([12, 25, 18, 29]);
+
+            var series = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
             var labels = series.labels();
             labels.enabled(true);
             labels.height("5%");
@@ -15,7 +23,11 @@
             labels.format(function() {
                 return "Value: " + this.value + "\n" + "Index: " + this.index
             });
-            labels.adjustFontSize(true); // sets adjust font size
+
+            // Set adjust font size.
+            labels.adjustFontSize(true);
+
+            chart.title("Set adjust font size");
             chart.container("container");
             chart.draw();
         });

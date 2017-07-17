@@ -6,12 +6,16 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.column();
+
             var series = chart.column([
-                {x: 0, value: 5, label: {minFontSize: 10, adjustFontSize: true}}, // sets minimum font size
-                {x: 1, value: 5},
-                {x: 2, value: 2},
-                {x: 3, value: 8}
+
+                // Set minimum font size.
+                {x: "January", value: 5, label: {minFontSize: 10, adjustFontSize: true}},
+                {x: "February", value: 5},
+                {x: "March", value: 2},
+                {x: "April", value: 8}
             ]);
+
             var labels = series.labels();
             labels.enabled(true);
             labels.background("#FFFFFF");
@@ -19,6 +23,8 @@
             labels.format(function() {
                 return "Value: " + this.value
             });
+
+            chart.title("Set label minimum font size");
             chart.container("container");
             chart.draw();
         });

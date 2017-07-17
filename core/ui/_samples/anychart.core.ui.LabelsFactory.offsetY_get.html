@@ -8,9 +8,15 @@
             stage = anychart.graphics.create("container");
 
             var columnChart = anychart.column();
-            columnChart.bounds(0, 0, "50%", "100%");
+            columnChart.bounds(0, 20, "50%", "100%");
 
-            var series = columnChart.column([12, 25, 18, 29]);
+            var series = columnChart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
 
             var columnLabels = series.labels();
             columnLabels.enabled(true);
@@ -20,9 +26,15 @@
             columnChart.draw();
 
             var lineChart = anychart.line();
-            lineChart.bounds("50%", 0, "50%", "100%");
+            lineChart.bounds("50%", 20, "50%", "100%");
 
-            var lineSeries = lineChart.line([12, 25, 18, 29]);
+            var lineSeries = lineChart.line([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
 
             var lineLabels = lineSeries.labels();
             lineLabels.enabled(true);
@@ -34,6 +46,11 @@
 
             lineChart.container(stage);
             lineChart.draw();
+
+            var title = anychart.standalones.title();
+            title.text("Get and use offset by Y");
+            title.container(stage);
+            title.draw();
         });
     </script>
 </head>

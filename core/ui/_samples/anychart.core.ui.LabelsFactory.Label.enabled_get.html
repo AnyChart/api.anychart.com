@@ -6,13 +6,18 @@
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
+
             var labels = anychart.standalones.labelsFactory();
+
             var label;
-            var getEnabled;
+            var state;
+
             for (var i = 0; i < 5; i++) {
                 label = labels.add({value: i}, {value: {x: (i + 1) * 50, y: 50}}, i);
-                getEnabled = label.enabled(); // get enabled state
-                if ((i == 2) && (getEnabled = true)) {
+
+                // Get enabled state.
+                state = label.enabled();
+                if ((i == 2) && (state = true)) {
                     label.enabled(false);
                 }
             }

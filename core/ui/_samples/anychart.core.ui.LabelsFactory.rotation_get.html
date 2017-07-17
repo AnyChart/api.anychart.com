@@ -6,11 +6,22 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.column();
-            var series = chart.column([12, 25, 18, 29]);
+
+            var series = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
             var labels = series.labels();
             labels.enabled(true);
-            var rotation = labels.rotation(); // get rotation
-            chart.title("Labels rotation - " + rotation);
+
+            // Get rotation.
+            var rotation = labels.rotation();
+
+            chart.title("Labels rotation is " + rotation);
             chart.container("container");
             chart.draw();
         });

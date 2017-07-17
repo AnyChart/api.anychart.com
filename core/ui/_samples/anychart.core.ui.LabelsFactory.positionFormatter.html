@@ -6,14 +6,26 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.column();
-            var series = chart.column([3, 5, 2, 8]);
+
+            var series = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
             var labels = series.labels();
             labels.enabled(true);
             labels.fontWeight("bold");
             labels.fontSize(15);
+
+            // Set position formatter.
             labels.positionFormatter(function() {
                 return {x: this.value.x + 105, y: this.value.y - 10};
-            }); // sets position formatter
+            });
+
+            chart.title("Set position formatter");
             chart.container("container");
             chart.draw();
         });
