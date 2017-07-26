@@ -21,6 +21,7 @@ def modify_source_code():
         filecontent = myfile.read()
         myfile.seek(0)
         myfile.write(filecontent.replace("map[methodName] = descriptor;","map[methodName] = descriptor;\n"+"map[methodName+'+'] = descriptor;"))
+        myfile.write(filecontent.replace("classConstructor.prototype[alias]","classConstructor.prototype[alias+'+'] = true; classConstructor.prototype[alias]"))
         myfile.close()
 
     ## change all protos and exportSymbols
