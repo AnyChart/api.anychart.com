@@ -23,7 +23,7 @@ if (args.length < 2) {
     var console_log = [];
 
     page.onError = function(msg, trace) {
-        console.error('ERROR', msg);
+        console.error('ERROR', msg, JSON.stringify(trace));
         phantom.exit("13")
     };
 

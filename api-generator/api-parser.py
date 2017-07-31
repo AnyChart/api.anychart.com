@@ -11,7 +11,7 @@ SRC_PATH = os.path.join(PROJECT_PATH, 'src')
 GRAPHICS_SRC_PATH = os.path.join(PROJECT_PATH, 'libs','graphicsjs', 'src')
 OUT_PATH = os.path.join(PATH, 'out')
 
-regexProto = r"\n\s*(proto\[([^\]]*)\](.*))"
+regexProto = r"\n\s*([^\/]proto\[([^\]]*)\](.*))"
 regexExportSymbol = r"\n\s*(goog.exportSymbol\(([^,]*)(.*))"
 
 
@@ -20,8 +20,7 @@ def modify_source_code():
     with open(os.path.join(SRC_PATH, 'core','settings.js'), 'r+') as myfile:
         filecontent = myfile.read()
         myfile.seek(0)
-        myfile.write(filecontent.replace("map[methodName] = descriptor;","map[methodName] = descriptor;\n"+"map[methodName+'+'] = descriptor;"))
-        myfile.write(filecontent.replace("classConstructor.prototype[alias]","classConstructor.prototype[alias+'+'] = true; classConstructor.prototype[alias]"))
+        myfile.write(filecontent.replace("classConstructor.prototype[alias]","classConstructor.prototype[alias+'+'] = true; classConstructor.prototype[alias]").replace("map[methodName] = descriptor;","map[methodName] = descriptor;\n"+"map[methodName+'+'] = descriptor;"))
         myfile.close()
 
     ## change all protos and exportSymbols
