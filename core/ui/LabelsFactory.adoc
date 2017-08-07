@@ -180,11 +180,223 @@ anychart.core.ui.LabelsFactory.prototype.positionFormatter;
 anychart.core.ui.LabelsFactory.prototype.position;
 
 /**
- * Setter for the labels position settings.
- * @detailed These settings are processed by the factory handler (for example a series,
- * or an axis) and can have different meanings from handler to handler. Try using anychart.enums.Position values.
- * @example anychart.core.ui.LabelsFactory.position_set
- * @param {string=} opt_value ["centerTop"] Labels position settings.
+ * Setter for the labels position settings.<br>
+ * The default value and the list of available values can be different depending on where the labels are used, e.g. with axes of different types or with different charts.
+ * Find more information in the detailed description.
+ * @detailed
+ * <br><table border="1"><tr><td><p><b>Class</p>
+ * </td><td><p><b>Default value</p>
+ * </td><td><p><b>Available value</p>
+ * </td>
+ * </tr><tr><td><p>anychart.charts.TreeMap</p>
+ * </td><td><center><p>“left-top”</p></center>
+ * </td><td><p>“left-top”</p>
+ * </td>
+ * </tr><tr><td><p>anychart.charts.Cartesian</p>
+ * </td><td rowspan="8"><center><p>value not set</p></center>
+ * </td><td rowspan="8"><center><p>{@link anychart.enums.Position}</p></center></td>
+ * </tr><tr><td><p>anychart.charts.Polar</p>
+ * </td>
+ * </tr><tr><td><p>anychart.charts.Scatter</p>
+ * </td>
+ * </tr><tr><td><p>anychart.charts.Pareto</p>
+ * </td>
+ * </tr><tr><td><p>anychart.charts.Venn</p>
+ * </td>
+ * </tr><tr><td><p>anychart.charts.Cartesian3d</p>
+ * </td>
+ * </tr><tr><td><p>anychart.charts.Sparkline</p>
+ * </td>
+ * </tr><tr><td><p>anychart.charts.Radar</p>
+ * </td>
+ * </tr><tr><td><p>anychart.charts.HeatMap</p>
+ * </td><td><center><p>“center”</p></center>
+ * </td><td><p>“center”</p>
+ * </td>
+ * </tr><tr><td><p>anychart.charts.Pie</p>
+ * </td><td><center><p>“inside”</p></center>
+ * </td><td><p>“inside”, “outside”</p>
+ * </td>
+ * </tr><tr><td><p>anychart.charts.Funnel</p>
+ * </td><td><center><p>“outside-left-in-column”</p></center>
+ * </td><td><p>{@link anychart.enums.PyramidLabelsPosition}</p>
+ * </td>
+ * </tr><tr><td><p>anychart.charts.Map</p>
+ * </td><td><center><p>value not set</p></center>
+ * </td><td><p>“start”, “middle”, “end” for connector maps only</p>
+ * </td>
+ * </tr><tr><td><p>anychart.charts.Pyramid</p>
+ * </td><td><center><p>“outside-left-in-column”</p></center>
+ * </td><td><p>{@link anychart.enums.PyramidLabelsPosition}</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.axes.Polar</p>
+ * </td><td><center><p>“by-path”</p></center>
+ * </td><td><p>“by-path”, “normal”</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.axes.Circular</p>
+ * </td><td><center><p>“inside”</p></center>
+ * </td><td><p>“Inside”, “outside”</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.Box</p>
+ * </td><td><center><p>“higest”</p></center>
+ * </td><td><p>“higest”, “median”, “lowest”, “q1”, “q3”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.SplineArea</p>
+ * </td><td><center><p>“value”</p></center>
+ * </td><td><p>&quot;zero&quot;, “value”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.Spline</p>
+ * </td><td><center><p>“value”</p></center>
+ * </td><td><p>“value”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.RangeStepArea</p>
+ * </td><td><center><p>“high”</p></center>
+ * </td><td><p>“high”, “low”, “x”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.StepArea</p>
+ * </td><td><center><p>“value”</p></center>
+ * </td><td><p>&quot;zero&quot;, “value”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.RangeBar</p>
+ * </td><td><center><p>“high”</p></center>
+ * </td><td><p>“high”, “low”, “x”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.Column3d</p>
+ * </td><td rowspan="3"><center><p>“value”</p></center>
+ * </td><td rowspan="3"><center><p>&quot;zero&quot;, “value”, custom values from data</p></center></td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.Area</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.Stick</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.Bubble</p>
+ * </td><td rowspan="2"><center><p>“value”</p></center>
+ * </td><td rowspan="2"><center><p>&quot;zero&quot;, “value”, “x”, “size” custom values from data</p></center>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.Bar</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.Area3d</p>
+ * </td><td><center><p>“value”</p></center>
+ * </td><td><p>&quot;zero&quot;, “value”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.OHLC</p>
+ * </td><td><center><p>“high”</p></center>
+ * </td><td><p>“high”, “low”, “open”, “close”, “x”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.Candlestick</p>
+ * </td><td><center><p>“high”</p></center>
+ * </td><td><p>“high”, “low”, “open”, “close”, “x”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.Column</p>
+ * </td><td><center><p>“value”</p></center>
+ * </td><td><p>&quot;zero&quot;, “value”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.RangeArea</p>
+ * </td><td><center><p>“high”</p></center>
+ * </td><td><p>“high”, “low”, “x”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.JumpLine</p>
+ * </td><td><center><p>“value”</p></center>
+ * </td><td><p>&quot;zero&quot;, “value”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.StepLine</p>
+ * </td><td><center><p>“value”</p></center>
+ * </td><td><p>&quot;zero&quot;, “value”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.Line</p>
+ * </td><td><center><p>“value”</p></center>
+ * </td><td><p>&quot;zero&quot;, “value”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.RangeColumn</p>
+ * </td><td><center><p>“high”</p></center>
+ * </td><td><p>“high”, “low”, “x”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.RangeSplineArea</p>
+ * </td><td><center><p>“high”</p></center>
+ * </td><td><p>“high”, “low”, “x”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.Hilo</p>
+ * </td><td><center><p>“high”</p></center>
+ * </td><td><p>“high”, “low”, “x”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.Marker</p>
+ * </td><td><center><p>“value”</p></center>
+ * </td><td><p>&quot;zero&quot;, “value”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.cartesian.series.Bar3d</p>
+ * </td><td><center><p>“value”</p></center>
+ * </td><td><p>&quot;zero&quot;, “value”, “x”, “size” custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.map.series.Choropleth</p>
+ * </td><td><center><p>“value”</p></center>
+ * </td><td><p>“value”</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.map.series.Bubble</p>
+ * </td><td><center><p>“value”</p></center>
+ * </td><td><p>“value”</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.map.series.Connector</p>
+ * </td><td><center><p>“middle”</p></center>
+ * </td><td><p>“middle”, “end”, “start”</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.map.series.Marker</p>
+ * </td><td><center><p>“value”</p></center>
+ * </td><td><p>“value”</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.mekko.series.Mekko</p>
+ * </td><td rowspan="5"><center><p>“value”</p></center>
+ * </td><td rowspan="5"><center><p>“value”, {@link anychart.enums.Position}</p></center></td>
+ * </tr><tr><td><p>anychart.core.polar.series.Polyline</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.polar.series.Area</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.polar.series.Column</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.polar.series.Line</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.polar.series.RangeColumn</p>
+ * </td><td><center><p>“high”</p></center>
+ * </td><td><p>“high”, “low”, “x”, custom values from data</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.polar.series.Marker</p>
+ * </td><td rowspan="9"><center><p>“value”</p></center>
+ * </td><td rowspan="9"><center><p>“value”, {@link anychart.enums.Position}</p></center></td>
+ * </tr><tr><td><p>anychart.core.polar.series.Polygon</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.radar.series.Area</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.radar.series.Line</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.radar.series.Marker</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.scatter.series.Bubble</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.scatter.series.Line</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.scatter.series.Marker</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.waterfall.series.Waterfall</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.ui.Timeline</p>
+ * </td><td rowspan="3"><center><p>“right-center”</p></center>
+ * </td><td rowspan="3"><center><p>{@link anychart.enums.Position}</p></center></td>
+ * </tr><tr><td><p>anychart.standalones.ProjectTimeline</p>
+ * </td>
+ * </tr><tr><td><p>anychart.standalones.ResourceTimeline</p>
+ * </td>
+ * </tr><tr><td><p>anychart.core.resource.Activities</p>
+ * </td><td><center><p>“left-top”</p></center>
+ * </td><td><p>{@link anychart.enums.Position}</p>
+ * </td>
+ * </tr><tr><td><p>anychart.standalones.axes.Polar</p>
+ * </td><td><center><p>“by-path”</p></center>
+ * </td><td><p>“by-path”, “normal”</p>
+ * </td>
+ * </tr>
+ * </table>
+ * @example anychart.core.ui.LabelsFactory.position_set_asColumn Sample on the column chart
+ * @example anychart.core.ui.LabelsFactory.position_set_asPie Sample on the pie chart
+ * @example anychart.core.ui.LabelsFactory.position_set_asPolar Sample on the polar axis
+ * @param {string=} opt_value [N/A] Labels position settings.
  * @return {anychart.core.ui.LabelsFactory} Self instance for method chaining.
  */
 anychart.core.ui.LabelsFactory.prototype.position;

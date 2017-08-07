@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="path anyChart anyGantt anyStock anyMap"/>
+    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
+    <script src="../../../anychart.min.js"></script>
+    <script x-export="stage">
+        anychart.onDocumentReady(function() {
+            stage = acgraph.create("container");
+
+            var path = stage.path();
+
+            path.moveTo(50, 50);
+            path.lineTo(150, 50);
+
+            // Get path length.
+            var length = path.getLength();
+
+            var text = stage.text(50, 20, "Get and use path length");
+            text.width(length);
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
