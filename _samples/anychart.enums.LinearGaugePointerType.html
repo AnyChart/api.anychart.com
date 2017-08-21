@@ -2,7 +2,10 @@
 <head>
     <meta name="x-cat-tags" content="linearGauge anyChart"/>
     <meta charset="UTF-8"/>
-    <script src="../anychart.min.js"></script>
+    <script src="../anychart-base.min.js"></script>
+	<script src="../anychart-linear-gauge.min.js"></script>
+	<script src="../anychart-exports.min.js"></script>
+	<script src="../anychart-ui.min.js"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container", 600, 600);
@@ -60,7 +63,7 @@
             ];
             var dataSet = anychart.data.set(rawData);
 
-            var barData = dataSet.mapAs({'low': [0], 'high': [1], 'value': [1]});
+            var barData = dataSet.mapAs({'low': 0, 'high': 1, 'value': 1});
 
             var rangeBar = anychart.gauges.linear(barData);
 

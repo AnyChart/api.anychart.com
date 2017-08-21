@@ -2,7 +2,9 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="column anyChart"/>
-    <script src="../../anychart.min.js"></script>
+    <script src="../../anychart-base.min.js"></script>
+	<script src="../../anychart-exports.min.js"></script>
+	<script src="../../anychart-ui.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var dataSet = anychart.data.set([
@@ -13,10 +15,10 @@
             ]);
 
             // Sets mapping for first series.
-            var firstData = dataSet.mapAs({"x": 0, "value": 1}, {"value": ["value", "prod"]});
+            var firstData = dataSet.mapAs({'value': ['value', 'prod']});
 
             // Sets mapping for second series.
-            var secondData = dataSet.mapAs({"x": 0, "value": 2}, {"value": ["value", "dev"]});
+            var secondData = dataSet.mapAs({'value': ['value', 'dev']});
 
             chart = anychart.column();
             chart.column(firstData);
