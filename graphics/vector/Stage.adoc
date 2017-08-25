@@ -28,27 +28,29 @@ anychart.graphics.vector.Stage;
 
 /**
  * Stage events.
+ * @example anychart.graphics.vector.Stage.EventType
  * @enum {string}
  */
 anychart.graphics.vector.Stage.EventType;
 
 /**
- * Rendering start
+ * Rendering start. Called before changes of the DOM start.
  */
 anychart.graphics.vector.Stage.EventType.RENDER_START = "renderstart";
 
 /**
- * Rendering end
+ * Rendering end. Called when all DOM-elements are created and added to the Document, and before loading images,
+ * fonts, and other external resources starts. 
  */
 anychart.graphics.vector.Stage.EventType.RENDER_FINISH = "renderfinish";
 
 /**
- * Fires when resize event occurs
+ * Called when the Stage is resized, the container is resized with percentage values of width and height, and the width and height values are changed.
  */
 anychart.graphics.vector.Stage.EventType.STAGE_RESIZE = "stageresize";
 
 /**
- * Fires when image loader finished loading all images
+ * Called when all external resources used on the Stage are loaded.
  */
 anychart.graphics.vector.Stage.EventType.STAGE_RENDERED = "stagerendered";
 
@@ -61,6 +63,7 @@ anychart.graphics.vector.Stage.EventType.STAGE_RENDERED = "stagerendered";
 
 /**
  * Returns stage root DOM element.
+ * @category Structure
  * @example anychart.graphics.vector.Stage.domElement
  * @return {Element} Stage root DOM element.
  */
@@ -75,7 +78,7 @@ anychart.graphics.vector.Stage.prototype.domElement;
 
 /**
  * Gets the current stage width.
- * @shortDescription Stage width setting.
+ * @shortDescription Stage width.
  * @category Size and Position
  * @example anychart.graphics.vector.Stage.width_get
  * @return {number} The current width of stage.
@@ -101,7 +104,7 @@ anychart.graphics.vector.Stage.prototype.width;
 
 /**
  * Gets the current stage height.
- * @shortDescription Stage height setting.
+ * @shortDescription Stage height.
  * @category Size and Position
  * @example anychart.graphics.vector.Stage.height_get
  * @return {number} The current height of stage.
@@ -127,7 +130,8 @@ anychart.graphics.vector.Stage.prototype.height;
 
 /**
  * Returns DOM element where everything is drawn upon rendering.
- * @shortDescription Container setting.
+ * @shortDescription Container settings.
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.container_get
  * @return {Element} Returns DOM element of graphics container.
  */
@@ -155,8 +159,9 @@ anychart.graphics.vector.Stage.prototype.container;
  * @detailed When Stage is in this state changes do not affect DOM.<br/>
  * To wake Stage up from this state you need to invoke {@link anychart.graphics.vector.Stage#resume}.<br/>
  * Suspended rendering is much faster than instant when there are a lot of operations with a Stage.<br/>
- * This method calculates the count of calls and allows to insert constructions correctly
+ * This method calculates the number of calls and allows to insert constructions correctly
  * (suspend(); suspend(); resume(); resume() - rendering will happen on the last resume()).
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.suspend
  * @return {anychart.graphics.vector.Stage} Stage.
  */
@@ -172,9 +177,10 @@ anychart.graphics.vector.Stage.prototype.suspend;
 /**
  * Removes suspend state and applies all changes in sync (if any).<br/>
  * Read more at {@link anychart.graphics.vector.Stage#suspend}.
- * @detailed This method calculates the count of calls and allows to insert constructions correctly
+ * @detailed This method calculates the number of calls and allows to insert constructions correctly
  * (suspend(); suspend(); resume(); resume() - rendering will happens on the last resume());
- * @param {boolean=} opt_force [false] If set to true - this parameter resets stack suspends and calls rendering immediately.
+ * @category Drawing
+ * @param {boolean=} opt_force [false] If set to true - this parameter resets the stack of suspends and calls rendering immediately.
  * @return {anychart.graphics.vector.Stage} Stage.
  */
 anychart.graphics.vector.Stage.prototype.resume;
@@ -188,6 +194,7 @@ anychart.graphics.vector.Stage.prototype.resume;
 
 /**
  * Returns rendering state (true - suspended, false - instant).
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.isSuspended
  * @return {boolean} Rendering state.
  */
@@ -202,6 +209,7 @@ anychart.graphics.vector.Stage.prototype.isSuspended;
 
 /**
  * Indicates if stage is in rendering process.
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.isRendering
  * @return {boolean} State of rendering process.
  */
@@ -233,6 +241,7 @@ anychart.graphics.vector.Stage.prototype.resize;
 
 /**
  * Returns self.
+ * @category Structure
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.getStage;
@@ -246,6 +255,7 @@ anychart.graphics.vector.Stage.prototype.getStage;
 
 /**
  * Returns self.
+ * @category Structure
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.parent;
@@ -258,16 +268,17 @@ anychart.graphics.vector.Stage.prototype.parent;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets the current stage identifier.
+ * Getter for the stage identifier.
  * If it was not set, than it will be generated.
- * @shortDescription Stage identifier setting.
+ * @shortDescription Stage identifier.
+ * @category Structure
  * @example anychart.graphics.vector.Stage.id_get
  * @return {string} Returns element identifier.
  */
 anychart.graphics.vector.Stage.prototype.id;
 
 /**
- * Sets a stage identifier and instantly applies it to DOM.
+ * Setter for a stage identifier. Instantly applied to the DOM.
  * @example anychart.graphics.vector.Stage.id_set
  * @param {string=} opt_value Custom identifier.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
@@ -283,7 +294,7 @@ anychart.graphics.vector.Stage.prototype.id;
 
 /**
  * Returns the current stage visibility.
- * @shortDescription Stage visibility setting.
+ * @shortDescription Switch flag of stage visibility.
  * @example anychart.graphics.vector.Stage.visible_get
  * @return {boolean} Visibility.
  */
@@ -305,7 +316,8 @@ anychart.graphics.vector.Stage.prototype.visible;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Returns stage JSON. Serializes stage and all its object in JSON.
+ * Returns stage JSON. Serializes stage and all its object to JSON.
+ * @category Export
  * @example anychart.graphics.vector.Stage.data_get
  * @return {Object} JSON data of stage.
  */
@@ -332,9 +344,10 @@ anychart.graphics.vector.Stage.prototype.data;
 
 
 /**
- * Invokes {@link anychart.graphics.vector.Layer} constructor<br/>
+ * Invokes {@link anychart.graphics.vector.Layer} constructor.<br/>
  * <strong>Note:</strong><br>anychart.graphics.vector.Stage doesn't delete objects you create.
  * You must delete them yourself after you finish using them.
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.layer
  * @return {anychart.graphics.vector.Layer} An instance of the class for method chaining.
  */
@@ -351,6 +364,7 @@ anychart.graphics.vector.Stage.prototype.layer;
  * Invokes {@link anychart.graphics.vector.Text} constructor.<br/>
  * <strong>Note:</strong><br>anychart.graphics.vector.Stage doesn't delete objects you create.
  * You must delete them yourself after you finish using them.
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.text_set_asCoord Using coordinate
  * @example anychart.graphics.vector.Stage.text_set_asSeveral Using several parameters
  * @param {number=} opt_x X-coordinate (Left) of left top corner of text bounds.
@@ -373,6 +387,7 @@ anychart.graphics.vector.Stage.prototype.text;
  * to parse HTML.<br/>
  * <strong>Note:</strong><br>anychart.graphics.vector.Stage doesn't delete objects you create.
  * You must delete them yourself after you finish using them.
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.html
  * @param {number=} opt_x X-coordinate (Left) of left top corner of text bounds.
  * @param {number=} opt_y Y-coordinate (Top) of left top corner of text bounds.
@@ -393,6 +408,7 @@ anychart.graphics.vector.Stage.prototype.html;
  * Invokes {@link anychart.graphics.vector.Rect} constructor.<br/>
  * <strong>Note:</strong><br>anychart.graphics.vector.Stage doesn't delete objects you create.
  * You must delete them yourself after you finish using them.
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.rect
  * @param {number=} opt_x X (Left) coordinate of top-left corner.
  * @param {number=} opt_y Y (Top) coordinate of top-left corner.
@@ -413,6 +429,7 @@ anychart.graphics.vector.Stage.prototype.rect;
  * Invokes {@link anychart.graphics.vector.Image} constructor.<br/>
  * <strong>Note:</strong><br>anychart.graphics.vector.Stage doesn't delete objects you create.
  * You must delete them yourself after you finish using them.
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.image
  * @param {string=} opt_src IRI (Internationalized Resource Identifiers) for image source.
  * @param {number=} opt_x X coordinate of left-top corner image.
@@ -433,6 +450,7 @@ anychart.graphics.vector.Stage.prototype.image;
 /**
  * Draws rectangle with rounded corners.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#roundedRect}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.roundedRect
  */
 anychart.graphics.vector.Stage.prototype.roundedRect;
@@ -447,6 +465,7 @@ anychart.graphics.vector.Stage.prototype.roundedRect;
 /**
  * Draws rectangle with inner rounded corners.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#roundedInnerRect}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.roundedInnerRect
  */
 anychart.graphics.vector.Stage.prototype.roundedInnerRect;
@@ -461,6 +480,7 @@ anychart.graphics.vector.Stage.prototype.roundedInnerRect;
 /**
  * Draws rectangle with truncated corners.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#truncatedRect}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.truncatedRect
  */
 anychart.graphics.vector.Stage.prototype.truncatedRect;
@@ -477,6 +497,7 @@ anychart.graphics.vector.Stage.prototype.truncatedRect;
  * <strong>Note:</strong><br>anychart.graphics.vector.Stage doesn't delete objects you create.
  * You must delete them yourself after you finish using them.<br/>
  * Read more at: {@link anychart.graphics.vector.Circle}
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.circle
  * @param {number=} opt_cx Center X, in pixels.
  * @param {number=} opt_cy Center Y, in pixels.
@@ -497,6 +518,7 @@ anychart.graphics.vector.Stage.prototype.circle;
  * <strong>Note:</strong><br>anychart.graphics.vector.Stage doesn't delete objects you create.
  * You must delete them yourself after you finish using them.<br/>
  * Read more at: {@link anychart.graphics.vector.Ellipse}
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.ellipse
  * @param {number=} opt_cx Center X, in pixels.
  * @param {number=} opt_cy Center Y, in pixels.
@@ -518,6 +540,7 @@ anychart.graphics.vector.Stage.prototype.ellipse;
  * <strong>Note:</strong><br>{@link anychart.graphics.vector.Stage} doesn't delete objects you create.
  * You must delete them yourself after you finish using them.<br/>
  * Read more at Path: {@link anychart.graphics.vector.Path}
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.path
  * @return {anychart.graphics.vector.Path} An instance of the class for method chaining.
  */
@@ -533,6 +556,7 @@ anychart.graphics.vector.Stage.prototype.path;
 /**
  * Draws multi-pointed star.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#star}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.star
  */
 anychart.graphics.vector.Stage.prototype.star = function(){};
@@ -547,6 +571,7 @@ anychart.graphics.vector.Stage.prototype.star = function(){};
 /**
  * Draws four-pointed star.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#star4}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.star4
  */
 anychart.graphics.vector.Stage.prototype.star4 = function(){};
@@ -561,6 +586,7 @@ anychart.graphics.vector.Stage.prototype.star4 = function(){};
 /**
  * Draws five-pointed star.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#star5}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.star5
  */
 anychart.graphics.vector.Stage.prototype.star5 = function(){};
@@ -575,6 +601,7 @@ anychart.graphics.vector.Stage.prototype.star5 = function(){};
 /**
  * Draws six-pointed star.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#star6}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.star6
  */
 anychart.graphics.vector.Stage.prototype.star6 = function(){};
@@ -589,6 +616,7 @@ anychart.graphics.vector.Stage.prototype.star6 = function(){};
 /**
  * Draws seven-pointed star.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#star7}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.star7
  */
 anychart.graphics.vector.Stage.prototype.star7 = function(){};
@@ -603,6 +631,7 @@ anychart.graphics.vector.Stage.prototype.star7 = function(){};
 /**
  * Draws ten-pointed star.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#star10}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.star10
  */
 anychart.graphics.vector.Stage.prototype.star10 = function(){};
@@ -617,6 +646,7 @@ anychart.graphics.vector.Stage.prototype.star10 = function(){};
 /**
  * Draws a triangle heading upwards set by its circumscribed circle center and radius.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#triangleUp}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.triangleUp
  */
 anychart.graphics.vector.Stage.prototype.triangleUp = function(){};
@@ -631,6 +661,7 @@ anychart.graphics.vector.Stage.prototype.triangleUp = function(){};
 /**
  * Draws a triangle heading downwards set by it circumscribed circle center and radius.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#triangleDown}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.triangleDown
  */
 anychart.graphics.vector.Stage.prototype.triangleDown = function(){};
@@ -644,6 +675,7 @@ anychart.graphics.vector.Stage.prototype.triangleDown = function(){};
 /**
  * Draws a triangle heading rightwards set by it circumscribed circle center and radius.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#triangleRight}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.triangleRight
  */
 anychart.graphics.vector.Stage.prototype.triangleRight = function(){};
@@ -657,6 +689,7 @@ anychart.graphics.vector.Stage.prototype.triangleRight = function(){};
 /**
  * Draws a triangle heading leftwards set by it circumscribed circle center and radius.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#triangleLeft}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.triangleLeft
  */
 anychart.graphics.vector.Stage.prototype.triangleLeft = function(){};
@@ -671,6 +704,7 @@ anychart.graphics.vector.Stage.prototype.triangleLeft = function(){};
 /**
  * Draws a diamond set by it circumscribed circle center and radius.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#diamond}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.diamond
  */
 anychart.graphics.vector.Stage.prototype.diamond = function(){};
@@ -683,8 +717,9 @@ anychart.graphics.vector.Stage.prototype.diamond = function(){};
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Draws a cross set by it's circumscribed circle center and radius.<br/>
+ * Draws a cross defined by a circumscribed circle.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#cross}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.cross
  */
 anychart.graphics.vector.Stage.prototype.cross = function(){};
@@ -699,6 +734,7 @@ anychart.graphics.vector.Stage.prototype.cross = function(){};
 /**
  * Draws a diagonal cross set by it circumscribed circle center and radius.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#diagonalCross}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.diagonalCross
  */
 anychart.graphics.vector.Stage.prototype.diagonalCross = function(){};
@@ -711,8 +747,9 @@ anychart.graphics.vector.Stage.prototype.diagonalCross = function(){};
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Draws a thick horizontal line set by it circumscribed circle center and radius.<br/>
+ * Draws a thick horizontal line set by its circumscribed circle center and radius.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#hLine}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.hLine
  */
 anychart.graphics.vector.Stage.prototype.hLine = function(){};
@@ -725,8 +762,9 @@ anychart.graphics.vector.Stage.prototype.hLine = function(){};
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Draws a thick vertical line set by it circumscribed circle center and radius.<br/>
+ * Draws a thick vertical line set by its circumscribed circle center and radius.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#vLine}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.vLine
  */
 anychart.graphics.vector.Stage.prototype.vLine = function(){};
@@ -741,6 +779,7 @@ anychart.graphics.vector.Stage.prototype.vLine = function(){};
 /**
  * Draws arc as pie chart element.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#pie}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.pie
  */
 anychart.graphics.vector.Stage.prototype.pie = function(){};
@@ -755,6 +794,7 @@ anychart.graphics.vector.Stage.prototype.pie = function(){};
 /**
  * Draws arc as donut chart element.<br/>
  * Read more at {@link anychart.graphics.vector.primitives#donut}
+ * @category Predefined Visual Elements
  * @example anychart.graphics.vector.Stage.donut
  */
 anychart.graphics.vector.Stage.prototype.donut = function(){};
@@ -771,6 +811,7 @@ anychart.graphics.vector.Stage.prototype.donut = function(){};
  * <strong>Note:</strong><br>anychart.graphics.vector.Stage doesn't delete objects you create.
  * You must delete them yourself after you finish using them.<br/>
  * Read more at: {@link anychart.graphics.vector.PatternFill}
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.pattern
  * @param {!anychart.graphics.math.Rect} bounds Bounds of pattern. Defines size and offset of pattern.
  * @return {anychart.graphics.vector.PatternFill} An instance of the class for method chaining.
@@ -789,6 +830,7 @@ anychart.graphics.vector.Stage.prototype.pattern;
  * <strong>Note:</strong><br>anychart.graphics.vector.Stage doesn't delete objects you create.
  * You have to delete them yourself after you finish using them.<br/>
  * Read more at: {@link anychart.graphics.vector.HatchFill}
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.hatchFill
  * @param {anychart.graphics.vector.HatchFill.HatchFillType=} opt_type Type of hatch fill.
  * @param {string=} opt_color Hatch color (You can combine with opacity).
@@ -806,8 +848,9 @@ anychart.graphics.vector.Stage.prototype.hatchFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Number of stage children.<br/>
+ * A number of stage children.<br/>
  * Similar to {@link anychart.graphics.vector.Layer#numChildren}
+ * @category Structure
  * @return {number} Number of stage children.
  */
 anychart.graphics.vector.Stage.prototype.numChildren;
@@ -820,8 +863,9 @@ anychart.graphics.vector.Stage.prototype.numChildren;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Adds element.<br/>
+ * Adds an element.<br/>
  * Similar to {@link anychart.graphics.vector.Layer#addChild}
+ * @category Structure
  * @param {!anychart.graphics.vector.Element} element Element.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
@@ -835,8 +879,9 @@ anychart.graphics.vector.Stage.prototype.addChild;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Adds element by index.<br/>
+ * Adds an element by index.<br/>
  * Similar to {@link anychart.graphics.vector.Layer#addChildAt}
+ * @category Structure
  * @param {!anychart.graphics.vector.Element} element Element.
  * @param {number} index Child index.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
@@ -851,8 +896,9 @@ anychart.graphics.vector.Stage.prototype.addChildAt;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Returns element by index.<br/>
+ * Returns an element by index.<br/>
  * Similar to {@link anychart.graphics.vector.Layer#getChildAt}
+ * @category Structure
  * @param {number} index Child index.
  * @return {anychart.graphics.vector.Element} Element or null.
  */
@@ -866,8 +912,9 @@ anychart.graphics.vector.Stage.prototype.getChildAt;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Removes element.<br/>
+ * Removes an element.<br/>
  * Similar to {@link anychart.graphics.vector.Layer#removeChild}
+ * @category Structure
  * @param {anychart.graphics.vector.Element} element Element.
  * @return {anychart.graphics.vector.Element} Removed element.
  */
@@ -881,8 +928,9 @@ anychart.graphics.vector.Stage.prototype.removeChild;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Removes element by index.<br/>
+ * Removes an element by index.<br/>
  * Similar to {@link anychart.graphics.vector.Layer#removeChildAt}
+ * @category Structure
  * @param {number} index Index.
  * @return {anychart.graphics.vector.Element} Removed element.
  */
@@ -898,6 +946,7 @@ anychart.graphics.vector.Stage.prototype.removeChildAt;
 /**
  * Removes all elements.<br/>
  * Similar to {@link anychart.graphics.vector.Layer#removeChildren}
+ * @category Structure
  * @return {!Array.<anychart.graphics.vector.Element>} Array of removed elements.
  */
 anychart.graphics.vector.Stage.prototype.removeChildren;
@@ -912,6 +961,7 @@ anychart.graphics.vector.Stage.prototype.removeChildren;
 /**
  * Checks if there is such element in children set.<br/>
  * Similar to {@link anychart.graphics.vector.Layer#hasChild}
+ * @category Structure
  * @param {anychart.graphics.vector.Element} element Element to check.
  * @return {boolean} Is there such element in stage or not.
  */
@@ -927,6 +977,7 @@ anychart.graphics.vector.Stage.prototype.hasChild;
 /**
  * Returns index of a child.<br/>
  * Similar to {@link anychart.graphics.vector.Layer#indexOfChild}
+ * @category Structure
  * @param {anychart.graphics.vector.Element} element Element.
  * @return {number} Index or -1.
  */
@@ -942,6 +993,7 @@ anychart.graphics.vector.Stage.prototype.indexOfChild;
 /**
  * Swaps two children.<br/>
  * Similar to {@link anychart.graphics.vector.Layer#swapChildren}
+ * @category Structure
  * @param {anychart.graphics.vector.Element} element1 First child.
  * @param {anychart.graphics.vector.Element} element2 Second child.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
@@ -958,6 +1010,7 @@ anychart.graphics.vector.Stage.prototype.swapChildren;
 /**
  * Swaps two children by id.<br/>
  * Similar to {@link anychart.graphics.vector.Layer#swapChildrenAt}
+ * @category Structure
  * @param {number} index1 First child or id.
  * @param {number} index2 Second child or id.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
@@ -974,6 +1027,7 @@ anychart.graphics.vector.Stage.prototype.swapChildrenAt;
 /**
  * Applies function to all children.<br/>
  * Similar to {@link anychart.graphics.vector.Layer#forEachChild}
+ * @category Structure
  * @param {function(anychart.graphics.vector.Element):void} callback Callback.
  * @param {Object=} opt_this This element.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
@@ -989,6 +1043,7 @@ anychart.graphics.vector.Stage.prototype.forEachChild;
 
 /**
  * Removes everything.
+ * @category Structure
  * @example anychart.graphics.vector.Stage.remove
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
@@ -1003,6 +1058,7 @@ anychart.graphics.vector.Stage.prototype.remove;
 
 /**
  * Returns X of top left corner.
+ * @category Size and Position
  * @example anychart.graphics.vector.Stage.getX
  * @return {number} X of top left corner.
  */
@@ -1017,6 +1073,7 @@ anychart.graphics.vector.Stage.prototype.getX;
 
 /**
  * Returns Y of top left corner.
+ * @category Size and Position
  * @example anychart.graphics.vector.Stage.getY
  * @return {number} Y of top left corner.
  */
@@ -1031,6 +1088,7 @@ anychart.graphics.vector.Stage.prototype.getY;
 
 /**
  * Returns bounds.
+ * @category Size and Position
  * @example anychart.graphics.vector.Stage.getBounds
  * @return {!anychart.graphics.math.Rect} Bounds.
  */
@@ -1046,6 +1104,7 @@ anychart.graphics.vector.Stage.prototype.getBounds;
 /**
  * Rotates root layer.<br/>
  * Read more at: {@link anychart.graphics.vector.Element#rotate}.
+ * @category Size and Position
  * @param {number} degrees Rotation angle.
  * @param {number=} opt_cx Rotaion X.
  * @param {number=} opt_cy Rotaion Y.
@@ -1063,6 +1122,7 @@ anychart.graphics.vector.Stage.prototype.rotate;
 /**
  * Rotates root layer around an anchor.<br/>
  * Read more at: {@link anychart.graphics.vector.Element#rotateByAnchor}.
+ * @category Size and Position
  * @param {number} degrees Rotation angle.
  * @param {(anychart.graphics.vector.Anchor|string)=} opt_anchor Rotation anchor.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
@@ -1079,6 +1139,7 @@ anychart.graphics.vector.Stage.prototype.rotateByAnchor;
 /**
  * Rotates root layer around a point.<br/>
  * Read more at: {@link anychart.graphics.vector.Element#setRotation}.
+ * @category Size and Position
  * @param {number} degrees Rotation angle.
  * @param {number=} opt_cx Rotaion X.
  * @param {number=} opt_cy Rotaion Y.
@@ -1096,6 +1157,7 @@ anychart.graphics.vector.Stage.prototype.setRotation;
 /**
  * Rotates root layer around an anchor.<br/>
  * Read more at: {@link anychart.graphics.vector.Element#setRotationByAnchor}.
+ * @category Size and Position
  * @param {number} degrees Rotation angle.
  * @param {(anychart.graphics.vector.Anchor|string)=} opt_anchor Rotation anchor.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
@@ -1113,6 +1175,7 @@ anychart.graphics.vector.Stage.prototype.setRotationByAnchor;
  * Moves root layer taking transformation into account.<br/>
  * Movement happens in root layer coordinates.<br/>
  * Read more at: {@link anychart.graphics.vector.Element#translate}.
+ * @category Transformations
  * @param {number} tx X offset.
  * @param {number} ty Y offset.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
@@ -1129,6 +1192,7 @@ anychart.graphics.vector.Stage.prototype.translate;
 /**
  * Sets top left corner coordinates of root layer (with transformation,in parent coordinate system).<br/>
  * Read more at: {@link anychart.graphics.vector.Element#setPosition}.
+ * @category Size and Position
  * @param {number} x X of top left corner.
  * @param {number} y Y of top left corner.
  * @return {!anychart.graphics.vector.Stage} Returns self for chaining.
@@ -1145,6 +1209,7 @@ anychart.graphics.vector.Stage.prototype.setPosition;
 /**
  * Scales root layer in parent coordinates system. Scaling center is set in the parent system too.<br/>
  * Read more at: {@link anychart.graphics.vector.Element#scale}.
+ * @category Transformations
  * @param {number} sx Scale X.
  * @param {number} sy Scale Y.
  * @param {number=} opt_cx Scale center X.
@@ -1163,6 +1228,7 @@ anychart.graphics.vector.Stage.prototype.scale;
 /**
  * Scales root layer in parent coordinates system. Scaling center is set by root layer anchor.<br/>
  * Read more at: {@link anychart.graphics.vector.Element#scaleByAnchor}.
+ * @category Transformations
  * @param {number} sx Scale X.
  * @param {number} sy Scale Y.
  * @param {(anychart.graphics.vector.Anchor|string)=} opt_anchor Scaling center anchor.
@@ -1181,6 +1247,7 @@ anychart.graphics.vector.Stage.prototype.scaleByAnchor;
  * Combines current transformation with another.<br/>
  * Combination is done by multiplying matrix to the right.<br/>
  * Read more at: {@link anychart.graphics.vector.Element#appendTransformationMatrix}.
+ * @category Transformations
  * @param {number} m00 Scale X.
  * @param {number} m10 Shear Y.
  * @param {number} m01 Shear X.
@@ -1201,6 +1268,7 @@ anychart.graphics.vector.Stage.prototype.appendTransformationMatrix;
 /**
  * Sets transformation matrix.<br/>
  * Read more at: {@link anychart.graphics.vector.Element#setTransformationMatrix}.
+ * @category Transformations
  * @param {number} m00 Scale X.
  * @param {number} m10 Shear Y.
  * @param {number} m01 Shear X.
@@ -1221,6 +1289,8 @@ anychart.graphics.vector.Stage.prototype.setTransformationMatrix;
 /**
  * Returns rotation angle in degrees.<br/>
  * Read more at: {@link anychart.graphics.vector.Element#getRotationAngle}.
+ * @category Transformations
+ * @category Transformations
  * @return {number} Rotation angle.
  */
 anychart.graphics.vector.Stage.prototype.getRotationAngle;
@@ -1242,6 +1312,8 @@ anychart.graphics.vector.Stage.prototype.getRotationAngle;
  * {number} m12 Translate Y.
  * ]<br/>
  * Read more at: {@link anychart.graphics.vector.Element#getTransformationMatrix}.
+ * @shortDescription Returns transformation matrix.
+ * @category Transformations
  * @return {Array.<number>} Transformation matrix.
  */
 anychart.graphics.vector.Stage.prototype.getTransformationMatrix;
@@ -1254,19 +1326,20 @@ anychart.graphics.vector.Stage.prototype.getTransformationMatrix;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
+ * Gets clip bounds.<br/>
+ * Works only after render() is invoked.<br/>
+ * Read more at: {@link anychart.graphics.vector.Element#clip}.
+ * @category Drawing
+ * @return {anychart.graphics.math.Rect} Clipping rectangle.
+ */
+anychart.graphics.vector.Stage.prototype.clip;
+
+/**
  * Clips a stage.<br/>
  * Works only after render() is invoked.<br/>
  * Read more at: {@link anychart.graphics.vector.Element#clip}.
  * @param {anychart.graphics.math.Rect=} opt_value Clipping rectangle.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
- */
-anychart.graphics.vector.Stage.prototype.clip;
-
-/**
- * Gets clip bounds.<br/>
- * Works only after render() is invoked.<br/>
- * Read more at: {@link anychart.graphics.vector.Element#clip}.
- * @return {anychart.graphics.math.Rect} Clipping rectangle.
  */
 anychart.graphics.vector.Stage.prototype.clip;
 
@@ -1280,6 +1353,7 @@ anychart.graphics.vector.Stage.prototype.clip;
 /**
  * Disposes stage.<br/>
  * Removes it from parent layer, nulls links, removes from DOM.
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.dispose
  */
 anychart.graphics.vector.Stage.prototype.dispose = function(){};
@@ -1293,6 +1367,7 @@ anychart.graphics.vector.Stage.prototype.dispose = function(){};
 
 /**
  * Print stage.
+ * @category Export
  * @example anychart.graphics.vector.Stage.print
  * @param {(string|number)=} opt_paperSizeOrWidth Paper Size or width.
  * @param {(boolean|string)=} opt_landscapeOrHeight Landscape or height.
@@ -1308,6 +1383,7 @@ anychart.graphics.vector.Stage.prototype.print;
 
 /**
  * Creates a clip element using single value.
+ * @category Drawing
  * @example anychart.graphics.vector.Stage.createClip_set_asSingle
  * @param {(Array.<number>|anychart.graphics.math.Rect|Object|null)=} opt_rect Rect or array or object representing bounds.
  * @return {anychart.graphics.vector.Clip} Clip element.
@@ -1335,6 +1411,7 @@ anychart.graphics.vector.Stage.prototype.createClip;
 /**
  * Saves the current stage as PNG Image.<br/>
  * For export to image PNG use {@link anychart#server}.
+ * @category Export
  * @example anychart.graphics.vector.Stage.saveAsPng
  * @param {number=} opt_width Image width.
  * @param {number=} opt_height Image height.
@@ -1354,6 +1431,7 @@ anychart.graphics.vector.Stage.prototype.saveAsPng;
 /**
  * Saves the current stage as JPG Image.<br/>
  * For export to image JPG use {@link anychart#server}.
+ * @category Export
  * @example anychart.graphics.vector.Stage.saveAsJpg
  * @param {number=} opt_width Image width.
  * @param {number=} opt_height Image height.
@@ -1374,6 +1452,7 @@ anychart.graphics.vector.Stage.prototype.saveAsJpg;
 /**
  * Saves the current stage as PDF Document.<br/>
  * For export to PDF file use {@link anychart#server}.
+ * @category Export
  * @example anychart.graphics.vector.Stage.saveAsPdf
  * @param {string=} opt_paperSize Any paper format like "a0", "tabloid", "b4", etc.
  * @param {boolean=} opt_landscape Define, is landscape.
@@ -1394,6 +1473,7 @@ anychart.graphics.vector.Stage.prototype.saveAsPdf;
 /**
  * Saves the stage as SVG Image.<br/>
  * For export to SVG use {@link anychart#server}.
+ * @category Export
  * @example anychart.graphics.vector.Stage.saveAsSvg_set_asPaperSizeLandscape
  * @param {string=} opt_paperSize Paper Size.
  * @param {boolean=} opt_landscape Landscape.
@@ -1422,6 +1502,7 @@ anychart.graphics.vector.Stage.prototype.saveAsSvg;
 /**
  * Returns SVG string if type of content is SVG with parameters otherwise returns empty string.
  * @shortDescription Returns SVG string
+ * @category Export
  * @example anychart.graphics.vector.Stage.toSvg_set_asPaperSizeLandscape
  * @param {string=} opt_paperSize Paper Size.
  * @param {boolean=} opt_landscape Landscape.
@@ -1449,15 +1530,17 @@ anychart.graphics.vector.Stage.prototype.toSvg;
 
 /**
  * Adds an event listener to a stage.
+ * @category Events
  * @detailed The listener can only be added once and if it is added again the key for the listener is
  * returned. <br/>
- * <b>Note</b>Note that if the existing listener is a one-off listener  (added using listenOnce),
+ * <b>Note</b> that if the existing listener is a one-off listener  (added using listenOnce),
  * it will no longer be a one-off listener after a call to listen() method.
  * @example anychart.graphics.vector.Stage.listen
- * @param {string} type The event type id.
- * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener Callback method.
- * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about capturing {@link https://javascript.info/bubbling-and-capturing}
- * @param {Object=} opt_listenerScope Object in whose scope to call the listener.
+ * @param {(string|anychart.graphics.vector.Stage.EventType)} type The event type name.
+ * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener A function to execute each time the event is triggered.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about <a target='_blank' rel="nofollow"
+ * href="https://javascript.info/bubbling-and-capturing">capturing</a>
+ * @param {Object=} opt_listenerScope ["Window"] Object in whose scope to call the listener.
  * @return {{key: number}} Unique key for the listener.
  * @since 7.7.0
  */
@@ -1471,17 +1554,19 @@ anychart.graphics.vector.Stage.prototype.listen;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Adds an event listener to a stage
+ * Adds an event listener that is removed automatically after the listener fired once.
+ * @category Events
  * @detailed <b>After the event is called, its handler will be deleted.</b><br>
  * If the event handler being added already exists, listenOnce will do nothing. <br/>
  * <b>Note</b> In particular, if the handler is already registered using listen(), listenOnce()
  * <b>will not</b> make it one-off. Similarly, if a one-off listener already exists,
  * listenOnce will not change it (it wil remain one-off).
  * @example anychart.graphics.vector.Stage.listenOnce
- * @param {string} type The event type id.
- * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener Callback method.
- * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about capturing {@link https://javascript.info/bubbling-and-capturing}
- * @param {Object=} opt_listenerScope Object in whose scope to call the listener.
+ * @param {(string|anychart.graphics.vector.Stage.EventType)} type The event type name.
+ * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener A function to execute each time the event is triggered.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about <a target='_blank' rel="nofollow"
+ * href="https://javascript.info/bubbling-and-capturing">capturing</a>
+ * @param {Object=} opt_listenerScope ["Window"] Object in whose scope to call the listener.
  * @return {{key: number}} Unique key for the listener.
  * @since 7.7.0
  */
@@ -1495,12 +1580,14 @@ anychart.graphics.vector.Stage.prototype.listenOnce;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Removes a listener added with listen() or listenOnce() methods.
+ * Removes a listener added with {@link anychart.graphics.vector.Stage#listen} or {@link anychart.graphics.vector.Stage#listenOnce} methods.
+ * @category Events
  * @example anychart.graphics.vector.Stage.unlisten
- * @param {string} type The event type id.
- * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener Callback  method.
- * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about capturing {@link https://javascript.info/bubbling-and-capturing}
- * @param {Object=} opt_listenerScope Object in whose scope to call the listener.
+ * @param {(string|anychart.graphics.vector.Stage.EventType)} type The event type name.
+ * @param {function(this:SCOPE, EVENTOBJ):(boolean|undefined)} listener A function to execute each time the event is triggered.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. <a target='_blank' rel="nofollow"
+ * href="https://javascript.info/bubbling-and-capturing">capturing</a>
+ * @param {Object=} opt_listenerScope ["Window"] Object in whose scope to call the listener.
  * @return {boolean} Whether any listener was removed.
  * @since 7.7.0
  */
@@ -1514,9 +1601,10 @@ anychart.graphics.vector.Stage.prototype.unlisten;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
+ * Removes an event listener which was added with {@link anychart.graphics.vector.Stage#listen} by the key returned by {@link anychart.graphics.vector.Stage#listen} or {@link anychart.graphics.vector.Stage#listenOnce}.
+ * @category Events
  * @example anychart.graphics.vector.Stage.unlistenByKey
- * @param {{key: number}} key The key returned by listen() or listenOnce().
+ * @param {{key: number}} key The key returned by {@link anychart.graphics.vector.Stage#listen} or {@link anychart.graphics.vector.Stage#listenOnce}.
  * @return {boolean} Whether any listener was removed.
  * @since 7.7.0
  */
@@ -1531,6 +1619,7 @@ anychart.graphics.vector.Stage.prototype.unlistenByKey;
 
 /**
  * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
+ * @category Events
  * @example anychart.graphics.vector.Stage.removeAllListeners
  * @param {string=} opt_type Type of event to remove, default is to remove all types.
  * @return {number} Number of listeners removed.
@@ -1547,9 +1636,10 @@ anychart.graphics.vector.Stage.prototype.removeAllListeners;
 /**
  * Getter for the current stage rendering mode.
  * @shortDescription Stage rendering mode.
+ * @category Drawing
  * @listing See listing
  * var stage = anychart.graphics.create("container");
- * stage.asyncMode();
+ * var asyncMode = stage.asyncMode();
  * @return {boolean} The current mode.
  */
 anychart.graphics.vector.Stage.prototype.asyncMode;
@@ -1574,7 +1664,7 @@ anychart.graphics.vector.Stage.prototype.asyncMode;
 
 /**
  * Getter for the element title value.
- * @shortDescription Title setting.
+ * @shortDescription Title attribute for SVG structure.
  * @example anychart.graphics.vector.Stage.title_get
  * @return {(string|null|undefined)} The element title value.
  * @since 7.11.0
@@ -1598,7 +1688,7 @@ anychart.graphics.vector.Stage.prototype.title;
 
 /**
  * Getter for the element description value.
- * @shortDescription Description setting.
+ * @shortDescription Description attribute for SVG structure.
  * @example anychart.graphics.vector.Stage.desc_get
  * @return {(string|null|undefined)} The element description value.
  * @since 7.11.0
@@ -1622,6 +1712,7 @@ anychart.graphics.vector.Stage.prototype.desc;
 
 /**
  * Shares a stage as a PNG file and returns a link to the shared image.
+ * @category Export
  * @example anychart.graphics.vector.Stage.shareAsPng
  * @param {function(string)} onSuccess Function that is called when sharing is complete.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
@@ -1642,6 +1733,7 @@ anychart.graphics.vector.Stage.prototype.shareAsPng;
 
 /**
  * Share a stage as a JPG and return link to shared image.
+ * @category Export
  * @example anychart.graphics.vector.Stage.shareAsJpg
  * @param {function(string)} onSuccess Function that is called when sharing is complete.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
@@ -1663,6 +1755,7 @@ anychart.graphics.vector.Stage.prototype.shareAsJpg;
 
 /**
  * Share a stage as a SVG and return link to shared image.
+ * @category Export
  * @example anychart.graphics.vector.Stage.shareAsSvg
  * @param {function(string)} onSuccess Function that is called when sharing is complete.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
@@ -1682,6 +1775,7 @@ anychart.graphics.vector.Stage.prototype.shareAsSvg;
 
 /**
  * Share a stage as a PDF and return link to shared image.
+ * @category Export
  * @example anychart.graphics.vector.Stage.shareAsPdf
  * @param {function(string)} onSuccess Function that is called when sharing is complete.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
@@ -1703,6 +1797,7 @@ anychart.graphics.vector.Stage.prototype.shareAsPdf;
 
 /**
  * Returns PNG as base64 string.
+ * @category Export
  * @example anychart.graphics.vector.Stage.getPngBase64String
  * @param {function(string)} onSuccess Function that is called when sharing is complete.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
@@ -1721,6 +1816,7 @@ anychart.graphics.vector.Stage.prototype.getPngBase64String;
 
 /**
  * Returns JPG as base64 string.
+ * @category Export
  * @example anychart.graphics.vector.Stage.getJpgBase64String
  * @param {function(string)} onSuccess Function that is called when sharing is complete.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
@@ -1740,6 +1836,7 @@ anychart.graphics.vector.Stage.prototype.getJpgBase64String;
 
 /**
  * Returns SVG as base64 string.
+ * @category Export
  * @example anychart.graphics.vector.Stage.getSvgBase64String
  * @param {function(string)} onSuccess Function that is called when sharing is complete.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
@@ -1757,6 +1854,7 @@ anychart.graphics.vector.Stage.prototype.getSvgBase64String;
 
 /**
  * Returns PDF as base64 string.
+ * @category Export
  * @example anychart.graphics.vector.Stage.getPdfBase64String
  * @param {function(string)} onSuccess Function that is called when sharing is complete.
  * @param {function(string)=} opt_onError Function that is called if sharing fails.
@@ -1778,7 +1876,6 @@ anychart.graphics.vector.Stage.prototype.getPdfBase64String;
 /**
  * Getter for stage credits.
  * @shortDescription Credits settings
- * @category Specific settings
  * @example anychart.graphics.vector.Stage.credits_get
  * @return {!anychart.core.ui.StageCredits} Credits instance.
  * @since 7.11.1
@@ -1810,6 +1907,7 @@ anychart.graphics.vector.Stage.prototype.credits;
 
 /**
  * Returns stage container element.
+ * @category Structure
  * @example anychart.graphics.vector.Stage.getContainerElement
  * @return {Element} Stage container element.
  * @since 7.13.0
@@ -1824,6 +1922,7 @@ anychart.graphics.vector.Stage.prototype.getContainerElement;
 
 /**
  * Returns a DIV wrapper that contains stage and other utilitarian DOM elements.
+ * @category Structure
  * @example anychart.graphics.vector.Stage.getDomWrapper
  * @return {!Element} The inner wrapper.
  * @since 7.13.0
