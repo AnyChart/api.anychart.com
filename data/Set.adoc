@@ -150,10 +150,10 @@ anychart.data.Set.prototype.data;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Defines data mapping.
- * @category Data
- * @detailed You can define mappings for the different types of data (see samples).
+ * Defines mapping for the chart data.<br/>
+ * The mapping object selects and gives names fields from the data set.
  * Default mapping is shown in {@link anychart.data.Set} constructor samples.
+ * @category Data
  * @listing Custom data mapping.
  * // Simple mapping
  *  dataSet.mapAs({
@@ -195,23 +195,44 @@ anychart.data.Set.prototype.data;
  *    11,                       {close: 4, value: 11}
  *    function(){ return 99;}   {close: 5, value: 99}
  *   ]
- * @example anychart.data.Set.mapAs_set_asArray Mapping for base data as array
- * @example anychart.data.Set.mapAs_set_asObject Mapping for base data as object
- * @param {!(Object.<Array.<number>>)=} opt_arrayMapping [{
- *   'x': &#91;0&#93;,
- *   'value': &#91;1, 0&#93;,
- *   'size': &#91;2&#93;,
- *   'open': &#91;1&#93;,
- *   'high': &#91;2&#93;,
- *   'low': &#91;3, 1&#93;,
- *   'close': &#91;4&#93;
- * }] Column mapping for the rows which are arrays.
- * @param {!(Object.<Array.<string>>)=} opt_objectMapping [{'value': &#91;'value', 'y', 'close'&#93;}] Column mapping for the rows
- *  which are objects.
- * @param {!(Array.<string>)=} opt_defaultProps [&#91;'value', 'close'&#93;] The names of the fields to map to
- *  if a row is a string, number or a function. Does not work in cases when a row is an object.
- * @param {!(Array.<string>)=} opt_indexProps [&#91;'x'&#93;] The names of the fields to be mapped to the current index
- *  if other options failed.
+ * @example anychart.data.Set.mapAs_set_asArray Mapping for raw data as an array
+ * @example anychart.data.Set.mapAs_set_asObject Mapping for raw data as an object
+ * @param {Object} opt_mapping [{
+ *
+ * 'x': [0, 'column', 'x'],
+ * 'value': [1, 0, 'value', 'y', 'close', 'heat'],
+ * 'size': [2, 1], // Bubble series
+ * 'open': [1],
+ * 'high': [2],
+ * 'low': [3, 1],
+ * 'close': [4],
+ *
+ * // Box/Whisker series
+ * 'lowest': [1, 'lowest', 'low'],
+ * 'q1': [2],
+ * 'median': [3],
+ * 'q3': [4],
+ * 'highest': [5, 'highest', 'high'],
+ * 'outliers': [6],
+ *
+ * // Maps
+ * 'id': [0],
+ * 'lat': [0, 'lat', 'y', 'value'],
+ * 'long': [1, 'long', 'lon', 'x'],
+ * 'points': [0],  // Сonnector series
+ *
+ * // Heat map
+ * 'y': [1, 'row', 'y'],
+ * 'heat': [2, 'heat', 'value'],
+ *
+ * // Tag cloud
+ * 'category': [2],
+ *
+ * // Waterfall
+ * 'isTotal': [2]
+ * }] Mapping for a raw data. An object with a string/number or an array of strings or numbers.
+ * Transformation of the raw data fields into the fields of the certain chart types.
+ * For example, the "population" field of the raw data is generated into the "size" field of the chart data.
  * @return {anychart.data.Mapping} An instance of the class for method chaining.
  */
 anychart.data.Set.prototype.mapAs;

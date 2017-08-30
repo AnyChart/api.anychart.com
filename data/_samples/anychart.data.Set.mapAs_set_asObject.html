@@ -8,17 +8,17 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var dataSet = anychart.data.set([
-                {x: "7.0.0", prod: 11, dev: 18},
-                {x: "7.1.0", prod: 21, dev: 15},
-                {x: "7.1.1", prod: 14, dev: 16},
-                {x: "7.2.0", prod: 17, dev: 20}
+                {x: "Eyeshadows", revenue: 1100, sales: 180},
+                {x: "Eyeliner", revenue: 2105, sales: 275},
+                {x: "Eyebrow pencil", revenue: 1478, sales: 168},
+                {x: "Nail polish", revenue: 1798, sales: 200}
             ]);
 
-            // Sets mapping for first series.
-            var firstData = dataSet.mapAs({'value': ['value', 'prod']});
+            // Set mapping for first series.
+            var firstData = dataSet.mapAs({x: 0, "value": "revenue"});
 
-            // Sets mapping for second series.
-            var secondData = dataSet.mapAs({'value': ['value', 'dev']});
+            // Set mapping for second series.
+            var secondData = dataSet.mapAs({x: 0, "value": "sales"});
 
             chart = anychart.column();
             chart.column(firstData);
@@ -27,6 +27,7 @@
             var yScale = chart.yScale();
             yScale.minimum(0);
 
+            chart.title("Set mapping for data in the form of an object");
             chart.container("container");
             chart.draw();
         });
