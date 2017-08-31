@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyStock"/>
+    <script src="../../../anychart.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var dataTable = anychart.data.table();
+            dataTable.addData(get_dji_daily_short_data());
+
+            chart = anychart.stock();
+            chart.padding(10, 10, 10, 60);
+
+            var plot1 = chart.plot(0);
+            plot1.line(dataTable.mapAs({value: 1}));
+
+            var plot2 = chart.plot(1);
+            plot2.line(dataTable.mapAs({value: 2}));
+
+            var plot3 = chart.plot(2);
+            plot3.line(dataTable.mapAs({value: 3}));
+
+            // Get crosshair.
+            var crosshair = plot1.crosshair();
+
+            crosshair.xStroke("#F44336");
+            crosshair.yStroke("#F44336");
+
+            chart.title("Get and modify plot crosshair. Move mouse over the chart to see");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

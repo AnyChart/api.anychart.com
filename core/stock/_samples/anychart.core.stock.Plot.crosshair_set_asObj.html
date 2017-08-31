@@ -2,27 +2,29 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="anyStock"/>
-    <script src="../../../anychart-base.min.js"></script>
-	<script src="../../../anychart-stock.min.js"></script>
-	<script src="../../../anychart-table.min.js"></script>
-	<script src="../../../anychart-exports.min.js"></script>
-	<script src="../../../anychart-ui.min.js"></script>
+    <script src="../../../anychart.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             var dataTable = anychart.data.table();
             dataTable.addData(get_dji_daily_short_data());
 
-            var mapping = dataTable.mapAs({'value': 1});
-
             chart = anychart.stock();
             chart.padding(10, 10, 10, 60);
 
-            var plot = chart.plot();
-            plot.line(mapping);
-            // Sets highlighter settings.
-            plot.dateTimeHighlighter("#F44336", 1.5, "6 2", "round");
+            var plot1 = chart.plot(0);
+            plot1.line(dataTable.mapAs({value: 1}));
 
+            var plot2 = chart.plot(1);
+            plot2.line(dataTable.mapAs({value: 2}));
+
+            var plot3 = chart.plot(2);
+            plot3.line(dataTable.mapAs({value: 3}));
+
+            // Set crosshair settings.
+            plot1.crosshair({xStroke: "#F44336", yStroke: "#F44336"});
+
+            chart.title("Set plot crosshair parameter as an object. Move mouse over the chart to see");
             chart.container("container");
             chart.draw();
         });

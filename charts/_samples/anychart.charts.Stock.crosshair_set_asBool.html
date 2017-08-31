@@ -16,16 +16,15 @@
             var mapping = dataTable.mapAs({'value': 1});
 
             chart = anychart.stock();
-            chart.padding(10, 10, 10, 60);
+            chart.padding(10, 10, 10, 50);
 
             var plot = chart.plot();
             plot.line(mapping);
-            plot.dateTimeHighlighter("#F44336");
 
-            // Gets highlighter.
-            var highlighter = plot.dateTimeHighlighter();
+            // Disable crosshair.
+            chart.crosshair(false);
 
-            chart.title({background: {stroke: highlighter}});
+            chart.title("Disable chart crosshair. Move mouse over the chart to see");
             chart.container("container");
             chart.draw();
         });
