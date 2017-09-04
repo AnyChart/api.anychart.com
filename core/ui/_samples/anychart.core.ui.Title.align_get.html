@@ -7,16 +7,24 @@
 	<script src="../../../anychart-ui.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+            chart = anychart.line([
+                {x: "January", value: 5},
+                {x: "February", value: 6},
+                {x: "March", value: 9},
+                {x: "April", value: 6},
+                {x: "May", value: 8},
+                {x: "June", value: 4}
+            ]);
+
             chart.background("#F5F5F5");
 
-            chartTitle = chart.title();
-            chartTitle.background(true);
+            var title = chart.title();
+            title.background(true);
 
-            // Gets align.
-            var align = chartTitle.align();
+            // Get align.
+            var align = title.align();
 
-            chart.title("The current align is " + align);
+            chart.title("Title align is " + align);
             chart.container("container");
             chart.draw();
         });

@@ -9,15 +9,14 @@
         anychart.onDocumentReady(function () {
             stage = anychart.graphics.create("container");
 
-            var data = anychart.data.set([
-                ["John", 10000],
-                ["Jake", 12000],
-                ["Peter", 18000],
-                ["James", 11000],
-                ["Mary", 9000]
+            var chart = anychart.column([
+                {x: "John", value: 10000},
+                {x: "Jake", value: 12000},
+                {x: "Peter", value: 18000},
+                {x: "James", value: 11000},
+                {x: "Mary", value: 9000}
             ]);
 
-            var chart = anychart.column(data);
             chart.bounds(0, "1%", "100%", "100%");
 
             var tooltipSettings = chart.tooltip();
@@ -42,6 +41,13 @@
                 tooltipSettings.hide(true);
 
             });
+            customLabel.listen("mouseOver", function () {
+                document.body.style.cursor = "pointer";
+            });
+            customLabel.listen("mouseOut", function () {
+                document.body.style.cursor = "auto";
+            });
+
             customLabel.container(stage);
             customLabel.draw();
         });
