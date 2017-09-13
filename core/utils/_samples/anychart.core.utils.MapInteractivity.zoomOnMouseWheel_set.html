@@ -7,7 +7,7 @@
 	<script src="../../../anychart-exports.min.js"></script>
 	<script src="../../../anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="australiaMap">
+    <script x-export="map">
         anychart.onDocumentReady(function() {
             var dataSet = anychart.data.set([
                 {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
@@ -22,20 +22,20 @@
 
             var dataSetForSeries = dataSet.mapAs({'id': 'id'});
 
-            australiaMap = anychart.map();
-            australiaMap.geoData(anychart.maps.australia);
+            map = anychart.map();
+            map.geoData(anychart.maps.australia);
 
-            australiaMap.choropleth(dataSetForSeries);
-            australiaMap.geoIdField("code_hasc");
+            map.choropleth(dataSetForSeries);
+            map.geoIdField("code_hasc");
 
-            var interactivity = australiaMap.interactivity();
+            var interactivity = map.interactivity();
 
             // Enable mouse wheel zoom.
             interactivity.zoomOnMouseWheel(true);
 
-            australiaMap.title("Enable mouse wheel zoom.");
-            australiaMap.container("container");
-            australiaMap.draw();
+            map.title("Enable mouse wheel zoom.");
+            map.container("container");
+            map.draw();
         });
     </script>
 </head>

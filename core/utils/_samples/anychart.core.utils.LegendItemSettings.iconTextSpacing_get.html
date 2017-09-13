@@ -8,13 +8,29 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
-            var firstSeries = chart.line([7, 15, 3, 10 ]);
-            chart.line([9, 10, 1, 15 ]);
+
+            var series1 = chart.line([
+                {x: 0, value: 22},
+                {x: 1, value: 34},
+                {x: 2, value: 16}
+            ]);
+
+            var series2 = chart.line([
+                {x: 0, value: 12},
+                {x: 1, value: 41},
+                {x: 2, value: 47}
+            ]);
+
             chart.legend(true);
-            firstSeries.legendItem({iconTextSpacing: 30});
-            var firstItem = firstSeries.legendItem();
-            var iconTextSpacing = firstItem.iconTextSpacing(); // get spacing
-            chart.title("Spacing between icon and text - " + iconTextSpacing);
+
+            series1.legendItem({iconTextSpacing: 30});
+
+            var item = series1.legendItem();
+
+            // Get icon text spacing.
+            var iconTextSpacing = item.iconTextSpacing();
+
+            chart.title("Spacing between icon and text is " + iconTextSpacing);
             chart.container("container");
             chart.draw();
         });

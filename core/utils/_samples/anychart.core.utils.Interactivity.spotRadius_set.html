@@ -8,13 +8,23 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.column();
-            chart.column([5, 8, 4, 6]);
-            chart.column([6, 2, 5, 3]);
+            chart.column([
+                {x: 0, value: 22},
+                {x: 1, value: 34},
+                {x: 2, value: 16},
+            ]);
+            chart.column([
+                {x: 0, value: 12},
+                {x: 1, value: 41},
+                {x: 2, value: 47}
+            ]);
 
             var interactivity = chart.interactivity();
-            // Sets spot radius.
+
+            // Set spot radius.
             interactivity.spotRadius(100);
 
+            chart.title("Set spot radius");
             chart.container("container");
             chart.draw();
         });

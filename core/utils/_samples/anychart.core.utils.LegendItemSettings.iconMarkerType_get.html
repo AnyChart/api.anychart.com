@@ -8,15 +8,30 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
-            var firstSeries = chart.line([7, 15, 3, 10 ]);
-            firstSeries.markers(true);
-            var secondSeries = chart.line([9, 10, 1, 15 ]);
-            secondSeries.markers(true);
+
+            var series1 = chart.line([
+                {x: 0, value: 22},
+                {x: 1, value: 34},
+                {x: 2, value: 16}
+            ]);
+            series1.markers(true);
+
+            var series2 = chart.line([
+                {x: 0, value: 12},
+                {x: 1, value: 41},
+                {x: 2, value: 47}
+            ]);
+
             chart.legend(true);
-            firstSeries.legendItem({iconMarkerType: "triangle-up"});
-            var firstItem = firstSeries.legendItem();
-            var iconMarker = firstItem.iconMarkerType(); // get marker type
-            chart.title("Marker Type - " + iconMarker);
+
+            series1.legendItem({iconMarkerType: "triangle-up", iconType: "line"});
+
+            var item = series1.legendItem();
+
+            // Get marker type.
+            var iconMarker = item.iconMarkerType();
+
+            chart.title("Marker type is " + iconMarker);
             chart.container("container");
             chart.draw();
         });

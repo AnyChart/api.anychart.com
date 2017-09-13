@@ -3,19 +3,30 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="scatter line errorSeries anyChart"/>
     <script src="../../../anychart-base.min.js"></script>
-	<script src="../../../anychart-exports.min.js"></script>
-	<script src="../../../anychart-ui.min.js"></script>
+    <script src="../../../anychart-exports.min.js"></script>
+    <script src="../../../anychart-ui.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.scatter();
-            var series = chart.line([2, 6, 4, 8]);
+
+            var series = chart.line([
+                {x: 0, value: 22},
+                {x: 1, value: 34},
+                {x: 2, value: 16},
+                {x: 3, value: 12},
+                {x: 4, value: 41},
+                {x: 5, value: 47}
+            ]);
             series.error(1);
+
             var error = series.error();
-            error.xErrorStroke(
-                    function() {
-                        return "4 " + this.sourceColor;
-                    }
-            ); // sets stroke by function.
+
+            // Set stroke by function.
+            error.xErrorStroke(function () {
+                return "4 " + this.sourceColor;
+            });
+
+            chart.title("Set stroke parameter as a function");
             chart.container("container");
             chart.draw();
         });

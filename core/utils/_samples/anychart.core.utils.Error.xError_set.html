@@ -8,9 +8,22 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
-            var series = chart.line([2, 6, 4, 8]);
+
+            var series = chart.line([
+                {x: 0, value: 22},
+                {x: 1, value: 34},
+                {x: 2, value: 16},
+                {x: 3, value: 12},
+                {x: 4, value: 41},
+                {x: 5, value: 47}
+            ]);
+
             var error = series.error();
-            error.xError(1); // sets value for X error.
+
+            // Set value for X error.
+            error.xError(1);
+
+            chart.title("Set value for X error");
             chart.container("container");
             chart.draw();
         });

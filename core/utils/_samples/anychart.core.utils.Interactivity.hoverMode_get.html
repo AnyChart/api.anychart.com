@@ -3,15 +3,23 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="column anyChart"/>
     <script src="../../../anychart-base.min.js"></script>
-	<script src="../../../anychart-exports.min.js"></script>
-	<script src="../../../anychart-ui.min.js"></script>
+    <script src="../../../anychart-exports.min.js"></script>
+    <script src="../../../anychart-ui.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             stage = anychart.graphics.create("container");
 
             var columnChart = anychart.column();
-            columnChart.column([5, 8, 4, 6]);
-            columnChart.column([6, 2, 5, 3]);
+            columnChart.column([
+                {x: 0, value: 22},
+                {x: 1, value: 34},
+                {x: 2, value: 16},
+            ]);
+            columnChart.column([
+                {x: 0, value: 12},
+                {x: 1, value: 41},
+                {x: 2, value: 47}
+            ]);
             columnChart.bounds(0, 0, "50%", "100%");
 
             var interactivityColumnChart = columnChart.interactivity();
@@ -21,8 +29,16 @@
             columnChart.draw();
 
             var areaChart = anychart.bar();
-            areaChart.bar([18, 5, 12, 15]);
-            areaChart.bar([10, 25, 16, 21]);
+            areaChart.bar([
+                {x: 0, value: 18},
+                {x: 1, value: 5},
+                {x: 2, value: 12}
+            ]);
+            areaChart.bar([
+                {x: 0, value: 10},
+                {x: 1, value: 25},
+                {x: 2, value: 16}
+            ]);
             areaChart.bounds("50%", 0, "50%", "100%");
 
             // Gets hover mode of column chart.

@@ -8,11 +8,24 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.scatter();
-            var series = chart.line([2, 6, 4, 8]);
+
+            var series = chart.line([
+                {x: 0, value: 22},
+                {x: 1, value: 34},
+                {x: 2, value: 16},
+                {x: 3, value: 12},
+                {x: 4, value: 41},
+                {x: 5, value: 47}
+            ]);
             series.error(1);
+
             var error = series.error();
-            var xLowerError = error.xLowerError(); // get lower error for X value.
-            chart.title("xLowerError - " + xLowerError);
+            error.xLowerError(2);
+
+            // Get lower error for X value.
+            var xLowerError = error.xLowerError();
+
+            chart.title("xLowerError is " + xLowerError);
             chart.container("container");
             chart.draw();
         });

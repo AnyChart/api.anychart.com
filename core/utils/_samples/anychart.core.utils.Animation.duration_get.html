@@ -7,11 +7,28 @@
 	<script src="../../../anychart-ui.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line([2, 8, 3, 4], [5, 2, 6, 1]);
+            var dataSet = anychart.data.set([
+                ["John" , 10000, 12000],
+                ["Jake" , 12000, 15000],
+                ["Peter" , 18000, 16000],
+                ["James" , 11000, 13000],
+                ["Mary" , 9000, 19000]
+            ]);
+
+            var data1 = dataSet.mapAs({'x': 0, 'value': 1});
+            var data2 = dataSet.mapAs({'x': 0, 'value': 2});
+
+            chart = anychart.line();
+            chart.line(data1);
+            chart.line(data2);
+
             var animationSettings = chart.animation();
             animationSettings.enabled(true);
-            var duration = animationSettings.duration(); // get duration
-            chart.title("Animation duration - " + duration);
+
+            // Get duration.
+            var duration = animationSettings.duration();
+
+            chart.title("Animation duration is " + duration);
             chart.container("container");
             chart.draw();
         });

@@ -8,13 +8,30 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
-            var firstSeries = chart.line([7, 15, 3, 10 ]);
-            firstSeries.markers(true);
-            var secondSeries = chart.line([9, 10, 1, 15 ]);
-            secondSeries.markers(true);
+
+            var series1 = chart.line([
+                {x: 0, value: 22},
+                {x: 1, value: 34},
+                {x: 2, value: 16}
+            ]);
+            series1.markers(true);
+
+            var series2 = chart.line([
+                {x: 0, value: 12},
+                {x: 1, value: 41},
+                {x: 2, value: 47}
+            ]);
+
+
             chart.legend(true);
-            var firstItem = firstSeries.legendItem();
-            firstItem.iconMarkerStroke("#000000", 1, "4 2"); // sets stroke
+
+            var item = series1.legendItem();
+            item.iconType("line");
+
+            // Set stroke.
+            item.iconMarkerStroke("#000000", 1, "4 2");
+
+            chart.title("Set stroke parameters");
             chart.container("container");
             chart.draw();
         });

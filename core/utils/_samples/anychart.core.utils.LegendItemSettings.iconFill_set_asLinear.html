@@ -8,11 +8,26 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.line();
-            var firstSeries = chart.marker([7, 15, 3, 10 ]);
-            chart.line([9, 10, 1, 15 ]);
+
+            var series1 = chart.line([
+                {x: 0, value: 22},
+                {x: 1, value: 34},
+                {x: 2, value: 16},
+            ]);
+            var series2 = chart.line([
+                {x: 0, value: 12},
+                {x: 1, value: 41},
+                {x: 2, value: 47}
+            ]);
+
             chart.legend(true);
-            var firstItem = firstSeries.legendItem();
-            firstItem.iconFill(["#FFFFFF", "#000000"], 45, true, 0.5); // sets icon linear fill
+
+            var item = series1.legendItem();
+
+            // Set icon linear fill.
+            item.iconFill(["#FFFFFF", "#000000"], 45, true, 0.5);
+
+            chart.title("Set icon fill as a linear gradient");
             chart.container("container");
             chart.draw();
         });

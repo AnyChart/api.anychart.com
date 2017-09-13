@@ -8,7 +8,7 @@
 	<script src="../../../anychart-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="australiaMap">
+    <script x-export="map">
         anychart.onDocumentReady(function() {
             // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
             // See https://docs.anychart.com/Maps/Map_Projections to learn more.
@@ -25,20 +25,21 @@
 
             var dataSetForSeries = dataSet.mapAs({'id': 'id'});
 
-            australiaMap = anychart.map();
-            australiaMap.geoData(anychart.maps.australia);
+            map = anychart.map();
+            map.geoData(anychart.maps.australia);
 
-            var series = australiaMap.choropleth(dataSetForSeries);
+            var series = map.choropleth(dataSetForSeries);
             series.geoIdField("code_hasc");
 
 
-            var unboundRegions = australiaMap.unboundRegions();
-            // Gets element state.
+            var unboundRegions = map.unboundRegions();
+
+            // Get element state.
             var elementState = unboundRegions.enabled();
 
-            australiaMap.title("Current element state - " + elementState);
-            australiaMap.container("container");
-            australiaMap.draw();
+            map.title("Element state is " + elementState);
+            map.container("container");
+            map.draw();
         });
     </script>
 </head>
