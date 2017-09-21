@@ -44,7 +44,7 @@
 
     var walkingMap = {};
     function objectResearch(obj, path){
-        if (walkingMap[path]) return;
+        if (walkingMap[path] || obj == window || obj == document) return;
         walkingMap[path] = true;
         if (!result[path]) result[path]=getResultTemplate();
         for(var p in obj){
