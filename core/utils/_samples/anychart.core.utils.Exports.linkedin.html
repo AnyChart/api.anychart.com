@@ -1,0 +1,53 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="column anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../../anychart-base.min.js"></script>
+    <script src="../../../anychart-exports.min.js"></script>
+    <script src="../../../anychart-exports.min.js"></script>
+    <script src="../../../anychart-ui.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            var exports = chart.exports();
+
+            // Set LinkedIn sharing settings.
+            exports.linkedin(
+                "ANYCHART.COM",
+                "Statistics of visits to the site",
+                "1000",
+                "500"
+            );
+
+            var label = chart.label();
+            label.background({fill: "#BDBDBD", stroke: "#9E9E9E"});
+            label.fontColor("#FAFAFA");
+            label.text("Share with LinkedIn");
+            label.padding(2);
+            label.listen("click", function () {
+                chart.shareWithLinkedIn();
+            });
+            label.listen("mouseOver", function () {
+                document.body.style.cursor = "pointer";
+            });
+            label.listen("mouseOut", function () {
+                document.body.style.cursor = "auto";
+            });
+
+            chart.title("Set LinkedIn sharing settings");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

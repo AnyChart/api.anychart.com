@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="column anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart-base.min.js"></script>
+    <script src="../../anychart-exports.min.js"></script>
+    <script src="../../anychart-exports.min.js"></script>
+    <script src="../../anychart-ui.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+
+            // To work with exports you need to reference the exports module from AnyChart CDN
+            // (http://cdn.anychart.com/js/latest/anychart-exports.min.js for latest or http://cdn.anychart.com/js/8.0.0/anychart-exports.min.js for the versioned file)
+
+            // Set exports settings.
+            chart.exports({facebook: {caption: "ANYCHART.COM", description: "Column chart"}});
+
+            var label = chart.label();
+            label.background({fill: "#BDBDBD", stroke: "#9E9E9E"});
+            label.fontColor("#FAFAFA");
+            label.text("Share with Facebook");
+            label.padding(2);
+            label.listen("click", function () {
+                chart.shareWithFacebook();
+            });
+            label.listen("mouseOver", function () {
+                document.body.style.cursor = "pointer";
+            });
+            label.listen("mouseOut", function () {
+                document.body.style.cursor = "auto";
+            });
+
+            chart.title("Set exports settings");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
