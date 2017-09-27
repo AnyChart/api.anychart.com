@@ -6,16 +6,37 @@
 	<script src="../../../../anychart-exports.min.js"></script>
 	<script src="../../../../anychart-ui.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.line();
-            var firstSeries = chart.line([-6, -15, 3, 12, 32, 44]);
-            firstSeries.markers(true);
-            firstSeries.hoverMarkers({fill: "#F44336"});
-            var secondSeries = chart.line([-27, -19, 7, 24, 36, 40]);
-            secondSeries.markers(true);
+
+            var series1 = chart.line([
+                {x: 0, value: -6},
+                {x: 1, value: -15},
+                {x: 2, value: 3},
+                {x: 3, value: 12},
+                {x: 4, value: 32},
+                {x: 5, value: 44}
+            ]);
+
+            series1.markers(true);
+            series1.hovered({markers: {fill: "#F44336"}});
+
+            var series2 = chart.line([
+                {x: 0, value: -27},
+                {x: 1, value: -19},
+                {x: 2, value: 7},
+                {x: 3, value: 24},
+                {x: 4, value: 36},
+                {x: 5, value: 40}
+            ]);
+            series2.markers(true);
+
+            chart.title("Set the hover state on fourth point");
             chart.container("container");
             chart.draw();
-            firstSeries.hover(3); // sets the hover state on fourth point
+
+            // Set the hover state on fourth point.
+            series1.hover(3);
         });
     </script>
 </head>

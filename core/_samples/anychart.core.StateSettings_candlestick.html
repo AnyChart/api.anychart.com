@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyStock"/>
+    <script src="../../anychart-base.min.js"></script>
+    <script src="../../anychart-stock.min.js"></script>
+    <script src="../../anychart-table.min.js"></script>
+    <script src="../../anychart-exports.min.js"></script>
+    <script src="../../anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            var dataTable = anychart.data.table();
+            dataTable.addData(get_dji_daily_short_data());
+
+            chart = anychart.stock();
+
+            var plot = chart.plot();
+
+            var series = plot.candlestick(dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4}));
+
+            var normal = series.normal();
+
+            normal.risingFill("#A5D6A7");
+            normal.fallingFill("#FFF59D");
+
+            normal.risingStroke("#A5D6A7");
+            normal.fallingStroke("#FFF59D");
+
+            var hovered = series.hovered();
+
+            hovered.risingFill("#1B5E20");
+            hovered.fallingFill("#F57F17");
+
+            hovered.risingStroke("#1B5E20");
+            hovered.fallingStroke("#F57F17");
+
+            chart.title("Set normal and hovered states settings for Candlestick series");
+            chart.container("container");
+            chart.draw();
+
+            chart.selectRange("ytd");
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

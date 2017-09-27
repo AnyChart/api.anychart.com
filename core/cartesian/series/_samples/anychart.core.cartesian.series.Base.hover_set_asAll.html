@@ -6,14 +6,35 @@
 	<script src="../../../../anychart-exports.min.js"></script>
 	<script src="../../../../anychart-ui.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.line();
-            var firstSeries = chart.line([-6, -15, 3, 12, 32, 44]);
-            chart.line([-27, -19, 7, 24, 36, 40]);
-            firstSeries.hoverStroke("#4CAF50");
+
+            var series = chart.line([
+                {x: 0, value: -6},
+                {x: 1, value: -15},
+                {x: 2, value: 3},
+                {x: 3, value: 12},
+                {x: 4, value: 32},
+                {x: 5, value: 44}
+            ]);
+
+            chart.line([
+                {x: 0, value: -27},
+                {x: 1, value: -19},
+                {x: 2, value: 7},
+                {x: 3, value: 24},
+                {x: 4, value: 36},
+                {x: 5, value: 40}
+            ]);
+
+            series.hovered({stroke: "#4CAF50"});
+
+            chart.title("Set the hover state on series");
             chart.container("container");
             chart.draw();
-            firstSeries.hover(); // sets the hover state on series
+
+            // Set the hover state on series.
+            series.hover();
         });
     </script>
 </head>

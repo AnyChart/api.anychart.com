@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="radar anyChart"/>
+    <script src="../../../../anychart-base.min.js"></script>
+    <script src="../../../../anychart-radar.min.js"></script>
+    <script src="../../../../anychart-exports.min.js"></script>
+    <script src="../../../../anychart-ui.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.radar();
+
+            var series = chart.line([
+                {x: "January", value: 3},
+                {x: "February", value: 6},
+                {x: "March", value: 3},
+                {x: "April", value: 6},
+                {x: "May", value: 3},
+                {x: "June", value: 6}
+            ]);
+
+            // Get state.
+            var state = series.normal();
+
+            state.stroke("#4CAF50");
+
+            chart.title("Get and modify normal state");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

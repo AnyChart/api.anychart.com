@@ -1,0 +1,38 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="polar line anyChart"/>
+    <script src="../../anychart-base.min.js"></script>
+	<script src="../../anychart-polar.min.js"></script>
+	<script src="../../anychart-exports.min.js"></script>
+	<script src="../../anychart-ui.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function() {
+            chart = anychart.polar();
+
+            chart.line([
+                {x: 0, value: 6},
+                {x: 1, value: 1},
+                {x: 2, value: 6},
+                {x: 3, value: 1},
+                {x: 4, value: 6},
+                {x: 5, value: 1}
+            ]);
+
+            // Get selected state.
+            var state = chart.selected();
+
+            state.labels({enabled: true, fontColor: "#ff0000"});
+
+            chart.title("Get and modify selected state");
+            chart.container("container");
+            chart.draw();
+
+            chart.getSeries(0).select([0, 2, 4]);
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

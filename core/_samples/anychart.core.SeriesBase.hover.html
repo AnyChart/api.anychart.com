@@ -6,11 +6,17 @@
 	<script src="../../anychart-exports.min.js"></script>
 	<script src="../../anychart-ui.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             chart = anychart.column();
 
-            var series = chart.column([18, 25, 10, 20, 35]);
-            series.hoverFill("#F44336");
+            var series = chart.column([
+                {x: "January", value: 2},
+                {x: "February", value: 5},
+                {x: "March", value: 3},
+                {x: "April", value: 9},
+                {x: "May", value: 4}
+            ]);
+            series.hovered({fill: "#F44336"});
 
             // Hover all points.
             series.hover();
