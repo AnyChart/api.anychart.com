@@ -10,13 +10,18 @@
             stage = anychart.graphics.create("container");
 
             // Create a chart from a data array.
-            var lineChart = anychart.line([1.1, 1.4, 1.2, 1.6]);
+            var lineChart = anychart.line([
+                {x: "January", value: 1.1},
+                {x: "February", value: 1.4},
+                {x: "March", value: 1.2},
+                {x: "April", value: 1.6}
+            ]);
             lineChart.bounds(0, 15, "50%", "100%");
             lineChart.container(stage);
             lineChart.draw();
 
-            // Get chart data as CSV using data export mode. Data export modes can be "raw", "grouped" and "specific".
-            var csvData = lineChart.toCsv("specific", {"rowsSeparator": "\n", "columnsSeparator": ",", "ignoreFirstRow": true});
+            // Get chart data as CSV using data export mode. Data export modes can be "raw", "grouped", "selected" and "default".
+            var csvData = lineChart.toCsv("default", {"rowsSeparator": "\n", "columnsSeparator": ",", "ignoreFirstRow": true});
 
             // Restore the chart from the data obtained.
             var columnChart = anychart.column(csvData);
@@ -25,7 +30,7 @@
             columnChart.draw();
 
             var customTitle = anychart.standalones.title();
-            customTitle.text("Set data export mode.");
+            customTitle.text("Set data export mode");
             customTitle.container(stage);
             customTitle.draw();
         });
