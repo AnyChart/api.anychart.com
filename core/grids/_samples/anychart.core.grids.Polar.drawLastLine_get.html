@@ -8,16 +8,23 @@
 	<script src="../../../anychart-ui.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.polar([129, 272, 250, 330, 85, 390, 95, 15]);
+            chart = anychart.polar([
+                {x: 0, value: 29},
+                {x: 2, value: 72},
+                {x: 3, value: 250},
+                {x: 4, value: 330},
+                {x: 5, value: 85},
+                {x: 6, value: 390},
+                {x: 7, value: 95},
+                {x: 8, value: 15}
+            ]);
 
             var customScale = anychart.scales.linear();
             customScale.ticks({interval: 50});
 
             chart.yScale(customScale);
 
-            var grid = chart.grid();
-            grid.enabled(true);
-            grid.layout("circuit");
+            var grid = chart.yGrid();
 
             // Get drawing flag.
             var drawingFlag = grid.drawLastLine();

@@ -3,14 +3,25 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="polar grid scale anyChart"/>
     <script src="../../../anychart-base.min.js"></script>
-	<script src="../../../anychart-polar.min.js"></script>
-	<script src="../../../anychart-exports.min.js"></script>
-	<script src="../../../anychart-ui.min.js"></script>
+    <script src="../../../anychart-polar.min.js"></script>
+    <script src="../../../anychart-exports.min.js"></script>
+    <script src="../../../anychart-ui.min.js"></script>
     <script x-export="stage">
-        anychart.onDocumentReady(function() {
+        anychart.onDocumentReady(function () {
             stage = anychart.graphics.create("container");
 
-            var markerChart = anychart.polar([29, -72, 250, 330, 85, 390, 95, 15]);
+            var markerChart = anychart.polar([
+                {x: 0, value: 29},
+                {x: 1, value: -72},
+                {x: 2, value: 250},
+                {x: 3, value: 330},
+                {x: 4, value: 85},
+                {x: 5, value: 390},
+                {x: 6, value: 95},
+                {x: 7, value: 15}
+            ]);
+
+
             markerChart.bounds(0, 0, "50%", "100%");
 
             var customScale = anychart.scales.linear();
@@ -18,24 +29,27 @@
             customScale.maximum(4);
             customScale.ticks({interval: 0.1});
 
-            var markerGrid = markerChart.grid();
-            markerGrid.enabled(true);
-            markerGrid.layout("radial");
+            var markerGrid = markerChart.yGrid();
             markerGrid.xScale(customScale);
 
             markerChart.container(stage);
             markerChart.draw();
 
             var lineChart = anychart.polar();
-            lineChart.line([6, 1, 6, 1, 6, 1]);
+            lineChart.line([
+                {x: 0, value: 6},
+                {x: 1, value: 1},
+                {x: 2, value: 6},
+                {x: 3, value: 1},
+                {x: 4, value: 6},
+                {x: 5, value: 1}
+            ]);
             lineChart.bounds("50%", 0, "50%", "100%");
 
             // Get grid scale of the first chart.
             var gridScale = markerGrid.xScale();
 
-            var lineGrid = lineChart.grid();
-            lineGrid.enabled(true);
-            lineGrid.layout("radial");
+            var lineGrid = lineChart.yGrid();
             lineGrid.xScale(gridScale);
 
             lineChart.container(stage);

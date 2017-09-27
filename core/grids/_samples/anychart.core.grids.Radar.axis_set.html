@@ -8,14 +8,23 @@
 	<script src="../../../anychart-ui.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.radar([300, 100, 400, 200, 300, 150, 450, 150]);
+            chart = anychart.radar([
+                {x: "January", value: 300},
+                {x: "February", value: 100},
+                {x: "March", value: 400},
+                {x: "April", value: 200},
+                {x: "May", value: 300},
+                {x: "April", value: 150},
+                {x: "June", value: 450},
+                {x: "Jule", value: 150}
+            ]);
 
             var customScale = anychart.scales.linear();
             customScale.ticks({interval: 50});
 
             chart.yScale(customScale);
 
-            var grid = chart.grid();
+            var grid = chart.yGrid();
 
             // Set grid axis.
             grid.axis(chart.yAxis());

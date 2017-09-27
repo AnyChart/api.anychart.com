@@ -8,14 +8,23 @@
 	<script src="../../../anychart-ui.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.polar([129, 272, 250, 330, 85, 390, 95, 15]);
+            chart = anychart.polar([
+                {x: 0, value: 129},
+                {x: 1, value: 272},
+                {x: 2, value: 250},
+                {x: 3, value: 330},
+                {x: 4, value: 85},
+                {x: 5, value: 390},
+                {x: 6, value: 95},
+                {x: 7, value: 15}
+            ]);
 
             var customScale = anychart.scales.linear();
             customScale.ticks({interval: 50});
 
             chart.yScale(customScale);
 
-            var grid = chart.grid();
+            var grid = chart.yGrid();
             grid.enabled(true);
 
             // Get stroke.

@@ -7,15 +7,23 @@
 	<script src="../../../anychart-ui.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line([29, 72, 250, 330, 85, 390, 95, 15]);
+            chart = anychart.line([
+                {x: "January", value: 29},
+                {x: "February", value: 72},
+                {x: "March", value: 250},
+                {x: "April", value: 330},
+                {x: "May", value: 85},
+                {x: "April", value: 390},
+                {x: "June", value: 95},
+                {x: "Jule", value: 15}
+            ]);
 
             var customScale = anychart.scales.linear();
             customScale.ticks({interval: 50});
 
             chart.yScale(customScale);
 
-            var grid = chart.grid();
-            grid.enabled(true);
+            var grid = chart.yGrid();
 
             // Enable minor grid.
             grid.isMinor(true);

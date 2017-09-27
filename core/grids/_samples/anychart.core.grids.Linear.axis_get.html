@@ -7,7 +7,16 @@
 	<script src="../../../anychart-ui.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line([29, 72, 250, 330, 85, 390, 95, 15]);
+            chart = anychart.line([
+                {x: "January", value: 29},
+                {x: "February", value: 72},
+                {x: "March", value: 250},
+                {x: "April", value: 330},
+                {x: "May", value: 85},
+                {x: "April", value: 390},
+                {x: "June", value: 95},
+                {x: "Jule", value: 15}
+            ]);
 
             var firstYScale = anychart.scales.linear();
             firstYScale.ticks({interval: 50});
@@ -23,7 +32,7 @@
             customYAxis.orientation("right");
             customYAxis.scale(secondYScale);
 
-            var grid = chart.grid();
+            var grid = chart.yGrid();
             grid.enabled(true);
             grid.axis(customYAxis);
 

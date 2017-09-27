@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="column anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart-base.min.js"></script>
+    <script src="../../anychart-exports.min.js"></script>
+    <script src="../../anychart-ui.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.cartesian();
+            chart.column([
+                {x: "January", value: 29},
+                {x: "February", value: 72},
+                {x: "March", value: 250},
+                {x: "April", value: 330},
+                {x: "May", value: 85},
+                {x: "June", value: 390},
+                {x: "July", value: 95},
+                {x: "August", value: 15}
+            ]);
+
+            chart.yGrid(0, {palette: ["#ffcc80", "#80cbc4", "#aed581", "#e6ee9c"]});
+
+            // Disable yGrid.
+            chart.yGrid(0, false);
+
+            chart.title("Disable chart yGrid by index");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

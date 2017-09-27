@@ -3,12 +3,17 @@
     <meta charset="UTF-8"/>
     <meta name="x-cat-tags" content="polar grid scale anyChart"/>
     <script src="../../../anychart-base.min.js"></script>
-	<script src="../../../anychart-polar.min.js"></script>
-	<script src="../../../anychart-exports.min.js"></script>
-	<script src="../../../anychart-ui.min.js"></script>
+    <script src="../../../anychart-polar.min.js"></script>
+    <script src="../../../anychart-exports.min.js"></script>
+    <script src="../../../anychart-ui.min.js"></script>
     <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.polar([29, 72, 250, 330]);
+        anychart.onDocumentReady(function () {
+            chart = anychart.polar([
+                {x: 0, value: 29},
+                {x: 1, value: 72},
+                {x: 2, value: 250},
+                {x: 3, value: 330}
+            ]);
 
             // Create custom scale.
             var customScale = anychart.scales.linear();
@@ -16,10 +21,8 @@
             customScale.maximum(4);
             customScale.ticks({interval: 0.2});
 
-            var grid = chart.grid();
-            grid.enabled(true);
-            grid.layout("radial");
-            
+            var grid = chart.xGrid();
+
             // Set custom grid X-scale.
             grid.xScale(customScale);
 

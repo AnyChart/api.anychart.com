@@ -147,62 +147,78 @@ anychart.core.grids.MapSettings.prototype.drawFirstLine;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.grids.MapSettings.prototype.oddFill
+//  anychart.core.grids.MapSettings.prototype.fill
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for grid odd fill settings.
+ * Getter for grid fill settings.
  * @shortDescription Odd fill settings.
  * @category Coloring
  * @listing See listing
  * var grids = map.grids();
- * var oddFill = mapGrids.oddFill();
- * @return {string|anychart.graphics.vector.Fill} Grid odd fill settings.
- * @since 7.12.0
+ * var fill = mapGrids.fill();
+ * @return {string|anychart.graphics.vector.Fill} Grid fill settings.
+ * @since 8.0.0
  */
-anychart.core.grids.MapSettings.prototype.oddFill;
+anychart.core.grids.MapSettings.prototype.fill;
 
 /**
- * Setter for odd fill settings using an array or a string.
+ * Setter for fill settings using an array or a string.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.grids.MapSettings.oddFill_set_asString Using string
- * @example anychart.core.grids.MapSettings.oddFill_set_asArray Using array
+ * @example anychart.core.grids.MapSettings.fill_set_asString Using string
+ * @example anychart.core.grids.MapSettings.fill_set_asArray Using array
  * @param {anychart.graphics.vector.Fill} opt_value Color as an array or a string.
  * @return {anychart.core.grids.MapSettings} Self instance for method chaining.
- * @since 7.12.0
+ * @since 8.0.0
  */
-anychart.core.grids.MapSettings.prototype.oddFill;
+anychart.core.grids.MapSettings.prototype.fill;
+
+/**
+ * Setter for fill settings using function.
+ * @example anychart.core.grids.MapSettings.fill_set_asFunc
+ * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ *  return this["palette"].itemAt(this["index"]);
+ * }] Function that looks like <code>function(){
+ *    // this.grid - grid instance.
+ *    // this.palette - grid palette.
+ *    // this.index - index of the grid element.
+ *    return fillValue; // type anychart.graphics.vector.Fill
+ * }</code>.
+ * @return {anychart.core.grids.Map} Self instance for method chaining.
+ * @since 8.0.0
+ */
+anychart.core.grids.MapSettings.prototype.fill;
 
 /**
  * Fill color with opacity. Fill as a string or an object.
  * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
  * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
- * @example anychart.core.grids.MapSettings.oddFill_set_asOpacity
+ * @example anychart.core.grids.MapSettings.fill_set_asOpacity
  * @param {string} color Color as a string.
  * @param {number=} opt_opacity Color opacity.
  * @return {anychart.core.grids.MapSettings} Self instance for method chaining.
- * @since 7.12.0
+ * @since 8.0.0
  */
-anychart.core.grids.MapSettings.prototype.oddFill;
+anychart.core.grids.MapSettings.prototype.fill;
 
 /**
  * Linear gradient fill.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.grids.MapSettings.oddFill_set_asLinear
+ * @example anychart.core.grids.MapSettings.fill_set_asLinear
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
  * @param {number=} opt_angle Gradient angle.
  * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
  * @param {number=} opt_opacity Gradient opacity.
  * @return {anychart.core.grids.MapSettings} Self instance for method chaining.
- * @since 7.12.0
+ * @since 8.0.0
  */
-anychart.core.grids.MapSettings.prototype.oddFill;
+anychart.core.grids.MapSettings.prototype.fill;
 
 /**
  * Radial gradient fill.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.grids.MapSettings.oddFill_set_asRadial
+ * @example anychart.core.grids.MapSettings.fill_set_asRadial
  * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
  * @param {number} cx X ratio of center radial gradient.
  * @param {number} cy Y ratio of center radial gradient.
@@ -211,99 +227,49 @@ anychart.core.grids.MapSettings.prototype.oddFill;
  * @param {number=} opt_fx X ratio of focal point.
  * @param {number=} opt_fy Y ratio of focal point.
  * @return {anychart.core.grids.MapSettings} Self instance for method chaining.
- * @since 7.12.0
+ * @since 8.0.0
  */
-anychart.core.grids.MapSettings.prototype.oddFill;
+anychart.core.grids.MapSettings.prototype.fill;
 
 /**
  * Image fill.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.grids.MapSettings.oddFill_set_asImg
+ * @example anychart.core.grids.MapSettings.fill_set_asImg
  * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
  * @return {anychart.core.grids.MapSettings} Self instance for method chaining.
- * @since 7.12.0
+ * @since 8.0.0
  */
-anychart.core.grids.MapSettings.prototype.oddFill;
+anychart.core.grids.MapSettings.prototype.fill;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.grids.MapSettings.prototype.evenFill
+//  anychart.core.grids.MapSettings.prototype.palette
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for grid even fill settings.
- * @shortDescription Even fill settings.
- * @category Coloring
+ * Getter for the colors palette.
+ * @shortDescription Palette settings.
+ * @category Chart Coloring
  * @listing See listing
- * var grids = map.grids();
- * var evenFill = mapGrids.evenFill();
- * @return {string|anychart.graphics.vector.Fill} Grid even fill settings.
- * @since 7.12.0
+ * var mapGrids = map.grids();
+ * var palette = mapGrids.palette();
+ * @return {!(anychart.palettes.RangeColors|anychart.palettes.DistinctColors)} Grid palette.
+ * @since 8.0.0
  */
-anychart.core.grids.MapSettings.prototype.evenFill;
+anychart.core.grids.MapSettings.prototype.palette;
 
 /**
- * Setter for even fill settings using an array or a string.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.grids.MapSettings.evenFill_set_asString Using string
- * @example anychart.core.grids.MapSettings.evenFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} opt_value Color as an array or a string.
- * @return {anychart.core.grids.MapSettings} Self instance for method chaining.
- * @since 7.12.0
+ * Setter for the grid colors palette.
+ * @detailed <b>Note</b>: You can use predefined palettes from {@link anychart.palettes}.
+ * @example anychart.core.grids.MapSettings.palette_set Using array of the colors
+ * @example anychart.core.grids.MapSettings.palette_set_asFromTheme Using palette from theme
+ * @param {(anychart.palettes.RangeColors|anychart.palettes.DistinctColors|Object|Array.<string>)=} opt_value ["none"]
+ * Grid colors palette settings to set.
+ * @return {anychart.core.grids.Map} Self instance for method chaining.
+ * @since 8.0.0
  */
-anychart.core.grids.MapSettings.prototype.evenFill;
-
-/**
- * Fill color with opacity. Fill as a string or an object.
- * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
- * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
- * @example anychart.core.grids.MapSettings.evenFill_set_asOpacity
- * @param {string} color Color as a string.
- * @param {number=} opt_opacity Color opacity.
- * @return {anychart.core.grids.MapSettings} Self instance for method chaining.
- * @since 7.12.0
- */
-anychart.core.grids.MapSettings.prototype.evenFill;
-
-/**
- * Linear gradient fill.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.grids.MapSettings.evenFill_set_asLinear
- * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
- * @param {number=} opt_angle Gradient angle.
- * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
- * @param {number=} opt_opacity Gradient opacity.
- * @return {anychart.core.grids.MapSettings} Self instance for method chaining.
- * @since 7.12.0
- */
-anychart.core.grids.MapSettings.prototype.evenFill;
-
-/**
- * Radial gradient fill.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.grids.MapSettings.evenFill_set_asRadial
- * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
- * @param {number} cx X ratio of center radial gradient.
- * @param {number} cy Y ratio of center radial gradient.
- * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
- * @param {number=} opt_opacity Opacity of the gradient.
- * @param {number=} opt_fx X ratio of focal point.
- * @param {number=} opt_fy Y ratio of focal point.
- * @return {anychart.core.grids.MapSettings} Self instance for method chaining.
- * @since 7.12.0
- */
-anychart.core.grids.MapSettings.prototype.evenFill;
-
-/**
- * Image fill.
- * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
- * @example anychart.core.grids.MapSettings.evenFill_set_asImg
- * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
- * @return {anychart.core.grids.MapSettings} Self instance for method chaining.
- * @since 7.12.0
- */
-anychart.core.grids.MapSettings.prototype.evenFill;
+anychart.core.grids.MapSettings.prototype.palette;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

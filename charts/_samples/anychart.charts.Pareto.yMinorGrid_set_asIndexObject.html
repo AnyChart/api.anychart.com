@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="pareto anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart-base.min.js"></script>
+    <script src="../../anychart-pareto.min.js"></script>
+    <script src="../../anychart-exports.min.js"></script>
+    <script src="../../anychart-ui.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            chart = anychart.pareto();
+            chart.data([
+                ["Nail polish", 14814],
+                ["Eyebrow pencil", 13012],
+                ["Rouge", 16624],
+                ["Pomade", 8814],
+                ["Eyeshadows", 12998],
+                ["Eyeliner", 17321],
+                ["Foundation", 10342],
+                ["Lip gloss", 22998],
+                ["Mascara", 19261]
+            ]);
+
+            var yAxis = chart.yAxis(0);
+            yAxis.minorLabels(true);
+
+            // Set yMinorGrid settings by index.
+            chart.yMinorGrid(0, {stroke: "#F44336"});
+
+            chart.title("Set yMinorGrid parameters as an object by index");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

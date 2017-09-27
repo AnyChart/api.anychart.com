@@ -9,7 +9,16 @@
         anychart.onDocumentReady(function() {
             stage = anychart.graphics.create("container");
 
-            var lineChart = anychart.line([29, 72, 250, 330, 85, 390, 95, 15]);
+            var lineChart = anychart.line([
+                {x: "January", value: 29},
+                {x: "February", value: 72},
+                {x: "March", value: 250},
+                {x: "April", value: 330},
+                {x: "May", value: 85},
+                {x: "April", value: 390},
+                {x: "June", value: 95},
+                {x: "Jule", value: 15}
+            ]);
             lineChart.bounds(0, 20, "50%", "100%");
 
             var customScale = anychart.scales.linear();
@@ -17,21 +26,29 @@
             customScale.maximum(400);
             customScale.ticks({interval: 40});
 
-            var lineGrid = lineChart.grid();
-            lineGrid.enabled(true);
+            var lineGrid = lineChart.yGrid();
             lineGrid.scale(customScale);
 
             lineChart.container(stage);
             lineChart.draw();
 
-            var columnChart = anychart.column([10, 150, 223, 344, 35, 390, 55, 21]);
+            var columnChart = anychart.column([
+                {x: "January", value: 10},
+                {x: "February", value: 150},
+                {x: "March", value: 223},
+                {x: "April", value: 344},
+                {x: "May", value: 35},
+                {x: "April", value: 390},
+                {x: "June", value: 55},
+                {x: "Jule", value: 21}
+            ]);
+
             columnChart.bounds("50%", 20, "50%", "100%");
 
             // Get grid scale of the line chart.
             var gridScale = lineGrid.scale();
 
-            var columnGrid = columnChart.grid();
-            columnGrid.enabled(true);
+            var columnGrid = columnChart.yGrid();
             columnGrid.scale(gridScale);
 
             columnChart.container(stage);
