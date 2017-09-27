@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="anyStock priceIndicator"/>
+    <script src="../../../anychart-base.min.js"></script>
+    <script src="../../../anychart-stock.min.js"></script>
+    <script src="../../../anychart-table.min.js"></script>
+    <script src="../../../anychart-exports.min.js"></script>
+    <script src="../../../anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function (){
+            var dataTable = anychart.data.table();
+            dataTable.addData(get_dji_daily_short_data());
+
+            var mapping = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4});
+
+            chart = anychart.stock();
+
+
+            var plot = chart.plot();
+            plot.ohlc(mapping);
+
+            var priceIndicator = plot.priceIndicator();
+
+            // Set label settings.
+            priceIndicator.label({background: "#FFAB91"});
+
+            chart.title("Set label parameter as an object");
+            chart.container("container");
+            chart.draw();
+
+            chart.selectRange("2005-01-01", "2007-01-01");
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
