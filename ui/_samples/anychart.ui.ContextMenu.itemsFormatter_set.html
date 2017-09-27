@@ -19,32 +19,30 @@
                 {x: "April", value: 2.9}
             ]);
 
-            chart.contextMenu().itemsFormatter(function(){
+            chart.contextMenu().itemsFormatter(function(items){
 
                 // Adding custom item to the top of context menu.
-                this.unshift({
-                    text: "My custom item 1",
-                    subMenu: [{
-                        text: "My custom sub-item 1",
-                        href: "https://anychart.com"
-                    }]
-                });
+                items["my-custom-item"] = {
+                    index: 0,
+                    text: "Show help info",
+                    href: "https://docs.anychart.com/"
+                };
 
-                // Adding separator after custom item 1.
-                this.splice(1, 0, undefined);
+                // Changing default item.
+                items["print-chart"] = {
+                    text: "Print this chart",
+                    action: function(){
+                        return chart.print();
+                    }
+                };
 
-                // Adding custom item to the bottom of context menu.
-                this.push({
-                    text: "My custom item 2",
-                    subMenu: [{
-                        text: "My custom sub-item 2",
-                        href: "https://anychart.com"
-                    }]
-                });
+                // Delete item.
+                delete items["about"];
+
                 return this;
             });
 
-            chart.title("Use items formatter to add submenu");
+            chart.title("Use items formatter to add, change and delete items");
             chart.container("container");
             chart.draw();
         });

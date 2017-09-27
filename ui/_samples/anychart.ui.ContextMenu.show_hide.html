@@ -15,7 +15,12 @@
 
             stage = anychart.graphics.create("container");
 
-            var chart = anychart.line([1, 2, 1.3, 2.9]);
+            var chart = anychart.line([
+                {x: "January", value: 1},
+                {x: "February", value: 2},
+                {x: "March", value: 1.3},
+                {x: "April", value: 2.9}
+            ]);
             chart.contextMenu(false);
             chart.bounds(0, "10%", "100%", "90%");
 
@@ -29,39 +34,39 @@
                 }
             ]);
 
-            var showLabel = anychart.standalones.label();
-            showLabel.background({fill: "#9E9E9E"});
-            showLabel.text("Show context menu.");
-            showLabel.fontColor("#fff");
-            showLabel.parentBounds(0, 0, 100, 100);
-            showLabel.padding(5);
-            showLabel.listen("click", function () {
+            chart.title("Show and hide context menu");
+            chart.container(stage);
+            chart.draw();
+
+            createLabel("Show context menu", 0, function() {
 
                 // Show context menu.
                 customContextMenu.show(150, 150);
-
             });
-            showLabel.container(stage);
-            showLabel.draw();
 
-            var hideLabel = anychart.standalones.label();
-            hideLabel.background({fill: "#9E9E9E"});
-            hideLabel.text("Hide context menu.");
-            hideLabel.fontColor("#fff");
-            hideLabel.parentBounds(0, 30, 100, 100);
-            hideLabel.padding(5);
-            hideLabel.listen("click", function () {
+            createLabel("Hide context menu", 30, function() {
 
                 // Hide context menu.
                 customContextMenu.hide();
-
             });
-            hideLabel.container(stage);
-            hideLabel.draw();
 
-            chart.title("Show and hide context menu.");
-            chart.container(stage);
-            chart.draw();
+            function createLabel(text, offset, action){
+                var label = anychart.standalones.label();
+                label.text(text);
+                label.parentBounds(0, offset, 100, 100);
+                label.listen("click", action);
+                label.listen("mouseOver", function () {
+                    document.body.style.cursor = "pointer";
+                });
+                label.listen("mouseOut", function () {
+                    document.body.style.cursor = "auto";
+                });
+                label.background({fill: "#9E9E9E"});
+                label.fontColor("#fff");
+                label.padding(5);
+                label.container(stage);
+                label.draw();
+            }
         });
     </script>
 </head>

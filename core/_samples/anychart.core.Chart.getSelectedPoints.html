@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line contextMenu anyChart"/>
+    <meta name="x-cat-tags" content="line anyChart"/>
     <script src="../../anychart-base.min.js"></script>
 	<script src="../../anychart-exports.min.js"></script>
 	<script src="../../anychart-ui.min.js"></script>
@@ -10,7 +10,12 @@
         anychart.onDocumentReady(function () {
             chart = anychart.column();
 
-            var series = chart.column([1, 2, 1.3, 2.9]);
+            var series = chart.column([
+                {x: "January", value: 1},
+                {x: "February", value: 2},
+                {x: "March", value: 1.3},
+                {x: "April", value: 2.9}
+            ]);
             series.selectFill("#4CAF50");
             series.select([1, 3]);
             series.selectHatchFill(true);
@@ -24,7 +29,7 @@
                 return point.selected(false);
             });
 
-            chart.title("Get an array of the selected points and modify the point.");
+            chart.title("Get an array of the selected points and modify the point");
             chart.container("container");
             chart.draw();
         });

@@ -15,7 +15,13 @@
 
             stage = anychart.graphics.create("container");
 
-            var lineChart = anychart.line([1, 2, 1.3, 2.9]);
+            var lineChart = anychart.line([
+                {x: "January", value: 1},
+                {x: "February", value: 2},
+                {x: "March", value: 1.3},
+                {x: "April", value: 2.9},
+                {x: "May", value: 1.5}
+            ]);
             lineChart.bounds(0, 50, "50%", "100%");
             lineChart.contextMenu(false);
 
@@ -35,7 +41,13 @@
             lineChart.container(stage);
             lineChart.draw();
 
-            var columnChart = anychart.column([1, 2, 1.3, 2.9]);
+            var columnChart = anychart.column([
+                {x: "January", value: 1},
+                {x: "February", value: 2},
+                {x: "March", value: 1.3},
+                {x: "April", value: 2.9},
+                {x: "May", value: 1.5}
+            ]);
             columnChart.bounds("50%", 50, "50%", "100%");
             columnChart.contextMenu(false);
             var columnCustomContextMenu = anychart.ui.contextMenu();
@@ -66,12 +78,18 @@
                 columnCustomContextMenu.attach(columnChart);
 
             });
+            attachDetachLabel.listen("mouseOver", function () {
+                document.body.style.cursor = "pointer";
+            });
+            attachDetachLabel.listen("mouseOut", function () {
+                document.body.style.cursor = "auto";
+            });
             attachDetachLabel.container(stage);
             attachDetachLabel.draw();
 
             var customTitle = anychart.standalones.title();
             customTitle.parentBounds("50%", 0, 100, 100);
-            customTitle.text("Detach/Attach a custom context menu to the chart. Click on labels and right-click on the chart.")
+            customTitle.text("Detach/Attach a custom context menu to the chart. Click on labels and right-click on the chart")
             customTitle.container(stage);
             customTitle.draw();
         });
