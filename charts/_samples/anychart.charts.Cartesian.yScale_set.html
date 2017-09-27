@@ -1,21 +1,25 @@
 <html>
 <head>
-  <meta name="x-cat-tags" content="line anyChart"/>
+    <meta name="x-cat-tags" content="line anyChart"/>
     <meta charset="UTF-8"/>
     <script src="../../anychart-base.min.js"></script>
-	<script src="../../anychart-exports.min.js"></script>
-	<script src="../../anychart-ui.min.js"></script>
+    <script src="../../anychart-exports.min.js"></script>
+    <script src="../../anychart-ui.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function () {
             chart = anychart.line();
-            chart.line([0.07, 0.9, 14, 2, 89]);
+            chart.line([
+                {x: 1, value: 0.07},
+                {x: 2, value: 0.9},
+                {x: 3, value: 14},
+                {x: 4, value: 2},
+                {x: 5, value: 89}
+            ]);
 
-            var logScale = anychart.scales.log();
+            // Set Y-scale.
+            chart.yScale("log");
 
-            // Sets Y-scale.
-            chart.yScale(logScale);
-
-            chart.title("Set chart yScale.");
+            chart.title("Set chart yScale");
             chart.container("container");
             chart.draw();
         });
