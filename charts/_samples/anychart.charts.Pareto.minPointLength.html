@@ -1,0 +1,43 @@
+<html>
+<head>
+    <meta name="x-cat-tags" content="pareto anyChart"/>
+    <meta charset="UTF-8"/>
+    <script src="../../anychart-base.min.js"></script>
+    <script src="../../anychart-pareto.min.js"></script>
+    <script src="../../anychart-exports.min.js"></script>
+    <script src="../../anychart-ui.min.js"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+            stage = anychart.graphics.create("container");
+
+            var data = [
+                ["Nail polish", 100],
+                ["Eyebrow pencil", 13012],
+                ["Rouge", 16624],
+                ["Pomade", 8814],
+            ];
+
+            var chart1 = anychart.pareto();
+            chart1.data(data);
+            chart1.title("minPointLength = 50");
+
+            // Set minimum point length.
+            chart1.minPointLength(50);
+
+            chart1.bounds(0, 0, "50%", "100%");
+            chart1.container(stage);
+            chart1.draw();
+
+            var chart2 = anychart.pareto();
+            chart2.data(data);
+            chart2.title("minPointLength not set");
+            chart2.bounds("50%", 0, "50%", "100%");
+            chart2.container(stage);
+            chart2.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>

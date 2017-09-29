@@ -2,33 +2,31 @@
 <head>
     <meta name="x-cat-tags" content="column anyChart"/>
     <meta charset="UTF-8"/>
-    <script src="../../../../anychart-base.min.js"></script>
-    <script src="../../../../anychart-exports.min.js"></script>
-    <script src="../../../../anychart-ui.min.js"></script>
+    <script src="../../anychart-base.min.js"></script>
+    <script src="../../anychart-cartesian-3d.min.js"></script>
+    <script src="../../anychart-exports.min.js"></script>
+    <script src="../../anychart-ui.min.js"></script>
     <script x-export="stage">
         anychart.onDocumentReady(function () {
             stage = anychart.graphics.create("container");
 
             var data = [
-                {x: "Apple", value: 17},
-                {x: "Pineapple", value: 17},
+                {x: "Apple", value: 0},
+                {x: "Pineapple", value: 100},
             ];
 
-            var chart1 = anychart.column();
-            chart1.title("pointWidth = 30");
+            var chart1 = anychart.column3d(data);
+            chart1.title("minPointLength = 50");
 
-            var series1 = chart1.column(data);
-
-            // Set point width.
-            series1.pointWidth(30);
+            // Set minimum point length.
+            chart1.minPointLength(50);
 
             chart1.bounds(0, 0, "50%", "100%");
             chart1.container(stage);
             chart1.draw();
 
-            var chart2 = anychart.column();
-            var series2 = chart2.column(data);
-            chart2.title("pointWidth not set");
+            var chart2 = anychart.column3d(data);
+            chart2.title("minPointLength not set");
             chart2.bounds("50%", 0, "50%", "100%");
             chart2.container(stage);
             chart2.draw();

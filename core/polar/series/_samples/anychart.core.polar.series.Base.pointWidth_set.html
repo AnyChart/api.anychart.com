@@ -1,33 +1,40 @@
 <html>
 <head>
-    <meta name="x-cat-tags" content="column anyChart"/>
     <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="polar column anyChart"/>
     <script src="../../../../anychart-base.min.js"></script>
+    <script src="../../../../anychart-polar.min.js"></script>
     <script src="../../../../anychart-exports.min.js"></script>
     <script src="../../../../anychart-ui.min.js"></script>
-    <script x-export="stage">
+    <script x-export="chart">
         anychart.onDocumentReady(function () {
             stage = anychart.graphics.create("container");
 
             var data = [
-                {x: "Apple", value: 17},
-                {x: "Pineapple", value: 17},
+                {x: 1, value: 4},
+                {x: 2, value: 4},
+                {x: 3, value: 4},
             ];
 
-            var chart1 = anychart.column();
-            chart1.title("pointWidth = 30");
-
+            var chart1 = anychart.polar();
             var series1 = chart1.column(data);
+            chart1.xScale("ordinal");
+            chart1.sortPointsByX(true);
+            chart1.innerRadius(50);
 
             // Set point width.
             series1.pointWidth(30);
 
+            chart1.title("pointWidth = 30");
             chart1.bounds(0, 0, "50%", "100%");
             chart1.container(stage);
             chart1.draw();
 
-            var chart2 = anychart.column();
+            var chart2 = anychart.polar();
             var series2 = chart2.column(data);
+            chart2.xScale("ordinal");
+            chart2.sortPointsByX(true);
+            chart2.innerRadius(50);
             chart2.title("pointWidth not set");
             chart2.bounds("50%", 0, "50%", "100%");
             chart2.container(stage);
