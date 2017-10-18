@@ -8,17 +8,33 @@
     <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
     <script x-export="chart">
         anychart.onDocumentReady(function() {
-            chart = anychart.line();
-            var series = chart.line([2, 8, 4, 10]);
-            var title = chart.title();
-            title.enabled(true);
-            title.text("Hover on line series.");
-            series.listen("pointmouseover", function(e) { //set event type
-                title.fontColor("#FF0000");
+            chart = anychart.column();
+
+            var series = chart.column([
+                {x: "Cycling", value: 10},
+                {x: "Swimming", value: 12},
+                {x: "Run", value: 18},
+                {x: "Hiking", value: 11},
+                {x: "Alpinism", value: 9}
+            ]);
+
+            var label = chart.label();
+            label.enabled(true);
+            label.text("Hover on the column series");
+            label.offsetX(150);
+            label.offsetY(100);
+            label.padding(5);
+
+            // Set event type.
+            series.listen("pointmouseover", function(e) {
+                label.text("You hover on the column series");
             });
-            series.listen("pointmouseout", function(e) { //set event type
-                title.fontColor("#0000FF");
+
+            // Set event type.
+            series.listen("pointmouseout", function(e) {
+                label.text("");
             });
+
             chart.container("container");
             chart.draw();
         });
