@@ -18,21 +18,18 @@
                 {x: "Alpinism", value: 9}
             ]);
 
-            var label = chart.label();
-            label.enabled(true);
-            label.text("Hover on the column series");
-            label.offsetX(100);
-            label.offsetY(50);
-            label.padding(5);
+            var title = chart.title();
+            title.enabled(true);
+            title.text("Hover on the column series");
 
             // Set event type.
             series.listen("pointmouseover", function(e) {
-                label.text("Point index is " + e.pointIndex);
+                title.text("Point index is " + e.pointIndex);
             });
 
             // Set event type.
             series.listen("pointmouseout", function(e) {
-                label.text("");
+                title.text("");
             });
 
             chart.container("container");
