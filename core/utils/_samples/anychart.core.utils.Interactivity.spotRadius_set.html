@@ -9,21 +9,26 @@
     <script x-export="chart">
         anychart.onDocumentReady(function() {
             chart = anychart.column();
-            chart.column([
+
+            var series1 = chart.column([
                 {x: 0, value: 22},
                 {x: 1, value: 34},
                 {x: 2, value: 16},
             ]);
-            chart.column([
+            series1.hovered({fill: "#F44336"});
+
+            var series2 = chart.column([
                 {x: 0, value: 12},
                 {x: 1, value: 41},
                 {x: 2, value: 47}
             ]);
+            series2.hovered({fill: "#4CAF50"});
 
             var interactivity = chart.interactivity();
+            interactivity.hoverMode("by-spot");
 
             // Set spot radius.
-            interactivity.spotRadius(100);
+            interactivity.spotRadius(200);
 
             chart.title("Set spot radius");
             chart.container("container");
