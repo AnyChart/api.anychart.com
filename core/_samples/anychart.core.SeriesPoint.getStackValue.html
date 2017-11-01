@@ -1,32 +1,45 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="column anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.column();
-
-            var series = chart.column([12814, 3054, 4376, 4229]);
-
-            chart.column([13012, 5067, 3987, 3932]);
-            chart.column([11624, 7004, 3574, 5221]);
-            chart.column([8814, 9054, 4376, 9256]);
-
-            var scale = chart.yScale();
-            scale.stackMode("percent");
-
-            chart.container("container");
-            chart.draw();
-
-            var point = series.getPoint(0);
-            // Gets stack value.
-            point.getStackValue();
-            // Returns 27.69756181912502.
-        });
-    </script>
+    <meta name="ac:name" content="anychart.core.SeriesPoint.getStackValue"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var chart = anychart.column();
+
+    var series = chart.column([12814, 3054, 4376, 4229]);
+
+    chart.column([13012, 5067, 3987, 3932]);
+    chart.column([11624, 7004, 3574, 5221]);
+    chart.column([8814, 9054, 4376, 9256]);
+
+    var scale = chart.yScale();
+    scale.stackMode("percent");
+
+    chart.container("container");
+    chart.draw();
+
+    var point = series.getPoint(0);
+    // Gets stack value.
+    point.getStackValue();
+    // Returns 27.69756181912502.
+});
+</script>
 </body>
 </html>

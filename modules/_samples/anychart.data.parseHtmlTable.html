@@ -1,91 +1,104 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="bar anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script src="https://cdn.anychart.com/js/latest/data-adapter.min.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/js/utils/style_installer.min.js" data-export="true"></script>
-    <script src="https://code.jquery.com/jquery-latest.min.js" data-export="true"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-
-            $('#container').after('<table id="html-table" ' +
-                    'id="html-table" border="1" cellpadding="5" cellspacing="5">' +
-                    '<caption>Cosmetic Products by Revenue</caption>' +
-                    '<tr>' +
-                    '    <th>#</th>' +
-                    '    <th>Revenue</th>' +
-                    '</tr>' +
-                    '<tr>' +
-                    '    <th>Eyeshadows</th>' +
-                    '    <td>249980</td>' +
-                    '</tr>' +
-                    '<tr>' +
-                    '    <th>Eyeliner</th>' +
-                    '    <td>213210</td>' +
-                    '</tr>' +
-                    '<tr>' +
-                    '    <th>Eyebrow pencil</th>' +
-                    '    <td>170670</td>' +
-                    '</tr>' +
-                    '<tr>' +
-                    '    <th>Nail polish</th>' +
-                    '    <td>143760</td>' +
-                    '</tr>' +
-                    '<tr>' +
-                    '    <th>Pomade</th>' +
-                    '    <td>128000</td>' +
-                    '</tr>' +
-                    '<tr>' +
-                    '    <th>Lip gloss</th>' +
-                    '    <td>110430</td>' +
-                    '</tr>' +
-                    '<tr>' +
-                    '    <th>Mascara</th>' +
-                    '    <td>102610</td>' +
-                    '</tr>' +
-                    '<tr>' +
-                    '    <th>Foundation</th>' +
-                    '    <td>94190</td>' +
-                    '</tr>' +
-                    '<tr>' +
-                    '    <th>Rouge</th>' +
-                    '    <td>80540</td>' +
-                    '</tr>' +
-                    '<tr>' +
-                    '    <th>Powder</th>' +
-                    '    <td>53540</td>' +
-                    '</tr>' +
-                    '</table>');
-
-            // To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
-            // (https://cdn.anychart.com/js/latest/data-adapter.min.js for latest or https://cdn.anychart.com/js/7.11.1/data-adapter.min.js for the versioned file)
-
-            // Parses HTML table.
-            var tableData = anychart.data.parseHtmlTable("#html-table");
-
-            chart = anychart.bar();
-            chart.margin([0, '45%', 0, 0]);
-
-            // Set data from HTML table.
-            chart.data(tableData);
-
-            chart.title("Parse HTML table to table data");
-            chart.container("container");
-            chart.draw();
-
-            anychart.installStyles('td, th {padding: 8px;line-height: 1.42857143;' +
-                    'vertical-align: top;border-top: 1px solid #ddd;' +
-                    'border-right: 1px solid #ddd;width: 50%;}' +
-                    'table {border-collapse: collapse; ' +
-                    'border: 1px solid #ddd; text-align: center; ' +
-                    'position: absolute; top: 40px; right: 25px; width: 31%;}' +
-                    'caption {margin-bottom: 10px;}'
-            );
-        });
-    </script>
+    <meta name="ac:name" content="anychart.data.parseHtmlTable"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
+    <script src="https://cdn.anychart.com/js/7.12.0/data-adapter.min.js"></script>
+    <script src="https://cdn.anychart.com/js/utils/style_installer.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%;"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function () {
+
+    $('#container').after('<table id="html-table" ' +
+            'id="html-table" border="1" cellpadding="5" cellspacing="5">' +
+            '<caption>Cosmetic Products by Revenue</caption>' +
+            '<tr>' +
+            '    <th>#</th>' +
+            '    <th>Revenue</th>' +
+            '</tr>' +
+            '<tr>' +
+            '    <th>Eyeshadows</th>' +
+            '    <td>249980</td>' +
+            '</tr>' +
+            '<tr>' +
+            '    <th>Eyeliner</th>' +
+            '    <td>213210</td>' +
+            '</tr>' +
+            '<tr>' +
+            '    <th>Eyebrow pencil</th>' +
+            '    <td>170670</td>' +
+            '</tr>' +
+            '<tr>' +
+            '    <th>Nail polish</th>' +
+            '    <td>143760</td>' +
+            '</tr>' +
+            '<tr>' +
+            '    <th>Pomade</th>' +
+            '    <td>128000</td>' +
+            '</tr>' +
+            '<tr>' +
+            '    <th>Lip gloss</th>' +
+            '    <td>110430</td>' +
+            '</tr>' +
+            '<tr>' +
+            '    <th>Mascara</th>' +
+            '    <td>102610</td>' +
+            '</tr>' +
+            '<tr>' +
+            '    <th>Foundation</th>' +
+            '    <td>94190</td>' +
+            '</tr>' +
+            '<tr>' +
+            '    <th>Rouge</th>' +
+            '    <td>80540</td>' +
+            '</tr>' +
+            '<tr>' +
+            '    <th>Powder</th>' +
+            '    <td>53540</td>' +
+            '</tr>' +
+            '</table>');
+
+    // To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
+    // (https://cdn.anychart.com/js/7.12.0/data-adapter.min.js for latest or https://cdn.anychart.com/js/7.11.1/data-adapter.min.js for the versioned file)
+
+    // Parses HTML table.
+    var tableData = anychart.data.parseHtmlTable("#html-table");
+
+    var chart = anychart.bar();
+    chart.margin([0, '45%', 0, 0]);
+
+    // Set data from HTML table.
+    chart.data(tableData);
+
+    chart.title("Parse HTML table to table data");
+    chart.container("container");
+    chart.draw();
+
+    anychart.installStyles('td, th {padding: 8px;line-height: 1.42857143;' +
+            'vertical-align: top;border-top: 1px solid #ddd;' +
+            'border-right: 1px solid #ddd;width: 50%;}' +
+            'table {border-collapse: collapse; ' +
+            'border: 1px solid #ddd; text-align: center; ' +
+            'position: absolute; top: 40px; right: 25px; width: 31%;}' +
+            'caption {margin-bottom: 10px;}'
+    );
+});
+</script>
 </body>
 </html>

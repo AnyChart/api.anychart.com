@@ -1,24 +1,37 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="table anyChart anyGantt anyStock anyMap"/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
-            var table = anychart.standalones.table();
-            table.contents([
-                [1, 2, 3, 4],
-                [5, 6, 7, 8],
-                [9, 10, 11]
-            ]);
-            table.rowEvenFill("#4CAF50", 0.3); // sets even row fill with opacity
-            table.container(stage);
-            table.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.core.ui.Table.rowEvenFill set asOpacity"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var stage = anychart.graphics.create("container");
+    var table = anychart.standalones.table();
+    table.contents([
+        [1, 2, 3, 4],
+        [5, 6, 7, 8],
+        [9, 10, 11]
+    ]);
+    table.rowEvenFill("#4CAF50", 0.3); // sets even row fill with opacity
+    table.container(stage);
+    table.draw();
+});
+</script>
 </body>
 </html>
