@@ -1,93 +1,105 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <script src="../../anychart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/united_states_of_america/united_states_of_america.js"
-            data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/usa_states/texas/texas.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js" data-export="true"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            // All maps created with geoData() method work only if you referenced a proper map
-            // source file as described at https://docs.anychart.com/latest/Maps/Quick_Start
-
-            // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
-            // See https://docs.anychart.com/latest/Maps/Map_Projections to learn more.
-
-            stage = anychart.graphics.create("container");
-
-            var worldDataSet = anychart.data.set([
-                {id: "US"}
-            ]);
-            var usaDataSet = anychart.data.set([
-                {id: "US.TX"}
-            ]);
-
-            var chart = anychart.map();
-            chart.geoData(anychart.maps.world);
-            worldSeries = chart.choropleth(worldDataSet);
-
-            var usaMap = anychart.map();
-            usaMap.geoData(anychart.maps.united_states_of_america);
-            usaSeries = usaMap.choropleth(usaDataSet);
-
-            var texasMap = anychart.map();
-            texasMap.geoData(anychart.maps["texas"]);
-
-            // Click to the Canada map.
-            worldSeries.listen("pointClick", function (e) {
-                chart.drillTo(e.point.get("id"), usaMap);
-            });
-
-            // Click to the Texas map.
-            usaSeries.listen("pointClick", function (e) {
-                chart.drillTo(e.point.get("id"), texasMap);
-            });
-
-            chart.listen("chartDraw", function () {
-
-                // Get drilldown path.
-                var path = chart.getDrilldownPath();
-
-                var currentChart = path[path.length - 1].getCurrentChart();
-                currentChart.title(printPath(path))
-            });
-
-            createLabel("Drill Up", 0, function () {
-                chart.drillUp();
-            });
-
-            chart.container(stage);
-            chart.draw();
-
-        });
-
-        function printPath(path) {
-            var text = "World\\";
-            for (i = 1; i < path.length; i++) {
-                text += path[i].getId() + "\\";
-            }
-            return text;
+    <meta name="ac:name" content="anychart.charts.Map.getDrilldownPath"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/united_states_of_america/united_states_of_america.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/usa_states/texas/texas.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
-
-        function createLabel(text, offset, action) {
-            var customLabel = anychart.standalones.label();
-            customLabel.background({fill: "#9E9E9E"});
-            customLabel.zIndex(1000);
-            customLabel.text(text);
-            customLabel.fontColor("#fff");
-            customLabel.padding(5);
-            customLabel.parentBounds(offset, 5, 130, 100);
-            customLabel.listen("click", action);
-            customLabel.container(stage);
-            customLabel.draw();
-            return customLabel;
-        }
-    </script>
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function () {
+    // All maps created with geoData() method work only if you referenced a proper map
+    // source file as described at https://docs.anychart.com/7.13.0/Maps/Quick_Start
+
+    // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+    // See https://docs.anychart.com/7.13.0/Maps/Map_Projections to learn more.
+
+    var stage = anychart.graphics.create("container");
+
+    var worldDataSet = anychart.data.set([
+        {id: "US"}
+    ]);
+    var usaDataSet = anychart.data.set([
+        {id: "US.TX"}
+    ]);
+
+    var chart = anychart.map();
+    chart.geoData(anychart.maps.world);
+    worldSeries = chart.choropleth(worldDataSet);
+
+    var usaMap = anychart.map();
+    usaMap.geoData(anychart.maps.united_states_of_america);
+    usaSeries = usaMap.choropleth(usaDataSet);
+
+    var texasMap = anychart.map();
+    texasMap.geoData(anychart.maps["texas"]);
+
+    // Click to the Canada map.
+    worldSeries.listen("pointClick", function (e) {
+        chart.drillTo(e.point.get("id"), usaMap);
+    });
+
+    // Click to the Texas map.
+    usaSeries.listen("pointClick", function (e) {
+        chart.drillTo(e.point.get("id"), texasMap);
+    });
+
+    chart.listen("chartDraw", function () {
+
+        // Get drilldown path.
+        var path = chart.getDrilldownPath();
+
+        var currentChart = path[path.length - 1].getCurrentChart();
+        currentChart.title(printPath(path))
+    });
+
+    createLabel("Drill Up", 0, function () {
+        chart.drillUp();
+    });
+
+    chart.container(stage);
+    chart.draw();
+
+});
+
+function printPath(path) {
+    var text = "World\\";
+    for (i = 1; i < path.length; i++) {
+        text += path[i].getId() + "\\";
+    }
+    return text;
+}
+
+function createLabel(text, offset, action) {
+    var customLabel = anychart.standalones.label();
+    customLabel.background({fill: "#9E9E9E"});
+    customLabel.zIndex(1000);
+    customLabel.text(text);
+    customLabel.fontColor("#fff");
+    customLabel.padding(5);
+    customLabel.parentBounds(offset, 5, 130, 100);
+    customLabel.listen("click", action);
+    customLabel.container(stage);
+    customLabel.draw();
+    return customLabel;
+}
+</script>
 </body>
 </html>

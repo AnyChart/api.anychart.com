@@ -1,35 +1,48 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="pyramid anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var dataSet = anychart.data.set([
-                {x: "Physical", value: 125},
-                {x: "Data Link", value: 125},
-                {x: "Network", value: 125},
-                {x: "Transport", value: 125},
-                {x: "Session", value: 125},
-                {x: "Presentation", value: 125},
-                {x: "Application", value: 290}
-            ]);
-
-            chart = anychart.pyramid(dataSet);
-
-            // Set fill for selected mode using image.
-            chart.selectFill({
-                src: "https://static.anychart.com/images/oceanic-airlines.png",
-                mode: "stretch",
-                opacity: 0.06});
-
-            chart.title("Set chart selectFill as an image.");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.charts.Pyramid.selectFill set asImg"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var dataSet = anychart.data.set([
+        {x: "Physical", value: 125},
+        {x: "Data Link", value: 125},
+        {x: "Network", value: 125},
+        {x: "Transport", value: 125},
+        {x: "Session", value: 125},
+        {x: "Presentation", value: 125},
+        {x: "Application", value: 290}
+    ]);
+
+    var chart = anychart.pyramid(dataSet);
+
+    // Set fill for selected mode using image.
+    chart.selectFill({
+        src: "https://static.anychart.com/images/oceanic-airlines.png",
+        mode: "stretch",
+        opacity: 0.06});
+
+    chart.title("Set chart selectFill as an image.");
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>

@@ -1,26 +1,39 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="boxChart anyChart"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var data = [
-                [1, 760, 801, 848, 895, 965] ,
-                [2, 733, 853, 939, 980, 1080, [1120, 630]],
-                [3, 760, 801, 848, 895, 965, [650]],
-                [4, 724, 802, 806, 871, 950, [1000, 600]]
-            ];
-            chart = anychart.box(data);
-            var series = chart.getSeries(0);
-            series.whiskerWidth(10);
-            series.whiskerStroke("#4CAF50", 3); // sets whisker stroke
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Box.whiskerStroke set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var data = [
+        [1, 760, 801, 848, 895, 965] ,
+        [2, 733, 853, 939, 980, 1080, [1120, 630]],
+        [3, 760, 801, 848, 895, 965, [650]],
+        [4, 724, 802, 806, 871, 950, [1000, 600]]
+    ];
+    var chart = anychart.box(data);
+    var series = chart.getSeries(0);
+    series.whiskerWidth(10);
+    series.whiskerStroke("#4CAF50", 3); // sets whisker stroke
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>

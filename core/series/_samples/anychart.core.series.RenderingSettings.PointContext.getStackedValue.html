@@ -1,51 +1,64 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line anyChart"/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            chart = anychart.column();
-
-            var firstSeries = chart.column([10, 11, 10, 12]);
-            firstSeries.rendering({point: drawer});
-
-            var secondSeries = chart.column([7, 3, 4, 1]);
-            secondSeries.rendering({point: drawer});
-
-            var thirdSeries = chart.column([6, 4, 8, 16]);
-            thirdSeries.rendering({point: drawer});
-
-            var currentYScale = chart.yScale();
-            currentYScale.stackMode("percent");
-
-            chart.title("Get stacked value");
-            chart.container("container");
-            chart.draw();
-        });
-        function drawer() {
-
-            // Get stacked value.
-            var value = this.getStackedValue();
-            // After that you can do something with this values.
-
-            if (this.missing) {
-                return;
-            }
-            var shapes = this.getShapesGroup(this.pointState);
-
-            var leftX = this.x - this.pointWidth / 2;
-            var rightX = leftX + this.pointWidth;
-
-            shapes["path"]
-                    .moveTo(leftX, this.zero)
-                    .lineTo(this.x, this.value)
-                    .lineTo(rightX, this.zero)
-                    .close();
+    <meta name="ac:name" content="anychart.core.series.RenderingSettings.PointContext.getStackedValue"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
-    </script>
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function () {
+    var chart = anychart.column();
+
+    var firstSeries = chart.column([10, 11, 10, 12]);
+    firstSeries.rendering({point: drawer});
+
+    var secondSeries = chart.column([7, 3, 4, 1]);
+    secondSeries.rendering({point: drawer});
+
+    var thirdSeries = chart.column([6, 4, 8, 16]);
+    thirdSeries.rendering({point: drawer});
+
+    var currentYScale = chart.yScale();
+    currentYScale.stackMode("percent");
+
+    chart.title("Get stacked value");
+    chart.container("container");
+    chart.draw();
+});
+function drawer() {
+
+    // Get stacked value.
+    var value = this.getStackedValue();
+    // After that you can do something with this values.
+
+    if (this.missing) {
+        return;
+    }
+    var shapes = this.getShapesGroup(this.pointState);
+
+    var leftX = this.x - this.pointWidth / 2;
+    var rightX = leftX + this.pointWidth;
+
+    shapes["path"]
+            .moveTo(leftX, this.zero)
+            .lineTo(this.x, this.value)
+            .lineTo(rightX, this.zero)
+            .close();
+}
+</script>
 </body>
 </html>

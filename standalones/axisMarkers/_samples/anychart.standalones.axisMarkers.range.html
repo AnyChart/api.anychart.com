@@ -1,32 +1,45 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="rangeMarker axis anyChart anyGantt anyStock anyMap"/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
-
-            var axis = anychart.standalones.axes.linear();
-            axis.scale(anychart.scales.linear());
-            axis.parentBounds(5, 65, 400, 80);
-            axis.title(false);
-            axis.container(stage);
-            axis.draw();
-
-            // Creates a range marker.
-            var rangeMarker = anychart.standalones.axisMarkers.range();
-            rangeMarker.parentBounds(5, 40, 400, 40);
-            rangeMarker.scale(anychart.scales.linear());
-            rangeMarker.from(0.4);
-            rangeMarker.to(0.8);
-            rangeMarker.axis(axis);
-            rangeMarker.container(stage);
-            rangeMarker.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.standalones.axisMarkers.range"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var stage = anychart.graphics.create("container");
+
+    var axis = anychart.standalones.axes.linear();
+    axis.scale(anychart.scales.linear());
+    axis.parentBounds(5, 65, 400, 80);
+    axis.title(false);
+    axis.container(stage);
+    axis.draw();
+
+    // Creates a range marker.
+    var rangeMarker = anychart.standalones.axisMarkers.range();
+    rangeMarker.parentBounds(5, 40, 400, 40);
+    rangeMarker.scale(anychart.scales.linear());
+    rangeMarker.from(0.4);
+    rangeMarker.to(0.8);
+    rangeMarker.axis(axis);
+    rangeMarker.container(stage);
+    rangeMarker.draw();
+});
+</script>
 </body>
 </html>

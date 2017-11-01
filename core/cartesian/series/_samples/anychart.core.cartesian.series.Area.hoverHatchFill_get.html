@@ -1,47 +1,61 @@
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="area anyChart"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            stage = anychart.graphics.create("container");
-
-            var chart = anychart.cartesian();
-
-            var firstAreaSeries = chart.area([
-                {x: "January", value: 16},
-                {x: "February", value: 10},
-                {x: "March", value: 20},
-                {x: "April", value: 9},
-                {x: "May", value: 4}
-            ]);
-            firstAreaSeries.hatchFill("zigZag", "#616161", 1, 10);
-
-            // Hovers series.
-            firstAreaSeries.hover();
-
-            // Get hatch fill.
-            var hatchFill = firstAreaSeries.hatchFill();
-
-            var secondAreaSeries = chart.area([
-                {x: "January", value: 10},
-                {x: "February", value: 25},
-                {x: "March", value: 1},
-                {x: "April", value: 6},
-                {x: "May", value: 20}
-            ]);
-            secondAreaSeries.hatchFill(hatchFill);
-
-            // Hovers series.
-            secondAreaSeries.hover();
-
-            chart.title("Get and use hatch fill");
-            chart.container(stage);
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Area.hoverHatchFill get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function () {
+    var stage = anychart.graphics.create("container");
+
+    var chart = anychart.cartesian();
+
+    var firstAreaSeries = chart.area([
+        {x: "January", value: 16},
+        {x: "February", value: 10},
+        {x: "March", value: 20},
+        {x: "April", value: 9},
+        {x: "May", value: 4}
+    ]);
+    firstAreaSeries.hatchFill("zigZag", "#616161", 1, 10);
+
+    // Hovers series.
+    firstAreaSeries.hover();
+
+    // Get hatch fill.
+    var hatchFill = firstAreaSeries.hatchFill();
+
+    var secondAreaSeries = chart.area([
+        {x: "January", value: 10},
+        {x: "February", value: 25},
+        {x: "March", value: 1},
+        {x: "April", value: 6},
+        {x: "May", value: 20}
+    ]);
+    secondAreaSeries.hatchFill(hatchFill);
+
+    // Hovers series.
+    secondAreaSeries.hover();
+
+    chart.title("Get and use hatch fill");
+    chart.container(stage);
+    chart.draw();
+});
+</script>
 </body>
 </html>

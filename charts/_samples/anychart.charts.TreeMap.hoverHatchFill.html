@@ -1,45 +1,58 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="treeMap anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var data = [
-                {name: 'Eurasia',
-                    children:[
-                        {name: "Asia", children:[
-                            {name: "Eastern Asia", children:[
-                                {name:"Mongolia", value: 1564116, capital: 'Ulan-Bator'},
-                                {name: "China", value: 1564116, capital: 'Beijing'},
-                                {name: "Southern Korea", value: 1564116, capital: 'Seoul'},
-                                {name: "Northern Korea", value: 120540, capital: 'Pyongyang'},
-                                {name: "Japan", value: 1564116, capital: 'Tokio'}
-                            ]}
-                        ]},
-                        {name: "Europe", children: [
-                            {name: "Northern Europe", children:[
-                                {name: "Finland", value: 338424, capital: 'Helsinki'},
-                                {name: "Great Britain", value: 209331, capital: 'London'},
-                                {name: "Ireland", value: 84421, capital: 'Dublin'},
-                                {name: "Scandinavia", value: 928057}
-                            ]}
-                        ]}
-                    ]}
-            ];
-
-            chart = anychart.treeMap(data);
-
-            // Set hover hatch fill.
-            chart.hoverHatchFill("backwardDiagonal", "#ECEFF1", 0.6, 15);
-
-            chart.title("Set hover hatchFill parameters.");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.charts.TreeMap.hoverHatchFill"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var data = [
+        {name: 'Eurasia',
+            children:[
+                {name: "Asia", children:[
+                    {name: "Eastern Asia", children:[
+                        {name:"Mongolia", value: 1564116, capital: 'Ulan-Bator'},
+                        {name: "China", value: 1564116, capital: 'Beijing'},
+                        {name: "Southern Korea", value: 1564116, capital: 'Seoul'},
+                        {name: "Northern Korea", value: 120540, capital: 'Pyongyang'},
+                        {name: "Japan", value: 1564116, capital: 'Tokio'}
+                    ]}
+                ]},
+                {name: "Europe", children: [
+                    {name: "Northern Europe", children:[
+                        {name: "Finland", value: 338424, capital: 'Helsinki'},
+                        {name: "Great Britain", value: 209331, capital: 'London'},
+                        {name: "Ireland", value: 84421, capital: 'Dublin'},
+                        {name: "Scandinavia", value: 928057}
+                    ]}
+                ]}
+            ]}
+    ];
+
+    var chart = anychart.treeMap(data);
+
+    // Set hover hatch fill.
+    chart.hoverHatchFill("backwardDiagonal", "#ECEFF1", 0.6, 15);
+
+    chart.title("Set hover hatchFill parameters.");
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>
