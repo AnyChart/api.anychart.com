@@ -1,28 +1,41 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
-    <script src="../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var chart = anychart.line([
-                {x: Date.UTC(2002, 9, 1), value: 1},
-                {x: Date.UTC(2008, 7, 3), value: 2},
-                {x: Date.UTC(2004, 3, 14), value: 3},
-                {x: Date.UTC(2009, 9, 16), value: 4}
-            ]);
-            var dateTimeScale = anychart.scales.dateTime();
-            dateTimeScale.minimum(Date.UTC(2001, 7, 1));
-            dateTimeScale.maximum(Date.UTC(2011, 8, 5));
-            var ticks = dateTimeScale.ticks();
-            ticks.interval(anychart.enums.Interval.YEARS, 3); // set interval for ticks
-            chart.xScale(dateTimeScale);
-            chart.container('container');
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.enums.Interval"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.4.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.4.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var chart = anychart.line([
+        {x: Date.UTC(2002, 9, 1), value: 1},
+        {x: Date.UTC(2008, 7, 3), value: 2},
+        {x: Date.UTC(2004, 3, 14), value: 3},
+        {x: Date.UTC(2009, 9, 16), value: 4}
+    ]);
+    var dateTimeScale = anychart.scales.dateTime();
+    dateTimeScale.minimum(Date.UTC(2001, 7, 1));
+    dateTimeScale.maximum(Date.UTC(2011, 8, 5));
+    var ticks = dateTimeScale.ticks();
+    ticks.interval(anychart.enums.Interval.YEARS, 3); // set interval for ticks
+    chart.xScale(dateTimeScale);
+    chart.container('container');
+    chart.draw();
+});
+</script>
 </body>
 </html>

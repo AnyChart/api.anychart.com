@@ -1,28 +1,41 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="dataGrid"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="dataGrid">
-        anychart.onDocumentReady(function() {
-            var data = [
-                {id: '1', name: '1'},
-                {id: '2', name: '2'},
-                {id: '3', name: '1-3', parent: '1'},
-                {id: '4', name: '2-4', parent: '2'},
-                {id: '5', name: '5'}
-            ];
-            var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
-            treeData.removeChildren(); // removes children of tree.
-            var dataGrid = anychart.ui.dataGrid();
-            dataGrid.data(treeData);
-            dataGrid.titleHeight(25);
-            dataGrid.container('container');
-            dataGrid.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.data.Tree.removeChildren"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.4.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.4.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var data = [
+        {id: '1', name: '1'},
+        {id: '2', name: '2'},
+        {id: '3', name: '1-3', parent: '1'},
+        {id: '4', name: '2-4', parent: '2'},
+        {id: '5', name: '5'}
+    ];
+    var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
+    treeData.removeChildren(); // removes children of tree.
+    var dataGrid = anychart.ui.dataGrid();
+    dataGrid.data(treeData);
+    dataGrid.titleHeight(25);
+    dataGrid.container('container');
+    dataGrid.draw();
+});
+</script>
 </body>
 </html>
