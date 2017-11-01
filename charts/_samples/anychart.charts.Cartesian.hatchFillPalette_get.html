@@ -1,46 +1,59 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="column bar"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
-
-            var barChart = anychart.cartesian();
-            barChart.bounds(0, 0, "50%", "100%");
-
-            var firstBarSeries = barChart.bar([10, 4, 17, 20]);
-            firstBarSeries.hatchFill(true);
-            var secondBarSeries = barChart.bar([5, 16, 10, 3]);
-            secondBarSeries.hatchFill(true);
-            var thirdBarSeries = barChart.bar([25, 4, 28, 11]);
-            thirdBarSeries.hatchFill(true);
-
-            barChart.hatchFillPalette(["divot", "zigZag", "weave"]);
-            barChart.container(stage);
-            barChart.draw();
-
-            var columnChart = anychart.cartesian();
-            columnChart.bounds("50%", 0, "50%", "100%");
-
-            var firstColumnSeries = columnChart.column([10, 4, 17, 20]);
-            firstColumnSeries.hatchFill(true);
-            var secondColumnSeries = columnChart.column([5, 16, 10, 3]);
-            secondColumnSeries.hatchFill(true);
-            var thirdColumnSeries = columnChart.column([25, 4, 28, 11]);
-            thirdColumnSeries.hatchFill(true);
-
-            // Gets hatch fill palette of the bar chart.
-            var barChartHatchFillPalette = barChart.hatchFillPalette();
-
-            columnChart.hatchFillPalette(barChartHatchFillPalette);
-            columnChart.container(stage);
-            columnChart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.charts.Cartesian.hatchFillPalette get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.9.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var stage = anychart.graphics.create("container");
+
+    var barChart = anychart.cartesian();
+    barChart.bounds(0, 0, "50%", "100%");
+
+    var firstBarSeries = barChart.bar([10, 4, 17, 20]);
+    firstBarSeries.hatchFill(true);
+    var secondBarSeries = barChart.bar([5, 16, 10, 3]);
+    secondBarSeries.hatchFill(true);
+    var thirdBarSeries = barChart.bar([25, 4, 28, 11]);
+    thirdBarSeries.hatchFill(true);
+
+    barChart.hatchFillPalette(["divot", "zigZag", "weave"]);
+    barChart.container(stage);
+    barChart.draw();
+
+    var columnChart = anychart.cartesian();
+    columnChart.bounds("50%", 0, "50%", "100%");
+
+    var firstColumnSeries = columnChart.column([10, 4, 17, 20]);
+    firstColumnSeries.hatchFill(true);
+    var secondColumnSeries = columnChart.column([5, 16, 10, 3]);
+    secondColumnSeries.hatchFill(true);
+    var thirdColumnSeries = columnChart.column([25, 4, 28, 11]);
+    thirdColumnSeries.hatchFill(true);
+
+    // Gets hatch fill palette of the bar chart.
+    var barChartHatchFillPalette = barChart.hatchFillPalette();
+
+    columnChart.hatchFillPalette(barChartHatchFillPalette);
+    columnChart.container(stage);
+    columnChart.draw();
+});
+</script>
 </body>
 </html>
