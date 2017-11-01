@@ -1,40 +1,53 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="stock"/>
-    <script src="../../../anychart.min.js"></script>
-    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var dataTable = anychart.data.table();
-            dataTable.addData(get_dji_daily_short_data());
-
-            var lineMapping = dataTable.mapAs({value: 1});
-
-            var rangeColumnMapping = dataTable.mapAs({
-                high: 2,
-                low: 3
-            });
-
-            chart = anychart.stock();
-            chart.padding(10, 10, 10, 50);
-
-            var currentPlot = chart.plot();
-            currentPlot.line(lineMapping);
-
-            var currentScroller = chart.scroller();
-            currentScroller.height("20%");
-
-            // Adds Range Column series.
-            currentScroller.rangeColumn(rangeColumnMapping);
-
-            chart.title("Add Range Column series to a scroller.");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.core.stock.Scroller.rangeColumn"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.10.1/anychart-bundle.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var dataTable = anychart.data.table();
+    dataTable.addData(get_dji_daily_short_data());
+
+    var lineMapping = dataTable.mapAs({value: 1});
+
+    var rangeColumnMapping = dataTable.mapAs({
+        high: 2,
+        low: 3
+    });
+
+    var chart = anychart.stock();
+    chart.padding(10, 10, 10, 50);
+
+    var currentPlot = chart.plot();
+    currentPlot.line(lineMapping);
+
+    var currentScroller = chart.scroller();
+    currentScroller.height("20%");
+
+    // Adds Range Column series.
+    currentScroller.rangeColumn(rangeColumnMapping);
+
+    chart.title("Add Range Column series to a scroller.");
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>

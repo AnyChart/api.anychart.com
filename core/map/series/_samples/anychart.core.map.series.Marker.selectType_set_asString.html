@@ -1,38 +1,51 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="map"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script src="https://cdn.anychart.com/geodata/1.1.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="australiaMap">
-        anychart.onDocumentReady(function () {
-            var dataSet = anychart.data.set([
-                {size: 15, lat: -23.279329572620075, long: 119.40604797655219},
-                {size: 23, lat: -27.021356967332213, long: 125.33689472609282},
-                {size: 86, lat: -23.422807398949452, long: 130.21523744698223},
-                {size: 16, lat: -17.17616833265064, long: 131.16288806043414},
-                {size: 32, lat: -24.042559630783582, long: 140.73247937630813},
-                {size: 64, lat: -28.249362754116305, long: 138.334307429299},
-                {size: 28, lat: -30.27595327991965, long: 142.30025047966743},
-                {size: 45, lat: -35.69541509829785, long: 142.02513479076833}
-            ]);
-
-            australiaMap = anychart.map();
-            australiaMap.geoData(anychart.maps.australia);
-
-            var series = australiaMap.marker(dataSet);
-            series.tooltip({title: false, separator: false});
-
-            // Sets marker type in selected mode.
-            series.selectType("square");
-
-            australiaMap.title("Select marker type is set to SQUARE.");
-            australiaMap.container("container");
-            australiaMap.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.core.map.series.Marker.selectType set asString"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.10.1/anychart-bundle.min.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.1.0/countries/australia/australia.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function () {
+    var dataSet = anychart.data.set([
+        {size: 15, lat: -23.279329572620075, long: 119.40604797655219},
+        {size: 23, lat: -27.021356967332213, long: 125.33689472609282},
+        {size: 86, lat: -23.422807398949452, long: 130.21523744698223},
+        {size: 16, lat: -17.17616833265064, long: 131.16288806043414},
+        {size: 32, lat: -24.042559630783582, long: 140.73247937630813},
+        {size: 64, lat: -28.249362754116305, long: 138.334307429299},
+        {size: 28, lat: -30.27595327991965, long: 142.30025047966743},
+        {size: 45, lat: -35.69541509829785, long: 142.02513479076833}
+    ]);
+
+    var australiaMap = anychart.map();
+    australiaMap.geoData(anychart.maps.australia);
+
+    var series = australiaMap.marker(dataSet);
+    series.tooltip({title: false, separator: false});
+
+    // Sets marker type in selected mode.
+    series.selectType("square");
+
+    australiaMap.title("Select marker type is set to SQUARE.");
+    australiaMap.container("container");
+    australiaMap.draw();
+});
+</script>
 </body>
 </html>

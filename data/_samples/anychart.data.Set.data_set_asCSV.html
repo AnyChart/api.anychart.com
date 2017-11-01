@@ -1,19 +1,32 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="pie"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var dataSet = anychart.data.set();
-            dataSet.data("Point 1, 10; Point 2, 14; Point 3, 16", {rowsSeparator: ";", columnsSeparator: ","}); // sets data
-            chart = anychart.pie(dataSet);
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.data.Set.data set asCSV"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.10.1/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var dataSet = anychart.data.set();
+    dataSet.data("Point 1, 10; Point 2, 14; Point 3, 16", {rowsSeparator: ";", columnsSeparator: ","}); // sets data
+    var chart = anychart.pie(dataSet);
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>

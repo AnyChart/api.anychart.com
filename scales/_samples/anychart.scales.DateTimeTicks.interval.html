@@ -1,32 +1,45 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="ohlc"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.financial();
-            chart.ohlc([
-                [new Date("28-Aug-07"), 511.53, 514.98, 505.79, 506.40],
-                [new Date("29-Aug-07"), 507.84, 513.30, 507.23, 512.88],
-                [new Date("30-Aug-07"), 512.36, 515.40, 510.58, 511.40],
-                [new Date("31-Aug-07"), 513.10, 516.50, 511.47, 515.25],
-                [new Date("01-Sep-07"), 515.02, 528.00, 514.62, 525.15]
-            ]);
-            chart.xAxis({ticks: true});
-
-            var scale = chart.xScale();
-
-            var myTicks = scale.ticks();
-            // Sets interval.
-            myTicks.interval("P1D");
-
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.scales.DateTimeTicks.interval"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.10.1/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var chart = anychart.financial();
+    chart.ohlc([
+        [new Date("28-Aug-07"), 511.53, 514.98, 505.79, 506.40],
+        [new Date("29-Aug-07"), 507.84, 513.30, 507.23, 512.88],
+        [new Date("30-Aug-07"), 512.36, 515.40, 510.58, 511.40],
+        [new Date("31-Aug-07"), 513.10, 516.50, 511.47, 515.25],
+        [new Date("01-Sep-07"), 515.02, 528.00, 514.62, 525.15]
+    ]);
+    chart.xAxis({ticks: true});
+
+    var scale = chart.xScale();
+
+    var myTicks = scale.ticks();
+    // Sets interval.
+    myTicks.interval("P1D");
+
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>
