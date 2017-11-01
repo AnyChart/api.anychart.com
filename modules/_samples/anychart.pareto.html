@@ -1,37 +1,50 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name="x-cat-tags" content="pareto anyChart"/>
-    <meta charset="UTF-8"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
+    <meta name="ac:name" content="anychart.pareto"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
 
-            // Creates Pareto chart.
-            chart = anychart.pareto();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            chart.data([
-                ['Parking Difficult', 95],
-                ['Sales Rep was Rude', 60],
-                ['Poor Lighting', 45],
-                ['Layout Confusing', 37],
-                ['Sizes Limited', 30],
-                ['Clothing Faded', 27],
-                ['Clothing Shrank', 18]
-            ]);
-
-            var lineSeries = chart.getSeries(0);
-            lineSeries.name("Cumulative Frequency");
-
-            var columnSeries = chart.getSeries(1);
-            columnSeries.name("Relative Frequency");
-
-            chart.title("Creates Pareto chart");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+
+        // Creates Pareto chart.
+        var chart = anychart.pareto();
+
+        chart.data([
+            ['Parking Difficult', 95],
+            ['Sales Rep was Rude', 60],
+            ['Poor Lighting', 45],
+            ['Layout Confusing', 37],
+            ['Sizes Limited', 30],
+            ['Clothing Faded', 27],
+            ['Clothing Shrank', 18]
+        ]);
+
+        var lineSeries = chart.getSeries(0);
+        lineSeries.name("Cumulative Frequency");
+
+        var columnSeries = chart.getSeries(1);
+        columnSeries.name("Relative Frequency");
+
+        chart.title("Creates Pareto chart");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

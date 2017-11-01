@@ -1,29 +1,42 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="legend anyChart anyGantt anyStock anyMap"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.standalones.Legend.container"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
 
-            var legend = anychart.standalones.legend();
-            legend.itemsLayout("vertical");
-            legend.parentBounds(0, 0, 150, 160);
-            legend.items([
-                {index: 0, text: "Chrome"},
-                {index: 1, text: "Firefox"},
-                {index: 2, text: "Safari"},
-                {index: 3, text: "IE"}
-            ]);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            // Set container.
-            legend.container("container");
-            legend.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        var legend = anychart.standalones.legend();
+        legend.itemsLayout("vertical");
+        legend.parentBounds(0, 0, 150, 160);
+        legend.items([
+            {index: 0, text: "Chrome"},
+            {index: 1, text: "Firefox"},
+            {index: 2, text: "Safari"},
+            {index: 3, text: "IE"}
+        ]);
+
+        // Set container.
+        legend.container("container");
+        legend.draw();
+    });
+</script>
 </body>
 </html>

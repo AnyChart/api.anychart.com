@@ -1,33 +1,46 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="column anyChart"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.column();
+    <meta name="ac:name" content="anychart.core.cartesian.series.Column.selectFill set asLinear"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
 
-            var series = chart.column([
-                {x: "January", value: 2},
-                {x: "February", value: 5},
-                {x: "March", value: 3},
-                {x: "April", value: 9},
-                {x: "May", value: 4}
-            ]);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            // Selects series.
-            series.select();
-
-            // Set select fill.
-            series.selectFill(["#263238", "#FFFFFF"], 90, true, 0.5);
-
-            chart.title("Set select fill as a linear gradient");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.column();
+
+        var series = chart.column([
+            {x: "January", value: 2},
+            {x: "February", value: 5},
+            {x: "March", value: 3},
+            {x: "April", value: 9},
+            {x: "May", value: 4}
+        ]);
+
+        // Selects series.
+        series.select();
+
+        // Set select fill.
+        series.selectFill(["#263238", "#FFFFFF"], 90, true, 0.5);
+
+        chart.title("Set select fill as a linear gradient");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

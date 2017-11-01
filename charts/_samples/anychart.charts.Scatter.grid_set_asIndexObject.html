@@ -1,30 +1,43 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="scatter anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.scatter([
-                {x: 2, y: 21},
-                {x: 14, y: 24},
-                {x: 89, y: 23},
-                {x: 48, y: 18}
-            ]);
+    <meta name="ac:name" content="anychart.charts.Scatter.grid set asIndexObject"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
 
-            // Sets grid by index.
-            chart.grid(0, {axis: chart.yAxis(), stroke: "#ffcc80"});
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            // Sets grid by index.
-            chart.grid(1, {axis: chart.xAxis(), stroke: "#aed581"});
-
-            chart.title("Set chart grid by index as object.");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.scatter([
+            {x: 2, y: 21},
+            {x: 14, y: 24},
+            {x: 89, y: 23},
+            {x: 48, y: 18}
+        ]);
+
+        // Sets grid by index.
+        chart.grid(0, {axis: chart.yAxis(), stroke: "#ffcc80"});
+
+        // Sets grid by index.
+        chart.grid(1, {axis: chart.xAxis(), stroke: "#aed581"});
+
+        chart.title("Set chart grid by index as object.");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

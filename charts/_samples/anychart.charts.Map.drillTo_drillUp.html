@@ -1,73 +1,86 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <script src="../../anychart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/mongolia/mongolia.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/canada/canada.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js" data-export="true"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            // All maps created with geoData() method work only if you referenced a proper map
-            // source file as described at https://docs.anychart.com/Maps/Quick_Start
+    <meta name="ac:name" content="anychart.charts.Map.drillTo drillUp"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/mongolia/mongolia.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/canada/canada.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>
 
-            // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
-            // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            stage = anychart.graphics.create("container");
-
-            var worldDataSet = anychart.data.set([
-                {id: "CA", name: "Canada", value: "A1"},
-                {id: "MN", name: "Mongolia", value: "A1"}
-            ]);
-
-            var canadaMap = anychart.map();
-            canadaMap.geoData(anychart.maps.canada);
-
-            var chart = anychart.map();
-            chart.geoData(anychart.maps.world);
-            chart.choropleth(worldDataSet);
-            chart.bounds(0, "10%", "90%", "90%");
-            chart.title("Drill down to Canada map and drill up.");
-            chart.container(stage);
-            chart.draw();
-
-            var drillToLabel = anychart.standalones.label();
-            drillToLabel.background({fill: "#9E9E9E"});
-            drillToLabel.text("Drill to Canada map.");
-            drillToLabel.fontColor("#fff");
-            drillToLabel.parentBounds(0, 0, 100, 100);
-            drillToLabel.padding(5);
-            drillToLabel.zIndex(1000);
-            drillToLabel.listen("click", function() {
-
-                // Drill down to specified map.
-                chart.drillTo("CA", canadaMap);
-
-            });
-            drillToLabel.container(stage);
-            drillToLabel.draw();
-
-            var drillUpLabel = anychart.standalones.label();
-            drillUpLabel.background({fill: "#9E9E9E"});
-            drillUpLabel.text("Drill up.");
-            drillUpLabel.fontColor("#fff");
-            drillUpLabel.parentBounds(0, 30, 100, 100);
-            drillUpLabel.padding(5);
-            drillUpLabel.zIndex(1000);
-            drillUpLabel.listen("click", function() {
-
-                // Drill up to one map level.
-                chart.drillUp();
-
-            });
-            drillUpLabel.container(stage);
-            drillUpLabel.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        // All maps created with geoData() method work only if you referenced a proper map
+        // source file as described at https://docs.anychart.com/Maps/Quick_Start
+
+        // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+        // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+
+        var stage = anychart.graphics.create("container");
+
+        var worldDataSet = anychart.data.set([
+            {id: "CA", name: "Canada", value: "A1"},
+            {id: "MN", name: "Mongolia", value: "A1"}
+        ]);
+
+        var canadaMap = anychart.map();
+        canadaMap.geoData(anychart.maps.canada);
+
+        var chart = anychart.map();
+        chart.geoData(anychart.maps.world);
+        chart.choropleth(worldDataSet);
+        chart.bounds(0, "10%", "90%", "90%");
+        chart.title("Drill down to Canada map and drill up.");
+        chart.container(stage);
+        chart.draw();
+
+        var drillToLabel = anychart.standalones.label();
+        drillToLabel.background({fill: "#9E9E9E"});
+        drillToLabel.text("Drill to Canada map.");
+        drillToLabel.fontColor("#fff");
+        drillToLabel.parentBounds(0, 0, 100, 100);
+        drillToLabel.padding(5);
+        drillToLabel.zIndex(1000);
+        drillToLabel.listen("click", function () {
+
+            // Drill down to specified map.
+            chart.drillTo("CA", canadaMap);
+
+        });
+        drillToLabel.container(stage);
+        drillToLabel.draw();
+
+        var drillUpLabel = anychart.standalones.label();
+        drillUpLabel.background({fill: "#9E9E9E"});
+        drillUpLabel.text("Drill up.");
+        drillUpLabel.fontColor("#fff");
+        drillUpLabel.parentBounds(0, 30, 100, 100);
+        drillUpLabel.padding(5);
+        drillUpLabel.zIndex(1000);
+        drillUpLabel.listen("click", function () {
+
+            // Drill up to one map level.
+            chart.drillUp();
+
+        });
+        drillUpLabel.container(stage);
+        drillUpLabel.draw();
+    });
+</script>
 </body>
 </html>

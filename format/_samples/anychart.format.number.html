@@ -1,32 +1,45 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta name="x-cat-tags" content="pie anyChart"/>
-    <meta charset="UTF-8"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.pie([
-                {name: 'Point 1', value: 230000},
-                {name: 'Point 2', value: 204524.489354},
-                {name: 'Point 3', value: 235401.56923},
-                {name: 'Point 4', value: 132135},
-                {name: 'Point 5', value: 102427},
-                {name: 'Point 6', value: 310846}
-            ]);
-            var labels = chart.labels();
-            labels.format(function() {
+    <meta name="ac:name" content="anychart.format.number"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
 
-                // Set format for number.
-                return anychart.format.number(this.value, 3, ".", ",")
-            });
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            chart.title("Set format for number");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.pie([
+            {name: 'Point 1', value: 230000},
+            {name: 'Point 2', value: 204524.489354},
+            {name: 'Point 3', value: 235401.56923},
+            {name: 'Point 4', value: 132135},
+            {name: 'Point 5', value: 102427},
+            {name: 'Point 6', value: 310846}
+        ]);
+        var labels = chart.labels();
+        labels.format(function () {
+
+            // Set format for number.
+            return anychart.format.number(this.value, 3, ".", ",")
+        });
+
+        chart.title("Set format for number");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

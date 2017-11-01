@@ -1,33 +1,50 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.core.Chart.toCsv"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
 
-            var lineChart = anychart.line([1.1, 1.4, 1.2, 1.6]);
-            lineChart.bounds(0, 0, "50%", "100%");
-            lineChart.container(stage);
-            lineChart.draw();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            // Get chart data as CSV with parameters.
-            var csvData = lineChart.toCsv("specific", {"rowsSeparator": "\n", "columnsSeparator": ",", "ignoreFirstRow": true});
-
-            var columnChart = anychart.column(csvData);
-            columnChart.bounds("50%", 0, "50%", "100%");
-            columnChart.container(stage);
-            columnChart.draw();
-
-            var customTitle = anychart.standalones.title();
-            customTitle.text("Get data as CSV with predefined settings and use.");
-            customTitle.container(stage);
-            customTitle.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        var lineChart = anychart.line([1.1, 1.4, 1.2, 1.6]);
+        lineChart.bounds(0, 0, "50%", "100%");
+        lineChart.container(stage);
+        lineChart.draw();
+
+        // Get chart data as CSV with parameters.
+        var csvData = lineChart.toCsv("specific", {
+            "rowsSeparator": "\n",
+            "columnsSeparator": ",",
+            "ignoreFirstRow": true
+        });
+
+        var columnChart = anychart.column(csvData);
+        columnChart.bounds("50%", 0, "50%", "100%");
+        columnChart.container(stage);
+        columnChart.draw();
+
+        var customTitle = anychart.standalones.title();
+        customTitle.text("Get data as CSV with predefined settings and use.");
+        customTitle.container(stage);
+        customTitle.draw();
+    });
+</script>
 </body>
 </html>

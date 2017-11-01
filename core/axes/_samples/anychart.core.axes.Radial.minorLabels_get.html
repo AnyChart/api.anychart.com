@@ -1,28 +1,41 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="polar line anyChart"/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.polar();
-            chart.line([6, 1, 6, 1, 6, 1]);
+    <meta name="ac:name" content="anychart.core.axes.Radial.minorLabels get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
 
-            var yAxis = chart.yAxis();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            // Get minor labels.
-            var minorLabelsSettings = yAxis.minorLabels();
-            minorLabelsSettings.enabled(true);
-            minorLabelsSettings.fontSize(14);
-            minorLabelsSettings.fontColor("#009688");
-
-            chart.title("Get and modify minor labels");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.polar();
+        chart.line([6, 1, 6, 1, 6, 1]);
+
+        var yAxis = chart.yAxis();
+
+        // Get minor labels.
+        var minorLabelsSettings = yAxis.minorLabels();
+        minorLabelsSettings.enabled(true);
+        minorLabelsSettings.fontSize(14);
+        minorLabelsSettings.fontColor("#009688");
+
+        chart.title("Get and modify minor labels");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

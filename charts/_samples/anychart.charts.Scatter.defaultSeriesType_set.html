@@ -1,29 +1,42 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="scatter line anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var data1 = [40, 30, 40, 30, 40, 30, 40, 30];
-            var data2 = [23, 41, 23, 41, 23, 11, 23, 5];
-            var data3 = [60, 10, 60, 15, 60, 20, 60, 25];
+    <meta name="ac:name" content="anychart.charts.Scatter.defaultSeriesType set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
 
-            chart = anychart.scatter();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            chart.addSeries(data1);
-
-            // Set default series type.
-            chart.defaultSeriesType("line");
-
-            chart.addSeries(data2, data3);
-            chart.title("Change default series type added by addSeries method");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var data1 = [40, 30, 40, 30, 40, 30, 40, 30];
+        var data2 = [23, 41, 23, 41, 23, 11, 23, 5];
+        var data3 = [60, 10, 60, 15, 60, 20, 60, 25];
+
+        var chart = anychart.scatter();
+
+        chart.addSeries(data1);
+
+        // Set default series type.
+        chart.defaultSeriesType("line");
+
+        chart.addSeries(data2, data3);
+        chart.title("Change default series type added by addSeries method");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

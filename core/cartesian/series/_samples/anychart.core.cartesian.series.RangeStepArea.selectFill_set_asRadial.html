@@ -1,36 +1,49 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="rangeStepArea anyChart"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.area();
+    <meta name="ac:name" content="anychart.core.cartesian.series.RangeStepArea.selectFill set asRadial"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
 
-            var series = chart.rangeStepArea([
-                {x: "January", low: 3093, high: 19522},
-                {x: "February", low: 8205, high: 32622},
-                {x: "March", low: 4019, high: 41612},
-                {x: "April", low: 6920, high: 53752},
-                {x: "May", low: 12684, high: 31917},
-                {x: "June", low: 14924, high: 42052},
-                {x: "July", low: 7933, high: 69812},
-                {x: "August", low: 15573, high: 59922}
-            ]);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            // Set select fill.
-            series.selectFill(["#FEFEFE", "#424242"], 0.6, 0.5, null, 0.8, 0.9, 0.71);
-
-            // Selects series.
-            series.select();
-
-            chart.title("Set select fill as a radial gradient");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.area();
+
+        var series = chart.rangeStepArea([
+            {x: "January", low: 3093, high: 19522},
+            {x: "February", low: 8205, high: 32622},
+            {x: "March", low: 4019, high: 41612},
+            {x: "April", low: 6920, high: 53752},
+            {x: "May", low: 12684, high: 31917},
+            {x: "June", low: 14924, high: 42052},
+            {x: "July", low: 7933, high: 69812},
+            {x: "August", low: 15573, high: 59922}
+        ]);
+
+        // Set select fill.
+        series.selectFill(["#FEFEFE", "#424242"], 0.6, 0.5, null, 0.8, 0.9, 0.71);
+
+        // Selects series.
+        series.select();
+
+        chart.title("Set select fill as a radial gradient");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

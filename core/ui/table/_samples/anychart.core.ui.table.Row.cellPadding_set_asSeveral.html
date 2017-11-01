@@ -1,35 +1,48 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="table anyChart anyGantt anyStock anyMap"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.core.ui.table.Row.cellPadding set asSeveral"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
 
-            var table = anychart.standalones.table();
-            table.contents([
-                [1, 2, 3],
-                [4, null, 6],
-                [7, 8, 9]
-            ]);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            var cell = table.getCell(1, 1);
-
-            var label = anychart.standalones.label();
-            cell.content(label.background("#C8E6C9"));
-
-            var row = table.getRow(1);
-
-            // Set padding.
-            row.cellPadding(15, 0, 0, -5);
-
-            table.container(stage);
-            table.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        var table = anychart.standalones.table();
+        table.contents([
+            [1, 2, 3],
+            [4, null, 6],
+            [7, 8, 9]
+        ]);
+
+        var cell = table.getCell(1, 1);
+
+        var label = anychart.standalones.label();
+        cell.content(label.background("#C8E6C9"));
+
+        var row = table.getRow(1);
+
+        // Set padding.
+        row.cellPadding(15, 0, 0, -5);
+
+        table.container(stage);
+        table.draw();
+    });
+</script>
 </body>
 </html>

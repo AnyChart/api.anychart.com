@@ -1,42 +1,55 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="polar line area anyChart"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var formatterFunc = function() {
-                return this.seriesName;
-            };
+    <meta name="ac:name" content="anychart.core.polar.series.Base.name set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
 
-            chart = anychart.polar();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            var seriesArea = chart.area([7, 4, 7, 4, 7, 4, 7, 4]);
-            seriesArea.color("#008000");
-            seriesArea.markers(true);
-
-            var seriesBlueLine = chart.line([10, 5, 10, 5, 10, 5, 10, 5]);
-            seriesBlueLine.markers(true);
-
-            // Set name.
-            seriesBlueLine.name("My Custom series name");
-
-            var blueLineTooltip = seriesBlueLine.tooltip();
-            blueLineTooltip.format(formatterFunc);
-
-            var seriesOrangeLine = chart.line([3, 2, 3, 2, 3]);
-            seriesOrangeLine.markers(true);
-
-            var orangeLineTooltip = seriesOrangeLine.tooltip();
-            orangeLineTooltip.format(formatterFunc);
-
-            chart.title("Set series name");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var formatterFunc = function () {
+            return this.seriesName;
+        };
+
+        var chart = anychart.polar();
+
+        var seriesArea = chart.area([7, 4, 7, 4, 7, 4, 7, 4]);
+        seriesArea.color("#008000");
+        seriesArea.markers(true);
+
+        var seriesBlueLine = chart.line([10, 5, 10, 5, 10, 5, 10, 5]);
+        seriesBlueLine.markers(true);
+
+        // Set name.
+        seriesBlueLine.name("My Custom series name");
+
+        var blueLineTooltip = seriesBlueLine.tooltip();
+        blueLineTooltip.format(formatterFunc);
+
+        var seriesOrangeLine = chart.line([3, 2, 3, 2, 3]);
+        seriesOrangeLine.markers(true);
+
+        var orangeLineTooltip = seriesOrangeLine.tooltip();
+        orangeLineTooltip.format(formatterFunc);
+
+        chart.title("Set series name");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

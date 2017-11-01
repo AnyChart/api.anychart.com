@@ -1,45 +1,58 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="bubble anyChart"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.bubble();
-            chart.yScale().maximum(3.6);
+    <meta name="ac:name" content="anychart.core.cartesian.series.Bubble.selectHatchFill get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
 
-            var firstSeries = chart.bubble([
-                {x: 1, value: 2, size: 1},
-                {x: 2, value: 2, size: 3},
-                {x: 3, value: 2, size: 2},
-                {x: 4, value: 2, size: 1}
-            ]);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            firstSeries.selectHatchFill("horizontal", "#FFFFFF", 2, 20);
-
-            var secondSeries = chart.bubble([
-                {x: 1, value: 3, size: 3},
-                {x: 2, value: 3, size: 1},
-                {x: 3, value: 3, size: 3},
-                {x: 4, value: 3, size: 4}
-            ]);
-
-            // Selects series.
-            firstSeries.select();
-            secondSeries.select();
-
-            // Get select hatch fill.
-            var selectedHatchFill = firstSeries.selectHatchFill();
-
-            secondSeries.selectHatchFill(selectedHatchFill);
-
-            chart.title("Get and use select hatch fill");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.bubble();
+        chart.yScale().maximum(3.6);
+
+        var firstSeries = chart.bubble([
+            {x: 1, value: 2, size: 1},
+            {x: 2, value: 2, size: 3},
+            {x: 3, value: 2, size: 2},
+            {x: 4, value: 2, size: 1}
+        ]);
+
+        firstSeries.selectHatchFill("horizontal", "#FFFFFF", 2, 20);
+
+        var secondSeries = chart.bubble([
+            {x: 1, value: 3, size: 3},
+            {x: 2, value: 3, size: 1},
+            {x: 3, value: 3, size: 3},
+            {x: 4, value: 3, size: 4}
+        ]);
+
+        // Selects series.
+        firstSeries.select();
+        secondSeries.select();
+
+        // Get select hatch fill.
+        var selectedHatchFill = firstSeries.selectHatchFill();
+
+        secondSeries.selectHatchFill(selectedHatchFill);
+
+        chart.title("Get and use select hatch fill");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

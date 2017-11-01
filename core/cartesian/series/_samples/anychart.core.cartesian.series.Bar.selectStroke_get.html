@@ -1,34 +1,47 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="bar anyChart"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.cartesian();
+    <meta name="ac:name" content="anychart.core.cartesian.series.Bar.selectStroke get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
 
-            var series = chart.bar([
-                {x: "January", value: 2},
-                {x: "February", value: 5},
-                {x: "March", value: 3},
-                {x: "April", value: 9},
-                {x: "May", value: 4}
-            ]);
-            series.selectStroke("#4CAF50");
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            // Get select stroke settings.
-            var selectSeriesStroke = series.selectStroke();
-
-            // Selects series.
-            series.select();
-
-            chart.title({fontColor: selectSeriesStroke, text: "Get and use select stroke"});
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.cartesian();
+
+        var series = chart.bar([
+            {x: "January", value: 2},
+            {x: "February", value: 5},
+            {x: "March", value: 3},
+            {x: "April", value: 9},
+            {x: "May", value: 4}
+        ]);
+        series.selectStroke("#4CAF50");
+
+        // Get select stroke settings.
+        var selectSeriesStroke = series.selectStroke();
+
+        // Selects series.
+        series.select();
+
+        chart.title({fontColor: selectSeriesStroke, text: "Get and use select stroke"});
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

@@ -1,48 +1,61 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <script src="../../anychart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/mongolia/mongolia.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/canada/canada.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js" data-export="true"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            // All maps created with geoData() method work only if you referenced a proper map
-            // source file as described at https://docs.anychart.com/Maps/Quick_Start
+    <meta name="ac:name" content="anychart.core.MapPoint.getCurrentChart"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/mongolia/mongolia.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/canada/canada.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>
 
-            // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
-            // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
 
-            var worldDataSet = anychart.data.set([
-                {id: "CA", name: "Canada", value: "A1"},
-                {id: "MN", name: "Mongolia", value: "A1"}
-            ]);
-
-            var canadaMap = anychart.map();
-            canadaMap.geoData(anychart.maps.canada);
-
-            chart = anychart.map();
-            chart.geoData(anychart.maps.world);
-            chart.choropleth(worldDataSet);
-
-            chart.listen("drillChange", function(){
-                var path = chart.getDrilldownPath();
-
-                // Get the current chart.
-                var pointChart = path[0].getCurrentChart();
-
-                pointChart.title("Get and modify point chart.");
-            });
-
-            chart.container("container");
-            chart.draw();
-            chart.drillTo("CA", canadaMap);
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        // All maps created with geoData() method work only if you referenced a proper map
+        // source file as described at https://docs.anychart.com/Maps/Quick_Start
+
+        // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+        // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+
+        var worldDataSet = anychart.data.set([
+            {id: "CA", name: "Canada", value: "A1"},
+            {id: "MN", name: "Mongolia", value: "A1"}
+        ]);
+
+        var canadaMap = anychart.map();
+        canadaMap.geoData(anychart.maps.canada);
+
+        var chart = anychart.map();
+        chart.geoData(anychart.maps.world);
+        chart.choropleth(worldDataSet);
+
+        chart.listen("drillChange", function () {
+            var path = chart.getDrilldownPath();
+
+            // Get the current chart.
+            var pointChart = path[0].getCurrentChart();
+
+            pointChart.title("Get and modify point chart.");
+        });
+
+        chart.container("container");
+        chart.draw();
+        chart.drillTo("CA", canadaMap);
+    });
+</script>
 </body>
 </html>
