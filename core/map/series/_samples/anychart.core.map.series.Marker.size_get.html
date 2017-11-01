@@ -1,41 +1,54 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="map"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script src="https://cdn.anychart.com/geodata/1.1.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="australiaMap">
-        anychart.onDocumentReady(function () {
-            var dataSet = anychart.data.set([
-                {size: 15,lat: -32.02271031624713,  long: 115.78957183886466},
-                {size: 23,lat: -12.572922477560256, long: 130.97766632589966},
-                {size: 86,lat: -23.907188700880287, long: 135.46069114224585},
-                {size: 16,lat: -17.714243724653496, long: 145.5373799079046},
-                {size: 32,lat: -25.400254403094834, long: 152.9941875434883},
-                {size: 64,lat: -33.76805924183775,  long: 151.16353568138263},
-                {size: 28,lat: -36.116205467018524, long: 149.76119786329127},
-                {size: 45,lat: -38.252688541798186, long: 145.1545241945089},
-                {size: 15, lat: -42.79851431917091,  long: 147.42539893261593}
-            ]);
-
-            australiaMap = anychart.map();
-            australiaMap.geoData(anychart.maps.australia);
-
-            var series = australiaMap.marker(dataSet);
-            series.tooltip({title: false, separator: false});
-
-            // Gets marker size.
-            var markerSize = series.size();
-
-            series.size(markerSize + 5);
-
-            australiaMap.title("Marker size increased by 5px.");
-            australiaMap.container("container");
-            australiaMap.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.core.map.series.Marker.size get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.10.0/anychart-bundle.min.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.1.0/countries/australia/australia.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function () {
+    var dataSet = anychart.data.set([
+        {size: 15,lat: -32.02271031624713,  long: 115.78957183886466},
+        {size: 23,lat: -12.572922477560256, long: 130.97766632589966},
+        {size: 86,lat: -23.907188700880287, long: 135.46069114224585},
+        {size: 16,lat: -17.714243724653496, long: 145.5373799079046},
+        {size: 32,lat: -25.400254403094834, long: 152.9941875434883},
+        {size: 64,lat: -33.76805924183775,  long: 151.16353568138263},
+        {size: 28,lat: -36.116205467018524, long: 149.76119786329127},
+        {size: 45,lat: -38.252688541798186, long: 145.1545241945089},
+        {size: 15, lat: -42.79851431917091,  long: 147.42539893261593}
+    ]);
+
+    var australiaMap = anychart.map();
+    australiaMap.geoData(anychart.maps.australia);
+
+    var series = australiaMap.marker(dataSet);
+    series.tooltip({title: false, separator: false});
+
+    // Gets marker size.
+    var markerSize = series.size();
+
+    series.size(markerSize + 5);
+
+    australiaMap.title("Marker size increased by 5px.");
+    australiaMap.container("container");
+    australiaMap.draw();
+});
+</script>
 </body>
 </html>

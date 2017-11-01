@@ -1,31 +1,44 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="background"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
-
-            var greyBackground = anychart.ui.background();
-            greyBackground.fill("#2196F3");
-            greyBackground.parentBounds(0, 0, 200, 200);
-            greyBackground.container(stage);
-            greyBackground.draw();
-
-            // Gets parent bounds.
-            var currentParentBounds = greyBackground.parentBounds();
-
-            var brownBackground = anychart.ui.background();
-            brownBackground.fill("#F44336 0.7");
-            brownBackground.corners(100);
-            brownBackground.parentBounds(currentParentBounds);
-            brownBackground.container(stage);
-            brownBackground.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.ui.Background.parentBounds get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.10.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var stage = anychart.graphics.create("container");
+
+    var greyBackground = anychart.ui.background();
+    greyBackground.fill("#2196F3");
+    greyBackground.parentBounds(0, 0, 200, 200);
+    greyBackground.container(stage);
+    greyBackground.draw();
+
+    // Gets parent bounds.
+    var currentParentBounds = greyBackground.parentBounds();
+
+    var brownBackground = anychart.ui.background();
+    brownBackground.fill("#F44336 0.7");
+    brownBackground.corners(100);
+    brownBackground.parentBounds(currentParentBounds);
+    brownBackground.container(stage);
+    brownBackground.draw();
+});
+</script>
 </body>
 </html>

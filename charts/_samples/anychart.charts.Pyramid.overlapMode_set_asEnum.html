@@ -1,27 +1,40 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="pyramid"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var dataSet = anychart.data.set([
-                {x: "Physical", value: 59.2},
-                {x: "Data Link", value: 24.9},
-                {x: "Network", value: 8.9},
-                {x: "Transport", value: 3.8},
-                {x: "Session", value: 1.9},
-                {x: "Presentation", value: 1.8},
-                {x: "Application", value: 1.4}
-            ]);
-            chart = anychart.pyramid(dataSet);
-            chart.overlapMode(anychart.enums.LabelsOverlapMode.ALLOW_OVERLAP); // sets overlap mode
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.charts.Pyramid.overlapMode set asEnum"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.10.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var dataSet = anychart.data.set([
+        {x: "Physical", value: 59.2},
+        {x: "Data Link", value: 24.9},
+        {x: "Network", value: 8.9},
+        {x: "Transport", value: 3.8},
+        {x: "Session", value: 1.9},
+        {x: "Presentation", value: 1.8},
+        {x: "Application", value: 1.4}
+    ]);
+    var chart = anychart.pyramid(dataSet);
+    chart.overlapMode(anychart.enums.LabelsOverlapMode.ALLOW_OVERLAP); // sets overlap mode
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>
