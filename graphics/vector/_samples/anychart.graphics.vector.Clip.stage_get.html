@@ -1,26 +1,39 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content=""/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            var stage = anychart.graphics.create("container");
-
-            var clip = anychart.graphics.clip(5, 1, 30, 30);
-            clip.stage(stage);
-
-            var circle = anychart.graphics.circle(50, 50, 45);
-
-            // Gets clip stage.
-            var currentClipStage = clip.stage();
-
-            circle.parent(currentClipStage);
-            circle.clip(clip);
-        });
-    </script>
+    <meta name="ac:name" content="anychart.graphics.vector.Clip.stage get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.6.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.6.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var stage = anychart.graphics.create("container");
+
+    var clip = anychart.graphics.clip(5, 1, 30, 30);
+    clip.stage(stage);
+
+    var circle = anychart.graphics.circle(50, 50, 45);
+
+    // Gets clip stage.
+    var currentClipStage = clip.stage();
+
+    circle.parent(currentClipStage);
+    circle.clip(clip);
+});
+</script>
 </body>
 </html>

@@ -1,27 +1,40 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line label"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var chart = anychart.line([4, 2, 12]);
-            var currentLabel = chart.label();
-            currentLabel.background(true);
-            currentLabel.text("Save image");
-            currentLabel.fontColor("#fff");
-            currentLabel.padding(5);
-            currentLabel.offsetX(5);
-            currentLabel.listen("click", function() {
-                // Saves image into PNG file.
-                chart.saveAsPng(1000, 1000, 0.9);
-            });
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.core.VisualBase.saveAsPng"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.6.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.6.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var chart = anychart.line([4, 2, 12]);
+    var currentLabel = chart.label();
+    currentLabel.background(true);
+    currentLabel.text("Save image");
+    currentLabel.fontColor("#fff");
+    currentLabel.padding(5);
+    currentLabel.offsetX(5);
+    currentLabel.listen("click", function() {
+        // Saves image into PNG file.
+        chart.saveAsPng(1000, 1000, 0.9);
+    });
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>

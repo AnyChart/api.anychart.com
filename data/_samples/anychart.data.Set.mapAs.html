@@ -1,29 +1,42 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="column"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var dataSet = anychart.data.set([
-                [11, 18, 1, "#F44336 0.5", "#E91E63 .5"],
-                [21, 15, 2, "#4CAF50 0.5", "#8BC34A"],
-                [14, 16, 3, "#03A9F4 0.5", "#00BCD4"],
-                {value: 17, x: 4, fill: "#80CBC4"}
-            ]);
-            var firstData = dataSet.mapAs({"value": [0], "x": [2], "fill": [3]}); // sets mapping
-            var secondData = dataSet.mapAs({"value": [1], "x": [2], "fill": [4]}); // sets mapping
-            var chart = anychart.column();
-            chart.column(firstData);
-            chart.column(secondData);
-            var yScale = chart.yScale();
-            yScale.minimum(0);
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.data.Set.mapAs"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.6.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.6.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var dataSet = anychart.data.set([
+        [11, 18, 1, "#F44336 0.5", "#E91E63 .5"],
+        [21, 15, 2, "#4CAF50 0.5", "#8BC34A"],
+        [14, 16, 3, "#03A9F4 0.5", "#00BCD4"],
+        {value: 17, x: 4, fill: "#80CBC4"}
+    ]);
+    var firstData = dataSet.mapAs({"value": [0], "x": [2], "fill": [3]}); // sets mapping
+    var secondData = dataSet.mapAs({"value": [1], "x": [2], "fill": [4]}); // sets mapping
+    var chart = anychart.column();
+    chart.column(firstData);
+    chart.column(secondData);
+    var yScale = chart.yScale();
+    yScale.minimum(0);
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>

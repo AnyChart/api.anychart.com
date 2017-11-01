@@ -1,27 +1,40 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="column"/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var chart = anychart.column();
-            var series = chart.column([12, 25, 18, 29]);
-            var labels = series.labels();
-            labels.enabled(true);
-            labels.height(14);
-            labels.background({fill: "#FFFFFF"});
-            labels.textFormatter(function() {
-                return "Value: " + this.value
-            });
-            var minFontSize = labels.minFontSize(); // get minimum font size
-            chart.title("Minimum font size - " + minFontSize);
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.core.ui.LabelsFactory.minFontSize get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.6.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.6.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var chart = anychart.column();
+    var series = chart.column([12, 25, 18, 29]);
+    var labels = series.labels();
+    labels.enabled(true);
+    labels.height(14);
+    labels.background({fill: "#FFFFFF"});
+    labels.textFormatter(function() {
+        return "Value: " + this.value
+    });
+    var minFontSize = labels.minFontSize(); // get minimum font size
+    chart.title("Minimum font size - " + minFontSize);
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>
