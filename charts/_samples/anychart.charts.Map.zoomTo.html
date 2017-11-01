@@ -1,51 +1,64 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <script src="../../anychart.min.js"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
-
-            var australiaMap = anychart.map();
-            australiaMap.geoData(anychart.maps.australia);
-            australiaMap.unboundRegions({fill: "#64b5f6"});
-            australiaMap.geoIdField("code_hasc");
-            australiaMap.title("Zoom map.");
-            australiaMap.container(stage);
-            australiaMap.draw();
-
-            createLabel("2x Zoom", 0, function() {
-
-                // Zoom map 2 times from the current.
-                // Calling ot several times.
-                // Increases zoom by a factor.
-                australiaMap.zoom(2);
-            });
-
-            createLabel("1x Zoom", 30, function() {
-
-                // Set 1x Zoom Level.
-                // Calling it several times does not change zoom level.
-                australiaMap.zoomTo(1);
-            });
-        });
-
-        function createLabel(text, offset, action){
-            var customLabel = anychart.ui.label();
-            customLabel.text(text);
-            customLabel.parentBounds(0, offset, 100, 100);
-            customLabel.listen("click", action);
-            customLabel.background({fill: "#9E9E9E"});
-            customLabel.fontColor("#fff");
-            customLabel.padding(5);
-            customLabel.container(stage);
-            customLabel.draw();
+    <meta name="ac:name" content="anychart.charts.Map.zoomTo"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.11.0/anychart-bundle.min.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
-    </script>
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var stage = anychart.graphics.create("container");
+
+    var australiaMap = anychart.map();
+    australiaMap.geoData(anychart.maps.australia);
+    australiaMap.unboundRegions({fill: "#64b5f6"});
+    australiaMap.geoIdField("code_hasc");
+    australiaMap.title("Zoom map.");
+    australiaMap.container(stage);
+    australiaMap.draw();
+
+    createLabel("2x Zoom", 0, function() {
+
+        // Zoom map 2 times from the current.
+        // Calling ot several times.
+        // Increases zoom by a factor.
+        australiaMap.zoom(2);
+    });
+
+    createLabel("1x Zoom", 30, function() {
+
+        // Set 1x Zoom Level.
+        // Calling it several times does not change zoom level.
+        australiaMap.zoomTo(1);
+    });
+});
+
+function createLabel(text, offset, action){
+    var customLabel = anychart.ui.label();
+    customLabel.text(text);
+    customLabel.parentBounds(0, offset, 100, 100);
+    customLabel.listen("click", action);
+    customLabel.background({fill: "#9E9E9E"});
+    customLabel.fontColor("#fff");
+    customLabel.padding(5);
+    customLabel.container(stage);
+    customLabel.draw();
+}
+</script>
 </body>
 </html>

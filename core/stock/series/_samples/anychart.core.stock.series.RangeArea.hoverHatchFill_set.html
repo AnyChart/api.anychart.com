@@ -1,36 +1,49 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyStock"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js" data-export="true"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var dataTable = anychart.data.table();
-            dataTable.addData(get_dji_daily_short_data());
-
-            var mapping = dataTable.mapAs({
-                high: 1,
-                low: 3
-            });
-
-            chart = anychart.stock();
-            chart.padding(10, 10, 10, 50);
-
-            var currentPlot = chart.plot();
-
-            var series = currentPlot.rangeArea(mapping);
-
-            // Set hover hatch fill.
-            series.hoverHatchFill("grid", "#212121", 1, 11);
-
-            chart.title("Set hover hatch fill parameters. Hover on the legend.");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.core.stock.series.RangeArea.hoverHatchFill set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.11.0/anychart-bundle.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var dataTable = anychart.data.table();
+    dataTable.addData(get_dji_daily_short_data());
+
+    var mapping = dataTable.mapAs({
+        high: 1,
+        low: 3
+    });
+
+    var chart = anychart.stock();
+    chart.padding(10, 10, 10, 50);
+
+    var currentPlot = chart.plot();
+
+    var series = currentPlot.rangeArea(mapping);
+
+    // Set hover hatch fill.
+    series.hoverHatchFill("grid", "#212121", 1, 11);
+
+    chart.title("Set hover hatch fill parameters. Hover on the legend.");
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>

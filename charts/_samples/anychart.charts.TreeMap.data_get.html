@@ -1,46 +1,59 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="treeMap anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            var data = [
-                {id: 'Eurasia', parent: null},
-                {id: 'Asia', parent: 'Eurasia'},
-                {id: 'Eastern Asia', parent: 'Asia'},
-                {id: 'Mongolia', parent: 'Eastern Asia', value: 1564116, capital: 'Ulan-Bator'},
-                {id: 'China', parent: 'Eastern Asia', value: 1564116, capital: 'Beijing'},
-                {id: 'Southern Korea', parent: 'Eastern Asia', value: 1564116, capital: 'Seoul'},
-                {id: 'Northern Korea', parent: 'Eastern Asia', value: 120540, capital: 'Pyongyang'},
-                {id: 'Japan', parent: 'Eastern Asia', value: 1564116, capital: 'Tokio'},
-                {id: 'Europe', parent: 'Eurasia'},
-                {id: 'Northern Europe', parent: 'Europe'},
-                {id: 'Finland', parent: 'Northern Europe', value: 338424, capital: 'Helsinki'},
-                {id: 'Great Britain', parent: 'Northern Europe', value: 209331, capital: 'London'},
-                {id: 'Ireland', parent: 'Northern Europe', value: 84421, capital: 'Dublin'},
-                {id: 'Scandinavia', parent: 'Northern Europe', value: 928057}];
-
-            var treeData = anychart.data.tree(data, "asTable");
-
-            chart = anychart.treeMap();
-            chart.data(treeData);
-
-            // Get data.
-            var currentData = chart.data();
-
-            var newData = [{id: 'Hokkaido', parent: 'Japan', value: 83400}];
-
-            var addData = currentData.addData(newData, "asTable");
-
-            chart.data(addData);
-            chart.title("Get and modify data.");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.charts.TreeMap.data get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.11.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function () {
+    var data = [
+        {id: 'Eurasia', parent: null},
+        {id: 'Asia', parent: 'Eurasia'},
+        {id: 'Eastern Asia', parent: 'Asia'},
+        {id: 'Mongolia', parent: 'Eastern Asia', value: 1564116, capital: 'Ulan-Bator'},
+        {id: 'China', parent: 'Eastern Asia', value: 1564116, capital: 'Beijing'},
+        {id: 'Southern Korea', parent: 'Eastern Asia', value: 1564116, capital: 'Seoul'},
+        {id: 'Northern Korea', parent: 'Eastern Asia', value: 120540, capital: 'Pyongyang'},
+        {id: 'Japan', parent: 'Eastern Asia', value: 1564116, capital: 'Tokio'},
+        {id: 'Europe', parent: 'Eurasia'},
+        {id: 'Northern Europe', parent: 'Europe'},
+        {id: 'Finland', parent: 'Northern Europe', value: 338424, capital: 'Helsinki'},
+        {id: 'Great Britain', parent: 'Northern Europe', value: 209331, capital: 'London'},
+        {id: 'Ireland', parent: 'Northern Europe', value: 84421, capital: 'Dublin'},
+        {id: 'Scandinavia', parent: 'Northern Europe', value: 928057}];
+
+    var treeData = anychart.data.tree(data, "asTable");
+
+    var chart = anychart.treeMap();
+    chart.data(treeData);
+
+    // Get data.
+    var currentData = chart.data();
+
+    var newData = [{id: 'Hokkaido', parent: 'Japan', value: 83400}];
+
+    var addData = currentData.addData(newData, "asTable");
+
+    chart.data(addData);
+    chart.title("Get and modify data.");
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>

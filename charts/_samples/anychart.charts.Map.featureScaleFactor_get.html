@@ -1,44 +1,57 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <script src="../../anychart.min.js"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/france/france.js" data-export="true"></script>
-    <script x-export="franceMap">
-        anychart.onDocumentReady(function () {
-            var dataSet = anychart.data.set([
-                {size: 1, lat: 48.04677871103531, long: -2.12443548026414},
-                {size: 1, lat: 45.85025102963345, long: -0.05555902937648371},
-                {size: 1, lat: 44.13282017031969, long: -0.6331316557379023},
-                {size: 1, lat: 48.91155589239087, long: -0.2614383795630683},
-                {size: 1, lat: 45.36178266437175, long: 3.1661777399148257},
-                {size: 1, lat: 47.3951601027151, long: 4.075436176363208},
-                {size: 1, lat: 50.55433223847086, long: 2.5190009490829643},
-                {size: 1, lat: 49.83217874244316, long: 2.0566302263277305},
-                {size: 1, lat: 41.9617928275597, long: 9.042687600355316},
-                {size: 1, lat: 4.346042402087561, long: -53.23436574621244},
-                {size: 1, lat: 48.741317232748585, long: 7.532229957512638},
-                {size: 2, lat: 45.53208569742555, long :5.531768794196096}
-            ]);
-
-            franceMap = anychart.map();
-            franceMap.geoData(anychart.maps.france);
-            franceMap.geoIdField("insee_cl");
-
-            franceMap.bubble(dataSet);
-            franceMap.maxBubbleSize("5%");
-            franceMap.minBubbleSize("3%");
-            franceMap.container("container");
-            franceMap.draw();
-
-            // Get the scale of the feature.
-            var ratio = franceMap.featureScaleFactor("2A004");
-
-            franceMap.title("The current scale ratio is " + ratio + ".");
-        });
-    </script>
+    <meta name="ac:name" content="anychart.charts.Map.featureScaleFactor get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.11.0/anychart-bundle.min.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/france/france.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function () {
+    var dataSet = anychart.data.set([
+        {size: 1, lat: 48.04677871103531, long: -2.12443548026414},
+        {size: 1, lat: 45.85025102963345, long: -0.05555902937648371},
+        {size: 1, lat: 44.13282017031969, long: -0.6331316557379023},
+        {size: 1, lat: 48.91155589239087, long: -0.2614383795630683},
+        {size: 1, lat: 45.36178266437175, long: 3.1661777399148257},
+        {size: 1, lat: 47.3951601027151, long: 4.075436176363208},
+        {size: 1, lat: 50.55433223847086, long: 2.5190009490829643},
+        {size: 1, lat: 49.83217874244316, long: 2.0566302263277305},
+        {size: 1, lat: 41.9617928275597, long: 9.042687600355316},
+        {size: 1, lat: 4.346042402087561, long: -53.23436574621244},
+        {size: 1, lat: 48.741317232748585, long: 7.532229957512638},
+        {size: 2, lat: 45.53208569742555, long :5.531768794196096}
+    ]);
+
+    var franceMap = anychart.map();
+    franceMap.geoData(anychart.maps.france);
+    franceMap.geoIdField("insee_cl");
+
+    franceMap.bubble(dataSet);
+    franceMap.maxBubbleSize("5%");
+    franceMap.minBubbleSize("3%");
+    franceMap.container("container");
+    franceMap.draw();
+
+    // Get the scale of the feature.
+    var ratio = franceMap.featureScaleFactor("2A004");
+
+    franceMap.title("The current scale ratio is " + ratio + ".");
+});
+</script>
 </body>
 </html>

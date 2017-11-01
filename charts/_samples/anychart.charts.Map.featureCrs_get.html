@@ -1,43 +1,56 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <script src="../../anychart.min.js"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="australiaMap">
-        anychart.onDocumentReady(function () {
-            var dataSet = anychart.data.set([
-                {size: 15, lat: -25.4245797891887, long: 121.73003277517734},
-                {size: 23, lat: -20.842288342048022, long: 133.7146679904298},
-                {size: 86, lat: -22.779121862616446, long: 144.45737585127495},
-                {size: 16, lat: -29.779790768543343, long: 134.69909260626144},
-                {size: 32, lat: -32.04024487366401, long: 146.39502782919635},
-                {size: 4, lat: -35.61202679648162, long: 148.96827292327762},
-                {size: 28, lat: -37.16639446600688, long: 144.12947319162336},
-                {size: 10, lat: -42.18378853089303, long: 146.1923695042304}
-            ]);
-
-            var dataSetForSeries = dataSet.mapAs({id: "id"});
-
-            australiaMap = anychart.map();
-            australiaMap.geoData(anychart.maps.australia);
-
-            australiaMap.bubble(dataSetForSeries);
-            australiaMap.maxBubbleSize("5%");
-            australiaMap.minBubbleSize("3%");
-
-            australiaMap.geoIdField("code_hasc");
-            australiaMap.title("Get feature crs.");
-            australiaMap.container("container");
-            australiaMap.draw();
-
-            // Get crs for the feature.
-            var crs = australiaMap.featureCrs("AU.WA");
-            // Do something.
-        });
-    </script>
+    <meta name="ac:name" content="anychart.charts.Map.featureCrs get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.11.0/anychart-bundle.min.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function () {
+    var dataSet = anychart.data.set([
+        {size: 15, lat: -25.4245797891887, long: 121.73003277517734},
+        {size: 23, lat: -20.842288342048022, long: 133.7146679904298},
+        {size: 86, lat: -22.779121862616446, long: 144.45737585127495},
+        {size: 16, lat: -29.779790768543343, long: 134.69909260626144},
+        {size: 32, lat: -32.04024487366401, long: 146.39502782919635},
+        {size: 4, lat: -35.61202679648162, long: 148.96827292327762},
+        {size: 28, lat: -37.16639446600688, long: 144.12947319162336},
+        {size: 10, lat: -42.18378853089303, long: 146.1923695042304}
+    ]);
+
+    var dataSetForSeries = dataSet.mapAs({id: "id"});
+
+    var australiaMap = anychart.map();
+    australiaMap.geoData(anychart.maps.australia);
+
+    australiaMap.bubble(dataSetForSeries);
+    australiaMap.maxBubbleSize("5%");
+    australiaMap.minBubbleSize("3%");
+
+    australiaMap.geoIdField("code_hasc");
+    australiaMap.title("Get feature crs.");
+    australiaMap.container("container");
+    australiaMap.draw();
+
+    // Get crs for the feature.
+    var crs = australiaMap.featureCrs("AU.WA");
+    // Do something.
+});
+</script>
 </body>
 </html>

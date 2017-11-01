@@ -1,61 +1,74 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <script src="../../anychart.min.js"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/mongolia/mongolia.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/canada/canada.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js" data-export="true"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            // All maps created with geoData() method work only if you referenced a proper map
-            // source file as described at https://docs.anychart.com/latest/Maps/Quick_Start
-
-            var worldDataSet = anychart.data.set([
-                {id: "CA", name: "Canada", value: "A1"},
-                {id: "MN", name: "Mongolia", value: "A1"}
-            ]);
-
-            var canadaDataSet = anychart.data.set([
-                {id: "CA.NS", size: 8, value: 111},
-                {id: "CA.ON", size: 8, value: 100},
-                {id: "CA.NU", size: 2, value: 101}
-            ]);
-
-            var mongoliaDataSet = anychart.data.set([
-                {id: "MN.DG", size: 8, value: 111},
-                {id: "MN.GA", size: 8, value: 100},
-                {id: "MN.TO", size: 2, value: 101}
-            ]);
-
-            var mongoliaMap = anychart.map();
-            var canadaMap = anychart.map();
-
-            mongoliaMap.geoData(anychart.maps.mongolia);
-            canadaMap.geoData(anychart.maps.canada);
-
-            mongoliaMap.choropleth(mongoliaDataSet);
-            canadaMap.choropleth(canadaDataSet);
-
-            chart = anychart.map();
-            chart.interactivity({selectionMode: "drillDown"});
-
-            chart.geoData(anychart.maps.world);
-            chart.choropleth(worldDataSet);
-
-            // Drill down map.
-            chart.drillDownMap({
-                "MN": mongoliaMap,
-                "CA": canadaMap
-            });
-
-            chart.title("Drill down map. Click on Canada or Mongolia.");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.charts.Map.drillDownMap"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.11.0/anychart-bundle.min.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/mongolia/mongolia.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/canada/canada.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function () {
+    // All maps created with geoData() method work only if you referenced a proper map
+    // source file as described at https://docs.anychart.com/7.11.0/Maps/Quick_Start
+
+    var worldDataSet = anychart.data.set([
+        {id: "CA", name: "Canada", value: "A1"},
+        {id: "MN", name: "Mongolia", value: "A1"}
+    ]);
+
+    var canadaDataSet = anychart.data.set([
+        {id: "CA.NS", size: 8, value: 111},
+        {id: "CA.ON", size: 8, value: 100},
+        {id: "CA.NU", size: 2, value: 101}
+    ]);
+
+    var mongoliaDataSet = anychart.data.set([
+        {id: "MN.DG", size: 8, value: 111},
+        {id: "MN.GA", size: 8, value: 100},
+        {id: "MN.TO", size: 2, value: 101}
+    ]);
+
+    var mongoliaMap = anychart.map();
+    var canadaMap = anychart.map();
+
+    mongoliaMap.geoData(anychart.maps.mongolia);
+    canadaMap.geoData(anychart.maps.canada);
+
+    mongoliaMap.choropleth(mongoliaDataSet);
+    canadaMap.choropleth(canadaDataSet);
+
+    var chart = anychart.map();
+    chart.interactivity({selectionMode: "drillDown"});
+
+    chart.geoData(anychart.maps.world);
+    chart.choropleth(worldDataSet);
+
+    // Drill down map.
+    chart.drillDownMap({
+        "MN": mongoliaMap,
+        "CA": canadaMap
+    });
+
+    chart.title("Drill down map. Click on Canada or Mongolia.");
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>
