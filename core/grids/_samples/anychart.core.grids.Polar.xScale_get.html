@@ -1,46 +1,59 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="polar grid scale"/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            var stage = anychart.graphics.create("container");
-
-            var markerChart = anychart.polar([29, -72, 250, 330, 85, 390, 95, 15]);
-            markerChart.bounds(0, 0, "50%", "100%");
-
-            var customScale = anychart.scales.linear();
-            customScale.minimum(1);
-            customScale.maximum(4);
-            customScale.ticks({interval: 0.1});
-
-            var markerChartGrid = markerChart.grid();
-            markerChartGrid.enabled(true);
-            markerChartGrid.layout('radial');
-            markerChartGrid.xScale(customScale);
-
-            markerChart.container(stage);
-            markerChart.draw();
-
-            var lineChart = anychart.polar();
-            lineChart.line([29, -72, 250, 330, 85, 390, 95, 15]);
-            lineChart.bounds("50%", 0, "50%", "100%");
-
-            // Gets grid scale of the first chart.
-            var gridScale = markerChartGrid.xScale();
-
-            var lineChartGrid = lineChart.grid();
-            lineChartGrid.enabled(true);
-            lineChartGrid.layout('radial');
-            lineChartGrid.xScale(gridScale);
-
-            lineChart.container(stage);
-            lineChart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.core.grids.Polar.xScale get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.8.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.8.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var stage = anychart.graphics.create("container");
+
+    var markerChart = anychart.polar([29, -72, 250, 330, 85, 390, 95, 15]);
+    markerChart.bounds(0, 0, "50%", "100%");
+
+    var customScale = anychart.scales.linear();
+    customScale.minimum(1);
+    customScale.maximum(4);
+    customScale.ticks({interval: 0.1});
+
+    var markerChartGrid = markerChart.grid();
+    markerChartGrid.enabled(true);
+    markerChartGrid.layout('radial');
+    markerChartGrid.xScale(customScale);
+
+    markerChart.container(stage);
+    markerChart.draw();
+
+    var lineChart = anychart.polar();
+    lineChart.line([29, -72, 250, 330, 85, 390, 95, 15]);
+    lineChart.bounds("50%", 0, "50%", "100%");
+
+    // Gets grid scale of the first chart.
+    var gridScale = markerChartGrid.xScale();
+
+    var lineChartGrid = lineChart.grid();
+    lineChartGrid.enabled(true);
+    lineChartGrid.layout('radial');
+    lineChartGrid.xScale(gridScale);
+
+    lineChart.container(stage);
+    lineChart.draw();
+});
+</script>
 </body>
 </html>
