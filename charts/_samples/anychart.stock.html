@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,34 +21,34 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var table = anychart.data.table(0);
+    anychart.onDocumentReady(function () {
+        var table = anychart.data.table(0);
 
-    table.addData([
-        ['2015-12-24', 511],
-        ['2015-12-25', 212],
-        ['2015-12-26', 311],
-        ['2015-12-27', 411],
-        ['2015-12-28', 611, "#FF0000"],
-        ['2015-12-29', 512],
-        ['2015-12-30', 411],
-        ['2015-12-31', 311],
-        ['2016-01-01', 510]
-    ]);
+        table.addData([
+            ['2015-12-24', 511],
+            ['2015-12-25', 212],
+            ['2015-12-26', 311],
+            ['2015-12-27', 411],
+            ['2015-12-28', 611, "#FF0000"],
+            ['2015-12-29', 512],
+            ['2015-12-30', 411],
+            ['2015-12-31', 311],
+            ['2016-01-01', 510]
+        ]);
 
-    var mapping = table.mapAs({value: 1, fill: 2});
+        var mapping = table.mapAs({value: 1, fill: 2});
 
-    // Creates a stock chart.
-    var chart = anychart.stock(true);
+        // Creates a stock chart.
+        var chart = anychart.stock(true);
 
-    var plot = chart.plot(0);
+        var plot = chart.plot(0);
 
-    plot.column(mapping).name("Volume");
+        plot.column(mapping).name("Volume");
 
-    chart.title("Create a Stock chart");
-    chart.container("container");
-    chart.draw();
-});
+        chart.title("Create a Stock chart");
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

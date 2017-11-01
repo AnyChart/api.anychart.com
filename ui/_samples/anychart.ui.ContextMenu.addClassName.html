@@ -5,10 +5,10 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.1/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.1/anychart-ui.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,37 +21,37 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    // To change the way how context menu looks you need to change CSS.
-    // By default CSS from AnyChart CDN is used: https://cdn.anychart.com/css/7.13.1/anychart-ui.css
-    // Download it, alter, upload to your server and link from your pages to change the look.
-    // In this page, custom style is declared in header:
-    // <style>
-    // .custom-menu
-    // { // background: #F9FBE7; // }
-    // </style>
+    anychart.onDocumentReady(function () {
+        // To change the way how context menu looks you need to change CSS.
+        // By default CSS from AnyChart CDN is used: https://cdn.anychart.com/css/7.13.1/anychart-ui.css
+        // Download it, alter, upload to your server and link from your pages to change the look.
+        // In this page, custom style is declared in header:
+        // <style>
+        // .custom-menu
+        // { // background: #F9FBE7; // }
+        // </style>
 
-    var chart = anychart.line([1, 2, 1.3, 2.9]);
-    chart.contextMenu(false);
+        var chart = anychart.line([1, 2, 1.3, 2.9]);
+        chart.contextMenu(false);
 
-    var customContextMenu = anychart.ui.contextMenu();
-    customContextMenu.attach(chart);
-    customContextMenu.itemsProvider(function() {
-        return [
-            {
-                text: "Open AnyChart API",
-                href: "https://api.anychart.com"
-            }
-        ];
+        var customContextMenu = anychart.ui.contextMenu();
+        customContextMenu.attach(chart);
+        customContextMenu.itemsProvider(function () {
+            return [
+                {
+                    text: "Open AnyChart API",
+                    href: "https://api.anychart.com"
+                }
+            ];
+        });
+
+        // Set class name.
+        customContextMenu.addClassName("custom-menu");
+
+        chart.title("Set CSS class name to Context Menu item. Right-click on the chart.");
+        chart.container("container");
+        chart.draw();
     });
-
-    // Set class name.
-    customContextMenu.addClassName("custom-menu");
-
-    chart.title("Set CSS class name to Context Menu item. Right-click on the chart.");
-    chart.container("container");
-    chart.draw();
-});
 </script>
 </body>
 </html>
