@@ -1,26 +1,39 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line"/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            var stage = anychart.graphics.create("container");
-            var text = stage.text(0,0,"Click to resume").fontSize(14);
-            text.x(20).y(10);
-            var rect = stage.rect(0, 0, 100, 100).fill("white .01").stroke(null);
-            anychart.graphics.events.listen(rect, anychart.graphics.events.EventType.CLICK, function(){
-                stage.resume();
-                text.text(null);
-                rect.fill("none");
-            });
-            stage.suspend();
-            stage.text(10, 10, "new text line");
-            stage.circle(stage.width()/2, stage.height()/2, 50).fill("red 0.2").stroke("2 blue");
-        });
-    </script>
+    <meta name="ac:name" content="anychart.graphics.vector.Stage.suspend"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.7.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.7.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function () {
+    var stage = anychart.graphics.create("container");
+    var text = stage.text(0,0,"Click to resume").fontSize(14);
+    text.x(20).y(10);
+    var rect = stage.rect(0, 0, 100, 100).fill("white .01").stroke(null);
+    anychart.graphics.events.listen(rect, anychart.graphics.events.EventType.CLICK, function(){
+        stage.resume();
+        text.text(null);
+        rect.fill("none");
+    });
+    stage.suspend();
+    stage.text(10, 10, "new text line");
+    stage.circle(stage.width()/2, stage.height()/2, 50).fill("red 0.2").stroke("2 blue");
+});
+</script>
 </body>
 </html>

@@ -1,34 +1,47 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="label"/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            var stage = anychart.graphics.create("container");
-
-            var parentBounds = stage.rect(5, 5, 190, 70);
-            parentBounds.stroke("rgba(0,0,200,.4)");
-
-            var myLabel = anychart.ui.label();
-            myLabel.padding(5);
-            myLabel.parentBounds(parentBounds.getBounds());
-
-            // Gets offset by Y.
-            var currentOffsetY = myLabel.offsetY();
-
-            myLabel.text("The current offset by Y is " + currentOffsetY);
-            myLabel.offsetX(10);
-            myLabel.background({fill: "none", stroke: "1 #aaa"});
-            myLabel.container(stage);
-            myLabel.draw();
-
-            var redCircle = stage.circle(5, 5, 2);
-            redCircle.stroke("3 #F44336");
-        });
-    </script>
+    <meta name="ac:name" content="anychart.core.ui.Label.offsetY get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.7.0/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.7.0/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var stage = anychart.graphics.create("container");
+
+    var parentBounds = stage.rect(5, 5, 190, 70);
+    parentBounds.stroke("rgba(0,0,200,.4)");
+
+    var myLabel = anychart.ui.label();
+    myLabel.padding(5);
+    myLabel.parentBounds(parentBounds.getBounds());
+
+    // Gets offset by Y.
+    var currentOffsetY = myLabel.offsetY();
+
+    myLabel.text("The current offset by Y is " + currentOffsetY);
+    myLabel.offsetX(10);
+    myLabel.background({fill: "none", stroke: "1 #aaa"});
+    myLabel.container(stage);
+    myLabel.draw();
+
+    var redCircle = stage.circle(5, 5, 2);
+    redCircle.stroke("3 #F44336");
+});
+</script>
 </body>
 </html>
