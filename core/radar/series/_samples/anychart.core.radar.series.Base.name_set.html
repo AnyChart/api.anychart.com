@@ -1,36 +1,49 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="radar area line anyChart"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var formatterFunc = function() {
-                return this.seriesName;
-            };
-
-            chart = anychart.radar();
-            chart.area([1, 4, 7, 1, 4]);
-
-            var seriesBlueLine = chart.line([1, 7, 2, 3]);
-            // Sets name.
-            seriesBlueLine.name("My Custom series name");
-
-            var blueLineTooltip = seriesBlueLine.tooltip();
-            blueLineTooltip.textFormatter(formatterFunc);
-
-            var seriesOrangeLine = chart.line([2, 3, 4, 6]);
-
-            var seriesOrangeLineTooltip = seriesOrangeLine.tooltip();
-            seriesOrangeLineTooltip.textFormatter(formatterFunc);
-
-            chart.legend().enabled(true);
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.core.radar.series.Base.name set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.11.1/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var formatterFunc = function() {
+        return this.seriesName;
+    };
+
+    var chart = anychart.radar();
+    chart.area([1, 4, 7, 1, 4]);
+
+    var seriesBlueLine = chart.line([1, 7, 2, 3]);
+    // Sets name.
+    seriesBlueLine.name("My Custom series name");
+
+    var blueLineTooltip = seriesBlueLine.tooltip();
+    blueLineTooltip.textFormatter(formatterFunc);
+
+    var seriesOrangeLine = chart.line([2, 3, 4, 6]);
+
+    var seriesOrangeLineTooltip = seriesOrangeLine.tooltip();
+    seriesOrangeLineTooltip.textFormatter(formatterFunc);
+
+    chart.legend().enabled(true);
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>

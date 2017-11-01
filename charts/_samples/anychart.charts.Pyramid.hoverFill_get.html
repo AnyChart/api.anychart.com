@@ -1,50 +1,63 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="pyramid"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            stage = anychart.graphics.create("container");
-
-            var pyramidChart = anychart.pyramid([
-                {x: "Physical", value: 125},
-                {x: "Data Link", value: 125},
-                {x: "Network", value: 125},
-                {x: "Transport", value: 125},
-                {x: "Session", value: 125},
-                {x: "Presentation", value: 125},
-                {x: "Application", value: 390, label: {anchor: "centerTop"}}
-            ]);
-            pyramidChart.labels({position: "inside"});
-            pyramidChart.legend(false);
-            pyramidChart.bounds(0, 20, "50%", "100%");
-            pyramidChart.hoverFill(function() {
-                return "rgba(135," + (40 * (this.index + 1) - 10) + ", 248, 0.6)";
-            });
-            pyramidChart.container(stage);
-            pyramidChart.draw();
-
-            var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
-            funnelChart.labels({position: "inside"});
-            funnelChart.legend(false);
-            funnelChart.bounds("50%", 20, "50%", "100%");
-
-            // Get hover fill.
-            var pieChartHoverFill = pyramidChart.hoverFill();
-
-            funnelChart.fill(pieChartHoverFill);
-            funnelChart.container(stage);
-            funnelChart.draw();
-
-            var customTitle = anychart.ui.title();
-            customTitle.text("Get and use hoverFill.");
-            customTitle.container(stage);
-            customTitle.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.charts.Pyramid.hoverFill get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.11.1/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function () {
+    var stage = anychart.graphics.create("container");
+
+    var pyramidChart = anychart.pyramid([
+        {x: "Physical", value: 125},
+        {x: "Data Link", value: 125},
+        {x: "Network", value: 125},
+        {x: "Transport", value: 125},
+        {x: "Session", value: 125},
+        {x: "Presentation", value: 125},
+        {x: "Application", value: 390, label: {anchor: "centerTop"}}
+    ]);
+    pyramidChart.labels({position: "inside"});
+    pyramidChart.legend(false);
+    pyramidChart.bounds(0, 20, "50%", "100%");
+    pyramidChart.hoverFill(function() {
+        return "rgba(135," + (40 * (this.index + 1) - 10) + ", 248, 0.6)";
+    });
+    pyramidChart.container(stage);
+    pyramidChart.draw();
+
+    var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
+    funnelChart.labels({position: "inside"});
+    funnelChart.legend(false);
+    funnelChart.bounds("50%", 20, "50%", "100%");
+
+    // Get hover fill.
+    var pieChartHoverFill = pyramidChart.hoverFill();
+
+    funnelChart.fill(pieChartHoverFill);
+    funnelChart.container(stage);
+    funnelChart.draw();
+
+    var customTitle = anychart.ui.title();
+    customTitle.text("Get and use hoverFill.");
+    customTitle.container(stage);
+    customTitle.draw();
+});
+</script>
 </body>
 </html>

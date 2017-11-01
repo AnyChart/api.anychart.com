@@ -1,32 +1,45 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="marker anyChart"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.marker([10, 11, 17, 7, 21, 15]);
-            chart.title("Custom marker displayed with custom drawing function.");
-
-            var series = chart.getSeries(0);
-
-            // Sets custom function used to draw a custom marker
-            series.type(function(path, x, y, size) {
-                var point1 = {x: x + 1.2 * size, y: y - 0.5 * size};
-                var point2 = {x: x - 0.5 * size, y: y - 0.5 * size};
-                path.moveTo(point1.x, point1.y)
-                        .arcToByEndPoint(point2.x, point2.y, size, size, true, true)
-                        .arcToByEndPoint(point1.x, point1.y, size / 3, size / 3, false, false)
-                        .moveTo(point1.x, point1.y)
-                        .close();
-                return path;
-            });
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Marker.type set asFunc"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.11.1/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var chart = anychart.marker([10, 11, 17, 7, 21, 15]);
+    chart.title("Custom marker displayed with custom drawing function.");
+
+    var series = chart.getSeries(0);
+
+    // Sets custom function used to draw a custom marker
+    series.type(function(path, x, y, size) {
+        var point1 = {x: x + 1.2 * size, y: y - 0.5 * size};
+        var point2 = {x: x - 0.5 * size, y: y - 0.5 * size};
+        path.moveTo(point1.x, point1.y)
+                .arcToByEndPoint(point2.x, point2.y, size, size, true, true)
+                .arcToByEndPoint(point1.x, point1.y, size / 3, size / 3, false, false)
+                .moveTo(point1.x, point1.y)
+                .close();
+        return path;
+    });
+    chart.container("container");
+    chart.draw();
+});
+</script>
 </body>
 </html>
