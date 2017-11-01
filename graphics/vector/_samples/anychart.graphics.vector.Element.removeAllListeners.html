@@ -1,32 +1,45 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="text"/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
-
-            var simpleText = stage.text(50, 50);
-            simpleText.style({fontStyle: "italic", fontSize: "15px"});
-            simpleText.text("Mouse over the text and click.");
-            simpleText.listen("mouseOut", function(e) {
-                simpleText.color("#1B5E20")
-            });
-            simpleText.listen("mouseOver", function(e) {
-                simpleText.color("#D50000");
-            });
-            simpleText.listen("click", function(e) {
-                simpleText.text("You can\'t click here anymore.");
-                simpleText.color("#212121");
-
-                // Removes all listeners.
-                simpleText.removeAllListeners();
-            });
-        });
-    </script>
+    <meta name="ac:name" content="anychart.graphics.vector.Element.removeAllListeners"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.9.1/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.1/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var stage = anychart.graphics.create("container");
+
+    var simpleText = stage.text(50, 50);
+    simpleText.style({fontStyle: "italic", fontSize: "15px"});
+    simpleText.text("Mouse over the text and click.");
+    simpleText.listen("mouseOut", function(e) {
+        simpleText.color("#1B5E20")
+    });
+    simpleText.listen("mouseOver", function(e) {
+        simpleText.color("#D50000");
+    });
+    simpleText.listen("click", function(e) {
+        simpleText.text("You can\'t click here anymore.");
+        simpleText.color("#212121");
+
+        // Removes all listeners.
+        simpleText.removeAllListeners();
+    });
+});
+</script>
 </body>
 </html>

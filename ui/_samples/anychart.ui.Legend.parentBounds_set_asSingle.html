@@ -1,25 +1,38 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="legend"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
-            var legend = anychart.ui.legend();
-            legend.items([
-                {index: 0, text: "Chrome"},
-                {index: 1, text: "Firefox"},
-                {index: 2, text: "Safari"},
-                {index: 3, text: "IE"}
-            ]);
-            legend.parentBounds(anychart.math.rect(100, 200, 340, 60)); // sets parent bounds
-            legend.container(stage);
-            legend.draw();
-        });
-    </script>
+    <meta name="ac:name" content="anychart.ui.Legend.parentBounds set asSingle"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.9.1/anychart-bundle.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.1/anychart-ui.min.css" />
+    
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+anychart.onDocumentReady(function() {
+    var stage = anychart.graphics.create("container");
+    var legend = anychart.ui.legend();
+    legend.items([
+        {index: 0, text: "Chrome"},
+        {index: 1, text: "Firefox"},
+        {index: 2, text: "Safari"},
+        {index: 3, text: "IE"}
+    ]);
+    legend.parentBounds(anychart.math.rect(100, 200, 340, 60)); // sets parent bounds
+    legend.container(stage);
+    legend.draw();
+});
+</script>
 </body>
 </html>
