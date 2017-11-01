@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.4.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.4.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.4.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,23 +20,23 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentLoad(function () {
-    var stage = anychart.graphics.create('container');
-    var text = stage.text(70, 55, 'Click on this TEXT.');
-    text.style({fontStyle: 'italic', fontSize: '18px', color: 'blue', hAlign: 'middle'});
-    var rect = stage.rect().setBounds(text.getBounds()).fill('white 0.00001').stroke(null);
-    anychart.graphics.events.listen(rect, anychart.graphics.events.EventType.MOUSEOVER, function(e){
-        text.style({color: 'green'});
+    anychart.onDocumentLoad(function () {
+        var stage = anychart.graphics.create('container');
+        var text = stage.text(70, 55, 'Click on this TEXT.');
+        text.style({fontStyle: 'italic', fontSize: '18px', color: 'blue', hAlign: 'middle'});
+        var rect = stage.rect().setBounds(text.getBounds()).fill('white 0.00001').stroke(null);
+        anychart.graphics.events.listen(rect, anychart.graphics.events.EventType.MOUSEOVER, function (e) {
+            text.style({color: 'green'});
+        });
+        anychart.graphics.events.listen(rect, anychart.graphics.events.EventType.MOUSEOUT, function (e) {
+            text.style({color: 'blue'});
+        });
+        anychart.graphics.events.listenOnce(rect, anychart.graphics.events.EventType.CLICK, function (e) {
+            text.text('You can\'t click here anymore.').style({color: 'red'});
+            rect.setBounds(text.getBounds());
+            anychart.graphics.events.removeAll(rect);
+        });
     });
-    anychart.graphics.events.listen(rect, anychart.graphics.events.EventType.MOUSEOUT, function(e){
-        text.style({color: 'blue'});
-    });
-    anychart.graphics.events.listenOnce(rect, anychart.graphics.events.EventType.CLICK, function(e){
-        text.text('You can\'t click here anymore.').style({color: 'red'});
-        rect.setBounds(text.getBounds());
-        anychart.graphics.events.removeAll(rect);
-    });
-});
 </script>
 </body>
 </html>
