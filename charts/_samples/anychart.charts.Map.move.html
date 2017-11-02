@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.10.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.1.0/countries/australia/australia.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,38 +21,38 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataSet = anychart.data.set([
-        {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
-        {id: "AU.VI", value: 23, title: "Victoria"},
-        {id: "AU.WA", value: 86, title: "Western Australia"},
-        {id: "AU.QL", value: 16, title: "Queensland"},
-        {id: "AU.NS", value: 32, title: "New South Wales"},
-        {id: "AU.NT", value: 64, title: "Northern Territory"},
-        {id: "AU.TS", value: 28, title: "Tasmania"},
-        {id: "AU.SA", value: 45, title: "South Australian"}
-    ]);
+    anychart.onDocumentReady(function () {
+        var dataSet = anychart.data.set([
+            {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
+            {id: "AU.VI", value: 23, title: "Victoria"},
+            {id: "AU.WA", value: 86, title: "Western Australia"},
+            {id: "AU.QL", value: 16, title: "Queensland"},
+            {id: "AU.NS", value: 32, title: "New South Wales"},
+            {id: "AU.NT", value: 64, title: "Northern Territory"},
+            {id: "AU.TS", value: 28, title: "Tasmania"},
+            {id: "AU.SA", value: 45, title: "South Australian"}
+        ]);
 
-    var dataSetForSeries = dataSet.mapAs({id: "id"});
+        var dataSetForSeries = dataSet.mapAs({id: "id"});
 
-    var australiaMap = anychart.map();
-    australiaMap.geoData(anychart.maps.australia);
-    australiaMap.choropleth(dataSetForSeries);
-    australiaMap.geoIdField("code_hasc");
-    australiaMap.container("container");
-    australiaMap.draw();
-    australiaMap.zoom(2.5);
+        var australiaMap = anychart.map();
+        australiaMap.geoData(anychart.maps.australia);
+        australiaMap.choropleth(dataSetForSeries);
+        australiaMap.geoIdField("code_hasc");
+        australiaMap.container("container");
+        australiaMap.draw();
+        australiaMap.zoom(2.5);
 
-    var label = australiaMap.label();
-    label.background({fill: "#9E9E9E .3"});
-    label.text("Move map");
-    label.padding(5);
-    label.offsetX(5);
-    label.listen("click", function() {
-        // Moves map.
-        australiaMap.move(100, 100);
+        var label = australiaMap.label();
+        label.background({fill: "#9E9E9E .3"});
+        label.text("Move map");
+        label.padding(5);
+        label.offsetX(5);
+        label.listen("click", function () {
+            // Moves map.
+            australiaMap.move(100, 100);
+        });
     });
-});
 </script>
 </body>
 </html>

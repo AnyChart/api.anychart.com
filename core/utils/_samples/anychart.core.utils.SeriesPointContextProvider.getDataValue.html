@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.10.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,25 +20,25 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var data = anychart.data.set([
-        {x: "P1", value: 20, browser: "Opera"},
-        {x: "P2", value: 55, browser: "Firefox"},
-        {x: "P3", value: 30, browser: "Safari"},
-        {x: "P4", value: 65, browser: "Chrome"}
-    ]);
-    var chart = anychart.line();
-    var series = chart.line(data);
-    var labels = series.labels();
-    labels.enabled(true);
-    labels.anchor("bottom");
-    labels.offsetY("3");
-    labels.textFormatter(function() {
-        return this.getDataValue("browser"); // get data value
+    anychart.onDocumentReady(function () {
+        var data = anychart.data.set([
+            {x: "P1", value: 20, browser: "Opera"},
+            {x: "P2", value: 55, browser: "Firefox"},
+            {x: "P3", value: 30, browser: "Safari"},
+            {x: "P4", value: 65, browser: "Chrome"}
+        ]);
+        var chart = anychart.line();
+        var series = chart.line(data);
+        var labels = series.labels();
+        labels.enabled(true);
+        labels.anchor("bottom");
+        labels.offsetY("3");
+        labels.textFormatter(function () {
+            return this.getDataValue("browser"); // get data value
+        });
+        chart.container("container");
+        chart.draw();
     });
-    chart.container("container");
-    chart.draw();
-});
 </script>
 </body>
 </html>

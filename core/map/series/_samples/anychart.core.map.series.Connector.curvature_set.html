@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.10.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.1.0/countries/australia/australia.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,33 +21,33 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var firstDataSet = anychart.data.set([
-        {points: [-27.50, 152.85, -34.14, 143.00], stroke: "#F44336"},
-        {points: [-34.14, 143.00, -22.9, 121.52], stroke: "#F44336"}
-    ]);
+    anychart.onDocumentReady(function () {
+        var firstDataSet = anychart.data.set([
+            {points: [-27.50, 152.85, -34.14, 143.00], stroke: "#F44336"},
+            {points: [-34.14, 143.00, -22.9, 121.52], stroke: "#F44336"}
+        ]);
 
-    var secondDataSet = anychart.data.set([
-        {points: [-27.50, 152.85, -34.14, 143.00], stroke: "#2196F3"},
-        {points: [-34.14, 143.00, -22.9, 121.52], stroke: "#2196F3"}
-    ]);
+        var secondDataSet = anychart.data.set([
+            {points: [-27.50, 152.85, -34.14, 143.00], stroke: "#2196F3"},
+            {points: [-34.14, 143.00, -22.9, 121.52], stroke: "#2196F3"}
+        ]);
 
-    var australiaMap = anychart.map();
-    australiaMap.geoData(anychart.maps.australia);
+        var australiaMap = anychart.map();
+        australiaMap.geoData(anychart.maps.australia);
 
-    var redSeries = australiaMap.connector(firstDataSet);
-    var blueSeries = australiaMap.connector(secondDataSet);
+        var redSeries = australiaMap.connector(firstDataSet);
+        var blueSeries = australiaMap.connector(secondDataSet);
 
-    // Set negative curvature.
-    redSeries.curvature(-0.4);
+        // Set negative curvature.
+        redSeries.curvature(-0.4);
 
-    // Set positive curvature.
-    blueSeries.curvature(0.4);
+        // Set positive curvature.
+        blueSeries.curvature(0.4);
 
-    australiaMap.title("Set curvature parameter.");
-    australiaMap.container("container");
-    australiaMap.draw();
-});
+        australiaMap.title("Set curvature parameter.");
+        australiaMap.container("container");
+        australiaMap.draw();
+    });
 </script>
 </body>
 </html>

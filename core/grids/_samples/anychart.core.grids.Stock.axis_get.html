@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.10.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,39 +21,39 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var mapping = dataTable.mapAs({value: 1});
+        var mapping = dataTable.mapAs({value: 1});
 
-    var chart = anychart.stock();
-    chart.padding(10, 50, 10, 50);
-    chart.title("Get and modify grid axis.");
+        var chart = anychart.stock();
+        chart.padding(10, 50, 10, 50);
+        chart.title("Get and modify grid axis.");
 
-    var currentPlot = chart.plot();
-    currentPlot.line(mapping);
+        var currentPlot = chart.plot();
+        currentPlot.line(mapping);
 
-    var secondYScale = anychart.scales.linear();
-    secondYScale.minimum(8000);
-    secondYScale.maximum(16000);
-    secondYScale.ticks({interval: 1000});
+        var secondYScale = anychart.scales.linear();
+        secondYScale.minimum(8000);
+        secondYScale.maximum(16000);
+        secondYScale.ticks({interval: 1000});
 
-    var customYAxis = currentPlot.yAxis(1);
-    customYAxis.orientation("right");
-    customYAxis.scale(secondYScale);
+        var customYAxis = currentPlot.yAxis(1);
+        customYAxis.orientation("right");
+        customYAxis.scale(secondYScale);
 
-    var plotGrid = currentPlot.grid();
-    plotGrid.axis(customYAxis);
+        var plotGrid = currentPlot.grid();
+        plotGrid.axis(customYAxis);
 
-    // Get grid axis.
-    var currentAxis = plotGrid.axis();
+        // Get grid axis.
+        var currentAxis = plotGrid.axis();
 
-    currentAxis.stroke("#2196F3");
+        currentAxis.stroke("#2196F3");
 
-    chart.container('container');
-    chart.draw();
-});
+        chart.container('container');
+        chart.draw();
+    });
 </script>
 </body>
 </html>
