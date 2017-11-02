@@ -1,30 +1,43 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="column anyChart"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.column();
-            chart.column([10, 11, 10, 12]);
-            chart.column([7, 3, 4, 1]);
-            chart.column([6, 4, 8, 16]);
+    <meta name="ac:name" content="anychart.scales.Linear.stackMode set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var scale = chart.yScale();
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
 
-            // Set stack mode.
-            scale.stackMode("value");
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
 
-            chart.title("Set stack mode for the scale");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.column();
+        chart.column([10, 11, 10, 12]);
+        chart.column([7, 3, 4, 1]);
+        chart.column([6, 4, 8, 16]);
+
+        var scale = chart.yScale();
+
+        // Set stack mode.
+        scale.stackMode("value");
+
+        chart.title("Set stack mode for the scale");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

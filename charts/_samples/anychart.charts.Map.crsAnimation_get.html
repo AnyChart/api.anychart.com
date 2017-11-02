@@ -1,31 +1,44 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-map.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/custom/world_source/world_source.js" data-export="true"></script>
-    <script x-export="worldMap">
-        anychart.onDocumentReady(function () {
-            worldMap = anychart.map();
-            worldMap.geoData(anychart.maps.world_source);
+    <meta name="ac:name" content="anychart.charts.Map.crsAnimation get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            // Get crs animation.
-            var animation = worldMap.crsAnimation();
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-map.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/custom/world_source/world_source.js"></script>
 
-            animation.duration(2000);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
 
-            worldMap.title("Get and modify crs animation");
-            worldMap.container("container");
-            worldMap.draw();
-            worldMap.crs("bonne");
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var worldMap = anychart.map();
+        worldMap.geoData(anychart.maps.world_source);
+
+        // Get crs animation.
+        var animation = worldMap.crsAnimation();
+
+        animation.duration(2000);
+
+        worldMap.title("Get and modify crs animation");
+        worldMap.container("container");
+        worldMap.draw();
+        worldMap.crs("bonne");
+    });
+</script>
 </body>
 </html>

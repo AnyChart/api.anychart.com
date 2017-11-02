@@ -1,52 +1,65 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name="x-cat-tags" content="line annotations anyChart"/>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-annotations.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            chart = anychart.line([6, 10, 18, 11, 9]);
-            chart.yScale().minimum(0);
-            chart.xScale("linear");
+    <meta name="ac:name" content="anychart.core.annotations.PlotController.getAnnotationAt"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            chart.annotations([{
-                type: "ellipse",
-                xAnchor: 1.9,
-                valueAnchor: 17,
-                secondXAnchor: 2.1,
-                secondValueAnchor: 19,
-                fill: "#4CAF50 0.5",
-                stroke: "3 #FF9800"
-            }, {
-                type: "triangle",
-                xAnchor: 2.9,
-                valueAnchor: 10.5,
-                secondXAnchor: 3.1,
-                secondValueAnchor: 10.5,
-                thirdXAnchor: 3,
-                thirdValueAnchor: 12,
-                fill: "#80deea 0.5",
-                stroke: "3 #FFD54F"
-            }]);
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-annotations.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
 
-            var controller = chart.annotations();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
 
-            // Get annotation by index.
-            var annotation = controller.getAnnotationAt(1);
-
-            chart.title("Get and modify annotations by index.");
-            chart.container("container");
-            chart.draw();
-
-            annotation.select();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.line([6, 10, 18, 11, 9]);
+        chart.yScale().minimum(0);
+        chart.xScale("linear");
+
+        chart.annotations([{
+            type: "ellipse",
+            xAnchor: 1.9,
+            valueAnchor: 17,
+            secondXAnchor: 2.1,
+            secondValueAnchor: 19,
+            fill: "#4CAF50 0.5",
+            stroke: "3 #FF9800"
+        }, {
+            type: "triangle",
+            xAnchor: 2.9,
+            valueAnchor: 10.5,
+            secondXAnchor: 3.1,
+            secondValueAnchor: 10.5,
+            thirdXAnchor: 3,
+            thirdValueAnchor: 12,
+            fill: "#80deea 0.5",
+            stroke: "3 #FFD54F"
+        }]);
+
+        var controller = chart.annotations();
+
+        // Get annotation by index.
+        var annotation = controller.getAnnotationAt(1);
+
+        chart.title("Get and modify annotations by index.");
+        chart.container("container");
+        chart.draw();
+
+        annotation.select();
+    });
+</script>
 </body>
 </html>

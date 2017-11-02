@@ -1,34 +1,47 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="candlestick anyChart"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.financial();
+    <meta name="ac:name" content="anychart.core.StateSettings.fallingFill set asLinear"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var series = chart.candlestick([
-                {x: Date.UTC(2017, 2, 25), open: 511.53, high: 514.98, low: 505.79, close: 506.40},
-                {x: Date.UTC(2017, 2, 26), open: 507.84, high: 513.30, low: 507.23, close: 512.88},
-                {x: Date.UTC(2017, 2, 27), open: 512.36, high: 515.40, low: 510.58, close: 511.40},
-                {x: Date.UTC(2017, 2, 28), open: 515.02, high: 520.50, low: 511.47, close: 517.25}
-            ]);
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
 
-            var state = series.normal();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
 
-            // Set falling fill.
-            state.fallingFill(["#263238", "#FFFFFF"], 45, true, 0.5);
-
-            chart.title("Set state falling fill as a linear gradient");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.financial();
+
+        var series = chart.candlestick([
+            {x: Date.UTC(2017, 2, 25), open: 511.53, high: 514.98, low: 505.79, close: 506.40},
+            {x: Date.UTC(2017, 2, 26), open: 507.84, high: 513.30, low: 507.23, close: 512.88},
+            {x: Date.UTC(2017, 2, 27), open: 512.36, high: 515.40, low: 510.58, close: 511.40},
+            {x: Date.UTC(2017, 2, 28), open: 515.02, high: 520.50, low: 511.47, close: 517.25}
+        ]);
+
+        var state = series.normal();
+
+        // Set falling fill.
+        state.fallingFill(["#263238", "#FFFFFF"], 45, true, 0.5);
+
+        chart.title("Set state falling fill as a linear gradient");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

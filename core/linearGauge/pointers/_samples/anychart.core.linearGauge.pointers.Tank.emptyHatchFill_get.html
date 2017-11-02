@@ -1,33 +1,46 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name="x-cat-tags" content="linearGauge anyChart"/>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-linear-gauge.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container", 600, 400);
+    <meta name="ac:name" content="anychart.core.linearGauge.pointers.Tank.emptyHatchFill get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-linear-gauge.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
 
-            var tankPointer = chart.tank(2);
-            tankPointer.emptyHatchFill("backward-diagonal", "#BDBDBD", 1, 4);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
 
-            // Get hatch fill for the empty part of a tank.
-            var emptyHatchFill = tankPointer.emptyHatchFill();
-
-            tankPointer.hatchFill(emptyHatchFill);
-
-            chart.title("Get and use hatch fill for the empty part of a tank");
-            chart.container(stage);
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container", 600, 400);
+
+        var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+
+        var tankPointer = chart.tank(2);
+        tankPointer.emptyHatchFill("backward-diagonal", "#BDBDBD", 1, 4);
+
+        // Get hatch fill for the empty part of a tank.
+        var emptyHatchFill = tankPointer.emptyHatchFill();
+
+        tankPointer.hatchFill(emptyHatchFill);
+
+        chart.title("Get and use hatch fill for the empty part of a tank");
+        chart.container(stage);
+        chart.draw();
+    });
+</script>
 </body>
 </html>

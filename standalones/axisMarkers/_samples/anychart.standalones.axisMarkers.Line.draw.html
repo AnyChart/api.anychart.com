@@ -1,35 +1,48 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="lineMarker axis anyChart anyGantt anyStock anyMap"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.standalones.axisMarkers.Line.draw"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var axis = anychart.standalones.axes.linear();
-            axis.scale(anychart.scales.linear());
-            axis.parentBounds(5, 65, 400, 80);
-            axis.title(null);
-            axis.container(stage);
-            axis.draw();
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
 
-            var lineMarker = anychart.standalones.axisMarkers.line();
-            lineMarker.parentBounds(5, 18, 400, 60);
-            lineMarker.scale(anychart.scales.linear());
-            lineMarker.value(0.4);
-            lineMarker.axis(axis);
-            lineMarker.container(stage);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
 
-            // Rendering of the line marker into the stage.
-            lineMarker.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        var axis = anychart.standalones.axes.linear();
+        axis.scale(anychart.scales.linear());
+        axis.parentBounds(5, 65, 400, 80);
+        axis.title(null);
+        axis.container(stage);
+        axis.draw();
+
+        var lineMarker = anychart.standalones.axisMarkers.line();
+        lineMarker.parentBounds(5, 18, 400, 60);
+        lineMarker.scale(anychart.scales.linear());
+        lineMarker.value(0.4);
+        lineMarker.axis(axis);
+        lineMarker.container(stage);
+
+        // Rendering of the line marker into the stage.
+        lineMarker.draw();
+    });
+</script>
 </body>
 </html>

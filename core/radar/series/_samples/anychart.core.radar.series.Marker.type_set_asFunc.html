@@ -1,46 +1,59 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="radar marker anyChart"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-radar.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.radar();
+    <meta name="ac:name" content="anychart.core.radar.series.Marker.type set asFunc"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var series = chart.marker([
-                {x: "January", value: 10},
-                {x: "February", value: 17},
-                {x: "March", value: 11},
-                {x: "April", value: 7},
-                {x: "May", value: 21},
-                {x: "June", value: 13},
-                {x: "July", value: 23},
-                {x: "August", value: 14}
-            ]);
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-radar.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
 
-            // Set marker type by custom function.
-            series.type(function(path, x, y, size) {
-                var point1 = {x: x + 1.2 * size, y: y - 0.4 * size};
-                var point2 = {x: x - 0.5 * size, y: y - 0.5 * size};
-                path.moveTo(point1.x, point1.y)
-                        .arcToByEndPoint(point2.x, point2.y, size, size, true, true)
-                        .arcToByEndPoint(point1.x, point1.y, size / 3, size / 3, false, false)
-                        .moveTo(point1.x, point1.y)
-                        .close();
-                return path;
-            });
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
 
-            chart.title("Set hover marker type by custom function");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.radar();
+
+        var series = chart.marker([
+            {x: "January", value: 10},
+            {x: "February", value: 17},
+            {x: "March", value: 11},
+            {x: "April", value: 7},
+            {x: "May", value: 21},
+            {x: "June", value: 13},
+            {x: "July", value: 23},
+            {x: "August", value: 14}
+        ]);
+
+        // Set marker type by custom function.
+        series.type(function (path, x, y, size) {
+            var point1 = {x: x + 1.2 * size, y: y - 0.4 * size};
+            var point2 = {x: x - 0.5 * size, y: y - 0.5 * size};
+            path.moveTo(point1.x, point1.y)
+                .arcToByEndPoint(point2.x, point2.y, size, size, true, true)
+                .arcToByEndPoint(point1.x, point1.y, size / 3, size / 3, false, false)
+                .moveTo(point1.x, point1.y)
+                .close();
+            return path;
+        });
+
+        chart.title("Set hover marker type by custom function");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

@@ -1,27 +1,40 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="pie anyChart"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.pie([5, 2, 1, 3, 1, 3]);
+    <meta name="ac:name" content="anychart.charts.Pie.outsideLabelsSpace get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            chart.labels({fontColor: "#000000", position: "outside"});
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
 
-            // Get outside labels space.
-            var outsideLabelsSpace = chart.outsideLabelsSpace();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
 
-            chart.title("The current outside labels space is " + outsideLabelsSpace + ".");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.pie([5, 2, 1, 3, 1, 3]);
+
+        chart.labels({fontColor: "#000000", position: "outside"});
+
+        // Get outside labels space.
+        var outsideLabelsSpace = chart.outsideLabelsSpace();
+
+        chart.title("The current outside labels space is " + outsideLabelsSpace + ".");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

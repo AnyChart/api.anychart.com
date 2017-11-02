@@ -1,49 +1,62 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="polar column anyChart"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-polar.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.charts.Polar.maxPointWidth"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var data = [
-                {x: 1, value: 4},
-                {x: 2, value: 4},
-                {x: 3, value: 4},
-            ];
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-polar.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
 
-            var chart1 = anychart.polar();
-            chart1.column(data);
-            chart1.xScale("ordinal");
-            chart1.sortPointsByX(true);
-            chart1.innerRadius(50);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
 
-            // Set maximum point width.
-            chart1.maxPointWidth(50);
-
-            chart1.title("maxPointWidth = 50");
-            chart1.bounds(0, 0, "50%", "100%");
-            chart1.container(stage);
-            chart1.draw();
-
-            var chart2 = anychart.polar();
-            chart2.column(data);
-            chart2.xScale("ordinal");
-            chart2.sortPointsByX(true);
-            chart2.innerRadius(50);
-            chart2.title("maxPointWidth not set");
-            chart2.bounds("50%", 0, "50%", "100%");
-            chart2.container(stage);
-            chart2.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        var data = [
+            {x: 1, value: 4},
+            {x: 2, value: 4},
+            {x: 3, value: 4},
+        ];
+
+        var chart1 = anychart.polar();
+        chart1.column(data);
+        chart1.xScale("ordinal");
+        chart1.sortPointsByX(true);
+        chart1.innerRadius(50);
+
+        // Set maximum point width.
+        chart1.maxPointWidth(50);
+
+        chart1.title("maxPointWidth = 50");
+        chart1.bounds(0, 0, "50%", "100%");
+        chart1.container(stage);
+        chart1.draw();
+
+        var chart2 = anychart.polar();
+        chart2.column(data);
+        chart2.xScale("ordinal");
+        chart2.sortPointsByX(true);
+        chart2.innerRadius(50);
+        chart2.title("maxPointWidth not set");
+        chart2.bounds("50%", 0, "50%", "100%");
+        chart2.container(stage);
+        chart2.draw();
+    });
+</script>
 </body>
 </html>

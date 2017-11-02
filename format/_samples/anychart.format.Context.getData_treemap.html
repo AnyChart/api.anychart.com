@@ -1,57 +1,82 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="treeMap anyChart"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-treemap.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            var data = [
-                {id: "Eurasia", parent: null, timezone: {utc: "Variable value"}},
-                {id: "Asia", parent: "Eurasia", timezone: {utc: "Variable value"}},
-                {id: "Eastern Asia", parent: "Asia"},
-                {id: "Mongolia", parent: "Eastern Asia", value: 1564116, capital: "Ulan-Bator", timezone: {utc: "UTC+7"}},
-                {id: "China", parent: "Eastern Asia", value: 1564116, capital: "Beijing", timezone: {utc: "UTC+8"}},
-                {id: "Southern Korea", parent: "Eastern Asia", value: 1564116, capital: "Seoul", timezone: {utc: "UTC+9"}},
-                {id: "Northern Korea", parent: "Eastern Asia", value: 120540, capital: "Pyongyang", timezone: {utc: "UTC+9"}},
-                {id: "Japan", parent: "Eastern Asia", value: 1564116, capital: "Tokio", timezone: {utc: "UTC+8"}},
-                {id: "Europe", parent: "Eurasia", timezone: {utc: "Variable value"}},
-                {id: "Northern Europe", parent: "Europe", timezone: {utc: "Variable value"}},
-                {id: "Finland", parent: "Northern Europe", value: 338424, capital: "Helsinki", timezone: {utc: "UTC+2"}},
-                {id: "Great Britain", parent: "Northern Europe", value: 209331, capital: "London", timezone: {utc: "UTC+0"}},
-                {id: "Ireland", parent: "Northern Europe", value: 84421, capital: "Dublin", timezone: {utc: "UTC+0"}},
-                {id: "Scandinavia", parent: "Northern Europe", value: 928057, timezone: "UTC+0"}];
+    <meta name="ac:name" content="anychart.format.Context.getData treemap"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            chart = anychart.treeMap();
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-treemap.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
 
-            var treeData = anychart.data.tree(data, "as-table");
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
 
-            chart.data(treeData);
-
-            var item = treeData.search("id", "Eastern Asia");
-            chart.drillTo(item);
-
-            var tooltip = chart.tooltip();
-            tooltip.format(function () {
-
-                // Get data.
-                return this.getData("timezone", "utc");
-            });
-
-            chart.title().orientation("bottom");
-            chart.title().padding(10);
-
-            chart.labels().format("{%id}");
-            chart.title("Get treemap data using several parameters");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var data = [
+            {id: "Eurasia", parent: null, timezone: {utc: "Variable value"}},
+            {id: "Asia", parent: "Eurasia", timezone: {utc: "Variable value"}},
+            {id: "Eastern Asia", parent: "Asia"},
+            {id: "Mongolia", parent: "Eastern Asia", value: 1564116, capital: "Ulan-Bator", timezone: {utc: "UTC+7"}},
+            {id: "China", parent: "Eastern Asia", value: 1564116, capital: "Beijing", timezone: {utc: "UTC+8"}},
+            {id: "Southern Korea", parent: "Eastern Asia", value: 1564116, capital: "Seoul", timezone: {utc: "UTC+9"}},
+            {
+                id: "Northern Korea",
+                parent: "Eastern Asia",
+                value: 120540,
+                capital: "Pyongyang",
+                timezone: {utc: "UTC+9"}
+            },
+            {id: "Japan", parent: "Eastern Asia", value: 1564116, capital: "Tokio", timezone: {utc: "UTC+8"}},
+            {id: "Europe", parent: "Eurasia", timezone: {utc: "Variable value"}},
+            {id: "Northern Europe", parent: "Europe", timezone: {utc: "Variable value"}},
+            {id: "Finland", parent: "Northern Europe", value: 338424, capital: "Helsinki", timezone: {utc: "UTC+2"}},
+            {
+                id: "Great Britain",
+                parent: "Northern Europe",
+                value: 209331,
+                capital: "London",
+                timezone: {utc: "UTC+0"}
+            },
+            {id: "Ireland", parent: "Northern Europe", value: 84421, capital: "Dublin", timezone: {utc: "UTC+0"}},
+            {id: "Scandinavia", parent: "Northern Europe", value: 928057, timezone: "UTC+0"}];
+
+        var chart = anychart.treeMap();
+
+        var treeData = anychart.data.tree(data, "as-table");
+
+        chart.data(treeData);
+
+        var item = treeData.search("id", "Eastern Asia");
+        chart.drillTo(item);
+
+        var tooltip = chart.tooltip();
+        tooltip.format(function () {
+
+            // Get data.
+            return this.getData("timezone", "utc");
+        });
+
+        chart.title().orientation("bottom");
+        chart.title().padding(10);
+
+        chart.labels().format("{%id}");
+        chart.title("Get treemap data using several parameters");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

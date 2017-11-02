@@ -1,54 +1,67 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-map.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/france/france.js" data-export="true"></script>
-    <script x-export="franceMap">
-        anychart.onDocumentReady(function () {
-            // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
-            // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+    <meta name="ac:name" content="anychart.charts.Map.featureScaleFactor set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var dataSet = anychart.data.set([
-                {id: "FR.A", value: 928},
-                {id: "FR.B", value: 192},
-                {id: "FR.C", value: 963},
-                {id: "FR.P", value: 266},
-                {id: "FR.E", value: 324},
-                {id: "FR.F", value: 767},
-                {id: "FR.G", value: 478},
-                {id: "FR.H", value: 456},
-                {id: "FR.I", value: 477},
-                {id: "FR.GP", value: 200},
-                {id: "FR.GF", value: 945}
-            ]);
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-map.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/france/france.js"></script>
 
-            franceMap = anychart.map();
-            franceMap.geoData(anychart.maps.france);
-            franceMap.choropleth(dataSet);
-            franceMap.title("Scale a feature.");
-            franceMap.container("container");
-            franceMap.draw();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
 
-            var mapLabel = franceMap.label();
-            mapLabel.background({fill: "#9E9E9E 0.3"});
-            mapLabel.text("Scale a feature.");
-            mapLabel.padding(5);
-            mapLabel.listen("click", function() {
-
-                // Scale feature.
-                franceMap.featureScaleFactor("FR.H", 0.002);
-
-            });
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+        // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+
+        var dataSet = anychart.data.set([
+            {id: "FR.A", value: 928},
+            {id: "FR.B", value: 192},
+            {id: "FR.C", value: 963},
+            {id: "FR.P", value: 266},
+            {id: "FR.E", value: 324},
+            {id: "FR.F", value: 767},
+            {id: "FR.G", value: 478},
+            {id: "FR.H", value: 456},
+            {id: "FR.I", value: 477},
+            {id: "FR.GP", value: 200},
+            {id: "FR.GF", value: 945}
+        ]);
+
+        var franceMap = anychart.map();
+        franceMap.geoData(anychart.maps.france);
+        franceMap.choropleth(dataSet);
+        franceMap.title("Scale a feature.");
+        franceMap.container("container");
+        franceMap.draw();
+
+        var mapLabel = franceMap.label();
+        mapLabel.background({fill: "#9E9E9E 0.3"});
+        mapLabel.text("Scale a feature.");
+        mapLabel.padding(5);
+        mapLabel.listen("click", function () {
+
+            // Scale feature.
+            franceMap.featureScaleFactor("FR.H", 0.002);
+
+        });
+    });
+</script>
 </body>
 </html>

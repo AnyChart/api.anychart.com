@@ -1,44 +1,57 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="text anyChart anyGantt anyStock anyMap"/>
-    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            stage = acgraph.create("container");
+    <meta name="ac:name" content="anychart.graphics.vector.Text.path"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var text = stage.text(50, 50);
-            text.style({fontSize: "15px", color: "#F44336"});
-            text.text("AnyChart's product family is a set of flexible JavaScript (HTML5) libraries for all your data visualization needs.");
+    <script src="https://cdn.anychart.com/js/8.0.0/graphics.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
 
-            var startX = 200;
-            var startY = 170;
-            
-            var textPath = stage.path();
-            textPath.moveTo(startX, startY);
-            var visualPath = stage.path();
-            visualPath.moveTo(startX, startY);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
 
-            for (var angle = 0; angle < Math.PI * 10; angle += 0.1) {
-                var multiplier = (2 + 3 * Math.pow(angle, 1.1));
-                var addX = multiplier * Math.cos(angle);
-                var addY = multiplier * Math.sin(angle);
-                x = startX + addX;
-                y = startY + addY;
-                textPath.lineTo(x, y);
-                visualPath.lineTo(x, y);
-            }
-
-            // Set path element.
-            text.path(textPath);
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = acgraph.create("container");
+
+        var text = stage.text(50, 50);
+        text.style({fontSize: "15px", color: "#F44336"});
+        text.text("AnyChart's product family is a set of flexible JavaScript (HTML5) libraries for all your data visualization needs.");
+
+        var startX = 200;
+        var startY = 170;
+
+        var textPath = stage.path();
+        textPath.moveTo(startX, startY);
+        var visualPath = stage.path();
+        visualPath.moveTo(startX, startY);
+
+        for (var angle = 0; angle < Math.PI * 10; angle += 0.1) {
+            var multiplier = (2 + 3 * Math.pow(angle, 1.1));
+            var addX = multiplier * Math.cos(angle);
+            var addY = multiplier * Math.sin(angle);
+            x = startX + addX;
+            y = startY + addY;
+            textPath.lineTo(x, y);
+            visualPath.lineTo(x, y);
+        }
+
+        // Set path element.
+        text.path(textPath);
+    });
+</script>
 </body>
 </html>
