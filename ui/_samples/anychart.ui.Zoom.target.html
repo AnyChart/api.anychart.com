@@ -6,10 +6,10 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.14.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.0/anychart-ui.min.css" />
-    <link rel="stylesheet" type="text/css" href="http://cdn.anychart.com/fonts/{{fonts-version}}/anychart.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.0/anychart-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://cdn.anychart.com/fonts/{{fonts-version}}/anychart.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -22,42 +22,42 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var dataSet = anychart.data.set([
-        {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
-        {id: "AU.VI", value: 23, title: "Victoria"},
-        {id: "AU.WA", value: 86, title: "Western Australia"},
-        {id: "AU.QL", value: 16, title: "Queensland"},
-        {id: "AU.NS", value: 32, title: "New South Wales"},
-        {id: "AU.NT", value: 64, title: "Northern Territory"},
-        {id: "AU.TS", value: 28, title: "Tasmania"},
-        {id: "AU.SA", value: 45, title: "South Australian"}
-    ]);
+    anychart.onDocumentReady(function () {
+        var dataSet = anychart.data.set([
+            {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
+            {id: "AU.VI", value: 23, title: "Victoria"},
+            {id: "AU.WA", value: 86, title: "Western Australia"},
+            {id: "AU.QL", value: 16, title: "Queensland"},
+            {id: "AU.NS", value: 32, title: "New South Wales"},
+            {id: "AU.NT", value: 64, title: "Northern Territory"},
+            {id: "AU.TS", value: 28, title: "Tasmania"},
+            {id: "AU.SA", value: 45, title: "South Australian"}
+        ]);
 
-    var dataSetForSeries = dataSet.mapAs({id: "id"});
+        var dataSetForSeries = dataSet.mapAs({id: "id"});
 
-    var map = anychart.map();
-    map.geoData(anychart.maps.australia);
+        var map = anychart.map();
+        map.geoData(anychart.maps.australia);
 
-    map.choropleth(dataSetForSeries);
+        map.choropleth(dataSetForSeries);
 
-    var zoom = anychart.ui.zoom();
+        var zoom = anychart.ui.zoom();
 
-    // Set target for zoom controller.
-    zoom.target(map);
+        // Set target for zoom controller.
+        zoom.target(map);
 
-    map.title("Set target for zoom controller");
-    map.container("container");
-    map.draw();
+        map.title("Set target for zoom controller");
+        map.container("container");
+        map.draw();
 
-    var controllerContainer = document.createElement("div");
-    controllerContainer.style.cssText = "background-color: #FFECB3; padding: 5px;";
-    controllerContainer.setAttribute("id", "controller_container");
+        var controllerContainer = document.createElement("div");
+        controllerContainer.style.cssText = "background-color: #FFECB3; padding: 5px;";
+        controllerContainer.setAttribute("id", "controller_container");
 
-    document.body.appendChild(controllerContainer);
+        document.body.appendChild(controllerContainer);
 
-    zoom.decorate(controllerContainer);
-});
+        zoom.decorate(controllerContainer);
+    });
 </script>
 </body>
 </html>
