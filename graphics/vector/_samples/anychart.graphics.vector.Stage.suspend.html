@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.6.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.6.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.6.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,20 +20,20 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var stage = anychart.graphics.create("container");
-    var text = stage.text(0,0,"Click to resume").fontSize(14);
-    text.x(20).y(10);
-    var rect = stage.rect(0, 0, 100, 100).fill("white .01").stroke(null);
-    anychart.graphics.events.listen(rect, anychart.graphics.events.EventType.CLICK, function(){
-        stage.resume();
-        text.text(null);
-        rect.fill("none");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+        var text = stage.text(0, 0, "Click to resume").fontSize(14);
+        text.x(20).y(10);
+        var rect = stage.rect(0, 0, 100, 100).fill("white .01").stroke(null);
+        anychart.graphics.events.listen(rect, anychart.graphics.events.EventType.CLICK, function () {
+            stage.resume();
+            text.text(null);
+            rect.fill("none");
+        });
+        stage.suspend();
+        stage.text(10, 10, "new text line");
+        stage.circle(stage.width() / 2, stage.height() / 2, 50).fill("red 0.2").stroke("2 blue");
     });
-    stage.suspend();
-    stage.text(10, 10, "new text line");
-    stage.circle(stage.width()/2, stage.height()/2, 50).fill("red 0.2").stroke("2 blue");
-});
 </script>
 </body>
 </html>

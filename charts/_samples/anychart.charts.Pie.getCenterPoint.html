@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.6.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.6.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.6.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,31 +20,31 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var pieInnerRadius = 40;
-    var chart = anychart.pie([10, 14, 8, 12]);
-    chart.innerRadius(pieInnerRadius + 10);
-    chart.container("container");
-    chart.draw();
-    var pieCenter = chart.getCenterPoint(); // get center point
-    var labelBounds = anychart.math.rect(
-                    pieCenter.x - pieInnerRadius,
-                    pieCenter.y - pieInnerRadius,
-                    pieCenter.x + pieInnerRadius,
-                    pieCenter.y + pieInnerRadius
-    );
-    var label = anychart.ui.label();
-    label.text("Pie\ninner\nlabel");
-    label.parentBounds(labelBounds);
-    label.hAlign("center");
-    label.vAlign("center");
-    label.zIndex(1);
-    label.container(chart.container());
-    label.adjustFontSize(true);
-    label.width(2 * pieInnerRadius);
-    label.height(2 * pieInnerRadius);
-    label.draw();
-});
+    anychart.onDocumentReady(function () {
+        var pieInnerRadius = 40;
+        var chart = anychart.pie([10, 14, 8, 12]);
+        chart.innerRadius(pieInnerRadius + 10);
+        chart.container("container");
+        chart.draw();
+        var pieCenter = chart.getCenterPoint(); // get center point
+        var labelBounds = anychart.math.rect(
+            pieCenter.x - pieInnerRadius,
+            pieCenter.y - pieInnerRadius,
+            pieCenter.x + pieInnerRadius,
+            pieCenter.y + pieInnerRadius
+        );
+        var label = anychart.ui.label();
+        label.text("Pie\ninner\nlabel");
+        label.parentBounds(labelBounds);
+        label.hAlign("center");
+        label.vAlign("center");
+        label.zIndex(1);
+        label.container(chart.container());
+        label.adjustFontSize(true);
+        label.width(2 * pieInnerRadius);
+        label.height(2 * pieInnerRadius);
+        label.draw();
+    });
 </script>
 </body>
 </html>
