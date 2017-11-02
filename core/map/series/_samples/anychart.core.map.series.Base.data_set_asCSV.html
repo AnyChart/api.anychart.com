@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.7.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/countries/aus/australia.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.7.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.7.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,28 +21,28 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var australiaMap = anychart.map();
-    australiaMap.geoData(anychart.maps.australia);
+    anychart.onDocumentReady(function () {
+        var australiaMap = anychart.map();
+        australiaMap.geoData(anychart.maps.australia);
 
-    var series = australiaMap.choropleth();
-    // Sets data.
-    series.data(
-                    "AU.CT;15|" +
-                    "AU.VI;23|" +
-                    "AU.WA;86|" +
-                    "AU.QL;16|" +
-                    "AU.NS;32|" +
-                    "AU.NT;64|" +
-                    "AU.TS;28|" +
-                    "AU.SA;45|",
+        var series = australiaMap.choropleth();
+        // Sets data.
+        series.data(
+            "AU.CT;15|" +
+            "AU.VI;23|" +
+            "AU.WA;86|" +
+            "AU.QL;16|" +
+            "AU.NS;32|" +
+            "AU.NT;64|" +
+            "AU.TS;28|" +
+            "AU.SA;45|",
             {"rowsSeparator": "|", columnsSeparator: ";"}
-    );
-    series.geoIdField("code_hasc");
+        );
+        series.geoIdField("code_hasc");
 
-    australiaMap.container("container");
-    australiaMap.draw();
-});
+        australiaMap.container("container");
+        australiaMap.draw();
+    });
 </script>
 </body>
 </html>

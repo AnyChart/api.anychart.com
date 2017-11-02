@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.7.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.7.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.7.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,47 +20,47 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var chart = anychart.line();
-    chart.title(null);
+    anychart.onDocumentReady(function () {
+        var chart = anychart.line();
+        chart.title(null);
 
-    var secondScale = anychart.scales.ordinal();
+        var secondScale = anychart.scales.ordinal();
 
-    var xAxis = chart.xAxis(1);
-    xAxis.scale(secondScale);
-    xAxis.orientation("top");
-    xAxis.title("DateTime axis");
+        var xAxis = chart.xAxis(1);
+        xAxis.scale(secondScale);
+        xAxis.orientation("top");
+        xAxis.title("DateTime axis");
 
-    chart.line([
-        ["A1", 2],
-        ["A2", 2.4],
-        ["A3", 1],
-        ["A4", 5]
-    ]);
+        chart.line([
+            ["A1", 2],
+            ["A2", 2.4],
+            ["A3", 1],
+            ["A4", 5]
+        ]);
 
-    var orangeSeries = chart.line([
-        ["2014-01-15", 1],
-        ["2014-06-15", 3],
-        ["2014-10-15", 2],
-        ["2014-12-15", 9]
-    ]);
-    orangeSeries.xScale(secondScale);
+        var orangeSeries = chart.line([
+            ["2014-01-15", 1],
+            ["2014-06-15", 3],
+            ["2014-10-15", 2],
+            ["2014-12-15", 9]
+        ]);
+        orangeSeries.xScale(secondScale);
 
-    var greenSeries = chart.line([
-        ["2014-01-15", 6],
-        ["2014-06-15", 4],
-        ["2014-10-15", 7],
-        ["2014-12-15", 3]
-    ]);
+        var greenSeries = chart.line([
+            ["2014-01-15", 6],
+            ["2014-06-15", 4],
+            ["2014-10-15", 7],
+            ["2014-12-15", 3]
+        ]);
 
-    // Gets series X scale.
-    var currentScaleOrangeSeries = orangeSeries.xScale();
+        // Gets series X scale.
+        var currentScaleOrangeSeries = orangeSeries.xScale();
 
-    greenSeries.xScale(currentScaleOrangeSeries);
+        greenSeries.xScale(currentScaleOrangeSeries);
 
-    chart.container("container");
-    chart.draw();
-});
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>
