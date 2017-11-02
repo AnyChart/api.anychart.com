@@ -1,23 +1,36 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="column anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.column();
+    <meta name="ac:name" content="anychart.core.SeriesBase.selectLabels set asObj"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
 
-            var series = chart.column([18, 25, 10, 20, 35]);
-            series.labels({enabled: true, fontSize: 15});
-            // Sets labels settings for selected mode.
-            series.selectLabels({fontSize: 20, fontColor: "#795548", fontStyle: "italic"});
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
 
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.column();
+
+        var series = chart.column([18, 25, 10, 20, 35]);
+        series.labels({enabled: true, fontSize: 15});
+        // Sets labels settings for selected mode.
+        series.selectLabels({fontSize: 20, fontColor: "#795548", fontStyle: "italic"});
+
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

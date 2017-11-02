@@ -1,29 +1,42 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line legend anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.line();
-            chart.legend(true);
+    <meta name="ac:name" content="anychart.core.SeriesBase.legendItem get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
 
-            var firstSeries = chart.line([35, 15, 20, 19, 40, 10, 23]);
-            firstSeries.legendItem({text: "Light blue line", iconType: "circle", iconFill: "#81D4FA"});
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
 
-            var secondSeries = chart.line([4, 6, 4, 9, 20, 30, 43]);
-            secondSeries.legendItem({text: "Blue line", iconType: "square", iconFill: "#90CAF9"});
-
-            chart.container("container");
-            chart.draw();
-
-            // Gets legend item.
-            var legendItem = firstSeries.legendItem();
-            legendItem.disabled(true);
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.line();
+        chart.legend(true);
+
+        var firstSeries = chart.line([35, 15, 20, 19, 40, 10, 23]);
+        firstSeries.legendItem({text: "Light blue line", iconType: "circle", iconFill: "#81D4FA"});
+
+        var secondSeries = chart.line([4, 6, 4, 9, 20, 30, 43]);
+        secondSeries.legendItem({text: "Blue line", iconType: "square", iconFill: "#90CAF9"});
+
+        chart.container("container");
+        chart.draw();
+
+        // Gets legend item.
+        var legendItem = firstSeries.legendItem();
+        legendItem.disabled(true);
+    });
+</script>
 </body>
 </html>

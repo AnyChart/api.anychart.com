@@ -1,68 +1,81 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="table pie line area anyChart"/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.core.ui.Table.shareAsPng"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
 
-            var dataSet = [
-                [1.1, 2.3, 1.7, 1.9],
-                [1.2, 2.1, 2.7, 1.3],
-                [1.0, 1.2, 0.7, 1.1],
-                [1.3, 2.4, 1.7, 1.9]
-            ];
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
 
-            var pie = anychart.pie();
-            pie.data(dataSet);
-            pie.legend(null);
-
-            var lineChart = anychart.line(dataSet[0]);
-            lineChart.title(null);
-            lineChart.xAxis(null);
-
-            var areaChart = anychart.area(dataSet[1]);
-            areaChart.title(null);
-            areaChart.xAxis(null);
-
-            var table = anychart.standalones.table();
-
-            var cell = table.getCell(0, 0);
-            cell.rowSpan(2);
-
-            table.contents([
-                [pie, lineChart],
-                [null, areaChart]
-            ]);
-            table.top("5%");
-            table.container(stage);
-            table.draw();
-
-            var customLabel = anychart.standalones.label();
-            customLabel.background({stroke: "#E0E0E0"});
-            customLabel.text("Get the link to PNG image");
-            customLabel.padding(2);
-            customLabel.listen("mouseOver", function () {
-                document.body.style.cursor = "pointer";
-            });
-            customLabel.listen("mouseOut", function () {
-                document.body.style.cursor = "auto";
-            });
-
-            customLabel.listen("click", function() {
-
-                // Share table as PNG image.
-                table.shareAsPng(function (response) {
-                    alert(response);
-                });
-            });
-            customLabel.container(stage);
-            customLabel.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        var dataSet = [
+            [1.1, 2.3, 1.7, 1.9],
+            [1.2, 2.1, 2.7, 1.3],
+            [1.0, 1.2, 0.7, 1.1],
+            [1.3, 2.4, 1.7, 1.9]
+        ];
+
+        var pie = anychart.pie();
+        pie.data(dataSet);
+        pie.legend(null);
+
+        var lineChart = anychart.line(dataSet[0]);
+        lineChart.title(null);
+        lineChart.xAxis(null);
+
+        var areaChart = anychart.area(dataSet[1]);
+        areaChart.title(null);
+        areaChart.xAxis(null);
+
+        var table = anychart.standalones.table();
+
+        var cell = table.getCell(0, 0);
+        cell.rowSpan(2);
+
+        table.contents([
+            [pie, lineChart],
+            [null, areaChart]
+        ]);
+        table.top("5%");
+        table.container(stage);
+        table.draw();
+
+        var customLabel = anychart.standalones.label();
+        customLabel.background({stroke: "#E0E0E0"});
+        customLabel.text("Get the link to PNG image");
+        customLabel.padding(2);
+        customLabel.listen("mouseOver", function () {
+            document.body.style.cursor = "pointer";
+        });
+        customLabel.listen("mouseOut", function () {
+            document.body.style.cursor = "auto";
+        });
+
+        customLabel.listen("click", function () {
+
+            // Share table as PNG image.
+            table.shareAsPng(function (response) {
+                alert(response);
+            });
+        });
+        customLabel.container(stage);
+        customLabel.draw();
+    });
+</script>
 </body>
 </html>

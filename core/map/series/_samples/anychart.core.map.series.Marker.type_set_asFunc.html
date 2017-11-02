@@ -1,52 +1,65 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="map">
-        anychart.onDocumentReady(function () {
-            // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
-            // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+    <meta name="ac:name" content="anychart.core.map.series.Marker.type set asFunc"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
 
-            var dataSet = anychart.data.set([
-                {size: 23, lat: -33.79230242675795,  long: 119.87666669973004},
-                {size: 86, lat: -25.03895558157087,  long: 130.3228311166256},
-                {size: 16, lat: -22.304113937307903, long: 134.02556224664892},
-                {size: 32, lat: -20.94204546579207,  long: 141.17850294690692},
-                {size: 64, lat: -33.846202518868466, long: 141.184101365051},
-                {size: 28, lat: -41.15644029160346,  long: 146.6254758485986},
-                {size: 45, lat: -17.994051559045015, long: 122.33292786367005},
-                {size: 15, lat: -17.67359349801839,  long: 145.9891299422427},
-                {size: 17, lat: -24.179094813466925, long: 151.01584181182147}
-            ]);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
 
-            map = anychart.map();
-            map.geoData(anychart.maps.australia);
-
-            var series = map.marker(dataSet);
-            series.tooltip({title: false, separator: false});
-
-            // Set custom function to display marker.
-            series.type(function(path, x, y, size) {
-                var point1 = {x: x + 1.3 * size, y: y - 0.4 * size};
-                var point2 = {x: x - 0.4 * size, y: y - 0.5 * size};
-                path.moveTo(point1.x, point1.y)
-                        .arcToByEndPoint(point2.x, point2.y, size, size, true, true)
-                        .arcToByEndPoint(point1.x, point1.y, size / 3, size / 3, false, false)
-                        .moveTo(point1.x, point1.y)
-                        .close();
-                return path;
-            });
-
-            map.title("Custom marker displayed with custom drawing function");
-            map.container("container");
-            map.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+        // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+
+        var dataSet = anychart.data.set([
+            {size: 23, lat: -33.79230242675795, long: 119.87666669973004},
+            {size: 86, lat: -25.03895558157087, long: 130.3228311166256},
+            {size: 16, lat: -22.304113937307903, long: 134.02556224664892},
+            {size: 32, lat: -20.94204546579207, long: 141.17850294690692},
+            {size: 64, lat: -33.846202518868466, long: 141.184101365051},
+            {size: 28, lat: -41.15644029160346, long: 146.6254758485986},
+            {size: 45, lat: -17.994051559045015, long: 122.33292786367005},
+            {size: 15, lat: -17.67359349801839, long: 145.9891299422427},
+            {size: 17, lat: -24.179094813466925, long: 151.01584181182147}
+        ]);
+
+        var map = anychart.map();
+        map.geoData(anychart.maps.australia);
+
+        var series = map.marker(dataSet);
+        series.tooltip({title: false, separator: false});
+
+        // Set custom function to display marker.
+        series.type(function (path, x, y, size) {
+            var point1 = {x: x + 1.3 * size, y: y - 0.4 * size};
+            var point2 = {x: x - 0.4 * size, y: y - 0.5 * size};
+            path.moveTo(point1.x, point1.y)
+                .arcToByEndPoint(point2.x, point2.y, size, size, true, true)
+                .arcToByEndPoint(point1.x, point1.y, size / 3, size / 3, false, false)
+                .moveTo(point1.x, point1.y)
+                .close();
+            return path;
+        });
+
+        map.title("Custom marker displayed with custom drawing function");
+        map.container("container");
+        map.draw();
+    });
+</script>
 </body>
 </html>

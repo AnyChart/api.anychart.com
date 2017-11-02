@@ -1,23 +1,36 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name="x-cat-tags" content="linearGauge anyChart"/>
-    <meta charset="UTF-8"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container", 600, 400);
+    <meta name="ac:name" content="anychart.gauges.linear"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
 
-            // Creates Linear gauge.
-            var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
 
-            chart.addPointer(4, 3, 2);
-            chart.title("Create a Linear Gauge");
-            chart.container(stage);
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container", 600, 400);
+
+        // Creates Linear gauge.
+        var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+
+        chart.addPointer(4, 3, 2);
+        chart.title("Create a Linear Gauge");
+        chart.container(stage);
+        chart.draw();
+    });
+</script>
 </body>
 </html>

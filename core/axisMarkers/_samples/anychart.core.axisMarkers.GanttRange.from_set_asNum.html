@@ -1,45 +1,116 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="rangeMarker anyGantt"/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var data = getData();
+    <meta name="ac:name" content="anychart.core.axisMarkers.GanttRange.from set asNum"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
 
-            chart = anychart.ganttProject();
-            chart.data(data, "asTable");
-            chart.editing(true);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
 
-            var timeLine = chart.getTimeline();
-
-            var customRangeMarker = timeLine.rangeMarker();
-
-            // Set starting value.
-            customRangeMarker.from("2000-02-25 00:00:00");
-
-            customRangeMarker.to("2000-02-26 00:00:00");
-
-            chart.title("Set starting value as a number");
-            chart.container("container");
-            chart.draw();
-            chart.fitAll();
-        });
-
-        function getData() {
-            return  [
-                {"id": "1", "name": "Phase 1 - Strategic Plan", "progressValue": "14%", "actualStart": "2000-02-24 08:00:00", "actualEnd": "2000-02-27 08:00:00"},
-                {"id": "2", "name": "Self-Assessment", parent: "1", "progressValue": "25%", "actualStart": "2000-02-24 08:00:00", "actualEnd": "2000-02-29 08:00:00", "baselineStart": "2000-02-27 08:00:00", "baselineEnd": "2000-02-28 08:00:00"},
-                {"id": "3", "name": "Define business vision", parent: "2", "progressValue": "0%", "actualStart": "2000-02-25 00:00:00", "actualEnd": "2000-02-25 09:00:00", "connectTo": "4", "connectorType": "FinishStart"},
-                {"id": "4", "name": "Identify available skills, information and support", parent: "2", "progressValue": "0%", "actualStart": "2000-02-26 00:00:00", "actualEnd": "2000-02-26 09:00:00", "connectTo": "5", "connectorType": "FinishStart"},
-                {"id": "5", "name": "Decide whether to proceed", parent: "2", "progressValue": "0%", "actualStart": "2000-02-27 08:00:00", "actualEnd": "2000-02-28 08:00:00", "connectTo": "6", "connectorType": "FinishStart"},
-                {"id": "6", "name": "Define the Opportunity", parent: "1", "progressValue": "27%", "actualStart": "2000-02-28 08:00:00", "actualEnd": "2000-02-29 08:00:00"},
-                {"id": "7", "name": "Research the market and competition", parent: "6", "progressValue": "0%", "actualStart": "2000-02-26 08:00:00", "actualEnd": "2000-02-27 08:00:00", "connectTo": "8", "connectorType": "FinishStart"}
-            ];
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
-    </script>
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var data = getData();
+
+        var chart = anychart.ganttProject();
+        chart.data(data, "asTable");
+        chart.editing(true);
+
+        var timeLine = chart.getTimeline();
+
+        var customRangeMarker = timeLine.rangeMarker();
+
+        // Set starting value.
+        customRangeMarker.from("2000-02-25 00:00:00");
+
+        customRangeMarker.to("2000-02-26 00:00:00");
+
+        chart.title("Set starting value as a number");
+        chart.container("container");
+        chart.draw();
+        chart.fitAll();
+    });
+
+    function getData() {
+        return [
+            {
+                "id": "1",
+                "name": "Phase 1 - Strategic Plan",
+                "progressValue": "14%",
+                "actualStart": "2000-02-24 08:00:00",
+                "actualEnd": "2000-02-27 08:00:00"
+            },
+            {
+                "id": "2",
+                "name": "Self-Assessment",
+                parent: "1",
+                "progressValue": "25%",
+                "actualStart": "2000-02-24 08:00:00",
+                "actualEnd": "2000-02-29 08:00:00",
+                "baselineStart": "2000-02-27 08:00:00",
+                "baselineEnd": "2000-02-28 08:00:00"
+            },
+            {
+                "id": "3",
+                "name": "Define business vision",
+                parent: "2",
+                "progressValue": "0%",
+                "actualStart": "2000-02-25 00:00:00",
+                "actualEnd": "2000-02-25 09:00:00",
+                "connectTo": "4",
+                "connectorType": "FinishStart"
+            },
+            {
+                "id": "4",
+                "name": "Identify available skills, information and support",
+                parent: "2",
+                "progressValue": "0%",
+                "actualStart": "2000-02-26 00:00:00",
+                "actualEnd": "2000-02-26 09:00:00",
+                "connectTo": "5",
+                "connectorType": "FinishStart"
+            },
+            {
+                "id": "5",
+                "name": "Decide whether to proceed",
+                parent: "2",
+                "progressValue": "0%",
+                "actualStart": "2000-02-27 08:00:00",
+                "actualEnd": "2000-02-28 08:00:00",
+                "connectTo": "6",
+                "connectorType": "FinishStart"
+            },
+            {
+                "id": "6",
+                "name": "Define the Opportunity",
+                parent: "1",
+                "progressValue": "27%",
+                "actualStart": "2000-02-28 08:00:00",
+                "actualEnd": "2000-02-29 08:00:00"
+            },
+            {
+                "id": "7",
+                "name": "Research the market and competition",
+                parent: "6",
+                "progressValue": "0%",
+                "actualStart": "2000-02-26 08:00:00",
+                "actualEnd": "2000-02-27 08:00:00",
+                "connectTo": "8",
+                "connectorType": "FinishStart"
+            }
+        ];
+    }
+</script>
 </body>
 </html>

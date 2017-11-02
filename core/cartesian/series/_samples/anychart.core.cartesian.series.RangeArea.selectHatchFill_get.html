@@ -1,57 +1,70 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="rangeArea anyChart"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.area();
+    <meta name="ac:name" content="anychart.core.cartesian.series.RangeArea.selectHatchFill get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
 
-            var firstSeries = chart.rangeArea([
-                {x: "January", low: 3093, high: 12522},
-                {x: "February", low: 4205, high: 14622},
-                {x: "March", low: 4019, high: 10612},
-                {x: "April", low: 4920, high: 9752},
-                {x: "May", low: 5795, high: 8839},
-                {x: "June", low: 8327, high: 9842},
-                {x: "July", low: 7933, high: 9812},
-                {x: "August", low: 13573, high: 16922},
-                {x: "September", low: 14924, high: 15052},
-                {x: "October", low: 12684, high: 15917}
-            ]);
-            firstSeries.selectHatchFill("zigZag");
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
 
-            // Selects series.
-            firstSeries.select();
-
-            var secondSeries = chart.rangeArea([
-                {x: "January", high: 3093, low: 493},
-                {x: "February", high: 4205, low: 205},
-                {x: "March", high: 4019, low: 119},
-                {x: "April", high: 4920, low: 920},
-                {x: "May", high: 5795, low: 795},
-                {x: "June", high: 8327, low: 327},
-                {x: "July", high: 7933, low: 933},
-                {x: "August", high: 13573, low: 3573},
-                {x: "September", high: 14924, low: 3924},
-                {x: "October", high: 12684, low: 1684}
-            ]);
-
-            // Selects series.
-            secondSeries.select();
-
-            // Get select hatch fill.
-            var selectedHatchFill = firstSeries.selectHatchFill();
-
-            secondSeries.selectHatchFill(selectedHatchFill);
-
-            chart.title("Get and use select hatch fill");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.area();
+
+        var firstSeries = chart.rangeArea([
+            {x: "January", low: 3093, high: 12522},
+            {x: "February", low: 4205, high: 14622},
+            {x: "March", low: 4019, high: 10612},
+            {x: "April", low: 4920, high: 9752},
+            {x: "May", low: 5795, high: 8839},
+            {x: "June", low: 8327, high: 9842},
+            {x: "July", low: 7933, high: 9812},
+            {x: "August", low: 13573, high: 16922},
+            {x: "September", low: 14924, high: 15052},
+            {x: "October", low: 12684, high: 15917}
+        ]);
+        firstSeries.selectHatchFill("zigZag");
+
+        // Selects series.
+        firstSeries.select();
+
+        var secondSeries = chart.rangeArea([
+            {x: "January", high: 3093, low: 493},
+            {x: "February", high: 4205, low: 205},
+            {x: "March", high: 4019, low: 119},
+            {x: "April", high: 4920, low: 920},
+            {x: "May", high: 5795, low: 795},
+            {x: "June", high: 8327, low: 327},
+            {x: "July", high: 7933, low: 933},
+            {x: "August", high: 13573, low: 3573},
+            {x: "September", high: 14924, low: 3924},
+            {x: "October", high: 12684, low: 1684}
+        ]);
+
+        // Selects series.
+        secondSeries.select();
+
+        // Get select hatch fill.
+        var selectedHatchFill = firstSeries.selectHatchFill();
+
+        secondSeries.selectHatchFill(selectedHatchFill);
+
+        chart.title("Get and use select hatch fill");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

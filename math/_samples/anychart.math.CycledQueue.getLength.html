@@ -1,27 +1,40 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyChart anyGantt anyStock anyMap"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.math.CycledQueue.getLength"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
 
-            var queue = anychart.math.cycledQueue(3);
-            queue.enqueue("a");
-            queue.enqueue("b");
-            queue.enqueue("c");
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
 
-            // Get queue length.
-            var length = queue.getLength();
-
-            var result = stage.text(30, 20);
-            result.text("Queue length: " + length);
-            result.fontSize(12);
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        var queue = anychart.math.cycledQueue(3);
+        queue.enqueue("a");
+        queue.enqueue("b");
+        queue.enqueue("c");
+
+        // Get queue length.
+        var length = queue.getLength();
+
+        var result = stage.text(30, 20);
+        result.text("Queue length: " + length);
+        result.fontSize(12);
+    });
+</script>
 </body>
 </html>

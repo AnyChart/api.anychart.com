@@ -1,43 +1,56 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="rangeSplineArea anyChart"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.area();
+    <meta name="ac:name" content="anychart.core.cartesian.series.RangeSplineArea.hoverHatchFill get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
 
-            var firstSeries = chart.rangeSplineArea([
-                {x: "January", low: 2, high: 3},
-                {x: "February", low: 3, high: 6},
-                {x: "March", low: 2, high: 4},
-                {x: "April", low: 1, high: 5}
-            ]);
-            firstSeries.hoverHatchFill("backwardDiagonal");
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
 
-            var secondSeries = chart.rangeSplineArea([
-                {x: "January", low: 6, high: 8},
-                {x: "February", low: 7, high: 10},
-                {x: "March", low: 6, high: 8},
-                {x: "April", low: 4, high: 11}
-            ]);
-
-            // Get hover hatch fill.
-            var hoverHatchFill = firstSeries.hoverHatchFill();
-
-            secondSeries.hoverHatchFill(hoverHatchFill);
-
-            // Hovers series.
-            firstSeries.hover();
-            secondSeries.hover();
-
-            chart.title("Get and use hover hatch fill");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.area();
+
+        var firstSeries = chart.rangeSplineArea([
+            {x: "January", low: 2, high: 3},
+            {x: "February", low: 3, high: 6},
+            {x: "March", low: 2, high: 4},
+            {x: "April", low: 1, high: 5}
+        ]);
+        firstSeries.hoverHatchFill("backwardDiagonal");
+
+        var secondSeries = chart.rangeSplineArea([
+            {x: "January", low: 6, high: 8},
+            {x: "February", low: 7, high: 10},
+            {x: "March", low: 6, high: 8},
+            {x: "April", low: 4, high: 11}
+        ]);
+
+        // Get hover hatch fill.
+        var hoverHatchFill = firstSeries.hoverHatchFill();
+
+        secondSeries.hoverHatchFill(hoverHatchFill);
+
+        // Hovers series.
+        firstSeries.hover();
+        secondSeries.hover();
+
+        chart.title("Get and use hover hatch fill");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

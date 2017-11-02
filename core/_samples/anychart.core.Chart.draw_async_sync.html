@@ -1,81 +1,94 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="pie anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.core.Chart.draw async sync"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
 
-            var charts = [];
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
 
-            createCharts(charts, true);
-
-            createLabel("Rerender async", 20, function () {
-                disposeCharts(charts);
-                // Set rendering mode to async.
-                createCharts(charts, true);
-            });
-
-            createLabel("Rerender in sync", 150, function () {
-                disposeCharts(charts);
-                setTimeout(function(){
-                    // Set rendering mode to sync.
-                    createCharts(charts, false);
-                }, 100);
-            });
-
-            var customTitle = anychart.standalones.title();
-            customTitle.text("Set asynchronous/synchronous rendering for the charts");
-            customTitle.parentBounds(0, "50%", 100, 100);
-            customTitle.container(stage);
-            customTitle.draw();
-
-            function createCharts(charts, sync) {
-                for (var i = 0; i < 15; i++) {
-                    for (var j = 2; j < 15; j++) {
-                        pieChart = anychart.pie([20, 30, 50]);
-                        pieChart.bounds(i * 10 + "%", j * 10 + "%", "10%", "10%");
-                        pieChart.labels(false);
-                        pieChart.legend(false);
-                        pieChart.padding(0);
-                        pieChart.margin(0);
-                        pieChart.container(stage);
-
-                        // Set render mode: true - async, false (default) - sync.
-                        pieChart.draw(sync);
-                        charts.push(pieChart);
-                    }
-                }
-            }
-
-            function disposeCharts(charts) {
-                for (var i = 0; i < charts.length; i++) {
-                    charts[i].dispose();
-                }
-            }
-
-            function createLabel(text, offset, action) {
-                var customLabel = anychart.standalones.label();
-                customLabel.text(text);
-                customLabel.parentBounds(offset, 30, 100, 100);
-                customLabel.listen("click", action);
-                customLabel.listen("mouseOver", function () {
-                    document.body.style.cursor = "pointer";
-                });
-                customLabel.listen("mouseOut", function () {
-                    document.body.style.cursor = "auto";
-                });
-                customLabel.background({fill: "#9E9E9E"});
-                customLabel.fontColor("#fff");
-                customLabel.padding(5);
-                customLabel.container(stage);
-                customLabel.draw();
-            }
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        var charts = [];
+
+        createCharts(charts, true);
+
+        createLabel("Rerender async", 20, function () {
+            disposeCharts(charts);
+            // Set rendering mode to async.
+            createCharts(charts, true);
+        });
+
+        createLabel("Rerender in sync", 150, function () {
+            disposeCharts(charts);
+            setTimeout(function () {
+                // Set rendering mode to sync.
+                createCharts(charts, false);
+            }, 100);
+        });
+
+        var customTitle = anychart.standalones.title();
+        customTitle.text("Set asynchronous/synchronous rendering for the charts");
+        customTitle.parentBounds(0, "50%", 100, 100);
+        customTitle.container(stage);
+        customTitle.draw();
+
+        function createCharts(charts, sync) {
+            for (var i = 0; i < 15; i++) {
+                for (var j = 2; j < 15; j++) {
+                    pieChart = anychart.pie([20, 30, 50]);
+                    pieChart.bounds(i * 10 + "%", j * 10 + "%", "10%", "10%");
+                    pieChart.labels(false);
+                    pieChart.legend(false);
+                    pieChart.padding(0);
+                    pieChart.margin(0);
+                    pieChart.container(stage);
+
+                    // Set render mode: true - async, false (default) - sync.
+                    pieChart.draw(sync);
+                    charts.push(pieChart);
+                }
+            }
+        }
+
+        function disposeCharts(charts) {
+            for (var i = 0; i < charts.length; i++) {
+                charts[i].dispose();
+            }
+        }
+
+        function createLabel(text, offset, action) {
+            var customLabel = anychart.standalones.label();
+            customLabel.text(text);
+            customLabel.parentBounds(offset, 30, 100, 100);
+            customLabel.listen("click", action);
+            customLabel.listen("mouseOver", function () {
+                document.body.style.cursor = "pointer";
+            });
+            customLabel.listen("mouseOut", function () {
+                document.body.style.cursor = "auto";
+            });
+            customLabel.background({fill: "#9E9E9E"});
+            customLabel.fontColor("#fff");
+            customLabel.padding(5);
+            customLabel.container(stage);
+            customLabel.draw();
+        }
+    });
+</script>
 </body>
 </html>

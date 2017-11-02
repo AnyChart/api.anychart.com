@@ -1,53 +1,66 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line anyChart"/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            chart = anychart.column();
+    <meta name="ac:name" content="anychart.core.series.RenderingSettings.updatePoint set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
 
-            var series = chart.column([10, 20, 15, 30, 5]);
-            series.hatchFill(true);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
 
-            var currentRendering = series.rendering();
-            currentRendering.point(drawer);
-
-            // Set the update point.
-            currentRendering.updatePoint(drawer);
-
-            chart.title("Set the update point");
-            chart.container("container");
-            chart.draw();
-        });
-        function drawer() {
-            if (this.missing) {
-                return;
-            }
-            var shapes = this.shapes || this.getShapesGroup(this.pointState);
-
-            var leftX = this.x - this.pointWidth / 2;
-            var rightX = leftX + this.pointWidth;
-
-            if (this.pointState > 0) {
-                shapes["path"]
-                        .clear()
-                        .moveTo(this.x, this.zero)
-                        .lineTo(leftX, this.value)
-                        .lineTo(rightX, this.value)
-                        .close();
-            } else {
-                shapes["path"]
-                        .clear()
-                        .moveTo(leftX, this.zero)
-                        .lineTo(this.x, this.value)
-                        .lineTo(rightX, this.zero)
-                        .close();
-            }
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
-    </script>
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.column();
+
+        var series = chart.column([10, 20, 15, 30, 5]);
+        series.hatchFill(true);
+
+        var currentRendering = series.rendering();
+        currentRendering.point(drawer);
+
+        // Set the update point.
+        currentRendering.updatePoint(drawer);
+
+        chart.title("Set the update point");
+        chart.container("container");
+        chart.draw();
+    });
+    function drawer() {
+        if (this.missing) {
+            return;
+        }
+        var shapes = this.shapes || this.getShapesGroup(this.pointState);
+
+        var leftX = this.x - this.pointWidth / 2;
+        var rightX = leftX + this.pointWidth;
+
+        if (this.pointState > 0) {
+            shapes["path"]
+                .clear()
+                .moveTo(this.x, this.zero)
+                .lineTo(leftX, this.value)
+                .lineTo(rightX, this.value)
+                .close();
+        } else {
+            shapes["path"]
+                .clear()
+                .moveTo(leftX, this.zero)
+                .lineTo(this.x, this.value)
+                .lineTo(rightX, this.zero)
+                .close();
+        }
+    }
+</script>
 </body>
 </html>

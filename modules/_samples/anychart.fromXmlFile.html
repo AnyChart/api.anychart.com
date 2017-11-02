@@ -1,24 +1,37 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="actualBug x-export line anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script src="https://cdn.anychart.com/js/latest/data-adapter.min.js" data-export="true"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            // To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
-            // (https://cdn.anychart.com/js/latest/data-adapter.min.js for latest or https://cdn.anychart.com/js/7.11.1/data-adapter.min.js for the versioned file)
+    <meta name="ac:name" content="anychart.fromXmlFile"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
+    <script src="https://cdn.anychart.com/js/7.14.3/data-adapter.min.js"></script>
 
-            // Create a chart by XML config.
-            anychart.fromXmlFile("https://cdn.anychart.com/config-samples/line-chart.xml", function (chart) {
-                chart.title("Create a chart by XML config");
-                chart.container("container");
-                chart.draw();
-            });
-        });
-    </script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
+
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%;"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        // To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
+        // (https://cdn.anychart.com/js/7.14.3/data-adapter.min.js for latest or https://cdn.anychart.com/js/7.11.1/data-adapter.min.js for the versioned file)
+
+        // Create a chart by XML config.
+        anychart.fromXmlFile("https://cdn.anychart.com/config-samples/line-chart.xml", function (chart) {
+            chart.title("Create a chart by XML config");
+            chart.container("container");
+            chart.draw();
+        });
+    });
+</script>
 </body>
 </html>

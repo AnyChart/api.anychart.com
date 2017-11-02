@@ -1,40 +1,53 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="map">
-        anychart.onDocumentReady(function() {
-            // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
-            // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+    <meta name="ac:name" content="anychart.core.map.series.Base.data set asCSV"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
 
-            map = anychart.map();
-            map.geoData(anychart.maps.australia);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
 
-            var series = map.choropleth();
-
-            // Set data.
-            series.data(
-                            "AU.CT;15|" +
-                            "AU.VI;23|" +
-                            "AU.WA;86|" +
-                            "AU.QL;16|" +
-                            "AU.NS;32|" +
-                            "AU.NT;64|" +
-                            "AU.TS;28|" +
-                            "AU.SA;45|",
-                    {"rowsSeparator": "|", columnsSeparator: ";"}
-            );
-
-            map.title("Set data as an CSV");
-            map.container("container");
-            map.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+        // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+
+        var map = anychart.map();
+        map.geoData(anychart.maps.australia);
+
+        var series = map.choropleth();
+
+        // Set data.
+        series.data(
+            "AU.CT;15|" +
+            "AU.VI;23|" +
+            "AU.WA;86|" +
+            "AU.QL;16|" +
+            "AU.NS;32|" +
+            "AU.NT;64|" +
+            "AU.TS;28|" +
+            "AU.SA;45|",
+            {"rowsSeparator": "|", columnsSeparator: ";"}
+        );
+
+        map.title("Set data as an CSV");
+        map.container("container");
+        map.draw();
+    });
+</script>
 </body>
 </html>

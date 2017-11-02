@@ -1,25 +1,38 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta name="x-cat-tags" content="gauges anyChart"/>
-    <meta charset="UTF-8"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.gauges.circular([20, 10]);
-            chart.axis();
-            chart.needle(0, {fill: "#FF8A65"});
-            chart.needle(1, {fill: "#4DB6AC"});
+    <meta name="ac:name" content="anychart.charts.CircularGauge.needle set asIndexBool"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
 
-            // Disable needle pointer by index.
-            chart.needle(1, false);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
 
-            chart.title("Disable needle pointer by index");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.gauges.circular([20, 10]);
+        chart.axis();
+        chart.needle(0, {fill: "#FF8A65"});
+        chart.needle(1, {fill: "#4DB6AC"});
+
+        // Disable needle pointer by index.
+        chart.needle(1, false);
+
+        chart.title("Disable needle pointer by index");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>
