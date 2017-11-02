@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.8.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.8.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.8.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,27 +21,27 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var mapping = dataTable.mapAs({value: 1});
+        var mapping = dataTable.mapAs({value: 1});
 
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
 
-    var currentPlot = chart.plot();
-    currentPlot.line(mapping);
+        var currentPlot = chart.plot();
+        currentPlot.line(mapping);
 
-    var plotGrid = currentPlot.grid();
+        var plotGrid = currentPlot.grid();
 
-    // Gets grid layout.
-    var gridLayout = plotGrid.layout();
+        // Gets grid layout.
+        var gridLayout = plotGrid.layout();
 
-    chart.title("The grid layout is " + gridLayout);
-    chart.container('container');
-    chart.draw();
-});
+        chart.title("The grid layout is " + gridLayout);
+        chart.container('container');
+        chart.draw();
+    });
 </script>
 </body>
 </html>
