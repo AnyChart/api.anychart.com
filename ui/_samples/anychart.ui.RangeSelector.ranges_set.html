@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.14.3/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.3/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,58 +21,58 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var mapping = dataTable.mapAs({value: 1});
+        var mapping = dataTable.mapAs({value: 1});
 
-    var chart = anychart.stock();
+        var chart = anychart.stock();
 
-    var plot = chart.plot();
-    plot.line(mapping);
+        var plot = chart.plot();
+        plot.line(mapping);
 
-    var rangeSelector = anychart.ui.rangeSelector();
+        var rangeSelector = anychart.ui.rangeSelector();
 
-    // Set ranges for range selector.
-    rangeSelector.ranges([{
-        'text': 'Vacation 2006',
-        'startDate': '2006 May 16',
-        'endDate': '2006 Jul 29'
-    }, {
-        'text': 'Vacation 2007',
-        'startDate': '2007 Feb 1',
-        'endDate': '2007 Mar 8'
-    }, {
-        'text': 'Vacation 2008',
-        'startDate': '2008 Oct 15',
-        'endDate': '2008 Nov 4'
-    }, {
-        'type': "Unit",
-        'unit': "Day",
-        'count': 10,
-        'anchor': "firstDate",
-        'text': "10 DAYS"
-    },{
-        'type': "Unit",
-        'unit': "quarter",
-        'count': 2,
-        'anchor': "firstDate",
-        'text': "6 MONTHS"
-    },{
-        'type': "Unit",
-        'unit': "year",
-        'count': 2,
-        'anchor': "lastDate",
-        'text': "2 YEARS"
-    }]);
+        // Set ranges for range selector.
+        rangeSelector.ranges([{
+            'text': 'Vacation 2006',
+            'startDate': '2006 May 16',
+            'endDate': '2006 Jul 29'
+        }, {
+            'text': 'Vacation 2007',
+            'startDate': '2007 Feb 1',
+            'endDate': '2007 Mar 8'
+        }, {
+            'text': 'Vacation 2008',
+            'startDate': '2008 Oct 15',
+            'endDate': '2008 Nov 4'
+        }, {
+            'type': "Unit",
+            'unit': "Day",
+            'count': 10,
+            'anchor': "firstDate",
+            'text': "10 DAYS"
+        }, {
+            'type': "Unit",
+            'unit': "quarter",
+            'count': 2,
+            'anchor': "firstDate",
+            'text': "6 MONTHS"
+        }, {
+            'type': "Unit",
+            'unit': "year",
+            'count': 2,
+            'anchor': "lastDate",
+            'text': "2 YEARS"
+        }]);
 
-    chart.title("Set ranges for range selector");
-    chart.container("container");
-    chart.draw();
+        chart.title("Set ranges for range selector");
+        chart.container("container");
+        chart.draw();
 
-    rangeSelector.render(chart);
-});
+        rangeSelector.render(chart);
+    });
 </script>
 </body>
 </html>
