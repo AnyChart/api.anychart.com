@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.9.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,28 +20,28 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
+    anychart.onDocumentReady(function () {
 
-    // Set output timezone.
-    anychart.format.outputTimezone(-60);
+        // Set output timezone.
+        anychart.format.outputTimezone(-60);
 
-    var chart = anychart.line([
-        [Date.UTC(2014, 9, 6, 13, 5), 511.53, 500.98, 680.79, 656.40],
-        [Date.UTC(2014, 9, 8, 13, 28), 900, 850, 1100, 1050],
-        [Date.UTC(2014, 9, 10, 13, 51), 700, 630.40, 810.58, 790],
-        [Date.UTC(2014, 9, 12, 14, 32), 380, 315, 450, 415],
-        [Date.UTC(2014, 9, 14, 15, 3), 830, 513, 405, 145]
-    ]);
+        var chart = anychart.line([
+            [Date.UTC(2014, 9, 6, 13, 5), 511.53, 500.98, 680.79, 656.40],
+            [Date.UTC(2014, 9, 8, 13, 28), 900, 850, 1100, 1050],
+            [Date.UTC(2014, 9, 10, 13, 51), 700, 630.40, 810.58, 790],
+            [Date.UTC(2014, 9, 12, 14, 32), 380, 315, 450, 415],
+            [Date.UTC(2014, 9, 14, 15, 3), 830, 513, 405, 145]
+        ]);
 
-    var axis = chart.xAxis();
-    var formatLabels = axis.labels();
-    formatLabels.textFormatter(function() {
-        return anychart.format.dateTime(this.value, "dd/MM/yyyy HH:mm");
+        var axis = chart.xAxis();
+        var formatLabels = axis.labels();
+        formatLabels.textFormatter(function () {
+            return anychart.format.dateTime(this.value, "dd/MM/yyyy HH:mm");
+        });
+
+        chart.container("container");
+        chart.draw();
     });
-
-    chart.container("container");
-    chart.draw();
-});
 </script>
 </body>
 </html>

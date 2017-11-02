@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.9.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/weather-data.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,33 +21,33 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_weather_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_weather_data());
 
-    var mapping = dataTable.mapAs({value: 2});
+        var mapping = dataTable.mapAs({value: 2});
 
-    var selectable = mapping.createSelectable();
-    selectable.select("2006-01-17", "2006-01-20");
+        var selectable = mapping.createSelectable();
+        selectable.select("2006-01-17", "2006-01-20");
 
-    var titles = [];
+        var titles = [];
 
-    // Gets iterator.
-    var iterator = selectable.getIterator();
-    while (iterator.advance()) {
-        titles.push(iterator.get("value"));
-    }
+        // Gets iterator.
+        var iterator = selectable.getIterator();
+        while (iterator.advance()) {
+            titles.push(iterator.get("value"));
+        }
 
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
 
-    var currentPlot = chart.plot();
-    currentPlot.line(mapping);
+        var currentPlot = chart.plot();
+        currentPlot.line(mapping);
 
-    chart.title(titles.join(" "));
-    chart.container('container');
-    chart.draw();
-});
+        chart.title(titles.join(" "));
+        chart.container('container');
+        chart.draw();
+    });
 </script>
 </body>
 </html>

@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.9.0/anychart-bundle.min.js"></script>
     <script src="http://cdn.anychart.com/locale/1.0.0/french-(france).js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,25 +21,25 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var chart = anychart.line([
-        [Date.UTC(2014, 5, 6, 13, 5, 0), 511.53, 500.98, 680.79, 656.40],
-        [Date.UTC(2014, 6, 8, 13, 28, 9), 900, 850, 1100, 1050],
-        [Date.UTC(2014, 9, 10, 13, 51, 36), 700, 630.40, 810.58, 790],
-        [Date.UTC(2014, 10, 12, 14, 32, 52), 380, 315, 450, 415],
-        [Date.UTC(2014, 11, 14, 15, 3, 39), 830, 513, 405, 145]
-    ]);
+    anychart.onDocumentReady(function () {
+        var chart = anychart.line([
+            [Date.UTC(2014, 5, 6, 13, 5, 0), 511.53, 500.98, 680.79, 656.40],
+            [Date.UTC(2014, 6, 8, 13, 28, 9), 900, 850, 1100, 1050],
+            [Date.UTC(2014, 9, 10, 13, 51, 36), 700, 630.40, 810.58, 790],
+            [Date.UTC(2014, 10, 12, 14, 32, 52), 380, 315, 450, 415],
+            [Date.UTC(2014, 11, 14, 15, 3, 39), 830, 513, 405, 145]
+        ]);
 
-    var axis = chart.xAxis();
-    var formatLabels = axis.labels();
-    formatLabels.textFormatter(function() {
-        // Sets format for datetime.
-        return anychart.format.dateTime(this.value, "dd MMMM yyyy HH:mm:ss", -60, "fr-fr");
+        var axis = chart.xAxis();
+        var formatLabels = axis.labels();
+        formatLabels.textFormatter(function () {
+            // Sets format for datetime.
+            return anychart.format.dateTime(this.value, "dd MMMM yyyy HH:mm:ss", -60, "fr-fr");
+        });
+
+        chart.container("container");
+        chart.draw();
     });
-
-    chart.container("container");
-    chart.draw();
-});
 </script>
 </body>
 </html>

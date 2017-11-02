@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.9.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,35 +21,35 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var mapping = dataTable.mapAs({value: 1});
+        var mapping = dataTable.mapAs({value: 1});
 
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
 
-    var firstPlot = chart.plot();
-    firstPlot.line(mapping);
+        var firstPlot = chart.plot();
+        firstPlot.line(mapping);
 
-    var secondPlot = chart.plot(1);
-    secondPlot.column(mapping);
+        var secondPlot = chart.plot(1);
+        secondPlot.column(mapping);
 
-    var firstLegend = firstPlot.legend();
-    firstLegend.titleFormatter(function() {
-        return "Grouping interval - " + this.groupingIntervalUnit
+        var firstLegend = firstPlot.legend();
+        firstLegend.titleFormatter(function () {
+            return "Grouping interval - " + this.groupingIntervalUnit
+        });
+
+        // Gets title formatter.
+        var currentTitleFormatter = firstLegend.titleFormatter();
+
+        var secondLegend = secondPlot.legend();
+        secondLegend.titleFormatter(currentTitleFormatter);
+
+        chart.container('container');
+        chart.draw();
     });
-
-    // Gets title formatter.
-    var currentTitleFormatter = firstLegend.titleFormatter();
-
-    var secondLegend = secondPlot.legend();
-    secondLegend.titleFormatter(currentTitleFormatter);
-
-    chart.container('container');
-    chart.draw();
-});
 </script>
 </body>
 </html>

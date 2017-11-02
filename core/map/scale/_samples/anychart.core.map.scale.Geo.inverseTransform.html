@@ -7,9 +7,9 @@
     <script src="https://cdn.anychart.com/js/7.9.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/tmp.js"></script>
     <script src="https://cdn.anychart.com/maps-data/france_data.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -22,23 +22,23 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    // The data that have been used for this sample can be taken from the CDN
-    // https://cdn.anychart.com/maps-data/france_data.js
-    var dataSet = anychart.data.set(data);
-    dataSet.mapAs({id: "id"});
+    anychart.onDocumentReady(function () {
+        // The data that have been used for this sample can be taken from the CDN
+        // https://cdn.anychart.com/maps-data/france_data.js
+        var dataSet = anychart.data.set(data);
+        dataSet.mapAs({id: "id"});
 
-    var franceMap = anychart.map();
-    franceMap.geoData(anychart.maps.france);
-    franceMap.choropleth(dataSet);
-    franceMap.container("container");
-    franceMap.draw();
+        var franceMap = anychart.map();
+        franceMap.geoData(anychart.maps.france);
+        franceMap.choropleth(dataSet);
+        franceMap.container("container");
+        franceMap.draw();
 
-    var mapScale = franceMap.scale();
-    // Trying to get coordinate at latitude and longitude.
-    mapScale.inverseTransform(220, -642);
-    // Returns -26.134780836105477, 61.32077901212413]
-});
+        var mapScale = franceMap.scale();
+        // Trying to get coordinate at latitude and longitude.
+        mapScale.inverseTransform(220, -642);
+        // Returns -26.134780836105477, 61.32077901212413]
+    });
 </script>
 </body>
 </html>

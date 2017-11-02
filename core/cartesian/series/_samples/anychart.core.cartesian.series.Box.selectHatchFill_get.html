@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.9.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,35 +20,35 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var firstData = [
-        [1, 760, 801, 848, 895, 965] ,
-        [2, 733, 853, 939, 980, 1080, [1120, 630]],
-        [3, 760, 801, 848, 895, 965, [650]],
-        [4, 724, 802, 806, 871, 950, [1000, 600]]
-    ];
+    anychart.onDocumentReady(function () {
+        var firstData = [
+            [1, 760, 801, 848, 895, 965],
+            [2, 733, 853, 939, 980, 1080, [1120, 630]],
+            [3, 760, 801, 848, 895, 965, [650]],
+            [4, 724, 802, 806, 871, 950, [1000, 600]]
+        ];
 
-    var secondData = [
-        [1, 660, 801, 948, 995, 1065] ,
-        [2, 633, 853, 1039, 1080, 1180, [1120, 630]],
-        [3, 660, 801, 948, 995, 1065, [650]],
-        [4, 624, 802, 906, 971, 1050, [1000, 600]]
-    ];
+        var secondData = [
+            [1, 660, 801, 948, 995, 1065],
+            [2, 633, 853, 1039, 1080, 1180, [1120, 630]],
+            [3, 660, 801, 948, 995, 1065, [650]],
+            [4, 624, 802, 906, 971, 1050, [1000, 600]]
+        ];
 
-    var chart = anychart.cartesian();
+        var chart = anychart.cartesian();
 
-    var series = chart.box(firstData);
-    series.selectHatchFill("zigZag");
+        var series = chart.box(firstData);
+        series.selectHatchFill("zigZag");
 
-    // Gets hatch fill settings for selected mode.
-    var selectedHatchFill = series.selectHatchFill();
+        // Gets hatch fill settings for selected mode.
+        var selectedHatchFill = series.selectHatchFill();
 
-    var boxSeries = chart.box(secondData);
-    boxSeries.selectHatchFill(selectedHatchFill);
+        var boxSeries = chart.box(secondData);
+        boxSeries.selectHatchFill(selectedHatchFill);
 
-    chart.container("container");
-    chart.draw();
-});
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

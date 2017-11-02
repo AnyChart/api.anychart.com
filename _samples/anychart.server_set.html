@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.9.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,26 +20,26 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var chart = anychart.column([32, 22, 27, 40, 120, 34, 37, 100, 22]);
+        var chart = anychart.column([32, 22, 27, 40, 120, 34, 37, 100, 22]);
 
-    var currentLabel = chart.label();
+        var currentLabel = chart.label();
 
-    currentLabel.background({fill: "#FFF59D", stroke: "#9E9E9E"});
-    currentLabel.text("Save chart");
-    currentLabel.padding(2);
-    currentLabel.listen("click", function() {
-        stage.saveAsJpg();
+        currentLabel.background({fill: "#FFF59D", stroke: "#9E9E9E"});
+        currentLabel.text("Save chart");
+        currentLabel.padding(2);
+        currentLabel.listen("click", function () {
+            stage.saveAsJpg();
+        });
+
+        // Sets address to export server.
+        anychart.server("https://export.anychart.com");
+
+        chart.container(stage);
+        chart.draw();
     });
-
-    // Sets address to export server.
-    anychart.server("https://export.anychart.com");
-
-    chart.container(stage);
-    chart.draw();
-});
 </script>
 </body>
 </html>
