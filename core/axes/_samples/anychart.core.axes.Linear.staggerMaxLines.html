@@ -23,38 +23,27 @@
     anychart.onDocumentLoad(function () {
         var chart = anychart.line();
 
-        var leftChart = anychart.cartesian();
-        var data = [
-            ['January', 1],
-            ['Febrary', 2],
-            ['March', 4],
-            ['April', 3],
-            ['May', 2],
-            ['June', 4],
-            ['Jule', 5],
-            ['August', 1]
-        ];
-        leftChart.xAxis().staggerLines(4);
-        leftChart.line(data);
-        leftChart.bounds(anychart.math.rect(0, 0, '49%', '100%'));
-        leftChart.container(stage).draw();
-        var rightChart = anychart.cartesian();
-        var data = [
-            ['January', 1],
-            ['Febrary', 2],
-            ['March', 4],
-            ['April', 3],
-            ['May', 2],
-            ['June', 4],
-            ['Jule', 5],
-            ['August', 1]
-        ];
-        rightChart.xAxis().staggerMaxLines(2);
-        rightChart.line(data);
-        rightChart.bounds(anychart.math.rect('51%', 0, '50%', '100%'));
-        rightChart.container(stage).draw();
+        chart.line([
+            {x: "January", value: 2},
+            {x: "February", value: 8},
+            {x: "March", value: 1},
+            {x: "April", value: 7},
+            {x: "May", value: 3},
+            {x: "June", value: 9},
+            {x: "July", value: 4},
+            {x: "August", value: 6},
+            {x: "September", value: 5}
+        ]);
 
-        chart.container('container');
+        var yAxis = chart.yAxis();
+        yAxis.staggerMode(true);
+
+        // Set stagger maximum lines.
+        yAxis.staggerMaxLines(4);
+
+        chart.yScale().ticks().interval(0.2);
+        chart.title("Set stagger maximum lines");
+        chart.container("container");
         chart.draw();
     });
 </script>
