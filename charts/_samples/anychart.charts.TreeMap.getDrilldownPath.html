@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.10.1/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,44 +20,44 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var data = [
-        {id: 'Eurasia', parent: null},
-        {id: 'Asia', parent: 'Eurasia'},
-        {id: 'Eastern Asia', parent: 'Asia'},
-        {id: 'Mongolia', parent: 'Eastern Asia', value: 1564116, capital: 'Ulan-Bator'},
-        {id: 'China', parent: 'Eastern Asia', value: 1564116, capital: 'Beijing'},
-        {id: 'Southern Korea', parent: 'Eastern Asia', value: 1564116, capital: 'Seoul'},
-        {id: 'Northern Korea', parent: 'Eastern Asia', value: 120540, capital: 'Pyongyang'},
-        {id: 'Japan', parent: 'Eastern Asia', value: 1564116, capital: 'Tokio'},
-        {id: 'Europe', parent: 'Eurasia'},
-        {id: 'Northern Europe', parent: 'Europe'},
-        {id: 'Finland', parent: 'Northern Europe', value: 338424, capital: 'Helsinki'},
-        {id: 'Great Britain', parent: 'Northern Europe', value: 209331, capital: 'London'},
-        {id: 'Ireland', parent: 'Northern Europe', value: 84421, capital: 'Dublin'},
-        {id: 'Scandinavia', parent: 'Northern Europe', value: 928057}];
+    anychart.onDocumentReady(function () {
+        var data = [
+            {id: 'Eurasia', parent: null},
+            {id: 'Asia', parent: 'Eurasia'},
+            {id: 'Eastern Asia', parent: 'Asia'},
+            {id: 'Mongolia', parent: 'Eastern Asia', value: 1564116, capital: 'Ulan-Bator'},
+            {id: 'China', parent: 'Eastern Asia', value: 1564116, capital: 'Beijing'},
+            {id: 'Southern Korea', parent: 'Eastern Asia', value: 1564116, capital: 'Seoul'},
+            {id: 'Northern Korea', parent: 'Eastern Asia', value: 120540, capital: 'Pyongyang'},
+            {id: 'Japan', parent: 'Eastern Asia', value: 1564116, capital: 'Tokio'},
+            {id: 'Europe', parent: 'Eurasia'},
+            {id: 'Northern Europe', parent: 'Europe'},
+            {id: 'Finland', parent: 'Northern Europe', value: 338424, capital: 'Helsinki'},
+            {id: 'Great Britain', parent: 'Northern Europe', value: 209331, capital: 'London'},
+            {id: 'Ireland', parent: 'Northern Europe', value: 84421, capital: 'Dublin'},
+            {id: 'Scandinavia', parent: 'Northern Europe', value: 928057}];
 
-    var chart = anychart.treeMap();
+        var chart = anychart.treeMap();
 
-    var treeData = anychart.data.tree(data, "asTable");
-    chart.data(treeData);
+        var treeData = anychart.data.tree(data, "asTable");
+        chart.data(treeData);
 
-    var item = treeData.search("id", "Asia");
+        var item = treeData.search("id", "Asia");
 
-    chart.container("container");
-    chart.draw();
+        chart.container("container");
+        chart.draw();
 
-    chart.drillTo(item);
+        chart.drillTo(item);
 
-    // Returns current path.
-    var path = chart.getDrilldownPath();
+        // Returns current path.
+        var path = chart.getDrilldownPath();
 
-    var asiaPoint = path[path.length-1];
+        var asiaPoint = path[path.length - 1];
 
-    chart.drillUp();
+        chart.drillUp();
 
-    asiaPoint.hovered(true);
-});
+        asiaPoint.hovered(true);
+    });
 </script>
 </body>
 </html>

@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.10.1/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,26 +20,26 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
-    var labels = anychart.ui.labelsFactory();
-    var label;
-    for (var i = 0; i < 5; i++) {
-        label = labels.add({value: i}, {value: {x: (i + 1) * 50, y: 50}}, i);
-        if (i == 0) {
-            label.textFormatter(function() {
-                return "Zero (0)"
-            }); // sets text formatter
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+        var labels = anychart.ui.labelsFactory();
+        var label;
+        for (var i = 0; i < 5; i++) {
+            label = labels.add({value: i}, {value: {x: (i + 1) * 50, y: 50}}, i);
+            if (i == 0) {
+                label.textFormatter(function () {
+                    return "Zero (0)"
+                }); // sets text formatter
+            }
+            else if (i == 2) {
+                label.textFormatter(function () {
+                    return "Third (2)"
+                }); // sets text formatter
+            }
         }
-        else if (i == 2) {
-            label.textFormatter(function() {
-                return "Third (2)"
-            }); // sets text formatter
-        }
-    }
-    labels.container(stage);
-    labels.draw();
-});
+        labels.container(stage);
+        labels.draw();
+    });
 </script>
 </body>
 </html>

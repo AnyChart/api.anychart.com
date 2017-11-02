@@ -7,9 +7,9 @@
     <script src="https://cdn.anychart.com/js/7.10.1/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.1.0/countries/canada/canada.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.1.0/custom/world/world.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -22,37 +22,37 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    // All maps created with geoData() method work only if you referenced a proper map
-    // source file as described at https://docs.anychart.com/7.10.1/Maps/Quick_Start
+    anychart.onDocumentReady(function () {
+        // All maps created with geoData() method work only if you referenced a proper map
+        // source file as described at https://docs.anychart.com/7.10.1/Maps/Quick_Start
 
-    var worldDataSet = anychart.data.set([
-        {id: "CA", name: "Canada", value: "A1"}
-    ]);
+        var worldDataSet = anychart.data.set([
+            {id: "CA", name: "Canada", value: "A1"}
+        ]);
 
-    var canadaMap = anychart.map();
-    canadaMap.geoData(anychart.maps.canada);
+        var canadaMap = anychart.map();
+        canadaMap.geoData(anychart.maps.canada);
 
-    var chart = anychart.map();
-    chart.title("The world map");
+        var chart = anychart.map();
+        chart.title("The world map");
 
-    chart.listen("drillChange", function() {
-        var path = chart.getCurrentPath();
+        chart.listen("drillChange", function () {
+            var path = chart.getCurrentPath();
 
-        // Get parent chart.
-        var parentChart = path[0].getParentChart();
+            // Get parent chart.
+            var parentChart = path[0].getParentChart();
 
-        var currentTitle = parentChart.title();
+            var currentTitle = parentChart.title();
 
-        canadaMap.title(currentTitle.text() + " is a parent chart for the Canada map.");
+            canadaMap.title(currentTitle.text() + " is a parent chart for the Canada map.");
+        });
+
+        chart.geoData(anychart.maps.world);
+        chart.choropleth(worldDataSet);
+        chart.container("container");
+        chart.draw();
+        chart.drillTo("CA", canadaMap);
     });
-
-    chart.geoData(anychart.maps.world);
-    chart.choropleth(worldDataSet);
-    chart.container("container");
-    chart.draw();
-    chart.drillTo("CA", canadaMap);
-});
 </script>
 </body>
 </html>

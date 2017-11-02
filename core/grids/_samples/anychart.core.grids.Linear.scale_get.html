@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.10.1/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,37 +20,37 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var lineChart = anychart.line([29, 72, 250, 330, 85, 390, 95, 15]);
-    lineChart.bounds(0, 0, "50%", "100%");
+        var lineChart = anychart.line([29, 72, 250, 330, 85, 390, 95, 15]);
+        lineChart.bounds(0, 0, "50%", "100%");
 
-    var customScale = anychart.scales.linear();
-    customScale.minimum(0);
-    customScale.maximum(400);
-    customScale.ticks({interval: 40});
+        var customScale = anychart.scales.linear();
+        customScale.minimum(0);
+        customScale.maximum(400);
+        customScale.ticks({interval: 40});
 
-    var lineChartGrid = lineChart.grid();
-    lineChartGrid.enabled(true);
-    lineChartGrid.scale(customScale);
+        var lineChartGrid = lineChart.grid();
+        lineChartGrid.enabled(true);
+        lineChartGrid.scale(customScale);
 
-    lineChart.container(stage);
-    lineChart.draw();
+        lineChart.container(stage);
+        lineChart.draw();
 
-    var columnChart = anychart.column([10, 150, 223, 344, 35, 390, 55, 21]);
-    columnChart.bounds("50%", 0, "50%", "100%");
+        var columnChart = anychart.column([10, 150, 223, 344, 35, 390, 55, 21]);
+        columnChart.bounds("50%", 0, "50%", "100%");
 
-    // Gets grid scale of the line chart.
-    var gridScale = lineChartGrid.scale();
+        // Gets grid scale of the line chart.
+        var gridScale = lineChartGrid.scale();
 
-    var columnChartGrid = columnChart.grid();
-    columnChartGrid.enabled(true);
-    columnChartGrid.scale(gridScale);
+        var columnChartGrid = columnChart.grid();
+        columnChartGrid.enabled(true);
+        columnChartGrid.scale(gridScale);
 
-    columnChart.container(stage);
-    columnChart.draw();
-});
+        columnChart.container(stage);
+        columnChart.draw();
+    });
 </script>
 </body>
 </html>

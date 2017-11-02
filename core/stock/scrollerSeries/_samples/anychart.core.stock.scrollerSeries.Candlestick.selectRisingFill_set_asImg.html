@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.10.1/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,40 +21,40 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var candlestickMapping = dataTable.mapAs({
-        open: 1,
-        high: 2,
-        low: 3,
-        close: 4
-    });
-    var lineMapping = dataTable.mapAs({value: 1});
+        var candlestickMapping = dataTable.mapAs({
+            open: 1,
+            high: 2,
+            low: 3,
+            close: 4
+        });
+        var lineMapping = dataTable.mapAs({value: 1});
 
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
-    chart.grouping({minPixPerPoint: 20});
-    chart.scrollerGrouping({minPixPerPoint: 20});
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
+        chart.grouping({minPixPerPoint: 20});
+        chart.scrollerGrouping({minPixPerPoint: 20});
 
-    var currentPlot = chart.plot();
-    currentPlot.line(lineMapping);
+        var currentPlot = chart.plot();
+        currentPlot.line(lineMapping);
 
-    chartScroller = chart.scroller();
-    chartScroller.height("50%");
+        chartScroller = chart.scroller();
+        chartScroller.height("50%");
 
-    var series = chartScroller.candlestick(candlestickMapping);
+        var series = chartScroller.candlestick(candlestickMapping);
 
-    // Set select rising fill.
-    series.selectRisingFill({
+        // Set select rising fill.
+        series.selectRisingFill({
             src: "https://static.anychart.com/images/beach.png"
-});
+        });
 
-    chart.title("Set select rising fill as an image.");
-    chart.container("container");
-    chart.draw();
-});
+        chart.title("Set select rising fill as an image.");
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

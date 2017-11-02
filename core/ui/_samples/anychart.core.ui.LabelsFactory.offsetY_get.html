@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.10.1/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,37 +20,37 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var columnChart = anychart.column();
-    columnChart.bounds(0, 0, "50%", "100%");
+        var columnChart = anychart.column();
+        columnChart.bounds(0, 0, "50%", "100%");
 
-    var series = columnChart.column([12, 25, 18, 29]);
+        var series = columnChart.column([12, 25, 18, 29]);
 
-    var columnLabels = series.labels();
-    columnLabels.enabled(true);
-    columnLabels.offsetY(50);
+        var columnLabels = series.labels();
+        columnLabels.enabled(true);
+        columnLabels.offsetY(50);
 
-    columnChart.container(stage);
-    columnChart.draw();
+        columnChart.container(stage);
+        columnChart.draw();
 
-    var lineChart = anychart.line();
-    lineChart.bounds("50%", 0, "50%", "100%");
+        var lineChart = anychart.line();
+        lineChart.bounds("50%", 0, "50%", "100%");
 
-    var lineSeries = lineChart.line([12, 25, 18, 29]);
+        var lineSeries = lineChart.line([12, 25, 18, 29]);
 
-    var lineLabels = lineSeries.labels();
-    lineLabels.enabled(true);
+        var lineLabels = lineSeries.labels();
+        lineLabels.enabled(true);
 
-    // Get offset by Y.
-    var offsetY = columnLabels.offsetY();
+        // Get offset by Y.
+        var offsetY = columnLabels.offsetY();
 
-    lineLabels.offsetY(offsetY);
+        lineLabels.offsetY(offsetY);
 
-    lineChart.container(stage);
-    lineChart.draw();
-});
+        lineChart.container(stage);
+        lineChart.draw();
+    });
 </script>
 </body>
 </html>

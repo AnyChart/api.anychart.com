@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.10.1/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.10.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,40 +21,40 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var ohlcMapping = dataTable.mapAs({
-        open: 1,
-        high: 2,
-        low: 3,
-        close: 4
+        var ohlcMapping = dataTable.mapAs({
+            open: 1,
+            high: 2,
+            low: 3,
+            close: 4
+        });
+        var stepAreaMapping = dataTable.mapAs({value: 1});
+
+        var chart = anychart.stock();
+        chart.grouping({minPixPerPoint: 5});
+        chart.scrollerGrouping({minPixPerPoint: 5});
+        chart.padding(10, 10, 10, 50);
+
+        var currentPlot = chart.plot();
+        currentPlot.ohlc(ohlcMapping);
+
+        chartScroller = chart.scroller();
+        chartScroller.height("20%");
+
+        var series = chartScroller.stepArea(stepAreaMapping);
+
+        // Set select stroke.
+        series.selectStroke(function () {
+            return "2 " + anychart.color.darken(this.sourceColor)
+        });
+
+        chart.title("Set select stroke parameter as a function.");
+        chart.container("container");
+        chart.draw();
     });
-    var stepAreaMapping = dataTable.mapAs({value: 1});
-
-    var chart = anychart.stock();
-    chart.grouping({minPixPerPoint: 5});
-    chart.scrollerGrouping({minPixPerPoint: 5});
-    chart.padding(10, 10, 10, 50);
-
-    var currentPlot = chart.plot();
-    currentPlot.ohlc(ohlcMapping);
-
-    chartScroller = chart.scroller();
-    chartScroller.height("20%");
-
-    var series = chartScroller.stepArea(stepAreaMapping);
-
-    // Set select stroke.
-    series.selectStroke(function() {
-        return "2 " + anychart.color.darken(this.sourceColor)
-    });
-
-    chart.title("Set select stroke parameter as a function.");
-    chart.container("container");
-    chart.draw();
-});
 </script>
 </body>
 </html>
