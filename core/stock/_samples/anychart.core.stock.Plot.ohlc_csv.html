@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,8 +20,8 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var csv = "1|10082.7803|10111.9102|9972.3896|10040.8203|1249400064, " +
+    anychart.onDocumentReady(function () {
+        var csv = "1|10082.7803|10111.9102|9972.3896|10040.8203|1249400064, " +
             "2|10040.8096|10143.7598|9989.6504|10110.1396|1199900032, " +
             "3|10111.0996|10159.54|10046.7197|10073.0498|1021900032, " +
             "4|10074.8896|10165.0703|10044.6602|10098.6299|1092499968, " +
@@ -46,27 +46,27 @@ anychart.onDocumentReady(function() {
             "23|10204.5195|10291.3896|10159.54|10244.9297|1324999936, " +
             "24|10244.0498|10244.0498|10075.3301|10109.1797|1379900032";
 
-    var dataTable = anychart.data.table();
-    dataTable.addData(csv, 0, {"rowsSeparator": ", ", columnsSeparator: "|"});
+        var dataTable = anychart.data.table();
+        dataTable.addData(csv, 0, {"rowsSeparator": ", ", columnsSeparator: "|"});
 
-    var mapping = dataTable.mapAs({
-        open: 1,
-        high: 2,
-        low: 3,
-        close: 4
+        var mapping = dataTable.mapAs({
+            open: 1,
+            high: 2,
+            low: 3,
+            close: 4
+        });
+
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
+
+        var currentPlot = chart.plot();
+
+        // Adds ohlc series.
+        currentPlot.ohlc(mapping);
+
+        chart.container("container");
+        chart.draw();
     });
-
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
-
-    var currentPlot = chart.plot();
-
-    // Adds ohlc series.
-    currentPlot.ohlc(mapping);
-
-    chart.container("container");
-    chart.draw();
-});
 </script>
 </body>
 </html>

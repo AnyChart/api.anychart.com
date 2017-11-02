@@ -4,10 +4,10 @@
     <meta name="ac:name" content="anychart.graphics.vector.Stage.shareAsJpg"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-    
+
     <script src="https://cdn.anychart.com/js/7.12.0/graphics.min.js"></script>
-    
-    
+
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,32 +20,32 @@
 <body>
 <div id="container"></div>
 <script>
-var stage = acgraph.create("container");
-stage.circle(450, 360, 340);
-stage.rect(200, 135, 500, 450);
+    var stage = acgraph.create("container");
+    stage.circle(450, 360, 340);
+    stage.rect(200, 135, 500, 450);
 
-var customLabel = anychart.standalones.label();
-customLabel.background({fill: "#9E9E9E"});
-customLabel.text("Get the link to JPG image");
-customLabel.fontColor("#fff");
-customLabel.padding(5);
-customLabel.offsetX(5);
-customLabel.listen("mouseOver", function () {
-    document.body.style.cursor = "pointer";
-});
-customLabel.listen("mouseOut", function () {
-    document.body.style.cursor = "auto";
-});
-
-customLabel.listen("click", function () {
-
-    // Share stage as JPG image.
-    stage.shareAsJpg(function (response) {
-        alert(response);
+    var customLabel = anychart.standalones.label();
+    customLabel.background({fill: "#9E9E9E"});
+    customLabel.text("Get the link to JPG image");
+    customLabel.fontColor("#fff");
+    customLabel.padding(5);
+    customLabel.offsetX(5);
+    customLabel.listen("mouseOver", function () {
+        document.body.style.cursor = "pointer";
     });
-});
-customLabel.container(stage);
-customLabel.draw();
+    customLabel.listen("mouseOut", function () {
+        document.body.style.cursor = "auto";
+    });
+
+    customLabel.listen("click", function () {
+
+        // Share stage as JPG image.
+        stage.shareAsJpg(function (response) {
+            alert(response);
+        });
+    });
+    customLabel.container(stage);
+    customLabel.draw();
 </script>
 </body>
 </html>

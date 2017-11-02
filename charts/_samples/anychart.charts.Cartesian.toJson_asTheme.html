@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,25 +20,25 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var chart = anychart.line();
-    chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
-    chart.bounds(0, 0, "50%", "100%");
-    chart.title("Serialize chart object to JSON with theme settings.");
-    chart.container(stage);
-    chart.draw();
+        var chart = anychart.line();
+        chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+        chart.bounds(0, 0, "50%", "100%");
+        chart.title("Serialize chart object to JSON with theme settings.");
+        chart.container(stage);
+        chart.draw();
 
-    // Returns chart config as JSON object with theme settings.
-    var json = chart.toJson(false, true);
+        // Returns chart config as JSON object with theme settings.
+        var json = chart.toJson(false, true);
 
-    var chartFromJson = anychart.fromJson(json);
-    chartFromJson.bounds("50%", 0, "50%", "100%");
-    chartFromJson.title("Creates chart from JSON object with theme.");
-    chartFromJson.container(stage);
-    chartFromJson.draw();
-});
+        var chartFromJson = anychart.fromJson(json);
+        chartFromJson.bounds("50%", 0, "50%", "100%");
+        chartFromJson.title("Creates chart from JSON object with theme.");
+        chartFromJson.container(stage);
+        chartFromJson.draw();
+    });
 </script>
 </body>
 </html>

@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,31 +21,31 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var firstMapping = dataTable.mapAs({value: 1});
+        var firstMapping = dataTable.mapAs({value: 1});
 
-    var secondMapping = dataTable.mapAs({value: 3});
+        var secondMapping = dataTable.mapAs({value: 3});
 
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
 
-    var currentPlot = chart.plot();
+        var currentPlot = chart.plot();
 
-    var series = currentPlot.line(firstMapping);
-    series.id("green");
+        var series = currentPlot.line(firstMapping);
+        series.id("green");
 
-    currentPlot.line(secondMapping);
+        currentPlot.line(secondMapping);
 
-    // Gets plot series by id.
-    var seriesById = currentPlot.getSeries("green");
-    seriesById.stroke("#4CAF50");
+        // Gets plot series by id.
+        var seriesById = currentPlot.getSeries("green");
+        seriesById.stroke("#4CAF50");
 
-    chart.container("container");
-    chart.draw();
-});
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,32 +20,32 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var data = [
-        {id: "A1", duration: 1, name: "Task A"},
-        {id: "A2", duration: 3, name: "Task B"},
-        {id: "A3", duration: 3, name: "Task C"},
-        {id: "A4", duration: 1, name: "Task D"},
-        {id: "A5", duration: 2, name: "Task AD"},
-        {id: "A6", duration: 2, name: "Task BC"}
-    ];
+    anychart.onDocumentReady(function () {
+        var data = [
+            {id: "A1", duration: 1, name: "Task A"},
+            {id: "A2", duration: 3, name: "Task B"},
+            {id: "A3", duration: 3, name: "Task C"},
+            {id: "A4", duration: 1, name: "Task D"},
+            {id: "A5", duration: 2, name: "Task AD"},
+            {id: "A6", duration: 2, name: "Task BC"}
+        ];
 
-    var dependencies = [
-        {from: "A1", to: "A5"},
-        {from: "A4", to: "A5"},
-        {from: "A2", to: "A6"},
-        {from: "A3", to: "A6"}
-    ];
+        var dependencies = [
+            {from: "A1", to: "A5"},
+            {from: "A4", to: "A5"},
+            {from: "A2", to: "A6"},
+            {from: "A3", to: "A6"}
+        ];
 
-    var chart = anychart.pert();
+        var chart = anychart.pert();
 
-    // Set data.
-    chart.data(data, "asTable", dependencies);
+        // Set data.
+        chart.data(data, "asTable", dependencies);
 
-    chart.title("Set data parameters.");
-    chart.container("container");
-    chart.draw();
-});
+        chart.title("Set data parameters.");
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

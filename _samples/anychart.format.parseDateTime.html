@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
     <script src="http://cdn.anychart.com/locale/1.0.0/french-(france).js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,26 +21,26 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
+    anychart.onDocumentReady(function () {
 
-    var chart = anychart.line([
-        [Date.UTC(2014, 5, 6), 511.53, 500.98, 680.79, 656.40],
-        [Date.UTC(2014, 8, 8), 900, 850, 1100, 1050],
-        [Date.UTC(2014, 9, 10), 700, 630.40, 810.58, 790],
-        [Date.UTC(2014, 10, 12), 380, 315, 450, 415]
-    ]);
+        var chart = anychart.line([
+            [Date.UTC(2014, 5, 6), 511.53, 500.98, 680.79, 656.40],
+            [Date.UTC(2014, 8, 8), 900, 850, 1100, 1050],
+            [Date.UTC(2014, 9, 10), 700, 630.40, 810.58, 790],
+            [Date.UTC(2014, 10, 12), 380, 315, 450, 415]
+        ]);
 
-    var axis = chart.xAxis();
-    var formatLabels = axis.labels();
-    formatLabels.textFormatter(function() {
-        // Parses input value to date.
-        var parsedValue = anychart.format.parseDateTime(this.value, "yyyy M d");
-        return anychart.format.dateTime(parsedValue, "dd MMMM yyyy", 50, "fr-fr");
+        var axis = chart.xAxis();
+        var formatLabels = axis.labels();
+        formatLabels.textFormatter(function () {
+            // Parses input value to date.
+            var parsedValue = anychart.format.parseDateTime(this.value, "yyyy M d");
+            return anychart.format.dateTime(parsedValue, "dd MMMM yyyy", 50, "fr-fr");
+        });
+
+        chart.container("container");
+        chart.draw();
     });
-
-    chart.container("container");
-    chart.draw();
-});
 </script>
 </body>
 </html>

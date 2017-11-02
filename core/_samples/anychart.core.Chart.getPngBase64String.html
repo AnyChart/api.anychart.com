@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,28 +21,28 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    $('#container').after(
+    anychart.onDocumentReady(function () {
+        $('#container').after(
             '<div style="position: absolute; top: 40px; right: 25px; width: 31%;">' +
             '<input style="margin-bottom: 10px;" type="button" value="getPngBase64String" onclick="getPngBase64String()"/>' +
             '<textarea style="width: 100%;" rows="5" cols="70" id="getPngBase64String"></textarea>' + '</div>'
-    );
+        );
 
-    var chart = anychart.line([1.1, 1.4, 1.2, 1.6]);
-    chart.margin([0, '45%', 0, 0]);
-    chart.title("Returns PNG as base64 string");
-    chart.container("container");
-    chart.draw();
-});
-
-function getPngBase64String() {
-
-    // Get PNG as base64 string.
-    chart.getPngBase64String(function (response) {
-        var base64String = document.getElementById('getPngBase64String');
-        base64String.innerHTML = response;
+        var chart = anychart.line([1.1, 1.4, 1.2, 1.6]);
+        chart.margin([0, '45%', 0, 0]);
+        chart.title("Returns PNG as base64 string");
+        chart.container("container");
+        chart.draw();
     });
-}
+
+    function getPngBase64String() {
+
+        // Get PNG as base64 string.
+        chart.getPngBase64String(function (response) {
+            var base64String = document.getElementById('getPngBase64String');
+            base64String.innerHTML = response;
+        });
+    }
 </script>
 </body>
 </html>

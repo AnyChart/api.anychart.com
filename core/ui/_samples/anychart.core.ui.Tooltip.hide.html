@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,45 +20,45 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var data = anychart.data.set([
-        ["John", 10000],
-        ["Jake", 12000],
-        ["Peter", 18000],
-        ["James", 11000],
-        ["Mary", 9000]
-    ]);
+        var data = anychart.data.set([
+            ["John", 10000],
+            ["Jake", 12000],
+            ["Peter", 18000],
+            ["James", 11000],
+            ["Mary", 9000]
+        ]);
 
-    var chart = anychart.column(data);
-    chart.bounds(0, "1%", "100%", "100%");
+        var chart = anychart.column(data);
+        chart.bounds(0, "1%", "100%", "100%");
 
-    var tooltipSettings = chart.tooltip();
-    tooltipSettings.displayMode("union");
-    tooltipSettings.positionMode("point");
-    tooltipSettings.hideDelay(4000);
+        var tooltipSettings = chart.tooltip();
+        tooltipSettings.displayMode("union");
+        tooltipSettings.positionMode("point");
+        tooltipSettings.hideDelay(4000);
 
-    chart.title("Hover a point then click the button");
-    chart.container(stage);
-    chart.draw();
+        chart.title("Hover a point then click the button");
+        chart.container(stage);
+        chart.draw();
 
-    var customLabel = anychart.standalones.label();
-    customLabel.background({fill: "#9E9E9E"});
-    customLabel.text("Hide tooltip.");
-    customLabel.fontColor("#fff");
-    customLabel.parentBounds(0, 0, 100, 100);
-    customLabel.padding(5);
-    customLabel.zIndex(1000);
-    customLabel.listen("click", function() {
+        var customLabel = anychart.standalones.label();
+        customLabel.background({fill: "#9E9E9E"});
+        customLabel.text("Hide tooltip.");
+        customLabel.fontColor("#fff");
+        customLabel.parentBounds(0, 0, 100, 100);
+        customLabel.padding(5);
+        customLabel.zIndex(1000);
+        customLabel.listen("click", function () {
 
-        // Hide tooltip.
-        tooltipSettings.hide(true);
+            // Hide tooltip.
+            tooltipSettings.hide(true);
 
+        });
+        customLabel.container(stage);
+        customLabel.draw();
     });
-    customLabel.container(stage);
-    customLabel.draw();
-});
 </script>
 </body>
 </html>

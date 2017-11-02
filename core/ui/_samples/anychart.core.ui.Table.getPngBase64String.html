@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,60 +21,60 @@
 <body>
 <div id="container"></div>
 <script>
-var table;
-anychart.onDocumentReady(function () {
-    $('#container').after(
+    var table;
+    anychart.onDocumentReady(function () {
+        $('#container').after(
             '<div style="position: absolute; top: 40px; right: 25px; width: 31%;">' +
             '<input style="margin-bottom: 10px;" type="button" value="getPngBase64String" onclick="getPngBase64String()"/>' +
             '<textarea style="width: 100%;" rows="5" cols="70" id="getPngBase64String"></textarea>' + '</div>'
-    );
+        );
 
-    var stage = anychart.graphics.create("container");
+        var stage = anychart.graphics.create("container");
 
-    var dataSet = [
-        [1.1, 2.3, 1.7, 1.9],
-        [1.2, 2.1, 2.7, 1.3],
-        [1.0, 1.2, 0.7, 1.1],
-        [1.3, 2.4, 1.7, 1.9]
-    ];
+        var dataSet = [
+            [1.1, 2.3, 1.7, 1.9],
+            [1.2, 2.1, 2.7, 1.3],
+            [1.0, 1.2, 0.7, 1.1],
+            [1.3, 2.4, 1.7, 1.9]
+        ];
 
-    var pie = anychart.pie();
-    pie.data(dataSet);
-    pie.legend(null);
+        var pie = anychart.pie();
+        pie.data(dataSet);
+        pie.legend(null);
 
-    var lineChart = anychart.line(dataSet[0]);
-    lineChart.title(null);
-    lineChart.xAxis(null);
-    lineChart.yScale().minimum(0);
+        var lineChart = anychart.line(dataSet[0]);
+        lineChart.title(null);
+        lineChart.xAxis(null);
+        lineChart.yScale().minimum(0);
 
-    var areaChart = anychart.area(dataSet[2]);
-    areaChart.title(null);
-    areaChart.xAxis(null);
-    areaChart.yScale().minimum(0);
+        var areaChart = anychart.area(dataSet[2]);
+        areaChart.title(null);
+        areaChart.xAxis(null);
+        areaChart.yScale().minimum(0);
 
-    table = anychart.standalones.table();
+        table = anychart.standalones.table();
 
-    var cell = table.getCell(0, 0);
-    cell.rowSpan(2);
+        var cell = table.getCell(0, 0);
+        cell.rowSpan(2);
 
-    table.contents([
-        [pie, lineChart],
-        [null, areaChart]
-    ]);
-    table.right('35%');
-    table.top("5%");
-    table.container(stage);
-    table.draw();
-});
-
-function getPngBase64String() {
-
-    // Get PNG as base64 string.
-    table.getPngBase64String(function (response) {
-        var base64String = document.getElementById('getPngBase64String');
-        base64String.innerHTML = response;
+        table.contents([
+            [pie, lineChart],
+            [null, areaChart]
+        ]);
+        table.right('35%');
+        table.top("5%");
+        table.container(stage);
+        table.draw();
     });
-}
+
+    function getPngBase64String() {
+
+        // Get PNG as base64 string.
+        table.getPngBase64String(function (response) {
+            var base64String = document.getElementById('getPngBase64String');
+            base64String.innerHTML = response;
+        });
+    }
 </script>
 </body>
 </html>

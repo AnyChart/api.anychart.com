@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,30 +20,30 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var formatterFunc = function() {
-        return this.seriesName;
-    };
+    anychart.onDocumentReady(function () {
+        var formatterFunc = function () {
+            return this.seriesName;
+        };
 
-    var chart = anychart.radar();
-    chart.area([1, 4, 7, 1, 4]);
+        var chart = anychart.radar();
+        chart.area([1, 4, 7, 1, 4]);
 
-    var seriesBlueLine = chart.line([1, 7, 2, 3]);
-    // Sets name.
-    seriesBlueLine.name("My Custom series name");
+        var seriesBlueLine = chart.line([1, 7, 2, 3]);
+        // Sets name.
+        seriesBlueLine.name("My Custom series name");
 
-    var blueLineTooltip = seriesBlueLine.tooltip();
-    blueLineTooltip.textFormatter(formatterFunc);
+        var blueLineTooltip = seriesBlueLine.tooltip();
+        blueLineTooltip.textFormatter(formatterFunc);
 
-    var seriesOrangeLine = chart.line([2, 3, 4, 6]);
+        var seriesOrangeLine = chart.line([2, 3, 4, 6]);
 
-    var seriesOrangeLineTooltip = seriesOrangeLine.tooltip();
-    seriesOrangeLineTooltip.textFormatter(formatterFunc);
+        var seriesOrangeLineTooltip = seriesOrangeLine.tooltip();
+        seriesOrangeLineTooltip.textFormatter(formatterFunc);
 
-    chart.legend().enabled(true);
-    chart.container("container");
-    chart.draw();
-});
+        chart.legend().enabled(true);
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

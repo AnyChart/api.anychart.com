@@ -4,10 +4,10 @@
     <meta name="ac:name" content="anychart.graphics.vector.Stage.suspend"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-    
+
     <script src="https://cdn.anychart.com/js/7.12.0/graphics.min.js"></script>
-    
-    
+
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,25 +20,25 @@
 <body>
 <div id="container"></div>
 <script>
-var stage = acgraph.create("container");
+    var stage = acgraph.create("container");
 
-var singleText = stage.text(20, 10, "Click to resume");
-singleText.fontSize(14);
+    var singleText = stage.text(20, 10, "Click to resume");
+    singleText.fontSize(14);
 
-var rectangle = stage.rect(0, 0, 100, 100);
-rectangle.fill("#FFFFFF 0.01");
-rectangle.stroke(null);
+    var rectangle = stage.rect(0, 0, 100, 100);
+    rectangle.fill("#FFFFFF 0.01");
+    rectangle.stroke(null);
 
-acgraph.events.listen(rectangle, "click", function () {
-    stage.resume();
-    singleText.text(null);
-    rectangle.fill("none");
-});
+    acgraph.events.listen(rectangle, "click", function () {
+        stage.resume();
+        singleText.text(null);
+        rectangle.fill("none");
+    });
 
-// Suspends rendering.
-stage.suspend();
-stage.text(10, 30, "New text line");
-stage.circle(100, 100, 50).fill("red 0.2").stroke("2 blue");
+    // Suspends rendering.
+    stage.suspend();
+    stage.text(10, 30, "New text line");
+    stage.circle(100, 100, 50).fill("red 0.2").stroke("2 blue");
 </script>
 </body>
 </html>

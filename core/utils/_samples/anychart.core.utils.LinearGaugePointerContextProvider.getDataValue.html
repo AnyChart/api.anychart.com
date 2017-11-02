@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,32 +20,32 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container", 600, 400);
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container", 600, 400);
 
-    var chart = anychart.gauges.linear();
-    chart.data([
-        {value: 15, browser: "Opera"},
-        {value: 20, browser: "Firefox"},
-        {value: 25, browser: "Safari"},
-        {value: 30, browser: "Chrome"}
-    ]);
+        var chart = anychart.gauges.linear();
+        chart.data([
+            {value: 15, browser: "Opera"},
+            {value: 20, browser: "Firefox"},
+            {value: 25, browser: "Safari"},
+            {value: 30, browser: "Chrome"}
+        ]);
 
-    var barPointer = chart.bar(2);
+        var barPointer = chart.bar(2);
 
-    var currentLabel = barPointer.label();
-    currentLabel.enabled(true);
-    currentLabel.offsetY(-20);
-    currentLabel.textFormatter(function() {
+        var currentLabel = barPointer.label();
+        currentLabel.enabled(true);
+        currentLabel.offsetY(-20);
+        currentLabel.textFormatter(function () {
 
-        // Get data value.
-        return this.getDataValue("browser")
+            // Get data value.
+            return this.getDataValue("browser")
+        });
+
+        chart.title("Get and use data value.");
+        chart.container(stage);
+        chart.draw();
     });
-
-    chart.title("Get and use data value.");
-    chart.container(stage);
-    chart.draw();
-});
 </script>
 </body>
 </html>

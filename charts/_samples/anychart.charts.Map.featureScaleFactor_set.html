@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/france/france.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,39 +21,39 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var dataSet = anychart.data.set([
-        {id: "FR.A", value: 928},
-        {id: "FR.B", value: 192},
-        {id: "FR.C", value: 963},
-        {id: "FR.P", value: 266},
-        {id: "FR.E", value: 324},
-        {id: "FR.F", value: 767},
-        {id: "FR.G", value: 478},
-        {id: "FR.H", value: 456},
-        {id: "FR.I", value: 477},
-        {id: "FR.GP", value: 200},
-        {id: "FR.GF", value: 945}
-    ]);
+    anychart.onDocumentReady(function () {
+        var dataSet = anychart.data.set([
+            {id: "FR.A", value: 928},
+            {id: "FR.B", value: 192},
+            {id: "FR.C", value: 963},
+            {id: "FR.P", value: 266},
+            {id: "FR.E", value: 324},
+            {id: "FR.F", value: 767},
+            {id: "FR.G", value: 478},
+            {id: "FR.H", value: 456},
+            {id: "FR.I", value: 477},
+            {id: "FR.GP", value: 200},
+            {id: "FR.GF", value: 945}
+        ]);
 
-    var franceMap = anychart.map();
-    franceMap.geoData(anychart.maps.france);
-    franceMap.choropleth(dataSet);
-    franceMap.title("Scale a feature.");
-    franceMap.container("container");
-    franceMap.draw();
+        var franceMap = anychart.map();
+        franceMap.geoData(anychart.maps.france);
+        franceMap.choropleth(dataSet);
+        franceMap.title("Scale a feature.");
+        franceMap.container("container");
+        franceMap.draw();
 
-    var mapLabel = franceMap.label();
-    mapLabel.background({fill: "#9E9E9E 0.3"});
-    mapLabel.text("Scale a feature.");
-    mapLabel.padding(5);
-    mapLabel.listen("click", function() {
+        var mapLabel = franceMap.label();
+        mapLabel.background({fill: "#9E9E9E 0.3"});
+        mapLabel.text("Scale a feature.");
+        mapLabel.padding(5);
+        mapLabel.listen("click", function () {
 
-        // Scale feature.
-        franceMap.featureScaleFactor("FR.H", 0.002);
+            // Scale feature.
+            franceMap.featureScaleFactor("FR.H", 0.002);
 
+        });
     });
-});
 </script>
 </body>
 </html>

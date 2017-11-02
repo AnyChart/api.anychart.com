@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,29 +21,29 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var mapping = dataTable.mapAs({value: 1});
+        var mapping = dataTable.mapAs({value: 1});
 
-    var chart = anychart.stock();
+        var chart = anychart.stock();
 
-    var currentPlot = chart.plot();
-    currentPlot.line(mapping);
+        var currentPlot = chart.plot();
+        currentPlot.line(mapping);
 
-    var rangePicker = anychart.ui.rangePicker();
-    rangePicker.target(chart);
+        var rangePicker = anychart.ui.rangePicker();
+        rangePicker.target(chart);
 
-    chart.title("Renders the range picker into container");
-    chart.container("container");
-    chart.draw();
+        chart.title("Renders the range picker into container");
+        chart.container("container");
+        chart.draw();
 
-    // Renders the range picker into container.
-    rangePicker.decorate(document.getElementById("container"));
+        // Renders the range picker into container.
+        rangePicker.decorate(document.getElementById("container"));
 
-    chart.selectRange("YTD");
-});
+        chart.selectRange("YTD");
+    });
 </script>
 </body>
 </html>

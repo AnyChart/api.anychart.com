@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,51 +20,51 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var dataSet = [
-        [1.1, 2.3, 1.7, 1.9],
-        [1.2, 2.1, 2.7, 1.3],
-        [1.0, 1.2, 0.7, 1.1],
-        [1.3, 2.4, 1.7, 1.9]
-    ];
+        var dataSet = [
+            [1.1, 2.3, 1.7, 1.9],
+            [1.2, 2.1, 2.7, 1.3],
+            [1.0, 1.2, 0.7, 1.1],
+            [1.3, 2.4, 1.7, 1.9]
+        ];
 
-    var pie = anychart.pie();
-    pie.data(dataSet);
-    pie.legend(null);
+        var pie = anychart.pie();
+        pie.data(dataSet);
+        pie.legend(null);
 
-    var lineChart = anychart.line(dataSet[0]);
-    lineChart.title(null);
-    lineChart.xAxis(null);
+        var lineChart = anychart.line(dataSet[0]);
+        lineChart.title(null);
+        lineChart.xAxis(null);
 
-    var areaChart = anychart.area(dataSet[1]);
-    areaChart.title(null);
-    areaChart.xAxis(null);
+        var areaChart = anychart.area(dataSet[1]);
+        areaChart.title(null);
+        areaChart.xAxis(null);
 
-    var table = anychart.standalones.table();
+        var table = anychart.standalones.table();
 
-    var cell = table.getCell(0, 0);
-    cell.rowSpan(2);
+        var cell = table.getCell(0, 0);
+        cell.rowSpan(2);
 
-    table.contents([
-        [pie, lineChart],
-        [null, areaChart]
-    ]);
-    table.container(stage);
-    table.draw();
+        table.contents([
+            [pie, lineChart],
+            [null, areaChart]
+        ]);
+        table.container(stage);
+        table.draw();
 
-    var saveLabel = anychart.standalones.label();
-    saveLabel.background({fill: "#FFF59D", stroke: "#9E9E9E"});
-    saveLabel.text("Save table");
-    saveLabel.padding(2);
-    saveLabel.listen("click", function() {
-        // Saves image into SVG file.
-        table.saveAsSvg(500, 600);
+        var saveLabel = anychart.standalones.label();
+        saveLabel.background({fill: "#FFF59D", stroke: "#9E9E9E"});
+        saveLabel.text("Save table");
+        saveLabel.padding(2);
+        saveLabel.listen("click", function () {
+            // Saves image into SVG file.
+            table.saveAsSvg(500, 600);
+        });
+        saveLabel.container(stage);
+        saveLabel.draw();
     });
-    saveLabel.container(stage);
-    saveLabel.draw();
-});
 </script>
 </body>
 </html>

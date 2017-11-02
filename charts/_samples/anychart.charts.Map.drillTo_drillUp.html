@@ -8,9 +8,9 @@
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/mongolia/mongolia.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/canada/canada.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -23,60 +23,60 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    // All maps created with geoData() method work only if you referenced a proper map
-    // source file as described at https://docs.anychart.com/7.12.0/Maps/Quick_Start
+    anychart.onDocumentReady(function () {
+        // All maps created with geoData() method work only if you referenced a proper map
+        // source file as described at https://docs.anychart.com/7.12.0/Maps/Quick_Start
 
-    var stage = anychart.graphics.create("container");
+        var stage = anychart.graphics.create("container");
 
-    var worldDataSet = anychart.data.set([
-        {id: "CA", name: "Canada", value: "A1"},
-        {id: "MN", name: "Mongolia", value: "A1"}
-    ]);
+        var worldDataSet = anychart.data.set([
+            {id: "CA", name: "Canada", value: "A1"},
+            {id: "MN", name: "Mongolia", value: "A1"}
+        ]);
 
-    var canadaMap = anychart.map();
-    canadaMap.geoData(anychart.maps.canada);
+        var canadaMap = anychart.map();
+        canadaMap.geoData(anychart.maps.canada);
 
-    var chart = anychart.map();
-    chart.geoData(anychart.maps.world);
-    chart.choropleth(worldDataSet);
-    chart.bounds(0, "10%", "90%", "90%");
-    chart.title("Drill down to Canada map and drill up.");
-    chart.container(stage);
-    chart.draw();
+        var chart = anychart.map();
+        chart.geoData(anychart.maps.world);
+        chart.choropleth(worldDataSet);
+        chart.bounds(0, "10%", "90%", "90%");
+        chart.title("Drill down to Canada map and drill up.");
+        chart.container(stage);
+        chart.draw();
 
-    var drillToLabel = anychart.standalones.label();
-    drillToLabel.background({fill: "#9E9E9E"});
-    drillToLabel.text("Drill to Canada map.");
-    drillToLabel.fontColor("#fff");
-    drillToLabel.parentBounds(0, 0, 100, 100);
-    drillToLabel.padding(5);
-    drillToLabel.zIndex(1000);
-    drillToLabel.listen("click", function() {
+        var drillToLabel = anychart.standalones.label();
+        drillToLabel.background({fill: "#9E9E9E"});
+        drillToLabel.text("Drill to Canada map.");
+        drillToLabel.fontColor("#fff");
+        drillToLabel.parentBounds(0, 0, 100, 100);
+        drillToLabel.padding(5);
+        drillToLabel.zIndex(1000);
+        drillToLabel.listen("click", function () {
 
-        // Drill down to specified map.
-        chart.drillTo("CA", canadaMap);
+            // Drill down to specified map.
+            chart.drillTo("CA", canadaMap);
 
+        });
+        drillToLabel.container(stage);
+        drillToLabel.draw();
+
+        var drillUpLabel = anychart.standalones.label();
+        drillUpLabel.background({fill: "#9E9E9E"});
+        drillUpLabel.text("Drill up.");
+        drillUpLabel.fontColor("#fff");
+        drillUpLabel.parentBounds(0, 30, 100, 100);
+        drillUpLabel.padding(5);
+        drillUpLabel.zIndex(1000);
+        drillUpLabel.listen("click", function () {
+
+            // Drill up to one map level.
+            chart.drillUp();
+
+        });
+        drillUpLabel.container(stage);
+        drillUpLabel.draw();
     });
-    drillToLabel.container(stage);
-    drillToLabel.draw();
-
-    var drillUpLabel = anychart.standalones.label();
-    drillUpLabel.background({fill: "#9E9E9E"});
-    drillUpLabel.text("Drill up.");
-    drillUpLabel.fontColor("#fff");
-    drillUpLabel.parentBounds(0, 30, 100, 100);
-    drillUpLabel.padding(5);
-    drillUpLabel.zIndex(1000);
-    drillUpLabel.listen("click", function() {
-
-        // Drill up to one map level.
-        chart.drillUp();
-
-    });
-    drillUpLabel.container(stage);
-    drillUpLabel.draw();
-});
 </script>
 </body>
 </html>

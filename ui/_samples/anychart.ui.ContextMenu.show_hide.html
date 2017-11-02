@@ -5,10 +5,10 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.12.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,61 +21,61 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    // To change the way how context menu looks you need to change CSS.
-    // By default CSS from AnyChart CDN is used: https://cdn.anychart.com/css/7.12.0/anychart-ui.css
-    // Download it, alter, upload to your server and link from your pages to change the look.
+    anychart.onDocumentReady(function () {
+        // To change the way how context menu looks you need to change CSS.
+        // By default CSS from AnyChart CDN is used: https://cdn.anychart.com/css/7.12.0/anychart-ui.css
+        // Download it, alter, upload to your server and link from your pages to change the look.
 
-    var stage = anychart.graphics.create("container");
+        var stage = anychart.graphics.create("container");
 
-    var chart = anychart.line([1, 2, 1.3, 2.9]);
-    chart.contextMenu(false);
-    chart.bounds(0, "10%", "100%", "90%");
+        var chart = anychart.line([1, 2, 1.3, 2.9]);
+        chart.contextMenu(false);
+        chart.bounds(0, "10%", "100%", "90%");
 
-    var customContextMenu = anychart.ui.contextMenu();
+        var customContextMenu = anychart.ui.contextMenu();
 
-    customContextMenu.attach(chart);
-    customContextMenu.items([
-        {
-            text: "Open AnyChart API",
-            href: "https://api.anychart.com"
-        }
-    ]);
+        customContextMenu.attach(chart);
+        customContextMenu.items([
+            {
+                text: "Open AnyChart API",
+                href: "https://api.anychart.com"
+            }
+        ]);
 
-    var showLabel = anychart.standalones.label();
-    showLabel.background({fill: "#9E9E9E"});
-    showLabel.text("Show context menu.");
-    showLabel.fontColor("#fff");
-    showLabel.parentBounds(0, 0, 100, 100);
-    showLabel.padding(5);
-    showLabel.listen("click", function () {
+        var showLabel = anychart.standalones.label();
+        showLabel.background({fill: "#9E9E9E"});
+        showLabel.text("Show context menu.");
+        showLabel.fontColor("#fff");
+        showLabel.parentBounds(0, 0, 100, 100);
+        showLabel.padding(5);
+        showLabel.listen("click", function () {
 
-        // Show context menu.
-        customContextMenu.show(150, 150);
+            // Show context menu.
+            customContextMenu.show(150, 150);
 
+        });
+        showLabel.container(stage);
+        showLabel.draw();
+
+        var hideLabel = anychart.standalones.label();
+        hideLabel.background({fill: "#9E9E9E"});
+        hideLabel.text("Hide context menu.");
+        hideLabel.fontColor("#fff");
+        hideLabel.parentBounds(0, 30, 100, 100);
+        hideLabel.padding(5);
+        hideLabel.listen("click", function () {
+
+            // Hide context menu.
+            customContextMenu.hide();
+
+        });
+        hideLabel.container(stage);
+        hideLabel.draw();
+
+        chart.title("Show and hide context menu.");
+        chart.container(stage);
+        chart.draw();
     });
-    showLabel.container(stage);
-    showLabel.draw();
-
-    var hideLabel = anychart.standalones.label();
-    hideLabel.background({fill: "#9E9E9E"});
-    hideLabel.text("Hide context menu.");
-    hideLabel.fontColor("#fff");
-    hideLabel.parentBounds(0, 30, 100, 100);
-    hideLabel.padding(5);
-    hideLabel.listen("click", function () {
-
-        // Hide context menu.
-        customContextMenu.hide();
-
-    });
-    hideLabel.container(stage);
-    hideLabel.draw();
-
-    chart.title("Show and hide context menu.");
-    chart.container(stage);
-    chart.draw();
-});
 </script>
 </body>
 </html>

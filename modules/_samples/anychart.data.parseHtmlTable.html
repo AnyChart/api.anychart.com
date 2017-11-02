@@ -8,9 +8,9 @@
     <script src="https://cdn.anychart.com/js/7.12.0/data-adapter.min.js"></script>
     <script src="https://cdn.anychart.com/js/utils/style_installer.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.12.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -23,9 +23,9 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
+    anychart.onDocumentReady(function () {
 
-    $('#container').after('<table id="html-table" ' +
+        $('#container').after('<table id="html-table" ' +
             'id="html-table" border="1" cellpadding="5" cellspacing="5">' +
             '<caption>Cosmetic Products by Revenue</caption>' +
             '<tr>' +
@@ -74,31 +74,31 @@ anychart.onDocumentReady(function () {
             '</tr>' +
             '</table>');
 
-    // To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
-    // (https://cdn.anychart.com/js/7.12.0/data-adapter.min.js for latest or https://cdn.anychart.com/js/7.11.1/data-adapter.min.js for the versioned file)
+        // To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
+        // (https://cdn.anychart.com/js/7.12.0/data-adapter.min.js for latest or https://cdn.anychart.com/js/7.11.1/data-adapter.min.js for the versioned file)
 
-    // Parses HTML table.
-    var tableData = anychart.data.parseHtmlTable("#html-table");
+        // Parses HTML table.
+        var tableData = anychart.data.parseHtmlTable("#html-table");
 
-    var chart = anychart.bar();
-    chart.margin([0, '45%', 0, 0]);
+        var chart = anychart.bar();
+        chart.margin([0, '45%', 0, 0]);
 
-    // Set data from HTML table.
-    chart.data(tableData);
+        // Set data from HTML table.
+        chart.data(tableData);
 
-    chart.title("Parse HTML table to table data");
-    chart.container("container");
-    chart.draw();
+        chart.title("Parse HTML table to table data");
+        chart.container("container");
+        chart.draw();
 
-    anychart.installStyles('td, th {padding: 8px;line-height: 1.42857143;' +
+        anychart.installStyles('td, th {padding: 8px;line-height: 1.42857143;' +
             'vertical-align: top;border-top: 1px solid #ddd;' +
             'border-right: 1px solid #ddd;width: 50%;}' +
             'table {border-collapse: collapse; ' +
             'border: 1px solid #ddd; text-align: center; ' +
             'position: absolute; top: 40px; right: 25px; width: 31%;}' +
             'caption {margin-bottom: 10px;}'
-    );
-});
+        );
+    });
 </script>
 </body>
 </html>

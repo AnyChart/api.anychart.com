@@ -4,10 +4,10 @@
     <meta name="ac:name" content="anychart.graphics.vector.Stage.unlistenByKey"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-    
+
     <script src="https://cdn.anychart.com/js/7.12.0/graphics.min.js"></script>
-    
-    
+
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,26 +20,26 @@
 <body>
 <div id="container"></div>
 <script>
-var stage = acgraph.create("container");
+    var stage = acgraph.create("container");
 
-var simpleText = stage.text(50, 50);
-simpleText.style({fontStyle: "italic", fontSize: "15px"});
-simpleText.text("Click on line series. You have 3 clicks.");
+    var simpleText = stage.text(50, 50);
+    simpleText.style({fontStyle: "italic", fontSize: "15px"});
+    simpleText.text("Click on line series. You have 3 clicks.");
 
-var listenKey = stage.listen("click", customListener);
+    var listenKey = stage.listen("click", customListener);
 
-var counter = 3;
+    var counter = 3;
 
-function customListener(e) {
-    counter--;
-    simpleText.text("Click on line series. You have " + counter + " clicks.");
-    if (counter == 0) {
+    function customListener(e) {
+        counter--;
+        simpleText.text("Click on line series. You have " + counter + " clicks.");
+        if (counter == 0) {
 
-        // Adds unlistener by key on stage.
-        stage.unlistenByKey(listenKey);
-        simpleText.text("You have no more clicks");
+            // Adds unlistener by key on stage.
+            stage.unlistenByKey(listenKey);
+            simpleText.text("You have no more clicks");
+        }
     }
-}
 </script>
 </body>
 </html>
