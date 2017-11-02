@@ -21,12 +21,21 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line();
-        var palette = anychart.utils.markerPalette();
-        palette.markers(); // ['star4', 'star5', 'star6', ...]
-        palette.markers(['cross', 'diagonalcross']).markers(); // ['cross', 'diagonalcross']
-        palette.markers('diamond', 'circle', 'square').markers(); // ['diamond', 'circle', 'square']
-        chart.container('container');
+        var chart = anychart.line([2, 5, 1, 8], [6, 3, 8, 4], [10, 6, 13, 1]);
+
+        var firstSeries = chart.getSeries(0);
+        firstSeries.markers(true);
+        var secondSeries = chart.getSeries(1);
+        secondSeries.markers(true);
+        var thirdSeries = chart.getSeries(2);
+        thirdSeries.markers(true);
+        var palette = anychart.palettes.markers();
+
+        // set markers
+        palette.markers("cross", "circle", "diagonal-cross");
+
+        chart.markerPalette(palette);
+        chart.container("container");
         chart.draw();
     });
 </script>
