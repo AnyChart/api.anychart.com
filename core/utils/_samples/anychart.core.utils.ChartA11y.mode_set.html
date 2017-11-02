@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,40 +20,40 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataSet = anychart.data.set([
-        ['1986', 41, 36, 31],
-        ['1987', 37, 34, 29],
-        ['1988', 48, 47, 40],
-        ['1989', 41, 39, 33],
-        ['1990', 39, 36, 31],
-        ['1991', 34, 31, 27],
-        ['1992', 38, 35, 30],
-        ['1993', 29, 28, 24],
-        ['1994', 33, 32, 27]
-    ]);
+    anychart.onDocumentReady(function () {
+        var dataSet = anychart.data.set([
+            ['1986', 41, 36, 31],
+            ['1987', 37, 34, 29],
+            ['1988', 48, 47, 40],
+            ['1989', 41, 39, 33],
+            ['1990', 39, 36, 31],
+            ['1991', 34, 31, 27],
+            ['1992', 38, 35, 30],
+            ['1993', 29, 28, 24],
+            ['1994', 33, 32, 27]
+        ]);
 
-    var firstSeriesData = dataSet.mapAs({x: [0], value: [1]});
-    var secondSeriesData = dataSet.mapAs({x: [0], value: [2]});
-    var thirdSeriesData = dataSet.mapAs({x: [0], value: [3]});
+        var firstSeriesData = dataSet.mapAs({x: [0], value: [1]});
+        var secondSeriesData = dataSet.mapAs({x: [0], value: [2]});
+        var thirdSeriesData = dataSet.mapAs({x: [0], value: [3]});
 
-    var chart = anychart.line();
+        var chart = anychart.line();
 
-    chart.line(firstSeriesData);
-    chart.line(secondSeriesData);
-    chart.line(thirdSeriesData);
+        chart.line(firstSeriesData);
+        chart.line(secondSeriesData);
+        chart.line(thirdSeriesData);
 
-    var currentA11y = chart.a11y();
+        var currentA11y = chart.a11y();
 
-    // Set accessibility mode.
-    // Mode adds a hidden table available for VoiceOver.
-    // You can use inspect element tool to see the table.
-    currentA11y.mode("dataTable");
+        // Set accessibility mode.
+        // Mode adds a hidden table available for VoiceOver.
+        // You can use inspect element tool to see the table.
+        currentA11y.mode("dataTable");
 
-    chart.title("Set accessibility mode DataTable.");
-    chart.container("container");
-    chart.draw();
-});
+        chart.title("Set accessibility mode DataTable.");
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

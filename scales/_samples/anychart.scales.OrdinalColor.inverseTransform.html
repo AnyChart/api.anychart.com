@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,49 +21,49 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataSet = anychart.data.set([
-        {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
-        {id: "AU.VI", value: 23, title: "Victoria"},
-        {id: "AU.WA", value: 86, title: "Western Australia"},
-        {id: "AU.QL", value: 16, title: "Queensland"},
-        {id: "AU.NS", value: 32, title: "New South Wales"},
-        {id: "AU.NT", value: 64, title: "Northern Territory"},
-        {id: "AU.TS", value: 28, title: "Tasmania"},
-        {id: "AU.SA", value: 45, title: "South Australian"}
-    ]);
+    anychart.onDocumentReady(function () {
+        var dataSet = anychart.data.set([
+            {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
+            {id: "AU.VI", value: 23, title: "Victoria"},
+            {id: "AU.WA", value: 86, title: "Western Australia"},
+            {id: "AU.QL", value: 16, title: "Queensland"},
+            {id: "AU.NS", value: 32, title: "New South Wales"},
+            {id: "AU.NT", value: 64, title: "Northern Territory"},
+            {id: "AU.TS", value: 28, title: "Tasmania"},
+            {id: "AU.SA", value: 45, title: "South Australian"}
+        ]);
 
-    var dataSetForSeries = dataSet.mapAs({id: "id"});
+        var dataSetForSeries = dataSet.mapAs({id: "id"});
 
-    var australiaMap = anychart.map();
-    australiaMap.geoData(anychart.maps.australia);
+        var australiaMap = anychart.map();
+        australiaMap.geoData(anychart.maps.australia);
 
-    var currentColorScale = anychart.scales.ordinalColor();
-    currentColorScale.ranges([
-        {from: 10, to: 30},
-        {from: 30, to: 50},
-        {from: 50, to: 90}
-    ]);
+        var currentColorScale = anychart.scales.ordinalColor();
+        currentColorScale.ranges([
+            {from: 10, to: 30},
+            {from: 30, to: 50},
+            {from: 50, to: 90}
+        ]);
 
 
-    var series = australiaMap.choropleth(dataSetForSeries);
-    series.geoIdField("code_hasc");
-    series.colorScale(currentColorScale);
+        var series = australiaMap.choropleth(dataSetForSeries);
+        series.geoIdField("code_hasc");
+        series.colorScale(currentColorScale);
 
-    var currentColorRange = australiaMap.colorRange();
-    currentColorRange.enabled(true);
-    var colorRangeTicks = currentColorRange.ticks();
-    colorRangeTicks.enabled(true);
-    colorRangeTicks.stroke("#000000");
+        var currentColorRange = australiaMap.colorRange();
+        currentColorRange.enabled(true);
+        var colorRangeTicks = currentColorRange.ticks();
+        colorRangeTicks.enabled(true);
+        colorRangeTicks.stroke("#000000");
 
-    australiaMap.container("container");
-    australiaMap.draw();
+        australiaMap.container("container");
+        australiaMap.draw();
 
-    // Trying to get a tick.
-    var tickValue = currentColorScale.transform(45);
+        // Trying to get a tick.
+        var tickValue = currentColorScale.transform(45);
 
-    australiaMap.title("Tick value is " + tickValue + ".");
-});
+        australiaMap.title("Tick value is " + tickValue + ".");
+    });
 </script>
 </body>
 </html>

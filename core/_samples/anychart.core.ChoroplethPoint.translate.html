@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/france/france.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,29 +21,29 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var dataSet = anychart.data.set([
-        {id: "FR.A", title: "Strasbourg", value: 928},
-        {id: "FR.B", title: "Bordeaux", value: 192},
-        {id: "FR.C", title: "Clermont-Ferrand", value: 963},
-        {id: "FR.P", title: "Caen", value: 266},
-        {id: "FR.D", title: "Dijon", value: 518},
-        {id: "FR.E", title: "Rennes", value: 324}
-    ]);
-    dataSet.mapAs({id: "id"});
+    anychart.onDocumentReady(function () {
+        var dataSet = anychart.data.set([
+            {id: "FR.A", title: "Strasbourg", value: 928},
+            {id: "FR.B", title: "Bordeaux", value: 192},
+            {id: "FR.C", title: "Clermont-Ferrand", value: 963},
+            {id: "FR.P", title: "Caen", value: 266},
+            {id: "FR.D", title: "Dijon", value: 518},
+            {id: "FR.E", title: "Rennes", value: 324}
+        ]);
+        dataSet.mapAs({id: "id"});
 
-    var franceMap = anychart.map();
-    franceMap.geoData(anychart.maps.france);
+        var franceMap = anychart.map();
+        franceMap.geoData(anychart.maps.france);
 
-    var series = franceMap.choropleth(dataSet);
+        var series = franceMap.choropleth(dataSet);
 
-    franceMap.container("container");
-    franceMap.draw();
+        franceMap.container("container");
+        franceMap.draw();
 
-    var point = series.getPoint(0);
-    // Moves point.
-    point.translate(20, 50);
-});
+        var point = series.getPoint(0);
+        // Moves point.
+        point.translate(20, 50);
+    });
 </script>
 </body>
 </html>

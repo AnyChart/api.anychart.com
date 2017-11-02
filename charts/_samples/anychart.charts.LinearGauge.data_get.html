@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,23 +20,23 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+    anychart.onDocumentReady(function () {
+        var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
 
-    // Get data.
-    var currentData = chart.data();
+        // Get data.
+        var currentData = chart.data();
 
-    var filterData = currentData.filter("value", function(value) {
-        return value < 26;
+        var filterData = currentData.filter("value", function (value) {
+            return value < 26;
+        });
+
+        chart.data(filterData);
+
+        chart.addPointer(4, 3, 2, 1, 0);
+        chart.title("Set data as an array.");
+        chart.container("container");
+        chart.draw();
     });
-
-    chart.data(filterData);
-
-    chart.addPointer(4, 3, 2, 1, 0);
-    chart.title("Set data as an array.");
-    chart.container("container");
-    chart.draw();
-});
 </script>
 </body>
 </html>

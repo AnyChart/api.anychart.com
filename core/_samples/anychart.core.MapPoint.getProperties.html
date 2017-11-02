@@ -8,9 +8,9 @@
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/mongolia/mongolia.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/canada/canada.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -23,35 +23,35 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    // All maps created with geoData() method work only if you referenced a proper map
-    // source file as described at https://docs.anychart.com/7.11.0/Maps/Quick_Start
+    anychart.onDocumentReady(function () {
+        // All maps created with geoData() method work only if you referenced a proper map
+        // source file as described at https://docs.anychart.com/7.11.0/Maps/Quick_Start
 
-    var worldDataSet = anychart.data.set([
-        {id: "CA", name: "Canada", value: "A1"},
-        {id: "MN", name: "Mongolia", value: "A1"}
-    ]);
+        var worldDataSet = anychart.data.set([
+            {id: "CA", name: "Canada", value: "A1"},
+            {id: "MN", name: "Mongolia", value: "A1"}
+        ]);
 
-    var canadaMap = anychart.map();
-    canadaMap.geoData(anychart.maps.canada);
+        var canadaMap = anychart.map();
+        canadaMap.geoData(anychart.maps.canada);
 
-    var chart = anychart.map();
-    chart.geoData(anychart.maps.world);
-    chart.choropleth(worldDataSet);
+        var chart = anychart.map();
+        chart.geoData(anychart.maps.world);
+        chart.choropleth(worldDataSet);
 
-    chart.listen("drillChange", function(){
-        var path = chart.getCurrentPath();
+        chart.listen("drillChange", function () {
+            var path = chart.getCurrentPath();
 
-        // Get properties.
-        var properties = path[0].getProperties();
+            // Get properties.
+            var properties = path[0].getProperties();
 
-        canadaMap.title("Get properties. The continent is " + properties["continent"] + ".");
+            canadaMap.title("Get properties. The continent is " + properties["continent"] + ".");
+        });
+
+        chart.container("container");
+        chart.draw();
+        chart.drillTo("CA", canadaMap);
     });
-    
-    chart.container("container");
-    chart.draw();
-    chart.drillTo("CA", canadaMap);
-});
 </script>
 </body>
 </html>

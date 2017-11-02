@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,40 +21,40 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var firstMapping = dataTable.mapAs({value: 1});
-    var secondMapping = dataTable.mapAs({value: 2});
-    var thirdMapping = dataTable.mapAs({value: 3});
+        var firstMapping = dataTable.mapAs({value: 1});
+        var secondMapping = dataTable.mapAs({value: 2});
+        var thirdMapping = dataTable.mapAs({value: 3});
 
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
 
-    var firstPlot = chart.plot();
+        var firstPlot = chart.plot();
 
-    firstPlot.marker(firstMapping);
-    firstPlot.marker(secondMapping);
-    firstPlot.marker(thirdMapping);
+        firstPlot.marker(firstMapping);
+        firstPlot.marker(secondMapping);
+        firstPlot.marker(thirdMapping);
 
-    firstPlot.markerPalette(["star5", "cross", "circle"]);
+        firstPlot.markerPalette(["star5", "cross", "circle"]);
 
-    var secondPlot = chart.plot(1);
+        var secondPlot = chart.plot(1);
 
-    secondPlot.marker(thirdMapping);
-    secondPlot.marker(secondMapping);
-    secondPlot.marker(firstMapping);
+        secondPlot.marker(thirdMapping);
+        secondPlot.marker(secondMapping);
+        secondPlot.marker(firstMapping);
 
-    // Get marker palette of the first plot.
-    var firstMarkerPalette = firstPlot.markerPalette();
+        // Get marker palette of the first plot.
+        var firstMarkerPalette = firstPlot.markerPalette();
 
-    secondPlot.palette(firstMarkerPalette);
+        secondPlot.palette(firstMarkerPalette);
 
-    chart.title("Get and use palette.");
-    chart.container("container");
-    chart.draw();
-});
+        chart.title("Get and use palette.");
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

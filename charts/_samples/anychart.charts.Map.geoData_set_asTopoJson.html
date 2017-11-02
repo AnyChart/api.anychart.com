@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.topo.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,30 +21,30 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var dataSet = anychart.data.set([
-        {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
-        {id: "AU.VI", value: 23, title: "Victoria"},
-        {id: "AU.WA", value: 86, title: "Western Australia"},
-        {id: "AU.QL", value: 16, title: "Queensland"},
-        {id: "AU.NS", value: 32, title: "New South Wales"},
-        {id: "AU.NT", value: 64, title: "Northern Territory"},
-        {id: "AU.TS", value: 28, title: "Tasmania"},
-        {id: "AU.SA", value: 45, title: "South Australian"}
-    ]);
+    anychart.onDocumentReady(function () {
+        var dataSet = anychart.data.set([
+            {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
+            {id: "AU.VI", value: 23, title: "Victoria"},
+            {id: "AU.WA", value: 86, title: "Western Australia"},
+            {id: "AU.QL", value: 16, title: "Queensland"},
+            {id: "AU.NS", value: 32, title: "New South Wales"},
+            {id: "AU.NT", value: 64, title: "Northern Territory"},
+            {id: "AU.TS", value: 28, title: "Tasmania"},
+            {id: "AU.SA", value: 45, title: "South Australian"}
+        ]);
 
-    var dataSetForSeries = dataSet.mapAs({id: "id"});
+        var dataSetForSeries = dataSet.mapAs({id: "id"});
 
-    var australiaMap = anychart.map();
+        var australiaMap = anychart.map();
 
-    // Set geoData in TopoJSON format.
-    australiaMap.geoData(anychart.maps.australia);
+        // Set geoData in TopoJSON format.
+        australiaMap.geoData(anychart.maps.australia);
 
-    australiaMap.choropleth(dataSetForSeries);
-    australiaMap.title("Set map geoData in TopoJSON format.");
-    australiaMap.container("container");
-    australiaMap.draw();
-});
+        australiaMap.choropleth(dataSetForSeries);
+        australiaMap.title("Set map geoData in TopoJSON format.");
+        australiaMap.container("container");
+        australiaMap.draw();
+    });
 </script>
 </body>
 </html>

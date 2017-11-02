@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/weather-data.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,73 +21,73 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_weather_data());
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_weather_data());
 
-    var mapping = dataTable.mapAs({value: 2});
+        var mapping = dataTable.mapAs({value: 2});
 
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
-    chart.bounds(170, 0, "100%", "100%");
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
+        chart.bounds(170, 0, "100%", "100%");
 
-    var currentPlot = chart.plot();
+        var currentPlot = chart.plot();
 
-    var series = currentPlot.line(mapping);
+        var series = currentPlot.line(mapping);
 
-    chart.title("Switch the series type.");
-    chart.container(stage);
-    chart.draw();
+        chart.title("Switch the series type.");
+        chart.container(stage);
+        chart.draw();
 
-    var firstLabel = anychart.ui.label();
-    firstLabel.background({fill: "#9E9E9E"});
-    firstLabel.text("Switch to the column series");
-    firstLabel.fontColor("#fff");
-    firstLabel.padding(5);
-    firstLabel.offsetX(5);
-    firstLabel.listen("click", function() {
+        var firstLabel = anychart.ui.label();
+        firstLabel.background({fill: "#9E9E9E"});
+        firstLabel.text("Switch to the column series");
+        firstLabel.fontColor("#fff");
+        firstLabel.padding(5);
+        firstLabel.offsetX(5);
+        firstLabel.listen("click", function () {
 
-        // Switch the series type.
-        series.seriesType("column");
+            // Switch the series type.
+            series.seriesType("column");
 
+        });
+        firstLabel.container(stage);
+        firstLabel.draw();
+
+        var secondLabel = anychart.ui.label();
+        secondLabel.background({fill: "#9E9E9E"});
+        secondLabel.text("Switch to the area series");
+        secondLabel.fontColor("#fff");
+        secondLabel.padding(5);
+        secondLabel.offsetX(5);
+        secondLabel.offsetY(30);
+        secondLabel.listen("click", function () {
+
+            // Switch the series type.
+            series.seriesType("area");
+
+        });
+        secondLabel.container(stage);
+        secondLabel.draw();
+
+        var thirdLabel = anychart.ui.label();
+        thirdLabel.background({fill: "#9E9E9E"});
+        thirdLabel.text("Switch to the line series");
+        thirdLabel.fontColor("#fff");
+        thirdLabel.padding(5);
+        thirdLabel.offsetX(5);
+        thirdLabel.offsetY(60);
+        thirdLabel.listen("click", function () {
+
+            // Switch the series type.
+            series.seriesType("line");
+
+        });
+        thirdLabel.container(stage);
+        thirdLabel.draw();
     });
-    firstLabel.container(stage);
-    firstLabel.draw();
-
-    var secondLabel = anychart.ui.label();
-    secondLabel.background({fill: "#9E9E9E"});
-    secondLabel.text("Switch to the area series");
-    secondLabel.fontColor("#fff");
-    secondLabel.padding(5);
-    secondLabel.offsetX(5);
-    secondLabel.offsetY(30);
-    secondLabel.listen("click", function() {
-
-        // Switch the series type.
-        series.seriesType("area");
-
-    });
-    secondLabel.container(stage);
-    secondLabel.draw();
-
-    var thirdLabel = anychart.ui.label();
-    thirdLabel.background({fill: "#9E9E9E"});
-    thirdLabel.text("Switch to the line series");
-    thirdLabel.fontColor("#fff");
-    thirdLabel.padding(5);
-    thirdLabel.offsetX(5);
-    thirdLabel.offsetY(60);
-    thirdLabel.listen("click", function() {
-
-        // Switch the series type.
-        series.seriesType("line");
-
-    });
-    thirdLabel.container(stage);
-    thirdLabel.draw();
-});
 </script>
 </body>
 </html>

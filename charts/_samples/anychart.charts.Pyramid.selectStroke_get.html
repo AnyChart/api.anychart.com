@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,40 +20,40 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var dataSet = anychart.data.set([
-        {x: "Physical", value: 125},
-        {x: "Data Link", value: 125},
-        {x: "Network", value: 125},
-        {x: "Transport", value: 125},
-        {x: "Session", value: 125},
-        {x: "Presentation", value: 125},
-        {x: "Application", value: 290}
-    ]);
+        var dataSet = anychart.data.set([
+            {x: "Physical", value: 125},
+            {x: "Data Link", value: 125},
+            {x: "Network", value: 125},
+            {x: "Transport", value: 125},
+            {x: "Session", value: 125},
+            {x: "Presentation", value: 125},
+            {x: "Application", value: 290}
+        ]);
 
-    var pyramidChart = anychart.pyramid(dataSet);
-    pyramidChart.bounds(0, 0, "50%", "100%");
-    pyramidChart.selectStroke("#90A4AE", 3);
-    pyramidChart.container(stage);
-    pyramidChart.draw();
+        var pyramidChart = anychart.pyramid(dataSet);
+        pyramidChart.bounds(0, 0, "50%", "100%");
+        pyramidChart.selectStroke("#90A4AE", 3);
+        pyramidChart.container(stage);
+        pyramidChart.draw();
 
-    var pieChart = anychart.pie([7, 7, 7, 7, 7, 7, 7]);
-    pieChart.bounds("50%", 0, "50%", "100%");
+        var pieChart = anychart.pie([7, 7, 7, 7, 7, 7, 7]);
+        pieChart.bounds("50%", 0, "50%", "100%");
 
-    // Get stroke in selected state.
-    var pyramidChartSelectStroke = pyramidChart.selectStroke();
+        // Get stroke in selected state.
+        var pyramidChartSelectStroke = pyramidChart.selectStroke();
 
-    pieChart.stroke(pyramidChartSelectStroke);
-    pieChart.container(stage);
-    pieChart.draw();
+        pieChart.stroke(pyramidChartSelectStroke);
+        pieChart.container(stage);
+        pieChart.draw();
 
-    var customTitle = anychart.ui.title();
-    customTitle.text("Get and use chart selectStroke.");
-    customTitle.container(stage);
-    customTitle.draw();
-});
+        var customTitle = anychart.ui.title();
+        customTitle.text("Get and use chart selectStroke.");
+        customTitle.container(stage);
+        customTitle.draw();
+    });
 </script>
 </body>
 </html>
