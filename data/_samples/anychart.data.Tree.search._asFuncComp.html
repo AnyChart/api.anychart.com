@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.4.1/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.4.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.4.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,30 +20,83 @@
 <body>
 <div id="container"></div>
 <script>
-function compare(targetValue, dataItemValue) {
-    return targetValue.indexOf(dataItemValue);
-}
-anychart.onDocumentReady(function() {
-    var data = [
-        {"id": "1", "value": 20, "name": "Phase 1 - Strategic Plan", "progressValue": "14%", "actualStart": 951350400000, "actualEnd": 951609600000},
-        {"id": "2", "value": 30, "name": "Self-Assessment", parent: "1", "progressValue": "25%", "actualStart": 951350400000, "actualEnd": 951782400000},
-        {"id": "3", "value": 20, "name": "Define business vision", parent: "2", "progressValue": "0%", "actualStart": 951408000000, "actualEnd": 951782400000, "connectTo": "4", "connectorType": "FinishStart"},
-        {"id": "4", "value": 60, "name": "Identify available skills, information and support", parent: "2", "progressValue": "0%", "actualStart": 951494400000, "actualEnd": 951526800000, "connectTo": "5", "connectorType": "FinishStart"},
-        {"id": "5", "value": 50, "name": "Decide whether to proceed", parent: "2", "progressValue": "0%", "actualStart": 951753600000, "actualEnd": 951786000000, "connectTo": "7", "connectorType": "FinishStart"},
-        {"id": "6", "value": 10, "name": "Define the Opportunity", parent: "1", "progressValue": "27%", "actualStart": 951782400000, "actualEnd": 951868800000}
-    ];
-    var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
-    var dataItem = treeData.search('name', 'Se', compare); // data search
-    for (var i = 0; i < dataItem.length; i++) {
-        var item = dataItem[i];
+    function compare(targetValue, dataItemValue) {
+        return targetValue.indexOf(dataItemValue);
     }
-    treeData.addChild(dataItem);
-    var chart = anychart.ganttProject();
-    chart.data(treeData);
-    chart.container('container');
-    chart.draw();
-    chart.fitAll();
-});
+    anychart.onDocumentReady(function () {
+        var data = [
+            {
+                "id": "1",
+                "value": 20,
+                "name": "Phase 1 - Strategic Plan",
+                "progressValue": "14%",
+                "actualStart": 951350400000,
+                "actualEnd": 951609600000
+            },
+            {
+                "id": "2",
+                "value": 30,
+                "name": "Self-Assessment",
+                parent: "1",
+                "progressValue": "25%",
+                "actualStart": 951350400000,
+                "actualEnd": 951782400000
+            },
+            {
+                "id": "3",
+                "value": 20,
+                "name": "Define business vision",
+                parent: "2",
+                "progressValue": "0%",
+                "actualStart": 951408000000,
+                "actualEnd": 951782400000,
+                "connectTo": "4",
+                "connectorType": "FinishStart"
+            },
+            {
+                "id": "4",
+                "value": 60,
+                "name": "Identify available skills, information and support",
+                parent: "2",
+                "progressValue": "0%",
+                "actualStart": 951494400000,
+                "actualEnd": 951526800000,
+                "connectTo": "5",
+                "connectorType": "FinishStart"
+            },
+            {
+                "id": "5",
+                "value": 50,
+                "name": "Decide whether to proceed",
+                parent: "2",
+                "progressValue": "0%",
+                "actualStart": 951753600000,
+                "actualEnd": 951786000000,
+                "connectTo": "7",
+                "connectorType": "FinishStart"
+            },
+            {
+                "id": "6",
+                "value": 10,
+                "name": "Define the Opportunity",
+                parent: "1",
+                "progressValue": "27%",
+                "actualStart": 951782400000,
+                "actualEnd": 951868800000
+            }
+        ];
+        var treeData = anychart.data.tree(data, anychart.enums.TreeFillingMethod.AS_TABLE);
+        var dataItem = treeData.search('name', 'Se', compare); // data search
+        for (var i = 0; i < dataItem.length; i++) {
+            var item = dataItem[i];
+        }
+        treeData.addChild(dataItem);
+        var chart = anychart.ganttProject();
+        chart.data(treeData);
+        chart.container('container');
+        chart.draw();
+        chart.fitAll();
+    });
 </script>
 </body>
 </html>
