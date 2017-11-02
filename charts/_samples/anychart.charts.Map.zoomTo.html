@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.1/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,44 +21,44 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var australiaMap = anychart.map();
-    australiaMap.geoData(anychart.maps.australia);
-    australiaMap.unboundRegions({fill: "#64b5f6"});
-    australiaMap.geoIdField("code_hasc");
-    australiaMap.title("Zoom map.");
-    australiaMap.container(stage);
-    australiaMap.draw();
+        var australiaMap = anychart.map();
+        australiaMap.geoData(anychart.maps.australia);
+        australiaMap.unboundRegions({fill: "#64b5f6"});
+        australiaMap.geoIdField("code_hasc");
+        australiaMap.title("Zoom map.");
+        australiaMap.container(stage);
+        australiaMap.draw();
 
-    createLabel("2x Zoom", 0, function() {
+        createLabel("2x Zoom", 0, function () {
 
-        // Zoom map 2 times from the current.
-        // Calling ot several times.
-        // Increases zoom by a factor.
-        australiaMap.zoom(2);
+            // Zoom map 2 times from the current.
+            // Calling ot several times.
+            // Increases zoom by a factor.
+            australiaMap.zoom(2);
+        });
+
+        createLabel("1x Zoom", 30, function () {
+
+            // Set 1x Zoom Level.
+            // Calling it several times does not change zoom level.
+            australiaMap.zoomTo(1);
+        });
     });
 
-    createLabel("1x Zoom", 30, function() {
-
-        // Set 1x Zoom Level.
-        // Calling it several times does not change zoom level.
-        australiaMap.zoomTo(1);
-    });
-});
-
-function createLabel(text, offset, action){
-    var customLabel = anychart.ui.label();
-    customLabel.text(text);
-    customLabel.parentBounds(0, offset, 100, 100);
-    customLabel.listen("click", action);
-    customLabel.background({fill: "#9E9E9E"});
-    customLabel.fontColor("#fff");
-    customLabel.padding(5);
-    customLabel.container(stage);
-    customLabel.draw();
-}
+    function createLabel(text, offset, action) {
+        var customLabel = anychart.ui.label();
+        customLabel.text(text);
+        customLabel.parentBounds(0, offset, 100, 100);
+        customLabel.listen("click", action);
+        customLabel.background({fill: "#9E9E9E"});
+        customLabel.fontColor("#fff");
+        customLabel.padding(5);
+        customLabel.container(stage);
+        customLabel.draw();
+    }
 </script>
 </body>
 </html>

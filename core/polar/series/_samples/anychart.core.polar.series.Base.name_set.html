@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.1/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,34 +20,34 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var formatterFunc = function() {
-        return this.seriesName;
-    };
+    anychart.onDocumentReady(function () {
+        var formatterFunc = function () {
+            return this.seriesName;
+        };
 
-    var chart = anychart.polar();
+        var chart = anychart.polar();
 
-    var seriesArea = chart.area([1, 4, 7, 1]);
-    seriesArea.color("#008000");
-    seriesArea.markers(true);
+        var seriesArea = chart.area([1, 4, 7, 1]);
+        seriesArea.color("#008000");
+        seriesArea.markers(true);
 
-    var seriesBlueLine = chart.line([1, 2, 3]);
-    seriesBlueLine.markers(true);
-    // Sets name.
-    seriesBlueLine.name("My Custom series name");
+        var seriesBlueLine = chart.line([1, 2, 3]);
+        seriesBlueLine.markers(true);
+        // Sets name.
+        seriesBlueLine.name("My Custom series name");
 
-    var blueLineTooltip = seriesBlueLine.tooltip();
-    blueLineTooltip.textFormatter(formatterFunc);
+        var blueLineTooltip = seriesBlueLine.tooltip();
+        blueLineTooltip.textFormatter(formatterFunc);
 
-    var seriesOrangeLine = chart.line([2, 3, 4]);
-    seriesOrangeLine.markers(true);
+        var seriesOrangeLine = chart.line([2, 3, 4]);
+        seriesOrangeLine.markers(true);
 
-    var orangeLineTooltip = seriesOrangeLine.tooltip();
-    orangeLineTooltip.textFormatter(formatterFunc);
+        var orangeLineTooltip = seriesOrangeLine.tooltip();
+        orangeLineTooltip.textFormatter(formatterFunc);
 
-    chart.container("container");
-    chart.draw();
-});
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

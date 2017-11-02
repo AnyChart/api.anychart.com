@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.1/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,34 +20,35 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    anychart.format.locales = {
-        'default': anychart.format.locales['default'],
-        "customOutputLocale": {
-            'numberLocale': {
-                'decimalsCount': 3,
-                'decimalPoint': ':'
+    anychart.onDocumentReady(function () {
+        anychart.format.locales = {
+            'default': anychart.format.locales['default'],
+            "customOutputLocale": {
+                'numberLocale': {
+                    'decimalsCount': 3,
+                    'decimalPoint': ':'
+                }
             }
-        }};
-    anychart.format.inputLocale("customOutputLocale");
+        };
+        anychart.format.inputLocale("customOutputLocale");
 
-    var chart = anychart.pie([
-        {name: 'Point 1', value: 230000},
-        {name: 'Point 2', value: 204524.489354},
-        {name: 'Point 3', value: 235401.56923},
-        {name: 'Point 4', value: 132125.35}
-    ]);
+        var chart = anychart.pie([
+            {name: 'Point 1', value: 230000},
+            {name: 'Point 2', value: 204524.489354},
+            {name: 'Point 3', value: 235401.56923},
+            {name: 'Point 4', value: 132125.35}
+        ]);
 
-    var formatLabels = chart.labels();
-    formatLabels.textFormatter(function() {
-        // Parses value to number.
-        var parsedNumber = anychart.format.parseNumber(this.value);
-        return anychart.format.number(parsedNumber, "customOutputLocale");
+        var formatLabels = chart.labels();
+        formatLabels.textFormatter(function () {
+            // Parses value to number.
+            var parsedNumber = anychart.format.parseNumber(this.value);
+            return anychart.format.number(parsedNumber, "customOutputLocale");
+        });
+
+        chart.container("container");
+        chart.draw();
     });
-
-    chart.container("container");
-    chart.draw();
-});
 </script>
 </body>
 </html>

@@ -6,10 +6,10 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.1/anychart-bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/playground-css/seat-map/seat-map-title.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/playground-css/seat-map/seat-map-title.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -22,71 +22,71 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    $('#container').append('<div class="title">' +
+    anychart.onDocumentReady(function () {
+        $('#container').append('<div class="title">' +
             '<h1>Race Village</h1>' +
             '<p>(draw chart in <a href="https://cdn.anychart.com/svg-data/seat-map/race-village.svg"' +
             'target="_blank">SVG data</a>)</p>' + '</div>');
 
 
-    $.ajax({
-        type: 'GET',
-        url: 'https://cdn.anychart.com/svg-data/seat-map/race-village.svg',
-        success: function (data) {
+        $.ajax({
+            type: 'GET',
+            url: 'https://cdn.anychart.com/svg-data/seat-map/race-village.svg',
+            success: function (data) {
 
-            var stage = anychart.graphics.create("container");
+                var stage = anychart.graphics.create("container");
 
-            // Creates seat map.
-            var chart = anychart.seatMap([
-                {id: 'race-office', value: 'Race office'},
-                {id: 'bike-service', value: 'Bike service'},
-                {id: 'feed-zone', value: 'Feed zone'},
-                {id: 'reward-zone', value: 'Reward zone'},
-                {id: 'starting-zone', value: 'Starting sectors'}
-            ]);
+                // Creates seat map.
+                var chart = anychart.seatMap([
+                    {id: 'race-office', value: 'Race office'},
+                    {id: 'bike-service', value: 'Bike service'},
+                    {id: 'feed-zone', value: 'Feed zone'},
+                    {id: 'reward-zone', value: 'Reward zone'},
+                    {id: 'starting-zone', value: 'Starting sectors'}
+                ]);
 
-            // Set SVG data.
-            chart.geoData(data);
-            chart.unboundRegions("as-is");
+                // Set SVG data.
+                chart.geoData(data);
+                chart.unboundRegions("as-is");
 
-            var series = chart.getSeries(0);
-            series.fill(function () {
-                var attr = this.attributes;
-                if (attr) {
-                    // Attributes in svg.file
-                    var class_ = attr.class;
-                    switch (class_) {
-                        case 'race-office' :
-                            return '#95C8EC';
-                        case 'bike-service' :
-                            return '#FECC81';
-                        case 'feed-zone' :
-                            return '#AED580';
-                        case 'reward-zone' :
-                            return '#F8AA92';
-                        case 'starting-zone' :
-                            return '#D1C3E0';
-                        default:
-                            return this.sourceColor;
+                var series = chart.getSeries(0);
+                series.fill(function () {
+                    var attr = this.attributes;
+                    if (attr) {
+                        // Attributes in svg.file
+                        var class_ = attr.class;
+                        switch (class_) {
+                            case 'race-office' :
+                                return '#95C8EC';
+                            case 'bike-service' :
+                                return '#FECC81';
+                            case 'feed-zone' :
+                                return '#AED580';
+                            case 'reward-zone' :
+                                return '#F8AA92';
+                            case 'starting-zone' :
+                                return '#D1C3E0';
+                            default:
+                                return this.sourceColor;
+                        }
                     }
-                }
-            });
+                });
 
-            var currentTooltip = series.tooltip();
-            currentTooltip.titleFormatter(function () {
-                return this.value
-            });
-            currentTooltip.title({useHtml: true});
+                var currentTooltip = series.tooltip();
+                currentTooltip.titleFormatter(function () {
+                    return this.value
+                });
+                currentTooltip.title({useHtml: true});
 
-            currentTooltip.textFormatter(function () {
-                return this.regionProperties.description;
-            });
+                currentTooltip.textFormatter(function () {
+                    return this.regionProperties.description;
+                });
 
-            chart.container(stage);
-            chart.draw();
-        }
+                chart.container(stage);
+                chart.draw();
+            }
+        });
     });
-});
 </script>
 </body>
 </html>

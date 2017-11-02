@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.1/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,67 +20,67 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var data = [
-        {id: 'Eurasia', parent: null},
-        {id: 'Asia', parent: 'Eurasia'},
-        {id: 'Eastern Asia', parent: 'Asia'},
-        {id: 'Mongolia', parent: 'Eastern Asia', value: 1564116, capital: 'Ulan-Bator'},
-        {id: 'China', parent: 'Eastern Asia', value: 1564116, capital: 'Beijing'},
-        {id: 'Southern Korea', parent: 'Eastern Asia', value: 1564116, capital: 'Seoul'},
-        {id: 'Northern Korea', parent: 'Eastern Asia', value: 120540, capital: 'Pyongyang'},
-        {id: 'Japan', parent: 'Eastern Asia', value: 1564116, capital: 'Tokio'},
-        {id: 'Europe', parent: 'Eurasia'},
-        {id: 'Northern Europe', parent: 'Europe'},
-        {id: 'Finland', parent: 'Northern Europe', value: 338424, capital: 'Helsinki'},
-        {id: 'Great Britain', parent: 'Northern Europe', value: 209331, capital: 'London'},
-        {id: 'Ireland', parent: 'Northern Europe', value: 84421, capital: 'Dublin'},
-        {id: 'Scandinavia', parent: 'Northern Europe', value: 928057}];
+        var data = [
+            {id: 'Eurasia', parent: null},
+            {id: 'Asia', parent: 'Eurasia'},
+            {id: 'Eastern Asia', parent: 'Asia'},
+            {id: 'Mongolia', parent: 'Eastern Asia', value: 1564116, capital: 'Ulan-Bator'},
+            {id: 'China', parent: 'Eastern Asia', value: 1564116, capital: 'Beijing'},
+            {id: 'Southern Korea', parent: 'Eastern Asia', value: 1564116, capital: 'Seoul'},
+            {id: 'Northern Korea', parent: 'Eastern Asia', value: 120540, capital: 'Pyongyang'},
+            {id: 'Japan', parent: 'Eastern Asia', value: 1564116, capital: 'Tokio'},
+            {id: 'Europe', parent: 'Eurasia'},
+            {id: 'Northern Europe', parent: 'Europe'},
+            {id: 'Finland', parent: 'Northern Europe', value: 338424, capital: 'Helsinki'},
+            {id: 'Great Britain', parent: 'Northern Europe', value: 209331, capital: 'London'},
+            {id: 'Ireland', parent: 'Northern Europe', value: 84421, capital: 'Dublin'},
+            {id: 'Scandinavia', parent: 'Northern Europe', value: 928057}];
 
-    var chart = anychart.treeMap();
+        var chart = anychart.treeMap();
 
-    var treeData = anychart.data.tree(data, "asTable");
-    chart.data(treeData);
+        var treeData = anychart.data.tree(data, "asTable");
+        chart.data(treeData);
 
-    var item = treeData.search("id", "Asia");
+        var item = treeData.search("id", "Asia");
 
-    chart.title("Drill down to specified item and drill up.");
-    chart.bounds(0, "5%", "100%", "90%");
-    chart.container(stage);
-    chart.draw();
+        chart.title("Drill down to specified item and drill up.");
+        chart.bounds(0, "5%", "100%", "90%");
+        chart.container(stage);
+        chart.draw();
 
-    var drillToLabel = anychart.ui.label();
-    drillToLabel.background({fill: "#9E9E9E"});
-    drillToLabel.text("Drill to item.");
-    drillToLabel.fontColor("#fff");
-    drillToLabel.padding(5);
-    drillToLabel.parentBounds(0, 0, 100, 100);
-    drillToLabel.listen("click", function() {
+        var drillToLabel = anychart.ui.label();
+        drillToLabel.background({fill: "#9E9E9E"});
+        drillToLabel.text("Drill to item.");
+        drillToLabel.fontColor("#fff");
+        drillToLabel.padding(5);
+        drillToLabel.parentBounds(0, 0, 100, 100);
+        drillToLabel.listen("click", function () {
 
-        // Drill down to specified item.
-        chart.drillTo(item);
+            // Drill down to specified item.
+            chart.drillTo(item);
 
+        });
+        drillToLabel.container(stage);
+        drillToLabel.draw();
+
+        var drillUpLabel = anychart.ui.label();
+        drillUpLabel.background({fill: "#9E9E9E"});
+        drillUpLabel.text("Drill up.");
+        drillUpLabel.fontColor("#fff");
+        drillUpLabel.padding(5);
+        drillUpLabel.parentBounds(0, 40, 100, 100);
+        drillUpLabel.listen("click", function () {
+
+            // Drill up.
+            chart.drillUp();
+
+        });
+        drillUpLabel.container(stage);
+        drillUpLabel.draw();
     });
-    drillToLabel.container(stage);
-    drillToLabel.draw();
-
-    var drillUpLabel = anychart.ui.label();
-    drillUpLabel.background({fill: "#9E9E9E"});
-    drillUpLabel.text("Drill up.");
-    drillUpLabel.fontColor("#fff");
-    drillUpLabel.padding(5);
-    drillUpLabel.parentBounds(0, 40, 100, 100);
-    drillUpLabel.listen("click", function() {
-
-        // Drill up.
-        chart.drillUp();
-
-    });
-    drillUpLabel.container(stage);
-    drillUpLabel.draw();
-});
 </script>
 </body>
 </html>

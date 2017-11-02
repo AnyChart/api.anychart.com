@@ -8,9 +8,9 @@
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/united_states_of_america/united_states_of_america.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/usa_states/texas/texas.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -23,79 +23,79 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    // All maps created with geoData() method work only if you referenced a proper map
-    // source file as described at https://docs.anychart.com/7.11.1/Maps/Quick_Start
+    anychart.onDocumentReady(function () {
+        // All maps created with geoData() method work only if you referenced a proper map
+        // source file as described at https://docs.anychart.com/7.11.1/Maps/Quick_Start
 
-    var stage = anychart.graphics.create("container");
+        var stage = anychart.graphics.create("container");
 
-    var worldDataSet = anychart.data.set([
-        {id: "US"}
-    ]);
-    var usaDataSet = anychart.data.set([
-        {id: "US.TX"}
-    ]);
+        var worldDataSet = anychart.data.set([
+            {id: "US"}
+        ]);
+        var usaDataSet = anychart.data.set([
+            {id: "US.TX"}
+        ]);
 
-    var chart = anychart.map();
-    chart.geoData(anychart.maps.world);
-    worldSeries = chart.choropleth(worldDataSet);
+        var chart = anychart.map();
+        chart.geoData(anychart.maps.world);
+        worldSeries = chart.choropleth(worldDataSet);
 
-    var usaMap = anychart.map();
-    usaMap.geoData(anychart.maps.united_states_of_america);
-    usaSeries = usaMap.choropleth(usaDataSet);
+        var usaMap = anychart.map();
+        usaMap.geoData(anychart.maps.united_states_of_america);
+        usaSeries = usaMap.choropleth(usaDataSet);
 
-    var texasMap = anychart.map();
-    texasMap.geoData(anychart.maps["texas"]);
+        var texasMap = anychart.map();
+        texasMap.geoData(anychart.maps["texas"]);
 
-    // Click to the Canada map.
-    worldSeries.listen("pointClick", function (e) {
-        chart.drillTo(e.point.get("id"), usaMap);
+        // Click to the Canada map.
+        worldSeries.listen("pointClick", function (e) {
+            chart.drillTo(e.point.get("id"), usaMap);
+        });
+
+        // Click to the Texas map.
+        usaSeries.listen("pointClick", function (e) {
+            chart.drillTo(e.point.get("id"), texasMap);
+        });
+
+        chart.listen("chartDraw", function () {
+
+            // Get drilldown path.
+            var path = chart.getDrilldownPath();
+
+            var currentChart = path[path.length - 1].getCurrentChart();
+            currentChart.title(printPath(path))
+        });
+
+        createLabel("Drill Up", 0, function () {
+            chart.drillUp();
+        });
+
+        chart.container(stage);
+        chart.draw();
+
     });
 
-    // Click to the Texas map.
-    usaSeries.listen("pointClick", function (e) {
-        chart.drillTo(e.point.get("id"), texasMap);
-    });
-
-    chart.listen("chartDraw", function () {
-
-        // Get drilldown path.
-        var path = chart.getDrilldownPath();
-
-        var currentChart = path[path.length - 1].getCurrentChart();
-        currentChart.title(printPath(path))
-    });
-
-    createLabel("Drill Up", 0, function () {
-        chart.drillUp();
-    });
-
-    chart.container(stage);
-    chart.draw();
-
-});
-
-function printPath(path) {
-    var text = "World\\";
-    for (i = 1; i < path.length; i++) {
-        text += path[i].getId() + "\\";
+    function printPath(path) {
+        var text = "World\\";
+        for (i = 1; i < path.length; i++) {
+            text += path[i].getId() + "\\";
+        }
+        return text;
     }
-    return text;
-}
 
-function createLabel(text, offset, action) {
-    var customLabel = anychart.ui.label();
-    customLabel.background({fill: "#9E9E9E"});
-    customLabel.zIndex(1000);
-    customLabel.text(text);
-    customLabel.fontColor("#fff");
-    customLabel.padding(5);
-    customLabel.parentBounds(offset, 5, 130, 100);
-    customLabel.listen("click", action);
-    customLabel.container(stage);
-    customLabel.draw();
-    return customLabel;
-}
+    function createLabel(text, offset, action) {
+        var customLabel = anychart.ui.label();
+        customLabel.background({fill: "#9E9E9E"});
+        customLabel.zIndex(1000);
+        customLabel.text(text);
+        customLabel.fontColor("#fff");
+        customLabel.padding(5);
+        customLabel.parentBounds(offset, 5, 130, 100);
+        customLabel.listen("click", action);
+        customLabel.container(stage);
+        customLabel.draw();
+        return customLabel;
+    }
 </script>
 </body>
 </html>

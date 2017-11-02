@@ -5,10 +5,10 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.1/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,34 +21,81 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    // To change the way how context menu looks you need to change CSS.
-    // By default CSS from AnyChart CDN is used: https://cdn.anychart.com/css/7.11.1/anychart-ui.css
-    // Download it, alter, upload to your server and link from your pages to change the look.
+    anychart.onDocumentReady(function () {
+        // To change the way how context menu looks you need to change CSS.
+        // By default CSS from AnyChart CDN is used: https://cdn.anychart.com/css/7.11.1/anychart-ui.css
+        // Download it, alter, upload to your server and link from your pages to change the look.
 
-    var data = [
-        {"id": "1", "name": "Phase 1 - Strategic Plan", "progressValue": "14%", "actualStart": 951350400000, "actualEnd": 951609600000},
-        {"id": "2", "name": "Self-Assessment", parent: "1", "progressValue": "25%", "actualStart": 951350400000, "actualEnd": 951782400000},
-        {"id": "3", "name": "Define business vision", parent: "2", "progressValue": "0%", "actualStart": 951408000000, "actualEnd": 951440400000, "connectTo": "4", "connectorType": "FinishStart"},
-        {"id": "4", "name": "Identify available skills, information and support", parent: "2", "progressValue": "0%", "actualStart": 951494400000, "actualEnd": 951526800000, "connectTo": "5", "connectorType": "FinishStart"},
-        {"id": "5", "name": "Decide whether to proceed", parent: "2", "progressValue": "0%", "actualStart": 951609600000, "actualEnd": 951696000000, "connectTo": "6", "connectorType": "FinishStart"},
-        {"id": "6", "name": "Define the Opportunity", parent: "1", "progressValue": "27%", "actualStart": 951696000000, "actualEnd": 951782400000}
-    ];
-    var chart = anychart.ganttProject();
+        var data = [
+            {
+                "id": "1",
+                "name": "Phase 1 - Strategic Plan",
+                "progressValue": "14%",
+                "actualStart": 951350400000,
+                "actualEnd": 951609600000
+            },
+            {
+                "id": "2",
+                "name": "Self-Assessment",
+                parent: "1",
+                "progressValue": "25%",
+                "actualStart": 951350400000,
+                "actualEnd": 951782400000
+            },
+            {
+                "id": "3",
+                "name": "Define business vision",
+                parent: "2",
+                "progressValue": "0%",
+                "actualStart": 951408000000,
+                "actualEnd": 951440400000,
+                "connectTo": "4",
+                "connectorType": "FinishStart"
+            },
+            {
+                "id": "4",
+                "name": "Identify available skills, information and support",
+                parent: "2",
+                "progressValue": "0%",
+                "actualStart": 951494400000,
+                "actualEnd": 951526800000,
+                "connectTo": "5",
+                "connectorType": "FinishStart"
+            },
+            {
+                "id": "5",
+                "name": "Decide whether to proceed",
+                parent: "2",
+                "progressValue": "0%",
+                "actualStart": 951609600000,
+                "actualEnd": 951696000000,
+                "connectTo": "6",
+                "connectorType": "FinishStart"
+            },
+            {
+                "id": "6",
+                "name": "Define the Opportunity",
+                parent: "1",
+                "progressValue": "27%",
+                "actualStart": 951696000000,
+                "actualEnd": 951782400000
+            }
+        ];
+        var chart = anychart.ganttProject();
 
-    var toolbar = anychart.ui.ganttToolbar();
-    toolbar.container("container");
+        var toolbar = anychart.ui.ganttToolbar();
+        toolbar.container("container");
 
-    // Set target.
-    toolbar.target(chart);
+        // Set target.
+        toolbar.target(chart);
 
-    toolbar.draw();
+        toolbar.draw();
 
-    chart.data(data, "asTable");
-    chart.container("container");
-    chart.draw();
-    chart.fitAll();
-});
+        chart.data(data, "asTable");
+        chart.container("container");
+        chart.draw();
+        chart.fitAll();
+    });
 </script>
 </body>
 </html>

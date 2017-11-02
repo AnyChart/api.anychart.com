@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.1/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,31 +20,31 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var chart = anychart.line();
-    chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
-    chart.left("5%");
-    chart.title("Save chart as SVG file with width and height set.");
-    chart.container(stage);
-    chart.draw();
+        var chart = anychart.line();
+        chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+        chart.left("5%");
+        chart.title("Save chart as SVG file with width and height set.");
+        chart.container(stage);
+        chart.draw();
 
-    var customLabel = anychart.ui.label();
-    customLabel.background({fill: "#9E9E9E"});
-    customLabel.text("Save image");
-    customLabel.fontColor("#fff");
-    customLabel.padding(5);
-    customLabel.offsetX(5);
-    customLabel.listen("click", function() {
+        var customLabel = anychart.ui.label();
+        customLabel.background({fill: "#9E9E9E"});
+        customLabel.text("Save image");
+        customLabel.fontColor("#fff");
+        customLabel.padding(5);
+        customLabel.offsetX(5);
+        customLabel.listen("click", function () {
 
-        // Saves into SVG file.
-        chart.saveAsSvg(400, 300);
+            // Saves into SVG file.
+            chart.saveAsSvg(400, 300);
 
+        });
+        customLabel.container(stage);
+        customLabel.draw();
     });
-    customLabel.container(stage);
-    customLabel.draw();
-});
 </script>
 </body>
 </html>

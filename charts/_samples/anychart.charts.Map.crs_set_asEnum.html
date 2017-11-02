@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.1/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,35 +21,35 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var dataSet = anychart.data.set([
-        {size: 15, lat: -25.42, long: 121.73},
-        {size: 23, lat: -20.84, long: 133.71},
-        {size: 86, lat: -22.77, long: 144.45},
-        {size: 16, lat: -29.77, long: 134.69},
-        {size: 32, lat: -32.04, long: 146.39},
-        {size: 4, lat: -35.61, long: 148.96},
-        {size: 28, lat: -37.16, long: 144.12},
-        {size: 10, lat: -42.18, long: 146.19}
-    ]);
+    anychart.onDocumentReady(function () {
+        var dataSet = anychart.data.set([
+            {size: 15, lat: -25.42, long: 121.73},
+            {size: 23, lat: -20.84, long: 133.71},
+            {size: 86, lat: -22.77, long: 144.45},
+            {size: 16, lat: -29.77, long: 134.69},
+            {size: 32, lat: -32.04, long: 146.39},
+            {size: 4, lat: -35.61, long: 148.96},
+            {size: 28, lat: -37.16, long: 144.12},
+            {size: 10, lat: -42.18, long: 146.19}
+        ]);
 
-    var dataSetForSeries = dataSet.mapAs({id: "id"});
+        var dataSetForSeries = dataSet.mapAs({id: "id"});
 
-    var australiaMap = anychart.map();
-    australiaMap.geoData(anychart.maps.australia);
+        var australiaMap = anychart.map();
+        australiaMap.geoData(anychart.maps.australia);
 
-    australiaMap.bubble(dataSetForSeries);
-    australiaMap.maxBubbleSize("5%");
-    australiaMap.minBubbleSize("3%");
+        australiaMap.bubble(dataSetForSeries);
+        australiaMap.maxBubbleSize("5%");
+        australiaMap.minBubbleSize("3%");
 
-    australiaMap.title("Set crs projection.");
-    australiaMap.geoIdField("insee_cl");
-    australiaMap.container("container");
-    australiaMap.draw();
+        australiaMap.title("Set crs projection.");
+        australiaMap.geoIdField("insee_cl");
+        australiaMap.container("container");
+        australiaMap.draw();
 
-    // Set crs projection.
-    australiaMap.crs("august");
-});
+        // Set crs projection.
+        australiaMap.crs("august");
+    });
 </script>
 </body>
 </html>

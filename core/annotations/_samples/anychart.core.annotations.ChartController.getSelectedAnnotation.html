@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.11.1/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.11.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,54 +21,54 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var mapping = dataTable.mapAs({value: 1});
+        var mapping = dataTable.mapAs({value: 1});
 
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
 
-    var firstPlot = chart.plot(0);
-    firstPlot.line(mapping);
-    firstPlot.annotations([{
-        type: "rectangle",
-        xAnchor: 1107129600000,
-        valueAnchor: 9000,
-        secondXAnchor: 1131408000000,
-        secondValueAnchor: 12000,
-        fill: "#4CAF50 0.5",
-        stroke: "3 #FF9800"
-    }]);
+        var firstPlot = chart.plot(0);
+        firstPlot.line(mapping);
+        firstPlot.annotations([{
+            type: "rectangle",
+            xAnchor: 1107129600000,
+            valueAnchor: 9000,
+            secondXAnchor: 1131408000000,
+            secondValueAnchor: 12000,
+            fill: "#4CAF50 0.5",
+            stroke: "3 #FF9800"
+        }]);
 
-    var secondPlot = chart.plot(1);
-    secondPlot.area(mapping);
-    secondPlot.annotations([{
-        type: "ellipse",
-        xAnchor: 1167782400000,
-        valueAnchor: 11000,
-        secondXAnchor: 1199232000000,
-        secondValueAnchor: 14500,
-        fill: "#4CAF50 0.5",
-        stroke: "3 #FF9800"
-    }]);
+        var secondPlot = chart.plot(1);
+        secondPlot.area(mapping);
+        secondPlot.annotations([{
+            type: "ellipse",
+            xAnchor: 1167782400000,
+            valueAnchor: 11000,
+            secondXAnchor: 1199232000000,
+            secondValueAnchor: 14500,
+            fill: "#4CAF50 0.5",
+            stroke: "3 #FF9800"
+        }]);
 
-    chart.container("container");
-    chart.draw();
+        chart.container("container");
+        chart.draw();
 
-    var selectAnnotation = firstPlot.annotations();
+        var selectAnnotation = firstPlot.annotations();
 
-    var annotation = chart.annotations();
-    annotation.select(selectAnnotation.getAnnotationAt(0));
+        var annotation = chart.annotations();
+        annotation.select(selectAnnotation.getAnnotationAt(0));
 
-    // Get selected annotation.
-    var selectedAnnotation = annotation.getSelectedAnnotation();
+        // Get selected annotation.
+        var selectedAnnotation = annotation.getSelectedAnnotation();
 
-    var type = selectedAnnotation.getType();
+        var type = selectedAnnotation.getType();
 
-    chart.title("Get selected annotation and get type - " + type + ".");
-});
+        chart.title("Get selected annotation and get type - " + type + ".");
+    });
 </script>
 </body>
 </html>
