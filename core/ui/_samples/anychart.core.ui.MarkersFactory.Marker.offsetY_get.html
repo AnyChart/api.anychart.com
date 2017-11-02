@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.5.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.5.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.5.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,24 +20,24 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
-    var rect = stage.rect(20, 0, 160, 100);
-    rect.stroke("#000000");
-    var markers = anychart.ui.markersFactory();
-    markers.size(25);
-    markers.fill("#009688");
-    for (var i = 0; i < 3; i++) {
-        var marker = markers.add({value: {x: 50 * (i + 1), y: 50}}, i);
-        marker.offsetY(15);
-        var getOffsetY = marker.offsetY(); // get offset by Y
-        if (i == (getOffsetY - 13)) {
-            marker.offsetY(70);
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+        var rect = stage.rect(20, 0, 160, 100);
+        rect.stroke("#000000");
+        var markers = anychart.ui.markersFactory();
+        markers.size(25);
+        markers.fill("#009688");
+        for (var i = 0; i < 3; i++) {
+            var marker = markers.add({value: {x: 50 * (i + 1), y: 50}}, i);
+            marker.offsetY(15);
+            var getOffsetY = marker.offsetY(); // get offset by Y
+            if (i == (getOffsetY - 13)) {
+                marker.offsetY(70);
+            }
         }
-    }
-    markers.container(stage);
-    markers.draw();
-});
+        markers.container(stage);
+        markers.draw();
+    });
 </script>
 </body>
 </html>

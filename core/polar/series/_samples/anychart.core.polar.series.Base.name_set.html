@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.5.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.5.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.5.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,23 +20,23 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var formatterFunc = function() {
-        return this.seriesName;
-    };
-    var chart = anychart.polar();
-    chart.area([1, 4, 7, 1]).color("#008000");
-    var seriesLine = chart.line([1, 2, 3]);
-    seriesLine.name("My Custom series name"); // set name
-    var tooltip = seriesLine.tooltip();
-    tooltip.contentFormatter(formatterFunc);
-    var seriesLine1 = chart.line([2, 3, 4]);
-    var tooltip1 = seriesLine1.tooltip();
-    tooltip1.contentFormatter(formatterFunc);
-    chart.legend({enabled: true});
-    chart.container("container");
-    chart.draw();
-});
+    anychart.onDocumentReady(function () {
+        var formatterFunc = function () {
+            return this.seriesName;
+        };
+        var chart = anychart.polar();
+        chart.area([1, 4, 7, 1]).color("#008000");
+        var seriesLine = chart.line([1, 2, 3]);
+        seriesLine.name("My Custom series name"); // set name
+        var tooltip = seriesLine.tooltip();
+        tooltip.contentFormatter(formatterFunc);
+        var seriesLine1 = chart.line([2, 3, 4]);
+        var tooltip1 = seriesLine1.tooltip();
+        tooltip1.contentFormatter(formatterFunc);
+        chart.legend({enabled: true});
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

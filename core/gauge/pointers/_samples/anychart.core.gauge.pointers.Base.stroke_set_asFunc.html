@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.5.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.5.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.5.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,26 +20,26 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    function pointerStroke(pointer) {
-        var color;
-        if (pointer.angle <= 60) {
-            color = "#263238";
-        } else {
-            color = "#4CAF50"
+    anychart.onDocumentReady(function () {
+        function pointerStroke(pointer) {
+            var color;
+            if (pointer.angle <= 60) {
+                color = "#263238";
+            } else {
+                color = "#4CAF50"
+            }
+            return "3 " + color;
         }
-        return "3 " + color;
-    }
 
-    var chart = anychart.circularGauge([7, 8]);
-    chart.axis();
-    var firstNeedle = chart.needle();
-    firstNeedle.stroke(pointerStroke); // sets stroke
-    var secondNeedle = chart.needle(1);
-    secondNeedle.stroke(pointerStroke); // sets stroke
-    chart.container("container");
-    chart.draw();
-});
+        var chart = anychart.circularGauge([7, 8]);
+        chart.axis();
+        var firstNeedle = chart.needle();
+        firstNeedle.stroke(pointerStroke); // sets stroke
+        var secondNeedle = chart.needle(1);
+        secondNeedle.stroke(pointerStroke); // sets stroke
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>
