@@ -1,45 +1,58 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="boxChart anyChart"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var firstData = [
-                {x: "January", low: 760, q1: 801, median: 848, q3: 895, high: 965},
-                {x: "February", low: 733, q1: 853, median: 939, q3: 980, high: 1080, outliers: [1120, 630]},
-                {x: "March", low: 760, q1: 801, median: 848, q3: 895, high: 965, outliers: [650]},
-                {x: "April", low: 724, q1: 802, median: 806, q3: 871, high: 950, outliers: [1000, 600]}
-            ];
+    <meta name="ac:name" content="anychart.core.cartesian.series.Box.hatchFill get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var secondData = [
-                {x: "January", low: 660, q1: 801, median: 948, q3: 995, high: 1065},
-                {x: "February", low: 633, q1: 853, median: 1039, q3: 1080, high: 1180, outliers: [1120, 630]},
-                {x: "March", low: 660, q1: 801, median: 948, q3: 995, high: 1065, outliers: [650]},
-                {x: "April", low: 624, q1: 802, median: 906, q3: 971, high: 1050, outliers: [1000, 600]}
-            ];
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
 
-            chart = anychart.box();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
 
-            var series = chart.box(firstData);
-            series.hatchFill("zig-zag");
-
-            // Get series hatch fill.
-            var hatchFill = series.hatchFill();
-
-            var boxSeries = chart.box(secondData);
-            boxSeries.hatchFill(hatchFill);
-
-            chart.title("Get and use hatch fill");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var firstData = [
+            {x: "January", low: 760, q1: 801, median: 848, q3: 895, high: 965},
+            {x: "February", low: 733, q1: 853, median: 939, q3: 980, high: 1080, outliers: [1120, 630]},
+            {x: "March", low: 760, q1: 801, median: 848, q3: 895, high: 965, outliers: [650]},
+            {x: "April", low: 724, q1: 802, median: 806, q3: 871, high: 950, outliers: [1000, 600]}
+        ];
+
+        var secondData = [
+            {x: "January", low: 660, q1: 801, median: 948, q3: 995, high: 1065},
+            {x: "February", low: 633, q1: 853, median: 1039, q3: 1080, high: 1180, outliers: [1120, 630]},
+            {x: "March", low: 660, q1: 801, median: 948, q3: 995, high: 1065, outliers: [650]},
+            {x: "April", low: 624, q1: 802, median: 906, q3: 971, high: 1050, outliers: [1000, 600]}
+        ];
+
+        var chart = anychart.box();
+
+        var series = chart.box(firstData);
+        series.hatchFill("zig-zag");
+
+        // Get series hatch fill.
+        var hatchFill = series.hatchFill();
+
+        var boxSeries = chart.box(secondData);
+        boxSeries.hatchFill(hatchFill);
+
+        chart.title("Get and use hatch fill");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

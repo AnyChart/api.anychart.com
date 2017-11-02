@@ -1,31 +1,44 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyChart anyGantt anyStock anyMap"/>
-    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
-    <script x-export="stage">
-        stage = acgraph.create("container");
+    <meta name="ac:name" content="anychart.graphics.vector.Stage.suspend"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-        var singleText = stage.text(20, 10, "Click to resume");
-        singleText.fontSize(14);
+    <script src="https://cdn.anychart.com/js/8.0.1/graphics.min.js"></script>
 
-        var rectangle = stage.rect(0, 0, 100, 100);
-        rectangle.fill("#FFFFFF 0.01");
-        rectangle.stroke(null);
 
-        acgraph.events.listen(rectangle, "click", function () {
-            stage.resume();
-            singleText.text(null);
-            rectangle.fill("none");
-        });
-
-        // Suspends rendering.
-        stage.suspend();
-        stage.text(10, 30, "New text line");
-        stage.circle(100, 100, 50).fill("red 0.2").stroke("2 blue");
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    var stage = acgraph.create("container");
+
+    var singleText = stage.text(20, 10, "Click to resume");
+    singleText.fontSize(14);
+
+    var rectangle = stage.rect(0, 0, 100, 100);
+    rectangle.fill("#FFFFFF 0.01");
+    rectangle.stroke(null);
+
+    acgraph.events.listen(rectangle, "click", function () {
+        stage.resume();
+        singleText.text(null);
+        rectangle.fill("none");
+    });
+
+    // Suspends rendering.
+    stage.suspend();
+    stage.text(10, 30, "New text line");
+    stage.circle(100, 100, 50).fill("red 0.2").stroke("2 blue");
+</script>
 </body>
 </html>

@@ -1,41 +1,54 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name="x-cat-tags" content="pareto anyChart"/>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pareto.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            chart = anychart.pareto();
+    <meta name="ac:name" content="anychart.charts.Pareto.getYScales"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            chart.data([
-                ["Nail polish", 14814],
-                ["Eyebrow pencil", 13012],
-                ["Rouge", 16624],
-                ["Lipstick", 8814],
-                ["Eyeshadows", 12998],
-                ["Eyeliner", 17321],
-                ["Foundation", 10342],
-                ["Lip gloss", 22998],
-                ["Mascara", 19261]
-            ]);
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pareto.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
 
-            chart.container("container");
-            chart.draw();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
 
-            // Get y scales.
-            var scales = chart.getYScales();
-
-            for (var i = 0; i < scales.length; i++) {
-                scales[i].maximum(scales[i].maximum() + 100);
-            }
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.pareto();
+
+        chart.data([
+            ["Nail polish", 14814],
+            ["Eyebrow pencil", 13012],
+            ["Rouge", 16624],
+            ["Lipstick", 8814],
+            ["Eyeshadows", 12998],
+            ["Eyeliner", 17321],
+            ["Foundation", 10342],
+            ["Lip gloss", 22998],
+            ["Mascara", 19261]
+        ]);
+
+        chart.container("container");
+        chart.draw();
+
+        // Get y scales.
+        var scales = chart.getYScales();
+
+        for (var i = 0; i < scales.length; i++) {
+            scales[i].maximum(scales[i].maximum() + 100);
+        }
+    });
+</script>
 </body>
 </html>

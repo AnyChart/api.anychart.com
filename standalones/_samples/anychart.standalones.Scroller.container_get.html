@@ -1,31 +1,44 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="scroller anyChart anyGantt anyStock anyMap"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.standalones.Scroller.container get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var scroller = anychart.standalones.scroller();
-            scroller.parentBounds(10, 0, 400, 60);
-            scroller.container(stage);
-            scroller.draw();
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
 
-            // Gets scroller container.
-            var scrollerContainer = scroller.container();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
 
-            var label = anychart.standalones.label();
-            label.parentBounds(180, 0, 50, 60);
-            label.container(scrollerContainer);
-            label.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        var scroller = anychart.standalones.scroller();
+        scroller.parentBounds(10, 0, 400, 60);
+        scroller.container(stage);
+        scroller.draw();
+
+        // Gets scroller container.
+        var scrollerContainer = scroller.container();
+
+        var label = anychart.standalones.label();
+        label.parentBounds(180, 0, 50, 60);
+        label.container(scrollerContainer);
+        label.draw();
+    });
+</script>
 </body>
 </html>

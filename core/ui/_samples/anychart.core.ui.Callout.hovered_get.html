@@ -1,47 +1,60 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="map">
-        anychart.onDocumentReady(function () {
-            var data = [
-                {id: "AU.CT", value: 15},
-                {id: "AU.VI", value: 23},
-                {id: "AU.WA", value: 86},
-                {id: "AU.QL", value: 16},
-                {id: "AU.NS", value: 32},
-                {id: "AU.NT", value: 64},
-                {id: "AU.TS", value: 28},
-                {id: "AU.SA", value: 45}
-            ];
+    <meta name="ac:name" content="anychart.core.ui.Callout.hovered get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            map = anychart.map();
-            map.geoData(anychart.maps.australia);
-            map.choropleth(data);
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
 
-            var callout = map.callout();
-            callout.items(["AU.CT", "AU.WA", "AU.NS", "AU.SA"]);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
 
-            // Get hovered state.
-            var state = callout.hovered();
-
-            state.labels({enabled: true, fontColor: "#F44336"});
-
-            map.title("Get and modify hovered state");
-            map.container("container");
-            map.draw();
-
-            map.getSeries(0).hover([0, 2]);
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var data = [
+            {id: "AU.CT", value: 15},
+            {id: "AU.VI", value: 23},
+            {id: "AU.WA", value: 86},
+            {id: "AU.QL", value: 16},
+            {id: "AU.NS", value: 32},
+            {id: "AU.NT", value: 64},
+            {id: "AU.TS", value: 28},
+            {id: "AU.SA", value: 45}
+        ];
+
+        var map = anychart.map();
+        map.geoData(anychart.maps.australia);
+        map.choropleth(data);
+
+        var callout = map.callout();
+        callout.items(["AU.CT", "AU.WA", "AU.NS", "AU.SA"]);
+
+        // Get hovered state.
+        var state = callout.hovered();
+
+        state.labels({enabled: true, fontColor: "#F44336"});
+
+        map.title("Get and modify hovered state");
+        map.container("container");
+        map.draw();
+
+        map.getSeries(0).hover([0, 2]);
+    });
+</script>
 </body>
 </html>

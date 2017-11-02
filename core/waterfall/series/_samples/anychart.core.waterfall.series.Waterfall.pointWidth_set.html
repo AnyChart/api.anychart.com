@@ -1,43 +1,56 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="waterFall anyChart"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-waterfall.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.core.waterfall.series.Waterfall.pointWidth set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var data = [
-                {x: "Start", value: 166},
-                {x: "January", value: 43},
-                {x: "End", isTotal: true}
-            ];
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-waterfall.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
 
-            var chart1 = anychart.waterfall();
-            var series1 = chart1.waterfall(data);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
 
-            // Set point width.
-            series1.pointWidth(30);
-
-            chart1.bounds(0, 0, "50%", "100%");
-            chart1.title("pointWidth = 30");
-            chart1.container(stage);
-            chart1.draw();
-
-            var chart2 = anychart.waterfall();
-            var series2 = chart2.waterfall(data);
-            chart2.bounds("50%", 0, "50%", "100%");
-            chart2.title("pointWidth not set");
-            chart2.container(stage);
-            chart2.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        var data = [
+            {x: "Start", value: 166},
+            {x: "January", value: 43},
+            {x: "End", isTotal: true}
+        ];
+
+        var chart1 = anychart.waterfall();
+        var series1 = chart1.waterfall(data);
+
+        // Set point width.
+        series1.pointWidth(30);
+
+        chart1.bounds(0, 0, "50%", "100%");
+        chart1.title("pointWidth = 30");
+        chart1.container(stage);
+        chart1.draw();
+
+        var chart2 = anychart.waterfall();
+        var series2 = chart2.waterfall(data);
+        chart2.bounds("50%", 0, "50%", "100%");
+        chart2.title("pointWidth not set");
+        chart2.container(stage);
+        chart2.draw();
+    });
+</script>
 </body>
 </html>

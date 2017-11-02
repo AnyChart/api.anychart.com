@@ -1,25 +1,38 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta name="x-cat-tags" content="line anyChart"/>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.line([10, 18, 15, 23, 19, 29, 33]);
+    <meta name="ac:name" content="anychart.format.subs"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            // Creates format for string substitution.
-            var titleFormat = anychart.format.subs("Stats of %s %s", "traffic", "for week.");
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
 
-            chart.title(titleFormat);
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
+
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.line([10, 18, 15, 23, 19, 29, 33]);
+
+        // Creates format for string substitution.
+        var titleFormat = anychart.format.subs("Stats of %s %s", "traffic", "for week.");
+
+        chart.title(titleFormat);
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

@@ -1,29 +1,42 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta name="x-cat-tags" content="spline lineMarker anyChart"/>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.line();
-            chart.spline([1, -4, 5, 7, 3, 8, 2]);
+    <meta name="ac:name" content="anychart.charts.Cartesian.lineMarker set asIndexBool"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            chart.lineMarker();
-            chart.lineMarker(1, {value: 4, stroke: "#F44336", axis: chart.yAxis()});
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
 
-            // Disables first line marker.
-            chart.lineMarker(0, false);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
 
-            chart.title("Disable chart line marker by index.");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.line();
+        chart.spline([1, -4, 5, 7, 3, 8, 2]);
+
+        chart.lineMarker();
+        chart.lineMarker(1, {value: 4, stroke: "#F44336", axis: chart.yAxis()});
+
+        // Disables first line marker.
+        chart.lineMarker(0, false);
+
+        chart.title("Disable chart line marker by index.");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

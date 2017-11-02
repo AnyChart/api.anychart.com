@@ -1,34 +1,47 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="pie anyChart"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.pie([
-                {x: "Cycling", value: 10},
-                {x: "Swimming", value: 12},
-                {x: "Run", value: 18},
-                {x: "Hiking", value: 11},
-                {x: "Alpinism", value: 9}
-            ]);
+    <meta name="ac:name" content="anychart.core.ui.Legend.width get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var legend = chart.legend();
-            legend.background("#CFD8DC");
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
 
-            // Get width.
-            var width = legend.width();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
 
-            chart.title("Legend width is " + width);
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.pie([
+            {x: "Cycling", value: 10},
+            {x: "Swimming", value: 12},
+            {x: "Run", value: 18},
+            {x: "Hiking", value: 11},
+            {x: "Alpinism", value: 9}
+        ]);
+
+        var legend = chart.legend();
+        legend.background("#CFD8DC");
+
+        // Get width.
+        var width = legend.width();
+
+        chart.title("Legend width is " + width);
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

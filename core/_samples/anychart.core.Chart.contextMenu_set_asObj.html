@@ -1,35 +1,48 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line contextMenu anyChart"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            // To change the way how context menu looks you need to change CSS.
-            // By default CSS from AnyChart CDN is used: https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css
-            // Download it, alter, upload to your server and link from your pages to change the look.
+    <meta name="ac:name" content="anychart.core.Chart.contextMenu set asObj"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            chart = anychart.line([
-                {x: "January", value: 1},
-                {x: "February", value: 2},
-                {x: "March", value: 1.3},
-                {x: "April", value: 2.9},
-                {x: "May", value: 1.5}
-            ]);
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
 
-            // Set context menu setting.
-            chart.contextMenu({enabled: false});
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
 
-            chart.title("Set context menu parameter as an object. Context menu is disabled using object in this sample");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        // To change the way how context menu looks you need to change CSS.
+        // By default CSS from AnyChart CDN is used: https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css
+        // Download it, alter, upload to your server and link from your pages to change the look.
+
+        var chart = anychart.line([
+            {x: "January", value: 1},
+            {x: "February", value: 2},
+            {x: "March", value: 1.3},
+            {x: "April", value: 2.9},
+            {x: "May", value: 1.5}
+        ]);
+
+        // Set context menu setting.
+        chart.contextMenu({enabled: false});
+
+        chart.title("Set context menu parameter as an object. Context menu is disabled using object in this sample");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

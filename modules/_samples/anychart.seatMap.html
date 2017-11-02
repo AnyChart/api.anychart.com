@@ -1,82 +1,95 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
-    <script src="https://code.jquery.com/jquery-latest.min.js" data-export="true"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/playground-css/seat-map/seat-map-title.css">
-    <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            $('#container').append('<div class="title">' +
-                    '<h1>Race Village</h1>' +
-                    '<p>(draw chart in <a href="https://cdn.anychart.com/svg-data/seat-map/race-village.svg"' +
-                    'target="_blank">SVG data</a>)</p>' + '</div>');
+    <meta name="ac:name" content="anychart.seatMap"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            stage = anychart.graphics.create("container");
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
-            $.ajax({
-                type: 'GET',
-                url: 'https://cdn.anychart.com/svg-data/seat-map/race-village.svg',
-                success: function (data) {
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/playground-css/seat-map/seat-map-title.css"/>
 
-                    // Creates seat map.
-                    var chart = anychart.seatMap([
-                        {id: 'race-office', value: 'Race office'},
-                        {id: 'bike-service', value: 'Bike service'},
-                        {id: 'feed-zone', value: 'Feed zone'},
-                        {id: 'reward-zone', value: 'Reward zone'},
-                        {id: 'starting-zone', value: 'Starting sectors'}
-                    ]);
-
-                    // Set SVG data.
-                    chart.geoData(data);
-                    chart.unboundRegions("as-is");
-
-                    var series = chart.getSeries(0);
-                    series.fill(function () {
-                        var attr = this.attributes;
-                        if (attr) {
-                            // Attributes in svg.file
-                            var class_ = attr.class;
-                            switch (class_) {
-                                case 'race-office' :
-                                    return '#95C8EC';
-                                case 'bike-service' :
-                                    return '#FECC81';
-                                case 'feed-zone' :
-                                    return '#AED580';
-                                case 'reward-zone' :
-                                    return '#F8AA92';
-                                case 'starting-zone' :
-                                    return '#D1C3E0';
-                                default:
-                                    return this.sourceColor;
-                            }
-                        }
-                    });
-
-                    var tooltip = series.tooltip();
-                    tooltip.titleFormat(function () {
-                        return this.value
-                    });
-                    tooltip.title({useHtml: true});
-
-                    tooltip.format(function () {
-                        return this.regionProperties.description;
-                    });
-
-                    chart.container(stage);
-                    chart.draw();
-                }
-            });
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        $('#container').append('<div class="title">' +
+            '<h1>Race Village</h1>' +
+            '<p>(draw chart in <a href="https://cdn.anychart.com/svg-data/seat-map/race-village.svg"' +
+            'target="_blank">SVG data</a>)</p>' + '</div>');
+
+        var stage = anychart.graphics.create("container");
+
+        $.ajax({
+            type: 'GET',
+            url: 'https://cdn.anychart.com/svg-data/seat-map/race-village.svg',
+            success: function (data) {
+
+                // Creates seat map.
+                var chart = anychart.seatMap([
+                    {id: 'race-office', value: 'Race office'},
+                    {id: 'bike-service', value: 'Bike service'},
+                    {id: 'feed-zone', value: 'Feed zone'},
+                    {id: 'reward-zone', value: 'Reward zone'},
+                    {id: 'starting-zone', value: 'Starting sectors'}
+                ]);
+
+                // Set SVG data.
+                chart.geoData(data);
+                chart.unboundRegions("as-is");
+
+                var series = chart.getSeries(0);
+                series.fill(function () {
+                    var attr = this.attributes;
+                    if (attr) {
+                        // Attributes in svg.file
+                        var class_ = attr.class;
+                        switch (class_) {
+                            case 'race-office' :
+                                return '#95C8EC';
+                            case 'bike-service' :
+                                return '#FECC81';
+                            case 'feed-zone' :
+                                return '#AED580';
+                            case 'reward-zone' :
+                                return '#F8AA92';
+                            case 'starting-zone' :
+                                return '#D1C3E0';
+                            default:
+                                return this.sourceColor;
+                        }
+                    }
+                });
+
+                var tooltip = series.tooltip();
+                tooltip.titleFormat(function () {
+                    return this.value
+                });
+                tooltip.title({useHtml: true});
+
+                tooltip.format(function () {
+                    return this.regionProperties.description;
+                });
+
+                chart.container(stage);
+                chart.draw();
+            }
+        });
+    });
+</script>
 </body>
 </html>

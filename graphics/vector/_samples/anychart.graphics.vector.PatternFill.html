@@ -1,38 +1,51 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line anyChart"/>
-    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
-    <script x-export="stage">
-        stage = acgraph.create("container");
+    <meta name="ac:name" content="anychart.graphics.vector.PatternFill"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-        var black = "2 #000000 0.9";
-        var blue = "1 #2196F3 0.9";
+    <script src="https://cdn.anychart.com/js/8.0.1/graphics.min.js"></script>
 
-        // Creates pattern.
-        var pattern = stage.pattern(new acgraph.math.Rect(0, 0, stage.width(), stage.height()));
 
-        var circles = {
-            cx: stage.width() / 2,
-            cy: stage.height() / 2,
-            step: 5
-        };
-
-        var max_circle_radius = Math.max(stage.width(), stage.height()) / 2;
-        for (var i = 0; i < max_circle_radius; i++) {
-            pattern.circle(circles.cx, circles.cy, circles.step * i).fill("none").stroke(blue);
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
-
-        var firstRect = stage.rect(40, 25, 200, 100);
-        firstRect.fill(pattern);
-        firstRect.stroke(black);
-
-        var secondRect = stage.rect(2, 2, 50, 50);
-        secondRect.fill(pattern);
-        secondRect.stroke(black);
-    </script>
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    var stage = acgraph.create("container");
+
+    var black = "2 #000000 0.9";
+    var blue = "1 #2196F3 0.9";
+
+    // Creates pattern.
+    var pattern = stage.pattern(new acgraph.math.Rect(0, 0, stage.width(), stage.height()));
+
+    var circles = {
+        cx: stage.width() / 2,
+        cy: stage.height() / 2,
+        step: 5
+    };
+
+    var max_circle_radius = Math.max(stage.width(), stage.height()) / 2;
+    for (var i = 0; i < max_circle_radius; i++) {
+        pattern.circle(circles.cx, circles.cy, circles.step * i).fill("none").stroke(blue);
+    }
+
+    var firstRect = stage.rect(40, 25, 200, 100);
+    firstRect.fill(pattern);
+    firstRect.stroke(black);
+
+    var secondRect = stage.rect(2, 2, 50, 50);
+    secondRect.fill(pattern);
+    secondRect.stroke(black);
+</script>
 </body>
 </html>

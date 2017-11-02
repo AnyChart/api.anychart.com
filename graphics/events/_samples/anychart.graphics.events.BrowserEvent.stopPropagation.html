@@ -1,43 +1,56 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="text anyChart anyGantt anyStock anyMap"/>
-    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
-    <script x-export="stage">
-        function getRandomColor() {
-            var min = Math.ceil(50);
-            var max = Math.floor(200);
-            var red = Math.floor(Math.random() * (max - min)) + min;
-            var green = Math.floor(Math.random() * (max - min)) + min;
-            var blue = Math.floor(Math.random() * (max - min)) + min;
-            return "rgb(" + red + "," + green + "," + blue + ")";
+    <meta name="ac:name" content="anychart.graphics.events.BrowserEvent.stopPropagation"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+
+    <script src="https://cdn.anychart.com/js/8.0.1/graphics.min.js"></script>
+
+
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
-
-        stage = acgraph.create("container");
-
-        var layer = stage.layer();
-        layer.rect(0, 0, 500, 300).fill("#FFFFFF 0.01");
-
-        var textObject = layer.text(70, 55, "Click on this TEXT");
-        textObject.style({fontSize: "18px"});
-        textObject.selectable(false);
-
-        var counter = 0;
-
-        textObject.listen("click", function (e) {
-            counter++;
-            textObject.text("You clicked " + counter + " times. " + "Click again");
-
-            // Stop propagation.
-            e.stopPropagation();
-        });
-
-        layer.listen("click", function (e) {
-            textObject.color(getRandomColor());
-        });
-    </script>
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    function getRandomColor() {
+        var min = Math.ceil(50);
+        var max = Math.floor(200);
+        var red = Math.floor(Math.random() * (max - min)) + min;
+        var green = Math.floor(Math.random() * (max - min)) + min;
+        var blue = Math.floor(Math.random() * (max - min)) + min;
+        return "rgb(" + red + "," + green + "," + blue + ")";
+    }
+
+    var stage = acgraph.create("container");
+
+    var layer = stage.layer();
+    layer.rect(0, 0, 500, 300).fill("#FFFFFF 0.01");
+
+    var textObject = layer.text(70, 55, "Click on this TEXT");
+    textObject.style({fontSize: "18px"});
+    textObject.selectable(false);
+
+    var counter = 0;
+
+    textObject.listen("click", function (e) {
+        counter++;
+        textObject.text("You clicked " + counter + " times. " + "Click again");
+
+        // Stop propagation.
+        e.stopPropagation();
+    });
+
+    layer.listen("click", function (e) {
+        textObject.color(getRandomColor());
+    });
+</script>
 </body>
 </html>

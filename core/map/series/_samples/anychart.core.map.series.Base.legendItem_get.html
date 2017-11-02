@@ -1,56 +1,69 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="map">
-        anychart.onDocumentReady(function() {
-            // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
-            // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+    <meta name="ac:name" content="anychart.core.map.series.Base.legendItem get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var firstDataSet = anychart.data.set([
-                {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
-                {id: "AU.VI", value: 23, title: "Victoria"},
-                {id: "AU.WA", value: 86, title: "Western Australia"},
-                {id: "AU.QL", value: 16, title: "Queensland"}
-            ]);
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
 
-            var secondDataSet = anychart.data.set([
-                {id: "AU.NS", value: 32, title: "New South Wales"},
-                {id: "AU.NT", value: 64, title: "Northern Territory"},
-                {id: "AU.TS", value: 28, title: "Tasmania"},
-                {id: "AU.SA", value: 45, title: "South Australian"}
-            ]);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
 
-            var firstView = firstDataSet.mapAs({'id': 'id'});
-            var secondView = secondDataSet.mapAs({'id': 'id'});
-
-            map = anychart.map();
-            map.geoData(anychart.maps.australia);
-            map.legend(true);
-
-            var firstSeries = map.choropleth(firstView);
-
-            // Get legend item.
-            var seriesLegendItem = firstSeries.legendItem();
-            seriesLegendItem.iconType("circle");
-            seriesLegendItem.text("Custom legend item");
-
-            map.choropleth(secondView);
-
-            map.title("Get and modify legend item");
-            map.container("container");
-            map.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+        // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+
+        var firstDataSet = anychart.data.set([
+            {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
+            {id: "AU.VI", value: 23, title: "Victoria"},
+            {id: "AU.WA", value: 86, title: "Western Australia"},
+            {id: "AU.QL", value: 16, title: "Queensland"}
+        ]);
+
+        var secondDataSet = anychart.data.set([
+            {id: "AU.NS", value: 32, title: "New South Wales"},
+            {id: "AU.NT", value: 64, title: "Northern Territory"},
+            {id: "AU.TS", value: 28, title: "Tasmania"},
+            {id: "AU.SA", value: 45, title: "South Australian"}
+        ]);
+
+        var firstView = firstDataSet.mapAs({'id': 'id'});
+        var secondView = secondDataSet.mapAs({'id': 'id'});
+
+        var map = anychart.map();
+        map.geoData(anychart.maps.australia);
+        map.legend(true);
+
+        var firstSeries = map.choropleth(firstView);
+
+        // Get legend item.
+        var seriesLegendItem = firstSeries.legendItem();
+        seriesLegendItem.iconType("circle");
+        seriesLegendItem.text("Custom legend item");
+
+        map.choropleth(secondView);
+
+        map.title("Get and modify legend item");
+        map.container("container");
+        map.draw();
+    });
+</script>
 </body>
 </html>

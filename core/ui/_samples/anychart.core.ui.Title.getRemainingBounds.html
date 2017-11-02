@@ -1,34 +1,47 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="label anyChart anyGantt anyStock anyMap"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.core.ui.Title.getRemainingBounds"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            // Placing the first title on the top of the Stage.
-            var title1 = anychart.standalones.title();
-            title1.text("First title");
-            title1.container(stage);
-            title1.draw();
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
 
-            // Gets remaining bounds.
-            var bounds = title1.getRemainingBounds();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
 
-            // Placing the second title over the remaining part - under the first title.
-            var title2 = anychart.standalones.title();
-            title2.text("Second title");
-            title2.container(stage);
-            title2.parentBounds(bounds);
-            title2.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        // Placing the first title on the top of the Stage.
+        var title1 = anychart.standalones.title();
+        title1.text("First title");
+        title1.container(stage);
+        title1.draw();
+
+        // Gets remaining bounds.
+        var bounds = title1.getRemainingBounds();
+
+        // Placing the second title over the remaining part - under the first title.
+        var title2 = anychart.standalones.title();
+        title2.text("Second title");
+        title2.container(stage);
+        title2.parentBounds(bounds);
+        title2.draw();
+    });
+</script>
 </body>
 </html>

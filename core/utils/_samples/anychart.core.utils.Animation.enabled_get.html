@@ -1,40 +1,53 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line anyChart"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var dataSet = anychart.data.set([
-                ["John" , 10000, 12000],
-                ["Jake" , 12000, 15000],
-                ["Peter" , 18000, 16000],
-                ["James" , 11000, 13000],
-                ["Mary" , 9000, 19000]
-            ]);
+    <meta name="ac:name" content="anychart.core.utils.Animation.enabled get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var data1 = dataSet.mapAs({'x': 0, 'value': 1});
-            var data2 = dataSet.mapAs({'x': 0, 'value': 2});
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
 
-            chart = anychart.line();
-            chart.line(data1);
-            chart.line(data2);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
 
-            var animationSettings = chart.animation();
-
-            // Get animation state.
-            var animationState = animationSettings.enabled();
-
-            chart.title("Animation state is " + animationState);
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var dataSet = anychart.data.set([
+            ["John", 10000, 12000],
+            ["Jake", 12000, 15000],
+            ["Peter", 18000, 16000],
+            ["James", 11000, 13000],
+            ["Mary", 9000, 19000]
+        ]);
+
+        var data1 = dataSet.mapAs({'x': 0, 'value': 1});
+        var data2 = dataSet.mapAs({'x': 0, 'value': 2});
+
+        var chart = anychart.line();
+        chart.line(data1);
+        chart.line(data2);
+
+        var animationSettings = chart.animation();
+
+        // Get animation state.
+        var animationState = animationSettings.enabled();
+
+        chart.title("Animation state is " + animationState);
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

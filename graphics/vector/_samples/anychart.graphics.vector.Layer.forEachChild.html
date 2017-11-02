@@ -1,24 +1,37 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="layer anyChart anyGantt anyStock anyMap"/>
-    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
-    <script x-export="stage">
-        stage = acgraph.create("container");
+    <meta name="ac:name" content="anychart.graphics.vector.Layer.forEachChild"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-        var simpleLayer = stage.layer();
+    <script src="https://cdn.anychart.com/js/8.0.1/graphics.min.js"></script>
 
-        var element = simpleLayer.ellipse(75, 105, 55, 35);
-        simpleLayer.ellipse(95, 75, 55, 35);
-        simpleLayer.ellipse(115, 45, 55, 35);
 
-        // Sets function of settings for each element.
-        simpleLayer.forEachChild(function (element) {
-            return element.fill("#4CAF50 0.8");
-        })
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    var stage = acgraph.create("container");
+
+    var simpleLayer = stage.layer();
+
+    var element = simpleLayer.ellipse(75, 105, 55, 35);
+    simpleLayer.ellipse(95, 75, 55, 35);
+    simpleLayer.ellipse(115, 45, 55, 35);
+
+    // Sets function of settings for each element.
+    simpleLayer.forEachChild(function (element) {
+        return element.fill("#4CAF50 0.8");
+    })
+</script>
 </body>
 </html>

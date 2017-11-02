@@ -1,53 +1,66 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="pert anyChart"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pert.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.charts.Pert.expectedTimeCalculator set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var data = [
-                {id: "A1", pessimistic: 50, optimistic: 20, mostLikely: 40, name: "Task A"},
-                {id: "A2", pessimistic: 30, optimistic: 25, mostLikely: 29, name: "Task B"},
-                {id: "A5", pessimistic: 40, optimistic: 35, mostLikely: 39, name: "Task AD", dependsOn: ["A2"]},
-                {id: "A6", pessimistic: 70, optimistic: 25, mostLikely: 60, name: "Task BC", dependsOn: ["A1"]},
-                {id: "A7", pessimistic: 20, optimistic: 10, mostLikely: 19, name: "Task B+", dependsOn: ["A1"]}
-            ];
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-pert.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
 
-            var optimisticPert = anychart.pert();
-            optimisticPert.data(data, "as-table");
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
 
-            // Set expected time.
-            optimisticPert.expectedTimeCalculator(function() {
-                return this.optimistic
-            });
-
-            optimisticPert.bounds(0, 0, "50%", "100%");
-            optimisticPert.title("Optimistic time and fast way.");
-            optimisticPert.container(stage);
-            optimisticPert.draw();
-
-            var pessimisticPert = anychart.pert();
-            pessimisticPert.data(data, "as-table");
-
-            // Set expected time.
-            pessimisticPert.expectedTimeCalculator(function() {
-                return this.pessimistic;
-            });
-
-            pessimisticPert.bounds("50%", 0, "50%", "100%");
-            pessimisticPert.title("Pessimistic time and high-quality way.");
-            pessimisticPert.container(stage);
-            pessimisticPert.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        var data = [
+            {id: "A1", pessimistic: 50, optimistic: 20, mostLikely: 40, name: "Task A"},
+            {id: "A2", pessimistic: 30, optimistic: 25, mostLikely: 29, name: "Task B"},
+            {id: "A5", pessimistic: 40, optimistic: 35, mostLikely: 39, name: "Task AD", dependsOn: ["A2"]},
+            {id: "A6", pessimistic: 70, optimistic: 25, mostLikely: 60, name: "Task BC", dependsOn: ["A1"]},
+            {id: "A7", pessimistic: 20, optimistic: 10, mostLikely: 19, name: "Task B+", dependsOn: ["A1"]}
+        ];
+
+        var optimisticPert = anychart.pert();
+        optimisticPert.data(data, "as-table");
+
+        // Set expected time.
+        optimisticPert.expectedTimeCalculator(function () {
+            return this.optimistic
+        });
+
+        optimisticPert.bounds(0, 0, "50%", "100%");
+        optimisticPert.title("Optimistic time and fast way.");
+        optimisticPert.container(stage);
+        optimisticPert.draw();
+
+        var pessimisticPert = anychart.pert();
+        pessimisticPert.data(data, "as-table");
+
+        // Set expected time.
+        pessimisticPert.expectedTimeCalculator(function () {
+            return this.pessimistic;
+        });
+
+        pessimisticPert.bounds("50%", 0, "50%", "100%");
+        pessimisticPert.title("Pessimistic time and high-quality way.");
+        pessimisticPert.container(stage);
+        pessimisticPert.draw();
+    });
+</script>
 </body>
 </html>

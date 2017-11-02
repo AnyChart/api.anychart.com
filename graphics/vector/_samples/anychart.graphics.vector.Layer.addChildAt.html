@@ -1,34 +1,47 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="layer anyChart anyGantt anyStock anyMap"/>
-    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
-    <script x-export="stage">
-        stage = acgraph.create("container");
+    <meta name="ac:name" content="anychart.graphics.vector.Layer.addChildAt"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-        var firstCircle = stage.circle(75, 60, 55);
-        firstCircle.fill("#2196F3", 0.3);
-        var firstStar = stage.star5(55, 79, 45);
-        firstStar.fill("#F44336");
+    <script src="https://cdn.anychart.com/js/8.0.1/graphics.min.js"></script>
 
-        var secondCircle = stage.circle(75, 60, 55);
-        secondCircle.fill("#2196F3", 0.3);
-        var secondStar = stage.star5(55, 79, 45);
-        secondStar.fill("#F44336");
 
-        var firstLayer = stage.layer();
-        firstLayer.addChild(firstCircle);
-        firstLayer.addChild(firstStar);
-
-        var secondLayer = stage.layer();
-        secondLayer.addChild(secondCircle);
-
-        // Adds the star below the circle.
-        secondLayer.addChildAt(secondStar, 0);
-        secondLayer.translate(150, 0);
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    var stage = acgraph.create("container");
+
+    var firstCircle = stage.circle(75, 60, 55);
+    firstCircle.fill("#2196F3", 0.3);
+    var firstStar = stage.star5(55, 79, 45);
+    firstStar.fill("#F44336");
+
+    var secondCircle = stage.circle(75, 60, 55);
+    secondCircle.fill("#2196F3", 0.3);
+    var secondStar = stage.star5(55, 79, 45);
+    secondStar.fill("#F44336");
+
+    var firstLayer = stage.layer();
+    firstLayer.addChild(firstCircle);
+    firstLayer.addChild(firstStar);
+
+    var secondLayer = stage.layer();
+    secondLayer.addChild(secondCircle);
+
+    // Adds the star below the circle.
+    secondLayer.addChildAt(secondStar, 0);
+    secondLayer.translate(150, 0);
+</script>
 </body>
 </html>

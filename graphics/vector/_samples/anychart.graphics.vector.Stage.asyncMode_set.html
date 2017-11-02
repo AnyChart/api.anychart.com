@@ -1,38 +1,50 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <!--actualBug CAT problem with asyncMode-->
-    <meta name="x-cat-tags" content="actualBug anyChart anyGantt anyStock anyMap"/>
-    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
-    <script x-export="stage">
-        stage = acgraph.create("container");
+    <meta name="ac:name" content="anychart.graphics.vector.Stage.asyncMode set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-        // Sets rendering mode.
-        stage.asyncMode(true);
+    <script src="https://cdn.anychart.com/js/8.0.1/graphics.min.js"></script>
 
-        // Suspends rendering.
-        stage.suspend();
 
-        var radius = 10;
-        var widthCount = Math.floor(stage.width() / (2 * radius));
-        var heightCount = Math.floor(stage.height() / (2 * radius));
-        var colors = ["#F44336", "#4CAF50", "#2196F3"];
-        var colorIndex = 0;
-
-        for (var i = 0; i < widthCount; i++) {
-            for (var j = 0; j < heightCount; j++) {
-                var circle = stage.circle(radius + i * 2 * radius, radius + j * 2 * radius, radius);
-                circle.stroke(colors[colorIndex]);
-                colorIndex++;
-                if (colorIndex >= colors.length) colorIndex=0;
-            }
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
-
-        // Removes suspend state.
-        stage.resume();
-    </script>
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    var stage = acgraph.create("container");
+
+    // Sets rendering mode.
+    stage.asyncMode(true);
+
+    // Suspends rendering.
+    stage.suspend();
+
+    var radius = 10;
+    var widthCount = Math.floor(stage.width() / (2 * radius));
+    var heightCount = Math.floor(stage.height() / (2 * radius));
+    var colors = ["#F44336", "#4CAF50", "#2196F3"];
+    var colorIndex = 0;
+
+    for (var i = 0; i < widthCount; i++) {
+        for (var j = 0; j < heightCount; j++) {
+            var circle = stage.circle(radius + i * 2 * radius, radius + j * 2 * radius, radius);
+            circle.stroke(colors[colorIndex]);
+            colorIndex++;
+            if (colorIndex >= colors.length) colorIndex = 0;
+        }
+    }
+
+    // Removes suspend state.
+    stage.resume();
+</script>
 </body>
 </html>
