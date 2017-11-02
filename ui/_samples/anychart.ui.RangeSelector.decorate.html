@@ -4,15 +4,15 @@
     <meta name="ac:name" content="anychart.ui.RangeSelector.decorate"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-    
+
     <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-stock.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -25,27 +25,27 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var mapping = dataTable.mapAs({'value': 1});
+        var mapping = dataTable.mapAs({'value': 1});
 
-    var chart = anychart.stock();
+        var chart = anychart.stock();
 
-    var plot = chart.plot();
-    plot.line(mapping);
+        var plot = chart.plot();
+        plot.line(mapping);
 
-    var rangeSelector = anychart.ui.rangeSelector();
-    rangeSelector.target(chart);
+        var rangeSelector = anychart.ui.rangeSelector();
+        rangeSelector.target(chart);
 
-    chart.title("Renders the range picker into container");
-    chart.container("container");
-    chart.draw();
+        chart.title("Renders the range picker into container");
+        chart.container("container");
+        chart.draw();
 
-    // Renders the range picker into container.
-    rangeSelector.decorate(document.getElementById("container"));
-});
+        // Renders the range picker into container.
+        rangeSelector.decorate(document.getElementById("container"));
+    });
 </script>
 </body>
 </html>

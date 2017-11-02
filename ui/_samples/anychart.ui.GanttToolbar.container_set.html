@@ -4,14 +4,14 @@
     <meta name="ac:name" content="anychart.ui.GanttToolbar.container set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-    
+
     <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-gantt.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -24,36 +24,83 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    // To change the way how context menu looks you need to change CSS.
-    // By default CSS from AnyChart CDN is used: https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css
-    // Download it, alter, upload to your server and link from your pages to change the look.
+    anychart.onDocumentReady(function () {
+        // To change the way how context menu looks you need to change CSS.
+        // By default CSS from AnyChart CDN is used: https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css
+        // Download it, alter, upload to your server and link from your pages to change the look.
 
-    var data = [
-        {id: 1, name: "Phase 1 - Strategic Plan", progressValue: "14%", actualStart: "2000-02-24", actualEnd: "2000-02-27"},
-        {id: 2, name: "Self-Assessment", parent: 1, progressValue: "25%", actualStart: "2000-02-24", actualEnd: "2000-02-29"},
-        {id: 3, name: "Define business vision", parent: 2, progressValue: "0%", actualStart: "2000-02-24T24:00", actualEnd: "2000-02-25T09:00", connectTo: "4", connectorType: "finish-start"},
-        {id: 4, name: "Identify available skills, information and support", parent: "2", progressValue: "0%", actualStart: "2000-02-26T00:00", actualEnd: "2000-02-26T09:00", connectTo: "5", connectorType: "finish-start"},
-        {id: 5, name: "Decide whether to proceed", parent: 2, progressValue: "0%", actualStart: "2000-02-27", actualEnd: "2000-02-28T08:00", connectTo: "6", connectorType: "finish-start"},
-        {id: 6, name: "Define the Opportunity", parent: 1, progressValue: "27%", actualStart: "2000-02-28T08:00", actualEnd: "2000-02-29"}
-    ];
+        var data = [
+            {
+                id: 1,
+                name: "Phase 1 - Strategic Plan",
+                progressValue: "14%",
+                actualStart: "2000-02-24",
+                actualEnd: "2000-02-27"
+            },
+            {
+                id: 2,
+                name: "Self-Assessment",
+                parent: 1,
+                progressValue: "25%",
+                actualStart: "2000-02-24",
+                actualEnd: "2000-02-29"
+            },
+            {
+                id: 3,
+                name: "Define business vision",
+                parent: 2,
+                progressValue: "0%",
+                actualStart: "2000-02-24T24:00",
+                actualEnd: "2000-02-25T09:00",
+                connectTo: "4",
+                connectorType: "finish-start"
+            },
+            {
+                id: 4,
+                name: "Identify available skills, information and support",
+                parent: "2",
+                progressValue: "0%",
+                actualStart: "2000-02-26T00:00",
+                actualEnd: "2000-02-26T09:00",
+                connectTo: "5",
+                connectorType: "finish-start"
+            },
+            {
+                id: 5,
+                name: "Decide whether to proceed",
+                parent: 2,
+                progressValue: "0%",
+                actualStart: "2000-02-27",
+                actualEnd: "2000-02-28T08:00",
+                connectTo: "6",
+                connectorType: "finish-start"
+            },
+            {
+                id: 6,
+                name: "Define the Opportunity",
+                parent: 1,
+                progressValue: "27%",
+                actualStart: "2000-02-28T08:00",
+                actualEnd: "2000-02-29"
+            }
+        ];
 
-    var chart = anychart.ganttProject();
+        var chart = anychart.ganttProject();
 
-    var toolbar = anychart.ui.ganttToolbar();
+        var toolbar = anychart.ui.ganttToolbar();
 
-    // Set container.
-    toolbar.container("container");
+        // Set container.
+        toolbar.container("container");
 
-    toolbar.target(chart);
-    toolbar.printPaperSizes(["A0", "A4"]);
-    toolbar.draw();
+        toolbar.target(chart);
+        toolbar.printPaperSizes(["A0", "A4"]);
+        toolbar.draw();
 
-    chart.data(data, "as-table");
-    chart.container("container");
-    chart.draw();
-    chart.fitAll();
-});
+        chart.data(data, "as-table");
+        chart.container("container");
+        chart.draw();
+        chart.fitAll();
+    });
 </script>
 </body>
 </html>
