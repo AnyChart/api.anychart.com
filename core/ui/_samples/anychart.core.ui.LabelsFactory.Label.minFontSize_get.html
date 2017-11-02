@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.9.1/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.1/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.9.1/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,25 +20,25 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
-    var labels = anychart.ui.labelsFactory();
-    var label;
-    var getMinFontSize;
-    for (var i = 0; i < 5; i++) {
-        label = labels.add({value: i}, {value: {x: (i + 1) * 50, y: 50}}, i);
-        label.height(12);
-        label.minFontSize(9);
-        label.adjustFontSize(true);
-        label.background({fill: "#FFFFFF"});
-        getMinFontSize = label.minFontSize(); // get minimum font size
-        if (i == (getMinFontSize - 5)) {
-            label.adjustFontSize(false);
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+        var labels = anychart.ui.labelsFactory();
+        var label;
+        var getMinFontSize;
+        for (var i = 0; i < 5; i++) {
+            label = labels.add({value: i}, {value: {x: (i + 1) * 50, y: 50}}, i);
+            label.height(12);
+            label.minFontSize(9);
+            label.adjustFontSize(true);
+            label.background({fill: "#FFFFFF"});
+            getMinFontSize = label.minFontSize(); // get minimum font size
+            if (i == (getMinFontSize - 5)) {
+                label.adjustFontSize(false);
+            }
         }
-    }
-    labels.container(stage);
-    labels.draw();
-});
+        labels.container(stage);
+        labels.draw();
+    });
 </script>
 </body>
 </html>
