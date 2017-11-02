@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,27 +21,27 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var mapping = dataTable.mapAs({value: 1});
+        var mapping = dataTable.mapAs({value: 1});
 
-    var chart = anychart.stock();
+        var chart = anychart.stock();
 
-    var plot = chart.plot();
-    plot.line(mapping);
+        var plot = chart.plot();
+        plot.line(mapping);
 
-    chart.container(stage);
-    chart.draw();
+        chart.container(stage);
+        chart.draw();
 
-    // Converts the local coordinates to global coordinates.
-    var globalCoordinates = chart.localToGlobal(0, 0);
+        // Converts the local coordinates to global coordinates.
+        var globalCoordinates = chart.localToGlobal(0, 0);
 
-    chart.title("Global coordinates [x: " + globalCoordinates.x + ", y: " + globalCoordinates.y + "]");
-});
+        chart.title("Global coordinates [x: " + globalCoordinates.x + ", y: " + globalCoordinates.y + "]");
+    });
 </script>
 </body>
 </html>

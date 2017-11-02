@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,26 +20,26 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    chart = anychart.bar();
-    chart.bar([10, 4, 6, 3]);
-    chart.bar([4, 6, -2, 3]);
-    chart.container(stage);
-    chart.draw();
+        chart = anychart.bar();
+        chart.bar([10, 4, 6, 3]);
+        chart.bar([4, 6, -2, 3]);
+        chart.container(stage);
+        chart.draw();
 
-    chart.listen("chartDraw", function() {
-        // Return chart in JSON object with theme settings.
-        var json = chart.toJson(false, true);
+        chart.listen("chartDraw", function () {
+            // Return chart in JSON object with theme settings.
+            var json = chart.toJson(false, true);
 
-        chart.dispose();
+            chart.dispose();
 
-        var myChart = anychart.fromJson(json);
-        myChart.container(stage);
-        myChart.draw();
+            var myChart = anychart.fromJson(json);
+            myChart.container(stage);
+            myChart.draw();
+        });
     });
-});
 </script>
 </body>
 </html>

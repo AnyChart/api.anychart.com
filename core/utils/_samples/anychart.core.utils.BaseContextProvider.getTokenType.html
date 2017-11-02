@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,29 +20,29 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var data = anychart.data.set([
-        {x: "P1", value: 20},
-        {x: "P2", value: 55},
-        {x: "P3", value: 30},
-        {x: "P4", value: 65}
-    ]);
-    var chart = anychart.line();
+    anychart.onDocumentReady(function () {
+        var data = anychart.data.set([
+            {x: "P1", value: 20},
+            {x: "P2", value: 55},
+            {x: "P3", value: 30},
+            {x: "P4", value: 65}
+        ]);
+        var chart = anychart.line();
 
-    var series = chart.line(data);
+        var series = chart.line(data);
 
-    var labels = series.labels();
-    labels.enabled(true);
-    labels.anchor("bottom");
-    labels.offsetY("3");
-    labels.textFormatter(function() {
-        // Gets token type.
-        return  "Token type for value: " + this.getTokenType("%Value");
+        var labels = series.labels();
+        labels.enabled(true);
+        labels.anchor("bottom");
+        labels.offsetY("3");
+        labels.textFormatter(function () {
+            // Gets token type.
+            return "Token type for value: " + this.getTokenType("%Value");
+        });
+
+        chart.container("container");
+        chart.draw();
     });
-
-    chart.container("container");
-    chart.draw();
-});
 </script>
 </body>
 </html>

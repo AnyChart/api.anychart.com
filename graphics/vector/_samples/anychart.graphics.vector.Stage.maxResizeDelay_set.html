@@ -4,10 +4,10 @@
     <meta name="ac:name" content="anychart.graphics.vector.Stage.maxResizeDelay set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-    
+
     <script src="https://cdn.anychart.com/js/7.13.0/graphics.min.js"></script>
-    
-    
+
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,57 +20,57 @@
 <body>
 <div id="container"></div>
 <script>
-mainContainervar  = document.getElementById('container');
+    mainContainervar = document.getElementById('container');
 
     // Creates three sub-container.
-    subContainer1var  = document.createElement('div');
-    subContainer1.style.heightvar  ='33%';
+    subContainer1var = document.createElement('div');
+    subContainer1.style.heightvar = '33%';
     mainContainer.appendChild(subContainer1);
 
-    subContainer2var  = document.createElement('div');
-    subContainer2.style.heightvar  ='33%';
+    subContainer2var = document.createElement('div');
+    subContainer2.style.heightvar = '33%';
     mainContainer.appendChild(subContainer2);
 
-    subContainer3var  = document.createElement('div');
-    subContainer3.style.heightvar  ='33%';
+    subContainer3var = document.createElement('div');
+    subContainer3.style.heightvar = '33%';
     mainContainer.appendChild(subContainer3);
 
-    firstStagevar  = acgraph.create(subContainer1);
+    firstStagevar = acgraph.create(subContainer1);
 
     // Set max resize delay.
     firstStage.maxResizeDelay(20);
 
-    rectvar  = firstStage.rect();
+    rectvar = firstStage.rect();
     rect.setBounds(firstStage.getBounds());
     rect.fill("#A5D6A7");
 
     firstStage.listen("stageresize", function () {
-       rect.setBounds(firstStage.getBounds());
+        rect.setBounds(firstStage.getBounds());
     });
 
-    secondStagevar  = acgraph.create(subContainer2);
+    secondStagevar = acgraph.create(subContainer2);
 
     // Set max resize delay.
     secondStage.maxResizeDelay(300);
 
-    secondRectvar  = secondStage.rect().setBounds(secondStage.getBounds()).fill("#C5E1A5");
+    secondRectvar = secondStage.rect().setBounds(secondStage.getBounds()).fill("#C5E1A5");
 
     secondStage.listen("stageresize", function () {
         secondRect.setBounds(secondStage.getBounds());
     });
 
-    thirdStagevar  = acgraph.create(subContainer3);
+    thirdStagevar = acgraph.create(subContainer3);
 
     // Set max resize delay.
     thirdStage.maxResizeDelay(1000);
 
-    thirdRectvar  = thirdStage.rect().setBounds(thirdStage.getBounds()).fill("#E6EE9C");
+    thirdRectvar = thirdStage.rect().setBounds(thirdStage.getBounds()).fill("#E6EE9C");
 
     thirdStage.listen("stageresize", function () {
         thirdRect.setBounds(thirdStage.getBounds());
     });
 
-    labelvar  = anychart.standalones.label();
+    labelvar = anychart.standalones.label();
     label.background({fill: "#9E9E9E"});
     label.text("Click to resize container");
     label.fontColor("#fff");
@@ -78,10 +78,12 @@ mainContainervar  = document.getElementById('container');
     label.offsetX(5);
     label.offsetY(5);
 
-    contaninerWidthvar  = 50;
-    label.listen('click',function(){
-        contaninerWidth+var  =10;
-        mainContainer.style.widthvar  = contaninerWidth+'%';
+    contaninerWidthvar = 50;
+    label.listen('click', function () {
+        contaninerWidth +
+        var =
+        10;
+        mainContainer.style.widthvar = contaninerWidth + '%';
     });
 
     label.container(firstStage);

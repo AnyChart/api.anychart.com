@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,29 +21,29 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var mapping = dataTable.mapAs({value: 1});
+        var mapping = dataTable.mapAs({value: 1});
 
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
 
-    var plot = chart.plot();
-    plot.line(mapping);
+        var plot = chart.plot();
+        plot.line(mapping);
 
-    var scroller = chart.scroller();
+        var scroller = chart.scroller();
 
-    var series = scroller.area(mapping);
+        var series = scroller.area(mapping);
 
-    // Set series fill.
-    series.selectFill("#4CAF50");
+        // Set series fill.
+        series.selectFill("#4CAF50");
 
-    chart.title("Set select fill as a string.");
-    chart.container("container");
-    chart.draw();
-});
+        chart.title("Set select fill as a string.");
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

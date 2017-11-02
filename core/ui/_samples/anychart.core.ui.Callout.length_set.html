@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,34 +21,34 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var dataSet = anychart.data.set([
-        {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
-        {id: "AU.VI", value: 23, title: "Victoria"},
-        {id: "AU.WA", value: 86, title: "Western Australia"},
-        {id: "AU.QL", value: 16, title: "Queensland"},
-        {id: "AU.NS", value: 32, title: "New South Wales"},
-        {id: "AU.NT", value: 64, title: "Northern Territory"},
-        {id: "AU.TS", value: 28, title: "Tasmania"},
-        {id: "AU.SA", value: 45, title: "South Australian"}
-    ]);
+    anychart.onDocumentReady(function () {
+        var dataSet = anychart.data.set([
+            {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
+            {id: "AU.VI", value: 23, title: "Victoria"},
+            {id: "AU.WA", value: 86, title: "Western Australia"},
+            {id: "AU.QL", value: 16, title: "Queensland"},
+            {id: "AU.NS", value: 32, title: "New South Wales"},
+            {id: "AU.NT", value: 64, title: "Northern Territory"},
+            {id: "AU.TS", value: 28, title: "Tasmania"},
+            {id: "AU.SA", value: 45, title: "South Australian"}
+        ]);
 
-    var dataSetForSeries = dataSet.mapAs({id: "id"});
+        var dataSetForSeries = dataSet.mapAs({id: "id"});
 
-    var australiaMap = anychart.map();
-    australiaMap.geoData(anychart.maps.australia);
-    australiaMap.choropleth(dataSetForSeries);
+        var australiaMap = anychart.map();
+        australiaMap.geoData(anychart.maps.australia);
+        australiaMap.choropleth(dataSetForSeries);
 
-    var callout = australiaMap.callout();
-    callout.items(["AU.WA", "AU.NS", "AU.SA"]);
+        var callout = australiaMap.callout();
+        callout.items(["AU.WA", "AU.NS", "AU.SA"]);
 
-    // Set length.
-    callout.length("30%");
+        // Set length.
+        callout.length("30%");
 
-    australiaMap.title("Set callout length");
-    australiaMap.container("container");
-    australiaMap.draw();
-});
+        australiaMap.title("Set callout length");
+        australiaMap.container("container");
+        australiaMap.draw();
+    });
 </script>
 </body>
 </html>

@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,42 +20,42 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var pyramidChart = anychart.pyramid([
-        {x: "Physical", value: 125},
-        {x: "Data Link", value: 125},
-        {x: "Network", value: 125},
-        {x: "Transport", value: 125},
-        {x: "Session", value: 125},
-        {x: "Presentation", value: 125},
-        {x: "Application", value: 390, label: {anchor: "centerTop"}}
-    ]);
-    pyramidChart.bounds(0, 20, "50%", "100%");
-    pyramidChart.legend(false);
-    pyramidChart.labels({position: "inside"});
-    pyramidChart.hoverStroke("#4CAF50", 3);
-    pyramidChart.container(stage);
-    pyramidChart.draw();
+        var pyramidChart = anychart.pyramid([
+            {x: "Physical", value: 125},
+            {x: "Data Link", value: 125},
+            {x: "Network", value: 125},
+            {x: "Transport", value: 125},
+            {x: "Session", value: 125},
+            {x: "Presentation", value: 125},
+            {x: "Application", value: 390, label: {anchor: "centerTop"}}
+        ]);
+        pyramidChart.bounds(0, 20, "50%", "100%");
+        pyramidChart.legend(false);
+        pyramidChart.labels({position: "inside"});
+        pyramidChart.hoverStroke("#4CAF50", 3);
+        pyramidChart.container(stage);
+        pyramidChart.draw();
 
-    var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
-    funnelChart.bounds("50%", 20, "50%", "100%");
-    funnelChart.legend(false);
-    funnelChart.labels({position: "inside"});
+        var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
+        funnelChart.bounds("50%", 20, "50%", "100%");
+        funnelChart.legend(false);
+        funnelChart.labels({position: "inside"});
 
-    // Get hover stroke.
-    var pyramidHoverStroke = pyramidChart.hoverStroke();
+        // Get hover stroke.
+        var pyramidHoverStroke = pyramidChart.hoverStroke();
 
-    funnelChart.stroke(pyramidHoverStroke);
-    funnelChart.container(stage);
-    funnelChart.draw();
+        funnelChart.stroke(pyramidHoverStroke);
+        funnelChart.container(stage);
+        funnelChart.draw();
 
-    var customTitle = anychart.standalones.title();
-    customTitle.text("Get and use hover stroke.");
-    customTitle.container(stage);
-    customTitle.draw();
-});
+        var customTitle = anychart.standalones.title();
+        customTitle.text("Get and use hover stroke.");
+        customTitle.container(stage);
+        customTitle.draw();
+    });
 </script>
 </body>
 </html>

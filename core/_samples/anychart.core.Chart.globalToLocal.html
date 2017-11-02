@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,36 +20,36 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var chart = anychart.line();
-    chart.line([49, 45, 9, 4, 17, 13]);
-    chart.line([41, 23, 15, 45, 39, 27]);
-    chart.title(true);
-    chart.legend(true);
-    chart.title("Convert the global coordinates to local coordinates.");
-    chart.container(stage);
-    chart.draw();
+        var chart = anychart.line();
+        chart.line([49, 45, 9, 4, 17, 13]);
+        chart.line([41, 23, 15, 45, 39, 27]);
+        chart.title(true);
+        chart.legend(true);
+        chart.title("Convert the global coordinates to local coordinates.");
+        chart.container(stage);
+        chart.draw();
 
-    // Converts the global coordinates to local coordinates.
-    var localCoordinates = chart.globalToLocal(8, 8);
+        // Converts the global coordinates to local coordinates.
+        var localCoordinates = chart.globalToLocal(8, 8);
 
-    var rectangle = stage.rect(0, 0, 170, 30);
-    rectangle.fill({opacity: 0.1});
+        var rectangle = stage.rect(0, 0, 170, 30);
+        rectangle.fill({opacity: 0.1});
 
-    rectangle.setX(localCoordinates.x);
-    rectangle.setY(localCoordinates.y);
+        rectangle.setX(localCoordinates.x);
+        rectangle.setY(localCoordinates.y);
 
-    var customText = anychart.graphics.text(localCoordinates.x, localCoordinates.y, "");
-    customText.htmlText("Local coordinates [x: "
+        var customText = anychart.graphics.text(localCoordinates.x, localCoordinates.y, "");
+        customText.htmlText("Local coordinates [x: "
             + localCoordinates.x + ", y: " + localCoordinates.y + "]<br>Global coordinates [x: 8, y: 8]");
-    customText.parent(stage);
+        customText.parent(stage);
 
-    // Visualises local bounds.
-    var localBounds = stage.rect();
-    localBounds.setBounds(stage.getBounds());
-});
+        // Visualises local bounds.
+        var localBounds = stage.rect();
+        localBounds.setBounds(stage.getBounds());
+    });
 </script>
 </body>
 </html>

@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,39 +20,39 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var chart = anychart.pareto();
-    chart.data([
-        ['Parking Difficult', 95],
-        ['Sales Rep was Rude', 60],
-        ['Poor Lighting', 45],
-        ['Layout Confusing', 37],
-        ['Sizes Limited', 30],
-        ['Clothing Faded', 27],
-        ['Clothing Shrank', 18]
-    ]);
+    anychart.onDocumentReady(function () {
+        var chart = anychart.pareto();
+        chart.data([
+            ['Parking Difficult', 95],
+            ['Sales Rep was Rude', 60],
+            ['Poor Lighting', 45],
+            ['Layout Confusing', 37],
+            ['Sizes Limited', 30],
+            ['Clothing Faded', 27],
+            ['Clothing Shrank', 18]
+        ]);
 
-    chart.yAxis(1).scale().ticks().interval(10);
+        chart.yAxis(1).scale().ticks().interval(10);
 
-    // Get text marker.
-    var leftTextMarker = chart.textMarker();
-    leftTextMarker.value(62.4);
-    leftTextMarker.anchor("leftBottom");
-    leftTextMarker.text("20% Effort");
-    leftTextMarker.axis(chart.yAxis());
+        // Get text marker.
+        var leftTextMarker = chart.textMarker();
+        leftTextMarker.value(62.4);
+        leftTextMarker.anchor("leftBottom");
+        leftTextMarker.text("20% Effort");
+        leftTextMarker.axis(chart.yAxis());
 
-    var rightTextMarker = chart.textMarker(1);
-    rightTextMarker.value(80);
-    rightTextMarker.anchor("leftBottom");
-    rightTextMarker.text("80% Results");
-    rightTextMarker.axis(chart.yAxis(1));
+        var rightTextMarker = chart.textMarker(1);
+        rightTextMarker.value(80);
+        rightTextMarker.anchor("leftBottom");
+        rightTextMarker.text("80% Results");
+        rightTextMarker.axis(chart.yAxis(1));
 
-    chart.lineMarker({value: 62.4, axis: chart.yAxis()});
-    chart.lineMarker(1, {value: 80, axis: chart.yAxis(1)});
-    chart.title("Get and modify text marker object");
-    chart.container("container");
-    chart.draw();
-});
+        chart.lineMarker({value: 62.4, axis: chart.yAxis()});
+        chart.lineMarker(1, {value: 80, axis: chart.yAxis(1)});
+        chart.title("Get and modify text marker object");
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

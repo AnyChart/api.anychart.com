@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,33 +21,33 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var mapping = dataTable.mapAs({value: 1});
+        var mapping = dataTable.mapAs({value: 1});
 
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
-    chart.grouping({minPixPerPoint: 5});
-    chart.scrollerGrouping({minPixPerPoint: 5});
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
+        chart.grouping({minPixPerPoint: 5});
+        chart.scrollerGrouping({minPixPerPoint: 5});
 
-    var plot = chart.plot();
-    plot.line(mapping);
+        var plot = chart.plot();
+        plot.line(mapping);
 
-    var scroller = chart.scroller();
-    scroller.height("50%");
+        var scroller = chart.scroller();
+        scroller.height("50%");
 
-    var series = scroller.marker(mapping);
-    series.selectType("square");
+        var series = scroller.marker(mapping);
+        series.selectType("square");
 
-    // Get select marker type.
-    var selectType = series.selectType();
+        // Get select marker type.
+        var selectType = series.selectType();
 
-    chart.title("The select marker type is a " + selectType + ".");
-    chart.container("container");
-    chart.draw();
-});
+        chart.title("The select marker type is a " + selectType + ".");
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

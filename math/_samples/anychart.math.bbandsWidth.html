@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,41 +21,41 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var dataTable = anychart.data.table();
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
 
-    // The data used in this sample can be obtained from the CDN
-    // https://cdn.anychart.com/csv-data/dji-daily-short.js
-    dataTable.addData(get_dji_daily_short_data());
+        // The data used in this sample can be obtained from the CDN
+        // https://cdn.anychart.com/csv-data/dji-daily-short.js
+        dataTable.addData(get_dji_daily_short_data());
 
-    var mapping = dataTable.mapAs();
-    mapping.addField('value', 4, 'last');
+        var mapping = dataTable.mapAs();
+        mapping.addField('value', 4, 'last');
 
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
 
-    // Create computer.
-    var computer = dataTable.createComputer(mapping);
+        // Create computer.
+        var computer = dataTable.createComputer(mapping);
 
-    var context = anychart.math.bbandsWidth.initContext(30, 5);
+        var context = anychart.math.bbandsWidth.initContext(30, 5);
 
-    // Set init context.
-    computer.setContext(context);
+        // Set init context.
+        computer.setContext(context);
 
-    // Set start calculation function.
-    computer.setStartFunction(anychart.math.bbandsWidth.startFunction);
+        // Set start calculation function.
+        computer.setStartFunction(anychart.math.bbandsWidth.startFunction);
 
-    // Calculation function.
-    computer.setCalculationFunction(anychart.math.bbandsWidth.calculationFunction);
+        // Calculation function.
+        computer.setCalculationFunction(anychart.math.bbandsWidth.calculationFunction);
 
-    var indicatorMapping = dataTable.mapAs({value: computer.addOutputField("result")});
+        var indicatorMapping = dataTable.mapAs({value: computer.addOutputField("result")});
 
-    var plot = chart.plot();
-    plot.line(indicatorMapping).name("BBands Width(30,5)");
+        var plot = chart.plot();
+        plot.line(indicatorMapping).name("BBands Width(30,5)");
 
-    chart.container("container");
-    chart.draw();
-});
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

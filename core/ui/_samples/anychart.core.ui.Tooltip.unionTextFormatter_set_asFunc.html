@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,34 +20,34 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var dataSet = anychart.data.set([
-        ["John", 10000, 12000],
-        ["Jake", 12000, 15000],
-        ["Peter", 18000, 16000],
-        ["James", 11000, 13000],
-        ["Mary", 9000, 19000]
-    ]);
+    anychart.onDocumentReady(function () {
+        var dataSet = anychart.data.set([
+            ["John", 10000, 12000],
+            ["Jake", 12000, 15000],
+            ["Peter", 18000, 16000],
+            ["James", 11000, 13000],
+            ["Mary", 9000, 19000]
+        ]);
 
-    var firstData = dataSet.mapAs({x: [0], value: [1]});
-    var secondData = dataSet.mapAs({x: [0], value: [2]});
+        var firstData = dataSet.mapAs({x: [0], value: [1]});
+        var secondData = dataSet.mapAs({x: [0], value: [2]});
 
-    var chart = anychart.column();
-    chart.column(firstData).name("First series");
-    chart.column(secondData).name("Second series");
+        var chart = anychart.column();
+        chart.column(firstData).name("First series");
+        chart.column(secondData).name("Second series");
 
-    var tooltip = chart.tooltip();
-    tooltip.displayMode("union");
+        var tooltip = chart.tooltip();
+        tooltip.displayMode("union");
 
-    // Set text formatter for union tooltip.
-    tooltip.textFormatter(function(){
-        return this.seriesName + ": " + this.value;
+        // Set text formatter for union tooltip.
+        tooltip.textFormatter(function () {
+            return this.seriesName + ": " + this.value;
+        });
+
+        chart.title("Set union text formatter parameter as a function");
+        chart.container("container");
+        chart.draw();
     });
-
-    chart.title("Set union text formatter parameter as a function");
-    chart.container("container");
-    chart.draw();
-});
 </script>
 </body>
 </html>

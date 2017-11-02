@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,35 +21,35 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var mapping = dataTable.mapAs();
-    mapping.addField('open', 1, 'first');
-    mapping.addField('high', 2, 'max');
-    mapping.addField('low', 3, 'min');
-    mapping.addField('close', 4, 'last');
-    mapping.addField('value', 4, 'last');
+        var mapping = dataTable.mapAs();
+        mapping.addField('open', 1, 'first');
+        mapping.addField('high', 2, 'max');
+        mapping.addField('low', 3, 'min');
+        mapping.addField('close', 4, 'last');
+        mapping.addField('value', 4, 'last');
 
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
 
-    var plot = chart.plot();
-    plot.ohlc(mapping);
-    plot.bbands(mapping);
+        var plot = chart.plot();
+        plot.ohlc(mapping);
+        plot.bbands(mapping);
 
-    var indicatorPlot = chart.plot(1);
+        var indicatorPlot = chart.plot(1);
 
-    var bbandsBIndicator = indicatorPlot.bbandsB(mapping);
+        var bbandsBIndicator = indicatorPlot.bbandsB(mapping);
 
-    // Get period.
-    var indicatorPeriod = bbandsBIndicator.period();
+        // Get period.
+        var indicatorPeriod = bbandsBIndicator.period();
 
-    chart.title("Indicator period is " + indicatorPeriod);
-    chart.container("container");
-    chart.draw();
-});
+        chart.title("Indicator period is " + indicatorPeriod);
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>

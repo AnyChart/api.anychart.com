@@ -7,9 +7,9 @@
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -22,67 +22,67 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
-    // See https://docs.anychart.com/7.13.0/Maps/Map_Projections to learn more.
+    anychart.onDocumentReady(function () {
+        // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+        // See https://docs.anychart.com/7.13.0/Maps/Map_Projections to learn more.
 
-    var stage = anychart.graphics.create("container");
+        var stage = anychart.graphics.create("container");
 
-    var firstDataSet = anychart.data.set([
-        {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
-        {id: "AU.VI", value: 23, title: "Victoria"},
-        {id: "AU.WA", value: 86, title: "Western Australia"},
-        {id: "AU.QL", value: 16, title: "Queensland"},
-        {id: "AU.NS", value: 32, title: "New South Wales"},
-        {id: "AU.NT", value: 64, title: "Northern Territory"},
-        {id: "AU.TS", value: 28, title: "Tasmania"},
-        {id: "AU.SA", value: 45, title: "South Australian"}
-    ]);
+        var firstDataSet = anychart.data.set([
+            {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
+            {id: "AU.VI", value: 23, title: "Victoria"},
+            {id: "AU.WA", value: 86, title: "Western Australia"},
+            {id: "AU.QL", value: 16, title: "Queensland"},
+            {id: "AU.NS", value: 32, title: "New South Wales"},
+            {id: "AU.NT", value: 64, title: "Northern Territory"},
+            {id: "AU.TS", value: 28, title: "Tasmania"},
+            {id: "AU.SA", value: 45, title: "South Australian"}
+        ]);
 
-    var secondDataSet = anychart.data.set([
-        {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
-        {id: "AU.VI", value: 23, title: "Victoria"},
-        {id: "AU.WA", value: 86, title: "Western Australia"},
-        {id: "AU.QL", value: 16, title: "Queensland"},
-        {id: "AU.NS", value: 32, title: "New South Wales"},
-        {id: "AU.NT", value: 64, title: "Northern Territory"},
-        {id: "AU.TS", value: 28, title: "Tasmania"},
-        {id: "AU.SA", value: 45, title: "South Australian"}
-    ]);
+        var secondDataSet = anychart.data.set([
+            {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
+            {id: "AU.VI", value: 23, title: "Victoria"},
+            {id: "AU.WA", value: 86, title: "Western Australia"},
+            {id: "AU.QL", value: 16, title: "Queensland"},
+            {id: "AU.NS", value: 32, title: "New South Wales"},
+            {id: "AU.NT", value: 64, title: "Northern Territory"},
+            {id: "AU.TS", value: 28, title: "Tasmania"},
+            {id: "AU.SA", value: 45, title: "South Australian"}
+        ]);
 
-    var firstDataSetForSeries = firstDataSet.mapAs({id: "id"});
+        var firstDataSetForSeries = firstDataSet.mapAs({id: "id"});
 
-    var firstAustraliaMap = anychart.map();
-    firstAustraliaMap.bounds(0, 0, "50%", "100%");
-    firstAustraliaMap.geoData(anychart.maps.australia);
+        var firstAustraliaMap = anychart.map();
+        firstAustraliaMap.bounds(0, 0, "50%", "100%");
+        firstAustraliaMap.geoData(anychart.maps.australia);
 
-    var series = firstAustraliaMap.choropleth(firstDataSetForSeries);
-    series.geoIdField("code_hasc");
-    series.hatchFill("backwardDiagonal", "#9E9E9E", 1.5, 50);
+        var series = firstAustraliaMap.choropleth(firstDataSetForSeries);
+        series.geoIdField("code_hasc");
+        series.hatchFill("backwardDiagonal", "#9E9E9E", 1.5, 50);
 
-    firstAustraliaMap.container(stage);
-    firstAustraliaMap.draw();
+        firstAustraliaMap.container(stage);
+        firstAustraliaMap.draw();
 
-    var secondDataSetForSeries = secondDataSet.mapAs({id: "id"});
+        var secondDataSetForSeries = secondDataSet.mapAs({id: "id"});
 
-    var secondAustraliaMap = anychart.map();
-    secondAustraliaMap.bounds("50%", 0, "50%", "100%");
-    secondAustraliaMap.geoData(anychart.maps.australia);
+        var secondAustraliaMap = anychart.map();
+        secondAustraliaMap.bounds("50%", 0, "50%", "100%");
+        secondAustraliaMap.geoData(anychart.maps.australia);
 
-    var secondSeries = secondAustraliaMap.choropleth(secondDataSetForSeries);
-    secondSeries.geoIdField("code_hasc");
+        var secondSeries = secondAustraliaMap.choropleth(secondDataSetForSeries);
+        secondSeries.geoIdField("code_hasc");
 
-    var color = anychart.scales.linearColor("#8BC34A");
-    secondSeries.colorScale(color);
+        var color = anychart.scales.linearColor("#8BC34A");
+        secondSeries.colorScale(color);
 
-    // Gets hatch fill.
-    var hatchFill = series.hatchFill();
+        // Gets hatch fill.
+        var hatchFill = series.hatchFill();
 
-    secondSeries.hatchFill(hatchFill);
+        secondSeries.hatchFill(hatchFill);
 
-    secondAustraliaMap.container(stage);
-    secondAustraliaMap.draw();
-});
+        secondAustraliaMap.container(stage);
+        secondAustraliaMap.draw();
+    });
 </script>
 </body>
 </html>

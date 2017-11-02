@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,31 +21,31 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var mapping = dataTable.mapAs({
-        high: 1,
-        low: 3
+        var mapping = dataTable.mapAs({
+            high: 1,
+            low: 3
+        });
+
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
+
+        var plot = chart.plot();
+
+        var series = plot.rangeSplineArea(mapping);
+
+        // Set hover fill.
+        series.hoverFill(function () {
+            return this.sourceColor + " 0.4";
+        });
+
+        chart.title("Set hover fill parameter as a function. Hover on the legend.");
+        chart.container("container");
+        chart.draw();
     });
-
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
-
-    var plot = chart.plot();
-
-    var series = plot.rangeSplineArea(mapping);
-
-    // Set hover fill.
-    series.hoverFill(function() {
-        return this.sourceColor + " 0.4";
-    });
-
-    chart.title("Set hover fill parameter as a function. Hover on the legend.");
-    chart.container("container");
-    chart.draw();
-});
 </script>
 </body>
 </html>

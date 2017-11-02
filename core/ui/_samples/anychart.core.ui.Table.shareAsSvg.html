@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,62 +20,62 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var dataSet = [
-        [1.1, 2.3, 1.7, 1.9],
-        [1.2, 2.1, 2.7, 1.3],
-        [1.0, 1.2, 0.7, 1.1],
-        [1.3, 2.4, 1.7, 1.9]
-    ];
+        var dataSet = [
+            [1.1, 2.3, 1.7, 1.9],
+            [1.2, 2.1, 2.7, 1.3],
+            [1.0, 1.2, 0.7, 1.1],
+            [1.3, 2.4, 1.7, 1.9]
+        ];
 
-    var pie = anychart.pie();
-    pie.data(dataSet);
-    pie.legend(null);
+        var pie = anychart.pie();
+        pie.data(dataSet);
+        pie.legend(null);
 
-    var lineChart = anychart.line(dataSet[0]);
-    lineChart.title(null);
-    lineChart.xAxis(null);
+        var lineChart = anychart.line(dataSet[0]);
+        lineChart.title(null);
+        lineChart.xAxis(null);
 
-    var areaChart = anychart.area(dataSet[1]);
-    areaChart.title(null);
-    areaChart.xAxis(null);
+        var areaChart = anychart.area(dataSet[1]);
+        areaChart.title(null);
+        areaChart.xAxis(null);
 
-    var table = anychart.standalones.table();
+        var table = anychart.standalones.table();
 
-    var cell = table.getCell(0, 0);
-    cell.rowSpan(2);
+        var cell = table.getCell(0, 0);
+        cell.rowSpan(2);
 
-    table.contents([
-        [pie, lineChart],
-        [null, areaChart]
-    ]);
-    table.top("5%");
-    table.container(stage);
-    table.draw();
+        table.contents([
+            [pie, lineChart],
+            [null, areaChart]
+        ]);
+        table.top("5%");
+        table.container(stage);
+        table.draw();
 
-    var customLabel = anychart.standalones.label();
-    customLabel.background({stroke: "#E0E0E0"});
-    customLabel.text("Get the link to SVG image");
-    customLabel.padding(2);
-    customLabel.listen("mouseOver", function () {
-        document.body.style.cursor = "pointer";
-    });
-    customLabel.listen("mouseOut", function () {
-        document.body.style.cursor = "auto";
-    });
-
-    customLabel.listen("click", function() {
-
-        // Share table as SVG image.
-        table.shareAsSvg(function (response) {
-            alert(response);
+        var customLabel = anychart.standalones.label();
+        customLabel.background({stroke: "#E0E0E0"});
+        customLabel.text("Get the link to SVG image");
+        customLabel.padding(2);
+        customLabel.listen("mouseOver", function () {
+            document.body.style.cursor = "pointer";
         });
+        customLabel.listen("mouseOut", function () {
+            document.body.style.cursor = "auto";
+        });
+
+        customLabel.listen("click", function () {
+
+            // Share table as SVG image.
+            table.shareAsSvg(function (response) {
+                alert(response);
+            });
+        });
+        customLabel.container(stage);
+        customLabel.draw();
     });
-    customLabel.container(stage);
-    customLabel.draw();
-});
 </script>
 </body>
 </html>

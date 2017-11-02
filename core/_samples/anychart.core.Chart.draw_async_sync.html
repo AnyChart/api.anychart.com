@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,75 +20,75 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var charts = [];
+        var charts = [];
 
-    createCharts(charts, true);
-
-    createLabel("Rerender async", 20, function () {
-        disposeCharts(charts);
-        // Set rendering mode to async.
         createCharts(charts, true);
-    });
 
-    createLabel("Rerender in sync", 150, function () {
-        disposeCharts(charts);
-        setTimeout(function(){
-            // Set rendering mode to sync.
-            createCharts(charts, false);
-        }, 100);
-    });
+        createLabel("Rerender async", 20, function () {
+            disposeCharts(charts);
+            // Set rendering mode to async.
+            createCharts(charts, true);
+        });
 
-    var customTitle = anychart.standalones.title();
-    customTitle.text("Set asynchronous/synchronous rendering for the charts");
-    customTitle.parentBounds(0, "50%", 100, 100);
-    customTitle.container(stage);
-    customTitle.draw();
+        createLabel("Rerender in sync", 150, function () {
+            disposeCharts(charts);
+            setTimeout(function () {
+                // Set rendering mode to sync.
+                createCharts(charts, false);
+            }, 100);
+        });
 
-    function createCharts(charts, sync) {
-        for (var i = 0; i < 15; i++) {
-            for (var j = 2; j < 15; j++) {
-                pieChart = anychart.pie([20, 30, 50]);
-                pieChart.bounds(i * 10 + "%", j * 10 + "%", "10%", "10%");
-                pieChart.labels(false);
-                pieChart.legend(false);
-                pieChart.padding(0);
-                pieChart.margin(0);
-                pieChart.container(stage);
+        var customTitle = anychart.standalones.title();
+        customTitle.text("Set asynchronous/synchronous rendering for the charts");
+        customTitle.parentBounds(0, "50%", 100, 100);
+        customTitle.container(stage);
+        customTitle.draw();
 
-                // Set render mode: true - async, false (default) - sync.
-                pieChart.draw(sync);
-                charts.push(pieChart);
+        function createCharts(charts, sync) {
+            for (var i = 0; i < 15; i++) {
+                for (var j = 2; j < 15; j++) {
+                    pieChart = anychart.pie([20, 30, 50]);
+                    pieChart.bounds(i * 10 + "%", j * 10 + "%", "10%", "10%");
+                    pieChart.labels(false);
+                    pieChart.legend(false);
+                    pieChart.padding(0);
+                    pieChart.margin(0);
+                    pieChart.container(stage);
+
+                    // Set render mode: true - async, false (default) - sync.
+                    pieChart.draw(sync);
+                    charts.push(pieChart);
+                }
             }
         }
-    }
 
-    function disposeCharts(charts) {
-        for (var i = 0; i < charts.length; i++) {
-            charts[i].dispose();
+        function disposeCharts(charts) {
+            for (var i = 0; i < charts.length; i++) {
+                charts[i].dispose();
+            }
         }
-    }
 
-    function createLabel(text, offset, action) {
-        var customLabel = anychart.standalones.label();
-        customLabel.text(text);
-        customLabel.parentBounds(offset, 30, 100, 100);
-        customLabel.listen("click", action);
-        customLabel.listen("mouseOver", function () {
-            document.body.style.cursor = "pointer";
-        });
-        customLabel.listen("mouseOut", function () {
-            document.body.style.cursor = "auto";
-        });
-        customLabel.background({fill: "#9E9E9E"});
-        customLabel.fontColor("#fff");
-        customLabel.padding(5);
-        customLabel.container(stage);
-        customLabel.draw();
-    }
-});
+        function createLabel(text, offset, action) {
+            var customLabel = anychart.standalones.label();
+            customLabel.text(text);
+            customLabel.parentBounds(offset, 30, 100, 100);
+            customLabel.listen("click", action);
+            customLabel.listen("mouseOver", function () {
+                document.body.style.cursor = "pointer";
+            });
+            customLabel.listen("mouseOut", function () {
+                document.body.style.cursor = "auto";
+            });
+            customLabel.background({fill: "#9E9E9E"});
+            customLabel.fontColor("#fff");
+            customLabel.padding(5);
+            customLabel.container(stage);
+            customLabel.draw();
+        }
+    });
 </script>
 </body>
 </html>

@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,36 +20,36 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var chart = anychart.line([6, 48, 6, 44, 8, 29, 9, 23, 9, 17]);
+        var chart = anychart.line([6, 48, 6, 44, 8, 29, 9, 23, 9, 17]);
 
-    chart.left("5%");
-    chart.title("Share with LinkedIn");
-    chart.container(stage);
-    chart.draw();
+        chart.left("5%");
+        chart.title("Share with LinkedIn");
+        chart.container(stage);
+        chart.draw();
 
-    var customLabel = anychart.standalones.label();
-    customLabel.background({fill: "#9E9E9E"});
-    customLabel.text("Get the sharing dialog");
-    customLabel.fontColor("#fff");
-    customLabel.padding(5);
-    customLabel.offsetX(5);
-    customLabel.listen("mouseOver", function () {
-        document.body.style.cursor = "pointer";
+        var customLabel = anychart.standalones.label();
+        customLabel.background({fill: "#9E9E9E"});
+        customLabel.text("Get the sharing dialog");
+        customLabel.fontColor("#fff");
+        customLabel.padding(5);
+        customLabel.offsetX(5);
+        customLabel.listen("mouseOver", function () {
+            document.body.style.cursor = "pointer";
+        });
+        customLabel.listen("mouseOut", function () {
+            document.body.style.cursor = "auto";
+        });
+        customLabel.listen("click", function () {
+
+            // Share chart with LinkedIn.
+            chart.shareWithLinkedIn("ANYCHART.COM", "Line chart");
+        });
+        customLabel.container(stage);
+        customLabel.draw();
     });
-    customLabel.listen("mouseOut", function () {
-        document.body.style.cursor = "auto";
-    });
-    customLabel.listen("click", function () {
-
-        // Share chart with LinkedIn.
-        chart.shareWithLinkedIn("ANYCHART.COM", "Line chart");
-    });
-    customLabel.container(stage);
-    customLabel.draw();
-});
 </script>
 </body>
 </html>

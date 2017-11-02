@@ -4,10 +4,10 @@
     <meta name="ac:name" content="anychart.graphics.events.BrowserEvent.stopPropagation"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-    
+
     <script src="https://cdn.anychart.com/js/7.13.0/graphics.min.js"></script>
-    
-    
+
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,37 +20,37 @@
 <body>
 <div id="container"></div>
 <script>
-function getRandomColor() {
-    var min = Math.ceil(50);
-    var max = Math.floor(200);
-    var red = Math.floor(Math.random() * (max - min)) + min;
-    var green = Math.floor(Math.random() * (max - min)) + min;
-    var blue = Math.floor(Math.random() * (max - min)) + min;
-    return "rgb(" + red + "," + green + "," + blue + ")";
-}
+    function getRandomColor() {
+        var min = Math.ceil(50);
+        var max = Math.floor(200);
+        var red = Math.floor(Math.random() * (max - min)) + min;
+        var green = Math.floor(Math.random() * (max - min)) + min;
+        var blue = Math.floor(Math.random() * (max - min)) + min;
+        return "rgb(" + red + "," + green + "," + blue + ")";
+    }
 
-var stage = acgraph.create("container");
+    var stage = acgraph.create("container");
 
-var layer = stage.layer();
-layer.rect(0, 0, 500, 300).fill("#FFFFFF 0.01");
+    var layer = stage.layer();
+    layer.rect(0, 0, 500, 300).fill("#FFFFFF 0.01");
 
-var textObject = layer.text(70, 55, "Click on this TEXT");
-textObject.style({fontSize: "18px"});
-textObject.selectable(false);
+    var textObject = layer.text(70, 55, "Click on this TEXT");
+    textObject.style({fontSize: "18px"});
+    textObject.selectable(false);
 
-var counter = 0;
+    var counter = 0;
 
-textObject.listen("click", function (e) {
-    counter++;
-    textObject.text("You clicked " + counter + " times. " + "Click again");
+    textObject.listen("click", function (e) {
+        counter++;
+        textObject.text("You clicked " + counter + " times. " + "Click again");
 
-    // Stop propagation.
-    e.stopPropagation();
-});
+        // Stop propagation.
+        e.stopPropagation();
+    });
 
-layer.listen("click", function (e) {
-    textObject.color(getRandomColor());
-});
+    layer.listen("click", function (e) {
+        textObject.color(getRandomColor());
+    });
 </script>
 </body>
 </html>

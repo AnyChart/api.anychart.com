@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,27 +20,31 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var lineChart = anychart.line([1.1, 1.4, 1.2, 1.6]);
-    lineChart.bounds(0, 0, "50%", "100%");
-    lineChart.container(stage);
-    lineChart.draw();
+        var lineChart = anychart.line([1.1, 1.4, 1.2, 1.6]);
+        lineChart.bounds(0, 0, "50%", "100%");
+        lineChart.container(stage);
+        lineChart.draw();
 
-    // Get chart data as CSV with parameters.
-    var csvData = lineChart.toCsv("specific", {"rowsSeparator": "\n", "columnsSeparator": ",", "ignoreFirstRow": true});
+        // Get chart data as CSV with parameters.
+        var csvData = lineChart.toCsv("specific", {
+            "rowsSeparator": "\n",
+            "columnsSeparator": ",",
+            "ignoreFirstRow": true
+        });
 
-    var columnChart = anychart.column(csvData);
-    columnChart.bounds("50%", 0, "50%", "100%");
-    columnChart.container(stage);
-    columnChart.draw();
+        var columnChart = anychart.column(csvData);
+        columnChart.bounds("50%", 0, "50%", "100%");
+        columnChart.container(stage);
+        columnChart.draw();
 
-    var customTitle = anychart.standalones.title();
-    customTitle.text("Get data as CSV with predefined settings and use.");
-    customTitle.container(stage);
-    customTitle.draw();
-});
+        var customTitle = anychart.standalones.title();
+        customTitle.text("Get data as CSV with predefined settings and use.");
+        customTitle.container(stage);
+        customTitle.draw();
+    });
 </script>
 </body>
 </html>

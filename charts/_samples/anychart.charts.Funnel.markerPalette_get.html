@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,36 +20,36 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var funnelChart = anychart.funnel([7, 7, 7, 7, 7, 7, 7]);
-    funnelChart.bounds(0, 0, "50%", "100%");
-    funnelChart.markers({enabled: true, size: 10});
-    funnelChart.labels(false);
-    funnelChart.markerPalette(["diamond", "star4", "star7", "diagonalCross"]);
-    funnelChart.container(stage);
-    funnelChart.draw();
+        var funnelChart = anychart.funnel([7, 7, 7, 7, 7, 7, 7]);
+        funnelChart.bounds(0, 0, "50%", "100%");
+        funnelChart.markers({enabled: true, size: 10});
+        funnelChart.labels(false);
+        funnelChart.markerPalette(["diamond", "star4", "star7", "diagonalCross"]);
+        funnelChart.container(stage);
+        funnelChart.draw();
 
-    var markerChart = anychart.column();
-    markerChart.marker([5, 40, 6, 37, 15]);
-    markerChart.marker([7, 23, 9, 18, 28]);
-    markerChart.marker([11, 17, 12, 34, 19]);
-    markerChart.marker([13, 7, 22, 14, 39]);
-    markerChart.bounds("50%", 0, "50%", "100%");
+        var markerChart = anychart.column();
+        markerChart.marker([5, 40, 6, 37, 15]);
+        markerChart.marker([7, 23, 9, 18, 28]);
+        markerChart.marker([11, 17, 12, 34, 19]);
+        markerChart.marker([13, 7, 22, 14, 39]);
+        markerChart.bounds("50%", 0, "50%", "100%");
 
-    // Gets marker palette of the funnel chart.
-    var funnelChartMarkerPalette = funnelChart.markerPalette();
+        // Gets marker palette of the funnel chart.
+        var funnelChartMarkerPalette = funnelChart.markerPalette();
 
-    markerChart.markerPalette(funnelChartMarkerPalette);
-    markerChart.container(stage);
-    markerChart.draw();
+        markerChart.markerPalette(funnelChartMarkerPalette);
+        markerChart.container(stage);
+        markerChart.draw();
 
-    var customTitle = anychart.standalones.title();
-    customTitle.text("Get and use chart marker palette.");
-    customTitle.container(stage);
-    customTitle.draw();
-});
+        var customTitle = anychart.standalones.title();
+        customTitle.text("Get and use chart marker palette.");
+        customTitle.container(stage);
+        customTitle.draw();
+    });
 </script>
 </body>
 </html>

@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,26 +20,26 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var chart = anychart.line();
+    anychart.onDocumentReady(function () {
+        var chart = anychart.line();
 
-    var lineSeries = chart.line([1, 4, 2, 6]);
+        var lineSeries = chart.line([1, 4, 2, 6]);
 
-    var myTitle = chart.title();
-    myTitle.enabled(true);
-    myTitle.text("Click on line series.");
+        var myTitle = chart.title();
+        myTitle.enabled(true);
+        myTitle.text("Click on line series.");
 
-    var counter = 0;
+        var counter = 0;
 
-    // Sets single time event listener.
-    lineSeries.listenOnce("pointClick", function(e) {
-        counter++;
-        myTitle.text("You can\'t click anymore.");
+        // Sets single time event listener.
+        lineSeries.listenOnce("pointClick", function (e) {
+            counter++;
+            myTitle.text("You can\'t click anymore.");
+        });
+
+        chart.container("container");
+        chart.draw();
     });
-
-    chart.container("container");
-    chart.draw();
-});
 </script>
 </body>
 </html>

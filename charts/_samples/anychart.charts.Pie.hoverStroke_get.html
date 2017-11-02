@@ -5,9 +5,9 @@
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -20,30 +20,30 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var stage = anychart.graphics.create("container");
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-    var pieChart = anychart.pie([7, 7, 7, 7, 7]);
-    pieChart.bounds(0, 0, "50%", "100%");
-    pieChart.hoverStroke("#90A4AE", 3);
-    pieChart.container(stage);
-    pieChart.draw();
+        var pieChart = anychart.pie([7, 7, 7, 7, 7]);
+        pieChart.bounds(0, 0, "50%", "100%");
+        pieChart.hoverStroke("#90A4AE", 3);
+        pieChart.container(stage);
+        pieChart.draw();
 
-    var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
-    funnelChart.bounds("50%", 0, "50%", "100%");
+        var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
+        funnelChart.bounds("50%", 0, "50%", "100%");
 
-    // Get stroke.
-    var pieChartStroke = pieChart.hoverStroke();
+        // Get stroke.
+        var pieChartStroke = pieChart.hoverStroke();
 
-    funnelChart.stroke(pieChartStroke);
-    funnelChart.container(stage);
-    funnelChart.draw();
+        funnelChart.stroke(pieChartStroke);
+        funnelChart.container(stage);
+        funnelChart.draw();
 
-    var customTitle = anychart.standalones.title();
-    customTitle.text("Get and use chart hoverStroke.");
-    customTitle.container(stage);
-    customTitle.draw();
-});
+        var customTitle = anychart.standalones.title();
+        customTitle.text("Get and use chart hoverStroke.");
+        customTitle.container(stage);
+        customTitle.draw();
+    });
 </script>
 </body>
 </html>

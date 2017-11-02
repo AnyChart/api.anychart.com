@@ -6,9 +6,9 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-    
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
-    
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -21,29 +21,29 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function() {
-    var dataTable = anychart.data.table();
-    dataTable.addData(get_dji_daily_short_data());
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-    var firstMapping = dataTable.mapAs({value: 1});
-    var secondMapping = dataTable.mapAs({value: 3});
+        var firstMapping = dataTable.mapAs({value: 1});
+        var secondMapping = dataTable.mapAs({value: 3});
 
-    var chart = anychart.stock();
-    chart.padding(10, 10, 10, 50);
+        var chart = anychart.stock();
+        chart.padding(10, 10, 10, 50);
 
-    var plot = chart.plot();
-    plot.line(firstMapping);
-    plot.line(secondMapping);
+        var plot = chart.plot();
+        plot.line(firstMapping);
+        plot.line(secondMapping);
 
-    var yScale = plot.yScale();
+        var yScale = plot.yScale();
 
-    // Get comparison mode.
-    var mode = yScale.comparisonMode();
+        // Get comparison mode.
+        var mode = yScale.comparisonMode();
 
-    chart.title("Get mode. Comparison mode is " + mode + ".");
-    chart.container("container");
-    chart.draw();
-});
+        chart.title("Get mode. Comparison mode is " + mode + ".");
+        chart.container("container");
+        chart.draw();
+    });
 </script>
 </body>
 </html>
