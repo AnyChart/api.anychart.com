@@ -1,78 +1,91 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="column legend anyChart"/>
-    <script src="../../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.core.ui.Legend.maxHeight set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.0/anychart-bundle.min.js"></script>
 
-            var data = [
-                ["Apples", 21, 99, 19, 72, 94, 71],
-                ["Pears", 41, 7, 71, 10, 27, 79],
-                ["Bananas", 9, 15, 77, 58, 97, 79],
-                ["Grapes", 71, 34, 40, 21, 72, 6],
-                ["Oranges", 6, 29, 11, 46, 19, 49]
-            ];
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.0/anychart-ui.min.css"/>
 
-            chart = anychart.column();
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
 
-            var series = anychart.data.mapAsTable(data, "value");
+        var data = [
+            ["Apples", 21, 99, 19, 72, 94, 71],
+            ["Pears", 41, 7, 71, 10, 27, 79],
+            ["Bananas", 9, 15, 77, 58, 97, 79],
+            ["Grapes", 71, 34, 40, 21, 72, 6],
+            ["Oranges", 6, 29, 11, 46, 19, 49]
+        ];
 
+        chart = anychart.column();
+
+        var series = anychart.data.mapAsTable(data, "value");
+
+        for (var i in series) {
+            chart.column(series[i]);
+        }
+
+        var legend = chart.legend();
+        legend.enabled(true);
+        legend.position("right");
+        legend.itemsLayout("vertical");
+
+        // Set maximum height.
+        legend.maxHeight("20%");
+
+        var seriesName = ["Florida", "Texas", "Arizona", "Nevada", "Oregon", "Idaho"];
+
+        for (var j = 0; j < chart.getSeriesCount(); j++) {
+            chart.getSeriesAt(j).name(seriesName[j]);
+        }
+
+        chart.top(50);
+        chart.title("Set a maximum height for the legend");
+        chart.container(stage);
+        chart.draw();
+
+        createLabel("Click to remove 1 series", 0, function () {
+            chart.removeSeriesAt(chart.getSeriesCount() - 1);
+        });
+
+        createLabel("Click to add 7 series", 40, function () {
             for (var i in series) {
                 chart.column(series[i]);
             }
-
-            var legend = chart.legend();
-            legend.enabled(true);
-            legend.position("right");
-            legend.itemsLayout("vertical");
-
-            // Set maximum height.
-            legend.maxHeight("20%");
-
-            var seriesName = ["Florida", "Texas", "Arizona", "Nevada", "Oregon", "Idaho"];
-
-            for (var j = 0; j < chart.getSeriesCount(); j++) {
-                chart.getSeriesAt(j).name(seriesName[j]);
-            }
-
-            chart.top(50);
-            chart.title("Set a maximum height for the legend");
-            chart.container(stage);
-            chart.draw();
-
-            createLabel("Click to remove 1 series", 0, function(){
-                chart.removeSeriesAt(chart.getSeriesCount() - 1);
-            });
-
-            createLabel("Click to add 7 series", 40, function(){
-                for (var i in series) {
-                    chart.column(series[i]);
-                }
-            });
         });
+    });
 
-        function createLabel(text, offset, action) {
-            customLabel = anychart.standalones.label();
-            customLabel.text(text);
-            customLabel.parentBounds(0, offset, 100, 100);
-            customLabel.listen("click", action);
-            customLabel.background({fill: "#9E9E9E"});
-            customLabel.fontColor("#fff");
-            customLabel.padding(5);
-            customLabel.listen("mouseOver", function () {
-                document.body.style.cursor = "pointer";
-            });
-            customLabel.listen("mouseOut", function () {
-                document.body.style.cursor = "auto";
-            });
-            customLabel.container(stage);
-            customLabel.draw();
-        }
-    </script>
-</head>
-<body>
-<div id="container" style="width: 100%; height: 100%"></div>
+    function createLabel(text, offset, action) {
+        customLabel = anychart.standalones.label();
+        customLabel.text(text);
+        customLabel.parentBounds(0, offset, 100, 100);
+        customLabel.listen("click", action);
+        customLabel.background({fill: "#9E9E9E"});
+        customLabel.fontColor("#fff");
+        customLabel.padding(5);
+        customLabel.listen("mouseOver", function () {
+            document.body.style.cursor = "pointer";
+        });
+        customLabel.listen("mouseOut", function () {
+            document.body.style.cursor = "auto";
+        });
+        customLabel.container(stage);
+        customLabel.draw();
+    }
+</script>
 </body>
 </html>

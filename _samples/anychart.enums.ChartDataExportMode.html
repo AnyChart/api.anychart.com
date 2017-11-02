@@ -1,35 +1,52 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta name="x-cat-tags" content="line column anyChart"/>
-    <meta charset="UTF-8"/>
-    <script src="../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.enums.ChartDataExportMode"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.0/anychart-bundle.min.js"></script>
 
-            // Create a chart from a data array.
-            var lineChart = anychart.line([1.1, 1.4, 1.2, 1.6]);
-            lineChart.bounds(0, 15, "50%", "100%");
-            lineChart.container(stage);
-            lineChart.draw();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.0/anychart-ui.min.css"/>
 
-            // Get chart data as CSV using data export mode. Data export modes can be "raw", "grouped" and "specific".
-            var csvData = lineChart.toCsv(anychart.enums.ChartDataExportMode.SPECIFIC, {"rowsSeparator": "\n", "columnsSeparator": ",", "ignoreFirstRow": true});
-
-            // Restore the chart from the data obtained.
-            var columnChart = anychart.column(csvData);
-            columnChart.bounds("50%", 15, "50%", "100%");
-            columnChart.container(stage);
-            columnChart.draw();
-
-            var customTitle = anychart.standalones.title();
-            customTitle.text("Set data export mode.");
-            customTitle.container(stage);
-            customTitle.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        // Create a chart from a data array.
+        var lineChart = anychart.line([1.1, 1.4, 1.2, 1.6]);
+        lineChart.bounds(0, 15, "50%", "100%");
+        lineChart.container(stage);
+        lineChart.draw();
+
+        // Get chart data as CSV using data export mode. Data export modes can be "raw", "grouped" and "specific".
+        var csvData = lineChart.toCsv(anychart.enums.ChartDataExportMode.SPECIFIC, {
+            "rowsSeparator": "\n",
+            "columnsSeparator": ",",
+            "ignoreFirstRow": true
+        });
+
+        // Restore the chart from the data obtained.
+        var columnChart = anychart.column(csvData);
+        columnChart.bounds("50%", 15, "50%", "100%");
+        columnChart.container(stage);
+        columnChart.draw();
+
+        var customTitle = anychart.standalones.title();
+        customTitle.text("Set data export mode.");
+        customTitle.container(stage);
+        customTitle.draw();
+    });
+</script>
 </body>
 </html>

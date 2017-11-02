@@ -1,36 +1,49 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="mekko anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            var data1 = [
-                {x: "Spring", value: 20},
-                {x: "Summer", value: 30},
-                {x: "Autumn", value: 100},
-                {x: "Winter", value: 40}
-            ];
-            var data2 = [
-                {x: "Spring", value: 2},
-                {x: "Summer", value: 30},
-                {x: "Autumn", value: 110},
-                {x: "Winter", value: 10}
-            ];
+    <meta name="ac:name" content="anychart.charts.Mekko.addSeries"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.0/anychart-bundle.min.js"></script>
 
-            chart = anychart.mekko();
-            chart.defaultSeriesType("mekko");
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.0/anychart-ui.min.css"/>
 
-            // Adds series.
-            chart.addSeries(data1, data2);
-
-            chart.title("Add multiple series");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var data1 = [
+            {x: "Spring", value: 20},
+            {x: "Summer", value: 30},
+            {x: "Autumn", value: 100},
+            {x: "Winter", value: 40}
+        ];
+        var data2 = [
+            {x: "Spring", value: 2},
+            {x: "Summer", value: 30},
+            {x: "Autumn", value: 110},
+            {x: "Winter", value: 10}
+        ];
+
+        var chart = anychart.mekko();
+        chart.defaultSeriesType("mekko");
+
+        // Adds series.
+        chart.addSeries(data1, data2);
+
+        chart.title("Add multiple series");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

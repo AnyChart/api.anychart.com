@@ -1,39 +1,52 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="rangeColumn anyChart"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.column();
+    <meta name="ac:name" content="anychart.core.cartesian.series.RangeColumn.hatchFill get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.0/anychart-bundle.min.js"></script>
 
-            var firstSeries = chart.rangeColumn([
-                {x: "January", low: 2, high: 3},
-                {x: "February", low: 3, high: 6},
-                {x: "March", low: 2, high: 4},
-                {x: "April", low: 1, high: 5}
-            ]);
-            firstSeries.hatchFill("zigZag");
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.0/anychart-ui.min.css"/>
 
-            var secondSeries = chart.rangeColumn([
-                {x: "January", low: 6, high: 8},
-                {x: "February", low: 7, high: 10},
-                {x: "March", low: 6, high: 8},
-                {x: "April", low: 4, high: 11}
-            ]);
-
-            // Get hatch fill.
-            var hatchFill = firstSeries.hatchFill();
-
-            secondSeries.hatchFill(hatchFill);
-
-            chart.title("Get and use hatch fill");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.column();
+
+        var firstSeries = chart.rangeColumn([
+            {x: "January", low: 2, high: 3},
+            {x: "February", low: 3, high: 6},
+            {x: "March", low: 2, high: 4},
+            {x: "April", low: 1, high: 5}
+        ]);
+        firstSeries.hatchFill("zigZag");
+
+        var secondSeries = chart.rangeColumn([
+            {x: "January", low: 6, high: 8},
+            {x: "February", low: 7, high: 10},
+            {x: "March", low: 6, high: 8},
+            {x: "April", low: 4, high: 11}
+        ]);
+
+        // Get hatch fill.
+        var hatchFill = firstSeries.hatchFill();
+
+        secondSeries.hatchFill(hatchFill);
+
+        chart.title("Get and use hatch fill");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

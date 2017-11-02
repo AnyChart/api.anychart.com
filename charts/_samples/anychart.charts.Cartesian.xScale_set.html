@@ -1,30 +1,43 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta name="x-cat-tags" content="line anyChart"/>
-    <meta charset="UTF-8"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            chart = anychart.line();
-            chart.line([
-                {x: "10-Jan-2016", y: 20},
-                {x: "11-Jan-2016", y: 40},
-                {x: "12-Jan-2016", y: 30},
-                {x: "13-Jan-2016", y: 55}
-            ]);
+    <meta name="ac:name" content="anychart.charts.Cartesian.xScale set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.0/anychart-bundle.min.js"></script>
 
-            var dateTime = anychart.scales.dateTime();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.0/anychart-ui.min.css"/>
 
-            // Sets X-scale.
-            chart.xScale(dateTime);
-
-            chart.title("Set xScale.");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.line();
+        chart.line([
+            {x: "10-Jan-2016", y: 20},
+            {x: "11-Jan-2016", y: 40},
+            {x: "12-Jan-2016", y: 30},
+            {x: "13-Jan-2016", y: 55}
+        ]);
+
+        var dateTime = anychart.scales.dateTime();
+
+        // Sets X-scale.
+        chart.xScale(dateTime);
+
+        chart.title("Set xScale.");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

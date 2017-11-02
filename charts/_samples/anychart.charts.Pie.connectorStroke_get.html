@@ -1,37 +1,50 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="pie funnel anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.charts.Pie.connectorStroke get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.0/anychart-bundle.min.js"></script>
 
-            var pieChart = anychart.pie([7, 7, 7, 7, 7]);
-            pieChart.labels({fontColor: "#000000", position: "outside"});
-            pieChart.bounds(0, 0, "50%", "100%");
-            pieChart.connectorStroke("#607D8B", 2, "5 2", "round");
-            pieChart.container(stage);
-            pieChart.draw();
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.0/anychart-ui.min.css"/>
 
-            var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
-            funnelChart.bounds("50%", 0, "50%", "100%");
-
-            // Get connector stroke.
-            var pieConnectorStroke = pieChart.connectorStroke();
-
-            funnelChart.connectorStroke(pieConnectorStroke);
-            funnelChart.container(stage);
-            funnelChart.draw();
-
-            var customTitle = anychart.standalones.title();
-            customTitle.text("Get and use chart stroke.");
-            customTitle.container(stage);
-            customTitle.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        var pieChart = anychart.pie([7, 7, 7, 7, 7]);
+        pieChart.labels({fontColor: "#000000", position: "outside"});
+        pieChart.bounds(0, 0, "50%", "100%");
+        pieChart.connectorStroke("#607D8B", 2, "5 2", "round");
+        pieChart.container(stage);
+        pieChart.draw();
+
+        var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
+        funnelChart.bounds("50%", 0, "50%", "100%");
+
+        // Get connector stroke.
+        var pieConnectorStroke = pieChart.connectorStroke();
+
+        funnelChart.connectorStroke(pieConnectorStroke);
+        funnelChart.container(stage);
+        funnelChart.draw();
+
+        var customTitle = anychart.standalones.title();
+        customTitle.text("Get and use chart stroke.");
+        customTitle.container(stage);
+        customTitle.draw();
+    });
+</script>
 </body>
 </html>

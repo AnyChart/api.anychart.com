@@ -1,31 +1,44 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="pyramid anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            var dataSet = anychart.data.set([
-                {x: "Physical", value: 125},
-                {x: "Data Link", value: 125},
-                {x: "Network", value: 125},
-                {x: "Transport", value: 125},
-                {x: "Session", value: 125},
-                {x: "Presentation", value: 125},
-                {x: "Application", value: 290}
-            ]);
-            chart = anychart.pyramid(dataSet);
+    <meta name="ac:name" content="anychart.charts.Pyramid.selectFill set asLinear"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.0/anychart-bundle.min.js"></script>
 
-            // Set fill for selected mode with linear gradient.
-            chart.selectFill(["#263238", "#FFFFFF"], 90, true, 0.5);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.0/anychart-ui.min.css"/>
 
-            chart.title("Set chart selectFill as linear gradient.");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var dataSet = anychart.data.set([
+            {x: "Physical", value: 125},
+            {x: "Data Link", value: 125},
+            {x: "Network", value: 125},
+            {x: "Transport", value: 125},
+            {x: "Session", value: 125},
+            {x: "Presentation", value: 125},
+            {x: "Application", value: 290}
+        ]);
+        var chart = anychart.pyramid(dataSet);
+
+        // Set fill for selected mode with linear gradient.
+        chart.selectFill(["#263238", "#FFFFFF"], 90, true, 0.5);
+
+        chart.title("Set chart selectFill as linear gradient.");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

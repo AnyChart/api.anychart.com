@@ -1,44 +1,57 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <script src="../../../../anychart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="map">
-        anychart.onDocumentReady(function () {
-            // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
-            // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+    <meta name="ac:name" content="anychart.core.map.series.Marker.hoverType get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.0/anychart-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
 
-            var dataSet = anychart.data.set([
-                {size: 15, lat: -34.070515084726864, long: 118.25445336353205},
-                {size: 23, lat: -31.894263008153402, long: 125.80186295404643},
-                {size: 86, lat: -32.99406058688677, long: 135.0663237414231},
-                {size: 16, lat: -17.254583189943997, long: 145.79605572639525},
-                {size: 32, lat: -21.606391148984073, long: 149.0662087776929},
-                {size: 64, lat: -19.805332762782474, long: 121.38103193504192},
-                {size: 28, lat: -12.168079198676674, long: 132.14421774121007},
-                {size: 45, lat: -30.381621653249564, long: 152.33073342386342},
-                {size: 15, lat: -42.097964381926396, long: 147.32434313632928}
-            ]);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.0/anychart-ui.min.css"/>
 
-            map = anychart.map();
-            map.geoData(anychart.maps.australia);
-
-            var series = map.marker(dataSet);
-            series.hoverType("square");
-            series.tooltip({title: false, separator: false});
-
-            // Get marker type in hover mode.
-            var type = series.hoverType();
-
-            map.title("Hover marker type is a " + type);
-            map.container("container");
-            map.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+        // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+
+        var dataSet = anychart.data.set([
+            {size: 15, lat: -34.070515084726864, long: 118.25445336353205},
+            {size: 23, lat: -31.894263008153402, long: 125.80186295404643},
+            {size: 86, lat: -32.99406058688677, long: 135.0663237414231},
+            {size: 16, lat: -17.254583189943997, long: 145.79605572639525},
+            {size: 32, lat: -21.606391148984073, long: 149.0662087776929},
+            {size: 64, lat: -19.805332762782474, long: 121.38103193504192},
+            {size: 28, lat: -12.168079198676674, long: 132.14421774121007},
+            {size: 45, lat: -30.381621653249564, long: 152.33073342386342},
+            {size: 15, lat: -42.097964381926396, long: 147.32434313632928}
+        ]);
+
+        var map = anychart.map();
+        map.geoData(anychart.maps.australia);
+
+        var series = map.marker(dataSet);
+        series.hoverType("square");
+        series.tooltip({title: false, separator: false});
+
+        // Get marker type in hover mode.
+        var type = series.hoverType();
+
+        map.title("Hover marker type is a " + type);
+        map.container("container");
+        map.draw();
+    });
+</script>
 </body>
 </html>

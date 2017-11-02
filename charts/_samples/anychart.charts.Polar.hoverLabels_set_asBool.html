@@ -1,43 +1,56 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="polar line anyChart"/>
-    <script src="../../anychart.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.polar();
+    <meta name="ac:name" content="anychart.charts.Polar.hoverLabels set asBool"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/js/7.14.0/anychart-bundle.min.js"></script>
 
-            var lineSeries = chart.line([
-                {x: 0, value: 6},
-                {x: 1, value: 1},
-                {x: 2, value: 6},
-                {x: 3, value: 1},
-                {x: 4, value: 6},
-                {x: 5, value: 1}
-            ]);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/css/7.14.0/anychart-ui.min.css"/>
 
-            var markerSeries = chart.marker([
-                {x: 0, value: 7},
-                {x: 1, value: 4},
-                {x: 2, value: 7},
-                {x: 3, value: 4},
-                {x: 4, value: 7},
-                {x: 5, value: 4}
-            ]);
-
-            // Enable chart hover labels.
-            chart.hoverLabels(true);
-
-            chart.title("Enable chart hover labels");
-            chart.container("container");
-            chart.draw();
-
-            lineSeries.hover([0, 2, 4]);
-            markerSeries.hover([1, 3, 5]);
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.polar();
+
+        var lineSeries = chart.line([
+            {x: 0, value: 6},
+            {x: 1, value: 1},
+            {x: 2, value: 6},
+            {x: 3, value: 1},
+            {x: 4, value: 6},
+            {x: 5, value: 1}
+        ]);
+
+        var markerSeries = chart.marker([
+            {x: 0, value: 7},
+            {x: 1, value: 4},
+            {x: 2, value: 7},
+            {x: 3, value: 4},
+            {x: 4, value: 7},
+            {x: 5, value: 4}
+        ]);
+
+        // Enable chart hover labels.
+        chart.hoverLabels(true);
+
+        chart.title("Enable chart hover labels");
+        chart.container("container");
+        chart.draw();
+
+        lineSeries.hover([0, 2, 4]);
+        markerSeries.hover([1, 3, 5]);
+    });
+</script>
 </body>
 </html>
