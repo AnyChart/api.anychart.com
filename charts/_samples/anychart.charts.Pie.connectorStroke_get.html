@@ -21,27 +21,27 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        stagevar = anychart.graphics.create("container");
+        stage = anychart.graphics.create("container");
 
-        pieChartvar = anychart.pie([7, 7, 7, 7, 7]);
+        var pieChart = anychart.pie([7, 7, 7, 7, 7]);
         pieChart.labels({fontColor: "#000000", position: "outside"});
         pieChart.bounds(0, 0, "50%", "100%");
         pieChart.connectorStroke("#607D8B", 2, "5 2", "round");
         pieChart.container(stage);
         pieChart.draw();
 
-        funnelChartvar = anychart.funnel([10, 3, 7, 10, 5]);
+        var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
         funnelChart.bounds("50%", 0, "50%", "100%");
 
         // Get connector stroke.
-        pieConnectorStrokevar = pieChart.connectorStroke();
+        var pieConnectorStroke = pieChart.connectorStroke();
 
         funnelChart.connectorStroke(pieConnectorStroke);
         funnelChart.container(stage);
         funnelChart.draw();
 
-        customTitlevar = anychart.ui.title();
-        customTitle.text("Get and use chart stroke.");
+        var customTitle = anychart.ui.title();
+        customTitle.text("Get and use chart stroke");
         customTitle.container(stage);
         customTitle.draw();
     });
