@@ -40,12 +40,12 @@
         chart.choropleth(worldDataSet);
 
         chart.listen("drillChange", function () {
-            // Get current path.
-            var path = chart.getCurrentPath();
+            // Get drilldown path.
+            var path = chart.getDrilldownPath();
 
             var properties = path[0].getProperties();
 
-            canadaMap.title("Canada is in " + properties['continent'] + ".");
+            canadaMap.title("Canada is in " + properties['name']);
         });
 
         chart.container("container");
