@@ -20,27 +20,27 @@
 <body>
 <div id="container"></div>
 <script>
-    mainContainervar = document.getElementById('container');
+    var mainContainer = document.getElementById('container');
 
     // Creates three sub-container.
-    subContainer1var = document.createElement('div');
+    var subContainer1 = document.createElement('div');
     subContainer1.style.heightvar = '33%';
     mainContainer.appendChild(subContainer1);
 
-    subContainer2var = document.createElement('div');
+    var subContainer2 = document.createElement('div');
     subContainer2.style.heightvar = '33%';
     mainContainer.appendChild(subContainer2);
 
-    subContainer3var = document.createElement('div');
+    var subContainer3 = document.createElement('div');
     subContainer3.style.heightvar = '33%';
     mainContainer.appendChild(subContainer3);
 
-    firstStagevar = acgraph.create(subContainer1);
+    var firstStage = acgraph.create(subContainer1);
 
     // Set max resize delay.
     firstStage.maxResizeDelay(20);
 
-    rectvar = firstStage.rect();
+    var rect = firstStage.rect();
     rect.setBounds(firstStage.getBounds());
     rect.fill("#A5D6A7");
 
@@ -48,29 +48,29 @@
         rect.setBounds(firstStage.getBounds());
     });
 
-    secondStagevar = acgraph.create(subContainer2);
+    var secondStage = acgraph.create(subContainer2);
 
     // Set max resize delay.
     secondStage.maxResizeDelay(300);
 
-    secondRectvar = secondStage.rect().setBounds(secondStage.getBounds()).fill("#C5E1A5");
+    var secondRect = secondStage.rect().setBounds(secondStage.getBounds()).fill("#C5E1A5");
 
     secondStage.listen("stageresize", function () {
         secondRect.setBounds(secondStage.getBounds());
     });
 
-    thirdStagevar = acgraph.create(subContainer3);
+    var thirdStage = acgraph.create(subContainer3);
 
     // Set max resize delay.
     thirdStage.maxResizeDelay(1000);
 
-    thirdRectvar = thirdStage.rect().setBounds(thirdStage.getBounds()).fill("#E6EE9C");
+    var thirdRect = thirdStage.rect().setBounds(thirdStage.getBounds()).fill("#E6EE9C");
 
     thirdStage.listen("stageresize", function () {
         thirdRect.setBounds(thirdStage.getBounds());
     });
 
-    labelvar = anychart.standalones.label();
+    var label = anychart.standalones.label();
     label.background({fill: "#9E9E9E"});
     label.text("Click to resize container");
     label.fontColor("#fff");
@@ -78,11 +78,9 @@
     label.offsetX(5);
     label.offsetY(5);
 
-    contaninerWidthvar = 50;
+    var contaninerWidth = 50;
     label.listen('click', function () {
-        contaninerWidth +
-        var =
-        10;
+        contaninerWidth +=10;
         mainContainer.style.widthvar = contaninerWidth + '%';
     });
 
