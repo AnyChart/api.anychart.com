@@ -40,12 +40,12 @@
         chart.choropleth(worldDataSet);
 
         chart.listen("drillChange", function () {
-            var path = chart.getCurrentPath();
+            var path = chart.getDrilldownPath();
 
             // Get properties.
-            var properties = path[0].getProperties();
+            var properties = path[1].getProperties();
 
-            canadaMap.title("Get properties. The continent is " + properties["continent"] + ".");
+            canadaMap.title("Get properties. The continent is " + properties["continent"]);
         });
 
         chart.container("container");
