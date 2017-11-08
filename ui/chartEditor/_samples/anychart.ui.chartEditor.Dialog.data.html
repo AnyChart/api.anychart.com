@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="x-cat-tags" content="actualBug"/>
     <meta name="ac:name" content="anychart.ui.chartEditor.Dialog.data"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
@@ -28,7 +29,7 @@
         // By default CSS from AnyChart CDN is used: https://cdn.anychart.com/css/7.14.0/anychart-ui.css
         // Download it, alter, upload to your server and link from your pages to change the look.
 
-        datavar = [
+        var data = [
             ['Powder', 11861, 10919, 8034, 18012],
             ['Mascara', 11261, 10419, 6134, 18712],
             ['Lip gloss', 22998, 12043, 4572, 4008],
@@ -38,7 +39,7 @@
             ['Pomade', 8814, 9054, 4376, 9256]
         ];
 
-        editorvar = anychart.ui.chartEditorDialog();
+        var editor = anychart.ui.chartEditorDialog();
 
         // Set data for chart editor.
         editor.data(data);
@@ -47,10 +48,10 @@
         editor.visible(true);
 
         editor.listen("complete", function () {
-            codevar = editor.getResultCode();
+            var code = editor.getResultCode();
             if (code) {
-                constructorFuncvar = eval(code);
-                chartvar = constructorFunc(data);
+                var constructorFunc = eval(code);
+                var chart = constructorFunc(data);
                 chart.title("Set data for the chart editor.");
                 chart.container("container");
                 chart.draw();
