@@ -4,16 +4,13 @@
     <meta name="ac:name" content="anychart.charts.Map.getZoomLevel"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-map.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.0.1/js/anychart-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.0.1/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -42,34 +39,34 @@
         createLabel("2x Zoom", 0, function () {
             australiaMap.zoom(2);
         });
+
+        function customListener(e) {
+
+            // Get zoom level.
+            var level = australiaMap.getZoomLevel();
+
+            australiaMap.title().text(level + " x Zoom");
+        }
+
+        function createLabel(text, offset, action) {
+            customLabel = anychart.standalones.label();
+            customLabel.text(text);
+            customLabel.parentBounds(0, offset, 100, 100);
+            customLabel.listen("click", action);
+            customLabel.background({fill: "#9E9E9E"});
+            customLabel.fontColor("#fff");
+            customLabel.padding(5);
+            customLabel.listen("mouseOver", function () {
+                document.body.style.cursor = "pointer";
+            });
+            customLabel.listen("mouseOut", function () {
+                document.body.style.cursor = "auto";
+            });
+            customLabel.listen("click", customListener);
+            customLabel.container(stage);
+            customLabel.draw();
+        }
     });
-
-    function customListener(e) {
-
-        // Get zoom level.
-        var level = australiaMap.getZoomLevel();
-
-        australiaMap.title().text(level + " x Zoom");
-    }
-
-    function createLabel(text, offset, action) {
-        customLabel = anychart.standalones.label();
-        customLabel.text(text);
-        customLabel.parentBounds(0, offset, 100, 100);
-        customLabel.listen("click", action);
-        customLabel.background({fill: "#9E9E9E"});
-        customLabel.fontColor("#fff");
-        customLabel.padding(5);
-        customLabel.listen("mouseOver", function () {
-            document.body.style.cursor = "pointer";
-        });
-        customLabel.listen("mouseOut", function () {
-            document.body.style.cursor = "auto";
-        });
-        customLabel.listen("click", customListener);
-        customLabel.container(stage);
-        customLabel.draw();
-    }
 </script>
 </body>
 </html>
