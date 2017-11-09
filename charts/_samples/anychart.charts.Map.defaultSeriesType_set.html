@@ -1,51 +1,64 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="anyMap"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-map.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" data-export="true"></script>
-    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js" data-export="true"></script>
-    <script x-export="australiaMap">
-        anychart.onDocumentReady(function() {
-            // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
-            // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+    <meta name="ac:name" content="anychart.charts.Map.defaultSeriesType set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var data1 = anychart.data.set([
-                {id: "AU.CT", value: 15},
-                {id: "AU.VI", value: 23},
-                {id: "AU.WA", value: 86}
-            ]);
-            var data2 = anychart.data.set([
-                {id: "AU.QL", value: 16},
-                {id: "AU.NS", value: 32},
-                {id: "AU.NT", value: 64}
-            ]);
-            var data3 = anychart.data.set([
-                {id: "AU.TS", value: 28},
-                {id: "AU.SA", value: 45},
-                {id: "AU.TS", value: 28},
-                {id: "AU.SA", value: 45}
-            ]);
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-map.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
 
-            australiaMap = anychart.map();
-            australiaMap.geoData(anychart.maps.australia);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/develop/css/anychart-ui.min.css"/>
 
-            // Set default series type.
-            australiaMap.defaultSeriesType("choropleth");
-
-            australiaMap.addSeries(data1, data2, data3);
-
-            australiaMap.title("Change default series type added by addSeries method");
-            australiaMap.container("container");
-            australiaMap.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+        // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+
+        var data1 = anychart.data.set([
+            {id: "AU.CT", value: 15},
+            {id: "AU.VI", value: 23},
+            {id: "AU.WA", value: 86}
+        ]);
+        var data2 = anychart.data.set([
+            {id: "AU.QL", value: 16},
+            {id: "AU.NS", value: 32},
+            {id: "AU.NT", value: 64}
+        ]);
+        var data3 = anychart.data.set([
+            {id: "AU.TS", value: 28},
+            {id: "AU.SA", value: 45},
+            {id: "AU.TS", value: 28},
+            {id: "AU.SA", value: 45}
+        ]);
+
+        var australiaMap = anychart.map();
+        australiaMap.geoData(anychart.maps.australia);
+
+        // Set default series type.
+        australiaMap.defaultSeriesType("choropleth");
+
+        australiaMap.addSeries(data1, data2, data3);
+
+        australiaMap.title("Change default series type added by addSeries method");
+        australiaMap.container("container");
+        australiaMap.draw();
+    });
+</script>
 </body>
 </html>

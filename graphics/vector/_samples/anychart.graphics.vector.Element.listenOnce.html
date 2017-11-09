@@ -1,21 +1,34 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="text anyChart anyGantt anyStock anyMap"/>
-    <script src="https://cdn.anychart.com/js/latest/graphics.min.js" data-export="true"></script>
-    <script x-export="stage">
-        stage = acgraph.create("container");
+    <meta name="ac:name" content="anychart.graphics.vector.Element.listenOnce"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-        var blueText = stage.text(70, 55, "Click on this TEXT.");
-        blueText.style({fontStyle: "italic", fontSize: "18px", color: "#2196F3", hAlign: "center"});
+    <script src="https://cdn.anychart.com/js/develop/graphics.min.js"></script>
 
-        // Listens event once.
-        blueText.listenOnce("click", function (e) {
-            blueText.text("You can\'t click here anymore.");
-        });
-    </script>
+
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    var stage = acgraph.create("container");
+
+    var blueText = stage.text(70, 55, "Click on this TEXT.");
+    blueText.style({fontStyle: "italic", fontSize: "18px", color: "#2196F3", hAlign: "center"});
+
+    // Listens event once.
+    blueText.listenOnce("click", function (e) {
+        blueText.text("You can\'t click here anymore.");
+    });
+</script>
 </body>
 </html>

@@ -1,43 +1,60 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta name="x-cat-tags" content="line column anyChart"/>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.enums.ChartDataExportMode"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            // Create a chart from a data array.
-            var lineChart = anychart.line([
-                {x: "January", value: 1.1},
-                {x: "February", value: 1.4},
-                {x: "March", value: 1.2},
-                {x: "April", value: 1.6}
-            ]);
-            lineChart.bounds(0, 15, "50%", "100%");
-            lineChart.container(stage);
-            lineChart.draw();
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-ui.min.js"></script>
 
-            // Get chart data as CSV using data export mode. Data export modes can be "raw", "grouped", "selected" and "default".
-            var csvData = lineChart.toCsv("default", {"rowsSeparator": "\n", "columnsSeparator": ",", "ignoreFirstRow": true});
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/develop/css/anychart-ui.min.css"/>
 
-            // Restore the chart from the data obtained.
-            var columnChart = anychart.column(csvData);
-            columnChart.bounds("50%", 15, "50%", "100%");
-            columnChart.container(stage);
-            columnChart.draw();
-
-            var customTitle = anychart.standalones.title();
-            customTitle.text("Set data export mode");
-            customTitle.container(stage);
-            customTitle.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        // Create a chart from a data array.
+        var lineChart = anychart.line([
+            {x: "January", value: 1.1},
+            {x: "February", value: 1.4},
+            {x: "March", value: 1.2},
+            {x: "April", value: 1.6}
+        ]);
+        lineChart.bounds(0, 15, "50%", "100%");
+        lineChart.container(stage);
+        lineChart.draw();
+
+        // Get chart data as CSV using data export mode. Data export modes can be "raw", "grouped", "selected" and "default".
+        var csvData = lineChart.toCsv("default", {
+            "rowsSeparator": "\n",
+            "columnsSeparator": ",",
+            "ignoreFirstRow": true
+        });
+
+        // Restore the chart from the data obtained.
+        var columnChart = anychart.column(csvData);
+        columnChart.bounds("50%", 15, "50%", "100%");
+        columnChart.container(stage);
+        columnChart.draw();
+
+        var customTitle = anychart.standalones.title();
+        customTitle.text("Set data export mode");
+        customTitle.container(stage);
+        customTitle.draw();
+    });
+</script>
 </body>
 </html>

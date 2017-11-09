@@ -1,41 +1,54 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line grid scale anyChart"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function() {
-            chart = anychart.line([
-                {x: "January", value: 29},
-                {x: "February", value: 72},
-                {x: "March", value: 250},
-                {x: "April", value: 330},
-                {x: "May", value: 85},
-                {x: "April", value: 390},
-                {x: "June", value: 95},
-                {x: "Jule", value: 15}
-            ]);
+    <meta name="ac:name" content="anychart.core.grids.Linear.isMinor set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var customScale = anychart.scales.linear();
-            customScale.ticks({interval: 50});
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-ui.min.js"></script>
 
-            chart.yScale(customScale);
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/develop/css/anychart-ui.min.css"/>
 
-            var grid = chart.yGrid();
-
-            // Enable minor grid.
-            grid.isMinor(true);
-
-            chart.title("Enable minor grid");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.line([
+            {x: "January", value: 29},
+            {x: "February", value: 72},
+            {x: "March", value: 250},
+            {x: "April", value: 330},
+            {x: "May", value: 85},
+            {x: "April", value: 390},
+            {x: "June", value: 95},
+            {x: "Jule", value: 15}
+        ]);
+
+        var customScale = anychart.scales.linear();
+        customScale.ticks({interval: 50});
+
+        chart.yScale(customScale);
+
+        var grid = chart.yGrid();
+
+        // Enable minor grid.
+        grid.isMinor(true);
+
+        chart.title("Enable minor grid");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

@@ -1,41 +1,54 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name="x-cat-tags" content="pareto anyChart"/>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-pareto.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="chart">
-        anychart.onDocumentReady(function () {
-            chart = anychart.pareto();
-            chart.data([
-                ['Parking Difficult', 95],
-                ['Sales Rep was Rude', 60],
-                ['Poor Lighting', 45],
-                ['Layout Confusing', 37],
-                ['Sizes Limited', 30],
-                ['Clothing Faded', 27],
-                ['Clothing Shrank', 18]
-            ]);
+    <meta name="ac:name" content="anychart.charts.Pareto.textMarker set asObject"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            chart.yAxis(1).scale().ticks().interval(10);
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-pareto.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-ui.min.js"></script>
 
-            // Set text marker.
-            chart.textMarker({value: 62.4, text: "20% Effort", anchor: "left-bottom", axis: chart.yAxis()});
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/develop/css/anychart-ui.min.css"/>
 
-            chart.textMarker(1, {value: 80, text: "80% Results", anchor: "left-bottom", axis: chart.yAxis(1)});
-
-            chart.lineMarker({value: 62.4, axis: chart.yAxis()});
-            chart.lineMarker(1, {value: 80, axis: chart.yAxis(1)});
-            chart.title("Set chart text marker parameters as an object");
-            chart.container("container");
-            chart.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.pareto();
+        chart.data([
+            ['Parking Difficult', 95],
+            ['Sales Rep was Rude', 60],
+            ['Poor Lighting', 45],
+            ['Layout Confusing', 37],
+            ['Sizes Limited', 30],
+            ['Clothing Faded', 27],
+            ['Clothing Shrank', 18]
+        ]);
+
+        chart.yAxis(1).scale().ticks().interval(10);
+
+        // Set text marker.
+        chart.textMarker({value: 62.4, text: "20% Effort", anchor: "left-bottom", axis: chart.yAxis()});
+
+        chart.textMarker(1, {value: 80, text: "80% Results", anchor: "left-bottom", axis: chart.yAxis(1)});
+
+        chart.lineMarker({value: 62.4, axis: chart.yAxis()});
+        chart.lineMarker(1, {value: 80, axis: chart.yAxis(1)});
+        chart.title("Set chart text marker parameters as an object");
+        chart.container("container");
+        chart.draw();
+    });
+</script>
 </body>
 </html>

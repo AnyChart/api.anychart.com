@@ -1,56 +1,69 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name="x-cat-tags" content="line annotations anyChart"/>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-annotations.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function () {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.core.annotations.PlotController.toXml fromXml asNode"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var lineChart = anychart.line([6, 10, 18, 11, 9]);
-            lineChart.yScale().minimum(0);
-            lineChart.bounds(0, 20, "50%", "100%");
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-annotations.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-ui.min.js"></script>
 
-            var controller = lineChart.annotations();
-            controller.line({
-                xAnchor: 1,
-                valueAnchor: 11,
-                secondXAnchor: 3,
-                secondValueAnchor: 12,
-                stroke: "2 #F44336"
-            });
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/develop/css/anychart-ui.min.css"/>
 
-            lineChart.container(stage);
-            lineChart.draw();
-
-
-            var columnChart = anychart.column([6, 10, 18, 11, 9]);
-            columnChart.yScale().minimum(0);
-            columnChart.bounds("50%", 20, "50%", "100%");
-
-            // Returns plot annotation in XML node.
-            var xml = controller.toXml(true);
-
-            var annotation = columnChart.annotations();
-
-            // Read config from XML node.
-            annotation.fromXml(xml);
-
-            columnChart.container(stage);
-            columnChart.draw();
-
-            var customTitle = anychart.standalones.title();
-            customTitle.text("Create and read config from XML node.");
-            customTitle.container(stage);
-            customTitle.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        var lineChart = anychart.line([6, 10, 18, 11, 9]);
+        lineChart.yScale().minimum(0);
+        lineChart.bounds(0, 20, "50%", "100%");
+
+        var controller = lineChart.annotations();
+        controller.line({
+            xAnchor: 1,
+            valueAnchor: 11,
+            secondXAnchor: 3,
+            secondValueAnchor: 12,
+            stroke: "2 #F44336"
+        });
+
+        lineChart.container(stage);
+        lineChart.draw();
+
+
+        var columnChart = anychart.column([6, 10, 18, 11, 9]);
+        columnChart.yScale().minimum(0);
+        columnChart.bounds("50%", 20, "50%", "100%");
+
+        // Returns plot annotation in XML node.
+        var xml = controller.toXml(true);
+
+        var annotation = columnChart.annotations();
+
+        // Read config from XML node.
+        annotation.fromXml(xml);
+
+        columnChart.container(stage);
+        columnChart.draw();
+
+        var customTitle = anychart.standalones.title();
+        customTitle.text("Create and read config from XML node.");
+        customTitle.container(stage);
+        customTitle.draw();
+    });
+</script>
 </body>
 </html>

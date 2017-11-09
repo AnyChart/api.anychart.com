@@ -1,68 +1,81 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="x-cat-tags" content="line grid scale anyChart"/>
-    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
-    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
-    <script x-export="stage">
-        anychart.onDocumentReady(function() {
-            stage = anychart.graphics.create("container");
+    <meta name="ac:name" content="anychart.core.grids.Linear.scale get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
 
-            var lineChart = anychart.line([
-                {x: "January", value: 29},
-                {x: "February", value: 72},
-                {x: "March", value: 250},
-                {x: "April", value: 330},
-                {x: "May", value: 85},
-                {x: "April", value: 390},
-                {x: "June", value: 95},
-                {x: "Jule", value: 15}
-            ]);
-            lineChart.bounds(0, 20, "50%", "100%");
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-ui.min.js"></script>
 
-            var customScale = anychart.scales.linear();
-            customScale.minimum(0);
-            customScale.maximum(400);
-            customScale.ticks({interval: 40});
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/develop/css/anychart-ui.min.css"/>
 
-            var lineGrid = lineChart.yGrid();
-            lineGrid.scale(customScale);
-
-            lineChart.container(stage);
-            lineChart.draw();
-
-            var columnChart = anychart.column([
-                {x: "January", value: 10},
-                {x: "February", value: 150},
-                {x: "March", value: 223},
-                {x: "April", value: 344},
-                {x: "May", value: 35},
-                {x: "April", value: 390},
-                {x: "June", value: 55},
-                {x: "Jule", value: 21}
-            ]);
-
-            columnChart.bounds("50%", 20, "50%", "100%");
-
-            // Get grid scale of the line chart.
-            var gridScale = lineGrid.scale();
-
-            var columnGrid = columnChart.yGrid();
-            columnGrid.scale(gridScale);
-
-            columnChart.container(stage);
-            columnChart.draw();
-
-            var title = anychart.standalones.title();
-            title.text("Get and use grid scale");
-            title.container(stage);
-            title.draw();
-        });
-    </script>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
-<div id="container" style="width: 100%; height: 100%"></div>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create("container");
+
+        var lineChart = anychart.line([
+            {x: "January", value: 29},
+            {x: "February", value: 72},
+            {x: "March", value: 250},
+            {x: "April", value: 330},
+            {x: "May", value: 85},
+            {x: "April", value: 390},
+            {x: "June", value: 95},
+            {x: "Jule", value: 15}
+        ]);
+        lineChart.bounds(0, 20, "50%", "100%");
+
+        var customScale = anychart.scales.linear();
+        customScale.minimum(0);
+        customScale.maximum(400);
+        customScale.ticks({interval: 40});
+
+        var lineGrid = lineChart.yGrid();
+        lineGrid.scale(customScale);
+
+        lineChart.container(stage);
+        lineChart.draw();
+
+        var columnChart = anychart.column([
+            {x: "January", value: 10},
+            {x: "February", value: 150},
+            {x: "March", value: 223},
+            {x: "April", value: 344},
+            {x: "May", value: 35},
+            {x: "April", value: 390},
+            {x: "June", value: 55},
+            {x: "Jule", value: 21}
+        ]);
+
+        columnChart.bounds("50%", 20, "50%", "100%");
+
+        // Get grid scale of the line chart.
+        var gridScale = lineGrid.scale();
+
+        var columnGrid = columnChart.yGrid();
+        columnGrid.scale(gridScale);
+
+        columnChart.container(stage);
+        columnChart.draw();
+
+        var title = anychart.standalones.title();
+        title.text("Get and use grid scale");
+        title.container(stage);
+        title.draw();
+    });
+</script>
 </body>
 </html>
