@@ -24,15 +24,21 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = anychart.data.set([
+        var dataSet = anychart.data.set([
             {"x": "A1", "value": 8},
             {"x": "A2", "value": 11},
             {"x": "A3", "value": 12},
             {"x": "A4", "value": 9}
         ]);
-        var chart = anychart.column(data);
-        var view = data.mapAs();
-        view.set(2, "fill", "#009688"); // sets new fill by row index
+
+        var chart = anychart.column(dataSet);
+
+        var view = dataSet.mapAs();
+
+        // Set a new fill by row index.
+        view.set(2, "fill", "#009688");
+
+        chart.title("Set a new fill by row index");
         chart.container("container");
         chart.draw();
     });

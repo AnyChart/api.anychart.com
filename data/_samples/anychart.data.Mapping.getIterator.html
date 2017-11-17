@@ -30,10 +30,15 @@
             [17, 22, 33],
             [21, 22, 43]
         ]);
+
         var mapping = dataSet.mapAs({'value': 2});
-        var iterator = mapping.getIterator(); // get iterator
+
+        // Get iterator.
+        var iterator = mapping.getIterator();
         iterator.select(2);
+
         var chart = anychart.pie();
+
         chart.data(mapping);
         chart.title("x: " + iterator.get("x") + ", y: " + iterator.get("value"));
         chart.container("container");

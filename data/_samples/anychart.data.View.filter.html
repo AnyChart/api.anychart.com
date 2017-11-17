@@ -24,7 +24,7 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = anychart.data.set([
+        var dataSet = anychart.data.set([
             ["Point A", 231],
             ["Point B", 131],
             ["Point C", 212],
@@ -33,11 +33,16 @@
             ["Point F", 45],
             ["Point G", 201]
         ]);
-        var view = data.mapAs();
-        var filteredView = view.filter("value", function (value) {
+
+        var view = dataSet.mapAs();
+
+        // The filter of data.
+        var filteredView = view.filter("value", function(value) {
             return value > 100;
-        }); // filter of data
+        });
+
         var chart = anychart.line(filteredView);
+        chart.title("The filter of data");
         chart.container("container");
         chart.draw();
     });

@@ -30,10 +30,15 @@
             ["Point C", 212],
             ["Point D", 94]
         ]);
+
         var view = data.mapAs();
+
         var iterator = view.getIterator();
         iterator.select(2);
-        iterator.reset(); // after reset current index -1, so get returns undefined.
+
+        // After resetting current index -1, so get returns undefined.
+        iterator.reset();
+
         var chart = anychart.line(data);
         chart.title(iterator.get("x") + " - " + iterator.get("value"));
         chart.container("container");

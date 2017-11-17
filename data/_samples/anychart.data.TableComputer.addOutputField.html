@@ -33,12 +33,13 @@
 
         var chart = anychart.stock();
 
-
         var indicator = dataTable.createComputer(mapping);
+
         // Adds output field.
         indicator.addOutputField("customField", "customUid");
+
         indicator.setContext({period: 2000});
-        indicator.setCalculationFunction(function (row) {
+        indicator.setCalculationFunction(function(row) {
             row.set("customField", row.get("value") + this.period);
         });
 

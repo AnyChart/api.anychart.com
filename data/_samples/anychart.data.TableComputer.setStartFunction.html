@@ -33,16 +33,15 @@
 
         var chart = anychart.stock();
 
-
         var indicator = dataTable.createComputer(mapping);
         indicator.addOutputField("customField", "uid");
         indicator.setContext({period: 2000, queue: 257});
 
-        // Sets initial function.
-        indicator.setStartFunction(function (context) {
+        // Set initial function.
+        indicator.setStartFunction(function(context) {
             context.period *= 2;
         });
-        indicator.setCalculationFunction(function (row) {
+        indicator.setCalculationFunction(function(row) {
             row.set("customField", row.get("value") + this.period);
         });
 
@@ -53,9 +52,10 @@
         plot.line(indicatorMapping);
         plot.getSeries(1).name("Custom indicator");
 
+        chart.title("Set initial function");
         chart.container("container");
         chart.draw();
-    });
+        });
 </script>
 </body>
 </html>

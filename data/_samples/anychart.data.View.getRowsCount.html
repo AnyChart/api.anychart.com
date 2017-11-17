@@ -24,15 +24,20 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = anychart.data.set([
+        var dataSet = anychart.data.set([
             ["Point A", 231],
             ["Point B", 131],
             ["Point C", 212],
             ["Point D", 94]
         ]);
-        var view = data.mapAs();
-        var chart = anychart.line(data);
-        var getRowsCount = view.getRowsCount(); // get rows count
+
+        var view = dataSet.mapAs();
+
+        var chart = anychart.line(dataSet);
+
+        // Get rows count.
+        var getRowsCount = view.getRowsCount();
+
         chart.title("Rows count: " + getRowsCount);
         chart.container("container");
         chart.draw();

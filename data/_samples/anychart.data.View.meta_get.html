@@ -24,17 +24,21 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = anychart.data.set([
+        var dataSet = anychart.data.set([
             {"x": "Point A", "value": 231},
             {"x": "Point B", "value": 131},
             {"x": "Point C", "value": 212},
             {"x": "Point D", "value": 94}
         ]);
-        var view = data.mapAs();
+
+        var view = dataSet.mapAs();
         view.meta(0, "name", "Maximum speed");
-        var getMeta = view.meta(0, "name"); // get meta by field
+
+        // Get meta by field.
+        var getMeta = view.meta(0, "name");
+
         var chart = anychart.line(view);
-        chart.title("Meta by first row - " + getMeta);
+        chart.title("Meta by first row is " + getMeta);
         chart.container("container");
         chart.draw();
     });

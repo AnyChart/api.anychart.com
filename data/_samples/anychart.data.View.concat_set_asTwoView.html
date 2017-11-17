@@ -24,22 +24,28 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var firstDataSet = anychart.data.set([
+        var dataSet1 = anychart.data.set([
             ["Point A", 231],
             ["Point B", 131],
             ["Point C", 212],
             ["Point D", 94]
         ]);
-        var secondDataSet = anychart.data.set([
+
+        var dataSet2 = anychart.data.set([
             ["Point E", 194],
             ["Point F", 45],
             ["Point G", 201],
             ["Point H", 104]
         ]);
-        var firstView = firstDataSet.mapAs();
-        var secondView = secondDataSet.mapAs();
-        var concatenatedView = firstView.concat(secondView); // concatenates two view
+
+        var firstView = dataSet1.mapAs();
+        var secondView = dataSet2.mapAs();
+
+        // Concatenates two view.
+        var concatenatedView = firstView.concat(secondView);
+
         var chart = anychart.line(concatenatedView);
+        chart.title("Concatenates two view");
         chart.container("container");
         chart.draw();
     });

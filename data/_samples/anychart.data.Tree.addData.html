@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="ac:name" content="anychart.data.Tree.getChildAt"/>
+    <meta name="ac:name" content="anychart.data.Tree.addData add asEnum"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
 
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/develop/js/anychart-ui.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/develop/css/anychart-ui.min.css"/>
 
     <style>
         html, body, #container {
@@ -35,18 +35,14 @@
             {"id": "7", "name": "Research the market and competition", parent: "6", "progressValue": "0%", "actualStart": "2000-02-26T08:00", "actualEnd": "2000-02-27", "connectTo": "8", "connectorType": "finish-start"}
         ];
 
-        var treeData = anychart.data.tree(data, "as-table");
+        var treeData = anychart.data.tree();
 
-        var item = treeData.search("id", "2");
-
-        // Get child by index.
-        var child = item.getChildAt(0);
-
-        treeData.addChild(child);
+        // Add data.
+        treeData.addData(data, "as-table");
 
         var chart = anychart.ganttProject();
         chart.data(treeData);
-        chart.title("Get and use child by index");
+        chart.title("Add data");
         chart.container("container");
         chart.draw();
         chart.fitAll();

@@ -28,17 +28,18 @@
     anychart.onDocumentReady(function () {
         var dataTable = anychart.data.table();
         dataTable.addData(get_weather_data());
+
         // Removes the points range.
-        dataTable.remove(1136073600000, 1195603200000);
+        dataTable.remove("2006-01-01", "2007-11-21");
 
         var mapping = dataTable.mapAs({'value': 2});
 
         var chart = anychart.stock();
 
-
         var firstPlot = chart.plot();
         firstPlot.line(mapping);
 
+        chart.title("Remove the points range");
         chart.container("container");
         chart.draw();
     });

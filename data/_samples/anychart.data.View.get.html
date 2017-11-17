@@ -24,17 +24,24 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = anychart.data.set([
+        var dataSet = anychart.data.set([
             {x: "A1", value: 8, fill: "#F44336"},
             {x: "A2", value: 11, fill: "#673AB7"},
             {x: "A3", value: 12, fill: "#03A9F4"},
             {x: "A4", value: 9, fill: "#4CAF50"}
         ]);
-        var chart = anychart.column(data);
-        var view = data.mapAs();
-        var pointX = view.get(2, "x"); // get value by second row and field "x"
-        var pointFill = view.get(2, "fill");  // get value by second row and field "fill"
-        chart.title("Point \'" + pointX + "\' has \'" + pointFill + "\' fill.");
+
+        var chart = anychart.column(dataSet);
+
+        var view = dataSet.mapAs();
+
+        // Get value by second row and field "x".
+        var pointX = view.get(2, "x");
+
+        // Get value by second row and field "fill".
+        var pointFill = view.get(2, "fill");
+
+        chart.title("Point \'" + pointX + "\' has \'" + pointFill + "\' fill");
         chart.container("container");
         chart.draw();
     });

@@ -24,20 +24,26 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.column();
         var data = anychart.data.set([
-            ["A1", 8],
-            ["A2", 11],
-            ["A3", 12],
-            ["A4", 9]
+            {x: "A1", value: 8},
+            {x: "A2", value: 11},
+            {x: "A3", value: 12},
+            {x: "A4", value: 9}
         ]);
+
+        var chart = anychart.column();
+
         chart.column(data);
+        chart.title("Appends data");
         chart.container("container");
         chart.draw();
+
+
+        // Appends data. You can use different data formats
         data.append(
             {x: "B1", value: 14, fill: "#4DB6AC"},
             ["B2", 16]
-        ); // appends data. You can use different data formats
+        );
     });
 </script>
 </body>

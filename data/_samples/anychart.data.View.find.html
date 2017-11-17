@@ -24,17 +24,23 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = anychart.data.set([
+        var dataSet = anychart.data.set([
             {x: "A1", value: 8},
             {x: "A2", value: 11, fill: "#F44336"},
             {x: "A3", value: 12},
             {x: "A4", value: 9}
         ]);
-        var chart = anychart.column(data);
-        var view = data.mapAs();
-        var index = view.find("x", "A2"); // searches fieldName by fieldValue
+
+        var chart = anychart.column(dataSet);
+
+        var view = dataSet.mapAs();
+
+        // Searches fieldName by fieldValue.
+        var index = view.find("x", "A2");
         view.set(index, "x", "Changed");
         view.set(index, "fill", "#009688");
+
+        chart.title("Searches fieldName by fieldValue");
         chart.container("container");
         chart.draw();
     });

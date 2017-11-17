@@ -24,15 +24,20 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = anychart.data.set([
+        var dataSet = anychart.data.set([
             ["Point A", 231],
             ["Point B", 131],
             ["Point C", 212],
             ["Point D", 94]
         ]);
-        var view = data.mapAs();
-        var derivedView = view.derive(); // derives view
+
+        var view = dataSet.mapAs();
+
+        // Derives view.
+        var derivedView = view.derive();
+
         var chart = anychart.line(derivedView);
+        chart.title("Derives view");
         chart.container("container");
         chart.draw();
     });

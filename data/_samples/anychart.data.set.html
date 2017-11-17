@@ -23,14 +23,20 @@
 <body>
 <div id="container"></div>
 <script>
-    anychart.onDocumentReady(function () {
-        var data = anychart.data.set([
+    anychart.onDocumentReady(function() {
+
+        // Creates data.
+        var dataSet = anychart.data.set([
             ["Point A", 231],
             ["Point B", 131],
             ["Point C", 212],
             ["Point D", 94]
-        ]); // creates data
+        ]);
+
+        var data = dataSet.mapAs({'x': 0, 'value': 1});
+
         var chart = anychart.line(data);
+        chart.title("Create data set");
         chart.container("container");
         chart.draw();
     });

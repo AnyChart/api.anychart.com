@@ -33,12 +33,11 @@
 
         var chart = anychart.stock();
 
-
         var indicator = dataTable.createComputer(mapping);
         indicator.addOutputField("customField", "uid");
         indicator.setContext({period: 2000});
-        indicator.setCalculationFunction(function (row) {
-            // Sets value by column index.
+        indicator.setCalculationFunction(function(row) {
+            // Set value by column index.
             row.setColumn(-1, row.get("value") + this.period);
         });
 
@@ -49,6 +48,7 @@
         plot.line(indicatorMapping);
         plot.getSeries(1).name("Custom indicator");
 
+        chart.title("Set value by column index");
         chart.container("container");
         chart.draw();
     });

@@ -24,7 +24,7 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = anychart.data.set([
+        var dataSet = anychart.data.set([
             ["Point A", 231],
             ["Point B", 131],
             ["Point C", 212],
@@ -33,11 +33,16 @@
             ["Point F", 45],
             ["Point G", 201]
         ]);
-        var view = data.mapAs();
-        var sortedView = view.sort("value", function (value1, value2) {
+
+        var view = dataSet.mapAs();
+
+        // Sorts the data.
+        var sortedView = view.sort("value", function(value1, value2) {
             return value1 > value2;
-        }); // sorts the data
+        });
+
         var chart = anychart.line(sortedView);
+        chart.title("Sorts the data");
         chart.container("container");
         chart.draw();
     });

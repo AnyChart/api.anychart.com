@@ -33,12 +33,11 @@
 
         var chart = anychart.stock();
 
-
         // Creates a new computer.
         var indicator = dataTable.createComputer(mapping);
         indicator.addOutputField("customField", "uid");
         indicator.setContext({period: 2000});
-        indicator.setCalculationFunction(function (row) {
+        indicator.setCalculationFunction(function(row) {
             row.set("customField", row.get("value") + this.period);
         });
 
@@ -48,6 +47,7 @@
         plot.column(mapping);
         plot.line(indicatorMapping);
 
+        chart.title("Create a new computer");
         chart.container("container");
         chart.draw();
     });
