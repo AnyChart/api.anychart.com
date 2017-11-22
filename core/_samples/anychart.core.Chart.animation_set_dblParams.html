@@ -24,8 +24,30 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([2, 8, 3, 4, 9], [5, 2, 6, 1]);
-        chart.animation(true, 3000); // enables animation
+        var dataSet = anychart.data.set([
+            ['1986', 41, 36],
+            ['1987', 37, 34],
+            ['1988', 48, 47],
+            ['1989', 41, 39],
+            ['1990', 39, 36],
+            ['1991', 34, 31],
+            ['1992', 38, 35],
+            ['1993', 29, 28],
+            ['1994', 33, 32]
+        ]);
+
+        var data1 = dataSet.mapAs({'x': 0, 'value': 1});
+        var data2 = dataSet.mapAs({'x': 0, 'value': 2});
+
+        var chart = anychart.line();
+
+        chart.line(data1);
+        chart.line(data2);
+
+        // Enable animation.
+        chart.animation(true, 3000);
+
+        chart.title("Enable animation with duration");
         chart.container("container");
         chart.draw();
     });

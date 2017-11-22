@@ -26,18 +26,24 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.line();
 
-        var lineSeries = chart.line([1, 4, 2, 6]);
+        var lineSeries = chart.column([
+            {x: "January", value: 2},
+            {x: "February", value: 5},
+            {x: "March", value: 3},
+            {x: "April", value: 9},
+            {x: "May", value: 4}
+        ]);
 
-        var myTitle = chart.title();
-        myTitle.enabled(true);
-        myTitle.text("Click on line series.");
+        var title = chart.title();
+        title.enabled(true);
+        title.text("Click on line series");
 
         var counter = 0;
 
-        // Sets event listener on series.
+        // Set event listener on series.
         lineSeries.listen("pointClick", function (e) {
             counter++;
-            myTitle.text("You clicked " + counter + " times. Click again.");
+            title.text("You clicked " + counter + " times. Click again");
         });
 
         chart.container("container");

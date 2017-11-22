@@ -26,14 +26,24 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.line();
 
-        var lineSeries = chart.line([1, 1.6, 1.2, 2.1]);
+        var series1 = chart.line([
+            {x: "Cycling", value: 18},
+            {x: "Swimming", value: 25},
+            {x: "Run", value: 10},
+            {x: "Hiking", value: 20}
+        ]);
 
-        chart.column([5, 1, 2, 1.6]);
+        var series2 = chart.line([
+            {x: "Cycling", value: 35},
+            {x: "Swimming", value: 23},
+            {x: "Run", value: 14},
+            {x: "Hiking", value: 50}
+        ]);
 
         // Gets Z-Index of the line series.
-        var zIndex = lineSeries.zIndex();
+        var zIndex = series2.zIndex();
 
-        chart.title("Z-Index of the series - " + zIndex);
+        chart.title("Z-Index of the series is " + zIndex);
 
         chart.container("container");
         chart.draw();

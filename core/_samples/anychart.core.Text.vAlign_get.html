@@ -24,15 +24,21 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([2, 8, 3, 4, 9], [5, 2, 6, 1]);
+        var chart = anychart.line([
+            {x: "January", value: 2},
+            {x: "February", value: 5},
+            {x: "March", value: 3},
+            {x: "April", value: 9},
+            {x: "May", value: 4}
+        ]);
 
         var title = chart.title();
         title.enabled(true);
 
-        // Gets vertical align.
+        // Get vertical align.
         var vAlign = title.vAlign();
 
-        title.text("The current vertical align is " + vAlign);
+        title.text("The vertical align is " + vAlign);
 
         chart.container("container");
         chart.draw();

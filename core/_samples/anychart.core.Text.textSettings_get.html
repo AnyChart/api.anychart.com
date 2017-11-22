@@ -24,18 +24,24 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([2, 8, 3, 4, 9], [5, 2, 6, 1]);
+        var chart = anychart.line([
+            {x: "January", value: 2},
+            {x: "February", value: 5},
+            {x: "March", value: 3},
+            {x: "April", value: 9},
+            {x: "May", value: 4}
+        ]);
 
         var title = chart.title();
         title.enabled(true);
         title.textSettings("text", "My custom title");
 
-        // Gets text settings.
+        // Get text settings.
         var settings = title.textSettings();
 
         var label = chart.label();
         label.enabled(true);
-        label.textSettings(title.textSettings());
+        label.textSettings(settings);
 
         chart.container("container");
         chart.draw();

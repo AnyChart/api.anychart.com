@@ -24,13 +24,20 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([1.1, 1.4, 1.2, 1.6]);
+        var chart = anychart.line([
+            {x: "January", value: 2},
+            {x: "February", value: 5},
+            {x: "March", value: 3},
+            {x: "April", value: 9},
+            {x: "May", value: 4}
+        ]);
 
-        // Gets title.
-        var myTitle = chart.title();
-        myTitle.enabled(true);
-        myTitle.fontColor("#F44336");
-        myTitle.text("Red chart title");
+        // Get title.
+        var title = chart.title();
+
+        title.enabled(true);
+        title.fontColor("#F44336");
+        title.text("Get and modify chart title");
 
         chart.container("container");
         chart.draw();

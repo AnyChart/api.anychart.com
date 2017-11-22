@@ -26,11 +26,17 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.line();
 
-        var lineSeries = chart.line([1, 4, 2, 6]);
+        var lineSeries = chart.column([
+            {x: "January", value: 2},
+            {x: "February", value: 5},
+            {x: "March", value: 3},
+            {x: "April", value: 9},
+            {x: "May", value: 4}
+        ]);
 
-        var myTitle = chart.title();
-        myTitle.enabled(true);
-        myTitle.text("Click on line series. You have 3 clicks.");
+        var title = chart.title();
+        title.enabled(true);
+        title.text("Click on line series. You have 3 clicks");
 
         var listenKey = lineSeries.listen("pointClick", customListener);
 
@@ -38,11 +44,11 @@
 
         function customListener(e) {
             counter--;
-            myTitle.text("Click on line series. You have " + counter + " clicks.");
+            title.text("Click on line series. You have " + counter + " clicks");
             if (counter === 0) {
                 // Removes listener by the key.
                 lineSeries.unlistenByKey(listenKey);
-                myTitle.text("You have no more clicks");
+                title.text("You have no more clicks");
             }
         }
 

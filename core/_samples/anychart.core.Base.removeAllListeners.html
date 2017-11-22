@@ -26,21 +26,28 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.line();
 
-        var lineSeries = chart.line([1, 4, 2, 6]);
+        var lineSeries = chart.column([
+            {x: "January", value: 2},
+            {x: "February", value: 5},
+            {x: "March", value: 3},
+            {x: "April", value: 9},
+            {x: "May", value: 4}
+        ]);
 
-        var myTitle = chart.title();
-        myTitle.enabled(true);
-        myTitle.text("MouseOver the title and click on line series.");
+        var title = chart.title();
+        title.enabled(true);
+        title.text("MouseOver the title and click on line series");
 
         lineSeries.listen("pointMouseOut", function (e) {
-            myTitle.fontColor("#4CAF50");
+            title.fontColor("#4CAF50");
         });
         lineSeries.listen("pointMouseOver", function (e) {
-            myTitle.fontColor("#F44336");
+            title.fontColor("#F44336");
         });
         lineSeries.listen("pointClick", function (e) {
-            myTitle.text("You can\'t click here anymore.");
-            myTitle.fontColor("#000000");
+            title.text("You can\'t click here anymore");
+            title.fontColor("#000000");
+
             // Removes all listeners.
             lineSeries.removeAllListeners();
         });

@@ -24,16 +24,29 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.column([18, 25, 10, 20], [35, 23, 14, 50]);
+        var chart = anychart.column();
 
-        var series = chart.getSeries(1);
+        var series1 = chart.column([
+            {x: "Cycling", value: 18},
+            {x: "Swimming", value: 25},
+            {x: "Run", value: 10},
+            {x: "Hiking", value: 20}
+        ]);
 
-        var point = series.getPoint(2);
+        var series2 = chart.column([
+            {x: "Cycling", value: 35},
+            {x: "Swimming", value: 23},
+            {x: "Run", value: 14},
+            {x: "Hiking", value: 50}
+        ]);
 
-        // Gets point series.
+        var point = series1.getPoint(2);
+
+        // Get point series.
         var series = point.getSeries();
         series.markers({size: 10});
 
+        chart.title("Get and modify point series");
         chart.container("container");
         chart.draw();
     });

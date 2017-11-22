@@ -24,22 +24,26 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
+        var data = [
+            ["USD", 57.6, 58.2, 56.9],
+            ["EUR", 69.07, 68.5, 70.3],
+            ["GBP", 78.9, 75.7, 80.3],
+            ["CZK", 26.5, 27.02, 24.9]
+        ];
+
         var chart = anychart.column();
-
-        chart.column([12814, 3054, 4376, 4229]);
-        chart.column([13012, 5067, 3987, 3932]);
-        chart.column([11624, 7004, 3574, 5221]);
-
-        var series = chart.column([8814, 9054, 4376, 9256]);
+        chart.data(data);
 
         var scale = chart.yScale();
         scale.stackMode("percent");
 
+        chart.title("Get stack value");
         chart.container("container");
         chart.draw();
 
-        var point = series.getPoint(2);
-        // Gets stack value.
+        var point = chart.getSeries(0).getPoint(2);
+
+        // Get stack value.
         point.getStackZero();
         // Returns 73.17476858946853
     });

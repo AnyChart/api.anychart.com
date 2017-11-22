@@ -24,13 +24,15 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
+        var data = [
+            ["USD", 57.6, 58.2, 56.9],
+            ["EUR", 69.07, 68.5, 70.3],
+            ["GBP", 78.9, 75.7, 80.3],
+            ["CZK", 26.5, 27.02, 24.9]
+        ];
+
         var chart = anychart.column();
-
-        var series = chart.column([12814, 3054, 4376, 4229]);
-
-        chart.column([13012, 5067, 3987, 3932]);
-        chart.column([11624, 7004, 3574, 5221]);
-        chart.column([8814, 9054, 4376, 9256]);
+        chart.data(data);
 
         var scale = chart.yScale();
         scale.stackMode("percent");
@@ -38,10 +40,11 @@
         chart.container("container");
         chart.draw();
 
-        var point = series.getPoint(0);
-        // Gets stack value.
+        var point = chart.getSeries(0).getPoint(0);
+
+        // Get stack value.
         point.getStackValue();
-        // Returns 27.69756181912502.
+        // Returns 100.
     });
 </script>
 </body>

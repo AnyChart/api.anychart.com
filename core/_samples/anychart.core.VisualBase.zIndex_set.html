@@ -26,13 +26,29 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.area();
 
-        var blueArea = chart.area([4, 20, 8, 17]);
-        var orangeArea = chart.area([6, 3, 15, 9]);
-        var greenArea = chart.area([2, 10, 9, 2]);
+        var blueArea = chart.area([
+            {x: "Cycling", value: 4},
+            {x: "Swimming", value: 20},
+            {x: "Run", value: 8},
+            {x: "Hiking", value: 17}
+        ]);
+        var orangeArea = chart.area([
+            {x: "Cycling", value: 6},
+            {x: "Swimming", value: 3},
+            {x: "Run", value: 15},
+            {x: "Hiking", value: 9}
+        ]);
+        var greenArea = chart.area([
+            {x: "Cycling", value: 2},
+            {x: "Swimming", value: 10},
+            {x: "Run", value: 2},
+            {x: "Hiking", value: 2}
+        ]);
 
-        // Sets Z-Index of the orange area series.
+        // Set Z-Index of the orange area series.
         orangeArea.zIndex(30.0001);
 
+        chart.title("Set Z-Index of the orange area series");
         chart.container("container");
         chart.draw();
     });

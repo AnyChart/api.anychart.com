@@ -24,11 +24,26 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([2, 8, 3, 4, 9], [5, 2, 6, 1]);
+        var chart = anychart.line();
 
-        // disable chart tooltip
+        chart.line([
+            {x: "January", value: 2},
+            {x: "February", value: 8},
+            {x: "March", value: 3},
+            {x: "April", value: 1}
+        ]);
+
+        chart.line([
+            {x: "January", value: 5},
+            {x: "February", value: 2},
+            {x: "March", value: 6},
+            {x: "April", value: 1}
+        ]);
+
+        // Disable chart tooltip.
         chart.tooltip(false);
 
+        chart.title("Disable chart tooltip");
         chart.container("container");
         chart.draw();
     });

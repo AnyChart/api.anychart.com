@@ -24,15 +24,20 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([2, 8, 3, 4, 9], [5, 2, 6, 1]);
+        var chart = anychart.line([
+            {x: "Cycling", value: 18},
+            {x: "Swimming", value: 25},
+            {x: "Run", value: 10},
+            {x: "Hiking", value: 20}
+        ]);
 
         var title = chart.title();
         title.enabled(true);
 
-        // Gets line height.
+        // Get line height.
         var lineHeight = title.lineHeight();
 
-        title.text("The current line height is " + lineHeight);
+        title.text("The line height is " + lineHeight);
 
         chart.container("container");
         chart.draw();

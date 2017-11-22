@@ -9,7 +9,8 @@
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
 
     <style>
         html, body, #container {
@@ -26,13 +27,22 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.column();
 
-        var series = chart.column([18, 25, 10, 20, 35, 23, 14, 50]);
+        var series = chart.column([
+            {x: "January", value: 18},
+            {x: "February", value: 25},
+            {x: "March", value: 10},
+            {x: "April", value: 20},
+            {x: "May", value: 35},
+            {x: "June", value: 23},
+            {x: "Jule", value: 14},
+            {x: "August", value: 50}
+        ]);
         series.name("My custom series name");
 
-        // Gets series name.
+        // Get series name.
         var seriesName = series.name();
 
-        chart.title("The series name - " + seriesName);
+        chart.title("The series name is " + seriesName);
         chart.container("container");
         chart.draw();
     });

@@ -24,16 +24,35 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container");
+        var dataSet = anychart.data.set([
+            ['1986', 41, 36],
+            ['1987', 37, 34],
+            ['1988', 48, 47],
+            ['1989', 41, 39],
+            ['1990', 39, 36],
+            ['1991', 34, 31],
+            ['1992', 38, 35],
+            ['1993', 29, 28],
+            ['1994', 33, 32]
+        ]);
 
-        var lineChart = anychart.line([2, 8, 3, 4, 9], [5, 2, 6, 1]);
+        var data1 = dataSet.mapAs({'x': 0, 'value': 1});
+        var data2 = dataSet.mapAs({'x': 0, 'value': 2});
 
-        var animationSettings = lineChart.animation();
+        var chart = anychart.line();
+
+        chart.line(data1);
+        chart.line(data2);
+
+        // Get animation.
+        var animationSettings = chart.animation();
+
         animationSettings.duration(3000);
         animationSettings.enabled(true);
 
-        lineChart.container(stage);
-        lineChart.draw();
+        chart.title("Get and modify animation");
+        chart.container("container");
+        chart.draw();
     });
 </script>
 </body>

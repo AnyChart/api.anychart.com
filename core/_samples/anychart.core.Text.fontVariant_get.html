@@ -24,15 +24,20 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([2, 8, 3, 4, 9], [5, 2, 6, 1]);
+        var chart = anychart.line([
+            {x: "Cycling", value: 18},
+            {x: "Swimming", value: 25},
+            {x: "Run", value: 10},
+            {x: "Hiking", value: 20}
+        ]);
 
         var title = chart.title();
         title.enabled(true);
 
-        // Gets text font variant.
+        // Get text font variant.
         var fontVariant = title.fontVariant();
 
-        title.text("The current font variant is " + fontVariant);
+        title.text("The font variant is " + fontVariant);
 
         chart.container("container");
         chart.draw();

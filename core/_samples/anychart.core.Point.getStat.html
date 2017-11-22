@@ -25,17 +25,16 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.bubble();
-        chart.yScale().minimum(0);
-        chart.yScale().maximum(4);
+        chart.yScale({minimum: 0, maximum: 4});
 
         var series = chart.bubble([
-            [1, 1, 6],
-            [2, 2, 4],
-            [3, 3, 6],
-            [4, 2, 2],
-            [5, 1, 7],
-            [6, 2, 3],
-            [7, 1, 2]
+            {x: 1, value: 1, size: 6},
+            {x: 2, value: 2, size: 4},
+            {x: 3, value: 3, size: 6},
+            {x: 4, value: 2, size: 2},
+            {x: 5, value: 1, size: 7},
+            {x: 6, value: 2, size: 3},
+            {x: 7, value: 1, size: 2}
         ]);
 
         var seriesTooltip = series.tooltip();
@@ -49,7 +48,7 @@
             return "Bubble size: " + point.getStat("bubbleSize");
         });
 
-        chart.title("Get the statistic and use the tooltip.");
+        chart.title("Get the statistic and use the tooltip");
         chart.container("container");
         chart.draw();
     });

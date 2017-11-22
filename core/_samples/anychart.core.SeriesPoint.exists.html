@@ -24,13 +24,19 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.column([18, 25, 10, 20, 14]);
+        var chart = anychart.column([
+            {x: "January", value: 2},
+            {x: "February", value: 5},
+            {x: "March", value: 3},
+            {x: "April", value: 9},
+            {x: "May", value: 4}
+        ]);
 
         var series = chart.getSeries(0);
 
         var point = series.getPoint(7);
 
-        // Gets value.
+        // Get value.
         var existsPoint = point.exists();
 
         chart.title("Is there a seventh point? " + existsPoint);

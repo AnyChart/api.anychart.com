@@ -24,13 +24,20 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([1.1, 1.4, 1.2, 1.6]);
+        var chart = anychart.line([
+            {x: "January", value: 2},
+            {x: "February", value: 5},
+            {x: "March", value: 3},
+            {x: "April", value: 9},
+            {x: "May", value: 4}
+        ]);
 
-        // Gets background.
-        var myBackground = chart.background();
-        myBackground.stroke("2 rgb(36,102,177)");
-        myBackground.corners(10);
-        myBackground.fill({
+        // Get background.
+        var background = chart.background();
+
+        background.stroke("2 rgb(36,102,177)");
+        background.corners(10);
+        background.fill({
             keys: [
                 "#FFECB3 0.2",
                 "#FFE082",
@@ -39,6 +46,7 @@
             angle: -90
         });
 
+        chart.title("Get and modify background");
         chart.container("container");
         chart.draw();
     });

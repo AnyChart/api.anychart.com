@@ -24,10 +24,25 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([2, 8, 3, 4, 9], [5, 2, 6, 1]);
+        var chart = anychart.column();
+
+        var series1 = chart.column([
+            {x: "Cycling", value: 18},
+            {x: "Swimming", value: 25},
+            {x: "Run", value: 10},
+            {x: "Hiking", value: 20}
+        ]);
+
+        var series2 = chart.column([
+            {x: "Cycling", value: 35},
+            {x: "Swimming", value: 23},
+            {x: "Run", value: 14},
+            {x: "Hiking", value: 50}
+        ]);
 
         var title = chart.title();
         title.enabled(true);
+
         // Disables pointer events.
         title.disablePointerEvents(true);
 

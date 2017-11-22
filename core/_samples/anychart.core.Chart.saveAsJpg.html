@@ -24,12 +24,17 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
+        stage = anychart.graphics.create("container");
 
-        var stage = anychart.graphics.create("container");
-
-        var chart = anychart.line([1.1, 1.4, 1.2, 1.6]);
+        var chart = anychart.line([
+            {x: "January", value: 49},
+            {x: "February", value: 45},
+            {x: "March", value: 9},
+            {x: "April", value: 4},
+            {x: "May", value: 17}
+        ]);
         chart.left("5%");
-        chart.title("Save chart as JPG file.");
+        chart.title("Save chart as JPG file");
         chart.container(stage);
         chart.draw();
 
@@ -44,6 +49,12 @@
             // Saves into JPG file.
             chart.saveAsJpg(360, 350, 0.9, true, "JpgChart");
 
+        });
+        customLabel.listen("mouseOver", function () {
+            document.body.style.cursor = "pointer";
+        });
+        customLabel.listen("mouseOut", function () {
+            document.body.style.cursor = "auto";
         });
         customLabel.container(stage);
         customLabel.draw();

@@ -25,12 +25,27 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.line();
-        chart.line([1, 1.6, 1.2, 2.1]);
 
-        var redLineSeries = chart.line([11, 11.6, 11.2, 12.1]);
+        var series1 = chart.line([
+            {x: "Cycling", value: 10},
+            {x: "Swimming", value: 12},
+            {x: "Run", value: 18},
+            {x: "Hiking", value: 11},
+            {x: "Alpinism", value: 9}
+        ]);
+
+        var series2 = chart.line([
+            {x: "Cycling", value: 20},
+            {x: "Swimming", value: 28},
+            {x: "Run", value: 24},
+            {x: "Hiking", value: 30},
+            {x: "Alpinism", value: 13}
+        ]);
+
         // Disables the second series.
-        redLineSeries.enabled(false);
+        series2.enabled(false);
 
+        chart.title("Disables the second series");
         chart.container("container");
         chart.draw();
     });
