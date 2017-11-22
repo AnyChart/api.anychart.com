@@ -4,13 +4,10 @@
     <meta name="ac:name" content="anychart.palettes.Markers.items get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -25,19 +22,26 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.line([2, 5, 1, 8], [6, 3, 8, 4], [10, 6, 13, 1]);
-        var firstSeries = chart.getSeries(0);
-        firstSeries.markers(true);
-        var secondSeries = chart.getSeries(1);
-        secondSeries.markers(true);
-        var thirdSeries = chart.getSeries(2);
-        thirdSeries.markers(true);
+
+        var series1 = chart.getSeries(0);
+        series1.markers(true);
+
+        var series2 = chart.getSeries(1);
+        series2.markers(true);
+
+        var series3 = chart.getSeries(2);
+        series3.markers(true);
+
         var palette = anychart.palettes.markers();
         palette.items(["cross", "circle", "diagonal-cross"]);
 
-        // set markers
-        var value = palette.items();
+        // Get markers.
+        var items  = palette.items();
+
+        items.reverse();
 
         chart.markerPalette(palette);
+        chart.title("Get and modify markers");
         chart.container("container");
         chart.draw();
     });

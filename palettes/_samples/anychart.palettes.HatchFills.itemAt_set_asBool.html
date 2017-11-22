@@ -4,13 +4,10 @@
     <meta name="ac:name" content="anychart.palettes.HatchFills.itemAt set asBool"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -24,15 +21,22 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.pie([2, 6, 12, 3]);
+        var chart = anychart.pie([
+            {x: "Cycling", value: 10},
+            {x: "Swimming", value: 12},
+            {x: "Run", value: 18},
+            {x: "Hiking", value: 11},
+            {x: "Alpinism", value: 9}
+        ]);
         chart.hatchFill(true);
 
         var palette = anychart.palettes.hatchFills();
 
-        // Disables hatch fill by index.
+        // Disable hatch fill by index.
         palette.itemAt(1, false);
 
         chart.hatchFillPalette(palette);
+        chart.title("Disable hatch fill by index");
         chart.container("container");
         chart.draw();
     });
