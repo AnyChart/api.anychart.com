@@ -4,7 +4,6 @@
     <meta name="ac:name" content="anychart.format.locales locs"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
@@ -14,7 +13,6 @@
     <script src="http://cdn.anychart.com/locale/1.1.0/de-de.js"></script>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -35,30 +33,31 @@
         anychart.format.outputDateTimeFormat("dd MMMM yyyy");
 
         var chart = anychart.line([
-            [Date.UTC(2014, 5, 6), 511.53, 500.98, 680.79, 656.40],
-            [Date.UTC(2014, 8, 8), 900, 850, 1100, 1050],
-            [Date.UTC(2014, 9, 10), 700, 630.40, 810.58, 790],
-            [Date.UTC(2014, 10, 12), 380, 315, 450, 415],
-            [Date.UTC(2014, 12, 14), 830, 513, 405, 145]
+            {x: Date.UTC(2014, 5, 6), value: 511.53},
+            {x: Date.UTC(2014, 6, 8), value: 900},
+            {x: Date.UTC(2014, 9, 10), value: 700},
+            {x: Date.UTC(2014, 10, 12), value: 380},
+            {x: Date.UTC(2014, 12, 14), value: 830}
         ]);
 
         var allLocales = "Defined locales: ";
         for (localeName in anychart.format.locales) {
             allLocales += localeName + " "
         }
-        // Get used locales.
+        // Set used locales.
         chart.title(allLocales);
 
         var axis = chart.xAxis();
+
         var formatLabels = axis.labels();
-        formatLabels.format(function () {
+        formatLabels.format(function() {
             return anychart.format.dateTime(this.value);
         });
 
+        chart.title("Set a few localization");
         chart.container("container");
         chart.draw();
-    })
-    ;
+    });
 </script>
 </body>
 </html>

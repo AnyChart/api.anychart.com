@@ -4,13 +4,10 @@
     <meta name="ac:name" content="anychart.format.outputTimeFormat"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,16 +25,17 @@
         anychart.format.outputTimeFormat("(H)mm:ss.SS");
 
         var chart = anychart.line([
-            [Date.UTC(2014, 5, 6, 10, 11, 14, 112), 511.53, 500.98, 680.79, 656.40],
-            [Date.UTC(2014, 5, 6, 8, 12, 4, 120), 900, 850, 1100, 1050],
-            [Date.UTC(2014, 5, 6, 0, 1, 4, 31), 700, 630.40, 810.58, 790],
-            [Date.UTC(2014, 5, 6, 5, 23, 41, 200), 380, 315, 450, 415],
-            [Date.UTC(2014, 5, 6, 18, 42, 27, 3), 830, 513, 405, 145]
+            {x: Date.UTC(2014, 5, 6, 10, 11, 14, 112), value: 511.53},
+            {x: Date.UTC(2014, 5, 6, 8, 12, 4, 120), value: 900},
+            {x: Date.UTC(2014, 5, 6, 0, 1, 4, 31), value: 700},
+            {x: Date.UTC(2014, 5, 6, 5, 23, 41, 200), value: 380},
+            {x: Date.UTC(2014, 5, 6, 18, 42, 27, 3), value: 830}
         ]);
 
         var axis = chart.xAxis();
-        var formatLabels = axis.labels();
-        formatLabels.format(function () {
+
+        var labels = axis.labels();
+        labels.format(function () {
             return anychart.format.time(this.value);
         });
 

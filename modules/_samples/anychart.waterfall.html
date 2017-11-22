@@ -4,14 +4,11 @@
     <meta name="ac:name" content="anychart.waterfall"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-waterfall.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -27,7 +24,14 @@
     anychart.onDocumentReady(function () {
 
         // Create a Waterfall Chart.
-        var chart = anychart.waterfall([166, 43, -79, -46, 84, NaN]);
+        var chart = anychart.waterfall([
+            {x: "Start", value: 166},
+            {x: "January", value: 43},
+            {x: "February", value: -79},
+            {x: "March", value: -46},
+            {x: "April", value: 84},
+            {x: "End", isTotal: true}
+        ]);
 
         chart.title("Create a Waterfall Chart");
         chart.container("container");

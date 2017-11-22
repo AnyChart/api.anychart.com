@@ -4,14 +4,12 @@
     <meta name="ac:name" content="anychart.format.time"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="http://cdn.anychart.com/locale/1.1.0/fr-fr.js"></script>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -37,12 +35,14 @@
         ]);
 
         var axis = chart.xAxis();
+
         var formatLabels = axis.labels();
-        formatLabels.format(function () {
-            // Sets format for date.
+        formatLabels.format(function() {
+            // Set format for date.
             return anychart.format.time(this.value, -60, "fr-fr");
         });
 
+        chart.title("Set format for date");
         chart.container("container");
         chart.draw();
     });

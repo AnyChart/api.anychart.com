@@ -4,13 +4,10 @@
     <meta name="ac:name" content="anychart.format.getMessage"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,8 +23,8 @@
     anychart.onDocumentReady(function () {
 
         // extend custom messages
-        // ?? means "title", "caption" in Chinese and Japanese
-        anychart.format.locales['default'].messages['title'] = '??';
+        // 標題 means "title", "caption" in Chinese and Japanese
+        anychart.format.locales['default'].messages['title']='標題';
         anychart.format.locales['default'].messages['custom'] = "Value";
 
         var chart = anychart.pie([
@@ -42,10 +39,11 @@
         chart.title(anychart.format.getMessage('title'));
 
         var labels = chart.labels();
-        labels.format(function () {
+        labels.format(function() {
             return anychart.format.getMessage('custom') + ': ' + anychart.format.number(this.value, 3, ".", ",")
         });
 
+        chart.title("Format the locales");
         chart.container("container");
         chart.draw();
     });
