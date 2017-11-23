@@ -4,13 +4,10 @@
     <meta name="ac:name" content="anychart.standalones.Legend.itemsSource set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -25,20 +22,30 @@
 <script>
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
-        var firstChart = anychart.pie([28, 55, 25, 31]);
-        firstChart.legend(false);
-        firstChart.bounds(0, 0, "50%", "60%");
-        firstChart.container(stage);
-        firstChart.draw();
-        var secondChart = anychart.scatter();
-        secondChart.line([28, 55, 25, 31]);
-        secondChart.marker([65, 30, 15, 20]);
-        secondChart.bounds("50%", 0, "50%", "60%");
-        secondChart.container(stage);
-        secondChart.draw();
+        
+        var leftChart = anychart.pie([
+            {x: "Cycling", value: 10},
+            {x: "Swimming", value: 12},
+            {x: "Run", value: 18},
+            {x: "Hiking", value: 11},
+        ]);
+        leftChart.legend(false);
+        leftChart.bounds(0, 30, "50%", "90%");
+        leftChart.container(stage);
+        leftChart.draw();
+        
+        var rightChart = anychart.scatter();
+        rightChart.line([28, 55, 25, 31]);
+        rightChart.marker([65, 30, 15, 20]);
+        rightChart.xScale().minimum(-0.1);
+        rightChart.bounds("50%", 30, "50%", "90%");
+        rightChart.container(stage);
+        rightChart.draw();
+        
         var legend = anychart.standalones.legend();
-        legend.itemsSource([firstChart, secondChart]); // sets items source
-        legend.parentBounds(0, "40%", "100%", "100%");
+
+        // Set items source.
+        legend.itemsSource([leftChart, rightChart]);
         legend.container(stage);
         legend.draw();
     });

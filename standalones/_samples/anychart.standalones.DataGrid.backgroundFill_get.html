@@ -4,14 +4,11 @@
     <meta name="ac:name" content="anychart.standalones.DataGrid.backgroundFill get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -42,12 +39,13 @@
         var dataGrid = anychart.standalones.dataGrid();
         dataGrid.data(treeData);
         dataGrid.headerHeight(25);
+        dataGrid.backgroundFill("#FFF59D");
 
         // Get background fill.
         var backgroundFill = dataGrid.backgroundFill();
 
         var column = dataGrid.column(1);
-        column.title("Background fill is " + backgroundFill);
+        column.title({background: backgroundFill, text: "Get and use background fill", fontSize: 12});
 
         dataGrid.container(stage);
         dataGrid.draw();
