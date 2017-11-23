@@ -4,13 +4,10 @@
     <meta name="ac:name" content="anychart.scales.Linear.minorTicks set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -24,13 +21,21 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([1, 4, 2, 9]);
+        var chart = anychart.line([
+            {x: "January", value: 2},
+            {x: "February", value: 5},
+            {x: "March", value: 3},
+            {x: "April", value: 9},
+            {x: "May", value: 4}
+        ]);
         chart.yAxis({minorTicks: {stroke: "#424242"}});
 
-        var myYScale = chart.yScale();
-        // Sets minor ticks.
-        myYScale.minorTicks([1.25, 3.75, 6.25, 8.75]);
+        var yScale = chart.yScale();
 
+        // Set minor ticks.
+        yScale.minorTicks([1.25, 3.75, 6.25, 8.75]);
+
+        chart.title("Set minor ticks");
         chart.container("container");
         chart.draw();
     });

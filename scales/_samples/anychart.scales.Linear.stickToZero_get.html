@@ -4,13 +4,10 @@
     <meta name="ac:name" content="anychart.scales.Linear.stickToZero get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -25,14 +22,18 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.line([
-            ["A1", 0.1],
-            ["A2", 1.4],
-            ["A3", 1.2],
-            ["A4", 1.9]
+            {x: "A1", value: 0.1},
+            {x: "A2", value: 1.4},
+            {x: "A3", value: 1.2},
+            {x: "A4", value: 1.9}
         ]);
+
         var yScale = chart.yScale();
-        var stickToZero = yScale.stickToZero(); // get stick to zero
-        chart.title("Stick to zero - " + stickToZero);
+
+        // Get stick to zero.
+        var stickToZero = yScale.stickToZero();
+
+        chart.title("Stick to zero is " + stickToZero);
         chart.container("container");
         chart.draw();
     });

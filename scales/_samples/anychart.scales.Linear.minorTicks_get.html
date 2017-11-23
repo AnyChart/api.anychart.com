@@ -4,13 +4,10 @@
     <meta name="ac:name" content="anychart.scales.Linear.minorTicks get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,28 +23,33 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var firstChart = anychart.line([1, 4, 2, 9]);
-        firstChart.yAxis({minorTicks: {stroke: "#424242"}});
-        firstChart.bounds(0, 0, "50%", "100%");
+        var lineChart = anychart.line([1, 4, 2, 9]);
+        lineChart.yAxis({minorTicks: {stroke: "#424242"}});
+        lineChart.bounds(0, 20, "50%", "100%");
 
-        var myYScale = firstChart.yScale();
-        myYScale.minorTicks([1.25, 3.75, 6.25, 8.75]);
+        var yScale1 = lineChart.yScale();
+        yScale1.minorTicks([1.25, 3.75, 6.25, 8.75]);
 
-        firstChart.container(stage);
-        firstChart.draw();
+        lineChart.container(stage);
+        lineChart.draw();
 
-        var secondChart = anychart.column([1, 4, 2, 9]);
-        secondChart.yAxis({minorTicks: {stroke: "#424242"}});
-        secondChart.bounds("50%", 0, "50%", "100%");
+        var columnChart = anychart.column([1, 4, 2, 9]);
+        columnChart.yAxis({minorTicks: {stroke: "#424242"}});
+        columnChart.bounds("50%", 20, "50%", "100%");
 
-        // Gets minor ticks.
-        var minorTicks = myYScale.minorTicks();
+        // Get minor ticks.
+        var minorTicks = yScale1.minorTicks();
 
-        var yScale = secondChart.yScale();
-        yScale.minorTicks(minorTicks.get());
+        var yScale2 = columnChart.yScale();
+        yScale2.minorTicks(minorTicks.get());
 
-        secondChart.container(stage);
-        secondChart.draw();
+        columnChart.container(stage);
+        columnChart.draw();
+
+        var title = anychart.standalones.title();
+        title.text("Get and use minor ticks");
+        title.container(stage);
+        title.draw();
     });
 </script>
 </body>

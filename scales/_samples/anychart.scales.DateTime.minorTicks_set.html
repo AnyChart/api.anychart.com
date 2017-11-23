@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="ac:name" content="anychart.scales.DateTime.minorTicks set"/>
-    <meta name="ac:short-desc" content=""/>
-    <meta name="ac:desc" content=""/>
-
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="ohlc anyChart"/>
+    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css"/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -39,10 +36,12 @@
         axis.minorTicks({stroke: "#424242"});
         axis.minorLabels(true);
 
-        var myXScale = chart.xScale();
-        // Sets minor ticks.
-        myXScale.minorTicks([new Date("27-Aug-07"), new Date("29-Aug-07"), new Date("31-Aug-07"), new Date("02-Sep-07")]);
+        var xScale = chart.xScale();
 
+        // Set minor ticks.
+        xScale.minorTicks([new Date("27-Aug-07"), new Date("29-Aug-07"), new Date("31-Aug-07"), new Date("02-Sep-07")]);
+
+        chart.title("Set minor ticks");
         chart.container("container");
         chart.draw();
     });

@@ -4,13 +4,10 @@
     <meta name="ac:name" content="anychart.scales.ScatterBase.maxTicksCount"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -25,9 +22,15 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.scatter();
-        chart.line([1.1, 1.4, 1.2, 1.7]);
-        chart.yAxis().overlapMode("allow-overlap");
-        chart.yAxis().minorTicks(true);
+
+        chart.line([
+            {x: 1, value: 1.1},
+            {x: 2, value: 1.4},
+            {x: 3, value: 1.2},
+            {x: 4, value: 1.7}
+        ]);
+
+        chart.yAxis({minorTicks: true, overlapMode: "allow-overlap"});
 
         var scale = chart.yScale();
 

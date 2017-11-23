@@ -4,13 +4,10 @@
     <meta name="ac:name" content="anychart.scales.Linear.ticks get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,26 +23,31 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var firstChart = anychart.line([1, 4, 2, 9]);
-        firstChart.bounds(0, 0, "50%", "100%");
+        var chart1 = anychart.line([1, 4, 2, 9]);
+        chart1.bounds(0, 20, "50%", "100%");
 
-        var myYScale = firstChart.yScale();
-        myYScale.ticks([0, 1.25, 3.75, 6.25, 8.75, 11.25]);
+        var yScale = chart1.yScale();
+        yScale.ticks([0, 1.25, 3.75, 6.25, 8.75, 11.25]);
 
-        firstChart.container(stage);
-        firstChart.draw();
+        chart1.container(stage);
+        chart1.draw();
 
-        var secondChart = anychart.column([1, 4, 2, 9]);
-        secondChart.bounds("50%", 0, "50%", "100%");
+        var chart2 = anychart.column([1, 4, 2, 9]);
+        chart2.bounds("50%", 20, "50%", "100%");
 
-        // Gets ticks.
-        var lineTicks = myYScale.ticks();
+        // Get ticks.
+        var lineTicks = yScale.ticks();
 
-        var yScale = secondChart.yScale();
+        var yScale = chart2.yScale();
         yScale.ticks(lineTicks.get());
 
-        secondChart.container(stage);
-        secondChart.draw();
+        chart2.container(stage);
+        chart2.draw();
+
+        var title = anychart.standalones.title();
+        title.text("Get and use ticks");
+        title.container(stage);
+        title.draw();
     });
 </script>
 </body>

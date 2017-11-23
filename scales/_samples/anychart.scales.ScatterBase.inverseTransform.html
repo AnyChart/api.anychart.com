@@ -4,13 +4,10 @@
     <meta name="ac:name" content="anychart.scales.ScatterBase.inverseTransform"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -24,11 +21,18 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([1.1, 1.4, 1.2, 1.95]);
+        var chart = anychart.line([
+            {x: "A1", value: 1.1},
+            {x: "A2", value: 1.4},
+            {x: "A3", value: 1.2},
+            {x: "A4", value: 1.95},
+        ]);
+        chart.title("Trying to get a tick");
         chart.container("container");
         chart.draw();
 
         var scale = chart.yScale();
+
         // Trying to get a tick.
         var position = scale.inverseTransform(0.39);
 
