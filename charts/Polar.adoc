@@ -51,7 +51,7 @@ anychart.charts.Polar.prototype.xScale;
  * Setter for the chart X scale.
  * @detailed <b>Note:</b> This scale will be passed to all scale dependent chart elements if they don't have their own scales.
  * @example anychart.charts.Polar.xScale_set
- * @param {(Object|string|anychart.enums.ScaleTypes|anychart.scales.Base)=} opt_value X Scale to set.
+ * @param {(Object|anychart.enums.ScaleTypes|string|anychart.scales.Base)=} opt_value [anychart.scales.Linear] X Scale to set.
  * @return {anychart.charts.Polar} Self instance for method chaining.
  */
 anychart.charts.Polar.prototype.xScale;
@@ -76,7 +76,7 @@ anychart.charts.Polar.prototype.yScale;
  * Setter for the chart Y scale.
  * @detailed <b>Note:</b> This scale will be passed to all scale dependent chart elements if they don't have their own scales.
  * @example anychart.charts.Polar.yScale_set
- * @param {(Object|string|anychart.enums.ScatterScaleTypes|anychart.scales.ScatterBase)=} opt_value ["linear"] Y Scale to set.
+ * @param {(Object|anychart.enums.ScatterScaleTypes|string|anychart.scales.ScatterBase)=} opt_value [anychart.scales.Linear] Y Scale to set.
  * @return {anychart.charts.Polar} Self instance for method chaining.
  */
 anychart.charts.Polar.prototype.yScale;
@@ -338,7 +338,7 @@ anychart.charts.Polar.prototype.yAxis;
  * @category Series
  * @example anychart.charts.Polar.area
  * @param {!(anychart.data.View|anychart.data.Set|Array)} data Data for the series.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings [false] If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings [false] If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.polar.series.Area} An instance of the created series.
  */
@@ -357,7 +357,7 @@ anychart.charts.Polar.prototype.area;
  * @category Series
  * @example anychart.charts.Polar.line
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings [false] If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings [false] If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.polar.series.Line} An instance of the created series.
  */
@@ -376,7 +376,7 @@ anychart.charts.Polar.prototype.line;
  * @category Series
  * @example anychart.charts.Polar.marker
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings [true] If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings [true] If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.polar.series.Marker} An instance of the created series.
  */
@@ -444,7 +444,7 @@ anychart.charts.Polar.prototype.markerPalette;
 /**
  * Setter for the markers palette settings.
  * @example anychart.charts.Polar.markerPalette_set
- * @param {(anychart.palettes.Markers|Object|Array.<anychart.enums.MarkerType>)=} opt_value Value to set.
+ * @param {(anychart.palettes.Markers|Object|Array.<anychart.enums.MarkerType|string>)=} opt_value Value to set.
  * @return {anychart.charts.Polar} Self instance for method chaining.
  */
 anychart.charts.Polar.prototype.markerPalette;
@@ -512,7 +512,7 @@ anychart.charts.Polar.prototype.defaultSeriesType;
  * @detailed Setting the default type using this method affects only series created using addSeries() method after the default is set.
  * All series created prior to that do not change the type.
  * @example anychart.charts.Polar.defaultSeriesType_set
- * @param {(string|anychart.enums.PolarSeriesType)=} opt_value Default series type.
+ * @param {(anychart.enums.PolarSeriesType|string)=} opt_value Default series type.
  * @return {anychart.charts.Polar} Self instance for method chaining.
  * @since 7.8.0
  */
@@ -785,7 +785,7 @@ anychart.charts.Polar.prototype.innerRadius;
  * @category Series
  * @example anychart.charts.Polar.column
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings [true] If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings [true] If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.polar.series.Column} An instance of the created series.
  * @since 7.13.1 
@@ -805,7 +805,7 @@ anychart.charts.Polar.prototype.column;
  * @category Series
  * @example anychart.charts.Polar.rangeColumn
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings [true] If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings [true] If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.polar.series.RangeColumn} An instance of the created series.
  * @since 7.13.1 
@@ -824,7 +824,7 @@ anychart.charts.Polar.prototype.rangeColumn;
  * @category Series
  * @example anychart.charts.Polar.polygon
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings [true] If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings [true] If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.polar.series.Polygon} An instance of the created series.
  * @since 7.13.1 
@@ -843,7 +843,7 @@ anychart.charts.Polar.prototype.polygon;
  * @category Series
  * @example anychart.charts.Polar.polyline
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings [true] If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings [true] If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.polar.series.Polyline} An instance of the created series.
  * @since 7.13.1 
@@ -898,7 +898,7 @@ anychart.charts.Polar.prototype.normal;
  * Setter for normal state settings.
  * @example anychart.charts.Polar.normal_set
  * @param {!Object=} opt_value State settings to set.
- * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ * @return {anychart.charts.Polar} Self instance for method chaining.
  * @since 8.0.0
  */
 anychart.charts.Polar.prototype.normal;
@@ -923,7 +923,7 @@ anychart.charts.Polar.prototype.hovered;
  * Setter for hovered state settings.
  * @example anychart.charts.Polar.hovered_set
  * @param {!Object=} opt_value State settings to set.
- * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ * @return {anychart.charts.Polar} Self instance for method chaining.
  * @since 8.0.0
  */
 anychart.charts.Polar.prototype.hovered;

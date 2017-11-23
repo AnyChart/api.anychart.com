@@ -131,7 +131,7 @@ anychart.charts.Cartesian3d.prototype.zPadding;
  * @category Series
  * @example anychart.charts.Cartesian3d.bar
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.cartesian.series.Bar3d} An instance of the created series.
  * @since 7.9.0
@@ -151,7 +151,7 @@ anychart.charts.Cartesian3d.prototype.bar;
  * @category Series
  * @example anychart.charts.Cartesian3d.column
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.cartesian.series.Column3d} An instance of the created series.
  * @since 7.9.0
@@ -171,7 +171,7 @@ anychart.charts.Cartesian3d.prototype.column;
  * @category Series
  * @example anychart.charts.Cartesian3d.area
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.cartesian.series.Area3d} An instance of the created series.
  * @since 7.9.0
@@ -354,7 +354,7 @@ anychart.charts.Cartesian3d.prototype.getYAxesCount;
  * @category Series
  * @example anychart.charts.Cartesian3d.line
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.cartesian.series.Line3d} An instance of the created series.
  * @since 8.0.0
@@ -373,7 +373,7 @@ anychart.charts.Cartesian3d.prototype.line;
  * @category Series
  * @example anychart.charts.Cartesian3d.line2d
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.cartesian.series.Line} An instance of the created series.
  * @since 8.0.0
@@ -400,7 +400,7 @@ anychart.charts.Cartesian3d.prototype.normal;
  * Setter for normal state settings.
  * @example anychart.charts.Cartesian3d.normal_set
  * @param {!Object=} opt_value State settings to set.
- * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
  * @since 8.0.0
  */
 anychart.charts.Cartesian3d.prototype.normal;
@@ -425,14 +425,14 @@ anychart.charts.Cartesian3d.prototype.hovered;
  * Setter for hovered state settings.
  * @example anychart.charts.Cartesian3d.hovered_set
  * @param {!Object=} opt_value State settings to set.
- * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
  * @since 8.0.0
  */
 anychart.charts.Cartesian3d.prototype.hovered;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.Cartesian.prototype.selected
+//  anychart.charts.Cartesian3d.prototype.selected
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -509,7 +509,7 @@ anychart.charts.Cartesian3d.prototype.maxPointWidth;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.Cartesian.prototype.minPointLength
+//  anychart.charts.Cartesian3d.prototype.minPointLength
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -533,6 +533,298 @@ anychart.charts.Cartesian3d.prototype.minPointLength;
  */
 anychart.charts.Cartesian3d.prototype.minPointLength;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian3d.prototype.xScale
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart X-scale.
+ * @shortDescription X-scale settings.
+ * @category Axes and Scales
+ * @example anychart.charts.Cartesian3d.xScale_get
+ * @return {anychart.scales.Ordinal} Default chart scale value.
+ */
+anychart.charts.Cartesian3d.prototype.xScale;
+
+/**
+ * Setter for the chart X-scale.
+ * @detailed <b>Note:</b> This scale will be passed to all scale dependent chart elements if they don't have their own scales.
+ * @example anychart.charts.Cartesian3d.xScale_set
+ * @param {(Object|anychart.enums.ScaleTypes|string|anychart.scales.Base)=} opt_value [anychart.scales.Ordinal] X-scale to set.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
+ */
+anychart.charts.Cartesian3d.prototype.xScale;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian3d.prototype.yScale
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart Y-scale.
+ * @shortDescription Y-scale settings.
+ * @category Axes and Scales
+ * @example anychart.charts.Cartesian3d.yScale_get
+ * @return {anychart.scales.Linear} Default chart scale value.
+ */
+anychart.charts.Cartesian3d.prototype.yScale;
+
+/**
+ * Setter for the chart Y-scale.
+ * @detailed <b>Note:</b> This scale will be passed to all scale dependent chart elements if they don't have their own scales.
+ * @example anychart.charts.Cartesian3d.yScale_set
+ * @param {(Object|anychart.enums.ScaleTypes|string|anychart.scales.Base)=} opt_value [anychart.scales.Linear] Y-scale to set.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
+ */
+anychart.charts.Cartesian3d.prototype.yScale;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian3d.prototype.xAxis
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart X-axis.
+ * @shortDescription X-axis settings.
+ * @category Axes and Scales
+ * @param {number=} opt_index [0] Chart axis index. If not set - creates a new instance and adds it to the end of the array.
+ * @return {!anychart.core.axes.Linear} Axis instance by index.
+ */
+anychart.charts.Cartesian3d.prototype.xAxis;
+
+/**
+ * Setter for the chart X-axis.
+ * @param {(Object|boolean|null)=} opt_value Chart axis settings to set.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
+ */
+anychart.charts.Cartesian3d.prototype.xAxis;
+
+/**
+ * Setter for the chart X-axis by index.
+ * @param {number=} opt_index [0] Chart axis index.
+ * @param {(Object|boolean|null)=} opt_value Chart axis settings to set.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
+ */
+anychart.charts.Cartesian3d.prototype.xAxis;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian3d.prototype.yAxis
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart Y-axis.
+ * @shortDescription Y-axis settings.
+ * @category Axes and Scales
+ * @param {number=} opt_index [0] Chart axis index. If not set - creates a new instance and adds it to the end of the array.
+ * @return {!anychart.core.axes.Linear} Axis instance by index.
+ */
+anychart.charts.Cartesian3d.prototype.yAxis;
+
+/**
+ * Setter for the chart Y-axis.
+ * @param {(Object|boolean|null)=} opt_value Chart axis settings to set.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
+ */
+anychart.charts.Cartesian3d.prototype.yAxis;
+
+/**
+ * Setter for the chart Y-axis by index.
+ * @param {number=} opt_index [0] Chart axis index.
+ * @param {(Object|boolean|null)=} opt_value Chart axis settings to set.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
+ */
+anychart.charts.Cartesian3d.prototype.yAxis;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian3d.prototype.yGrid
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart grid by Y-scale.
+ * @shortDescription Grid settings.
+ * @category Axes and Scales
+ * @example anychart.charts.Cartesian3d.yGrid_get
+ * @param {number=} opt_index [0] Chart grid index. If not set - creates a new instance and adds it to the end of the array.
+ * @return {!anychart.core.grids.Linear} Grid instance by index.
+ * @since 8.0.0
+ */
+anychart.charts.Cartesian3d.prototype.yGrid;
+
+/**
+ * Setter for the chart grid by Y-scale.
+ * @detailed Sets chart yGrid settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart yGrid.</li>
+ *   <li><b>object</b> - sets chart yGrid settings.</li>
+ * </ul>
+ * @example anychart.charts.Cartesian3d.yGrid_set_asBool Disable/Enable grid
+ * @example anychart.charts.Cartesian3d.yGrid_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Chart grid settings to set.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
+ * @since 8.0.0
+ */
+anychart.charts.Cartesian3d.prototype.yGrid;
+
+/**
+ * Setter for chart grid by index.
+ * @detailed Sets chart yGrid settings by index depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart yGrid by index.</li>
+ *   <li><b>object</b> - sets chart yGrid settings by index.</li>
+ * </ul>
+ * @example anychart.charts.Cartesian3d.yGrid_set_asIndexBool Disable/Enable grid by index
+ * @example anychart.charts.Cartesian3d.yGrid_set_asIndexObject Using object
+ * @param {number=} opt_index [0] Chart grid index.
+ * @param {(Object|boolean|null)=} opt_value [false] Chart grid settings to set.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
+ * @since 8.0.0
+ */
+anychart.charts.Cartesian3d.prototype.yGrid;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian3d.prototype.xGrid
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart grid by X-scale.
+ * @shortDescription Grid settings.
+ * @category Axes and Scales
+ * @example anychart.charts.Cartesian3d.xGrid_get
+ * @param {number=} opt_index [0] Chart grid index. If not set - creates a new instance and adds it to the end of the array.
+ * @return {!anychart.core.grids.Linear} Grid instance by index.
+ * @since 8.0.0
+ */
+anychart.charts.Cartesian3d.prototype.xGrid;
+
+/**
+ * Setter for the chart grid by X-scale.
+ * @detailed Sets chart xGrid settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart xGrid.</li>
+ *   <li><b>object</b> - sets chart xGrid settings.</li>
+ * </ul>
+ * @example anychart.charts.Cartesian3d.xGrid_set_asBool Disable/Enable grid
+ * @example anychart.charts.Cartesian3d.xGrid_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Chart grid settings to set.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
+ * @since 8.0.0
+ */
+anychart.charts.Cartesian3d.prototype.xGrid;
+
+/**
+ * Setter for chart grid by index.
+ * @detailed Sets chart xGrid settings by index depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart xGrid by index.</li>
+ *   <li><b>object</b> - sets chart xGrid settings by index.</li>
+ * </ul>
+ * @example anychart.charts.Cartesian3d.xGrid_set_asIndexBool Disable/Enable grid by index
+ * @example anychart.charts.Cartesian3d.xGrid_set_asIndexObject Using object
+ * @param {number=} opt_index [0] Chart grid index.
+ * @param {(Object|boolean|null)=} opt_value [false] Chart grid settings to set.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
+ * @since 8.0.0
+ */
+anychart.charts.Cartesian3d.prototype.xGrid;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian3d.prototype.xMinorGrid
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart minor grid by X-scale.
+ * @shortDescription Minor grid settings.
+ * @category Axes and Scales
+ * @param {number=} opt_index [0] Chart minor grid index. If not set - creates a new instance and adds it to the end of the array.
+ * @return {!anychart.core.grids.Linear} Minor grid instance by index.
+ */
+anychart.charts.Cartesian3d.prototype.xMinorGrid;
+
+/**
+ * Setter for the chart minor grid by X-scale.
+ * @detailed Sets chart minor grid settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart minor grid.</li>
+ *   <li><b>object</b> - sets chart minor grid settings.</li>
+ * </ul>
+ * @param {(Object|boolean|null)=} opt_value [false] Chart minor grid settings to set.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
+ */
+anychart.charts.Cartesian3d.prototype.xMinorGrid;
+
+/**
+ * Setter for the chart minor grid by index.
+ * @detailed Sets chart minor grid settings by index depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart minor grid by index.</li>
+ *   <li><b>object</b> - sets chart minor grid settings by index.</li>
+ * </ul>
+ * @param {number=} opt_index [0] Chart minor grid index.
+ * @param {(Object|boolean|null)=} opt_value [false] Chart minor grid settings to set.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
+ */
+anychart.charts.Cartesian3d.prototype.xMinorGrid;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian3d.prototype.yMinorGrid
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart minor grid by Y-scale.
+ * @shortDescription Minor grid settings.
+ * @category Axes and Scales
+ * @example anychart.charts.Cartesian3d.yMinorGrid_get
+ * @param {number=} opt_index [0] Chart minor grid index. If not set - creates a new instance and adds it to the end of the array.
+ * @return {!anychart.core.grids.Linear} Minor grid instance by index.
+ */
+anychart.charts.Cartesian3d.prototype.yMinorGrid;
+
+/**
+ * Setter for the chart minor grid by Y-scale.
+ * @detailed Sets chart minor grid settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart minor grid.</li>
+ *   <li><b>object</b> - sets chart minor grid settings.</li>
+ * </ul>
+ * @example anychart.charts.Cartesian3d.yMinorGrid_set_asBool Disable/Enable minor grid
+ * @example anychart.charts.Cartesian3d.yMinorGrid_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [false] Chart minor grid settings to set.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
+ */
+anychart.charts.Cartesian3d.prototype.yMinorGrid;
+
+/**
+ * Setter for the chart minor grid by index.
+ * @detailed Sets chart minor grid settings by index depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart minor grid by index.</li>
+ *   <li><b>object</b> - sets chart minor grid settings by index.</li>
+ * </ul>
+ * @example anychart.charts.Cartesian3d.yMinorGrid_set_asIndexBool Disable/Enable minor grid by index
+ * @example anychart.charts.Cartesian3d.yMinorGrid_set_asIndexObject Using object
+ * @param {number=} opt_index [0] Chart minor grid index.
+ * @param {(Object|boolean|null)=} opt_value [false] Chart minor grid settings to set.
+ * @return {anychart.charts.Cartesian3d} Self instance for method chaining.
+ */
+anychart.charts.Cartesian3d.prototype.yMinorGrid;
+
 /** @inheritDoc */
 anychart.charts.Cartesian3d.prototype.defaultSeriesType;
 
@@ -544,24 +836,6 @@ anychart.charts.Cartesian3d.prototype.xZoom;
 
 /** @inheritDoc */
 anychart.charts.Cartesian3d.prototype.xScroller;
-
-/** @inheritDoc */
-anychart.charts.Cartesian3d.prototype.xScale;
-
-/** @inheritDoc */
-anychart.charts.Cartesian3d.prototype.yScale;
-
-/** @inheritDoc */
-anychart.charts.Cartesian3d.prototype.grid;
-
-/** @inheritDoc */
-anychart.charts.Cartesian3d.prototype.minorGrid;
-
-/** @inheritDoc */
-anychart.charts.Cartesian3d.prototype.xAxis;
-
-/** @inheritDoc */
-anychart.charts.Cartesian3d.prototype.yAxis;
 
 /** @inheritDoc */
 anychart.charts.Cartesian3d.prototype.lineMarker;
@@ -777,7 +1051,7 @@ anychart.charts.Cartesian3d.prototype.inMarquee;
 anychart.charts.Cartesian3d.prototype.cancelMarquee;;
 
 /** @inheritDoc */
-anychart.charts.Cartesian.prototype.noData;
+anychart.charts.Cartesian3d.prototype.noData;
 
 /** @inheritDoc */
 anychart.charts.Cartesian3d.prototype.exports;

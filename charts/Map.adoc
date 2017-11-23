@@ -17,7 +17,7 @@ anychart.charts.Map;
  * @shortDescription Unbound regions settings.
  * @category Specific settings
  * @example anychart.charts.Map.unboundRegions_get
- * @return {(anychart.core.utils.UnboundRegionsSettings|anychart.enums.MapUnboundRegionsMode)} The current settings for regions.
+ * @return {(anychart.core.utils.UnboundRegionsSettings|anychart.enums.MapUnboundRegionsMode|string)} The current settings for regions.
  * @since 7.6.0
  */
 anychart.charts.Map.prototype.unboundRegions;
@@ -77,7 +77,7 @@ anychart.charts.Map.prototype.colorRange;
  * @category Series
  * @example anychart.charts.Map.choropleth
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Series data as SVG, SVGString, GeoJSON or MapNameString.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.map.series.Choropleth} An instance of the created series.
  * @since 7.6.0
@@ -168,7 +168,7 @@ anychart.charts.Map.prototype.markerPalette;
  * @example anychart.charts.Map.markerPalette_set_asArray Using array
  * @example anychart.charts.Map.markerPalette_set_asObj Using object
  * @example anychart.charts.Map.markerPalette_set_asInstance Using instance
- * @param {(anychart.palettes.Markers|Object|Array.<anychart.enums.MarkerType>)=} opt_value Map marker palette settings to set.
+ * @param {(anychart.palettes.Markers|Object|Array.<anychart.enums.MarkerType|string>)=} opt_value Map marker palette settings to set.
  * @return {!anychart.charts.Map} Self instance for method chaining.
  * @since 7.6.0
  */
@@ -275,7 +275,7 @@ anychart.charts.Map.prototype.geoIdField;
  * @category Series
  * @example anychart.charts.Map.bubble
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Series data as SVG, SVGString, GeoJSON or MapNameString.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.map.series.Bubble} An instance of the created series.
  * @since 7.7.0
@@ -356,7 +356,7 @@ anychart.charts.Map.prototype.defaultSeriesType;
  * @detailed Setting the default type using this method affects only series created using addSeries() method after the default is set.
  * All series created prior to that do not change the type.
  * @example anychart.charts.Map.defaultSeriesType_set
- * @param {(string|anychart.enums.MapSeriesType)=} opt_value Series type.
+ * @param {(anychart.enums.MapSeriesType|string)=} opt_value Series type.
  * @return {anychart.charts.Map} Self instance for method chaining.
  * @since 7.8.0
  */
@@ -743,7 +743,7 @@ anychart.charts.Map.prototype.translateFeature;
  * @category Series
  * @example anychart.charts.Map.marker
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Series data as SVG, SVGString, GeoJSON or MapNameString.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.map.series.Marker} An instance of the created series.
  * @since 7.10.0
@@ -848,7 +848,7 @@ anychart.charts.Map.prototype.globalToLocal;
  * @category Series
  * @example anychart.charts.Map.connector
  * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Series data as SVG, SVGString, GeoJSON or MapNameString.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.map.series.Connector} An instance of the class for method chaining
  * @since 7.10.0
@@ -1010,7 +1010,7 @@ anychart.charts.Map.prototype.scale;
 /**
  * Setter for the map geo scale.
  * @example anychart.charts.Map.scale_set
- * @param {(anychart.scales.Geo|Object)=} opt_value Scale to set.
+ * @param {(anychart.scales.Geo|Object)=} opt_value ["geo"] Scale to set.
  * @return {anychart.scales.Geo} Map geo scale value.
  * @since 7.12.0
  */
@@ -1203,7 +1203,7 @@ anychart.charts.Map.prototype.normal;
  * Setter for normal state settings.
  * @example anychart.charts.Map.normal_set
  * @param {!Object=} opt_value State settings to set.
- * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ * @return {anychart.charts.Map} Self instance for method chaining.
  * @since 8.0.0
  */
 anychart.charts.Map.prototype.normal;
@@ -1228,7 +1228,7 @@ anychart.charts.Map.prototype.hovered;
  * Setter for hovered state settings.
  * @example anychart.charts.Map.hovered_set
  * @param {!Object=} opt_value State settings to set.
- * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ * @return {anychart.charts.Map} Self instance for method chaining.
  * @since 8.0.0
  */
 anychart.charts.Map.prototype.hovered;

@@ -16,7 +16,7 @@ anychart.charts.Resource;
  * @typedef {Object} anychart.charts.Resource.ZoomLevel
  * @property {(string|undefined)} id Level identifier.
  * @property {Array.<anychart.core.resource.TimeLine.Level>} levels Levels list.
- * @property {(anychart.enums.Interval|undefined)} unit Interval.
+ * @property {(anychart.enums.Interval|string|undefined)} unit Interval.
  * @property {(number|undefined)} count Unit count.
  * @property {number} unitPixSize Unit size.
  */
@@ -46,7 +46,7 @@ anychart.charts.Resource.prototype.data;
  * @example anychart.charts.Resource.data_set_asDataset Using dataset
  * @example anychart.charts.Resource.data_set_asMapping Using mapping
  * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
  * @return {(!anychart.charts.Resource)} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -71,7 +71,7 @@ anychart.charts.Resource.prototype.xScale;
 /**
  * Setter for the X scale.
  * @example anychart.charts.Resource.xScale_set
- * @param {Object=} opt_value Value to set
+ * @param {Object=} opt_value [anychart.scales.DateTimeWithCalendar] Value to set
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -151,7 +151,7 @@ anychart.charts.Resource.prototype.verticalScrollBar;
  * @category Specific settings
  * @listing See listing
  * var mode = chart.timeTrackingMode();
- * @return {anychart.enums.TimeTrackingMode} The time tracking mode.
+ * @return {anychart.enums.TimeTrackingMode|string} The time tracking mode.
  * @since 7.12.0
  */
 anychart.charts.Resource.prototype.timeTrackingMode;
@@ -723,6 +723,30 @@ anychart.charts.Resource.prototype.selectPoint;
  * @since 7.13.0
  */
 anychart.charts.Resource.prototype.unselect;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.currentStartDate
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current start date.
+ * @shortDescription Current start date.
+ * @category Size and Position
+ * @listing See listing
+ * var currentStartDate = chart.currentStartDate();
+ * @return {(Date|number|string)} Current start date.
+ */
+anychart.charts.Resource.prototype.currentStartDate;
+
+/**
+ * Setter for the current start date.
+ * @example anychart.charts.Resource.currentStartDate
+ * @param {(Date|number|string)} value Current start date to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.currentStartDate;
 
 /** @inheritDoc */
 anychart.charts.Resource.prototype.getType;

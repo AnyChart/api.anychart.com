@@ -22,7 +22,7 @@ anychart.core.cartesian;
  * </ul>
  * You can also obtain <i>getIterator, getResetIterator</i> iterators here.
  * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Series data.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @constructor
  * @extends {anychart.core.SeriesBase}
@@ -143,7 +143,7 @@ anychart.core.cartesian.series.Base.prototype.data;
  * @example anychart.core.cartesian.series.Base.data_set_asArrayofObjects Using array of object
  * @example anychart.core.cartesian.series.Base.data_set_asCSV Using CSV
  * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
- * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed by first param, you can pass CSV parser settings here as a hash map.
+ * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed by first param, you can pass CSV parser settings here as a hash map.
  * @return {anychart.core.cartesian.series.Base} Self instance for method chaining.
  */
 anychart.core.cartesian.series.Base.prototype.data;
@@ -195,7 +195,7 @@ anychart.core.cartesian.series.Base.prototype.xScale;
 /**
  * Setter for the series X scale.
  * @example anychart.core.cartesian.series.Base.xScale_set
- * @param {(anychart.scales.Base|Object|anychart.enums.ScaleTypes|string)=} opt_value ["ordinal"] Value to set.
+ * @param {(anychart.scales.Base|Object|anychart.enums.ScaleTypes|string)=} opt_value [anychart.scales.Ordinal] Value to set.
  * @return {anychart.core.cartesian.series.Base} Self instance for method chaining.
  */
 anychart.core.cartesian.series.Base.prototype.xScale;
@@ -219,7 +219,7 @@ anychart.core.cartesian.series.Base.prototype.yScale;
 /**
  * Setter for the series Y scale.
  * @example anychart.core.cartesian.series.Base.yScale_set
- * @param {(anychart.scales.Base|Object|anychart.enums.ScaleTypes|string)=} opt_value ["linear"] Value to set.
+ * @param {(anychart.scales.Base|Object|anychart.enums.ScaleTypes|string)=} opt_value [anychart.scales.Linear] Value to set.
  * @return {anychart.core.cartesian.series.Base} Self instance for method chaining.
  */
 anychart.core.cartesian.series.Base.prototype.yScale;
@@ -264,7 +264,6 @@ anychart.core.cartesian.series.Base.prototype.tooltip;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * @ignoreDoc User friendly API hide
  * Getter for current series data labels.
  * @shortDescription Labels settings.
  * @category Point Elements
@@ -274,7 +273,6 @@ anychart.core.cartesian.series.Base.prototype.tooltip;
 anychart.core.cartesian.series.Base.prototype.labels;
 
 /**
- * @ignoreDoc User friendly API hide
  * Setter for series data labels.
  * @detailed Sets series labels settings depending on parameter type:
  * <ul>
@@ -705,6 +703,33 @@ anychart.core.cartesian.series.Base.prototype.selected;
  * @since 8.0.0
  */
 anychart.core.cartesian.series.Base.prototype.selected;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Base.prototype.markers
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for series data markers.
+ * @shortDescription Markers settings.
+ * @category Point Elements
+ * @return {!anychart.core.ui.MarkersFactory} Markers instance.
+ */
+anychart.core.cartesian.series.Base.prototype.markers;
+
+/**
+ * Setter for series data markers.
+ * @detailed Sets series markers settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable series markers.</li>
+ *   <li><b>object</b> - sets series markers settings.</li>
+ *   <li><b>string</b> - sets series markers type.</li>
+ * </ul>
+ * @param {(Object|boolean|null|string)=} opt_value [false] Series data markers settings.
+ * @return {anychart.core.cartesian.series.Base} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Base.prototype.markers;
 
 /** @inheritDoc */
 anychart.core.cartesian.series.Base.prototype.getPoint;

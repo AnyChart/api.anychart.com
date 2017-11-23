@@ -29,7 +29,7 @@ anychart.core.stock.Scroller.prototype.yScale;
 /**
  * Setter for the scroller Y-scale.
  * @example anychart.core.stock.Scroller.yScale_set
- * @param {(anychart.enums.ScatterScaleTypes|anychart.scales.ScatterBase|Object)=} opt_value Y-scale to set.
+ * @param {(anychart.enums.ScatterScaleTypes|string|anychart.scales.ScatterBase|Object)=} opt_value [anychart.scales.Linear] Y-scale to set.
  * @return {anychart.core.stock.Scroller} Self instance for method chaining.
  * @since 7.7.0
  */
@@ -81,10 +81,10 @@ anychart.core.stock.Scroller.prototype.xAxis;
  * @example anychart.core.stock.Scroller.column_table Using data settings
  * @example anychart.core.stock.Scroller.column_csv Using CSV
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -108,10 +108,10 @@ anychart.core.stock.Scroller.prototype.column;
  * @example anychart.core.stock.Scroller.line_table Using data settings
  * @example anychart.core.stock.Scroller.line_csv Using csv
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -135,10 +135,10 @@ anychart.core.stock.Scroller.prototype.line;
  * @example anychart.core.stock.Scroller.ohlc_table Using data settings
  * @example anychart.core.stock.Scroller.ohlc_csv Using csv
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -178,7 +178,7 @@ anychart.core.stock.Scroller.prototype.getSeries;
  * @shortDescription Default series type.
  * @category Specific settings
  * @example anychart.core.stock.Scroller.defaultSeriesType_get
- * @return {string|anychart.enums.StockSeriesType} Default series type.
+ * @return {anychart.enums.StockSeriesType|string} Default series type.
  * @since 7.8.0
  */
 anychart.core.stock.Scroller.prototype.defaultSeriesType;
@@ -189,7 +189,7 @@ anychart.core.stock.Scroller.prototype.defaultSeriesType;
  * @detailed Setting the default type using this method affects only series created using addSeries() method after the default is set.
  * All series created prior to that do not change the type.
  * @example anychart.core.stock.Scroller.defaultSeriesType_set
- * @param {(string|anychart.enums.StockSeriesType)=} opt_value Default series type.
+ * @param {(anychart.enums.StockSeriesType|string)=} opt_value Default series type.
  * @return {anychart.core.stock.Scroller} Self instance for method chaining.
  * @since 7.8.0
  */
@@ -363,7 +363,7 @@ anychart.core.stock.Scroller.prototype.allowRangeChange;
  * @example anychart.core.stock.Scroller.ema
  * @param {!anychart.data.TableMapping} mapping Data mapping.
  * @param {number=} opt_period [20] Period.
- * @param {(string|anychart.enums.StockSeriesType)=} opt_seriesType ["line"] Series type for EMA indicator (type as "line", "column", "ohlc").
+ * @param {(anychart.enums.StockSeriesType|string)=} opt_seriesType ["line"] Series type for EMA indicator (type as "line", "column", "ohlc").
  * @return {anychart.core.stock.indicators.EMA} An instance of the created series.
  * @since 7.9.0
  */
@@ -385,9 +385,9 @@ anychart.core.stock.Scroller.prototype.ema;
  * @param {number=} opt_fastPeriod [12] Fast period. Fast period must be greater than the slow period.
  * @param {number=} opt_slowPeriod [26] Slow period.
  * @param {number=} opt_signalPeriod [9] Signal period.
- * @param {(string|anychart.enums.StockSeriesType)=} opt_macdSeriesType ["line"] Series type for MACD indicator (type as "line", "column", "ohlc").
- * @param {(string|anychart.enums.StockSeriesType)=} opt_signalSeriesType ["line"] Series type for signal (type as "line", "column", "ohlc").
- * @param {(string|anychart.enums.StockSeriesType)=} opt_histogramSeriesType ["column"] Series type for histogram (type as "line", "column", "ohlc").
+ * @param {(anychart.enums.StockSeriesType|string)=} opt_macdSeriesType ["line"] Series type for MACD indicator (type as "line", "column", "ohlc").
+ * @param {(anychart.enums.StockSeriesType|string)=} opt_signalSeriesType ["line"] Series type for signal (type as "line", "column", "ohlc").
+ * @param {(anychart.enums.StockSeriesType|string)=} opt_histogramSeriesType ["column"] Series type for histogram (type as "line", "column", "ohlc").
  * @return {anychart.core.stock.indicators.MACD} An instance of the created series.
  * @since 7.9.0
  */
@@ -406,7 +406,7 @@ anychart.core.stock.Scroller.prototype.macd;
  * @example anychart.core.stock.Scroller.roc
  * @param {!anychart.data.TableMapping} mapping Data mapping.
  * @param {number=} opt_period [20] Period.
- * @param {(string|anychart.enums.StockSeriesType)=} opt_seriesType ["line"] Series type for Roc indicator (type as "line", "column", "ohlc").
+ * @param {(anychart.enums.StockSeriesType|string)=} opt_seriesType ["line"] Series type for Roc indicator (type as "line", "column", "ohlc").
  * @return {anychart.core.stock.indicators.RoC} An instance of the created series.
  * @since 7.9.0
  */
@@ -425,7 +425,7 @@ anychart.core.stock.Scroller.prototype.roc;
  * @example anychart.core.stock.Scroller.rsi
  * @param {!anychart.data.TableMapping} mapping Data mapping.
  * @param {number=} opt_period [14] Period.
- * @param {(string|anychart.enums.StockSeriesType)=} opt_seriesType ["line"] Series type for RSI indicator (type as "line", "column", "ohlc").
+ * @param {(anychart.enums.StockSeriesType|string)=} opt_seriesType ["line"] Series type for RSI indicator (type as "line", "column", "ohlc").
  * @return {anychart.core.stock.indicators.RSI} An instance of the created series.
  * @since 7.9.0
  */
@@ -444,7 +444,7 @@ anychart.core.stock.Scroller.prototype.rsi;
  * @example anychart.core.stock.Scroller.sma
  * @param {!anychart.data.TableMapping} mapping Data mapping.
  * @param {number=} opt_period [20] Period.
- * @param {(string|anychart.enums.StockSeriesType)=} opt_seriesType ["line"] Series type for SMA indicator (type as "line", "column", "ohlc").
+ * @param {(anychart.enums.StockSeriesType|string)=} opt_seriesType ["line"] Series type for SMA indicator (type as "line", "column", "ohlc").
  * @return {anychart.core.stock.indicators.SMA} An instance of the created series.
  * @since 7.9.0
  */
@@ -462,10 +462,10 @@ anychart.core.stock.Scroller.prototype.sma;
  * @category Series
  * @example anychart.core.stock.Scroller.area
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -487,10 +487,10 @@ anychart.core.stock.Scroller.prototype.area;
  * @category Series
  * @example anychart.core.stock.Scroller.candlestick
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -512,10 +512,10 @@ anychart.core.stock.Scroller.prototype.candlestick;
  * @category Series
  * @example anychart.core.stock.Scroller.marker
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -537,10 +537,10 @@ anychart.core.stock.Scroller.prototype.marker;
  * @category Series
  * @example anychart.core.stock.Scroller.rangeArea
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -562,10 +562,10 @@ anychart.core.stock.Scroller.prototype.rangeArea;
  * @category Series
  * @example anychart.core.stock.Scroller.rangeColumn
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -587,10 +587,10 @@ anychart.core.stock.Scroller.prototype.rangeColumn;
  * @category Series
  * @example anychart.core.stock.Scroller.rangeSplineArea
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -612,10 +612,10 @@ anychart.core.stock.Scroller.prototype.rangeSplineArea;
  * @category Series
  * @example anychart.core.stock.Scroller.rangeStepArea
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -637,10 +637,10 @@ anychart.core.stock.Scroller.prototype.rangeStepArea;
  * @category Series
  * @example anychart.core.stock.Scroller.spline
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -662,10 +662,10 @@ anychart.core.stock.Scroller.prototype.spline;
  * @category Series
  * @example anychart.core.stock.Scroller.splineArea
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -687,10 +687,10 @@ anychart.core.stock.Scroller.prototype.splineArea;
  * @category Series
  * @example anychart.core.stock.Scroller.stepArea
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -712,10 +712,10 @@ anychart.core.stock.Scroller.prototype.stepArea;
  * @category Series
  * @example anychart.core.stock.Scroller.stepLine
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -737,8 +737,8 @@ anychart.core.stock.Scroller.prototype.stepLine;
  * @example anychart.core.stock.Scroller.aroon
  * @param {!anychart.data.TableMapping} mapping Data mapping
  * @param {number=} opt_period [20] Period
- * @param {anychart.enums.StockSeriesType=} opt_upSeriesType ["line"] Up Series type for the Aroon indicator.
- * @param {anychart.enums.StockSeriesType=} opt_downSeriesType ["line"] Down Series type for the Aroon indicator.
+ * @param {anychart.enums.StockSeriesType|string=} opt_upSeriesType ["line"] Up Series type for the Aroon indicator.
+ * @param {anychart.enums.StockSeriesType|string=} opt_downSeriesType ["line"] Down Series type for the Aroon indicator.
  * @return {anychart.core.stock.indicators.Aroon} An instance of the created series.
  * @since 7.12.0
  */
@@ -852,7 +852,7 @@ anychart.core.stock.Scroller.prototype.bbandsWidth;
  * @example anychart.core.stock.Scroller.atr
  * @param {!anychart.data.TableMapping} mapping Data mapping.
  * @param {number=} opt_period [14] Moving average period value.
- * @param {anychart.enums.StockSeriesType=} opt_seriesType ["line"] Series type for the Average True Range indicator.
+ * @param {anychart.enums.StockSeriesType|string=} opt_seriesType ["line"] Series type for the Average True Range indicator.
  * @return {anychart.core.stock.indicators.ATR} An instance of the created series.
  * @since 7.13.0
  */
@@ -873,13 +873,13 @@ anychart.core.stock.Scroller.prototype.atr;
  * @param {number=} opt_kPeriod [14] Indicator %K period.
  * @param {number=} opt_kMAPeriod [5] Indicator %K smoothing period.
  * @param {number=} opt_dPeriod [5] Indicator %D period.
- * @param {anychart.enums.MovingAverageType=} opt_kMAType ["ema"] Indicator %K smoothing type.
- * @param {anychart.enums.MovingAverageType=} opt_dMAType ["ema"] Indicator %D smoothing type.
+ * @param {anychart.enums.MovingAverageType|string=} opt_kMAType ["ema"] Indicator %K smoothing type.
+ * @param {anychart.enums.MovingAverageType|string=} opt_dMAType ["ema"] Indicator %D smoothing type.
  * @param {number=} opt_kMultiplier [-2] The %K multiplier to calculate the % J values.
  * @param {number=} opt_dMultiplier [3] The %D multiplier to calculate the % J values.
- * @param {anychart.enums.StockSeriesType=} opt_kSeriesType ["line"] Series type for %K value.
- * @param {anychart.enums.StockSeriesType=} opt_dSeriesType ["line"] Series type for %D value.
- * @param {anychart.enums.StockSeriesType=} opt_jSeriesType ["line"] Series type for %J value.
+ * @param {anychart.enums.StockSeriesType|string=} opt_kSeriesType ["line"] Series type for %K value.
+ * @param {anychart.enums.StockSeriesType|string=} opt_dSeriesType ["line"] Series type for %D value.
+ * @param {anychart.enums.StockSeriesType|string=} opt_jSeriesType ["line"] Series type for %J value.
  * @return {anychart.core.stock.indicators.KDJ} An instance of the created series.
  * @since 7.13.0
  */
@@ -899,10 +899,10 @@ anychart.core.stock.Scroller.prototype.kdj;
  * @param {number=} opt_kPeriod [14] Moving average period value for %K.
  * @param {number=} opt_kMAPeriod [1] Indicator %K smoothing period.
  * @param {number=} opt_dPeriod [3] Moving average period value for %D.
- * @param {anychart.enums.MovingAverageType=} opt_kMAType ["sma"] Indicator %K smoothing type.
- * @param {anychart.enums.MovingAverageType=} opt_dMAType ["sma"] Indicator %D smoothing type.
- * @param {anychart.enums.StockSeriesType=} opt_kSeriesType ["line"] Series type for %K value.
- * @param {anychart.enums.StockSeriesType=} opt_dSeriesType ["line"] Series type for %D value.
+ * @param {anychart.enums.MovingAverageType|string=} opt_kMAType ["sma"] Indicator %K smoothing type.
+ * @param {anychart.enums.MovingAverageType|string=} opt_dMAType ["sma"] Indicator %D smoothing type.
+ * @param {anychart.enums.StockSeriesType|string=} opt_kSeriesType ["line"] Series type for %K value.
+ * @param {anychart.enums.StockSeriesType|string=} opt_dSeriesType ["line"] Series type for %D value.
  * @return {anychart.core.stock.indicators.Stochastic} An instance of the created series.
  * @since 7.13.0
  */
@@ -919,7 +919,7 @@ anychart.core.stock.Scroller.prototype.stochastic;
  * @category Technical Indicators
  * @example anychart.core.stock.Scroller.adl
  * @param {!anychart.data.TableMapping} mapping Data mapping.
- * @param {anychart.enums.StockSeriesType=} opt_seriesType Series type.
+ * @param {anychart.enums.StockSeriesType|string=} opt_seriesType Series type.
  * @return {anychart.core.stock.indicators.ADL} An instance of the created series.
  * @since 7.14.0
  */
@@ -937,7 +937,7 @@ anychart.core.stock.Scroller.prototype.adl;
  * @example anychart.core.stock.Scroller.cmf
  * @param {!anychart.data.TableMapping} mapping Data mapping.
  * @param {number=} opt_period Moving average period value.
- * @param {anychart.enums.StockSeriesType=} opt_seriesType Series type.
+ * @param {anychart.enums.StockSeriesType|string=} opt_seriesType Series type.
  * @return {anychart.core.stock.indicators.CMF} An instance of the created series.
  * @since 7.14.0
  */
@@ -955,7 +955,7 @@ anychart.core.stock.Scroller.prototype.cmf;
  * @example anychart.core.stock.Scroller.cci
  * @param {!anychart.data.TableMapping} mapping Data mapping.
  * @param {number=} opt_period Moving average period value.
- * @param {anychart.enums.StockSeriesType=} opt_seriesType Series type.
+ * @param {anychart.enums.StockSeriesType|string=} opt_seriesType Series type.
  * @return {anychart.core.stock.indicators.CCI} An instance of the created series.
  * @since 7.14.0
  */
@@ -975,7 +975,7 @@ anychart.core.stock.Scroller.prototype.cci;
  * @param {number=} opt_fastPeriod [3] Indicator period.
  * @param {number=} opt_slowPeriod [10] Indicator period.
  * @param {string=} opt_maType [EMA] Indicator smoothing type.
- * @param {anychart.enums.StockSeriesType=} opt_seriesType ["line"] Series type.
+ * @param {anychart.enums.StockSeriesType|string=} opt_seriesType ["line"] Series type.
  * @return {anychart.core.stock.indicators.CHO} An instance of the created series.
  * @since 7.14.0
  */
@@ -995,9 +995,9 @@ anychart.core.stock.Scroller.prototype.cho;
  * @param {number=} opt_period [14] Moving average period value.
  * @param {number=} opt_adxPeriod [14] Period for ADX.
  * @param {boolean=} opt_useWildersSmoothing [true] Wilders smoothing mode.
- * @param {anychart.enums.StockSeriesType=} opt_pdiSeriesType ["line"] Type for +DI series.
- * @param {anychart.enums.StockSeriesType=} opt_ndiSeriesType ["line"] Type for -DI series.
- * @param {anychart.enums.StockSeriesType=} opt_adxSeriesType ["line"] Type for ADX series.
+ * @param {anychart.enums.StockSeriesType|string=} opt_pdiSeriesType ["line"] Type for +DI series.
+ * @param {anychart.enums.StockSeriesType|string=} opt_ndiSeriesType ["line"] Type for -DI series.
+ * @param {anychart.enums.StockSeriesType|string=} opt_adxSeriesType ["line"] Type for ADX series.
  * @return {anychart.core.stock.indicators.DMI} An instance of the created series.
  * @since 7.14.0
  */
@@ -1016,10 +1016,10 @@ anychart.core.stock.Scroller.prototype.dmi;
  * @example anychart.core.stock.Scroller.jumpLine_table Using data settings
  * @example anychart.core.stock.Scroller.jumpLine_csv Using csv
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -1042,10 +1042,10 @@ anychart.core.stock.Scroller.prototype.jumpLine;
  * @example anychart.core.stock.Scroller.stick_table Using data settings
  * @example anychart.core.stock.Scroller.stick_csv Using CSV
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.
@@ -1120,10 +1120,10 @@ anychart.core.stock.Scroller.prototype.hatchFillPalette;
  * @category Series
  * @example anychart.core.stock.Scroller.hilo
  * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
- * @param {Object.<({column: number, type: anychart.enums.AggregationType, weights: number}|number)>=} opt_mappingSettings
+ * @param {Object.<({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
- *      - 'type': anychart.enums.AggregationType - How to group values for the field. Defaults to 'close'.
+ *      - 'type': anychart.enums.AggregationType|string - How to group values for the field. Defaults to 'close'.
  *      - 'weights': number - Column to get weights from for 'weightedAverage' grouping type. Note: If type set to
  *          'weightedAverage', but opt_weightsColumn is not passed - uses 'average' grouping instead.
  *   or numbers - just the column index to get values from. In this case the grouping type will be set to 'close'.

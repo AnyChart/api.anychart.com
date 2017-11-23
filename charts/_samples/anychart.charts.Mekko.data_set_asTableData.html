@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="x-cat-tags" content="mekko anyChart"/>
+    <link rel="stylesheet" href="https://cdn.anychart.com/releases/8.0.0/css/anychart-ui.min.css" />
+    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-mekko.min.js"></script>
+    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-annotations.min.js"></script>
+    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-data-adapter.min.js"></script>
+    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-exports.min.js"></script>
+    <script data-export="true" src="https://cdn.anychart.com/releases/8.0.0/js/anychart-ui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js" data-export="true"></script>
+    <script x-export="chart">
+        anychart.onDocumentReady(function () {
+
+            $('#container').append('<div class="table">' +
+                '<table id="table" style="display:none">' +
+                '<tr>' +
+                '<th>Spring</th>' +
+                '<td>20</td>' +
+                '<td>2</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<th>Summer</th>' +
+                '<td>30</td>' +
+                '<td>30</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<th>Autumn</th>' +
+                '<td>110</td>' +
+                '<td>110</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<th>Winter</th>' +
+                '<td>40</td>' +
+                '<td>10</td>' +
+                '</tr>' +
+                '</table>' +
+                '</div>');
+
+            // To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
+            // (https://cdn.anychart.com/js/latest/data-adapter.min.js for latest or https://cdn.anychart.com/js/7.11.1/data-adapter.min.js for the versioned file)
+
+            var tableData = anychart.data.parseHtmlTable("#table", undefined, undefined, "none");
+
+            chart = anychart.mekko();
+
+            // Set data from HTML table.
+            chart.data(tableData);
+
+            chart.title("Set chart data as a table data");
+            chart.container("container");
+            chart.draw();
+        });
+    </script>
+</head>
+<body>
+<div id="container" style="width: 100%; height: 100%"></div>
+</body>
+</html>
