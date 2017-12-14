@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="ac:name" content="anychart.core.ui.Legend.items set"/>
+    <meta name="ac:name" content="anychart.core.ui.Outline.stroke set asFunc"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -31,19 +28,18 @@
             {x: "IE", value: 2}
         ]);
 
-        var legend = chart.legend();
+        var outline = chart.hovered().outline();
 
-        // Set items settings.
-        legend.items([
-            {index: 0, text: "Chrome", iconType: "circle", iconStroke: "2 #F44336", iconFill: "#0091EA"},
-            {index: 1, text: "Firefox", iconFill: "#1976D2", iconHatchFill: "dashed-backward-diagonal"},
-            {index: 2, text: "Safari", iconFill: "#FF5722"},
-            {index: 3, text: "IE", iconMarkerType: "square", iconMarkerFill: "#FFEB3B", iconType: "line"}
-        ]);
+        // Set stroke.
+        outline.stroke(function () {
+            return "3 #F44336";
+        });
 
-        chart.title("Set items settings");
+        chart.title("Set outline stroke parameter as a function");
         chart.container("container");
         chart.draw();
+
+        chart.hover(0);
     });
 </script>
 </body>
