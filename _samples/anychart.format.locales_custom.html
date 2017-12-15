@@ -57,23 +57,22 @@
                     firstDayOfWeek: 6,
                     weekendRange: [5, 6],
                     firstWeekCutOffDay: 5
-                }
-            },
+                }},
             'customOutputLocale': {
                 dateTimeLocale: {
                     eras: ['av. J.-C.', 'ap. J.-C.'],
-                    eraNames: ['avant J??sus-Christ', 'apr??s J??sus-Christ'],
+                    eraNames: ['avant JГ©sus-Christ', 'aprГЁs JГ©sus-Christ'],
                     narrowMonths: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
                     standaloneNarrowMonths: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O',
                         'N', 'D'],
-                    months: ['janvier', 'f??vrier', 'mars', 'avril', 'mai', 'juin', 'juillet',
-                        'ao??t', 'septembre', 'octobre', 'novembre', 'd??cembre'],
-                    standaloneMonths: ['Janvier', 'F??vrier', 'Mars', 'Avril', 'Mai', 'Juin',
-                        'Juillet', 'Ao??t', 'Septembre', 'Octobre', 'Novembre', 'D??cembre'],
-                    shortMonths: ['janv.', 'f??vr.', 'mars', 'avr.', 'mai', 'juin', 'juil.',
-                        'ao??t', 'sept.', 'oct.', 'nov.', 'd??c.'],
-                    standaloneShortMonths: ['Janv.', 'F??vr.', 'Mars', 'Avr.', 'Mai', 'Juin',
-                        'Juil.', 'Ao??t', 'Sept.', 'Oct.', 'Nov.', 'D??c.'],
+                    months: ['janvier', 'fГ©vrier', 'mars', 'avril', 'mai', 'juin', 'juillet',
+                        'aoГ»t', 'septembre', 'octobre', 'novembre', 'dГ©cembre'],
+                    standaloneMonths: ['Janvier', 'FГ©vrier', 'Mars', 'Avril', 'Mai', 'Juin',
+                        'Juillet', 'AoГ»t', 'Septembre', 'Octobre', 'Novembre', 'DГ©cembre'],
+                    shortMonths: ['janv.', 'fГ©vr.', 'mars', 'avr.', 'mai', 'juin', 'juil.',
+                        'aoГ»t', 'sept.', 'oct.', 'nov.', 'dГ©c.'],
+                    standaloneShortMonths: ['Janv.', 'FГ©vr.', 'Mars', 'Avr.', 'Mai', 'Juin',
+                        'Juil.', 'AoГ»t', 'Sept.', 'Oct.', 'Nov.', 'DГ©c.'],
                     weekdays: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi',
                         'samedi'],
                     standaloneWeekdays: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi',
@@ -92,8 +91,7 @@
                     firstDayOfWeek: 0,
                     weekendRange: [5, 6],
                     firstWeekCutOffDay: 3
-                }
-            }
+                }}
         };
 
         anychart.format.inputLocale("customInputLocale");
@@ -102,19 +100,21 @@
         anychart.format.outputDateTimeFormat("dd MMMM yyyy");
 
         var chart = anychart.line([
-            [Date.UTC(2014, 5, 6), 511.53, 500.98, 680.79, 656.40],
-            [Date.UTC(2014, 8, 8), 900, 850, 1100, 1050],
-            [Date.UTC(2014, 9, 10), 700, 630.40, 810.58, 790],
-            [Date.UTC(2014, 10, 12), 380, 315, 450, 415],
-            [Date.UTC(2014, 12, 14), 830, 513, 405, 145]
+            {x: Date.UTC(2014, 5, 6), value: 511.53},
+            {x: Date.UTC(2014, 6, 8), value: 900},
+            {x: Date.UTC(2014, 9, 10), value: 700},
+            {x: Date.UTC(2014, 10, 12), value: 380},
+            {x: Date.UTC(2014, 12, 14), value: 830}
         ]);
 
         var axis = chart.xAxis();
+
         var formatLabels = axis.labels();
         formatLabels.textFormatter(function () {
             return anychart.format.dateTime(this.value);
         });
 
+        chart.title("Set localization");
         chart.container("container");
         chart.draw();
     });
