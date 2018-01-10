@@ -1,0 +1,968 @@
+/**
+ * Label annotation.
+ * @constructor
+ * @extends {anychart.core.annotations.Base}
+ */
+anychart.core.annotations.Label;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.background
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the background.
+ * @shortDescription Background settings.
+ * @category Coloring
+ * @example anychart.core.annotations.Label.background_get
+ * @return {anychart.core.ui.Background} Background instance.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.background;
+
+/**
+ * Setter for the background.
+ * @detailed Sets label background settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable label background.</li>
+ *   <li><b>string</b> - sets label background color value.</li>
+ *   <li><b>object</b> - sets label background settings.</li>
+ * </ul>
+ * @example anychart.core.annotations.Label.background_set_asBool Enable/Disable background
+ * @example anychart.core.annotations.Label.background_set_asObj Using object
+ * @example anychart.core.annotations.Label.background_set_asString Using string
+ * @param {(string|Object|null|boolean)=} opt_value ["#eee 0.5"] Background object to set.
+ * @return {anychart.core.annotations.Label} Returns the background or itself for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.background;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.padding
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for padding settings.
+ * @shortDescription Padding settings.
+ * @category Size and Position
+ * @detailed Also, you can use {@link anychart.core.annotations.Label.Padding#bottom}, {@link anychart.core.annotations.Label.Padding#left},
+ * {@link anychart.core.annotations.Label.Padding#right}, {@link anychart.core.annotations.Label.Padding#top} methods to setting paddings.
+ * @example anychart.core.annotations.Label.padding_get
+ * @return {anychart.core.utils.Padding} Padding settings.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.padding;
+
+/**
+ * Setter for paddings in pixels using a single value.
+ * @listing Examples for paddings
+ * // all paddings 15px
+ * label.padding(15);
+ * // all paddings 15px
+ * label.padding('15px');
+ * // top and bottom 5px ,right and left 15px
+ * label.padding(anychart.utils.padding(5,15));
+ * @example anychart.core.annotations.Label.padding_set_asSingle
+ * @param {(null|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_value [5] Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.padding;
+
+/**
+ * Setter for paddings in pixels using several numbers.
+ * @listing Examples for paddings
+ * // 1) top and bottom 10px, left and right 15px
+ * label.padding(10, '15px');
+ * // 2) top 10px, left and right 15px, bottom 5px
+ * label.padding(10, '15px', 5);
+ * // 3) top 10px, right 15px, bottom 5px, left 12px
+ * label.padding(10, '15px', '5px', 12);
+ * @example anychart.core.annotations.Label.padding_set_asSeveral
+ * @param {(string|number)=} opt_value1 Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 Right or right-left space.
+ * @param {(string|number)=} opt_value3 Bottom space.
+ * @param {(string|number)=} opt_value4 Left space.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.padding;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.adjustFontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the adjust font settings.
+ * @shortDescription Adjusting settings.
+ * @category Content Text Settings
+ * @detailed Returns an array of two elements <b>[isAdjustByWidth, isAdjustByHeight]</b>.
+ *  <ul>
+ *    <li>[false, false] - don't adjust (adjust is off )</li>
+ *    <li>[true, false] - adjust width</li>
+ *    <li>[false, true] - adjust height</li>
+ *    <li>[true, true] - adjust the first suitable value.</li>
+ * </ul>
+ * @return {({width:boolean,height:boolean})} AdjustFontSize settings.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.adjustFontSize;
+
+/**
+ * Setter for the adjust font settings.
+ * @detailed Minimal and maximal font sizes can be configured using:
+ *  {@link anychart.core.annotations.Label#minFontSize} and {@link anychart.core.annotations.Label#maxFontSize}.<br/>
+ * <b>Note:</b> Works only when {@link anychart.core.annotations.Label#width} and {@link anychart.core.annotations.Label#height} are set.<br/>
+ * <b>Note:</b> {@link anychart.core.annotations.Label#fontSize} does not work when adjusting is enabled.
+ * @shortDescription Setter for the adjust font settings.
+ * @listing Example
+ * label.adjustFontSize(false);
+ * // the same
+ * label.adjustFontSize(false, false);
+ * // the same
+ * label.adjustFontSize([false, false]);
+ * @param {({width: boolean, height: boolean}|Array.<boolean>|boolean)=} opt_bothOrByWidth [{width: false, height: false}]
+ * If only one param is set, its value goes for another too (see source code).
+ * @param {boolean=} opt_byHeight Is font needs to be adjusted by height.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.adjustFontSize;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.anchor
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for anchor settings.
+ * @shortDescription Anchor settings.
+ * @category Size and Position
+ * @listing See listing
+ * var anchor = annotation.anchor();
+ * @return {anychart.enums.Anchor|string} Anchor value.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.anchor;
+
+/**
+ * Setter for anchor settings.
+ * @example anychart.core.annotations.Label.anchor_set
+ * @param {(anychart.enums.Anchor|string)=} opt_value ["center"] Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.anchor;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.disablePointerEvents
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the pointer events settings.
+ * @shortDescription Pointer events settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var disablePointerEvents = annotation.disablePointerEvents();
+ * @return {boolean} The pointer events settings.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.disablePointerEvents;
+
+/**
+ * Setter for the pointer events settings.
+ * @param {boolean} opt_value [false] Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.disablePointerEvents;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.fontColor
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font color settings.
+ * @shortDescription Font color settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontColor = annotation.fontColor();
+ * @return {string} Font color settings.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontColor;
+
+/**
+ * Setter for font color settings.
+ * @example anychart.core.annotations.Label.fontColor
+ * @param {string} opt_value Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontColor;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.fontDecoration
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text font decoration.
+ * @shortDescription Font decoration settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontDecoration = annotation.fontDecoration();
+ * @return {anychart.graphics.vector.Text.Decoration|string} Font decoration.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontDecoration;
+
+/**
+ * Setter for the text font decoration.
+ * @example anychart.core.annotations.Label.fontDecoration
+ * @param {(anychart.graphics.vector.Text.Decoration|string)=} opt_value [{@link anychart.graphics.vector.Text.Decoration#NONE}] Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontDecoration;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.fontFamily
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the font family.
+ * @shortDescription Font family settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontDecoration = annotation.fontFamily();
+ * @return {string} Font family.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontFamily;
+
+/**
+ * Setter for font family.
+ * @example anychart.core.annotations.Label.fontFamily
+ * @param {string=} opt_value Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontFamily;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.fontOpacity
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text font opacity.
+ * @shortDescription Font opacity settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontOpacity = annotation.fontOpacity();
+ * @return {number} Font opacity.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontOpacity;
+
+/**
+ * Setter for the text font opacity.<br/>
+ * Double value from 0 to 1.
+ * @example anychart.core.annotations.Label.fontOpacity
+ * @param {number=} opt_value Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontOpacity;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.fontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font size settings.
+ * @shortDescription Font size settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontSize = annotation.fontSize();
+ * @return {number} Font size settings.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontSize;
+
+/**
+ * Setter for font size settings.
+ * @example anychart.core.annotations.Label.fontSize
+ * @param {(number|string)=} opt_value Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontSize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.fontStyle
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font style settings.
+ * @shortDescription Font style settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontStyle = annotation.fontStyle();
+ * @return {anychart.graphics.vector.Text.FontStyle} Font style settings.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontStyle;
+
+/**
+ * Setter for font style settings.
+ * @example anychart.core.annotations.Label.fontStyle
+ * @param {string|anychart.graphics.vector.Text.FontStyle} opt_value Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontStyle;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.fontVariant
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font variant settings.
+ * @shortDescription Font variant settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontVariant = annotation.fontVariant();
+ * @return {anychart.graphics.vector.Text.FontVariant} Font variant settings.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontVariant;
+
+/**
+ * Setter for font variant settings.
+ * @example anychart.core.annotations.Label.fontVariant
+ * @param {string|anychart.graphics.vector.Text.FontVariant} opt_value Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontVariant;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.fontWeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font weight settings.
+ * @shortDescription Font weight settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontWeight = annotation.fontWeight();
+ * @return {string|number} Font weight settings.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontWeight;
+
+/**
+ * Setter for font weight settings.
+ * @example anychart.core.annotations.Label.fontWeight
+ * @param {string|number} opt_value Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.fontWeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.hAlign
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for text horizontal align settings.
+ * @shortDescription Text horizontal align settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var hAlign = annotation.hAlign();
+ * @return {anychart.graphics.vector.Text.HAlign} Horizontal align settings.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.hAlign;
+
+/**
+ * Setter for the text horizontal align settings.
+ * @example anychart.core.annotations.Label.hAlign
+ * @param {string|anychart.graphics.vector.Text.HAlign} opt_value Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.hAlign;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.letterSpacing
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for letter spacing settings.
+ * @shortDescription Text letter spacing settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var letterSpacing = annotation.letterSpacing();
+ * @return {number} Letter spacing settings.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.letterSpacing;
+
+/**
+ * Setter for letter spacing settings.
+ * @example anychart.core.annotations.Label.letterSpacing
+ * @param {number} opt_value Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.letterSpacing;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.lineHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text line height.
+ * @shortDescription Line height settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var lineHeight = annotation.lineHeight();
+ * @return {string|number} Text line height.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.lineHeight;
+
+/**
+ * Setter for the text line height.<br/> {@link https://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
+ * @example anychart.core.annotations.Label.lineHeight_set
+ * @param {(string|number)=} opt_value Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.lineHeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.maxFontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the font size for adjust text to.
+ * @shortDescription Maximum font size setting.
+ * @category Content Text Settings
+ * @return {number} Maximum font size.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.maxFontSize;
+
+/**
+ * Setter for the font size for adjust text to.
+ * @detailed <b>Note:</b> works only when adjusting is enabled. Look {@link anychart.core.annotations.Label#adjustFontSize}.
+ * @param {(number|string)=} opt_value Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.maxFontSize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.minFontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for minimum font size settings for adjust text from.
+ * @shortDescription Minimum font size settings.
+ * @category Content Text Settings
+ * @return {number} Minimum font size.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.minFontSize;
+
+/**
+ * Setter for minimum font size settings for adjust text from.
+ * @detailed <b>Note:</b> works only when adjusting is enabled. Look {@link anychart.core.annotations.Label#adjustFontSize}.
+ * @param {(number|string)=} opt_value Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.minFontSize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.offsetX
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for offset by X.
+ * @shortDescription Offset by X.
+ * @category Size and Position
+ * @listing See listing
+ * var offsetX = annotation.offsetX();
+ * @return {number|string} Label offsetX value.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.offsetX;
+
+/**
+ * Setter for offset by X.<br/>
+ * <img src='/anychart.core.ui.CrosshairLabel.offsetX.png' height='436' width='577'/><br/>
+ * Arrows show offsets layout.
+ * @example anychart.core.annotations.Label.offsetX
+ * @param {(number|string)=} opt_value [0] Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.offsetX;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.offsetY
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for offset by Y.
+ * @shortDescription Offset by Y.
+ * @category Size and Position
+ * @listing See listing
+ * var offsetY = annotation.offsetY();
+ * @return {number|string} Label offsetY value.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.offsetY;
+
+/**
+ * Setter for offset by Y.
+ * See illustration in {@link anychart.core.annotations.Label#offsetX}.
+ * @example anychart.core.annotations.Label.offsetY
+ * @param {(number|string)=} opt_value [0] Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.offsetY;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.selectable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text selectable option.
+ * @shortDescription Text selectable option.
+ * @category Interactivity
+ * @listing See listing
+ * var selectable = annotation.selectable();
+ * @return {boolean} Text selectable option.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.selectable;
+
+/**
+ * Setter for the text selectable.
+ * @detailed This options defines whether the text can be selected. If set to <b>false</b> one can't select the text.
+ * @example anychart.core.annotations.Label.selectable
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.selectable;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.text
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text content for a label.
+ * @shortDescription Label text.
+ * @category Specific settings
+ * @listing See listing
+ * var text = annotation.text();
+ * @return {string} Text content of a label.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.text;
+
+/**
+ * Setter for text content for a label.
+ * @example anychart.core.annotations.Label.text
+ * @param {string=} opt_value Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.text;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.textDirection
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text direction.
+ * @shortDescription Text direction settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var textDirection = annotation.textDirection();
+ * @return {anychart.graphics.vector.Text.Direction|string} Text direction.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.textDirection;
+
+/**
+ * Setter for the text direction.
+ * @example anychart.core.annotations.Label.textDirection
+ * @param {(anychart.graphics.vector.Text.Direction|string)=} opt_value ["ltr"] Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.textDirection;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.textIndent
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text indent.
+ * @shortDescription Text indent settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var textIndent = annotation.textIndent();
+ * @return {number} Text indent.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.textIndent;
+
+/**
+ * Setter for the text indent.
+ * @example anychart.core.annotations.Label.textIndent
+ * @param {number=} opt_value Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.textIndent;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.textOverflow
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text overflow settings.
+ * @shortDescription Text overflow settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var textOverflow = annotation.textOverflow();
+ * @return {anychart.graphics.vector.Text.TextOverflow|string} Text overflow settings.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.textOverflow;
+
+/**
+ * Setter for the text overflow settings.
+ * @example anychart.core.annotations.Label.textOverflow
+ * @param {(anychart.graphics.vector.Text.TextOverflow|string)=} opt_value [""] Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.textOverflow;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.useHtml
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the useHTML flag.
+ * @shortDescription Text useHtml settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var useHtml = annotation.useHtml();
+ * @return {boolean} Value of useHTML flag.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.useHtml;
+
+/**
+ * Setter for the useHTML flag.
+ * @detailed This property defines whether HTML text should be parsed.
+ * @example anychart.core.annotations.Label.useHtml
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.useHtml;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.vAlign
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text vertical align.
+ * @shortDescription Text vertical align settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var vAlign = annotation.vAlign();
+ * @return {anychart.graphics.vector.Text.VAlign|string} Text vertical align.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.vAlign;
+
+/**
+ * Setter for the text vertical align.
+ * @example anychart.core.annotations.Label.vAlign
+ * @param {(anychart.graphics.vector.Text.VAlign|string)=} opt_value ["top"] Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.vAlign;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.valueAnchor
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the value anchor.
+ * @shortDescription Value anchor settings
+ * @category Size and Position
+ * @listing See listing.
+ * var valueAnchor = annotation.valueAnchor();
+ * @return {*} The value anchor.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.valueAnchor;
+
+/**
+ * Setter for the value anchor.
+ * @example anychart.core.annotations.Label.anchors
+ * @param {*} value Value anchor to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.valueAnchor;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.xAnchor
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the X anchor.
+ * @shortDescription X anchor settings
+ * @category Size and Position
+ * @listing See listing.
+ * var xAnchor = annotation.xAnchor();
+ * @return {*} The X anchor.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.xAnchor;
+
+/**
+ * Setter for the X anchor.
+ * @example anychart.core.annotations.Label.anchors
+ * @param {*} value X anchor to set.
+ * @return {anychart.core.annotations.Line} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.xAnchor;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.wordBreak
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the word-break mode.
+ * @shortDescription Word break mode.
+ * @category Content Text Settings
+ * @listing See listing.
+ * var wordBreak = annotation.wordBreak();
+ * @return {anychart.enums.WordBreak|string} Word-break mode.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.wordBreak;
+
+/**
+ * Setter for the word-break mode.
+ * @example anychart.core.annotations.Label.wordBreak
+ * @param {(anychart.enums.WordBreak|string)=} opt_value ["normal"] Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.wordBreak;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.annotations.Label.prototype.wordWrap
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the word-wrap mode.
+ * @shortDescription Word-wrap mode.
+ * @category Content Text Settings
+ * @listing See listing.
+ * var wordWrap = annotation.wordWrap();
+ * @return {anychart.enums.WordWrap|string} Word-wrap mode.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.wordWrap;
+
+/**
+ * Setter for the word-wrap mode.
+ * @example anychart.core.annotations.Label.wordWrap_set
+ * @param {(anychart.enums.WordWrap|string)=} opt_value ["normal"] Value to set.
+ * @return {anychart.core.annotations.Label} Self instance for method chaining.
+ * @since 8.1.0
+ */
+anychart.core.annotations.Label.prototype.wordWrap;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.allowEdit;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.bottom;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.bounds;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.color;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.dispose;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.enabled;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.getChart;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.getPixelBounds;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.getPlot;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.getType;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.height;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.hoverGap;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.hovered;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.left;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.listen;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.listenOnce;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.markers;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.maxHeight;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.maxWidth;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.minHeight;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.minWidth;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.normal;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.print;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.removeAllListeners;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.right;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.select;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.selected;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.top;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.unlisten;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.unlistenByKey;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.width;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.xScale;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.yScale;
+
+/** @inheritDoc */
+anychart.core.annotations.Label.prototype.zIndex;
