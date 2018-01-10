@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.enums.Align"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -25,10 +22,21 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line();
-        chart.line([2, 8, 4, 10]);
+        var chart = anychart.line([
+            {x: "January", value: 2},
+            {x: "February", value: 5},
+            {x: "March", value: 3},
+            {x: "April", value: 9},
+            {x: "May", value: 4}
+        ]);
+        
         var title = chart.title();
-        title.align("left"); // set layout for polar chart.
+        title.enabled(true);
+        title.text("Set left layout");
+
+        // Set layout.
+        title.align("left"); 
+        
         chart.container("container");
         chart.draw();
     });

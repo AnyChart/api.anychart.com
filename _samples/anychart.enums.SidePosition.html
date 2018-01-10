@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.enums.SidePosition"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -25,11 +22,22 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([2, 8, 4, 10]);
+        var chart = anychart.line([
+            {x: "Cycling", value: 2},
+            {x: "Swimming", value: 8},
+            {x: "Run", value: 4},
+            {x: "Hiking", value: 10}
+        ]);
+
         var axis = chart.yAxis();
-        var ticks = axis.minorTicks();
-        ticks.enabled(true);
-        ticks.position("inside"); //set position for minorTicks
+
+        var minorTicks = axis.minorTicks();
+        minorTicks.enabled(true);
+
+        // Set position for minorTicks.
+        minorTicks.position("inside");
+
+        chart.title("Set position");
         chart.container("container");
         chart.draw();
     });

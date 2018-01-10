@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.enums.LegendItemsSourceMode"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -27,8 +24,13 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.line([8, 7, 3, 2], [6, 1, 2, 5]);
         chart.legend(true);
+
         var legend = chart.legend();
-        legend.itemsSourceMode("categories"); // sets mode
+
+        // Set mode.
+        legend.itemsSourceMode("categories");
+
+        chart.title("Set items source mode");
         chart.container("container");
         chart.draw();
     });

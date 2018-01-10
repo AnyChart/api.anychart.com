@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.color.blend"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,14 +23,20 @@
 <script>
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
+
         var color1 = [255, 0, 0];
         var color2 = [0, 0, 255];
+
         stage.rect(10, 10, stage.width() / 4, stage.height() - 20).fill("red");
         stage.rect(3 * stage.width() / 4 - 10, 10, stage.width() / 4, stage.height() - 20).fill("blue");
+
+        // Blend two colors.
         var mixColor1 = anychart.color.blend(color1, color2, 0.2);
         var mixColor2 = anychart.color.blend(color1, color2, 0.8);
+
         stage.rect(stage.width() / 3 + 10, 10, stage.width() / 4, stage.height() / 2 - 10)
             .fill(mixColor1);
+
         stage.rect(stage.width() / 3 + 10, stage.height() / 2 + 10, stage.width() / 4, stage.height() / 2 - 20)
             .fill(mixColor2);
     });

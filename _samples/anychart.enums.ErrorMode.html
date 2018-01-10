@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.enums.ErrorMode"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -25,12 +22,24 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([2, 6, 4, 8]);
+        var chart = anychart.line([
+            {x: 0, value: 10},
+            {x: 1, value: 12},
+            {x: 2, value: 18},
+            {x: 3, value: 11},
+            {x: 4, value: 9}
+        ]);
         chart.xScale("linear");
+
         var series = chart.getSeries(0);
         series.error(1);
+
         var error = series.error();
-        error.mode("both"); // set error mode.
+
+        // Set error mode.
+        error.mode("both");
+
+        chart.title("Set error mode");
         chart.container("container");
         chart.draw();
     });

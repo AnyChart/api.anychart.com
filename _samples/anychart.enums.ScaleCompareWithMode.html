@@ -5,15 +5,12 @@
     <meta name="ac:name" content="anychart.enums.ScaleCompareWithMode"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -30,40 +27,40 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var firstMapping = dataTable.mapAs({'value': 1});
-        var secondMapping = dataTable.mapAs({'value': 5});
+        var data1 = dataTable.mapAs({'value': 1});
+        var data2 = dataTable.mapAs({'value': 5});
 
         var chart = anychart.stock();
 
-        var firstPlot = chart.plot(0);
-        firstPlot.line(firstMapping);
-        firstPlot.line(secondMapping);
+        var plot1 = chart.plot(0);
+        plot1.line(data1);
+        plot1.line(data2);
 
-        var firstPlotYScale = firstPlot.yScale();
-        firstPlotYScale.comparisonMode("percent");
+        var plot1YScale = plot1.yScale();
+        plot1YScale.comparisonMode("percent");
 
         // Set date for the changes zero of the series.
-        firstPlotYScale.compareWith("series-start");
+        plot1YScale.compareWith("series-start");
 
-        var secondPlot = chart.plot(1);
-        secondPlot.line(firstMapping);
-        secondPlot.line(secondMapping);
+        var plot2 = chart.plot(1);
+        plot2.line(data1);
+        plot2.line(data2);
 
-        var secondPlotYScale = secondPlot.yScale();
-        secondPlotYScale.comparisonMode("percent");
+        var plot2YScale = plot2.yScale();
+        plot2YScale.comparisonMode("percent");
 
         // Set date for first visible point.
-        secondPlotYScale.compareWith("first-visible");
+        plot2YScale.compareWith("first-visible");
 
-        var thirdPlot = chart.plot(2);
-        thirdPlot.line(firstMapping);
-        thirdPlot.line(secondMapping);
+        var plot3 = chart.plot(2);
+        plot3.line(data1);
+        plot3.line(data2);
 
-        var thirdPlotYScale = thirdPlot.yScale();
-        thirdPlotYScale.comparisonMode("percent");
+        var plot3YScale = plot3.yScale();
+        plot3YScale.comparisonMode("percent");
 
         // Set custom date.
-        thirdPlotYScale.compareWith(1209081600000);
+        plot3YScale.compareWith(1209081600000);
 
         chart.title("First plot: compare scale with series start \n Second plot: compare scale with first visible point \n" +
             "Third plot: compare scale with custom date");

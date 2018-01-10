@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.color.lighten"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,12 +23,19 @@
 <script>
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
-        stage.rect(10, 10, stage.width() / 3 - 10, stage.height() - 20)
-            .fill("red");
-        stage.rect(stage.width() / 3 + 10, 10, stage.width() / 3 - 20, stage.height() - 20)
-            .fill(anychart.color.lighten("red"));
-        stage.rect(2 * stage.width() / 3 + 10, 10, stage.width() / 3 - 30, stage.height() - 20)
-            .fill(anychart.color.lighten("red", .8));
+
+        var rect1 = stage.rect(10, 10, stage.width() / 3 - 10, stage.height() - 20);
+        rect1.fill("#F44336");
+
+        var rect2 = stage.rect(stage.width() / 3 + 10, 10, stage.width() / 3 - 20, stage.height() - 20);
+
+        // Makes red color lighter.
+        rect2.fill(anychart.color.lighten("#F44336"));
+
+        var rect3 = stage.rect(2 * stage.width() / 3 + 10, 10, stage.width() / 3 - 30, stage.height() - 20);
+
+        // Makes red color lighter.
+        rect3.fill(anychart.color.lighten("#F44336", 0.8));
     });
 </script>
 </body>

@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.enums.GaugeSidePosition"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-circular-gauge.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,14 +25,21 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.gauges.circular([10]);
         chart.marker({radius: 90});
+
         var axis = chart.axis();
+
         var scale = axis.scale();
         scale.minimum(0);
         scale.maximum(20);
+
         var range = chart.range();
         range.from(5);
         range.to(16);
-        range.position("inside"); // sets range position
+
+        // Set range position.
+        range.position("inside");
+
+        chart.title("Set range position");
         chart.container("container");
         chart.draw();
     });
