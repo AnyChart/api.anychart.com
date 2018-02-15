@@ -2,13 +2,18 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.enums.BackgroundCornersType"/>
+    <meta name="ac:name" content="anychart.charts.Stock.selectRange set asConvert"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
+
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
+
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+
     <style>
         html, body, #container {
             width: 100%;
@@ -22,24 +27,22 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([
-            {x: "January", value: 2},
-            {x: "February", value: 5},
-            {x: "March", value: 3},
-            {x: "April", value: 9},
-            {x: "May", value: 4}
-        ]);
-        
-        var background = chart.background();
-        background.stroke("#0000BB");
-        background.corners(20);
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
 
-        // Set corners type.
-        background.cornerType("round"); 
-        
-        chart.title("Set corners type");
+        var mapping = dataTable.mapAs({'value': 1});
+
+        var chart = anychart.stock();
+
+        var plot = chart.plot();
+        plot.line(mapping);
+
+        chart.title("Set select range");
         chart.container("container");
         chart.draw();
+
+        // Set values for selected range.
+        chart.selectRange("2005-06-29", false);
     });
 </script>
 </body>
