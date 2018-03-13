@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.math.cci"/>
+    <meta name="ac:name" content="anychart.core.stock.indicators.Momentum.period set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -30,34 +30,22 @@
         // https://cdn.anychart.com/csv-data/dji-daily-short.js
         dataTable.addData(get_dji_daily_short_data());
 
-        var mapping = dataTable.mapAs();
-        mapping.addField('open', 1, 'first');
-        mapping.addField('high', 2, 'max');
-        mapping.addField('low', 3, 'min');
-        mapping.addField('close', 4, 'last');
-        mapping.addField('value', 4, 'last');
+        var mapping = dataTable.mapAs({open: 1, high: 2, low: 3, close: 4, volume: 4});
 
         var chart = anychart.stock();
 
-        // Create computer.
-        var computer = dataTable.createComputer(mapping);
-
-        var context = anychart.math.cci.initContext(10);
-
-        // Set init context.
-        computer.setContext(context);
-
-        // Set start calculation function.
-        computer.setStartFunction(anychart.math.cci.startFunction);
-
-        // Calculation function.
-        computer.setCalculationFunction(anychart.math.cci.calculationFunction);
-
-        var indicatorMapping = dataTable.mapAs({value: computer.addOutputField("result")});
-
         var plot = chart.plot();
-        plot.line(indicatorMapping).name("CCI(10)");
+        plot.ohlc(mapping);
 
+        var indicatorPlot = chart.plot(1);
+        indicatorPlot.height("30%");
+
+        var momentumIndicator = indicatorPlot.momentum(mapping);
+
+        // Set indicator period.
+        momentumIndicator.period(20);
+
+        chart.title("Set indicator period");
         chart.container("container");
         chart.draw();
     });
