@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.TreeMapPoint.set"/>
+    <meta name="ac:name" content="anychart.core.TreeChartPoint.hovered get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
 
@@ -60,17 +60,16 @@
         ];
 
         var chart = anychart.treeMap(data);
-
-        chart.listen("pointClick", function (event) {
-
-            // Set value by field.
-            event.point.set("name", event.point.get("name") + " - " + event.point.get("value") + " km²");
-
-        });
-
-        chart.title("Click on point. Set name by the specified path");
         chart.container("container");
         chart.draw();
+
+        var path = chart.getDrilldownPath();
+        var asiaPoint = path[path.length - 1];
+
+        // Get hover state on point.
+        var hoverState = asiaPoint.hovered();
+
+        chart.title("Hover state is " + hoverState);
     });
 </script>
 </body>

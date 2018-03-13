@@ -1,0 +1,1002 @@
+/**
+ * Sunburst Class.<br/>
+ * <b>Note:</b> Use {@link anychart#sunburst} method to get an instance of this class.
+ * @param {(anychart.data.Tree|anychart.data.TreeView|Array.<Object>)=} opt_data Data tree or raw data.
+ * @param {anychart.enums.TreeFillingMethod=} opt_fillMethod Fill method.
+ * @extends {anychart.core.SeparateChart}
+ * @constructor
+ */
+anychart.charts.Sunburst;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.data
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the data.
+ * @shortDescription Data settings.
+ * @category Data
+ * @example anychart.charts.Sunburst.data_get
+ * @return {(anychart.data.Tree|anychart.data.TreeView)} Data tree.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.data;
+
+/**
+ * Setter for the data.
+ * @example anychart.charts.Sunburst.data_set_asTree Using data tree
+ * @example anychart.charts.Sunburst.data_set_asTable Using data table
+ * @example anychart.charts.Sunburst.data_set_rawData Using raw data
+ * @param {(anychart.data.Tree|anychart.data.TreeView|Array.<Object>)=} opt_data Data tree or raw data.
+ * @param {(anychart.enums.TreeFillingMethod|string)=} opt_fillMethod Fill method.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.data;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the fill color.
+ * @shortDescription Fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var chart = anychart.sunburst(data);
+ * var fill = chart.fill();
+ * @return {anychart.graphics.vector.Fill|Function} Chart fill color.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.fill;
+
+/**
+ * Setter for fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Sunburst.fill_set_asString Using string
+ * @example anychart.charts.Sunburst.fill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} color Color as an array or a string.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.fill;
+
+/**
+ * Setter for the fill using function.
+ * @example anychart.charts.Sunburst.fill_set_asFunc
+ * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {return this.sourceColor;}]
+ * Function that looks like <code>function(){
+ *    this.index - internal node index,
+ *    this.level - remoteness from the root node, the root node has level equal 0,
+ *    this.isLeaf - whether the current element is a leaf,
+ *    this.parent - parent node,
+ *    this.point - wrapper over current node, instance of anychart.core.TreeChartPoint
+ *    this.path - an array of the nodes from root to the current node (root node has index 0),
+ *    this.mainColor - node color, that defines sector color,
+ *    this.autoColor - palette color by linear node index,
+ *    this.parentColor - parent node color,
+ *    this.sourceColor - color returned by current state of point (normal, hover or selected),
+ *    this.iterator - linear iterator,
+ *    this.series - sunburst instance chart,
+ *    this.chart - sunburst instance chart
+ *    return fillValue; // type anychart.graphics.vector.Fill
+ * }</code>.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.fill;
+
+/**
+ * Setter for the fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.Sunburst.fill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.fill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Sunburst.fill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.fill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Sunburst.fill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.fill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Sunburst.fill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.fill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the stroke.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @listing See listing
+ * var chart = anychart.sunburst(data);
+ * var stroke = chart.stroke();
+ * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} Stroke settings.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.stroke;
+
+/**
+ * Setter for the stroke using function.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Sunburst.stroke_set_asFunc
+ * @param {(function():anychart.graphics.vector.Stroke)=} opt_strokeFunction [// return stroke from the default palette.
+ * function() {return anychart.color.darken(this.sourceColor);};]
+ *  Function that looks like <code>function(){
+ *    this.index - internal node index,
+ *    this.level - remoteness from the root node, the root node has level equal 0,
+ *    this.isLeaf - whether the current element is a leaf,
+ *    this.parent - parent node,
+ *    this.point - wrapper over current node, instance of anychart.core.TreeChartPoint
+ *    this.path - an array of the nodes from root to the current node (root node has index 0),
+ *    this.mainColor - node color, that defines sector color,
+ *    this.autoColor - palette color by linear node index,
+ *    this.parentColor - parent node color,
+ *    this.sourceColor - color returned by current state of point (normal, hover or selected),
+ *    this.iterator - linear iterator,
+ *    this.series - sunburst instance chart,
+ *    this.chart - sunburst instance chart
+ *    return strokeValue; // type anychart.graphics.vector.Stroke
+ * }</code>.
+ * @return {!anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.stroke;
+
+/**
+ * Setter for the stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Sunburst.stroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_color Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.stroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.calculationMode
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the calculation mode.
+ * @shortDescription Calculation modes.
+ * @category Specific settings
+ * @listing See listing
+ * var chart = anychart.sunburst(data);
+ * var calculationMode = chart.calculationMode();
+ * @return {anychart.enums.SunburstCalculationMode|string} Calculation mode.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.calculationMode;
+
+/**
+ * Setter for the calculation mode.<br/>
+ * The calculateMode() method allows to change the appearance and location of points in the Sunburst chart relative
+ * to the calculated values. Learn more about permitted values at {@link anychart.enums.SunburstCalculationMode}
+ * @example anychart.charts.Sunburst.calculationMode_set
+ * @param {(anychart.enums.SunburstCalculationMode|string)=} opt_mode ["ordinal-from-root"] Mode to set.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.calculationMode;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.radius
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the outer radius.
+ * @shortDescription Outer radius
+ * @category Size and Position
+ * @listing See listing
+ * var chart = anychart.sunburst(data);
+ * var radius = chart.radius();
+ * @return {(string|number)} Outer radius of the chart.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.radius;
+
+/**
+ * Setter for the outer radius.
+ * @detailed The radius() method allows to set the outer radius of a Sunburst chart.<br/>
+ * The thickness of the levels is calculated relative to the radius.<br/>
+ * Radius can be set as a number (considered as number of pixels), or as a string, e.g.'42%' or '152px'.
+ * @example anychart.charts.Sunburst.radiusInnerRadius_set
+ * @param {(string|number)=} opt_radius ["45%"] Value of the outer radius.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.radius;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.innerRadius
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the inner radius.
+ * @shortDescription Inner radius.
+ * @category Size and Position
+ * @listing See listing
+ * var chart = anychart.sunburst(data);
+ * var innerRadius = chart.innerRadius();
+ * @return {(string|number|function(number):number)} The inner radius.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.innerRadius;
+
+/**
+ * Setter for the inner radius.
+ * @example anychart.charts.Sunburst.innerRadius_set_asFunc Using function
+ * @example anychart.charts.Sunburst.radiusInnerRadius_set Using string
+ * @param {(string|number|function(number):number)=} opt_innerRadius [0] The value of the inner radius in pixels, percents or
+ * function. In general the function should look like this:
+ * <code>function(outerRadius){
+ *   ...
+ *   return NUMBER;
+ * }
+ * </code>.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.innerRadius;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.startAngle
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the angle.
+ * @shortDescription Start angle.
+ * @category Size and Position
+ * @listing See listing
+ * var chart = anychart.sunburst(data);
+ * var startAngle = chart.startAngle();
+ * @return {(string|number)} The start angle.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.startAngle;
+
+/**
+ * Setter for the angle.
+ * @example anychart.charts.Sunburst.startAngle_set
+ * @param {(string|number)=} opt_startAngle [0] Value of the start angle.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.startAngle;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.labels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for labels.
+ * @shortDescription Labels settings.
+ * @category Labels
+ * @example anychart.charts.Sunburst.labels_get
+ * @return {anychart.core.ui.LabelsFactory} Labels factory instance.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.labels;
+
+/**
+ * Setter for the labels.
+ * @detailed Sets chart labels settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart labels.</li>
+ *   <li><b>object</b> - sets chart labels settings from {@link anychart.core.ui.LabelsFactory}.</li>
+ * </ul>
+ * @example anychart.charts.Sunburst.labels_set_asBool Disable/enable labels
+ * @example anychart.charts.Sunburst.labels_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_settings [true] Chart data labels settings.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.labels;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.level
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for levels settings.
+ * @shortDescription Levels settings.
+ * @category Specific settings
+ * @example anychart.charts.Sunburst.level_get
+ * @param {number} index Level index.
+ * @return {anychart.core.sunburst.Level} Levels settings.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.level;
+
+/**
+ * Setter for levels settings.
+ * @detailed Sets chart levels settings depending on parameter type:
+ * <ul>
+ *   <li><b>boolean</b> - disable or enable chart levels.</li>
+ *   <li><b>object</b> - sets chart levels settings from {@link anychart.core.sunburst.Level}.</li>
+ * </ul>
+ * @example anychart.charts.Sunburst.level_set_asBool Disable/enable levels
+ * @example anychart.charts.Sunburst.level_set_asObj Using object
+ * @param {number} index Level index.
+ * @param {(Object|boolean)=} opt_settings Levels settings.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.level;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.leaves
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for leaves settings.
+ * @shortDescription Leaves settings.
+ * @category Specific settings
+ * @example anychart.charts.Sunburst.leaves_get
+ * @return {anychart.core.sunburst.Level} Leaves instance.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.leaves;
+
+/**
+ * Setter for leaves settings.
+ * @detailed Sets leaves settings depending on parameter type:
+ * <ul>
+ *   <li><b>boolean</b> - disable or enable leaves.</li>
+ *   <li><b>object</b> - sets leaves settings from {@link anychart.core.sunburst.Level}.</li>
+ * </ul>
+ * @example anychart.charts.Sunburst.leaves_set_asBool Disable/enable leaves
+ * @example anychart.charts.Sunburst.leaves_set_asObj Using object
+ * @param {(Object|boolean)=} opt_settings Leaves settings.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.leaves;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.normal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for normal state settings.
+ * @shortDescription Normal state settings.
+ * @category States
+ * @example anychart.charts.Sunburst.normal_get
+ * @return {anychart.core.StateSettings} Normal state settings.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.normal;
+
+/**
+ * Setter for normal state settings.
+ * @example anychart.charts.Sunburst.normal_set
+ * @param {!Object=} opt_settings State settings to set from {@link anychart.core.StateSettings}.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.normal;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.hovered
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for hovered state settings.
+ * @shortDescription Hovered state settings.
+ * @category States
+ * @example anychart.charts.Sunburst.hovered_get
+ * @return {anychart.core.StateSettings} Hovered state settings
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.hovered;
+
+/**
+ * Setter for hovered state settings.
+ * @example anychart.charts.Sunburst.hovered_set
+ * @param {!Object=} opt_settings State settings to set from {@link anychart.core.StateSettings}.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.hovered;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.selected
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for selected state settings.
+ * @shortDescription Selected state settings.
+ * @category States
+ * @example anychart.charts.Sunburst.selected_get
+ * @return {anychart.core.StateSettings} Selected state settings
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.selected;
+
+/**
+ * Setter for selected state settings.
+ * @example anychart.charts.Sunburst.selected_set
+ * @param {!Object=} opt_settings State settings to set from {@link anychart.core.StateSettings}.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.selected;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.drillTo
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Drills down to target.
+ * @category Interactivity
+ * @example anychart.charts.Sunburst.drillTo_drillUp
+ * @param {(anychart.data.Tree.DataItem|Array|string)} target Target to drill down to.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.drillTo;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.drillUp
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Drills one level up from current level.
+ * @category Interactivity
+ * @example anychart.charts.Sunburst.drillTo_drillUp
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.drillUp = function () {};
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.getDrilldownPath
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns crumbs from the root to the current level.
+ * @category Data
+ * @example anychart.charts.Sunburst.getDrilldownPath
+ * @return {Array} The current path.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.getDrilldownPath;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.hatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the hatch fill.
+ * @shortDescription Hatch fill settings.
+ * @category Coloring
+ * @detailed This method can be used as getter only if the value has been previously set.
+ * @listing See listing
+ * var chart = anychart.sunburst(data);
+ * var hatchFill = chart.hatchFill();
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Hatch fill settings.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.hatchFill;
+
+/**
+ * Setter for the hatch fill using boolean.
+ * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+ * @example anychart.charts.Sunburst.hatchFill_set_asBool
+ * @param {boolean=} opt_enabled [false] Whether to enable hatch fill or no.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.hatchFill;
+
+/**
+ * Setter for the hatch fill using function.
+ * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+ * @example anychart.charts.Sunburst.hatchFill_set_asFunc
+ * @param {function(): anychart.graphics.vector.HatchFill=} opt_hatchFillFunction Hatch fill function.
+ * Function that looks like <code>function(){
+ *    this.autoColor - palette color by linear node index,
+ *    this.chart - sunburst instance chart,
+ *    this.index - internal node index,
+ *    this.isLeaf - whether the current element is a leaf,
+ *    this.iterator - linear iterator,
+ *    this.level - remoteness from the root node, the root node has level equal 0,
+ *    this.mainColor - node color, that defines sector color,
+ *    this.parent - parent node,
+ *    this.parentColor - parent node color,
+ *    this.path - an array of the nodes from root to the current node (root node has index 0),
+ *    this.point - wrapper over current node, instance of anychart.core.TreeChartPoint
+ *    this.series - sunburst instance chart,
+ *    this.sourceHatchFill - hatch fill returned by current state of point (normal, hover or selected)
+ *
+ *    return hatchFillValue; // type anychart.graphics.vector.HatchFill
+ * }</code>.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.hatchFill;
+
+/**
+ * Setter for the hatch fill using pattern.
+ * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+ * @example anychart.charts.Sunburst.hatchFill_set_asPattern
+ * @param {(anychart.graphics.vector.PatternFill)=} opt_patternHatchFill Pattern hatch fill.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.hatchFill;
+
+/**
+ * Setter for hatch fill using an instance.
+ * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+ * @example anychart.charts.Sunburst.hatchFill_set_asInst
+ * @param {(anychart.graphics.vector.HatchFill)=} opt_settings Hatch fill instance.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.hatchFill;
+
+/**
+ * Setter for the hatch fill using several parameters.
+ * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
+ * @example anychart.charts.Sunburst.hatchFill_set_several
+ * @param {(anychart.graphics.vector.HatchFill.HatchFillType|string)=} opt_type PatternFill or HatchFill instance or type of hatch fill.
+ * @param {string=} opt_color Color.
+ * @param {number=} opt_thickness Thickness.
+ * @param {number=} opt_size Pattern size.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.hatchFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.center
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for center settings.
+ * @shortDescription Center state settings.
+ * @category Specific settings
+ * @example anychart.charts.Sunburst.center_get
+ * @return {anychart.core.ui.Center} Center instance.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.center;
+
+/**
+ * Setter for center settings.
+ * @example anychart.charts.Sunburst.center_set
+ * @param {Object=} opt_centerSettings Settings to set.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.center;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.sort
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the sorting settings.
+ * @shortDescription Sort settings.
+ * @category Data
+ * @listing See listing
+ * var sort = chart.sort();
+ * @return {anychart.enums.Sort|string|Function} Sort settings.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.sort;
+
+/**
+ * Setter for the sorting settings using string.<br/>
+ * Ascending, Descending and No sorting is supported.
+ * @example anychart.charts.Sunburst.sort_set_asString
+ * @param {(anychart.enums.Sort|string)=} opt_mode ["none"] Sorting mode.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.sort;
+
+/**
+ * Setter for the sorting setting using function.
+ * @example anychart.charts.Sunburst.sort_set_asFunc
+ * @param {function((anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem), (anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem)):number=} opt_sortFunction Sorting function.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.sort;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.palette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the palette.
+ * @shortDescription Palette settings.
+ * @category Chart Coloring
+ * @listing See listing
+ * var palette = chart.palette();
+ * @return {!(anychart.palettes.RangeColors|anychart.palettes.DistinctColors)} Color palette instance.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.palette;
+
+/**
+ * Setter for the palette.
+ * <b>Note</b>: You can use predefined palettes from {@link anychart.palettes}.
+ * @example anychart.charts.Sunburst.palette_set_asArray Using array
+ * @example anychart.charts.Sunburst.palette_set_asRangeColors Using range colors
+ * @example anychart.charts.Sunburst.palette_set_asDistinctColors Using distinct colors
+ * @example anychart.charts.Sunburst.palette_set_asObject Using object
+ * @example anychart.charts.Sunburst.palette_set_asFromTheme Using palette from theme
+ * @param {(anychart.palettes.RangeColors|anychart.palettes.DistinctColors|Object|Array.<string>)=} opt_settings Color palette settings.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.palette;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.prototype.hatchFillPalette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for hatch fill palette settings.
+ * @shortDescription Hatch fill palette settings.
+ * @category Chart Coloring
+ * @listing See listing
+ * var hatchFillPalette = chart.hatchFillPalette();
+ * @return {anychart.palettes.HatchFills} Hatch fills palette instance
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.hatchFillPalette;
+
+/**
+ * Setter for hatch fill palette settings.<br/>
+ * <b>Note:</b> Works only with {@link anychart.charts.Sunburst#hatchFill} method.
+ * @example anychart.charts.Sunburst.hatchFillPalette_set_asArray Using array
+ * @example anychart.charts.Sunburst.hatchFillPalette_set_asObject Using object
+ * @param {(Array.<anychart.graphics.vector.HatchFill.HatchFillType>|Object|anychart.palettes.HatchFills)=} opt_settings
+ * Chart hatch fill palette settings to set.
+ * @return {anychart.charts.Sunburst} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.charts.Sunburst.prototype.hatchFillPalette;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sunburst.StatsFieldsName
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Type definition for the statistics fields name.
+ * @typedef {Object} anychart.charts.Sunburst.StatsFieldsName
+ * @property {number} depth Level number.
+ * @property {Object.<{
+ *      sum: number,
+ *      nodesCount: number,
+ *      leavesCount: number,
+ *      branchesCount: number,
+ *      display: boolean,
+ *      attendingRoots: (Array.<number>),
+ *      statsByRoot: (Object.<number,
+ *      ({
+ *          sum: number,
+ *          nodesCount: number,
+ *          leavesSum: number,
+ *          leavesCount: number,
+ *          branchesCount: number,
+ *          childSum: number,
+ *          nodes: Array.<Point>
+ *      })>)
+ * }>} level Statistic object for the sunburst levels.
+ */
+anychart.charts.Sunburst.StatsFieldsName;
+
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.animation;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.autoRedraw;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.background;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.bottom;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.bounds;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.container;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.contextMenu;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.credits;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.draw;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.enabled;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.exports;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.getPixelBounds;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.getSelectedPoints;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.getStat;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.globalToLocal;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.height;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.interactivity;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.label;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.left;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.listen;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.listenOnce;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.localToGlobal;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.margin;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.maxHeight;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.maxWidth;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.minHeight;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.minWidth;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.noData;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.padding;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.print;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.removeAllListeners;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.right;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.saveAsCsv;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.saveAsJpg;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.saveAsJson;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.saveAsPdf;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.saveAsPng;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.saveAsSvg;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.saveAsXlsx;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.saveAsXml;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.title;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.toCsv;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.toJson;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.toSvg;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.toXml;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.tooltip;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.top;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.unlisten;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.unlistenByKey;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.width;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.zIndex;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.a11y;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.cancelMarquee;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.getJpgBase64String;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.getPdfBase64String;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.getPngBase64String;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.getSvgBase64String;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.inMarquee;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.selectMarqueeFill;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.selectMarqueeStroke;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.shareAsJpg;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.shareAsPdf;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.shareAsPng;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.shareAsSvg;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.shareWithFacebook;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.shareWithLinkedIn;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.shareWithPinterest;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.shareWithTwitter;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.startSelectMarquee;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.toA11yTable;
+
+/** @inheritDoc */
+anychart.charts.Sunburst.prototype.toHtmlTable;
+
+// anychart.charts.Sunburst.fullScreen;
+// anychart.charts.Sunburst.id;
+// anychart.charts.Sunburst.isFullScreenAvailable;
+

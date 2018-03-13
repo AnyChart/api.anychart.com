@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.TreeMapPoint.getNode"/>
+    <meta name="ac:name" content="anychart.core.TreeChartPoint.exists"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
 
@@ -61,17 +61,16 @@
 
         var chart = anychart.treeMap(data);
 
-        chart.listen("pointClick", function (event) {
-
-            // Get point node.
-            var pointNode = event.point.getNode();
-
-            pointNode.set("name", event.point.get("capital") + " is the capital of " + event.point.get("name"));
-        });
-
-        chart.title("Click on point. Get and modify point node");
         chart.container("container");
         chart.draw();
+
+        var path = chart.getDrilldownPath();
+        var rickPoint = path[path.length - 1];
+
+        // Checking the existence of the current point.
+        var existsPoint = rickPoint.exists();
+
+        chart.title("Is there a first point? " + existsPoint);
     });
 </script>
 </body>

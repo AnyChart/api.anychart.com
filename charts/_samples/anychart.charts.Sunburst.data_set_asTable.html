@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Sunburst.data set asTable"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-sunburst.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var data = [
+            {name: 'Activities', id: 'activities', parent: null, value: 1000},
+            {name: 'Snowboarding', parent: 'activities', id: 'snowboard', value: 50},
+            {name: 'Nordic Skiing', parent: 'activities', id: 'nordic', value: 50},
+            {name: 'Working Out', parent: 'activities', id: 'workout', value: 30},
+            {name: 'Crossfit', parent: 'activities', id: 'crossfit', value: 30},
+            {name: 'Hiking', parent: 'activities', id: 'hike', value: 30},
+            {name: 'Yoga', parent: 'activities', id: 'yoga', value: 40},
+            {name: 'Running', parent: 'activities', id: 'run', value: 50},
+            {name: 'Swimming', parent: 'activities', id: 'swim', value: 30},
+            {name: 'Riding', parent: 'activities', id: 'ride', value: 90}
+        ];
+
+        var chart = anychart.sunburst();
+
+        // Set chart data.
+        chart.data(data, 'as-table');
+
+        chart.title('Set data as a table');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>

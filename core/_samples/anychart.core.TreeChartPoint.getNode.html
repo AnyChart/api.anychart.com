@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.TreeMapPoint.hovered get"/>
+    <meta name="ac:name" content="anychart.core.TreeChartPoint.getNode"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
 
@@ -60,16 +60,18 @@
         ];
 
         var chart = anychart.treeMap(data);
+
+        chart.listen("pointClick", function (event) {
+
+            // Get point node.
+            var pointNode = event.point.getNode();
+
+            pointNode.set("name", event.point.get("capital") + " is the capital of " + event.point.get("name"));
+        });
+
+        chart.title("Click on point. Get and modify point node");
         chart.container("container");
         chart.draw();
-
-        var path = chart.getDrilldownPath();
-        var asiaPoint = path[path.length - 1];
-
-        // Get hover state on point.
-        var hoverState = asiaPoint.hovered();
-
-        chart.title("Hover state is " + hoverState);
     });
 </script>
 </body>

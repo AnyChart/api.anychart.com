@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.TreeMapPoint.get"/>
+    <meta name="ac:name" content="anychart.core.TreeChartPoint.set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
 
@@ -59,17 +59,16 @@
             }
         ];
 
-        var chart = anychart.treeMap(data, "as-tree");
+        var chart = anychart.treeMap(data);
 
         chart.listen("pointClick", function (event) {
 
-            // Get field value.
-            var value = event.point.get("value");
+            // Set value by field.
+            event.point.set("name", event.point.get("name") + " - " + event.point.get("value") + " km²");
 
-            chart.title("The area of the " + event.point.get("name") + " is " + value + " km²")
         });
 
-        chart.title("Click on point. Get and modify field value");
+        chart.title("Click on point. Set name by the specified path");
         chart.container("container");
         chart.draw();
     });

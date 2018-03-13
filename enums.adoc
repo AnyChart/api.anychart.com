@@ -2535,7 +2535,7 @@ anychart.enums.StringToken.SERIES_Y_RANGE_SUM = "%SeriesYRangeSum";
 anychart.enums.StringToken.SERIES_Y_SUM = "%SeriesYSum";
 
 /**
- * The y value of this point.
+ * The value of this point.
  */
 anychart.enums.StringToken.VALUE = "%Value";
 
@@ -3161,6 +3161,12 @@ anychart.enums.Statistics.Y_SCALES_MIN = "yScalesMin";
  * Maximum value of Y scales.
  */
 anychart.enums.Statistics.Y_SCALES_MAX = "yScalesMax";
+
+/**
+ * Statistics by data tree levels for the Sunburst chart.<br/>
+ * Returns {api:anychart.charts.Sunburst.StatsFieldsName}object with statistics{api}.
+ */
+anychart.enums.Statistics.treeLevels = "leaves";
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -4948,3 +4954,40 @@ anychart.enums.EventMarkerType.PIN = "pin";
  * Flag marker type.
  */
 anychart.enums.EventMarkerType.FLAG = "flag";
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.enums.SunburstcalculationMode
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Sunburst calculation mode.
+ * @example anychart.enums.SunburstCalculationMode
+ * @enum {string}
+ */
+anychart.enums.SunburstCalculationMode;
+
+/**
+ * "Ordinal-from-root" mode. The calculation is based on a number of points on the levels.
+ * The data value in the field isn't considered.
+ */
+anychart.enums.SunburstCalculationMode.ORDINAL_FROM_ROOT = 'ordinal-from-root';
+
+/**
+ * "Ordinal-from-leaves" mode. The calculation is based on a number of leaves.
+ * All leaves divide 360 into equal parts and have the same angle.
+ */
+anychart.enums.SunburstCalculationMode.ORDINAL_FROM_LEAVES ='ordinal-from-leaves';
+
+/**
+ * "Parent-dependent" mode. The calculation is based on a values of the field "value".
+ * An angular quantity of the points depends on node value and parent value.
+ */
+anychart.enums.SunburstCalculationMode.PARENT_DEPENDENT = 'parent-dependent';
+
+/**
+ * 'Parent-independent' mode. The calculation is based on leaves values.
+ *  Parent values are calculated as the sum of the values of their children.
+ */
+anychart.enums.SunburstCalculationMode.PARENT_INDEPENDENT = 'parent-independent';
