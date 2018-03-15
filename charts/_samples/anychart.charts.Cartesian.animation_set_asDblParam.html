@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.charts.Cartesian.animation set asDblParam"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -25,13 +22,20 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line();
-        chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+        var chart = anychart.line([
+            {x: "Theatre", value: 10},
+            {x: "Literature", value: 4},
+            {x: "Cinema", value: 17},
+            {x: "Music", value: 20},
+            {x: "Sculpture", value: 16},
+            {x: "Art", value: 35},
+            {x: "Painting", value: 6}
+        ]);
 
-        // Sets animation settings.
+        // Set animation settings.
         chart.animation(true, 3000);
 
-        chart.title("Set chart animation parameters.");
+        chart.title("Set chart animation parameters");
         chart.container("container");
         chart.draw();
     });

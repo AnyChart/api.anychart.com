@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.LinearGauge.rangeBar"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-linear-gauge.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,25 +25,12 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container", 600, 400);
 
-        var rawData = [
-            [3, 7],
-            [1, 4],
-            [1, 8],
-            [6, 7],
-            [6, 3],
-            [6, 7]
-        ];
-
-        var dataSet = anychart.data.set(rawData);
-
-        var data = dataSet.mapAs({'low': 0, 'high': 1, 'value': 1});
-
-        var chart = anychart.gauges.linear(data);
+        var chart = anychart.gauges.linear([{'low': 3, 'high': 7, 'value': 5}]);
 
         // Add range bar pointer.
         chart.rangeBar(0);
 
-        chart.title("Add Range Bar pointer to a gauge.");
+        chart.title("Add Range Bar pointer to a gauge");
         chart.container(stage);
         chart.draw();
     });

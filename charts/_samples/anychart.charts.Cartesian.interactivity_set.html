@@ -26,14 +26,21 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.column();
-        chart.column([5, 8, 4, 6]);
-        chart.column([6, 2, 5, 3]);
-        chart.column([2, 6, 4, 8]);
 
-        // Sets interactivity settings.
+        chart.data({
+            header: ["#", "Florida", "Texas"],
+            rows: [
+                ["Apples", 5, 8, 4],
+                ["Pears", 6, 2, 5],
+                ["Bananas", 2, 6, 4],
+                ["Peaches", 6, 3, 8]
+            ]
+        });
+
+        // Set interactivity settings.
         chart.interactivity({hoverMode: "by-x"});
 
-        chart.title("Set chart interactivity.");
+        chart.title("Set chart interactivity");
         chart.container("container");
         chart.draw();
     });

@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.Funnel.hatchFill get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pyramid-funnel.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,24 +25,34 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
-        funnelChart.bounds(0, 0, "50%", "100%");
-        funnelChart.hatchFill("diagonal-brick", "#424242", 0.5, 25);
-        funnelChart.container(stage);
-        funnelChart.draw();
+        var chart1 = anychart.funnel([
+            {name: "California", value: 10},
+            {name: "Illinois", value: 7},
+            {name: "Massachusetts", value: 20},
+            {name: "New York", value: 14}
+        ]);
+        chart1.bounds(0, 0, "50%", "100%");
+        chart1.hatchFill("diagonal-brick", "#424242", 0.5, 25);
+        chart1.container(stage);
+        chart1.draw();
 
-        var pieChart = anychart.pie([7, 7, 7, 7, 7]);
-        pieChart.bounds("50%", 0, "50%", "100%");
+        var chart2 = anychart.pie([
+            {name: "California", value: 10},
+            {name: "Illinois", value: 7},
+            {name: "Massachusetts", value: 20},
+            {name: "New York", value: 14}
+        ]);
+        chart2.bounds("50%", 0, "50%", "100%");
 
         // Get hatch fill.
-        var funnelChartHatchFill = funnelChart.hatchFill();
+        var funnelChartHatchFill = chart1.hatchFill();
 
-        pieChart.hatchFill(funnelChartHatchFill);
-        pieChart.container(stage);
-        pieChart.draw();
+        chart2.hatchFill(funnelChartHatchFill);
+        chart2.container(stage);
+        chart2.draw();
 
         var customTitle = anychart.standalones.title();
-        customTitle.text("Get and use chart hatchFill.");
+        customTitle.text("Get and use chart hatchFill");
         customTitle.container(stage);
         customTitle.draw();
     });

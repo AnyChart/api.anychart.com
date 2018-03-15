@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.core.grids.Polar.xScale get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-polar.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,7 +25,7 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var markerChart = anychart.polar([
+        var chart1 = anychart.polar([
             {x: 0, value: 29},
             {x: 1, value: -72},
             {x: 2, value: 250},
@@ -39,22 +36,21 @@
             {x: 7, value: 15}
         ]);
 
-
-        markerChart.bounds(0, 0, "50%", "100%");
+        chart1.bounds(0, 0, "50%", "100%");
 
         var customScale = anychart.scales.linear();
         customScale.minimum(1);
         customScale.maximum(4);
         customScale.ticks({interval: 0.1});
 
-        var markerGrid = markerChart.yGrid();
+        var markerGrid = chart1.yGrid();
         markerGrid.xScale(customScale);
 
-        markerChart.container(stage);
-        markerChart.draw();
+        chart1.container(stage);
+        chart1.draw();
 
-        var lineChart = anychart.polar();
-        lineChart.line([
+        var chart2 = anychart.polar();
+        chart2.line([
             {x: 0, value: 6},
             {x: 1, value: 1},
             {x: 2, value: 6},
@@ -62,16 +58,16 @@
             {x: 4, value: 6},
             {x: 5, value: 1}
         ]);
-        lineChart.bounds("50%", 0, "50%", "100%");
+        chart2.bounds("50%", 0, "50%", "100%");
 
         // Get grid scale of the first chart.
         var gridScale = markerGrid.xScale();
 
-        var lineGrid = lineChart.yGrid();
+        var lineGrid = chart2.yGrid();
         lineGrid.xScale(gridScale);
 
-        lineChart.container(stage);
-        lineChart.draw();
+        chart2.container(stage);
+        chart2.draw();
 
         var title = anychart.standalones.title();
         title.text("Get and use grid scale");

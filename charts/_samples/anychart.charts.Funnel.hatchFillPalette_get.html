@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.Funnel.hatchFillPalette get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pyramid-funnel.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,26 +25,36 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var funnelChart = anychart.funnel([7, 7, 7, 7, 7, 7, 7]);
-        funnelChart.bounds(0, 0, "50%", "100%");
-        funnelChart.hatchFill(true);
-        funnelChart.hatchFillPalette(["divot", "grid", "vertical", "horizontal"]);
-        funnelChart.container(stage);
-        funnelChart.draw();
+        var chart1 = anychart.funnel([
+            {name: "California", value: 10},
+            {name: "Illinois", value: 7},
+            {name: "Massachusetts", value: 20},
+            {name: "New York", value: 14}
+        ]);
+        chart1.bounds(0, 0, "50%", "100%");
+        chart1.hatchFill(true);
+        chart1.hatchFillPalette(["divot", "grid", "vertical", "horizontal"]);
+        chart1.container(stage);
+        chart1.draw();
 
-        var pieChart = anychart.pie([7, 7, 7, 7, 7, 7, 7]);
-        pieChart.hatchFill(true);
-        pieChart.bounds("50%", 0, "50%", "100%");
+        var chart2 = anychart.pie([
+            {name: "California", value: 10},
+            {name: "Illinois", value: 7},
+            {name: "Massachusetts", value: 20},
+            {name: "New York", value: 14}
+        ]);
+        chart2.hatchFill(true);
+        chart2.bounds("50%", 0, "50%", "100%");
 
         // Gets hatch fill palette.
-        var funnelChartHatchFillPalette = funnelChart.hatchFillPalette();
+        var funnelChartHatchFillPalette = chart1.hatchFillPalette();
 
-        pieChart.hatchFillPalette(funnelChartHatchFillPalette);
-        pieChart.container(stage);
-        pieChart.draw();
+        chart2.hatchFillPalette(funnelChartHatchFillPalette);
+        chart2.container(stage);
+        chart2.draw();
 
         var customTitle = anychart.standalones.title();
-        customTitle.text("Get and use chart hatchFillPalette.");
+        customTitle.text("Get and use chart hatchFillPalette");
         customTitle.container(stage);
         customTitle.draw();
     });

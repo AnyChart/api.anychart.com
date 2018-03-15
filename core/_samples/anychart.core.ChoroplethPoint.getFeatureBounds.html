@@ -5,16 +5,13 @@
     <meta name="ac:name" content="anychart.core.ChoroplethPoint.getFeatureBounds"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-map.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/france/france.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -39,22 +36,21 @@
             {id: "FR.D", title: "Dijon", value: 518},
             {id: "FR.E", title: "Rennes", value: 324}
         ]);
-        dataSet.mapAs({'id': 'id'});
 
-        var franceMap = anychart.map();
-        franceMap.geoData(anychart.maps.france);
+        var map = anychart.map();
+        map.geoData(anychart.maps.france);
 
-        var series = franceMap.choropleth(dataSet);
+        var series = map.choropleth(dataSet);
         series.tooltip({title: false, separator: false});
 
-        franceMap.container("container");
-        franceMap.draw();
+        map.container("container");
+        map.draw();
 
-        franceMap.listen("pointClick", function (e) {
+        map.listen("pointClick", function (e) {
             // Gets point bounds.
             var bounds = e.point.getFeatureBounds();
 
-            franceMap.title("Point width: " + bounds.width);
+            map.title("Point width: " + bounds.width);
             // Click on point.
         });
     });

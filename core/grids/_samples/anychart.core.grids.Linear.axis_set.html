@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.core.grids.Linear.axis set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -36,19 +33,19 @@
             {x: "Jule", value: 15}
         ]);
 
-        var firstYScale = anychart.scales.linear();
-        firstYScale.ticks({interval: 50});
+        var yScale1 = anychart.scales.linear();
+        yScale1.ticks({interval: 50});
 
-        chart.yScale(firstYScale);
+        chart.yScale(yScale1);
 
-        var secondYScale = anychart.scales.linear();
-        secondYScale.minimum(8000);
-        secondYScale.maximum(16000);
-        secondYScale.ticks({interval: 1000});
+        var yScale2 = anychart.scales.linear();
+        yScale2.minimum(8000);
+        yScale2.maximum(16000);
+        yScale2.ticks({interval: 1000});
 
         var customYAxis = chart.yAxis(1);
         customYAxis.orientation("right");
-        customYAxis.scale(secondYScale);
+        customYAxis.scale(yScale2);
 
         var grid = chart.yGrid();
         grid.enabled(true);

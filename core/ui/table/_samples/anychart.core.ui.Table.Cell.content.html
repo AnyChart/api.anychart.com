@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.core.ui.Table.Cell.content"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-table.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -27,14 +24,25 @@
 <script>
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
+
         var table = anychart.standalones.table(3, 2);
-        var firstCell = table.getCell(0, 0);
-        firstCell.content("Text");  // sets content to cell as string
-        var secondCell = table.getCell(1, 0);
-        secondCell.content(1000000); // sets content to another cell as number
-        var thirdCell = table.getCell(0, 1);
-        thirdCell.content(anychart.line([1.1, 1.4, 1.2, 1.6])); // sets content to another cell as chart
-        thirdCell.rowSpan(3);
+
+        var cell1 = table.getCell(0, 0);
+
+        // Set content to cell as a string.
+        cell1.content("Text");
+
+        var cell2 = table.getCell(1, 0);
+
+        // Set content to another cell as a number.
+        cell2.content(1000000);
+
+        var cell3 = table.getCell(0, 1);
+
+        // Set content to another cell as a chart.
+        cell3.content(anychart.line([1.1, 1.4, 1.2, 1.6]));
+        cell3.rowSpan(3);
+
         table.container(stage);
         table.draw();
     });

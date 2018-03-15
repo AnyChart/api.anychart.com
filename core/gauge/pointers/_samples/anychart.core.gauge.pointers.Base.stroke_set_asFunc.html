@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.core.gauge.pointers.Base.stroke set asFunc"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-circular-gauge.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -36,18 +33,18 @@
             return "3 " + color;
         }
 
-        var chart = anychart.gauges.circular([7, 8]);
+        var chart = anychart.gauges.circular([{value: 7}, {value: 8}]);
         chart.axis();
 
-        var firstNeedle = chart.needle();
+        var needle1 = chart.needle();
 
         // Set stroke.
-        firstNeedle.stroke(pointerStroke);
+        needle1.stroke(pointerStroke);
 
-        var secondNeedle = chart.needle(1);
+        var needle2 = chart.needle(1);
 
         // Set stroke.
-        secondNeedle.stroke(pointerStroke);
+        needle2.stroke(pointerStroke);
 
         chart.title("Set stroke parameter as a function");
         chart.container("container");

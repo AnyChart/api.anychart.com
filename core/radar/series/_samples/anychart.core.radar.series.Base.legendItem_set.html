@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.core.radar.series.Base.legendItem set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-radar.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,7 +25,7 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.radar();
 
-        var firstSeries = chart.line([
+        var series1 = chart.line([
             {x: "January", value: 3},
             {x: "February", value: 6},
             {x: "March", value: 3},
@@ -39,7 +36,7 @@
             {x: "August", value: 6}
         ]);
 
-        var secondSeries = chart.area([
+        var series2 = chart.area([
             {x: "January", value: 2},
             {x: "February", value: 5},
             {x: "March", value: 2},
@@ -53,8 +50,8 @@
         chart.legend(true);
 
         // Set legend item.
-        firstSeries.legendItem({text: "Light blue area", iconType: "circle", iconFill: "#03A9F4"});
-        secondSeries.legendItem({text: "Blue line", iconType: "square", iconFill: "#2196F3"});
+        series1.legendItem({text: "Light blue area", iconType: "circle", iconFill: "#03A9F4"});
+        series2.legendItem({text: "Blue line", iconType: "square", iconFill: "#2196F3"});
 
         chart.title("Set legend item");
         chart.container("container");

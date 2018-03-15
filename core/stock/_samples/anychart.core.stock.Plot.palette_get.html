@@ -5,15 +5,12 @@
     <meta name="ac:name" content="anychart.core.stock.Plot.palette get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -30,34 +27,32 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var firstMapping = dataTable.mapAs({'value': 1});
-        var secondMapping = dataTable.mapAs({'value': 2});
-        var thirdMapping = dataTable.mapAs({'value': 3});
+        var data1 = dataTable.mapAs({'value': 1});
+        var data2 = dataTable.mapAs({'value': 2});
+        var data3 = dataTable.mapAs({'value': 3});
 
         var chart = anychart.stock();
 
+        var plot1 = chart.plot();
 
-        var firstPlot = chart.plot();
+        plot1.line(data1);
+        plot1.line(data2);
+        plot1.line(data3);
 
-        firstPlot.line(firstMapping);
-        firstPlot.line(secondMapping);
-        firstPlot.line(thirdMapping);
+        plot1.palette(["#827717", "#c77532", "#998675"]);
 
-        firstPlot.palette(["#827717", "#c77532", "#998675"]);
+        var plot2 = chart.plot(1);
 
-
-        var secondPlot = chart.plot(1);
-
-        secondPlot.stepLine(firstMapping);
-        secondPlot.spline(secondMapping);
-        secondPlot.column(thirdMapping);
+        plot2.stepLine(data1);
+        plot2.spline(data2);
+        plot2.column(data3);
 
         // Get palette of the line chart.
-        var linePlotPalette = firstPlot.palette();
+        var linePlotPalette = plot1.palette();
 
-        secondPlot.palette(linePlotPalette);
+        plot2.palette(linePlotPalette);
 
-        chart.title("Get and use palette.");
+        chart.title("Get and use palette");
         chart.container("container");
         chart.draw();
     });

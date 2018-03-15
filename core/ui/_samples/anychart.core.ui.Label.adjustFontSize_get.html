@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.core.ui.Label.adjustFontSize get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -27,35 +24,35 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var firstRectangle = stage.rect(5, 5, 190, 90);
-        firstRectangle.fill("none");
-        firstRectangle.stroke("1 #BDBDBD");
+        var rect1 = stage.rect(5, 5, 190, 90);
+        rect1.fill("none");
+        rect1.stroke("1 #BDBDBD");
 
-        var firstLabel = anychart.standalones.label();
-        firstLabel.text("Adjusted text");
-        firstLabel.adjustFontSize(true);
-        firstLabel.width("100%");
-        firstLabel.height("100%");
-        firstLabel.parentBounds(firstRectangle.getBounds());
-        firstLabel.container(stage);
-        firstLabel.draw();
+        var label1 = anychart.standalones.label();
+        label1.text("Adjusted text");
+        label1.adjustFontSize(true);
+        label1.width("100%");
+        label1.height("100%");
+        label1.parentBounds(rect1.getBounds());
+        label1.container(stage);
+        label1.draw();
 
-        var secondRectangle = stage.rect(205, 5, 190, 90);
-        secondRectangle.fill("none");
-        secondRectangle.stroke("1 #BDBDBD");
+        var rect2 = stage.rect(205, 5, 190, 90);
+        rect2.fill("none");
+        rect2.stroke("1 #BDBDBD");
 
-        var secondLabel = anychart.standalones.label();
-        secondLabel.text("Adjusted text");
+        var label2 = anychart.standalones.label();
+        label2.text("Adjusted text");
 
         // Get adjusting font size.
-        var adjusting = firstLabel.adjustFontSize();
+        var adjusting = label1.adjustFontSize();
 
-        secondLabel.adjustFontSize(adjusting);
-        secondLabel.width("100%");
-        secondLabel.height("100%");
-        secondLabel.parentBounds(secondRectangle.getBounds());
-        secondLabel.container(stage);
-        secondLabel.draw();
+        label2.adjustFontSize(adjusting);
+        label2.width("100%");
+        label2.height("100%");
+        label2.parentBounds(rect2.getBounds());
+        label2.container(stage);
+        label2.draw();
     });
 </script>
 </body>

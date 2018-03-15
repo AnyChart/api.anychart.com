@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.core.cartesian.series.Box.hatchFill get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -25,14 +22,14 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var firstData = [
+        var data1 = [
             {x: "January", low: 760, q1: 801, median: 848, q3: 895, high: 965},
             {x: "February", low: 733, q1: 853, median: 939, q3: 980, high: 1080, outliers: [1120, 630]},
             {x: "March", low: 760, q1: 801, median: 848, q3: 895, high: 965, outliers: [650]},
             {x: "April", low: 724, q1: 802, median: 806, q3: 871, high: 950, outliers: [1000, 600]}
         ];
 
-        var secondData = [
+        var data2 = [
             {x: "January", low: 660, q1: 801, median: 948, q3: 995, high: 1065},
             {x: "February", low: 633, q1: 853, median: 1039, q3: 1080, high: 1180, outliers: [1120, 630]},
             {x: "March", low: 660, q1: 801, median: 948, q3: 995, high: 1065, outliers: [650]},
@@ -41,13 +38,13 @@
 
         var chart = anychart.box();
 
-        var series = chart.box(firstData);
+        var series = chart.box(data1);
         series.hatchFill("zig-zag");
 
         // Get series hatch fill.
         var hatchFill = series.hatchFill();
 
-        var boxSeries = chart.box(secondData);
+        var boxSeries = chart.box(data2);
         boxSeries.hatchFill(hatchFill);
 
         chart.title("Get and use hatch fill");

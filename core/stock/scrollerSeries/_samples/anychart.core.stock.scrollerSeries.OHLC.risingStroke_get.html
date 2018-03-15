@@ -5,15 +5,12 @@
     <meta name="ac:name" content="anychart.core.stock.scrollerSeries.OHLC.risingStroke get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -30,23 +27,23 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var ohlcMapping = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4});
-        var lineMapping = dataTable.mapAs({'value': 1});
+        var data1 = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4});
+        var data2 = dataTable.mapAs({'value': 1});
 
         var chart = anychart.stock();
 
-
         var plot = chart.plot();
-        plot.line(lineMapping);
+        plot.line(data2);
 
-        scroller = chart.scroller();
+        var scroller = chart.scroller();
         scroller.height("20%");
 
-        var series = scroller.ohlc(ohlcMapping);
-        // Gets rising stroke settings.
+        var series = scroller.ohlc(data1);
+
+        // Get rising stroke settings.
         var risingStroke = series.risingStroke();
 
-        chart.title({background: {stroke: risingStroke}});
+        chart.title({background: {stroke: risingStroke}, text: "Get and  use rising stroke"});
         chart.container("container");
         chart.draw();
     });

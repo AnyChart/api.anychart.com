@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.Pie.hatchFillPalette get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pyramid-funnel.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,14 +25,26 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var pieChart = anychart.pie([7, 7, 7, 7, 7, 7, 7]);
+        var pieChart = anychart.pie([
+            {x: "Cycling", value: 7},
+            {x: "Swimming", value: 7},
+            {x: "Run", value: 7},
+            {x: "Hiking", value: 7},
+            {x: "Alpinism", value: 7}
+        ]);
         pieChart.hatchFill(true);
         pieChart.bounds(0, 0, "50%", "100%");
         pieChart.hatchFillPalette(["divot", "grid", "vertical", "horizontal"]);
         pieChart.container(stage);
         pieChart.draw();
 
-        var funnelChart = anychart.funnel([7, 7, 7, 7, 7, 7, 7]);
+        var funnelChart = anychart.funnel([
+            {x: "Cycling", value: 7},
+            {x: "Swimming", value: 7},
+            {x: "Run", value: 7},
+            {x: "Hiking", value: 7},
+            {x: "Alpinism", value: 7}
+        ]);
         funnelChart.bounds("50%", 0, "50%", "100%");
         funnelChart.hatchFill(true);
 
@@ -47,7 +56,7 @@
         funnelChart.draw();
 
         var customTitle = anychart.standalones.title();
-        customTitle.text("Get and use chart hatchFillPalette.");
+        customTitle.text("Get and use chart hatchFillPalette");
         customTitle.container(stage);
         customTitle.draw();
     });

@@ -5,15 +5,12 @@
     <meta name="ac:name" content="anychart.core.stock.scrollerSeries.Candlestick.fallingHatchFill set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -30,8 +27,8 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var candlestickMapping = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4});
-        var lineMapping = dataTable.mapAs({'value': 1});
+        var data1 = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4});
+        var data2 = dataTable.mapAs({'value': 1});
 
         var chart = anychart.stock();
 
@@ -39,17 +36,17 @@
         chart.scrollerGrouping({minPixPerPoint: 20});
 
         var plot = chart.plot();
-        plot.line(lineMapping);
+        plot.line(data2);
 
         var scroller = chart.scroller();
         scroller.height("50%");
 
-        var series = scroller.candlestick(candlestickMapping);
+        var series = scroller.candlestick(data1);
 
         // Set falling hatch fill.
         series.fallingHatchFill("dashed-vertical", "#212121", 1, 7);
 
-        chart.title("Set falling hatch fill parameter as an array. Move the scroller.");
+        chart.title("Set falling hatch fill parameter as an array. Move the scroller");
         chart.container("container");
         chart.draw();
     });

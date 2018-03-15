@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.charts.Cartesian.legend get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,19 +23,24 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.line();
-        chart.line([1, 2, 3, 4]);
-        chart.line([2, 3, 4, 1]);
-        chart.line([3, 4, 1, 2]);
-        chart.line([4, 1, 2, 3]);
+        chart.data({
+            header: ["#", "Florida", "Texas", "Arizona", "Nevada"],
+            rows: [
+                ["Apples", 1, 2, 3, 4],
+                ["Pears", 2, 3, 4, 1],
+                ["Bananas", 3, 4, 1, 2],
+                ["Grapes", 4, 1, 2, 3]
+            ]
+        });
 
-        // Gets legend.
+        // Get legend.
         var legend = chart.legend();
         legend.enabled(true);
         legend.position("right");
         legend.itemsLayout("vertical");
         legend.align("top");
 
-        chart.title("Get and modify legend object.");
+        chart.title("Get and modify legend object");
         chart.container("container");
         chart.draw();
     });

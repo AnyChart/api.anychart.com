@@ -5,16 +5,13 @@
     <meta name="ac:name" content="anychart.charts.Map.toGeoJSON"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-map.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -33,7 +30,7 @@
 
         var stage = anychart.graphics.create("container");
 
-        var firstDataSet = anychart.data.set([
+        var dataSet = anychart.data.set([
             {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
             {id: "AU.VI", value: 23, title: "Victoria"},
             {id: "AU.WA", value: 86, title: "Western Australia"},
@@ -45,33 +42,31 @@
         ]);
 
 
-        var firstDataSetForSeries = firstDataSet.mapAs({'id': 'id'});
+        var data = dataSet.mapAs({'id': 'id'});
 
-        var firstAustraliaMap = anychart.map();
-        firstAustraliaMap.bounds(0, 0, "100%", "50%");
-        firstAustraliaMap.geoData(anychart.maps.australia);
+        var map1 = anychart.map();
+        map1.bounds(0, 0, "100%", "50%");
+        map1.geoData(anychart.maps.australia);
 
-        var series = firstAustraliaMap.choropleth(firstDataSetForSeries);
-        series.geoIdField("code_hasc");
+        map1.choropleth(data);
 
-        firstAustraliaMap.title("Get and set geo JSON config.");
-        firstAustraliaMap.container(stage);
-        firstAustraliaMap.draw();
+        map1.title("Get and set geo JSON config");
+        map1.container(stage);
+        map1.draw();
 
-        // Gets geo JSON config.
-        var data = firstAustraliaMap.toGeoJSON();
+        // Get geo JSON config.
+        var data = map1.toGeoJSON();
 
-        var secondAustraliaMap = anychart.map();
-        secondAustraliaMap.bounds(0, "50%", "100%", "50%");
+        var map2 = anychart.map();
+        map2.bounds(0, "50%", "100%", "50%");
 
-        // Sets data from geo JSON.
-        secondAustraliaMap.geoData(data);
+        // Set data from geo JSON.
+        map2.geoData(data);
 
-        var secondSeries = secondAustraliaMap.choropleth(firstDataSet);
-        secondSeries.geoIdField("code_hasc");
+        map2.choropleth(dataSet);
 
-        secondAustraliaMap.container(stage);
-        secondAustraliaMap.draw();
+        map2.container(stage);
+        map2.draw();
     });
 </script>
 </body>

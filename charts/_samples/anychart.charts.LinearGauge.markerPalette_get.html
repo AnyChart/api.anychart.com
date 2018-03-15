@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.LinearGauge.markerPalette get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-linear-gauge.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,7 +25,13 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container", 600, 400);
 
-        var chart = anychart.gauges.linear([15, 20, 29, 36, 44]);
+        var chart = anychart.gauges.linear([
+            {value: 15},
+            {value: 20},
+            {value: 25},
+            {value: 30},
+            {value: 44}
+        ]);
         chart.bar(4);
         chart.bar(3);
         chart.bar(2);
@@ -58,7 +61,7 @@
         palette.itemAt(0, "triangle-up");
 
         chart.axis({offset: -11});
-        chart.title("Get and modify marker palette.");
+        chart.title("Get and modify marker palette");
         chart.container(stage);
         chart.draw();
     });

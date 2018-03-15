@@ -5,16 +5,13 @@
     <meta name="ac:name" content="anychart.charts.Map.palette set asDistinctColors"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-map.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -48,34 +45,34 @@
             {id: "AU.VI", value: 23, title: "Victoria"}
         ]);
 
-        var firstDataSetForSeries = firstDataSet.mapAs({'id': 'id'});
-        var secondDataSetForSeries = secondDataSet.mapAs({'id': 'id'});
-        var thirdDataSetForSeries = thirdDataSet.mapAs({'id': 'id'});
+        var data1 = firstDataSet.mapAs({'id': 'id'});
+        var data2 = secondDataSet.mapAs({'id': 'id'});
+        var data3 = thirdDataSet.mapAs({'id': 'id'});
 
         var australiaMap = anychart.map();
         australiaMap.geoData(anychart.maps.australia);
 
         // Create palette.
-        var myPalette = anychart.palettes.distinctColors();
-        myPalette.items([
+        var palette = anychart.palettes.distinctColors();
+        palette.items([
             ["#FFEB3B", "#ef6c00"],
             "#4FC3F7",
             "#4DD0E1"
         ]);
 
         // Set palette
-        australiaMap.palette(myPalette);
+        australiaMap.palette(palette);
 
-        var firstSeries = australiaMap.choropleth(firstDataSetForSeries);
-        firstSeries.geoIdField("code_hasc");
+        var series1 = australiaMap.choropleth(data1);
+        series1.geoIdField("code_hasc");
 
-        var secondSeries = australiaMap.choropleth(secondDataSetForSeries);
-        secondSeries.geoIdField("code_hasc");
+        var series2 = australiaMap.choropleth(data2);
+        series2.geoIdField("code_hasc");
 
-        var thirdSeries = australiaMap.choropleth(thirdDataSetForSeries);
-        thirdSeries.geoIdField("code_hasc");
+        var series2 = australiaMap.choropleth(data3);
+        series2.geoIdField("code_hasc");
 
-        australiaMap.title("Set map palette parameter as an instance.");
+        australiaMap.title("Set map palette parameter as an instance");
         australiaMap.container("container");
         australiaMap.draw();
     });

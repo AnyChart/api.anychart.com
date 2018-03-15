@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.Funnel.markerPalette get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pyramid-funnel.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,30 +25,35 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var funnelChart = anychart.funnel([7, 7, 7, 7, 7, 7, 7]);
-        funnelChart.bounds(0, 0, "50%", "100%");
-        funnelChart.markers({enabled: true, size: 10});
-        funnelChart.labels(false);
-        funnelChart.markerPalette(["diamond", "star4", "star7", "diagonal-cross"]);
-        funnelChart.container(stage);
-        funnelChart.draw();
+        var chart1 = anychart.funnel([
+            {name: "California", value: 10},
+            {name: "Illinois", value: 7},
+            {name: "Massachusetts", value: 20},
+            {name: "New York", value: 14}
+        ]);
+        chart1.bounds(0, 0, "50%", "100%");
+        chart1.markers({enabled: true, size: 10});
+        chart1.labels(false);
+        chart1.markerPalette(["diamond", "star4", "star7", "diagonal-cross"]);
+        chart1.container(stage);
+        chart1.draw();
 
-        var markerChart = anychart.column();
-        markerChart.marker([5, 40, 6, 37, 15]);
-        markerChart.marker([7, 23, 9, 18, 28]);
-        markerChart.marker([11, 17, 12, 34, 19]);
-        markerChart.marker([13, 7, 22, 14, 39]);
-        markerChart.bounds("50%", 0, "50%", "100%");
+        var chart2 = anychart.column();
+        chart2.marker([5, 40, 6, 37, 15]);
+        chart2.marker([7, 23, 9, 18, 28]);
+        chart2.marker([11, 17, 12, 34, 19]);
+        chart2.marker([13, 7, 22, 14, 39]);
+        chart2.bounds("50%", 0, "50%", "100%");
 
-        // Gets marker palette of the funnel chart.
-        var funnelChartMarkerPalette = funnelChart.markerPalette();
+        // Get marker palette of the funnel chart.
+        var funnelChartMarkerPalette = chart1.markerPalette();
 
-        markerChart.markerPalette(funnelChartMarkerPalette);
-        markerChart.container(stage);
-        markerChart.draw();
+        chart2.markerPalette(funnelChartMarkerPalette);
+        chart2.container(stage);
+        chart2.draw();
 
         var customTitle = anychart.standalones.title();
-        customTitle.text("Get and use chart marker palette.");
+        customTitle.text("Get and use chart marker palette");
         customTitle.container(stage);
         customTitle.draw();
     });

@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.charts.Cartesian.xAxis get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -25,20 +22,25 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.column();
-        chart.column([1, 4, 5, 7, 2]);
+        var chart = anychart.column([
+            {x: "Meat", value: 10},
+            {x: "Fruit", value: 12},
+            {x: "Nuts", value: 18},
+            {x: "Milk", value: 5},
+            {x: "Fish", value: 9}
+        ]);
 
-        // Gets X-axis.
+        // Get X-axis.
         var bottomXAxis = chart.xAxis();
         bottomXAxis.ticks({stroke: "#2196F3"});
 
-        // Gets X-axis by index.
+        // Get X-axis by index.
         var topXAxis = chart.xAxis(1);
         topXAxis.orientation("top");
         topXAxis.stroke("#2196F3");
         topXAxis.title(true);
 
-        chart.title("Get and modify chart xAxis.");
+        chart.title("Get and modify chart xAxis");
         chart.container("container");
         chart.draw();
     });

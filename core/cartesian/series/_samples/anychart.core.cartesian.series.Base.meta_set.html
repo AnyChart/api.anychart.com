@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.core.cartesian.series.Base.meta set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,10 +23,24 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.cartesian();
-        var series = chart.line([4, 2, 7, 1]);
-        series.meta("location", "{{branch-name}}ment"); // sets meta
-        series.meta("source", "https://some-url.dmn"); // sets meta
-        series.meta("imageSRC", "https://some-url.dmn/getImage.php?bySomeParam=Value"); // sets meta
+
+        var series = chart.line([
+            {x: 0, value: 4},
+            {x: 1, value: 2},
+            {x: 2, value: 7},
+            {x: 3, value: 1}
+        ]);
+
+        // Set meta.
+        series.meta("location", "Development");
+
+        // Set meta.
+        series.meta("source", "https://some-url.dmn");
+
+        // Set meta.
+        series.meta("imageSRC", "https://some-url.dmn/getImage.php?bySomeParam=Value");
+
+        chart.title("Set series meta");
         chart.container("container");
         chart.draw();
     });

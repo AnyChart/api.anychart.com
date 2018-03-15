@@ -26,7 +26,10 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.bullet([10, 15]);
+        var chart = anychart.bullet([
+            {value: 10},
+            {value: 15}
+        ]);
 
         chart.range({from: 0, to: 5});
         chart.range(1, {from: 5, to: 10});
@@ -34,9 +37,9 @@
         chart.range(3, {from: 15, to: 20});
 
         // Gets type.
-        chartType = chart.getType();
+        var chartType = chart.getType();
 
-        chart.title({text: "Get chart type. Chart type is a " + chartType + ".", orientation: "top"});
+        chart.title({text: "Get chart type. Chart type is a " + chartType, orientation: "top"});
 
         chart.bottom("60%");
         chart.container("container");

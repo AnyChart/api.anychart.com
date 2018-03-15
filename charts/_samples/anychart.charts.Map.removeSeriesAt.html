@@ -5,16 +5,13 @@
     <meta name="ac:name" content="anychart.charts.Map.removeSeriesAt"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-map.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
     <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -48,28 +45,23 @@
             {id: "AU.SA", size: 45}
         ]);
 
-        var dataSetForFirstSeries = firstDataSet.mapAs({'id': 'id'});
-        var dataSetForSecondSeries = secondDataSet.mapAs({'id': 'id'});
-        var dataSetThirdForSeries = thirdDataSet.mapAs({'id': 'id'});
+        var data1 = firstDataSet.mapAs({'id': 'id'});
+        var data2 = secondDataSet.mapAs({'id': 'id'});
+        var data3 = thirdDataSet.mapAs({'id': 'id'});
 
         var australiaMap = anychart.map();
         australiaMap.geoData(anychart.maps.australia);
         australiaMap.defaultSeriesType("choropleth");
-        australiaMap.addSeries(dataSetForFirstSeries, dataSetForSecondSeries, dataSetThirdForSeries);
+        australiaMap.addSeries(data1, data2, data3);
 
-        var firstSeries = australiaMap.getSeries(0);
-        firstSeries.geoIdField("code_hasc");
-
-        var secondSeries = australiaMap.getSeries(1);
-        secondSeries.geoIdField("code_hasc");
-
-        var thirdSeries = australiaMap.getSeries(2);
-        thirdSeries.geoIdField("code_hasc");
+        australiaMap.getSeries(0);
+        australiaMap.getSeries(1);
+        australiaMap.getSeries(2);
 
         // Remove the series by index.
         australiaMap.removeSeriesAt(2);
 
-        australiaMap.title("Remove series by index.");
+        australiaMap.title("Remove series by index");
         australiaMap.container("container");
         australiaMap.draw();
     });

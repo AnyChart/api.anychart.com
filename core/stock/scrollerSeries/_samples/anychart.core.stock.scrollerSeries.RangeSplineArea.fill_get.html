@@ -5,15 +5,12 @@
     <meta name="ac:name" content="anychart.core.stock.scrollerSeries.RangeSplineArea.fill get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -30,28 +27,27 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var rangeSplineAreaMapping = dataTable.mapAs({'high': 1, 'low': 3});
-        var lineMapping = dataTable.mapAs({'value': 1});
+        var data1 = dataTable.mapAs({'high': 1, 'low': 3});
+        var data2 = dataTable.mapAs({'value': 1});
 
         var chart = anychart.stock();
         chart.grouping({minPixPerPoint: 5});
         chart.scrollerGrouping({minPixPerPoint: 5});
 
-
         var plot = chart.plot();
-        plot.line(lineMapping);
+        plot.line(data2);
 
         var scroller = chart.scroller();
         scroller.height("50%");
 
-        var series = scroller.rangeSplineArea(rangeSplineAreaMapping);
+        var series = scroller.rangeSplineArea(data1);
 
         series.fill("#4CAF50");
 
         // Get series fill.
         var fill = series.fill();
 
-        chart.title({fontColor: fill, text: "Get and use fill. Move the scroller."});
+        chart.title({fontColor: fill, text: "Get and use fill. Move the scroller"});
         chart.container("container");
         chart.draw();
     });

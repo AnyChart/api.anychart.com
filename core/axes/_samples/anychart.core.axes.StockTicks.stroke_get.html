@@ -5,15 +5,12 @@
     <meta name="ac:name" content="anychart.core.axes.StockTicks.stroke get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -34,19 +31,18 @@
 
         var chart = anychart.stock();
 
-
         var plot = chart.plot();
         plot.line(mapping);
 
         var plotXAxis = plot.xAxis();
         plotXAxis.labels({anchor: "left-top"});
 
-        var ticksSettings = plotXAxis.ticks();
-        ticksSettings.enabled(true);
-        ticksSettings.stroke("#F44336");
+        var ticks = plotXAxis.ticks();
+        ticks.enabled(true);
+        ticks.stroke("#F44336");
 
         // Get ticks stroke.
-        var stroke = ticksSettings.stroke();
+        var stroke = ticks.stroke();
 
         chart.title({text: "Get and use ticks stroke", fontColor: stroke});
         chart.container("container");

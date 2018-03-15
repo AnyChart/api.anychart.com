@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.core.ui.LabelsFactory.offsetX get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -27,10 +24,10 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var columnChart = anychart.column();
-        columnChart.bounds(0, 0, "100%", "50%");
+        var chart1 = anychart.column();
+        chart1.bounds(0, 0, "100%", "50%");
 
-        var series = columnChart.column([
+        var series1 = chart1.column([
             {x: "January", value: 2},
             {x: "February", value: 5},
             {x: "March", value: 3},
@@ -38,17 +35,17 @@
             {x: "May", value: 4}
         ]);
 
-        var labels = series.labels();
+        var labels = series1.labels();
         labels.enabled(true);
         labels.offsetX(50);
 
-        columnChart.container(stage);
-        columnChart.draw();
+        chart1.container(stage);
+        chart1.draw();
 
-        var lineChart = anychart.line();
-        lineChart.bounds(0, "50%", "100%", "50%");
+        var chart2 = anychart.line();
+        chart2.bounds(0, "50%", "100%", "50%");
 
-        var lineSeries = lineChart.line([
+        var series2 = chart2.line([
             {x: "January", value: 2},
             {x: "February", value: 5},
             {x: "March", value: 3},
@@ -56,15 +53,15 @@
             {x: "May", value: 4}
         ]);
 
-        var lineLabels = lineSeries.labels();
+        var lineLabels = series2.labels();
         lineLabels.enabled(true);
 
         // Get offset by X.
         var offsetX = labels.offsetX();
 
         lineLabels.offsetX(offsetX);
-        lineChart.container(stage);
-        lineChart.draw();
+        chart2.container(stage);
+        chart2.draw();
 
         var title = anychart.standalones.title();
         title.text("Get and use offset by X");

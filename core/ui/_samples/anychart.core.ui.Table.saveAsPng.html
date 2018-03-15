@@ -5,16 +5,13 @@
     <meta name="ac:name" content="anychart.core.ui.Table.saveAsPng"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-table.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -41,13 +38,13 @@
         pie.data(dataSet);
         pie.legend(null);
 
-        var lineChart = anychart.line(dataSet[0]);
-        lineChart.title(null);
-        lineChart.xAxis(null);
+        var chart1 = anychart.line(dataSet[0]);
+        chart1.title(null);
+        chart1.xAxis(null);
 
-        var areaChart = anychart.area(dataSet[1]);
-        areaChart.title(null);
-        areaChart.xAxis(null);
+        var chart2 = anychart.area(dataSet[1]);
+        chart2.title(null);
+        chart2.xAxis(null);
 
         var table = anychart.standalones.table();
 
@@ -55,8 +52,8 @@
         cell.rowSpan(2);
 
         table.contents([
-            [pie, lineChart],
-            [null, areaChart]
+            [pie, chart1],
+            [null, chart2]
         ]);
         table.container(stage);
         table.draw();

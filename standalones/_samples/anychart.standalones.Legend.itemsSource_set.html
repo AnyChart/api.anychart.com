@@ -24,29 +24,29 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
         
-        var leftChart = anychart.pie([
+        var pie = anychart.pie([
             {x: "Cycling", value: 10},
             {x: "Swimming", value: 12},
             {x: "Run", value: 18},
             {x: "Hiking", value: 11},
         ]);
-        leftChart.legend(false);
-        leftChart.bounds(0, 30, "50%", "90%");
-        leftChart.container(stage);
-        leftChart.draw();
+        pie.legend(false);
+        pie.bounds(0, 30, "50%", "90%");
+        pie.container(stage);
+        pie.draw();
         
-        var rightChart = anychart.scatter();
-        rightChart.line([28, 55, 25, 31]);
-        rightChart.marker([65, 30, 15, 20]);
-        rightChart.xScale().minimum(-0.1);
-        rightChart.bounds("50%", 30, "50%", "90%");
-        rightChart.container(stage);
-        rightChart.draw();
+        var chart = anychart.scatter();
+        chart.line([28, 55, 25, 31]);
+        chart.marker([65, 30, 15, 20]);
+        chart.xScale().minimum(-0.1);
+        chart.bounds("50%", 30, "50%", "90%");
+        chart.container(stage);
+        chart.draw();
         
         var legend = anychart.standalones.legend();
 
         // Set items source.
-        legend.itemsSource([leftChart, rightChart]);
+        legend.itemsSource([pie, chart]);
         legend.container(stage);
         legend.draw();
     });

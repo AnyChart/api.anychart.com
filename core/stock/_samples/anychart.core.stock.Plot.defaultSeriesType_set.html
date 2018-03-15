@@ -5,15 +5,12 @@
     <meta name="ac:name" content="anychart.core.stock.Plot.defaultSeriesType set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -30,19 +27,18 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var firstMapping = dataTable.mapAs({'value': 1});
-        var secondMapping = dataTable.mapAs({'value': 3});
-        var thirdMapping = dataTable.mapAs({'value': 2});
+        var data1 = dataTable.mapAs({'value': 1});
+        var data2 = dataTable.mapAs({'value': 3});
+        var data3 = dataTable.mapAs({'value': 2});
 
         var chart = anychart.stock();
-
 
         var plot = chart.plot();
 
         // Set default series type.
         plot.defaultSeriesType("line");
 
-        plot.addSeries(firstMapping, secondMapping, thirdMapping);
+        plot.addSeries(data1, data2, data3);
 
         chart.title("Change default series type added by addSeries method");
         chart.container("container");

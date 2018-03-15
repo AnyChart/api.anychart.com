@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.core.ui.LabelsFactory.height get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -27,10 +24,10 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var columnChart = anychart.column();
-        columnChart.bounds(0, 0, "100%", "50%");
+        var chart1 = anychart.column();
+        chart1.bounds(0, 0, "100%", "50%");
 
-        var series = columnChart.column([
+        var series = chart1.column([
             {x: "January", value: 2},
             {x: "February", value: 5},
             {x: "March", value: 3},
@@ -38,18 +35,18 @@
             {x: "May", value: 4}
         ]);
 
-        var labels = series.labels();
-        labels.enabled(true);
-        labels.background({fill: "#2196F3 0.3"});
-        labels.height(30);
+        var labels1 = series.labels();
+        labels1.enabled(true);
+        labels1.background({fill: "#2196F3 0.3"});
+        labels1.height(30);
 
-        columnChart.container(stage);
-        columnChart.draw();
+        chart1.container(stage);
+        chart1.draw();
 
-        var lineChart = anychart.line();
-        lineChart.bounds(0, "50%", "100%", "50%");
+        var chart2 = anychart.line();
+        chart2.bounds(0, "50%", "100%", "50%");
 
-        var lineSeries = lineChart.line([
+        var lineSeries = chart2.line([
             {x: "January", value: 2},
             {x: "February", value: 5},
             {x: "March", value: 3},
@@ -57,16 +54,17 @@
             {x: "May", value: 4}
         ]);
 
-        var lineLabels = lineSeries.labels();
-        lineLabels.enabled(true);
-        lineLabels.background({fill: "#2196F3 0.3"});
+        var labels2 = lineSeries.labels();
+        labels2.enabled(true);
+        labels2.background({fill: "#2196F3 0.3"});
 
         // Get height.
-        var height = labels.height();
+        var height = labels1.height();
 
-        lineLabels.height(height);
-        lineChart.container(stage);
-        lineChart.draw();
+        labels2.height(height);
+
+        chart2.container(stage);
+        chart2.draw();
 
         var title = anychart.standalones.title();
         title.text("Get and use height");

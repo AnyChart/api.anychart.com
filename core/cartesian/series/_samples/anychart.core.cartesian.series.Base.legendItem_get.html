@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.core.cartesian.series.Base.legendItem get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -27,20 +24,21 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var lineChart = anychart.cartesian();
-        lineChart.bounds(0, 0, "100%", "80%");
-        lineChart.legend(true);
+        var chart = anychart.cartesian();
+        chart.bounds(0, 0, "100%", "80%");
+        chart.legend(true);
 
-        var blueSeries = lineChart.line([6, 3, 1, 8]);
-        var orangeSeries = lineChart.line([4, 6, 4, 9]);
+        var blueSeries = chart.line([6, 3, 1, 8]);
+        var orangeSeries = chart.line([4, 6, 4, 9]);
 
         blueSeries.legendItem({text: "Blue line", iconType: "circle", iconFill: "#0091EA"});
         orangeSeries.legendItem({text: "Orange line", iconType: "square", iconFill: "#FF9800"});
 
-        lineChart.container(stage);
-        lineChart.draw();
+        chart.title("Get and modify legend item");
+        chart.container(stage);
+        chart.draw();
 
-        // Gets settings of the legend item.
+        // Get legend item.
         var legendItem = blueSeries.legendItem();
         legendItem.disabled(true);
     });

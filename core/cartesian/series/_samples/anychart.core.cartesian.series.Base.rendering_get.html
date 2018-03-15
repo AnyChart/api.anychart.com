@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.core.cartesian.series.Base.rendering get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -27,12 +24,19 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.cartesian();
 
-        var series = chart.column([10, 20, 15, 30, 5]);
+        var series = chart.column([
+            {x: "January", value: 10},
+            {x: "February", value: 20},
+            {x: "March", value: 15},
+            {x: "April", value: 30},
+            {x: "May", value: 5}
+        ]);
 
         // Get rendering.
         var renderingSettings = series.rendering();
         renderingSettings.point(drawer);
 
+        chart.title("Get and modify rendering");
         chart.container("container");
         chart.draw();
     });

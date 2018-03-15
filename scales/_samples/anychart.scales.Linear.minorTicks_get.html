@@ -24,28 +24,28 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var lineChart = anychart.line([1, 4, 2, 9]);
-        lineChart.yAxis({minorTicks: {stroke: "#424242"}});
-        lineChart.bounds(0, 20, "50%", "100%");
+        var chart1 = anychart.line([1, 4, 2, 9]);
+        chart1.yAxis({minorTicks: {stroke: "#424242"}});
+        chart1.bounds(0, 20, "50%", "100%");
 
-        var yScale1 = lineChart.yScale();
+        var yScale1 = chart1.yScale();
         yScale1.minorTicks([1.25, 3.75, 6.25, 8.75]);
 
-        lineChart.container(stage);
-        lineChart.draw();
+        chart1.container(stage);
+        chart1.draw();
 
-        var columnChart = anychart.column([1, 4, 2, 9]);
-        columnChart.yAxis({minorTicks: {stroke: "#424242"}});
-        columnChart.bounds("50%", 20, "50%", "100%");
+        var chart2 = anychart.column([1, 4, 2, 9]);
+        chart2.yAxis({minorTicks: {stroke: "#424242"}});
+        chart2.bounds("50%", 20, "50%", "100%");
 
         // Get minor ticks.
         var minorTicks = yScale1.minorTicks();
 
-        var yScale2 = columnChart.yScale();
+        var yScale2 = chart2.yScale();
         yScale2.minorTicks(minorTicks.get());
 
-        columnChart.container(stage);
-        columnChart.draw();
+        chart2.container(stage);
+        chart2.draw();
 
         var title = anychart.standalones.title();
         title.text("Get and use minor ticks");

@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.charts.Pie.palette set asDistinctColors"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -25,9 +22,13 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = [7, 7, 7, 7, 7, 7];
-
-        var chart = anychart.pie(data);
+        var chart = anychart.pie([
+            {x: "Cycling", value: 7},
+            {x: "Swimming", value: 7},
+            {x: "Run", value: 7},
+            {x: "Hiking", value: 7},
+            {x: "Alpinism", value: 7}
+        ]);
         chart.labels(null);
         chart.legend(null);
 
@@ -38,7 +39,7 @@
         // Set palette.
         chart.palette(palette);
 
-        chart.title("Set palette parameters as an instance.");
+        chart.title("Set palette parameters as an instance");
         chart.container("container");
         chart.draw();
     });

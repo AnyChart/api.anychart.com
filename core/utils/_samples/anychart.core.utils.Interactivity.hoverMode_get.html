@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.core.utils.Interactivity.hoverMode get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -27,46 +24,51 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var columnChart = anychart.column();
-        columnChart.column([
+        var chart1 = anychart.column();
+        chart1.column([
             {x: 0, value: 22},
             {x: 1, value: 34},
             {x: 2, value: 16},
         ]);
-        columnChart.column([
+        chart1.column([
             {x: 0, value: 12},
             {x: 1, value: 41},
             {x: 2, value: 47}
         ]);
-        columnChart.bounds(0, 0, "50%", "100%");
+        chart1.bounds(0, 10, "50%", "100%");
 
-        var interactivityColumnChart = columnChart.interactivity();
-        interactivityColumnChart.hoverMode("by-x");
+        var interactivity1 = chart1.interactivity();
+        interactivity1.hoverMode("by-x");
 
-        columnChart.container(stage);
-        columnChart.draw();
+        chart1.container(stage);
+        chart1.draw();
 
-        var areaChart = anychart.bar();
-        areaChart.bar([
+        var chart1 = anychart.bar();
+        chart1.bar([
             {x: 0, value: 18},
             {x: 1, value: 5},
             {x: 2, value: 12}
         ]);
-        areaChart.bar([
+        chart1.bar([
             {x: 0, value: 10},
             {x: 1, value: 25},
             {x: 2, value: 16}
         ]);
-        areaChart.bounds("50%", 0, "50%", "100%");
+        chart1.bounds("50%", 10, "50%", "100%");
 
-        // Gets hover mode of column chart.
-        var hoverModeColumnChart = interactivityColumnChart.hoverMode();
+        // Get hover mode of column chart.
+        var hoverMode = interactivity1.hoverMode();
 
-        var interactivityAreaChart = areaChart.interactivity();
-        interactivityAreaChart.hoverMode(hoverModeColumnChart);
+        var interactivity2 = chart1.interactivity();
+        interactivity2.hoverMode(hoverMode);
 
-        areaChart.container(stage);
-        areaChart.draw();
+        chart1.container(stage);
+        chart1.draw();
+
+        var title = anychart.standalones.title();
+        title.text("Get and use hover mode");
+        title.container(stage);
+        title.draw();
     });
 </script>
 </body>

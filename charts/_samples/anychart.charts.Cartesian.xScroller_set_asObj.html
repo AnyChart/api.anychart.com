@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.charts.Cartesian.xScroller set asObj"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -25,14 +22,22 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line();
-        chart.line([10, 4, 17, 20, 16, 35, 6, 15, 19, 25, 34, 42, 14, 64, 55, 34, 40, 25]);
+        var chart = anychart.line([
+            {x: "January", value: 29},
+            {x: "February", value: 72},
+            {x: "March", value: 250},
+            {x: "April", value: 330},
+            {x: "May", value: 85},
+            {x: "June", value: 390},
+            {x: "July", value: 95},
+            {x: "August", value: 15}
+        ]);
         chart.xAxis(true);
 
-        // Sets scroller settings.
+        // Set scroller settings.
         chart.xScroller({position: "before-axes"});
 
-        chart.title("Set chart scroller parameter.");
+        chart.title("Set chart scroller parameter");
         chart.container("container");
         chart.draw();
     });

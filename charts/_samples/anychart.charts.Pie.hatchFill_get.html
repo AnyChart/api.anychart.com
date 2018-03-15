@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.Pie.hatchFill get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pyramid-funnel.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,7 +25,13 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var pieChart = anychart.pie([14, 3, 7, 10]);
+        var pieChart = anychart.pie([
+            {x: "Cycling", value: 5},
+            {x: "Swimming", value: 2},
+            {x: "Run", value: 1},
+            {x: "Hiking", value: 3},
+            {x: "Alpinism", value: 1}
+        ]);
         pieChart.bounds(0, 0, "50%", "100%");
         pieChart.hatchFill("diagonal-brick", "#424242", 0.5, 25);
         pieChart.container(stage);
@@ -45,7 +48,7 @@
         funnelChart.draw();
 
         var customTitle = anychart.standalones.title();
-        customTitle.text("Get and use chart hatchFill.");
+        customTitle.text("Get and use chart hatchFill");
         customTitle.container(stage);
         customTitle.draw();
     });

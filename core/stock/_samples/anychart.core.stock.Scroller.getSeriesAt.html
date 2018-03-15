@@ -5,15 +5,12 @@
     <meta name="ac:name" content="anychart.core.stock.Scroller.getSeriesAt"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -30,26 +27,26 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var firstMapping = dataTable.mapAs({'value': 1});
-        var secondMapping = dataTable.mapAs({'value': 3});
-        var thirdMapping = dataTable.mapAs({'value': 2});
+        var data1 = dataTable.mapAs({'value': 1});
+        var data2 = dataTable.mapAs({'value': 3});
+        var data3 = dataTable.mapAs({'value': 2});
 
         var chart = anychart.stock();
-
 
         var scroller = chart.scroller();
         scroller.defaultSeriesType("line");
         scroller.height("25%");
-        scroller.addSeries(firstMapping, secondMapping, thirdMapping);
+        scroller.addSeries(data1, data2, data3);
 
         // Gets series by index.
         var series = scroller.getSeriesAt(0);
         series.selected({stroke: "#F44336"});
 
         var plot = chart.plot();
-        plot.line(firstMapping);
-        plot.line(secondMapping);
+        plot.line(data1);
+        plot.line(data2);
 
+        chart.title("Get and modify series by index");
         chart.container("container");
         chart.draw();
     });

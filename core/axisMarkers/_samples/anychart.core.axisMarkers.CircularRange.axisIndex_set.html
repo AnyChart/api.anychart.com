@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.core.axisMarkers.CircularRange.axisIndex set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-circular-gauge.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,21 +23,21 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.gauges.circular([10]);
+        var chart = anychart.gauges.circular([{value: 10}]);
         chart.marker({radius: 90});
 
-        var firstAxis = chart.axis();
+        var axis1 = chart.axis();
 
-        var firstScale = firstAxis.scale();
-        firstScale.minimum(0);
-        firstScale.maximum(20);
+        var scale1 = axis1.scale();
+        scale1.minimum(0);
+        scale1.maximum(20);
 
-        var secondAxis = chart.axis(1);
-        secondAxis.radius(70);
+        var axis2 = chart.axis(1);
+        axis2.radius(70);
 
-        var secondScale = secondAxis.scale();
-        secondScale.minimum(0);
-        secondScale.maximum(20);
+        var scale2 = axis2.scale();
+        scale2.minimum(0);
+        scale2.maximum(20);
 
         var rangeSettings = chart.range();
         rangeSettings.from(5);

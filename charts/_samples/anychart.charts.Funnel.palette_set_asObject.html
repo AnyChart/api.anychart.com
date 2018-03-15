@@ -26,15 +26,18 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = [7, 7, 7, 7, 7, 7, 7];
-
-        var chart = anychart.funnel(data);
+        var chart = anychart.funnel([
+            {name: "California", value: 10},
+            {name: "Illinois", value: 7},
+            {name: "Massachusetts", value: 20},
+            {name: "New York", value: 14}
+        ]);
         chart.labels(null);
 
-        // Sets palette.
+        // Set palette.
         chart.palette({items: ["#B2DFDB", "#00796B"], count: 7, type: "range"});
 
-        chart.title("Set chart color palette parameter as object.");
+        chart.title("Set chart color palette parameter as an object");
         chart.container("container");
         chart.draw();
     });

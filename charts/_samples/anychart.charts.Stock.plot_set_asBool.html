@@ -5,15 +5,12 @@
     <meta name="ac:name" content="anychart.charts.Stock.plot set asBool"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -30,20 +27,22 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var firstMapping = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4});
+        var mapping1 = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4});
 
-        var secondMapping = dataTable.mapAs({'value': 1});
+        var mapping2 = dataTable.mapAs({'value': 1});
 
         var chart = anychart.stock();
 
-        var firstPlot = chart.plot();
-        firstPlot.ohlc(firstMapping);
+        var plot1 = chart.plot();
+        plot1.ohlc(mapping1);
 
-        var secondPlot = chart.plot(1);
-        secondPlot.column(secondMapping);
+        var plot2 = chart.plot(1);
+        plot2.column(mapping2);
 
         // Disables plot.
         chart.plot(false);
+
+        chart.title("Disables plot");
         chart.container("container");
         chart.draw();
     });

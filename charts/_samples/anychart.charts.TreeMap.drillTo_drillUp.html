@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.TreeMap.drillTo drillUp"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-treemap.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -51,40 +48,38 @@
 
         var item = treeData.search("id", "Asia");
 
-        chart.title("Drill down to specified item and drill up.");
+        chart.title("Drill down to specified item and drill up");
         chart.bounds(0, "5%", "100%", "90%");
         chart.container(stage);
         chart.draw();
 
-        var drillToLabel = anychart.standalones.label();
-        drillToLabel.background({fill: "#9E9E9E"});
-        drillToLabel.text("Drill to item.");
-        drillToLabel.fontColor("#fff");
-        drillToLabel.padding(5);
-        drillToLabel.parentBounds(0, 0, 100, 100);
-        drillToLabel.listen("click", function () {
-
+        createLabel("Drill to item", 0, function () {
             // Drill down to specified item.
             chart.drillTo(item);
-
         });
-        drillToLabel.container(stage);
-        drillToLabel.draw();
 
-        var drillUpLabel = anychart.standalones.label();
-        drillUpLabel.background({fill: "#9E9E9E"});
-        drillUpLabel.text("Drill up.");
-        drillUpLabel.fontColor("#fff");
-        drillUpLabel.padding(5);
-        drillUpLabel.parentBounds(0, 40, 100, 100);
-        drillUpLabel.listen("click", function () {
-
+        createLabel("Drill up", 30, function () {
             // Drill up.
             chart.drillUp();
-
         });
-        drillUpLabel.container(stage);
-        drillUpLabel.draw();
+
+        function createLabel(text, offset, action) {
+            var label = anychart.standalones.label();
+            label.text(text);
+            label.parentBounds(0, offset, 100, 100);
+            label.listen("click", action);
+            label.listen("mouseOver", function () {
+                document.body.style.cursor = "pointer";
+            });
+            label.listen("mouseOut", function () {
+                document.body.style.cursor = "auto";
+            });
+            label.background({fill: "#9E9E9E"});
+            label.fontColor("#fff");
+            label.padding(5);
+            label.container(stage);
+            label.draw();
+        }
     });
 </script>
 </body>

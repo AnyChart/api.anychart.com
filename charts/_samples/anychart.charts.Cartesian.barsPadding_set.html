@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.charts.Cartesian.barsPadding set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,15 +23,21 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.column();
-        chart.column([4, 2, 8]);
-        chart.column([4, 2, 8]);
+        chart.data({
+            header: ["#", "Florida", "Texas"],
+            rows: [
+                ["Apples", 4, 4],
+                ["Pears", 2, 2],
+                ["Bananas", 8, 8]
+            ]
+        });
 
-        // Sets the padding between bars.
+        // Set the padding between bars.
         chart.barsPadding(0);
-        // Sets the padding between bars or columns group.
+        // Set the padding between bars or columns group.
         // chart.barGroupsPadding(0);
 
-        chart.title("Set padding between column or bar in a group.");
+        chart.title("Set padding between column or bar in a group");
         chart.container("container");
         chart.draw();
     });

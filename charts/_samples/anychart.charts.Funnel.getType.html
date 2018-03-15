@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.Funnel.getType"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pyramid-funnel.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,12 +23,17 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.funnel([10, 14, 8, 12]);
+        var chart = anychart.funnel([
+            {name: "California", value: 10},
+            {name: "Illinois", value: 7},
+            {name: "Massachusetts", value: 20},
+            {name: "New York", value: 14}
+        ]);
 
-        // Gets chart type.
-        chartType = chart.getType();
+        // Get chart type.
+        var chartType = chart.getType();
 
-        chart.title("Get chart type. Chart type is " + chartType + ".");
+        chart.title("Get chart type. Chart type is " + chartType);
         chart.container("container");
         chart.draw();
     });

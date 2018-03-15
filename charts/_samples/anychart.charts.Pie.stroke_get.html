@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.Pie.stroke get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pyramid-funnel.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,13 +25,25 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var pieChart = anychart.pie([7, 7, 7, 7, 7]);
+        var pieChart = anychart.pie([
+            {x: "Cycling", value: 12},
+            {x: "Swimming", value: 14},
+            {x: "Run", value: 8},
+            {x: "Hiking", value: 12},
+            {x: "Alpinism", value: 20}
+        ]);
         pieChart.bounds(0, 0, "50%", "100%");
         pieChart.stroke("#90A4AE", 3);
         pieChart.container(stage);
         pieChart.draw();
 
-        var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
+        var funnelChart = anychart.funnel([
+            {x: "Cycling", value: 12},
+            {x: "Swimming", value: 14},
+            {x: "Run", value: 8},
+            {x: "Hiking", value: 12},
+            {x: "Alpinism", value: 20}
+        ]);
         funnelChart.bounds("50%", 0, "50%", "100%");
 
         // Get stroke.
@@ -45,7 +54,7 @@
         funnelChart.draw();
 
         var customTitle = anychart.standalones.title();
-        customTitle.text("Get and use chart stroke.");
+        customTitle.text("Get and use chart stroke");
         customTitle.container(stage);
         customTitle.draw();
     });

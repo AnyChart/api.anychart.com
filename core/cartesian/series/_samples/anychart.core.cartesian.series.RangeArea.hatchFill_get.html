@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.core.cartesian.series.RangeArea.hatchFill get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -27,7 +24,7 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.area();
 
-        var firstSeries = chart.rangeArea([
+        var series1 = chart.rangeArea([
             {x: "January", low: 3093, high: 12522},
             {x: "February", low: 4205, high: 14622},
             {x: "March", low: 4019, high: 10612},
@@ -39,9 +36,9 @@
             {x: "September", low: 14924, high: 15052},
             {x: "October", low: 12684, high: 15917}
         ]);
-        firstSeries.hatchFill("zig-zag");
+        series1.hatchFill("zig-zag");
 
-        var secondSeries = chart.rangeArea([
+        var series2 = chart.rangeArea([
             {x: "January", high: 3093, low: 493},
             {x: "February", high: 4205, low: 205},
             {x: "March", high: 4019, low: 119},
@@ -55,9 +52,9 @@
         ]);
 
         // Get hatch fill.
-        var hatchFill = firstSeries.hatchFill();
+        var hatchFill = series1.hatchFill();
 
-        secondSeries.hatchFill(hatchFill);
+        series2.hatchFill(hatchFill);
 
         chart.title("Get and use hatch fill");
         chart.container("container");

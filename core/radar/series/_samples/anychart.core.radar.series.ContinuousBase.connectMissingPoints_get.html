@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.core.radar.series.ContinuousBase.connectMissingPoints get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-radar.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,7 +25,7 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.radar();
 
-        var blueLine = chart.line([
+        var series1 = chart.line([
             {x: "January", value: 7},
             {x: "February", value: 4},
             {x: "March", value: 7},
@@ -38,12 +35,12 @@
             {x: "July", value: 7},
             {x: "August", value: 4}
         ]);
-        blueLine.connectMissingPoints(false);
+        series1.connectMissingPoints(false);
 
         // Get connectMissingPoints mode.
-        var connectMissingPoints = blueLine.connectMissingPoints();
+        var connectMissingPoints = series1.connectMissingPoints();
 
-        var redLine = chart.line([
+        var series2 = chart.line([
             {x: "January", value: 10},
             {x: "February", value: 5},
             {x: "March", value: 10},
@@ -53,7 +50,7 @@
             {x: "July", value: 10},
             {x: "August", value: 5}
         ]);
-        redLine.connectMissingPoints(connectMissingPoints);
+        series2.connectMissingPoints(connectMissingPoints);
 
         chart.title("Get and use connectMissingPoints mode");
         chart.container("container");

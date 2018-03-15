@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.Funnel.palette get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pyramid-funnel.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,28 +25,33 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var funnelChart = anychart.funnel([7, 7, 7, 7, 7, 7, 7]);
-        funnelChart.bounds(0, 0, "50%", "100%");
-        funnelChart.palette(["#90caf9", "#80cbc4", "#aed581", "#e6ee9c", "#ffcc80", "#ffab91", "#f8bbd0"]);
-        funnelChart.container(stage);
-        funnelChart.draw();
+        var chart1 = anychart.funnel([
+            {name: "California", value: 10},
+            {name: "Illinois", value: 7},
+            {name: "Massachusetts", value: 20},
+            {name: "New York", value: 14}
+        ]);
+        chart1.bounds(0, 0, "50%", "100%");
+        chart1.palette(["#90caf9", "#80cbc4", "#aed581", "#e6ee9c", "#ffcc80", "#ffab91", "#f8bbd0"]);
+        chart1.container(stage);
+        chart1.draw();
 
-        var columnChart = anychart.column();
-        columnChart.column([1, 2, 3, 4]);
-        columnChart.column([2, 3, 4, 1]);
-        columnChart.column([3, 4, 1, 2]);
-        columnChart.column([4, 1, 2, 3]);
-        columnChart.bounds("50%", 0, "50%", "100%");
+        var chart2 = anychart.column();
+        chart2.column([1, 2, 3, 4]);
+        chart2.column([2, 3, 4, 1]);
+        chart2.column([3, 4, 1, 2]);
+        chart2.column([4, 1, 2, 3]);
+        chart2.bounds("50%", 0, "50%", "100%");
 
         // Get chart palette.
-        var funnelChartPalette = funnelChart.palette();
+        var funnelChartPalette = chart1.palette();
 
-        columnChart.palette(funnelChartPalette);
-        columnChart.container(stage);
-        columnChart.draw();
+        chart2.palette(funnelChartPalette);
+        chart2.container(stage);
+        chart2.draw();
 
         var customTitle = anychart.standalones.title();
-        customTitle.text("Get and use chart palette.");
+        customTitle.text("Get and use chart palette");
         customTitle.container(stage);
         customTitle.draw();
     });

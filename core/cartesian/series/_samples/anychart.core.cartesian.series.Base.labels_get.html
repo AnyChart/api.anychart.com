@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.core.cartesian.series.Base.labels get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,12 +23,22 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.cartesian();
-        var series = chart.line([4, 2, 7, 1]);
-        var labels = series.labels(); // get labels
+
+        var series = chart.line([
+            {x: 0, value: 4},
+            {x: 1, value: 2},
+            {x: 2, value: 7},
+            {x: 3, value: 1}
+        ]);
+
+        // Get labels.
+        var labels = series.labels();
         labels.enabled(true);
         labels.fontColor("#F44336");
         labels.fontSize(16);
         labels.fontWeight("bold");
+
+        chart.title("Get and modify labels");
         chart.container("container");
         chart.draw();
     });

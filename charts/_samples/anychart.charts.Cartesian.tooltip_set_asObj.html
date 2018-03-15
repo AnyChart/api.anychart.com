@@ -25,14 +25,18 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line();
-        chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
-        chart.line([35, 6, 15, 10, 4, 17, 20, 16]);
+        var chart = anychart.line([
+            {x: "Meat", value: 10},
+            {x: "Fruit", value: 12},
+            {x: "Nuts", value: 18},
+            {x: "Milk", value: 5},
+            {x: "Fish", value: 9}
+        ]);
 
-        // Sets tooltip settings.
-        chart.tooltip({displayMode: "union", background: "#CFD8DC", fontColor: "black"});
+        // Set tooltip settings.
+        chart.tooltip({background: "#CFD8DC", fontColor: "black"});
 
-        chart.title("Set chart tooltip parameters as object.");
+        chart.title("Set chart tooltip parameters as an object");
         chart.container("container");
         chart.draw();
     });

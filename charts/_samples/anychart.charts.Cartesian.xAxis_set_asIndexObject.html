@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.charts.Cartesian.xAxis set asIndexObject"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -25,14 +22,19 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.column();
-        chart.column([1, 4, 5, 7, 2]);
+        var chart = anychart.column([
+            {x: "Meat", value: 10},
+            {x: "Fruit", value: 12},
+            {x: "Nuts", value: 18},
+            {x: "Milk", value: 5},
+            {x: "Fish", value: 9}
+        ]);
 
-        // Sets X-axis by index
+        // Set X-axis by index
         chart.xAxis(0, {orientation: "top"});
         chart.xAxis(1, {title: true});
 
-        chart.title("Set xAxis parameters as object by index.");
+        chart.title("Set xAxis parameters as an object by index");
         chart.container("container");
         chart.draw();
     });

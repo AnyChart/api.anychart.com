@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.core.cartesian.series.Base.data get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,12 +23,28 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.line();
-        var series = chart.line([4, 2, 7, 1, 10, 6, 8, 4, 6, 3]);
-        var data = series.data(); // get data
+
+        var series = chart.line([
+            {x: 0, value: 4},
+            {x: 1, value: 2},
+            {x: 2, value: 7},
+            {x: 3, value: 10},
+            {x: 4, value: 6},
+            {x: 5, value: 8},
+            {x: 6, value: 4},
+            {x: 7, value: 6}
+        ]);
+
+        // Get data.
+        var data = series.data();
+
         var newData = data.filter("value", function (value) {
             return value > 5;
         });
+
         series.data(newData);
+
+        chart.title("Get and modify data");
         chart.container("container");
         chart.draw();
     });

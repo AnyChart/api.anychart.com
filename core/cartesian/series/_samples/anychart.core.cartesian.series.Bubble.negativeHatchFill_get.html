@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.core.cartesian.series.Bubble.negativeHatchFill get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -27,29 +24,29 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.bubble();
 
-        var firstSeries = chart.bubble([
+        var series1 = chart.bubble([
             {x: 1, value: 1.0, size: 2},
             {x: 2, value: 1.6, size: -7},
             {x: 3, value: 1.2, size: -4},
             {x: 4, value: 1.9, size: 3}
         ]);
 
-        firstSeries.displayNegative(true);
-        firstSeries.negativeHatchFill("horizontal");
+        series1.displayNegative(true);
+        series1.negativeHatchFill("horizontal");
 
-        var secondSeries = chart.bubble([
+        var series2 = chart.bubble([
             {x: 1, value: 2.0, size: -4},
             {x: 2, value: 2.6, size: -1},
             {x: 3, value: 3.2, size: 3},
             {x: 4, value: 2.9, size: 4}
         ]);
 
-        secondSeries.displayNegative(true);
+        series2.displayNegative(true);
 
         // Get negative hatch fill.
-        var negativeHatchFill = firstSeries.negativeHatchFill();
+        var negativeHatchFill = series1.negativeHatchFill();
 
-        secondSeries.negativeHatchFill(negativeHatchFill);
+        series2.negativeHatchFill(negativeHatchFill);
 
         chart.title("Get and use negative hatch fill");
         chart.container("container");

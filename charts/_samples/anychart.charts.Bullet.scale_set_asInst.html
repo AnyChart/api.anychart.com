@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.Bullet.scale set asInst"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-bullet.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -33,24 +30,30 @@
         scale.minimum(0.01);
         scale.maximum(1);
 
-        var firstChart = anychart.bullet([0.07, 0.03]);
+        var chart1 = anychart.bullet([
+            {value: 0.07},
+            {value: 0.03}
+        ]);
 
         // Set scale.
-        firstChart.scale(scale);
+        chart1.scale(scale);
 
-        firstChart.bounds(0, 0, "100%", "50%");
-        firstChart.title({text: "Set chart scale as an instance.", orientation: "top"});
-        firstChart.container(stage);
-        firstChart.draw();
+        chart1.bounds(0, 0, "100%", "50%");
+        chart1.title({text: "Set chart scale as an instance", orientation: "top"});
+        chart1.container(stage);
+        chart1.draw();
 
-        var secondChart = anychart.bullet([0.15, 0.1]);
+        var chart2 = anychart.bullet([
+            {value: 0.15},
+            {value: 0.1}
+        ]);
 
         // Set scale.
-        secondChart.scale(scale);
+        chart2.scale(scale);
 
-        secondChart.bounds(0, "50%", "100%", "50%");
-        secondChart.container(stage);
-        secondChart.draw();
+        chart2.bounds(0, "50%", "100%", "50%");
+        chart2.container(stage);
+        chart2.draw();
     });
 </script>
 </body>

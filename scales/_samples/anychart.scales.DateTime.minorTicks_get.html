@@ -24,9 +24,9 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var ohlcChart = anychart.financial();
-        ohlcChart.bounds(0, 20, "50%", "100%");
-        ohlcChart.ohlc([
+        var chart1 = anychart.financial();
+        chart1.bounds(0, 20, "50%", "100%");
+        chart1.ohlc([
             [new Date("28-Aug-07"), 511.53, 514.98, 505.79, 506.40],
             [new Date("29-Aug-07"), 507.84, 513.30, 507.23, 512.88],
             [new Date("30-Aug-07"), 512.36, 515.40, 510.58, 511.40],
@@ -34,22 +34,22 @@
             [new Date("01-Sep-07"), 515.02, 528.00, 514.62, 525.15]
         ]);
 
-        ohlcChart.xAxis({
+        chart1.xAxis({
             ticks: true,
             labels: false,
             minorTicks: {stroke: "#424242"},
             minorLabels: true
         });
 
-        var xScale = ohlcChart.xScale();
+        var xScale = chart1.xScale();
         xScale.minorTicks([new Date("27-Aug-07"), new Date("29-Aug-07"), new Date("31-Aug-07"), new Date("02-Sep-07")]);
 
-        ohlcChart.container(stage);
-        ohlcChart.draw();
+        chart1.container(stage);
+        chart1.draw();
 
-        var candlestickChart = anychart.financial();
-        candlestickChart.bounds("50%", 20, "50%", "100%");
-        candlestickChart.candlestick([
+        var chart2 = anychart.financial();
+        chart2.bounds("50%", 20, "50%", "100%");
+        chart2.candlestick([
             [new Date("28-Aug-07"), 511.53, 514.98, 505.79, 506.40],
             [new Date("29-Aug-07"), 507.84, 513.30, 507.23, 512.88],
             [new Date("30-Aug-07"), 512.36, 515.40, 510.58, 511.40],
@@ -57,7 +57,7 @@
             [new Date("01-Sep-07"), 515.02, 528.00, 514.62, 525.15]
         ]);
 
-        candlestickChart.xAxis({
+        chart2.xAxis({
             ticks: true,
             labels: false,
             minorTicks: {stroke: "#424242"},
@@ -67,11 +67,11 @@
         // Get minor ticks.
         var ticks = xScale.minorTicks();
 
-        var scale = candlestickChart.xScale();
+        var scale = chart2.xScale();
         scale.minorTicks(ticks.get());
 
-        candlestickChart.container(stage);
-        candlestickChart.draw();
+        chart2.container(stage);
+        chart2.draw();
 
         var title = anychart.standalones.title();
         title.text("Get and use minor ticks");

@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.Polar.yScale get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-polar.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,13 +23,22 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.polar([129, 272, 250, 330, 200, 390, 195, 35]);
+        var chart = anychart.polar([
+            {x: 0, value: 129},
+            {x: 1, value: 272},
+            {x: 2, value: 250},
+            {x: 3, value: 330},
+            {x: 4, value: 200},
+            {x: 5, value: 390},
+            {x: 6, value: 195},
+            {x: 7, value: 35}
+        ]);
 
         // Get Y-scale
         var scale = chart.yScale();
         scale.inverted(true);
 
-        chart.title("Get and use yScale object.");
+        chart.title("Get and use yScale object");
         chart.container("container");
         chart.draw();
     });

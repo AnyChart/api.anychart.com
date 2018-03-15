@@ -27,13 +27,20 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.column3d();
-        chart.column([12, 7, 18, 10, 14]);
-        chart.column([18, 10, 14, 20, 7]);
+        chart.data({
+            header: ["#", "Florida", "Texas"],
+            rows: [
+                ["Apples", 21, 99],
+                ["Pears", 41, 7],
+                ["Bananas", 9, 15],
+                ["Grapes", 71, 34]
+            ]
+        });
 
-        // Gets Z-axis padding.
+        // Get Z-axis padding.
         var padding = chart.zPadding();
 
-        chart.title("Default zPadding is: " + padding + ".");
+        chart.title("Default zPadding is: " + padding);
         chart.container("container");
         chart.draw();
     });

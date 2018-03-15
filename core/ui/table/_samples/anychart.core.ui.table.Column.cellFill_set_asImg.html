@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.core.ui.table.Column.cellFill set asImg"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-table.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -27,18 +24,22 @@
 <script>
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
+
         var table = anychart.standalones.table();
         table.contents([
             [1, 2, 3],
             [4, 5, 6],
             [7, 8, 9]
         ]);
+
+        // Set image fill.
         var column = table.getCol(1);
         column.cellFill({
             src: "https://static.anychart.com/images/oceanic-airlines.png",
             mode: "stretch",
             opacity: .1
-        }); // sets image fill
+        });
+
         table.container(stage);
         table.draw();
     });

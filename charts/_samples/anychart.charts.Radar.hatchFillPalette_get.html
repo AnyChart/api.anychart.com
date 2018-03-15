@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.Radar.hatchFillPalette get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-radar.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,10 +25,10 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var firstChart = anychart.radar();
-        firstChart.bounds(0, 0, "50%", "100%");
+        var chart1 = anychart.radar();
+        chart1.bounds(0, 0, "50%", "100%");
 
-        var firstSeries = firstChart.area([
+        var firstSeries = chart1.area([
             {x: "Strength", value: 10},
             {x: "Agility", value: 15},
             {x: "Stamina", value: 10},
@@ -40,7 +37,7 @@
         ]);
         firstSeries.hatchFill(true);
 
-        var secondSeries = firstChart.area([
+        var secondSeries = chart1.area([
             {x: "Strength", value: 8},
             {x: "Agility", value: 2},
             {x: "Stamina", value: 8},
@@ -49,14 +46,14 @@
         ]);
         secondSeries.hatchFill(true);
 
-        firstChart.hatchFillPalette(["backward-diagonal", "horizontal-brick"]);
-        firstChart.container(stage);
-        firstChart.draw();
+        chart1.hatchFillPalette(["backward-diagonal", "horizontal-brick"]);
+        chart1.container(stage);
+        chart1.draw();
 
-        var secondChart = anychart.radar();
-        secondChart.bounds("50%", 0, "50%", "100%");
+        var chart2 = anychart.radar();
+        chart2.bounds("50%", 0, "50%", "100%");
 
-        var firstAreaSeries = secondChart.area([
+        var firstAreaSeries = chart2.area([
             {x: "Strength", value: 8},
             {x: "Agility", value: 2},
             {x: "Stamina", value: 8},
@@ -65,7 +62,7 @@
         ]);
         firstAreaSeries.hatchFill(true);
 
-        var secondAreaSeries = secondChart.area([
+        var secondAreaSeries = chart2.area([
             {x: "Strength", value: 1},
             {x: "Agility", value: 5},
             {x: "Stamina", value: 1},
@@ -75,11 +72,11 @@
         secondAreaSeries.hatchFill(true);
 
         // Get hatch fill palette.
-        var palette = firstChart.hatchFillPalette();
+        var palette = chart1.hatchFillPalette();
 
-        secondChart.hatchFillPalette(palette);
-        secondChart.container(stage);
-        secondChart.draw();
+        chart2.hatchFillPalette(palette);
+        chart2.container(stage);
+        chart2.draw();
 
         var title = anychart.standalones.title();
         title.text("Get and use hatch fill palette");

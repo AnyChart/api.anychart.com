@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.charts.Cartesian.lineMarker set asIndexObject"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,12 +23,20 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.line();
-        chart.line([1, -4, 5, 7, 3, 8, 5]);
+        chart.line([
+            {x: 0, value: 1},
+            {x: 1, value: -4},
+            {x: 2, value: 5},
+            {x: 3, value: 7},
+            {x: 4, value: 3},
+            {x: 5, value: 8},
+            {x: 6, value: 5}
+        ]);
 
         // Sets line marker by index.
         chart.lineMarker(0, {value: 4, stroke: "#F44336", axis: chart.xAxis()});
 
-        chart.title("Set chart line marker parameters as object by index.");
+        chart.title("Set chart line marker parameters as object by index");
         chart.container("container");
         chart.draw();
     });

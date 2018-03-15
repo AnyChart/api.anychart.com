@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.Cartesian3d.getYScales"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-cartesian-3d.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -26,20 +23,16 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = anychart.data.set([
+        var data = [
             ["January", 10, 20, 14, 25],
             ["February", 5, 50, 28, 41],
             ["March", 17, 30, 55, 34],
             ["April", 20, 90, 26, 17],
             ["May", 16, 49, 31, 36]
-        ]);
-
-        var seriesData_1 = data.mapAs({'x': 0, 'value': 1});
-        var seriesData_2 = data.mapAs({'x': 0, 'value': 2});
-        var seriesData_3 = data.mapAs({'x': 0, 'value': 3});
-        var seriesData_4 = data.mapAs({'x': 0, 'value': 4});
+        ];
 
         var chart = anychart.column3d();
+        chart.data(data);
 
         var yScale1 = anychart.scales.linear();
         yScale1.stackMode("value");
@@ -47,10 +40,10 @@
         var yScale2 = anychart.scales.linear();
         yScale2.stackMode("value");
 
-        chart.column(seriesData_1).yScale(yScale1);
-        chart.column(seriesData_2).yScale(yScale1);
-        chart.column(seriesData_3).yScale(yScale2);
-        chart.column(seriesData_4).yScale(yScale2);
+        chart.getSeries(0).yScale(yScale1);
+        chart.getSeries(1).yScale(yScale1);
+        chart.getSeries(2).yScale(yScale2);
+        chart.getSeries(3).yScale(yScale2);
 
         chart.yAxis().scale(yScale1);
 
@@ -58,8 +51,8 @@
         chart.container("container");
         chart.draw();
 
-        globalMax = chart.getStat("yScalesMax");
-        globalMin = chart.getStat("yScalesMin");
+        var globalMax = chart.getStat("yScalesMax");
+        var globalMin = chart.getStat("yScalesMin");
 
         // Get all Y scales.
         var yScales = chart.getYScales();

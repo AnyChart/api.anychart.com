@@ -5,7 +5,6 @@
     <meta name="ac:name" content="anychart.core.ui.Table.getSvgBase64String"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-table.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
@@ -13,9 +12,7 @@
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -49,15 +46,15 @@
         pie.data(dataSet);
         pie.legend(null);
 
-        var lineChart = anychart.line(dataSet[0]);
-        lineChart.title(null);
-        lineChart.xAxis(null);
-        lineChart.yScale().minimum(0);
+        var chart1 = anychart.line(dataSet[0]);
+        chart1.title(null);
+        chart1.xAxis(null);
+        chart1.yScale().minimum(0);
 
-        var areaChart = anychart.area(dataSet[2]);
-        areaChart.title(null);
-        areaChart.xAxis(null);
-        areaChart.yScale().minimum(0);
+        var chart2 = anychart.area(dataSet[2]);
+        chart2.title(null);
+        chart2.xAxis(null);
+        chart2.yScale().minimum(0);
 
         table = anychart.standalones.table();
 
@@ -65,8 +62,8 @@
         cell.rowSpan(2);
 
         table.contents([
-            [pie, lineChart],
-            [null, areaChart]
+            [pie, chart1],
+            [null, chart2]
         ]);
         table.right('35%');
         table.top("5%");

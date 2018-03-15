@@ -5,15 +5,12 @@
     <meta name="ac:name" content="anychart.charts.Waterfall.annotations get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-waterfall.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-annotations.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -27,7 +24,16 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.waterfall([166, 43, -79, -46, 84, NaN]);
+
+        var chart = anychart.waterfall([
+            {x: "Net Sales", value: 5085000},
+            {x: "Cost of Sales", value: -1250450},
+            {x: "Gross Income", isTotal: true},
+            {x: "Operating Expenses", value: -2350050},
+            {x: "Operating Income", isTotal: true},
+            {x: "Other Income", value: 750000},
+            {x: "Extraordinary Gain", value: -230050}
+        ]);
 
         // Get annotation settings.
         var annotation = chart.annotations();

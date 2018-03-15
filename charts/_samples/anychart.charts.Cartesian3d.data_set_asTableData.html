@@ -5,18 +5,14 @@
     <meta name="ac:name" content="anychart.charts.Cartesian3d.data set asTableData"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-cartesian-3d.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-data-adapter.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -30,56 +26,20 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-
-        $('#container').append('<div class="table">' +
-            '<table id="table" style="display:none">' +
-            '<tr>' +
-            '<th>Eyeshadows</th>' +
-            '<td>249980</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<th>Eyeliner</th>' +
-            '<td>213210</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<th>Eyebrow pencil</th>' +
-            '<td>170670</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<th>Nail polish</th>' +
-            '<td>143760</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<th>Lipstick</th>' +
-            '<td>128000</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<th>Lip gloss</th>' +
-            '<td>110430</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<th>Mascara</th>' +
-            '<td>102610</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<th>Foundation</th>' +
-            '<td>94190</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<th>Rouge</th>' +
-            '<td>80540</td>' +
-            '</tr>' +
-            '<tr>' +
-            '<th>Powder</th>' +
-            '<td>53540</td>' +
-            '</tr>' +
-            '</table>' +
-            '</div>');
-
-        // To work with the data adapter you need to reference the data adapter script file from AnyChart CDN
-        // (https://cdn.anychart.com/releases/v8/js/anychart-data-adapter.min.js for latest or https://cdn.anychart.com/releases/8.0.1/js/anychart-data-adapter.min.js for the versioned file)
-
-        var tableData = anychart.data.parseHtmlTable("#table");
+        var tableData = {
+            "header": ["#", "Florida", "Texas", "Nevada"],
+            "rows": [
+                ["Nail polish", 12814, 3054, 4376],
+                ["Eyebrow pencil", 13012, 5067, 3987],
+                ["Rouge", 11624, 7004, 3574],
+                ["Lipstick", 8814, 9054, 4376],
+                ["Eyeshadows", 12998, 12043, 4572],
+                ["Eyeliner", 12321, 15067, 3417],
+                ["Foundation", 10342, 10119, 5231],
+                ["Lip gloss", 22998, 12043, 4572],
+                ["Mascara", 11261, 10419, 6134]
+            ]
+        };
 
         var chart = anychart.bar3d();
 

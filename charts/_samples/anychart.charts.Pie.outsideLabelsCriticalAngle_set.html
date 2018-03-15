@@ -5,13 +5,10 @@
     <meta name="ac:name" content="anychart.charts.Pie.outsideLabelsCriticalAngle set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -25,14 +22,20 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.pie([109, 100, 4816, 55, 95, 100]);
+        var chart = anychart.pie([
+            {x: "Cycling", value: 109},
+            {x: "Swimming", value: 100},
+            {x: "Run", value: 4816},
+            {x: "Hiking", value: 55},
+            {x: "Alpinism", value: 95}
+        ]);
 
         chart.labels({fontColor: "#000000", position: "outside"});
 
-        // Sets critical angle.
+        // Set critical angle.
         chart.outsideLabelsCriticalAngle(160);
 
-        chart.title("Set critical angle for the outside labels.");
+        chart.title("Set critical angle for the outside labels");
         chart.container("container");
         chart.draw();
     });

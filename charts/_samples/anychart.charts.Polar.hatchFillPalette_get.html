@@ -5,14 +5,11 @@
     <meta name="ac:name" content="anychart.charts.Polar.hatchFillPalette get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-polar.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
-
     <style>
         html, body, #container {
             width: 100%;
@@ -28,37 +25,37 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var firstChart = anychart.polar();
-        firstChart.bounds(0, 0, "50%", "100%");
+        var chart1 = anychart.polar();
+        chart1.bounds(0, 0, "50%", "100%");
 
-        var firstSeries = firstChart.area([10, 15, 10, 15, 10, 15]);
+        var firstSeries = chart1.area([10, 15, 10, 15, 10, 15]);
         firstSeries.hatchFill(true);
 
-        var secondSeries = firstChart.area([2, 8, 2, 8, 2, 8]);
+        var secondSeries = chart1.area([2, 8, 2, 8, 2, 8]);
         secondSeries.hatchFill(true);
 
-        firstChart.hatchFillPalette(["diagonal-cross", "plaid"]);
-        firstChart.container(stage);
-        firstChart.draw();
+        chart1.hatchFillPalette(["diagonal-cross", "plaid"]);
+        chart1.container(stage);
+        chart1.draw();
 
-        var secondChart = anychart.polar();
-        secondChart.bounds("50%", 0, "50%", "100%");
+        var chart2 = anychart.polar();
+        chart2.bounds("50%", 0, "50%", "100%");
 
-        var firstAreaSeries = secondChart.area([2, 8, 2, 8, 2, 8]);
+        var firstAreaSeries = chart2.area([2, 8, 2, 8, 2, 8]);
         firstAreaSeries.hatchFill(true);
 
-        var secondAreaSeries = secondChart.area([6, 1, 6, 1, 6, 1]);
+        var secondAreaSeries = chart2.area([6, 1, 6, 1, 6, 1]);
         secondAreaSeries.hatchFill(true);
 
         // Get hatch fill palette.
-        var palette = firstChart.hatchFillPalette();
+        var palette = chart1.hatchFillPalette();
 
-        secondChart.hatchFillPalette(palette);
-        secondChart.container(stage);
-        secondChart.draw();
+        chart2.hatchFillPalette(palette);
+        chart2.container(stage);
+        chart2.draw();
 
         var title = anychart.standalones.title();
-        title.text("Get and use hatchFill palette.");
+        title.text("Get and use hatchFill palette");
         title.container(stage);
         title.draw();
     });
