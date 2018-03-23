@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.scales.log"/>
+    <meta name="ac:name" content="anychart.scales.log_pos"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -22,22 +22,22 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.line([
-            {x: "January", value: 200},
-            {x: "February", value: 500},
-            {x: "March", value: 300},
-            {x: "April", value: 900},
-            {x: "May", value: 40}
+        var chart = anychart.column([
+            {x: "Alpha", value: 200000},
+            {x: "Beta", value: -1500},
+            {x: "Gamma", value: 160000},
+            {x: "Delta", value: 4000},
+            {x: "Epsilon", value: -80}
         ]);
 
         // Create logarithmic scale.
         var logScale = anychart.scales.log();
 
-        logScale.inverted(true);
-
         // Set scale.
         chart.yScale(logScale);
-        chart.title("Create logarithmic scale");
+
+        chart.xAxis();
+        chart.title("Create logarithmic scale with negative values");
         chart.container("container");
         chart.draw();
     });
