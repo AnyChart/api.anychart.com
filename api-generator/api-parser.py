@@ -17,11 +17,20 @@ regexExportSymbol = r"\n\s*(goog.exportSymbol\(([^,]*)(.*))"
 
 def modify_source_code():
     ## modify anychart.core.settings.createDescriptor
-    with open(os.path.join(SRC_PATH, 'core','settings.js'), 'r+') as myfile:
-        filecontent = myfile.read()
-        myfile.seek(0)
-        myfile.write(filecontent.replace("classConstructor.prototype[alias]","classConstructor.prototype[alias+'+'] = true; classConstructor.prototype[alias]").replace("map[methodName] = descriptor;","map[methodName] = descriptor;\n"+"map[methodName+'+'] = descriptor;"))
-        myfile.close()
+    with open(os.path.join(SRC_PATH, 'core','settings.js'), 'r') as myfile:
+        data = myfile.readlines()
+
+    data[241] = data[241].replace("classConstructor.prototype[alias]","classConstructor.prototype[alias+'+'] = true; classConstructor.prototype[alias]").replace("map[methodName] = descriptor;","map[methodName] = descriptor;\n"+"map[methodName+'+'] = descriptor;")
+    data[217] = ""
+    data[218] = "target[i] = goog.partial(anychart.core.settings.handlersMap[descriptor.handler],descriptor.propName,descriptor.deprecatedPropName,descriptor.normalizer);"
+    data[219] = "target[i+'+'] = goog.partial(anychart.core.settings.handlersMap[descriptor.handler],descriptor.propName+'+',descriptor.deprecatedPropName,descriptor.normalizer);"
+    data[220] = ""
+    data[221] = ""
+    
+
+        # and write everything back
+    with open(os.path.join(SRC_PATH, 'core','settings.js'), 'w') as file:
+        file.writelines( data )
 
     ## change all protos and exportSymbols
     for dirpath, dirnames, files in os.walk(SRC_PATH):

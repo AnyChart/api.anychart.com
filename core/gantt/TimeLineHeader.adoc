@@ -1,0 +1,2002 @@
+/**
+ * Resource Chart Timeline element.
+ * @constructor
+ * @extends {anychart.core.VisualBaseWithBounds}
+ */
+anychart.core.gantt.TimeLineHeader;
+
+
+/**
+ * Time line level definition.
+ * @typedef {Object} anychart.core.gantt.TimeLineHeader.Level
+ * @property {(anychart.enums.Interval|string|undefined)} unit Interval unit
+ * @property {(number|undefined)} count Interval count
+ * @property {(string|Array.<string>|undefined)} formats Date formats
+ * @property  {(number|string|undefined)} height Level height
+ * @property  {Object.<{
+ *      fill: (anychart.graphics.vector.Fill|undefined),
+ *      padding: (Object|Array.<number>|number|string|null|undefined),
+ *      minFontSize: (number|undefined),
+ *      maxFontSize: (number|undefined),
+ *      adjustFontSize: (boolean|Array.<boolean>|{width:boolean,height:boolean}|undefined),
+ *      fontSize: (number|undefined),
+ *      fontFamily: (string|undefined),
+ *      fontColor: (string|undefined),
+ *      fontOpacity: (number|undefined),
+ *      fontDecoration: (string|undefined),
+ *      fontStyle: (anychart.enums.FontStyle|string|undefined),
+ *      fontVariant: (anychart.enums.FontVariant|string|undefined),
+ *      fontWeight: (string|number|undefined),
+ *      letterSpacing: (number|string|undefined),
+ *      textDirection: (string|undefined),
+ *      lineHeight: (number|string|undefined),
+ *      textIndent: (number|undefined),
+ *      vAlign: (anychart.enums.VAlign|string|undefined),
+ *      hAlign: (anychart.enums.HAlign|string|undefined),
+ *      wordWrap: (string|undefined),
+ *      wordBreak: (string|undefined),
+ *      textOverflow: (anychart.graphics.vector.Text.TextOverflow|string|undefined),
+ *      selectable: (boolean|undefined),
+ *      disablePointerEvents: (boolean|undefined),
+ *      useHtml: (boolean|undefined),
+ *      format: (Function|undefined)
+ *   }>} holiday Holiday settings,
+ *  @property {(anychart.graphics.vector.Fill|undefined)} fill Level fill
+ *  @property {(Object|Array|number|string|null|undefined)} padding Level padding
+ *  @property {(number|undefined)} minFontSize Minimum font size
+ *  @property {(number|undefined)} maxFontSize Maximum font size
+ *  @property {(boolean|Array.<boolean>|{width:boolean,height:boolean}|undefined)} adjustFontSize Adjust font size
+ *  @property {(number|undefined)} fontSize Level font size
+ *  @property {(string|undefined)} fontFamily Level font family
+ *  @property {(string|undefined)} fontColor Level font color
+ *  @property {(number|undefined)} fontOpacity Level font opacity
+ *  @property {(string|undefined)} fontDecoration Level font decoration
+ *  @property {(anychart.enums.FontStyle|string|undefined)} fontStyle Level font style
+ *  @property {(anychart.enums.FontVariant|string|undefined)} fontVariant Level font variant
+ *  @property {(string|number|undefined)} fontWeight Level font weight
+ *  @property {(number|string|undefined)} letterSpacing Level letter spacing
+ *  @property {(string|undefined)} textDirection Level text direction
+ *  @property {(number|string|undefined)} lineHeight Level line height
+ *  @property {(number|undefined)} textIndent Level text indent
+ *  @property {(anychart.enums.VAlign|string|undefined)} vAlign Vertical align
+ *  @property {(anychart.enums.HAlign|string|undefined)} hAlign Horizontal align
+ *  @property {(string|undefined)} wordWrap Word wrap mode
+ *  @property {(string|undefined)} wordBreak Word break mode
+ *  @property {(anychart.graphics.vector.Text.TextOverflow|string|undefined)} textOverflow Text overflow
+ *  @property {(boolean|undefined)} selectable Whether text can be selected.
+ *  @property {(boolean|undefined)} disablePointerEvents DisablePointerEvents option
+ *  @property {(boolean|undefined)} useHtml UseHtml flag
+ *  @property {(Function|undefined)} format Text formatter
+ */
+anychart.core.gantt.TimeLineHeader.Level;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the stroke.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @listing See listing
+ * var currentTimeLine = chart.timeLine();
+ * var currentStroke = currentTimeLine.stroke();
+ * @return {anychart.graphics.vector.Stroke} The stroke.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.stroke;
+
+/**
+ * Setter for the stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.gantt.TimeLineHeader.stroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_color Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.stroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the fill color.
+ * @shortDescription Fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var fill = timeLine.fill();
+ * @return {!anychart.graphics.vector.Fill} The fill color.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fill;
+
+/**
+ * Setter for fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.gantt.TimeLineHeader.fill_set_asString Using string
+ * @example anychart.core.gantt.TimeLineHeader.fill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fill;
+
+/**
+ * Fill color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.gantt.TimeLineHeader.fill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.gantt.TimeLineHeader.fill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.gantt.TimeLineHeader.fill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.gantt.TimeLineHeader.fill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.levelHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the level height.
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var currentHeight = timeLine.levelHeight();
+ * @return {number} The level height.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.levelHeight;
+
+/**
+ * Setter for the level height.
+ * @example anychart.core.gantt.TimeLineHeader.levelHeight
+ * @param {number} value Level height.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.levelHeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.drawTopLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the top line drawing flag.
+ * @shortDescription Drawing of the top line.
+ * @category Specific settings
+ * @listing See listing
+ * var timeline = chart.getTimeline();
+ * var flag = timeline.drawTopLine();
+ * @return {boolean} Drawing flag.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.drawTopLine;
+
+/**
+ * Setter for the top line drawing flag.
+ * @example anychart.core.gantt.TimeLineHeader.drawTopLine
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.drawTopLine;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.drawRightLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the right line drawing flag.
+ * @shortDescription Drawing of the right line.
+ * @category Specific settings
+ * @listing See listing
+ * var timeline = chart.getTimeline();
+ * var flag = timeline.drawRightLine();
+ * @return {boolean} Drawing flag.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.drawRightLine;
+
+/**
+ * Setter for the right line drawing flag.
+ * @example anychart.core.gantt.TimeLineHeader.drawRightLine
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.drawRightLine;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// anychart.core.gantt.TimeLineHeader.prototype.drawBottomLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the bottom line drawing flag.
+ * @shortDescription Drawing of the bottom line.
+ * @category Specific settings
+ * @listing See listing
+ * var timeline = chart.getTimeline();
+ * var flag = timeline.drawBottomLine();
+ * @return {boolean} Drawing flag.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.drawBottomLine;
+
+/**
+ * Setter for the bottom line drawing flag.
+ * @example anychart.core.gantt.TimeLineHeader.drawBottomLine
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.drawBottomLine;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.drawLeftLine
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the left line drawing flag.
+ * @shortDescription Drawing of the left line.
+ * @category Specific settings
+ * @listing See listing
+ * var timeline = chart.getTimeline();
+ * var flag = timeline.drawLeftLine();
+ * @return {boolean} Drawing flag.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.drawLeftLine;
+
+/**
+ * Setter for the left line drawing flag.
+ * @example anychart.core.gantt.TimeLineHeader.drawLeftLine
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.resource.Grid} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.drawLeftLine;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.background
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+/**
+ * Getter for the background.
+ * @shortDescription Background settings.
+ * @category Coloring
+ * @example anychart.core.gantt.TimeLineHeader.background_get
+ * @return {anychart.core.ui.Background} Background settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.background;
+
+/**
+ * Setter for the background.
+ * @detailed Sets background settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable background.</li>
+ *   <li><b>object</b> - sets background settings.</li>
+ *   <li><b>string</b> - sets background color.</li>
+ * </ul>
+ * @example anychart.core.gantt.TimeLineHeader.background_set_asBool Disable/Enable background
+ * @example anychart.core.gantt.TimeLineHeader.background_set_asObj Using object
+ * @example anychart.core.gantt.TimeLineHeader.background_set_asString Using string
+ * @param {(string|Object|null|boolean)=} opt_value Value to set
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.background;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.padding
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the padding.
+ * @shortDescription Padding settings
+ * @category Size and Position
+ * @example anychart.core.gantt.TimeLineHeader.padding_get
+ * @return {anychart.core.utils.Padding} Padding.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.padding;
+
+/**
+ * Setter for paddings in pixels using a single value.
+ * @listing Examples for paddings
+ * // all paddings 15px
+ * timeLine.padding(15);
+ * // all paddings 15px
+ * timeLine.padding('15px');
+ * // top and bottom 5px ,right and left 15px
+ * timeLine.padding(anychart.utils.padding(5,15));
+ * @example anychart.core.gantt.TimeLineHeader.padding_set_asSingle
+ * @param {(null|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_value Value to set.
+ * @return {!anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.padding;
+
+/**
+ * Setter for paddings in pixels using several numbers.
+ * @listing Examples for paddings
+ * // 1) top and bottom 10px, left and right 15px
+ * timeLine.padding(10, '15px');
+ * // 2) top 10px, left and right 15px, bottom 5px
+ * timeLine.padding(10, '15px', 5);
+ * // 3) top 10px, right 15px, bottom 5px, left 12px
+ * timeLine.padding(10, '15px', '5px', 12);
+ * @example anychart.core.gantt.TimeLineHeader.padding_set_asSeveral
+ * @param {(string|number)=} opt_value1 Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 Right or right-left space.
+ * @param {(string|number)=} opt_value3 Bottom space.
+ * @param {(string|number)=} opt_value4 Left space.
+ * @return {!anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.padding;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.holidays
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for holidays.
+ * @shortDescription Padding settings
+ * @category Specific settings
+ * @return {anychart.core.gantt.TimeLineLevelHolidaysSettings} Holidays settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.holidays;
+
+/**
+ * Setter for holidays settings.
+ * @example anychart.core.gantt.TimeLineHeader.holidays_set
+ * @param {Object=} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.holidays;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.overlay
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the overlay element.
+ * @shortDescription Overlay element.
+ * @category Specific settings
+ * @listing See listing
+ * var element = timeLine.overlay();
+ * @return {anychart.core.gantt} Overlay element.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.overlay;
+
+/**
+ * Setter for the overlay element.
+ * @example anychart.core.gantt.TimeLineHeader.overlay
+ * @param {(Object|null|boolean)=} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.overlay;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.format
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the function content text.
+ * @category Specific settings
+ * @shortDescription Function to format content text.
+ * @listing See listing
+ * var format = timeLine.format();
+ * @return {Function|string} Token or function to format text.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.format;
+
+/**
+ * Setter for the function content text.<br/>
+ * {docs:Common_Settings/Text_Formatters}Learn more about using format() method.{docs}
+ * @param {(Function|string)=} opt_value Function or string token to format content text.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.format;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.minFontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the minimum font size.
+ * @shortDescription Minimum font size settings.
+ * @category Advanced Text Settings
+ * @listing See listing
+ * var minFontSize = timeLine.minFontSize();
+ * @return {number} Minimum font size.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.minFontSize;
+
+/**
+ * Setter for the minimum font size.
+ * @detailed <b>Note:</b> works only when adjusting is enabled. Look {@link anychart.core.gantt.TimeLineHeader#adjustFontSize}.
+ * @example anychart.core.gantt.TimeLineHeader.minFontSize_set
+ * @param {(number|string)=} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ */
+anychart.core.gantt.TimeLineHeader.prototype.minFontSize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the maximum font size.
+ * @shortDescription Maximum font size settings.
+ * @category Advanced Text Settings
+ * @listing See listing
+ * var maxFontSize = timeLine.maxFontSize();
+ * @return {number} Maximum font size.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.maxFontSize;
+
+/**
+ * Setter for the maximum font size.
+ * @detailed <b>Note:</b> works only when adjusting is enabled. Look {@link anychart.core.gantt.TimeLineHeader#adjustFontSize}.
+ * @example anychart.core.gantt.TimeLineHeader.maxFontSize_set
+ * @param {(number|string)=} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ */
+anychart.core.gantt.TimeLineHeader.prototype.maxFontSize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.adjustFontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the adjusting font size.
+ * @shortDescription Adjusting settings.
+ * @category Text Settings
+ * @detailed Returns an array of two elements <b>[isAdjustByWidth, isAdjustByHeight]</b>.
+ *  <ul>
+ *    <li>[false, false] - do not adjust (adjust is off )</li>
+ *    <li>[true, false] - adjust width</li>
+ *    <li>[false, true] - adjust height</li>
+ *    <li>[true, true] - adjust the first suitable value.</li>
+ * </ul>
+ * @listing See listing
+ * var timeLine = chart.timeLine();
+ * var adjustFontSize = timeLine.adjustFontSize();
+ * @return {number} An adjusted font size.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.adjustFontSize;
+
+/**
+ * Setter for the adjusting font size.
+ * @detailed Minimal and maximal font sizes can be configured using:
+ * {@link anychart.core.gantt.TimeLineHeader#minFontSize} and {@link anychart.core.gantt.TimeLineHeader#maxFontSize} methods.<br/>
+ * <b>Note: </b> {@link anychart.core.gantt.TimeLineHeader#fontSize} does not work when adjusting is enabled.
+ * @example anychart.core.gantt.TimeLineHeader.adjustFontSize
+ * @param {(boolean|Array.<boolean>|{width:boolean,height:boolean})=} opt_adjustOrAdjustByWidth Is font needs to be adjusted in case of 1 argument and adjusted by width in case of 2 arguments.
+ * @param {boolean=} opt_adjustByHeight Is font needs to be adjusted by height.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.adjustFontSize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.fontSize;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font size settings.
+ * @shortDescription Font size settings.
+ * @category Text Settings
+ * @listing
+ * var timeline = chart.getTimeline();
+ * var fontSize = timeline.fontSize();
+ * @return {number} Font size settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontSize;
+
+/**
+ * Setter for font size settings.
+ * @example anychart.core.gantt.TimeLineHeader.fontSize
+ * @param {(number|string)=} opt_value [11] Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontSize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.fontFamily;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font family settings.
+ * @shortDescription Font family settings.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var fontFamily = timeLine.fontFamily();
+ * @return {string} Font family settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontFamily;
+
+/**
+ * Setter for font family settings.
+ * @example anychart.core.gantt.TimeLineHeader.fontFamily
+ * @param {string} opt_value ["Helvetica Neue", Helvetica, sans-serif] Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontFamily;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.fontColor;
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter for font color settings.
+ * @shortDescription Font color settings.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var fontColor = timeLine.fontColor();
+ * @return {string} Font color settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontColor;
+
+/**
+ * Setter for font color settings.
+ * @example anychart.core.gantt.TimeLineHeader.fontColor
+ * @param {string} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontColor;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.fontOpacity;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font opacity settings.
+ * @shortDescription Font opacity settings.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var fontOpacity = timeLine.fontOpacity();
+ * @return {number} Font opacity settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontOpacity;
+
+/**
+ * Setter for font opacity settings.
+ * @example anychart.core.gantt.TimeLineHeader.fontOpacity
+ * @param {number} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontOpacity;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.fontDecoration;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font decoration settings.
+ * @shortDescription Font decoration setting.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var fontDecoration = timeLine.fontDecoration();
+ * @return {anychart.graphics.vector.Text.Decoration} Font decoration settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontDecoration;
+
+/**
+ * Setter for font decoration settings.
+ * @example anychart.core.gantt.TimeLineHeader.fontDecoration
+ * @param {anychart.graphics.vector.Text.Decoration|string} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontDecoration;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.fontStyle
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font style settings.
+ * @shortDescription Font style settings.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var fontStyle = timeLine.fontStyle();
+ * @return {anychart.graphics.vector.Text.FontStyle} Font style settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontStyle;
+
+/**
+ * Setter for font style settings.
+ * @example anychart.core.gantt.TimeLineHeader.fontStyle
+ * @param {string|anychart.graphics.vector.Text.FontStyle} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontStyle;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.fontVariant;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font variant settings.
+ * @shortDescription Font variant settings.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var fontVariant = timeLine.fontVariant();
+ * @return {anychart.graphics.vector.Text.FontVariant} Font variant settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontVariant;
+
+/**
+ * Setter for font variant settings.
+ * @example anychart.core.gantt.TimeLineHeader.fontVariant
+ * @param {string|anychart.graphics.vector.Text.FontVariant} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontVariant;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.fontWeight;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font weight settings.
+ * @shortDescription Font weight settings.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var fontWeight = timeLine.fontWeight();
+ * @return {string|number} Font weight settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontWeight;
+
+/**
+ * Setter for font weight settings.
+ * @example anychart.core.gantt.TimeLineHeader.fontWeight
+ * @param {string|number} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.fontWeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.letterSpacing;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for text letter spacing settings.
+ * @shortDescription Text letter spacing settings.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var letterSpacing = timeLine.letterSpacing();
+ * @return {number} Letter spacing settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.letterSpacing;
+
+/**
+ * Setter for text letter spacing settings.
+ * @example anychart.core.gantt.TimeLineHeader.letterSpacing
+ * @param {number|string} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.letterSpacing;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.textDirection;
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter for the text direction settings.
+ * @shortDescription Text direction settings.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var textDirection = timeLine.textDirection();
+ * @return {anychart.graphics.vector.Text.Direction} Text direction settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.textDirection;
+
+/**
+ * Setter for text direction settings.
+ * @example anychart.core.gantt.TimeLineHeader.textDirection
+ * @param {string|anychart.graphics.vector.Text.Direction} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.textDirection;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.lineHeight;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for text line height settings.
+ * @shortDescription Text line height setting.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var lineHeight = timeLine.lineHeight();
+ * @return {number|string} Line height settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.lineHeight;
+
+/**
+ * Setter for text line height settings.
+ * @example anychart.core.gantt.TimeLineHeader.lineHeight
+ * @param {number|string} opt_value ["normal"] Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.lineHeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.textIndent;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for text-indent settings.
+ * @shortDescription Text indent settings.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var textIndent = timeLine.textIndent();
+ * @return {number} Text indent settings.
+ */
+anychart.core.gantt.TimeLineHeader.prototype.textIndent;
+
+/**
+ * Setter for text-indent settings.
+ * @example anychart.core.gantt.TimeLineHeader.textIndent
+ * @param {number} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.textIndent;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.vAlign;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for text vertical align settings.
+ * @shortDescription Text vertical align settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var vAlign = timeLine.vAlign();
+ * @return {anychart.graphics.vector.Text.VAlign} Vertical align.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.vAlign;
+
+/**
+ * Setter for text vertical align settings.
+ * @example anychart.core.gantt.TimeLineHeader.vAlign
+ * @param {string|anychart.graphics.vector.Text.VAlign} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.vAlign;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.hAlign;
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for text horizontal align settings.
+ * @shortDescription Text horizontal align settings.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var hAlign = timeLine.hAlign();
+ * @return {anychart.graphics.vector.Text.HAlign} Horizontal align settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.hAlign;
+
+/**
+ * Setter for the text horizontal align settings.
+ * @example anychart.core.gantt.TimeLineHeader.hAlign
+ * @param {string|anychart.graphics.vector.Text.HAlign} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.hAlign;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.wordWrap
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the word-wrap mode.
+ * @shortDescription Word-wrap mode.
+ * @category Text Settings
+ * @listing See listing
+ * var wordWrap = timeLine.wordWrap();
+ * @return {anychart.enums.WordWrap|string} Word-wrap mode.
+ * @since 8.0.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.wordWrap;
+
+/**
+ * Setter for the word-wrap mode.
+ * @listing See listing
+ * timeLine.wordWrap("break-all");
+ * @param {(anychart.enums.WordWrap|string)=} opt_value ["normal"] Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.0.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.wordWrap;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.wordBreak
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the word-break mode.
+ * @shortDescription Word break mode.
+ * @category Text Settings
+ * @listing See listing
+ * var wordWrap = timeLine.wordBreak();
+ * @return {anychart.enums.WordBreak|string} Word-break mode.
+ * @since 8.0.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.wordBreak;
+
+/**
+ * Setter for the word-break mode.
+ * @listing See listing
+ * timeLine.wordWrap("break-all");
+ * @param {(anychart.enums.WordBreak|string)=} opt_value ["normal"] Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.0.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.wordBreak;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.textOverflow
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for text overflow settings.
+ * @shortDescription Text overflow settings.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var textOverflow = timeLine.textOverflow();
+ * @return {anychart.graphics.vector.Text.TextOverflow} Text overflow settings
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.textOverflow;
+
+/**
+ * Setter for text overflow settings.
+ * @example anychart.core.gantt.TimeLineHeader.textOverflow
+ * @param {anychart.graphics.vector.Text.TextOverflow|string=} opt_value Value to set
+ * @return {!anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.textOverflow;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.selectable;
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter for the text selectable option.
+ * @shortDescription Text selectable option.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var selectable = timeLine.selectable();
+ * @return {boolean} Text selectable value.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.selectable;
+
+/**
+ * Setter for the text selectable option.
+ * @example anychart.core.gantt.TimeLineHeader.selectable
+ * @param {boolean} opt_value [false] Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.selectable;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.disablePointerEvents
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the pointer events settings.
+ * @shortDescription Pointer events settings.
+ * @category Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var disablePointerEvents = timeLine.disablePointerEvents();
+ * @return {boolean} The pointer events settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.disablePointerEvents;
+
+/**
+ * Setter for the pointer events setting.
+ * @param {boolean} opt_value [false] Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.disablePointerEvents;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.useHtml
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the useHTML flag.
+ * @shortDescription Use HTML option.
+ * @category Content Text Settings
+ * @listing See listing
+ * var timeLine = chart.getTimeline();
+ * var useHtml = timeLine.useHtml();
+ * @return {boolean} UseHTML flag.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.useHtml;
+
+/**
+ * Setter for the useHTML flag.
+ * @example anychart.core.gantt.TimeLineHeader.useHtml
+ * @param {boolean} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.useHtml;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.prototype.level
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for level settings.
+ * @shortDescription Level option.
+ * @category Specific Settings
+ * @example anychart.core.gantt.TimeLineHeader.level_get
+ * @param {(number)=} opt_index [0] Level index.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Level settings
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.level;
+
+/**
+ * Setter for level settings.
+ * @detailed Sets level settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable level.</li>
+ *   <li><b>object</b> - sets level settings.</li>
+ * </ul>
+ * @example anychart.core.gantt.TimeLineHeader.level_set_asBool Disable/Enable level.
+ * @example anychart.core.gantt.TimeLineHeader.level_set_asObj Using object
+ * @param {(Object|boolean|null)=} opt_settings [true] Level settings from {@link anychart.core.gantt.TimeLineHeader.LevelWrapper}
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.level;
+
+/**
+ * Setter for level settings by index.
+ * @detailed Sets level settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable level by index.</li>
+ *   <li><b>object</b> - sets level settings by index.</li>
+ * </ul>
+ * @example anychart.core.gantt.TimeLineHeader.level_set_asBoolIndex Disable/Enable level.
+ * @example anychart.core.gantt.TimeLineHeader.level_set_asObjIndex Using object
+ * @param {(number)=} opt_index [0] Level index.
+ * @param {(Object|boolean|null)=} opt_settings [true] Level settings from {@link anychart.core.gantt.TimeLineHeader.LevelWrapper}
+ * @return {anychart.core.gantt.TimeLineHeader} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.prototype.level;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.bounds;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.left;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.right;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.top;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.bottom;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.width;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.height;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.minWidth;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.minHeight;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.maxWidth;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.maxHeight;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.getPixelBounds;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.zIndex;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.enabled;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.print;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.listen;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.listenOnce;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.unlisten;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.unlistenByKey;
+
+/** @inheritDoc */
+anychart.core.gantt.TimeLineHeader.prototype.removeAllListeners;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Single timeline header level.
+ * @param {anychart.core.gantt.TimeLineHeader} header Parent header.
+ * @param {number} index Level index.
+ * @constructor
+ * @extends {anychart.core.Base}
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the level fill.
+ * @shortDescription Fill settings
+ * @category Coloring
+ * @listing See listing
+ * var fill = level.fill();
+ * @return {anychart.graphics.vector.Fill|string} The level fill.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fill;
+
+
+/**
+ * Setter for fill settings using an array or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.fill_set_asString Using string
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.fill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fill;
+
+/**
+ * Fill color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.fill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.fill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.fill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.fill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the level stroke.
+ * @shortDescription Stroke settings
+ * @category Coloring
+ * @listing See listing
+ * var stroke = level.stroke();
+ * @return {anychart.graphics.vector.Stroke|string} The connector preview stroke.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.stroke;
+
+/**
+ * Setter for the level stroke.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.stroke
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_settings Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line joint style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.stroke;
+
+/**
+ * Setter for the level stroke using an object.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.stroke_set_asObj
+ * @param {(Object)=} opt_settings Stroke settings from {@link anychart.graphics.vector.Stroke}.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.stroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.enabled
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the level state.
+ * @shortDescription Level state (enabled or disabled).
+ * @category Interactivity
+ * @listing See listing
+ * var level = header.level(1);
+ * var state = level.enabled();
+ * @return {?boolean} Level state.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.enabled;
+
+/**
+ * Setter for the level enabled state.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.enabled
+ * @param {(null|boolean)=} opt_state [true] Value to set.
+ * @return {anychart.core.ui.LabelsFactory} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.enabled;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.minFontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for minimum font size settings for adjust text from.
+ * @shortDescription Minimum font size settings.
+ * @category Content Text Settings
+ * @return {number} Minimum font size.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.minFontSize;
+
+/**
+ * Setter for minimum font size settings for adjust text from.
+ * @detailed <b>Note:</b> works only when adjusting is enabled. Look {@link anychart.core.gantt.TimeLineHeader.LevelWrapper#adjustFontSize}.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.minFontSize
+ * @param {(number|string)=} opt_minFontSize [0] Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.minFontSize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.maxFontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the font size for adjust text to.
+ * @shortDescription Maximum font size setting.
+ * @category Content Text Settings
+ * @return {number} Maximum font size.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.maxFontSize;
+
+/**
+ * Setter for the font size for adjust text to.
+ * @detailed <b>Note:</b> works only when adjusting is enabled. Look {@link anychart.core.gantt.TimeLineHeader.LevelWrapper#adjustFontSize}.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.maxFontSize
+ * @param {(number|string)=} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.maxFontSize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.adjustFontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the adjust font settings.
+ * @shortDescription Adjusting settings.
+ * @category Content Text Settings
+ * @detailed Returns an array of two elements <b>[isAdjustByWidth, isAdjustByHeight]</b>.
+ *  <ul>
+ *    <li>[false, false] - don't adjust (adjust is off )</li>
+ *    <li>[true, false] - adjust width</li>
+ *    <li>[false, true] - adjust height</li>
+ *    <li>[true, true] - adjust the first suitable value.</li>
+ * </ul>
+ * @return {({width:boolean,height:boolean})} AdjustFontSize settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.adjustFontSize;
+
+/**
+ * Setter for the adjust font settings.
+ * @detailed Minimal and maximal font sizes can be configured using:
+ * {@link anychart.core.gantt.TimeLineHeader.LevelWrapper#minFontSize} and {@link anychart.core.gantt.TimeLineHeader.LevelWrapper#maxFontSize}.<br/>
+ * <b>Note:</b> {@link anychart.core.gantt.TimeLineHeader.LevelWrapper#fontSize} does not work when adjusting is enabled.
+ * @shortDescription Setter for the adjust font settings.
+ * @listing Example
+ * label.adjustFontSize(false);
+ * // the same
+ * label.adjustFontSize(false, false);
+ * // the same
+ * label.adjustFontSize([false, false]);
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.adjustFontSize
+ * @param {({width: boolean, height: boolean}|Array.<boolean>|boolean)=} opt_bothOrByWidth [{width: false, height: false}]
+ * If only one param is set, its value goes for another too (see source code).
+ * @param {boolean=} opt_byHeight Is font needs to be adjusted by height.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.adjustFontSize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontSize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font size settings.
+ * @shortDescription Font size settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontSize = level.fontSize();
+ * @return {number} Font size settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontSize;
+
+/**
+ * Setter for font size settings.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.fontSize
+ * @param {(number|string)=} opt_size Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontSize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontFamily
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the font family.
+ * @shortDescription Font family settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontDecoration = level.fontFamily();
+ * @return {string} Font family.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontFamily;
+
+/**
+ * Setter for font family.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.fontFamily
+ * @param {string=} opt_family Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontFamily;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontColor
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font color settings.
+ * @shortDescription Font color settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontColor = level.fontColor();
+ * @return {string} Font color settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontColor;
+
+/**
+ * Setter for font color settings.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.fontColor
+ * @param {string} opt_color Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontColor;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontOpacity
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text font opacity.
+ * @shortDescription Font opacity settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontOpacity = level.fontOpacity();
+ * @return {number} Font opacity.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontOpacity;
+
+/**
+ * Setter for the text font opacity.<br/>
+ * Double value from 0 to 1.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.fontOpacity
+ * @param {number=} opt_opacity Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontOpacity;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontDecoration
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text font decoration.
+ * @shortDescription Font decoration settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontDecoration = level.fontDecoration();
+ * @return {anychart.graphics.vector.Text.Decoration|string} Font decoration.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontDecoration;
+
+/**
+ * Setter for the text font decoration.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.fontDecoration
+ * @param {(anychart.graphics.vector.Text.Decoration|string)=} opt_value [{@link anychart.graphics.vector.Text.Decoration#NONE}] Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontDecoration;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontStyle
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font style settings.
+ * @shortDescription Font style settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontStyle = level.fontStyle();
+ * @return {anychart.graphics.vector.Text.FontStyle} Font style settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontStyle;
+
+/**
+ * Setter for font style settings.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.fontStyle
+ * @param {string|anychart.graphics.vector.Text.FontStyle} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontStyle;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontVariant
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font variant settings.
+ * @shortDescription Font variant settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontVariant = level.fontVariant();
+ * @return {anychart.graphics.vector.Text.FontVariant} Font variant settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontVariant;
+
+/**
+ * Setter for font variant settings.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.fontVariant
+ * @param {string|anychart.graphics.vector.Text.FontVariant} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontVariant;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontWeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for font weight settings.
+ * @shortDescription Font weight settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var fontWeight = level.fontWeight();
+ * @return {string|number} Font weight settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontWeight;
+
+/**
+ * Setter for font weight settings.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.fontWeight
+ * @param {string|number} opt_weight Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.fontWeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.letterSpacing
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for letter spacing settings.
+ * @shortDescription Text letter spacing settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var letterSpacing = level.letterSpacing();
+ * @return {number} Letter spacing settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.letterSpacing;
+
+/**
+ * Setter for letter spacing settings.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.letterSpacing
+ * @param {number} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.letterSpacing;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.textDirection
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text direction.
+ * @shortDescription Text direction settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var textDirection = level.textDirection();
+ * @return {anychart.graphics.vector.Text.Direction|string} Text direction.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.textDirection;
+
+/**
+ * Setter for the text direction.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.textDirection
+ * @param {(anychart.graphics.vector.Text.Direction|string)=} opt_value ["ltr"] Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.textDirection;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.lineHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text line height.
+ * @shortDescription Line height settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var lineHeight = level.lineHeight();
+ * @return {string|number} Text line height.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.lineHeight;
+
+/**
+ * Setter for the text line height.<br/> {@link https://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.lineHeight
+ * @param {(string|number)=} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.lineHeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.textIndent
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text indent.
+ * @shortDescription Text indent settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var textIndent = level.textIndent();
+ * @return {number} Text indent.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.textIndent;
+
+/**
+ * Setter for the text indent.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.textIndent
+ * @param {number=} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.textIndent;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.vAlign
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text vertical align.
+ * @shortDescription Text vertical align settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var vAlign = level.vAlign();
+ * @return {anychart.graphics.vector.Text.VAlign|string} Text vertical align.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.vAlign;
+
+/**
+ * Setter for the text vertical align.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.vAlign
+ * @param {(anychart.graphics.vector.Text.VAlign|string)=} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.vAlign;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.hAlign
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for text horizontal align settings.
+ * @shortDescription Text horizontal align settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var hAlign = level.hAlign();
+ * @return {anychart.graphics.vector.Text.HAlign} Horizontal align settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.hAlign;
+
+/**
+ * Setter for the text horizontal align settings.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.hAlign
+ * @param {string|anychart.graphics.vector.Text.HAlign} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.hAlign;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.wordWrap
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the word-wrap mode.
+ * @shortDescription Word-wrap mode.
+ * @category Content Text Settings
+ * @listing See listing.
+ * var level = header.level(0);
+ * var wordWrap = level.wordWrap();
+ * @return {anychart.enums.WordWrap|string} Word-wrap mode.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.wordWrap;
+
+/**
+ * Setter for the word-wrap mode.
+ * @listing See listing.
+ * var level = header.level(0);
+ * level.wordWrap("break-all");
+ * @param {(anychart.enums.WordWrap|string)=} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.wordWrap;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.wordBreak
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the word-break mode.
+ * @shortDescription Word break mode.
+ * @category Content Text Settings
+ * @listing See listing.
+ * var wordBreak = level.wordBreak();
+ * @return {anychart.enums.WordBreak|string} Word-break mode.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.wordBreak;
+
+/**
+ * Setter for the word-break mode.
+ * @listing See listing.
+ * var level = header.level(0);
+ * level.wordBreak("break-all");
+ * @param {(anychart.enums.WordBreak|string)=} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.wordBreak;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.textOverflow
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text overflow settings.
+ * @shortDescription Text overflow settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var textOverflow = level.textOverflow();
+ * @return {anychart.graphics.vector.Text.TextOverflow|string} Text overflow settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.textOverflow;
+
+/**
+ * Setter for the text overflow settings.
+ * @listing See listing.
+ * var level = header.level(0);
+ * level.textOverflow("...");
+ * @param {(anychart.graphics.vector.Text.TextOverflow|string)=} opt_value Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.textOverflow;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.selectable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the text selectable option.
+ * @shortDescription Text selectable option.
+ * @category Interactivity
+ * @listing See listing
+ * var selectable = level.selectable();
+ * @return {boolean} Text selectable option.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.selectable;
+
+/**
+ * Setter for the text selectable.
+ * @detailed This options defines whether the text can be selected. If set to <b>false</b> one can't select the text.
+ * @example anychart.core.gantt.TimeLineHeader.LevelWrapper.selectable
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.selectable;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.disablePointerEvents
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the pointer events settings.
+ * @shortDescription Pointer events settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var disablePointerEvents = level.disablePointerEvents();
+ * @return {boolean} The pointer events settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.disablePointerEvents;
+
+/**
+ * Setter for the pointer events settings.
+ * @listing See listing
+ * var level = header.level(0);
+ * level.disablePointerEvents(true);
+ * @param {boolean} opt_value [false] Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.disablePointerEvents;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.useHtml
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the useHTML flag.
+ * @shortDescription Text useHtml settings.
+ * @category Content Text Settings
+ * @listing See listing
+ * var useHtml = level.useHtml();
+ * @return {boolean} Value of useHTML flag.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.useHtml;
+
+/**
+ * Setter for the useHTML flag.
+ * @detailed This property defines whether HTML text should be parsed.
+ * @listing See listing.
+ * var level = header.level(0);
+ * level.useHtml(true);
+ * @param {boolean=} opt_value [false] Value to set.
+ * @return {anychart.core.gantt.TimeLineHeader.LevelWrapper} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.TimeLineHeader.LevelWrapper.prototype.useHtml;
