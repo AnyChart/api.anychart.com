@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.ui.Crosshair.yLabel get"/>
+    <meta name="ac:name" content="anychart.core.ui.Crosshair.xLabel set asIndexObj"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -31,22 +31,17 @@
             {x: 4, value: 40}
         ]);
 
-        chart.yAxis(1, {orientation: "right"});
-        chart.yAxis(1).scale("log");
+        chart.xAxis(1, {orientation: "top"});
+        chart.xAxis(1).scale("log");
 
         var crosshair = chart.crosshair();
         crosshair.enabled(true);
+        crosshair.xLabel(0, false);
 
-        // Get Y-label.
-        var yLabel1 = crosshair.yLabel();
-        yLabel1.background({fill: "#CFD8DC", stroke: "#455A64"});
-        yLabel1.fontColor("black");
+        // Set X-label settings.
+        crosshair.xLabel(1, {axisIndex: 1, background: {fill: "#CFD8DC", stroke: "#455A64"}, fontColor: "black"});
 
-        // Get Y-label by index.
-        var yLabel2 = crosshair.yLabel(1);
-        yLabel2.axisIndex(1);
-
-        chart.title("Get and modify Y-label by index");
+        chart.title("Set X-label parameters as an object by index");
         chart.container("container");
         chart.draw();
     });

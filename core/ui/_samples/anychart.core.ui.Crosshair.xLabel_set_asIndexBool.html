@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.ui.Crosshair.yLabel get"/>
+    <meta name="ac:name" content="anychart.core.ui.Crosshair.xLabel set asBool"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -31,22 +31,18 @@
             {x: 4, value: 40}
         ]);
 
-        chart.yAxis(1, {orientation: "right"});
-        chart.yAxis(1).scale("log");
+        chart.xAxis(1, {orientation: "top"});
+        chart.xAxis(1).scale("log");
 
         var crosshair = chart.crosshair();
         crosshair.enabled(true);
 
-        // Get Y-label.
-        var yLabel1 = crosshair.yLabel();
-        yLabel1.background({fill: "#CFD8DC", stroke: "#455A64"});
-        yLabel1.fontColor("black");
+        // Disables X-label by index.
+        crosshair.xLabel(0, false);
 
-        // Get Y-label by index.
-        var yLabel2 = crosshair.yLabel(1);
-        yLabel2.axisIndex(1);
+        crosshair.xLabel(1, {axisIndex: 1, background: {fill: "#CFD8DC", stroke: "#455A64"}, fontColor: "black"});
 
-        chart.title("Get and modify Y-label by index");
+        chart.title("Disables X-label by index");
         chart.container("container");
         chart.draw();
     });
