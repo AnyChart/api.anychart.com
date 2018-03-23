@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.scales.GanttDateTime.maximumMinimum"/>
+    <meta name="ac:name" content="anychart.scales.GanttDateTime.measureWithText"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -37,12 +37,13 @@
             var column1 = dataGrid.column(0);
             column1.title('#');
             column1.width(30);
-            column1.cellTextSettings({hAlign: 'center'});
+            column1.labels({hAlign: 'center'});
 
-            var getTimeline = chart.getTimeline();
-            getTimeline.baseLabels(true);
+            var timeline = chart.getTimeline();
+            timeline.baseLabels(true);
+            timeline.labels({fontColor: '#FFFFFF'});
 
-            getTimeline.labels().format(function () {
+            timeline.labels().format(function () {
                 var name = this.name;
                 var label = this.label;
 
@@ -60,15 +61,11 @@
             var column2 = dataGrid.column(1);
             column2.title('Person');
             column2.width(120);
-            column2.cellTextSettings({hAlign: 'left'});
-            column2.format(function () {
-                return this.name;
-            });
 
-            chart.title("Measures labels text");
+            chart.title('Measures labels text');
             chart.container('container');
             chart.draw();
-            chart.zoomTo(1171036800000, 1176908400000);
+            chart.zoomTo(Date.UTC(2007, 1, 10), Date.UTC(2007, 3, 19));
         });
     });
 </script>

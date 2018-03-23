@@ -447,7 +447,6 @@ anychart.core.ui.DataGrid.prototype.tooltip;
  */
 anychart.core.ui.DataGrid.prototype.tooltip;
 
-
 //----------------------------------------------------------------------------------------------------------------------
 //
 //  anychart.core.ui.DataGrid.prototype.column
@@ -460,7 +459,7 @@ anychart.core.ui.DataGrid.prototype.tooltip;
  * @shortDescription Column settings.
  * @category Specific settings
  * @example anychart.core.ui.DataGrid.column_get
- * @param {(number)=} opt_index Column index or column.
+ * @param {number=} opt_index Column index.
  * @return {anychart.core.ui.DataGrid.Column} Column by index.
  */
 anychart.core.ui.DataGrid.prototype.column;
@@ -473,15 +472,15 @@ anychart.core.ui.DataGrid.prototype.column;
  */
 anychart.core.ui.DataGrid.prototype.column;
 
-
 /**
  * Setter for the column by index.
  * @example anychart.core.ui.DataGrid.column_set_asIndex
- * @param {number} opt_index Column index or column.
+ * @param {number} opt_index Column index.
  * @param {anychart.core.ui.DataGrid.Column} opt_value Column to set.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.column;
+
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -575,10 +574,11 @@ anychart.core.ui.DataGrid.Column;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
+ * @ignoreDoc
+ * @deprecated Use format() from labels() instead.
  * Sets cell text value formatter.<br/>
  * {docs:Common_Settings/Text_Formatters}Learn more about using format() method.{docs}
  * @category Specific settings
- * @example anychart.core.ui.DataGrid.Column.format
  * @param {(function(anychart.data.Tree.DataItem):string)=} opt_function Function to format data grid text.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
  */
@@ -592,6 +592,8 @@ anychart.core.ui.DataGrid.Column.prototype.format;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
+ * @ignoreDoc
+ * @deprecated Use labels() instead.
  * Getter for the label factory.
  * @shortDescription Label factory settings.
  * @category Advanced Text Settings
@@ -600,8 +602,9 @@ anychart.core.ui.DataGrid.Column.prototype.format;
 anychart.core.ui.DataGrid.Column.prototype.cellTextSettings;
 
 /**
+ * @ignoreDoc
+ * @deprecated Use labels() instead.
  * Setter for label factory to decorate cells.
- * @example anychart.core.ui.DataGrid.Column.cellTextSettings_set
  * @param {Object=} opt_value Value to set.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
  */
@@ -878,6 +881,129 @@ anychart.core.ui.DataGrid.Column.prototype.defaultWidth;
  * @since 7.6.0
  */
 anychart.core.ui.DataGrid.Column.prototype.defaultWidth;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.DataGrid.Column.prototype.labels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for labels factory of a column.
+ * @shortDescription Labels settings.
+ * @category Specific settings
+ * @example anychart.core.ui.DataGrid.Column.labels_get
+ * @return {anychart.core.ui.LabelsFactory} Labels factory settings.
+ * @since 8.2.0
+ */
+anychart.core.ui.DataGrid.Column.prototype.labels;
+
+/**
+ * Setter for labels factory of a column.<br/>
+ * Sets labels settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable column labels.</li>
+ *   <li><b>object</b> - sets column labels settings.</li>
+ * </ul>
+ * @example anychart.core.ui.DataGrid.Column.labels_set Using object
+ * @example anychart.core.ui.DataGrid.Column.labels_set_asBool Disable/enable labels
+ * @param {(Object|null|boolean)=} opt_settings Labels settings to set from {@link anychart.core.ui.LabelsFactory}.
+ * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.ui.DataGrid.Column.prototype.labels;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.DataGrid.prototype.onEditStart
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the onEditStart function.
+ * @shortDescription onEditStart function.
+ * @category Specific settings
+ * @listing See listing
+ * var dataGrid = chart.dataGrid();
+ * var onEditStart = dataGrid.onEditStart();
+ * @return {function():(Object|undefined)} Return onEditStart function.
+ * @since 8.2.0
+ */
+anychart.core.ui.DataGrid.prototype.onEditStart;
+
+
+/**
+ * Setter for the onEditStart function.<br>
+ * @detailed The onEditStart function is called before the input appearance.<br/>
+ * Input and text are defined by the onEditStart function.<br/>
+ * In order for an input to appear, the function must return an object with string field 'value', the value of which is
+ * set in the appeared input
+ * @example anychart.core.ui.DataGrid.onEditEnd_Start
+ * @param {(function():(Object|undefined))=} opt_onEditStartFunction [
+ * function() {
+ * return this[columnIndex] < 1 ? {cancelEdit: true} : {'value: this['value']};
+ * }] OnEditStart function to set.<br/>
+ *  Function that looks like <code>function(){
+ *  // this.columnIndex - The column index from {@link anychart.core.ui.DataGrid#column} method. Type is a number
+ *  // this.item - DataItem (literally corresponding row). Type is {@link anychart.data.Tree.DataItem}
+ *  // this.value - The current text value of a cell. Type is a string
+ *  return Object or null/undefined;
+ *  // The input editing doesn't appear:</br>
+ *  - if the function returns null or undefined</br>
+ *  - if the returned object contains next field with key: {'cancelEdit': true}</br>
+ * }</code>.
+ * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.ui.DataGrid.prototype.onEditStart;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.DataGrid.prototype.onEditEnd
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the onEditEnd function.
+ * @shortDescription onEditStart function.
+ * @category Specific settings
+ * @listing See listing
+ * var dataGrid = chart.dataGrid();
+ * var onEditEnd = dataGrid.onEditEnd();
+ * @return {function():(Object|undefined)} Return onEditEnd function.
+ * @since 8.2.0
+ */
+anychart.core.ui.DataGrid.prototype.onEditEnd;
+
+/**
+ * Setter for the onEditEnd function.
+ * @detailed
+ * To apply the changes, the function should return an object with a map itemMap, where the keys are the dataItem fields,
+ * the values are the values to set to fields.<br/>
+ * The function is called when changing the focus or pressing the enter key.<br/>
+ * When the editing is canceled (pressing the escape key), the function isn't called and the changes aren't applied,
+ * the input disappears.
+ * @shortDescription onEditEnd function.
+ * @category Specific settings
+ * @example anychart.core.ui.DataGrid.onEditEnd_Start
+ * @param {(function():(Object|undefined))=} opt_onEditEndFunction [
+ * function() {
+ *  return this[columnIndex] == 1 ? {itemMap: {name: this['value']}} : {cancelEdit: true};
+ *  }] OnEditEnd function to set.<br/>
+ * Function that looks like <code>function(){
+ *  // this.columnIndex - The column index for the editing. Type is a number
+ *  // this.item - Corresponding dataItem. Type is {@link anychart.data.Tree.DataItem}
+ *  // this.value - Custom value. Type is a string
+ *  return Object with a map itemMap or null/undefined;
+  *  // A custom value does not apply to data:
+ *   - if the function returns null or undefined
+ *   - if the returned object contains next field with key: {'cancelEdit': true}
+ * }</code>.
+ * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.ui.DataGrid.prototype.onEditEnd;
+
 
 
 //----------------------------------------------------------------------------------------------------------------------
