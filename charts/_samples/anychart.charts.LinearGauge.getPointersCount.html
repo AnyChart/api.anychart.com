@@ -23,8 +23,6 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
-
         chart = anychart.gauges.linear([
             {value: 15},
             {value: 20},
@@ -34,14 +32,14 @@
         ]);
         chart.addPointer(4, 3, 2, 1, 0);
 
-        // Get pointers count in loop.
+        // Get the number of pointers in loop.
         for (var i = 0; i < chart.getPointersCount(); i++) {
             chart.getPointerAt(i).name((i + 1) + " Pointer");
         }
 
         chart.legend(true);
         chart.title("Get and use pointers count");
-        chart.container(stage);
+        chart.container("container");
         chart.draw();
     });
 </script>

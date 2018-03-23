@@ -23,21 +23,14 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
+        var chart = anychart.gauges.linear([44, 30, 25, 20, 15]);
 
-        var chart = anychart.gauges.linear([
-            {value: 15},
-            {value: 20},
-            {value: 25},
-            {value: 30},
-            {value: 44}
-        ]);
-        chart.bar(4);
-        chart.bar(3);
-        chart.bar(2);
+        chart.bar(0);
         chart.bar(1);
-        chart.marker(0);
-        chart.marker(1);
+        chart.bar(2);
+        chart.bar(3);
+        chart.marker(3);
+        chart.marker(4);
 
         var marker1 = chart.getPointer(4);
         marker1.offset(6);
@@ -60,7 +53,7 @@
         chart.markerPalette(["triangle-up", "diamond"]);
 
         chart.title("Set marker palette");
-        chart.container(stage);
+        chart.container("container");
         chart.draw();
     });
 </script>

@@ -23,27 +23,19 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
-
-        var chart = anychart.gauges.linear([
-            {value: 15},
-            {value: 20},
-            {value: 25},
-            {value: 30},
-            {value: 44}
-        ]);
-        chart.bar(4);
-        chart.bar(3);
-        chart.bar(2);
-        chart.bar(1);
+        var chart = anychart.gauges.linear([44, 30, 25, 20, 15]);
         chart.bar(0);
+        chart.bar(1);
+        chart.bar(2);
+        chart.bar(3);
+        chart.bar(4);
 
         // Get palette.
         var palette = chart.palette();
         palette.items(["#827717", "#c77532", "#998675", "#6b617b", "#c69c6d", "#d29b9b"]);
 
         chart.title("Get and modify gauge palette");
-        chart.container(stage);
+        chart.container("container");
         chart.draw();
     });
 </script>
