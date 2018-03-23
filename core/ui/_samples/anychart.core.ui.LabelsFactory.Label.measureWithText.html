@@ -39,9 +39,8 @@
             column1.width(30);
             column1.labels({hAlign: 'center'});
 
-            var timeline = chart.getTimeline();
-            timeline.baseLabels(true);
-            timeline.labels({fontColor: '#FFFFFF'});
+            var getTimeline = chart.getTimeline();
+            getTimeline.elements().labels(true);
 
             timeline.labels().format(function () {
                 var name = this.name;
@@ -61,6 +60,10 @@
             var column2 = dataGrid.column(1);
             column2.title('Person');
             column2.width(120);
+            column2.labels({hAlign: 'left'});
+            column2.labels().format(function () {
+                return this.name;
+            });
 
             chart.title('Measures labels text');
             chart.container('container');
