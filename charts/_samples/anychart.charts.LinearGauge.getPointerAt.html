@@ -23,8 +23,6 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
-
         var chart = anychart.gauges.linear([
             {value: 44},
             {value: 30},
@@ -40,11 +38,11 @@
         chart.bar(4);
 
         // Get pointer by index.
-        var firstPointer = chart.getPointerAt(0);
-        firstPointer.hatchFill(true);
+        var pointer = chart.getPointerAt(0);
+        pointer.hatchFill(true);
 
         chart.title("Get and modify pointer");
-        chart.container(stage);
+        chart.container('container');
         chart.draw();
     });
 </script>
