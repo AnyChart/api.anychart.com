@@ -80,32 +80,47 @@
     });
 
     function drawer() {
+        // Get bounds for custom drawing.
         var bounds = this['predictedBounds'];
 
         var shapes = this['shapes'];
 
+        // Get shapes by names.
         var cross = shapes['cross'];
         var line = shapes['line'];
         var star = shapes['star'];
         var background = shapes['background'];
 
+        // Get the height value of the bounds.
         var h = bounds.height;
+
+        // Get the value of the bounds.
         var t = bounds.top;
+
+        // Get the x of the bounds.
         var l = bounds.left;
+
+        // Get the width value of the bounds.
         var w = bounds.width;
 
+        // Calculate the quarter of the height.
         var h4 = h / 4;
 
+        // Draw a diagonal cross.
         anychart.graphics.vector.primitives.diagonalCross(cross, l, t + h - h4, h4);
 
+        // Draw a star5.
         anychart.graphics.vector.primitives.star5(star, l + w, t + h4, h4);
 
+        // Set fill, stroke settings for the background shape.
         background.fill('#FFF9C4 0.4').stroke('none');
 
+        // Draw a rectangle with rounded inner corners.
         anychart.graphics.vector.primitives.roundedRect(background, bounds, 3);
 
-        line.moveTo(l+h/4, t+ h - h/4)
-            .curveTo(l+w/2, t+ 3/4*h, l+w/2, t+h/4, l+w-h/4, t+ h4)
+        // Draw a curved line.
+        line.moveTo(l + h4, t + h - h4)
+            .curveTo(l + w / 2, t + 3 / 4 * h, l + w / 2, t + h4, l + w - h4, t + h4)
             .fill('none');
     }
 
