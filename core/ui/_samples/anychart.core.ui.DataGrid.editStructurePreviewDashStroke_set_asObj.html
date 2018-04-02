@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.gantt.TimelineHeader.fill set asArray"/>
+    <meta name="ac:name" content="anychart.core.ui.DataGrid.editStructurePreviewDashStroke set asObj"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -25,17 +25,18 @@
     anychart.onDocumentReady(function () {
         var data = getData();
 
+        var treeData = anychart.data.tree(data, "as-table");
+
         var chart = anychart.ganttProject();
-        chart.data(data, "as-table");
+        chart.data(treeData);
 
-        var timeline = chart.getTimeline();
+        var dataGrid = chart.dataGrid();
+        dataGrid.editing(true);
 
-        var header = timeline.header();
+        // Set structure preview dash stroke in edit mode.
+        dataGrid.editStructurePreviewDashStroke({color: "#F44336", thickness: 2, dash: "5"});
 
-        // Set fill.
-        header.fill(["#FAFFD1", "#A1FFCE"]);
-
-        chart.title("Set fill parameter as an array");
+        chart.title("Set stroke parameter as an object");
         chart.container("container");
         chart.draw();
         chart.fitAll();
@@ -95,16 +96,6 @@
                 progressValue: "27%",
                 actualStart: "2000-02-28T08:00",
                 actualEnd: "2000-02-29"
-            },
-            {
-                id: "7",
-                name: "Research the market and competition",
-                parent: "6",
-                progressValue: "0%",
-                actualStart: "2000-02-26T08:00",
-                actualEnd: "2000-02-27",
-                connectTo: "8",
-                connectorType: "finish-start"
             }
         ];
     }

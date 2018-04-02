@@ -610,8 +610,25 @@ anychart.data.Tree.prototype.dispatchEvents;
  * Creates and returns a new instance of the data tree.
  * @category Data
  * @example anychart.data.tree
- * @param {Array.<Object>=} opt_data Raw data.
- * @param {anychart.enums.TreeFillingMethod|string=} opt_fillMethod Fill method.
+ * @param {(Array.<Object>|string)=} opt_data - Raw data or CSV-string. If the string is passed, the second parameter
+ * is interpreted as fields mapping.
+ * @param {(anychart.enums.TreeFillingMethod|Object)=} opt_fillMethodOrCsvMapping Fill method or CSV mapping object.
+ *  This parameter is interpreted as mapping object if the first parameter is a string. Mapping object should have the structure
+ *  like
+ *  <code>
+ *    //'nameOfField': index_of_column
+ *    mapping = {
+ *      'id': 0,
+ *      'name': 1,
+ *      'value': 15
+ *    };
+ *  </code>.
+ * @param {Object=} opt_csvSettings  CSV settings object. Should be fields like<br/>
+ *  rowsSeparator - string or undefined, if it is undefined, it will not be set.<br/>
+ *  columnsSeparator - string or undefined, if it is undefined, it will not be set.<br/>
+ *  ignoreTrailingSpaces - boolean or undefined, if it is undefined, it will not be set.<br/>
+ *  ignoreFirstRow - boolean or undefined, if it is undefined, it will not be set.
+ * @param {Object=} opt_fieldsMapping Field mapping object. Maps only first-level data.
  * @return {anychart.data.Tree} Self instance for method chaining.
  */
 anychart.data.tree;
