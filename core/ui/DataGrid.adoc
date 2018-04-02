@@ -578,11 +578,17 @@ anychart.core.ui.DataGrid.Column;
  * Sets cell text value formatter.<br/>
  * {docs:Common_Settings/Text_Formatters}Learn more about using the format() method.{docs}
  * @category Specific settings
- * @param {(function(anychart.data.Tree.DataItem):string)=} opt_function Function to format data grid text.
+ * @param {FormatFunction=} opt_function Function to format data grid text.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.Column.prototype.format;
 
+/**
+ * Format function.
+ * @typedef {function}
+ * @name FormatFunction
+ * @param {anychart.data.Tree.DataItem} item Data item.
+ */
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -662,8 +668,7 @@ anychart.core.ui.DataGrid.Column.prototype.labelsOverrider;
 /**
  * Setter for the labels overrider.
  * @example anychart.core.ui.DataGrid.Column.labelsOverrider
- * @param {function(anychart.core.ui.LabelsFactory.Label, anychart.data.Tree.DataItem)} opt_overriderFunction
- * [function(label, dataItem){}] Text settings overrider function.
+ * @param {OverriderFunction} opt_overriderFunction [function(label, dataItem){}] Text settings overrider function.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
  * @since 8.2.0
  */
@@ -682,10 +687,19 @@ anychart.core.ui.DataGrid.Column.prototype.cellTextSettingsOverrider;
  * @ignoreDoc
  * @deprecated Use labelsOverrider() instead.
  * Setter
- * @param {function(anychart.core.ui.LabelsFactory.Label, anychart.data.Tree.DataItem)} opt_value Value to set.
+ * @param {OverriderFunction} opt_value Value to set.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.Column.prototype.cellTextSettingsOverrider;
+
+
+/**
+ * Overrider function.
+ * @typedef {function}
+ * @name OverriderFunction
+ * @param {anychart.core.ui.LabelsFactory.Label} label Label.
+ * @param {anychart.data.Tree.DataItem} item Data item.
+ */
 
 
 //----------------------------------------------------------------------------------------------------------------------
