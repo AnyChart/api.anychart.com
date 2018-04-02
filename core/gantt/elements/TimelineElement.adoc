@@ -1,0 +1,401 @@
+/**
+ * Namespace anychart.core.gantt.elements
+ * @namespace
+ * @name anychart.core.gantt.elements
+ */
+anychart.core.gantt.elements;
+
+/**
+ * Settings class for all timeline elements (baselines, connectors, tasks, grouping tasks, periods, progress bars).
+ * @param {anychart.core.gantt.elements.TimelineElement} timeline Related timeline.
+ * @constructor
+ * @extends {anychart.core.Base}
+ */
+anychart.core.gantt.elements.TimelineElement;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.elements.TimelineElement.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the element fill.
+ * @shortDescription Fill elements settings.
+ * @category Coloring
+ * @example anychart.core.gantt.elements.TimelineElement.fill_get
+ * @return {anychart.graphics.vector.Fill|string} Element fill.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.fill;
+
+/**
+ * Setter for element fill settings using an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.gantt.elements.TimelineElement.fill_set_asString Using string
+ * @example anychart.core.gantt.elements.TimelineElement.fill_set_asArray Using array
+ * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @return {anychart.core.gantt.elements.TimelineElement} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.fill;
+
+/**
+ * Setter for fill settings using function.
+ * @example anychart.core.gantt.elements.TimelineElement.fill_set_asFunc
+ * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *    // this.sourceColor - Color with type anychart.graphics.vector.Fill (directly resolvable color).
+ *    Type is anychart.graphics.vector.Fill, anychart.graphics.vector.PatternFill. The color is set from a theme
+ *    or palette and is determined automatically for each colorized element.
+ *    // this.item - the item of the visual element to which the coloring is applied. Type is anychart.data.Tree.DataItem or anychart.data.TreeView.DataItem
+ *    // this.itemIndex - the linear index of the item. Type is number
+ *    // this.period - the period for {@link anychart#ganttResource}. Type is object. A period object with the index
+ *    this.periodIndex at the data point this.item, corresponding to the visual display element.
+ *    // this.periodIndex - the index of the period for {@link anychart#ganttResource}.
+ *
+ *    return fillValue; // type anychart.graphics.vector.Fill
+ * }</code>.
+ * @return {anychart.core.gantt.elements.TimelineElement} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.fill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.gantt.elements.TimelineElement.fill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.gantt.elements.TimelineElement} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.fill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.gantt.elements.TimelineElement.fill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.gantt.elements.TimelineElement} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.fill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.gantt.elements.TimelineElement.fill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.gantt.elements.TimelineElement} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.fill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.gantt.elements.TimelineElement.fill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.gantt.elements.TimelineElement} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.fill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.elements.TimelineElement.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for element stroke settings.
+ * @shortDescription Element stroke settings.
+ * @category Coloring
+ * @example anychart.core.gantt.elements.TimelineElement.stroke_get
+ * @return {anychart.graphics.vector.Stroke|string} Element stroke settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.stroke;
+
+/**
+ * Setter for element stroke settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.gantt.elements.TimelineElement.stroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_color Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
+ * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
+ * @return {anychart.core.gantt.elements.TimelineElement} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.stroke;
+
+/**
+ * Setter for element stroke settings using function.
+ * @example anychart.core.gantt.elements.TimelineElement.stroke_set_asFunc
+ * @param {function(): anychart.graphics.vector.Stroke=} opt_strokeFunction [function() {
+ * }] Function that looks like <code>function(){
+ *    // this.sourceColor - Color with type anychart.graphics.vector.Stroke (directly resolvable color).
+ *    Type is anychart.graphics.vector.Stroke. The color is set from a theme or palette and is determined automatically for each colorized element.
+ *    // this.item - the item of the visual element to which the coloring is applied. Type is anychart.data.Tree.DataItem or anychart.data.TreeView.DataItem
+ *    // this.itemIndex - the linear index of the item. Type is number
+ *    // this.period - the period for {@link anychart#ganttResource}. Type is object. A period object with the index
+ *    this.periodIndex at the data point this.item, corresponding to the visual display element.
+ *    // this.periodIndex - the index of the period for {@link anychart#ganttResource}.
+ *
+ *    return strokeValue; // type anychart.graphics.vector.Stroke
+ * }</code>.
+ * @return {anychart.core.gantt.elements.TimelineElement} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.stroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.elements.TimelineElement.prototype.labels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+/**
+ * Getter for elements labels.
+ * @shortDescription Element labels settings.
+ * @category Labels
+ * @example anychart.core.gantt.elements.TimelineElement.labels_get
+ * @return {anychart.core.ui.LabelsFactory} Labels instance.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.labels;
+
+/**
+ * Setter for element labels.
+ * @detailed Sets labels settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable base labels.</li>
+ *   <li><b>object</b> - sets base labels settings.</li>
+ * </ul>
+ * @example anychart.core.gantt.elements.TimelineElement.labels_set_asBool Disable/enable labels
+ * @example anychart.core.gantt.elements.TimelineElement.labels_set_asObj Using object
+ * @param {(Object|boolean|null)=} opt_settings Labels settings.
+ * @return {anychart.core.gantt.elements.TimelineElement} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.labels;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.elements.TimelineElement.prototype.height
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the element height.
+ * @shortDescription Element height.
+ * @category Size and Position
+ * @listing See listing
+ * var elements = timeLine.elements();
+ * var height = elements.height();
+ * @return {string|number} Element height.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.height;
+
+/**
+ * Setter for the element height.
+ * @example anychart.core.gantt.elements.TimelineElement.height
+ * @param {(string|number)=} opt_height Value to set.
+ * @return {anychart.core.gantt.elements.TimelineElement} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.height;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.elements.TimelineElement.prototype.anchor
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the element anchor.
+ * @shortDescription Element anchor.
+ * @category Size and Position
+ * @listing See listing
+ * var elements = timeLine.elements();
+ * var anchor = elements.anchor();
+ * @return {string|anychart.enums.Anchor} Element anchor.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.anchor;
+
+/**
+ * Setter for the element anchor.
+ * @example anychart.core.gantt.elements.TimelineElement.anchor
+ * @param {(string|anychart.enums.Anchor)=} opt_anchor Value to set.
+ * @return {anychart.core.gantt.elements.TimelineElement} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.anchor;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.elements.TimelineElement.prototype.position
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the element position.
+ * @shortDescription Element position.
+ * @category Size and Position
+ * @listing See listing
+ * var elements = timeLine.elements();
+ * var position = elements.position();
+ * @return {string|anychart.enums.Anchor} The element position.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.position;
+
+/**
+ * Setter for the element position.
+ * @example anychart.core.gantt.elements.TimelineElement.position
+ * @param {(string|anychart.enums.Anchor)=} opt_position Value to set.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.position;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.elements.TimelineElement.prototype.offset
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the vertical offset.
+ * @shortDescription Element vertical offset.
+ * @category Size and Position
+ * @listing See listing
+ * var elements = timeLine.elements();
+ * var offset = elements.offset();
+ * @return {string|number} Element vertical offset.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.offset;
+
+/**
+ * Setter for the vertical offset.
+ * @example anychart.core.gantt.elements.TimelineElement.offset
+ * @param {(string|number)=} opt_offset Value to set.
+ * @return {anychart.core.ui.Timeline} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.offset;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.elements.TimelineElement.prototype.normal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for normal state settings.
+ * @shortDescription Normal state settings.
+ * @category Interactivity
+ * @example anychart.core.gantt.elements.TimelineElement.normal_get
+ * @return {anychart.core.StateSettings} Normal state settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.normal;
+
+/**
+ * Setter for normal state settings.
+ * @example anychart.core.gantt.elements.TimelineElement.normal_set
+ * @param {!Object=} opt_settings State settings to set.
+ * @return {anychart.core.gantt.elements.TimelineElement} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.normal;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.elements.TimelineElement.prototype.selected
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for selected state settings.
+ * @shortDescription Selected state settings.
+ * @category Interactivity
+ * @example anychart.core.gantt.elements.TimelineElement.selected_get
+ * @return {anychart.core.StateSettings} Selected state settings
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.selected;
+
+/**
+ * Setter for selected state settings.
+ * @example anychart.core.gantt.elements.TimelineElement.selected_set
+ * @param {!Object=} opt_settings State settings to set.
+ * @return {anychart.core.gantt.elements.TimelineElement} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.selected;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.elements.TimelineElement.prototype.rendering
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for rendering settings.
+ * @shortDescription Rendering settings.
+ * @category Interactivity
+ * @example anychart.core.gantt.elements.TimelineElement.rendering_get
+ * @return {anychart.core.gantt.rendering.Settings} Rendering settings.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.rendering;
+
+/**
+ * Setter for rendering settings.
+ * @example anychart.core.gantt.elements.TimelineElement.rendering_set
+ * @param {Object=} opt_settings Rendering settings from {@link anychart.core.gantt.rendering.Settings}.
+ * @return {anychart.core.gantt.elements.TimelineElement} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.gantt.elements.TimelineElement.prototype.rendering;
+
+/** @inheritDoc */
+anychart.core.gantt.elements.TimelineElement.prototype.dispose;
+
+/** @inheritDoc */
+anychart.core.gantt.elements.TimelineElement.prototype.listen;
+
+/** @inheritDoc */
+anychart.core.gantt.elements.TimelineElement.prototype.listenOnce;
+
+/** @inheritDoc */
+anychart.core.gantt.elements.TimelineElement.prototype.removeAllListeners;
+
+/** @inheritDoc */
+anychart.core.gantt.elements.TimelineElement.prototype.unlisten;
+
+/** @inheritDoc */
+anychart.core.gantt.elements.TimelineElement.prototype.unlistenByKey;
+
+

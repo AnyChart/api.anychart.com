@@ -447,7 +447,6 @@ anychart.core.ui.DataGrid.prototype.tooltip;
  */
 anychart.core.ui.DataGrid.prototype.tooltip;
 
-
 //----------------------------------------------------------------------------------------------------------------------
 //
 //  anychart.core.ui.DataGrid.prototype.column
@@ -460,7 +459,7 @@ anychart.core.ui.DataGrid.prototype.tooltip;
  * @shortDescription Column settings.
  * @category Specific settings
  * @example anychart.core.ui.DataGrid.column_get
- * @param {(number)=} opt_index Column index or column.
+ * @param {number=} opt_index Column index.
  * @return {anychart.core.ui.DataGrid.Column} Column by index.
  */
 anychart.core.ui.DataGrid.prototype.column;
@@ -468,17 +467,16 @@ anychart.core.ui.DataGrid.prototype.column;
 /**
  * Setter for the first column.
  * @example anychart.core.ui.DataGrid.column_set_asInst
- * @param {anychart.core.ui.DataGrid.Column} opt_value Column to set.
+ * @param {(anychart.core.ui.DataGrid.Column|Object)} opt_settings Column to set.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.column;
 
-
 /**
  * Setter for the column by index.
  * @example anychart.core.ui.DataGrid.column_set_asIndex
- * @param {number} opt_index Column index or column.
- * @param {anychart.core.ui.DataGrid.Column} opt_value Column to set.
+ * @param {number} opt_index Column index.
+ * @param {(anychart.core.ui.DataGrid.Column|Object)} opt_settings Column to set.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.column;
@@ -575,10 +573,11 @@ anychart.core.ui.DataGrid.Column;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
+ * @ignoreDoc
+ * @deprecated Use labels().format() instead.
  * Sets cell text value formatter.<br/>
- * {docs:Common_Settings/Text_Formatters}Learn more about using format() method.{docs}
+ * {docs:Common_Settings/Text_Formatters}Learn more about using the format() method.{docs}
  * @category Specific settings
- * @example anychart.core.ui.DataGrid.Column.format
  * @param {(function(anychart.data.Tree.DataItem):string)=} opt_function Function to format data grid text.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
  */
@@ -592,6 +591,8 @@ anychart.core.ui.DataGrid.Column.prototype.format;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
+ * @ignoreDoc
+ * @deprecated Use labels() instead.
  * Getter for the label factory.
  * @shortDescription Label factory settings.
  * @category Advanced Text Settings
@@ -600,12 +601,44 @@ anychart.core.ui.DataGrid.Column.prototype.format;
 anychart.core.ui.DataGrid.Column.prototype.cellTextSettings;
 
 /**
+ * @ignoreDoc
+ * @deprecated Use labels() instead.
  * Setter for label factory to decorate cells.
- * @example anychart.core.ui.DataGrid.Column.cellTextSettings_set
  * @param {Object=} opt_value Value to set.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.Column.prototype.cellTextSettings;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.DataGrid.Column.prototype.labels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for labels factory of a column.
+ * @shortDescription Labels settings.
+ * @category Specific settings
+ * @example anychart.core.ui.DataGrid.Column.labels_get
+ * @return {anychart.core.ui.LabelsFactory} Labels factory settings.
+ * @since 8.2.0
+ */
+anychart.core.ui.DataGrid.Column.prototype.labels;
+
+/**
+ * Setter for labels factory of a column.
+ * @detailed Sets labels settings depending on parameter type:
+ *  <ul>
+ *        <li><b>null/boolean</b> - disable or enable column labels.</li>
+ *        <li><b>object</b> - sets column labels settings.</li>*
+ * </ul>
+ * @example anychart.core.ui.DataGrid.Column.labels_set Using object
+ * @example anychart.core.ui.DataGrid.Column.labels_set_asBool Disable/enable labels
+ * @param {(Object|null|boolean)=} opt_settings Labels settings to set from {@link anychart.core.ui.LabelsFactory}.
+ * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
+ * @since 8.2.0
+ */
++anychart.core.ui.DataGrid.Column.prototype.labels;
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -615,21 +648,32 @@ anychart.core.ui.DataGrid.Column.prototype.cellTextSettings;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for cells text settings overrider.
- * @shortDescription Cells text settings overrider.
+ * Getter for the labels overrider.
+ * @shortDescription labels overrider.
  * @category Advanced Text Settings
+ * @listing See listing
+ * var column = dataGrid.column(1);
+ * var labelsOverrider = column.labelsOverrider();
  * @return {function(anychart.core.ui.LabelsFactory.Label, anychart.data.Tree.DataItem)} Cells text settings overrider.
+ * @since 8.2.0
  */
-anychart.core.ui.DataGrid.Column.prototype.cellTextSettingsOverrider;
+anychart.core.ui.DataGrid.Column.prototype.labelsOverrider;
 
 /**
- * Setter for cells text settings overrider.
- * @example anychart.core.ui.DataGrid.Column.cellTextSettingsOverrider_set
- * @param {function(anychart.core.ui.LabelsFactory.Label, anychart.data.Tree.DataItem)} opt_value [function(label, dataItem){}] Value to set.
+ * Setter for the labels overrider.
+ * @example anychart.core.ui.DataGrid.Column.labelsOverrider
+ * @param {function(anychart.core.ui.LabelsFactory.Label, anychart.data.Tree.DataItem)} opt_overriderFunction
+ * [function(label, dataItem){}] Text settings overrider function.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
+ * @since 8.2.0
+ */
+anychart.core.ui.DataGrid.Column.prototype.labelsOverrider;
+
+/**
+ * @ignoreDoc
+ * @deprecated Use labelsOverrider() instead.
  */
 anychart.core.ui.DataGrid.Column.prototype.cellTextSettingsOverrider;
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
