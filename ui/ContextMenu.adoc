@@ -80,7 +80,8 @@ anychart.ui.ContextMenu.prototype.removeClassName;
  * @listing See listing
  * var contextMenu = chart.contextMenu();
  * var formatter = contextMenu.itemsFormatter();
- * @return {function} Formatter function.
+ * @return {function(this:Object.<string, anychart.ui.ContextMenu.Item>, Object.<string, anychart.ui.ContextMenu.Item>,
+ *     anychart.ui.ContextMenu.PrepareItemsContext):Object.<string, anychart.ui.ContextMenu.Item>} Formatter function.
  * @since 7.10.0
  */
 anychart.ui.ContextMenu.prototype.itemsFormatter;
@@ -88,11 +89,20 @@ anychart.ui.ContextMenu.prototype.itemsFormatter;
 /**
  * Setter for the items formatter.
  * @example anychart.ui.ContextMenu.itemsFormatter_set
- * @param {function=} opt_value Formatter function.
+ * @param {ItemsFormatterFunction=} opt_value Formatter function.
  * @return {anychart.ui.ContextMenu} Self instance for method chaining.
  * @since 7.10.0
  */
 anychart.ui.ContextMenu.prototype.itemsFormatter;
+
+/**
+ * Items formatter function.
+ * @typedef {function}
+ * @name ItemsFormatterFunction
+ * @param {Object.<string, anychart.ui.ContextMenu.Item>} item1 ContextMenu item.
+ * @param {Object.<string, anychart.ui.ContextMenu.Item>} item2 ContextMenu item.
+ * @param {anychart.ui.ContextMenu.PrepareItemsContext} context Items context.
+ */
 
 //----------------------------------------------------------------------------------------------------------------------
 //
