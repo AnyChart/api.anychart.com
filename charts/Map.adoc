@@ -76,7 +76,7 @@ anychart.charts.Map.prototype.colorRange;
  * Creates a Choropleth series.
  * @category Series
  * @example anychart.charts.Map.choropleth
- * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Series data as SVG, SVGString, GeoJSON or MapNameString.
+ * @param {!(anychart.data.View|anychart.data.Set|Array|string)=} data Series data as SVG, SVGString, GeoJSON or MapNameString.
  * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings
  *    here as a hash map.
  * @return {anychart.core.map.series.Choropleth} An instance of the created series.
@@ -96,7 +96,7 @@ anychart.charts.Map.prototype.choropleth;
  * @shortDescription Geo data settings.
  * @category Data
  * @listing See listing
- * var currentGeoData = map.geoData();
+ * var geoData = map.geoData();
  * @return {Node|string|Object} The current geo data.
  * @since 7.6.0
  */
@@ -109,7 +109,7 @@ anychart.charts.Map.prototype.geoData;
  * @example anychart.charts.Map.geoData_set_asSVG Using SVG element
  * @example anychart.charts.Map.geoData_set_asSVGString Using SVG string
  * @param {Node|string|Object=} opt_data Map data as SVG, SVGString, GeoJSON or MapNameString.
- * @return {Node|string|Object} Passed geo data.
+ * @return {anychart.charts.Map} Self instance for method chaining.
  * @since 7.6.0
  */
 anychart.charts.Map.prototype.geoData;
@@ -642,14 +642,24 @@ anychart.charts.Map.prototype.featureCrs;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Sets the crs (coordinate system) to map.
+ * Getter for the the crs (coordinate system) to map.
+ * @shortDescription Coordinate system settings
  * @category Size and Position
+ * @return {(Object|Function|anychart.enums.MapProjections|string)} Projection name, or projection string representation,
+ * or projection Object or Function.
+ * @since 7.9.0
+ */
+anychart.charts.Map.prototype.crs;
+
+/**
+ * Setter for the the crs (coordinate system) to map.
  * @detailed crs method changes map projections.<br/>
  * See the list of supported projections and samples at {@link https://docs.anychart.com/7.11.0/Maps/Map_Projections}
  * @example anychart.charts.Map.crs_set_asString Using projection string representation
  * @example anychart.charts.Map.crs_set_asEnum Using enumeration
- * @param {(Object|Function|anychart.enums.MapProjections|string)=} value Projection name, or projection string representation,
+ * @param {(Object|Function|anychart.enums.MapProjections|string)} Projection name, or projection string representation,
  * or projection Object or Function.
+ * @return {anychart.charts.Map} Self instance for method chaining.
  * @since 7.9.0
  */
 anychart.charts.Map.prototype.crs;
