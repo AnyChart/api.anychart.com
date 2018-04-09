@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.ui.DataGrid.Column.onEditEnd"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        anychart.format.inputDateTimeFormat('dd MMM yyyy');
+        anychart.format.outputDateTimeFormat('dd MMM yyyy');
+
+        var data = getData();
+
+        var treeData = anychart.data.tree(data, 'as-table');
+
+        var chart = anychart.ganttProject();
+        chart.data(treeData);
+
+        var dataGrid = chart.dataGrid();
+
+        var startColumn = dataGrid.column(2);
+        startColumn.title('Start');
+        startColumn.labels().format('{%actualStart}');
+
+        var endColumn = dataGrid.column(3);
+        endColumn.title('End');
+        endColumn.labels().format('{%actualEnd}');
+
+        // Set text for the input.
+        dataGrid.onEditStart(function () {
+            if (this.columnIndex < 2)
+                return {cancelEdit: true};
+            else {
+                var parsed = anychart.format.parseDateTime(this.value);
+                return {value: anychart.format.dateTime(parsed, 'yyyy MMM dd')};
+            }
+        });
+
+        // Set end text.
+        dataGrid.onEditEnd(function () {
+            var parsed = anychart.format.parseDateTime(this.value, 'yyyy MMM dd');
+            var localized = anychart.format.dateTime(parsed);
+            if (this.columnIndex == 2)
+                return {itemMap: {actualStart: localized}};
+            else if (this.columnIndex == 3)
+                return {itemMap: {actualEnd: localized}};
+        });
+
+        chart.splitterPosition(450);
+        chart.editing(true);
+        chart.title('Set the text for the input and the final text in columns 3 and 4');
+        chart.container('container');
+        chart.draw();
+        chart.fitAll();
+    });
+
+    function getData() {
+        return [
+            {id: 1, name: 'Phase 1 - Strategic Plan', progressValue: 0.14, actualStart: '24 Feb 2000', actualEnd: '27 Feb 2000'},
+            {id: 2, name: 'Self-Assessment', parent: 1, progressValue: 0.25, actualStart: '24 Feb 2000', actualEnd: '29 Feb 2000'},
+            {id: 3, name: 'Define business vision', parent: 2, progressValue: 0,actualStart: '24 Feb 2000',actualEnd: '25 Feb 2000',connectTo: 4,connectorType: 'finish-start'},
+            {id: 4, name: 'Identify available skills', parent: 2, progressValue: 0, actualStart: '26 Feb 2000', actualEnd: '27 Feb 2000', connectTo: 5, connectorType: 'finish-start'},
+            {id: 5, name: 'Decide whether to proceed', parent: 2, progressValue: 0, actualStart: '27 Feb 2000', actualEnd: '28 Feb 2000', connectTo: 6, connectorType: 'finish-start'},
+            {id: 6, name: 'Define the Opportunity', parent: 1, progressValue: 0.27, actualStart: '28 Feb 2000', actualEnd: '29 Feb 2000'}
+        ];
+    }
+</script>
+</body>
+</html>
