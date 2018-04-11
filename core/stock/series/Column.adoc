@@ -106,9 +106,12 @@ anychart.core.stock.series.Column.prototype.fill;
  * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
- *    // this.index - series index.
- *    // this.sourceColor - color returned by fill() getter.
- *    // this.iterator - series point iterator.
+ *      index - point index. Type is number.
+ *      sourceColor - source color of the point. Type is string
+ *      iterator - series point iterator. Type is {@link anychart.data.TableIterator}
+ *      series - series of the point. Type is {@link anychart.core.stock.series}
+ *      plot - plot of the point Type is {@link anychart.core.stock.Plot}
+ *      chart - chart of the point Type is {@link anychart.charts.Stock}
  *    return fillValue; // type anychart.graphics.vector.Fill
  * }</code>.
  * @return {anychart.core.stock.series.Column} Self instance for method chaining.
@@ -166,6 +169,9 @@ anychart.core.stock.series.Column.prototype.fill;
  * @since 7.7.0
  */
 anychart.core.stock.series.Column.prototype.fill;
+
+/** @inheritDoc */
+anychart.core.stock.series.Column.prototype.allowPointSettings;
 
 /** @inheritDoc */
 anychart.core.stock.series.Column.prototype.normal;

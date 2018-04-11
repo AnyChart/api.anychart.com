@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.data.TreeView.search"/>
+    <meta name="ac:name" content="anychart.data.Tree.search"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -24,20 +24,18 @@
 <script>
     anychart.onDocumentReady(function () {
         var data = [
-            {id: 1, name: 'Task_1', progressValue: 0.14, actualStartField: new Date(2018, 3, 22), actualEnd: new Date(2018, 3, 27)},
-            {id: 2, name: 'Task_2', parent: 1, progressValue: 0.25, actualStartField: new Date(2018, 3, 24), actualEnd: new Date(2018, 3, 29)},
-            {id: 3, name: 'Task_2.1', parent: 2, progressValue: 0, actualStartField: new Date(2018, 3, 25), actualEnd: new Date(2018, 3, 26), connectTo: 4},
-            {id: 4, name: 'Task_2.2', parent: 2, progressValue: 0, actualStartField: new Date(2018, 3, 27), actualEnd: new Date(2018, 3, 28), connectTo: 5},
-            {id: 5, name: 'Task_2.3', parent: 2, progressValue: 0, actualStartField: new Date(2018, 3, 29), actualEnd: new Date(2018, 3, 30)},
-            {id: 6, name: 'Task_1.2', parent: 1, progressValue: 0.27, actualStartField: new Date(2018, 3, 29), actualEnd: new Date(2018, 4, 1)}
+            {id: 1, name: 'Task_1', progressValue: 0.14, actualStart: new Date(2018, 3, 22), actualEnd: new Date(2018, 3, 27)},
+            {id: 2, name: 'Task_2', parent: 1, progressValue: 0.25, actualStart: new Date(2018, 3, 24), actualEnd: new Date(2018, 3, 29)},
+            {id: 3, name: 'Task_2.1', parent: 2, progressValue: 0, actualStart: new Date(2018, 3, 25), actualEnd: new Date(2018, 3, 26), connectTo: 4},
+            {id: 4, name: 'Task_2.2', parent: 2, progressValue: 0, actualStart: new Date(2018, 3, 27), actualEnd: new Date(2018, 3, 28), connectTo: 5},
+            {id: 5, name: 'Task_2.3', parent: 2, progressValue: 0, actualStart: new Date(2018, 3, 29), actualEnd: new Date(2018, 3, 30)},
+            {id: 6, name: 'Task_1.2', parent: 1, progressValue: 0.27, actualStart: new Date(2018, 3, 29), actualEnd: new Date(2018, 4, 1)}
         ];
 
-        var treeData = anychart.data.tree(data, "as-table");
-
-        var mapping = treeData.mapAs({actualStart: 'actualStartField'});
+        var treeData = anychart.data.tree(data, 'as-table');
 
         // Search a data item.
-        var dataItem = mapping.search('actualStart', '25 Apr 2018', function(val1, val2) {
+        var dataItem = treeData.search('actualStart', '25 Apr 2018', function(val1, val2) {
             var val1Ms = anychart.format.parseDateTime(val1).getTime();
             var val2Ms = anychart.format.parseDateTime(val2).getTime();
 
@@ -48,9 +46,9 @@
         dataItem.remove();
 
         var chart = anychart.ganttProject();
+        chart.data(treeData);
         chart.title('Set search of the data item');
-        chart.data(mapping);
-        chart.container("container");
+        chart.container('container');
         chart.draw();
         chart.fitAll();
     });

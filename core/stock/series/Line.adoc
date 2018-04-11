@@ -32,9 +32,12 @@ anychart.core.stock.series.Line.prototype.stroke;
  * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
  *  return this.sourceColor;
  * }] Function that looks like <code>function(){
- *    // this.index - series index.
- *    // this.sourceColor - color returned by fill() getter.
- *    // this.iterator - series point iterator.
+ *      this.index - point index. Type is number.
+ *      this.sourceColor - source color of the point. Type is string
+ *      this.iterator - series point iterator. Type is {@link anychart.data.TableIterator}
+ *      this.series - series of the point. Type is {@link anychart.core.stock.series}
+ *      this.plot - plot of the point Type is {@link anychart.core.stock.Plot}
+ *      this.chart - chart of the point Type is {@link anychart.charts.Stock}
  *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
  * }</code>.
  * @return {anychart.core.stock.series.Line} Self instance for method chaining.
@@ -56,6 +59,9 @@ anychart.core.stock.series.Line.prototype.stroke;
  * @since 7.7.0
  */
 anychart.core.stock.series.Line.prototype.stroke;
+
+/** @inheritDoc */
+anychart.core.stock.series.Line.prototype.allowPointSettings;
 
 /** @inheritDoc */
 anychart.core.stock.series.Line.prototype.normal;

@@ -84,10 +84,20 @@ anychart.data.Tree.prototype.addData;
  * treeData.search("name", 5);
  * @param {string} field Field name.
  * @param {boolean=} opt_asString If the value should be treated as string always.
+ * @param {comparisonFunction=} opt_comparisonFn Comparison function by which the array is ordered.
+ * Should take 2 arguments to compare and return a negative number, zero, or positive number depending on whether
+ * the first argument is less than, equal to or greater than the second.
  * @return {anychart.data.Tree} Self instance for method chaining.
  */
 anychart.data.Tree.prototype.createIndexOn;
 
+/**
+ * Comparison function.
+ * @typedef {function}
+ * @name comparisonFunction
+ * @param {*} value1 Value to compare.
+ * @param {*} value2 Value to compare.
+ */
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -131,30 +141,15 @@ anychart.data.Tree.prototype.removeIndexOn;
 
 /**
  * Performs a data search.
- * @shortDescription Performs a data search.
  * @category Data
- * @detailed Returns null of nothing is found, tree data item if here's a single result and array of
- * tree data items if here are multiple matches.</br>
- * <b>Note:</b> Search tree without indexing for certain key is inefficiently.
- * @example anychart.data.Tree.search._asFuncComp
- * @param {string} soughtField Field for search. Literally means the name of field of data item.
- * @param {(string|number|boolean)} value Sought value.
- * @param {(function(*,*):number)=} opt_comparisonFn Comparison function.
- * @return {(anychart.data.Tree.DataItem|Array.<anychart.data.Tree.DataItem>|null)} Found tree data item or null or array of found tree data items.
- */
-anychart.data.Tree.prototype.search;
-
-/**
- * @ignoreDoc DVF-1350
- * Performs a data search.
- * @detailed Returns null of nothing is found, tree data item if here's a single result and array of
- * tree data items if here are multiple matches.</br>
- * <b>Note:</b>: Search tree without indexing for certain key is inefficiently.
- * @example anychart.data.Tree.search._asFuncEval
- * @param {string} soughtField - Field for search. Literally means the name of field of data item.
- * @param {function(anychart.data.Tree.DataItem, number, Array.<anychart.data.Tree.DataItem>):number} evaluator Evaluator function.
- * @param {Object=} evaluatorContext Evaluator context.
- * @return {(anychart.data.Tree.DataItem|Array.<anychart.data.Tree.DataItem>|null)} - Found tree data item or null or array of found tree data items.
+ * @detailed Returns null if nothing is found, tree data item if here's a single result and an array of tree data items if there are multiple matches.</br>
+ * @example anychart.data.Tree.search
+ * @param {string} field Field for search. Literally means the name of the field of the data item.
+ * @param {*} value Value to found.
+ * @param {comparisonFunction=} opt_comparisonFn An optional comparison function by which the array is ordered.
+ * Should take 2 arguments to compare and return a negative number, zero, or positive number depending on whether
+ * the first argument is less than, equal to or greater than the second.
+ * @return {(anychart.data.Tree.DataItem|Array.<anychart.data.Tree.DataItem>|null)} The found tree data item or null or array of found tree data items.
  */
 anychart.data.Tree.prototype.search;
 
@@ -165,28 +160,19 @@ anychart.data.Tree.prototype.search;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Performs a data search. Actually does the same as ({@link anychart.data.Tree#search}) but result is always an array.
- * @shortDescription Performs an items search.
+ * Performs a data search.</br>
+ * Actually does the same as ({@link anychart.data.Tree#search}) but result is always an array.
+ * @shortDescription Performs search of an array of the items.
  * @category Data
- * @example anychart.data.Tree.searchItems_asFuncComp
- * @param {string} soughtField Field for search. Literally means the name of field of data item.
- * @param {(string|number|boolean)} value Sought value
- * @param {(function(*,*):number)=} opt_comparisonFn Comparison function.
- * @return {Array.<anychart.data.Tree.DataItem>} Array of found tree data items.
+ * @example anychart.data.Tree.searchItems
+ * @param {string} field Field for search. Literally means the name of the field of the data item.
+ * @param {*} value Value to found.
+ * @param {comparisonFunction=} opt_comparisonFn An optional comparison function by which the array is ordered.
+ * Should take 2 arguments to compare and return a negative number, zero, or positive number depending on whether
+ * the first argument is less than, equal to or greater than the second.
+ * @return {Array.<anychart.data.Tree.DataItem>} An array of found tree data items.
  */
 anychart.data.Tree.prototype.searchItems;
-
-/**
- * @ignoreDoc DVF-1350
- * Performs a data search. Actually does the same as ({@link anychart.data.Tree#search}) but result is always an array.
- * @example anychart.data.Tree.searchItems_asFuncEval
- * @param {string} soughtField - Field for search. Literally means the name of field of data item.
- * @param {(function(anychart.data.Tree.DataItem, number, Array.<anychart.data.Tree.DataItem>):number)} evaluator Evaluator function.
- * @param {Object=} evaluatorContext Evaluator context.
- * @return {Array.<anychart.data.Tree.DataItem>} Array of found tree data items.
- */
-anychart.data.Tree.prototype.searchItems;
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -681,6 +667,32 @@ anychart.data.Tree.Dependency;
  */
 anychart.data.Tree.prototype.mapAs;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.data.Tree.prototype.filter
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Filters the tree data items using the filter-function.
+ * @detailed
+ * The filter function accepts a data item. After the action with the date item, the function must return a value of "true"
+ * or "false", specifying whether to include this data item in the result of the filtering or not.<br/>
+ * <b>Note</b>: the filter performs a full data passage. Filtering is slower than searching in an indexed field
+ * with a correctly implemented comparison function.
+ * @example anychart.data.Tree.filter
+ * @param {filterFunction} filterFunction Filter function.
+ * @return {Array.<anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem>} An array of data items.
+ * @since 8.2.1
+ */
+anychart.data.Tree.prototype.filter;
+
+/**
+ * Filter function.
+ * @typedef {function}
+ * @name filterFunction
+ * @param {(anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem)} item Data item.
+ */
 
 /** @inheritDoc */
 anychart.data.Tree.prototype.listen;

@@ -30,7 +30,12 @@ anychart.core.stock.scrollerSeries.RangeSplineArea.prototype.highStroke;
  * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
- *    // this.sourceColor -  color returned by fill() getter.
+ *      this.index - point index. Type is number.
+ *      this.sourceColor - source color of the point. Type is string
+ *      this.iterator - series point iterator. Type is {@link anychart.data.TableIterator}
+ *      this.series - series of the point. Type is {@link anychart.core.stock.series}
+ *      this.plot - plot of the point Type is {@link anychart.core.stock.Plot}
+ *      this.chart - chart of the point Type is {@link anychart.charts.Stock}
  *    return fillValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
  * }</code>.
  * @return {!anychart.core.stock.scrollerSeries.RangeSplineArea} Self instance for method chaining.
@@ -73,9 +78,12 @@ anychart.core.stock.scrollerSeries.RangeSplineArea.prototype.lowStroke;
  * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
- *   // this.index - series index.
- *    // this.sourceColor - color returned by fill() getter.
- *    // this.iterator - series point iterator.
+ *      this.index - point index. Type is number.
+ *      this.sourceColor - source color of the point. Type is string
+ *      this.iterator - series point iterator. Type is {@link anychart.data.TableIterator}
+ *      this.series - series of the point. Type is {@link anychart.core.stock.series}
+ *      this.plot - plot of the point Type is {@link anychart.core.stock.Plot}
+ *      this.chart - chart of the point Type is {@link anychart.charts.Stock}
  *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
  * }</code>.
  * @return {!anychart.core.stock.scrollerSeries.RangeSplineArea} Self instance for method chaining.
@@ -159,9 +167,12 @@ anychart.core.stock.scrollerSeries.RangeSplineArea.prototype.fill;
  * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
- *    // this.index - series index.
- *    // this.sourceColor - color returned by fill() getter.
- *    // this.iterator - series point iterator.
+ *      this.index - point index. Type is number.
+ *      this.sourceColor - source color of the point. Type is string
+ *      this.iterator - series point iterator. Type is {@link anychart.data.TableIterator}
+ *      this.series - series of the point. Type is {@link anychart.core.stock.series}
+ *      this.plot - plot of the point Type is {@link anychart.core.stock.Plot}
+ *      this.chart - chart of the point Type is {@link anychart.charts.Stock}
  *    return fillValue; // type anychart.graphics.vector.Fill
  * }</code>.
  * @return {anychart.core.stock.scrollerSeries.RangeSplineArea} Self instance for method chaining.
@@ -214,6 +225,9 @@ anychart.core.stock.scrollerSeries.RangeSplineArea.prototype.fill;
  * @return {!anychart.core.stock.scrollerSeries.RangeSplineArea} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.RangeSplineArea.prototype.fill;
+
+/** @inheritDoc */
+anychart.core.stock.scrollerSeries.RangeSplineArea.prototype.allowPointSettings;
 
 /** @inheritDoc */
 anychart.core.stock.scrollerSeries.RangeSplineArea.prototype.normal;
