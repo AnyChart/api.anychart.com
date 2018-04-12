@@ -5,11 +5,11 @@
     <meta name="ac:name" content="anychart.data.Tree.filter"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-treemap.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <script src="https://cdn.anychart.com/releases/RC-8.2.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/RC-8.2.1/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/RC-8.2.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/RC-8.2.1/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/RC-8.2.1/css/anychart-ui.min.css"/>
     <style>
         html, body, #container {
             width: 100%;
@@ -24,31 +24,49 @@
 <script>
     anychart.onDocumentReady(function () {
         var data = [
-            {
-                name: 'Eastern Asia', children: [
-                {name: 'Mongolia', value: 806},
-                {name: 'China', value: 655},
-                {name: 'Southern Korea', value: 549},
-                {name: 'Northern Korea', value: 397},
-                {name: 'Japan', value: 198}
-            ]
-            }
+            {id: 1, name: 'Task_1 with a _marker_', progressValue: 0.14, actualStart: '2000-02-24', actualEnd: '2000-02-27'},
+            {id: 2, name: 'Task_2 with a _marker_', parent: 1, progressValue: 0.25, actualStart: '2000-02-24', actualEnd: '2000-02-29'},
+            {id: 3, name: 'Task_3 with a marker', parent: 2, progressValue: 0, actualStart: '2000-02-24T24:00', actualEnd: '2000-02-25T09:00', connectTo: 4},
+            {id: 4, name: 'Task_4 with a _marker_', parent: 2, progressValue: 0, actualStart: '2000-02-26T00:00', actualEnd: '2000-02-26T09:00', connectTo: 5},
+            {id: 5, name: 'Task_5 with a marker', parent: 2, progressValue: 0, actualStart: '2000-02-27', actualEnd: '2000-02-28T08:00', connectTo: 6},
+            {id: 6, name: 'Task_6 with a _marker_', parent: 1, progressValue: 0.27, actualStart: '2000-02-28T08:00', actualEnd: '2000-02-29'},
+            {id: 7, name: 'Task_5 with a marker', parent: 6, progressValue: 0, actualStart: '2000-02-26T08:00', actualEnd: '2000-02-27'}
         ];
 
-        var treeData = anychart.data.tree(data, 'as-tree');
+        var treeData = anychart.data.tree(data, "as-table");
 
-        // Set filter function.
-        treeData.filter(function (item) {
-            if (item.get('value') > 500) {
-                item.set('fill', '#FFCC80');
+        // Filter the tree data items using the filter-function.
+        var itemsWithMarker = treeData.filter(function (item) {
+            return item.get('name').indexOf('_marker_') >= 0;
+        });
+
+        for (var i = 0; i < itemsWithMarker.length; i++) {
+            var item = itemsWithMarker[i];
+            item.meta('hasMarker', true);
+        }
+
+        var chart = anychart.ganttProject();
+        chart.title('Filter the tree data items using the filter-function');
+        chart.data(treeData);
+
+        var dataGrid = chart.dataGrid();
+
+        var column = dataGrid.column(1);
+        column.width(250);
+
+        column.labelsOverrider(function (label, item) {
+            if (item.meta('hasMarker')) {
+                label.fontWeight('bold');
+                label.fontColor('#66BB6A');
             }
         });
 
-        var chart = anychart.treeMap();
-        chart.data(treeData);
-        chart.title('Set filter function');
-        chart.container('container');
+        chart.getTimeline().elements().fill(function() {
+            return this.item.meta('hasMarker') ? '#66BB6A' : this.sourceColor;
+        });
+        chart.container("container");
         chart.draw();
+        chart.fitAll();
     });
 </script>
 </body>

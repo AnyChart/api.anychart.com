@@ -24,17 +24,17 @@
 <script>
     anychart.onDocumentReady(function () {
         var data = [
-            {id: 1, value: 20, name: 'Task_1', progressValue: 0.14, actualStart: new Date(2018, 3, 22), actualEnd: new Date(2018, 3, 27)},
-            {id: 2, value: 30, name: 'Task_2', parent: 1, progressValue: 0.25, actualStart: new Date(2018, 3, 24), actualEnd: new Date(2018, 3, 29)},
-            {id: 3, value: 20, name: 'Task_2.1', parent: 2, progressValue: 0, actualStart: new Date(2018, 3, 25), actualEnd: new Date(2018, 3, 26), connectTo: 4},
-            {id: 4, value: 60, name: 'Task_2.2', parent: 2, progressValue: 0, actualStart: new Date(2018, 3, 26), actualEnd: new Date(2018, 3, 28), connectTo: 5},
-            {id: 5, value: 50, name: 'Task_2.3', parent: 2, progressValue: 0, actualStart: new Date(2018, 3, 29), actualEnd: new Date(2018, 3, 30)},
-            {id: 6, value: 10, name: 'Task_1.2', parent: 1, progressValue: 0.27, actualStart: new Date(2018, 3, 25), actualEnd: new Date(2018, 4, 1)}
+            {id: 1, name: 'Task_1', progressValue: 0.14, actualStart: new Date(2018, 3, 22), actualEnd: new Date(2018, 3, 27)},
+            {id: 2, name: 'Task_2', parent: 1, progressValue: 0.25, actualStart: new Date(2018, 3, 24), actualEnd: new Date(2018, 3, 29)},
+            {id: 3, name: 'Task_2.1', parent: 2, progressValue: 0, actualStart: new Date(2018, 3, 25), actualEnd: new Date(2018, 3, 26), connectTo: 4},
+            {id: 4, name: 'Task_2.2', parent: 2, progressValue: 0, actualStart: new Date(2018, 3, 26), actualEnd: new Date(2018, 3, 28), connectTo: 5},
+            {id: 5, name: 'Task_2.3', parent: 2, progressValue: 0, actualStart: new Date(2018, 3, 29), actualEnd: new Date(2018, 3, 30)},
+            {id: 6, name: 'Task_1.2', parent: 1, progressValue: 0.27, actualStart: new Date(2018, 3, 25), actualEnd: new Date(2018, 4, 1)}
         ];
 
         var treeData = anychart.data.tree(data, 'as-table');
 
-        // Search an array of the data items.
+        // Searching for an array of the data items.
         var dataItems = treeData.searchItems('actualStart', '25 Apr 2018', function(val1, val2) {
             var val1Ms = anychart.format.parseDateTime(val1).getTime();
             var val2Ms = anychart.format.parseDateTime(val2).getTime();
@@ -42,14 +42,15 @@
             return val1Ms - val2Ms;
         });
 
-        // Remove the data items from the founded array.
+        var item = {};
         for (var i = 0; i < dataItems.length; i++) {
-            dataItems[i].remove();
+            item = dataItems[i];
+            item.set("name", "[Found] " + item.get("name"))
         }
 
         var chart = anychart.ganttProject();
         chart.data(treeData);
-        chart.title('Set search of an array of the data items');
+        chart.title('Perform search of an array of the data items');
         chart.container('container');
         chart.draw();
         chart.fitAll();
