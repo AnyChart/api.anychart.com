@@ -34,7 +34,7 @@
 
         var treeData = anychart.data.tree(data, 'as-table');
 
-        // Searching for a data item.
+        // Searching for a data item
         var searchResult = treeData.search('actualStart', '25 Apr 2018', function(val1, val2) {
             var val1Ms = anychart.format.parseDateTime(val1).getTime();
             var val2Ms = anychart.format.parseDateTime(val2).getTime();
@@ -42,14 +42,14 @@
             return val1Ms - val2Ms;
         });
 
-        // In common case, the search result can be null, data item or an array of the data items.
-        if (searchResult) { // Condition if the search result is null (nothing found).
-            if (searchResult instanceof Array){ // Condition if the search result is the array (multiple matches).
+        // In common case, the search result can be null, data item or an array of the data items
+        if (searchResult) { // Checking if search result is not null
+            if (searchResult instanceof Array){ // Condition if the search result is the array (multiple matches)
                 for (var i = 0; i < searchResult.length; i++) {
                     var item = searchResult[i];
                     item.set("name", "[Found] " + item.get("name"));
                 }
-            } else { // Single match.
+            } else { // Single match
                 searchResult.set("name", "[Found] " + searchResult.get("name"));
             }
         }

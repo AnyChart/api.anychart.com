@@ -36,7 +36,7 @@
 
         var mapping = treeData.mapAs({actualStart: 'actualStartField'});
 
-        // Search an array of the data items.
+        // Searching for an array of the data items
         var dataItems = mapping.searchItems('actualStart', '25 Apr 2018', function(val1, val2) {
             var val1Ms = anychart.format.parseDateTime(val1).getTime();
             var val2Ms = anychart.format.parseDateTime(val2).getTime();
@@ -44,15 +44,15 @@
             return val1Ms - val2Ms;
         });
 
-        // Remove the data items from the founded array.
+        var item = {};
         for (var i = 0; i < dataItems.length; i++) {
-            dataItems[i].remove();
+            item = dataItems[i];
+            item.set("name", "[Found] " + item.get("name"))
         }
-
 
         var chart = anychart.ganttProject();
         chart.data(mapping);
-        chart.title('Set search of an array of the data items');
+        chart.title('Perform search of an array of the data items');
         chart.container('container');
         chart.draw();
         chart.fitAll();
