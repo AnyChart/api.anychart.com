@@ -85,14 +85,16 @@ anychart.data.Tree.prototype.addData;
  * @param {string} field Field name.
  * @param {boolean=} opt_asString If the value should be treated as string always.
  * @param {comparisonFunction=} opt_comparisonFn Indexing comparison function.<br/>
+ * Should take 2 arguments to compare and return a negative number, zero, or positive number depending on whether
+ * the first argument is less than, equal to or greater than the second.<br/>
  * The binary insertion mechanism is used for the indexing the data by a specified field
  * (for further search acceleration using the binary search).<br/>
  * This function can be used for correct comparision during the data sorting process for binary search by the complicated values of a specified field.<br/>
- * There is a default sorting function in ascending order, which correctly handles string and numeric values.<br/>
+ * There is a default sorting function in ascending order simple values (numbers, strings, booleans) so for such values,
+ * the use of a custom comparison function is not necessary when indexing or searching.<br/>
  * To perform searching ({@link anychart.data.Tree#search} and {@link anychart.data.Tree#searchItems}) on an indexed
  * field with a custom comparison function, the comparison function specified for the indexing must be considered.<br/>
- * Should take 2 arguments to compare and return a negative number, zero, or positive number depending on whether
- * the first argument is less than, equal to or greater than the second.
+ * The index for the field 'id' is created automatically when the data tree is created.
  * @return {anychart.data.Tree} Self instance for method chaining.
  */
 anychart.data.Tree.prototype.createIndexOn;
