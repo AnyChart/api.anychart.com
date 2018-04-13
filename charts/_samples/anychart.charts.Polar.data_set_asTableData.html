@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Polar.data set asTableData"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-polar.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.polar();
+
+        // Set data.
+        chart.data({
+            title: 'Region Sales by Year (2007-2011) (Stacked)',
+            header: ['#', 'Arizona', 'Florida', 'Nevada'],
+            rows: [
+                ['2007', 1368763, 1991297, 431097],
+                ['2008', 799873, 1254823, 561983],
+                ['2009', 1497653, 1732987, 1019874],
+                ['2010', 1351874, 332871, 2027634],
+                ['2011', 1582987, 649853, 1961085]
+            ]
+        });
+
+        chart.yAxis().labels()
+            .format('{%Value}{scale:(1000000)|(M)}');
+        chart.xScale("ordinal");
+        chart.sortPointsByX(true);
+        chart.innerRadius(50);
+        chart.title('Set chart data as a table data');
+        chart.container("container");
+        chart.draw();
+    });
+</script>
+</body>
+</html>
