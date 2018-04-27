@@ -2,14 +2,13 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Stock.getPlotsCount"/>
+    <meta name="ac:name" content="anychart.core.stock.series.Base.allowPointSettings_color"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
     <style>
         html, body, #container {
@@ -24,29 +23,28 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var dataTable = anychart.data.table();
-        dataTable.addData(get_dji_daily_short_data());
-
-        var mapping = dataTable.mapAs({'value': 1});
+        var table = anychart.data.table();
+        table.addData([
+            ['2015-12-24', 211, '#4CAF50'],
+            ['2015-12-25', 512],
+            ['2015-12-26', 311],
+            ['2015-12-27', 411],
+            ['2015-12-28', 611, '#FF0000'],
+            ['2015-12-29', 512],
+            ['2015-12-30', 411],
+            ['2015-12-31', 311],
+            ['2016-01-01', 510]
+        ]);
 
         var chart = anychart.stock();
 
-        var firstPlot = chart.plot();
-        firstPlot.line(mapping);
+        var series = chart.plot(0).column(table.mapAs({value: 1, fill: 2}));
 
-        // Get plots count.
-        var count = chart.getPlotsCount();
+        // Enable access to the point fill from data.
+        series.allowPointSettings(true);
 
-        var secondPlot = chart.plot(count);
-        secondPlot.column(mapping);
-
-        // Get plots count.
-        for (var i = 0; i < chart.getPlotsCount(); i++) {
-            chart.plot(i).background("#FFF9C4");
-        }
-
-        chart.title("Get and use plots count");
-        chart.container("container");
+        chart.title('Enable access to the point fill from data');
+        chart.container('container');
         chart.draw();
     });
 </script>

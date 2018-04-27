@@ -8,7 +8,6 @@
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
     <style>
         html, body, #container {
@@ -21,15 +20,13 @@
 </head>
 <body>
 <div id="container"></div>
+<div style="position: absolute; top: 40px; right: 25px; width: 31%;">
+    <input style="margin-bottom: 10px;" type="button" value="csv" onclick="csv()"/>
+    <textarea style="width: 100%;" rows="5" cols="70" id="csv"></textarea>
+</div>
 <script>
     var chart;
     anychart.onDocumentReady(function () {
-        $('#container').after(
-            '<div style="position: absolute; top: 40px; right: 25px; width: 31%;">' +
-            '<input style="margin-bottom: 10px;" type="button" value="csv" onclick="csv()"/>' +
-            '<textarea style="width: 100%;" rows="5" cols="70" id="csv"></textarea>' + '</div>'
-        );
-
          chart = anychart.bar();
          chart.rangeBar([
             {x: 'Development', low: Date.UTC(2000, 1, 1), high: Date.UTC(2002, 2, 15)},
@@ -53,7 +50,8 @@
                 return val;
             }
         });
-        $('#csv').val(value);
+        var csv = document.getElementById('csv');
+        csv.value = value;
     }
 </script>
 </body>

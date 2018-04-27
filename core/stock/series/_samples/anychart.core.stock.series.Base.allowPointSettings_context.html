@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Stock.getPlotsCount"/>
+    <meta name="ac:name" content="anychart.core.stock.series.Base.allowPointSettings_context"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -25,28 +25,40 @@
 <script>
     anychart.onDocumentReady(function () {
         var dataTable = anychart.data.table();
+
+        // The data used in this sample can be obtained from the CDN
+        // https://cdn.anychart.com/csv-data/dji-daily-short.js
         dataTable.addData(get_dji_daily_short_data());
 
-        var mapping = dataTable.mapAs({'value': 1});
+        var mapping = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4, 'volume': 5});
 
         var chart = anychart.stock();
 
-        var firstPlot = chart.plot();
-        firstPlot.line(mapping);
+        var plot = chart.plot();
+        plot.ohlc(mapping);
 
-        // Get plots count.
-        var count = chart.getPlotsCount();
+        var indicatorPlot = chart.plot(1);
 
-        var secondPlot = chart.plot(count);
-        secondPlot.column(mapping);
+        var atrIndicator = indicatorPlot.adl(mapping, 'column');
 
-        // Get plots count.
-        for (var i = 0; i < chart.getPlotsCount(); i++) {
-            chart.plot(i).background("#FFF9C4");
-        }
+        var series = atrIndicator.series();
 
-        chart.title("Get and use plots count");
-        chart.container("container");
+        // Enable access to the point settings.
+        series.allowPointSettings(true);
+
+        series.fill(function () {
+            if (this.iterator.getIndex() > 150)
+                return '#81C784';
+            else
+                return this.sourceColor;
+        });
+
+        indicatorPlot.yAxis().labels().format(function () {
+            return anychart.format.number(this.value, {scale: true})
+        });
+
+        chart.title('Enable access to the point settings and modify the point');
+        chart.container('container');
         chart.draw();
     });
 </script>

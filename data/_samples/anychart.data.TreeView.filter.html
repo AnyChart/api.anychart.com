@@ -24,13 +24,13 @@
 <script>
     anychart.onDocumentReady(function () {
         var data = [
-            {id: 1, nameField: 'Task_1 with a _marker_', progressValue: 0.14, actualStart: '2000-02-24', actualEnd: '2000-02-27'},
-            {id: 2, nameField: 'Task_2 with a _marker_', parent: 1, progressValue: 0.25, actualStart: '2000-02-24', actualEnd: '2000-02-29'},
-            {id: 3, nameField: 'Task_3 with a marker', parent: 2, progressValue: 0, actualStart: '2000-02-24T24:00', actualEnd: '2000-02-25T09:00', connectTo: 4},
-            {id: 4, nameField: 'Task_4 with a _marker_', parent: 2, progressValue: 0, actualStart: '2000-02-26T00:00', actualEnd: '2000-02-26T09:00', connectTo: 5},
-            {id: 5, nameField: 'Task_5 with a marker', parent: 2, progressValue: 0, actualStart: '2000-02-27', actualEnd: '2000-02-28T08:00', connectTo: 6},
-            {id: 6, nameField: 'Task_6 with a _marker_', parent: 1, progressValue: 0.27, actualStart: '2000-02-28T08:00', actualEnd: '2000-02-29'},
-            {id: 7, nameField: 'Task_5 with a marker', parent: 6, progressValue: 0, actualStart: '2000-02-26T08:00', actualEnd: '2000-02-27'}
+            {id: 1, nameField: 'Task A', progressValue: 0.14, actualStart: '2000-02-24', actualEnd: '2000-02-27'},
+            {id: 2, nameField: 'Task B', parent: 1, progressValue: 0.25, actualStart: '2000-02-24', actualEnd: '2000-02-29'},
+            {id: 3, nameField: 'Task C', parent: 2, progressValue: 0, actualStart: '2000-02-24T24:00', actualEnd: '2000-02-25T09:00', connectTo: 4},
+            {id: 4, nameField: 'Task D', parent: 2, progressValue: 0, actualStart: '2000-02-26T00:00', actualEnd: '2000-02-26T09:00', connectTo: 5},
+            {id: 5, nameField: 'Task E', parent: 2, progressValue: 0, actualStart: '2000-02-27', actualEnd: '2000-02-28T08:00', connectTo: 6},
+            {id: 6, nameField: 'Task F', parent: 1, progressValue: 0.27, actualStart: '2000-02-28T08:00', actualEnd: '2000-02-29'},
+            {id: 7, nameField: 'Task G', parent: 6, progressValue: 0, actualStart: '2000-02-26T08:00', actualEnd: '2000-02-27'}
         ];
 
         var treeData = anychart.data.tree(data, "as-table");
@@ -39,12 +39,12 @@
 
         // Filter the tree data items using the filter-function.
         var itemsWithMarker = mapping.filter(function (item) {
-            return item.get('name').indexOf('_marker_') >= 0;
+            return item.get('progressValue') >= 0.20;
         });
 
         for (var i = 0; i < itemsWithMarker.length; i++) {
             var item = itemsWithMarker[i];
-            item.meta('hasMarker', true);
+            item.meta('filter', true);
         }
 
         var chart = anychart.ganttProject();
@@ -57,7 +57,7 @@
         column.width(250);
 
         column.labelsOverrider(function (label, item) {
-            if (item.meta('hasMarker')) {
+            if (item.meta('filter')) {
                 label.fontWeight('bold');
                 label.fontColor('#66BB6A');
             }
