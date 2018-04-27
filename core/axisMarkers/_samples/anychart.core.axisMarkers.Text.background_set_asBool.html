@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.axisMarkers.Text.background set asBool"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/DVF-3645-axis-markers/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/DVF-3645-axis-markers/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/DVF-3645-axis-markers/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/DVF-3645-axis-markers/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.line([
+            {x: 0, value: 5},
+            {x: 1, value: 9},
+            {x: 2, value: 2},
+            {x: 3, value: 6}
+        ]);
+
+        var textMarker = chart.textMarker();
+        textMarker.value(9);
+        textMarker.axis(chart.yAxis());
+        textMarker.padding(5);
+        textMarker.background().stroke('2 #F44336');
+
+        // Enable background.
+        textMarker.background(true);
+
+        chart.title('Enable text marker background');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
