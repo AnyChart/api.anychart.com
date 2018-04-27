@@ -30,9 +30,13 @@ anychart.core.stock.series.RangeArea.prototype.highStroke;
  * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
- *    // this.index - series index.
- *    // this.sourceColor - color returned by fill() getter.
- *    // this.iterator - series point iterator.
+ *      // Context:
+ *      // this.index - point index, (number)
+ *      // this.sourceColor - source color of the point (string)
+ *      // this.iterator - series point iterator, instance of {@link anychart.data.TableIterator}
+ *      // this.series - link to the series, instance of {@link anychart.core.stock.series}
+ *      // this.plot - link to the plot, instance of  {@link anychart.core.stock.Plot}
+ *      // this.chart - link to the chart, instance of {@link anychart.charts.Stock}
  *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
  * }</code>.
  * @return {!anychart.core.stock.series.RangeArea} Self instance for method chaining.
@@ -75,9 +79,13 @@ anychart.core.stock.series.RangeArea.prototype.lowStroke;
  * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
- *    // this.index - series index.
- *    // this.sourceColor - color returned by fill() getter.
- *    // this.iterator - series point iterator.
+ *      // Context:
+ *      // this.index - point index, (number)
+ *      // this.sourceColor - source color of the point (string)
+ *      // this.iterator - series point iterator, instance of {@link anychart.data.TableIterator}
+ *      // this.series - link to the series, instance of {@link anychart.core.stock.series}
+ *      // this.plot - link to the plot, instance of  {@link anychart.core.stock.Plot}
+ *      // this.chart - link to the chart, instance of {@link anychart.charts.Stock}
  *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
  * }</code>.
  * @return {!anychart.core.stock.series.RangeArea} Self instance for method chaining.
@@ -159,9 +167,13 @@ anychart.core.stock.series.RangeArea.prototype.fill;
  * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
- *    // this.index - series index.
- *    // this.sourceColor - color returned by fill() getter.
- *    // this.iterator - series point iterator.
+ *      // Context:
+ *      // this.index - point index, (number)
+ *      // this.sourceColor - source color of the point (string)
+ *      // this.iterator - series point iterator, instance of {@link anychart.data.TableIterator}
+ *      // this.series - link to the series, instance of {@link anychart.core.stock.series}
+ *      // this.plot - link to the plot, instance of  {@link anychart.core.stock.Plot}
+ *      // this.chart - link to the chart, instance of {@link anychart.charts.Stock}
  *    return fillValue; // type anychart.graphics.vector.Fill
  * }</code>.
  * @return {anychart.core.stock.series.RangeArea} Self instance for method chaining.
@@ -178,6 +190,9 @@ anychart.core.stock.series.RangeArea.prototype.fill;
  * @return {!anychart.core.stock.series.RangeArea} Self instance for method chaining.
  */
 anychart.core.stock.series.RangeArea.prototype.fill;
+
+/** @inheritDoc */
+anychart.core.stock.series.RangeArea.prototype.allowPointSettings;
 
 /** @inheritDoc */
 anychart.core.stock.series.RangeArea.prototype.normal;

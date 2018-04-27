@@ -130,9 +130,12 @@ anychart.core.stock.scrollerSeries.Marker.prototype.fill;
  * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
- *    // this.index - series index.
- *    // this.sourceColor - color returned by fill() getter.
- *    // this.iterator - series point iterator.
+ *      this.index - point index, (number)
+ *      this.sourceColor - source color of the point (string)
+ *      this.iterator - series point iterator, instance of {@link anychart.data.TableIterator}
+ *      this.series - link to the series, instance of {@link anychart.core.stock.series}
+ *      this.plot - link to the plot, instance of  {@link anychart.core.stock.Plot}
+ *      this.chart - link to the chart, instance of {@link anychart.charts.Stock}
  *    return fillValue; // type anychart.graphics.vector.Fill
  * }</code>.
  * @return {anychart.core.stock.scrollerSeries.Marker} Self instance for method chaining.
@@ -209,9 +212,13 @@ anychart.core.stock.scrollerSeries.Marker.prototype.stroke;
  * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
- *    // this.index - series index.
- *    // this.sourceColor -  color returned by fill() getter.
- *    // this.iterator - series point iterator.
+ *      // Context:
+ *      // this.index - point index, (number)
+ *      // this.sourceColor - source color of the point (string)
+ *      // this.iterator - series point iterator, instance of {@link anychart.data.TableIterator}
+ *      // this.series - link to the series, instance of {@link anychart.core.stock.series}
+ *      // this.plot - link to the plot, instance of  {@link anychart.core.stock.Plot}
+ *      // this.chart - link to the chart, instance of {@link anychart.charts.Stock}
  *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
  * }</code>.
  * @return {anychart.core.stock.scrollerSeries.Marker} Self instance for method chaining.
@@ -230,6 +237,9 @@ anychart.core.stock.scrollerSeries.Marker.prototype.stroke;
  * @return {anychart.core.stock.scrollerSeries.Marker} Self instance for method chaining.
  */
 anychart.core.stock.scrollerSeries.Marker.prototype.stroke;
+
+/** @inheritDoc */
+anychart.core.stock.scrollerSeries.Marker.prototype.allowPointSettings;
 
 /** @inheritDoc */
 anychart.core.stock.scrollerSeries.Marker.prototype.normal;

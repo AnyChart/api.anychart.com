@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.data.TreeView.filter"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var data = [
+            {id: 1, nameField: 'Task A', progressValue: 0.14, actualStart: '2000-02-24', actualEnd: '2000-02-27'},
+            {id: 2, nameField: 'Task B', parent: 1, progressValue: 0.25, actualStart: '2000-02-24', actualEnd: '2000-02-29'},
+            {id: 3, nameField: 'Task C', parent: 2, progressValue: 0, actualStart: '2000-02-24T24:00', actualEnd: '2000-02-25T09:00', connectTo: 4},
+            {id: 4, nameField: 'Task D', parent: 2, progressValue: 0, actualStart: '2000-02-26T00:00', actualEnd: '2000-02-26T09:00', connectTo: 5},
+            {id: 5, nameField: 'Task E', parent: 2, progressValue: 0, actualStart: '2000-02-27', actualEnd: '2000-02-28T08:00', connectTo: 6},
+            {id: 6, nameField: 'Task F', parent: 1, progressValue: 0.27, actualStart: '2000-02-28T08:00', actualEnd: '2000-02-29'},
+            {id: 7, nameField: 'Task G', parent: 6, progressValue: 0, actualStart: '2000-02-26T08:00', actualEnd: '2000-02-27'}
+        ];
+
+        var treeData = anychart.data.tree(data, "as-table");
+
+        var mapping = treeData.mapAs({name: 'nameField'});
+
+        // Filter the tree data items using the filter-function.
+        var itemsWithMarker = mapping.filter(function (item) {
+            return item.get('progressValue') >= 0.20;
+        });
+
+        for (var i = 0; i < itemsWithMarker.length; i++) {
+            var item = itemsWithMarker[i];
+            item.meta('filter', true);
+        }
+
+        var chart = anychart.ganttProject();
+        chart.title('Filter the tree data items using the filter-function');
+        chart.data(mapping);
+
+        var dataGrid = chart.dataGrid();
+
+        var column = dataGrid.column(1);
+        column.width(250);
+
+        column.labelsOverrider(function (label, item) {
+            if (item.meta('filter')) {
+                label.fontWeight('bold');
+                label.fontColor('#66BB6A');
+            }
+        });
+
+        chart.getTimeline().elements().fill(function() {
+            return this.item.meta('hasMarker') ? '#66BB6A' : this.sourceColor;
+        });
+        chart.container("container");
+        chart.draw();
+        chart.fitAll();
+    });
+</script>
+</body>
+</html>

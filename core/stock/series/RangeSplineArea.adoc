@@ -28,11 +28,17 @@ anychart.core.stock.series.RangeSplineArea.prototype.highStroke;
 /**
  * Setter for series high stroke by function.
  * @example anychart.core.stock.series.RangeSplineArea.highStroke_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_fillFunction [function() {
+ * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
- *    // this.sourceColor -  color returned by fill() getter.
- *    return fillValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
+ *      // Context:
+ *      // this.index - point index, (number)
+ *      // this.sourceColor - source color of the point (string)
+ *      // this.iterator - series point iterator, instance of {@link anychart.data.TableIterator}
+ *      // this.series - link to the series, instance of {@link anychart.core.stock.series}
+ *      // this.plot - link to the plot, instance of  {@link anychart.core.stock.Plot}
+ *      // this.chart - link to the chart, instance of {@link anychart.charts.Stock}
+ *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
  * }</code>.
  * @return {!anychart.core.stock.series.RangeSplineArea} Self instance for method chaining.
  */
@@ -71,13 +77,17 @@ anychart.core.stock.series.RangeSplineArea.prototype.lowStroke;
  * Setter for series low stroke by function.
  * @example anychart.core.stock.series.RangeSplineArea.lowStroke_set_asFunc
  * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
-  *  return anychart.color.darken(this.sourceColor);
-  * }] Function that looks like <code>function(){
-  *   // this.index - series index.
- *    // this.sourceColor - color returned by fill() getter.
- *    // this.iterator - series point iterator.
-  *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
-  * }</code>.
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like <code>function(){
+ *      // Context:
+ *      // this.index - point index, (number)
+ *      // this.sourceColor - source color of the point (string)
+ *      // this.iterator - series point iterator, instance of {@link anychart.data.TableIterator}
+ *      // this.series - link to the series, instance of {@link anychart.core.stock.series}
+ *      // this.plot - link to the plot, instance of  {@link anychart.core.stock.Plot}
+ *      // this.chart - link to the chart, instance of {@link anychart.charts.Stock}
+ *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
+ * }</code>.
  * @return {!anychart.core.stock.series.RangeSplineArea} Self instance for method chaining.
  */
 anychart.core.stock.series.RangeSplineArea.prototype.lowStroke;
@@ -159,9 +169,13 @@ anychart.core.stock.series.RangeSplineArea.prototype.fill;
  * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like <code>function(){
- *    // this.index - series index.
- *    // this.sourceColor - color returned by fill() getter.
- *    // this.iterator - series point iterator.
+ *      // Context:
+ *      // this.index - point index, (number)
+ *      // this.sourceColor - source color of the point (string)
+ *      // this.iterator - series point iterator, instance of {@link anychart.data.TableIterator}
+ *      // this.series - link to the series, instance of {@link anychart.core.stock.series}
+ *      // this.plot - link to the plot, instance of  {@link anychart.core.stock.Plot}
+ *      // this.chart - link to the chart, instance of {@link anychart.charts.Stock}
  *    return fillValue; // type anychart.graphics.vector.Fill
  * }</code>.
  * @return {anychart.core.stock.series.RangeSplineArea} Self instance for method chaining.
@@ -178,6 +192,9 @@ anychart.core.stock.series.RangeSplineArea.prototype.fill;
  * @return {!anychart.core.stock.series.RangeSplineArea} Self instance for method chaining.
  */
 anychart.core.stock.series.RangeSplineArea.prototype.fill;
+
+/** @inheritDoc */
+anychart.core.stock.series.RangeSplineArea.prototype.allowPointSettings;
 
 /** @inheritDoc */
 anychart.core.stock.series.RangeSplineArea.prototype.normal;
