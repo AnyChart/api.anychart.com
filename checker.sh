@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+clean && echo 'Start checking....'
 ################################################################################################################################################
 # Utility function to fix known troubles with production server
 ################################################################################################################################################
@@ -13,7 +13,8 @@ for filename in $FILESLIST; do
     perl -pi -e 's,(releases)/([^/])+/,$1/{{branch-name}}/,g' $filename
     
     # match all non-ascii symbols
-    # Search charcode here  https://www.compart.com/en/unicode/search?q=
+    # Search charcode by symbol here  https://www.compart.com/en/unicode/search?q=
+    # Search symbol by hex code here https://utf8-chartable.de/unicode-utf8-table.pl?start=8192&number=128&utf8=string-literal
     match=$(cat $filename | tr -d '\r' | tr -d '\n' | sed 's/\xC2\xA0/+/g' | \
         sed -e "s/'//g;s/[\s\t]/ /g" | sed -e 's/[0-9A-z"*+-=()/&!?.,:;$<>#{}%~|@ ]//g' | \
         awk '{$1=$1}1' )
