@@ -3,6 +3,16 @@ clear && echo 'Start checking....'
 ################################################################################################################################################
 # Utility function to fix known troubles with production server
 ################################################################################################################################################
+
+# install pre-push hook if not exists
+hook='.git/hook/pre-push'
+if [ ! -f $hook ]; then 
+   echo '#!/bin/bash' >> $hook
+   echo 'if [ $(git symbolic-ref HEAD | sed -e "s,.*/\(.*\),\1,") = "develop" ] && [[ ! $(git log -1 --pretty=%B) =~ "#without-check" ]] ' >> $hook
+   echo 'then  . ./checker.sh; fi' >> $hook
+   chmod +x $hook
+fi
+
 # filter only MD files and html samples
 FILESLIST=$(find . -type f \( -name "*.adoc" -o -name "*.html" \) ) 
 
@@ -31,7 +41,9 @@ done
 
 CHANGES=$(git diff --name-only)
 if [ "$CHANGES" ]; then    
-    echo $CHANGES
+    echo 
+    echo 'ABORTED! Files was modified (autofixed). Check them pleaze.'
+    echo '   git status'
     exit 1
 fi
 
