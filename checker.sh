@@ -25,7 +25,11 @@ declare -a IGNOREFILES=(
     )
 
 # filter only MD files and html samples
-FILESLIST=$(find . -type f \( -name "*.adoc" -o -name "*.html" \) ) 
+# FILESLIST=$(find . -type f \( -name "*.adoc" -o -name "*.html" \) ) # ALL FILES
+FILESLIST=$(git diff --name-only origin/develop | grep -e .adoc -e .html ) # not pushed yet only 
+
+
+printf "Items for check: \n$FILESLIST\n"
 
 # for each files in tree of folders do (like python walk)
 for filename in $FILESLIST; do
