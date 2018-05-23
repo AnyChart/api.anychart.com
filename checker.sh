@@ -76,12 +76,25 @@ function broke_file(){
 for ARGUMENT in "$@"
 do
     case "$ARGUMENT" in
-            replace)    FILE_MODIFYER="broke_file" ;;
-            all)        FILESLIST=$(find . -type f \( -name "*.adoc" -o -name "*.html" \)) ;;
-            "-h"|"--help"|help)  printf "parameters: \
-                \n 'relpace' - to rename all {{branch-name}} to current branch\
-                \n 'all' - modify all files (by default False, modify only diff with origin/develop)\
+            replace|r|"-r")    FILE_MODIFYER="broke_file" ;;
+            all|a|"-a")        FILESLIST=$(find . -type f -name "*.html") ;;
+            "-h"|"--help"|help|h|"-help")  printf "parameters: \
+                \n 'replace (-r)' - to rename all {{branch-name}} to current branch\
+                \n 'all (-a)' - modify all files (by default False, modify only diff with origin/develop)\
+                \n 'links (-l)' - get links to pg and github.com for changed samples\
                 \n" && exit 1 ;;
+            links|link|l|"-l")
+                for filename in ${FILESLIST}; do
+                    fileext=${filename:${#filename}-4}
+
+                    if [[ "$fileext" = "html" ]]; then
+                        pglink="http://playground.anychart.stg/api/$CURRENT_BRANCH/${filename:0:${#filename}-5}\n\t"
+                    fi
+
+                    printf "\n*$filename*\n\t${pglink}https://github.com/AnyChart/api.anychart.com/blob/$CURRENT_BRANCH/$filename\n"
+                done
+                exit 0
+                ;;
             *)
     esac
 done
