@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.Chart.saveAsCsv"/>
+    <meta name="ac:name" content="anychart.core.Chart.saveAsCsv_asFunc"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -46,17 +46,15 @@
         customLabel.listen("click", function () {
 
             // Save into CSV file.
-            chart.saveAsCsv("raw", csvSettings, "ChartCSV");
+            chart.saveAsCsv('default', {
+                formats: function(header, val) {
+                    if (header == 'low' || header == 'high')
+                        return anychart.format.dateTime(val, 'yyyy-MMM-dd');
+                    return val;
+                }
+            });
 
         });
-
-        var csvSettings = {
-            formats: function(header, val) {
-                if (header == 'low' || header == 'high')
-                    return anychart.format.dateTime(val, 'yyyy-MMM-dd');
-                return val;
-            }
-        };
 
         customLabel.listen("mouseOver", function () {
             document.body.style.cursor = "pointer";

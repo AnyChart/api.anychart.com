@@ -22,32 +22,46 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container");
+        anychart.format.inputDateTimeFormat("yyyy-MMM-dd");
 
-        var chart1 = anychart.line([
-            {x: "January", value: 1.1},
-            {x: "February", value: 1.4},
-            {x: "March", value: 1.2},
-            {x: "April", value: 1.6}
+        var stage = anychart.graphics.create('container');
+
+        var chart1 = anychart.bar();
+        chart1.rangeBar([
+            {x: 'Development', low: Date.UTC(2000, 1, 1), high: Date.UTC(2002, 2, 15)},
+            {x: 'Internal Testing', low: Date.UTC(2001, 6, 1), high: Date.UTC(2003, 7, 1)},
+            {x: 'Field Tests', low: Date.UTC(2002, 2, 25), high: Date.UTC(2003, 7, 1)},
+            {x: 'Licensing', low: Date.UTC(2003, 7, 1), high: Date.UTC(2004, 7, 1)}
         ]);
-        chart1.bounds(0, 20, "50%", "100%");
+        chart1.yScale(anychart.scales.dateTime());
+        chart1.bounds(0, 20, '50%', '100%');
         chart1.container(stage);
         chart1.draw();
 
         // Get chart data as CSV with parameters.
-        var csvData = chart1.toCsv("default", {
-            "rowsSeparator": "\n",
-            "columnsSeparator": ",",
-            "ignoreFirstRow": true
+        var csvData = chart1.toCsv('default', {
+            rowsSeparator: '\n',
+            columnsSeparator: ',',
+            ignoreFirstRow: true,
+            formats: {
+                'low': function(val) {
+                    return anychart.format.dateTime(val, 'yyyy-MMM-dd');
+                },
+                'high': function(val) {
+                    return anychart.format.dateTime(val, 'yyyy-MMM-dd');
+                }
+            }
         });
 
-        var chart2 = anychart.column(csvData);
-        chart2.bounds("50%", 20, "50%", "100%");
+        var chart2 = anychart.column();
+        chart2.rangeColumn(csvData);
+        chart2.yScale(anychart.scales.dateTime());
+        chart2.bounds('50%', 20, '50%', '100%');
         chart2.container(stage);
         chart2.draw();
 
         var customTitle = anychart.standalones.title();
-        customTitle.text("Get data as CSV with predefined settings and use");
+        customTitle.text('Get data as CSV with predefined settings and use');
         customTitle.container(stage);
         customTitle.draw();
     });
