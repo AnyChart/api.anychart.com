@@ -1,4 +1,4 @@
-# AnyChart API Reference
+# AnyChart API Reference 
 ### Overview
 
 The AnyChart Technical Documentation Team welcomes you!
