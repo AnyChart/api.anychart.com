@@ -1,0 +1,111 @@
+/**
+ * Namespace anychart.math.trix<br/>
+ * {docs:Stock_Charts/Technical_Indicators/Mathematical_Description}Learn more about indicator mathematics.{docs}
+ * @namespace {anychart.math.trix}
+ * @name anychart.math.trix
+ */
+anychart.math.trix;
+
+
+/**
+ * Type definition for the context.
+ * @typedef {Object} anychart.math.trix.Context
+ * @property {number} period Indicator period.
+ * @property {number} prevResult Previous calculation result.
+ * @property {number} signalPeriod Signal indicator period.
+ * @property {anychart.math.ema.Context|anychart.math.sma.Context} firstMaContext Context for the first pass of the Moving Average function.
+ * @property {anychart.math.ema.Context|anychart.math.sma.Context} secondMaContext Context for the second pass of the Moving Average function.
+ * @property {anychart.math.ema.Context|anychart.math.sma.Context} thirdMaContext Context for the third pass of the Moving Average function.
+ * @property {anychart.math.ema.Context|anychart.math.sma.Context} signalMaContext Context for the signal pass of the Moving Average function.
+ * @property {Function} maSignalCalculate Calculation function for the Moving Average signal value.
+ * @property {Function} maCalculate Calculation function for the Moving Average.
+ * @property {(anychart.enums.MovingAverageType|string)} maType Indicator smoothing type.
+ * @property {(anychart.enums.MovingAverageType|string)} signalMaType Signal smoothing type.
+ * @property {Function} dispose The function to dispose the context.
+ */
+anychart.math.trix.Context;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.math.trix.initContext
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates context for TRIX indicator calculation.
+ * @example anychart.math.trix
+ * @param {number=} opt_period [15] Indicator period.
+ * @param {number=} opt_signalPeriod [9] Signal indicator period.
+ * @param {(string|anychart.enums.MovingAverageType)=} opt_maType ['ema'] Indicator smoothing type.
+ * @param {(string|anychart.enums.MovingAverageType)=} opt_signalMaType ['ema'] Signal smoothing type.
+ * @return {anychart.math.trix.Context} Context.
+ * @since 8.3.0
+ */
+anychart.math.trix.initContext;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.math.trix.startFunction
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Start calculation function for TRIX indicator calculation.
+ * @example anychart.math.trix
+ * @param {anychart.math.trix.Context} context Context.
+ * @since 8.3.0
+ */
+anychart.math.trix.startFunction;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.math.trix.calculationFunction
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Calculates TRIX.
+ * @example anychart.math.trix
+ * @param {anychart.data.TableComputer.RowProxy} row Row proxy.
+ * @param {anychart.math.trix.Context} context Context.
+ * @since 8.3.0
+ */
+anychart.math.trix.calculationFunction;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.math.trix.createComputer
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates TRIX computer for the given table mapping.
+ * @example anychart.math.trix
+ * @param {anychart.data.TableMapping} mapping Data mapping.
+ * @param {number=} opt_period [15] Moving Average period.
+ * @param {number=} opt_signalPeriod [9] Signal Moving Average period.
+ * @param {(string|anychart.enums.MovingAverageType)=} opt_maType ['ema'] Indicator smoothing type.
+ * @param {(string|anychart.enums.MovingAverageType)=} opt_signalMaType ['ema'] Signal smoothing type.
+ * @return {anychart.data.TableComputer} Table computer.
+ * @since 8.3.0
+ */
+anychart.math.trix.createComputer;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.math.trix.calculate
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * TRIX calculation.<br/>
+ * @detailed Calculates next TRIX value based on a previous Ma value and current data value.<br/>
+ * To use this function you need a setup queue with a length equal to the period.<br/>
+ * For the first calculation pass NaN or nothing as a opt_prevResult.
+ * @param {anychart.math.trix.Context} context Context.
+ * @param {number} value Value.
+ * @return {Array.<number>} The calculated TRIX indicator array of values.
+ * @since 8.3.0
+ */
+anychart.math.trix.calculate;
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.stock.indicators.KeltnerChannels.atrPeriod get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+
+        // The data used in this sample can be obtained from the CDN
+        // https://cdn.anychart.com/csv-data/dji-daily-short.js
+        dataTable.addData(get_dji_daily_short_data());
+
+        var mapping = dataTable.mapAs({open: 1, high: 2, low: 3, close: 4, value: 3});
+
+        var chart = anychart.stock();
+
+        var plot = chart.plot();
+        plot.candlestick(mapping);
+
+        var keltnerChannels = plot.keltnerChannels(mapping);
+
+        // Get ATR period.
+        var atrPeriod = keltnerChannels.atrPeriod();
+
+        chart.title('Average True Range period is ' + atrPeriod);
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
