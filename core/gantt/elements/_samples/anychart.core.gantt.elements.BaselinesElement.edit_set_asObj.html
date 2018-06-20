@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.gantt.elements.BaselinesElement.edit set asObj"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var data = getData();
+
+        var chart = anychart.ganttProject();
+        chart.data(data, 'as-table');
+        chart.defaultRowHeight(50);
+
+        var timeline = chart.getTimeline();
+
+        var baselines = timeline.baselines();
+
+        // Set live edit settings.
+        baselines.edit({fill: '#66cd00 0.3', stroke: '3 #ff4040'});
+
+        chart.title('Hover on the timeline baselines to see the changed editing settings');
+        chart.container('container');
+        chart.draw();
+        chart.fitAll();
+    });
+
+
+    function getData() {
+        return [
+            {id: 1, name: 'Task 1', progressValue: 0.14, actualStart: '2000-02-24', actualEnd: '2000-02-27', baselineStart: '2000-02-24', baselineEnd: '2000-02-27T12:00'},
+            {id: 2, name: 'Task 2', progressValue: 0.25, actualStart: '2000-02-24', actualEnd: '2000-02-29', baselineStart: '2000-02-24', baselineEnd: '2000-02-27T08:00'},
+            {id: 3, name: 'Task 3', progressValue: 0, actualStart: '2000-02-24T24:00', actualEnd: '2000-02-25T09:00', connectTo: 4, baselineStart: '2000-02-24T24:00', baselineEnd: '2000-02-25T20:00'},
+            {id: 4, name: 'Task 4', progressValue: 0, actualStart: '2000-02-26T00:00', actualEnd: '2000-02-26T09:00', connectTo: 5, baselineStart: '2000-02-25T24:00', baselineEnd: '2000-02-26T20:00'},
+            {id: 5, name: 'Task 5', progressValue: 0, actualStart: '2000-02-27', actualEnd: '2000-02-28T08:00', connectTo: 6, baselineStart: '2000-02-27T24:00', baselineEnd: '2000-02-28T20:00'},
+            {id: 6, name: 'Task 6', progressValue: 0.27, actualStart: '2000-02-28T08:00', actualEnd: '2000-02-29', baselineStart: '2000-02-28', baselineEnd: '2000-02-28T15:00'},
+            {id: 7, name: 'Task 7', progressValue: 0, actualStart: '2000-02-26T08:00', actualEnd: '2000-02-27', connectTo: 8, baselineStart: '2000-02-26', baselineEnd: '2000-02-28'}
+        ];
+    }
+</script>
+</body>
+</html>
