@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.math.pc"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+
+        // The data used in this sample can be obtained from the CDN
+        // https://cdn.anychart.com/csv-data/dji-daily-short.js
+        dataTable.addData(get_dji_daily_short_data());
+
+        var mapping = dataTable.mapAs({open: 1, high: 2, low: 3, close: 4});
+
+        var chart = anychart.stock();
+
+        // Create computer.
+        var computer = dataTable.createComputer(mapping);
+
+        var context = anychart.math.priceChannels.initContext(25);
+
+        // Set init context.
+        computer.setContext(context);
+
+        // Set start calculation function.
+        computer.setStartFunction(anychart.math.priceChannels.startFunction);
+
+        // Calculation function.
+        computer.setCalculationFunction(anychart.math.priceChannels.calculationFunction);
+
+        computer.addOutputField('upperResult');
+        computer.addOutputField('middleResult');
+        computer.addOutputField('lowerResult');
+
+        var plot = chart.plot();
+        plot.rangeArea(dataTable, {high: computer.getFieldIndex('upperResult'), low: computer.getFieldIndex('lowerResult')});
+        plot.line(dataTable, {value: computer.getFieldIndex('upperResult')}).name('Channels U');
+        plot.line(dataTable, {value: computer.getFieldIndex('middleResult')}).name('Channels M');
+        plot.line(dataTable, {value: computer.getFieldIndex('lowerResult')}).name('Channels M');
+
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
