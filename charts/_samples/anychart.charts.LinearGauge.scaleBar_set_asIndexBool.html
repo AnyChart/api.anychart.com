@@ -23,8 +23,6 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
-
         var chart = anychart.gauges.linear([
             {value: 15},
             {value: 20},
@@ -37,22 +35,23 @@
         // Enable scale bar.
         chart.scaleBar(0, true);
 
-        chart.scaleBar(0, {from: 25, to: 40, fill: "#E0E0E0"});
+        chart.scaleBar(0, {from: 25, to: 40, fill: '#E0E0E0'});
         chart.scaleBar(1, {
             from: 23, to: 27, points: [
                 {height: 0, left: 1, right: 0},
                 {height: 0.5, left: 0, right: 0},
                 {height: 1, left: 1, right: 0}
-            ], offset: "10%", fill: "#F44336"
+            ], offset: '10%', fill: '#F44336'
         });
 
-        chart.axis(0, {offset: "-11%"});
+        chart.axis(0, {offset: '-11%'});
 
         chart.scale().minimum(0);
         chart.scale().maximum(50);
 
-        chart.title("Enable scale bar by index");
-        chart.container(stage);
+        chart.width(600).height(400);
+        chart.title('Enable scale bar by index');
+        chart.container('container');
         chart.draw();
     });
 </script>

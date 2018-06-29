@@ -23,8 +23,6 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
-
         var chart = anychart.gauges.linear([10, 20, 40, 30, 44]);
 
         chart.addPointer(2, 1, 0);
@@ -34,8 +32,9 @@
         // Get axis offset.
         var offset = linearAxis.offset();
 
-        chart.title("Axis offset is " + offset);
-        chart.container(stage);
+        chart.width(600).height(400);
+        chart.title('Axis offset is ' + offset);
+        chart.container('container');
         chart.draw();
     });
 </script>

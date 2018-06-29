@@ -23,8 +23,6 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
-
         var chart = anychart.gauges.linear([
             {value: 15},
             {value: 20},
@@ -33,14 +31,15 @@
             {value: 44}
         ]);
         chart.addPointer(4, 3, 2, 1, 0);
-        chart.axis(0, {offset: "-11%"});
+        chart.axis(0, {offset: '-11%'});
 
         // Get scale.
         var gaugeScale = chart.scale();
         gaugeScale.inverted(true);
 
-        chart.title("Get and modify scale");
-        chart.container(stage);
+        chart.width(600).height(400);
+        chart.title('Get and modify scale');
+        chart.container('container');
         chart.draw();
     });
 </script>

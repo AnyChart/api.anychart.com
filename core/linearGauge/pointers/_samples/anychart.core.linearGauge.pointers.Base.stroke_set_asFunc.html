@@ -23,19 +23,18 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
-
         var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
 
         var barPointer = chart.bar(2);
 
         // Set pointer stroke.
         barPointer.stroke(function () {
-            return "3 " + anychart.color.darken(this.sourceColor);
+            return '3 ' + anychart.color.darken(this.sourceColor);
         });
 
-        chart.title("Set pointer stroke parameter as a function");
-        chart.container(stage);
+        chart.width(600).height(400);
+        chart.title('Set pointer stroke parameter as a function');
+        chart.container('container');
         chart.draw();
     });
 </script>

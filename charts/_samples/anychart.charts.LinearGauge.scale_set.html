@@ -23,8 +23,6 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
-
         var chart = anychart.gauges.linear([
             {value: 0.05},
             {value: 1},
@@ -33,13 +31,14 @@
             {value: 100000}
         ]);
         chart.addPointer(4, 3, 2, 1, 0);
-        chart.axis(0, {offset: "-11%"});
+        chart.axis(0, {offset: '-11%'});
 
         // Set scale.
-        chart.scale("log");
+        chart.scale('log');
 
-        chart.title("Set scale as an instance.");
-        chart.container(stage);
+        chart.width(600).height(400);
+        chart.title('Set scale as an instance');
+        chart.container('container');
         chart.draw();
     });
 </script>

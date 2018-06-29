@@ -23,8 +23,6 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
-
         var chart = anychart.gauges.linear([
             {value: 15},
             {value: 20},
@@ -36,15 +34,16 @@
         // Get data.
         var data = chart.data();
 
-        var filterData = data.filter("value", function (value) {
+        var filterData = data.filter('value', function (value) {
             return value < 26;
         });
 
         chart.data(filterData);
 
+        chart.width(600).height(400);
         chart.addPointer(4, 3, 2, 1, 0);
-        chart.title("Set data as an array");
-        chart.container(stage);
+        chart.title('Set data as an array');
+        chart.container('container');
         chart.draw();
     });
 </script>

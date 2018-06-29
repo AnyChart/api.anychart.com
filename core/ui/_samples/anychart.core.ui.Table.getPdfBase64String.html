@@ -9,9 +9,6 @@
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-table.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
     <style>
         html, body, #container {
@@ -24,14 +21,13 @@
 </head>
 <body>
 <div id="container"></div>
+<div style="position: absolute; top: 40px; right: 25px; width: 31%;">
+<input style="margin-bottom: 10px;" type="button" value="getPdfBase64String" onclick="getPdfBase64String()"/>
+<textarea style="width: 100%;" rows="5" cols="70" id="getPdfBase64String"></textarea>
+</div>
 <script>
     var table;
     anychart.onDocumentReady(function () {
-        $('#container').after(
-            '<div style="position: absolute; top: 40px; right: 25px; width: 31%;">' +
-            '<input style="margin-bottom: 10px;" type="button" value="getPdfBase64String" onclick="getPdfBase64String()"/>' +
-            '<textarea style="width: 100%;" rows="5" cols="70" id="getPdfBase64String"></textarea>' + '</div>'
-        );
 
         var stage = anychart.graphics.create("container");
 

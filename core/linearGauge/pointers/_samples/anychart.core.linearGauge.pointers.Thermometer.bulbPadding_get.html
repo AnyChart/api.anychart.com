@@ -23,8 +23,6 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
-
         var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
 
         var thermometerPointer = chart.thermometer(4);
@@ -32,8 +30,9 @@
         // Get bulb padding.
         var bulbPadding = thermometerPointer.bulbPadding();
 
-        chart.title("Bulb padding is " + bulbPadding);
-        chart.container(stage);
+        chart.width(600).height(400);
+        chart.title('Bulb padding is ' + bulbPadding);
+        chart.container('container');
         chart.draw();
     });
 </script>

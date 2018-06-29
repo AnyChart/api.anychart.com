@@ -23,8 +23,6 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
-
         chart = anychart.gauges.linear([
             {value: 15},
             {value: 20},
@@ -41,10 +39,11 @@
         // Get axis by index.
         var leftAxis = chart.axis(1);
         leftAxis.labels({fontSize: 10, rotation: -30});
-        leftAxis.offset("-17%");
+        leftAxis.offset('-17%');
 
-        chart.title("Get and modify axis");
-        chart.container(stage);
+        chart.width(600).height(400);
+        chart.title('Get and modify axis');
+        chart.container('container');
         chart.draw();
     });
 </script>

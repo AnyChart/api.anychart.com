@@ -24,23 +24,20 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var dataTable = anychart.data.table();
+        var table = anychart.data.table();
 
         // The data used in this sample can be obtained from the CDN
         // https://cdn.anychart.com/csv-data/dji-daily-short.js
-        dataTable.addData(get_dji_daily_short_data());
+        table.addData(get_dji_daily_short_data());
 
-        var mapping = dataTable.mapAs();
-        mapping.addField('open', 1, 'first');
-        mapping.addField('high', 2, 'max');
-        mapping.addField('low', 3, 'min');
-        mapping.addField('close', 4, 'last');
-        mapping.addField('value', 4, 'last');
+        var mapping = table.mapAs(
+            {'open': 1, 'high': 2, 'low': 3, 'close': 4, 'value': 4}
+        );
 
         var chart = anychart.stock();
 
         // Create computer.
-        var computer = dataTable.createComputer(mapping);
+        var computer = table.createComputer(mapping);
 
         var context = anychart.math.bbands.initContext(30, 5);
 
@@ -59,9 +56,9 @@
 
         var plot = chart.plot();
         plot.ohlc(mapping).name("DJI");
-        plot.line(dataTable, {value: computer.getFieldIndex('upperResult')}).name("BBands U");
-        plot.line(dataTable, {value: computer.getFieldIndex('lowerResult')}).name("BBands L");
-        plot.line(dataTable, {value: computer.getFieldIndex('middleResult')}).name("BBands M");
+        plot.line(table, {value: computer.getFieldIndex('upperResult')}).name("BBands U");
+        plot.line(table, {value: computer.getFieldIndex('lowerResult')}).name("BBands L");
+        plot.line(table, {value: computer.getFieldIndex('middleResult')}).name("BBands M");
 
         chart.container("container");
         chart.draw();

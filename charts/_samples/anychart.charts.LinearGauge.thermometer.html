@@ -23,8 +23,6 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
-
         var chart = anychart.gauges.linear([
             {value: 15},
             {value: 20},
@@ -36,9 +34,10 @@
         // Add thermometer pointer.
         chart.thermometer(2);
 
-        chart.axis({offset: "-11%"});
-        chart.title("Add Thermometer pointer to a gauge");
-        chart.container(stage);
+        chart.width(600).height(400);
+        chart.axis({offset: '-11%'});
+        chart.title('Add Thermometer pointer to a gauge');
+        chart.container('container');
         chart.draw();
     });
 </script>

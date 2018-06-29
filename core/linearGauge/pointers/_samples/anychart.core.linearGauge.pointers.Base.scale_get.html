@@ -23,17 +23,16 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
-
         var chart = anychart.gauges.linear([0.05, 1, 10, 150, 100000]);
 
         var barPointer = chart.bar(2);
 
         var logScale = anychart.scales.log();
 
-        chart.axis(0, {offset: "5%"});
-        chart.title("Get and use pointer scale");
-        chart.container(stage);
+        chart.width(600).height(400);
+        chart.axis(0, {offset: '5%'});
+        chart.title('Get and use pointer scale');
+        chart.container('container');
         chart.draw();
 
         barPointer.scale(logScale);
@@ -42,7 +41,7 @@
         var pointerScale = barPointer.scale();
 
         chart.axis(1).scale(pointerScale);
-        chart.axis(1).offset("-12%");
+        chart.axis(1).offset('-12%');
     });
 </script>
 </body>

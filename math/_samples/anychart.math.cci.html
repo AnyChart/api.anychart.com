@@ -24,23 +24,20 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var dataTable = anychart.data.table();
+        var table = anychart.data.table();
 
         // The data used in this sample can be obtained from the CDN
         // https://cdn.anychart.com/csv-data/dji-daily-short.js
-        dataTable.addData(get_dji_daily_short_data());
+        table.addData(get_dji_daily_short_data());
 
-        var mapping = dataTable.mapAs();
-        mapping.addField('open', 1, 'first');
-        mapping.addField('high', 2, 'max');
-        mapping.addField('low', 3, 'min');
-        mapping.addField('close', 4, 'last');
-        mapping.addField('value', 4, 'last');
+        var mapping = table.mapAs(
+            {'open': 1, 'high': 2, 'low': 3, 'close': 4, 'value': 4}
+        );
 
         var chart = anychart.stock();
 
         // Create computer.
-        var computer = dataTable.createComputer(mapping);
+        var computer = table.createComputer(mapping);
 
         var context = anychart.math.cci.initContext(10);
 
@@ -53,7 +50,7 @@
         // Calculation function.
         computer.setCalculationFunction(anychart.math.cci.calculationFunction);
 
-        var indicatorMapping = dataTable.mapAs({value: computer.addOutputField("result")});
+        var indicatorMapping = table.mapAs({value: computer.addOutputField("result")});
 
         var plot = chart.plot();
         plot.line(indicatorMapping).name("CCI(10)");

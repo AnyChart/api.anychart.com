@@ -23,8 +23,6 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container", 600, 400);
-
         var chart = anychart.gauges.linear([
             {value: 15},
             {value: 20},
@@ -34,14 +32,15 @@
         ]);
 
         // Add bar pointer.
-        chart.bar(0);
-        chart.bar(1);
-        chart.bar(2);
-        chart.bar(3);
         chart.bar(4);
+        chart.bar(3);
+        chart.bar(2);
+        chart.bar(1);
+        chart.bar(0);
 
-        chart.title("Add Bar pointer to a gauge");
-        chart.container(stage);
+        chart.width(600).height(400);
+        chart.title('Add Bar pointer to a gauge');
+        chart.container('container');
         chart.draw();
     });
 </script>
