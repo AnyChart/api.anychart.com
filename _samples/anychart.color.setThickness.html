@@ -2,14 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.stock.series.RangeColumn.stroke set asFunc"/>
+    <meta name="ac:name" content="anychart.color.setThickness"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
-    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
     <style>
         html, body, #container {
@@ -24,25 +22,15 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var dataTable = anychart.data.table();
-        dataTable.addData(get_dji_daily_short_data());
+        var stage = anychart.graphics.create('container');
 
-        var mapping = dataTable.mapAs({'high': 1, 'low': 3});
+        var rect = stage.rect(20, 20, stage.width() / 4, stage.height() / 2);
 
-        var chart = anychart.stock();
+        // Set thickness.
+        var color = anychart.color.setThickness('#4CAF50', 10, 0.4);
 
-        var plot = chart.plot();
-
-        var series = plot.rangeColumn(mapping);
-
-        // Set stroke.
-        series.stroke(function () {
-            return anychart.color.setThickness(anychart.color.darken(this.sourceColor), 2);
-        });
-
-        chart.title("Set stroke parameter as a function");
-        chart.container("container");
-        chart.draw();
+        rect.stroke(color);
+        rect.fill('#fff68f');
     });
 </script>
 </body>
