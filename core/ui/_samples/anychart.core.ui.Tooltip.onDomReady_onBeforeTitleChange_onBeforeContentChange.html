@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.ui.Tooltip.onDomReady_onBeforeTitleChange_onBeforeContentChange"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    var tooltipChart = null;
+    var title = null;
+    anychart.onDocumentReady(function () {
+        var data = anychart.data.set([
+            ['2000', 10048, 2600, 3200, 2159, 2089],
+            ['2001', 10938, 2367, 1989, 2383, 4199],
+            ['2002', 9989, 2156, 2399, 2867, 2567],
+            ['2003', 10226, 2398, 2225, 3010, 2593],
+            ['2004', 11004, 2851, 3007, 2805, 2341],
+            ['2005', 10934, 3400, 2105, 2563, 2866],
+            ['2006', 11275, 2878, 2933, 3561, 1903],
+            ['2007', 11945, 2959, 3855, 3109, 2022],
+            ['2008', 12245, 4001, 2156, 3928, 2160],
+            ['2009', 12056, 1995, 2057, 4902, 3102],
+            ['2010', 11734, 2584, 3166, 3101, 2883],
+            ['2011', 12337, 3106, 2845, 2933, 3453],
+            ['2012', 12761, 3296, 2655, 3144, 3666],
+            ['2013', 13390, 2611, 4194, 3206, 3379],
+            ['2014', 13818, 3000, 2599, 4107, 4112],
+            ['2015', 13188, 3199, 2564, 3118, 4307]
+        ]);
+
+        var dataMapping = data.mapAs({x: 0, value: 1});
+
+        chart = anychart.column(dataMapping);
+
+        var tooltip = chart.tooltip();
+        tooltip.useHtml(true);
+        tooltip.separator(false);
+
+        // Create a tooltip chart and title.
+        tooltip.onDomReady(function() {
+            this.contentElement.style.width = '200px';
+            this.contentElement.style.height = '150px';
+            tooltipChart.container(this.contentElement);
+            tooltipChart.draw();
+
+            this.titleElement.style.width = '200px';
+            this.titleElement.style.height = '60px';
+            title.container(this.titleElement);
+            title.draw();
+
+        });
+
+        tooltip.onBeforeTitleChange(function() {
+            // Prevent overriding content of this.titleElement
+            return false;
+        });
+
+        tooltip.onBeforeContentChange(function() {
+            // Prevent overriding content of this.contentElement
+            return false;
+        });
+
+        chart.listen('pointMouseOver', function(e) {
+            var index = e.pointIndex;
+            var dataRow = data.row(index);
+            tooltipChart = tooltipChart || createChart();
+            tooltipChart.data([
+                {x: 'John', value: dataRow[2]},
+                {x: 'James', value: dataRow[3]},
+                {x: 'Peter', value: dataRow[4]},
+                {x: 'Mary', value: dataRow[5]}
+            ]);
+            title = title || anychart.standalones.title();
+            title.text("Sales Persons Share: " + dataRow[0]);
+            title.fontColor('#ffffff');
+        });
+
+        chart.title('Set onDomReady and onBeforeTitleChange, onBeforeContentChange handlers');
+        chart.container('container');
+        chart.draw();
+    });
+
+    function createChart() {
+        var chart = anychart.bar();
+        chart.title().fontSize(12);
+        chart.xAxis().stroke(null).ticks(false);
+        chart.xAxis().labels().fontSize(10);
+        chart.yAxis().labels().fontSize(10);
+        chart.padding([0, 12, 0, 0]);
+        return chart;
+    };
+</script>
+</body>
+</html>

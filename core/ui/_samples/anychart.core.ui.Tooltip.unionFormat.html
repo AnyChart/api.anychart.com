@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Stock.annotations"/>
+    <meta name="ac:name" content="anychart.core.ui.Tooltip.unionFormat set asFunc"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -32,18 +32,18 @@
         var chart = anychart.stock();
 
         var plot = chart.plot();
-        plot.area(dataTable.mapAs({'value': 1})).name("First series");
-        plot.line(dataTable.mapAs({'value': 2})).name("Second series");
+        plot.area(dataTable.mapAs({'value': 1})).name('First series');
+        plot.line(dataTable.mapAs({'value': 2})).name('Second series');
 
         var tooltip = chart.tooltip();
 
         // Set union format.
         tooltip.unionFormat(function () {
-            return "Area series: " + this.points[0].value + '\n' + "Line series: "+ this.points[1].value;
+            return 'Area series: ' + this.points[0].value + '\n' + 'Line series: '+ this.points[1].value;
         });
 
-        chart.title("Set union format for the tooltip");
-        chart.container("container");
+        chart.title('Set the union format using the function');
+        chart.container('container');
         chart.draw();
     });
 </script>
