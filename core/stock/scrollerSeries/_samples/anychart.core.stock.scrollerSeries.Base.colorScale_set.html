@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.stock.scrollerSeries.Area.stroke set asFunc"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-bundle.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
+
+        var mapping = dataTable.mapAs({'value': 1});
+
+        var chart = anychart.stock();
+
+        var plot = chart.plot();
+        plot.line(mapping);
+
+        var scroller = chart.scroller();
+        scroller.height('30%');
+
+        var series = scroller.area(mapping);
+
+        var colorScale = anychart.scales.ordinalColor();
+        colorScale.ranges([
+            {
+                less: 9000,
+                color: '#d4e157'
+            },
+            {
+                from: 9000,
+                to: 11000,
+                color: '#ff6e40'
+            },
+            {
+                greater: 11000,
+                color: '#03a9f4'
+            }
+        ]);
+
+        // Set color scale.
+        series.colorScale(colorScale);
+
+        chart.title('Set series color scale');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>

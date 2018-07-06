@@ -72,13 +72,22 @@ anychart.core.stock.scrollerSeries.SplineArea.prototype.fill;
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *      // Context:
- *      // this.index - point index, (number)
- *      // this.sourceColor - source color of the point (string)
- *      // this.iterator - series point iterator, instance of {@link anychart.data.TableIterator}
- *      // this.series - link to the series, instance of {@link anychart.core.stock.series}
- *      // this.plot - link to the plot, instance of  {@link anychart.core.stock.Plot}
- *      // this.chart - link to the chart, instance of {@link anychart.charts.Stock}
- *    return fillValue; // type anychart.graphics.vector.Fill
+ *      // this.x - X value. Type is "date-time"
+ *      // this.value - value. Type is number
+ *      // this.index - point index (iterator.getIndex();). Type is number
+ *      // this.sourceColor - source color of the point.
+ *      // this.iterator - series point iterator. Type is instance of {@link anychart.data.TableIterator}
+ *      // this.plot - link to the plot. Type is instance of {@link anychart.core.stock.Plot}
+ *      // this.chart - link to the chart. Type is instance of {@link anychart.charts.Stock}
+ *      // this.name - series name. Type is string
+ *
+ *      Additional fields if colorScale () is set:
+ *
+ *      // this.scaledColor - color from this.colorScale for this point of the series. Type is string
+ *      // this.colorScale - series color scale. Type is instance of {@link anychart.scales.LinearColor} or {@link anychart.scales.OrdinalColor}
+ *
+ *      // Methods from {@link anychart.format.Context} are used for an access to series.
+ *    return fillValue; // Type is {@link anychart.graphics.vector.Fill}
  * }</pre>
  * @return {anychart.core.stock.scrollerSeries.SplineArea} Self instance for method chaining.
  */
@@ -155,13 +164,22 @@ anychart.core.stock.scrollerSeries.SplineArea.prototype.stroke;
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *      // Context:
- *      // this.index - point index, (number)
- *      // this.sourceColor - source color of the point (string)
- *      // this.iterator - series point iterator, instance of {@link anychart.data.TableIterator}
- *      // this.series - link to the series, instance of {@link anychart.core.stock.series}
- *      // this.plot - link to the plot, instance of  {@link anychart.core.stock.Plot}
- *      // this.chart - link to the chart, instance of {@link anychart.charts.Stock}
- *    return strokeValue; // type anychart.graphics.vector.Stroke or anychart.graphics.vector.ColoredFill
+ *      // this.x - X value. Type is "date-time"
+ *      // this.value - value. Type is number
+ *      // this.index - point index (iterator.getIndex();). Type is number
+ *      // this.sourceColor - source color of the point.
+ *      // this.iterator - series point iterator. Type is instance of {@link anychart.data.TableIterator}
+ *      // this.plot - link to the plot. Type is instance of {@link anychart.core.stock.Plot}
+ *      // this.chart - link to the chart. Type is instance of {@link anychart.charts.Stock}
+ *      // this.name - series name. Type is string
+ *
+ *      Additional fields if colorScale () is set:
+ *
+ *      // this.scaledColor - color from this.colorScale for this point of the series. Type is string
+ *      // this.colorScale - series color scale. Type is instance of {@link anychart.scales.LinearColor} or {@link anychart.scales.OrdinalColor}
+ *
+ *      // Methods from {@link anychart.format.Context} are used for an access to series.
+ *    return strokeValue; // Type is {@link anychart.graphics.vector.Stroke} or {@link anychart.graphics.vector.ColoredFill}
  * }</pre>
  * @return {anychart.core.stock.scrollerSeries.SplineArea} Self instance for method chaining.
  */
@@ -329,3 +347,6 @@ anychart.core.stock.scrollerSeries.SplineArea.prototype.maxLabels;
 
 /** @inheritDoc */
 anychart.core.stock.scrollerSeries.SplineArea.prototype.minLabels;
+
+/** @inheritDoc */
+anychart.core.stock.scrollerSeries.SplineArea.prototype.colorScale;
