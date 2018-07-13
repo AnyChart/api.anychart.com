@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.axes.Linear.stroke set asObj"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.line([
+            {x: 'January', value: 1.1},
+            {x: 'February', value: 1.6},
+            {x: 'March', value: 1.4},
+            {x: 'April', value: 1.9}
+        ]);
+
+        var yAxis = chart.yAxis();
+
+        // Set stroke settings.
+        yAxis.stroke({color: '#004D40', thickness: 3, dash: '5 5', lineCap: 'round'});
+
+        chart.title('Set stroke parameter as an object');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
