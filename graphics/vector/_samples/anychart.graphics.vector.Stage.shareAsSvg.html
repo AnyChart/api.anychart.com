@@ -14,37 +14,26 @@
             margin: 0;
             padding: 0;
         }
+        button {
+            margin: 10px 0 0 10px;
+        }
     </style>
 </head>
 <body>
+<button onclick="shareAsSvg();">Get the link to SVG image</button>
 <div id="container"></div>
 <script>
     var stage = acgraph.create("container");
-    stage.circle(450, 360, 340);
-    stage.rect(200, 135, 500, 450);
+    stage.circle(300, 250, 200);
+    stage.rect(100, 50, 400, 400);
 
-    var customLabel = anychart.standalones.label();
-    customLabel.background({fill: "#9E9E9E"});
-    customLabel.text("Get the link to SVG image");
-    customLabel.fontColor("#fff");
-    customLabel.padding(5);
-    customLabel.offsetX(5);
-    customLabel.listen("mouseOver", function () {
-        document.body.style.cursor = "pointer";
-    });
-    customLabel.listen("mouseOut", function () {
-        document.body.style.cursor = "auto";
-    });
-
-    customLabel.listen("click", function () {
+   function shareAsSvg() {
 
         // Share stage as SVG image.
         stage.shareAsSvg(function (response) {
             alert(response);
         });
-    });
-    customLabel.container(stage);
-    customLabel.draw();
+    }
 </script>
 </body>
 </html>

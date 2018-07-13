@@ -19,13 +19,18 @@
             margin: 0;
             padding: 0;
         }
+        button {
+            margin: 10px 0 0 10px;
+        }
     </style>
 </head>
 <body>
+<button onclick="shareAsPdf();">Get the link to PDF image</button>
 <div id="container"></div>
 <script>
+    var table;
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container");
+//        var stage = anychart.graphics.create("container");
 
         var dataSet = [
             [1.1, 2.3, 1.7, 1.9],
@@ -46,7 +51,8 @@
         chart2.title(null);
         chart2.xAxis(null);
 
-        var table = anychart.standalones.table();
+        table = anychart.standalones.table();
+        table.width('100%').height('90%');
 
         var cell = table.getCell(0, 0);
         cell.rowSpan(2);
@@ -55,31 +61,17 @@
             [pie, chart1],
             [null, chart2]
         ]);
-        table.top("5%");
-        table.container(stage);
+        table.container('container');
         table.draw();
-
-        var customLabel = anychart.standalones.label();
-        customLabel.background({stroke: "#E0E0E0"});
-        customLabel.text("Get the link to PDF image");
-        customLabel.padding(2);
-        customLabel.listen("mouseOver", function () {
-            document.body.style.cursor = "pointer";
-        });
-        customLabel.listen("mouseOut", function () {
-            document.body.style.cursor = "auto";
-        });
-
-        customLabel.listen("click", function () {
-
-            // Share table as PDF file.
-            table.shareAsPdf(function (response) {
-                alert(response);
-            });
-        });
-        customLabel.container(stage);
-        customLabel.draw();
     });
+
+    function shareAsPdf() {
+
+        // Share table as PDF file.
+        table.shareAsPdf(function (response) {
+            alert(response);
+        });
+    }
 </script>
 </body>
 </html>

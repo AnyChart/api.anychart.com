@@ -21,11 +21,16 @@
             margin: 0;
             padding: 0;
         }
+        button {
+            margin: 10px 0 0 10px;
+        }
     </style>
 </head>
 <body>
+<button onclick="chart.drillUp();">Drill Up</button>
 <div id="container"></div>
 <script>
+    var chart;
     anychart.onDocumentReady(function () {
         // All maps created with geoData() method work only if you referenced a proper map
         // source file as described at https://docs.anychart.com/Maps/Quick_Start
@@ -33,17 +38,16 @@
         // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
         // See https://docs.anychart.com/Maps/Map_Projections to learn more.
 
-        var stage = anychart.graphics.create("container");
-
         var worldDataSet = anychart.data.set([
-            {id: "US"}
+            {id: 'US'}
         ]);
         var usaDataSet = anychart.data.set([
-            {id: "US.TX"}
+            {id: 'US.TX'}
         ]);
 
-        var chart = anychart.map();
+        chart = anychart.map();
         chart.geoData(anychart.maps.world);
+        chart.width('100%').height('95%');
 
         var worldSeries = chart.choropleth(worldDataSet);
 
@@ -53,19 +57,19 @@
         var usaSeries = usaMap.choropleth(usaDataSet);
 
         var texasMap = anychart.map();
-        texasMap.geoData(anychart.maps["texas"]);
+        texasMap.geoData(anychart.maps['texas']);
 
         // Click to the Canada map.
-        worldSeries.listen("pointClick", function (e) {
-            chart.drillTo(e.point.get("id"), usaMap);
+        worldSeries.listen('pointClick', function (e) {
+            chart.drillTo(e.point.get('id'), usaMap);
         });
 
         // Click to the Texas map.
-        usaSeries.listen("pointClick", function (e) {
-            chart.drillTo(e.point.get("id"), texasMap);
+        usaSeries.listen('pointClick', function (e) {
+            chart.drillTo(e.point.get('id'), texasMap);
         });
 
-        chart.listen("chartDraw", function () {
+        chart.listen('chartDraw', function () {
 
             // Get drilldown path.
             var path = chart.getDrilldownPath();
@@ -74,35 +78,19 @@
             currentChart.title(printPath(path))
         });
 
-        createLabel("Drill Up", 0, function () {
-            chart.drillUp();
-        });
-
-        chart.container(stage);
+        chart.container('container');
         chart.draw();
 
+    });
+
         function printPath(path) {
-            var text = "World\\";
+            var text = 'World\\';
             for (i = 1; i < path.length; i++) {
-                text += path[i].getId() + "\\";
+                text += path[i].getId() + '\\';
             }
             return text;
         }
 
-        function createLabel(text, offset, action) {
-            var customLabel = anychart.standalones.label();
-            customLabel.background({fill: "#9E9E9E"});
-            customLabel.zIndex(1000);
-            customLabel.text(text);
-            customLabel.fontColor("#fff");
-            customLabel.padding(5);
-            customLabel.parentBounds(offset, 5, 130, 100);
-            customLabel.listen("click", action);
-            customLabel.container(stage);
-            customLabel.draw();
-            return customLabel;
-        }
-    });
 </script>
 </body>
 </html>

@@ -7,6 +7,7 @@
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/js/{{branch-name}}/graphics.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <style>
         html, body, #container {
             width: 100%;
@@ -14,29 +15,25 @@
             margin: 0;
             padding: 0;
         }
+        button {
+            margin: 10px 0 0 10px;
+        }
     </style>
 </head>
 <body>
+<button onclick="saveAsPng()">Save image</button>
 <div id="container"></div>
 <script>
     var stage = acgraph.create("container");
 
-    stage.circle(450, 360, 350);
-    stage.rect(100, 10, 700, 700);
+    stage.circle(300, 250, 200);
+    stage.rect(100, 50, 400, 400);
 
-    var grayLabel = anychart.standalones.label();
-    grayLabel.background({fill: "#9E9E9E"});
-    grayLabel.text("Save image");
-    grayLabel.fontColor("#fff");
-    grayLabel.padding(5);
-    grayLabel.offsetX(5);
-    grayLabel.listen("click", function () {
+    function saveAsPng() {
 
         // Saves into PNG file.
         stage.saveAsPng(360, 500, 0.3, "Circle");
-    });
-    grayLabel.container(stage);
-    grayLabel.draw();
+    }
 </script>
 </body>
 </html>

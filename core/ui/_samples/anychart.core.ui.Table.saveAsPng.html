@@ -19,11 +19,16 @@
             margin: 0;
             padding: 0;
         }
+        button {
+            margin: 10px 0 0 10px;
+        }
     </style>
 </head>
 <body>
+<button onclick="saveAsPng()">Save table</button>
 <div id="container"></div>
 <script>
+    var table;
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
@@ -46,7 +51,8 @@
         chart2.title(null);
         chart2.xAxis(null);
 
-        var table = anychart.standalones.table();
+        table = anychart.standalones.table();
+        table.width('100%').height('90%');
 
         var cell = table.getCell(0, 0);
         cell.rowSpan(2);
@@ -57,25 +63,11 @@
         ]);
         table.container(stage);
         table.draw();
-
-        var saveLabel = anychart.standalones.label();
-        saveLabel.background({fill: "#FFF59D", stroke: "#9E9E9E"});
-        saveLabel.text("Save table");
-        saveLabel.padding(2);
-        saveLabel.listen("click", function () {
-            // Saves image into PNG file.
-            table.saveAsPng(1000, 1000, 0.9);
-        });
-        saveLabel.listen("mouseOver", function () {
-            document.body.style.cursor = "pointer";
-        });
-        saveLabel.listen("mouseOut", function () {
-            document.body.style.cursor = "auto";
-        });
-        saveLabel.container(stage);
-        saveLabel.draw();
-
     });
+    function saveAsPng() {
+        // Saves image into PNG file.
+        table.saveAsPng(1000, 1000, 0.9);
+    }
 </script>
 </body>
 </html>

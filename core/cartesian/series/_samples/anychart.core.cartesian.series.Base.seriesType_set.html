@@ -16,17 +16,23 @@
             margin: 0;
             padding: 0;
         }
+        button {
+            margin: 10px 0 0 10px;
+        }
     </style>
 </head>
 <body>
+<button onclick="column()">Switch to the column series</button>
+<button onclick="area()">Switch to the area series</button>
+<button onclick="line()">Switch to the line series</button>
 <div id="container"></div>
 <script>
+    var chart;
+    var series;
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container");
+        chart = anychart.cartesian();
 
-        var chart = anychart.cartesian();
-
-        var series = chart.line([
+        series = chart.line([
             {x: "January", value: 4},
             {x: "February", value: 2},
             {x: "March", value: 7},
@@ -35,45 +41,29 @@
         ]);
 
         chart.title("Switch the series type");
-        chart.container(stage);
+        chart.width('100%').height('95%');
+        chart.container('container');
         chart.draw();
 
-        createLabel("Switch to the area series", 0, function () {
+    });
+
+        function column() {
 
             // Switch the series type.
             series.seriesType("column");
-        });
+        };
 
-        createLabel("Switch to the line series", 30, function () {
+       function area() {
 
             // Switch the series type.
             series.seriesType("area");
-        });
+        };
 
-        createLabel("Switch to the column series", 60, function () {
+        function line() {
 
             // Switch the series type.
             series.seriesType("line");
-        });
-
-        function createLabel(text, offset, action) {
-            var label = anychart.standalones.label();
-            label.text(text);
-            label.parentBounds(0, offset, 100, 100);
-            label.listen("click", action);
-            label.listen("mouseOver", function () {
-                document.body.style.cursor = "pointer";
-            });
-            label.listen("mouseOut", function () {
-                document.body.style.cursor = "auto";
-            });
-            label.background({fill: "#9E9E9E"});
-            label.fontColor("#fff");
-            label.padding(5);
-            label.container(stage);
-            label.draw();
-        }
-    });
+        };
 </script>
 </body>
 </html>

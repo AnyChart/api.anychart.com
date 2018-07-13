@@ -18,70 +18,54 @@
             margin: 0;
             padding: 0;
         }
+        button {
+            margin: 10px 0 0 10px;
+        }
     </style>
 </head>
 <body>
+<button onclick="column()">Switch to the column series</button>
+<button onclick="area()">Switch to the area series</button>
+<button onclick="line()">Switch to the line series</button>
 <div id="container"></div>
 <script>
+    var chart;
+    var series;
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container");
-
         var dataTable = anychart.data.table();
         dataTable.addData(get_weather_data());
 
         var mapping = dataTable.mapAs({'value': 2});
 
-        var chart = anychart.stock();
-
-        chart.bounds(170, 0, "100%", "100%");
+        chart = anychart.stock();
 
         var plot = chart.plot();
 
-        var series = plot.line(mapping);
+        series = plot.line(mapping);
 
-        chart.title("Switch the series type.");
-        chart.container(stage);
+        chart.title("Switch the series type");
+        chart.width('100%').height('95%');
+        chart.container('container');
         chart.draw();
-
-        createLabel("Switch to the column series", 0, function () {
-
-            // Switch the series type.
-            series.seriesType("column");
-
-        });
-
-        createLabel("Switch to the area series", 30, function () {
-
-            // Switch the series type.
-            series.seriesType("area");
-
-        });
-
-        createLabel("Switch to the line series", 60, function () {
-
-            // Switch the series type.
-            series.seriesType("line");
-
-        });
-
-        function createLabel(text, offset, action) {
-            var customLabel = anychart.standalones.label();
-            customLabel.text(text);
-            customLabel.parentBounds(5, offset, 100, 100);
-            customLabel.listen("click", action);
-            customLabel.listen("mouseOver", function () {
-                document.body.style.cursor = "pointer";
-            });
-            customLabel.listen("mouseOut", function () {
-                document.body.style.cursor = "auto";
-            });
-            customLabel.background({fill: "#9E9E9E"});
-            customLabel.fontColor("#fff");
-            customLabel.padding(5);
-            customLabel.container(stage);
-            customLabel.draw();
-        }
     });
+
+    function column() {
+
+        // Switch the series type.
+        series.seriesType("column");
+    }
+
+    function area() {
+
+        // Switch the series type.
+        series.seriesType("area");
+    }
+
+    function line() {
+
+        // Switch the series type.
+        series.seriesType("line");
+    }
 </script>
 </body>
 </html>

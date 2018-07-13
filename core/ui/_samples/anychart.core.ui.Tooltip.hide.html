@@ -16,56 +16,43 @@
             margin: 0;
             padding: 0;
         }
+        button {
+            margin: 10px 0 0 10px;
+        }
     </style>
 </head>
 <body>
+<button onclick="hide();">Hide tooltip</button>
 <div id="container"></div>
 <script>
+    var chart;
+    var tooltipSettings;
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container");
-
-        var chart = anychart.column([
-            {x: "John", value: 10000},
-            {x: "Jake", value: 12000},
-            {x: "Peter", value: 18000},
-            {x: "James", value: 11000},
-            {x: "Mary", value: 9000}
+        chart = anychart.column([
+            {x: 'John', value: 10000},
+            {x: 'Jake', value: 12000},
+            {x: 'Peter', value: 18000},
+            {x: 'James', value: 11000},
+            {x: 'Mary', value: 9000}
         ]);
 
-        chart.bounds(0, "1%", "100%", "100%");
-
-        var tooltipSettings = chart.tooltip();
-        tooltipSettings.displayMode("union");
-        tooltipSettings.positionMode("point");
+        tooltipSettings = chart.tooltip();
+        tooltipSettings.displayMode('union');
+        tooltipSettings.positionMode('point');
         tooltipSettings.hideDelay(4000);
 
-        chart.title("Hover a point then click the button");
-        chart.container(stage);
+        chart.title('Hover a point then click the button');
+        chart.width('100%').height('90%');
+        chart.container('container');
         chart.draw();
-
-        var customLabel = anychart.standalones.label();
-        customLabel.background({fill: "#9E9E9E"});
-        customLabel.text("Hide tooltip.");
-        customLabel.fontColor("#fff");
-        customLabel.parentBounds(0, 0, 100, 100);
-        customLabel.padding(5);
-        customLabel.zIndex(1000);
-        customLabel.listen("click", function () {
-
-            // Hide tooltip.
-            tooltipSettings.hide(true);
-
-        });
-        customLabel.listen("mouseOver", function () {
-            document.body.style.cursor = "pointer";
-        });
-        customLabel.listen("mouseOut", function () {
-            document.body.style.cursor = "auto";
-        });
-
-        customLabel.container(stage);
-        customLabel.draw();
     });
+
+    function hide() {
+
+        // Hide tooltip.
+        tooltipSettings.hide(true);
+
+    }
 </script>
 </body>
 </html>

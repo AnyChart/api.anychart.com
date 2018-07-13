@@ -14,9 +14,13 @@
             margin: 0;
             padding: 0;
         }
+        button {
+            margin: 10px 0 0 10px;
+        }
     </style>
 </head>
 <body>
+<button onclick="mainContainerResize();">Click to resize container</button>
 <div id="container"></div>
 <script>
     var mainContainer = document.getElementById('container');
@@ -69,22 +73,12 @@
         rect3.setBounds(stage2.getBounds());
     });
 
-    var label = anychart.standalones.label();
-    label.background({fill: "#9E9E9E"});
-    label.text("Click to resize container");
-    label.fontColor("#fff");
-    label.padding(5);
-    label.offsetX(5);
-    label.offsetY(5);
-
     var contaninerWidth = 50;
-    label.listen('click', function () {
+
+    function mainContainerResize() {
         contaninerWidth += 10;
         mainContainer.style.width = contaninerWidth + '%';
-    });
-
-    label.container(stage1);
-    label.draw();
+    }
 </script>
 </body>
 </html>

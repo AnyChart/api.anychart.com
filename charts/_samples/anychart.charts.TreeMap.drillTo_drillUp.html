@@ -17,14 +17,19 @@
             margin: 0;
             padding: 0;
         }
+        button {
+            margin: 10px 0 0 10px;
+        }
     </style>
 </head>
 <body>
+<button onclick="drillTo();">Drill to item</button>
+<button onclick="drillUp();">Drill up</button>
 <div id="container"></div>
 <script>
+    var chart;
+    var item;
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container");
-
         var data = [
             {id: 'Eurasia', parent: null},
             {id: 'Asia', parent: 'Eurasia'},
@@ -41,46 +46,30 @@
             {id: 'Ireland', parent: 'Northern Europe', value: 84421, capital: 'Dublin'},
             {id: 'Scandinavia', parent: 'Northern Europe', value: 928057}];
 
-        var chart = anychart.treeMap();
+        chart = anychart.treeMap();
 
         var treeData = anychart.data.tree(data, "as-table");
         chart.data(treeData);
 
-        var item = treeData.search("id", "Asia");
+        item = treeData.search("id", "Asia");
 
         chart.title("Drill down to specified item and drill up");
-        chart.bounds(0, "5%", "100%", "90%");
-        chart.container(stage);
+        chart.bounds(0, 0, "100%", "90%");
+        chart.container("container");
         chart.draw();
-
-        createLabel("Drill to item", 0, function () {
-            // Drill down to specified item.
-            chart.drillTo(item);
-        });
-
-        createLabel("Drill up", 30, function () {
-            // Drill up.
-            chart.drillUp();
-        });
-
-        function createLabel(text, offset, action) {
-            var label = anychart.standalones.label();
-            label.text(text);
-            label.parentBounds(0, offset, 100, 100);
-            label.listen("click", action);
-            label.listen("mouseOver", function () {
-                document.body.style.cursor = "pointer";
-            });
-            label.listen("mouseOut", function () {
-                document.body.style.cursor = "auto";
-            });
-            label.background({fill: "#9E9E9E"});
-            label.fontColor("#fff");
-            label.padding(5);
-            label.container(stage);
-            label.draw();
-        }
     });
+
+    function drillTo() {
+
+        // Drill down to specified item.
+        chart.drillTo(item);
+    };
+
+    function drillUp() {
+
+        // Drill up.
+        chart.drillUp();
+    };
 </script>
 </body>
 </html>

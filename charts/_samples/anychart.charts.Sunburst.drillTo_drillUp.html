@@ -20,12 +20,6 @@
         button {
             margin: 10px 0 0 10px;
         }
-        #container {
-            position: absolute;
-            width: 100%;
-            top: 35px;
-            bottom: 0;
-        }
     </style>
 </head>
 <body>
@@ -33,6 +27,7 @@
 <button onclick="drillUpALevel()">Drill Up</button>
 <div id="container"></div>
 <script>
+    var chart;
     anychart.onDocumentReady(function () {
         var data = getData();
 
@@ -41,6 +36,7 @@
         chart = anychart.sunburst();
         chart.data(treeData);
         chart.title('Drill down to specified item and drill up');
+        chart.width('100%').height('95%');
         chart.container('container');
         chart.draw();
     });

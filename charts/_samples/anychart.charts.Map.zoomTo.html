@@ -19,51 +19,46 @@
             margin: 0;
             padding: 0;
         }
+        button {
+            margin: 10px 0 0 10px;
+        }
     </style>
 </head>
 <body>
+<button onclick="zoom();">2x Zoom</button>
+<button onclick="zoomTo();">1x Zoom</button>
 <div id="container"></div>
 <script>
+    var chart;
     anychart.onDocumentReady(function () {
         // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
         // See https://docs.anychart.com/Maps/Map_Projections to learn more.
 
-        var stage = anychart.graphics.create("container");
-
-        var australiaMap = anychart.map();
-        australiaMap.geoData(anychart.maps.australia);
-        australiaMap.unboundRegions({fill: "#64b5f6"});
-        australiaMap.title("Zoom map.");
-        australiaMap.container(stage);
-        australiaMap.draw();
-
-        createLabel("2x Zoom", 0, function () {
-
-            // Zoom map 2 times from the current.
-            // Calling ot several times.
-            // Increases zoom by a factor.
-            australiaMap.zoom(2, 100, 100);
-        });
-
-        createLabel("1x Zoom", 30, function () {
-
-            // Set 1x Zoom Level.
-            // Calling it several times does not change zoom level.
-            australiaMap.zoomTo(1);
-        });
-
-        function createLabel(text, offset, action) {
-            var customLabel = anychart.standalones.label();
-            customLabel.text(text);
-            customLabel.parentBounds(0, offset, 100, 100);
-            customLabel.listen("click", action);
-            customLabel.background({fill: "#9E9E9E"});
-            customLabel.fontColor("#fff");
-            customLabel.padding(5);
-            customLabel.container(stage);
-            customLabel.draw();
-        }
+        chart = anychart.map();
+        chart.width('100%').height('95%');
+        chart.geoData(anychart.maps.australia);
+        chart.unboundRegions({fill: '#64b5f6'});
+        chart.title('Zoom map');
+        chart.container('container');
+        chart.draw();
     });
+    
+    function zoom() {
+
+        // Zoom map 2 times from the current.
+        // Calling ot several times.
+        // Increases zoom by a factor.
+        chart.zoom(2, 100, 100);
+
+    }
+
+    function zoomTo() {
+
+        // Set 1x Zoom Level.
+        // Calling it several times does not change zoom level.
+        chart.zoomTo(1);
+
+    }
 </script>
 </body>
 </html>

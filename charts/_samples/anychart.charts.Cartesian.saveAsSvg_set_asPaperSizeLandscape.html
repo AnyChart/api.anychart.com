@@ -16,40 +16,28 @@
             margin: 0;
             padding: 0;
         }
+        button {
+            margin: 10px 0 0 10px;
+        }
     </style>
 </head>
 <body>
+<button onclick="chart.saveAsSvg('a5', true);">Save image</button>
 <div id="container"></div>
 <script>
+    var chart;
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container");
-
-        var chart = anychart.line([
-            {x: "Meat", value: 10},
-            {x: "Fruit", value: 12},
-            {x: "Nuts", value: 18},
-            {x: "Milk", value: 11},
-            {x: "Fish", value: 9}
+        chart = anychart.line([
+            {x: 'Meat', value: 10},
+            {x: 'Fruit', value: 12},
+            {x: 'Nuts', value: 18},
+            {x: 'Milk', value: 11},
+            {x: 'Fish', value: 9}
         ]);
-        chart.left("5%");
-        chart.title("Save chart as SVG file with paper size and landscape orientation set");
-        chart.container(stage);
+        chart.width('100%').height('95%');
+        chart.title('Save chart as SVG file with paper size and landscape orientation set');
+        chart.container('container');
         chart.draw();
-
-        var customLabel = anychart.standalones.label();
-        customLabel.background({fill: "#9E9E9E"});
-        customLabel.text("Save image");
-        customLabel.fontColor("#fff");
-        customLabel.padding(5);
-        customLabel.offsetX(5);
-        customLabel.listen("click", function () {
-
-            // Saves into SVG file.
-            chart.saveAsSvg("a5", true);
-
-        });
-        customLabel.container(stage);
-        customLabel.draw();
     });
 </script>
 </body>

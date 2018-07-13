@@ -15,28 +15,24 @@
             margin: 0;
             padding: 0;
         }
+        button {
+            margin: 10px 0 0 10px;
+        }
     </style>
 </head>
 <body>
+<button onclick="print()">Print stage</button>
 <div id="container"></div>
 <script>
-    var stage = acgraph.create("container");
-    stage.circle(450, 500, 350);
-    stage.rect(100, 150, 700, 700);
+    var stage = acgraph.create('container');
+    stage.circle(300, 250, 200);
+    stage.rect(100, 50, 400, 400);
 
-    var grayLabel = anychart.standalones.label();
-    grayLabel.background({fill: "#9E9E9E"});
-    grayLabel.text("Print stage");
-    grayLabel.fontColor("#fff");
-    grayLabel.padding(5);
-    grayLabel.offsetX(5);
-    grayLabel.listen("click", function () {
+    function print() {
 
         // Sets paper size.
-        stage.print("a3");
-    });
-    grayLabel.container(stage);
-    grayLabel.draw();
+        stage.print('a3');
+    }
 </script>
 </body>
 </html>

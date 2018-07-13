@@ -16,80 +16,68 @@
             margin: 0;
             padding: 0;
         }
+        button {
+            margin: 10px 0 0 10px;
+        }
     </style>
 </head>
 <body>
+<button onclick="async()">Rerender async</button>
+<button onclick="sync()">Rerender in sync</button>
 <div id="container"></div>
 <script>
+    var charts = [];
+    var stage;
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container");
-
-        var charts = [];
+        stage = anychart.graphics.create('container');
 
         createCharts(charts, true);
 
-        createLabel("Rerender async", 20, function () {
-            disposeCharts(charts);
-            // Set rendering mode to async.
-            createCharts(charts, true);
-        });
-
-        createLabel("Rerender in sync", 150, function () {
-            disposeCharts(charts);
-            setTimeout(function () {
-                // Set rendering mode to sync.
-                createCharts(charts, false);
-            }, 100);
-        });
-
         var customTitle = anychart.standalones.title();
-        customTitle.text("Set asynchronous/synchronous rendering for the charts");
-        customTitle.parentBounds(0, "50%", 100, 100);
+        customTitle.text('Set asynchronous/synchronous rendering for the charts');
+        customTitle.parentBounds(0, '50%', 100, 100);
         customTitle.container(stage);
         customTitle.draw();
-
-        function createCharts(charts, sync) {
-            for (var i = 0; i < 15; i++) {
-                for (var j = 2; j < 15; j++) {
-                    pieChart = anychart.pie([20, 30, 50]);
-                    pieChart.bounds(i * 10 + "%", j * 10 + "%", "10%", "10%");
-                    pieChart.labels(false);
-                    pieChart.legend(false);
-                    pieChart.padding(0);
-                    pieChart.margin(0);
-                    pieChart.container(stage);
-
-                    // Set render mode: true - async, false (default) - sync.
-                    pieChart.draw(sync);
-                    charts.push(pieChart);
-                }
-            }
-        }
-
-        function disposeCharts(charts) {
-            for (var i = 0; i < charts.length; i++) {
-                charts[i].dispose();
-            }
-        }
-
-        function createLabel(text, offset, action) {
-            var customLabel = anychart.standalones.label();
-            customLabel.text(text);
-            customLabel.parentBounds(offset, 30, 100, 100);
-            customLabel.listen("click", action);
-            customLabel.listen("mouseOver", function () {
-                document.body.style.cursor = "pointer";
-            });
-            customLabel.listen("mouseOut", function () {
-                document.body.style.cursor = "auto";
-            });
-            customLabel.background({fill: "#9E9E9E"});
-            customLabel.fontColor("#fff");
-            customLabel.padding(5);
-            customLabel.container(stage);
-            customLabel.draw();
-        }
     });
+
+    function createCharts(charts, sync) {
+        for (var i = 0; i < 15; i++) {
+            for (var j = 2; j < 15; j++) {
+                var pieChart = anychart.pie([20, 30, 50]);
+                pieChart.bounds(i * 10 + '%', j * 10 + '%', '10%', '10%');
+                pieChart.labels(false);
+                pieChart.legend(false);
+                pieChart.padding(0);
+                pieChart.margin(0);
+                pieChart.container(stage);
+
+                // Set render mode: true - async, false (default) - sync.
+                pieChart.draw(sync);
+                charts.push(pieChart);
+            }
+        }
+    }
+
+    function disposeCharts(charts) {
+        for (var i = 0; i < charts.length; i++) {
+            charts[i].dispose();
+        }
+    }
+
+    function async() {
+        disposeCharts(charts);
+
+        // Set rendering mode to async.
+        createCharts(charts, true);
+    }
+
+    function sync() {
+        disposeCharts(charts);
+        setTimeout(function () {
+            // Set rendering mode to sync.
+            createCharts(charts, false);
+        }, 100);
+    }
 </script>
 </body>
 </html>
