@@ -1028,7 +1028,7 @@ anychart.graphics.vector.Stage.prototype.swapChildrenAt;
  * Applies function to all children.<br/>
  * Similar to {@link anychart.graphics.vector.Layer#forEachChild}
  * @category Structure
- * @param {function(anychart.graphics.vector.Element):void} callback Callback.
+ * @param {CallbackFunction} callback Callback.
  * @param {Object=} opt_this This element.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
@@ -1537,7 +1537,7 @@ anychart.graphics.vector.Stage.prototype.toSvg;
  * it will no longer be a one-off listener after a call to listen() method.
  * @example anychart.graphics.vector.Stage.listen
  * @param {(string|anychart.graphics.vector.Stage.EventType)} type The event type name.
- * @param {function(Object):(boolean|undefined)} listener A function to execute each time the event is triggered.
+ * @param {Callback} listener A function to execute each time the event is triggered.
  * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about <a target='_blank' rel="nofollow"
  * href="https://javascript.info/bubbling-and-capturing">capturing</a>
  * @param {Object=} opt_listenerScope ["Window"] Object in whose scope to call the listener.
@@ -1563,7 +1563,7 @@ anychart.graphics.vector.Stage.prototype.listen;
  * listenOnce will not change it (it wil remain one-off).
  * @example anychart.graphics.vector.Stage.listenOnce
  * @param {(string|anychart.graphics.vector.Stage.EventType)} type The event type name.
- * @param {function(Object):(boolean|undefined)} listener A function to execute each time the event is triggered.
+ * @param {Callback} listener A function to execute each time the event is triggered.
  * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about <a target='_blank' rel="nofollow"
  * href="https://javascript.info/bubbling-and-capturing">capturing</a>
  * @param {Object=} opt_listenerScope ["Window"] Object in whose scope to call the listener.
@@ -1584,7 +1584,7 @@ anychart.graphics.vector.Stage.prototype.listenOnce;
  * @category Events
  * @example anychart.graphics.vector.Stage.unlisten
  * @param {(string|anychart.graphics.vector.Stage.EventType)} type The event type name.
- * @param {function(Object):(boolean|undefined)} listener A function to execute each time the event is triggered.
+ * @param {Callback} listener A function to execute each time the event is triggered.
  * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. <a target='_blank' rel="nofollow"
  * href="https://javascript.info/bubbling-and-capturing">capturing</a>
  * @param {Object=} opt_listenerScope ["Window"] Object in whose scope to call the listener.
@@ -1714,8 +1714,8 @@ anychart.graphics.vector.Stage.prototype.desc;
  * Shares a stage as a PNG file and returns a link to the shared image.
  * @category Export
  * @example anychart.graphics.vector.Stage.shareAsPng
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
- * @param {function(string)=} opt_onError Function that is called if sharing fails.
+ * @param {OnSuccess} onSuccess Function that is called when sharing is complete.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
  * @param {boolean=} opt_asBase64 Share as base64 file.
  * @param {number=} opt_width Image width.
  * @param {number=} opt_height Image height.
@@ -1735,8 +1735,8 @@ anychart.graphics.vector.Stage.prototype.shareAsPng;
  * Share a stage as a JPG and return link to shared image.
  * @category Export
  * @example anychart.graphics.vector.Stage.shareAsJpg
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
- * @param {function(string)=} opt_onError Function that is called if sharing fails.
+ * @param {OnSuccess} onSuccess Function that is called when sharing is complete.
+ * @param {OnError} opt_onError Function that is called if sharing fails.
  * @param {boolean=} opt_asBase64 Share as base64 file.
  * @param {number=} opt_width Image width.
  * @param {number=} opt_height Image height.
@@ -1757,8 +1757,8 @@ anychart.graphics.vector.Stage.prototype.shareAsJpg;
  * Share a stage as a SVG and return link to shared image.
  * @category Export
  * @example anychart.graphics.vector.Stage.shareAsSvg
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
- * @param {function(string)=} opt_onError Function that is called if sharing fails.
+ * @param {OnSuccess} onSuccess Function that is called when sharing is complete.
+ * @param {OnError} opt_onError Function that is called if sharing fails.
  * @param {boolean=} opt_asBase64 Share as base64 file.
  * @param {(string|number)=} opt_paperSizeOrWidth Paper Size or width.
  * @param {(boolean|string)=} opt_landscapeOrHeight Landscape or height.
@@ -1777,8 +1777,8 @@ anychart.graphics.vector.Stage.prototype.shareAsSvg;
  * Share a stage as a PDF and return link to shared image.
  * @category Export
  * @example anychart.graphics.vector.Stage.shareAsPdf
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
- * @param {function(string)=} opt_onError Function that is called if sharing fails.
+ * @param {OnSuccess} onSuccess Function that is called when sharing is complete.
+ * @param {OnError} opt_onError Function that is called if sharing fails.
  * @param {boolean=} opt_asBase64 Share as base64 file.
  * @param {(number|string)=} opt_paperSizeOrWidth Any paper format like 'a0', 'tabloid', 'b4', etc.
  * @param {(number|boolean)=} opt_landscapeOrWidth Define, is landscape.
@@ -1799,8 +1799,8 @@ anychart.graphics.vector.Stage.prototype.shareAsPdf;
  * Returns PNG as base64 string.
  * @category Export
  * @example anychart.graphics.vector.Stage.getPngBase64String
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
- * @param {function(string)=} opt_onError Function that is called if sharing fails.
+ * @param {OnSuccess} onSuccess Function that is called when sharing is complete.
+ * @param {OnError} opt_onError Function that is called if sharing fails.
  * @param {number=} opt_width Image width.
  * @param {number=} opt_height Image height.
  * @param {number=} opt_quality Image quality in ratio 0-1.
@@ -1818,8 +1818,8 @@ anychart.graphics.vector.Stage.prototype.getPngBase64String;
  * Returns JPG as base64 string.
  * @category Export
  * @example anychart.graphics.vector.Stage.getJpgBase64String
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
- * @param {function(string)=} opt_onError Function that is called if sharing fails.
+ * @param {OnSuccess} onSuccess Function that is called when sharing is complete.
+ * @param {OnError} opt_onError Function that is called if sharing fails.
  * @param {number=} opt_width Image width.
  * @param {number=} opt_height Image height.
  * @param {number=} opt_quality Image quality in ratio 0-1.
@@ -1838,8 +1838,8 @@ anychart.graphics.vector.Stage.prototype.getJpgBase64String;
  * Returns SVG as base64 string.
  * @category Export
  * @example anychart.graphics.vector.Stage.getSvgBase64String
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
- * @param {function(string)=} opt_onError Function that is called if sharing fails.
+ * @param {OnSuccess} onSuccess Function that is called when sharing is complete.
+ * @param {OnError} opt_onError Function that is called if sharing fails.
  * @param {(string|number)=} opt_paperSizeOrWidth Paper Size or width.
  * @param {(boolean|string)=} opt_landscapeOrHeight Landscape or height.
  * @since 7.11.0
@@ -1856,8 +1856,8 @@ anychart.graphics.vector.Stage.prototype.getSvgBase64String;
  * Returns PDF as base64 string.
  * @category Export
  * @example anychart.graphics.vector.Stage.getPdfBase64String
- * @param {function(string)} onSuccess Function that is called when sharing is complete.
- * @param {function(string)=} opt_onError Function that is called if sharing fails.
+ * @param {OnSuccess} onSuccess Function that is called when sharing is complete.
+ * @param {OnError} opt_onError Function that is called if sharing fails.
  * @param {(number|string)=} opt_paperSizeOrWidth Any paper format like 'a0', 'tabloid', 'b4', etc.
  * @param {(number|boolean)=} opt_landscapeOrWidth Define, is landscape.
  * @param {number=} opt_x Offset X.

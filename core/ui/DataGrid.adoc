@@ -607,7 +607,7 @@ anychart.core.ui.DataGrid.Column.prototype.labels;
  * @listing See listing
  * var column = dataGrid.column(1);
  * var labelsOverrider = column.labelsOverrider();
- * @return {function(anychart.core.ui.LabelsFactory.Label, anychart.data.Tree.DataItem)} Cells text settings overrider.
+ * @return {OverriderFunction} Cells text settings overrider.
  * @since 8.2.0
  */
 anychart.core.ui.DataGrid.Column.prototype.labelsOverrider;
@@ -839,7 +839,7 @@ anychart.core.ui.DataGrid.Column.prototype.defaultWidth;
  * @listing See listing
  * var dataGrid = chart.dataGrid();
  * var onEditStart = dataGrid.onEditStart();
- * @return {function():(Object|undefined)} Returns onEditStart function.
+ * @return {OnEditFunction} Returns onEditStart function.
  * @since 8.2.0
  */
 anychart.core.ui.DataGrid.prototype.onEditStart;
@@ -852,7 +852,7 @@ anychart.core.ui.DataGrid.prototype.onEditStart;
  * In order for an input to appear, the function must return an object with the string field 'value', the value of which is
  * set in the appeared input.
  * @example anychart.core.ui.DataGrid.onEditEnd_Start
- * @param {(function():(Object|undefined))=} opt_onEditStartFunction [
+ * @param {OnEditFunction=} opt_onEditStartFunction [
  * function() {
  * return this[columnIndex] < 1 ? {cancelEdit: true} : {'value: this['value']};
  * }] OnEditStart function to set.<br/>
@@ -883,7 +883,7 @@ anychart.core.ui.DataGrid.prototype.onEditStart;
  * @listing See listing
  * var dataGrid = chart.dataGrid();
  * var onEditEnd = dataGrid.onEditEnd();
- * @return {function():(Object|undefined)} Returns onEditEnd function.
+ * @return {OnEditFunction} Returns onEditEnd function.
  * @since 8.2.0
  */
 anychart.core.ui.DataGrid.prototype.onEditEnd;
@@ -898,14 +898,14 @@ anychart.core.ui.DataGrid.prototype.onEditEnd;
  * @shortDescription onEditEnd function.
  * @category Specific settings
  * @example anychart.core.ui.DataGrid.onEditEnd_Start
- * @param {(function():(Object|undefined))=} opt_onEditEndFunction [
+ * @param {(OnEditFunction)=} opt_onEditEndFunction [
  * function() {
  *  return this[columnIndex] == 1 ? {itemMap: {name: this['value']}} : {cancelEdit: true};
  *  }] OnEditEnd function to set.<br/>
  * Function that looks like: <pre>function(){
  *  // this.columnIndex - The column index for the editing. Type is a number
  *  // this.item - Corresponding dataItem. Type is {@link anychart.data.Tree.DataItem}
- *  // this.value -The value entered by the user. Type is a string
+ *  // this.value - The value entered by the user. Type is a string
  *  return Object with a map itemMap or null/undefined;
  *  // Data changes don't occur at all when:
  *   - the function returns null or undefined
@@ -1283,14 +1283,6 @@ anychart.core.ui.DataGrid.Column.prototype.cellTextSettings;
  */
 anychart.core.ui.DataGrid.Column.prototype.cellTextSettings;
 
-/**
- * Overrider function.
- * @typedef {function}
- * @name OverriderFunction
- * @param {anychart.core.ui.LabelsFactory.Label} label Label.
- * @param {anychart.data.Tree.DataItem} item Data item.
- */
-
 //----------------------------------------------------------------------------------------------------------------------
 //
 //  anychart.core.ui.DataGrid.Column.prototype.cellTextSettingsOverrider
@@ -1301,7 +1293,7 @@ anychart.core.ui.DataGrid.Column.prototype.cellTextSettings;
  * @ignoreDoc
  * @deprecated Use labelsOverrider() instead.
  * Getter
- * @return {function(anychart.core.ui.LabelsFactory.Label, anychart.data.Tree.DataItem)} Cells text settings overrider.
+ * @return {OverriderFunction} Cells text settings overrider.
  */
 anychart.core.ui.DataGrid.Column.prototype.cellTextSettingsOverrider;
 
@@ -1326,17 +1318,11 @@ anychart.core.ui.DataGrid.Column.prototype.cellTextSettingsOverrider;
  * Sets cell text value formatter.<br/>
  * {docs:Common_Settings/Text_Formatters}Learn more about using the format() method.{docs}
  * @category Specific settings
- * @param {FormatFunction=} opt_function Function to format data grid text.
+ * @param {FormatDataGridFunction=} opt_function Function to format data grid text.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.Column.prototype.format;
 
-/**
- * Format function.
- * @typedef {function}
- * @name FormatFunction
- * @param {anychart.data.Tree.DataItem} item Data item.
- */
 
 //----------------------------------------------------------------------------------------------------------------------
 //

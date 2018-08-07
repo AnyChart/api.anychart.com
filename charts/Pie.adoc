@@ -106,7 +106,7 @@ anychart.charts.Pie.prototype.hatchFillPalette;
  * @shortDescription Fill settings.
  * @category Coloring
  * @example anychart.charts.Pie.fill_get
- * @return {(anychart.graphics.vector.Fill|function():anychart.graphics.vector.Fill)} The fill in the normal state.
+ * @return {(anychart.graphics.vector.Fill|FillFunction)} The fill in the normal state.
  */
 anychart.charts.Pie.prototype.fill;
 
@@ -114,7 +114,7 @@ anychart.charts.Pie.prototype.fill;
  * Setter for the pie fill.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.charts.Pie.fill_set_asFunc
- * @param {(function():anychart.graphics.vector.Fill)=} fillFunction [// return the fill from the default palette.
+ * @param {FillFunction=} fillFunction [// return the fill from the default palette.
  * function() {
  *   return this.sourceColor;
  * };] Fill-function, which should look like this:<pre>function() {
@@ -196,7 +196,7 @@ anychart.charts.Pie.prototype.fill;
  * @shortDescription Stroke settings.
  * @category Coloring
  * @example anychart.charts.Pie.stroke_get
- * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} The stroke in the normal state.
+ * @return {(anychart.graphics.vector.Stroke|StrokeFunction)} The stroke in the normal state.
  */
 anychart.charts.Pie.prototype.stroke;
 
@@ -204,7 +204,7 @@ anychart.charts.Pie.prototype.stroke;
  * Setter for the pie slices stroke using function.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.charts.Pie.stroke_set_asFunc
- * @param {(function():anychart.graphics.vector.Stroke)=} fillFunction [// return stroke from the default palette.
+ * @param {StrokeFunction=} fillFunction [// return stroke from the default palette.
  * function() {
  *   return anychart.color.darken(this.sourceColor);
  * };] Stroke-function, which should look like:<pre>function() {
@@ -546,7 +546,7 @@ anychart.charts.Pie.prototype.innerRadius;
  * Setter for the inner radius in case of a Donut chart.
  * @example anychart.charts.Pie.innerRadius_set_asFunc Using function
  * @example anychart.charts.Pie.innerRadius_set_asString Using string
- * @param {(string|number|function(number):number)=} opt_value [0] The value of the inner radius in pixels, percents or
+ * @param {(string|number|innerRadiusFunction)=} opt_value [0] The value of the inner radius in pixels, percents or
  * function. In general the function should look like this:
  * <pre>function(outerRadius){
  *   ...
@@ -556,7 +556,6 @@ anychart.charts.Pie.prototype.innerRadius;
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
 anychart.charts.Pie.prototype.innerRadius;
-
 
 //----------------------------------------------------------------------------------------------------------------------
 //

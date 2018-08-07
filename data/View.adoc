@@ -33,18 +33,13 @@ anychart.data.View.prototype.derive;
  * @category Data
  * @example anychart.data.View.filter
  * @param {string} fieldName A field which value will be passed to a filter function.
- * @param {FilterFunction} func A filter function that should accept a field value and return true if the row
+ * @param {FilterViewFunction} func A filter function that should accept a field value and return true if the row
  *  should be included in the resulting view.
  * @return {!anychart.data.View} The new derived filtered view.
  */
 anychart.data.View.prototype.filter;
 
-/**
- * Filter function.
- * @typedef {function}
- * @name FilterFunction
- * @param {*} val
- */
+
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -52,13 +47,14 @@ anychart.data.View.prototype.filter;
 //
 //----------------------------------------------------------------------------------------------------------------------
 
+
 /**
  * Creates a derived view that ensures sorting by a passed field.
  * @shortDescription Data sorting.
  * @category Data
  * @example anychart.data.View.sort_set_asFunc
  * @param {string} fieldName A field name to make sort by.
- * @param {function(*, *):number=} opt_comparator A sorting function that should accept two field values and return the
+ * @param {SortingFunction=} opt_comparator A sorting function that should accept two field values and return the
  * numeric result of the comparison.
  * @return {!anychart.data.View} The new derived sorted view.
  */

@@ -70,7 +70,7 @@ anychart.charts.Sunburst.prototype.fill;
 /**
  * Setter for the fill using function.
  * @example anychart.charts.Sunburst.fill_set_asFunc
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {return this.sourceColor;}]
+ * @param {FillFunction=} opt_fillFunction [function() {return this.sourceColor;}]
  * Function that looks like: <pre>function(){
  *    this.index - internal node index,
  *    this.level - remoteness from the root node, the root node has level equal 0,
@@ -157,7 +157,7 @@ anychart.charts.Sunburst.prototype.fill;
  * @listing See listing
  * var chart = anychart.sunburst(data);
  * var stroke = chart.stroke();
- * @return {(anychart.graphics.vector.Stroke|function():anychart.graphics.vector.Stroke)} Stroke settings.
+ * @return {(anychart.graphics.vector.Stroke|StrokeFunction)} Stroke settings.
  * @since 8.2.0
  */
 anychart.charts.Sunburst.prototype.stroke;
@@ -166,7 +166,7 @@ anychart.charts.Sunburst.prototype.stroke;
  * Setter for the stroke using function.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.charts.Sunburst.stroke_set_asFunc
- * @param {(function():anychart.graphics.vector.Stroke)=} opt_strokeFunction [// return stroke from the default palette.
+ * @param {StrokeFunction=} opt_strokeFunction [// return stroke from the default palette.
  * function() {return anychart.color.darken(this.sourceColor);};]
  *  Function that looks like: <pre>function(){
  *    this.index - internal node index,
@@ -294,7 +294,7 @@ anychart.charts.Sunburst.prototype.innerRadius;
  * Setter for the inner radius.
  * @example anychart.charts.Sunburst.innerRadius_set_asFunc Using function
  * @example anychart.charts.Sunburst.radiusInnerRadius_set Using string
- * @param {(string|number|function(number):number)=} opt_innerRadius [0] The value of the inner radius in pixels, percents or
+ * @param {(string|number|innerRadiusFunction)=} opt_innerRadius [0] The value of the inner radius in pixels, percents or
  * function. In general the function should look like this:
  * <pre>function(outerRadius){
  *   ...
@@ -551,6 +551,7 @@ anychart.charts.Sunburst.prototype.drillUp = function () {};
  */
 anychart.charts.Sunburst.prototype.getDrilldownPath;
 
+
 //----------------------------------------------------------------------------------------------------------------------
 //
 //  anychart.charts.Sunburst.prototype.hatchFill
@@ -565,7 +566,7 @@ anychart.charts.Sunburst.prototype.getDrilldownPath;
  * @listing See listing
  * var chart = anychart.sunburst(data);
  * var hatchFill = chart.hatchFill();
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Hatch fill settings.
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|HatchFillFunction} Hatch fill settings.
  * @since 8.2.0
  */
 anychart.charts.Sunburst.prototype.hatchFill;
@@ -584,7 +585,7 @@ anychart.charts.Sunburst.prototype.hatchFill;
  * Setter for the hatch fill using function.
  * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
  * @example anychart.charts.Sunburst.hatchFill_set_asFunc
- * @param {function(): anychart.graphics.vector.HatchFill=} opt_hatchFillFunction Hatch fill function.
+ * @param {HatchFillFunction=} opt_hatchFillFunction Hatch fill function.
  * Function that looks like: <pre>function(){
  *    this.autoColor - palette color by linear node index,
  *    this.chart - sunburst instance chart,
@@ -677,7 +678,7 @@ anychart.charts.Sunburst.prototype.center;
  * @category Data
  * @listing See listing
  * var sort = chart.sort();
- * @return {anychart.enums.Sort|string|Function} Sort settings.
+ * @return {anychart.enums.Sort|string|SortFunction} Sort settings.
  * @since 8.2.0
  */
 anychart.charts.Sunburst.prototype.sort;
@@ -695,7 +696,7 @@ anychart.charts.Sunburst.prototype.sort;
 /**
  * Setter for the sorting setting using function.
  * @example anychart.charts.Sunburst.sort_set_asFunc
- * @param {function((anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem), (anychart.data.Tree.DataItem|anychart.data.TreeView.DataItem)):number=} opt_sortFunction Sorting function.
+ * @param {SortFunction=} opt_sortFunction Sorting function.
  * @return {anychart.charts.Sunburst} Self instance for method chaining.
  * @since 8.2.0
  */

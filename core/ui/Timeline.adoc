@@ -576,7 +576,7 @@ anychart.core.ui.Timeline.prototype.baseFill;
  * @ignoreDoc
  * @deprecated Use timeline.elements().fill() instead.
  * Setter for fill settings using function.
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ * @param {FillFunction=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
@@ -685,7 +685,7 @@ anychart.core.ui.Timeline.prototype.baseStroke;
  * @ignoreDoc
  * @deprecated Use timeline.elements().stroke() instead.
  * Setter for base stroke settings using function.
- * @param {function(): anychart.graphics.vector.Stroke=} opt_strokeFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
  *    // this.item - item for coloring.
@@ -735,7 +735,7 @@ anychart.core.ui.Timeline.prototype.baselineFill;
  * @ignoreDoc
  * @deprecated Use timeline.baselines().fill() instead.
  * Setter for fill settings using function.
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ * @param {FillFunction=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
@@ -844,7 +844,7 @@ anychart.core.ui.Timeline.prototype.baselineStroke;
  * @ignoreDoc
  * @deprecated Use timeline.baselines().stroke() instead.
  * Setter for baseline stroke settings using function.
- * @param {function(): anychart.graphics.vector.Stroke=} opt_strokeFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
  *    // this.item - item for coloring.
@@ -895,7 +895,7 @@ anychart.core.ui.Timeline.prototype.progressFill;
  * @ignoreDoc
  * @deprecated Use timeline.tasks().progress().fill() instead.
  * Setter for fill settings using function.
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ * @param {FillFunction=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
@@ -1003,7 +1003,7 @@ anychart.core.ui.Timeline.prototype.progressStroke;
  * @ignoreDoc
  * @deprecated Use timeline.tasks().progress().stroke() instead.
  * Setter for progress stroke settings using function.
- * @param {function(): anychart.graphics.vector.Stroke=} opt_strokeFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
  *    // this.item - item for coloring.
@@ -1052,7 +1052,7 @@ anychart.core.ui.Timeline.prototype.milestoneFill;
  * @ignoreDoc
  * @deprecated Use timeline.milestones().fill() instead.
  * Setter for fill settings using function.
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ * @param {FillFunction=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
@@ -1159,7 +1159,7 @@ anychart.core.ui.Timeline.prototype.milestoneStroke;
  * @ignoreDoc
  * @deprecated Use timeline.milestones().stroke() instead.
  * Setter for milestone stroke settings using function.
- * @param {function(): anychart.graphics.vector.Stroke=} opt_strokeFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
  *    // this.item - item for coloring.
@@ -1208,7 +1208,7 @@ anychart.core.ui.Timeline.prototype.parentFill;
  * @ignoreDoc
  * @deprecated Use timeline.groupingTasks().fill() instead.
  * Setter for fill settings using function.
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ * @param {FillFunction=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
@@ -1317,7 +1317,7 @@ anychart.core.ui.Timeline.prototype.parentStroke;
  * @ignoreDoc
  * @deprecated Use timeline.groupingTasks().stroke() instead.
  * Setter for parent stroke settings using function.
- * @param {function(): anychart.graphics.vector.Stroke=} opt_strokeFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
  *    // this.item - item for coloring.
@@ -1353,7 +1353,7 @@ anychart.core.ui.Timeline.prototype.connectorFill;
  * @ignoreDoc
  * @deprecated Use timeline.connectors().fill() instead.
  * Setter for fill settings using function.
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ * @param {FillFunction=} opt_fillFunction [function() {
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
  *    // this.fromItem - connector from item
@@ -1429,7 +1429,7 @@ anychart.core.ui.Timeline.prototype.connectorStroke;
  * @ignoreDoc
  * @deprecated Use timeline.connectors().stroke() instead.
  * Setter for connector stroke settings using function.
- * @param {function(): anychart.graphics.vector.Stroke=} opt_strokeFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
  *    // this.fromItem - connector from item
@@ -1496,7 +1496,7 @@ anychart.core.ui.Timeline.prototype.selectedConnectorStroke;
  * @ignoreDoc
  * @deprecated Use timeline.connectors().selected().stroke() instead.
  * Setter for selected connector stroke settings using function.
- * @param {function(): anychart.graphics.vector.Stroke=} opt_strokeFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
  *    // this.fromItem - connector from item
@@ -1550,7 +1550,7 @@ anychart.core.ui.Timeline.prototype.selectedElementFill;
  * @ignoreDoc
  * @deprecated Use timeline.elements().selected().fill() instead.
  * Setter for selected element fill settings using function.
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ * @param {FillFunction=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
@@ -1659,7 +1659,7 @@ anychart.core.ui.Timeline.prototype.selectedElementStroke;
  * @ignoreDoc
  * @deprecated Use timeline.elements().selected().stroke() instead.
  * Setter for baseline stroke settings using function.
- * @param {function(): anychart.graphics.vector.Stroke=} opt_strokeFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  * }] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
  *    // this.item - the item for coloring

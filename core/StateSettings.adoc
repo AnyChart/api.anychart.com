@@ -29,7 +29,7 @@ anychart.core.StateSettings;
  * @listing See listing
  * var normal = chart.normal();
  * var fill = normal.fill();
- * @return {(anychart.graphics.vector.Fill|function():anychart.graphics.vector.Fill)} Fill settings.
+ * @return {(anychart.graphics.vector.Fill|FillFunction)} Fill settings.
  * @since 8.0.0
  */
 anychart.core.StateSettings.prototype.fill;
@@ -38,7 +38,7 @@ anychart.core.StateSettings.prototype.fill;
  * Setter for the fill.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.StateSettings.fill_set_asFunc
- * @param {(function():anychart.graphics.vector.Fill)=} fillFunction [// return the fill from the default palette.
+ * @param {FillFunction=} fillFunction [// return the fill from the default palette.
  * function() {
  *   return this.sourceColor;
  * };] Fill-function, which should look like this:<pre>function() {
@@ -149,7 +149,7 @@ anychart.core.StateSettings.prototype.negativeFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @detailed <b>Note:</b> Works only with {@link anychart.core.StateSettings#displayNegative}.
  * @example anychart.core.StateSettings.negativeFill_set_asFunc
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ * @param {FillFunction=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -250,7 +250,7 @@ anychart.core.StateSettings.prototype.risingFill;
 /**
  * Setter for the rising fill settings using function.
  * @example anychart.core.StateSettings.risingFill_set_asFunc
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ * @param {FillFunction=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -335,7 +335,7 @@ anychart.core.StateSettings.prototype.stroke;
 /**
  * Setter for stroke by function.
  * @example anychart.core.StateSettings.stroke_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -392,7 +392,7 @@ anychart.core.StateSettings.prototype.lowStroke;
 /**
  * Setter for low stroke by function.
  * @example anychart.core.StateSettings.lowStroke_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -449,7 +449,7 @@ anychart.core.StateSettings.prototype.highStroke;
 /**
  * Setter for high stroke by function.
  * @example anychart.core.StateSettings.highStroke_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -497,7 +497,7 @@ anychart.core.StateSettings.prototype.negativeStroke;
 /**
  * Setter for negative stroke by function.
  * @example anychart.core.StateSettings.negativeStroke_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -555,7 +555,7 @@ anychart.core.StateSettings.prototype.risingStroke;
 /**
  * Setter for series rising stroke by function.
  * @example anychart.core.StateSettings.risingStroke_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -612,7 +612,7 @@ anychart.core.StateSettings.prototype.fallingStroke;
 /**
  * Setter for falling stroke by function.
  * @example anychart.core.StateSettings.fallingStroke_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_fillFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -680,7 +680,7 @@ anychart.core.StateSettings.prototype.fallingFill;
 /**
  * Setter for falling fill settings using function.
  * @example anychart.core.StateSettings.fallingFill_set_asFunc
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ * @param {FillFunction=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -797,7 +797,7 @@ anychart.core.StateSettings.prototype.medianStroke;
 /**
  * Setter for the median stroke by function.
  * @example anychart.core.StateSettings.medianStroke_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_value [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -854,7 +854,7 @@ anychart.core.StateSettings.prototype.stemStroke;
 /**
  * Setter for the stem stroke by function.
  * @example anychart.core.StateSettings.stemStroke_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_value [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -911,7 +911,7 @@ anychart.core.StateSettings.prototype.whiskerStroke;
 /**
  * Setter for the whisker stroke by function.
  * @example anychart.core.StateSettings.whiskerStroke_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_value [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -1157,7 +1157,7 @@ anychart.core.StateSettings.prototype.trend;
 /**
  * Setter for the annotation trend by function.
  * @example anychart.core.StateSettings.trend_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_trendFunction [function() {
+ * @param {StrokeFunction=} opt_trendFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -1205,7 +1205,7 @@ anychart.core.StateSettings.prototype.grid;
 /**
  * Setter for the annotation grid by function.
  * @example anychart.core.StateSettings.grid_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_gridFunction [function() {
+ * @param {StrokeFunction=} opt_gridFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -1265,7 +1265,7 @@ anychart.core.StateSettings.prototype.emptyFill;
 /**
  * Setter for state fill settings for the empty part of a tank using function.
  * @example anychart.core.StateSettings.emptyFill_set_asFunc
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ * @param {FillFunction=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -1749,7 +1749,7 @@ anychart.core.StateSettings.prototype.dummyStroke;
 /**
  * Setter for tasks dummy stroke by function.
  * @example anychart.core.StateSettings.dummyStroke_set_asFunc
- * @param {function():(anychart.graphics.vector.ColoredFill|anychart.graphics.vector.Stroke)=} opt_strokeFunction [function() {
+ * @param {StrokeFunction=} opt_strokeFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -1808,7 +1808,7 @@ anychart.core.StateSettings.prototype.dummyFill;
  * Setter for the dummy fill using function.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.StateSettings.dummyFill_set_asFunc
- * @param {(function():anychart.graphics.vector.Fill)=} fillFunction [// return the fill from the default palette.
+ * @param {FillFunction=} fillFunction [// return the fill from the default palette.
  * function() {
  *   return this.sourceColor;
  * };] Fill-function, which should look like this:<pre>function() {
@@ -2567,7 +2567,7 @@ anychart.core.StateSettings.prototype.content;
 /**
  * Setter for buttons content settings using function.
  * @example anychart.core.StateSettings.content_set_asFunc
- * @param {function(anychart.graphics.vector.Path)} opt_function Buttons content.
+ * @param {ContentFunction} opt_function Buttons content.
  * Function that looks like: <pre>function(){
  *    // this.path - button element, instance of {@link anychart.graphics.vector.Path}
  *    // this.width - button width (number).
@@ -2605,7 +2605,7 @@ anychart.core.StateSettings.prototype.highFill;
 /**
  * Setter for the high fill settings using function (for the range series and Hilo series).
  * @example anychart.core.StateSettings.highFill_set_asFunc
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ * @param {FillFunction=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
@@ -2701,7 +2701,7 @@ anychart.core.StateSettings.prototype.lowFill;
 /**
  * Setter for the low fill settings using function (for the range series and Hilo series).
  * @example anychart.core.StateSettings.lowFill_set_asFunc
- * @param {function(): anychart.graphics.vector.Fill=} opt_fillFunction [function() {
+ * @param {FillFunction=} opt_fillFunction [function() {
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
