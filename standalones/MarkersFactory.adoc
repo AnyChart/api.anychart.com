@@ -19,16 +19,60 @@ anychart.standalones.MarkersFactory.Marker;
  */
 anychart.standalones.markersFactory;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.standalones.MarkersFactory.prototype.measure
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Calculates bounds for the current marker.
+ * @param {*} positionProvider Object with information about marker with current index,
+ *  it must contain <b>x</b> and <b>y</b> fields (with no offsets taken in account).
+ *  You can add any custom information of needed.
+ * @return {anychart.math.Rect} Markers bounds.
+ */
 anychart.standalones.MarkersFactory.prototype.measure;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.standalones.MarkersFactory.prototype.clear
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Clears an array of markers.
+ * @param {number=} opt_index If set, removes only the marker that is in passed index.
+ * @return {anychart.standalones.MarkersFactory} Self instance for method chaining.
+ */
 anychart.standalones.MarkersFactory.prototype.clear;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.standalones.MarkersFactory.prototype.add
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds new marker and adds it to a set taking positionProvider into account.
+ * @param {*} positionProvider Object with position settings,
+ *  it must contain <b>x</b> and <b>y</b> without offsets.
+ *  Can contain any additional info, if needed.
+ * @param {number=} opt_index Marker index.
+ * @return {anychart.standalones.MarkersFactory} Self instance for method chaining.
+ */
 anychart.standalones.MarkersFactory.prototype.add;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.standalones.MarkersFactory.prototype.draw
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Markers drawing.
+ * @return {anychart.core.ui.MarkersFactory} Self instance for method chaining.
+ */
 anychart.standalones.MarkersFactory.prototype.draw;
 
 /** @inheritDoc */
@@ -36,6 +80,24 @@ anychart.standalones.MarkersFactory.prototype.container;
 
 /** @inheritDoc */
 anychart.standalones.MarkersFactory.prototype.parentBounds;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.standalones.MarkersFactory.Marker.prototype.clear
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Resets marker to the initial state, but leaves DOM elements intact, but without the parent.
+ */
+anychart.standalones.MarkersFactory.Marker.prototype.clear = function () {};
+
+/**
+ * Marker drawing.
+ * @return {anychart.core.ui.MarkersFactory.Marker} Self instance for method chaining.
+ */
+anychart.standalones.MarkersFactory.Marker.prototype.draw;
 
 /** @inheritDoc */
 anychart.standalones.MarkersFactory.Marker.prototype.getIndex;
@@ -69,12 +131,6 @@ anychart.standalones.MarkersFactory.Marker.prototype.stroke;
 
 /** @inheritDoc */
 anychart.standalones.MarkersFactory.Marker.prototype.enabled;
-
-/** @inheritDoc */
-anychart.standalones.MarkersFactory.Marker.prototype.clear;
-
-/** @inheritDoc */
-anychart.standalones.MarkersFactory.Marker.prototype.draw;
 
 /** @inheritDoc */
 anychart.standalones.MarkersFactory.prototype.enabled;
