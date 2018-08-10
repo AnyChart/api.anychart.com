@@ -247,6 +247,9 @@ declare namespace anychart.charts {
         zIndex(value?: number): anychart.charts.Sunburst;
         legend(): anychart.core.ui.Legend;
         legend(value?: Object | boolean): anychart.charts.Sunburst;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Sunburst;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Sunburst;
     }
     namespace Sunburst {
     type StatsFieldsName = {
@@ -420,6 +423,9 @@ declare namespace anychart.charts {
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toCsv(chartDataExportMode?: string, csvSettings?: {[prop:string]:string|boolean|((name:any,value:any)=>void)|Object}): string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.TreeMap;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.TreeMap;
     }
     interface Cartesian extends anychart.core.SeparateChart {
         addSeries(...var_args: (anychart.data.View | anychart.data.Set | Array<any>)[]): Array<anychart.core.cartesian.series.Base>;
@@ -652,6 +658,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Cartesian;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Cartesian;
     }
     interface Bullet extends anychart.core.Chart {
         animation(): anychart.core.utils.Animation;
@@ -782,6 +791,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Bullet;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Bullet;
     }
     interface Polar extends anychart.core.SeparateChart {
         addSeries(...var_args: (anychart.data.View | anychart.data.Set | Array<any>)[]): Array<anychart.core.polar.series.Base>;
@@ -977,6 +989,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Polar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Polar;
     }
     interface Pert extends anychart.core.SeparateChart {
         animation(): anychart.core.utils.Animation;
@@ -1109,6 +1124,9 @@ declare namespace anychart.charts {
         toHtmlTable(title?: string, asString?: boolean): Element | string;
         tooltip(): anychart.core.ui.Tooltip;
         tooltip(tooltipSettings?: Object | boolean): anychart.charts.Pert;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Pert;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Pert;
     }
     interface Scatter extends anychart.core.SeparateChart {
         addSeries(...var_args: (anychart.data.View | anychart.data.Set | Array<any>)[]): Array<anychart.core.scatter.series.Base>;
@@ -1307,6 +1325,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Scatter;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Scatter;
     }
     interface Pareto extends anychart.core.SeparateChart {
         addSeries(...var_args: (anychart.data.View | anychart.data.Set | Array<any>)[]): Array<anychart.core.cartesian.series.Base>;
@@ -1516,6 +1537,9 @@ declare namespace anychart.charts {
         width(value?: number | string): anychart.charts.Pareto;
         zIndex(): number;
         zIndex(value?: number): anychart.charts.Pareto;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Pareto;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Pareto;
     }
     interface Venn extends anychart.core.SeparateChart {
         autoRedraw(): boolean;
@@ -1677,6 +1701,9 @@ declare namespace anychart.charts {
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
         startSelectMarquee(repeat?: boolean): anychart.charts.Venn;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Venn;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Venn;
     }
     interface Waterfall extends anychart.core.SeparateChart {
         addSeries(...var_args: (anychart.data.View | anychart.data.Set | Array<any>)[]): Array<anychart.core.cartesian.series.Base>;
@@ -1874,6 +1901,9 @@ declare namespace anychart.charts {
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
         startSelectMarquee(repeat?: boolean): anychart.charts.Waterfall;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Waterfall;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Waterfall;
     }
     interface TagCloud extends anychart.core.SeparateChart {
         angles(): Array<number>;
@@ -2026,6 +2056,9 @@ declare namespace anychart.charts {
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
         startSelectMarquee(repeat?: boolean): anychart.charts.TagCloud;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.TagCloud;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.TagCloud;
     }
     interface Cartesian3d extends anychart.core.SeparateChart {
         addSeries(...var_args: (anychart.data.View | anychart.data.Set | Array<any>)[]): Array<anychart.core.cartesian.series.Base>;
@@ -2082,7 +2115,7 @@ declare namespace anychart.charts {
         getYAxesCount(): number;
         getYScales(): Array<any>;
         globalToLocal(xCoord: number, yCoord: number): {[prop:string]:number};
-        hatchFillPalette(): anychart.palettes.Cartesian3d;
+        hatchFillPalette(): anychart.palettes.HatchFills;
         hatchFillPalette(settings?: Array<anychart.graphics.vector.HatchFill.HatchFillType> | Object | anychart.palettes.HatchFills): anychart.charts.Cartesian3d;
         height(): number | string;
         height(value?: number | string): anychart.charts.Cartesian3d;
@@ -2240,6 +2273,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Cartesian3d;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Cartesian3d;
     }
     interface Stock extends anychart.core.Chart {
         animation(): anychart.core.utils.Animation;
@@ -2388,6 +2424,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Stock;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Stock;
     }
     namespace Stock {
     type SelectedRange = {
@@ -2563,6 +2602,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Resource;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Resource;
     }
     namespace Resource {
     type ZoomLevel = {
@@ -2785,6 +2827,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Sparkline;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Sparkline;
     }
     interface Radar extends anychart.core.SeparateChart {
         addSeries(...var_args: (anychart.data.View | anychart.data.Set | Array<any>)[]): Array<anychart.core.radar.series.Base>;
@@ -2964,6 +3009,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Radar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Radar;
     }
     interface LinearGauge extends anychart.core.SeparateChart {
         addPointer(...var_args: (number | Array<any> | anychart.data.Set | anychart.data.View)[]): Array<anychart.core.linearGauge.pointers.Base>;
@@ -3119,6 +3167,9 @@ declare namespace anychart.charts {
         toHtmlTable(title?: string, asString?: boolean): Element | string;
         tooltip(): anychart.core.ui.Tooltip;
         tooltip(tooltipSettings?: Object | boolean): anychart.charts.LinearGauge;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.LinearGauge;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.LinearGauge;
     }
     interface HeatMap extends anychart.core.SeparateChart {
         animation(): anychart.core.utils.Animation;
@@ -3295,6 +3346,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.HeatMap;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.HeatMap;
     }
     interface Gantt extends anychart.core.SeparateChart {
         autoRedraw(): boolean;
@@ -3463,6 +3517,9 @@ declare namespace anychart.charts {
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
         startSelectMarquee(repeat?: boolean): anychart.charts.Gantt;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Gantt;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Gantt;
     }
     interface CircularGauge extends anychart.core.Chart {
         addPointer(...var_args: (anychart.data.View | anychart.data.Set | Array<any>)[]): Array<anychart.core.gauge.pointers.Base>;
@@ -3625,6 +3682,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.CircularGauge;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.CircularGauge;
     }
     interface Mekko extends anychart.core.SeparateChart {
         addSeries(...var_args: (anychart.data.View | anychart.data.Set | Array<any>)[]): Array<anychart.core.mekko.series.Mekko>;
@@ -3792,6 +3852,9 @@ declare namespace anychart.charts {
         zIndex(): number;
         zIndex(value?: number): anychart.charts.Mekko;
         startSelectMarquee(repeat?: boolean): anychart.charts.Mekko;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Mekko;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Mekko;
     }
     interface Pie extends anychart.core.SeparateChart {
         animation(): anychart.core.utils.Animation;
@@ -3981,6 +4044,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Pie;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Pie;
     }
     interface Funnel extends anychart.core.SeparateChart {
         animation(): anychart.core.utils.Animation;
@@ -4152,6 +4218,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Funnel;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Funnel;
     }
     interface Map extends anychart.core.SeparateChart {
         addSeries(...var_args: (anychart.data.View | anychart.data.Set | Array<any>)[]): Array<anychart.core.map.series.Base>;
@@ -4348,6 +4417,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Map;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Map;
     }
     interface Pyramid extends anychart.core.SeparateChart {
         animation(): anychart.core.utils.Animation;
@@ -4516,6 +4588,9 @@ declare namespace anychart.charts {
         shareWithTwitter(): void;
         toA11yTable(title?: string, asString?: boolean): Element | string;
         toHtmlTable(title?: string, asString?: boolean): Element | string;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.charts.Pyramid;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.charts.Pyramid;
     }
 }
 
@@ -4554,10 +4629,15 @@ declare namespace anychart.core {
         type: anychart.graphics.events.EventType;
     }
     interface VisualBase extends anychart.core.Base {
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.VisualBase;
         enabled(): boolean;
         enabled(value?: boolean): anychart.core.VisualBase;
         listen(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
         listenOnce(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.VisualBase;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.VisualBase;
         print(paperSizeOrOptions?: anychart.graphics.vector.PaperSize | Object, landscape?: boolean): void;
         removeAllListeners(type?: string): number;
         unlisten(type: string, listener: ((e:Object)=>boolean), useCapture?: boolean, listenerScope?: Object): boolean;
@@ -4906,6 +4986,9 @@ declare namespace anychart.core {
         zIndex(value?: number): anychart.core.SeparateChart;
         dispose(): void;
         startSelectMarquee(repeat?: boolean): anychart.core.SeparateChart;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.SeparateChart;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.SeparateChart;
     }
     interface Chart extends anychart.core.VisualBaseWithBounds {
         a11y(): anychart.core.utils.ChartA11y;
@@ -5019,6 +5102,9 @@ declare namespace anychart.core {
         width(value?: number | string): anychart.core.Chart;
         zIndex(): number;
         zIndex(value?: number): anychart.core.Chart;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.Chart;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.Chart;
     }
     interface SeriesPoint extends anychart.core.Point {
         exists(): boolean;
@@ -5121,6 +5207,11 @@ declare namespace anychart.core {
         width(value?: number | string): anychart.core.SeriesBase;
         zIndex(): number;
         zIndex(value?: number): anychart.core.SeriesBase;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.SeriesBase;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.SeriesBase;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.SeriesBase;
     }
     interface Text extends anychart.core.VisualBase {
         disablePointerEvents(): boolean;
@@ -5177,6 +5268,11 @@ declare namespace anychart.core {
         wordWrap(value?: string): anychart.core.Text;
         zIndex(): number;
         zIndex(value?: number): anychart.core.Text;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.Text;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.Text;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.Text;
     }
     interface TreeChartPoint extends anychart.core.Point {
         exists(): boolean;
@@ -5226,6 +5322,11 @@ declare namespace anychart.core {
         width(value?: number | string): anychart.core.VisualBaseWithBounds;
         zIndex(): number;
         zIndex(value?: number): anychart.core.VisualBaseWithBounds;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.VisualBaseWithBounds;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.VisualBaseWithBounds;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.VisualBaseWithBounds;
     }
     interface ChoroplethPoint extends anychart.core.SeriesPoint {
         crs(): string;
@@ -5396,6 +5497,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.Ray;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.Ray;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.Ray;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.Ray;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.Ray;
     }
     interface InfiniteLine extends anychart.core.annotations.Base {
         allowEdit(): boolean;
@@ -5466,6 +5572,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.InfiniteLine;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.InfiniteLine;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.InfiniteLine;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.InfiniteLine;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.InfiniteLine;
     }
     interface Label extends anychart.core.annotations.Base {
         adjustFontSize(): Object;
@@ -5587,6 +5698,11 @@ declare namespace anychart.core.annotations {
         zIndex(value?: number): anychart.core.annotations.Label;
         color(): string;
         color(value: string): anychart.core.annotations.Label;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.Label;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.Label;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.Label;
     }
     interface FibonacciFan extends anychart.core.annotations.FibonacciBase {
         allowEdit(): boolean;
@@ -5669,6 +5785,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.FibonacciFan;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.FibonacciFan;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.FibonacciFan;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.FibonacciFan;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.FibonacciFan;
     }
     interface Rectangle extends anychart.core.annotations.Base {
         allowEdit(): boolean;
@@ -5748,6 +5869,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.Rectangle;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.Rectangle;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.Rectangle;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.Rectangle;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.Rectangle;
     }
     interface AndrewsPitchfork extends anychart.core.annotations.Base {
         color(): string;
@@ -5822,6 +5948,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.AndrewsPitchfork;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.AndrewsPitchfork;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.AndrewsPitchfork;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.AndrewsPitchfork;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.AndrewsPitchfork;
     }
     interface Base extends anychart.core.VisualBaseWithBounds {
         allowEdit(): boolean;
@@ -5880,6 +6011,11 @@ declare namespace anychart.core.annotations {
         yScale(value?: anychart.scales.Base | Object | string): anychart.core.annotations.Base;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.Base;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.Base;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.Base;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.Base;
     }
     interface PlotController extends anychart.core.VisualBase {
         add(annotationTypeOrConfig: string | anychart.core.annotations.AnnotationJSONFormat): anychart.core.annotations.Base;
@@ -5923,6 +6059,11 @@ declare namespace anychart.core.annotations {
         verticalLine(config?: Object): anychart.core.annotations.VerticalLine;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.PlotController;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.PlotController;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.PlotController;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.PlotController;
     }
     interface FibonacciBase extends anychart.core.annotations.Base {
         allowEdit(): boolean;
@@ -6000,6 +6141,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.FibonacciBase;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.FibonacciBase;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.FibonacciBase;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.FibonacciBase;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.FibonacciBase;
     }
     interface Triangle extends anychart.core.annotations.Base {
         allowEdit(): boolean;
@@ -6079,6 +6225,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.Triangle;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.Triangle;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.Triangle;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.Triangle;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.Triangle;
     }
     interface FibonacciRetracement extends anychart.core.annotations.FibonacciBase {
         allowEdit(): boolean;
@@ -6156,6 +6307,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.FibonacciRetracement;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.FibonacciRetracement;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.FibonacciRetracement;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.FibonacciRetracement;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.FibonacciRetracement;
     }
     interface TrendChannel extends anychart.core.annotations.Base {
         allowEdit(): boolean;
@@ -6239,6 +6395,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.TrendChannel;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.TrendChannel;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.TrendChannel;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.TrendChannel;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.TrendChannel;
     }
     interface VerticalLine extends anychart.core.annotations.Base {
         allowEdit(): boolean;
@@ -6303,6 +6464,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.VerticalLine;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.VerticalLine;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.VerticalLine;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.VerticalLine;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.VerticalLine;
     }
     interface HorizontalLine extends anychart.core.annotations.Base {
         allowEdit(): boolean;
@@ -6367,6 +6533,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.HorizontalLine;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.HorizontalLine;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.HorizontalLine;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.HorizontalLine;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.HorizontalLine;
     }
     interface ChartController extends anychart.core.Base {
         cancelDrawing(): void;
@@ -6458,6 +6629,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.FibonacciArc;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.FibonacciArc;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.FibonacciArc;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.FibonacciArc;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.FibonacciArc;
     }
     interface Line extends anychart.core.annotations.Base {
         allowEdit(): boolean;
@@ -6528,6 +6704,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.Line;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.Line;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.Line;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.Line;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.Line;
     }
     interface FibonacciTimezones extends anychart.core.annotations.FibonacciBase {
         allowEdit(): boolean;
@@ -6605,6 +6786,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.FibonacciTimezones;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.FibonacciTimezones;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.FibonacciTimezones;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.FibonacciTimezones;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.FibonacciTimezones;
     }
     interface Ellipse extends anychart.core.annotations.Base {
         allowEdit(): boolean;
@@ -6684,6 +6870,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.Ellipse;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.Ellipse;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.Ellipse;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.Ellipse;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.Ellipse;
     }
     interface Marker extends anychart.core.annotations.Base {
         allowEdit(): boolean;
@@ -6769,6 +6960,11 @@ declare namespace anychart.core.annotations {
         width(value?: number | string): anychart.core.annotations.Marker;
         zIndex(): number;
         zIndex(value?: number): anychart.core.annotations.Marker;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.annotations.Marker;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.annotations.Marker;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.annotations.Marker;
     }
 }
 
@@ -6802,6 +6998,11 @@ declare namespace anychart.core.axes {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axes.CircularTicks;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axes.CircularTicks;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axes.CircularTicks;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axes.CircularTicks;
     }
     interface Polar extends anychart.core.VisualBase {
         enabled(): boolean;
@@ -6836,6 +7037,11 @@ declare namespace anychart.core.axes {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axes.Polar;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axes.Polar;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axes.Polar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axes.Polar;
     }
     interface Linear extends anychart.core.VisualBase {
         drawFirstLabel(): boolean;
@@ -6882,6 +7088,11 @@ declare namespace anychart.core.axes {
         width(value?: number | string): anychart.core.axes.Linear;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axes.Linear;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axes.Linear;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axes.Linear;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axes.Linear;
     }
     interface MapSettings extends anychart.core.VisualBase {
         bottom(): anychart.core.axes.Map;
@@ -6921,6 +7132,11 @@ declare namespace anychart.core.axes {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axes.MapSettings;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axes.MapSettings;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axes.MapSettings;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axes.MapSettings;
     }
     interface Radial extends anychart.core.VisualBase {
         drawFirstLabel(): boolean;
@@ -6952,6 +7168,11 @@ declare namespace anychart.core.axes {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axes.Radial;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axes.Radial;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axes.Radial;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axes.Radial;
     }
     interface Ticks extends anychart.core.VisualBase {
         enabled(): boolean;
@@ -6972,6 +7193,11 @@ declare namespace anychart.core.axes {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axes.Ticks;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axes.Ticks;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axes.Ticks;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axes.Ticks;
     }
     interface Circular extends anychart.core.VisualBase {
         cornersRounding(): string;
@@ -7016,6 +7242,11 @@ declare namespace anychart.core.axes {
         width(value?: number | string): anychart.core.axes.Circular;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axes.Circular;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axes.Circular;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axes.Circular;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axes.Circular;
     }
     interface StockDateTime extends anychart.core.VisualBase {
         background(): anychart.core.ui.Background;
@@ -7044,6 +7275,11 @@ declare namespace anychart.core.axes {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axes.StockDateTime;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axes.StockDateTime;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axes.StockDateTime;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axes.StockDateTime;
     }
     interface Radar extends anychart.core.VisualBase {
         enabled(): boolean;
@@ -7066,6 +7302,11 @@ declare namespace anychart.core.axes {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axes.Radar;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axes.Radar;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axes.Radar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axes.Radar;
     }
     interface LinearGauge extends anychart.core.axes.Linear {
         drawFirstLabel(): boolean;
@@ -7114,6 +7355,11 @@ declare namespace anychart.core.axes {
         zIndex(): number;
         zIndex(value?: number): anychart.core.axes.LinearGauge;
         getPixelBounds(): anychart.math.Rect;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axes.LinearGauge;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axes.LinearGauge;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axes.LinearGauge;
     }
     interface MapTicks extends anychart.core.VisualBase {
         enabled(): boolean;
@@ -7133,6 +7379,11 @@ declare namespace anychart.core.axes {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axes.MapTicks;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axes.MapTicks;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axes.MapTicks;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axes.MapTicks;
     }
     interface Map extends anychart.core.VisualBase {
         drawFirstLabel(): boolean;
@@ -7164,6 +7415,11 @@ declare namespace anychart.core.axes {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axes.Map;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axes.Map;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axes.Map;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axes.Map;
     }
 }
 
@@ -7189,6 +7445,11 @@ declare namespace anychart.core.axisMarkers {
         value(value?: number | string): anychart.core.axisMarkers.GanttLine;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axisMarkers.GanttLine;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axisMarkers.GanttLine;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axisMarkers.GanttLine;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axisMarkers.GanttLine;
     }
     interface GanttText extends anychart.core.Text {
         align(): string;
@@ -7273,6 +7534,11 @@ declare namespace anychart.core.axisMarkers {
         wordWrap(value?: string): anychart.core.axisMarkers.GanttText;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axisMarkers.GanttText;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axisMarkers.GanttText;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axisMarkers.GanttText;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axisMarkers.GanttText;
     }
     interface GanttRange extends anychart.core.VisualBase {
         enabled(): boolean;
@@ -7300,6 +7566,11 @@ declare namespace anychart.core.axisMarkers {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axisMarkers.GanttRange;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axisMarkers.GanttRange;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axisMarkers.GanttRange;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axisMarkers.GanttRange;
     }
     interface CircularRange extends anychart.core.VisualBase {
         axisIndex(): number;
@@ -7330,6 +7601,11 @@ declare namespace anychart.core.axisMarkers {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axisMarkers.CircularRange;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axisMarkers.CircularRange;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axisMarkers.CircularRange;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axisMarkers.CircularRange;
     }
     interface Text extends anychart.core.Text {
         align(): string;
@@ -7418,6 +7694,11 @@ declare namespace anychart.core.axisMarkers {
         wordWrap(value?: string): anychart.core.axisMarkers.Text;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axisMarkers.Text;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axisMarkers.Text;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axisMarkers.Text;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axisMarkers.Text;
     }
     interface CurrentPriceIndicator extends anychart.core.VisualBase {
         axis(): anychart.core.axes.Linear;
@@ -7453,6 +7734,11 @@ declare namespace anychart.core.axisMarkers {
         valueField(value: string): string;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axisMarkers.CurrentPriceIndicator;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axisMarkers.CurrentPriceIndicator;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axisMarkers.CurrentPriceIndicator;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axisMarkers.CurrentPriceIndicator;
     }
     interface Line extends anychart.core.VisualBase {
         axis(): anychart.core.axes.Linear;
@@ -7479,6 +7765,11 @@ declare namespace anychart.core.axisMarkers {
         value(newValue?: number): anychart.core.axisMarkers.Line;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axisMarkers.Line;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axisMarkers.Line;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axisMarkers.Line;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axisMarkers.Line;
     }
     interface Range extends anychart.core.VisualBase {
         axis(): anychart.core.axes.Linear;
@@ -7510,6 +7801,11 @@ declare namespace anychart.core.axisMarkers {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.axisMarkers.Range;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.axisMarkers.Range;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.axisMarkers.Range;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.axisMarkers.Range;
     }
 }
 
@@ -7624,6 +7920,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.ContinuousBase;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.ContinuousBase;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.ContinuousBase;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.ContinuousBase;
     }
     interface Box extends anychart.core.cartesian.series.WidthBased {
         bottom(): number | string;
@@ -7765,6 +8066,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Box;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Box;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Box;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Box;
     }
     interface Line3d extends anychart.core.cartesian.series.ContinuousBase {
         bottom(): number | string;
@@ -7875,6 +8181,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Line3d;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Line3d;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Line3d;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Line3d;
     }
     interface SplineArea extends anychart.core.cartesian.series.ContinuousBase {
         bottom(): number | string;
@@ -7996,6 +8307,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.SplineArea;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.SplineArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.SplineArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.SplineArea;
     }
     interface Spline extends anychart.core.cartesian.series.ContinuousBase {
         bottom(): number | string;
@@ -8108,6 +8424,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Spline;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Spline;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Spline;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Spline;
     }
     interface DiscreteBase extends anychart.core.cartesian.series.BaseWithMarkers {
         excludePoint(indexes: number | Array<number>): boolean;
@@ -8216,6 +8537,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.DiscreteBase;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.DiscreteBase;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.DiscreteBase;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.DiscreteBase;
     }
     interface RangeStepArea extends anychart.core.cartesian.series.ContinuousRangeBase {
         bottom(): number | string;
@@ -8343,6 +8669,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.RangeStepArea;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.RangeStepArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.RangeStepArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.RangeStepArea;
     }
     interface StepArea extends anychart.core.cartesian.series.ContinuousBase {
         bottom(): number | string;
@@ -8466,6 +8797,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.StepArea;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.StepArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.StepArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.StepArea;
     }
     interface Base extends anychart.core.SeriesBase {
         bottom(): number | string;
@@ -8572,6 +8908,11 @@ declare namespace anychart.core.cartesian.series {
         hover(): anychart.core.cartesian.series.Base;
         hover(index?: number): anychart.core.cartesian.series.Base;
         hover(indexes?: Array<number>): anychart.core.cartesian.series.Base;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Base;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Base;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Base;
     }
     interface RangeBar extends anychart.core.cartesian.series.WidthBased {
         bottom(): number | string;
@@ -8697,6 +9038,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.RangeBar;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.RangeBar;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.RangeBar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.RangeBar;
     }
     interface Column3d extends anychart.core.cartesian.series.WidthBased {
         bottom(): number | string;
@@ -8820,6 +9166,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Column3d;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Column3d;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Column3d;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Column3d;
     }
     interface ContinuousRangeBase extends anychart.core.cartesian.series.ContinuousBase {
         bottom(): number | string;
@@ -8945,6 +9296,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.ContinuousRangeBase;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.ContinuousRangeBase;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.ContinuousRangeBase;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.ContinuousRangeBase;
     }
     interface Area extends anychart.core.cartesian.series.ContinuousBase {
         bottom(): number | string;
@@ -9066,6 +9422,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Area;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Area;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Area;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Area;
     }
     interface Stick extends anychart.core.cartesian.series.WidthBased {
         bottom(): number | string;
@@ -9182,6 +9543,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Stick;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Stick;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Stick;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Stick;
     }
     interface Bubble extends anychart.core.cartesian.series.BaseWithMarkers {
         bottom(): number | string;
@@ -9316,6 +9682,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Bubble;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Bubble;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Bubble;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Bubble;
     }
     interface Bar extends anychart.core.cartesian.series.WidthBased {
         bottom(): number | string;
@@ -9441,6 +9812,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Bar;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Bar;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Bar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Bar;
     }
     interface Area3d extends anychart.core.cartesian.series.ContinuousBase {
         bottom(): number | string;
@@ -9555,6 +9931,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Area3d;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Area3d;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Area3d;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Area3d;
     }
     interface OHLC extends anychart.core.cartesian.series.WidthBased {
         bottom(): number | string;
@@ -9675,6 +10056,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.OHLC;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.OHLC;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.OHLC;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.OHLC;
     }
     interface Candlestick extends anychart.core.cartesian.series.OHLC {
         bottom(): number | string;
@@ -9813,6 +10199,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Candlestick;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Candlestick;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Candlestick;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Candlestick;
     }
     interface Column extends anychart.core.cartesian.series.WidthBased {
         bottom(): number | string;
@@ -9938,6 +10329,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Column;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Column;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Column;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Column;
     }
     interface WidthBased extends anychart.core.cartesian.series.BaseWithMarkers {
         bottom(): number | string;
@@ -10050,6 +10446,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.WidthBased;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.WidthBased;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.WidthBased;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.WidthBased;
     }
     interface RangeArea extends anychart.core.cartesian.series.ContinuousRangeBase {
         bottom(): number | string;
@@ -10175,6 +10576,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.RangeArea;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.RangeArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.RangeArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.RangeArea;
     }
     interface BaseWithMarkers extends anychart.core.cartesian.series.Base {
         bottom(): number | string;
@@ -10281,6 +10687,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.BaseWithMarkers;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.BaseWithMarkers;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.BaseWithMarkers;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.BaseWithMarkers;
     }
     interface JumpLine extends anychart.core.cartesian.series.WidthBased {
         bottom(): number | string;
@@ -10397,6 +10808,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.JumpLine;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.JumpLine;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.JumpLine;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.JumpLine;
     }
     interface StepLine extends anychart.core.cartesian.series.ContinuousBase {
         bottom(): number | string;
@@ -10511,6 +10927,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.StepLine;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.StepLine;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.StepLine;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.StepLine;
     }
     interface Line extends anychart.core.cartesian.series.ContinuousBase {
         bottom(): number | string;
@@ -10626,6 +11047,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Line;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Line;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Line;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Line;
     }
     interface RangeColumn extends anychart.core.cartesian.series.WidthBased {
         bottom(): number | string;
@@ -10751,6 +11177,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.RangeColumn;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.RangeColumn;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.RangeColumn;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.RangeColumn;
     }
     interface RangeSplineArea extends anychart.core.cartesian.series.ContinuousRangeBase {
         bottom(): number | string;
@@ -10876,6 +11307,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.RangeSplineArea;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.RangeSplineArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.RangeSplineArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.RangeSplineArea;
     }
     interface Hilo extends anychart.core.cartesian.series.ContinuousBase {
         bottom(): number | string;
@@ -10988,6 +11424,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Hilo;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Hilo;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Hilo;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Hilo;
     }
     interface Marker extends anychart.core.cartesian.series.Base {
         bottom(): number | string;
@@ -11111,6 +11552,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Marker;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Marker;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Marker;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Marker;
     }
     interface Bar3d extends anychart.core.cartesian.series.WidthBased {
         bottom(): number | string;
@@ -11223,6 +11669,11 @@ declare namespace anychart.core.cartesian.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.cartesian.series.Bar3d;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.cartesian.series.Bar3d;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.cartesian.series.Bar3d;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.cartesian.series.Bar3d;
     }
 }
 
@@ -11341,6 +11792,11 @@ declare namespace anychart.core.gantt {
         wordWrap(value?: string): anychart.core.gantt.TimeLineHeader;
         zIndex(): number;
         zIndex(value?: number): anychart.core.gantt.TimeLineHeader;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.gantt.TimeLineHeader;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.gantt.TimeLineHeader;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.gantt.TimeLineHeader;
     }
     namespace TimeLineHeader {
     type Level = {
@@ -11507,6 +11963,11 @@ declare namespace anychart.core.gantt {
         top(value?: number | string): anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings;
         width(): number | string;
         width(value?: number | string): anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.gantt.TimeLineHeaderLevelHolidaysSettings;
     }
     interface DataGridButton extends anychart.core.VisualBase {
         content(): string | number;
@@ -11577,6 +12038,11 @@ declare namespace anychart.core.gantt {
         wordWrap(value?: string): anychart.core.gantt.DataGridButton;
         zIndex(): number;
         zIndex(value?: number): anychart.core.gantt.DataGridButton;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.gantt.DataGridButton;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.gantt.DataGridButton;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.gantt.DataGridButton;
     }
 }
 
@@ -11994,6 +12460,11 @@ declare namespace anychart.core.gauge {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.gauge.Cap;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.gauge.Cap;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.gauge.Cap;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.gauge.Cap;
     }
 }
 
@@ -12041,6 +12512,11 @@ declare namespace anychart.core.gauge.pointers {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.gauge.pointers.Needle;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.gauge.pointers.Needle;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.gauge.pointers.Needle;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.gauge.pointers.Needle;
     }
     interface Base extends anychart.core.VisualBase {
         axisIndex(): number;
@@ -12073,6 +12549,11 @@ declare namespace anychart.core.gauge.pointers {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.gauge.pointers.Base;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.gauge.pointers.Base;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.gauge.pointers.Base;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.gauge.pointers.Base;
     }
     interface Bar extends anychart.core.gauge.pointers.Base {
         axisIndex(): number;
@@ -12111,6 +12592,11 @@ declare namespace anychart.core.gauge.pointers {
         width(value?: number | string): anychart.core.gauge.pointers.Bar;
         zIndex(): number;
         zIndex(value?: number): anychart.core.gauge.pointers.Bar;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.gauge.pointers.Bar;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.gauge.pointers.Bar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.gauge.pointers.Bar;
     }
     interface Knob extends anychart.core.gauge.pointers.Base {
         axisIndex(): number;
@@ -12155,6 +12641,11 @@ declare namespace anychart.core.gauge.pointers {
         verticesCurvature(value?: number): anychart.core.gauge.pointers.Knob;
         zIndex(): number;
         zIndex(value?: number): anychart.core.gauge.pointers.Knob;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.gauge.pointers.Knob;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.gauge.pointers.Knob;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.gauge.pointers.Knob;
     }
     interface Marker extends anychart.core.gauge.pointers.Base {
         axisIndex(): number;
@@ -12195,6 +12686,11 @@ declare namespace anychart.core.gauge.pointers {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.gauge.pointers.Marker;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.gauge.pointers.Marker;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.gauge.pointers.Marker;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.gauge.pointers.Marker;
     }
 }
 
@@ -12233,6 +12729,11 @@ declare namespace anychart.core.grids {
         yScale(value?: anychart.scales.Base | string | Object): anychart.core.grids.Polar;
         zIndex(): number;
         zIndex(value?: number): anychart.core.grids.Polar;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.grids.Polar;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.grids.Polar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.grids.Polar;
     }
     interface Linear extends anychart.core.VisualBase {
         axis(): anychart.core.axes.Linear;
@@ -12268,6 +12769,11 @@ declare namespace anychart.core.grids {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.grids.Linear;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.grids.Linear;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.grids.Linear;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.grids.Linear;
     }
     interface MapSettings extends anychart.core.Base {
         drawFirstLine(): boolean;
@@ -12336,6 +12842,11 @@ declare namespace anychart.core.grids {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.grids.Stock;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.grids.Stock;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.grids.Stock;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.grids.Stock;
     }
     interface Radar extends anychart.core.VisualBase {
         axis(): anychart.core.axes.Radar | anychart.core.axes.Radial;
@@ -12372,6 +12883,11 @@ declare namespace anychart.core.grids {
         yScale(value?: anychart.scales.Base | string | Object): anychart.core.grids.Radar;
         zIndex(): number;
         zIndex(value?: number): anychart.core.grids.Radar;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.grids.Radar;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.grids.Radar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.grids.Radar;
     }
     interface Map extends anychart.core.VisualBase {
         drawFirstLine(): boolean;
@@ -12403,6 +12919,11 @@ declare namespace anychart.core.grids {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.grids.Map;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.grids.Map;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.grids.Map;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.grids.Map;
     }
 }
 
@@ -12431,10 +12952,15 @@ declare namespace anychart.core.linearGauge {
         to(value?: string | number): anychart.core.linearGauge.ScaleBar;
         width(): string;
         width(value?: string): anychart.core.linearGauge.ScaleBar;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.linearGauge.ScaleBar;
         enabled(): boolean;
         enabled(value?: boolean): anychart.core.linearGauge.ScaleBar;
         listen(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
         listenOnce(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.linearGauge.ScaleBar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.linearGauge.ScaleBar;
         print(paperSizeOrOptions?: anychart.graphics.vector.PaperSize | Object, landscape?: boolean): void;
         removeAllListeners(type?: string): number;
         unlisten(type: string, listener: ((e:Object)=>boolean), useCapture?: boolean, listenerScope?: Object): boolean;
@@ -12512,6 +13038,11 @@ declare namespace anychart.core.linearGauge.pointers {
         width(value?: string): anychart.core.linearGauge.pointers.Tank;
         zIndex(): number;
         zIndex(value?: number): anychart.core.linearGauge.pointers.Tank;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.linearGauge.pointers.Tank;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.linearGauge.pointers.Tank;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.linearGauge.pointers.Tank;
     }
     interface Base extends anychart.core.VisualBase {
         color(): string;
@@ -12557,10 +13088,15 @@ declare namespace anychart.core.linearGauge.pointers {
         unselect(): anychart.core.linearGauge.pointers.Base;
         width(): string;
         width(value?: string): anychart.core.linearGauge.pointers.Base;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.linearGauge.pointers.Base;
         enabled(): boolean;
         enabled(value?: boolean): anychart.core.linearGauge.pointers.Base;
         listen(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
         listenOnce(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.linearGauge.pointers.Base;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.linearGauge.pointers.Base;
         print(paperSizeOrOptions?: anychart.graphics.vector.PaperSize | Object, landscape?: boolean): void;
         removeAllListeners(type?: string): number;
         unlisten(type: string, listener: ((e:Object)=>boolean), useCapture?: boolean, listenerScope?: Object): boolean;
@@ -12622,6 +13158,11 @@ declare namespace anychart.core.linearGauge.pointers {
         width(value?: string): anychart.core.linearGauge.pointers.RangeBar;
         zIndex(): number;
         zIndex(value?: number): anychart.core.linearGauge.pointers.RangeBar;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.linearGauge.pointers.RangeBar;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.linearGauge.pointers.RangeBar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.linearGauge.pointers.RangeBar;
     }
     interface Bar extends anychart.core.linearGauge.pointers.Base {
         color(): string;
@@ -12677,6 +13218,11 @@ declare namespace anychart.core.linearGauge.pointers {
         width(value?: string): anychart.core.linearGauge.pointers.Bar;
         zIndex(): number;
         zIndex(value?: number): anychart.core.linearGauge.pointers.Bar;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.linearGauge.pointers.Bar;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.linearGauge.pointers.Bar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.linearGauge.pointers.Bar;
     }
     interface Led extends anychart.core.linearGauge.pointers.Base {
         color(): string;
@@ -12742,6 +13288,11 @@ declare namespace anychart.core.linearGauge.pointers {
         width(value?: string): anychart.core.linearGauge.pointers.Led;
         zIndex(): number;
         zIndex(value?: number): anychart.core.linearGauge.pointers.Led;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.linearGauge.pointers.Led;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.linearGauge.pointers.Led;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.linearGauge.pointers.Led;
     }
     interface Marker extends anychart.core.linearGauge.pointers.Base {
         color(): string;
@@ -12799,6 +13350,11 @@ declare namespace anychart.core.linearGauge.pointers {
         width(value?: string): anychart.core.linearGauge.pointers.Marker;
         zIndex(): number;
         zIndex(value?: number): anychart.core.linearGauge.pointers.Marker;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.linearGauge.pointers.Marker;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.linearGauge.pointers.Marker;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.linearGauge.pointers.Marker;
     }
     interface Thermometer extends anychart.core.linearGauge.pointers.Base {
         bulbPadding(): string | number;
@@ -12858,6 +13414,11 @@ declare namespace anychart.core.linearGauge.pointers {
         width(value?: string): anychart.core.linearGauge.pointers.Thermometer;
         zIndex(): number;
         zIndex(value?: number): anychart.core.linearGauge.pointers.Thermometer;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.linearGauge.pointers.Thermometer;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.linearGauge.pointers.Thermometer;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.linearGauge.pointers.Thermometer;
     }
 }
 
@@ -12967,6 +13528,11 @@ declare namespace anychart.core.map.series {
         colorScale(settings?: anychart.scales.LinearColor | anychart.scales.OrdinalColor | Object | string): anychart.core.map.series.Base;
         markers(): anychart.core.ui.MarkersFactory;
         markers(value?: Object | boolean | string): anychart.core.map.series.Base;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.map.series.Base;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.map.series.Base;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.map.series.Base;
     }
     interface Choropleth extends anychart.core.map.series.BaseWithMarkers {
         allowPointsSelect(): boolean;
@@ -13070,6 +13636,11 @@ declare namespace anychart.core.map.series {
         zIndex(value?: number): anychart.core.map.series.Choropleth;
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.map.series.Choropleth;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.map.series.Choropleth;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.map.series.Choropleth;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.map.series.Choropleth;
     }
     interface Bubble extends anychart.core.map.series.BaseWithMarkers {
         allowPointsSelect(): boolean;
@@ -13186,6 +13757,11 @@ declare namespace anychart.core.map.series {
         zIndex(value?: number): anychart.core.map.series.Bubble;
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.map.series.Bubble;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.map.series.Bubble;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.map.series.Bubble;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.map.series.Bubble;
     }
     interface BaseWithMarkers extends anychart.core.map.series.Base {
         allowPointsSelect(): boolean;
@@ -13289,6 +13865,11 @@ declare namespace anychart.core.map.series {
         a11y(value?: boolean | Object): anychart.core.map.series.BaseWithMarkers;
         colorScale(): anychart.scales.LinearColor | anychart.scales.OrdinalColor;
         colorScale(settings?: anychart.scales.LinearColor | anychart.scales.OrdinalColor | Object | string): anychart.core.map.series.BaseWithMarkers;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.map.series.BaseWithMarkers;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.map.series.BaseWithMarkers;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.map.series.BaseWithMarkers;
     }
     interface Connector extends anychart.core.map.series.BaseWithMarkers {
         allowPointsSelect(): boolean;
@@ -13398,6 +13979,11 @@ declare namespace anychart.core.map.series {
         zIndex(value?: number): anychart.core.map.series.Connector;
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.map.series.Connector;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.map.series.Connector;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.map.series.Connector;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.map.series.Connector;
     }
     interface Marker extends anychart.core.map.series.Base {
         allowPointsSelect(): boolean;
@@ -13505,6 +14091,11 @@ declare namespace anychart.core.map.series {
         a11y(value?: boolean | Object): anychart.core.map.series.Marker;
         markers(): anychart.core.ui.MarkersFactory;
         markers(value?: Object | boolean | string): anychart.core.map.series.Marker;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.map.series.Marker;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.map.series.Marker;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.map.series.Marker;
     }
 }
 
@@ -13636,6 +14227,11 @@ declare namespace anychart.core.mekko.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.mekko.series.Mekko;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.mekko.series.Mekko;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.mekko.series.Mekko;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.mekko.series.Mekko;
     }
 }
 
@@ -13829,6 +14425,11 @@ declare namespace anychart.core.polar.series {
         pointWidth(value?: number | string): anychart.core.polar.series.Polyline;
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.polar.series.Polyline;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.polar.series.Polyline;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.polar.series.Polyline;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.polar.series.Polyline;
     }
     interface ContinuousBase extends anychart.core.polar.series.Base {
         bottom(): number | string;
@@ -13931,6 +14532,11 @@ declare namespace anychart.core.polar.series {
         pointWidth(value?: number | string): anychart.core.polar.series.ContinuousBase;
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.polar.series.ContinuousBase;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.polar.series.ContinuousBase;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.polar.series.ContinuousBase;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.polar.series.ContinuousBase;
     }
     interface Base extends anychart.core.SeriesBase {
         bottom(): number | string;
@@ -14029,6 +14635,11 @@ declare namespace anychart.core.polar.series {
         hover(indexes?: Array<number>): anychart.core.polar.series.Base;
         markers(): anychart.core.ui.MarkersFactory;
         markers(value?: Object | boolean | string): anychart.core.polar.series.Base;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.polar.series.Base;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.polar.series.Base;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.polar.series.Base;
     }
     interface Area extends anychart.core.polar.series.ContinuousBase {
         bottom(): number | string;
@@ -14144,6 +14755,11 @@ declare namespace anychart.core.polar.series {
         pointWidth(value?: number | string): anychart.core.polar.series.Area;
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.polar.series.Area;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.polar.series.Area;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.polar.series.Area;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.polar.series.Area;
     }
     interface Column extends anychart.core.polar.series.Base {
         bottom(): number | string;
@@ -14256,6 +14872,11 @@ declare namespace anychart.core.polar.series {
         keepOnlyPoints(indexes: number | Array<number>): void;
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.polar.series.Column;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.polar.series.Column;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.polar.series.Column;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.polar.series.Column;
     }
     interface Line extends anychart.core.polar.series.ContinuousBase {
         bottom(): number | string;
@@ -14361,6 +14982,11 @@ declare namespace anychart.core.polar.series {
         pointWidth(value?: number | string): anychart.core.polar.series.Line;
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.polar.series.Line;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.polar.series.Line;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.polar.series.Line;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.polar.series.Line;
     }
     interface RangeColumn extends anychart.core.polar.series.Base {
         bottom(): number | string;
@@ -14472,6 +15098,11 @@ declare namespace anychart.core.polar.series {
         keepOnlyPoints(indexes: number | Array<number>): void;
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.polar.series.RangeColumn;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.polar.series.RangeColumn;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.polar.series.RangeColumn;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.polar.series.RangeColumn;
     }
     interface Marker extends anychart.core.polar.series.Base {
         bottom(): number | string;
@@ -14587,6 +15218,11 @@ declare namespace anychart.core.polar.series {
         a11y(value?: boolean | Object): anychart.core.polar.series.Marker;
         markers(): anychart.core.ui.MarkersFactory;
         markers(value?: Object | boolean | string): anychart.core.polar.series.Marker;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.polar.series.Marker;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.polar.series.Marker;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.polar.series.Marker;
     }
     interface Polygon extends anychart.core.polar.series.ContinuousBase {
         bottom(): number | string;
@@ -14702,6 +15338,11 @@ declare namespace anychart.core.polar.series {
         pointWidth(value?: number | string): anychart.core.polar.series.Polygon;
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.polar.series.Polygon;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.polar.series.Polygon;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.polar.series.Polygon;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.polar.series.Polygon;
     }
 }
 
@@ -14802,6 +15443,11 @@ declare namespace anychart.core.radar.series {
         keepOnlyPoints(indexes: number | Array<number>): void;
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.radar.series.ContinuousBase;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.radar.series.ContinuousBase;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.radar.series.ContinuousBase;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.radar.series.ContinuousBase;
     }
     interface Base extends anychart.core.SeriesBase {
         bottom(): number | string;
@@ -14896,6 +15542,11 @@ declare namespace anychart.core.radar.series {
         a11y(value?: boolean | Object): anychart.core.radar.series.Base;
         markers(): anychart.core.ui.MarkersFactory;
         markers(value?: Object | boolean | string): anychart.core.radar.series.Base;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.radar.series.Base;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.radar.series.Base;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.radar.series.Base;
     }
     interface Area extends anychart.core.radar.series.ContinuousBase {
         bottom(): number | string;
@@ -15003,6 +15654,11 @@ declare namespace anychart.core.radar.series {
         zIndex(value?: number): anychart.core.radar.series.Area;
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.radar.series.Area;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.radar.series.Area;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.radar.series.Area;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.radar.series.Area;
     }
     interface Line extends anychart.core.radar.series.ContinuousBase {
         bottom(): number | string;
@@ -15101,6 +15757,11 @@ declare namespace anychart.core.radar.series {
         zIndex(value?: number): anychart.core.radar.series.Line;
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.radar.series.Line;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.radar.series.Line;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.radar.series.Line;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.radar.series.Line;
     }
     interface Marker extends anychart.core.radar.series.Base {
         bottom(): number | string;
@@ -15210,6 +15871,11 @@ declare namespace anychart.core.radar.series {
         a11y(value?: boolean | Object): anychart.core.radar.series.Marker;
         markers(): anychart.core.ui.MarkersFactory;
         markers(value?: Object | boolean | string): anychart.core.radar.series.Marker;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.radar.series.Marker;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.radar.series.Marker;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.radar.series.Marker;
     }
 }
 
@@ -15241,6 +15907,11 @@ declare namespace anychart.core.resource {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.resource.Conflicts;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.resource.Conflicts;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.resource.Conflicts;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.resource.Conflicts;
     }
     interface Activities extends anychart.core.Base {
         color(): string;
@@ -15355,6 +16026,11 @@ declare namespace anychart.core.resource {
         width(value?: number | string): anychart.core.resource.Grid;
         zIndex(): number;
         zIndex(value?: number): anychart.core.resource.Grid;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.resource.Grid;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.resource.Grid;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.resource.Grid;
     }
     interface Logo extends anychart.core.ui.Background {
         bottom(): number | string;
@@ -15362,6 +16038,8 @@ declare namespace anychart.core.resource {
         bounds(): anychart.core.utils.Bounds;
         bounds(value?: anychart.utils.RectObj | anychart.math.Rect | anychart.core.utils.Bounds): anychart.core.resource.Logo;
         bounds(x?: number | string, y?: number | string, width?: number | string, height?: number | string): anychart.core.resource.Logo;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.resource.Logo;
         cornerType(): string;
         cornerType(value?: string): anychart.core.resource.Logo;
         corners(): Array<number>;
@@ -15391,6 +16069,9 @@ declare namespace anychart.core.resource {
         minWidth(value?: number | string): anychart.core.resource.Logo;
         overlay(): anychart.core.gantt.Overlay;
         overlay(value?: Object | boolean): anychart.core.resource.Logo;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.resource.Logo;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.resource.Logo;
         print(paperSizeOrOptions?: anychart.graphics.vector.PaperSize | Object, landscape?: boolean): void;
         removeAllListeners(type?: string): number;
         right(): number | string;
@@ -15491,6 +16172,11 @@ declare namespace anychart.core.resource {
         width(value?: number | string): anychart.core.resource.ResourceList;
         zIndex(): number;
         zIndex(value?: number): anychart.core.resource.ResourceList;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.resource.ResourceList;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.resource.ResourceList;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.resource.ResourceList;
     }
 }
 
@@ -15704,6 +16390,11 @@ declare namespace anychart.core.scatter.series {
         hover(indexes?: Array<number>): anychart.core.scatter.series.Base;
         markers(): anychart.core.ui.MarkersFactory;
         markers(value?: Object | boolean | string): anychart.core.scatter.series.Base;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.scatter.series.Base;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.scatter.series.Base;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.scatter.series.Base;
     }
     interface Bubble extends anychart.core.scatter.series.BaseWithMarkers {
         bottom(): number | string;
@@ -15823,6 +16514,11 @@ declare namespace anychart.core.scatter.series {
         a11y(value?: boolean | Object): anychart.core.scatter.series.Bubble;
         colorScale(): anychart.scales.LinearColor | anychart.scales.OrdinalColor;
         colorScale(settings?: anychart.scales.LinearColor | anychart.scales.OrdinalColor | Object | string): anychart.core.scatter.series.Bubble;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.scatter.series.Bubble;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.scatter.series.Bubble;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.scatter.series.Bubble;
     }
     interface BaseWithMarkers extends anychart.core.scatter.series.Base {
         bottom(): number | string;
@@ -15916,6 +16612,11 @@ declare namespace anychart.core.scatter.series {
         a11y(value?: boolean | Object): anychart.core.scatter.series.BaseWithMarkers;
         colorScale(): anychart.scales.LinearColor | anychart.scales.OrdinalColor;
         colorScale(settings?: anychart.scales.LinearColor | anychart.scales.OrdinalColor | Object | string): anychart.core.scatter.series.BaseWithMarkers;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.scatter.series.BaseWithMarkers;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.scatter.series.BaseWithMarkers;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.scatter.series.BaseWithMarkers;
     }
     interface Line extends anychart.core.scatter.series.BaseWithMarkers {
         bottom(): number | string;
@@ -16015,6 +16716,11 @@ declare namespace anychart.core.scatter.series {
         a11y(value?: boolean | Object): anychart.core.scatter.series.Line;
         colorScale(): anychart.scales.LinearColor | anychart.scales.OrdinalColor;
         colorScale(settings?: anychart.scales.LinearColor | anychart.scales.OrdinalColor | Object | string): anychart.core.scatter.series.Line;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.scatter.series.Line;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.scatter.series.Line;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.scatter.series.Line;
     }
     interface Marker extends anychart.core.scatter.series.Base {
         bottom(): number | string;
@@ -16124,6 +16830,11 @@ declare namespace anychart.core.scatter.series {
         colorScale(settings?: anychart.scales.LinearColor | anychart.scales.OrdinalColor | Object | string): anychart.core.scatter.series.Marker;
         markers(): anychart.core.ui.MarkersFactory;
         markers(value?: Object | boolean | string): anychart.core.scatter.series.Marker;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.scatter.series.Marker;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.scatter.series.Marker;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.scatter.series.Marker;
     }
 }
 
@@ -16193,6 +16904,11 @@ declare namespace anychart.core.series {
         yScale(value?: anychart.scales.Base): anychart.scales.Base | anychart.core.series.Cartesian;
         zIndex(): number;
         zIndex(value?: number): anychart.core.series.Cartesian;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.series.Cartesian;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.series.Cartesian;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.series.Cartesian;
     }
     interface Base extends anychart.core.VisualBaseWithBounds {
         bottom(): number | string;
@@ -16251,6 +16967,11 @@ declare namespace anychart.core.series {
         yScale(value?: anychart.scales.Base): anychart.scales.Base | anychart.core.series.Base;
         zIndex(): number;
         zIndex(value?: number): anychart.core.series.Base;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.series.Base;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.series.Base;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.series.Base;
     }
     interface Stock extends anychart.core.series.Base {
         bottom(): number | string;
@@ -16310,6 +17031,11 @@ declare namespace anychart.core.series {
         yScale(value?: anychart.scales.Base): anychart.scales.Base | anychart.core.series.Stock;
         zIndex(): number;
         zIndex(value?: number): anychart.core.series.Stock;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.series.Stock;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.series.Stock;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.series.Stock;
     }
     interface RenderingSettings extends anychart.core.Base {
         finish(): (() => void);
@@ -16468,6 +17194,11 @@ declare namespace anychart.core.stock {
         yScale(value?: string | anychart.scales.ScatterBase | Object): anychart.core.stock.Scroller;
         zIndex(): number;
         zIndex(value?: number): anychart.core.stock.Scroller;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.Scroller;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.Scroller;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.Scroller;
     }
     interface Plot extends anychart.core.VisualBaseWithBounds {
         addSeries(...var_args: (anychart.data.TableMapping)[]): Array<anychart.core.stock.series.Base>;
@@ -16622,6 +17353,11 @@ declare namespace anychart.core.stock {
         yScale(value?: string | anychart.scales.ScatterBase | Object): anychart.core.stock.Plot;
         zIndex(): number;
         zIndex(value?: number): anychart.core.stock.Plot;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.Plot;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.Plot;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.Plot;
     }
     interface Grouping extends anychart.core.Base {
         enabled(): boolean;
@@ -16847,6 +17583,11 @@ declare namespace anychart.core.stock.eventMarkers {
         wordWrap(value?: string): anychart.core.stock.eventMarkers.Group;
         zIndex(): number;
         zIndex(value?: number): anychart.core.stock.eventMarkers.Group;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.eventMarkers.Group;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.eventMarkers.Group;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.eventMarkers.Group;
     }
     namespace Group {
     type DataFormat = {
@@ -17211,6 +17952,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         minPointLength(value?: number | string): anychart.core.stock.scrollerSeries.SplineArea;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.scrollerSeries.SplineArea;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.SplineArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.SplineArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.SplineArea;
     }
     interface Spline extends anychart.core.stock.scrollerSeries.Base {
         allowPointSettings(): boolean;
@@ -17280,6 +18026,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         minPointLength(value?: number | string): anychart.core.stock.scrollerSeries.Spline;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.scrollerSeries.Spline;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.Spline;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.Spline;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.Spline;
     }
     interface DiscreteBase extends anychart.core.stock.scrollerSeries.Base {
         allowPointSettings(): boolean;
@@ -17345,6 +18096,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         rendering(value?: Object | (() => void)): anychart.core.stock.scrollerSeries.DiscreteBase;
         seriesType(): string;
         seriesType(value?: string): anychart.core.stock.scrollerSeries.DiscreteBase;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.DiscreteBase;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.DiscreteBase;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.DiscreteBase;
     }
     interface RangeStepArea extends anychart.core.stock.scrollerSeries.Base {
         allowPointSettings(): boolean;
@@ -17429,6 +18185,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         minPointLength(value?: number | string): anychart.core.stock.scrollerSeries.RangeStepArea;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.scrollerSeries.RangeStepArea;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.RangeStepArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.RangeStepArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.RangeStepArea;
     }
     interface StepArea extends anychart.core.stock.scrollerSeries.Base {
         allowPointSettings(): boolean;
@@ -17509,6 +18270,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         minPointLength(value?: number | string): anychart.core.stock.scrollerSeries.StepArea;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.scrollerSeries.StepArea;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.StepArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.StepArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.StepArea;
     }
     interface Base extends anychart.core.VisualBaseWithBounds {
         allowPointSettings(): boolean;
@@ -17574,6 +18340,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         yScale(value?: anychart.scales.ScatterBase | Object | string): anychart.core.stock.scrollerSeries.Base;
         zIndex(): number;
         zIndex(value?: number): anychart.core.stock.scrollerSeries.Base;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.Base;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.Base;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.Base;
     }
     interface Area extends anychart.core.stock.scrollerSeries.Base {
         allowPointSettings(): boolean;
@@ -17652,6 +18423,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         minPointLength(value?: number | string): anychart.core.stock.scrollerSeries.Area;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.scrollerSeries.Area;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.Area;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.Area;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.Area;
     }
     interface Stick extends anychart.core.stock.scrollerSeries.DiscreteBase {
         allowPointSettings(): boolean;
@@ -17720,6 +18496,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         yScale(value?: anychart.scales.ScatterBase | Object | string): anychart.core.stock.scrollerSeries.Stick;
         zIndex(): number;
         zIndex(value?: number): anychart.core.stock.scrollerSeries.Stick;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.Stick;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.Stick;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.Stick;
     }
     interface OHLC extends anychart.core.stock.scrollerSeries.DiscreteBase {
         allowPointSettings(): boolean;
@@ -17791,6 +18572,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         yScale(value?: anychart.scales.ScatterBase | Object | string): anychart.core.stock.scrollerSeries.OHLC;
         zIndex(): number;
         zIndex(value?: number): anychart.core.stock.scrollerSeries.OHLC;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.OHLC;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.OHLC;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.OHLC;
     }
     interface Candlestick extends anychart.core.stock.scrollerSeries.OHLC {
         allowPointSettings(): boolean;
@@ -17880,6 +18666,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         zIndex(): number;
         zIndex(value?: number): anychart.core.stock.scrollerSeries.Candlestick;
         getIndex(): number;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.Candlestick;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.Candlestick;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.Candlestick;
     }
     interface Column extends anychart.core.stock.scrollerSeries.DiscreteBase {
         allowPointSettings(): boolean;
@@ -17956,6 +18747,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         yScale(value?: anychart.scales.ScatterBase | Object | string): anychart.core.stock.scrollerSeries.Column;
         zIndex(): number;
         zIndex(value?: number): anychart.core.stock.scrollerSeries.Column;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.Column;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.Column;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.Column;
     }
     interface RangeArea extends anychart.core.stock.scrollerSeries.Base {
         allowPointSettings(): boolean;
@@ -18038,6 +18834,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         minPointLength(value?: number | string): anychart.core.stock.scrollerSeries.RangeArea;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.scrollerSeries.RangeArea;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.RangeArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.RangeArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.RangeArea;
     }
     interface JumpLine extends anychart.core.stock.scrollerSeries.Base {
         allowPointSettings(): boolean;
@@ -18106,6 +18907,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         minPointLength(value?: number | string): anychart.core.stock.scrollerSeries.JumpLine;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.scrollerSeries.JumpLine;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.JumpLine;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.JumpLine;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.JumpLine;
     }
     interface StepLine extends anychart.core.stock.scrollerSeries.Base {
         allowPointSettings(): boolean;
@@ -18177,6 +18983,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         minPointLength(value?: number | string): anychart.core.stock.scrollerSeries.StepLine;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.scrollerSeries.StepLine;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.StepLine;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.StepLine;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.StepLine;
     }
     interface Line extends anychart.core.stock.scrollerSeries.Base {
         allowPointSettings(): boolean;
@@ -18245,6 +19056,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         minPointLength(value?: number | string): anychart.core.stock.scrollerSeries.Line;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.scrollerSeries.Line;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.Line;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.Line;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.Line;
     }
     interface RangeColumn extends anychart.core.stock.scrollerSeries.Base {
         allowPointSettings(): boolean;
@@ -18323,6 +19139,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         maxPointWidth(value?: number | string): anychart.core.stock.scrollerSeries.RangeColumn;
         minPointLength(): string | number;
         minPointLength(value?: number | string): anychart.core.stock.scrollerSeries.RangeColumn;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.RangeColumn;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.RangeColumn;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.RangeColumn;
     }
     interface RangeSplineArea extends anychart.core.stock.scrollerSeries.Base {
         bottom(): number | string;
@@ -18405,6 +19226,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         minPointLength(value?: number | string): anychart.core.stock.scrollerSeries.RangeSplineArea;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.scrollerSeries.RangeSplineArea;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.RangeSplineArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.RangeSplineArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.RangeSplineArea;
     }
     interface Hilo extends anychart.core.stock.scrollerSeries.Base {
         allowPointSettings(): boolean;
@@ -18473,6 +19299,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         minPointLength(value?: number | string): anychart.core.stock.scrollerSeries.Hilo;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.scrollerSeries.Hilo;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.Hilo;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.Hilo;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.Hilo;
     }
     interface Marker extends anychart.core.stock.scrollerSeries.Base {
         allowPointSettings(): boolean;
@@ -18555,6 +19386,11 @@ declare namespace anychart.core.stock.scrollerSeries {
         minPointLength(value?: number | string): anychart.core.stock.scrollerSeries.Marker;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.scrollerSeries.Marker;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.scrollerSeries.Marker;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.scrollerSeries.Marker;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.scrollerSeries.Marker;
     }
 }
 
@@ -18644,6 +19480,11 @@ declare namespace anychart.core.stock.series {
         minPointLength(value?: number | string): anychart.core.stock.series.SplineArea;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.series.SplineArea;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.SplineArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.SplineArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.SplineArea;
     }
     interface Spline extends anychart.core.stock.series.Base {
         allowPointSettings(): boolean;
@@ -18721,6 +19562,11 @@ declare namespace anychart.core.stock.series {
         minPointLength(value?: number | string): anychart.core.stock.series.Spline;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.series.Spline;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.Spline;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.Spline;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.Spline;
     }
     interface DiscreteBase extends anychart.core.stock.series.Base {
         allowPointSettings(): boolean;
@@ -18794,6 +19640,11 @@ declare namespace anychart.core.stock.series {
         rendering(value?: Object | (() => void)): anychart.core.stock.series.DiscreteBase;
         seriesType(): string;
         seriesType(value?: string): anychart.core.stock.series.DiscreteBase;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.DiscreteBase;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.DiscreteBase;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.DiscreteBase;
     }
     interface RangeStepArea extends anychart.core.stock.series.Base {
         allowPointSettings(): boolean;
@@ -18882,6 +19733,11 @@ declare namespace anychart.core.stock.series {
         minPointLength(value?: number | string): anychart.core.stock.series.RangeStepArea;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.series.RangeStepArea;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.RangeStepArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.RangeStepArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.RangeStepArea;
     }
     interface StepArea extends anychart.core.stock.series.Base {
         allowPointSettings(): boolean;
@@ -18970,6 +19826,11 @@ declare namespace anychart.core.stock.series {
         minPointLength(value?: number | string): anychart.core.stock.series.StepArea;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.series.StepArea;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.StepArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.StepArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.StepArea;
     }
     interface Base extends anychart.core.VisualBaseWithBounds {
         allowPointSettings(): boolean;
@@ -19043,6 +19904,11 @@ declare namespace anychart.core.stock.series {
         yScale(value?: anychart.scales.ScatterBase | Object | string): anychart.core.stock.series.Base;
         zIndex(): number;
         zIndex(value?: number): anychart.core.stock.series.Base;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.Base;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.Base;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.Base;
     }
     interface Area extends anychart.core.stock.series.Base {
         allowPointSettings(): boolean;
@@ -19131,6 +19997,11 @@ declare namespace anychart.core.stock.series {
         minPointLength(value?: number | string): anychart.core.stock.series.Area;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.series.Area;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.Area;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.Area;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.Area;
     }
     interface Stick extends anychart.core.stock.series.DiscreteBase {
         allowPointSettings(): boolean;
@@ -19207,6 +20078,11 @@ declare namespace anychart.core.stock.series {
         yScale(value?: anychart.scales.ScatterBase | Object | string): anychart.core.stock.series.Stick;
         zIndex(): number;
         zIndex(value?: number): anychart.core.stock.series.Stick;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.Stick;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.Stick;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.Stick;
     }
     interface OHLC extends anychart.core.stock.series.DiscreteBase {
         allowPointSettings(): boolean;
@@ -19287,6 +20163,11 @@ declare namespace anychart.core.stock.series {
         yScale(value?: anychart.scales.ScatterBase | Object | string): anychart.core.stock.series.OHLC;
         zIndex(): number;
         zIndex(value?: number): anychart.core.stock.series.OHLC;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.OHLC;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.OHLC;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.OHLC;
     }
     interface Candlestick extends anychart.core.stock.series.OHLC {
         allowPointSettings(): boolean;
@@ -19375,6 +20256,11 @@ declare namespace anychart.core.stock.series {
         zIndex(): number;
         zIndex(value?: number): anychart.core.stock.series.Candlestick;
         getIndex(): number;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.Candlestick;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.Candlestick;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.Candlestick;
     }
     interface Column extends anychart.core.stock.series.DiscreteBase {
         allowPointSettings(): boolean;
@@ -19460,6 +20346,11 @@ declare namespace anychart.core.stock.series {
         yScale(value?: anychart.scales.ScatterBase | Object | string): anychart.core.stock.series.Column;
         zIndex(): number;
         zIndex(value?: number): anychart.core.stock.series.Column;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.Column;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.Column;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.Column;
     }
     interface RangeArea extends anychart.core.stock.series.Base {
         allowPointSettings(): boolean;
@@ -19546,6 +20437,11 @@ declare namespace anychart.core.stock.series {
         minPointLength(value?: number | string): anychart.core.stock.series.RangeArea;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.series.RangeArea;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.RangeArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.RangeArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.RangeArea;
     }
     interface JumpLine extends anychart.core.stock.series.Base {
         allowPointSettings(): boolean;
@@ -19623,6 +20519,11 @@ declare namespace anychart.core.stock.series {
         minPointLength(value?: number | string): anychart.core.stock.series.JumpLine;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.series.JumpLine;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.JumpLine;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.JumpLine;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.JumpLine;
     }
     interface StepLine extends anychart.core.stock.series.Base {
         allowPointSettings(): boolean;
@@ -19702,6 +20603,11 @@ declare namespace anychart.core.stock.series {
         minPointLength(value?: number | string): anychart.core.stock.series.StepLine;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.series.StepLine;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.StepLine;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.StepLine;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.StepLine;
     }
     interface Line extends anychart.core.stock.series.Base {
         allowPointSettings(): boolean;
@@ -19779,6 +20685,11 @@ declare namespace anychart.core.stock.series {
         minPointLength(value?: number | string): anychart.core.stock.series.Line;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.series.Line;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.Line;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.Line;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.Line;
     }
     interface RangeColumn extends anychart.core.stock.series.Base {
         allowPointSettings(): boolean;
@@ -19862,6 +20773,11 @@ declare namespace anychart.core.stock.series {
         zIndex(): number;
         zIndex(value?: number): anychart.core.stock.series.RangeColumn;
         getIndex(): number;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.RangeColumn;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.RangeColumn;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.RangeColumn;
     }
     interface RangeSplineArea extends anychart.core.stock.series.Base {
         allowPointSettings(): boolean;
@@ -19948,6 +20864,11 @@ declare namespace anychart.core.stock.series {
         minPointLength(value?: number | string): anychart.core.stock.series.RangeSplineArea;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.series.RangeSplineArea;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.RangeSplineArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.RangeSplineArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.RangeSplineArea;
     }
     interface Hilo extends anychart.core.stock.series.Base {
         allowPointSettings(): boolean;
@@ -20025,6 +20946,11 @@ declare namespace anychart.core.stock.series {
         zIndex(value?: number): anychart.core.stock.series.Hilo;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.series.Hilo;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.Hilo;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.Hilo;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.Hilo;
     }
     interface Marker extends anychart.core.stock.series.Base {
         allowPointSettings(): boolean;
@@ -20110,6 +21036,11 @@ declare namespace anychart.core.stock.series {
         minPointLength(value?: number | string): anychart.core.stock.series.Marker;
         pointWidth(): string | number;
         pointWidth(value?: number | string): anychart.core.stock.series.Marker;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.stock.series.Marker;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.stock.series.Marker;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.stock.series.Marker;
     }
 }
 
@@ -20519,6 +21450,11 @@ declare namespace anychart.core.ui {
         width(value?: number | string): anychart.core.ui.DataGrid;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.DataGrid;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.DataGrid;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.DataGrid;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.DataGrid;
     }
     module DataGrid {
     interface Column extends anychart.core.VisualBase {
@@ -20555,6 +21491,11 @@ declare namespace anychart.core.ui {
         width(value?: number | string): anychart.core.ui.DataGrid.Column;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.DataGrid.Column;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.DataGrid.Column;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.DataGrid.Column;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.DataGrid.Column;
     }
     }
     interface MarkersFactory extends anychart.core.VisualBase {
@@ -20595,6 +21536,11 @@ declare namespace anychart.core.ui {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.MarkersFactory;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.MarkersFactory;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.MarkersFactory;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.MarkersFactory;
     }
     module MarkersFactory {
     interface Marker extends anychart.core.VisualBase {
@@ -20614,6 +21560,9 @@ declare namespace anychart.core.ui {
         offsetX(value?: number | string): anychart.core.ui.MarkersFactory.Marker;
         offsetY(): number | string;
         offsetY(value?: number | string): anychart.core.ui.MarkersFactory.Marker;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.MarkersFactory.Marker;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.MarkersFactory.Marker;
         position(): string;
         position(value?: string): anychart.core.ui.MarkersFactory.Marker;
         positionFormatter(): any;
@@ -20634,6 +21583,8 @@ declare namespace anychart.core.ui {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.MarkersFactory.Marker;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.MarkersFactory.Marker;
     }
     }
     interface Scroller extends anychart.core.VisualBase {
@@ -20676,6 +21627,11 @@ declare namespace anychart.core.ui {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.Scroller;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.Scroller;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.Scroller;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.Scroller;
     }
     module Scroller {
     interface Thumbs {
@@ -20754,6 +21710,11 @@ declare namespace anychart.core.ui {
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.ColorRange;
         getPixelBounds(): anychart.math.Rect;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.ColorRange;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.ColorRange;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.ColorRange;
     }
     interface Label extends anychart.core.Text {
         adjustFontSize(): Object;
@@ -20837,6 +21798,11 @@ declare namespace anychart.core.ui {
         wordWrap(value?: string): anychart.core.ui.Label;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.Label;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.Label;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.Label;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.Label;
     }
     interface Outline extends anychart.core.Base {
         enabled(): boolean;
@@ -20945,6 +21911,11 @@ declare namespace anychart.core.ui {
         wordWrap(value?: string): anychart.core.ui.CrosshairLabel;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.CrosshairLabel;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.CrosshairLabel;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.CrosshairLabel;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.CrosshairLabel;
     }
     interface StageCredits {
         alt(): string;
@@ -21094,6 +22065,11 @@ declare namespace anychart.core.ui {
         wordWrap(value?: string): anychart.core.ui.Tooltip;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.Tooltip;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.Tooltip;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.Tooltip;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.Tooltip;
     }
     interface DataArea extends anychart.core.VisualBase {
         background(): anychart.core.ui.Background;
@@ -21108,6 +22084,11 @@ declare namespace anychart.core.ui {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.DataArea;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.DataArea;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.DataArea;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.DataArea;
     }
     interface Background extends anychart.core.VisualBaseWithBounds {
         bottom(): number | string;
@@ -21169,6 +22150,11 @@ declare namespace anychart.core.ui {
         width(value?: number | string): anychart.core.ui.Background;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.Background;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.Background;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.Background;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.Background;
     }
     interface Legend extends anychart.core.Text {
         align(): string;
@@ -21281,6 +22267,11 @@ declare namespace anychart.core.ui {
         wordWrap(value?: string): anychart.core.ui.Legend;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.Legend;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.Legend;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.Legend;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.Legend;
     }
     namespace Legend {
     type LegendItemProvider = {
@@ -21326,6 +22317,11 @@ declare namespace anychart.core.ui {
         width(value?: number | string): anychart.core.ui.Separator;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.Separator;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.Separator;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.Separator;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.Separator;
     }
     interface Title extends anychart.core.Text {
         align(): string;
@@ -21403,6 +22399,11 @@ declare namespace anychart.core.ui {
         wordWrap(value?: string): anychart.core.ui.Title;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.Title;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.Title;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.Title;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.Title;
     }
     interface Paginator extends anychart.core.Text {
         background(value?: string | Object | boolean): anychart.core.ui.Paginator | anychart.core.ui.Background;
@@ -21469,6 +22470,11 @@ declare namespace anychart.core.ui {
         wordWrap(value?: string): anychart.core.ui.Paginator;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.Paginator;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.Paginator;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.Paginator;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.Paginator;
     }
     interface ChartScroller extends anychart.core.ui.Scroller {
         allowRangeChange(): boolean;
@@ -21514,6 +22520,11 @@ declare namespace anychart.core.ui {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.ChartScroller;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.ChartScroller;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.ChartScroller;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.ChartScroller;
     }
     interface ScrollBar extends anychart.core.VisualBaseWithBounds {
         backgroundFill(): anychart.graphics.vector.Fill | string;
@@ -21576,6 +22587,11 @@ declare namespace anychart.core.ui {
         width(value?: number | string): anychart.core.ui.ScrollBar;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.ScrollBar;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.ScrollBar;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.ScrollBar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.ScrollBar;
     }
     interface CircularLabelsFactory extends anychart.core.ui.LabelsFactory {
         adjustFontSize(): Object;
@@ -21670,6 +22686,11 @@ declare namespace anychart.core.ui {
         format(func?: (() => void)): anychart.core.ui.CircularLabelsFactory;
         getLabel(index: number): anychart.core.ui.LabelsFactory.Label;
         getLabelsCount(): number;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.CircularLabelsFactory;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.CircularLabelsFactory;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.CircularLabelsFactory;
     }
     module CircularLabelsFactory {
     interface Label extends anychart.core.ui.LabelsFactory.Label {
@@ -21762,6 +22783,11 @@ declare namespace anychart.core.ui {
         format(): any;
         format(value?: any): any;
         measureWithText(text: string): anychart.math.Rect;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.CircularLabelsFactory.Label;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.CircularLabelsFactory.Label;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.CircularLabelsFactory.Label;
     }
     }
     interface Crosshair extends anychart.core.VisualBase {
@@ -21787,6 +22813,11 @@ declare namespace anychart.core.ui {
         yStroke(value?: anychart.graphics.vector.Stroke | string, thickness?: number, dashpattern?: string, lineJoin?: string | anychart.graphics.vector.StrokeLineJoin, lineCap?: string | anychart.graphics.vector.StrokeLineCap): anychart.core.ui.Crosshair;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.Crosshair;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.Crosshair;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.Crosshair;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.Crosshair;
     }
     interface Table extends anychart.core.VisualBaseWithBounds {
         border(): anychart.core.ui.table.Border;
@@ -21925,6 +22956,11 @@ declare namespace anychart.core.ui {
         wordWrap(value?: string): anychart.core.ui.Table;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.Table;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.Table;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.Table;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.Table;
     }
     interface LegendItem extends anychart.core.Text {
         disablePointerEvents(): boolean;
@@ -21999,6 +23035,11 @@ declare namespace anychart.core.ui {
         y(value?: number | string): number | string | anychart.core.ui.LegendItem;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.LegendItem;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.LegendItem;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.LegendItem;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.LegendItem;
     }
     interface Callout extends anychart.core.VisualBase {
         align(): string;
@@ -22029,10 +23070,15 @@ declare namespace anychart.core.ui {
         title(value?: boolean | Object | string): anychart.core.ui.Callout;
         width(): number | string;
         width(value?: number | string): anychart.core.ui.Callout;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.Callout;
         enabled(): boolean;
         enabled(value?: boolean): anychart.core.ui.Callout;
         listen(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
         listenOnce(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.Callout;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.Callout;
         print(paperSizeOrOptions?: anychart.graphics.vector.PaperSize | Object, landscape?: boolean): void;
         removeAllListeners(type?: string): number;
         unlisten(type: string, listener: ((e:Object)=>boolean), useCapture?: boolean, listenerScope?: Object): boolean;
@@ -22131,6 +23177,11 @@ declare namespace anychart.core.ui {
         wordWrap(value?: string): anychart.core.ui.LabelsFactory;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.LabelsFactory;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.LabelsFactory;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.LabelsFactory;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.LabelsFactory;
     }
     module LabelsFactory {
     interface Label extends anychart.core.Text {
@@ -22221,6 +23272,11 @@ declare namespace anychart.core.ui {
         wordWrap(value?: string): anychart.core.ui.LabelsFactory.Label;
         zIndex(): number;
         zIndex(value?: number): anychart.core.ui.LabelsFactory.Label;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.ui.LabelsFactory.Label;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.ui.LabelsFactory.Label;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.ui.LabelsFactory.Label;
     }
     }
     interface ChartCredits extends anychart.core.Base {
@@ -22591,6 +23647,11 @@ declare namespace anychart.core.utils {
         wordWrap(value?: string): anychart.core.utils.LegendItemSettings;
         zIndex(): number;
         zIndex(value?: number): anychart.core.utils.LegendItemSettings;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.utils.LegendItemSettings;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.utils.LegendItemSettings;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.utils.LegendItemSettings;
     }
     interface UnboundRegionsSettings {
         enabled(): boolean;
@@ -22800,6 +23861,8 @@ declare namespace anychart.core.utils {
         corners(): Array<number>;
         corners(value?: number | string | Array<number>): anychart.core.utils.Quarter;
         corners(topLeft?: number | string, topRight?: number | string, bottomRight?: number | string, bottomLeft?: number | string): anychart.core.utils.Quarter;
+        disablePointerEvents(): boolean;
+        disablePointerEvents(value?: boolean): anychart.core.utils.Quarter;
         fill(): anychart.graphics.vector.Fill;
         fill(value: anychart.graphics.vector.Fill): anychart.core.utils.Quarter;
         fill(color: string, opacity?: number): anychart.core.utils.Quarter;
@@ -22862,6 +23925,11 @@ declare namespace anychart.core.utils {
         width(value?: number | string): anychart.core.utils.Quarter;
         zIndex(): number;
         zIndex(value?: number): anychart.core.utils.Quarter;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.utils.Quarter;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.utils.Quarter;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.utils.Quarter;
     }
     interface Crossing extends anychart.core.Base {
         stroke(): anychart.graphics.vector.Stroke;
@@ -23124,6 +24192,11 @@ declare namespace anychart.core.waterfall.series {
         a11y(): anychart.core.utils.SeriesA11y;
         a11y(value?: boolean | Object): anychart.core.waterfall.series.Waterfall;
         getStat(key: string): any;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.core.waterfall.series.Waterfall;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.core.waterfall.series.Waterfall;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.core.waterfall.series.Waterfall;
     }
 }
 
@@ -26830,6 +27903,8 @@ declare namespace anychart.standalones {
         height(value?: number | string): anychart.standalones.DataGrid;
         horizontalOffset(): number;
         horizontalOffset(value?: number): anychart.standalones.DataGrid;
+        horizontalScrollBar(): anychart.core.ui.ScrollBar;
+        horizontalScrollBar(value?: Object): anychart.standalones.DataGrid;
         left(): number | string;
         left(value?: number | string): anychart.standalones.DataGrid;
         listen(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
@@ -26902,13 +27977,16 @@ declare namespace anychart.standalones {
         width(value?: number | string): anychart.standalones.DataGrid;
         zIndex(): number;
         zIndex(value?: number): anychart.standalones.DataGrid;
-        horizontalScrollBar(): anychart.core.ui.ScrollBar;
-        horizontalScrollBar(value?: Object): anychart.standalones.DataGrid;
     }
     interface MarkersFactory extends anychart.core.ui.MarkersFactory {
+        add(positionProvider: any, index?: number): anychart.standalones.MarkersFactory;
         anchor(): string;
         anchor(value?: string): anychart.standalones.MarkersFactory;
+        clear(index?: number): anychart.standalones.MarkersFactory;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.standalones.MarkersFactory;
         disablePointerEvents(value?: boolean): anychart.standalones.MarkersFactory | boolean;
+        draw(): anychart.standalones.MarkersFactory;
         enabled(): boolean;
         enabled(value?: boolean): anychart.standalones.MarkersFactory;
         fill(): anychart.graphics.vector.Fill | string;
@@ -26919,10 +27997,14 @@ declare namespace anychart.standalones {
         fill(imageSettings: anychart.graphics.vector.Fill): anychart.standalones.MarkersFactory;
         listen(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
         listenOnce(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
+        measure(positionProvider: any): anychart.math.Rect;
         offsetX(): number | string;
         offsetX(value?: number | string): anychart.standalones.MarkersFactory;
         offsetY(): number | string;
         offsetY(value?: number | string): anychart.standalones.MarkersFactory;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.standalones.MarkersFactory;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.standalones.MarkersFactory;
         position(): string;
         position(value?: string): anychart.standalones.MarkersFactory;
         positionFormatter(): (() => void);
@@ -26948,6 +28030,8 @@ declare namespace anychart.standalones {
     interface Marker extends anychart.core.ui.MarkersFactory.Marker {
         anchor(): string;
         anchor(value?: string): anychart.standalones.MarkersFactory.Marker;
+        clear(): void;
+        draw(): anychart.standalones.MarkersFactory.Marker;
         enabled(): boolean;
         enabled(value?: boolean): anychart.standalones.MarkersFactory.Marker;
         fill(): anychart.graphics.vector.Fill | string;
@@ -26982,6 +28066,11 @@ declare namespace anychart.standalones {
         unlistenByKey(key: Object): boolean;
         zIndex(): number;
         zIndex(value?: number): anychart.standalones.MarkersFactory.Marker;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.standalones.MarkersFactory.Marker;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.standalones.MarkersFactory.Marker;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.standalones.MarkersFactory.Marker;
     }
     }
     interface Scroller extends anychart.core.ui.Scroller {
@@ -27535,6 +28624,9 @@ declare namespace anychart.standalones {
         minHeight(value?: number | string): anychart.standalones.Table;
         minWidth(): number | string;
         minWidth(value?: number | string): anychart.standalones.Table;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.standalones.Table;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.standalones.Table;
         print(paperSizeOrOptions?: anychart.graphics.vector.PaperSize | Object, landscape?: boolean): void;
         removeAllListeners(type?: string): number;
         right(): number | string;
@@ -27603,6 +28695,7 @@ declare namespace anychart.standalones {
         shareAsSvg(onSuccess: ((response:string)=>void), onError?: ((response:string)=>void), asBase64?: boolean, paperSizeOrWidth?: string | number, landscapeOrHeight?: boolean | string, filename?: string): void;
     }
     interface LabelsFactory extends anychart.core.ui.LabelsFactory {
+        add(formatProvider: any, positionProvider: any, index?: number): anychart.core.ui.LabelsFactory.Label;
         adjustFontSize(): Object;
         adjustFontSize(adjustByWidth?: boolean, adjustByHeight?: boolean): anychart.standalones.LabelsFactory;
         adjustFontSize(value?: Object | Array<boolean> | boolean): anychart.standalones.LabelsFactory;
@@ -27610,8 +28703,12 @@ declare namespace anychart.standalones {
         anchor(value?: string): anychart.standalones.LabelsFactory;
         background(): anychart.core.ui.Background;
         background(value?: string | Object | boolean): anychart.standalones.LabelsFactory;
+        clear(index?: number): anychart.standalones.LabelsFactory;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.standalones.LabelsFactory;
         disablePointerEvents(): boolean;
         disablePointerEvents(value?: boolean): anychart.standalones.LabelsFactory;
+        draw(): anychart.standalones.LabelsFactory;
         enabled(): boolean;
         enabled(value?: boolean): anychart.standalones.LabelsFactory;
         fontColor(): string;
@@ -27642,6 +28739,8 @@ declare namespace anychart.standalones {
         listenOnce(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
         maxFontSize(): number;
         maxFontSize(value?: number | string): anychart.standalones.LabelsFactory;
+        measure(formatProviderOrLabel: any | anychart.core.ui.LabelsFactory.Label, positionProvider?: any, settings?: Object, cacheIndex?: number): anychart.math.Rect;
+        measureWithTransform(formatProviderOrLabel: any | anychart.core.ui.LabelsFactory.Label, positionProvider?: any, settings?: Object, cacheIndexIndex?: number): Array<number>;
         minFontSize(): number;
         minFontSize(value?: number | string): anychart.standalones.LabelsFactory;
         offsetX(): number | string;
@@ -27651,6 +28750,9 @@ declare namespace anychart.standalones {
         padding(): anychart.core.utils.Padding;
         padding(value?: Array<number|string> | Object | number | string): anychart.standalones.LabelsFactory;
         padding(value1?: string | number, value2?: string | number, value3?: string | number, value4?: string | number): anychart.standalones.LabelsFactory;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.standalones.LabelsFactory;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.standalones.LabelsFactory;
         position(): string;
         position(value?: string): anychart.standalones.LabelsFactory;
         positionFormatter(): (() => void);
@@ -28126,6 +29228,8 @@ declare namespace anychart.standalones.grids {
     interface Polar extends anychart.core.grids.Polar {
         axis(): anychart.core.axes.Polar | anychart.core.axes.Radial;
         axis(value?: anychart.core.axes.Polar | anychart.core.axes.Radial): anychart.standalones.grids.Polar;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.standalones.grids.Polar;
         drawLastLine(): boolean;
         drawLastLine(value?: boolean): anychart.standalones.grids.Polar;
         enabled(): boolean;
@@ -28148,6 +29252,9 @@ declare namespace anychart.standalones.grids {
         listenOnce(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
         palette(): anychart.palettes.RangeColors | anychart.palettes.DistinctColors;
         palette(value?: anychart.palettes.RangeColors | anychart.palettes.DistinctColors | Object | Array<string>): anychart.core.grids.Map;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.standalones.grids.Polar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.standalones.grids.Polar;
         print(paperSizeOrOptions?: anychart.graphics.vector.PaperSize | Object, landscape?: boolean): void;
         removeAllListeners(type?: string): number;
         stroke(): string | anychart.graphics.vector.Stroke;
@@ -28165,6 +29272,8 @@ declare namespace anychart.standalones.grids {
     interface Linear extends anychart.core.grids.Linear {
         axis(): anychart.core.axes.Linear;
         axis(value?: anychart.core.axes.Linear): anychart.standalones.grids.Linear;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.standalones.grids.Linear;
         drawFirstLine(): boolean;
         drawFirstLine(value?: boolean): anychart.standalones.grids.Linear;
         drawLastLine(): boolean;
@@ -28187,6 +29296,9 @@ declare namespace anychart.standalones.grids {
         listenOnce(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
         palette(): anychart.palettes.RangeColors | anychart.palettes.DistinctColors;
         palette(value?: anychart.palettes.RangeColors | anychart.palettes.DistinctColors | Object | Array<string>): anychart.standalones.grids.Linear;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.standalones.grids.Linear;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.standalones.grids.Linear;
         print(paperSizeOrOptions?: anychart.graphics.vector.PaperSize | Object, landscape?: boolean): void;
         removeAllListeners(type?: string): number;
         scale(): anychart.scales.Base;
@@ -28202,6 +29314,8 @@ declare namespace anychart.standalones.grids {
     interface Radar extends anychart.core.grids.Radar {
         axis(): anychart.core.axes.Radar | anychart.core.axes.Radial;
         axis(value?: anychart.core.axes.Radar | anychart.core.axes.Radial): anychart.standalones.grids.Radar;
+        container(): anychart.graphics.vector.Layer;
+        container(value?: anychart.graphics.vector.Layer | string | Element): anychart.standalones.grids.Radar;
         drawLastLine(): boolean;
         drawLastLine(value?: boolean): anychart.standalones.grids.Radar;
         enabled(): boolean;
@@ -28224,6 +29338,9 @@ declare namespace anychart.standalones.grids {
         listenOnce(type: string, listener: ((e:Object)=>void), useCapture?: boolean, listenerScope?: Object): Object;
         palette(): anychart.palettes.RangeColors | anychart.palettes.DistinctColors;
         palette(value?: anychart.palettes.RangeColors | anychart.palettes.DistinctColors | Object | Array<string>): anychart.core.grids.Map;
+        parentBounds(): anychart.math.Rect;
+        parentBounds(bounds?: anychart.math.Rect | Object | number): anychart.standalones.grids.Radar;
+        parentBounds(left?: number, top?: number, width?: number, height?: number): anychart.standalones.grids.Radar;
         print(paperSizeOrOptions?: anychart.graphics.vector.PaperSize | Object, landscape?: boolean): void;
         removeAllListeners(type?: string): number;
         stroke(settings?: Object): anychart.standalones.grids.Radar;
