@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Venn.hatchFill set"/>
+    <meta name="ac:name" content="anychart.charts.Venn.hatchFill set asPattern"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -23,24 +23,29 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create('container');
+
+        var pattern = stage.pattern(new anychart.graphics.math.Rect(0, 0, 20, 20));
+        pattern.star5(10, 10, 8).stroke('#78909C');
+
         var data = [
-            {x: "A", value: 20},
-            {x: "B", value: 12},
-            {x: "C", value: 17},
-            {x: "A&B", value: 4},
-            {x: "B&C", value: 5},
-            {x: "A&C", value: 7},
-            {x: "A&B&C", value: 1}
+            {x: 'A', value: 20},
+            {x: 'B', value: 12},
+            {x: 'C', value: 17},
+            {x: 'A&B', value: 4},
+            {x: 'B&C', value: 5},
+            {x: 'A&C', value: 7},
+            {x: 'A&B&C', value: 1}
         ];
 
         var chart = anychart.venn(data);
-        chart.stroke("3 #FFFFFF");
+        chart.stroke('3 #FFFFFF');
 
         // Set hatch fill.
-        chart.hatchFill("zig-zag", "#424242", 0.5, 20);
+        chart.hatchFill(pattern);
 
-        chart.title("Set hatch fill parameters");
-        chart.container("container");
+        chart.title('Set hatch fill as an pattern');
+        chart.container(stage);
         chart.draw();
     });
 </script>

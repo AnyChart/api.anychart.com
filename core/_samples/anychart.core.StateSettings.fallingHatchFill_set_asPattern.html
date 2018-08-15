@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.pie.Center.fill set asLinear"/>
+    <meta name="ac:name" content="anychart.core.StateSettings.emptyHatchFill set asPattern"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-linear-gauge.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -22,34 +23,23 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.pie([
-            {x: "Cycling", value: 10},
-            {x: "Swimming", value: 12},
-            {x: "Run", value: 18},
-            {x: "Hiking", value: 11},
-            {x: "Alpinism", value: 9}
-        ]);
+        var stage = anychart.graphics.create('container');
 
-        chart.innerRadius("25%");
+        var pattern = stage.pattern(new anychart.graphics.math.Rect(0, 0, 20, 20));
+        pattern.star5(10, 10, 8).stroke('#838b8b');
 
-        var label = anychart.standalones.label();
-        label.enabled(true);
-        label.text("Activities");
-        label.width("100%");
-        label.height("100%");
-        label.fontSize(30);
-        label.fontColor("#60727b");
-        label.hAlign("center");
-        label.vAlign("middle");
+        var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
 
-        var center = chart.center();
-        center.content(label);
+        var tankPointer = chart.tank(3);
 
-        // Set fill.
-        center.fill(["#FDFC47", "#24FE41"], 45, true, 0.6);
+        var state = tankPointer.normal();
 
-        chart.title("Set fill as a linear gradient");
-        chart.container("container");
+        // Set hatch fill for the empty part of a tank.
+        state.emptyHatchFill(pattern);
+
+        chart.width(600).height(400);
+        chart.title('Set state hatch fill as a pattern');
+        chart.container(stage);
         chart.draw();
     });
 </script>

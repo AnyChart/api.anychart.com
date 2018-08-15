@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.pie.Center.fill set asImg"/>
+    <meta name="ac:name" content="anychart.charts.Pie.hatchFill setPattern"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -23,36 +23,20 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.pie([
-            {x: "Cycling", value: 10},
-            {x: "Swimming", value: 12},
-            {x: "Run", value: 18},
-            {x: "Hiking", value: 11},
-            {x: "Alpinism", value: 9}
+            {x: 'Cycling', value: 5},
+            {x: 'Swimming', value: 2},
+            {x: 'Run', value: 1},
+            {x: 'Hiking', value: 3},
+            {x: 'Alpinism', value: 1}
         ]);
 
-        chart.innerRadius("25%");
+        var customHatchFill = anychart.graphics.hatchFill('divot', '#424242', 0.5, 20);
 
-        var label = anychart.standalones.label();
-        label.enabled(true);
-        label.text("Activities");
-        label.width("100%");
-        label.height("100%");
-        label.fontSize(30);
-        label.fontColor("#60727b");
-        label.hAlign("center");
-        label.vAlign("middle");
+        // Set hatch fill.
+        chart.hatchFill(customHatchFill);
 
-        var center = chart.center();
-        center.content(label);
-
-        // Set fill.
-        center.fill({
-            src: "https://static.anychart.com/images/underwater.jpg",
-            opacity: 0.7
-        });
-
-        chart.title("Set fill as an image");
-        chart.container("container");
+        chart.title('Set hatch fill parameter as an instance');
+        chart.container(stage);
         chart.draw();
     });
 </script>

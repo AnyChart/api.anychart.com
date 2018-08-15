@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.pie.Center.stroke set asObj"/>
+    <meta name="ac:name" content="anychart.core.StateSettings.risingHatchFill set asBool"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -22,33 +22,23 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.pie([
-            {x: 'Cycling', value: 10},
-            {x: 'Swimming', value: 12},
-            {x: 'Run', value: 18},
-            {x: 'Hiking', value: 11},
-            {x: 'Alpinism', value: 9}
+        var chart = anychart.financial();
+
+        var series = chart.candlestick([
+            {x: Date.UTC(2017, 2, 25), open: 511.53, high: 514.98, low: 505.79, close: 506.40},
+            {x: Date.UTC(2017, 2, 26), open: 507.84, high: 513.30, low: 507.23, close: 512.88},
+            {x: Date.UTC(2017, 2, 27), open: 512.36, high: 515.40, low: 510.58, close: 511.40},
+            {x: Date.UTC(2017, 2, 28), open: 515.02, high: 520.50, low: 511.47, close: 517.25}
         ]);
 
-        chart.innerRadius('25%');
+        chart.xScale({minimum: Date.UTC(2017, 2, 24), maximum: Date.UTC(2017, 2, 29)});
 
-        var label = anychart.standalones.label();
-        label.enabled(true);
-        label.text('Activities');
-        label.width('100%');
-        label.height('100%');
-        label.fontSize(30);
-        label.fontColor('#60727b');
-        label.hAlign('center');
-        label.vAlign('middle');
+        var state = series.normal();
 
-        var center = chart.center();
-        center.content(label);
+        // Set rising hatch fill.
+        state.risingHatchFill(true);
 
-        // Set stroke settings.
-        center.stroke({color: '#F44336', thickness: 3, dash: '5 2'});
-
-        chart.title('Set stroke parameter as an object');
+        chart.title('Enable state rising hatch fill');
         chart.container('container');
         chart.draw();
     });

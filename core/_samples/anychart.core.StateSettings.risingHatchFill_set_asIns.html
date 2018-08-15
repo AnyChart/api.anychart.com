@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.StateSettings.risingHatchFill set"/>
+    <meta name="ac:name" content="anychart.core.StateSettings.risingHatchFill set asIns"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -35,10 +35,12 @@
 
         var state = series.normal();
 
-        // Set rising hatch fill.
-        state.risingHatchFill('horizontal', '#FFFFFF', 2, 15);
+        var customHatchFill = anychart.graphics.hatchFill('divot', '#424242', 0.5, 20);
 
-        chart.title('Set state rising hatch fill parameters');
+        // Set rising hatch fill.
+        state.risingHatchFill(customHatchFill);
+
+        chart.title('Set state rising hatch fill using an instance');
         chart.container('container');
         chart.draw();
     });

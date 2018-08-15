@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Venn.hatchFill set"/>
+    <meta name="ac:name" content="anychart.core.StateSettings.emptyHatchFill set asPattern"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-venn.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-linear-gauge.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -23,24 +23,23 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = [
-            {x: "A", value: 20},
-            {x: "B", value: 12},
-            {x: "C", value: 17},
-            {x: "A&B", value: 4},
-            {x: "B&C", value: 5},
-            {x: "A&C", value: 7},
-            {x: "A&B&C", value: 1}
-        ];
+        var stage = anychart.graphics.create('container');
 
-        var chart = anychart.venn(data);
-        chart.stroke("3 #FFFFFF");
+        var pattern = stage.pattern(new anychart.graphics.math.Rect(0, 0, 20, 20));
+        pattern.star5(10, 10, 8).stroke('#78909C');
 
-        // Set hatch fill.
-        chart.hatchFill("zig-zag", "#424242", 0.5, 20);
+        var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
 
-        chart.title("Set hatch fill parameters");
-        chart.container("container");
+        var tankPointer = chart.tank(3);
+
+        var state = tankPointer.normal();
+
+        // Set hatch fill for the empty part of a tank.
+        state.emptyHatchFill(pattern);
+
+        chart.width(600).height(400);
+        chart.title("Set state hatch fill parameter as a pattern");
+        chart.container(stage);
         chart.draw();
     });
 </script>

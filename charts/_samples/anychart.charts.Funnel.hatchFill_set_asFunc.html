@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.pie.Center.fill set asRadial"/>
+    <meta name="ac:name" content="anychart.charts.Funnel.hatchFill set asFunc"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pyramid-funnel.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -22,34 +23,22 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.pie([
-            {x: "Cycling", value: 10},
-            {x: "Swimming", value: 12},
-            {x: "Run", value: 18},
-            {x: "Hiking", value: 11},
-            {x: "Alpinism", value: 9}
+        var chart = anychart.funnel([
+            {name: 'California', value: 10},
+            {name: 'Illinois', value: 7},
+            {name: 'Massachusetts', value: 20},
+            {name: 'New York', value: 14}
         ]);
 
-        chart.innerRadius("25%");
+        // Set hatch fill.
+        chart.hatchFill(function () {
+           if (this.index > 1) {
+               return {type: 'diagonal-brick'};
+           }
+        });
 
-        var label = anychart.standalones.label();
-        label.enabled(true);
-        label.text("Activities");
-        label.width("100%");
-        label.height("100%");
-        label.fontSize(30);
-        label.fontColor("#60727b");
-        label.hAlign("center");
-        label.vAlign("middle");
-
-        var center = chart.center();
-        center.content(label);
-
-        // Set fill.
-        center.fill(["#FDFC47", "#24FE41"], 0.5, 0.5, null, 0.7, 0.5, 0.5);
-
-        chart.title("Set fill as a radial gradient");
-        chart.container("container");
+        chart.title('Set chart hatch fill parameter as a function');
+        chart.container('container');
         chart.draw();
     });
 </script>

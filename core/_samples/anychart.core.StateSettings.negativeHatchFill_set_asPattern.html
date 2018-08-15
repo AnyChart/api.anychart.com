@@ -2,11 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Venn.hatchFill set"/>
+    <meta name="ac:name" content="anychart.core.StateSettings.negativeHatchFill set asPattern"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-venn.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -23,24 +22,30 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = [
-            {x: "A", value: 20},
-            {x: "B", value: 12},
-            {x: "C", value: 17},
-            {x: "A&B", value: 4},
-            {x: "B&C", value: 5},
-            {x: "A&C", value: 7},
-            {x: "A&B&C", value: 1}
-        ];
+        var stage = anychart.graphics.create('container');
 
-        var chart = anychart.venn(data);
-        chart.stroke("3 #FFFFFF");
+        var pattern = stage.pattern(new anychart.graphics.math.Rect(0, 0, 20, 20));
+        pattern.star5(10, 10, 8).stroke('#fffaf0');
 
-        // Set hatch fill.
-        chart.hatchFill("zig-zag", "#424242", 0.5, 20);
+        var chart = anychart.bubble();
 
-        chart.title("Set hatch fill parameters");
-        chart.container("container");
+        var series = chart.bubble([
+            {x: 1, value: 1.0, size: 2},
+            {x: 2, value: 1.6, size: -7},
+            {x: 3, value: 1.2, size: -4},
+            {x: 4, value: 1.9, size: 3},
+            {x: 4, value: 1.5, size: -2}
+        ]);
+
+        series.displayNegative(true);
+
+        var state = series.normal();
+
+        // Set negative hatch fill.
+        state.negativeHatchFill(pattern);
+
+        chart.title('Set state hatch fill as a pattern');
+        chart.container(stage);
         chart.draw();
     });
 </script>

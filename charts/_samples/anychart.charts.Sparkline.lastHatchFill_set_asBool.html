@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.pie.Center.fill set asString"/>
+    <meta name="ac:name" content="anychart.charts.Sparkline.lastHatchFill set asBool"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-sparkline.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -22,34 +23,14 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.pie([
-            {x: "Cycling", value: 10},
-            {x: "Swimming", value: 12},
-            {x: "Run", value: 18},
-            {x: "Hiking", value: 11},
-            {x: "Alpinism", value: 9}
-        ]);
+        var chart = anychart.sparkline([50, 5, 10, 60, 20, 70, 30]);
+        chart.seriesType('column');
 
-        chart.innerRadius("25%");
+        // Enable hatch fill for the the last point.
+        chart.lastHatchFill(true);
 
-        var label = anychart.standalones.label();
-        label.enabled(true);
-        label.text("Activities");
-        label.width("100%");
-        label.height("100%");
-        label.fontSize(30);
-        label.fontColor("#60727b");
-        label.hAlign("center");
-        label.vAlign("middle");
-
-        var center = chart.center();
-        center.content(label);
-
-        // Set fill.
-        center.fill("#B9F6CA");
-
-        chart.title("Set fill parameter as a string");
-        chart.container("container");
+        chart.title({text: 'Enable hatch fill', orientation: 'top'});
+        chart.container('container');
         chart.draw();
     });
 </script>

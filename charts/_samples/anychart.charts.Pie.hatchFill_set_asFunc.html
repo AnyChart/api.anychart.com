@@ -2,11 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Venn.hatchFill set"/>
+    <meta name="ac:name" content="anychart.charts.Pie.hatchFill setFunc"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-venn.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -23,24 +22,23 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = [
-            {x: "A", value: 20},
-            {x: "B", value: 12},
-            {x: "C", value: 17},
-            {x: "A&B", value: 4},
-            {x: "B&C", value: 5},
-            {x: "A&C", value: 7},
-            {x: "A&B&C", value: 1}
-        ];
-
-        var chart = anychart.venn(data);
-        chart.stroke("3 #FFFFFF");
+        var chart = anychart.pie([
+            {x: 'Cycling', value: 5},
+            {x: 'Swimming', value: 2},
+            {x: 'Run', value: 1},
+            {x: 'Hiking', value: 3},
+            {x: 'Alpinism', value: 1}
+        ]);
 
         // Set hatch fill.
-        chart.hatchFill("zig-zag", "#424242", 0.5, 20);
+        chart.hatchFill(function () {
+            if (this.index > 2) {
+                return {type: 'diagonal-brick'};
+            }
+        });
 
-        chart.title("Set hatch fill parameters");
-        chart.container("container");
+        chart.title('Set hatch fill parameter as a function');
+        chart.container('container');
         chart.draw();
     });
 </script>

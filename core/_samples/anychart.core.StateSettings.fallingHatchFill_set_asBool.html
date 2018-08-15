@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Venn.hatchFill set"/>
+    <meta name="ac:name" content="anychart.core.StateSettings.emptyHatchFill set asBool"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-venn.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-linear-gauge.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -23,24 +23,18 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = [
-            {x: "A", value: 20},
-            {x: "B", value: 12},
-            {x: "C", value: 17},
-            {x: "A&B", value: 4},
-            {x: "B&C", value: 5},
-            {x: "A&C", value: 7},
-            {x: "A&B&C", value: 1}
-        ];
+        var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
 
-        var chart = anychart.venn(data);
-        chart.stroke("3 #FFFFFF");
+        var tankPointer = chart.tank(3);
 
-        // Set hatch fill.
-        chart.hatchFill("zig-zag", "#424242", 0.5, 20);
+        var state = tankPointer.normal();
 
-        chart.title("Set hatch fill parameters");
-        chart.container("container");
+        // Enable hatch fill for the empty part of a tank.
+        state.emptyHatchFill(true);
+
+        chart.width(600).height(400);
+        chart.title('Enable state hatch fill');
+        chart.container('container');
         chart.draw();
     });
 </script>

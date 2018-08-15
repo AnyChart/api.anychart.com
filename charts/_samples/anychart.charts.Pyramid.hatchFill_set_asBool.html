@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Venn.hatchFill set"/>
+    <meta name="ac:name" content="anychart.charts.Pyramid.hatchFill set asBool"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-venn.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pyramid-funnel.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -23,24 +23,22 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = [
-            {x: "A", value: 20},
-            {x: "B", value: 12},
-            {x: "C", value: 17},
-            {x: "A&B", value: 4},
-            {x: "B&C", value: 5},
-            {x: "A&C", value: 7},
-            {x: "A&B&C", value: 1}
-        ];
+        var chart = anychart.pyramid([
+            {x: 'Physical', value: 125},
+            {x: 'Data Link', value: 125},
+            {x: 'Network', value: 125},
+            {x: 'Transport', value: 125},
+            {x: 'Session', value: 125},
+            {x: 'Presentation', value: 125},
+            {x: 'Application', value: 290, label: {anchor: 'center-top'}}
+        ]);
+        chart.labels({position: 'inside'});
 
-        var chart = anychart.venn(data);
-        chart.stroke("3 #FFFFFF");
+        // Enable hatch fill.
+        chart.hatchFill(true);
 
-        // Set hatch fill.
-        chart.hatchFill("zig-zag", "#424242", 0.5, 20);
-
-        chart.title("Set hatch fill parameters");
-        chart.container("container");
+        chart.title('Enable hatch fill');
+        chart.container('container');
         chart.draw();
     });
 </script>
