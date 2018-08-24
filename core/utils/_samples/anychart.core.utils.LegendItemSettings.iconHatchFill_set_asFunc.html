@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.utils.LegendItemSettings.iconHatchFill set asFunc"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.line();
+
+        var series1 = chart.line([
+            {x: 'Cycling', value: 10},
+            {x: 'Swimming', value: 32},
+            {x: 'Run', value: 18}
+        ]);
+
+        var series2 = chart.line([
+            {x: 'Cycling', value: 15},
+            {x: 'Swimming', value: 9},
+            {x: 'Run', value: 29}
+        ]);
+
+        chart.legend(true);
+
+        var item = series1.legendItem();
+
+        // Set hatch fill.
+        item.iconHatchFill(function () {
+            return {type: 'zig-zag', color: '#FFFFFF', size: 10}
+        });
+
+        chart.title('Set hatch fill parameters');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
