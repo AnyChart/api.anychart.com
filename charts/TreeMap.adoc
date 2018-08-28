@@ -29,7 +29,7 @@ anychart.charts.TreeMap.prototype.getDrilldownPath;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current maximal drawing depth.
+ * Getter for the maximal drawing depth.
  * @shortDescription Settings for the number of levels headlines
  * @category Specific settings
  * @detailed Shows the number of levels headlines that will be drawn.
@@ -42,7 +42,7 @@ anychart.charts.TreeMap.prototype.maxDepth;
 /**
  * Setter for the maximal drawing depth.
  * @detailed Shows the number of levels headlines that will be drawn.
- * @param {number=} opt_value [1] Max depth to draw.
+ * @param {number=} opt_maxDepth [1] Max depth to draw.
  * @example anychart.charts.TreeMap.maxDepth_set
  * @return {anychart.charts.TreeMap} Self instance for method chaining.
  * @since 7.10.0
@@ -56,7 +56,7 @@ anychart.charts.TreeMap.prototype.maxDepth;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current additional segmentation of treeMap points.
+ * Getter for the additional segmentation of treeMap points.
  * @shortDescription Settings for the number of hint-levels
  * @category Specific settings
  * @detailed Shows the number of hint-levels that will be drawn below.
@@ -68,7 +68,7 @@ anychart.charts.TreeMap.prototype.hintDepth;
 
 /**
  * Setter for the additional segmentation of treeMap points.
- * @param {number=} opt_value [0] Additional depth of visibility.
+ * @param {number=} opt_hintDepth [0] Additional depth of visibility.
  * @example anychart.charts.TreeMap.hintDepth_set
  * @return {anychart.charts.TreeMap} Self instance for method chaining.
  * @since 7.10.0
@@ -82,20 +82,20 @@ anychart.charts.TreeMap.prototype.hintDepth;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current hint opacity.
+ * Getter for the hint opacity.
  * @shortDescription Hint opacity settings
  * @category Chart coloring
  * @example anychart.charts.TreeMap.hintOpacity_get
- * @return {number} The current hint opacity.
+ * @return {number} Hint opacity.
  * @since 7.10.0
  */
 anychart.charts.TreeMap.prototype.hintOpacity;
 
 /**
- * Setter for current hint opacity.
+ * Setter for the hint opacity.
  * @detailed The layer opacity above of the hint layers. Note that {@link anychart.charts.TreeMap#hintDepth} should be greater 0.
  * @example anychart.charts.TreeMap.hintOpacity_set
- * @param {number=} opt_value [1] Opacity value from 0 to 1
+ * @param {number=} opt_hintOpacity [0.4] Opacity value from 0 to 1
  * @return {anychart.charts.TreeMap} Self instance for method chaining.
  * @since 7.10.0
  */
@@ -120,7 +120,7 @@ anychart.charts.TreeMap.prototype.maxHeadersHeight;
 /**
  * Setter for the maximum headers height.
  * @example anychart.charts.TreeMap.maxHeadersHeight_set
- * @param {(number|string)=} opt_value [25] Max headers height value. A height can be set as absolute numbers or as a percentage.
+ * @param {(number|string)=} opt_height [25] Max headers height value. A height can be set as absolute numbers or as a percentage.
  * @return {anychart.charts.TreeMap} Self instance for method chaining.
  * @since 7.10.0
  */
@@ -146,7 +146,7 @@ anychart.charts.TreeMap.prototype.data;
  * Setter for the data.
  * @example anychart.charts.TreeMap.data_set_asArrayOfObject Using an array of objects.
  * @example anychart.charts.TreeMap.data_set_asInstance Using instance
- * @param {(anychart.data.Tree|anychart.data.TreeView|Array.<Object>)=} opt_value Data tree or raw data.
+ * @param {(anychart.data.Tree|anychart.data.TreeView|Array.<Object>)=} opt_data Data tree or raw data.
  * @param {(anychart.enums.TreeFillingMethod|string)=} opt_fillMethod Fill method.
  * @return {anychart.charts.TreeMap} Self instance for method chaining.
  * @since 7.10.0
@@ -189,11 +189,11 @@ anychart.charts.TreeMap.prototype.drillUp = function () {};
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current headers display mode.
+ * Getter for the headers display mode.
  * @shortDescription Header labels display mode.
  * @category Point Elements
  * @example anychart.charts.TreeMap.headersDisplayMode_get
- * @return {anychart.enums.LabelsDisplayMode|string} The current mode.
+ * @return {anychart.enums.LabelsDisplayMode|string} Headers display mode.
  * @since 7.10.0
  */
 anychart.charts.TreeMap.prototype.headersDisplayMode;
@@ -201,7 +201,7 @@ anychart.charts.TreeMap.prototype.headersDisplayMode;
 /**
  * Setter for the headers display mode.
  * @example anychart.charts.TreeMap.headersDisplayMode_set
- * @param {(anychart.enums.LabelsDisplayMode|string)=} opt_value Mode to set.
+ * @param {(anychart.enums.LabelsDisplayMode|string)=} opt_mode Mode to set.
  * @return {anychart.charts.TreeMap} Self instance for method chaining.
  * @since 7.10.0
  */
@@ -214,11 +214,11 @@ anychart.charts.TreeMap.prototype.headersDisplayMode;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current point header labels.
+ * Getter for the point header labels.
  * @shortDescription Header labels settings.
  * @category Point Elements
  * @example anychart.charts.TreeMap.headers_get
- * @return {!(anychart.core.ui.LabelsFactory)} The current point header labels.
+ * @return {!(anychart.core.ui.LabelsFactory)} The point header labels.
  * @since 7.10.0
  */
 anychart.charts.TreeMap.prototype.headers;
@@ -232,7 +232,7 @@ anychart.charts.TreeMap.prototype.headers;
  * </ul>
  * @example anychart.charts.TreeMap.headers_set_asBool Disable/enable header labels
  * @example anychart.charts.TreeMap.headers_set_asObject Using object
- * @param {(Object|boolean|null)=} opt_value Point headers settings.
+ * @param {(Object|boolean|null)=} opt_settings Point headers settings.
  * @return {!(anychart.charts.TreeMap)} Self instance for method chaining.
  * @since 7.10.0
  */
@@ -245,7 +245,7 @@ anychart.charts.TreeMap.prototype.headers;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current point labels.
+ * Getter for the point labels.
  * @shortDescription Labels settings.
  * @category Point Elements
  * @example anychart.charts.TreeMap.labels_get
@@ -263,7 +263,7 @@ anychart.charts.TreeMap.prototype.labels;
  * </ul>
  * @example anychart.charts.TreeMap.labels_set_asBool Disable/enable point labels
  * @example anychart.charts.TreeMap.labels_set_asObj Using object
- * @param {(Object|boolean|null)=} opt_value Point labels settings.
+ * @param {(Object|boolean|null)=} opt_settings Point labels settings.
  * @return {!(anychart.charts.TreeMap)} Self instance for method chaining.
  * @since 7.10.0
  */
@@ -277,7 +277,7 @@ anychart.charts.TreeMap.prototype.labels;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current point markers.
+ * Getter for point markers.
  * @shortDescription Markers settings.
  * @category Point Elements
  * @example anychart.charts.TreeMap.markers_get
@@ -287,7 +287,7 @@ anychart.charts.TreeMap.prototype.labels;
 anychart.charts.TreeMap.prototype.markers;
 
 /**
- * Setter for the point markers.
+ * Setter for point markers.
  * @detailed Sets point markers settings depending on parameter type:
  * <ul>
  *   <li><b>null/boolean</b> - disable or enable point markers.</li>
@@ -295,7 +295,7 @@ anychart.charts.TreeMap.prototype.markers;
  * </ul>
  * @example anychart.charts.TreeMap.markers_set_asBool Disable/enable point markers
  * @example anychart.charts.TreeMap.markers_set_asObj Using object
- * @param {(Object|boolean|null|string)=} opt_value Point markers settings.
+ * @param {(Object|boolean|null|string)=} opt_settings Point markers settings.
  * @return {!(anychart.charts.TreeMap)} Self instance for method chaining.
  * @since 7.10.0
  */
@@ -322,7 +322,8 @@ anychart.charts.TreeMap.prototype.colorScale;
  * Setter for the color scale.
  * @example anychart.charts.TreeMap.colorScale_set_asValue Using value
  * @example anychart.charts.TreeMap.colorScale_set_asColors Using colors
- * @param {(anychart.scales.OrdinalColor|anychart.scales.LinearColor|Object|anychart.enums.ScaleTypes|string)=} opt_value Value to set.
+ * @param {(anychart.scales.OrdinalColor|anychart.scales.LinearColor|Object|anychart.enums.ScaleTypes|string)=} opt_settings
+ * Color scale to set.
  * @return {anychart.scales.LinearColor} Self instance for method chaining.
  * @since 7.10.0
  */
@@ -335,11 +336,11 @@ anychart.charts.TreeMap.prototype.colorScale;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current color range.
+ * Getter for the color range.
  * @shortDescription Color range settings.
  * @category Chart Controls
  * @example anychart.charts.TreeMap.colorRange_get
- * @return {!(anychart.core.ui.ColorRange)} The current color range.
+ * @return {!(anychart.core.ui.ColorRange)} Color range.
  * @since 7.10.0
  */
 anychart.charts.TreeMap.prototype.colorRange;
@@ -347,7 +348,7 @@ anychart.charts.TreeMap.prototype.colorRange;
 /**
  * Setter for the color range.
  * @example anychart.charts.TreeMap.colorRange_set
- * @param {Object=} opt_value Color range settings to set.
+ * @param {Object=} opt_settings Color range settings to set.
  * @return {!(anychart.charts.TreeMap)} Self instance for method chaining.
  * @since 7.10.0
  */
@@ -360,7 +361,7 @@ anychart.charts.TreeMap.prototype.colorRange;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current fill color.
+ * Getter for the fill color.
  * @shortDescription Fill settings.
  * @category Coloring
  * @listing See listing
@@ -372,19 +373,19 @@ anychart.charts.TreeMap.prototype.colorRange;
 anychart.charts.TreeMap.prototype.fill;
 
 /**
- * Sets fill settings using an array or a string.
+ * Setter for fill settings using an array or a string.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @detailed <b>Note</b>: If you call a fill method, the colorScale settings will not be applied.
  * @example anychart.charts.TreeMap.fill_set_asString Using string
  * @example anychart.charts.TreeMap.fill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} color Color as an array or a string.
  * @return {anychart.charts.TreeMap} Self instance for method chaining.
  * @since 7.10.0
  */
 anychart.charts.TreeMap.prototype.fill;
 
 /**
- * Sets fill settings using function.
+ * Setter for fill settings using function.
  * @detailed <b>Note</b>: If you call a fill method, the colorScale settings will not be applied.
  * @example anychart.charts.TreeMap.fill_set_asFunc
  * @param {FillFunction=} opt_fillFunction [function() {
@@ -463,13 +464,13 @@ anychart.charts.TreeMap.prototype.fill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current stroke.
+ * Getter for the stroke.
  * @shortDescription Stroke settings.
  * @category Coloring
  * @listing See listing
  * var chart = anychart.treeMap(data);
- * var currentStroke = chart.stroke();
- * @return {(anychart.graphics.vector.Stroke|StrokeFunction)} The current stroke.
+ * var stroke = chart.stroke();
+ * @return {(anychart.graphics.vector.Stroke|StrokeFunction)} Stroke settings.
  * @since 7.10.0
  */
 anychart.charts.TreeMap.prototype.stroke;
@@ -524,13 +525,13 @@ anychart.charts.TreeMap.prototype.stroke;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current hatch fill settings.
+ * Getter for hatch fill settings.
  * @shortDescription Hatch fill settings.
  * @category Coloring
  * @listing See listing
  * var chart = anychart.treeMap(data);
- * var currentHatchFill = chart.hatchFill();
- * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} The current hatch fill.
+ * var hatchFill = chart.hatchFill();
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Hatch fill settings.
  * @since 7.10.0
  */
 anychart.charts.TreeMap.prototype.hatchFill;
@@ -595,12 +596,12 @@ anychart.charts.TreeMap.prototype.hatchFill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current selection mode.
+ * Getter for the selection mode.
  * @shortDescription Selection mode
  * @category Specific settings
  * @listing See listing
- * var currentMode = chart.selectionMode();
- * @return {anychart.enums.SelectionMode|string|null} The current selection mode.
+ * var selectionMode = chart.selectionMode();
+ * @return {anychart.enums.SelectionMode|string|null} Selection mode.
  * @since 7.10.0
  */
 anychart.charts.TreeMap.prototype.selectionMode;
@@ -622,11 +623,11 @@ anychart.charts.TreeMap.prototype.selectionMode;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current sort settings.
+ * Getter for the sort settings.
  * @shortDescription Sort settings.
  * @category Data
  * @example anychart.charts.TreeMap.sort_get
- * @return {anychart.enums.Sort|string} The current sort settings.
+ * @return {anychart.enums.Sort|string} Sort settings.
  * @since 7.10.0
  */
 anychart.charts.TreeMap.prototype.sort;
@@ -635,7 +636,7 @@ anychart.charts.TreeMap.prototype.sort;
  * Setter for the sort settings.<br/>
  * Ascending, Descending and No sorting is supported.
  * @example anychart.charts.TreeMap.sort_set
- * @param {(anychart.enums.Sort|string)=} opt_value ["desc"] Sort type.
+ * @param {(anychart.enums.Sort|string)=} opt_type ['desc'] Sort type.
  * @return {anychart.charts.TreeMap} Self instance for method chaining.
  * @since 7.10.0
  */
@@ -660,7 +661,7 @@ anychart.charts.TreeMap.prototype.normal;
 /**
  * Setter for normal state settings.
  * @example anychart.charts.TreeMap.normal_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.charts.TreeMap} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -685,7 +686,7 @@ anychart.charts.TreeMap.prototype.hovered;
 /**
  * Setter for hovered state settings.
  * @example anychart.charts.TreeMap.hovered_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.charts.TreeMap} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -710,7 +711,7 @@ anychart.charts.TreeMap.prototype.selected;
 /**
  * Setter for selected state settings.
  * @example anychart.charts.TreeMap.selected_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.charts.TreeMap} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -736,7 +737,7 @@ anychart.charts.TreeMap.prototype.labelsDisplayMode;
 /**
  * Setter for the labels display mode.
  * @example anychart.charts.TreeMap.labelsDisplayMode_set
- * @param {(anychart.enums.LabelsDisplayMode|string)=} opt_value ["clip"] Mode to set.
+ * @param {(anychart.enums.LabelsDisplayMode|string)=} opt_mode ['clip'] Mode to set.
  * @return {anychart.charts.TreeMap} Self instance for method chaining.
  * @since 8.1.0
  */

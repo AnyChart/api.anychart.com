@@ -33,7 +33,7 @@ anychart.charts.Resource.ZoomLevel;
  * @shortDescription Data settings.
  * @category Data
  * @listing See listing
- * var currentData = chart.data();
+ * var data = chart.data();
  * @return {!anychart.data.View} Data mapping.
  * @since 7.12.0
  */
@@ -45,7 +45,7 @@ anychart.charts.Resource.prototype.data;
  * @example anychart.charts.Resource.data_set_asArray Using array
  * @example anychart.charts.Resource.data_set_asDataset Using dataset
  * @example anychart.charts.Resource.data_set_asMapping Using mapping
- * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_value Value to set.
+ * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Value to set.
  * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
  * @return {(!anychart.charts.Resource)} Self instance for method chaining.
  * @since 7.12.0
@@ -71,7 +71,7 @@ anychart.charts.Resource.prototype.xScale;
 /**
  * Setter for the X scale.
  * @example anychart.charts.Resource.xScale_set
- * @param {Object=} opt_value [anychart.scales.DateTimeWithCalendar] Value to set
+ * @param {Object=} opt_settings [{api:anychart.scales.DateTimeWithCalendar}anychart.scales.DateTimeWithCalendar{api}] Value to set
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -102,7 +102,7 @@ anychart.charts.Resource.prototype.horizontalScrollBar;
  * </ul>
  * @example anychart.charts.Resource.horizontalScrollBar_set_asObj Using object
  * @example anychart.charts.Resource.horizontalScrollBar_set_asBool Enable/Disable horizontal scrollbar
- * @param {(Object|null|boolean)=} opt_value Value to set.
+ * @param {(Object|null|boolean)=} opt_settings Value to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -133,7 +133,7 @@ anychart.charts.Resource.prototype.verticalScrollBar;
  * </ul>
  * @example anychart.charts.Resource.verticalScrollBar_set_asObj Using object
  * @example anychart.charts.Resource.verticalScrollBar_set_asBool Enable/Disable vertical scrollbar
- * @param {(Object|null|boolean)=} opt_value Value to set.
+ * @param {(Object|null|boolean)=} opt_settings Value to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -159,7 +159,7 @@ anychart.charts.Resource.prototype.timeTrackingMode;
 /**
  * Setter for the time tracking mode.
  * @example anychart.charts.Resource.timeTrackingMode_set
- * @param {(anychart.enums.TimeTrackingMode|string)=} opt_value ["activityPerResource"] Value to set.
+ * @param {(anychart.enums.TimeTrackingMode|string)=} opt_mode ['availability-per-resource'] Value to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -186,7 +186,7 @@ anychart.charts.Resource.prototype.defaultMinutesPerDay;
  * Setter for default minutes per day.
  * <b>Note:</b> Use method when number of minutes per day isn't specified in the data.
  * @example anychart.charts.Resource.defaultMinutesPerDay
- * @param {number=} opt_value [60] Minutes per day.
+ * @param {number=} opt_minutes [60] Minutes per day.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -212,7 +212,7 @@ anychart.charts.Resource.prototype.pixPerHour;
 /**
  * Setter for hours row height in pixels.
  * @example anychart.charts.Resource.pixPerHour_set
- * @param {number=} opt_value [25] Value to set.
+ * @param {number=} opt_height [25] Value to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -238,7 +238,7 @@ anychart.charts.Resource.prototype.minRowHeight;
 /**
  * Setter for the minimal row height.
  * @example anychart.charts.Resource.minRowHeight_set
- * @param {number=} opt_value [50] Value to set.
+ * @param {number=} opt_height [50] Value to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -300,7 +300,7 @@ anychart.charts.Resource.prototype.cellPadding;
  * // top and bottom 5px ,right and left 15px
  * chart.padding(anychart.utils.padding(5,15));
  * @example anychart.charts.Resource.cellPadding_set_asSingle
- * @param {(null|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_value Value to set.
+ * @param {(null|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_padding Value to set.
  * @return {!anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -344,7 +344,7 @@ anychart.charts.Resource.prototype.activities;
 /**
  * Setter for the activities settings.
  * @example anychart.charts.Resource.activities_set
- * @param {(Object)=} opt_value Value to set.
+ * @param {(Object)=} opt_settings Value to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -369,7 +369,7 @@ anychart.charts.Resource.prototype.conflicts;
 /**
  * Setter for the conflicts settings.
  * @example anychart.charts.Resource.conflicts_set
- * @param {Object=} opt_value Value to set.
+ * @param {Object=} opt_settings Value to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -394,7 +394,7 @@ anychart.charts.Resource.prototype.calendar;
 /**
  * Setter for calendar.
  * @example anychart.charts.Resource.calendar_set
- * @param {Object=} opt_value Value to set.
+ * @param {Object=} opt_settings Value to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -425,7 +425,7 @@ anychart.charts.Resource.prototype.timeLine;
  * </ul>
  * @example anychart.charts.Resource.timeLine_set_asBool Enable/Disable time line.
  * @example anychart.charts.Resource.timeLine_set_asObj Using object
- * @param {(Object|null|boolean)=} opt_value Value to set.
+ * @param {(Object|null|boolean)=} opt_settings Value to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -450,7 +450,7 @@ anychart.charts.Resource.prototype.logo;
 /**
  * Setter for the logo.
  * @example anychart.charts.Resource.logo_set
- * @param {(Object)=} opt_value Value to set.
+ * @param {(Object)=} opt_settings Value to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -481,7 +481,7 @@ anychart.charts.Resource.prototype.grid;
  * </ul>
  * @example anychart.charts.Resource.grid_set_asObj Using object
  * @example anychart.charts.Resource.grid_set_asBool Enable/Disable grid
- * @param {(Object|null|boolean)=} opt_value Value to set.
+ * @param {(Object|null|boolean)=} opt_settings Value to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -507,7 +507,7 @@ anychart.charts.Resource.prototype.zoomLevels;
 /**
  * Setter for zoom levels set.
  * @example anychart.charts.Resource.zoomLevels_set
- * @param {Array.<anychart.charts.Resource.ZoomLevel>=} opt_value Value to set.
+ * @param {Array.<anychart.charts.Resource.ZoomLevel>=} opt_levelsSettings Zoom levels settings to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -562,7 +562,7 @@ anychart.charts.Resource.prototype.timeLineHeight;
 /**
  * Setter for the time line height.
  * @example anychart.charts.Resource.timeLineHeight_set
- * @param {(number|string)=} opt_value [52] Value to set.
+ * @param {(number|string)=} opt_height [52] Value to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -620,7 +620,7 @@ anychart.charts.Resource.prototype.resourceListWidth;
 /**
  * Setter for the resource list width.
  * @example anychart.charts.Resource.resourceListWidth_set
- * @param {(number|string)=} opt_value [260] Value to set
+ * @param {(number|string)=} opt_width [260] Value to set
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -647,7 +647,7 @@ anychart.charts.Resource.prototype.overlay;
  * Setter for the overlay element.
  * @detailed The overlay method creates a DIV Element by specified bounds and saves its bounds for resize of the chart.
  * @example anychart.charts.Resource.overlay_set
- * @param {(Object|null|boolean)=} opt_value Value to set.
+ * @param {(Object|null|boolean)=} opt_settings Value to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -775,7 +775,7 @@ anychart.charts.Resource.prototype.currentStartDate;
 /**
  * Setter for the current start date.
  * @example anychart.charts.Resource.currentStartDate
- * @param {(Date|number|string)} value Current start date to set.
+ * @param {(Date|number|string)} date Current start date to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  */
 anychart.charts.Resource.prototype.currentStartDate;

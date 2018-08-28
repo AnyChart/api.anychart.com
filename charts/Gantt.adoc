@@ -25,7 +25,7 @@ anychart.charts.Gantt.prototype.data;
  * Setter for the chart data.
  * @example anychart.charts.Gantt.data_set_asArrayOfObjects Using array of objects
  * @example anychart.charts.Gantt.data_set_asInst Using instance
- * @param {(anychart.data.Tree|anychart.data.TreeView|Array.<Object>)=} opt_value Data tree or raw data.
+ * @param {(anychart.data.Tree|anychart.data.TreeView|Array.<Object>)=} opt_data Data tree or raw data.
  * @param {(anychart.enums.TreeFillingMethod|string)=} opt_fillMethod Fill method.
  * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
@@ -50,7 +50,7 @@ anychart.charts.Gantt.prototype.headerHeight;
 /**
  * Setter for the header height.
  * @example anychart.charts.Gantt.headerHeight_set
- * @param {(number|string)=} opt_value [70] Value to set.
+ * @param {(number|string)=} opt_height [70] Value to set.
  * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.headerHeight;
@@ -106,17 +106,17 @@ anychart.charts.Gantt.prototype.getTimeline;
  * @shortDescription Row fill settings in hover mode.
  * @category Coloring
  * @example anychart.charts.Gantt.rowHoverFill_get
- * @return {anychart.graphics.vector.Fill|string} Current value hover fill.
+ * @return {anychart.graphics.vector.Fill|string} Row hover fill.
  */
 anychart.charts.Gantt.prototype.rowHoverFill;
 
 /**
- * Sets row hover fill settings using an array or a string.
+ * Setter for row hover fill settings using an array or a string.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @detailed <b>Note:</b> You can't use image for row hover fill.
  * @example anychart.charts.Gantt.rowHoverFill_set_asString Using string
  * @example anychart.charts.Gantt.rowHoverFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} value Color as an object or a string.
  * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.rowHoverFill;
@@ -189,7 +189,7 @@ anychart.charts.Gantt.prototype.rowHoverFill;
  * @shortDescription Fill settings for selected row.
  * @category Coloring
  * @example anychart.charts.Gantt.rowSelectedFill_get
- * @return {anychart.graphics.vector.Fill|string} The row select fill.
+ * @return {anychart.graphics.vector.Fill|string} Row selected fill.
  */
 anychart.charts.Gantt.prototype.rowSelectedFill;
 
@@ -199,7 +199,7 @@ anychart.charts.Gantt.prototype.rowSelectedFill;
  * @detailed <b>Note:</b> You can't use image for row selected fill.
  * @example anychart.charts.Gantt.rowSelectedFill_set_asString Using string
  * @example anychart.charts.Gantt.rowSelectedFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value ["#d2eafa"] Color as an object or a string.
+ * @param {anychart.graphics.vector.Fill} value [function(){return this.sourceColor}] Color as an object or a string.
  * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.rowSelectedFill;
@@ -207,9 +207,7 @@ anychart.charts.Gantt.prototype.rowSelectedFill;
 /**
  * Setter for fill settings using function.
  * @example anychart.charts.Gantt.rowSelectedFill_set_asFunc
- * @param {FillFunction=} opt_fillFunction [function() {
- *  return anychart.color.darken(this.sourceColor);
- * }] Function that looks like: <pre>function(){
+ * @param {FillFunction=} opt_fillFunction [function(){return this.sourceColor}] Function that looks like: <pre>function(){
  *    // this.sourceColor - color returned by fill() getter.
  *    // this.item - item for coloring.
  *    // this.itemIndex - item index.
@@ -503,7 +501,7 @@ anychart.charts.Gantt.prototype.splitterPosition;
 /**
  * Setter for the splitter position.
  * @example anychart.charts.Gantt.splitterPosition_set
- * @param {(string|number)=} opt_value ["30%"] Pixel or percent value.
+ * @param {(string|number)=} opt_position ['30%'] Pixel or percent value.
  * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.splitterPosition;
@@ -558,7 +556,7 @@ anychart.charts.Gantt.prototype.columnStroke;
 /**
  * Setter for the column stroke.
  * @example anychart.charts.Gantt.columnStroke_set
- * @param {(anychart.graphics.vector.Stroke|string)=} opt_value Value to set.
+ * @param {(anychart.graphics.vector.Stroke|string)=} opt_color Color to set.
  * @return {anychart.charts.Gantt} Self instance for method chaining.
  * @since 7.6.0
  */
@@ -593,7 +591,7 @@ anychart.charts.Gantt.prototype.rowStroke;
 /**
  * Setter for the row stroke.
  * @example anychart.charts.Gantt.rowStroke_set
- * @param {(anychart.graphics.vector.Stroke|string)=} opt_value Value to set.
+ * @param {(anychart.graphics.vector.Stroke|string)=} opt_color Color to set.
  * @return {anychart.charts.Gantt} Self instance for method chaining.
  * @since 7.6.0
  */
@@ -655,7 +653,7 @@ anychart.charts.Gantt.prototype.xScale;
 /**
  * Setter for the timeline X-scale.
  * @example anychart.charts.Gantt.xScale_set
- * @param {Object=} opt_value [anychart.scales.GanttDateTime] Scale object.
+ * @param {Object=} opt_settings [{api:anychart.scales.GanttDateTime}anychart.scales.GanttDateTime{api}] Scale object.
  * @return {anychart.charts.Gantt} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -681,7 +679,7 @@ anychart.charts.Gantt.prototype.defaultRowHeight;
 /**
  * Setter for the default row height.
  * @example anychart.charts.Gantt.defaultRowHeight
- * @param {number=} opt_value [20] Value to set.
+ * @param {number=} opt_height [20] Value to set.
  * @return {anychart.charts.Gantt} Self instance for method chaining.
  * @since 7.12.0
  */

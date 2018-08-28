@@ -28,7 +28,7 @@ anychart.charts.Pyramid.prototype.baseWidth;
  * Setter for the base width.
  * @detailed The width in pixels or in percentage of the width of the bounds.
  * @example anychart.charts.Pyramid.baseWidth_set
- * @param {(string|number)=} opt_value ["70%"] Value to set.
+ * @param {(string|number)=} opt_width ['70%'] Value to set.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  */
 anychart.charts.Pyramid.prototype.baseWidth;
@@ -69,7 +69,7 @@ anychart.charts.Pyramid.prototype.reversed;
  * @shortDescription Definition of the chart type.
  * @category Specific settings
  * @example anychart.charts.Pyramid.getType
- * @return {string} Current chart type.
+ * @return {string} Chart type.
  */
 anychart.charts.Pyramid.prototype.getType;
 
@@ -97,7 +97,7 @@ anychart.charts.Pyramid.prototype.data;
  * @example anychart.charts.Pyramid.data_set_asMapping Using data mapping
  * @example anychart.charts.Pyramid.data_set_asCSV Using data settings
  * @example anychart.charts.Pyramid.data_set_asTableData Using data settings
- * @param {(anychart.data.View|anychart.data.Mapping|anychart.data.Set|Array|string|anychart.data.DataSettings)=} opt_value Value to set.
+ * @param {(anychart.data.View|anychart.data.Mapping|anychart.data.Set|Array|string|anychart.data.DataSettings)=} opt_data Value to set.
  * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed by first param, you can pass CSV parser settings here as a hash map.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  */
@@ -127,7 +127,7 @@ anychart.charts.Pyramid.prototype.palette;
  * @example anychart.charts.Pyramid.palette_set_DistinctColors Using distinct colors
  * @example anychart.charts.Pyramid.palette_set_asObject Using object
  * @example anychart.charts.Pyramid.palette_set_asFromPalettes Using palette from predefined palettes
- * @param {(anychart.palettes.RangeColors|anychart.palettes.DistinctColors|Object|Array.<string>)=} opt_value Color palette instance.
+ * @param {(anychart.palettes.RangeColors|anychart.palettes.DistinctColors|Object|Array.<string>)=} opt_settings Color palette instance.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  */
 anychart.charts.Pyramid.prototype.palette;
@@ -152,7 +152,7 @@ anychart.charts.Pyramid.prototype.markerPalette;
  * Setter for the chart markers palette settings.
  * @detailed Works only with {@link anychart.charts.Pyramid#markers}.
  * @example anychart.charts.Pyramid.markerPalette_set
- * @param {(anychart.palettes.Markers|Object|Array.<anychart.enums.MarkerType|string>)=} opt_value Chart marker palette settings to set.
+ * @param {(anychart.palettes.Markers|Object|Array.<anychart.enums.MarkerType|string>)=} opt_settings Chart marker palette settings to set.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  */
 anychart.charts.Pyramid.prototype.markerPalette;
@@ -177,7 +177,7 @@ anychart.charts.Pyramid.prototype.hatchFillPalette;
  * Setter for hatch fill palette settings.
  * @detailed Works only with {@link anychart.charts.Pyramid}#hatchFill}.
  * @example anychart.charts.Pyramid.hatchFillPalette_set
- * @param {(Array.<anychart.graphics.vector.HatchFill.HatchFillType>|Object|anychart.palettes.HatchFills)=} opt_value Chart
+ * @param {(Array.<anychart.graphics.vector.HatchFill.HatchFillType>|Object|anychart.palettes.HatchFills)=} opt_settings Chart
  * hatch fill palette settings to set.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  */
@@ -195,7 +195,7 @@ anychart.charts.Pyramid.prototype.hatchFillPalette;
  * @shortDescription Fill settings.
  * @category Coloring
  * @example anychart.charts.Pyramid.fill_get
- * @return {(anychart.graphics.vector.Fill|FillFunction)} Current fill in the normal state.
+ * @return {(anychart.graphics.vector.Fill|FillFunction)} Fill settings.
  */
 anychart.charts.Pyramid.prototype.fill;
 
@@ -203,7 +203,7 @@ anychart.charts.Pyramid.prototype.fill;
  * Setter for the pyramid fill.
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.charts.Pyramid.fill_set_asFunc
- * @param {(anychart.graphics.vector.Fill|FillFunction)=} opt_value [// return the fill from the default palette.
+ * @param {(anychart.graphics.vector.Fill|FillFunction)=} opt_fillFunction [// return the fill from the default palette.
  * function() {
  *   return this.sourceColor;
  * };] or Fill, or fill-function, which should look like this:<pre>function() {
@@ -222,7 +222,7 @@ anychart.charts.Pyramid.prototype.fill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.charts.Pyramid.fill_set_asString Using string
  * @example anychart.charts.Pyramid.fill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} color Color as an array or a string.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  */
 anychart.charts.Pyramid.prototype.fill;
@@ -355,13 +355,10 @@ anychart.charts.Pyramid.prototype.hatchFill;
 anychart.charts.Pyramid.prototype.stroke;
 
 /**
- * Setter for the pyramid stroke.
+ * Setter for the pyramid stroke using a function.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.charts.Pyramid.stroke_set_asFunc
- * @param {(anychart.graphics.vector.Stroke|StrokeFunction)=} opt_value [// return stroke from the default palette.
- * function() {
- *   return anychart.color.darken(this.sourceColor);
- * };] Stroke-function, which should look like:<pre>function() {
+ * @param {(anychart.graphics.vector.Stroke|StrokeFunction)=} opt_value ['none'] Stroke-function, which should look like:<pre>function() {
  *  //  this: {
  *  //  index : number  - the index of the current point
  *  //  sourceColor : anychart.graphics.vector.Stroke - stroke of the current point
@@ -376,7 +373,7 @@ anychart.charts.Pyramid.prototype.stroke;
  * Setter for the pyramid stroke.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.charts.Pyramid.stroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_color Stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_color ['none'] Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
@@ -412,7 +409,7 @@ anychart.charts.Pyramid.prototype.pointsPadding;
 /**
  * Setter for the padding between points.
  * @example anychart.charts.Pyramid.pointsPadding_set
- * @param {(string|number)=} opt_value [5] Value to set.
+ * @param {(string|number)=} opt_padding [0] Value to set.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  */
 anychart.charts.Pyramid.prototype.pointsPadding;
@@ -446,7 +443,7 @@ anychart.charts.Pyramid.prototype.labels;
  * </ul>
  * @example anychart.charts.Pyramid.labels_set_asBool Disable/enable labels
  * @example anychart.charts.Pyramid.labels_set_asObject Using object
- * @param {(Object|boolean|null)=} opt_value [true] Chart data labels settings.
+ * @param {(Object|boolean|null)=} opt_settings [true] Chart data labels settings.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  */
 anychart.charts.Pyramid.prototype.labels;
@@ -471,7 +468,7 @@ anychart.charts.Pyramid.prototype.overlapMode;
  * @detailed Allows the labels to cross other labels. ONLY for outside labels.
  * @example anychart.charts.Pyramid.overlapMode_set_asBool Disable/Enable overlap mode
  * @example anychart.charts.Pyramid.overlapMode_set_asString Using string
- * @param {(anychart.enums.LabelsOverlapMode|string|boolean)=} opt_value ["noOverlap"] Value to set.
+ * @param {(anychart.enums.LabelsOverlapMode|string|boolean)=} opt_settings ['noOverlap'] Value to set.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  */
 anychart.charts.Pyramid.prototype.overlapMode;
@@ -496,7 +493,7 @@ anychart.charts.Pyramid.prototype.connectorLength;
  * Setter for the outside labels connector length.
  * @detailed Works only with {@link anychart.core.ui.LabelsFactory#position} for values "outsideLeft" and "outsideRight".
  * @example anychart.charts.Pyramid.connectorLength_set
- * @param {(number|string)=} opt_value [20] Value to set.
+ * @param {(number|string)=} opt_length [20] Value to set.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  */
 anychart.charts.Pyramid.prototype.connectorLength;
@@ -521,7 +518,7 @@ anychart.charts.Pyramid.prototype.connectorStroke;
  * Setter for outside labels connectors stroke settings.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.charts.Pyramid.connectorStroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value ["#7c868e"] Stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value ['#CECECE'] Stroke settings.
  * @param {number=} opt_thickness Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
@@ -557,7 +554,7 @@ anychart.charts.Pyramid.prototype.markers;
  * @example anychart.charts.Pyramid.markers_set_asBool Disable/enable markers
  * @example anychart.charts.Pyramid.markers_set_asObject Using object
  * @example anychart.charts.Pyramid.markers_set_asString Using string
- * @param {(Object|boolean|null|string)=} opt_value [false] Data markers settings.
+ * @param {(Object|boolean|null|string)=} opt_settings [false] Data markers settings.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  */
 anychart.charts.Pyramid.prototype.markers;
@@ -587,7 +584,7 @@ anychart.charts.Pyramid.prototype.tooltip;
  * </ul>
  * @example anychart.charts.Pyramid.tooltip_set_asBool Disable/enable tooltip
  * @example anychart.charts.Pyramid.tooltip_set_asObject Using object
- * @param {(Object|boolean|null)=} opt_value [true] Tooltip settings.
+ * @param {(Object|boolean|null)=} opt_settings [true] Tooltip settings.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  */
 anychart.charts.Pyramid.prototype.tooltip;
@@ -702,7 +699,7 @@ anychart.charts.Pyramid.prototype.normal;
 /**
  * Setter for normal state settings.
  * @example anychart.charts.Pyramid.normal_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -727,7 +724,7 @@ anychart.charts.Pyramid.prototype.hovered;
 /**
  * Setter for hovered state settings.
  * @example anychart.charts.Pyramid.hovered_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -752,7 +749,7 @@ anychart.charts.Pyramid.prototype.selected;
 /**
  * Setter for selected state settings.
  * @example anychart.charts.Pyramid.selected_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.charts.Pyramid} Self instance for method chaining.
  * @since 8.0.0
  */

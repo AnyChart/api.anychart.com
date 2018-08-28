@@ -19,7 +19,7 @@ anychart.charts.Pie;
  * @shortDescription Data settings.
  * @category Data
  * @example anychart.charts.Pie.data_get
- * @return {anychart.data.View} Current data view.
+ * @return {anychart.data.View} Data view.
  */
 anychart.charts.Pie.prototype.data;
 
@@ -32,7 +32,7 @@ anychart.charts.Pie.prototype.data;
  * @example anychart.charts.Pie.data_set_asMapping Using a complex data mapping.
  * @example anychart.charts.Pie.data_set_asCSV Using CSV
  * @example anychart.charts.Pie.data_set_asObj Using data settings
- * @param {(anychart.data.View|anychart.data.Mapping|anychart.data.Set|anychart.data.DataSettings|Array)=} opt_value Data for the chart.
+ * @param {(anychart.data.View|anychart.data.Mapping|anychart.data.Set|anychart.data.DataSettings|Array)=} opt_data Data for the chart.
  * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed by first param, you can pass CSV
  * parser settings here as a hash map.
  * @return {anychart.charts.Pie} Self instance for method chaining.
@@ -62,7 +62,7 @@ anychart.charts.Pie.prototype.palette;
  * @example anychart.charts.Pie.palette_set_asDistinctColors Using distinct colors
  * @example anychart.charts.Pie.palette_set_asObject Using object
  * @example anychart.charts.Pie.palette_set_asFromTheme Using palette from theme
- * @param {(anychart.palettes.RangeColors|anychart.palettes.DistinctColors|Object|Array.<string>)=} opt_value Color palette instance.
+ * @param {(anychart.palettes.RangeColors|anychart.palettes.DistinctColors|Object|Array.<string>)=} opt_settings Color palette instance.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
 anychart.charts.Pie.prototype.palette;
@@ -88,7 +88,7 @@ anychart.charts.Pie.prototype.hatchFillPalette;
  * <b>Note:</b> Works only with {@link anychart.charts.Pie#hatchFill} method.
  * @example anychart.charts.Pie.hatchFillPalette_set_asArray Using array
  * @example anychart.charts.Pie.hatchFillPalette_set_asObject Using object
- * @param {(Array.<anychart.graphics.vector.HatchFill.HatchFillType>|Object|anychart.palettes.HatchFills)=} opt_value Chart
+ * @param {(Array.<anychart.graphics.vector.HatchFill.HatchFillType>|Object|anychart.palettes.HatchFills)=} opt_settings Chart
  * hatch fill palette settings to set.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
@@ -133,7 +133,7 @@ anychart.charts.Pie.prototype.fill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.charts.Pie.fill_set_asString Using string
  * @example anychart.charts.Pie.fill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} color Color as an array or a string.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
 anychart.charts.Pie.prototype.fill;
@@ -222,7 +222,7 @@ anychart.charts.Pie.prototype.stroke;
  * Setter for the pie slices stroke.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.charts.Pie.stroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ["none"] Stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value ['none'] Stroke settings.
  * @param {number=} opt_thickness Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
@@ -323,7 +323,7 @@ anychart.charts.Pie.prototype.overlapMode;
  * @detailed Defines show label if it don't fit to bounds slice or not show. ONLY for inside labels.
  * @example anychart.charts.Pie.overlapMode_set_asBool Disable/Enable overlap mode
  * @example anychart.charts.Pie.overlapMode_set_asString Using string
- * @param {(anychart.enums.LabelsOverlapMode|string|boolean)=} opt_value ["no-overlap"] Value to set.
+ * @param {(anychart.enums.LabelsOverlapMode|string|boolean)=} opt_value ['no-overlap'] Value to set.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
 anychart.charts.Pie.prototype.overlapMode;
@@ -357,7 +357,7 @@ anychart.charts.Pie.prototype.labels;
  * </ul>
  * @example anychart.charts.Pie.labels_set_asBool Disable/enable labels
  * @example anychart.charts.Pie.labels_set_asObject Using object
- * @param {(Object|boolean|null)=} opt_value [true] Chart data labels settings.
+ * @param {(Object|boolean|null)=} opt_settings [true] Chart data labels settings.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
 anychart.charts.Pie.prototype.labels;
@@ -374,7 +374,7 @@ anychart.charts.Pie.prototype.labels;
  * Getter for the outside labels space settings.
  * @shortDescription Outside labels space settings.
  * @category Labels
- * @return {number|string|null} Current outside labels space.
+ * @return {number|string|null} Outside labels space.
  */
 anychart.charts.Pie.prototype.outsideLabelsSpace;
 
@@ -408,7 +408,7 @@ anychart.charts.Pie.prototype.insideLabelsOffset;
  * Setter for inside labels space settings.<br/>
  * <b>Note:</b> Works only with inside labels mode.
  * @example anychart.charts.Pie.insideLabelsOffset_set
- * @param {(number|string)=} opt_value ["50%"] Value to set.
+ * @param {(number|string)=} opt_offset ['50%'] Value to set.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
 anychart.charts.Pie.prototype.insideLabelsOffset;
@@ -433,7 +433,7 @@ anychart.charts.Pie.prototype.connectorLength;
  * Setter for the outside labels connector length.<br/>
  * <b>Note:</b> Works only with outside labels mode.
  * @example anychart.charts.Pie.connectorLength_set
- * @param {(number|string)=} opt_value [20] Value to set.
+ * @param {(number|string)=} opt_length [20] Value to set.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
 anychart.charts.Pie.prototype.connectorLength;
@@ -459,7 +459,7 @@ anychart.charts.Pie.prototype.outsideLabelsCriticalAngle;
  * <b>Note:</b> Works only with outside labels mode.
  * @detailed Labels with the connector angle greater than critical are not displayed.
  * @example anychart.charts.Pie.outsideLabelsCriticalAngle_set
- * @param {(number|string)=} opt_value [60] Value to set.
+ * @param {(number|string)=} opt_angle [60] Value to set.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
 anychart.charts.Pie.prototype.outsideLabelsCriticalAngle;
@@ -486,7 +486,7 @@ anychart.charts.Pie.prototype.connectorStroke;
  * <b>Note: </b> Works only with outside labels mode.
  * @example anychart.charts.Pie.connectorStroke_set
  * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_value
- * ["#000 0.3"] Stroke settings.
+ * ['#CECECE'] Stroke settings.
  * @param {number=} opt_thickness Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
@@ -515,7 +515,7 @@ anychart.charts.Pie.prototype.connectorStroke;
  * @shortDescription Grouping of the points
  * @category Data
  * @listing See listing
- * var groupPoints = chart.group();
+ * var group = chart.group();
  * @return {(null|GroupingFunction)} The grouping function.
  */
 anychart.charts.Pie.prototype.group;
@@ -532,7 +532,7 @@ anychart.charts.Pie.prototype.group;
  * @example anychart.charts.Pie.group_set_asNull Disable grouping function using null
  * @example anychart.charts.Pie.group_set_asString Disable grouping function using string
  * @example anychart.charts.Pie.group_set_withName Changing grouped point name
- * @param {(string|null|GroupingFunction)=} opt_value [null] Filter function or disable value.
+ * @param {(string|null|GroupingFunction)=} opt_settings [null] Filter function or disable value.
  * @param {string=} opt_name ['Grouped point'] Group name.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
@@ -558,7 +558,7 @@ anychart.charts.Pie.prototype.radius;
  * Setter for the outer pie radius.
  * @detailed Radius can be set as a number (considered as number of pixels), or as a string, e.g.'42%' or '152px'.
  * @example anychart.charts.Pie.radius_set
- * @param {(string|number)=} opt_value ["45%"] Value of the outer radius.
+ * @param {(string|number)=} opt_radius ['45%'] Value of the outer radius.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
 anychart.charts.Pie.prototype.radius;
@@ -575,7 +575,7 @@ anychart.charts.Pie.prototype.radius;
  * @shortDescription Pie inner radius for Donut chart.
  * @category Size and Position
  * @example anychart.charts.Pie.innerRadius_get
- * @return {(string|number|function(number):number)} The inner radius of a pie chart.
+ * @return {(string|number|innerRadiusFunction)} The inner radius of a pie chart.
  */
 anychart.charts.Pie.prototype.innerRadius;
 
@@ -583,7 +583,7 @@ anychart.charts.Pie.prototype.innerRadius;
  * Setter for the inner radius in case of a Donut chart.
  * @example anychart.charts.Pie.innerRadius_set_asFunc Using function
  * @example anychart.charts.Pie.innerRadius_set_asString Using string
- * @param {(string|number|innerRadiusFunction)=} opt_value [0] The value of the inner radius in pixels, percents or
+ * @param {(string|number|innerRadiusFunction)=} opt_radius [0] The value of the inner radius in pixels, percents or
  * function. In general the function should look like this:
  * <pre>function(outerRadius){
  *   ...
@@ -661,7 +661,7 @@ anychart.charts.Pie.prototype.startAngle;
 /**
  * Setter for the angle of the first slice.
  * @example anychart.charts.Pie.startAngle_set
- * @param {(string|number)=} opt_value [0] Value of the start angle.
+ * @param {(string|number)=} opt_angle [0] Value of the start angle.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
 anychart.charts.Pie.prototype.startAngle;
@@ -686,7 +686,7 @@ anychart.charts.Pie.prototype.explode;
  * Setter for the value of the exploded pie slice.<br/>
  * <b>Note:</b> Works only with exploded points mode.
  * @example anychart.charts.Pie.explode_set
- * @param {(string|number)=} opt_value [15] Value of the expansion/exploding.
+ * @param {(string|number)=} opt_value ['5%'] Value of the expansion/exploding.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
 anychart.charts.Pie.prototype.explode;
@@ -775,7 +775,7 @@ anychart.charts.Pie.prototype.tooltip;
  * </ul>
  * @example anychart.charts.Pie.tooltip_set_asBool Disable/Enable tooltip
  * @example anychart.charts.Pie.tooltip_set_asObject Using object
- * @param {(Object|boolean|null)=} opt_value [true] Tooltip settings.
+ * @param {(Object|boolean|null)=} opt_settings [true] Tooltip settings.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  */
 anychart.charts.Pie.prototype.tooltip;
@@ -851,7 +851,7 @@ anychart.charts.Pie.prototype.forceHoverLabels;
  * Setter for the displaying of the label on hover event.
  * @detailed Force shows the label in hover mode, if it doesn't got in the pie slice.
  * @example anychart.charts.Pie.forceHoverLabels_set
- * @param {boolean=} opt_value [false] Boolean flag.
+ * @param {boolean=} opt_enabled [false] Boolean flag.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  * @since 7.5.1
  */
@@ -893,7 +893,7 @@ anychart.charts.Pie.prototype.normal;
 /**
  * Setter for normal state settings.
  * @example anychart.charts.Pie.normal_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -918,7 +918,7 @@ anychart.charts.Pie.prototype.hovered;
 /**
  * Setter for hovered state settings.
  * @example anychart.charts.Pie.hovered_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -997,7 +997,7 @@ anychart.charts.Pie.prototype.selected;
 /**
  * Setter for selected state settings.
  * @example anychart.charts.Pie.selected_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.charts.Pie} Self instance for method chaining.
  * @since 8.1.0
  */

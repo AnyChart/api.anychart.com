@@ -27,7 +27,7 @@ anychart.charts.Venn.prototype.dataSeparator;
 /**
  * Setter for the data separator.
  * @example anychart.charts.Venn.dataSeparator_set
- * @param {string=} opt_value ["&"] Symbol to set.
+ * @param {string=} opt_separator ['&'] Symbol to set.
  * @return {anychart.charts.Venn} Self instance for method chaining.
  * @since 7.14.0
  */
@@ -52,7 +52,7 @@ anychart.charts.Venn.prototype.intersections;
 /**
  * Setter for intersections settings.
  * @example anychart.charts.Venn.intersections_set
- * @param {Object=} opt_value Object with intersections settings.
+ * @param {Object=} opt_settings Object with intersections settings.
  * @return {anychart.charts.Venn} Self instance for method chaining.
  * @since 7.14.0
  */
@@ -82,7 +82,7 @@ anychart.charts.Venn.prototype.fill;
  * @detailed <b>Note</b>: If you call a fill method, the colorScale settings will not be applied.
  * @example anychart.charts.Venn.fill_set_asString Using string
  * @example anychart.charts.Venn.fill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value Color as an array or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} value Color as an array or a string.
  * @return {anychart.charts.Venn} Self instance for method chaining.
  * @since 7.14.0
  */
@@ -180,8 +180,7 @@ anychart.charts.Venn.prototype.hatchFill;
 /**
  * Setter for hatch fill settings.
  * @example anychart.charts.Venn.hatchFill_set
- * @param {(anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function|anychart.graphics.vector.HatchFill.HatchFillType|
- * string|boolean)=} opt_patternFillOrType [false] PatternFill or HatchFill instance or type of hatch fill.
+ * @param {(anychart.graphics.vector.HatchFill.HatchFillType|string)=} opt_type [false] Type of hatch fill.
  * @param {string=} opt_color Color.
  * @param {number=} opt_thickness Thickness.
  * @param {number=} opt_size Pattern size.
@@ -316,7 +315,8 @@ anychart.charts.Venn.prototype.palette;
  * @example anychart.charts.Venn.palette_set_DistinctColors Using distinct colors
  * @example anychart.charts.Venn.palette_set_asObject Using object
  * @example anychart.charts.Venn.palette_set_asFromTheme Using palette from theme
- * @param {(anychart.palettes.RangeColors|anychart.palettes.DistinctColors|Object|Array.<string>)=} opt_value Color palette instance.
+ * @param {(anychart.palettes.RangeColors|anychart.palettes.DistinctColors|Object|Array.<string>)=} opt_settings
+ * Color palette to set.
  * @return {anychart.charts.Venn} Self instance for method chaining.
  * @since 7.14.0
  */
@@ -343,7 +343,7 @@ anychart.charts.Venn.prototype.hatchFillPalette;
  * Setter for the chart hatch fill palette settings.
  * @detailed Works only with {@link anychart.charts.Venn#hatchFill}.
  * @example anychart.charts.Venn.hatchFillPalette_set
- * @param {(Array.<anychart.graphics.vector.HatchFill.HatchFillType>|Object|anychart.palettes.HatchFills)=} opt_value Chart
+ * @param {(Array.<anychart.graphics.vector.HatchFill.HatchFillType>|Object|anychart.palettes.HatchFills)=} opt_settings Chart
  * hatch fill palette settings to set.
  * @return {anychart.charts.Venn} Self instance for method chaining.
  * @since 7.14.0
@@ -371,7 +371,8 @@ anychart.charts.Venn.prototype.markerPalette;
  * Setter for chart markers palette settings.
  * @detailed Works only with {@link anychart.charts.Venn#markers}.
  * @example anychart.charts.Venn.markerPalette_set
- * @param {(anychart.palettes.Markers|Object|Array.<anychart.enums.MarkerType|string>)=} opt_value Chart marker palette settings to set.
+ * @param {(anychart.palettes.Markers|Object|Array.<anychart.enums.MarkerType|string>)=} opt_settings
+ * Chart marker palette settings to set.
  * @return {anychart.charts.Venn} Self instance for method chaining.
  * @since 7.14.0
  */
@@ -406,7 +407,7 @@ anychart.charts.Venn.prototype.labels;
  * </ul>
  * @example anychart.charts.Venn.labels_set_asBool Disable/enable labels
  * @example anychart.charts.Venn.labels_set_asObject Using object
- * @param {(Object|boolean|null)=} opt_value [true] Chart data labels settings.
+ * @param {(Object|boolean|null)=} opt_settings [true] Chart data labels settings.
  * @return {anychart.charts.Venn} Self instance for method chaining.
  * @since 7.14.0
  */
@@ -440,7 +441,7 @@ anychart.charts.Venn.prototype.markers;
  * @example anychart.charts.Venn.markers_set_asBool Disable/enable markers
  * @example anychart.charts.Venn.markers_set_asObject Using object
  * @example anychart.charts.Venn.markers_set_asString Using string
- * @param {(Object|boolean|null|string)=} opt_value [false] Data markers settings.
+ * @param {(Object|boolean|null|string)=} opt_settings [false] Data markers settings.
  * @return {anychart.charts.Venn} Self instance for method chaining.
  * @since 7.14.0
  */
@@ -471,7 +472,7 @@ anychart.charts.Venn.prototype.data;
  * @example anychart.charts.Venn.data_set_asMapping Using data mapping
  * @example anychart.charts.Venn.data_set_asCSV Using CSV
  * @example anychart.charts.Venn.data_set_asObj Using table data
- * @param {(anychart.data.View|anychart.data.Mapping|anychart.data.Set|Array|string|anychart.data.DataSettings)=} opt_value Value to set.
+ * @param {(anychart.data.View|anychart.data.Mapping|anychart.data.Set|Array|string|anychart.data.DataSettings)=} opt_data Value to set.
  * @param {Object.<string, (string|boolean)>=} opt_csvSettings If CSV string is passed by first param, you can pass CSV parser settings here as a hash map.
  * @return {anychart.charts.Venn} Self instance for method chaining.
  * @since 7.14.0
@@ -609,7 +610,7 @@ anychart.charts.Venn.prototype.normal;
 /**
  * Setter for normal state settings.
  * @example anychart.charts.Venn.normal_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.charts.Venn} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -633,7 +634,7 @@ anychart.charts.Venn.prototype.hovered;
 
 /**
  * Setter for hovered state settings.
- * @example anychart.charts.Venn.hovered_set
+ * @example anychart.opt_settings.Venn.hovered_set
  * @param {!Object=} opt_value State settings to set.
  * @return {anychart.charts.Venn} Self instance for method chaining.
  * @since 8.0.0
@@ -659,7 +660,7 @@ anychart.charts.Venn.prototype.selected;
 /**
  * Setter for selected state settings.
  * @example anychart.charts.Venn.selected_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.charts.Venn} Self instance for method chaining.
  * @since 8.0.0
  */
