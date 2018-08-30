@@ -27,7 +27,7 @@ anychart.core.linearGauge.pointers.Base.prototype.name;
  * Setter for the pointer name.
  * @detailed Basically, name of series is used in Legend displaying, but it can be used in tooltips.
  * @example anychart.core.linearGauge.pointers.Base.name_set
- * @param {string=} opt_value Pointer name.
+ * @param {string=} opt_name Pointer name to set.
  * @return {anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
  * @since 7.11.0
  */
@@ -92,7 +92,7 @@ anychart.core.linearGauge.pointers.Base.prototype.scale;
 /**
  * Setter for the pointer scale.
  * @example anychart.core.linearGauge.pointers.Base.scale_set
- * @param {anychart.scales.Base=} opt_value [anychart.scales.Linear] Pointer scale.
+ * @param {anychart.scales.Base=} opt_scale [{api:anychart.scales.Linear}anychart.scales.Linear{api}] Pointer scale.
  * @return {anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
  * @since 7.11.0
  */
@@ -109,7 +109,7 @@ anychart.core.linearGauge.pointers.Base.prototype.scale;
  * @shortDescription Labels settings.
  * @category Specific settings
  * @example anychart.core.linearGauge.pointers.Base.labels_get
- * @return {anychart.core.ui.LabelsFactory} Labels factory instance.
+ * @return {anychart.core.ui.LabelsFactory} Labels instance.
  * @since 7.11.0
  */
 anychart.core.linearGauge.pointers.Base.prototype.labels;
@@ -123,7 +123,7 @@ anychart.core.linearGauge.pointers.Base.prototype.labels;
  * </ul>
  * @example anychart.core.linearGauge.pointers.Base.labels_set_asBool Disable/Enable labels
  * @example anychart.core.linearGauge.pointers.Base.labels_set_asObj Using object
- * @param {(anychart.core.ui.LabelsFactory|Object|boolean)=} opt_value Pointer labels settings.
+ * @param {(anychart.core.ui.LabelsFactory|Object|boolean)=} opt_settings Pointer labels settings.
  * @return {anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
  * @since 7.11.0
  */
@@ -151,7 +151,7 @@ anychart.core.linearGauge.pointers.Base.prototype.color;
  * image fill here - stroke doesn't accept image fill.<br/>
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.linearGauge.pointers.Base.color_set
- * @param {string} value Color as a string.
+ * @param {string} color Color as a string.
  * @return {anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
  * @since 7.11.0
  */
@@ -179,7 +179,7 @@ anychart.core.linearGauge.pointers.Base.prototype.fill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.linearGauge.pointers.Base.fill_set_asString Using string
  * @example anychart.core.linearGauge.pointers.Base.fill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value [] Color as an object or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} color [function(){return this.sourceColor}] Color as an object or a string.
  * @return {anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
  * @since 7.11.0
  */
@@ -256,7 +256,7 @@ anychart.core.linearGauge.pointers.Base.prototype.stroke;
  * Setter for the pointer stroke using function.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.core.linearGauge.pointers.Base.stroke_set_asFunc
- * @param {(anychart.graphics.vector.Stroke|StrokeFunction)=} opt_value [// return stroke from the default palette.
+ * @param {(StrokeFunction)=} opt_strokeFunction [// return stroke from the default palette.
  * function() {
  *   return anychart.color.darken(this.sourceColor);
  * };] or Stroke, or stroke-function, which should look like:<pre>function() {
@@ -266,7 +266,7 @@ anychart.core.linearGauge.pointers.Base.prototype.stroke;
  *  // }
  *  return myStroke; //anychart.graphics.vector.Stroke
  * };</pre>
- * @return {!anychart.core.linearGauge.pointers.Base}Self instance for method chaining.
+ * @return {!anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
  * @since 7.11.0
  */
 anychart.core.linearGauge.pointers.Base.prototype.stroke;
@@ -275,7 +275,7 @@ anychart.core.linearGauge.pointers.Base.prototype.stroke;
  * Setter for the pointer stroke using several parameters.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.core.linearGauge.pointers.Base.stroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_color Stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_color Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
@@ -381,7 +381,7 @@ anychart.core.linearGauge.pointers.Base.prototype.width;
 /**
  * Setter for the pointer width.
  * @example anychart.core.linearGauge.pointers.Base.width_set
- * @param {string=} opt_value ["10%"] Pointer width
+ * @param {string=} opt_width ['10%'] Pointer width
  * @return {anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
  * @since 7.11.0
  */
@@ -406,7 +406,7 @@ anychart.core.linearGauge.pointers.Base.prototype.offset;
 /**
  * Setter for the pointer offset.
  * @example anychart.core.linearGauge.pointers.Base.offset_set
- * @param {(string|number)=} opt_value Percent offset.
+ * @param {(string|number)=} opt_offset ['0%'] Pointer offset to set.
  * @return {anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
  * @since 7.11.0
  */
@@ -432,7 +432,7 @@ anychart.core.linearGauge.pointers.Base.prototype.legendItem;
 /**
  * Setter for the legend item settings.
  * @example anychart.core.linearGauge.pointers.Base.legendItem_set
- * @param {(Object)=} opt_value Legend item settings object.
+ * @param {Object=} opt_settings Legend item settings to set.
  * @return {anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
  * @since 7.11.0
  */
@@ -522,7 +522,7 @@ anychart.core.linearGauge.pointers.Base.prototype.normal;
 /**
  * Setter for normal state settings.
  * @example anychart.core.linearGauge.pointers.Base.normal_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -547,7 +547,7 @@ anychart.core.linearGauge.pointers.Base.prototype.hovered;
 /**
  * Setter for hovered state settings.
  * @example anychart.core.linearGauge.pointers.Base.hovered_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -572,7 +572,7 @@ anychart.core.linearGauge.pointers.Base.prototype.selected;
 /**
  * Setter for selected state settings.
  * @example anychart.core.linearGauge.pointers.Base.selected_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -616,7 +616,7 @@ anychart.core.linearGauge.pointers.Base.prototype.id;
  * @category Data
  * @listing See listing
  * var pointer = pointer.data();
- * @return {!anychart.data.View} Pointers data.
+ * @return {anychart.data.View} Pointers data.
  * @since 8.2.0
  */
 anychart.core.linearGauge.pointers.Base.prototype.data;
@@ -625,9 +625,9 @@ anychart.core.linearGauge.pointers.Base.prototype.data;
  * Getter for pointers data.
  * @example anychart.core.linearGauge.pointers.Base.data_set_asArray Using array
  * @example anychart.core.linearGauge.pointers.Base.data_set_asArrayOfObj Using array with object
- * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Value to set.
+ * @param {(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Data to set.
  * @param {(anychart.enums.TextParsingMode|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
- * @return {!anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
+ * @return {anychart.core.linearGauge.pointers.Base} Self instance for method chaining.
  * @since 8.2.0
  */
 anychart.core.linearGauge.pointers.Base.prototype.data;
