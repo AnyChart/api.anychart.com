@@ -22,18 +22,18 @@ anychart.core.stock.series.Base;
 //
 //----------------------------------------------------------------------------------------------------------------------
 /**
- * Gets data for the series.
+ * Getter for data for the series.
  * @shortDescription Data settings.
  * @category Data
- * @return {anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string} Returns current mapping.
+ * @return {anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string} Returns mapping.
  * @since 7.7.0
  */
 anychart.core.stock.series.Base.prototype.data;
 
 /**
- * Sets data for the series.
+ * Setter for data for the series.
  * @example anychart.core.stock.series.Base.data
- * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_value Data for the series.
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data for the series.
  * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  * Mapping settings.
  * An object where keys are field names and values are objects with fields:
@@ -72,13 +72,13 @@ anychart.core.stock.series.Base.prototype.getIndex;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current Y-scale.
+ * Getter for the Y-scale.
  * @shortDescription Y-scale settings.
  * @category Scales
  * @listing See listing
- * var myPlot = chart.plot();
- * var plotSeries = myPlot.line(data);
- * plotSeries.yScale();
+ * var plot = chart.plot();
+ * var plotSeries = plot.line(data);
+ * var yScale = plotSeries.yScale();
  * @return {anychart.scales.ScatterBase} Series Y-scale.
  * @since 7.7.0
  */
@@ -87,7 +87,8 @@ anychart.core.stock.series.Base.prototype.yScale;
 /**
  * Setter for the Y-scale.
  * @example anychart.core.stock.series.Base.yScale_set
- * @param {(anychart.scales.ScatterBase|Object|anychart.enums.ScaleTypes|string)=} opt_value [anychart.scales.Linear] Value to set.
+ * @param {(anychart.scales.ScatterBase|Object|anychart.enums.ScaleTypes|string)=} opt_settings [{api:anychart.scales.Linear}anychart.scales.Linear{api}]
+ * Scale settings to set.
  * @return {anychart.core.stock.series.Base} Self instance for method chaining.
  * @since 7.7.0
  */
@@ -101,7 +102,7 @@ anychart.core.stock.series.Base.prototype.yScale;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current tooltip.
+ * Getter for the tooltip.
  * @shortDescription Tooltip settings.
  * @category Point Elements
  * @example anychart.core.stock.series.Base.tooltip_get
@@ -119,7 +120,7 @@ anychart.core.stock.series.Base.prototype.tooltip;
  * </ul>
  * @example anychart.core.stock.series.Base.tooltip_set_asBool Disable/Enable tooltip
  * @example anychart.core.stock.series.Base.tooltip_set_asObj Using object
- * @param {(Object|boolean|null)=} opt_value [true] Tooltip settings.
+ * @param {(Object|boolean|null)=} opt_settings [true] Tooltip settings.
  * @return {anychart.core.stock.series.Base} Self instance for method chaining.
  * @since 7.7.0
  */
@@ -133,7 +134,7 @@ anychart.core.stock.series.Base.prototype.tooltip;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets the current legend item setting for series.
+ * Getter for the legend item setting for series.
  * @shortDescription Legend item settings.
  * @category Specific settings
  * @example anychart.core.stock.series.Base.legendItem_get
@@ -143,9 +144,9 @@ anychart.core.stock.series.Base.prototype.tooltip;
 anychart.core.stock.series.Base.prototype.legendItem;
 
 /**
- * Sets the legend item setting for series.
+ * Setter for the legend item setting for series.
  * @example anychart.core.stock.series.Base.legendItem_set
- * @param {(Object)=} opt_value Legend item settings object.
+ * @param {Object=} opt_settings Legend item settings object.
  * @return {anychart.core.stock.series.Base} Self instance for method chaining.
  * @since 7.7.0
  */
@@ -159,7 +160,7 @@ anychart.core.stock.series.Base.prototype.legendItem;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets the current series name.
+ * Getter for the series name.
  * @shortDescription Series name settings.
  * @category Data
  * @example anychart.core.stock.series.Base.name_get
@@ -169,9 +170,9 @@ anychart.core.stock.series.Base.prototype.legendItem;
 anychart.core.stock.series.Base.prototype.name;
 
 /**
- * Sets the series name.
+ * Setter for the series name.
  * @example anychart.core.stock.series.Base.name_set
- * @param {string=} opt_value
+ * @param {string=} opt_name Series name.
  * @return {anychart.core.stock.series.Base} Self instance for method chaining.
  * @since 7.7.0
  */
@@ -198,7 +199,7 @@ anychart.core.stock.series.Base.prototype.seriesType;
  * @detailed You can use seriesType() method to fast switching series type.
  * <b>Note</b>: The switching of series type resets markers and labels settings.
  * @example anychart.core.stock.series.Base.seriesType_set
- * @param {string=} opt_value Series type.
+ * @param {string=} opt_type Series type.
  * @return {anychart.core.stock.series.Base} Self instance for method chaining.
  * @since 7.10.0
  */
@@ -230,7 +231,7 @@ anychart.core.stock.series.Base.prototype.markers;
  * @example anychart.core.stock.series.Base.markers_set_asBool Disable/enable markers
  * @example anychart.core.stock.series.Base.markers_set_asObject Using object
  * @example anychart.core.stock.series.Base.markers_set_asString Using string
- * @param {(Object|boolean|null|string)=} opt_value [false] Data markers settings.
+ * @param {(Object|boolean|null|string)=} opt_settings [false] Data markers settings.
  * @return {anychart.core.stock.series.Base} Self instance for method chaining.
  */
 anychart.core.stock.series.Base.prototype.markers;
@@ -254,7 +255,7 @@ anychart.core.stock.series.Base.prototype.rendering;
 /**
  * Setter for the series rendering settings.
  * @example anychart.core.stock.series.Base.rendering_set
- * @param {(Object|Function)=} opt_value Value to set.
+ * @param {(Object|Function)=} opt_settings Rendering settings to set.
  * @return {anychart.core.stock.series.Base} Self instance for method chaining.
  * @since 7.13.0
  */
@@ -279,7 +280,7 @@ anychart.core.stock.series.Base.prototype.normal;
 /**
  * Setter for normal state settings.
  * @example anychart.core.stock.series.Base.normal_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.core.stock.series.Base} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -304,7 +305,7 @@ anychart.core.stock.series.Base.prototype.hovered;
 /**
  * Setter for hovered state settings.
  * @example anychart.core.stock.series.Base.hovered_set
- * @param {!Object=} opt_value State settings to set.
+ * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.core.stock.series.Base} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -332,7 +333,7 @@ anychart.core.stock.series.Base.prototype.pointWidth;
 /**
  * Setter for the point width settings.
  * @example anychart.core.stock.series.Base.pointWidth_set
- * @param {(number|string)=} opt_value Point width pixel value.
+ * @param {(number|string)=} opt_width Point width pixel value.
  * @return {anychart.core.stock.series.Base} Self instance for method chaining.
  */
 anychart.core.stock.series.Base.prototype.pointWidth;
@@ -357,7 +358,7 @@ anychart.core.stock.series.Base.prototype.maxPointWidth;
 /**
  * Setter for the maximum point width.
  * @example anychart.core.stock.series.Base.maxPointWidth
- * @param {(number|string)=} opt_value Point width pixel value.
+ * @param {(number|string)=} opt_width Point width pixel value.
  * @return {anychart.core.stock.series.Base} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -383,7 +384,7 @@ anychart.core.stock.series.Base.prototype.minPointLength;
 /**
  * Setter for the minimum point length.
  * @example anychart.core.stock.series.Base.minPointLength
- * @param {(number|string)=} opt_value Minimum point length pixel value.
+ * @param {(number|string)=} opt_length Minimum point length pixel value.
  * @return {anychart.core.stock.series.Base} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -396,25 +397,25 @@ anychart.core.stock.series.Base.prototype.minPointLength;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for chart labels.
+ * Getter for series labels.
  * @shortDescription Labels settings.
  * @category Specific settings
  * @example anychart.core.stock.series.Base.labels_get
- * @return {anychart.core.ui.LabelsFactory} Axis labels instance.
+ * @return {anychart.core.ui.LabelsFactory} Series labels instance.
  * @since 8.2.0
  */
 anychart.core.stock.series.Base.prototype.labels;
 
 /**
- * Setter for chart labels.<br>
- * @detailed Sets chart labels settings depending on parameter type:
+ * Setter for series labels.<br>
+ * @detailed Sets series labels settings depending on parameter type:
  * <ul>
- *   <li><b>null/boolean</b> - disable or enable chart labels.</li>
- *   <li><b>object</b> - sets chart labels settings.</li>
+ *   <li><b>null/boolean</b> - disable or enable series labels.</li>
+ *   <li><b>object</b> - sets series labels settings.</li>
  * </ul>
  * @example anychart.core.stock.series.Base.labels_set_asBool Disable/Enable labels
  * @example anychart.core.stock.series.Base.labels_set_asObject Using object
- * @param {(Object|boolean|null)=} opt_value [true] Axis labels.
+ * @param {(Object|boolean|null)=} opt_settings [true] Series labels settings.
  * @return {anychart.core.stock.series.Base} Self instance for method chaining.
  * @since 8.2.0
  */
@@ -545,7 +546,7 @@ anychart.core.stock.series.Base.prototype.colorScale;
 /**
  * Setter for the color scale.
  * @example anychart.core.stock.series.Base.colorScale_set
- * @param {(anychart.scales.LinearColor|anychart.scales.OrdinalColor|Object|anychart.enums.ScaleTypes|string)=} opt_settings Scale to set.
+ * @param {(anychart.scales.LinearColor|anychart.scales.OrdinalColor|Object|anychart.enums.ScaleTypes|string)=} opt_settings Color scale to set.
  * @return {anychart.core.stock.series.Base} Self instance for method chaining.
  * @since 8.3.0
  */

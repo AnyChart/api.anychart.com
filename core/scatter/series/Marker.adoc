@@ -31,8 +31,8 @@ anychart.core.scatter.series.Marker.prototype.type;
  * @example anychart.core.scatter.series.Marker.type_set_asString Using string
  * @example anychart.core.scatter.series.Marker.type_set_asFunc Using custom function.
  * @param {(anychart.enums.MarkerType|string|
- *  function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path)=} opt_value
- *  ["circle"] Type or custom drawer. Function for a custom
+ *  function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path)=} opt_type
+ *  ['circle'] Type or custom drawer. Function for a custom
  *  marker should look like this: <pre>function(path, x, y, size){
  *    // path - anychart.graphics.vector.Path
  *    // x, y - marker position
@@ -63,7 +63,7 @@ anychart.core.scatter.series.Marker.prototype.size;
 /**
  * Setter for the marker size.
  * @example anychart.core.scatter.series.Marker.size_set
- * @param {number=} opt_value [6] Value to set.
+ * @param {number=} opt_size [5] Marker size to set.
  * @return {anychart.core.scatter.series.Marker} Self instance for method chaining.
  */
 anychart.core.scatter.series.Marker.prototype.size;
@@ -90,7 +90,7 @@ anychart.core.scatter.series.Marker.prototype.fill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.scatter.series.Marker.fill_set_asString Using string
  * @example anychart.core.scatter.series.Marker.fill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} color Color as an object or a string.
  * @return {anychart.core.scatter.series.Marker} Self instance for method chaining.
  */
 anychart.core.scatter.series.Marker.prototype.fill;
@@ -163,7 +163,7 @@ anychart.core.scatter.series.Marker.prototype.hatchFill;
  * Setter for hatch fill settings.
  * {docs:Graphics/Hatch_Fill_Settings}Learn more about hatch fill settings.{docs}
  * @example anychart.core.scatter.series.Marker.hatchFill
- * @param {(anychart.graphics.vector.HatchFill.HatchFillType|string)=} opt_type [false] Type of hatch fill.
+ * @param {(anychart.graphics.vector.HatchFill.HatchFillType|string)=} opt_type [false] Type of the hatch fill.
  * @param {string=} opt_color Color.
  * @param {number=} opt_thickness Thickness.
  * @param {number=} opt_size Pattern size.
@@ -230,7 +230,7 @@ anychart.core.scatter.series.Marker.prototype.stroke;
  *  return anychart.color.darken(this.sourceColor);
  * }] Function that looks like: <pre>function(){
  *    // this.index - series index.
- *    // this.sourceColor -  color returned by stroke() getter.
+ *    // this.sourceColor - color returned by stroke() getter.
  *    // this.iterator - series point iterator.
  *    return strokeValue; // type anychart.graphics.vector.Fill or anychart.graphics.vector.Stroke
  * }</pre>

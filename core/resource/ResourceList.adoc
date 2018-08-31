@@ -16,8 +16,8 @@ anychart.core.resource.ResourceList;
  * @shortDescription Stroke settings.
  * @category Coloring
  * @listing See listing
- * var currentResourceList = chart.resourceList();
- * var currentStroke = currentResourceList.stroke();
+ * var resourceList = chart.resourceList();
+ * var stroke = resourceList.stroke();
  * @return {anychart.graphics.vector.Stroke} The stroke.
  * @since 7.12.0
  */
@@ -57,8 +57,8 @@ anychart.core.resource.ResourceList.prototype.stroke;
  * @shortDescription Odd fill settings.
  * @category Coloring
  * @listing See listing
- * var currentResourceList = chart.resourceList();
- * var oddFillSettings = currentResourceList.oddFill();
+ * var resourceList = chart.resourceList();
+ * var oddFill = resourceList.oddFill();
  * @return {!anychart.graphics.vector.Fill} The odd fill color.
  * @since 7.12.0
  */
@@ -69,7 +69,7 @@ anychart.core.resource.ResourceList.prototype.oddFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.resource.ResourceList.oddFill_set_asString Using string
  * @example anychart.core.resource.ResourceList.oddFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} color Color as an object or a string.
  * @return {anychart.core.resource.ResourceList} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -137,8 +137,8 @@ anychart.core.resource.ResourceList.prototype.oddFill;
  * @shortDescription Even fill settings.
  * @category Coloring
  * @listing See listing
- * var currentResourceList = chart.resourceList();
- * var evenFillSettings = currentResourceList.evenFill();
+ * var resourceList = chart.resourceList();
+ * var evenFill = resourceList.evenFill();
  * @return {!anychart.graphics.vector.Fill} The odd fill color.
  * @since 7.12.0
  */
@@ -149,7 +149,7 @@ anychart.core.resource.ResourceList.prototype.evenFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.resource.ResourceList.evenFill_set_asString Using string
  * @example anychart.core.resource.ResourceList.evenFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} color Color as an object or a string.
  * @return {anychart.core.resource.ResourceList} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -217,8 +217,8 @@ anychart.core.resource.ResourceList.prototype.evenFill;
  * @shortDescription Drawing of the top line.
  * @category Specific settings
  * @listing See listing
- * var currentResourceList = chart.resourceList();
- * var flag = currentResourceList.drawTopLine();
+ * var resourceList = chart.resourceList();
+ * var drawTopLine = resourceList.drawTopLine();
  * @return {boolean} Drawing flag.
  * @since 7.12.0
  */
@@ -227,7 +227,7 @@ anychart.core.resource.ResourceList.prototype.drawTopLine;
 /**
  * Setter for the top line drawing flag.
  * @example anychart.core.resource.ResourceList.drawTopLine
- * @param {boolean=} opt_value [false] Value to set.
+ * @param {boolean=} opt_enabled [false] Value to set.
  * @return {anychart.core.resource.ResourceList} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -244,8 +244,8 @@ anychart.core.resource.ResourceList.prototype.drawTopLine;
  * @shortDescription Drawing of the right line.
  * @category Specific settings
  * @listing See listing
- * var currentResourceList = chart.resourceList();
- * var flag = currentResourceList.drawRightLine();
+ * var resourceList = chart.resourceList();
+ * var drawRightLine = resourceList.drawRightLine();
  * @return {boolean} Drawing flag.
  * @since 7.12.0
  */
@@ -254,7 +254,7 @@ anychart.core.resource.ResourceList.prototype.drawRightLine;
 /**
  * Setter for the right line drawing flag.
  * @example anychart.core.resource.ResourceList.drawRightLine
- * @param {boolean=} opt_value [false] Value to set.
+ * @param {boolean=} opt_enabled [false] Value to set.
  * @return {anychart.core.resource.ResourceList} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -271,8 +271,8 @@ anychart.core.resource.ResourceList.prototype.drawRightLine;
  * @shortDescription Drawing of the bottom line.
  * @category Specific settings
  * @listing See listing
- * var currentResourceList = chart.resourceList();
- * var flag = currentResourceList.drawBottomLine();
+ * var resourceList = chart.resourceList();
+ * var drawBottomLine = resourceList.drawBottomLine();
  * @return {boolean} Drawing flag.
  * @since 7.12.0
  */
@@ -281,7 +281,7 @@ anychart.core.resource.ResourceList.prototype.drawBottomLine;
 /**
  * Setter for the bottom line drawing flag.
  * @example anychart.core.resource.ResourceList.drawBottomLine
- * @param {boolean=} opt_value [true] Value to set.
+ * @param {boolean=} opt_enabled [true] Value to set.
  * @return {anychart.core.resource.ResourceList} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -299,7 +299,7 @@ anychart.core.resource.ResourceList.prototype.drawBottomLine;
  * @category Specific settings
  * @listing See listing
  * var resourceList = chart.resourceList();
- * var flag = resourceList.drawLeftLine();
+ * var drawLeftLine = resourceList.drawLeftLine();
  * @return {boolean} Drawing flag.
  * @since 7.12.0
  */
@@ -308,7 +308,7 @@ anychart.core.resource.ResourceList.prototype.drawLeftLine;
 /**
  * Setter for the left line drawing flag.
  * @example anychart.core.resource.ResourceList.drawLeftLine
- * @param {boolean=} opt_value [false] Value to set.
+ * @param {boolean=} opt_enabled [false] Value to set.
  * @return {anychart.core.resource.ResourceList} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -341,7 +341,7 @@ anychart.core.resource.ResourceList.prototype.background;
  * @example anychart.core.resource.ResourceList.background_set_asObj Using object
  * @example anychart.core.resource.ResourceList.background_set_asBool Disable/Enable background
  * @example anychart.core.resource.ResourceList.background_set_asString Using string
- * @param {(string|Object|null|boolean)=} opt_value Value to set.
+ * @param {(string|Object|null|boolean)=} opt_settings Background settings to set.
  * @return {anychart.core.resource.ResourceList} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -366,7 +366,7 @@ anychart.core.resource.ResourceList.prototype.images;
 /**
  * Setter for images.
  * @example anychart.core.resource.ResourceList.images_set
- * @param {Object=} opt_value Object with settings for resource images.
+ * @param {Object=} opt_settings Object with settings for resource images.
  * @return {anychart.core.resource.ResourceList} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -391,7 +391,7 @@ anychart.core.resource.ResourceList.prototype.names;
 /**
  * Setter for names.
  * @example anychart.core.resource.ResourceList.names_set
- * @param {Object=} opt_value Object with settings.
+ * @param {Object=} opt_settings Object with settings.
  * @return {anychart.core.resource.ResourceList} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -416,7 +416,7 @@ anychart.core.resource.ResourceList.prototype.types;
 /**
  * Setter for types.
  * @example anychart.core.resource.ResourceList.types_set
- * @param {Object=} opt_value Object with settings.
+ * @param {Object=} opt_settings Object with settings.
  * @return {anychart.core.resource.ResourceList} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -441,7 +441,7 @@ anychart.core.resource.ResourceList.prototype.descriptions;
 /**
  * Setter for descriptions.
  * @example anychart.core.resource.ResourceList.descriptions_set
- * @param {Object=} opt_value Object with settings.
+ * @param {Object=} opt_settings Object with settings.
  * @return {anychart.core.resource.ResourceList} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -467,7 +467,7 @@ anychart.core.resource.ResourceList.prototype.tags;
 /**
  * Setter for tags.
  * @example anychart.core.resource.ResourceList.tags_set
- * @param {Object=} opt_value Object with settings.
+ * @param {Object=} opt_settings Object with settings.
  * @return {anychart.core.resource.ResourceList} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -494,7 +494,7 @@ anychart.core.resource.ResourceList.prototype.overlay;
  * Setter for the overlay element.
  * @example anychart.core.resource.ResourceList.overlay
  * @detailed The overlay method creates a DIV Element by specified bounds and saves its bounds for resize of the chart.
- * @param {(string|Object|null|boolean)=} opt_value Value to set.
+ * @param {(string|Object|null|boolean)=} opt_settings Value to set.
  * @return {anychart.core.resource.ResourceList} Self instance for method chaining.
  * @since 7.12.0
  */

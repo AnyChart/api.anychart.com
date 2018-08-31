@@ -28,7 +28,7 @@ anychart.core.stock.Plot;
  * @category Series
  * @example anychart.core.stock.Plot.column_table Using data settings
  * @example anychart.core.stock.Plot.column_csv Using CSV
- * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data to set.
  * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
@@ -55,7 +55,7 @@ anychart.core.stock.Plot.prototype.column;
  * @category Series
  * @example anychart.core.stock.Plot.line_table Using data settings
  * @example anychart.core.stock.Plot.line_csv Using CSV
- * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data to set.
  * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
@@ -82,7 +82,7 @@ anychart.core.stock.Plot.prototype.line;
  * @category Series
  * @example anychart.core.stock.Plot.ohlc_table Using data settings
  * @example anychart.core.stock.Plot.ohlc_csv Using CSV
- * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Value to set.
+ * @param {(anychart.data.TableMapping|anychart.data.Table|Array.<Array.<*>>|string)=} opt_data Data to set.
  * @param {Object.<string, ({column: number, type: anychart.enums.AggregationType|string, weights: number}|number)>=} opt_mappingSettings
  *   An object where keys are field names and values are objects with fields:
  *      - 'column': number - Column index, that the field should get values from;
@@ -121,11 +121,11 @@ anychart.core.stock.Plot.prototype.getSeries;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current plot background.
+ * Getter for the plot background.
  * @shortDescription Background settings.
  * @category Coloring
  * @example anychart.core.stock.Plot.background_get
- * @return {anychart.core.ui.Background} The current chart background.
+ * @return {anychart.core.ui.Background} Chart background.
  * @since 7.7.0
  */
 anychart.core.stock.Plot.prototype.background;
@@ -141,7 +141,7 @@ anychart.core.stock.Plot.prototype.background;
  * @example anychart.core.stock.Plot.background_set_asBool Disable/Enable background
  * @example anychart.core.stock.Plot.background_set_asObj Using object
  * @example anychart.core.stock.Plot.background_set_asString Using string
- * @param {(string|Object|null|boolean)=} opt_value Background settings.
+ * @param {(string|Object|null|boolean)=} opt_settings Background settings to set.
  * @return {anychart.core.stock.Plot} Self instance for method chaining.
  * @since 7.7.0
  */
@@ -160,7 +160,7 @@ anychart.core.stock.Plot.prototype.background;
  * @category Axes and Scales
  * @listing See listing
  * var plot = chart.plot();
- * plot.yScale();
+ * var yScale = plot.yScale();
  * @return {anychart.scales.ScatterBase} Default chart scale value.
  * @since 7.7.0
  */
@@ -169,7 +169,8 @@ anychart.core.stock.Plot.prototype.yScale;
 /**
  * Setter for the plot Y-scale.
  * @example anychart.core.stock.Plot.yScale_set
- * @param {(anychart.enums.ScatterScaleTypes|string|anychart.scales.ScatterBase|Object)=} opt_value [anychart.scales.Linear] Y-scale to set.
+ * @param {(anychart.enums.ScatterScaleTypes|string|anychart.scales.ScatterBase|Object)=} opt_settings [{api:anychart.scales.Linear}anychart.scales.Linear{api}]
+ * Scale settings to set.
  * @return {anychart.core.stock.Plot} Self instance for method chaining.
  * @since 7.7.0
  */
@@ -183,7 +184,7 @@ anychart.core.stock.Plot.prototype.yScale;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current plot Y-axis.
+ * Getter for the plot Y-axis.
  * @shortDescription Y-axis settings.
  * @category Axes and Scales
  * @example anychart.core.stock.Plot.yAxis_get
@@ -202,7 +203,7 @@ anychart.core.stock.Plot.prototype.yAxis;
  * </ul>
  * @example anychart.core.stock.Plot.yAxis_set_asBool Disable/Enable Y-axis
  * @example anychart.core.stock.Plot.yAxis_set_asObj Using object
- * @param {(Object|boolean|null)=} opt_value Chart axis settings to set.
+ * @param {(Object|boolean|null)=} opt_settings Chart axis settings to set.
  * @return {anychart.core.stock.Plot} Self instance for method chaining.
  * @since 7.7.0
  */
@@ -218,7 +219,7 @@ anychart.core.stock.Plot.prototype.yAxis;
  * @example anychart.core.stock.Plot.yAxis_set_asIndexBool Disable/Enable Y-axis by index
  * @example anychart.core.stock.Plot.yAxis_set_asInbexObj Using object
  * @param {number=} opt_index Axis index.
- * @param {(Object|boolean|null)=} opt_value Chart axis settings to set.
+ * @param {(Object|boolean|null)=} opt_settings Chart axis settings to set.
  * @return {anychart.core.stock.Plot} Self instance for method chaining.
  * @since 7.7.0
  */
@@ -232,7 +233,7 @@ anychart.core.stock.Plot.prototype.yAxis;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current X-axis.
+ * Getter for the X-axis.
  * @shortDescription X-axis settings.
  * @category Axes and Scales
  * @example anychart.core.stock.Plot.xAxis_get
@@ -250,7 +251,7 @@ anychart.core.stock.Plot.prototype.xAxis;
  * </ul>
  * @example anychart.core.stock.Plot.xAxis_set_asObj Using object
  * @example anychart.core.stock.Plot.xAxis_set_asBool Disable/Enable X-axis
- * @param {(Object|boolean|null)=} opt_value Chart axis settings to set.
+ * @param {(Object|boolean|null)=} opt_settings Chart axis settings to set.
  * @return {anychart.core.stock.Plot} Self instance for method chaining.
  * @since 7.7.0
  */
@@ -283,7 +284,7 @@ anychart.core.stock.Plot.prototype.xGrid;
  * </ul>
  * @example anychart.core.stock.Plot.xGrid_set_asBool Disable/Enable grid
  * @example anychart.core.stock.Plot.xGrid_set_asObj Using object
- * @param {(Object|boolean|null)=} opt_value Grid settings to set.
+ * @param {(Object|boolean|null)=} opt_settings Grid settings to set.
  * @return {anychart.core.stock.Plot} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -299,7 +300,7 @@ anychart.core.stock.Plot.prototype.xGrid;
  * @example anychart.core.stock.Plot.xGrid_set_asIndexBool Disable/Enable grid by index
  * @example anychart.core.stock.Plot.xGrid_set_asIndexObj Using object
  * @param {number=} opt_index Grid index.
- * @param {(Object|boolean|null)=} opt_value Grid settings to set.
+ * @param {(Object|boolean|null)=} opt_settings Grid settings to set.
  * @return {anychart.core.stock.Plot} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -331,7 +332,7 @@ anychart.core.stock.Plot.prototype.yGrid;
  * </ul>
  * @example anychart.core.stock.Plot.yGrid_set_asBool Disable/Enable grid
  * @example anychart.core.stock.Plot.yGrid_set_asObj Using object
- * @param {(Object|boolean|null)=} opt_value Grid settings to set.
+ * @param {(Object|boolean|null)=} opt_settings Grid settings to set.
  * @return {anychart.core.stock.Plot} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -347,7 +348,7 @@ anychart.core.stock.Plot.prototype.yGrid;
  * @example anychart.core.stock.Plot.yGrid_set_asIndexBool Disable/Enable grid by index
  * @example anychart.core.stock.Plot.yGrid_set_asIndexObj Using object
  * @param {number=} opt_index Grid index.
- * @param {(Object|boolean|null)=} opt_value Grid settings to set.
+ * @param {(Object|boolean|null)=} opt_settings Grid settings to set.
  * @return {anychart.core.stock.Plot} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -380,7 +381,7 @@ anychart.core.stock.Plot.prototype.xMinorGrid;
  * </ul>
  * @example anychart.core.stock.Plot.xMinorGrid_set_asBool Disable/Enable minor grid
  * @example anychart.core.stock.Plot.xMinorGrid_set_asObj Using object
- * @param {(Object|boolean|null)=} opt_value Minor grid settings to set.
+ * @param {(Object|boolean|null)=} opt_settings Minor grid settings to set.
  * @return {anychart.core.stock.Plot} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -396,7 +397,7 @@ anychart.core.stock.Plot.prototype.xMinorGrid;
  * @example anychart.core.stock.Plot.xMinorGrid_set_asIndexBool Disable/Enable minor grid by index
  * @example anychart.core.stock.Plot.xMinorGrid_set_asIndexObj Using object
  * @param {number=} opt_indexOrValue Minor grid index.
- * @param {(Object|boolean|null)=} opt_value Minor grid settings to set.
+ * @param {(Object|boolean|null)=} opt_settings Minor grid settings to set.
  * @return {anychart.core.stock.Plot} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -428,7 +429,7 @@ anychart.core.stock.Plot.prototype.yMinorGrid;
  * </ul>
  * @example anychart.core.stock.Plot.yMinorGrid_set_asBool Disable/Enable minor grid
  * @example anychart.core.stock.Plot.yMinorGrid_set_asObj Using object
- * @param {(Object|boolean|null)=} opt_value Minor grid settings to set.
+ * @param {(Object|boolean|null)=} opt_settings Minor grid settings to set.
  * @return {anychart.core.stock.Plot} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -444,7 +445,7 @@ anychart.core.stock.Plot.prototype.yMinorGrid;
  * @example anychart.core.stock.Plot.yMinorGrid_set_asIndexBool Disable/Enable minor grid by index
  * @example anychart.core.stock.Plot.yMinorGrid_set_asIndexObj Using object
  * @param {number=} opt_indexOrValue Minor grid index.
- * @param {(Object|boolean|null)=} opt_value Minor grid settings to set.
+ * @param {(Object|boolean|null)=} opt_settings Minor grid settings to set.
  * @return {anychart.core.stock.Plot} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -472,7 +473,7 @@ anychart.core.stock.Plot.prototype.defaultSeriesType;
  * @detailed Setting the default type using this method affects only series created using addSeries() method after the default is set.
  * All series created prior to that do not change the type.
  * @example anychart.core.stock.Plot.defaultSeriesType_set
- * @param {(anychart.enums.StockSeriesType|string)=} opt_value Default series type.
+ * @param {(anychart.enums.StockSeriesType|string)=} opt_type Default series type.
  * @return {anychart.core.stock.Plot} Self instance for method chaining
  * @since 7.8.0
  */
@@ -603,7 +604,7 @@ anychart.core.stock.Plot.prototype.crosshair;
  * </ul>
  * @example anychart.core.stock.Plot.crosshair_set_asBool Disable/Enable crosshair
  * @example anychart.core.stock.Plot.crosshair_set_asObj Using object
- * @param {(Object|boolean|null)=} opt_value Crosshair settings.
+ * @param {(Object|boolean|null)=} opt_settings Crosshair settings.
  * @return {anychart.core.stock.Plot} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -1054,11 +1055,11 @@ anychart.core.stock.Plot.prototype.stepLine;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the current series colors palette.
+ * Getter for the series colors palette.
  * @shortDescription Palette settings.
  * @category Chart Coloring
  * @example anychart.core.stock.Plot.palette_get
- * @return {!(anychart.palettes.RangeColors|anychart.palettes.DistinctColors)} The current palette.
+ * @return {!(anychart.palettes.RangeColors|anychart.palettes.DistinctColors)} Color palette.
  * @since 7.10.0
  */
 anychart.core.stock.Plot.prototype.palette;
