@@ -39,10 +39,10 @@ anychart.core.ui.table.Cell.prototype.content;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current cell fill color.
+ * Getter for cell fill color.
  * @shortDescription Fill settings.
  * @category Coloring
- * @return {!anychart.graphics.vector.Fill} Current fill color.
+ * @return {!anychart.graphics.vector.Fill} Cell fill color.
  */
 anychart.core.ui.table.Cell.prototype.fill;
 
@@ -51,7 +51,7 @@ anychart.core.ui.table.Cell.prototype.fill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.ui.table.Cell.fill_set_asString Using string
  * @example anychart.core.ui.table.Cell.fill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} color [null] Color as an object or a string.
  * @return {anychart.core.ui.table.Cell} Self instance for method chaining.
  */
 anychart.core.ui.table.Cell.prototype.fill;
@@ -111,10 +111,10 @@ anychart.core.ui.table.Cell.prototype.fill;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for current cell border settings.
+ * Getter for cell border settings.
  * @shortDescription Cell border settings.
  * @category Coloring
- * @return {!anychart.core.ui.table.Border} Current stroke settings.
+ * @return {!anychart.core.ui.table.Border} Stroke settings.
  */
 anychart.core.ui.table.Cell.prototype.border;
 
@@ -124,8 +124,7 @@ anychart.core.ui.table.Cell.prototype.border;
  * @detailed <b>Note:</b> Pass <b>null</b> to reset to default settings.<br/>
  * <b>Note:</b> <u>lineJoin</u> settings not working here.
  * @example anychart.core.ui.Table.Cell.border
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- * or stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_color Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
@@ -144,7 +143,7 @@ anychart.core.ui.table.Cell.prototype.border;
  * Getter for cell columns span.
  * @shortDescription Cell columns span settings.
  * @example anychart.core.ui.table.Cell.colSpan_get
- * @return {number} Current columns span.
+ * @return {number} Columns span.
  */
 anychart.core.ui.table.Cell.prototype.colSpan;
 
@@ -152,7 +151,7 @@ anychart.core.ui.table.Cell.prototype.colSpan;
  * Setter for cell columns span.
  * @detailed <b>Note:</b> Cells that are overlapped by other cells are not drawn.
  * @example anychart.core.ui.table.Cell.colSpan_set
- * @param {number=} opt_value [1] Count of cells to merge right.
+ * @param {number=} opt_count [1] Count of cells to merge right.
  * @return {anychart.core.ui.table.Cell} Self instance for method chaining.
  */
 anychart.core.ui.table.Cell.prototype.colSpan;
@@ -168,7 +167,7 @@ anychart.core.ui.table.Cell.prototype.colSpan;
  * Getter for cell rows span.
  * @shortDescription Rows columns span settings.
  * @example anychart.core.ui.table.Cell.rowSpan_get
- * @return {number} Current rows span.
+ * @return {number} Rows span.
  */
 anychart.core.ui.table.Cell.prototype.rowSpan;
 
@@ -176,7 +175,7 @@ anychart.core.ui.table.Cell.prototype.rowSpan;
  * Setter for cell rows span.
  * @detailed <b>Note:</b> Cells that are overlapped by other cells are not drawn.
  * @example anychart.core.ui.table.Cell.rowSpan_set
- * @param {number=} opt_value [1] Count of cells to merge down.
+ * @param {number=} opt_count [1] Count of cells to merge down.
  * @return {anychart.core.ui.table.Cell} Self instance for method chaining.
  */
 anychart.core.ui.table.Cell.prototype.rowSpan;
@@ -191,7 +190,7 @@ anychart.core.ui.table.Cell.prototype.rowSpan;
 /**
  * Returns current cell row number.
  * @example anychart.core.ui.table.Cell.getRowNum
- * @return {number} Current cell row number.
+ * @return {number} Cell row number.
  */
 anychart.core.ui.table.Cell.prototype.getRowNum;
 
@@ -205,7 +204,7 @@ anychart.core.ui.table.Cell.prototype.getRowNum;
 /**
  * Returns current cell column number.
  * @example anychart.core.ui.table.Cell.getColNum
- * @return {number} Current cell column number.
+ * @return {number} Cell column number.
  */
 anychart.core.ui.table.Cell.prototype.getColNum;
 
@@ -219,7 +218,7 @@ anychart.core.ui.table.Cell.prototype.getColNum;
 /**
  * Returns current cell row instance.
  * @example anychart.core.ui.table.Cell.getRow
- * @return {anychart.core.ui.table.Row} Current cell row instance.
+ * @return {anychart.core.ui.table.Row} Cell row instance.
  */
 anychart.core.ui.table.Cell.prototype.getRow;
 
@@ -233,7 +232,7 @@ anychart.core.ui.table.Cell.prototype.getRow;
 /**
  * Returns current cell column instance.
  * @example anychart.core.ui.table.Cell.getCol
- * @return {anychart.core.ui.table.Column} Current cell column instance.
+ * @return {anychart.core.ui.table.Column} Cell column instance.
  */
 anychart.core.ui.table.Cell.prototype.getCol;
 
@@ -248,7 +247,7 @@ anychart.core.ui.table.Cell.prototype.getCol;
  * Returns cell bounds without padding counted (bounds which are used for borders drawing).
  * @detailed Works only after {@link anychart.core.ui.Table#draw} is called.
  * @example anychart.core.ui.Table.Cell.getBounds
- * @return {!anychart.math.Rect} Current cell bounds.
+ * @return {!anychart.math.Rect} Cell bounds.
  */
 anychart.core.ui.table.Cell.prototype.getBounds;
 
@@ -280,7 +279,8 @@ anychart.core.ui.table.Cell.prototype.padding;
  * // top and bottom 5px ,right and left 15px
  * cell.padding(anychart.utils.padding(5,15));
  * @example anychart.core.ui.table.Cell.padding_set_asSingle
- * @param {(null|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_value Value to set.
+ * @param {(null|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_padding
+ * Cell padding to set.
  * @return {anychart.core.ui.table.Cell} Self instance for method chaining.
  */
 anychart.core.ui.table.Cell.prototype.padding;

@@ -31,7 +31,7 @@ anychart.core.ui.Background.prototype.corners;
  * the first value is set for all four corners.
  * @example anychart.core.ui.Background.corners_set_asSingle Using single value
  * @example anychart.core.ui.Background.corners_set_asArray Using array
- * @param {(number|string|Array.<number>)=} opt_value [0] Value to set.
+ * @param {(number|string|Array.<number>)=} opt_corners [0] Value to set.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
  */
 anychart.core.ui.Background.prototype.corners;
@@ -68,7 +68,7 @@ anychart.core.ui.Background.prototype.cornerType;
  * @detailed <b>Note</b>: Set corner radius {@link anychart.core.ui.Background#corners} to display a corners shape.
  * If a radius set to 0, no effect will be applied.
  * @example anychart.core.ui.Background.cornerType_set
- * @param {anychart.enums.BackgroundCornersType|string=} opt_value ["round"] Value to set.
+ * @param {anychart.enums.BackgroundCornersType|string=} opt_type ['round'] Value to set.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
  */
 anychart.core.ui.Background.prototype.cornerType;
@@ -102,7 +102,7 @@ anychart.core.ui.Background.prototype.fill;
  * e.g. "red 0.5".
  * @example anychart.core.ui.Background.fill_set_asString Using string
  * @example anychart.core.ui.Background.fill_set_asImg Using image.
- * @param {anychart.graphics.vector.Fill} value ["#fff"] Fill as an object or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} color Fill as an object or a string.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
  * */
 anychart.core.ui.Background.prototype.fill;
@@ -207,8 +207,8 @@ anychart.core.ui.Background.prototype.stroke;
  * @example anychart.core.ui.Background.stroke_set_asString Using string
  * @example anychart.core.ui.Background.stroke_set_asObj Using object
  * @example anychart.core.ui.Background.stroke_set_asArray Using array
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null|Object)} value ["none"]
- * Stroke formatted as "[thickness ]color[ opacity]".
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null|Object)} color ['none']
+ * Stroke formatted as '[thickness ]color[ opacity]'.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
  */
 anychart.core.ui.Background.prototype.stroke;
@@ -219,12 +219,12 @@ anychart.core.ui.Background.prototype.stroke;
  * object properties have priority. E.g. setting <b>shape.stroke('10 red', 5);</b> (or <b>shape.stroke({color: 'red',
  * thickness: 10}, 5);</b> will result in a red stroke with thickness 10px.
  * @example anychart.core.ui.Background.stroke_set
- * @param {(anychart.graphics.vector.Stroke|string)} value Stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|string)} color Stroke settings.
  * @param {number=} opt_thickness Line thickness. Defaults to 1 of not set.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths. Dash array contains a
  * list of white space separated lengths and percentages that specify the lengths of alternating dashes and gaps. If an
  * odd number of values is provided, then the list of values is repeated to yield an even number of values. Thus, stroke
- * dashpattern: "5 3 2" is equivalent to dashpattern: "5 3 2 5 3 2".
+ * dashpattern: '5 3 2' is equivalent to dashpattern: '5 3 2 5 3 2'.
  * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
  * @param {(string|anychart.graphics.vector.StrokeLineCap)=} opt_lineCap Line cap style.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
@@ -263,12 +263,12 @@ anychart.core.ui.Background.prototype.topStroke;
  * <li>{@link anychart.graphics.vector.GradientKey} keys array</li>
  * <li><b>null</b> resets current stroke settings</li>
  * </ul>
- * <b>Note:</b> String parts order is significant and "3px red" is not the same as "red 3px".
+ * <b>Note:</b> String parts order is significant and '3px red' is not the same as 'red 3px'.
  * @example anychart.core.ui.Background.topStroke_set_asString Using string
  * @example anychart.core.ui.Background.topStroke_set_asObj Using object
  * @example anychart.core.ui.Background.topStroke_set_asArray Using array
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null|Object)} value ["none"]
- * Stroke formatted as "[thickness ]color[ opacity]".
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null|Object)} color ['none']
+ * Stroke formatted as '[thickness ]color[ opacity]'.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
  */
 anychart.core.ui.Background.prototype.topStroke;
@@ -284,7 +284,7 @@ anychart.core.ui.Background.prototype.topStroke;
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths. Dash array contains a
  * list of white space separated lengths and percentages that specify the lengths of alternating dashes and gaps. If an
  * odd number of values is provided, then the list of values is repeated to yield an even number of values. Thus, stroke
- * dashpattern: "5 3 2" is equivalent to dashpattern: "5 3 2 5 3 2".
+ * dashpattern: '5 3 2' is equivalent to dashpattern: '5 3 2 5 3 2'.
  * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
  * @param {(string|anychart.graphics.vector.StrokeLineCap)=} opt_lineCap Line cap style.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
@@ -327,8 +327,8 @@ anychart.core.ui.Background.prototype.rightStroke;
  * @example anychart.core.ui.Background.rightStroke_set_asString Using string
  * @example anychart.core.ui.Background.rightStroke_set_asObj Using object
  * @example anychart.core.ui.Background.rightStroke_set_asArray Using array
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null|Object)} value ["none"]
- * Stroke formatted as "[thickness ]color[ opacity]".
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null|Object)} color ['none']
+ * Stroke formatted as '[thickness ]color[ opacity]'.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
  */
 anychart.core.ui.Background.prototype.rightStroke;
@@ -344,7 +344,7 @@ anychart.core.ui.Background.prototype.rightStroke;
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths. Dash array contains a
  * list of white space separated lengths and percentages that specify the lengths of alternating dashes and gaps. If an
  * odd number of values is provided, then the list of values is repeated to yield an even number of values. Thus, stroke
- * dashpattern: "5 3 2" is equivalent to dashpattern: "5 3 2 5 3 2".
+ * dashpattern: '5 3 2' is equivalent to dashpattern: '5 3 2 5 3 2'.
  * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
  * @param {(string|anychart.graphics.vector.StrokeLineCap)=} opt_lineCap Line cap style.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
@@ -383,12 +383,12 @@ anychart.core.ui.Background.prototype.bottomStroke;
  * <li>{@link anychart.graphics.vector.GradientKey} keys array</li>
  * <li><b>null</b> resets current stroke settings</li>
  * </ul>
- * <b>Note:</b> String parts order is significant and "3px red" is not the same as "red 3px".
+ * <b>Note:</b> String parts order is significant and '3px red' is not the same as 'red 3px'.
  * @example anychart.core.ui.Background.bottomStroke_set_asString Using string
  * @example anychart.core.ui.Background.bottomStroke_set_asObj Using object
  * @example anychart.core.ui.Background.bottomStroke_set_asArray Using array
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null|Object)} value ["none"]
- * Stroke formatted as "[thickness ]color[ opacity]".
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null|Object)} color ['none']
+ * Stroke formatted as '[thickness ]color[ opacity]'.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
  */
 anychart.core.ui.Background.prototype.bottomStroke;
@@ -404,7 +404,7 @@ anychart.core.ui.Background.prototype.bottomStroke;
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths. Dash array contains a
  * list of white space separated lengths and percentages that specify the lengths of alternating dashes and gaps. If an
  * odd number of values is provided, then the list of values is repeated to yield an even number of values. Thus, stroke
- * dashpattern: "5 3 2" is equivalent to dashpattern: "5 3 2 5 3 2".
+ * dashpattern: '5 3 2' is equivalent to dashpattern: '5 3 2 5 3 2'.
  * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
  * @param {(string|anychart.graphics.vector.StrokeLineCap)=} opt_lineCap Line cap style.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
@@ -443,12 +443,12 @@ anychart.core.ui.Background.prototype.leftStroke;
  * <li>{@link anychart.graphics.vector.GradientKey} keys array</li>
  * <li><b>null</b> resets current stroke settings</li>
  * </ul>
- * <b>Note:</b> String parts order is significant and "3px red" is not the same as "red 3px".
+ * <b>Note:</b> String parts order is significant and '3px red' is not the same as 'red 3px'.
  * @example anychart.core.ui.Background.leftStroke_set_asString Using string
  * @example anychart.core.ui.Background.leftStroke_set_asObj Using object
  * @example anychart.core.ui.Background.leftStroke_set_asArray Using array
- * @param {(anychart.graphics.vector.Stroke|string|null|Object)} value ["none"]
- * Stroke formatted as "[thickness ]color[ opacity]".
+ * @param {(anychart.graphics.vector.Stroke|string|null|Object)} color ['none']
+ * Stroke formatted as '[thickness ]color[ opacity]'.
  * @return {anychart.core.ui.Background} Self instance for method chaining.
  */
 anychart.core.ui.Background.prototype.leftStroke;
@@ -464,7 +464,7 @@ anychart.core.ui.Background.prototype.leftStroke;
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths. Dash array contains a
  * list of white space separated lengths and percentages that specify the lengths of alternating dashes and gaps. If an
  * odd number of values is provided, then the list of values is repeated to yield an even number of values. Thus, stroke
- * dashpattern: "5 3 2" is equivalent to dashpattern: "5 3 2 5 3 2".
+ * dashpattern: '5 3 2' is equivalent to dashpattern: '5 3 2 5 3 2'.
  * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
  * @param {(string|anychart.graphics.vector.StrokeLineCap)=} opt_lineCap Line cap style.
  * @return {anychart.core.ui.Background} Self instance for method chaining.

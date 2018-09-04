@@ -28,7 +28,7 @@ anychart.core.ui.Table.prototype.rowsCount;
  * Setter for table rows count.
  * @detailed Calculated from the contents if not defined explicitly.
  * @example anychart.core.ui.Table.rowsCount_set
- * @param {number=} opt_value [5] Value to set.
+ * @param {number=} opt_count [5] Rows count to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.rowsCount;
@@ -53,7 +53,7 @@ anychart.core.ui.Table.prototype.colsCount;
  * Setter for table columns count.
  * @detailed <b>Note:</b> Calculated from the contents if not defined explicitly.
  * @example anychart.core.ui.Table.colsCount_set
- * @param {number=} opt_value [4] Value to set.
+ * @param {number=} opt_count [4] Columns count to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.colsCount;
@@ -131,7 +131,8 @@ anychart.core.ui.Table.prototype.cellPadding;
  * // top and bottom 5px, right and left 15px
  * table.cellPadding(anychart.utils.padding(5,15));
  * @example anychart.core.ui.Table.cellPadding_set_asSingle
- * @param {(null|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=} opt_value Value to set.
+ * @param {(null|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=}
+ * opt_padding Padding to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.cellPadding;
@@ -176,7 +177,7 @@ anychart.core.ui.Table.prototype.cellFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.ui.Table.cellFill_set_asString Using string
  * @example anychart.core.ui.Table.cellFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} color [null] Color as an object or a string.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.cellFill;
@@ -250,7 +251,7 @@ anychart.core.ui.Table.prototype.rowOddFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.ui.Table.rowOddFill_set_asString Using string
  * @example anychart.core.ui.Table.rowOddFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} color [null] Color as an object or a string.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.rowOddFill;
@@ -324,7 +325,7 @@ anychart.core.ui.Table.prototype.rowEvenFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.ui.Table.rowEvenFill_set_asString Using string
  * @example anychart.core.ui.Table.rowEvenFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value [null] Color as an object or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} color [null] Color as an object or a string.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.rowEvenFill;
@@ -400,8 +401,7 @@ anychart.core.ui.Table.prototype.cellBorder;
  * the border for the corresponding side.<br/>
  * <b>Note:</b> <u>lineJoin</u> settings not working here.
  * @example anychart.core.ui.Table.cellBorder
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_strokeOrFill Fill settings
- *    or stroke settings.
+ * @param {(anychart.graphics.vector.Stroke|string|Function|null)=} opt_colorSettings Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
@@ -466,18 +466,18 @@ anychart.core.ui.Table.prototype.getCol;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for row height.
+ * Getter for rows height.
  * @shortDescription Row height.
  * @category Specific settings
- * @return {string|number|null} Row height.
+ * @return {string|number|null} Rows height.
  */
 anychart.core.ui.Table.prototype.rowsHeight;
 
 /**
- * Setter for row height.
+ * Setter for rows height.
  * @detailed Defaults to null - divide the rest of table height between rows with null height evenly.
  * @example anychart.core.ui.Table.rowsHeight_set
- * @param {(string|number|null)=} opt_value [null] Value to set.
+ * @param {(string|number|null)=} opt_height [null] Rows height to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.rowsHeight;
@@ -501,7 +501,7 @@ anychart.core.ui.Table.prototype.rowsMinHeight;
  * Setter for the row height minimum.
  * @detailed Defaults to null - no minimum height. The method sets a minimum height of rows, that will be to remain after a resize of table.
  * @example anychart.core.ui.Table.rowsMinHeight_set
- * @param {(string|number|null)=} opt_value [null] Value to set.
+ * @param {(string|number|null)=} opt_height [null] Row height minimum to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.rowsMinHeight;
@@ -525,7 +525,7 @@ anychart.core.ui.Table.prototype.rowsMaxHeight;
  * Setter for the row height maximum.
  * @detailed Defaults to null - no maximum height.
  * @example anychart.core.ui.Table.rowsMaxHeight_set
- * @param {(string|number|null)=} opt_value [null] Value to set.
+ * @param {(string|number|null)=} opt_height [null] Row height maximum to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.rowsMaxHeight;
@@ -551,7 +551,7 @@ anychart.core.ui.Table.prototype.colsWidth;
  * Setter for the column width.
  * @detailed Defaults to null - divide the rest of table width between columns with null width evenly.
  * @example anychart.core.ui.Table.colsWidth_set
- * @param {(string|number|null)=} opt_value [null] Value to set.
+ * @param {(string|number|null)=} opt_width [null] Column width to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.colsWidth;
@@ -577,7 +577,7 @@ anychart.core.ui.Table.prototype.colsMinWidth;
  * Setter for column width minimum.
  * @detailed Defaults to null - no minimum width. The method sets a minimum width of columns, that will be to remain after a resize of table.
  * @example anychart.core.ui.Table.colsMinWidth_set
- * @param {(string|number|null)=} opt_value [null] Value to set.
+ * @param {(string|number|null)=} opt_width [null] Column width minimum to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.colsMinWidth;
@@ -603,7 +603,7 @@ anychart.core.ui.Table.prototype.colsMaxWidth;
  * Setter for the column width maximum.
  * @detailed Defaults to null - no maximum width.
  * @example anychart.core.ui.Table.colsMaxWidth_set
- * @param {(string|number|null)=} opt_value [null] Value to set.
+ * @param {(string|number|null)=} opt_width [null] Column width maximum to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.colsMaxWidth;
@@ -654,7 +654,7 @@ anychart.core.ui.Table.prototype.fontSize;
 /**
  * Setter for text font size.
  * @example anychart.core.ui.Table.fontSize_set
- * @param {string|number=} opt_value Value to set.
+ * @param {string|number=} opt_size Font size to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.fontSize;
@@ -677,7 +677,7 @@ anychart.core.ui.Table.prototype.fontFamily;
 /**
  * Setter for font family.
  * @example anychart.core.ui.Table.fontFamily_set
- * @param {string=} opt_value Value to set.
+ * @param {string=} opt_family Font family to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.fontFamily;
@@ -703,7 +703,7 @@ anychart.core.ui.Table.prototype.fontColor;
  * Setter for the text font color.
  * {@link https://www.w3schools.com/html/html_colors.asp}
  * @example anychart.core.ui.Table.fontColor_set
- * @param {string=} opt_value Value to set.
+ * @param {string=} opt_color Font color to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.fontColor;
@@ -729,7 +729,7 @@ anychart.core.ui.Table.prototype.fontOpacity;
  * Setter for the text font opacity.
  * Double value from 0 to 1.
  * @example anychart.core.ui.Table.fontOpacity_set
- * @param {number=} opt_value Value to set.
+ * @param {number=} opt_opacity Font opacity to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.fontOpacity;
@@ -754,7 +754,7 @@ anychart.core.ui.Table.prototype.fontDecoration;
 /**
  * Setter for the text font decoration.
  * @example anychart.core.ui.Table.fontDecoration_set
- * @param {(anychart.graphics.vector.Text.Decoration|string)=} opt_value [{@link anychart.graphics.vector.Text.Decoration#NONE}] Value to set.
+ * @param {(anychart.graphics.vector.Text.Decoration|string)=} opt_value [{@link anychart.graphics.vector.Text.Decoration#NONE}] Font decoration to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.fontDecoration;
@@ -779,7 +779,7 @@ anychart.core.ui.Table.prototype.fontStyle;
 /**
  * Setter for the text font style.
  * @example anychart.core.ui.Table.fontStyle_set
- * @param {(anychart.graphics.vector.Text.FontStyle|string)=} opt_value [{@link anychart.graphics.vector.Text.FontStyle#NORMAL}] Value to set.
+ * @param {(anychart.graphics.vector.Text.FontStyle|string)=} opt_style [{@link anychart.graphics.vector.Text.FontStyle#NORMAL}] Font style to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.fontStyle;
@@ -804,7 +804,7 @@ anychart.core.ui.Table.prototype.fontVariant;
 /**
  * Setter for the text font variant.
  * @example anychart.core.ui.Table.fontVariant_set
- * @param {(anychart.graphics.vector.Text.FontVariant|string)=} opt_value [{@link anychart.graphics.vector.Text.FontVariant#NORMAL}] Value to set.
+ * @param {(anychart.graphics.vector.Text.FontVariant|string)=} opt_value [{@link anychart.graphics.vector.Text.FontVariant#NORMAL}] Font variant to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.fontVariant;
@@ -830,7 +830,7 @@ anychart.core.ui.Table.prototype.fontWeight;
  * Setter for the text font weight.
  * {@link https://www.w3schools.com/cssref/pr_font_weight.asp}
  * @example anychart.core.ui.Table.fontWeight_set
- * @param {(string|number)=} opt_value Value to set.
+ * @param {(string|number)=} opt_weight Font weight to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.fontWeight;
@@ -856,7 +856,7 @@ anychart.core.ui.Table.prototype.letterSpacing;
  * Setter for the text letter spacing.
  * {@link https://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
  * @example anychart.core.ui.Table.letterSpacing_set
- * @param {(string|number)=} opt_value Value to set.
+ * @param {(string|number)=} opt_spacing Letter spacing to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.letterSpacing;
@@ -870,7 +870,7 @@ anychart.core.ui.Table.prototype.letterSpacing;
 
 /**
  * Getter for the text direction.
- * @shortDescription Letter direction settings.
+ * @shortDescription Text direction settings.
  * @category Base Text Settings
  * @listing See listing
  * var textDirection = table.textDirection();
@@ -881,7 +881,8 @@ anychart.core.ui.Table.prototype.textDirection;
 /**
  * Setter for the text direction.
  * @example anychart.core.ui.Table.textDirection_set
- * @param {(anychart.graphics.vector.Text.Direction|string)=} opt_value [{@link anychart.graphics.vector.Text.Direction#LTR}] Value to set.
+ * @param {(anychart.graphics.vector.Text.Direction|string)=} opt_value [{@link anychart.graphics.vector.Text.Direction#LTR}]
+ * Text direction to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.textDirection;
@@ -906,7 +907,7 @@ anychart.core.ui.Table.prototype.lineHeight;
 /**
  * Setter for the text line height. {@link https://www.w3schools.com/cssref/pr_text_letter-spacing.asp}
  * @example anychart.core.ui.Table.lineHeight_set
- * @param {(string|number)=} opt_value Value to set.
+ * @param {(string|number)=} opt_height Line height to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.lineHeight;
@@ -931,7 +932,7 @@ anychart.core.ui.Table.prototype.textIndent;
 /**
  * Setter for the text indent.
  * @example anychart.core.ui.Table.textIndent_set
- * @param {number=} opt_value Value to set.
+ * @param {number=} opt_indent Text indent to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.textIndent;
@@ -956,7 +957,7 @@ anychart.core.ui.Table.prototype.vAlign;
 /**
  * Setter for the text vertical align.
  * @example anychart.core.ui.Table.vAlign_set
- * @param {(anychart.graphics.vector.Text.VAlign|string)=} opt_value [{@link anychart.graphics.vector.Text.VAlign#TOP}] Value to set.
+ * @param {(anychart.graphics.vector.Text.VAlign|string)=} opt_align [{@link anychart.graphics.vector.Text.VAlign#TOP}] Vertical align to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.vAlign;
@@ -981,7 +982,7 @@ anychart.core.ui.Table.prototype.hAlign;
 /**
  * Setter for the text horizontal align.
  * @example anychart.core.ui.Table.hAlign_set
- * @param {(anychart.graphics.vector.Text.HAlign|string)=} opt_value [{@link anychart.graphics.vector.Text.HAlign#START}] Value to set.
+ * @param {(anychart.graphics.vector.Text.HAlign|string)=} opt_align [{@link anychart.graphics.vector.Text.HAlign#START}] Horizontal align to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.hAlign;
@@ -1007,7 +1008,7 @@ anychart.core.ui.Table.prototype.wordWrap;
 /**
  * Setter for the word-wrap mode.
  * @example anychart.core.ui.Table.wordWrap
- * @param {(anychart.enums.WordWrap|string)=} opt_value ["normal"] Value to set.
+ * @param {(anychart.enums.WordWrap|string)=} opt_mode ['normal'] Value to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -1033,7 +1034,7 @@ anychart.core.ui.Table.prototype.wordBreak;
 /**
  * Setter for the word-break mode.
  * @example anychart.core.ui.Table.wordBreak
- * @param {(anychart.enums.WordBreak|string)=} opt_value ["normal"] Value to set.
+ * @param {(anychart.enums.WordBreak|string)=} opt_mode ['normal'] Value to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -1085,7 +1086,7 @@ anychart.core.ui.Table.prototype.selectable;
  * Setter for the text selectable.
  * @detailed This options defines whether the text can be selected. If set to <b>false</b> one can't select the text.
  * @example anychart.core.ui.Table.selectable_set
- * @param {boolean=} opt_value [false] Value to set.
+ * @param {boolean=} opt_enabled [false] Text selectable option to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.selectable;
@@ -1110,7 +1111,7 @@ anychart.core.ui.Table.prototype.disablePointerEvents;
 /**
  * Setter for the text disablePointerEvents option.
  * @detailed This options defines whether the text should pass mouse events through.
- * @param {boolean=} opt_value [false] Value to set.
+ * @param {boolean=} opt_enabled [false] DisablePointerEvents option to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.disablePointerEvents;
@@ -1136,7 +1137,7 @@ anychart.core.ui.Table.prototype.useHtml;
  * Setter for flag useHtml.
  * @detailed This property defines whether HTML text should be parsed.
  * @example anychart.core.ui.Table.useHtml_set
- * @param {boolean=} opt_value [false] Value to set.
+ * @param {boolean=} opt_enabled [false] Value to set.
  * @return {anychart.core.ui.Table} Self instance for method chaining.
  */
 anychart.core.ui.Table.prototype.useHtml;

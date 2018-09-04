@@ -18,7 +18,7 @@ anychart.core.ui.DataGrid;
  * @shortDescription Row fill settings.
  * @category Coloring
  * @example anychart.core.ui.DataGrid.rowFill_get
- * @return {anychart.graphics.vector.Fill|string} Row fill.
+ * @return {anychart.graphics.vector.Fill|string} Row fill color.
  */
 anychart.core.ui.DataGrid.prototype.rowFill;
 
@@ -28,7 +28,7 @@ anychart.core.ui.DataGrid.prototype.rowFill;
  * @detailed <b>Note</b>: resets settings of {@link anychart.core.ui.DataGrid#oddFill} and {@link anychart.core.ui.DataGrid#evenFill}.
  * @example anychart.core.ui.DataGrid.rowFill_set_asString Using string
  * @example anychart.core.ui.DataGrid.rowFill_set_asArray Using array
- * @param {!anychart.graphics.vector.Fill} value ["#fff"] Color as an object or a string.
+ * @param {!anychart.graphics.vector.Fill} color ['#fff'] Color as an object or a string.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.rowFill;
@@ -104,7 +104,7 @@ anychart.core.ui.DataGrid.prototype.rowOddFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.ui.DataGrid.rowOddFill_set_asString Using string
  * @example anychart.core.ui.DataGrid.rowOddFill_set_asArray Using array
- * @param {!anychart.graphics.vector.Fill} value ["#fff"] Color as an object or a string.
+ * @param {!anychart.graphics.vector.Fill|string|Array} color ['#fff'] Color as an object or a string.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.rowOddFill;
@@ -177,7 +177,7 @@ anychart.core.ui.DataGrid.prototype.rowEvenFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.ui.DataGrid.rowEvenFill_set_asString Using string
  * @example anychart.core.ui.DataGrid.rowEvenFill_set_asArray Using array
- * @param {!anychart.graphics.vector.Fill} value ["#fafafa"] Color as an object or a string.
+ * @param {!anychart.graphics.vector.Fill|string|Array} color ['#fafafa'] Color as an object or a string.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.rowEvenFill;
@@ -250,7 +250,7 @@ anychart.core.ui.DataGrid.prototype.rowHoverFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.ui.DataGrid.rowHoverFill_set_asString Using string
  * @example anychart.core.ui.DataGrid.rowHoverFill_set_asArray Using array
- * @param {!anychart.graphics.vector.Fill} value ["#edf8ff"] Color as an object or a string.
+ * @param {!anychart.graphics.vector.Fill|string|Array} color ['#edf8ff'] Color as an object or a string.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.rowHoverFill;
@@ -320,7 +320,7 @@ anychart.core.ui.DataGrid.prototype.data;
 /**
  * Setter for new data.
  * @example anychart.core.ui.DataGrid.data_set
- * @param {anychart.data.Tree=} opt_value New data tree.
+ * @param {anychart.data.Tree=} opt_data New data tree.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.data;
@@ -346,7 +346,7 @@ anychart.core.ui.DataGrid.prototype.startIndex;
  * @detailed This method as setter works only for a standalone element.<br/>
  * If full data doesn't fit into the visible area, DataGrid will show a range of display data started from this value.
  * @example anychart.core.ui.DataGrid.startIndex_set
- * @param {number=} opt_value [0] Value to set.
+ * @param {number=} opt_index [0] Start index to set.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.startIndex;
@@ -373,7 +373,7 @@ anychart.core.ui.DataGrid.prototype.endIndex;
  * If full data doesn't fit into visible area, DataGrid will show a range of display data ended by this value.<br/>
  * <b>Note:</b> Has higher priority than {@link anychart.core.ui.DataGrid#startIndex}.
  * @example anychart.core.ui.DataGrid.endIndex_set
- * @param {number=} opt_value [0] Value to set.
+ * @param {number=} opt_index [0] End index to set.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.endIndex;
@@ -399,7 +399,7 @@ anychart.core.ui.DataGrid.prototype.verticalOffset;
  * @detailed This method as setter works only for a standalone element.<br/>
  * Gantt Chart defines vertical offset for data grid automatically and you can't customize it by instance.
  * @example anychart.core.ui.DataGrid.verticalOffset_set
- * @param {number=} opt_value [0] Value to set.
+ * @param {number=} opt_offset [0] Vertical offset to set.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.verticalOffset;
@@ -429,7 +429,7 @@ anychart.core.ui.DataGrid.prototype.tooltip;
  * </ul>
  * @example anychart.core.ui.DataGrid.tooltip_set_Disable Disable/enable tooltip
  * @example anychart.core.ui.DataGrid.tooltip_set_asObject Using object
- * @param {(Object|boolean|null)=} opt_value [true] Tooltip settings.
+ * @param {(Object|boolean|null)=} opt_settings [true] Tooltip settings.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.tooltip;
@@ -454,7 +454,7 @@ anychart.core.ui.DataGrid.prototype.column;
 /**
  * Setter for the first column.
  * @example anychart.core.ui.DataGrid.column_set_asInst
- * @param {(anychart.core.ui.DataGrid.Column|Object)} opt_settings Column to set.
+ * @param {(anychart.core.ui.DataGrid.Column|Object)} opt_settings Column settings to set.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.column;
@@ -463,7 +463,7 @@ anychart.core.ui.DataGrid.prototype.column;
  * Setter for the column by index.
  * @example anychart.core.ui.DataGrid.column_set_asIndex
  * @param {number} opt_index Column index.
- * @param {(anychart.core.ui.DataGrid.Column|Object)} opt_settings Column to set.
+ * @param {(anychart.core.ui.DataGrid.Column|Object)} opt_settings Column settings to set.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.column;
@@ -502,7 +502,7 @@ anychart.core.ui.DataGrid.prototype.horizontalScrollBar;
 /**
  * Setter for the horizontal scroll bar.
  * @example anychart.core.ui.DataGrid.horizontalScrollBar_set
- * @param {Object=} opt_value Object with settings.
+ * @param {Object=} opt_settings Horizontal scroll bar settings to set.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -527,7 +527,7 @@ anychart.core.ui.DataGrid.prototype.columnStroke;
 /**
  * Setter for the column stroke.
  * @example anychart.core.ui.DataGrid.columnStroke_set
- * @param {(anychart.graphics.vector.Stroke|string)=} opt_value ["#ccd7e1"] Value to set.
+ * @param {(anychart.graphics.vector.Stroke|string)=} opt_color ['#cecece'] Stroke color to set.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.columnStroke;
@@ -646,7 +646,7 @@ anychart.core.ui.DataGrid.Column.prototype.title;
  * @example anychart.core.ui.DataGrid.Column.title_set_asDisable Disable/Enable title
  * @example anychart.core.ui.DataGrid.Column.title_set_asObject Using object
  * @example anychart.core.ui.DataGrid.Column.title_set_asString Using string
- * @param {(null|boolean|Object|string)=} opt_value [true] Value to set.
+ * @param {(null|boolean|Object|string)=} opt_settings [true] Title settings to set.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.Column.prototype.title;
@@ -663,14 +663,14 @@ anychart.core.ui.DataGrid.Column.prototype.title;
  * @shortDescription Column width settings.
  * @category Size and Position
  * @example anychart.core.ui.DataGrid.Column.width_get
- * @return {(number|string)} Current column width.
+ * @return {(number|string)} Column width.
  */
 anychart.core.ui.DataGrid.Column.prototype.width;
 
 /**
  * Setter for the column width.
  * @example anychart.core.ui.DataGrid.Column.width_set
- * @param {(number|string)=} opt_value [0] Width value.
+ * @param {(number|string)=} opt_width [0] Column width to set.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.Column.prototype.width;
@@ -693,7 +693,7 @@ anychart.core.ui.DataGrid.Column.prototype.enabled;
 /**
  * Setter for the element enabled state.
  * @example anychart.core.ui.DataGrid.Column.enabled_set_asBool
- * @param {boolean=} opt_value [true] Value to set.
+ * @param {boolean=} opt_enabled [true] Enabled state to set.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.Column.prototype.enabled;
@@ -716,7 +716,7 @@ anychart.core.ui.DataGrid.prototype.horizontalOffset;
 /**
  * Setter for the horizontal offset.
  * @example anychart.core.ui.DataGrid.horizontalOffset_set
- * @param {number=} opt_value [0] Value to set.
+ * @param {number=} opt_offset [0] Horizontal offset to set.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.prototype.horizontalOffset;
@@ -742,7 +742,7 @@ anychart.core.ui.DataGrid.Column.prototype.depthPaddingMultiplier;
  * @detailed Sets multiplier to choose a left padding in a cell depending on a tree data item's depth.
  * Used to highlight a hierarchy of data items.
  * @example anychart.core.ui.DataGrid.Column.depthPaddingMultiplier_set
- * @param {number=} opt_value [15] Value to set.
+ * @param {number=} opt_padding [15] Value to set.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.Column.prototype.depthPaddingMultiplier;
@@ -759,14 +759,14 @@ anychart.core.ui.DataGrid.Column.prototype.depthPaddingMultiplier;
  * @shortDescription Expand or collapse buttons.
  * @category Interactivity
  * @example anychart.core.ui.DataGrid.Column.collapseExpandButtons_get
- * @return {boolean} Value.
+ * @return {boolean} Collapse or expand buttons.
  */
 anychart.core.ui.DataGrid.Column.prototype.collapseExpandButtons;
 
 /**
  * Setter for expanding or collapse buttons.
  * @example anychart.core.ui.DataGrid.Column.collapseExpandButtons_set
- * @param {boolean=} opt_value [true] Value to set.
+ * @param {boolean=} opt_enabled [true] Enable/Disable buttons.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
  */
 anychart.core.ui.DataGrid.Column.prototype.collapseExpandButtons;
@@ -820,7 +820,7 @@ anychart.core.ui.DataGrid.Column.prototype.defaultWidth;
 /**
  * Setter for the column default width.
  * @example anychart.core.ui.DataGrid.Column.defaultWidth_set
- * @param {number=} opt_value [undefined] Default width value.
+ * @param {number=} opt_width [undefined] Default width value.
  * @return {anychart.core.ui.DataGrid.Column} Self instance for method chaining.
  * @since 7.6.0
  */
@@ -937,7 +937,7 @@ anychart.core.ui.DataGrid.prototype.rowSelectedFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.ui.DataGrid.rowSelectedFill_set_asString Using string
  * @example anychart.core.ui.DataGrid.rowSelectedFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value ["#d2eafa"] Color as an array or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} color [function(){return this.sourceColor}] Color as an array or a string.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  * @since 7.8.0
  */
@@ -1015,7 +1015,7 @@ anychart.core.ui.DataGrid.prototype.backgroundFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.ui.DataGrid.backgroundFill_set_asString Using string
  * @example anychart.core.ui.DataGrid.backgroundFill_set_asArray Using array
- * @param {!anychart.graphics.vector.Fill} value ["none"] Color as an array or a string.
+ * @param {!anychart.graphics.vector.Fill|string|Array} color [null] Color as an array or a string.
  * @return {anychart.core.ui.DataGrid} Self instance for method chaining.
  * @since 7.8.0
  */

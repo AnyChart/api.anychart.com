@@ -1,6 +1,6 @@
 /**
  * The CrosshairLabel class contains methods for configuring the label of the crosshair.<br/>
- * Crosshair label is used text and position settings, the coloring, interactivity states and other settings.
+ * Crosshair label is used in text and position settings, the coloring, interactivity states and other settings.
  * @example anychart.core.ui.CrosshairLabel_font Font settings
  * @example anychart.core.ui.CrosshairLabel_useHtml Use HTML
  * @example anychart.core.ui.CrosshairLabel_enabled Disable label
@@ -98,7 +98,7 @@ anychart.core.ui.CrosshairLabel.prototype.background;
  * @example anychart.core.ui.CrosshairLabel.background_set_asBool Disable/enable label background
  * @example anychart.core.ui.CrosshairLabel.background_set_asString Using string
  * @example anychart.core.ui.CrosshairLabel.background_set_asObj Using object
- * @param {(string|Object|null|boolean)=} opt_value [true] Value to set.
+ * @param {(string|Object|null|boolean)=} opt_settings [true] Value to set.
  * @return {anychart.core.ui.CrosshairLabel} Self instance for method chaining.
  */
 anychart.core.ui.CrosshairLabel.prototype.background;
@@ -125,7 +125,7 @@ anychart.core.ui.CrosshairLabel.prototype.padding;
  * Setter for crosshair label padding in pixels by one value.
  * @example anychart.core.ui.CrosshairLabel.padding_set_asSingle
  * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=}
- * opt_value [{top: 5, right: 10, bottom: 5, left: 10}] Value to set.
+ * opt_padding [{top: 5, right: 10, bottom: 5, left: 10}] Padding to set.
  * @return {anychart.core.ui.CrosshairLabel} Self instance for method chaining.
  */
 anychart.core.ui.CrosshairLabel.prototype.padding;
@@ -168,7 +168,7 @@ anychart.core.ui.CrosshairLabel.prototype.width;
  * Setter for the crosshair label width.
  * @detailed <b>Note:</b> if <b>null</b> is passed, width is calculated automatically.
  * @example anychart.core.ui.CrosshairLabel.width_set
- * @param {(number|string|null)=} opt_value [null] Value to set.
+ * @param {(number|string|null)=} opt_width [null] Crosshair label width to set.
  * @return {anychart.core.ui.CrosshairLabel} Self instance for method chaining.
  */
 anychart.core.ui.CrosshairLabel.prototype.width;
@@ -185,7 +185,7 @@ anychart.core.ui.CrosshairLabel.prototype.width;
  * @shortDescription Height settings.
  * @category Size and Position
  * @example anychart.core.ui.CrosshairLabel.height_get
- * @return {number|string|null} Label width.
+ * @return {number|string|null} Label height.
  */
 anychart.core.ui.CrosshairLabel.prototype.height;
 
@@ -193,7 +193,7 @@ anychart.core.ui.CrosshairLabel.prototype.height;
  * Setter for the crosshair label height.
  * @detailed <b>Note:</b> if <b>null</b> is passed, height is calculated automatically.
  * @example anychart.core.ui.CrosshairLabel.height_set
- * @param {(number|string|null)=} opt_value [null] Value to set.
+ * @param {(number|string|null)=} opt_height [null] Value to set.
  * @return {anychart.core.ui.CrosshairLabel} Self instance for method chaining.
  */
 anychart.core.ui.CrosshairLabel.prototype.height;
@@ -239,7 +239,7 @@ anychart.core.ui.CrosshairLabel.prototype.anchor;
 /**
  * Setter for the crosshair label anchor settings.
  * @example anychart.core.ui.CrosshairLabel.anchor_set
- * @param {(anychart.enums.Anchor|string)=} opt_value [null] Value to set.
+ * @param {(anychart.enums.Anchor|string)=} opt_anchor [null] Value to set.
  * @return {anychart.core.ui.CrosshairLabel} Self instance for method chaining.
  */
 anychart.core.ui.CrosshairLabel.prototype.anchor;
@@ -265,7 +265,7 @@ anychart.core.ui.CrosshairLabel.prototype.offsetX;
  * <img src='/anychart.core.ui.CrosshairLabel.offsetX.png' height='436' width='577'/><br/>
  * Arrows show offsets layout.
  * @example anychart.core.ui.CrosshairLabel.offsetX_set
- * @param {(number|string)=} opt_value [0] Value to set.
+ * @param {(number|string)=} opt_offset [0] Offset by X to set.
  * @return {anychart.core.ui.CrosshairLabel} Self instance for method chaining.
  */
 anychart.core.ui.CrosshairLabel.prototype.offsetX;
@@ -290,7 +290,7 @@ anychart.core.ui.CrosshairLabel.prototype.offsetY;
  * Setter for crosshair label offsetY settings.
  * See illustration in {@link anychart.core.ui.CrosshairLabel#offsetX}.
  * @example anychart.core.ui.CrosshairLabel.offsetY_set
- * @param {(number|string)=} opt_value [0] Value to set.
+ * @param {(number|string)=} opt_offset [0] Offset by Y to set.
  * @return {anychart.core.ui.CrosshairLabel} Self instance for method chaining.
  */
 anychart.core.ui.CrosshairLabel.prototype.offsetY;
@@ -315,7 +315,7 @@ anychart.core.ui.CrosshairLabel.prototype.minFontSize;
  * Setter for the minimum font size for adjust text from.
  * @detailed <b>Note:</b> works only when adjusting is enabled. Look {@link anychart.core.ui.CrosshairLabel#adjustFontSize}.
  * @example anychart.core.ui.CrosshairLabel.minFontSize_set
- * @param {(number|string)=} opt_value [8] Value to set.
+ * @param {(number|string)=} opt_size [8] Minimum font size  to set.
  * @return {anychart.core.ui.CrosshairLabel} Self instance for method chaining.
  */
 anychart.core.ui.CrosshairLabel.prototype.minFontSize;
@@ -327,19 +327,19 @@ anychart.core.ui.CrosshairLabel.prototype.minFontSize;
 //
 //----------------------------------------------------------------------------------------------------------------------
 /**
- * Getter for the font size for adjust text to.
+ * Getter for the maximum font size for adjust text to.
  * @shortDescription Maximum font size setting.
  * @category Advanced Text Settings
  * @example anychart.core.ui.CrosshairLabel.maxFontSize_get
- * @return {number} Current value.
+ * @return {number} Maximum font size.
  */
 anychart.core.ui.CrosshairLabel.prototype.maxFontSize;
 
 /**
- * Setter for the font size for adjust text to.
+ * Setter for the maximum font size for adjust text to.
  * @detailed <b>Note:</b> works only when adjusting is enabled. Look {@link anychart.core.ui.CrosshairLabel#adjustFontSize}.
  * @example anychart.core.ui.CrosshairLabel.maxFontSize_set
- * @param {(number|string)=} opt_value [72] Value to set.
+ * @param {(number|string)=} opt_size [72] Maximum font size to set.
  * @return {anychart.core.ui.CrosshairLabel} Self instance for method chaining.
  */
 anychart.core.ui.CrosshairLabel.prototype.maxFontSize;
