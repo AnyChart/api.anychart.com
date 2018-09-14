@@ -27,7 +27,7 @@ anychart.core.utils.LegendItemSettings.prototype.iconTextSpacing;
 /**
  * Setter for a spacing between icon and text.
  * @example anychart.core.utils.LegendItemSettings.iconTextSpacing_set
- * @param {number=} opt_value Value of spacing between icon and text.
+ * @param {number=} opt_spacing Value of spacing between icon and text.
  * @return {anychart.core.utils.LegendItemSettings} Self instance for method chaining.
  */
 anychart.core.utils.LegendItemSettings.prototype.iconTextSpacing;
@@ -52,7 +52,7 @@ anychart.core.utils.LegendItemSettings.prototype.iconEnabled;
 /**
  * Setter for settings showing icons.
  * @example anychart.core.utils.LegendItemSettings.iconEnabled_set
- * @param {boolean=} opt_value Whether to show item icon or not.
+ * @param {boolean=} opt_enabled Whether to show item icon or not.
  * @return {anychart.core.utils.LegendItemSettings} Self instance for method chaining.
  */
 anychart.core.utils.LegendItemSettings.prototype.iconEnabled;
@@ -77,7 +77,8 @@ anychart.core.utils.LegendItemSettings.prototype.iconType;
 /**
  * Setter for the icon type.
  * @example anychart.core.utils.LegendItemSettings.iconType_set
- * @param {(anychart.enums.LegendItemIconType|string|function(anychart.graphics.vector.Path, number))=} opt_value Icon type or custom drawer function.
+ * @param {(anychart.enums.LegendItemIconType|string|function(anychart.graphics.vector.Path, number))=} opt_type
+ * Icon type or custom drawer function.
  * @return {anychart.core.utils.LegendItemSettings} Self instance for method chaining.
  */
 anychart.core.utils.LegendItemSettings.prototype.iconType;
@@ -102,7 +103,7 @@ anychart.core.utils.LegendItemSettings.prototype.iconFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.utils.LegendItemSettings.iconFill_set_asString Using string
  * @example anychart.core.utils.LegendItemSettings.iconFill_set_asArray Using array
- * @param {!anychart.graphics.vector.Fill} value Color as an array or a string.
+ * @param {!anychart.graphics.vector.Fill} color Color as an array or a string.
  * @return {anychart.core.utils.LegendItemSettings} Self instance for method chaining.
  */
 anychart.core.utils.LegendItemSettings.prototype.iconFill;
@@ -160,11 +161,24 @@ anychart.core.utils.LegendItemSettings.prototype.iconFill;
  */
 anychart.core.utils.LegendItemSettings.prototype.iconStroke;
 
+
+/**
+ * Setter for legend item icon stroke using a function.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.utils.LegendItemSettings.iconStroke_set_asFunc
+ * @param {StrokeFunction=} opt_strokeFunction Function that looks like: <pre>function(){
+ *    // this.sourceColor - color returned by fill() getter.
+ *    return strokeValue; // type anychart.graphics.vector.Fill or anychart.graphics.vector.Stroke
+ * }</pre>
+ * @return {anychart.core.utils.LegendItemSettings} Self instance for method chaining.
+ */
+anychart.core.utils.LegendItemSettings.prototype.iconStroke;
+
 /**
  * Setter for legend item icon stroke settings.
  * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
  * @example anychart.core.utils.LegendItemSettings.iconStroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_value [null]
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_color [null]
  * Stroke settings.
  * @param {number=} opt_thickness Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
@@ -256,7 +270,8 @@ anychart.core.utils.LegendItemSettings.prototype.iconMarkerType;
  * Setter for the marker type.
  * @detailed Usable with line, spline, step line icon types.
  * @example anychart.core.utils.LegendItemSettings.iconMarkerType_set
- * @param {?(anychart.enums.MarkerType|string|function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path)=} opt_value Marker type.
+ * @param {(anychart.enums.MarkerType|string|function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path)=}
+ * opt_type Marker type to set.
  * @return {anychart.core.utils.LegendItemSettings} Self instance for method chaining.
  */
 anychart.core.utils.LegendItemSettings.prototype.iconMarkerType;
@@ -281,7 +296,7 @@ anychart.core.utils.LegendItemSettings.prototype.iconMarkerFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @detailed Also you can use a fill with opacity, radial and linear gradients.
  * @example anychart.core.utils.LegendItemSettings.iconMarkerFill_set
- * @param {anychart.graphics.vector.Fill} value Color as a string.
+ * @param {anychart.graphics.vector.Fill} color Color as a string.
  * @return {anychart.core.utils.LegendItemSettings} Self instance for method chaining.
  */
 anychart.core.utils.LegendItemSettings.prototype.iconMarkerFill;
@@ -377,9 +392,9 @@ anychart.core.utils.LegendItemSettings.prototype.text;
 
 /**
  * Setter for the legend item text.
- * @example anychart.core.utils.LegendItemSettings.text_set
- * @param {string|Function=} opt_value Legend item text.
  * @detailed The same as {@link anychart.core.utils.LegendItemSettings#format}.
+ * @example anychart.core.utils.LegendItemSettings.text_set
+ * @param {string|Function=} opt_text Legend item text.
  * @return {anychart.core.utils.LegendItemSettings} Self instance for method chaining.
  */
 anychart.core.utils.LegendItemSettings.prototype.text;
@@ -404,7 +419,7 @@ anychart.core.utils.LegendItemSettings.prototype.format;
  * Setter for legend item format settings.<br/>
  * {docs:Common_Settings/Text_Formatters}Learn more about using the format() method.{docs}
  * @example anychart.core.utils.LegendItemSettings.format_set
- * @param {string|Function} value Function or string token to format legend item text.
+ * @param {string|Function} format Function or string token to format legend item text.
  * @detailed This method is a simlink for {@link anychart.core.utils.LegendItemSettings#text}.
  * @return {anychart.core.utils.LegendItemSettings} Self instance for method chaining.
  */
@@ -430,7 +445,7 @@ anychart.core.utils.LegendItemSettings.prototype.disabled;
 /**
  * Setter for disabled settings.
  * @example anychart.core.utils.LegendItemSettings.disabled_set
- * @param {boolean=} opt_value Is this item disabled.
+ * @param {boolean=} opt_enabled Enabled state to set.
  * @return {anychart.core.utils.LegendItemSettings} Self instance for method chaining.
  */
 anychart.core.utils.LegendItemSettings.prototype.disabled;
@@ -453,7 +468,7 @@ anychart.core.utils.LegendItemSettings.prototype.iconSize;
 /**
  * Setter for the icon size of legend item.
  * @example anychart.core.utils.LegendItemSettings.iconSize_set
- * @param {(number|string)=} opt_value Icon size setting.
+ * @param {(number|string)=} opt_size Icon size to set.
  * @return {anychart.core.utils.LegendItemSettings} Self for method chaining.
  */
 anychart.core.utils.LegendItemSettings.prototype.iconSize;

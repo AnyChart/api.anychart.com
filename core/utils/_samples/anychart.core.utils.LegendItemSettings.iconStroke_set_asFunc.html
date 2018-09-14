@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.utils.Error.xErrorWidth set"/>
+    <meta name="ac:name" content="anychart.core.utils.LegendItemSettings.iconStroke set asFunc"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -22,24 +22,31 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.scatter();
+        var chart = anychart.line();
 
-        var series = chart.line([
-            {x: 0, value: 22},
-            {x: 1, value: 34},
-            {x: 2, value: 16},
-            {x: 3, value: 12},
-            {x: 4, value: 41},
-            {x: 5, value: 47}
+        var series1 = chart.line([
+            {x: 'Cycling', value: 10},
+            {x: 'Swimming', value: 32},
+            {x: 'Run', value: 18}
         ]);
-        series.error(1);
+        series1.markers(true);
 
-        var error = series.error();
+        var series2 = chart.line([
+            {x: 'Cycling', value: 15},
+            {x: 'Swimming', value: 9},
+            {x: 'Run', value: 29}
+        ]);
 
-        // Set X error width.
-        error.xErrorWidth(100);
+        chart.legend(true);
 
-        chart.title('Set X error width');
+        var item = series1.legendItem();
+
+        // Set icon stroke.
+        item.iconStroke(function () {
+            return anychart.color.setThickness(anychart.color.darken(this.sourceColor), 2);
+        });
+
+        chart.title('Set icon stroke parameter as a function');
         chart.container('container');
         chart.draw();
     });
