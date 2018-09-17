@@ -34,8 +34,8 @@
         // See https://docs.anychart.com/Maps/Map_Projections to learn more.
 
         var worldDataSet = anychart.data.set([
-            {id: "CA", name: "Canada", value: "A1"},
-            {id: "MN", name: "Mongolia", value: "A1"}
+            {id: 'CA', name: 'Canada', value: 'A1'},
+            {id: 'MN', name: 'Mongolia', value: 'A1'}
         ]);
 
         var canadaMap = anychart.map();
@@ -45,19 +45,19 @@
         chart.geoData(anychart.maps.world);
         chart.choropleth(worldDataSet);
 
-        chart.listen("drillChange", function () {
+        chart.listen('drillChange', function () {
 
             var path = chart.getDrilldownPath();
 
             // Get id.
             var id = path[0].getId();
 
-            canadaMap.title("Get point id. Id of first point is " + id);
+            canadaMap.title('Get point id. Id of first point is ' + id);
         });
 
-        chart.container("container");
+        chart.container('container');
         chart.draw();
-        chart.drillTo("CA", canadaMap);
+        chart.drillTo('CA', canadaMap);
     });
 </script>
 </body>

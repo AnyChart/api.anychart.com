@@ -35,7 +35,7 @@ anychart.core.Chart.prototype.margin;
  * chart.margin(anychart.utils.margin(5, 15));
  * @example anychart.core.Chart.margin_set_asSingle
  * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=}
- * opt_value [{top: 0, right: 0, bottom: 0, left: 0}] Value to set.
+ * opt_margin [{top: 0, right: 0, bottom: 0, left: 0}] Margin to set.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.margin;
@@ -46,11 +46,11 @@ anychart.core.Chart.prototype.margin;
  * // 1) all 10px
  * chart.margin(10);
  * // 2) top and bottom 10px, left and right 15px
- * chart.margin(10, "15px");
+ * chart.margin(10, '15px');
  * // 3) top 10px, left and right 15px, bottom 5px
- * chart.margin(10, "15px", 5);
+ * chart.margin(10, '15px', 5);
  * // 4) top 10px, right 15px, bottom 5px, left 12px
- * chart.margin(10, "15px", "5px", 12);
+ * chart.margin(10, '15px', '5px', 12);
  * @example anychart.core.Chart.margin_set_asSeveral
  * @param {(string|number)=} opt_value1 [0] Top or top-bottom space.
  * @param {(string|number)=} opt_value2 [0] Right or right-left space.
@@ -86,7 +86,7 @@ anychart.core.Chart.prototype.padding;
  * chart.padding({left: 10, top: 20, bottom: 30, right: "40%"}});
  * @example anychart.core.Chart.padding_set_asSingle
  * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=}
- * opt_value [{top: 0, right: 0, bottom: 0, left: 0}] Value to set.
+ * opt_padding [{top: 0, right: 0, bottom: 0, left: 0}] Padding to set.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.padding;
@@ -97,11 +97,11 @@ anychart.core.Chart.prototype.padding;
  * // 1) all 10px
  * chart.padding(10);
  * // 2) top and bottom 10px, left and right 15px
- * chart.padding(10, "15px");
+ * chart.padding(10, '15px');
  * // 3) top 10px, left and right 15px, bottom 5px
- * chart.padding(10, "15px", 5);
+ * chart.padding(10, '15px', 5);
  * // 4) top 10px, right 15%, bottom 5px, left 12px
- * chart.padding(10, "15%", "5px", 12);
+ * chart.padding(10, '15%', '5px', 12);
  * @example anychart.core.Chart.padding_set_asSeveral
  * @param {(string|number)=} opt_value1 [0] Top or top-bottom space.
  * @param {(string|number)=} opt_value2 [0] Right or right-left space.
@@ -130,7 +130,7 @@ anychart.core.Chart.prototype.background;
 /**
  * Setter for the chart background.
  * @example anychart.core.Chart.background_set
- * @param {Object=} opt_value [{enabled: true, fill: "#fff", stroke: 'none', zIndex: 1}] Background object to set.
+ * @param {Object=} opt_settings [{enabled: true, fill: "#fff", stroke: 'none', zIndex: 1}] Background object to set.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.background;
@@ -162,7 +162,7 @@ anychart.core.Chart.prototype.title;
  * @example anychart.core.Chart.title_set_asBool Disable/Enable title
  * @example anychart.core.Chart.title_set_asObj Using object
  * @example anychart.core.Chart.title_set_asString Using string
- * @param {(null|boolean|Object|string)=} opt_value [false] Chart title text or title instance for copy settings from.
+ * @param {(null|boolean|Object|string)=} opt_settings [false] Chart title text or title instance for copy settings from.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.title;
@@ -195,7 +195,7 @@ anychart.core.Chart.prototype.label;
  * @example anychart.core.Chart.label_set_asBool Disable/Enable label
  * @example anychart.core.Chart.label_set_asObj Using object
  * @example anychart.core.Chart.label_set_asString Using string
- * @param {(null|boolean|Object|string)=} opt_value [false] Chart label instance to add by index 0.
+ * @param {(null|boolean|Object|string)=} opt_settings [false] Chart label instance to add by index 0.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.label;
@@ -212,7 +212,7 @@ anychart.core.Chart.prototype.label;
  * @example anychart.core.Chart.label_set_asIndexObj Using object
  * @example anychart.core.Chart.label_set_asIndexString Using string
  * @param {(string|number)=} opt_index Label index.
- * @param {(null|boolean|Object|string)=} opt_value [false] Chart label settings.
+ * @param {(null|boolean|Object|string)=} opt_settings [false] Chart label settings.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.label;
@@ -296,7 +296,7 @@ anychart.core.Chart.prototype.container;
  *  var fwElement = anychart.standalones.title();
  *  element.container( fwElement.container() );
  * @example anychart.core.Chart.container_set
- * @param {(anychart.graphics.vector.Layer|anychart.graphics.vector.Stage|string|Element)=} opt_value The value to set.
+ * @param {(anychart.graphics.vector.Layer|anychart.graphics.vector.Stage|string|Element)=} opt_value Container to set.
  * @return {!anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.container;
@@ -327,7 +327,7 @@ anychart.core.Chart.prototype.animation;
  * <b>Note</b> If you use {@link anychart.graphics.vector.Stage#suspend}, you will not see animation.
  * @example anychart.core.Chart.animation_set_asBool Disable/Enable label
  * @example anychart.core.Chart.animation_set_asObj Animation using object
- * @param {boolean|Object} opt_value [false] Whether to enable animation.
+ * @param {boolean|Object} opt_settings [false] Whether to enable animation.
  * @return {anychart.core.Chart} Self instance for method chaining.
  */
 anychart.core.Chart.prototype.animation;
@@ -369,7 +369,7 @@ anychart.core.Chart.prototype.tooltip;
  * <b>Note:</b> Works only with anychart.enums.TooltipDisplayMode|string.UNION display mode.
  * @example anychart.core.Chart.tooltip_set_asBool Disable/enable tooltip
  * @example anychart.core.Chart.tooltip_set_asObj Using object
- * @param {(Object|boolean|null)=} opt_tooltipSettings Tooltip settings to set.
+ * @param {(Object|boolean|null)=} opt_settings Tooltip settings to set.
  * @return {!anychart.core.Chart} Self instance for method chaining.
  * @since 7.7.0
  */
@@ -547,7 +547,7 @@ anychart.core.Chart.prototype.contextMenu;
  * </ul>
  * @example anychart.core.Chart.contextMenu_set_asBool Enable/disable context menu
  * @example anychart.core.Chart.contextMenu_set_asObj Using object
- * @param {(Object|boolean|null)=} opt_value Context menu settings
+ * @param {(Object|boolean|null)=} opt_settings Context menu settings
  * @return {!anychart.core.Chart} Self instance for method chaining.
  * @since 7.10.0
  */
@@ -747,7 +747,7 @@ anychart.core.Chart.prototype.a11y;
  * </ul>
  * @example anychart.core.Chart.a11y_set_asObj Using object
  * @example anychart.core.Chart.a11y_set_asBool Enable/disable accessibility
- * @param {(boolean|Object)=} opt_value Whether to enable accessibility or object with settings.
+ * @param {(boolean|Object)=} opt_settings Whether to enable accessibility or object with settings.
  * @return {anychart.core.Chart} Self instance for method chaining.
  * @since 7.14.0
  */
@@ -1010,7 +1010,7 @@ anychart.core.Chart.prototype.selectMarqueeFill;
  * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
  * @example anychart.core.Chart.selectMarqueeFill_set_asString Using string
  * @example anychart.core.Chart.selectMarqueeFill_set_asArray Using array
- * @param {anychart.graphics.vector.Fill} value Color as an object or a string.
+ * @param {anychart.graphics.vector.Fill|string|Array} color Color as an object or a string.
  * @return {anychart.core.Chart} Self instance for method chaining.
  * @since 7.14.0
  */
@@ -1173,7 +1173,7 @@ anychart.core.Chart.prototype.exports;
  * @example anychart.core.Chart.exports
  * @detailed To work with exports you need to reference the exports module from AnyChart CDN
  * (http://cdn.anychart.com/js/latest/anychart-exports.min.js for latest or http://cdn.anychart.com/js/{{branch-name}}/anychart-exports.min.js for the versioned file)
- * @param {Object=} opt_value Export settings.
+ * @param {Object=} opt_settings Export settings.
  * @return {anychart.core.Chart} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -1199,7 +1199,7 @@ anychart.core.Chart.prototype.noData;
  * Setter for noData settings.<br/>
  * {docs:Working_with_Data/No_Data_Label} Learn more about "No data" feature {docs}
  * @example anychart.core.Chart.noData_set
- * @param {Object=} opt_value NoData settings.
+ * @param {Object=} opt_settings NoData settings.
  * @return {anychart.core.Chart} Self instance for method chaining.
  * @since 8.0.0
  */
@@ -1226,7 +1226,7 @@ anychart.core.Chart.prototype.autoRedraw;
  * Setter for the autoRedraw flag.<br/>
  * Flag whether to automatically call chart.draw() on any changes or not.
  * @example anychart.core.Chart.autoRedraw
- * @param {boolean=} opt_value [true] Value to set.
+ * @param {boolean=} opt_enabled [true] Value to set.
  * @return {anychart.core.Chart} Self instance for method chaining.
  * @since 8.1.0
  */
@@ -1236,7 +1236,7 @@ anychart.core.Chart.prototype.autoRedraw;
  * Disposes charts.
  * @ignoreDoc
  */
-anychart.core.Chart.prototype.dispose = function(){};;
+anychart.core.Chart.prototype.dispose = function(){};
 
 /** @inheritDoc */
 anychart.core.Chart.prototype.bounds;

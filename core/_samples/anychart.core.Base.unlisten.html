@@ -25,32 +25,32 @@
         var chart = anychart.line();
 
         var lineSeries = chart.column([
-            {x: "January", value: 2},
-            {x: "February", value: 5},
-            {x: "March", value: 3},
-            {x: "April", value: 9},
-            {x: "May", value: 4}
+            {x: 'January', value: 2},
+            {x: 'February', value: 5},
+            {x: 'March', value: 3},
+            {x: 'April', value: 9},
+            {x: 'May', value: 4}
         ]);
 
         var title = chart.title();
         title.enabled(true);
-        title.text("Click on line series. You have 3 clicks");
+        title.text('Click on line series. You have 3 clicks');
 
-        lineSeries.listen("pointClick", customListener);
+        lineSeries.listen('pointClick', customListener);
 
         var counter = 3;
 
         function customListener(e) {
             counter--;
-            title.text("Click on line series. You have " + counter + " clicks");
+            title.text('Click on line series. You have ' + counter + ' clicks');
             if (counter === 0) {
                 // Removes listener.
-                lineSeries.unlisten("pointclick", customListener);
-                title.text("You have no more clicks");
+                lineSeries.unlisten('pointclick', customListener);
+                title.text('You have no more clicks');
             }
         }
 
-        chart.container("container");
+        chart.container('container');
         chart.draw();
     });
 </script>

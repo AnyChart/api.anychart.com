@@ -25,32 +25,32 @@
         var chart = anychart.line();
 
         var lineSeries = chart.column([
-            {x: "January", value: 2},
-            {x: "February", value: 5},
-            {x: "March", value: 3},
-            {x: "April", value: 9},
-            {x: "May", value: 4}
+            {x: 'January', value: 2},
+            {x: 'February', value: 5},
+            {x: 'March', value: 3},
+            {x: 'April', value: 9},
+            {x: 'May', value: 4}
         ]);
 
         var title = chart.title();
         title.enabled(true);
-        title.text("MouseOver the title and click on line series");
+        title.text('MouseOver the title and click on line series');
 
-        lineSeries.listen("pointMouseOut", function (e) {
-            title.fontColor("#4CAF50");
+        lineSeries.listen('pointMouseOut', function (e) {
+            title.fontColor('#4CAF50');
         });
-        lineSeries.listen("pointMouseOver", function (e) {
-            title.fontColor("#F44336");
+        lineSeries.listen('pointMouseOver', function (e) {
+            title.fontColor('#F44336');
         });
-        lineSeries.listen("pointClick", function (e) {
-            title.text("You can\'t click here anymore");
-            title.fontColor("#000000");
+        lineSeries.listen('pointClick', function (e) {
+            title.text('You can\'t click here anymore');
+            title.fontColor('#000000');
 
             // Removes all listeners.
             lineSeries.removeAllListeners();
         });
 
-        chart.container("container");
+        chart.container('container');
         chart.draw();
     });
 </script>

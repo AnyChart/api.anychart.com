@@ -29,26 +29,26 @@
         // See https://docs.anychart.com/Maps/Map_Projections to learn more.
 
         var dataSet = anychart.data.set([
-            {id: "FR.A", title: "Strasbourg", value: 928},
-            {id: "FR.B", title: "Bordeaux", value: 192},
-            {id: "FR.C", title: "Clermont-Ferrand", value: 963},
-            {id: "FR.P", title: "Caen", value: 266},
-            {id: "FR.D", title: "Dijon", value: 518},
-            {id: "FR.E", title: "Rennes", value: 324}
+            {id: 'FR.A', title: 'Strasbourg', value: 928},
+            {id: 'FR.B', title: 'Bordeaux', value: 192},
+            {id: 'FR.C', title: 'Clermont-Ferrand', value: 963},
+            {id: 'FR.P', title: 'Caen', value: 266},
+            {id: 'FR.D', title: 'Dijon', value: 518},
+            {id: 'FR.E', title: 'Rennes', value: 324}
         ]);
 
         var map = anychart.map();
         map.geoData(anychart.maps.france);
         map.choropleth(dataSet);
 
-        map.container("container");
+        map.container('container');
         map.draw();
 
-        map.listen("pointClick", function (e) {
+        map.listen('pointClick', function (e) {
             // Gets point properties.
             var properties = e.point.getFeatureProp();
 
-            map.title("Point name (capital): " + properties.nom_cl);
+            map.title('Point name (capital): ' + properties.nom_cl);
             // Click on point.
         });
     });
