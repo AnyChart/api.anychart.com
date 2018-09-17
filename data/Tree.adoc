@@ -81,7 +81,7 @@ anychart.data.Tree.prototype.addData;
  * ];
  * var treeData = anychart.data.tree(rawdata, anychart.enums.TreeFillingMethod|string.TREE);
  * treeData.createIndexOn("name"); // Creates index.
- * treeData.search("name", 5);
+ * treeData.search('name', 5);
  * @param {string} field Field name.
  * @param {boolean=} opt_asString If the value should be treated as string always.
  * @param {ComparisonFunction=} opt_comparisonFn Indexing comparison function.<br/>
@@ -309,7 +309,7 @@ anychart.data.Tree.prototype.indexOfChild;
  * @category Data
  * @example anychart.data.Tree.removeChildAt
  * @param {number} index - Index of data item for removal.
- * @return {?anychart.data.Tree.DataItem} Removed item or null if item is not found.
+ * @return {anychart.data.Tree.DataItem} Removed item or null if item is not found.
  */
 anychart.data.Tree.prototype.removeChildAt;
 
@@ -353,7 +353,7 @@ anychart.data.Tree.DataItem;
  * @category Data
  * @example anychart.data.Tree.DataItem.get
  * @param {string} key Key.
- * @return {*} value Value.
+ * @return {*} Value.
  */
 anychart.data.Tree.DataItem.prototype.get;
 
@@ -393,7 +393,7 @@ anychart.data.Tree.DataItem.prototype.meta;
  * Setter for a meta data.
  * @example anychart.data.Tree.DataItem.meta_set
  * @param {string} key Key.
- * @param {*=} opt_value Value.
+ * @param {*=} opt_value Value to set.
  * @return {*} Value.
  */
 anychart.data.Tree.DataItem.prototype.meta;
@@ -521,7 +521,7 @@ anychart.data.Tree.DataItem.prototype.removeChild;
  * @category Data
  * @example anychart.data.Tree.DataItem.removeChildAt
  * @param {number} index Index of item for removal.
- * @return {?anychart.data.Tree.DataItem} Removed item or null if item is not found.
+ * @return {anychart.data.Tree.DataItem} Removed item or null if item is not found.
  */
 anychart.data.Tree.DataItem.prototype.removeChildAt;
 
@@ -585,7 +585,7 @@ anychart.data.Tree.DataItem.prototype.remove;
  * @shortDescription Tree CRUD events dispatching
  * @category Data
  * @example anychart.data.Tree.dispatchEvents_get
- * @return {boolean} Current value.
+ * @return {boolean} Returns enabled state.
  * @since 7.8.0
  */
 anychart.data.Tree.prototype.dispatchEvents;
@@ -593,7 +593,7 @@ anychart.data.Tree.prototype.dispatchEvents;
 /**
  * Starts or stops tree CRUD events dispatching.
  * @example anychart.data.Tree.dispatchEvents_set
- * @param {boolean=} opt_value [true] Value to set.
+ * @param {boolean=} opt_enabled [true] Enabled state to set.
  * @return {anychart.data.Tree} Self instance for method chaining.
  * @since 7.8.0
  */
@@ -609,7 +609,7 @@ anychart.data.Tree.prototype.dispatchEvents;
  * Creates and returns a new instance of the data tree.
  * @category Data
  * @example anychart.data.tree
- * @param {(Array.<Object>|string)=} opt_data - Raw data or CSV-string. If the string is passed, the second parameter
+ * @param {(Array.<Object>|string)=} opt_data Raw data or CSV-string. If the string is passed, the second parameter
  * is interpreted as fields mapping.
  * @param {(anychart.enums.TreeFillingMethod|Object)=} opt_fillMethodOrCsvMapping Fill method or CSV mapping object.
  *  This parameter is interpreted as mapping object if the first parameter is a string. Mapping object should have the structure
@@ -622,7 +622,7 @@ anychart.data.Tree.prototype.dispatchEvents;
  *      'value': 15
  *    };
  *  </pre>
- * @param {Object=} opt_csvSettings  CSV settings object. Should be fields like<br/>
+ * @param {Object=} opt_csvSettings CSV settings object. Should be fields like<br/>
  *  rowsSeparator - string or undefined, if it is undefined, it will not be set.<br/>
  *  columnsSeparator - string or undefined, if it is undefined, it will not be set.<br/>
  *  ignoreTrailingSpaces - boolean or undefined, if it is undefined, it will not be set.<br/>
@@ -690,7 +690,7 @@ anychart.data.Tree.prototype.mapAs;
  * Filters the tree data items using the filter-function.
  * @detailed
  * The filter function accepts a data item. After the action with the data item, the function must return a value of "true"
- * or "false", specifying whether to include this data item in the result of the filtering or not.<br/>
+ * or 'false', specifying whether to include this data item in the result of the filtering or not.<br/>
  * <b>Note</b>: the filter performs a full data passage.
  * @example anychart.data.Tree.filter
  * @param {FilterTreeFunction} filterFunction Filter function.

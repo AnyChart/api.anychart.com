@@ -34,11 +34,11 @@
         var indicator = dataTable.createComputer(mapping);
 
         // Adds output field.
-        indicator.addOutputField("customField", "customUid");
+        indicator.addOutputField('customField', 'customUid');
 
         indicator.setContext({period: 2000});
         indicator.setCalculationFunction(function(row) {
-            row.set("customField", row.get("value") + this.period);
+            row.set('customField', row.get('value') + this.period);
         });
 
         var indicatorMapping = dataTable.mapAs({'value': 'customUid'});
@@ -46,13 +46,13 @@
         var plot = chart.plot();
         plot.column(mapping);
         plot.line(indicatorMapping);
-        plot.getSeries(1).name("Custom indicator");
+        plot.getSeries(1).name('Custom indicator');
 
         // Returns negative number of column.
         var number = indicator.addOutputField();
 
-        chart.title("Number of column: " + number);
-        chart.container("container");
+        chart.title('Number of column: ' + number);
+        chart.container('container');
         chart.draw();
     });
 </script>

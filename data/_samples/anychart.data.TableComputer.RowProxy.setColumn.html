@@ -32,11 +32,11 @@
         var chart = anychart.stock();
 
         var indicator = dataTable.createComputer(mapping);
-        indicator.addOutputField("customField", "uid");
+        indicator.addOutputField('customField', 'uid');
         indicator.setContext({period: 2000});
         indicator.setCalculationFunction(function(row) {
             // Set value by column index.
-            row.setColumn(-1, row.get("value") + this.period);
+            row.setColumn(-1, row.get('value') + this.period);
         });
 
         var indicatorMapping = dataTable.mapAs({'value': 'uid'});
@@ -44,10 +44,10 @@
         var plot = chart.plot();
         plot.column(mapping);
         plot.line(indicatorMapping);
-        plot.getSeries(1).name("Custom indicator");
+        plot.getSeries(1).name('Custom indicator');
 
-        chart.title("Set value by column index");
-        chart.container("container");
+        chart.title('Set value by column index');
+        chart.container('container');
         chart.draw();
     });
 </script>

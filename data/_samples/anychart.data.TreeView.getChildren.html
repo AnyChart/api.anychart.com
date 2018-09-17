@@ -24,16 +24,16 @@
 <script>
     anychart.onDocumentReady(function () {
         var data = [
-            {id: 1, "valueNum": 12, name: "Phase 1 - Strategic Plan", progressValue: 0.14, actualStart: "2000-02-24", actualEnd: "2000-02-27"},
-            {id: 2, "valueNum": 21, name: "Self-Assessment", parent: 1, progressValue: 0.25, actualStart: "2000-02-24", actualEnd: "2000-02-29"},
-            {id: 3, "valueNum": 34, name: "Define business vision", parent: 2, progressValue: 0, actualStart: "2000-02-24T24:00", actualEnd: "2000-02-25T09:00", connectTo: 4, connectorType: "finish-start"},
-            {id: 4, "valueNum": 55, name: "Identify available skills, information and support", parent: 2, progressValue: 0, actualStart: "2000-02-26T00:00", actualEnd: "2000-02-26T09:00", connectTo: 5, connectorType: "finish-start"},
-            {id: 5, "valueNum": 73, name: "Decide whether to proceed", parent: 2, progressValue: 0, actualStart: "2000-02-27", actualEnd: "2000-02-28T08:00", connectTo: 6, connectorType: "finish-start"},
-            {id: 6, "valueNum": 43, name: "Define the Opportunity", parent: 1, progressValue: 0.27, actualStart: "2000-02-28T08:00", actualEnd: "2000-02-29"},
-            {id: 7, "valueNum": 64, name: "Research the market and competition", parent: 6, progressValue: 0, actualStart: "2000-02-26T08:00", actualEnd: "2000-02-27"}
+            {id: 1, 'valueNum': 12, name: 'Phase 1 - Strategic Plan', progressValue: 0.14, actualStart: '2000-02-24', actualEnd: '2000-02-27'},
+            {id: 2, 'valueNum': 21, name: 'Self-Assessment', parent: 1, progressValue: 0.25, actualStart: '2000-02-24', actualEnd: '2000-02-29'},
+            {id: 3, 'valueNum': 34, name: 'Define business vision', parent: 2, progressValue: 0, actualStart: '2000-02-24T24:00', actualEnd: '2000-02-25T09:00', connectTo: 4, connectorType: 'finish-start'},
+            {id: 4, 'valueNum': 55, name: 'Identify available skills, information and support', parent: 2, progressValue: 0, actualStart: '2000-02-26T00:00', actualEnd: '2000-02-26T09:00', connectTo: 5, connectorType: 'finish-start'},
+            {id: 5, 'valueNum': 73, name: 'Decide whether to proceed', parent: 2, progressValue: 0, actualStart: '2000-02-27', actualEnd: '2000-02-28T08:00', connectTo: 6, connectorType: 'finish-start'},
+            {id: 6, 'valueNum': 43, name: 'Define the Opportunity', parent: 1, progressValue: 0.27, actualStart: '2000-02-28T08:00', actualEnd: '2000-02-29'},
+            {id: 7, 'valueNum': 64, name: 'Research the market and competition', parent: 6, progressValue: 0, actualStart: '2000-02-26T08:00', actualEnd: '2000-02-27'}
         ];
 
-        var treeData = anychart.data.tree(data, "as-table");
+        var treeData = anychart.data.tree(data, 'as-table');
 
         var mapping = treeData.mapAs({'value': 'valueNum'});
 
@@ -43,13 +43,13 @@
         var item = {};
         for (var i = 0; i < childrenList.length; i++) {
             item = childrenList[i];
-            item.set("name", item.get("name") + " (has " + item.numChildren() + " children)");
+            item.set('name', item.get('name') + ' (has ' + item.numChildren() + ' children)');
         }
 
         var chart = anychart.ganttProject();
         chart.data(mapping);
-        chart.title("Get and use children of data tree");
-        chart.container("container");
+        chart.title('Get and use children of data tree');
+        chart.container('container');
         chart.draw();
         chart.fitAll();
     });
