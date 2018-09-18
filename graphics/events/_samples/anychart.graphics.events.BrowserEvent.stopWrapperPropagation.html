@@ -24,37 +24,37 @@
         var red = Math.floor(Math.random() * (max - min)) + min;
         var green = Math.floor(Math.random() * (max - min)) + min;
         var blue = Math.floor(Math.random() * (max - min)) + min;
-        return "rgb(" + red + "," + green + "," + blue + ")";
+        return 'rgb(' + red + ',' + green + ',' + blue + ')';
     }
 
-    var stage = acgraph.create("container");
+    var stage = acgraph.create('container');
 
     var layer = stage.layer();
-    layer.rect(0, 0, 500, 300).fill("#FFFFFF 0.01");
+    layer.rect(0, 0, 500, 300).fill('#FFFFFF 0.01');
 
-    var textObject = layer.text(70, 55, "Click on this TEXT.");
-    textObject.style({fontSize: "18px"});
+    var textObject = layer.text(70, 55, 'Click on this TEXT.');
+    textObject.style({fontSize: '18px'});
     textObject.selectable(false);
 
     var counter = 0;
 
-    textObject.listen("click", function (e) {
+    textObject.listen('click', function (e) {
         counter++;
-        textObject.text("You clicked " + counter + " times. " + "Click again.");
+        textObject.text('You clicked ' + counter + ' times. ' + 'Click again.');
 
         // Stop wrapper propagation.
         e.stopWrapperPropagation();
     });
 
-    layer.listen("click", function (e) {
+    layer.listen('click', function (e) {
         counter++;
-        textObject.text("You clicked " + counter + " times. " + "Click again.");
+        textObject.text('You clicked ' + counter + ' times. ' + 'Click again.');
         textObject.color(getRandomColor());
     });
 
     acgraph.events.listen(document.getElementById('container'), 'click', function (e) {
         counter++;
-        textObject.text("You clicked " + counter + " times. " + "Click again.");
+        textObject.text('You clicked ' + counter + ' times. ' + 'Click again.');
         textObject.color(getRandomColor());
     });
 </script>

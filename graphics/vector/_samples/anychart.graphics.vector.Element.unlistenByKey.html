@@ -18,12 +18,12 @@
 <body>
 <div id="container"></div>
 <script>
-    var stage = acgraph.create("container");
+    var stage = acgraph.create('container');
 
-    var largeText = stage.text(70, 55, "Click on this TEXT.");
-    largeText.style({fontStyle: "italic", fontSize: "18px", color: "#2196F3", hAlign: "center"});
+    var largeText = stage.text(70, 55, 'Click on this TEXT.');
+    largeText.style({fontStyle: 'italic', fontSize: '18px', color: '#2196F3', hAlign: 'center'});
 
-    var smallText = stage.text(70, 75, "You have 3 clicks");
+    var smallText = stage.text(70, 75, 'You have 3 clicks');
 
     var counter = 3;
 
@@ -31,16 +31,16 @@
 
     function customListener(e) {
         counter--;
-        smallText.text("You have " + counter + " clicks");
+        smallText.text('You have ' + counter + ' clicks');
         if (counter == 0) {
             // Removes an event listener.
             largeText.unlistenByKey(listenerKey);
-            largeText.style({color: "#F44336"});
-            smallText.text("You have no more clicks");
+            largeText.style({color: '#F44336'});
+            smallText.text('You have no more clicks');
         }
     }
 
-    listenerKey = largeText.listen("click", customListener);
+    listenerKey = largeText.listen('click', customListener);
 </script>
 </body>
 </html>

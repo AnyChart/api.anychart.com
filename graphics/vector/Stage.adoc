@@ -36,23 +36,23 @@ anychart.graphics.vector.Stage.EventType;
 /**
  * Rendering start. Called before changes of the DOM start.
  */
-anychart.graphics.vector.Stage.EventType.RENDER_START = "renderstart";
+anychart.graphics.vector.Stage.EventType.RENDER_START = 'renderstart';
 
 /**
  * Rendering end. Called when all DOM-elements are created and added to the Document, and before loading images,
  * fonts, and other external resources starts.
  */
-anychart.graphics.vector.Stage.EventType.RENDER_FINISH = "renderfinish";
+anychart.graphics.vector.Stage.EventType.RENDER_FINISH = 'renderfinish';
 
 /**
  * Called when the Stage is resized, the container is resized with percentage values of width and height, and the width and height values are changed.
  */
-anychart.graphics.vector.Stage.EventType.STAGE_RESIZE = "stageresize";
+anychart.graphics.vector.Stage.EventType.STAGE_RESIZE = 'stageresize';
 
 /**
  * Called when all external resources used on the Stage are loaded.
  */
-anychart.graphics.vector.Stage.EventType.STAGE_RENDERED = "stagerendered";
+anychart.graphics.vector.Stage.EventType.STAGE_RENDERED = 'stagerendered';
 
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -77,20 +77,20 @@ anychart.graphics.vector.Stage.prototype.domElement;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets the current stage width.
+ * Getter for the stage width.
  * @shortDescription Stage width.
  * @category Size and Position
  * @example anychart.graphics.vector.Stage.width_get
- * @return {number} The current width of stage.
+ * @return {number} Returns width of stage.
  */
 anychart.graphics.vector.Stage.prototype.width;
 
 /**
- * Sets a stage width.
+ * Setter for a stage width.
  * @detailed If opt_value defined then it will be set as stage width else returns current stage width.
  * Stage width can be defined as pixel or percent value.
  * @example anychart.graphics.vector.Stage.width_set
- * @param {(string|number)=} opt_value Width of stage.
+ * @param {(string|number)=} opt_width Width of stage.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.width;
@@ -103,7 +103,7 @@ anychart.graphics.vector.Stage.prototype.width;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Gets the current stage height.
+ * Getter for the stage height.
  * @shortDescription Stage height.
  * @category Size and Position
  * @example anychart.graphics.vector.Stage.height_get
@@ -112,11 +112,11 @@ anychart.graphics.vector.Stage.prototype.width;
 anychart.graphics.vector.Stage.prototype.height;
 
 /**
- * Sets a stage height.
+ * Setter for a stage height.
  * @detailed If opt_value defined then it will be set as stage height else returns current stage height.
  * Stage height can be defined as pixel or percent value.
  * @example anychart.graphics.vector.Stage.height_set
- * @param {(string|number)=} opt_value Height of stage.
+ * @param {(string|number)=} opt_height Height of stage.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.height;
@@ -142,7 +142,7 @@ anychart.graphics.vector.Stage.prototype.container;
  * @detailed If method is invoked after rendering and new container is set then upon next draw DOM element will move
  * to the new container.
  * @example anychart.graphics.vector.Stage.container_set
- * @param {Element=} opt_value Container DOM element.
+ * @param {Element=} opt_element Container DOM element.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.container;
@@ -280,7 +280,7 @@ anychart.graphics.vector.Stage.prototype.id;
 /**
  * Setter for a stage identifier. Instantly applied to the DOM.
  * @example anychart.graphics.vector.Stage.id_set
- * @param {string=} opt_value Custom identifier.
+ * @param {string=} opt_id Custom identifier.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.id;
@@ -330,7 +330,7 @@ anychart.graphics.vector.Stage.prototype.data;
  * when we deserialize - JSON schema does this. JSON schema is created in
  * <a href='https://tools.ietf.org/html/draft-zyp-json-schema-04'>4-th version of standard</a>
  * <a href='http://json-schema.org/'>JSON schema</a>.
- * @param {Object=} opt_value JSON data to set for stage.
+ * @param {Object=} opt_settings JSON data to set for stage.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.data;
@@ -1338,7 +1338,7 @@ anychart.graphics.vector.Stage.prototype.clip;
  * Clips a stage.<br/>
  * Works only after render() is invoked.<br/>
  * Read more at: {@link anychart.graphics.vector.Element#clip}.
- * @param {anychart.graphics.math.Rect=} opt_value Clipping rectangle.
+ * @param {anychart.graphics.math.Rect=} opt_rect Clipping rectangle.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  */
 anychart.graphics.vector.Stage.prototype.clip;
@@ -1454,7 +1454,7 @@ anychart.graphics.vector.Stage.prototype.saveAsJpg;
  * For export to PDF file use {@link anychart.graphics#server}.
  * @category Export
  * @example anychart.graphics.vector.Stage.saveAsPdf
- * @param {string=} opt_paperSize Any paper format like "a0", "tabloid", "b4", etc.
+ * @param {string=} opt_paperSize Any paper format like 'a0', 'tabloid', 'b4', etc.
  * @param {boolean=} opt_landscape Define, is landscape.
  * @param {number=} opt_x Offset X.
  * @param {number=} opt_y Offset Y.
@@ -1538,9 +1538,9 @@ anychart.graphics.vector.Stage.prototype.toSvg;
  * @example anychart.graphics.vector.Stage.listen
  * @param {(string|anychart.graphics.vector.Stage.EventType)} type The event type name.
  * @param {Callback} listener A function to execute each time the event is triggered.
- * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about <a target='_blank' rel="nofollow"
- * href="https://javascript.info/bubbling-and-capturing">capturing</a>
- * @param {Object=} opt_listenerScope ["Window"] Object in whose scope to call the listener.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about <a target='_blank' rel='nofollow'
+ * href='https://javascript.info/bubbling-and-capturing'>capturing</a>
+ * @param {Object=} opt_listenerScope ['Window'] Object in whose scope to call the listener.
  * @return {{key: number}} Unique key for the listener.
  * @since 7.7.0
  */
@@ -1564,9 +1564,9 @@ anychart.graphics.vector.Stage.prototype.listen;
  * @example anychart.graphics.vector.Stage.listenOnce
  * @param {(string|anychart.graphics.vector.Stage.EventType)} type The event type name.
  * @param {Callback} listener A function to execute each time the event is triggered.
- * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about <a target='_blank' rel="nofollow"
- * href="https://javascript.info/bubbling-and-capturing">capturing</a>
- * @param {Object=} opt_listenerScope ["Window"] Object in whose scope to call the listener.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about <a target='_blank' rel='nofollow'
+ * href='https://javascript.info/bubbling-and-capturing'>capturing</a>
+ * @param {Object=} opt_listenerScope ['Window'] Object in whose scope to call the listener.
  * @return {{key: number}} Unique key for the listener.
  * @since 7.7.0
  */
@@ -1585,9 +1585,9 @@ anychart.graphics.vector.Stage.prototype.listenOnce;
  * @example anychart.graphics.vector.Stage.unlisten
  * @param {(string|anychart.graphics.vector.Stage.EventType)} type The event type name.
  * @param {Callback} listener A function to execute each time the event is triggered.
- * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. <a target='_blank' rel="nofollow"
- * href="https://javascript.info/bubbling-and-capturing">capturing</a>
- * @param {Object=} opt_listenerScope ["Window"] Object in whose scope to call the listener.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. <a target='_blank' rel='nofollow'
+ * href='https://javascript.info/bubbling-and-capturing'>capturing</a>
+ * @param {Object=} opt_listenerScope ['Window'] Object in whose scope to call the listener.
  * @return {boolean} Whether any listener was removed.
  * @since 7.7.0
  */
@@ -1601,10 +1601,12 @@ anychart.graphics.vector.Stage.prototype.unlisten;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Removes an event listener which was added with {@link anychart.graphics.vector.Stage#listen} by the key returned by {@link anychart.graphics.vector.Stage#listen} or {@link anychart.graphics.vector.Stage#listenOnce}.
+ * Removes an event listener which was added with {@link anychart.graphics.vector.Stage#listen} by the key returned by
+ * {@link anychart.graphics.vector.Stage#listen} or {@link anychart.graphics.vector.Stage#listenOnce}.
  * @category Events
  * @example anychart.graphics.vector.Stage.unlistenByKey
- * @param {{key: number}} key The key returned by {@link anychart.graphics.vector.Stage#listen} or {@link anychart.graphics.vector.Stage#listenOnce}.
+ * @param {{key: number}} key The key returned by {@link anychart.graphics.vector.Stage#listen} or
+ * {@link anychart.graphics.vector.Stage#listenOnce}.
  * @return {boolean} Whether any listener was removed.
  * @since 7.7.0
  */
@@ -1640,7 +1642,7 @@ anychart.graphics.vector.Stage.prototype.removeAllListeners;
  * @listing See listing
  * var stage = anychart.graphics.create("container");
  * var asyncMode = stage.asyncMode();
- * @return {boolean} The current mode.
+ * @return {boolean} Returns mode.
  */
 anychart.graphics.vector.Stage.prototype.asyncMode;
 
@@ -1651,7 +1653,7 @@ anychart.graphics.vector.Stage.prototype.asyncMode;
  * STAGE_RENDERED event on the stage. To control the suspension of rendering,
  * always use {@link anychart.graphics.vector.Stage#suspend} and {@link anychart.graphics.vector.Stage#resume}.
  * @example anychart.graphics.vector.Stage.asyncMode_set
- * @param {boolean=} opt_value [false] Value to set.
+ * @param {boolean=} opt_async [false] Value to set.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining
  */
 anychart.graphics.vector.Stage.prototype.asyncMode;
@@ -1674,7 +1676,7 @@ anychart.graphics.vector.Stage.prototype.title;
 /**
  * Setter for the element title value.
  * @example anychart.graphics.vector.Stage.title_set
- * @param {(string|null)=} opt_value Value to set.
+ * @param {(string|null)=} opt_text Title text to set.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  * @since 7.11.0
  */
@@ -1698,7 +1700,7 @@ anychart.graphics.vector.Stage.prototype.desc;
 /**
  * Setter for the element desc value.
  * @example anychart.graphics.vector.Stage.desc_set
- * @param {(string|null)=} opt_value Value to set.
+ * @param {(string|null)=} opt_text Value to set.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  * @since 7.11.0
  */
@@ -1893,7 +1895,7 @@ anychart.graphics.vector.Stage.prototype.credits;
  * </ul>
  * @example anychart.graphics.vector.Stage.credits_set_asBool Disable/Enable credits
  * @example anychart.graphics.vector.Stage.credits_set_asObj Using object
- * @param {(Object|boolean|null)=} opt_value Credits settings.
+ * @param {(Object|boolean|null)=} opt_settings Credits settings.
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  * @since 7.11.1
  */
@@ -1949,7 +1951,7 @@ anychart.graphics.vector.Stage.prototype.maxResizeDelay;
  * Setter for max delay.
  * @detailed Max delay in milliseconds between the container resize and the stage reaction on it.
  * @example anychart.graphics.vector.Stage.maxResizeDelay_set
- * @param {number=} opt_value Max delay value
+ * @param {number=} opt_delay Max delay value
  * @return {anychart.graphics.vector.Stage} Self instance for method chaining.
  * @since 7.13.0
  */
