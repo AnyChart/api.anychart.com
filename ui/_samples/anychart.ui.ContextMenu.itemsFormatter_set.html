@@ -27,37 +27,37 @@
         // Download it, alter, upload to your server and link from your pages to change the look.
 
         var chart = anychart.line([
-            {x: "January", value: 1},
-            {x: "February", value: 2},
-            {x: "March", value: 1.3},
-            {x: "April", value: 2.9}
+            {x: 'January', value: 1},
+            {x: 'February', value: 2},
+            {x: 'March', value: 1.3},
+            {x: 'April', value: 2.9}
         ]);
 
         chart.contextMenu().itemsFormatter(function (items) {
 
             // Adding custom item to the top of context menu.
-            items["my-custom-item"] = {
+            items['my-custom-item'] = {
                 index: 0,
-                text: "Show help info",
-                href: "https://docs.anychart.com/"
+                text: 'Show help info',
+                href: 'https://docs.anychart.com/'
             };
 
             // Changing default item.
-            items["print-chart"] = {
-                text: "Print this chart",
+            items['print-chart'] = {
+                text: 'Print this chart',
                 action: function () {
                     return chart.print();
                 }
             };
 
             // Delete item.
-            delete items["about"];
+            delete items['about'];
 
             return items;
         });
 
-        chart.title("Use items formatter to add, change and delete items");
-        chart.container("container");
+        chart.title('Use items formatter to add, change and delete items');
+        chart.container('container');
         chart.draw();
     });
 </script>

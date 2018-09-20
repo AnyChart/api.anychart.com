@@ -20,20 +20,20 @@ anychart.utils;
  * - if there is any text value or a CDATA node or any their combination in the
  *   node, that value is stored as a string in a property named "value" even in
  *   cases when there is a subnode named "value" (but the node with this name
- *   still can be found in "#children#" array mentioned below).
+ *   still can be found in '#children#' array mentioned below).
  * Also some service properties are added to an object representing a node:
- * - "#name#" property - the node name
- * - "#children#" array property - all node children listed in order they appear
+ * - '#name#' property - the node name
+ * - '#children#' array property - all node children listed in order they appear
  *   in the node
- * - mentioned above "value" string property - contains textual value of the
+ * - mentioned above 'value' string property - contains textual value of the
  *   node
  * Usage sample:
  * <pre>
  *   var a = new XMLHttpRequest();
- *   a.open('GET', 'https://sample.com', false, "", "");
+ *   a.open('GET', 'https://sample.com', false, '', '');
  *   a.send(null);
  *   // for example there was the next XML:
- *   // <root a="123">
+ *   // <root a='123'>
  *   //   <child />
  *   //   <child>some text value<![CDATA[   and a CDATA   ]]></child>
  *   //   <child_other/>
@@ -42,18 +42,18 @@ anychart.utils;
  * </pre>
  * json variable will have the following structure:
  * {
- *   #name#: "root",
+ *   #name#: 'root',
  *   #children#: [
- *      {#name#: "child", #children#: []},
- *      {#name#: "child", #children#: [], value: "some text value   and a CDATA   "}
- *      {#name#: "child_other", #children#: []}
+ *      {#name#: 'child', #children#: []},
+ *      {#name#: 'child', #children#: [], value: 'some text value   and a CDATA   '}
+ *      {#name#: 'child_other', #children#: []}
  *   ],
- *   a: "123",
+ *   a: '123',
  *   child: [
- *      {#name#: "child", #children#: []},
- *      {#name#: "child", #children#: [], value: "some text value   and a CDATA   "}
+ *      {#name#: 'child', #children#: []},
+ *      {#name#: 'child', #children#: [], value: 'some text value   and a CDATA   '}
  *   ],
- *   child_other: {#name#: "child_other", #children#: []}
+ *   child_other: {#name#: 'child_other', #children#: []}
  * }
  * @category XML/JSON
  * @param {string|Node} xml XML source string.

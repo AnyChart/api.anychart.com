@@ -27,10 +27,10 @@
         // Download it, alter, upload to your server and link from your pages to change the look.
 
         var chart = anychart.column([
-            {x: "January", value: 1},
-            {x: "February", value: 2},
-            {x: "March", value: 1.3},
-            {x: "April", value: 2.9}
+            {x: 'January', value: 1},
+            {x: 'February', value: 2},
+            {x: 'March', value: 1.3},
+            {x: 'April', value: 2.9}
         ]);
         chart.contextMenu(false);
 
@@ -41,8 +41,8 @@
         customContextMenu.itemsProvider(function () {
             var result = {
                 'custom-item': {
-                    text: "Open AnyChart API",
-                    href: "https://api.anychart.com",
+                    text: 'Open AnyChart API',
+                    href: 'https://api.anychart.com',
                     index: 10
                 }
             };
@@ -50,20 +50,20 @@
             if (this.target == this.chart) {
                 result['chart-click-item'] = {
                     index: 0,
-                    text: "Context menu on Chart"
+                    text: 'Context menu on Chart'
                 }
             } else if (this.selectedPoints.length) {
-                result["point-click-item"] = {
+                result['point-click-item'] = {
                     index: 0,
-                    text: "Context menu on Point Name: " + this.selectedPoints[0].getStat("categoryName")
+                    text: 'Context menu on Point Name: ' + this.selectedPoints[0].getStat('categoryName')
                 }
             }
 
             return result;
         });
 
-        chart.title("Set items provider function");
-        chart.container("container");
+        chart.title('Set items provider function');
+        chart.container('container');
         chart.draw();
     });
 </script>
