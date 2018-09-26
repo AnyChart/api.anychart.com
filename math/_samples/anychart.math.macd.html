@@ -31,7 +31,7 @@
         dataTable.addData(get_dji_daily_short_data());
 
         var mapping = dataTable.mapAs();
-        mapping.addField("value", 4, "last");
+        mapping.addField('value', 4, 'last');
 
         var chart = anychart.stock();
 
@@ -48,16 +48,16 @@
 
         // Calculation function.
         computer.setCalculationFunction(anychart.math.macd.calculationFunction);
-        computer.addOutputField("macdResult");
-        computer.addOutputField("signalResult");
-        computer.addOutputField("histogramResult");
+        computer.addOutputField('macdResult');
+        computer.addOutputField('signalResult');
+        computer.addOutputField('histogramResult');
 
         var plot = chart.plot();
-        plot.line(dataTable, {value: computer.getFieldIndex("macdResult")}).name("MACD(10,30,5)");
-        plot.line(dataTable, {value: computer.getFieldIndex("signalResult")}).name("Signal");
-        plot.column(dataTable, {value: computer.getFieldIndex("histogramResult")}).name("Histogram");
+        plot.line(dataTable, {value: computer.getFieldIndex('macdResult')}).name('MACD(10,30,5)');
+        plot.line(dataTable, {value: computer.getFieldIndex('signalResult')}).name('Signal');
+        plot.column(dataTable, {value: computer.getFieldIndex('histogramResult')}).name('Histogram');
 
-        chart.container("container");
+        chart.container('container');
         chart.draw();
     });
 </script>

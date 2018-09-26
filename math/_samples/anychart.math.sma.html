@@ -31,7 +31,7 @@
         table.addData(get_dji_daily_short_data());
 
         var mapping = table.mapAs(
-            {'open': 1, 'high': 2, 'low': 3, 'close': 4, 'value': 4}
+            {open: 1, high: 2, low: 3, close: 4, value: 4}
         );
 
         var chart = anychart.stock();
@@ -50,13 +50,13 @@
         // Calculation function.
         computer.setCalculationFunction(anychart.math.sma.calculationFunction);
 
-        var indicatorMapping = table.mapAs({value: computer.addOutputField("result")});
+        var indicatorMapping = table.mapAs({value: computer.addOutputField('result')});
 
         var plot = chart.plot();
-        plot.ohlc(mapping).name("DJI");
-        plot.line(indicatorMapping).name("SMA(10)");
+        plot.ohlc(mapping).name('DJI');
+        plot.line(indicatorMapping).name('SMA(10)');
 
-        chart.container("container");
+        chart.container('container');
         chart.draw();
     });
 </script>

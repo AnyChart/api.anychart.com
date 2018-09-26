@@ -30,9 +30,7 @@
         // https://cdn.anychart.com/csv-data/dji-daily-short.js
         table.addData(get_dji_daily_short_data());
 
-        var mapping = table.mapAs(
-            {'open': 1, 'high': 2, 'low': 3, 'close': 4, 'value': 4}
-        );
+        var mapping = table.mapAs({open: 1, high: 2, low: 3, close: 4, value: 4});
 
         var chart = anychart.stock();
 
@@ -42,13 +40,13 @@
         var indicatorPlot = chart.plot(1);
 
         var macdIndicator = indicatorPlot.macd(mapping);
-        macdIndicator.histogramSeries("line");
+        macdIndicator.histogramSeries('line');
 
         // Sets series type for MACD indicator.
-        macdIndicator.macdSeries("column");
+        macdIndicator.macdSeries('column');
 
-        chart.title("Set series type for MACD indicator");
-        chart.container("container");
+        chart.title('Set series type for MACD indicator');
+        chart.container('container');
         chart.draw();
     });
 </script>

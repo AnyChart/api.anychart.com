@@ -27,8 +27,8 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var data1 = dataTable.mapAs({'value': 1});
-        var data2 = dataTable.mapAs({'value': 5});
+        var data1 = dataTable.mapAs({value: 1});
+        var data2 = dataTable.mapAs({value: 5});
 
         var chart = anychart.stock();
 
@@ -37,34 +37,34 @@
         plot1.line(data2);
 
         var plot1YScale = plot1.yScale();
-        plot1YScale.comparisonMode("percent");
+        plot1YScale.comparisonMode('percent');
 
         // Set date for the changes zero of the series.
-        plot1YScale.compareWith("series-start");
+        plot1YScale.compareWith('series-start');
 
         var plot2 = chart.plot(1);
         plot2.line(data1);
         plot2.line(data2);
 
         var plot2YScale = plot2.yScale();
-        plot2YScale.comparisonMode("percent");
+        plot2YScale.comparisonMode('percent');
 
         // Set date for first visible point.
-        plot2YScale.compareWith("first-visible");
+        plot2YScale.compareWith('first-visible');
 
         var plot3 = chart.plot(2);
         plot3.line(data1);
         plot3.line(data2);
 
         var plot3YScale = plot3.yScale();
-        plot3YScale.comparisonMode("percent");
+        plot3YScale.comparisonMode('percent');
 
         // Set custom date.
         plot3YScale.compareWith(1209081600000);
 
-        chart.title("First plot: compare scale with series start \n Second plot: compare scale with first visible point \n" +
-            "Third plot: compare scale with custom date");
-        chart.container("container");
+        chart.title('First plot: compare scale with series start \n Second plot: compare scale with first visible point \n' +
+            'Third plot: compare scale with custom date');
+        chart.container('container');
         chart.draw();
     });
 </script>

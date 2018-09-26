@@ -27,32 +27,32 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var mapping = dataTable.mapAs({'value': 1});
+        var mapping = dataTable.mapAs({value: 1});
 
         var chart = anychart.stock();
 
         var plot = chart.plot();
         plot.line(mapping);
 
-        chart.selectRange("2006-01-02", "2007-06-01");
+        chart.selectRange('2006-01-02', '2007-06-01');
 
         // Get object with selected range.
         var range = chart.getSelectedRange();
 
-        chart.title("Get selected range object \n First selected value: "
-            + anychart.format.dateTime(range.firstSelected, "dd/MM/yy hh:mm")
-            + "\n Last selected value: "
-            + anychart.format.dateTime(range.lastSelected, "dd/MM/yy hh:mm"));
+        chart.title('Get selected range object \n First selected value: '
+            + anychart.format.dateTime(range.firstSelected, 'dd/MM/yy hh:mm')
+            + '\n Last selected value: '
+            + anychart.format.dateTime(range.lastSelected, 'dd/MM/yy hh:mm'));
 
-        chart.scroller().listen("scrollerChange", function () {
+        chart.scroller().listen('scrollerChange', function () {
             var range = chart.getSelectedRange();
-            chart.title("Get selected range object \n First selected value: "
-                + anychart.format.dateTime(range.firstSelected, "dd/MM/yy hh:mm")
-                + "\n Last selected value: "
-                + anychart.format.dateTime(range.lastSelected, "dd/MM/yy hh:mm"));
+            chart.title('Get selected range object \n First selected value: '
+                + anychart.format.dateTime(range.firstSelected, 'dd/MM/yy hh:mm')
+                + '\n Last selected value: '
+                + anychart.format.dateTime(range.lastSelected, 'dd/MM/yy hh:mm'));
         });
 
-        chart.container("container");
+        chart.container('container');
         chart.draw();
     });
 </script>

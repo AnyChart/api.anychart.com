@@ -29,48 +29,43 @@
         // See https://docs.anychart.com/Maps/Map_Projections to learn more.
 
         var firstDataSet = anychart.data.set([
-            {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
-            {id: "AU.VI", value: 23, title: "Victoria"},
-            {id: "AU.WA", value: 86, title: "Western Australia"}
+            {id: 'AU.CT', value: 15, title: 'Australian Capital Territory'},
+            {id: 'AU.VI', value: 23, title: 'Victoria'},
+            {id: 'AU.WA', value: 86, title: 'Western Australia'}
         ]);
         var secondDataSet = anychart.data.set([
-            {id: "AU.QL", value: 16, title: "Queensland", size: 40},
-            {id: "AU.NS", value: 32, title: "New South Wales", size: 40},
-            {id: "AU.NT", value: 64, title: "Northern Territory", size: 40}
+            {id: 'AU.QL', value: 16, title: 'Queensland', size: 40},
+            {id: 'AU.NS', value: 32, title: 'New South Wales', size: 40},
+            {id: 'AU.NT', value: 64, title: 'Northern Territory', size: 40}
         ]);
         var thirdDataSet = anychart.data.set([
-            {id: "AU.TS", value: 28, title: "Tasmania"},
-            {id: "AU.SA", value: 45, title: "South Australian"},
-            {id: "AU.TS", size: 28},
-            {id: "AU.SA", size: 45}
+            {id: 'AU.TS', value: 28, title: 'Tasmania'},
+            {id: 'AU.SA', value: 45, title: 'South Australian'},
+            {id: 'AU.TS', size: 28},
+            {id: 'AU.SA', size: 45}
         ]);
 
-        var dataSetForFirstSeries = firstDataSet.mapAs({'id': 'id'});
-        var dataSetForSecondSeries = secondDataSet.mapAs({'id': 'id'});
-        var dataSetThirdForSeries = thirdDataSet.mapAs({'id': 'id'});
+        var dataSetForFirstSeries = firstDataSet.mapAs({id: 'id'});
+        var dataSetForSecondSeries = secondDataSet.mapAs({id: 'id'});
+        var dataSetThirdForSeries = thirdDataSet.mapAs({id: 'id'});
 
         var australiaMap = anychart.map();
         australiaMap.geoData(anychart.maps.australia);
-        australiaMap.defaultSeriesType("choropleth");
+        australiaMap.defaultSeriesType('choropleth');
         australiaMap.addSeries(dataSetForFirstSeries, dataSetForSecondSeries, dataSetThirdForSeries);
 
-        var firstSeries = australiaMap.getSeries(0);
-        firstSeries.geoIdField("code_hasc");
-
-        var secondSeries = australiaMap.getSeries(1);
-        secondSeries.geoIdField("code_hasc");
-
-        var thirdSeries = australiaMap.getSeries(2);
-        thirdSeries.geoIdField("code_hasc");
+        australiaMap.getSeries(0);
+        australiaMap.getSeries(1);
+        australiaMap.getSeries(2);
 
         // Get series count in loop.
         for (var i = 0; i < australiaMap.getSeriesCount(); i++) {
-            australiaMap.getSeriesAt(i).name((i + 1) + " Series");
+            australiaMap.getSeriesAt(i).name((i + 1) + ' Series');
         }
 
         australiaMap.legend(true);
-        australiaMap.title("Get and use series count");
-        australiaMap.container("container");
+        australiaMap.title('Get and use series count');
+        australiaMap.container('container');
         australiaMap.draw();
     });
 </script>

@@ -31,7 +31,7 @@
         table.addData(get_dji_daily_short_data());
 
         var mapping = table.mapAs(
-            {'open': 1, 'high': 2, 'low': 3, 'close': 4, 'value': 4}
+            {open: 1, high: 2, low: 3, close: 4, value: 4}
         );
 
         var chart = anychart.stock();
@@ -49,14 +49,14 @@
 
         // Calculation function.
         computer.setCalculationFunction(anychart.math.stochastic.calculationFunction);
-        computer.addOutputField("kResult");
-        computer.addOutputField("dResult");
+        computer.addOutputField('kResult');
+        computer.addOutputField('dResult');
 
         var plot = chart.plot();
-        plot.line(table, {value: computer.getFieldIndex("kResult")}).name("%K(20)");
-        plot.line(table, {value: computer.getFieldIndex("dResult")}).name("%D(6)");
+        plot.line(table, {value: computer.getFieldIndex('kResult')}).name('%K(20)');
+        plot.line(table, {value: computer.getFieldIndex('dResult')}).name('%D(6)');
 
-        chart.container("container");
+        chart.container('container');
         chart.draw();
     });
 </script>

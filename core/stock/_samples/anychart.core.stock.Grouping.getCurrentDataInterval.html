@@ -27,11 +27,11 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var mapping = dataTable.mapAs({'value': 1});
+        var mapping = dataTable.mapAs({value: 1});
 
         var chart = anychart.stock();
 
-        chart.title("Move the scroller");
+        chart.title('Move the scroller');
 
         var plot = chart.plot();
         plot.area(mapping);
@@ -39,13 +39,13 @@
         var grouping = chart.grouping();
         grouping.forced(true);
 
-        chart.listen("selectedrangechange", function () {
+        chart.listen('selectedrangechange', function () {
 
             // Get the current data interval and use the title.
-            chart.title("Move the scroller. The current level is " + grouping.getCurrentDataInterval().unit);
+            chart.title('Move the scroller. The current level is ' + grouping.getCurrentDataInterval().unit);
         });
 
-        chart.container("container");
+        chart.container('container');
         chart.draw();
     });
 </script>

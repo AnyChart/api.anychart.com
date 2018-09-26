@@ -24,18 +24,19 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container");
+        var stage = anychart.graphics.create('container');
 
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var mapping = dataTable.mapAs({'value': 1});
+        var mapping = dataTable.mapAs({value: 1});
 
         var chart = anychart.stock();
 
         var plot = chart.plot();
         plot.line(mapping);
 
+        chart.top(30);
         chart.container(stage);
         chart.draw();
 
@@ -48,9 +49,9 @@
         rectangle.setX(localCoordinates.x);
         rectangle.setY(localCoordinates.y);
 
-        var customText = anychart.graphics.text(localCoordinates.x, localCoordinates.y, "");
-        customText.htmlText("Local coordinates [x: "
-            + localCoordinates.x + ", y: " + localCoordinates.y + "]<br>Global coordinates [x: 8, y: 8]");
+        var customText = anychart.graphics.text(localCoordinates.x, localCoordinates.y, '');
+        customText.htmlText('Local coordinates [x: '
+            + localCoordinates.x + ', y: ' + localCoordinates.y + ']<br>Global coordinates [x: 8, y: 8]');
         customText.parent(stage);
 
         // Visualises local bounds.

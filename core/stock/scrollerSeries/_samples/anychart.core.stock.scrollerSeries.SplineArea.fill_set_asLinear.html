@@ -27,8 +27,8 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var data1 = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4});
-        var data2 = dataTable.mapAs({'value': 1});
+        var data1 = dataTable.mapAs({open: 1, high: 2, low: 3, close: 4});
+        var data2 = dataTable.mapAs({value: 1});
 
         var chart = anychart.stock();
         chart.grouping({minPixPerPoint: 5});
@@ -38,15 +38,15 @@
         plot.ohlc(data1);
 
         var scroller = chart.scroller();
-        scroller.height("20%");
+        scroller.height('20%');
 
         var series = scroller.splineArea(data2);
 
         // Set fill.
-        series.fill(["#ECEFF1", "#90A4AE"], 90, true, 0.8);
+        series.fill(['#ECEFF1', '#90A4AE'], 90, true, 0.8);
 
-        chart.title("Set fill as a linear gradient. Move the scroller");
-        chart.container("container");
+        chart.title('Set fill as a linear gradient. Move the scroller');
+        chart.container('container');
         chart.draw();
     });
 </script>

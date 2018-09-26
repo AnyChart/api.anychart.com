@@ -30,9 +30,7 @@
         // https://cdn.anychart.com/csv-data/dji-daily-short.js
         table.addData(get_dji_daily_short_data());
 
-        var mapping = table.mapAs(
-            {'open': 1, 'high': 2, 'low': 3, 'close': 4, 'value': 3}
-        );
+        var mapping = table.mapAs({open: 1, high: 2, low: 3, close: 4, value: 3});
 
         var chart = anychart.stock();
 
@@ -41,13 +39,13 @@
         plot.ohlc(mapping);
 
         var indicatorPlot = chart.plot(1);
-        indicatorPlot.height("30%");
+        indicatorPlot.height('30%');
 
         // Creates an ATR indicator.
-        indicatorPlot.atr(mapping, 20, "area");
+        indicatorPlot.atr(mapping, 20, 'area');
 
-        chart.title("Create Average True Range indicator");
-        chart.container("container");
+        chart.title('Create Average True Range indicator');
+        chart.container('container');
         chart.draw();
     });
 </script>

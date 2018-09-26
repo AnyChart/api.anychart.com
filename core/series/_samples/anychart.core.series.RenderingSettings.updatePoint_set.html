@@ -27,14 +27,14 @@
         var series = chart.column([10, 20, 15, 30, 5]);
         series.hatchFill(true);
 
-        var currentRendering = series.rendering();
-        currentRendering.point(drawer);
+        var rendering = series.rendering();
+        rendering.point(drawer);
 
         // Set the update point.
-        currentRendering.updatePoint(drawer);
+        rendering.updatePoint(drawer);
 
-        chart.title("Set the update point");
-        chart.container("container");
+        chart.title('Set the update point');
+        chart.container('container');
         chart.draw();
     });
     function drawer() {
@@ -47,14 +47,14 @@
         var rightX = leftX + this.pointWidth;
 
         if (this.pointState > 0) {
-            shapes["path"]
+            shapes['path']
                 .clear()
                 .moveTo(this.x, this.zero)
                 .lineTo(leftX, this.value)
                 .lineTo(rightX, this.value)
                 .close();
         } else {
-            shapes["path"]
+            shapes['path']
                 .clear()
                 .moveTo(leftX, this.zero)
                 .lineTo(this.x, this.value)

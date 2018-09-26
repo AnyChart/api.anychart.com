@@ -31,7 +31,7 @@
         table.addData(get_dji_daily_short_data());
 
         var mapping = table.mapAs(
-            {'open': 1, 'high': 2, 'low': 3, 'close': 4, 'value': 4}
+            {open: 1, high: 2, low: 3, close: 4, value: 4}
         );
 
         var chart = anychart.stock();
@@ -40,19 +40,19 @@
         plot.ohlc(mapping);
 
         var scroller = chart.scroller();
-        scroller.height("20%");
+        scroller.height('20%');
 
         // Creates MACD indicator.
-        var macdIndicator = scroller.macd(mapping, 10, 20, 8, "column", "line", "line");
+        var macdIndicator = scroller.macd(mapping, 10, 20, 8, 'column', 'line', 'line');
 
         var signal = macdIndicator.signalSeries();
-        signal.selected({stroke: "#4CAF50"});
+        signal.selected({stroke: '#4CAF50'});
 
         var histogram = macdIndicator.histogramSeries();
-        histogram.selected({stroke: "#F44336"});
+        histogram.selected({stroke: '#F44336'});
 
-        chart.title("Create MACD indicator");
-        chart.container("container");
+        chart.title('Create MACD indicator');
+        chart.container('container');
         chart.draw();
     });
 </script>

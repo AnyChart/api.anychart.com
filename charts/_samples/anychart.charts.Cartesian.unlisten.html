@@ -23,29 +23,29 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.line([
-            {x: "Meat", value: 10},
-            {x: "Fruit", value: 12},
-            {x: "Nuts", value: 18},
-            {x: "Milk", value: 5},
-            {x: "Fish", value: 9}
+            {x: 'Meat', value: 10},
+            {x: 'Fruit', value: 12},
+            {x: 'Nuts', value: 18},
+            {x: 'Milk', value: 5},
+            {x: 'Fish', value: 9}
         ]);
-        chart.title("Click on the chart. You have 3 clicks");
+        chart.title('Click on the chart. You have 3 clicks');
 
-        chart.listen("click", customListener);
+        chart.listen('click', customListener);
 
         var counter = 3;
 
         function customListener(e) {
             counter--;
-            chart.title("Click on the chart. You have " + counter + " clicks");
+            chart.title('Click on the chart. You have ' + counter + ' clicks');
             if (counter === 0) {
                 // Removes event listener.
-                chart.unlisten("click", customListener);
-                chart.title("You have no more clicks");
+                chart.unlisten('click', customListener);
+                chart.title('You have no more clicks');
             }
         }
 
-        chart.container("container");
+        chart.container('container');
         chart.draw();
     });
 </script>

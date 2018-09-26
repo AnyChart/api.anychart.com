@@ -25,23 +25,22 @@
 <script>
     anychart.onDocumentReady(function () {
         var dataSet = anychart.data.set([
-            {id: "AU.CT", value: 15, title: "Australian Capital Territory"},
-            {id: "AU.VI", value: 23, title: "Victoria"},
-            {id: "AU.WA", value: 86, title: "Western Australia"},
-            {id: "AU.QL", value: 16, title: "Queensland"},
-            {id: "AU.NS", value: 32, title: "New South Wales"},
-            {id: "AU.NT", value: 64, title: "Northern Territory"},
-            {id: "AU.TS", value: 28, title: "Tasmania"},
-            {id: "AU.SA", value: 45, title: "South Australian"}
+            {id: 'AU.CT', value: 15, title: 'Australian Capital Territory'},
+            {id: 'AU.VI', value: 23, title: 'Victoria'},
+            {id: 'AU.WA', value: 86, title: 'Western Australia'},
+            {id: 'AU.QL', value: 16, title: 'Queensland'},
+            {id: 'AU.NS', value: 32, title: 'New South Wales'},
+            {id: 'AU.NT', value: 64, title: 'Northern Territory'},
+            {id: 'AU.TS', value: 28, title: 'Tasmania'},
+            {id: 'AU.SA', value: 45, title: 'South Australian'}
         ]);
 
-        var dataSetForSeries = dataSet.mapAs({'id': 'id'});
+        var dataSetForSeries = dataSet.mapAs({id: 'id'});
 
         var map = anychart.map();
         map.geoData(anychart.maps.australia);
 
         var series = map.choropleth(dataSetForSeries);
-        series.geoIdField("code_hasc");
 
         var linearColorScale = anychart.scales.linearColor();
 
@@ -53,10 +52,10 @@
         // Get marker settings.
         var marker = colorRange.marker();
         marker.enabled(true);
-        marker.type("diamond");
+        marker.type('diamond');
 
-        map.title("Get and modify marker");
-        map.container("container");
+        map.title('Get and modify marker');
+        map.container('container');
         map.draw();
     });
 </script>

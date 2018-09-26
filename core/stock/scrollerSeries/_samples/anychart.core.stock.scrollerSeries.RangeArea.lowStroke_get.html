@@ -27,8 +27,8 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var data1 = dataTable.mapAs({'high': 1, 'low': 3});
-        var data2 = dataTable.mapAs({'value': 1});
+        var data1 = dataTable.mapAs({high: 1, low: 3});
+        var data2 = dataTable.mapAs({value: 1});
 
         var chart = anychart.stock();
         chart.grouping({minPixPerPoint: 5});
@@ -38,16 +38,16 @@
         plot.line(data2);
 
         var scroller = chart.scroller();
-        scroller.height("50%");
+        scroller.height('50%');
 
         var series = scroller.rangeArea(data1);
-        series.lowStroke("#F44336");
+        series.lowStroke('#F44336');
 
         // Get low stroke.
         var lowStroke = series.lowStroke();
 
-        chart.title({fontColor: lowStroke, text: "Get and use low stroke. Move the scroller"});
-        chart.container("container");
+        chart.title({fontColor: lowStroke, text: 'Get and use low stroke. Move the scroller'});
+        chart.container('container');
         chart.draw();
     });
 </script>

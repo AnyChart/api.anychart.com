@@ -23,30 +23,30 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container");
+        var stage = anychart.graphics.create('container');
 
         var pyramidChart = anychart.pyramid([
-            {x: "Physical", value: 125},
-            {x: "Data Link", value: 125},
-            {x: "Network", value: 125},
-            {x: "Transport", value: 125},
-            {x: "Session", value: 125},
-            {x: "Presentation", value: 125},
-            {x: "Application", value: 390, label: {anchor: "center-top"}}
+            {x: 'Physical', value: 125},
+            {x: 'Data Link', value: 125},
+            {x: 'Network', value: 125},
+            {x: 'Transport', value: 125},
+            {x: 'Session', value: 125},
+            {x: 'Presentation', value: 125},
+            {x: 'Application', value: 390, label: {anchor: 'center-top'}}
         ]);
-        pyramidChart.labels({position: "inside"});
+        pyramidChart.labels({position: 'inside'});
         pyramidChart.legend(false);
-        pyramidChart.bounds(0, 20, "50%", "100%");
+        pyramidChart.bounds(0, 20, '50%', '100%');
         pyramidChart.fill(function () {
-            return "rgba(135," + (40 * (this.index + 1) - 10) + ", 248, 0.6)";
+            return 'rgba(135,' + (40 * (this.index + 1) - 10) + ', 248, 0.6)';
         });
         pyramidChart.container(stage);
         pyramidChart.draw();
 
         var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
-        funnelChart.labels({position: "inside"});
+        funnelChart.labels({position: 'inside'});
         funnelChart.legend(false);
-        funnelChart.bounds("50%", 20, "50%", "100%");
+        funnelChart.bounds('50%', 20, '50%', '100%');
 
         // Get fill.
         var pieChartFill = pyramidChart.fill();
@@ -56,7 +56,7 @@
         funnelChart.draw();
 
         var customTitle = anychart.standalones.title();
-        customTitle.text("Get and use chart fill");
+        customTitle.text('Get and use chart fill');
         customTitle.container(stage);
         customTitle.draw();
     });

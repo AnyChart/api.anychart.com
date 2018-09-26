@@ -27,8 +27,8 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var candlestickMapping = dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4});
-        var lineMapping = dataTable.mapAs({'value': 1});
+        var candlestickMapping = dataTable.mapAs({open: 1, high: 2, low: 3, close: 4});
+        var lineMapping = dataTable.mapAs({value: 1});
 
         var chart = anychart.stock();
 
@@ -39,16 +39,16 @@
         plot.line(lineMapping);
 
         var scroller = chart.scroller();
-        scroller.height("50%");
+        scroller.height('50%');
 
         var series = scroller.candlestick(candlestickMapping);
-        series.fallingFill("#F44336");
+        series.fallingFill('#F44336');
 
         // Get falling fill.
         var fallingFill = series.fallingFill();
 
-        chart.title({fontColor: fallingFill, text: "Get and use falling fill. Move the scroller"});
-        chart.container("container");
+        chart.title({fontColor: fallingFill, text: 'Get and use falling fill. Move the scroller'});
+        chart.container('container');
         chart.draw();
     });
 </script>

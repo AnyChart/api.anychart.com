@@ -23,19 +23,19 @@
 <script>
     var chart;
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container");
+        var stage = anychart.graphics.create('container');
 
         var data = anychart.data.set([
-            {name: "Point 1", value: 50},
-            {name: "Point 2", value: 13},
-            {name: "Point 3", value: 14},
-            {name: "Point 4", value: 20}
+            {name: 'Point 1', value: 50},
+            {name: 'Point 2', value: 13},
+            {name: 'Point 3', value: 14},
+            {name: 'Point 4', value: 20}
         ]);
 
         chart = anychart.pie(data);
         chart.explode(25);
         chart.legend(false);
-        chart.title("Get and use explode value. Explode slice with pointer");
+        chart.title('Get and use explode value. Explode slice with pointer');
         chart.container(stage);
         chart.draw();
 
@@ -62,11 +62,11 @@
             if (triangle) triangle.clear();
             triangle = anychart.graphics.vector.primitives.triangleUp(layer, x + 80, y + 30, 35);
             triangle.rotate(-30, x + 80, y + 30);
-            triangle.fill("#F44336");
+            triangle.fill('#F44336');
 
         }
 
-        chart.listen("pointsselect", function (e) {
+        chart.listen('pointsselect', function (e) {
             var point = e.point;
             if (point.index == 2) {
                 drawArrow(point.exploded());

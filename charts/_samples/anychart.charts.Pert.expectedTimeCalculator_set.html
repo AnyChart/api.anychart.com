@@ -23,39 +23,39 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create("container");
+        var stage = anychart.graphics.create('container');
 
         var data = [
-            {id: "A1", pessimistic: 50, optimistic: 20, mostLikely: 40, name: "Task A"},
-            {id: "A2", pessimistic: 30, optimistic: 25, mostLikely: 29, name: "Task B"},
-            {id: "A5", pessimistic: 40, optimistic: 35, mostLikely: 39, name: "Task AD", dependsOn: ["A2"]},
-            {id: "A6", pessimistic: 70, optimistic: 25, mostLikely: 60, name: "Task BC", dependsOn: ["A1"]},
-            {id: "A7", pessimistic: 20, optimistic: 10, mostLikely: 19, name: "Task B+", dependsOn: ["A1"]}
+            {id: 'A1', pessimistic: 50, optimistic: 20, mostLikely: 40, name: 'Task A'},
+            {id: 'A2', pessimistic: 30, optimistic: 25, mostLikely: 29, name: 'Task B'},
+            {id: 'A5', pessimistic: 40, optimistic: 35, mostLikely: 39, name: 'Task AD', dependsOn: ['A2']},
+            {id: 'A6', pessimistic: 70, optimistic: 25, mostLikely: 60, name: 'Task BC', dependsOn: ['A1']},
+            {id: 'A7', pessimistic: 20, optimistic: 10, mostLikely: 19, name: 'Task B+', dependsOn: ['A1']}
         ];
 
         var optimisticPert = anychart.pert();
-        optimisticPert.data(data, "as-table");
+        optimisticPert.data(data, 'as-table');
 
         // Set expected time.
         optimisticPert.expectedTimeCalculator(function () {
             return this.optimistic
         });
 
-        optimisticPert.bounds(0, 0, "50%", "100%");
-        optimisticPert.title("Optimistic time and fast way");
+        optimisticPert.bounds(0, 0, '50%', '100%');
+        optimisticPert.title('Optimistic time and fast way');
         optimisticPert.container(stage);
         optimisticPert.draw();
 
         var pessimisticPert = anychart.pert();
-        pessimisticPert.data(data, "as-table");
+        pessimisticPert.data(data, 'as-table');
 
         // Set expected time.
         pessimisticPert.expectedTimeCalculator(function () {
             return this.pessimistic;
         });
 
-        pessimisticPert.bounds("50%", 0, "50%", "100%");
-        pessimisticPert.title("Pessimistic time and high-quality way");
+        pessimisticPert.bounds('50%', 0, '50%', '100%');
+        pessimisticPert.title('Pessimistic time and high-quality way');
         pessimisticPert.container(stage);
         pessimisticPert.draw();
     });

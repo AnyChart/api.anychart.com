@@ -21,10 +21,12 @@
     </style>
 </head>
 <body>
+<button onclick="chart.shareWithLinkedIn();">Get the sharing dialog</button>
 <div id="container"></div>
 <script>
+    var chart;
     anychart.onDocumentReady(function () {
-        var chart = anychart.column([
+        chart = anychart.column([
             {x: 'January', value: 2},
             {x: 'February', value: 5},
             {x: 'March', value: 3},
@@ -41,21 +43,6 @@
             '1000',
             '500'
         );
-
-        var label = chart.label();
-        label.background({fill: '#BDBDBD', stroke: '#9E9E9E'});
-        label.fontColor('#FAFAFA');
-        label.text('Share with LinkedIn');
-        label.padding(2);
-        label.listen('click', function () {
-            chart.shareWithLinkedIn();
-        });
-        label.listen('mouseOver', function () {
-            document.body.style.cursor = 'pointer';
-        });
-        label.listen('mouseOut', function () {
-            document.body.style.cursor = 'auto';
-        });
 
         chart.title('Set LinkedIn sharing settings');
         chart.container('container');

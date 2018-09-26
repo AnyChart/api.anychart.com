@@ -31,9 +31,9 @@
         var map = anychart.map();
         map.geoData(anychart.maps.france);
 
-        map.title("Click anywhere on the map to drop a pin\nClick this title to remove all pins");
+        map.title('Click anywhere on the map to drop a pin\nClick this title to remove all pins');
 
-        map.listen("click", function (e) {
+        map.listen('click', function (e) {
 
             // Getting pixel coordinates
             var localCord = map.globalToLocal(e.clientX, e.clientY);
@@ -48,14 +48,14 @@
         var dataSetMarker = anychart.data.set([]);
 
         var series = map.marker(dataSetMarker);
-        series.labels().format("({%lat}, {%long})");
+        series.labels().format('({%lat}, {%long})');
 
-        map.title().listen("click", function (e) {
+        map.title().listen('click', function (e) {
             dataSetMarker.data(null);
             e.stopPropagation();
         });
 
-        map.container("container");
+        map.container('container');
         map.draw();
     });
 </script>

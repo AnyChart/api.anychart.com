@@ -21,10 +21,12 @@
     </style>
 </head>
 <body>
+<button onclick="chart.shareWithFacebook();">Get the sharing dialog</button>
 <div id="container"></div>
 <script>
+    var chart;
     anychart.onDocumentReady(function () {
-        var chart = anychart.column([
+        chart = anychart.column([
             {x: 'January', value: 2},
             {x: 'February', value: 5},
             {x: 'March', value: 3},
@@ -43,21 +45,6 @@
             '1000',
             '500'
         );
-
-        var label = chart.label();
-        label.background({fill: '#BDBDBD', stroke: '#9E9E9E'});
-        label.fontColor('#FAFAFA');
-        label.text('Share with Facebook');
-        label.padding(2);
-        label.listen('click', function () {
-            chart.shareWithFacebook();
-        });
-        label.listen('mouseOver', function () {
-            document.body.style.cursor = 'pointer';
-        });
-        label.listen('mouseOut', function () {
-            document.body.style.cursor = 'auto';
-        });
 
         chart.title('Set Facebook sharing settings');
         chart.container('container');
