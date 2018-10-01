@@ -3,8 +3,8 @@
 
 The AnyChart Technical Documentation Team welcomes you!
 
-This repo contains source for [AnyChart JavaScript HTML5 Charts API Reference](//api.anychart.com) documentation.
-We are appreciate your interest and will do our best to make AnyChart documentation as good as possible.  
+This repo contains [AnyChart JavaScript HTML5 Charts API Reference](//api.anychart.com) sources.
+We  appreciate your interest and will do our best to make AnyChart documentation as good as possible.  
 
 If you have any suggestions how to improve this documentation, feel free to use one of the following methods:
 * Create an issue in repo [issues tracker](//github.com/anychart/api-reference/issues), we will answer you in a 24 hours on weekdays and in 48 hours during weekends.
