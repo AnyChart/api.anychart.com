@@ -30,17 +30,21 @@
         var mapping = dataTable.mapAs({value: 1});
 
         var chart = anychart.stock();
+        chart.grouping({minPixPerPoint: 50});
 
         var plot = chart.plot();
 
         var series = plot.marker(mapping);
+        series.size(10);
 
         // Set fill.
         series.fill('#C5E1A5');
 
-        chart.title('Set series fill');
+        chart.title('Set series fill parameter as a string');
         chart.container('container');
         chart.draw();
+
+        chart.selectRange('2009-05-01', '2009-07-02')
     });
 </script>
 </body>

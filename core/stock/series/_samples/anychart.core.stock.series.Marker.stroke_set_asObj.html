@@ -30,13 +30,15 @@
         var mapping = dataTable.mapAs({value: 1});
 
         var chart = anychart.stock();
+        chart.grouping({minPixPerPoint: 50});
 
         var plot = chart.plot();
 
         var series = plot.marker(mapping);
+        series.size(20);
 
         // Set stroke.
-        series.stroke({color: '#F44336', thickness: 1});
+        series.stroke({color: '#F44336', thickness: 2});
 
         chart.title('Set series stroke parameter as an object');
         chart.container('container');

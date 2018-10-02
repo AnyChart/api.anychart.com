@@ -30,6 +30,8 @@
         var mapping = dataTable.mapAs({value: 1});
 
         var chart = anychart.stock();
+        chart.grouping({minPixPerPoint: 20});
+        chart.scrollerGrouping({minPixPerPoint: 20});
 
         var plot = chart.plot();
         plot.line(mapping);
@@ -37,7 +39,7 @@
         var scroller = chart.scroller();
 
         var series = scroller.column(mapping);
-        series.stroke('#607D8B');
+        series.stroke('#66cd00');
 
         // Get stroke.
         var stroke = series.stroke();
@@ -45,6 +47,8 @@
         chart.title({fontColor: stroke, text: 'Get stroke'});
         chart.container('container');
         chart.draw();
+
+        chart.selectRange('2009');
     });
 </script>
 </body>

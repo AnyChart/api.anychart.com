@@ -2,11 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.StateSettings.emptyHatchFill set asBool"/>
+    <meta name="ac:name" content="anychart.core.StateSettings.fallingHatchFill set asBool"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-linear-gauge.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -23,17 +22,23 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.gauges.linear([15, 20, 25, 30, 44]);
+        var chart = anychart.financial();
+        chart.xScale().maximum(Date.UTC(2017, 2, 29));
+        chart.xScale().minimum(Date.UTC(2017, 2, 24));
 
-        var tankPointer = chart.tank(3);
+        var series = chart.candlestick([
+            {x: Date.UTC(2017, 2, 25), open: 511.53, high: 514.98, low: 505.79, close: 506.40},
+            {x: Date.UTC(2017, 2, 26), open: 507.84, high: 513.30, low: 507.23, close: 512.88},
+            {x: Date.UTC(2017, 2, 27), open: 512.36, high: 515.40, low: 510.58, close: 511.40},
+            {x: Date.UTC(2017, 2, 28), open: 515.02, high: 520.50, low: 511.47, close: 517.25}
+        ]);
 
-        var state = tankPointer.normal();
+        var state = series.normal();
 
-        // Enable hatch fill for the empty part of a tank.
-        state.emptyHatchFill(true);
+        // Enable falling hatch fill.
+        state.fallingHatchFill(true);
 
-        chart.width(600).height(400);
-        chart.title('Enable state hatch fill');
+        chart.title('Enable falling hatch fill');
         chart.container('container');
         chart.draw();
     });

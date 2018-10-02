@@ -30,13 +30,14 @@
         var mapping = dataTable.mapAs({high: 1, low: 3});
 
         var chart = anychart.stock();
+        chart.grouping({minPixPerPoint: 50});
 
         var plot = chart.plot();
 
         var series = plot.rangeColumn(mapping);
 
         // Set fill.
-        series.fill(['#8BC34A', '#c5e1a5']);
+        series.fill([{offset: 0.4, color: '#ffab91', opacity: 0.7}, '#dce35b']);
 
         chart.title('Set series fill parameter as an array');
         chart.container('container');

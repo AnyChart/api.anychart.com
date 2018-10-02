@@ -23,6 +23,8 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.financial();
+        chart.xScale().maximum(Date.UTC(2017, 2, 29));
+        chart.xScale().minimum(Date.UTC(2017, 2, 24));
 
         var series = chart.candlestick([
             {x: Date.UTC(2017, 2, 25), open: 511.53, high: 514.98, low: 505.79, close: 506.40},
@@ -34,7 +36,7 @@
         var state = series.normal();
 
         // Set falling fill.
-        state.fallingFill(['#2BC0E4', '#EAECC6']);
+        state.fallingFill([{offset: 0.2, color: '#DCE35B', opacity: 0.6}, '#45B649 0.6']);
 
         chart.title('Set state falling fill parameter as an array');
         chart.container('container');
