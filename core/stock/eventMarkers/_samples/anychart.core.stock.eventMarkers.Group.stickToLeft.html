@@ -2,11 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.stock.eventMarkers.ChartController.selected set"/>
+    <meta name="ac:name" content="anychart.core.stock.eventMarkers.Group.stickToLeft"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-annotations.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
@@ -27,33 +28,28 @@
         var dataTable = anychart.data.table();
         dataTable.addData(get_dji_daily_short_data());
 
-        var mapping1 = dataTable.mapAs({
-            open: 1,
-            high: 2,
-            low: 3,
-            close: 4
-        });
-
-        var mapping2 = dataTable.mapAs({value: 1});
-
         var chart = anychart.stock();
 
-        var plot1 = chart.plot();
-        plot1.ohlc(mapping1);
+        var plot = chart.plot();
+        plot.line(dataTable.mapAs({value: 1}));
 
-        var plot2 = chart.plot(1);
-        plot2.column(mapping2);
+        var controller = chart.plot(0).annotations();
 
-        var eventMarkers = chart.eventMarkers();
-        eventMarkers.group(['2006-05-11', '2007-05-14']);
+        controller.verticalLine({xAnchor: '2006-10-12', normal: {stroke: '#FF0000'}}).allowEdit(false);
+        controller.verticalLine({xAnchor: '2006-11-12', normal: {stroke: '#FF0000'}}).allowEdit(false);
 
-        // Get hovered state.
-        var selectedState = eventMarkers.selected();
+        var eventMarkers = plot.eventMarkers();
+        eventMarkers.connector().length(30);
+        eventMarkers.group(['2006-10-12']).stickToLeft(false);
+        eventMarkers.group(1, ['2006-10-12', '2006-11-12']).format('B');
 
-        selectedState.fill('#E0E0E0');
+        var group = eventMarkers.group(1);
 
-        chart.selectRange('2005-01-01', '2008-01-01');
-        chart.title('Get and modify hovered state');
+        // Disable sticking to left value.
+        group.stickToLeft(false);
+
+        chart.selectRange('2006-09-01', '2006-12-21');
+        chart.title('Disable sticking of the event markers to left value. \n Event markers stick to the specified timestamp');
         chart.container('container');
         chart.draw();
     });
