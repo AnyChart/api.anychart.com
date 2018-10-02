@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.ui.Table.shareWithFacebook"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-table.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        button {
+            margin: 10px 0 0 10px;
+        }
+    </style>
+</head>
+<body>
+<button onclick="shareWithFacebook();">Get the sharing dialog</button>
+<div id="container"></div>
+<script>
+    var table;
+    anychart.onDocumentReady(function () {
+        var dataSet = [
+            [1.1, 2.3, 1.7, 1.9],
+            [1.2, 2.1, 2.7, 1.3],
+            [1.0, 1.2, 0.7, 1.1],
+            [1.3, 2.4, 1.7, 1.9]
+        ];
+
+        var pie = anychart.pie();
+        pie.data(dataSet);
+        pie.legend(null);
+
+        var chart1 = anychart.line(dataSet[0]);
+        chart1.title(null);
+        chart1.xAxis(null);
+
+        var chart2 = anychart.area(dataSet[1]);
+        chart2.title(null);
+        chart2.xAxis(null);
+
+        table = anychart.standalones.table();
+        table.width('100%').height('95%');
+        table.top('1%');
+
+        var cell = table.getCell(0, 0);
+        cell.rowSpan(2);
+
+        table.contents([
+            [pie, chart1],
+            [null, chart2]
+        ]);
+        table.container('container');
+        table.draw();
+    });
+
+    function shareWithFacebook() {
+
+        // Share chart with Facebook.
+        table.shareWithFacebook('ANYCHART.COM', 'https://www.anychart.com/', 'Table with charts', 'Statistics of visits to the site');
+    }
+</script>
+</body>
+</html>
