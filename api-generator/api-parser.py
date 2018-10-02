@@ -20,12 +20,12 @@ def modify_source_code():
     with open(os.path.join(SRC_PATH, 'core','settings.js'), 'r') as myfile:
         data = myfile.readlines()
 
-    data[241] = data[241].replace("classConstructor.prototype[alias]","classConstructor.prototype[alias+'+'] = true; classConstructor.prototype[alias]").replace("map[methodName] = descriptor;","map[methodName] = descriptor;\n"+"map[methodName+'+'] = descriptor;")
-    data[217] = ""
-    data[218] = "target[i] = goog.partial(anychart.core.settings.handlersMap[descriptor.handler],descriptor.propName,descriptor.deprecatedPropName,descriptor.normalizer);"
-    data[219] = "target[i+'+'] = goog.partial(anychart.core.settings.handlersMap[descriptor.handler],descriptor.propName+'+',descriptor.deprecatedPropName,descriptor.normalizer);"
-    data[220] = ""
-    data[221] = ""
+    data[251] = data[251].replace("classConstructor.prototype[alias]","classConstructor.prototype[alias+'+'] = true; classConstructor.prototype[alias]").replace("map[methodName] = descriptor;","map[methodName] = descriptor;\n"+"map[methodName+'+'] = descriptor;")
+    data[232] = ""
+    data[233] = "target[i] = goog.partial(anychart.core.settings.handlersMap[descriptor.handler],descriptor.propName,descriptor.deprecatedPropName,descriptor.normalizer);"
+    data[234] = "target[i+'+'] = goog.partial(anychart.core.settings.handlersMap[descriptor.handler],descriptor.propName+'+',descriptor.deprecatedPropName,descriptor.normalizer);"
+    data[235] = ""
+    data[236] = ""
     
 
         # and write everything back
