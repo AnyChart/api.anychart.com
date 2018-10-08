@@ -19,10 +19,13 @@
     </style>
 </head>
 <body>
+<button onclick="chart.group(function (val) {return val > 2;});">Group points</button>
+<button onclick="disableGroup();">Ungroup point</button>
 <div id="container"></div>
 <script>
+    var chart;
     anychart.onDocumentReady(function () {
-        var chart = anychart.pie([
+        chart = anychart.pie([
             {x: 'Cycling', value: 5},
             {x: 'Swimming', value: 2},
             {x: 'Run', value: 1},
@@ -30,35 +33,15 @@
             {x: 'Alpinism', value: 1}
         ]);
 
-        var firstLabel = chart.label();
-        firstLabel.background({fill: '#757575'});
-        firstLabel.text('Group points');
-        firstLabel.fontColor('#fff');
-        firstLabel.padding(5);
-        firstLabel.offsetX(5);
-        firstLabel.listen('click', function () {
-            chart.group(function (val) {
-                return val > 2;
-            });
-        });
-
-        var secondLabel = chart.label(1);
-        secondLabel.background({fill: '#757575'});
-        secondLabel.text('Ungroup points');
-        secondLabel.fontColor('#fff');
-        secondLabel.padding(5);
-        secondLabel.offsetX(5);
-        secondLabel.offsetY(30);
-        secondLabel.listen('click', function () {
-
-            // Disable grouping function.
-            chart.group('none');
-        });
-
         chart.title('Ungroup points using string');
         chart.container('container');
         chart.draw();
     });
+
+    function disableGroup() {
+        // Disable grouping function.
+        chart.group('none');
+    }
 </script>
 </body>
 </html>
