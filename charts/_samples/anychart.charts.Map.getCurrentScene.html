@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Map.getCurrentScene"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-map.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/mongolia/mongolia.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/canada/canada.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/custom/world/world.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="getCurrentScene();">Modify current chart</button>
+<div id="container"></div>
+<script>
+    var chart;
+    anychart.onDocumentReady(function () {
+        // All maps created with geoData() method work only if you referenced a proper map
+        // source file as described at https://docs.anychart.com/Maps/Quick_Start
+
+        // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+        // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+
+        var worldDataSet = anychart.data.set([
+            {id: 'CA', name: 'Canada', value: 'A1'},
+            {id: 'MN', name: 'Mongolia', value: 'A1'}
+        ]);
+
+        var canadaDataSet = anychart.data.set([
+            {id: 'CA.NS', size: 8, value: 111},
+            {id: 'CA.ON', size: 8, value: 100},
+            {id: 'CA.NU', size: 2, value: 101}
+        ]);
+
+        var mongoliaDataSet = anychart.data.set([
+            {id: 'MN.DG', size: 8, value: 111},
+            {id: 'MN.GA', size: 8, value: 100},
+            {id: 'MN.TO', size: 2, value: 101}
+        ]);
+
+        var mongoliaMap = anychart.map();
+        var canadaMap = anychart.map();
+
+        mongoliaMap.geoData(anychart.maps.mongolia);
+        canadaMap.geoData(anychart.maps.canada);
+
+        mongoliaMap.choropleth(mongoliaDataSet);
+        canadaMap.choropleth(canadaDataSet);
+
+        chart = anychart.map();
+        chart.interactivity({selectionMode: 'drill-down'});
+        chart.geoData(anychart.maps.world);
+        chart.choropleth(worldDataSet);
+        chart.drillDownMap({
+            'MN': mongoliaMap,
+            'CA': canadaMap
+        });
+        chart.title('Click on Canada or Mongolia. And press the button above the chart');
+        chart.container('container');
+        chart.draw();
+    });
+
+    function getCurrentScene() {
+
+        // Get and modify current chart.
+        var currentChart = chart.getCurrentScene();
+        currentChart.unboundRegions({fill: '#ffb90f'});
+
+    }
+</script>
+</body>
+</html>
