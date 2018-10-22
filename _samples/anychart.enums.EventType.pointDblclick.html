@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.enums.EventType.point pointmouse over out"/>
+    <meta name="ac:name" content="anychart.enums.EventType.pointDblclick"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -25,28 +25,23 @@
         var chart = anychart.column();
 
         var series = chart.column([
-            {x: "Cycling", value: 10},
-            {x: "Swimming", value: 12},
-            {x: "Run", value: 18},
-            {x: "Hiking", value: 11},
-            {x: "Alpinism", value: 9}
+            {x: 'Cycling', value: 10},
+            {x: 'Swimming', value: 12},
+            {x: 'Run', value: 18},
+            {x: 'Hiking', value: 11},
+            {x: 'Alpinism', value: 9}
         ]);
 
         var title = chart.title();
         title.enabled(true);
-        title.text("");
+        title.text('PointDblclick event');
 
         // Set event type.
-        series.listen("pointmouseover", function (e) {
-            title.text("Point index is " + e.pointIndex);
+        series.listen('pointDblclick', function (e) {
+            title.text('The point with name ' + e.point.get('x') + ' has been double-clicked on')
         });
 
-        // Set event type.
-        series.listen("pointmouseout", function (e) {
-            title.text("");
-        });
-
-        chart.container("container");
+        chart.container('container');
         chart.draw();
     });
 </script>
