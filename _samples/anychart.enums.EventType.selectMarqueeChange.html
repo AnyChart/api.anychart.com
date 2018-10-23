@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.format.outputDateFormat"/>
+    <meta name="ac:name" content="anychart.enums.EventType.selectMarqueeChange"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -22,27 +22,24 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        // Set output date format.
-        anychart.format.outputDateFormat('dd MMMM yyyy');
-
-        var chart = anychart.line([
-            {x: Date.UTC(2014, 5, 6), value: 511.53},
-            {x: Date.UTC(2014, 6, 8), value: 900},
-            {x: Date.UTC(2014, 9, 10), value: 700},
-            {x: Date.UTC(2014, 10, 12), value: 380},
-            {x: Date.UTC(2014, 12, 14), value: 830}
+        var chart = anychart.column([
+            {x: 'January', value: 2},
+            {x: 'February', value: 5},
+            {x: 'March', value: 3},
+            {x: 'April', value: 9},
+            {x: 'May', value: 4}
         ]);
 
-        var axis = chart.xAxis();
-
-        var labels = axis.labels();
-        labels.format(function() {
-            return anychart.format.date(this.value);
-        });
-
-        chart.title('Set output date format');
+        chart.title('Marquee event types. \nUse mouse to draw marquee');
         chart.container('container');
         chart.draw();
+
+        chart.startSelectMarquee(true);
+
+        // Set event type to change the drawing rectangle marquee
+        chart.listen('selectMarqueeChange', function (e) {
+            chart.title('Rectangle marquee drawing is changed \n Indexes of the points: ' + e.seriesStatus[0].pointsInRect);
+        });
     });
 </script>
 </body>
