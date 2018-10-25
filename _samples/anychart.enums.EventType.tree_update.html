@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.enums.EventType.tree_update"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="update()">Update the item</button>
+<div id="container"></div>
+<script>
+    var treeData;
+    var i = 0;
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create('container');
+
+        var data = [
+                {id: 1, name: 'Item 1'},
+                {id: 2, name: 'Item 2'},
+                {id: 3, name: 'Item 3'},
+                {id: 4, name: 'Item 4'},
+                {id: 5, name: 'Item 5'},
+                {id: 6, name: 'Item 6'},
+                {id: 7, name: 'Item 7'},
+                {id: 8, name: 'Item 8'}
+        ];
+
+        treeData = anychart.data.tree(data, 'as-tree');
+
+        var dataGrid = anychart.standalones.dataGrid();
+        dataGrid.data(treeData);
+        dataGrid.headerHeight(25);
+
+        var title = anychart.standalones.title();
+        title.text('Click buttons above to see results');
+
+        // Set event type.
+        // Update the item and change the title on the event.
+        treeData.listen('treeItemUpdate', function(e){
+            title.text('The item "' + e.item.get('name') +'" was updated');
+        });
+
+        dataGrid.container(stage);
+        dataGrid.draw();
+        title.container(stage);
+        title.draw();
+    });
+
+    function update() {
+        if (i < treeData.numChildren()) {
+            var item = treeData.getChildAt(i);
+            item.set("name", item.get("name") + " has index " + i);
+            i++
+        }
+    }
+</script>
+</body>
+</html>

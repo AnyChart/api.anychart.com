@@ -22,8 +22,10 @@
     </style>
 </head>
 <body>
+<button onclick="move();">Move map</button>
 <div id="container"></div>
 <script>
+    var map;
     anychart.onDocumentReady(function () {
         // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
         // See https://docs.anychart.com/Maps/Map_Projections to learn more.
@@ -41,26 +43,19 @@
 
         var dataSetForSeries = dataSet.mapAs({id: 'id'});
 
-        var australiaMap = anychart.map();
-        australiaMap.geoData(anychart.maps.australia);
-        australiaMap.choropleth(dataSetForSeries);
-        australiaMap.title('Move a map');
-        australiaMap.container('container');
-        australiaMap.draw();
-        australiaMap.zoom(2.5);
-
-        var label = australiaMap.label();
-        label.background({fill: '#9E9E9E .3'});
-        label.text('Move map');
-        label.padding(5);
-        label.offsetX(5);
-        label.listen('click', function () {
-
-            // Move a map.
-            australiaMap.move(100, 100);
-
-        });
+        map = anychart.map();
+        map.geoData(anychart.maps.australia);
+        map.choropleth(dataSetForSeries);
+        map.title('Move a map');
+        map.container('container');
+        map.draw();
+        map.zoom(2.5);
     });
+
+    function move() {
+        // Move a map.
+        map.move(100, 100);
+    }
 </script>
 </body>
 </html>

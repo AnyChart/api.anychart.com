@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.enums.EventType.tree_create_remove"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="move1()">Move from Parent 2 to Parent 1</button>
+<button onclick="move2()">Move from Parent 1 to Parent 2</button>
+<div id="container"></div>
+<script>
+    var treeData;
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create('container');
+
+        var data = [
+            {
+                id: 1, name: 'Parent 1', children: [
+                {id: 2, name: 'Item 1'},
+                {id: 3, name: 'Item 2'},
+                {id: 4, name: 'Item 3'},
+                {id: 5, name: 'Item 4'},
+            ]},
+            {
+                id: 6, name: 'Parent 2', children: [
+                {id: 7, name: 'Item 5'},
+                {id: 8, name: 'Item 6'},
+                {id: 9, name: 'Item 7'},
+                {id: 10, name: 'Item 8'}
+            ]}
+        ];
+
+        treeData = anychart.data.tree(data, 'as-tree');
+
+        var dataGrid = anychart.standalones.dataGrid();
+        dataGrid.data(treeData);
+        dataGrid.headerHeight(25);
+
+        var title = anychart.standalones.title();
+        title.text('Click buttons above to see results');
+
+        // Set event type.
+        // Move the item and change the title on the event.
+        treeData.listen('treeItemMove', function(e){
+            var parentForm = e.source.get('name');
+            var parentTo = e.target.get('name');
+
+            title.text('The item "' + e.item.get('name') +'" moved from ' + parentForm  + ' to ' + parentTo);
+        });
+
+        dataGrid.container(stage);
+        dataGrid.draw();
+        title.container(stage);
+        title.draw();
+    });
+
+    function move1(){
+        var parent1 = treeData.getChildAt(0);
+        var parent2 = treeData.getChildAt(1);
+
+        var child = parent2.getChildAt(0);
+        if (child)
+            parent1.addChild(child);
+    }
+
+    function move2() {
+        var parent1 = treeData.getChildAt(0);
+        var parent2 = treeData.getChildAt(1);
+
+        var child = parent1.getChildAt(0);
+        if (child)
+            parent2.addChild(child);
+    }
+</script>
+</body>
+</html>

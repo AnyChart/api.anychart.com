@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.enums.EventType.drag_start_end"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+Legend Drag Event Info: <span id="text"></span>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var data = anychart.data.set([
+            ['Cycling', 10, 20, 30],
+            ['Swimming', 12, 6, 10],
+            ['Run', 18, 22, 40],
+            ['Hiking', 11, 5, 18],
+            ['Alpinism', 9, 13, 15]
+        ]);
+
+        var chart = anychart.column();
+        chart.column(data.mapAs({x: 0, value: 1})).name('Autumn');
+        chart.column(data.mapAs({x: 0, value: 2})).name('Winter');
+        chart.column(data.mapAs({x: 0, value: 3})).name('Summer');
+        chart.xGrid(true).yGrid(true).yMinorGrid(true);
+
+        var legend = chart.legend();
+        legend.enabled(true);
+        legend.padding(35);
+        legend.positionMode('inside');
+        legend.itemsLayout('vertical-expandable');
+        legend.background({fill: '#FFFFFF', stroke: '2 #212121'});
+        legend.drag(true);
+
+        // Set event type.
+        legend.listen('drag', function () {
+            document.getElementById("text").innerHTML = "drag in process";
+            chart.background().fill('#f0f8ff 0.2');
+        });
+
+        // Set event type.
+        legend.listen('dragStart', function () {
+            chart.background().fill('#9E9E9E');
+            document.getElementById("text").innerHTML = "drag started";
+        });
+
+        // Set event type.
+        legend.listen('dragEnd', function () {
+            chart.background().fill('#f0f8ff 0.2');
+            document.getElementById("text").innerHTML = "drag finished";
+        });
+
+        chart.title('Drag event types');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>

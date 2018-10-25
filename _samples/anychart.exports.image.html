@@ -21,18 +21,12 @@
     </style>
 </head>
 <body>
+<button onclick="chart.saveAsJpg();">Save chart</button>
 <div id="container"></div>
 <script>
+    var chart;
     anychart.onDocumentReady(function () {
-        var chart = anychart.column([32, 22, 27, 40, 120, 34, 37, 100, 22]);
-
-        var label = chart.label();
-        label.background({fill: '#FFE082', stroke: '#9E9E9E'});
-        label.text('Save chart');
-        label.padding(2);
-        label.listen('click', function () {
-            chart.saveAsJpg();
-        });
+        chart = anychart.column([32, 22, 27, 40, 120, 34, 37, 100, 22]);
 
         // Set image dimensions.
         anychart.exports.image('500', '200');

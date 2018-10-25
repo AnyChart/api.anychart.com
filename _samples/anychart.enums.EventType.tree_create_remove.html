@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.enums.EventType.tree_create_remove"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="create()">Create tree item</button>
+<button onclick="remove()">Remove tree item</button>
+<div id="container"></div>
+<script>
+    var treeData;
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create('container');
+
+        var data = [
+            {id: 1, name: 'Item 1'},
+            {id: 2, name: 'Item 2'},
+            {id: 3, name: 'Item 3'},
+            {id: 4, name: 'Item 4'},
+            {id: 5, name: 'Item 5'},
+            {id: 6, name: 'Item 6'},
+            {id: 7, name: 'Item 7'}
+        ];
+
+        treeData = anychart.data.tree(data, 'as-table');
+
+        var dataGrid = anychart.standalones.dataGrid();
+        dataGrid.data(treeData);
+        dataGrid.headerHeight(25);
+
+        var title = anychart.standalones.title();
+        title.text('Click buttons above to see results');
+
+        // Set event type.
+        // Create an item and change the title on the event.
+        treeData.listen('treeItemCreate', function(e){
+            title.text('The item "' + e.item.get('name') +'" was created');
+        });
+
+        // Set event type.
+        // Remove an item and change the title on the event.
+        treeData.listen('treeItemRemove', function(e){
+            title.text('The item "' + e.item.get('name') +'" was removed');
+        });
+
+        dataGrid.container(stage);
+        dataGrid.draw();
+
+        title.container(stage);
+        title.draw();
+    });
+
+    function create(){
+        treeData.addChild({name: 'New Item ' + (treeData.numChildren() + 1)});
+    }
+
+    function remove() {
+        treeData.removeChildAt(treeData.numChildren() - 1);
+    }
+</script>
+</body>
+</html>
