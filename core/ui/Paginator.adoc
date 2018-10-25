@@ -1,15 +1,34 @@
 /**
- * Paginator base class.
+ * Class for a paginator element.<br/>
+ * The Paginator class contains methods for configuring the {api:anychart.core.ui.Legend#paginator}Legend{api}
+ * paginator.
  * @constructor
  * @extends {anychart.core.Text}
  */
 anychart.core.ui.Paginator;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Paginator.prototype.orientation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
 /**
- * Orientation of the paginator.
+ * Getter for the paginator orientation.
+ * @shortDescription Paginator orientation
  * @category Size and Position
- * @param {(anychart.enums.Orientation|string)=} opt_value Value to set.
- * @return {!anychart.core.ui.Paginator|anychart.enums.Orientation|string} .
+ * @listing See listing
+ * var paginator = chart.legend().paginator();
+ * var orientation = paginator.orientation();
+ * @return {anychart.enums.Orientation|string} Returns the paginator orientation.
+ */
+anychart.core.ui.Paginator.prototype.orientation;
+
+/**
+ * Setter for the paginator orientation.
+ * @example anychart.core.ui.Paginator.orientation
+ * @param {(anychart.enums.Orientation|string)=} opt_orientation Orientation to set.
+ * @return {anychart.core.ui.Paginator} Self instance for method chaining.
  */
 anychart.core.ui.Paginator.prototype.orientation;
 
@@ -21,19 +40,29 @@ anychart.core.ui.Paginator.prototype.orientation;
 
 /**
  * Getter for the paginator padding.
+ * @shortDescription Padding settings
  * @category Size and Position
+ * @example anychart.core.ui.Paginator.padding_get
  * @return {anychart.core.utils.Padding} Padding instance.
  */
 anychart.core.ui.Paginator.prototype.padding;
 
 /**
- * Setter for the paginator padding.
- * @category Size and Position
- * @param {(string|number|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number)})=} opt_spaceOrTopOrTopAndBottom Space object or top or top and bottom
- *    space.
- * @param {(string|number)=} opt_rightOrRightAndLeft Right or right and left space.
- * @param {(string|number)=} opt_bottom Bottom space.
- * @param {(string|number)=} opt_left Left space.
+ * Setter for the paginator padding in pixels using a single value.
+ * @example anychart.core.ui.Paginator.padding_set_asSingle
+ * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)}|number|string)=}
+ * opt_padding [{top: 7, right: 7, bottom: 7, left: 7}] Space value, object or array.
+ * @return {anychart.core.ui.Paginator} Self instance for method chaining.
+ */
+anychart.core.ui.Paginator.prototype.padding;
+
+/**
+ * Setter for the paginator padding setting in pixels using a several values.
+ * @example anychart.core.ui.Paginator.padding_set_asSeveral
+ * @param {(string|number)=} opt_value1 Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 Right or right-left space.
+ * @param {(string|number)=} opt_value3 Bottom space.
+ * @param {(string|number)=} opt_value4 Left space.
  * @return {anychart.core.ui.Paginator} Self instance for method chaining.
  */
 anychart.core.ui.Paginator.prototype.padding;
@@ -46,40 +75,95 @@ anychart.core.ui.Paginator.prototype.padding;
 
 /**
  * Getter for the paginator margin.
+ * @shortDescription Margin settings
  * @category Size and Position
- * @return {anychart.core.utils.Margin} Padding instance.
+ * @example anychart.core.ui.Paginator.margin_get
+ * @return {anychart.core.utils.Margin} Padding settings.
  */
 anychart.core.ui.Paginator.prototype.margin;
 
 /**
- * Setter for the paginator margin.
- * @param {(string|number|Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number)})=} opt_spaceOrTopOrTopAndBottom Space object or top or top and bottom
- *    space.
- * @param {(string|number)=} opt_rightOrRightAndLeft Right or right and left space.
- * @param {(string|number)=} opt_bottom Bottom space.
- * @param {(string|number)=} opt_left Left space.
+ * Setter for the paginator margin in pixels using a single complex object.
+ * @listing Example.
+ * // all margins 15px
+ * paginator.margin(15);
+ * // all margins 15px
+ * paginator.margin('15px');
+ * // top and bottom 5px, right and left 15px
+ * paginator.margin(anychart.utils.margin(5, 15));
+ * @example anychart.core.ui.Paginator.margin_set_asSingle
+ * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=}
+ * opt_margin [{top: 0, right: 0, bottom: 0, left: 0}] Margin to set.
  * @return {anychart.core.ui.Paginator} Self instance for method chaining.
  */
 anychart.core.ui.Paginator.prototype.margin;
 
 /**
- * Paginator background.
- * @category Specific settings
- * @param {(string|Object|null|boolean)=} opt_value Value to set.
- * @return {!(anychart.core.ui.Paginator|anychart.core.ui.Background)} .
+ * Setter for the paginator margin in pixels using several simple values.
+ * @listing Example.
+ * // 1) all 10px
+ * paginator.margin(10);
+ * // 2) top and bottom 10px, left and right 15px
+ * paginator.margin(10, '15px');
+ * // 3) top 10px, left and right 15px, bottom 5px
+ * paginator.margin(10, '15px', 5);
+ * // 4) top 10px, right 15px, bottom 5px, left 12px
+ * chart.margin(10, '15px', '5px', 12);
+ * @example anychart.core.ui.Paginator.margin_set_asSeveral
+ * @param {(string|number)=} opt_value1 Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 Right or right-left space.
+ * @param {(string|number)=} opt_value3 Bottom space.
+ * @param {(string|number)=} opt_value4 Left space.
+ * @return {anychart.core.ui.Paginator} Self instance for method chaining.
+ */
+anychart.core.ui.Paginator.prototype.margin;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Paginator.prototype.background
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+/**
+ * Getter for the paginator background.
+ * @shortDescription Background settings
+ * @category Coloring
+ * @listing See listing
+ * var paginator = chart.legend().paginator();
+ * var background = paginator.background();
+ * @return {anychart.core.ui.Background} Returns the paginator background.
  */
 anychart.core.ui.Paginator.prototype.background;
+
+/**
+ * Setter for the paginator background.
+ * @param {(string|Object|null|boolean)=} opt_settings Background settings to set.
+ * @return {anychart.core.ui.Paginator} Self instance for method chaining.
+ */
+anychart.core.ui.Paginator.prototype.background;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.ui.Paginator.prototype.layout
+//
+//----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for paginator layout.
  * @shortDescription Layout settings.
  * @category Size and Position
- * @return {anychart.enums.Layout|string} Layout or self for chaining.
+ * @listing See listing
+ * var paginator = chart.legend().paginator();
+ * var layout = paginator.layout();
+ * @return {anychart.enums.Layout|string} Returns paginator layout.
  */
 anychart.core.ui.Paginator.prototype.layout;
 
 /**
  * Setter for paginator layout.
+ * @example anychart.core.ui.Paginator.layout
  * @param {(anychart.enums.Layout|string)=} opt_value Value to set.
  * @return {anychart.core.ui.Paginator} Self instance for method chaining.
  */
