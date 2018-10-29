@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.enums.EventType.drillChange"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-sunburst.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var data = getData();
+
+        treeData = anychart.data.tree(data, 'as-table');
+
+        var chart = anychart.sunburst();
+        chart.data(treeData);
+
+        // Set event type.
+        chart.listen('drillChange', function(e){
+            chart.title('Drilled to ' + e.current.get('name') + ' (value: ' + e.current.get('value') + ')')
+        });
+
+        chart.title('Drill change event types. Drill down to any item');
+        chart.container('container');
+        chart.draw();
+    });
+
+    function getData() {
+        return [
+            {name: 'Seasonal activities', id: 'activities', parent: null, value: 1000},
+            {name: 'Winter', parent: 'activities', id: 'winter', value: 250},
+            {name: 'Spring', parent: 'activities', id: 'spring', value: 250},
+            {name: 'Summer', parent: 'activities', id: 'summer', value: 250},
+            {name: 'Autumn', parent: 'activities', id: 'autumn', value: 250},
+            {name: 'Running', parent: 'winter', id: 'run', value: 43},
+            {name: 'Snowboarding', parent: 'winter', id: 'snowboard', value: 50},
+            {name: 'Nordic Skiing', parent: 'winter', id: 'nordic', value: 50},
+            {name: 'Working Out', parent: 'winter', id: 'workout', value: 30},
+            {name: 'Ice Skating', parent: 'winter', id: 'iceskate', value: 40},
+            {name: 'Kitesurfing', parent: 'winter', id: 'kitesurf', value: 37},
+            {name: 'Riding', parent: 'spring', id: 'ride', value: 100},
+            {name: 'Crossfit', parent: 'spring', id: 'crossfit', value: 30},
+            {name: 'Hiking', parent: 'spring', id: 'hike', value: 30},
+            {name: 'Yoga', parent: 'spring', id: 'yoga', value: 40},
+            {name: 'Running', parent: 'spring', id: 'run', value: 50},
+            {name: 'Riding', parent: 'summer', id: 'ride', value: 150},
+            {name: 'Windsurfing', parent: 'summer', id: 'windsurf', value: 20},
+            {name: 'Swimming', parent: 'summer', id: 'swim', value: 30},
+            {name: 'Roller Skiing', parent: 'summer', id: 'roller', value: 10},
+            {name: 'Rowing', parent: 'summer', id: 'rowing', value: 40},
+            {name: 'Riding', parent: 'autumn', id: 'ride', value: 90},
+            {name: 'Hiking', parent: 'autumn', id: 'windsurf', value: 20},
+            {name: 'Swimming', parent: 'autumn', id: 'swim', value: 10},
+            {name: 'Nordic Skiing', parent: 'autumn', id: 'nordic', value: 40},
+            {name: 'Climbing', parent: 'autumn', id: 'climbing', value: 40}
+        ];
+    }
+</script>
+</body>
+</html>

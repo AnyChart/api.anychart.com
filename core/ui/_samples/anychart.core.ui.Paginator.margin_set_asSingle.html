@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.ui.Paginator.margin set asSingle"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.pie([
+            {name: 'John', value: 10000},
+            {name: 'Jake', value: 12000},
+            {name: 'Peter', value: 16000},
+            {name: 'Alex', value: 11000},
+            {name: 'Tom', value: 13000},
+            {name: 'Julia', value: 18000},
+            {name: 'Alexa', value: 9000},
+            {name: 'Henry', value: 18000},
+            {name: 'Daniel', value: 5000},
+            {name: 'Harley', value: 20000},
+            {name: 'Megan', value: 17000}
+        ]);
+
+        var legend = chart.legend();
+        legend.enabled(true);
+        legend.width(450);
+
+        var paginator = chart.legend().paginator();
+
+        // Set margin.
+        paginator.margin(15);
+
+        chart.title('Set the paginator margin using single value');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
