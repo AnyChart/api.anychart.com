@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.enums.EventType.chartDraw"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+    </style>
+</head>
+<body>
+<button onclick="lineDraw();">Draw line chart</button>
+<button onclick="barDraw();">Draw bar chart</button>
+Chart id: <span id="text"></span>
+<div id="container"></div>
+<script>
+    var chart;
+
+    function lineDraw() {
+        if (chart)
+            chart.dispose();
+        createChart(anychart.line, 'LineChart');
+    }
+
+    function barDraw() {
+        if (chart)
+            chart.dispose();
+        createChart(anychart.bar, 'BarChart');
+    }
+
+    function createChart(type, text) {
+        chart = type([
+            {x: 'Swimming', value: 1},
+            {x: 'Cycling', value: 4},
+            {x: 'Run', value: 2},
+            {x: 'Hiking', value: 3},
+            {x: 'Alpinism', value: 2}
+        ]);
+        chart.id(text);
+        chart.container('container');
+        chart.draw('container');
+
+        // Use the 'chartDraw' event to determine which chart has been rendered
+        // Set event type.
+        chart.listen('chartDraw', function () {
+            document.getElementById("text").innerHTML = chart.id();
+        });
+        return chart;
+    }
+</script>
+</body>
+</html>
