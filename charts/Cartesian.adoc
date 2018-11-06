@@ -2802,6 +2802,748 @@ anychart.charts.Cartesian.prototype.baseline;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//  anychart.charts.Cartesian.prototype.localToGlobal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+
+/**
+ * Converts the local coordinates to global coordinates.
+ * <b>Note:</b> Works only after {@link anychart.charts.Cartesian#draw} is called.
+ * @category Specific settings
+ * @detailed Converts local coordinates of the container or stage into global coordinates of the global document.<br/>
+ * On image below, the red point is a starting coordinate point of the chart bounds.
+ * Local coordinates work only in area of the stage (container).<br/>
+ * <img src='/anychart.core.Chart.localToGlobal.png' height='310' width='530'/><br/>
+ * @example anychart.charts.Cartesian.localToGlobal
+ * @param {number} xCoord Local X coordinate.
+ * @param {number} yCoord Local Y coordinate.
+ * @return {Object.<string, number>} Object with XY coordinates.
+ */
+anychart.charts.Cartesian.prototype.localToGlobal;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.globalToLocal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Converts the global coordinates to local coordinates.
+ * <b>Note:</b> Works only after {@link anychart.charts.Cartesian#draw} is called.
+ * @category Specific settings
+ * @detailed Converts global coordinates of the global document into local coordinates of the container or stage.<br/>
+ * On image below, the red point is a starting coordinate point of the chart bounds. Local coordinates work only in area of the stage (container).<br/>
+ * <img src='/anychart.core.Chart.localToGlobal.png' height='310' width='530'/>
+ * @example anychart.charts.Cartesian.globalToLocal
+ * @param {number} xCoord Global X coordinate.
+ * @param {number} yCoord Global Y coordinate.
+ * @return {Object.<string, number>} Object with XY coordinates.
+ */
+anychart.charts.Cartesian.prototype.globalToLocal;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.contextMenu
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the context menu.
+ * @shortDescription Context menu settings.
+ * @category Chart Controls
+ * @example anychart.charts.Cartesian.contextMenu_get
+ * @return {anychart.ui.ContextMenu} Context menu.
+ */
+anychart.charts.Cartesian.prototype.contextMenu;
+
+/**
+ * Setter for the context menu.
+ * @detailed Sets context menu settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable context menu.</li>
+ *   <li><b>object</b> - sets context menu settings.</li>
+ * </ul>
+ * @example anychart.charts.Cartesian.contextMenu_set_asBool Enable/disable context menu
+ * @example anychart.charts.Cartesian.contextMenu_set_asObj Using object
+ * @param {(Object|boolean|null)=} opt_settings Context menu settings
+ * @return {!anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.contextMenu;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.getSelectedPoints
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the selected points.
+ * @category Data
+ * @example anychart.charts.Cartesian.getSelectedPoints
+ * @return {Array.<anychart.core.Point>} An array of the selected points.
+ */
+anychart.charts.Cartesian.prototype.getSelectedPoints;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.toCsv
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns CSV string with the chart data.
+ * @category Export
+ * @example anychart.charts.Cartesian.toCsv Using object
+ * @example anychart.charts.Cartesian.toCsv_asFunc Using function
+ * @param {(anychart.enums.ChartDataExportMode|string)=} opt_chartDataExportMode Data export mode.
+ * @param {Object.<string, (string|boolean|undefined|csvSettingsFunction|Object)>=} opt_csvSettings CSV settings.<br/>
+ * <b>CSV settings object</b>:<br/>
+ *  <b>rowsSeparator</b> - string or undefined (default is '\n')<br/>
+ *  <b>columnsSeparator</b>  - string or undefined (default is ',')<br/>
+ *  <b>ignoreFirstRow</b>  - boolean or undefined (default is 'false')<br/>
+ *  <b>formats</b>  - <br/>
+ *  1) a function with two arguments such as the field name and value, that returns the formatted value<br/>
+ *  or <br/>
+ *  2) the object with the key as the field name, and the value as a format function. <br/>
+ *  (default is 'undefined').
+ * @return {string} CSV string.
+ */
+anychart.charts.Cartesian.prototype.toCsv;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.saveAsXml
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves chart config as XML document.
+ * @category Export
+ * @example anychart.charts.Cartesian.saveAsXml
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Cartesian.prototype.saveAsXml;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.saveAsJson
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves chart config as JSON document.
+ * @category Export
+ * @example anychart.charts.Cartesian.saveAsJson
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Cartesian.prototype.saveAsJson;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.saveAsCsv
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves chart data as a CSV file.
+ * @category Export
+ * @example anychart.charts.Cartesian.saveAsCsv Using object
+ * @example anychart.charts.Cartesian.saveAsCsv_asFunc Using function
+ * @param {(anychart.enums.ChartDataExportMode|string)=} opt_chartDataExportMode Data export mode.
+ * @param {Object.<string, (string|boolean|undefined|csvSettingsFunction)>=} opt_csvSettings CSV settings.<br/>
+ * <b>CSV settings object</b>:<br/>
+ *  <b>rowsSeparator</b> - string or undefined (default is '\n')<br/>
+ *  <b>columnsSeparator</b>  - string or undefined (default is ',')<br/>
+ *  <b>ignoreFirstRow</b>  - boolean or undefined (default is 'false')<br/>
+ *  <b>formats</b>  - <br/>
+ *  1) a function with two arguments such as the field name and value, that returns the formatted value<br/>
+ *  or <br/>
+ *  2) the object with the key as the field name, and the value as a format function. <br/>
+ *  (default is 'undefined').
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Cartesian.prototype.saveAsCsv;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.saveAsXlsx
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves chart data as an Excel document.
+ * @category Export
+ * @example anychart.charts.Cartesian.saveAsXlsx
+ * @param {(anychart.enums.ChartDataExportMode|string)=} opt_chartDataExportMode Data export mode.
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Cartesian.prototype.saveAsXlsx;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.getStat
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for a statistical value by the key.
+ * @category Data
+ * @example anychart.charts.Cartesian.getStat
+ * @param {(anychart.enums.Statistics|string)=} key Key.
+ * @return {*} Statistics value.
+ */
+anychart.charts.Cartesian.prototype.getStat;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.startSelectMarquee
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Starts select marquee drawing.
+ * <b>Note:</b> Works only after {@link anychart.charts.Cartesian#draw} is called.
+ * @category Interactivity
+ * @example anychart.charts.Cartesian.startSelectMarquee
+ * @param {boolean=} opt_repeat Whether to start select marquee drawing.
+ * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.startSelectMarquee;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.selectMarqueeFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the select marquee fill.
+ * @shortDescription Select marquee fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var selectMarqueeFill = chart.selectMarqueeFill();
+ * @return {anychart.graphics.vector.Fill} Select marquee fill.
+ */
+anychart.charts.Cartesian.prototype.selectMarqueeFill;
+
+/**
+ * Setter for fill settings using an array, an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Cartesian.selectMarqueeFill_set_asString Using string
+ * @example anychart.charts.Cartesian.selectMarqueeFill_set_asArray Using array
+ * @example anychart.charts.Cartesian.selectMarqueeFill_set_asObj Using object
+ * @param {anychart.graphics.vector.Fill|Array.<(anychart.graphics.vector.GradientKey|string)>} color Color as an object, an array or a string.
+ * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.selectMarqueeFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.Cartesian.selectMarqueeFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.selectMarqueeFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Cartesian.selectMarqueeFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.selectMarqueeFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Cartesian.selectMarqueeFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.selectMarqueeFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.Cartesian.selectMarqueeFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.selectMarqueeFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.selectMarqueeStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the select marquee stroke.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @listing See listing.
+ * var selectMarqueeStroke = chart.selectMarqueeStroke();
+ * @return {anychart.graphics.vector.Stroke} Select marquee stroke.
+ */
+anychart.charts.Cartesian.prototype.selectMarqueeStroke;
+
+/**
+ * Setter for the select marquee stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.Cartesian.selectMarqueeStroke
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_color Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
+ * @param {(string|anychart.graphics.vector.StrokeLineCap)=} opt_lineCap Line cap style.
+ * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.selectMarqueeStroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.inMarquee
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets marquee process running value.
+ * @return {boolean} Returns true if there is a marquee process running.
+ */
+anychart.charts.Cartesian.prototype.inMarquee;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.cancelMarquee
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Stops marquee action if any.
+ * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.cancelMarquee;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.noData
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for noData settings.
+ * @shortDescription NoData settings.
+ * @category Data
+ * @example anychart.charts.Cartesian.noData_get
+ * @return {anychart.core.NoDataSettings} NoData settings.
+ */
+anychart.charts.Cartesian.prototype.noData;
+
+/**
+ * Setter for noData settings.<br/>
+ * {docs:Working_with_Data/No_Data_Label} Learn more about "No data" feature {docs}
+ * @example anychart.charts.Cartesian.noData_set
+ * @param {Object=} opt_settings NoData settings.
+ * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.noData;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.exports
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the export charts.
+ * @shortDescription Exports settings
+ * @category Export
+ * @listing See listing
+ * var exports = chart.exports();
+ * @return {anychart.core.utils.Exports} Exports settings.
+ */
+anychart.charts.Cartesian.prototype.exports;
+
+/**
+ * Setter for the export charts.
+ * @example anychart.charts.Cartesian.exports
+ * @detailed To work with exports you need to reference the exports module from AnyChart CDN
+ * (http://cdn.anychart.com/js/latest/anychart-exports.min.js for latest or http://cdn.anychart.com/js/{{branch-name}}/anychart-exports.min.js for the versioned file)
+ * @param {Object=} opt_settings Export settings.
+ * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.exports;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.autoRedraw
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the autoRedraw flag. <br/>
+ * Flag whether to automatically call chart.draw() on any changes or not.
+ * @shortDescription Redraw chart after changes or not.
+ * @listing See listing
+ * var autoRedraw = chart.autoRedraw();
+ * @return {boolean} AutoRedraw flag.
+ */
+anychart.charts.Cartesian.prototype.autoRedraw;
+
+/**
+ * Setter for the autoRedraw flag.<br/>
+ * Flag whether to automatically call chart.draw() on any changes or not.
+ * @example anychart.charts.Cartesian.autoRedraw
+ * @param {boolean=} opt_enabled [true] Value to set.
+ * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.autoRedraw;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.fullScreen
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the fullscreen mode.
+ * @shortDescription Fullscreen mode.
+ * @listing See listing
+ * var fullScreen = chart.fullScreen();
+ * @return {boolean} Full screen state (enabled/disabled).
+ */
+anychart.charts.Cartesian.prototype.fullScreen;
+
+/**
+ * Setter for the fullscreen mode.
+ * @example anychart.charts.Cartesian.fullScreen
+ * @param {boolean=} opt_enabled [false] Enable/Disable fullscreen mode.
+ * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.fullScreen;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.isFullScreenAvailable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Whether the fullscreen mode available in the browser or not.
+ * @example anychart.charts.Cartesian.isFullScreenAvailable
+ * @return {boolean} isFullScreenAvailable state.
+ */
+anychart.charts.Cartesian.prototype.isFullScreenAvailable;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.id
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for chart id.
+ * @shortDescription Chart id.
+ * @example anychart.charts.Cartesian.id_get
+ * @return {string} Return chart id.
+ */
+anychart.charts.Cartesian.prototype.id;
+
+/**
+ * Setter for chart id.
+ * @example anychart.charts.Cartesian.id_set
+ * @param {string=} opt_id Chart id.
+ * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.id;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.a11y
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the accessibility setting.
+ * @shortDescription Accessibility setting.
+ * @category Specific settings
+ * @listing See listing.
+ * var stateOfAccsessibility = chart.a11y();
+ * @return {anychart.core.utils.ChartA11y} Accessibility settings object.
+ */
+anychart.charts.Cartesian.prototype.a11y;
+
+/**
+ * Setter for the accessibility setting.
+ * @detailed If you want to enable accessibility you need to turn it on using {@link anychart.core.Chart#a11y} method.<br/>
+ * Sets accessibility setting depending on parameter type:
+ * <ul>
+ *   <li><b>boolean</b> - disable or enable accessibility.</li>
+ *   <li><b>object</b> - sets accessibility setting.</li>
+ * </ul>
+ * @example anychart.charts.Cartesian.a11y_set_asObj Using object
+ * @example anychart.charts.Cartesian.a11y_set_asBool Enable/disable accessibility
+ * @param {(boolean|Object)=} opt_settings Whether to enable accessibility or object with settings.
+ * @return {anychart.charts.Cartesian} Self instance for method chaining.
+ */
+anychart.charts.Cartesian.prototype.a11y;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.shareWithFacebook
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens Facebook sharing dialog.
+ * @category Export
+ * @example anychart.charts.Cartesian.shareWithFacebook
+ * @param {(string|Object)=} opt_captionOrOptions Caption for the main link or object with options.
+ * @param {string=} opt_link The URL is attached to the publication.
+ * @param {string=} opt_name The title for the attached link.
+ * @param {string=} opt_description Description for the attached link.
+ */
+anychart.charts.Cartesian.prototype.shareWithFacebook;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.shareWithLinkedIn
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens LinkedIn sharing dialog.
+ * @category Export
+ * @example anychart.charts.Cartesian.shareWithLinkedIn
+ * @param {(string|Object)=} opt_captionOrOptions Caption for publication or object with options. If not set 'AnyChart' will be used.
+ * @param {string=} opt_description Description.
+ */
+anychart.charts.Cartesian.prototype.shareWithLinkedIn;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.shareWithPinterest
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens Pinterest sharing dialog.
+ * @category Export
+ * @example anychart.charts.Cartesian.shareWithPinterest
+ * @param {(string|Object)=} opt_linkOrOptions Attached link or object with options. If not set, the image URL will be used.
+ * @param {string=} opt_description Description.
+ */
+anychart.charts.Cartesian.prototype.shareWithPinterest;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.shareWithTwitter
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens Twitter sharing dialog.
+ * @category Export
+ * @example anychart.charts.Cartesian.shareWithTwitter
+ */
+anychart.charts.Cartesian.prototype.shareWithTwitter = function(){};
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.getJpgBase64String
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns JPG as base64 string.
+ * @example anychart.charts.Cartesian.getJpgBase64String
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ * @param {boolean=} opt_forceTransparentWhite Force transparent to white or not.
+ */
+anychart.charts.Cartesian.prototype.getJpgBase64String;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.getPdfBase64String
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns PDF as base64 string.
+ * @example anychart.charts.Cartesian.getPdfBase64String
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {(number|string)=} opt_paperSizeOrWidth Any paper format like 'a0', 'tabloid', 'b4', etc.
+ * @param {(number|boolean)=} opt_landscapeOrWidth Define, is landscape.
+ * @param {number=} opt_x Offset X.
+ * @param {number=} opt_y Offset Y.
+ */
+anychart.charts.Cartesian.prototype.getPdfBase64String;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.getPngBase64String
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns PNG as base64 string.
+ * @example anychart.charts.Cartesian.getPngBase64String
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ */
+anychart.charts.Cartesian.prototype.getPngBase64String;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.getSvgBase64String
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns SVG as base64 string.
+ * @example anychart.charts.Cartesian.getSvgBase64String
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {(string|number)=} opt_paperSizeOrWidth Paper Size or width.
+ * @param {(boolean|string)=} opt_landscapeOrHeight Landscape or height.
+ */
+anychart.charts.Cartesian.prototype.getSvgBase64String;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.shareAsJpg
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shares a chart as a JPG file and returns a link to the shared image.
+ * @example anychart.charts.Cartesian.shareAsJpg
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {boolean=} opt_asBase64 Share as base64 file.
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ * @param {boolean=} opt_forceTransparentWhite Force transparent to white or not.
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Cartesian.prototype.shareAsJpg;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.shareAsPdf
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shares a chart as a PDF file and returns a link to the shared image.
+ * @example anychart.charts.Cartesian.shareAsPdf
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {boolean=} opt_asBase64 Share as base64 file.
+ * @param {(number|string)=} opt_paperSizeOrWidth Any paper format like 'a0', 'tabloid', 'b4', etc.
+ * @param {(number|boolean)=} opt_landscapeOrWidth Define, is landscape.
+ * @param {number=} opt_x Offset X.
+ * @param {number=} opt_y Offset Y.
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Cartesian.prototype.shareAsPdf;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.shareAsPng
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shares a chart as a PNG file and returns a link to the shared image.
+ * @example anychart.charts.Cartesian.shareAsPng
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {boolean=} opt_asBase64 Share as base64 file.
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Cartesian.prototype.shareAsPng;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.shareAsSvg
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shares a chart as a SVG file and returns a link to the shared image.
+ * @example anychart.charts.Cartesian.shareAsSvg
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {boolean=} opt_asBase64 Share as base64 file.
+ * @param {(string|number)=} opt_paperSizeOrWidth Paper Size or width.
+ * @param {(boolean|string)=} opt_landscapeOrHeight Landscape or height.
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Cartesian.prototype.shareAsSvg;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.toA11yTable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns the chart represented as an invisible HTML table.
+ * @detailed This method generates an invisible HTML table for accessibility purposes. The table is only available for Screen Readers.
+ * @category Specific settings
+ * @example anychart.charts.Cartesian.toA11yTable
+ * @param {string=} opt_title Title to set.
+ * @param {boolean=} opt_asString Defines output: HTML string if True, DOM element if False.
+ * @return {Element|string|null} HTML table instance with a11y style (invisible), HTML string or null if parsing chart to table fails.
+ */
+anychart.charts.Cartesian.prototype.toA11yTable;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Cartesian.prototype.toHtmlTable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns a chart as HTML table.
+ * @detailed This method generates an HTML table which contains chart data.
+ * @category Specific settings
+ * @example anychart.charts.Cartesian.toHtmlTable
+ * @param {string=} opt_title Title to set.
+ * @param {boolean=} opt_asString Defines output: HTML string if True, DOM element if False.
+ * @return {Element|string|null} HTML table instance, HTML string or null if parsing chart to table fails.
+ */
+anychart.charts.Cartesian.prototype.toHtmlTable;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //  ignoreDoc
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -2812,116 +3554,8 @@ anychart.charts.Cartesian.prototype.baseline;
  */
 anychart.charts.Cartesian.prototype.enabled;
 
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.localToGlobal;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.globalToLocal;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.contextMenu;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.getSelectedPoints;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.toCsv;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.saveAsXml;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.saveAsJson;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.saveAsCsv;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.saveAsXlsx;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.getStat;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.startSelectMarquee;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.selectMarqueeFill;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.selectMarqueeStroke;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.inMarquee;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.cancelMarquee;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.noData;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.exports;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.autoRedraw;
-
 /**
  * @inheritDoc
  * @ignoreDoc
  */
 anychart.charts.Cartesian.prototype.dispose;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.fullScreen;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.isFullScreenAvailable;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.id;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.a11y;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.shareWithFacebook;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.shareWithLinkedIn;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.shareWithPinterest;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.shareWithTwitter;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.getJpgBase64String;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.getPdfBase64String;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.getPngBase64String;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.getSvgBase64String;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.shareAsJpg;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.shareAsPdf;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.shareAsPng;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.shareAsSvg;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.toA11yTable;
-
-/** @inheritDoc */
-anychart.charts.Cartesian.prototype.toHtmlTable;

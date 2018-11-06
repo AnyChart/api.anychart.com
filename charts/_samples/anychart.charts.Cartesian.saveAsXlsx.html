@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.Chart.shareAsJpg"/>
+    <meta name="ac:name" content="anychart.charts.Cartesian.saveAsXlsx"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -22,30 +22,29 @@
     </style>
 </head>
 <body>
-<button onclick="shareAsJpg();">Get the link to JPG image</button>
+<button onclick="saveAsXlsx();">Save Excel</button>
 <div id="container"></div>
 <script>
     var chart;
     anychart.onDocumentReady(function () {
         chart = anychart.line([
-            {x: 'January', value: 2},
-            {x: 'February', value: 5},
-            {x: 'March', value: 3},
-            {x: 'April', value: 9},
-            {x: 'May', value: 4}
+            {x: 'Meat', value: 10},
+            {x: 'Fruit', value: 12},
+            {x: 'Nuts', value: 18},
+            {x: 'Milk', value: 11},
+            {x: 'Fish', value: 9}
         ]);
-        chart.title('Share chart as JPG image');
         chart.width('100%').height('95%');
+        chart.title('Save chart as Excel file');
         chart.container('container');
         chart.draw();
     });
 
-    function shareAsJpg() {
+    function saveAsXlsx() {
 
-        // Share chart as JPG image.
-        chart.shareAsJpg(function (response) {
-            alert(response);
-        });
+        // Save into Excel file.
+        chart.saveAsXlsx('raw', 'ExcelData');
+
     }
 </script>
 </body>
