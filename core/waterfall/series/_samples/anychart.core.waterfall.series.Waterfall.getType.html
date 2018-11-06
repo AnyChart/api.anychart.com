@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.waterfall.series.Waterfall.getType"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-waterfall.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.waterfall([
+            {x: 'Start', value: 166},
+            {x: 'January', value: 43},
+            {x: 'February', value: -79},
+            {x: 'March', value: -46},
+            {x: 'April', value: 84},
+            {x: 'End', isTotal: true}
+        ]);
+
+        var series = chart.getSeries(0);
+
+        // Get series type.
+        var type = series.getType();
+
+        chart.title('Series type is ' + type);
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
