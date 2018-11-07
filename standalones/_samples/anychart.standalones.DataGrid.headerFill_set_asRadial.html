@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.standalones.DataGrid.headerFill set asRadial"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create('container');
+
+        var data = [
+            {id: 1, name: 'Phase 1 - Strategic Plan'},
+            {id: 2, name: 'Self-Assessment'},
+            {id: 3, name: '14%', parent: 1},
+            {id: 4, name: '25%', parent: 2},
+            {id: 5, name: 'Define business vision'},
+            {id: 6, name: '0%', parent: 5},
+            {id: 7, name: 'Interview owners of similar businesses'}
+        ];
+
+        var treeData = anychart.data.tree(data, 'as-table');
+
+        var dataGrid = anychart.standalones.dataGrid();
+        dataGrid.data(treeData);
+        dataGrid.headerHeight(25);
+
+        // Set header fill as a radial gradient
+        dataGrid.headerFill(['#bebebe', '#ffffff'], 0.5, 0.5, null, 0.9, 0.5, 0.5);
+
+        dataGrid.container(stage);
+        dataGrid.draw();
+    });
+</script>
+</body>
+</html>

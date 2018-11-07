@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.standalones.ResourceTimeline.rowStroke set asObj"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create('container');
+
+        var data = getData();
+
+        var treeData = anychart.data.tree(data, 'as-table');
+
+        var timeLine = anychart.standalones.resourceTimeline();
+        timeLine.data(treeData);
+
+        // Set row stroke parameter as an object.
+        timeLine.rowStroke({color: '#ee3b3b', thickness: 2, dash: '3 1'});
+
+        timeLine.container(stage);
+        timeLine.draw();
+    });
+    function getData() {
+        return [
+            {
+                id: 1,
+                name: 'Alex Exler',
+                periods: [
+                    {id: '1_1', start: 1171468800000, end: 1171987200000},
+                    {id: '1_2', start: 1174921200000, end: 1175612400000},
+                    {id: '1_3', start: 1177599600000, end: 1178550000000},
+                    {id: '1_4', start: 1182092400000, end: 1182697200000},
+                    {id: '1_5', start: 1183647600000, end: 1183906800000},
+                    {id: '1_6', start: 1186412400000, end: 1187708400000},
+                    {id: '1_7', start: 1190646000000, end: 1191337200000},
+                    {id: '1_8', start: 1193760000000, end: 1194192000000},
+                    {id: '1_9', start: 1196870400000, end: 1197302400000},
+                    {id: '1_10', start: 1201017600000, end: 1201449600000},
+                    {id: '1_11', start: 1207148400000, end: 1207666800000},
+                    {id: '1_12', start: 1209913200000, end: 1210518000000},
+                    {id: '1_13', start: 1213542000000, end: 1213801200000},
+                    {id: '1_14', start: 1214838000000, end: 1215356400000},
+                    {id: '1_15', start: 1216566000000, end: 1216911600000},
+                    {id: '1_16', start: 1218380400000, end: 1219330800000},
+                    {id: '1_17', start: 1222182000000, end: 1222614000000},
+                    {id: '1_18', start: 1225728000000, end: 1226851200000},
+                    {id: '1_19', start: 1229356800000, end: 1229961600000}
+                ]
+            },
+            {
+                id: 2,
+                name: 'Philip Kineyko',
+                periods: [
+                    {id: '2_1', start: 1173024000000, end: 1173715200000},
+                    {id: '2_2', start: 1173888000000, end: 1174406400000},
+                    {id: '2_3', start: 1176994800000, end: 1177945200000},
+                    {id: '2_4', start: 1180364400000, end: 1180882800000},
+                    {id: '2_5', start: 1182956400000, end: 1183647600000}
+                ]
+            },
+            {
+                id: 3,
+                name: 'Luke Liakos',
+                periods: [
+                    {id: '3_1', start: 1169740800000, end: 1170172800000},
+                    {id: '3_2', start: 1171987200000, end: 1172505600000},
+                    {id: '3_3', start: 1175439600000, end: 1176217200000},
+                    {id: '3_4', start: 1176908400000, end: 1178463600000},
+                    {id: '3_5', start: 1180364400000, end: 1180537200000},
+                    {id: '3_6', start: 1184684400000, end: 1185721200000},
+                    {id: '3_7', start: 1187535600000, end: 1188226800000},
+                    {id: '3_8', start: 1189350000000, end: 1190041200000},
+                    {id: '3_9', start: 1190559600000, end: 1191250800000},
+                    {id: '3_10', start: 1193065200000, end: 1193846400000},
+                    {id: '3_11', start: 1197561600000, end: 1197907200000},
+                    {id: '3_12', start: 1199376000000, end: 1200240000000},
+                    {id: '3_13', start: 1202140800000, end: 1202745600000},
+                    {id: '3_14', start: 1207580400000, end: 1208098800000},
+                    {id: '3_15', start: 1211900400000, end: 1212418800000},
+                    {id: '3_16', start: 1215702000000, end: 1215961200000},
+                    {id: '3_17', start: 1218985200000, end: 1219158000000}
+                ]
+            }
+        ];
+    }
+</script>
+</body>
+</html>

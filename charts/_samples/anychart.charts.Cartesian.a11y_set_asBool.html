@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Cartesian.a11y set asBool"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.column();
+
+        chart.data({
+            header: ['#', 'Florida', 'Texas', 'Arizona', 'Nevada', 'Oregon', 'Idaho'],
+            rows: [
+                ['Apples', 21, 99, 19, 72, 94, 71],
+                ['Pears', 41, 7, 71, 10, 27, 79],
+                ['Bananas', 9, 15, 77, 58, 97, 79],
+                ['Grapes', 71, 34, 40, 21, 72, 6],
+                ['Oranges', 6, 29, 11, 46, 19, 49]
+            ]
+        });
+
+        chart.a11y({mode: 'data-table'});
+
+        // Disable accessibility.
+        chart.a11y(false);
+
+        chart.title('Disable accessibility');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>

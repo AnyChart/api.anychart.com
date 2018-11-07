@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.getChartById"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="getChartById()">Get the chart by id and modify it</button>
+<div id="container"></div>
+</div>
+<script>
+    var stage;
+    anychart.onDocumentReady(function () {
+        stage = anychart.graphics.create('container');
+
+        createChart(anychart.column, 0, 0, '100%', '50%', 'Column chart', 'column');
+        createChart(anychart.line, 0, '50%', '100%', '50%', 'Line chart', 'line');
+    });
+
+    function createChart(type, x, y, width, height, text, id) {
+        var chart = type([
+            {x: 'June', value: 3},
+            {x: 'July', value: 2},
+            {x: 'August', value: 6},
+            {x: 'September', value: 5},
+            {x: 'October', value: 1}
+        ]);
+        chart.bounds(x, y, width, height);
+        chart.id(id);
+        chart.title(text);
+        chart.container(stage);
+        chart.draw();
+    }
+
+    function getChartById() {
+
+        // Get the chart by id.
+        var chartById = anychart.getChartById('line');
+        chartById.background('#7fff00 0.2');
+    }
+</script>
+</body>
+</html>

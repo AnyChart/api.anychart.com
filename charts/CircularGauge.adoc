@@ -6,6 +6,7 @@ anychart.gauges;
 
 /**
  * Circular gauge class.
+ * {docs:Gauges/Circular_Gauge}Learn more about Circular Gauge{docs}
  * @param {?(anychart.data.View|anychart.data.Set|Array|string)=} opt_data Value to set.
  * @param {(anychart.enums.TextParsingMode|string|anychart.data.TextParsingSettings)=} opt_csvSettings If CSV string is passed, you can pass CSV parser settings here as a hash map.
  * @extends {anychart.core.Chart}
@@ -707,248 +708,1647 @@ anychart.charts.CircularGauge.prototype.defaultPointerType;
  */
 anychart.charts.CircularGauge.prototype.defaultPointerType;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.margin
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart margin.<br/>
+ * <img src='/anychart.core.Chart.prototype.margin.png' width='352' height='351'/>
+ * @shortDescription Margin settings.
+ * @category Size and Position
+ * @detailed Also, you can use {@link anychart.core.utils.Margin#bottom}, {@link anychart.core.utils.Margin#left},
+ * {@link anychart.core.utils.Margin#right}, {@link anychart.core.utils.Margin#top} methods to setting paddings.
+ * @example anychart.charts.CircularGauge.margin_get
+ * @return {!anychart.core.utils.Margin} Chart margin.
+ */
 anychart.charts.CircularGauge.prototype.margin;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart margin in pixels using a single complex object.
+ * @listing Example.
+ * // all margins 15px
+ * chart.margin(15);
+ * // all margins 15px
+ * chart.margin("15px");
+ * // top and bottom 5px, right and left 15px
+ * chart.margin(anychart.utils.margin(5, 15));
+ * @example anychart.charts.CircularGauge.margin_set_asSingle
+ * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=}
+ * opt_margin [{top: 0, right: 0, bottom: 0, left: 0}] Value to set.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.margin;
+
+/**
+ * Setter for the chart margin in pixels using several simple values.
+ * @listing Example.
+ * // 1) all 10px
+ * chart.margin(10);
+ * // 2) top and bottom 10px, left and right 15px
+ * chart.margin(10, "15px");
+ * // 3) top 10px, left and right 15px, bottom 5px
+ * chart.margin(10, "15px", 5);
+ * // 4) top 10px, right 15px, bottom 5px, left 12px
+ * chart.margin(10, "15px", "5px", 12);
+ * @example anychart.charts.CircularGauge.margin_set_asSeveral
+ * @param {(string|number)=} opt_value1 [0] Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 [0] Right or right-left space.
+ * @param {(string|number)=} opt_value3 [0] Bottom space.
+ * @param {(string|number)=} opt_value4 [0] Left space.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.margin;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+// anychart.charts.CircularGauge.prototype.padding
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart padding.<br/>
+ * <img src='/anychart.core.Chart.prototype.padding.png' width='352' height='351'/>
+ * @shortDescription Padding settings.
+ * @category Size and Position
+ * @detailed Also, you can use {@link anychart.core.utils.Padding#bottom}, {@link anychart.core.utils.Padding#left},
+ * {@link anychart.core.utils.Padding#right}, {@link anychart.core.utils.Padding#top} methods to setting paddings.
+ * @example anychart.charts.CircularGauge.padding_get
+ * @return {!anychart.core.utils.Padding} Chart padding.
+ */
 anychart.charts.CircularGauge.prototype.padding;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart paddings in pixels using a single value.
+ * @listing See listing.
+ * chart.padding([5, 15]);
+ * or
+ * chart.padding({left: 10, top: 20, bottom: 30, right: "40%"}});
+ * @example anychart.charts.CircularGauge.padding_set_asSingle
+ * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=}
+ * opt_padding [{top: 0, right: 0, bottom: 0, left: 0}] Value to set.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.padding;
+
+/**
+ * Setter for the chart paddings in pixels using several numbers.
+ * @listing Example.
+ * // 1) all 10px
+ * chart.padding(10);
+ * // 2) top and bottom 10px, left and right 15px
+ * chart.padding(10, "15px");
+ * // 3) top 10px, left and right 15px, bottom 5px
+ * chart.padding(10, "15px", 5);
+ * // 4) top 10px, right 15%, bottom 5px, left 12px
+ * chart.padding(10, "15%", "5px", 12);
+ * @example anychart.charts.CircularGauge.padding_set_asSeveral
+ * @param {(string|number)=} opt_value1 [0] Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 [0] Right or right-left space.
+ * @param {(string|number)=} opt_value3 [0] Bottom space.
+ * @param {(string|number)=} opt_value4 [0] Left space.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.padding;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.background
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart background.
+ * @shortDescription Background settings.
+ * @category Coloring
+ * @example anychart.charts.CircularGauge.background_get
+ * @return {!anychart.core.ui.Background} Chart background.
+ */
 anychart.charts.CircularGauge.prototype.background;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart background settings.
+ * @detailed Sets chart background settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart background.</li>
+ *   <li><b>object</b> - sets chart background settings.</li>
+ *   <li><b>string</b> - sets chart background color.</li>
+ * </ul>
+ * @example anychart.charts.CircularGauge.background_set_asBool Disable/Enable background
+ * @example anychart.charts.CircularGauge.background_set_asObj Using object
+ * @example anychart.charts.CircularGauge.background_set_asString Using string
+ * @param {(string|Object|null|boolean)=} opt_settings Background settings to set.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.background;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.title
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart title.
+ * @shortDescription Title settings.
+ * @category Chart Controls
+ * @example anychart.charts.CircularGauge.title_get
+ * @return {!anychart.core.ui.Title} Chart title.
+ */
 anychart.charts.CircularGauge.prototype.title;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart title.
+ * @detailed Sets chart title settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart title.</li>
+ *   <li><b>string</b> - sets chart title text value.</li>
+ *   <li><b>object</b> - sets chart title settings.</li>
+ * </ul>
+ * @example anychart.charts.CircularGauge.title_set_asBool Disable/Enable title
+ * @example anychart.charts.CircularGauge.title_set_asObj Using object
+ * @example anychart.charts.CircularGauge.title_set_asString Using string
+ * @param {(null|boolean|Object|string)=} opt_settings [false] Chart title text or title instance for copy settings from.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.title;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.label
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart label.
+ * @shortDescription Label settings.
+ * @category Chart Controls
+ * @example anychart.charts.CircularGauge.label_get
+ * @param {(string|number)=} opt_index [0] Index of instance.
+ * @return {anychart.core.ui.Label} An instance of class.
+ */
 anychart.charts.CircularGauge.prototype.label;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart label.
+ * @detailed Sets chart label settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart label.</li>
+ *   <li><b>string</b> - sets chart label text value.</li>
+ *   <li><b>object</b> - sets chart label settings.</li>
+ * </ul>
+ * @example anychart.charts.CircularGauge.label_set_asBool Disable/Enable label
+ * @example anychart.charts.CircularGauge.label_set_asObj Using object
+ * @example anychart.charts.CircularGauge.label_set_asString Using string
+ * @param {(null|boolean|Object|string)=} opt_settings [false] Chart label instance to add by index 0.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.label;
+
+/**
+ * Setter for chart label using index.
+ * @detailed Sets chart label settings by index depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart label.</li>
+ *   <li><b>string</b> - sets chart label text value.</li>
+ *   <li><b>object</b> - sets chart label settings.</li>
+ * </ul>
+ * @example anychart.charts.CircularGauge.label_set_asIndexBool Disable/Enable label by index
+ * @example anychart.charts.CircularGauge.label_set_asIndexObj Using object
+ * @example anychart.charts.CircularGauge.label_set_asIndexString Using string
+ * @param {(string|number)=} opt_index [0] Label index.
+ * @param {(null|boolean|Object|string)=} opt_settings [false] Chart label settings.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.label;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.tooltip
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart tooltip.
+ * @category Interactivity
+ * @shortDescription Tooltip settings.
+ * @listing See listing.
+ * var tooltip = chart.tooltip();
+ * @return {anychart.core.ui.Tooltip} Tooltip settings.
+ */
 anychart.charts.CircularGauge.prototype.tooltip;
 
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.animation;
+/**
+ * Setter for the chart tooltip.
+ * @detailed Sets tooltip settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable tooltip.</li>
+ *   <li><b>object</b> - sets tooltip settings.</li>
+ * </ul>
+ * <b>Note:</b> Works only with anychart.enums.TooltipDisplayMode|string.UNION display mode.
+ * @example anychart.charts.CircularGauge.tooltip_set_asBool Disable/Enable tooltip
+ * @example anychart.charts.CircularGauge.tooltip_set_asObj Using object
+ * @param {(Object|boolean|null)=} opt_settings [false] Chart tooltip settings.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.tooltip;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.draw
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Starts the rendering of the chart into the container.
+ * @shortDescription Drawing of cartesian chart.
+ * @example anychart.charts.CircularGauge.draw
+ * @param {boolean=} opt_async Whether do draw asynchronously. If set to <b>true</b>, the chart will be drawn asynchronously.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
 anychart.charts.CircularGauge.prototype.draw;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.toJson
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns chart configuration as JSON object or string.
+ * @category XML/JSON
+ * @example anychart.charts.CircularGauge.toJson_asObj Returns JSON as object
+ * @example anychart.charts.CircularGauge.toJson_asString Returns JSON as string
+ * @param {boolean=} opt_stringify [false] Returns JSON as string.
+ * @return {Object|string} Chart configuration.
+ */
 anychart.charts.CircularGauge.prototype.toJson;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.toXml
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns chart configuration as XML string or XMLNode.
+ * @category XML/JSON
+ * @example anychart.charts.CircularGauge.toXml_asString Returns XML as string
+ * @example anychart.charts.CircularGauge.toXml_asNode Returns XMLNode
+ * @param {boolean=} opt_asXmlNode [false] Return XML as XMLNode.
+ * @return {string|Node} Chart configuration.
+ */
 anychart.charts.CircularGauge.prototype.toXml;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.bounds
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart bounds settings.
+ * @shortDescription Bounds settings.
+ * @category Size and Position
+ * @listing See listing
+ * var bounds = chart.bounds();
+ * @return {!anychart.core.utils.Bounds} Bounds of the element.
+ */
 anychart.charts.CircularGauge.prototype.bounds;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart bounds using one parameter.
+ * @example anychart.charts.CircularGauge.bounds_set_asSingle
+ * @param {(anychart.utils.RectObj|anychart.math.Rect|anychart.core.utils.Bounds)=} opt_bounds Bounds of teh chart.
+ * @return {anychart.core.VisualBase} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.bounds;
+
+/**
+ * Setter for the chart bounds settings.
+ * @example anychart.charts.CircularGauge.bounds_set_asSeveral
+ * @param {(number|string)=} opt_x [null] X-coordinate.
+ * @param {(number|string)=} opt_y [null] Y-coordinate.
+ * @param {(number|string)=} opt_width [null] Width.
+ * @param {(number|string)=} opt_height [null] Height.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.bounds;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.left
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's left bound setting.
+ * @shortDescription Left bound setting.
+ * @category Size and Position
+ * @listing See listing
+ * var left = chart.left();
+ * @return {number|string|undefined} Chart's left bound setting.
+ */
 anychart.charts.CircularGauge.prototype.left;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart's left bound setting.
+ * @example anychart.charts.CircularGauge.left_right_top_bottom
+ * @param {(number|string|null)=} opt_left [null] Left bound setting for the chart.
+ * @return {!anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.left;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.right
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's right bound setting.
+ * @shortDescription Right bound setting.
+ * @category Size and Position
+ * @listing See listing
+ * var right = chart.right();
+ * @return {number|string|undefined} Chart's right bound setting.
+ */
 anychart.charts.CircularGauge.prototype.right;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart's right bound setting.
+ * @example anychart.charts.CircularGauge.left_right_top_bottom
+ * @param {(number|string|null)=} opt_right [null] Right bound setting for the chart.
+ * @return {!anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.right;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.top
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's top bound setting.
+ * @shortDescription Top bound setting.
+ * @category Size and Position
+ * @listing See listing
+ * var top = chart.top();
+ * @return {number|string|undefined} Chart's top bound setting.
+ */
 anychart.charts.CircularGauge.prototype.top;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart's top bound setting.
+ * @example anychart.charts.CircularGauge.left_right_top_bottom
+ * @param {(number|string|null)=} opt_top [null] Top bound setting for the chart.
+ * @return {!anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.top;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.bottom
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's bottom bound setting.
+ * @shortDescription Bottom bound setting.
+ * @category Size and Position
+ * @listing See listing
+ * var bottom = chart.bottom();
+ * @return {number|string|undefined} Chart's bottom bound setting.
+ */
 anychart.charts.CircularGauge.prototype.bottom;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart's bottom bound setting.
+ * @example anychart.charts.CircularGauge.left_right_top_bottom
+ * @param {(number|string|null)=} opt_bottom [null] Bottom bound setting for the chart.
+ * @return {!anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.bottom;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.width
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's width setting.
+ * @shortDescription Width setting.
+ * @category Size and Position
+ * @listing See listing
+ * var width = chart.width();
+ * @return {number|string|undefined} Chart's width setting.
+ */
 anychart.charts.CircularGauge.prototype.width;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart's width setting.
+ * @example anychart.charts.CircularGauge.width_height
+ * @param {(number|string|null)=} opt_value [null] Width settings for the chart.
+ * @return {!anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.width;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.height
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's height setting.
+ * @shortDescription Height setting.
+ * @category Size and Position
+ * @listing See listing
+ * var height = chart.height();
+ * @return {number|string|undefined} Chart's height setting.
+ */
 anychart.charts.CircularGauge.prototype.height;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart's height setting.
+ * @example anychart.charts.CircularGauge.width_height
+ * @param {(number|string|null)=} opt_value [null] Height setting for the chart.
+ * @return {!anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.height;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.minWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's minimum width.
+ * @shortDescription Minimum width setting.
+ * @category Size and Position
+ * @listing See listing
+ * var chart = anychart.cartesian();
+ * chart.line([10, 4, 17, 20, 16, 35, 6, 15]);
+ * var minWidth = chart.minWidth();
+ * @return {(number|string|null)} Chart's minimum width.
+ */
 anychart.charts.CircularGauge.prototype.minWidth;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart's minimum width.
+ * @detailed The method sets a minimum width of elements, that will be to remain after a resize of element.
+ * @example anychart.charts.CircularGauge.minWidth_set
+ * @param {(number|string|null)=} opt_value [null] Value to set.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.minWidth;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.minHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's minimum height.
+ * @shortDescription Minimum height setting.
+ * @category Size and Position
+ * @listing See listing
+ * var minHeight = chart.minHeight();
+ * @return {(number|string|null)} Chart's minimum height.
+ */
 anychart.charts.CircularGauge.prototype.minHeight;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart's minimum height.
+ * @detailed The method sets a minimum height of elements, that will be to remain after a resize of element.
+ * @example anychart.charts.CircularGauge.minHeight_set
+ * @param {(number|string|null)=} opt_value [null] Value to set.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.minHeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.maxWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's maximum width.
+ * @shortDescription Maximum width setting.
+ * @category Size and Position
+ * @listing See listing
+ * var maxWidth = chart.maxWidth();
+ * @return {(number|string|null)} Chart's maximum width.
+ */
 anychart.charts.CircularGauge.prototype.maxWidth;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart's maximum width.
+ * @example anychart.charts.CircularGauge.maxWidth_set
+ * @param {(number|string|null)=} opt_value [null] Value to set.
+ * @return {!anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.maxWidth;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.maxHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's maximum height.
+ * @shortDescription Maximum height setting.
+ * @category Size and Position
+ * @listing See listing
+ * var maxHeight = chart.maxHeight();
+ * @return {(number|string|null)} Chart's maximum height.
+ */
 anychart.charts.CircularGauge.prototype.maxHeight;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart's maximum height.
+ * @example anychart.charts.CircularGauge.maxHeight_set
+ * @param {(number|string|null)=} opt_value [null] Value to set.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.maxHeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.getPixelBounds
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns pixel bounds of the chart.<br/>
+ * Returns pixel bounds of the chart due to parent bounds and self bounds settings.
+ * @category Size and Position
+ * @example anychart.charts.CircularGauge.getPixelBounds
+ * @return {!anychart.math.Rect} Pixel bounds of the chart.
+ */
 anychart.charts.CircularGauge.prototype.getPixelBounds;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.container
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart container.
+ * @shortDescription Chart container
+ * @return {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage} Chart container.
+ */
 anychart.charts.CircularGauge.prototype.container;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart container.
+ * @example anychart.charts.CircularGauge.container
+ * @param {(anychart.graphics.vector.Layer|anychart.graphics.vector.Stage|string|Element)=} opt_element The value to set.
+ * @return {!anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.container;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.zIndex
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the Z-index of the chart.
+ * @shortDescription Z-index of the chart.
+ * @category Size and Position
+ * @listing See listing
+ * var zIndex = chart.zIndex();
+ * @return {number} Chart Z-index.
+ */
 anychart.charts.CircularGauge.prototype.zIndex;
 
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.enabled;
+/**
+ * Setter for the Z-index of the chart.
+ * @detailed The bigger the index - the higher the element position is.
+ * @example anychart.charts.CircularGauge.zIndex_set
+ * @param {number=} opt_zIndex [0] Value to set.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.zIndex;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.saveAsPng
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves the chart as PNG image.
+ * @category Export
+ * @example anychart.charts.CircularGauge.saveAsPng
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ */
 anychart.charts.CircularGauge.prototype.saveAsPng;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.saveAsJpg
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves the chart as JPEG image.
+ * @category Export
+ * @example anychart.charts.CircularGauge.saveAsJpg
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ * @param {boolean=} opt_forceTransparentWhite Define, should we force transparent to white background.
+ */
 anychart.charts.CircularGauge.prototype.saveAsJpg;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.saveAsPdf
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves the chart as PDF image.
+ * @category Export
+ * @example anychart.charts.CircularGauge.saveAsPdf
+ * @param {string=} opt_paperSize Any paper format like 'a0', 'tabloid', 'b4', etc.
+ * @param {boolean=} opt_landscape Define, is landscape.
+ * @param {number=} opt_x Offset X.
+ * @param {number=} opt_y Offset Y.
+ */
 anychart.charts.CircularGauge.prototype.saveAsPdf;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.saveAsSvg
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves the chart as SVG image using paper size and landscape.
+ * @shortDescription Saves the chart as SVG image.
+ * @category Export
+ * @example anychart.charts.CircularGauge.saveAsSvg_set_asPaperSizeLandscape
+ * @param {string=} opt_paperSize Paper Size.
+ * @param {boolean=} opt_landscape Landscape.
+ */
 anychart.charts.CircularGauge.prototype.saveAsSvg;
 
-/** @inheritDoc */
+/**
+ * Saves the stage as SVG image using width and height.
+ * @example anychart.charts.CircularGauge.saveAsSvg_set_asWidthHeight
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ */
+anychart.charts.CircularGauge.prototype.saveAsSvg;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.toSvg
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns SVG string using paper size and landscape.
+ * @detailed Returns SVG string if type of content is SVG otherwise returns empty string.
+ * @shortDescription Returns SVG string.
+ * @category Export
+ * @example anychart.charts.CircularGauge.toSvg_set_asPaperSizeLandscape
+ * @param {string=} opt_paperSize Paper Size.
+ * @param {boolean=} opt_landscape Landscape.
+ * @return {string} SVG content or empty string.
+ */
 anychart.charts.CircularGauge.prototype.toSvg;
 
-/** @inheritDoc */
+/**
+ * Returns SVG string using width and height.
+ * @detailed Returns SVG string if type of content is SVG otherwise returns empty string.
+ * @example anychart.charts.CircularGauge.toSvg_set_asWidthHeight
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @return {string} SVG content or empty string.
+ */
+anychart.charts.CircularGauge.prototype.toSvg;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.print
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Prints chart.
+ * @shortDescription Prints chart.
+ * @category Export
+ * @example anychart.charts.CircularGauge.print
+ * @param {anychart.graphics.vector.PaperSize=} opt_paperSize Paper size.
+ * @param {boolean=} opt_landscape [false] Flag of landscape.
+ */
 anychart.charts.CircularGauge.prototype.print;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.listen
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds an event listener to an implementing object.
+ * @detailed The listener can be added to an object once, and if it is added one more time, its key will be returned.<br/>
+ * <b>Note</b>: Notice that if the existing listener is one-off (added using listenOnce),
+ * it will cease to be such after calling the listen() method.
+ * @shortDescription Adds an event listener.
+ * @category Events
+ * @example anychart.charts.CircularGauge.listen
+ * @param {string} type The event type id.
+ * @param {ListenCallback} listener Callback method.
+ * Function that looks like: <pre>function(event){
+ *    // event.actualTarget - actual event target
+ *    // event.currentTarget - current event target
+ *    // event.iterator - event iterator
+ *    // event.originalEvent - original event
+ *    // event.point - event point
+ *    // event.pointIndex - event point index
+ * }</pre>
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about capturing {@link https://javascript.info/bubbling-and-capturing}
+ * @param {Object=} opt_listenerScope Object in whose scope to call the listener.
+ * @return {{key: number}} Unique key for the listener.
+ */
 anychart.charts.CircularGauge.prototype.listen;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.listenOnce
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds an event listener to an implementing object.
+ * @detailed <b>After the event is called, its handler will be deleted.</b><br>
+ * If the event handler being added already exists, listenOnce will do nothing. <br/>
+ * <b>Note</b>: In particular, if the handler is already registered using listen(), listenOnce()
+ * <b>will not</b> make it one-off. Similarly, if a one-off listener already exists, listenOnce will not change it
+ * (it wil remain one-off).
+ * @shortDescription Adds a single time event listener.
+ * @category Events
+ * @example anychart.charts.CircularGauge.listenOnce
+ * @param {string} type The event type id.
+ * @param {ListenCallback} listener Callback method.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about capturing {@link https://javascript.info/bubbling-and-capturing}
+ * @param {Object=} opt_listenerScope Object in whose scope to call the listener.
+ * @return {{key: number}} Unique key for the listener.
+ */
 anychart.charts.CircularGauge.prototype.listenOnce;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.unlisten
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes a listener added using listen() or listenOnce() methods.
+ * @shortDescription Removes the listener.
+ * @category Events
+ * @example anychart.charts.CircularGauge.unlisten
+ * @param {string} type The event type id.
+ * @param {ListenCallback} listener Callback method.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about capturing {@link https://javascript.info/bubbling-and-capturing}
+ * @param {Object=} opt_listenerScope Object in whose scope to call the listener.
+ * @return {boolean} Whether any listener was removed.
+ */
 anychart.charts.CircularGauge.prototype.unlisten;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.unlistenByKey
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
+ * @shortDescription Removes the listener by the key.
+ * @category Events
+ * @example anychart.charts.CircularGauge.unlistenByKey
+ * @param {{key: number}} key The key returned by listen() or listenOnce().
+ * @return {boolean} Whether any listener was removed.
+ */
 anychart.charts.CircularGauge.prototype.unlistenByKey;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.removeAllListeners
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
+ * @shortDescription Removes all listeners.
+ * @category Events
+ * @example anychart.charts.CircularGauge.removeAllListeners
+ * @param {string=} opt_type Type of event to remove, default is to remove all types.
+ * @return {number} Number of listeners removed.
+ */
 anychart.charts.CircularGauge.prototype.removeAllListeners;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.localToGlobal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Converts the local coordinates to global coordinates.
+ * <b>Note:</b> Works only after {@link anychart.charts.CircularGauge#draw} is called.
+ * @category Specific settings
+ * @detailed Converts local coordinates of the container or stage into global coordinates of the global document.<br/>
+ * On image below, the red point is a starting coordinate point of the chart bounds.
+ * Local coordinates work only in area of the stage (container).<br/>
+ * <img src='/anychart.core.Chart.localToGlobal.png' height='310' width='530'/><br/>
+ * @example anychart.charts.CircularGauge.localToGlobal
+ * @param {number} xCoord Local X coordinate.
+ * @param {number} yCoord Local Y coordinate.
+ * @return {Object.<string, number>} Object with XY coordinates.
+ */
 anychart.charts.CircularGauge.prototype.localToGlobal;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.globalToLocal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Converts the global coordinates to local coordinates.
+ * <b>Note:</b> Works only after {@link anychart.charts.CircularGauge#draw} is called.
+ * @category Specific settings
+ * @detailed Converts global coordinates of the global document into local coordinates of the container or stage.<br/>
+ * On image below, the red point is a starting coordinate point of the chart bounds. Local coordinates work only in area of the stage (container).<br/>
+ * <img src='/anychart.core.Chart.localToGlobal.png' height='310' width='530'/>
+ * @example anychart.charts.CircularGauge.globalToLocal
+ * @param {number} xCoord Global X coordinate.
+ * @param {number} yCoord Global Y coordinate.
+ * @return {Object.<string, number>} Object with XY coordinates.
+ */
 anychart.charts.CircularGauge.prototype.globalToLocal;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.contextMenu
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the context menu.
+ * @shortDescription Context menu settings.
+ * @category Chart Controls
+ * @example anychart.charts.CircularGauge.contextMenu_get
+ * @return {anychart.ui.ContextMenu} Context menu.
+ */
 anychart.charts.CircularGauge.prototype.contextMenu;
 
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.getSelectedPoints;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.toCsv;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.saveAsXml;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.saveAsJson;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.saveAsCsv;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.saveAsXlsx;
-
-/** @inheritDoc */
+/**
+ * Setter for the context menu.
+ * @detailed Sets context menu settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable context menu.</li>
+ *   <li><b>object</b> - sets context menu settings.</li>
+ * </ul>
+ * @example anychart.charts.CircularGauge.contextMenu_set_asBool Enable/disable context menu
+ * @example anychart.charts.CircularGauge.contextMenu_set_asObj Using object
+ * @param {(Object|boolean|null)=} opt_settings Context menu settings
+ * @return {!anychart.charts.CircularGauge} Self instance for method chaining.
+ */
 anychart.charts.CircularGauge.prototype.contextMenu;
 
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.getSelectedPoints;
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.toCsv
+//
+//----------------------------------------------------------------------------------------------------------------------
 
-/** @inheritDoc */
+/**
+ * Returns CSV string with the chart data.
+ * @category Export
+ * @example anychart.charts.CircularGauge.toCsv Using object
+ * @example anychart.charts.CircularGauge.toCsv_asFunc Using function
+ * @param {(anychart.enums.ChartDataExportMode|string)=} opt_chartDataExportMode Data export mode.
+ * @param {Object.<string, (string|boolean|undefined|csvSettingsFunction|Object)>=} opt_csvSettings CSV settings.<br/>
+ * <b>CSV settings object</b>:<br/>
+ *  <b>rowsSeparator</b> - string or undefined (default is '\n')<br/>
+ *  <b>columnsSeparator</b>  - string or undefined (default is ',')<br/>
+ *  <b>ignoreFirstRow</b>  - boolean or undefined (default is 'false')<br/>
+ *  <b>formats</b>  - <br/>
+ *  1) a function with two arguments such as the field name and value, that returns the formatted value<br/>
+ *  or <br/>
+ *  2) the object with the key as the field name, and the value as a format function. <br/>
+ *  (default is 'undefined').
+ * @return {string} CSV string.
+ */
 anychart.charts.CircularGauge.prototype.toCsv;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.saveAsXml
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves chart config as XML document.
+ * @category Export
+ * @example anychart.charts.CircularGauge.saveAsXml
+ * @param {string=} opt_filename File name to save.
+ */
 anychart.charts.CircularGauge.prototype.saveAsXml;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.saveAsJson
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves chart config as JSON document.
+ * @category Export
+ * @example anychart.charts.CircularGauge.saveAsJson
+ * @param {string=} opt_filename File name to save.
+ */
 anychart.charts.CircularGauge.prototype.saveAsJson;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.saveAsCsv
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves chart data as a CSV file.
+ * @category Export
+ * @example anychart.charts.CircularGauge.saveAsCsv
+ * @param {(anychart.enums.ChartDataExportMode|string)=} opt_chartDataExportMode Data export mode.
+ * @param {Object.<string, (string|boolean|undefined|csvSettingsFunction)>=} opt_csvSettings CSV settings.<br/>
+ * <b>CSV settings object</b>:<br/>
+ *  <b>rowsSeparator</b> - string or undefined (default is '\n')<br/>
+ *  <b>columnsSeparator</b>  - string or undefined (default is ',')<br/>
+ *  <b>ignoreFirstRow</b>  - boolean or undefined (default is 'false')<br/>
+ *  <b>formats</b>  - <br/>
+ *  1) a function with two arguments such as the field name and value, that returns the formatted value<br/>
+ *  or <br/>
+ *  2) the object with the key as the field name, and the value as a format function. <br/>
+ *  (default is 'undefined').
+ * @param {string=} opt_filename File name to save.
+ */
 anychart.charts.CircularGauge.prototype.saveAsCsv;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.saveAsXlsx
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves chart data as an Excel document.
+ * @category Export
+ * @example anychart.charts.CircularGauge.saveAsXlsx
+ * @param {(anychart.enums.ChartDataExportMode|string)=} opt_chartDataExportMode Data export mode.
+ * @param {string=} opt_filename File name to save.
+ */
 anychart.charts.CircularGauge.prototype.saveAsXlsx;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.startSelectMarquee
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Starts select marquee drawing.
+ * <b>Note:</b> Works only after {@link anychart.charts.CircularGauge#draw} is called.
+ * @category Interactivity
+ * @example anychart.charts.CircularGauge.startSelectMarquee
+ * @param {boolean=} opt_repeat Whether to start select marquee drawing.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
 anychart.charts.CircularGauge.prototype.startSelectMarquee;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.selectMarqueeFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the select marquee fill.
+ * @shortDescription Select marquee fill settings.
+ * @category Coloring
+ * @listing See listing
+ * var selectMarqueeFill = chart.selectMarqueeFill();
+ * @return {anychart.graphics.vector.Fill} Select marquee fill.
+ */
 anychart.charts.CircularGauge.prototype.selectMarqueeFill;
 
-/** @inheritDoc */
+/**
+ * Setter for fill settings using an array, an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.CircularGauge.selectMarqueeFill_set_asString Using string
+ * @example anychart.charts.CircularGauge.selectMarqueeFill_set_asArray Using array
+ * @example anychart.charts.CircularGauge.selectMarqueeFill_set_asObj Using object
+ * @param {anychart.graphics.vector.Fill|Array.<(anychart.graphics.vector.GradientKey|string)>} color Color as an object, an array or a string.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.selectMarqueeFill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.charts.CircularGauge.selectMarqueeFill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.selectMarqueeFill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.CircularGauge.selectMarqueeFill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.selectMarqueeFill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.CircularGauge.selectMarqueeFill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.selectMarqueeFill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.charts.CircularGauge.selectMarqueeFill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.selectMarqueeFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.selectMarqueeStroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the select marquee stroke.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @listing See listing.
+ * var selectMarqueeStroke = chart.selectMarqueeStroke();
+ * @return {anychart.graphics.vector.Stroke} Select marquee stroke.
+ */
 anychart.charts.CircularGauge.prototype.selectMarqueeStroke;
 
-/** @inheritDoc */
+/**
+ * Setter for the select marquee stroke.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.charts.CircularGauge.selectMarqueeStroke
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_color Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
+ * @param {(string|anychart.graphics.vector.StrokeLineCap)=} opt_lineCap Line cap style.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.selectMarqueeStroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.inMarquee
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Gets marquee process running value.
+ * @return {boolean} Returns true if there is a marquee process running.
+ */
 anychart.charts.CircularGauge.prototype.inMarquee;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.cancelMarquee
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Stops marquee action if any.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
 anychart.charts.CircularGauge.prototype.cancelMarquee;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.credits
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for chart credits.
+ * @shortDescription Credits settings
+ * @category Chart Controls
+ * @example anychart.charts.CircularGauge.credits_get
+ * @return {anychart.core.ui.ChartCredits} Chart credits.
+ */
 anychart.charts.CircularGauge.prototype.credits;
 
-/** @inheritDoc */
+/**
+ * Setter for chart credits.
+ * {docs:Quick_Start/Credits}Learn more about credits settings.{docs}
+ * @detailed <b>Note:</b> You can't customize credits without <u>your licence key</u>. To buy licence key go to
+ * <a href="https://www.anychart.com/buy/">Buy page</a>.<br/>
+ * Sets chart credits settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart credits.</li>
+ *   <li><b>object</b> - sets chart credits settings.</li>
+ * </ul>
+ * @example anychart.charts.CircularGauge.credits_set_asBool Disable/Enable credits
+ * @example anychart.charts.CircularGauge.credits_set_asObj Using object
+ * @param {(Object|boolean|null)=} opt_settings [true] Credits settings
+ * @return {!anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.credits;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.exports
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the export charts.
+ * @shortDescription Exports settings
+ * @category Export
+ * @listing See listing
+ * var exports = chart.exports();
+ * @return {anychart.core.utils.Exports} Exports settings.
+ */
 anychart.charts.CircularGauge.prototype.exports;
 
-/** @inheritDoc */
+/**
+ * Setter for the export charts.
+ * @example anychart.charts.CircularGauge.exports
+ * @detailed To work with exports you need to reference the exports module from AnyChart CDN
+ * (http://cdn.anychart.com/js/latest/anychart-exports.min.js for latest or http://cdn.anychart.com/js/{{branch-name}}/anychart-exports.min.js for the versioned file)
+ * @param {Object=} opt_settings Export settings.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.exports;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.noData
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for noData settings.
+ * @shortDescription NoData settings.
+ * @category Data
+ * @example anychart.charts.CircularGauge.noData_get
+ * @return {anychart.core.NoDataSettings} NoData settings.
+ */
 anychart.charts.CircularGauge.prototype.noData;
 
-/** @inheritDoc */
+/**
+ * Setter for noData settings.<br/>
+ * {docs:Working_with_Data/No_Data_Label} Learn more about "No data" feature {docs}
+ * @example anychart.charts.CircularGauge.noData_set
+ * @param {Object=} opt_settings NoData settings.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.noData;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.autoRedraw
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the autoRedraw flag. <br/>
+ * Flag whether to automatically call chart.draw() on any changes or not.
+ * @shortDescription Redraw chart after changes or not.
+ * @listing See listing
+ * var autoRedraw = chart.autoRedraw();
+ * @return {boolean} AutoRedraw flag.
+ */
 anychart.charts.CircularGauge.prototype.autoRedraw;
+
+/**
+ * Setter for the autoRedraw flag.<br/>
+ * Flag whether to automatically call chart.draw() on any changes or not.
+ * @example anychart.charts.CircularGauge.autoRedraw
+ * @param {boolean=} opt_enabled [true] Value to set.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.autoRedraw;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.fullScreen
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the fullscreen mode.
+ * @shortDescription Fullscreen mode.
+ * @listing See listing
+ * var fullScreen = chart.fullScreen();
+ * @return {boolean} Full screen state (enabled/disabled).
+ */
+anychart.charts.CircularGauge.prototype.fullScreen;
+
+/**
+ * Setter for the fullscreen mode.
+ * @example anychart.charts.CircularGauge.fullScreen
+ * @param {boolean=} opt_enabled [false] Enable/Disable fullscreen mode.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.fullScreen;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.isFullScreenAvailable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Whether the fullscreen mode available in the browser or not.
+ * @example anychart.charts.CircularGauge.isFullScreenAvailable
+ * @return {boolean} isFullScreenAvailable state.
+ */
+anychart.charts.CircularGauge.prototype.isFullScreenAvailable;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.id
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for chart id.
+ * @shortDescription Chart id.
+ * @example anychart.charts.CircularGauge.id_get
+ * @return {string} Return chart id.
+ */
+anychart.charts.CircularGauge.prototype.id;
+
+/**
+ * Setter for chart id.
+ * @example anychart.charts.CircularGauge.id_set
+ * @param {string=} opt_id Chart id.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.id;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.a11y
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the accessibility setting.
+ * @shortDescription Accessibility setting.
+ * @category Specific settings
+ * @listing See listing.
+ * var stateOfAccsessibility = chart.a11y();
+ * @return {anychart.core.utils.ChartA11y} Accessibility settings object.
+ */
+anychart.charts.CircularGauge.prototype.a11y;
+
+/**
+ * Setter for the accessibility setting.
+ * @detailed If you want to enable accessibility you need to turn it on using {@link anychart.charts.CircularGauge#a11y} method.<br/>
+ * Sets accessibility setting depending on parameter type:
+ * <ul>
+ *   <li><b>boolean</b> - disable or enable accessibility.</li>
+ *   <li><b>object</b> - sets accessibility setting.</li>
+ * </ul>
+ * @example anychart.charts.CircularGauge.a11y_set_asObj Using object
+ * @example anychart.charts.CircularGauge.a11y_set_asBool Enable/disable accessibility
+ * @param {(boolean|Object)=} opt_settings Whether to enable accessibility or object with settings.
+ * @return {anychart.charts.CircularGauge} Self instance for method chaining.
+ */
+anychart.charts.CircularGauge.prototype.a11y;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.shareWithFacebook
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens Facebook sharing dialog.
+ * @category Export
+ * @example anychart.charts.CircularGauge.shareWithFacebook
+ * @param {(string|Object)=} opt_captionOrOptions Caption for the main link or object with options.
+ * @param {string=} opt_link The URL is attached to the publication.
+ * @param {string=} opt_name The title for the attached link.
+ * @param {string=} opt_description Description for the attached link.
+ */
+anychart.charts.CircularGauge.prototype.shareWithFacebook;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.shareWithLinkedIn
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens LinkedIn sharing dialog.
+ * @category Export
+ * @example anychart.charts.CircularGauge.shareWithLinkedIn
+ * @param {(string|Object)=} opt_captionOrOptions Caption for publication or object with options. If not set 'AnyChart' will be used.
+ * @param {string=} opt_description Description.
+ */
+anychart.charts.CircularGauge.prototype.shareWithLinkedIn;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.shareWithPinterest
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens Pinterest sharing dialog.
+ * @category Export
+ * @example anychart.charts.CircularGauge.shareWithPinterest
+ * @param {(string|Object)=} opt_linkOrOptions Attached link or object with options. If not set, the image URL will be used.
+ * @param {string=} opt_description Description.
+ */
+anychart.charts.CircularGauge.prototype.shareWithPinterest;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.shareWithTwitter
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens Twitter sharing dialog.
+ * @category Export
+ * @example anychart.charts.CircularGauge.shareWithTwitter
+ */
+anychart.charts.CircularGauge.prototype.shareWithTwitter = function(){};
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.getJpgBase64String
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns JPG as base64 string.
+ * @category Export
+ * @example anychart.charts.CircularGauge.getJpgBase64String
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ * @param {boolean=} opt_forceTransparentWhite Force transparent to white or not.
+ */
+anychart.charts.CircularGauge.prototype.getJpgBase64String;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.getPdfBase64String
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns PDF as base64 string.
+ * @category Export
+ * @example anychart.charts.CircularGauge.getPdfBase64String
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {(number|string)=} opt_paperSizeOrWidth Any paper format like 'a0', 'tabloid', 'b4', etc.
+ * @param {(number|boolean)=} opt_landscapeOrWidth Define, is landscape.
+ * @param {number=} opt_x Offset X.
+ * @param {number=} opt_y Offset Y.
+ */
+anychart.charts.CircularGauge.prototype.getPdfBase64String;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.getPngBase64String
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns PNG as base64 string.
+ * @category Export
+ * @example anychart.charts.CircularGauge.getPngBase64String
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ */
+anychart.charts.CircularGauge.prototype.getPngBase64String;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.getSvgBase64String
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns SVG as base64 string.
+ * @category Export
+ * @example anychart.charts.CircularGauge.getSvgBase64String
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {(string|number)=} opt_paperSizeOrWidth Paper Size or width.
+ * @param {(boolean|string)=} opt_landscapeOrHeight Landscape or height.
+ */
+anychart.charts.CircularGauge.prototype.getSvgBase64String;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.shareAsJpg
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shares a chart as a JPG file and returns a link to the shared image.
+ * @category Export
+ * @example anychart.charts.CircularGauge.shareAsJpg
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {boolean=} opt_asBase64 Share as base64 file.
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ * @param {boolean=} opt_forceTransparentWhite Force transparent to white or not.
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.CircularGauge.prototype.shareAsJpg;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.shareAsPdf
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shares a chart as a PDF file and returns a link to the shared image.
+ * @category Export
+ * @example anychart.charts.CircularGauge.shareAsPdf
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {boolean=} opt_asBase64 Share as base64 file.
+ * @param {(number|string)=} opt_paperSizeOrWidth Any paper format like 'a0', 'tabloid', 'b4', etc.
+ * @param {(number|boolean)=} opt_landscapeOrWidth Define, is landscape.
+ * @param {number=} opt_x Offset X.
+ * @param {number=} opt_y Offset Y.
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.CircularGauge.prototype.shareAsPdf;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.shareAsPng
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shares a chart as a PNG file and returns a link to the shared image.
+ * @category Export
+ * @example anychart.charts.CircularGauge.shareAsPng
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {boolean=} opt_asBase64 Share as base64 file.
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.CircularGauge.prototype.shareAsPng;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.shareAsSvg
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shares a chart as a SVG file and returns a link to the shared image.
+ * @category Export
+ * @example anychart.charts.CircularGauge.shareAsSvg
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {boolean=} opt_asBase64 Share as base64 file.
+ * @param {(string|number)=} opt_paperSizeOrWidth Paper Size or width.
+ * @param {(boolean|string)=} opt_landscapeOrHeight Landscape or height.
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.CircularGauge.prototype.shareAsSvg;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.toA11yTable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns the chart represented as an invisible HTML table.
+ * @detailed This method generates an invisible HTML table for accessibility purposes. The table is only available for Screen Readers.
+ * @category Specific settings
+ * @example anychart.charts.CircularGauge.toA11yTable
+ * @param {string=} opt_title Title to set.
+ * @param {boolean=} opt_asString Defines output: HTML string if True, DOM element if False.
+ * @return {Element|string|null} HTML table instance with a11y style (invisible), HTML string or null if parsing chart to table fails.
+ */
+anychart.charts.CircularGauge.prototype.toA11yTable;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.CircularGauge.prototype.toHtmlTable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns a chart as HTML table.
+ * @detailed This method generates an HTML table which contains chart data.
+ * @category Specific settings
+ * @example anychart.charts.CircularGauge.toHtmlTable
+ * @param {string=} opt_title Title to set.
+ * @param {boolean=} opt_asString Defines output: HTML string if True, DOM element if False.
+ * @return {Element|string|null} HTML table instance, HTML string or null if parsing chart to table fails.
+ */
+anychart.charts.CircularGauge.prototype.toHtmlTable;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  ignoreDoc
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ *  @inheritDoc
+ *  @ignoreDoc no sense
+ */
+anychart.charts.CircularGauge.prototype.animation;
+
+/**
+ *  @inheritDoc
+ *  @ignoreDoc no sense
+ */
+anychart.charts.CircularGauge.prototype.getSelectedPoints;
+
+/**
+ *  @inheritDoc
+ *  @ignoreDoc no sense
+ */
+anychart.charts.CircularGauge.prototype.getStat;
+
+/**
+ * @inheritDoc
+ * @ignoreDoc
+ */
+anychart.charts.CircularGauge.prototype.enabled;
 
 /**
  * @inheritDoc
  * @ignoreDoc
  */
 anychart.charts.CircularGauge.prototype.dispose;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.fullScreen;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.isFullScreenAvailable;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.id;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.a11y;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.shareWithFacebook;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.shareWithLinkedIn;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.shareWithPinterest;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.shareWithTwitter;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.getStat;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.getJpgBase64String;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.getPdfBase64String;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.getPngBase64String;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.getSvgBase64String;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.shareAsJpg;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.shareAsPdf;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.shareAsPng;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.shareAsSvg;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.toA11yTable;
-
-/** @inheritDoc */
-anychart.charts.CircularGauge.prototype.toHtmlTable;
