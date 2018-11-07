@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Bullet.zIndex"/>
+    <meta name="ac:name" content="anychart.charts.CircularGauge.zIndex set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-bullet.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-circular-gauge.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -25,23 +25,15 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create('container');
 
-        var overChart = anychart.bullet([
-            {value: 10},
-            {value: 15}
-        ]);
-
-        overChart.range({from: 0, to: 5});
-        overChart.range(1, {from: 5, to: 10});
-        overChart.range(2, {from: 10, to: 15});
-        overChart.range(3, {from: 15, to: 20});
-        overChart.padding(20);
-        overChart.bounds('10%', '3%', '40%', '15%');
+        var overChart = anychart.gauges.circular([{value: 7.5}]);
+        overChart.axis();
+        overChart.needle();
 
         // Set zIndex.
         overChart.zIndex(1);
 
-        overChart.title({text: 'Set chart zIndex', orientation: 'top'});
-
+        overChart.bounds('7%', '3%', '30%', '40%');
+        overChart.title('Set chart zIndex');
         overChart.container(stage);
         overChart.draw();
 

@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Bullet.toSvg set asPaperSizeLandscape"/>
+    <meta name="ac:name" content="anychart.charts.CircularGauge.toCsv asFunc"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-bullet.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-circular-gauge.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -21,27 +21,28 @@
 </head>
 <body>
 <div id="container"></div>
+<div style="position: absolute; top: 28px; right: 15px; width: 10%;">
+    <input style="margin-bottom: 10px;" type="button" value="csv" onclick="csv()">
+    <textarea style="width: 100%;" rows="5" cols="70" id="csv"></textarea>
+</div>
 <script>
+    var chart;
     anychart.onDocumentReady(function () {
-        var chart = anychart.bullet([
-            {value: 10},
-            {value: 15}
-        ]);
-
-        chart.range({from: 0, to: 5});
-        chart.range(1, {from: 5, to: 10});
-        chart.range(2, {from: 10, to: 15});
-        chart.range(3, {from: 15, to: 20});
-        chart.padding(20);
-        chart.bounds(0, 0, '100%', 150);
-        chart.title({text: 'Get chart as SVG with predefined paper size and orientation', orientation: 'top'});
+        chart = anychart.gauges.circular([{value: 7.5}]);
+        chart.axis();
+        chart.needle();
+        chart.title('Get chart data as CSV with parameters using function');
         chart.container('container');
         chart.draw();
-
-        // Get chart as SVG with parameters.
-        var SVGstring = chart.toSvg('a4', true);
-        // Now you can do something with this string, send it to the server and etc.
     });
+
+    function csv(){
+        // Get chart data as CSV with parameters using function
+        var value = chart.toCsv('default');
+
+        var csv = document.getElementById('csv');
+        csv.value = value;
+    }
 </script>
 </body>
 </html>

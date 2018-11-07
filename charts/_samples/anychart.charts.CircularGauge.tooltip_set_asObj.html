@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Bullet.toSvg set asPaperSizeLandscape"/>
+    <meta name="ac:name" content="anychart.charts.CircularGauge.tooltip set asObj"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-bullet.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-circular-gauge.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -23,24 +23,16 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.bullet([
-            {value: 10},
-            {value: 15}
-        ]);
+        var chart = anychart.gauges.circular([{value: 7.5}]);
+        chart.axis();
+        chart.needle();
 
-        chart.range({from: 0, to: 5});
-        chart.range(1, {from: 5, to: 10});
-        chart.range(2, {from: 10, to: 15});
-        chart.range(3, {from: 15, to: 20});
-        chart.padding(20);
-        chart.bounds(0, 0, '100%', 150);
-        chart.title({text: 'Get chart as SVG with predefined paper size and orientation', orientation: 'top'});
+        // Set tooltip settings.
+        chart.tooltip({background: '#458b74', fontWeight: 600});
+
+        chart.title('Set chart tooltip parameters as an object');
         chart.container('container');
         chart.draw();
-
-        // Get chart as SVG with parameters.
-        var SVGstring = chart.toSvg('a4', true);
-        // Now you can do something with this string, send it to the server and etc.
     });
 </script>
 </body>
