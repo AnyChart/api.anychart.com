@@ -20,17 +20,16 @@
     </style>
 </head>
 <body>
-<button onclick="chart.data([{value: [Math.random()]}, {value: [Math.random()]}]);">Apply changes (add pointers)</button>
+<button onclick="data();">Apply changes (add pointers)</button>
 <button onclick="autoRedraw();">Draw changes on the chart</button>
 <div id="container"></div>
 <script>
     var chart;
     anychart.onDocumentReady(function () {
-        chart = anychart.gauges.circular();
-        chart.data([{value: 7.5}]);
+        chart = anychart.gauges.circular([0.4]);
         chart.axis();
         chart.needle();
-        chart.title('Set data as an array of objects');
+        chart.title('Disable redrawing of the chart after the changes. \n Use the buttons to apply the changes and draw them');
         chart.container('container');
         chart.draw();
 
@@ -42,6 +41,15 @@
 
         // Enable chart redrawing.
         chart.autoRedraw(true);
+    }
+
+    var i = 0;
+
+    function data() {
+        var getData = chart.data();
+        var newData = getData.concat([Math.random()]);
+        chart.data(newData);
+        chart.needle(i++);
     }
 </script>
 </body>

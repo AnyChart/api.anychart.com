@@ -20,23 +20,15 @@
     </style>
 </head>
 <body>
-<button onclick="chart.data([{value: [Math.random() + 19], type: 'line'}, {value: [Math.random() + 15], type: 'bar'}]);">Apply changes (add markers)</button>
+<button onclick="data();">Apply changes (add markers)</button>
 <button onclick="autoRedraw();">Draw changes on the chart</button>
 <div id="container"></div>
 <script>
     var chart;
     anychart.onDocumentReady(function () {
-        chart = anychart.bullet();
-
-        chart.data([
-            {value: 10},
-            {value: 15}
-        ]);
-
-        chart.range({from: 0, to: 5});
-        chart.range(1, {from: 5, to: 10});
-        chart.range(2, {from: 10, to: 15});
-        chart.range(3, {from: 15, to: 20});
+        chart = anychart.bullet([0.1, 0.4]);
+        chart.range({from: 0, to: 0.5});
+        chart.range(1, {from: 0.5, to: 1});
         chart.padding(20);
         chart.bounds(0, 0, '100%', 150);
         chart.title({text: 'Disable redrawing of the chart after the changes. \n Use the buttons to apply the changes and draw them', orientation: 'top'});
@@ -51,6 +43,12 @@
 
         // Enable chart redrawing.
         chart.autoRedraw(true);
+    }
+
+    function data() {
+        var getData = chart.data();
+        var newData = getData.concat([Math.random()]);
+        chart.data(newData);
     }
 </script>
 </body>
