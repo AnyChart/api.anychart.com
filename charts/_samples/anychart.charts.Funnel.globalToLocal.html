@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Funnel.globalToLocal"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pyramid-funnel.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create('container');
+
+        var chart = anychart.funnel([
+            {name: 'California', value: 10},
+            {name: 'Illinois', value: 7},
+            {name: 'Massachusetts', value: 20},
+            {name: 'New York', value: 14}
+        ]);
+        chart.bounds(100, 10, '100%', '100%');
+        chart.title('Convert the global coordinates to local coordinates');
+        chart.container(stage);
+        chart.draw();
+
+        // Converts the global coordinates to local coordinates.
+        var localCoordinates = chart.globalToLocal(8, 8);
+
+        var rectangle = stage.rect(0, 0, 170, 30);
+        rectangle.fill({opacity: 0.1});
+
+        rectangle.setX(localCoordinates.x);
+        rectangle.setY(localCoordinates.y);
+
+        var customText = anychart.graphics.text(localCoordinates.x, localCoordinates.y, "");
+        customText.htmlText("Local coordinates [x: "
+            + localCoordinates.x + ", y: " + localCoordinates.y + "]<br>Global coordinates [x: 8, y: 8]");
+        customText.parent(stage);
+
+        // Visualises local bounds.
+        var localBounds = stage.rect();
+        localBounds.setBounds(stage.getBounds());
+
+    });
+</script>
+</body>
+</html>
