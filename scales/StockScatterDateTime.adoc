@@ -203,6 +203,88 @@ anychart.scales.StockScatterDateTime.prototype.ticks;
  */
 anychart.scales.StockScatterDateTime.TicksSettings;
 
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.scales.StockScatterDateTime.minimumGap
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the scale minimum gap.
+ * @shortDescription Minimum gap settings.
+ * @category Specific settings
+ * @listing See listing
+ * var scale = chart.xScale();
+ * var minimumGap = scale.minimumGap();
+ * @return {anychart.scales.StockScatterDateTime.GapConfig} Returns the minimum gap configuration.
+ * @since 8.4.2
+ */
+anychart.scales.StockScatterDateTime.prototype.minimumGap;
+
+/**
+ * Setter for the scale minimum gap.
+ * @detailed The minimumGap() method adds a gap to the scale. It looks like empty space on the X axis near the minimum value.<br/>
+ * Allows to add {api:anychart.charts.Stock#annotations}annotations{api} or markers ({api:anychart.core.stock.Plot#lineMarker}lineMarker{api},
+ * {api:anychart.core.stock.Plot#textMarker}textMarker{api}, {api:anychart.core.stock.Plot#rangeMarker}rangeMarker{api})
+ * with a 'consider' mode (lineMarker.scaleRangeMode('consider')) out of the interval defined by the data.
+ * @example anychart.scales.StockScatterDateTime.minimumGap_maximumGap
+ * @param {(anychart.scales.StockScatterDateTime.GapConfig|null)=} opt_minGap Minimum gap configuration to set.
+ * The <b>null</b> parameter resets the gap configuration to the default value ({intervalsCount: 0}).<br/>
+ * It is recommended to set unitType or unitCount in the {api:anychart.scales.StockScatterDateTime.GapConfig}configuration{api}
+ * because otherwise these values will be set from {@link anychart.core.stock.Grouping#getCurrentDataInterval} that depends on the current zoom.
+ * If unitType or unitCount is not set, it might provide an unexpected behavior for the user.
+ * @return {anychart.scales.StockScatterDateTime} Self instance for method chaining.
+ * @since 8.4.2
+ */
+anychart.scales.StockScatterDateTime.prototype.minimumGap;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.scales.StockScatterDateTime.maximumGap
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the scale maximum gap.
+ * @shortDescription Maximum gap settings.
+ * @category Specific settings
+ * @listing See listing
+ * var scale = chart.xScale();
+ * var maximumGap = scale.maximumGap();
+ * @return {anychart.scales.StockScatterDateTime.GapConfig} Returns the maximum gap configuration.
+ * @since 8.4.2
+ */
+anychart.scales.StockScatterDateTime.prototype.maximumGap;
+
+/**
+ * Setter for the scale maximum gap.
+ * @detailed The maximumGap() method adds a gap to the scale. It looks like empty space on the X axis near the maximum value.<br/>
+ * Allows to add {api:anychart.charts.Stock#annotations}annotations{api} or markers ({api:anychart.core.stock.Plot#lineMarker}lineMarker{api},
+ * {api:anychart.core.stock.Plot#textMarker}textMarker{api}, {api:anychart.core.stock.Plot#rangeMarker}rangeMarker{api})
+ * with a 'consider' mode (lineMarker.scaleRangeMode('consider')) out of the interval defined by the data.
+ * @example anychart.scales.StockScatterDateTime.minimumGap_maximumGap
+ * @param {(anychart.scales.StockScatterDateTime.GapConfig|null)=} opt_maxGap Maximum gap configuration to set.
+ * The <b>null</b> parameter resets the gap configuration to the default value ({intervalsCount: 0}).<br/>
+ * It is recommended to set unitType or unitCount in the {api:anychart.scales.StockScatterDateTime.GapConfig}configuration{api}
+ * because otherwise these values will be set from {@link anychart.core.stock.Grouping#getCurrentDataInterval} that depends on the current zoom.
+ * If unitType or unitCount is not set, it might provide an unexpected behavior for the user.
+ * @return {anychart.scales.StockScatterDateTime} Self instance for method chaining.
+ * @since 8.4.2
+ */
+anychart.scales.StockScatterDateTime.prototype.maximumGap;
+
+/**
+ * Type definition for the gap configuration.
+ * @typedef {Object} anychart.scales.StockScatterDateTime.GapConfig
+ * @property {anychart.enums.Interval|string} unitType Time interval type.
+ * @property {number} unitCount The number of units in the interval.
+ * @property {number} intervalsCount The number of intervals. If intervalsCount is not set, it will be 0 (gap will be removed).
+ * @since 8.4.2
+ */
+anychart.scales.StockScatterDateTime.GapConfig;
+
 /** @inheritDoc */
 anychart.scales.StockScatterDateTime.prototype.listen;
 
