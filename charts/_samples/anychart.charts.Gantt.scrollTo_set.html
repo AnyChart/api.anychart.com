@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Gantt.scrollTo"/>
+    <meta name="ac:name" content="anychart.charts.Gantt.scrollTo set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -26,17 +26,17 @@
         var data = getData();
 
         var chart = anychart.ganttProject();
-
         chart.data(data, 'as-table');
 
-        chart.title('Set vertical scrolling value');
+        // Set the pixel value on which the chart is scrolled vertically
+        chart.scrollTo(200);
+
+        // For better sample visual appearance
+        chart.defaultRowHeight(50);
+        chart.splitterPosition(223);
+        chart.title('The chart is scrolled down by 200 pixels');
         chart.container('container');
         chart.draw();
-
-        // Set vertical scrolling value.
-        chart.scrollTo(300);
-
-        chart.fitAll();
     });
 
     function getData() {

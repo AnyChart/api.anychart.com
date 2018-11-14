@@ -371,11 +371,22 @@ anychart.charts.Gantt.prototype.fitToTask;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Performs vertical scrolling by pixel offset.<br/>
- * The scrollTo() method should be used after drawing a chart.
+ * Getter for the pixel value on which the chart is scrolled vertically.
+ * @detailed The scrollTo() method always returns the actual value by which the chart is scrolled vertically. Also scrollTo() pixel value changes when the resize of the chart affects
+ * the number and position of visible rows in the grid.<br/>
+ * <b>Note:</b> The chart can not be scrolled to a value less than 0 vertically and a value larger than the total height of the grid cells.
+ * @shortDescription Scrolls the chart to the specified value vertically.
  * @category Interactivity
- * @example anychart.charts.Gantt.scrollTo
- * @param {number} pxOffset Value for pixel offset to set.
+ * @example anychart.charts.Gantt.scrollTo_get
+ * @return {number} Returns the actual value (in pixels) by which the chart was scrolled vertically.
+ */
+anychart.charts.Gantt.prototype.scrollTo;
+
+/**
+ * Setter for the pixel value on which the chart is scrolled vertically.
+ * @detailed The scrollTo() method can be used to restore the scroll position when loading a chart.
+ * @example anychart.charts.Gantt.scrollTo_set
+ * @param {number} pxValue The value (in pixels) by which the chart will be scrolled vertically.
  * @return {anychart.charts.Gantt} Self instance for method chaining.
  */
 anychart.charts.Gantt.prototype.scrollTo;
