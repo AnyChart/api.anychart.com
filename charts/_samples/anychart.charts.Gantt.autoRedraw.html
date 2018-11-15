@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Gantt.autoRedraw"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="create()">Apply changes (add rows)</button>
+<button onclick="autoRedraw();">Draw changes on the chart</button>
+<div id="container"></div>
+<script>
+    var treeData, chart;
+    anychart.onDocumentReady(function () {
+        var data = getData();
+
+        treeData = anychart.data.tree(data, 'as-table');
+
+        chart = anychart.ganttProject();
+        chart.data(treeData);
+        chart.title('Disable redrawing of the chart after the changes.' +
+            ' \n Use the buttons to apply the changes and draw them');
+        chart.splitterPosition(223);
+        chart.container('container');
+        chart.draw();
+        chart.fitAll();
+
+        // Disable chart redrawing.
+        chart.autoRedraw(false);
+    });
+
+    function autoRedraw() {
+
+        // Enable chart redrawing.
+        chart.autoRedraw(true);
+    }
+
+    var now = (new Date()).getTime();
+    var sec = 1000;
+    var min = 60 * sec;
+    var hour = 60 * min;
+    var day = 24 * hour;
+
+    function create(){
+        treeData.addChild({name: 'New Item ' + (treeData.numChildren() + 1), actualStart: (now + (Math.random() + 5) * day), actualEnd: (now + Math.random() * day)});
+    }
+
+    function getData() {
+
+        return [
+            {id: 0, name: 'Item 1', actualStart: (now - 9 * day), actualEnd: (now - 2 * day)},
+            {id: 1, name: 'Item 2', actualStart: (now + 5 * day), actualEnd: (now + 10 * day)},
+            {id: 2, name: 'Item 3', actualStart: (now + 3 * day), actualEnd: (now + 5 * day)},
+            {id: 3, name: 'Item 4', actualStart: (now + 6 * day), actualEnd: (now + 13 *day)},
+            {id: 4, name: 'Item 5', actualStart: (now + 5 * day), actualEnd: (now + 15 * day)}
+        ];
+    }
+
+
+</script>
+</body>
+</html>

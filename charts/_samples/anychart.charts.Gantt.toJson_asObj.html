@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Gantt.toJson asObj"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create('container');
+
+        var data = getData();
+
+        var chart = anychart.ganttProject();
+        chart.data(data, 'as-table');
+        chart.bounds(0, 0, '100%', '50%');
+        chart.title('Serialize chart object to JSON');
+        chart.splitterPosition(223);
+        chart.container(stage);
+        chart.draw();
+        chart.fitAll();
+
+        // Returns chart as JSON object.
+        var json = chart.toJson();
+
+        var chartFromJson = anychart.fromJson(json);
+        chartFromJson.bounds(0, '50%', '100%', '50%');
+        chartFromJson.title('Creates chart from JSON object');
+        chartFromJson.splitterPosition(223);
+        chartFromJson.container(stage);
+        chartFromJson.draw();
+    });
+
+    function getData() {
+        return [
+            {id: 1, name: 'Phase 1 - Strategic Plan', progressValue: 0.14, actualStart: '2000-02-24T08:00', actualEnd: '2000-03-28T09:00'},
+            {id: 2, name: 'Self-Assessment', parent: 1, progressValue: 0.25, actualStart: '2000-02-24T08:00', actualEnd: '2000-03-02T08:00'},
+            {id: 3, name: 'Define business vision', parent: 2, progressValue: 0, actualStart: '2000-02-25T00:00', actualEnd: '2000-02-25T09:00', connectTo: 4, connectorType: 'finish-start'},
+            {id: 4, name: 'Identify available skills, information and support', parent: 2, progressValue: 0, actualStart: '2000-02-26T00:00', actualEnd: '2000-02-26T09:00', connectTo: 5, connectorType: 'finish-start'},
+            {id: 5, name: 'Decide whether to proceed', parent: 2, progressValue: 0, actualStart: '2000-02-29T00:00', actualEnd: '2000-02-29T09:00', connectTo: 7, connectorType: 'finish-start'},
+            {id: 6, name: 'Define the Opportunity', parent: 1, progressValue: 0.27, actualStart: '2000-02-29T08:00', actualEnd: '2000-03-14T08:00'},
+            {id: 7, name: 'Research the market and competition', parent: 6, progressValue: 0, actualStart: '2000-03-01T00:00', actualEnd: '2000-03-01T09:00'}
+        ];
+    }
+</script>
+</body>
+</html>

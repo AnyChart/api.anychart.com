@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Gantt.unlisten"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var data = getData();
+
+        var chart = anychart.ganttProject();
+        chart.data(data, 'as-table');
+        chart.title('Click the row. You have 3 clicks');
+        chart.listen('rowClick', customListener);
+
+        var counter = 3;
+
+        function customListener(e) {
+            counter--;
+            chart.title('Click the row. You have ' + counter + ' clicks');
+            if (counter === 0) {
+                // Removes event listener
+                chart.unlisten('rowClick', customListener);
+                chart.title('You have no more clicks');
+            }
+        }
+
+        chart.splitterPosition(223);
+        chart.container('container');
+        chart.draw();
+        chart.fitAll();
+    });
+
+    function getData() {
+        return [
+            {id: 1, name: 'Phase 1 - Strategic Plan', progressValue: 0.14, actualStart: '2000-02-24T08:00', actualEnd: '2000-03-28T09:00'},
+            {id: 2, name: 'Self-Assessment', parent: 1, progressValue: 0.25, actualStart: '2000-02-24T08:00', actualEnd: '2000-03-02T08:00'},
+            {id: 3, name: 'Define business vision', parent: 2, progressValue: 0, actualStart: '2000-02-25T00:00', actualEnd: '2000-02-25T09:00', connectTo: 4, connectorType: 'finish-start'},
+            {id: 4, name: 'Identify available skills, information and support', parent: 2, progressValue: 0, actualStart: '2000-02-26T00:00', actualEnd: '2000-02-26T09:00', connectTo: 5, connectorType: 'finish-start'},
+            {id: 5, name: 'Decide whether to proceed', parent: 2, progressValue: 0, actualStart: '2000-02-29T00:00', actualEnd: '2000-02-29T09:00', connectTo: 7, connectorType: 'finish-start'},
+            {id: 6, name: 'Define the Opportunity', parent: 1, progressValue: 0.27, actualStart: '2000-02-29T08:00', actualEnd: '2000-03-14T08:00'},
+            {id: 7, name: 'Research the market and competition', parent: 6, progressValue: 0, actualStart: '2000-03-01T00:00', actualEnd: '2000-03-01T09:00', connectTo: 8, connectorType: 'finish-start'},
+            {id: 8, name: 'Interview owners of similar businesses', parent: 6, progressValue: 0.6, actualStart: '2000-03-01T08:00', actualEnd: '2000-03-08T08:00', connectTo: 9, connectorType: 'finish-start'},
+            {id: 9, name: 'Identify needed resources', parent: 6, progressValue: 0, actualStart: '2000-03-09T00:00', actualEnd: '2000-03-10T09:00', connectTo: 10, connectorType: 'finish-start'},
+            {id: 10, name: 'Identify operating cost elements', parent: 6, progressValue: 0, actualStart: '2000-03-11T00:00', actualEnd: '2000-03-14T09:00', connectTo: 12, connectorType: 'finish-start'},
+            {id: 11, name: 'Evaluate Business Approach', parent: 1, progressValue: 0, actualStart: '2000-03-15T00:00', actualEnd: '2000-03-18T09:00'},
+            {id: 12, name: 'Define new entity requirements', parent: 11, progressValue: 0, actualStart: '2000-03-15T00:00', actualEnd: '2000-03-15T09:00', connectTo: 17, connectorType: 'finish-start'},
+            {id: 13, name: 'Identify on-going business purchase opportunities', parent: 11, progressValue: 0, actualStart: '2000-03-16T00:00', actualEnd: '2000-03-16T09:00', connectTo: 14, connectorType: 'finish-start'},
+            {id: 14, name: 'Research franchise possibilities', parent: 11, progressValue: 0, actualStart: '2000-03-17T00:00', actualEnd: '2000-03-17T09:00', connectTo: 15, connectorType: 'finish-start'},
+            {id: 15, name: 'Summarize business approach', parent: 11, progressValue: 0, actualStart: '2000-03-18T00:00', actualEnd: '2000-03-18T09:00', connectTo: 21, connectorType: 'finish-start'},
+            {id: 16, name: 'Evaluate Potential Risks and Rewards', parent: 1, progressValue: 0, actualStart: '2000-03-16T00:00', actualEnd: '2000-03-25T09:00'},
+            {id: 17, name: 'Assess market size and stability', parent: 16, progressValue: 0, actualStart: '2000-03-16T00:00', actualEnd: '2000-03-17T09:00', connectTo: 18, connectorType: 'finish-start'},
+            {id: 18, name: 'Estimate the competition', parent: 16, progressValue: 0, actualStart: '2000-03-18T00:00', actualEnd: '2000-03-18T09:00', connectTo: 19, connectorType: 'finish-start'}
+        ];
+    }
+</script>
+</body>
+</html>
