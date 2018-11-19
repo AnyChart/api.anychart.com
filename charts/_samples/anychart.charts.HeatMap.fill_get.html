@@ -25,7 +25,33 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create('container');
 
-        var heatMapChart = anychart.heatMap([
+        var data = getData();
+
+        var heatMapChart = anychart.heatMap(data);
+        heatMapChart.fill('#FFECB3');
+        heatMapChart.stroke('#fff');
+        heatMapChart.bounds(0, 10, '50%', '100%');
+        heatMapChart.container(stage);
+        heatMapChart.draw();
+
+        var pieChart = anychart.pie([7, 10, 7, 10, 11]);
+        pieChart.bounds('50%', 10, '50%', '100%');
+
+        // Get chart fill.
+        var heatMapChartFill = heatMapChart.fill();
+
+        pieChart.stroke('3 ' + heatMapChartFill);
+        pieChart.container(stage);
+        pieChart.draw();
+
+        var customTitle = anychart.standalones.title();
+        customTitle.text('Get and use chart fill');
+        customTitle.container(stage);
+        customTitle.draw();
+    });
+
+    function getData() {
+        return [
             {x: 'California', y: '2004', heat: 1704211},
             {x: 'California', y: '2005', heat: 2782680},
             {x: 'California', y: '2006', heat: 2992679},
@@ -41,29 +67,8 @@
             {x: 'Texas', y: '2004', heat: 219967},
             {x: 'Texas', y: '2005', heat: 3732889},
             {x: 'Texas', y: '2006', heat: 4185098}
-        ]);
-        heatMapChart.labels(true);
-        heatMapChart.fill('#FFECB3');
-        heatMapChart.stroke('#fff');
-        heatMapChart.bounds(0, 0, '50%', '100%');
-        heatMapChart.container(stage);
-        heatMapChart.draw();
-
-        var pieChart = anychart.pie([7, 10, 7, 10, 11]);
-        pieChart.bounds('50%', 0, '50%', '100%');
-
-        // Get chart fill.
-        var heatMapChartFill = heatMapChart.fill();
-
-        pieChart.stroke('3 ' + heatMapChartFill);
-        pieChart.container(stage);
-        pieChart.draw();
-
-        var customTitle = anychart.standalones.title();
-        customTitle.text('Get and use chart fill');
-        customTitle.container(stage);
-        customTitle.draw();
-    });
+        ]
+    }
 </script>
 </body>
 </html>

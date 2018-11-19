@@ -23,7 +23,22 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.heatMap([
+        var data = getData();
+
+        var chart = anychart.heatMap(data);
+        chart.right('65%');
+        chart.bottom('50%');
+
+        // Set labels display mode.
+        chart.labelsDisplayMode('clip');
+
+        chart.title('Set labels display mode');
+        chart.container('container');
+        chart.draw();
+    });
+
+    function getData() {
+        return [
             {x: 'California', y: '2004', heat: 1704211},
             {x: 'California', y: '2005', heat: 2782680},
             {x: 'California', y: '2006', heat: 2992679},
@@ -38,20 +53,9 @@
             {x: 'New York', y: '2006', heat: 3151022},
             {x: 'Texas', y: '2004', heat: 219967},
             {x: 'Texas', y: '2005', heat: 3732889},
-            {x: 'Texas', y: '2006', heat: 5678458629596}
-        ]);
-
-        chart.right('65%');
-        chart.bottom('50%');
-        chart.labels(true);
-
-        // Set labels display mode.
-        chart.labelsDisplayMode('clip');
-
-        chart.title('Set labels display mode');
-        chart.container('container');
-        chart.draw();
-    });
+            {x: 'Texas', y: '2006', heat: 4185098}
+        ]
+    }
 </script>
 </body>
 </html>

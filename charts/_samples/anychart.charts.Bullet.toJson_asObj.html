@@ -36,19 +36,19 @@
         chart.range(3, {from: 15, to: 20});
         chart.padding(20);
         chart.bounds(0, 0, '100%', 150);
-        chart.container('container');
+        chart.title({text: 'Serialize chart object to JSON', orientation: 'top'});
+        chart.container(stage);
         chart.draw();
 
-        chart.listen('chartDraw', function () {
-            // Returns chart in JSON object.
-            var json = chart.toJson();
+        // Returns chart as JSON object.
+        var json = chart.toJson();
 
-            chart.dispose();
-
-            var chartFromJson = anychart.fromJson(json);
-            chartFromJson.container(stage);
-            chartFromJson.draw();
-        });
+        var chartFromJson = anychart.fromJson(json);
+        chartFromJson.bounds(0, '50%','100%', 150);
+        chart.padding(20);
+        chartFromJson.title({text: 'Creates chart from JSON object', orientation: 'top'});
+        chartFromJson.container(stage);
+        chartFromJson.draw();
     });
 </script>
 </body>

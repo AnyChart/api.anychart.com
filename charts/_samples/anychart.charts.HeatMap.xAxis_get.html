@@ -23,7 +23,21 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.heatMap([
+        var data = getData();
+
+        var chart = anychart.heatMap(data);
+
+        // Get X-axis.
+        var axis = chart.xAxis();
+        axis.stroke('3 #2196F3');
+
+        chart.title('Get and modify chart xAxis');
+        chart.container('container');
+        chart.draw();
+    });
+
+    function getData() {
+        return [
             {x: 'California', y: '2004', heat: 1704211},
             {x: 'California', y: '2005', heat: 2782680},
             {x: 'California', y: '2006', heat: 2992679},
@@ -39,18 +53,8 @@
             {x: 'Texas', y: '2004', heat: 219967},
             {x: 'Texas', y: '2005', heat: 3732889},
             {x: 'Texas', y: '2006', heat: 4185098}
-        ]);
-
-        chart.labels(true);
-
-        // Get X-axis.
-        var axis = chart.xAxis();
-        axis.stroke('3 #2196F3');
-
-        chart.title('Get and modify chart xAxis');
-        chart.container('container');
-        chart.draw();
-    });
+        ]
+    }
 </script>
 </body>
 </html>

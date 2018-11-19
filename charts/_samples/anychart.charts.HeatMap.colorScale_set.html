@@ -23,25 +23,9 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.heatMap([
-            {x: 'California', y: '2004', heat: 1704211},
-            {x: 'California', y: '2005', heat: 2782680},
-            {x: 'California', y: '2006', heat: 2992679},
-            {x: 'Illinois', y: '2004', heat: 727914},
-            {x: 'Illinois', y: '2005', heat: 1150659},
-            {x: 'Illinois', y: '2006', heat: 1134085},
-            {x: 'Massachusetts', y: '2004', heat: 238819},
-            {x: 'Massachusetts', y: '2005', heat: 157719},
-            {x: 'Massachusetts', y: '2006', heat: 887169},
-            {x: 'New York', y: '2004', heat: 1667969},
-            {x: 'New York', y: '2005', heat: 2763503},
-            {x: 'New York', y: '2006', heat: 3151022},
-            {x: 'Texas', y: '2004', heat: 219967},
-            {x: 'Texas', y: '2005', heat: 3732889},
-            {x: 'Texas', y: '2006', heat: 4185098}
-        ]);
+        var data = getData();
 
-        chart.labels(true);
+        var chart = anychart.heatMap(data);
 
         var colorScale = anychart.scales.ordinalColor();
         colorScale.ranges([
@@ -57,6 +41,26 @@
         chart.container('container');
         chart.draw();
     });
+
+    function getData() {
+        return [
+            {x: 'California', y: '2004', heat: 1704211},
+            {x: 'California', y: '2005', heat: 2782680},
+            {x: 'California', y: '2006', heat: 2992679},
+            {x: 'Illinois', y: '2004', heat: 727914},
+            {x: 'Illinois', y: '2005', heat: 1150659},
+            {x: 'Illinois', y: '2006', heat: 1134085},
+            {x: 'Massachusetts', y: '2004', heat: 238819},
+            {x: 'Massachusetts', y: '2005', heat: 157719},
+            {x: 'Massachusetts', y: '2006', heat: 887169},
+            {x: 'New York', y: '2004', heat: 1667969},
+            {x: 'New York', y: '2005', heat: 2763503},
+            {x: 'New York', y: '2006', heat: 3151022},
+            {x: 'Texas', y: '2004', heat: 219967},
+            {x: 'Texas', y: '2005', heat: 3732889},
+            {x: 'Texas', y: '2006', heat: 4185098}
+        ]
+    }
 </script>
 </body>
 </html>

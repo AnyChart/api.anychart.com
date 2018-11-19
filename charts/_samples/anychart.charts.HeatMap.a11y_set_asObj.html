@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.HeatMap.a11y set asObj"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-heatmap.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var data = getData();
+
+        var chart = anychart.heatMap(data);
+
+        // Set accessibility setting.
+        // Mode adds a hidden table available for VoiceOver.
+        // You can use inspect element tool to see the table.
+        chart.a11y({mode: 'data-table'});
+
+        chart.title('Set accessibility parameter as an object');
+        chart.container('container');
+        chart.draw();
+    });
+
+    function getData() {
+        return [
+            {x: 'California', y: '2004', heat: 1704211},
+            {x: 'California', y: '2005', heat: 2782680},
+            {x: 'California', y: '2006', heat: 2992679},
+            {x: 'Illinois', y: '2004', heat: 727914},
+            {x: 'Illinois', y: '2005', heat: 1150659},
+            {x: 'Illinois', y: '2006', heat: 1134085},
+            {x: 'Massachusetts', y: '2004', heat: 238819},
+            {x: 'Massachusetts', y: '2005', heat: 157719},
+            {x: 'Massachusetts', y: '2006', heat: 887169},
+            {x: 'New York', y: '2004', heat: 1667969},
+            {x: 'New York', y: '2005', heat: 2763503},
+            {x: 'New York', y: '2006', heat: 3151022},
+            {x: 'Texas', y: '2004', heat: 219967},
+            {x: 'Texas', y: '2005', heat: 3732889},
+            {x: 'Texas', y: '2006', heat: 4185098}
+        ]
+    }
+</script>
+</body>
+</html>
