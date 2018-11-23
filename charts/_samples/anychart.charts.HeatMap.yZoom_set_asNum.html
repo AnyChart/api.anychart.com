@@ -23,7 +23,20 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.heatMap([
+        var data = getData();
+
+        var chart = anychart.heatMap(data);
+
+        // Set Y Zoom.
+        chart.yZoom(1.7);
+
+        chart.title('Set chart Y Zoom parameter as a number');
+        chart.container('container');
+        chart.draw();
+    });
+
+    function getData() {
+        return [
             {x: 'California', y: '2004', heat: 1704211},
             {x: 'California', y: '2005', heat: 2782680},
             {x: 'California', y: '2006', heat: 2992679},
@@ -39,16 +52,8 @@
             {x: 'Texas', y: '2004', heat: 219967},
             {x: 'Texas', y: '2005', heat: 3732889},
             {x: 'Texas', y: '2006', heat: 4185098}
-        ]);
-        chart.labels(true);
-
-        // Set Y Zoom.
-        chart.yZoom(1.7);
-
-        chart.title('Set chart Y Zoom parameter as a number');
-        chart.container('container');
-        chart.draw();
-    });
+        ]
+    }
 </script>
 </body>
 </html>

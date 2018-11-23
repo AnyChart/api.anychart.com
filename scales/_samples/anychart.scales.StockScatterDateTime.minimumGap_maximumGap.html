@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.scales.StockScatterDateTime.minimumGap maximumGap"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-annotations.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var dataTable = anychart.data.table();
+        dataTable.addData(data());
+
+        var chart = anychart.stock();
+
+        var plot = chart.plot();
+        plot.ohlc(dataTable.mapAs({'open': 1, 'high': 2, 'low': 3, 'close': 4}));
+
+        // Set scatter scale
+        chart.xScale('stock-scatter-date-time');
+
+        var scale = chart.xScale();
+
+        // Set minimum gap
+        scale.minimumGap({intervalsCount: 3, unitType: 'day', unitCount: 3});
+
+        // Set maximum gap
+        scale.maximumGap({intervalsCount: 2, unitType: 'weeks', unitCount: 1});
+
+        // Create a Rectangle annotation
+        plot.annotations().rectangle({xAnchor: '2017-02-01', valueAnchor: 10790, secondXAnchor: '2017-02-16', secondValueAnchor: 10333});
+
+        // Create a text marker
+        plot.textMarker({text: 'Future price movements', value: '2017-02-08', axis: plot.xAxis(), zIndex: 2001, fontSize: 16});
+
+        chart.title('Minimum gap is 3 intervals by 3 days\nMaximum gap is 2 intervals by 1 week');
+        chart.container('container');
+        chart.draw();
+
+        function data() {
+            return [
+                ['2017-01-09', 10452.7402, 10554.96, 10367.4102, 10409.8496, 1153200000],
+                ['2017-01-23', 10411.8496, 10575.9199, 10411.8496, 10544.0703, 1578200064],
+                ['2017-01-10', 10543.8496, 10584.0703, 10454.3701, 10538.6602, 1494499968],
+                ['2017-01-22', 10535.46, 10587.5498, 10432, 10529.0303, 1704899968],
+                ['2017-01-11', 10530.0703, 10651.9902, 10480.5898, 10592.4404, 1868400000],
+                ['2017-01-18', 10589.25, 10603.4805, 10420.5195, 10458.8896, 1720700032],
+                ['2017-01-15', 10461.5498, 10543.0303, 10389.8496, 10485.1797, 1510200064],
+                ['2017-01-16', 10485.1797, 10539.25, 10341.1904, 10427.1797, 1595900032],
+                ['2017-01-01', 10428.6699, 10573.8496, 10426.8896, 10538.3701, 1514599936],
+                ['2017-01-30', 10534.5195, 10639.0303, 10454.5195, 10553.8496, 1695000064],
+                ['2017-01-03', 10556.3701, 10666.8799, 10503.7002, 10600.5098, 1721100032],
+                ['2017-01-29', 10601.4004, 10676.96, 10447.9199, 10528.6602, 1698200064],
+                ['2017-01-05', 10522.7695, 10665.7002, 10453.1104, 10623.6201, 1757600000],
+                ['2017-01-28', 10624.2197, 10717.4004, 10545.0303, 10623.1797, 1693699968]
+            ]
+        }
+    });
+</script>
+</body>
+</html>

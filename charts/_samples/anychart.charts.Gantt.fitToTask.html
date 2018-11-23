@@ -26,26 +26,36 @@
         var data = getData();
 
         var chart = anychart.ganttProject();
-
         chart.data(data, 'as-table');
-
         chart.title('Fit the visible area of the timeline');
+        chart.splitterPosition(223);
         chart.container('container');
         chart.draw();
 
         // Set value.
-        chart.fitToTask('2');
+        chart.fitToTask('1');
     });
 
     function getData() {
         return [
-            {id: 1, name: 'Phase 1 - Strategic Plan', progressValue: 0.14, actualStart: '2000-02-24', actualEnd: '2000-02-27'},
-            {id: 2, name: 'Self-Assessment', parent: 1, progressValue: 0.25, actualStart: '2000-02-24', actualEnd: '2000-02-29'},
-            {id: 3, name: 'Define business vision', parent: 2, progressValue: 0, actualStart: '2000-02-24T24:00', actualEnd: '2000-02-25T09:00', connectTo: 4, connectorType: 'finish-start'},
+            {id: 1, name: 'Phase 1 - Strategic Plan', progressValue: 0.14, actualStart: '2000-02-24T08:00', actualEnd: '2000-03-28T09:00'},
+            {id: 2, name: 'Self-Assessment', parent: 1, progressValue: 0.25, actualStart: '2000-02-24T08:00', actualEnd: '2000-03-02T08:00'},
+            {id: 3, name: 'Define business vision', parent: 2, progressValue: 0, actualStart: '2000-02-25T00:00', actualEnd: '2000-02-25T09:00', connectTo: 4, connectorType: 'finish-start'},
             {id: 4, name: 'Identify available skills, information and support', parent: 2, progressValue: 0, actualStart: '2000-02-26T00:00', actualEnd: '2000-02-26T09:00', connectTo: 5, connectorType: 'finish-start'},
-            {id: 5, name: 'Decide whether to proceed', parent: 2, progressValue: 0, actualStart: '2000-02-27', actualEnd: '2000-02-28T08:00', connectTo: 6, connectorType: 'finish-start'},
-            {id: 6, name: 'Define the Opportunity', parent: 1, progressValue: 0.27, actualStart: '2000-02-28T08:00', actualEnd: '2000-02-29'},
-            {id: 7, name: 'Research the market and competition', parent: 6, progressValue: 0, actualStart: '2000-02-26T08:00', actualEnd: '2000-02-27'}
+            {id: 5, name: 'Decide whether to proceed', parent: 2, progressValue: 0, actualStart: '2000-02-29T00:00', actualEnd: '2000-02-29T09:00', connectTo: 7, connectorType: 'finish-start'},
+            {id: 6, name: 'Define the Opportunity', parent: 1, progressValue: 0.27, actualStart: '2000-02-29T08:00', actualEnd: '2000-03-14T08:00'},
+            {id: 7, name: 'Research the market and competition', parent: 6, progressValue: 0, actualStart: '2000-03-01T00:00', actualEnd: '2000-03-01T09:00', connectTo: 8, connectorType: 'finish-start'},
+            {id: 8, name: 'Interview owners of similar businesses', parent: 6, progressValue: 0.6, actualStart: '2000-03-01T08:00', actualEnd: '2000-03-08T08:00', connectTo: 9, connectorType: 'finish-start'},
+            {id: 9, name: 'Identify needed resources', parent: 6, progressValue: 0, actualStart: '2000-03-09T00:00', actualEnd: '2000-03-10T09:00', connectTo: 10, connectorType: 'finish-start'},
+            {id: 10, name: 'Identify operating cost elements', parent: 6, progressValue: 0, actualStart: '2000-03-11T00:00', actualEnd: '2000-03-14T09:00', connectTo: 12, connectorType: 'finish-start'},
+            {id: 11, name: 'Evaluate Business Approach', parent: 1, progressValue: 0, actualStart: '2000-03-15T00:00', actualEnd: '2000-03-18T09:00'},
+            {id: 12, name: 'Define new entity requirements', parent: 11, progressValue: 0, actualStart: '2000-03-15T00:00', actualEnd: '2000-03-15T09:00', connectTo: 17, connectorType: 'finish-start'},
+            {id: 13, name: 'Identify on-going business purchase opportunities', parent: 11, progressValue: 0, actualStart: '2000-03-16T00:00', actualEnd: '2000-03-16T09:00', connectTo: 14, connectorType: 'finish-start'},
+            {id: 14, name: 'Research franchise possibilities', parent: 11, progressValue: 0, actualStart: '2000-03-17T00:00', actualEnd: '2000-03-17T09:00', connectTo: 15, connectorType: 'finish-start'},
+            {id: 15, name: 'Summarize business approach', parent: 11, progressValue: 0, actualStart: '2000-03-18T00:00', actualEnd: '2000-03-18T09:00', connectTo: 21, connectorType: 'finish-start'},
+            {id: 16, name: 'Evaluate Potential Risks and Rewards', parent: 1, progressValue: 0, actualStart: '2000-03-16T00:00', actualEnd: '2000-03-25T09:00'},
+            {id: 17, name: 'Assess market size and stability', parent: 16, progressValue: 0, actualStart: '2000-03-16T00:00', actualEnd: '2000-03-17T09:00', connectTo: 18, connectorType: 'finish-start'},
+            {id: 18, name: 'Estimate the competition', parent: 16, progressValue: 0, actualStart: '2000-03-18T00:00', actualEnd: '2000-03-18T09:00', connectTo: 19, connectorType: 'finish-start'}
         ];
     }
 </script>

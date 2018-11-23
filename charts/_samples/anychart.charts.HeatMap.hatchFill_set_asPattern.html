@@ -28,7 +28,20 @@
         var pattern = stage.pattern(new anychart.graphics.math.Rect(0, 0, 20, 20));
         pattern.star5(10, 10, 8).stroke('#78909C');
 
-        var chart = anychart.heatMap([
+        var data = getData();
+
+        var chart = anychart.heatMap(data);
+
+        // Set hatch fill.
+        chart.hatchFill(pattern);
+
+        chart.title('Set chart hatch fill as a pattern');
+        chart.container(stage);
+        chart.draw();
+    });
+
+    function getData() {
+        return [
             {x: 'California', y: '2004', heat: 1704211},
             {x: 'California', y: '2005', heat: 2782680},
             {x: 'California', y: '2006', heat: 2992679},
@@ -44,16 +57,8 @@
             {x: 'Texas', y: '2004', heat: 219967},
             {x: 'Texas', y: '2005', heat: 3732889},
             {x: 'Texas', y: '2006', heat: 4185098}
-        ]);
-        chart.labels(true);
-
-        // Set hatch fill.
-        chart.hatchFill(pattern);
-
-        chart.title('Set chart hatch fill as a pattern');
-        chart.container(stage);
-        chart.draw();
-    });
+        ]
+    }
 </script>
 </body>
 </html>

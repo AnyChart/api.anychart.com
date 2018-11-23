@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.LinearGauge.toCsv asFunc"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-linear-gauge.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<div style="position: absolute; top: 28px; right: 25px; width: 25%;">
+    <input style="margin-bottom: 10px;" type="button" value="csv" onclick="csv()">
+    <textarea style="width: 100%;" rows="5" cols="70" id="csv"></textarea>
+</div>
+<script>
+    var chart;
+    anychart.onDocumentReady(function () {
+        chart = anychart.gauges.linear([300, 250, 150]);
+        chart.addPointer(0, 1, 2);
+        chart.right('26%');
+        chart.title('Get chart data as CSV with parameters using function');
+        chart.container('container');
+        chart.draw();
+    });
+
+    function csv(){
+        // Get chart data as CSV with parameters using function
+        var value = chart.toCsv('raw');
+
+        var csv = document.getElementById('csv');
+        csv.value = value;
+    }
+</script>
+</body>
+</html>

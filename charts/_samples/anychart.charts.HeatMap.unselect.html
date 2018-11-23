@@ -23,7 +23,22 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.heatMap([
+        var data = getData();
+
+        var chart = anychart.heatMap(data);
+        chart.selected({fill: '#F44336'});
+        chart.title('Disable select on an point');
+        chart.container('container');
+        chart.draw();
+
+        chart.select([1, 4, 6]);
+
+        // Disables select.
+        chart.unselect();
+    });
+
+    function getData() {
+        return [
             {x: 'California', y: '2004', heat: 1704211},
             {x: 'California', y: '2005', heat: 2782680},
             {x: 'California', y: '2006', heat: 2992679},
@@ -39,21 +54,8 @@
             {x: 'Texas', y: '2004', heat: 219967},
             {x: 'Texas', y: '2005', heat: 3732889},
             {x: 'Texas', y: '2006', heat: 4185098}
-        ]);
-
-        chart.labels(true);
-
-        chart.selected({fill: '#F44336'});
-
-        chart.title('Disable select on an point');
-        chart.container('container');
-        chart.draw();
-
-        chart.select([1, 4, 6]);
-
-        // Disables select.
-        chart.unselect();
-    });
+        ]
+    }
 </script>
 </body>
 </html>
