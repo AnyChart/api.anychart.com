@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Map.shareWithLinkedIn"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-map.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="shareWithLinkedIn();">Get the sharing dialog</button>
+<div id="container"></div>
+<script>
+    var map;
+    anychart.onDocumentReady(function () {
+        // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+        // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+
+        var data = [
+            {id: 'AU.CT', value: 15, title: 'Australian Capital Territory'},
+            {id: 'AU.VI', value: 23, title: 'Victoria'},
+            {id: 'AU.WA', value: 86, title: 'Western Australia'},
+            {id: 'AU.QL', value: 16, title: 'Queensland'},
+            {id: 'AU.NS', value: 32, title: 'New South Wales'},
+            {id: 'AU.NT', value: 64, title: 'Northern Territory'},
+            {id: 'AU.TS', value: 28, title: 'Tasmania'},
+            {id: 'AU.SA', value: 45, title: 'South Australian'}
+        ];
+
+        map = anychart.map();
+        map.geoData(anychart.maps.australia);
+        map.choropleth(data);
+        map.title('Share with LinkedIn');
+        map.container('container');
+        map.draw();
+    });
+
+    function shareWithLinkedIn() {
+
+        // Share chart with LinkedIn.
+        map.shareWithLinkedIn('ANYCHART.COM', 'Map chart');
+    }
+</script>
+</body>
+</html>

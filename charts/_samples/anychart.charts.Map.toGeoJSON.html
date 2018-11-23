@@ -30,7 +30,7 @@
 
         var stage = anychart.graphics.create('container');
 
-        var dataSet = anychart.data.set([
+        var data = [
             {id: 'AU.CT', value: 15, title: 'Australian Capital Territory'},
             {id: 'AU.VI', value: 23, title: 'Victoria'},
             {id: 'AU.WA', value: 86, title: 'Western Australia'},
@@ -39,32 +39,26 @@
             {id: 'AU.NT', value: 64, title: 'Northern Territory'},
             {id: 'AU.TS', value: 28, title: 'Tasmania'},
             {id: 'AU.SA', value: 45, title: 'South Australian'}
-        ]);
-
-
-        var data = dataSet.mapAs({id: 'id'});
+        ];
 
         var map1 = anychart.map();
         map1.bounds(0, 0, '100%', '50%');
         map1.geoData(anychart.maps.australia);
-
         map1.choropleth(data);
-
         map1.title('Get and set geo JSON config');
         map1.container(stage);
         map1.draw();
 
         // Get geo JSON config.
-        var data = map1.toGeoJSON();
+        var geoJSON = map1.toGeoJSON();
 
         var map2 = anychart.map();
         map2.bounds(0, '50%', '100%', '50%');
 
         // Set data from geo JSON.
-        map2.geoData(data);
+        map2.geoData(geoJSON);
 
-        map2.choropleth(dataSet);
-
+        map2.choropleth(data);
         map2.container(stage);
         map2.draw();
     });

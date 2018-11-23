@@ -28,33 +28,31 @@
         // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
         // See https://docs.anychart.com/Maps/Map_Projections to learn more.
 
-        var firstDataSet = anychart.data.set([
+        var data1 = [
             {id: 'AU.CT', value: 15, title: 'Australian Capital Territory'},
             {id: 'AU.VI', value: 23, title: 'Victoria'},
             {id: 'AU.WA', value: 86, title: 'Western Australia'},
             {id: 'AU.QL', value: 16, title: 'Queensland'}
-        ]);
+        ];
 
-        var secondDataSet = anychart.data.set([
+        var data2 = [
             {id: 'AU.NS', value: 32, title: 'New South Wales'},
             {id: 'AU.NT', value: 64, title: 'Northern Territory'},
             {id: 'AU.TS', value: 28, title: 'Tasmania'},
             {id: 'AU.SA', value: 45, title: 'South Australian'}
-        ]);
-
-        var firstMapping = firstDataSet.mapAs({id: 'id'});
-        var secondMapping = secondDataSet.mapAs({id: 'id'});
+        ];
 
         var australiaMap = anychart.map();
         australiaMap.geoData(anychart.maps.australia);
 
-        var firstSeries = australiaMap.choropleth(firstMapping);
+        var firstSeries = australiaMap.choropleth(data1);
 
-        var secondSeries = australiaMap.choropleth(secondMapping);
+        var secondSeries = australiaMap.choropleth(data2);
         secondSeries.id('green');
 
         // Get series by id.
         var seriesById = australiaMap.getSeries('green');
+
         seriesById.fill('#AED581');
 
         australiaMap.title('Get and modify map series by id');

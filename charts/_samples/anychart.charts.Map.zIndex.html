@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Map.zIndex"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-map.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js"></script>
+    <script src="https://cdn.anychart.com/geodata/1.2.0/countries/australia/australia.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
+        // See https://docs.anychart.com/Maps/Map_Projections to learn more.
+
+        var data = [
+            ['AU.WA', 300],
+            ['AU.JB', 230],
+            ['AU.NS', 240],
+            ['AU.VI', 275],
+            ['AU.NT', 130],
+            ['AU.TS', 190],
+            ['AU.CT', 100],
+            ['AU.SA', 305],
+            ['AU.QL', 190]
+        ];
+
+        var stage = anychart.graphics.create('container');
+
+        var overChart = anychart.map();
+        overChart.geoData(anychart.maps.australia);
+        overChart.choropleth(data);
+        overChart.bounds('74%', '3%', '25%', '30%');
+
+        // Set zIndex.
+        overChart.zIndex(1);
+
+        overChart.title('Set chart zIndex');
+        overChart.container(stage);
+        overChart.draw();
+
+        var chart = anychart.column(data);
+        chart.yScale({maximum: 500});
+        chart.background('#E0E0E0 0.5');
+        chart.container(stage);
+        chart.draw();
+    });
+</script>
+</body>
+</html>

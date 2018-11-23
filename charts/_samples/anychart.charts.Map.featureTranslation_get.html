@@ -28,7 +28,7 @@
         // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
         // See https://docs.anychart.com/Maps/Map_Projections to learn more.
 
-        var dataSet = anychart.data.set([
+        var data = [
             {size: 928, lat: 48.04677871103531, long: -2.12443548026414},
             {size: 192, lat: 45.85025102963345, long: -0.05555902937648371},
             {size: 963, lat: 44.13282017031969, long: -0.6331316557379023},
@@ -42,16 +42,13 @@
             {size: 200, lat: 48.741317232748585, long: 7.532229957512638},
             {size: 945, lat: 45.53208569742555, long: 5.531768794196096},
             {size: 351, lat: 43.93420056617674, long: 6.207894450015418}
-        ]);
+        ];
 
         var franceMap = anychart.map();
         franceMap.geoData(anychart.maps.france);
-        franceMap.geoIdField('insee_cl');
-
-        franceMap.bubble(dataSet);
+        franceMap.bubble(data);
         franceMap.maxBubbleSize('5%');
         franceMap.minBubbleSize('3%');
-
         franceMap.container('container');
         franceMap.draw();
 

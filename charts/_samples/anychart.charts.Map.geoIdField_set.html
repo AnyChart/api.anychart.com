@@ -28,7 +28,7 @@
         // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
         // See https://docs.anychart.com/Maps/Map_Projections to learn more.
 
-        var dataSet = anychart.data.set([
+        var data = [
             {id: '67482', value: 928},
             {id: '33063', value: 192},
             {id: '63113', value: 963},
@@ -56,16 +56,15 @@
             {id: '86194', value: 413},
             {id: '13055', value: 627},
             {id: '69123', value: 676}
-        ]);
+        ];
 
         var chart = anychart.map();
-
         chart.geoData('anychart.maps.france');
 
         // Set geo id field.
         chart.geoIdField('insee_cl');
 
-        chart.choropleth(dataSet);
+        chart.choropleth(data);
         chart.title('Set geo id field');
         chart.container('container');
         chart.draw();
