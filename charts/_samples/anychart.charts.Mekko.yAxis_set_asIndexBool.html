@@ -23,20 +23,14 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var dataSet = anychart.data.set([
-            ['Spring', 20, 2],
-            ['Summer', 30, 30],
-            ['Autumn', 100, 110],
-            ['Winter', 40, 10]
-        ]);
-
         var chart = anychart.mekko();
-
-        var data1 = dataSet.mapAs({x: 0, value: 1});
-        var data2 = dataSet.mapAs({x: 0, value: 2});
-
-        chart.mekko(data1);
-        chart.mekko(data2);
+        chart.data({
+            rows: [
+                ['Apples', 21, 99, 19],
+                ['Pears', 41, 7, 71],
+                ['Bananas', 9, 15, 77]
+            ]
+        });
 
         chart.yAxis(0);
         chart.yAxis(1, {orientation: 'right', title: true});

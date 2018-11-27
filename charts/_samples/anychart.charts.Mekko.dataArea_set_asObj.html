@@ -23,20 +23,16 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var dataSet = anychart.data.set([
-            ['Spring', 20, 2],
-            ['Summer', 30, 30],
-            ['Autumn', 100, 110],
-            ['Winter', 40, 10]
-        ]);
-
         var chart = anychart.mekko();
-
-        var data1 = dataSet.mapAs({x: 0, value: 1});
-        var data2 = dataSet.mapAs({x: 0, value: 2})
-
-        chart.mekko(data1).fill('none');
-        chart.mekko(data2).fill('none');
+        chart.data({
+            rows: [
+                ['Apples', 21, 99, 19],
+                ['Pears', 41, 7, 71],
+                ['Bananas', 9, 15, 77]
+            ]
+        });
+        chart.getSeries(0).fill('none').stroke('#141414');
+        chart.getSeries(1).fill('none').stroke('#141414');
 
         // Set data area.
         chart.dataArea({background: {fill: '#458b00 0.5', stroke: '5 #FF5722'}});

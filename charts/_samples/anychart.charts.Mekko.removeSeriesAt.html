@@ -23,30 +23,15 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data1 = [
-            {x: 'Spring', value: 20},
-            {x: 'Summer', value: 30},
-            {x: 'Autumn', value: 100},
-            {x: 'Winter', value: 40}
-        ];
-
-        var data2 = [
-            {x: 'Spring', value: 2},
-            {x: 'Summer', value: 30},
-            {x: 'Autumn', value: 110},
-            {x: 'Winter', value: 10}
-        ];
-
-        var data3 = [
-            {x: 'Spring', value: 4},
-            {x: 'Summer', value: 30},
-            {x: 'Autumn', value: 30},
-            {x: 'Winter', value: 30}
-        ];
-
         var chart = anychart.mekko();
-        chart.defaultSeriesType('mekko');
-        chart.addSeries(data1, data2, data3);
+        chart.data({
+            rows: [
+                ['Spring', 20, 2, 4, 10],
+                ['Summer', 30, 30, 30, 0],
+                ['Autumn', 100, 110, 30, 10],
+                ['Winter', 40, 10, 30, 10]
+            ]
+        });
 
         // Removes the first series by index.
         chart.removeSeries(0);

@@ -26,21 +26,14 @@
 <script>
     var chart;
     anychart.onDocumentReady(function () {
-        var dataSet = anychart.data.set([
-            ['Spring', 20, 2],
-            ['Summer', 30, 30],
-            ['Autumn', 100, 110],
-            ['Winter', 40, 10]
-        ]);
-
         chart = anychart.barmekko();
-
-        var data1 = dataSet.mapAs({x: 0, value: 1});
-        var data2 = dataSet.mapAs({x: 0, value: 2});
-
-        chart.mekko(data1);
-        chart.mekko(data2);
-
+        chart.data({
+            rows: [
+                ['Apples', 21, 99, 19],
+                ['Pears', 41, 7, 71],
+                ['Bananas', 9, 15, 77]
+            ]
+        });
         chart.dataArea({background: {fill: '#62e1e8 0.5', stroke: '5 #8cd365 0.7'}});
         chart.title('Disable/Enable data area');
         chart.container('container');

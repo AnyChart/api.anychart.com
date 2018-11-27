@@ -25,22 +25,15 @@
     anychart.onDocumentReady(function () {
         stage = anychart.graphics.create('container');
 
-        var data1 = [
-            {x: 'Spring', value: 20},
-            {x: 'Summer', value: 30},
-            {x: 'Autumn', value: 100},
-            {x: 'Winter', value: 40}
-        ];
-        var data2 = [
-            {x: 'Spring', value: 2},
-            {x: 'Summer', value: 30},
-            {x: 'Autumn', value: 110},
-            {x: 'Winter', value: 10}
-        ];
-
         var chart = anychart.mekko();
-        chart.defaultSeriesType('mekko');
-        chart.addSeries(data1, data2);
+        chart.data({
+            rows: [
+                ['Spring', 20, 2],
+                ['Summer', 30, 30],
+                ['Autumn', 100, 110],
+                ['Winter', 40, 10]
+            ]
+        });
         chart.pointsPadding(20);
         chart.background(false);
         chart.title('Get and use plot bounds object');

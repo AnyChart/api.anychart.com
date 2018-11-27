@@ -23,22 +23,18 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var dataSet = anychart.data.set([
-            ['Spring', 20, 2],
-            ['Summer', 30, 30],
-            ['Autumn', 100, 110],
-            ['Winter', 40, 10]
-        ]);
-
         var chart = anychart.mekko();
+        chart.data({
+            rows: [
+                ['Spring', 20, 2],
+                ['Summer', 30, 30],
+                ['Autumn', 100, 110],
+                ['Winter', 40, 10]
+            ]
+        });
 
-        var data1 = dataSet.mapAs({x: 0, value: 1});
-        var data2 = dataSet.mapAs({x: 0, value: 2})
-
-        var series = chart.mekko(data1);
+        var series = chart.getSeries(0);
         series.id('firstSeries');
-
-        chart.mekko(data2);
 
         // Get series by id.
         var seriesById = chart.getSeries('firstSeries');
