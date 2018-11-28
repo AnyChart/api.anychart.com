@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Pareto.shareWithFacebook"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pareto.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="shareWithFacebook();">Get the sharing dialog</button>
+<div id="container"></div>
+<script>
+    var chart;
+    anychart.onDocumentReady(function () {
+        chart = anychart.pareto();
+        chart.data([
+            {x: 'Nail polish', value: 14814},
+            {x: 'Eyebrow pencil', value: 13012},
+            {x: 'Rouge', value: 16624},
+            {x: 'Lipstick', value: 8814},
+            {x: 'Eyeshadows', value: 12998},
+            {x: 'Eyeliner', value: 17321},
+            {x: 'Foundation', value: 10342},
+            {x: 'Lip gloss', value: 22998},
+            {x: 'Mascara', value: 19261}
+        ]);
+        chart.title('Share with Facebook');
+        chart.container('container');
+        chart.draw();
+    });
+
+    function shareWithFacebook() {
+
+        // Share chart with Facebook
+        chart.shareWithFacebook('ANYCHART.COM', 'https://www.anychart.com/', 'Pareto chart', 'Chart description');
+    }
+</script>
+</body>
+</html>

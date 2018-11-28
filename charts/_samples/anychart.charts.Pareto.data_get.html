@@ -23,7 +23,7 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = anychart.data.set([
+        var dataSet = anychart.data.set([
             {x: 'Nail polish', value: 14814},
             {x: 'Eyebrow pencil', value: 13012},
             {x: 'Rouge', value: 16624},
@@ -32,10 +32,9 @@
         ]);
 
         var chart = anychart.pareto();
+        chart.data(dataSet);
 
-        chart.data(data);
-
-        // Get data.
+        // Get data
         var data = chart.data();
 
         var newData = data.concat([
@@ -46,7 +45,6 @@
         ]);
 
         chart.data(newData);
-
         chart.title('Get and modify data');
         chart.container('container');
         chart.draw();
