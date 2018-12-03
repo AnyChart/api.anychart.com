@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Pert.removeAllListeners"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pert.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var data = getData();
+
+        var chart = anychart.pert();
+        chart.data(data, 'as-table');
+        chart.title('Click on the chart and then double-click');
+        chart.listen('click', function (e) {
+            chart.title({fontColor: '#4CAF50'});
+        });
+
+        chart.listen('dblClick', function (e) {
+            chart.title('You can\'t click here anymore');
+            chart.title({fontColor: '#000000'});
+
+            // Removes all listeners
+            chart.removeAllListeners();
+
+        });
+
+        chart.container('container');
+        chart.draw();
+    });
+
+    function getData() {
+        return [
+            {id: 'A1', duration: 1, name: 'Task A'},
+            {id: 'A2', duration: 3, name: 'Task B'},
+            {id: 'A3', duration: 3, name: 'Task C'},
+            {id: 'A4', duration: 1, name: 'Task D'},
+            {id: 'A5', duration: 2, name: 'Task AD', dependsOn: ['A1', 'A4']},
+            {id: 'A6', duration: 2, name: 'Task BC', dependsOn: ['A2', 'A3']}
+        ];
+    }
+</script>
+</body>
+</html>

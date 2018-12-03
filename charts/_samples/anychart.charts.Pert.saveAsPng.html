@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Pert.saveAsPng"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pert.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="saveAsPng();">Save image</button>
+<div id="container"></div>
+<script>
+    var chart;
+    anychart.onDocumentReady(function () {
+        var data = getData();
+
+        chart = anychart.pert();
+        chart.data(data, 'as-table');
+        chart.title('Save chart as PNG file');
+        chart.container('container');
+        chart.draw();
+    });
+
+    function saveAsPng() {
+
+        // Save chart as PNG file
+        chart.saveAsPng(360, 500, 0.3);
+    }
+
+    function getData() {
+        return [
+            {id: 'A1', duration: 1, name: 'Task A'},
+            {id: 'A2', duration: 3, name: 'Task B'},
+            {id: 'A3', duration: 3, name: 'Task C'},
+            {id: 'A4', duration: 1, name: 'Task D'},
+            {id: 'A5', duration: 2, name: 'Task AD', dependsOn: ['A1', 'A4']},
+            {id: 'A6', duration: 2, name: 'Task BC', dependsOn: ['A2', 'A3']}
+        ];
+    }
+</script>
+</body>
+</html>
