@@ -25,41 +25,39 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create("container");
 
-        var pieChart = anychart.pie([
-            {x: 'Cycling', value: 10},
-            {x: 'Swimming', value: 10},
-            {x: 'Run', value: 10},
-            {x: 'Hiking', value: 10},
-            {x: 'Alpinism', value: 10}
-        ]);
-        pieChart.bounds(0, 0, '50%', '100%');
-        pieChart.fill(function () {
+        var chart1 = anychart.pie(getData());
+        chart1.bounds(0, 0, '50%', '100%');
+        chart1.fill(function () {
             return 'rgba(135,' + (50 * (this.index + 1) - 10) + ', 248, 0.6)';
         });
-        pieChart.container(stage);
-        pieChart.draw();
+        chart1.container(stage);
+        chart1.draw();
 
-        var funnelChart = anychart.funnel([
-            {x: 'Cycling', value: 10},
-            {x: 'Swimming', value: 10},
-            {x: 'Run', value: 10},
-            {x: 'Hiking', value: 10},
-            {x: 'Alpinism', value: 10}
-        ]);
-        funnelChart.bounds('50%', 0, '50%', '100%');
+        var chart2 = anychart.funnel(getData());
+        chart2.bounds('50%', 0, '50%', '100%');
 
         // Get fill.
-        var pieChartFill = pieChart.fill();
+        var fill = chart1.fill();
 
-        funnelChart.fill(pieChartFill);
-        funnelChart.container(stage);
-        funnelChart.draw();
+        chart2.fill(fill);
+        chart2.container(stage);
+        chart2.draw();
 
         var customTitle = anychart.standalones.title();
         customTitle.text('Get and use chart fill');
         customTitle.container(stage);
         customTitle.draw();
     });
+
+    function getData() {
+        return [
+            {x: 'Cycling', value: 10},
+            {x: 'Swimming', value: 10},
+            {x: 'Run', value: 10},
+            {x: 'Hiking', value: 10},
+            {x: 'Alpinism', value: 10}
+        ]
+    }
 </script>
 </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Pie.contextMenu set asObj"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        // To change the way how context menu looks you need to change CSS.
+        // By default CSS from AnyChart CDN is used: https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css
+        // Download it, alter, upload to your server and link from your pages to change the look.
+
+        var chart = anychart.pie([
+            {x: 'Cycling', value: 10},
+            {x: 'Swimming', value: 12},
+            {x: 'Run', value: 18},
+            {x: 'Hiking', value: 11},
+            {x: 'Alpinism', value: 9}
+        ]);
+
+        // Set context menu setting.
+        chart.contextMenu({enabled: false});
+
+        chart.title('Set context menu parameter as an object. Context menu is disabled using object in this sample');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>

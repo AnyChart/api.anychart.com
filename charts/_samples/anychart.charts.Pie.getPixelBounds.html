@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Pie.explode get"/>
+    <meta name="ac:name" content="anychart.charts.Pie.getPixelBounds"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -22,20 +22,27 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = anychart.data.set([
-            {name: 'Point 1', value: 50},
-            {name: 'Point 2', value: 13, exploded: true},
-            {name: 'Point 3', value: 14, exploded: true}
+        var stage = anychart.graphics.create('container');
+
+        var chart = anychart.pie([
+            {x: 'Cycling', value: 10},
+            {x: 'Swimming', value: 12},
+            {x: 'Run', value: 18},
+            {x: 'Hiking', value: 11},
+            {x: 'Alpinism', value: 9}
         ]);
-
-        var chart = anychart.pie(data);
-
-        // Get value.
-        var valueExpodedSlice = chart.explode();
-
-        chart.title('The value of the exploded slice is ' + valueExpodedSlice);
-        chart.container('container');
+        chart.title('Get and use pixel bounds object');
+        chart.container(stage);
         chart.draw();
+
+        // Gets pixel bounds.
+        var bounds = chart.getPixelBounds();
+
+        var customBackground = anychart.standalones.background();
+        customBackground.fill('#ff7f50 0.2');
+        customBackground.parentBounds(bounds);
+        customBackground.container(stage);
+        customBackground.draw();
     });
 </script>
 </body>
