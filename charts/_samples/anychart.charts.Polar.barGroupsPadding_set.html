@@ -24,17 +24,13 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.polar();
-
-        chart.column([
-            {x: 1, value: 4},
-            {x: 2, value: 2},
-            {x: 3, value: 8}
-        ]);
-        chart.column([
-            {x: 1, value: 5},
-            {x: 2, value: 3},
-            {x: 3, value: 9}
-        ]);
+        chart.defaultSeriesType('column');
+        chart.data([
+                [0, 1, 2],
+                [1, 2, 3],
+                [2, 3, 4],
+                [3, 4, 1]
+            ]);
 
         // Sets the padding between bar groups.
         chart.barGroupsPadding(1);
@@ -43,7 +39,6 @@
 
         chart.xScale('ordinal').sortPointsByX(true);
         chart.innerRadius(50);
-
         chart.title('Set padding between column in a group');
         chart.container('container');
         chart.draw();
