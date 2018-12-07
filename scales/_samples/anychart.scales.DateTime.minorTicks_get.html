@@ -24,16 +24,17 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create('container');
 
-        var chart1 = anychart.financial();
-        chart1.bounds(0, 20, '50%', '100%');
-        chart1.ohlc([
+        var data = [
             [new Date('28-Aug-07'), 511.53, 514.98, 505.79, 506.40],
             [new Date('29-Aug-07'), 507.84, 513.30, 507.23, 512.88],
             [new Date('30-Aug-07'), 512.36, 515.40, 510.58, 511.40],
             [new Date('31-Aug-07'), 513.10, 516.50, 511.47, 515.25],
             [new Date('01-Sep-07'), 515.02, 528.00, 514.62, 525.15]
-        ]);
+        ];
 
+        var chart1 = anychart.ohlc(data);
+        chart1.bounds(0, 20, '50%', '100%');
+        chart1.xScale().minimum(Date.UTC(2007, 7, 27)).maximum(Date.UTC(2007, 8, 1));
         chart1.xAxis({
             ticks: true,
             labels: false,
@@ -47,16 +48,9 @@
         chart1.container(stage);
         chart1.draw();
 
-        var chart2 = anychart.financial();
+        var chart2 = anychart.candlestick(data);
         chart2.bounds('50%', 20, '50%', '100%');
-        chart2.candlestick([
-            [new Date('28-Aug-07'), 511.53, 514.98, 505.79, 506.40],
-            [new Date('29-Aug-07'), 507.84, 513.30, 507.23, 512.88],
-            [new Date('30-Aug-07'), 512.36, 515.40, 510.58, 511.40],
-            [new Date('31-Aug-07'), 513.10, 516.50, 511.47, 515.25],
-            [new Date('01-Sep-07'), 515.02, 528.00, 514.62, 525.15]
-        ]);
-
+        chart2.xScale().minimum(Date.UTC(2007, 7, 27)).maximum(Date.UTC(2007, 8, 1));
         chart2.xAxis({
             ticks: true,
             labels: false,

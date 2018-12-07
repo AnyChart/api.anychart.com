@@ -22,7 +22,7 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.cartesian();
+        var chart = anychart.candlestick();
 
         var series = chart.candlestick([
             {x: Date.UTC(2017, 2, 25), open: 511.53, high: 514.98, low: 505.79, close: 506.40},
@@ -34,6 +34,7 @@
         // Set rising hatch fill.
         series.risingHatchFill('horizontal', '#FFFFFF', 2, 20);
 
+        chart.xScale().minimum(Date.UTC(2017, 2, 24)).maximum(Date.UTC(2017, 2, 29));
         chart.title('Set rising hatch fill parameters');
         chart.container('container');
         chart.draw();

@@ -22,7 +22,7 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.cartesian();
+        var chart = anychart.ohlc();
 
         var series = chart.ohlc([
             {x: Date.UTC(2017, 2, 25), open: 511.53, high: 514.98, low: 505.79, close: 506.40},
@@ -35,6 +35,7 @@
         // Get falling stroke.
         var fallingStroke = series.fallingStroke();
 
+        chart.xScale().minimum(Date.UTC(2017, 2, 24)).maximum(Date.UTC(2017, 2, 29));
         chart.title({text: 'Get and use falling stroke', fontColor: fallingStroke});
         chart.container('container');
         chart.draw();

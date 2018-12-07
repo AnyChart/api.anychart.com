@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.ohlc"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        // Creates OHLC chart.
+        var chart = anychart.ohlc([
+            [Date.UTC(2018, 10, 1), 511.53, 514.98, 505.79, 506.40],
+            [Date.UTC(2018, 10, 10), 507.84, 513.30, 507.23, 512.88],
+            [Date.UTC(2018, 10, 20), 512.36, 515.40, 510.58, 511.40],
+            [Date.UTC(2018, 10, 30), 513.10, 516.50, 511.47, 515.25],
+            [Date.UTC(2018, 11, 10), 515.02, 528.00, 514.62, 525.15]
+        ]);
+
+        chart.title('Create an OHLC chart');
+        chart.xScale().minimum(Date.UTC(2018, 9, 25)).maximum(Date.UTC(2018, 11, 15));
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
