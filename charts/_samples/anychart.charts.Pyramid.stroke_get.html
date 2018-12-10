@@ -25,7 +25,7 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create('container');
 
-        var pyramidChart = anychart.pyramid([
+        var chart1 = anychart.pyramid([
             {x: 'Physical', value: 125},
             {x: 'Data Link', value: 125},
             {x: 'Network', value: 125},
@@ -34,22 +34,22 @@
             {x: 'Presentation', value: 125},
             {x: 'Application', value: 390, label: {anchor: 'center-top'}}
         ]);
-        pyramidChart.bounds(0, 20, '50%', '100%');
-        pyramidChart.labels({position: 'inside'});
-        pyramidChart.stroke('#4CAF50', 3);
-        pyramidChart.container(stage);
-        pyramidChart.draw();
+        chart1.bounds(0, 20, '50%', '100%');
+        chart1.labels({position: 'inside'});
+        chart1.stroke('#4CAF50', 3);
+        chart1.container(stage);
+        chart1.draw();
 
-        var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
-        funnelChart.bounds('50%', 20, '50%', '100%');
-        funnelChart.labels({position: 'inside'});
+        var chart2 = anychart.funnel([10, 3, 7, 10, 5]);
+        chart2.bounds('50%', 20, '50%', '100%');
+        chart2.labels({position: 'inside'});
 
         // Get stroke.
-        var pyramidChartStroke = pyramidChart.stroke();
+        var stroke = chart1.stroke();
 
-        funnelChart.stroke(pyramidChartStroke);
-        funnelChart.container(stage);
-        funnelChart.draw();
+        chart2.stroke(stroke);
+        chart2.container(stage);
+        chart2.draw();
 
         var customTitle = anychart.standalones.title();
         customTitle.text('Get and use chart stroke');

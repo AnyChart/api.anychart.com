@@ -28,7 +28,7 @@
         // We do that for the demo purposes only.
         var palette = ['divot', 'grid', 'vertical', 'horizontal', 'confetti', 'diagonal-cross', 'zig-zag'];
 
-        var pyramidChart = anychart.pyramid([
+        var chart1 = anychart.pyramid([
             {x: 'Physical', value: 125},
             {x: 'Data Link', value: 125},
             {x: 'Network', value: 125},
@@ -38,29 +38,24 @@
             {x: 'Application', value: 390, label: {anchor: 'center-top'}}
         ]);
 
-        pyramidChart.labels({position: 'inside'});
-        pyramidChart.bounds(0, 20, '50%', '100%');
-        pyramidChart.hatchFill(true);
-        pyramidChart.legend(false);
-        pyramidChart.hatchFillPalette(palette);
-        pyramidChart.title('Set hatch fill parameter');
-        pyramidChart.container(stage);
-        pyramidChart.draw();
-
-        var pieChart = anychart.pie([7, 7, 7, 7, 7, 7, 7]);
-        pieChart.hatchFill(true);
-        pieChart.legend(false);
-        pieChart.bounds('50%', 20, '50%', '100%');
+        chart1.labels({position: 'inside'}).bounds(0, 20, '50%', '100%');
+        chart1.hatchFill(true).legend(false);
+        chart1.hatchFillPalette(palette);
+        chart1.container(stage);
+        chart1.draw();
 
         // Get hatch fill palette.
-        var pyramidChartHatchFillPalette = pyramidChart.hatchFillPalette();
+        var hatchFillPalette = chart1.hatchFillPalette();
 
-        pieChart.hatchFillPalette(pyramidChartHatchFillPalette);
-        pieChart.container(stage);
-        pieChart.draw();
+        var chart2 = anychart.pie([7, 7, 7, 7, 7, 7, 7]);
+        chart2.hatchFill(true).legend(false);
+        chart2.bounds('50%', 20, '50%', '100%');
+        chart2.hatchFillPalette(hatchFillPalette);
+        chart2.container(stage);
+        chart2.draw();
 
         var customTitle = anychart.standalones.title();
-        customTitle.text('Get and use chart hatchFillPalette');
+        customTitle.text('Get and use chart hatch fill palette');
         customTitle.container(stage);
         customTitle.draw();
     });

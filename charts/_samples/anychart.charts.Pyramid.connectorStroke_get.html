@@ -25,7 +25,7 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create('container');
 
-        var pyramidChart = anychart.pyramid([
+        var chart1 = anychart.pyramid([
             {x: 'Physical', value: 70},
             {x: 'Data Link', value: 60},
             {x: 'Network', value: 50},
@@ -34,21 +34,21 @@
             {x: 'Presentation', value: 20},
             {x: 'Application', value: 10}
         ]);
-        pyramidChart.labels({fontColor: '#000000', position: 'outside'});
-        pyramidChart.bounds(0, 0, '50%', '100%');
-        pyramidChart.connectorStroke('#607D8B', 2, '5 2', 'round');
-        pyramidChart.container(stage);
-        pyramidChart.draw();
+        chart1.labels({fontColor: '#000000', position: 'outside'});
+        chart1.bounds(0, 10, '50%', '100%');
+        chart1.connectorStroke('#607D8B', 2, '5 2', 'round');
+        chart1.container(stage);
+        chart1.draw();
 
-        var funnelChart = anychart.funnel([10, 3, 7, 10, 5]);
-        funnelChart.bounds('50%', 0, '50%', '100%');
+        var chart2 = anychart.funnel([10, 3, 7, 10, 5]);
+        chart2.bounds('50%', 10, '50%', '100%');
 
         // Get connector stroke.
-        var pyramidConnectorStroke = pyramidChart.connectorStroke();
+        var connectorStroke = chart1.connectorStroke();
 
-        funnelChart.connectorStroke(pyramidConnectorStroke);
-        funnelChart.container(stage);
-        funnelChart.draw();
+        chart2.connectorStroke(connectorStroke);
+        chart2.container(stage);
+        chart2.draw();
 
         var customTitle = anychart.standalones.title();
         customTitle.text('Get and use chart stroke');
