@@ -27,53 +27,40 @@
 
         var chart1 = anychart.radar();
         chart1.bounds(0, 0, '50%', '100%');
-
-        var firstSeries = chart1.area([
-            {x: 'Strength', value: 10},
-            {x: 'Agility', value: 15},
-            {x: 'Stamina', value: 10},
-            {x: 'Intellect', value: 15},
-            {x: 'Spirit', value: 10}
-        ]);
-        firstSeries.hatchFill(true);
-
-        var secondSeries = chart1.area([
-            {x: 'Strength', value: 8},
-            {x: 'Agility', value: 2},
-            {x: 'Stamina', value: 8},
-            {x: 'Intellect', value: 2},
-            {x: 'Spirit', value: 8}
-        ]);
-        secondSeries.hatchFill(true);
-
+        chart1.defaultSeriesType('area');
+        chart1.data({
+            rows: [
+                [0, 6, 7],
+                [1, 1, 4],
+                [2, 6, 7],
+                [3, 1, 4],
+                [4, 6, 7],
+                [5, 1, 4]
+            ]});
+        chart1.getSeries(0).hatchFill(true);
+        chart1.getSeries(1).hatchFill(true);
         chart1.hatchFillPalette(['backward-diagonal', 'horizontal-brick']);
         chart1.container(stage);
         chart1.draw();
 
-        var chart2 = anychart.radar();
-        chart2.bounds('50%', 0, '50%', '100%');
-
-        var firstAreaSeries = chart2.area([
-            {x: 'Strength', value: 8},
-            {x: 'Agility', value: 2},
-            {x: 'Stamina', value: 8},
-            {x: 'Intellect', value: 2},
-            {x: 'Spirit', value: 8}
-        ]);
-        firstAreaSeries.hatchFill(true);
-
-        var secondAreaSeries = chart2.area([
-            {x: 'Strength', value: 1},
-            {x: 'Agility', value: 5},
-            {x: 'Stamina', value: 1},
-            {x: 'Intellect', value: 5},
-            {x: 'Spirit', value: 1}
-        ]);
-        secondAreaSeries.hatchFill(true);
-
         // Get hatch fill palette.
         var palette = chart1.hatchFillPalette();
 
+        var chart2 = anychart.radar();
+        chart2.bounds('50%', 0, '50%', '100%');
+
+        chart2.defaultSeriesType('area');
+        chart2.data({
+            rows: [
+                [0, 7, 2],
+                [1, 4, 5],
+                [2, 7, 2],
+                [3, 4, 5],
+                [4, 7, 2],
+                [5, 4, 5]
+            ]});
+        chart2.getSeries(0).hatchFill(true);
+        chart2.getSeries(1).hatchFill(true);
         chart2.hatchFillPalette(palette);
         chart2.container(stage);
         chart2.draw();
