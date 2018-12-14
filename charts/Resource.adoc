@@ -344,7 +344,7 @@ anychart.charts.Resource.prototype.activities;
 /**
  * Setter for the activities settings.
  * @example anychart.charts.Resource.activities_set
- * @param {(Object)=} opt_settings Value to set.
+ * @param {(Object)=} opt_settings Activities settings to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
  * @since 7.12.0
  */
@@ -423,7 +423,7 @@ anychart.charts.Resource.prototype.timeLine;
  *   <li><b>null/boolean</b> - disable or enable time line.</li>
  *   <li><b>object</b> - sets time line settings.</li>
  * </ul>
- * @example anychart.charts.Resource.timeLine_set_asBool Enable/Disable time line.
+ * @example anychart.charts.Resource.timeLine_set_asBool Enable/Disable time line
  * @example anychart.charts.Resource.timeLine_set_asObj Using object
  * @param {(Object|null|boolean)=} opt_settings Value to set.
  * @return {anychart.charts.Resource} Self instance for method chaining.
@@ -795,29 +795,1412 @@ anychart.charts.Resource.prototype.currentStartDate;
  */
 anychart.charts.Resource.prototype.getType;
 
-/** @inheritDoc */
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.margin
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart margin.<br/>
+ * <img src='/anychart.core.Chart.prototype.margin.png' width='352' height='351'/>
+ * @shortDescription Margin settings.
+ * @category Size and Position
+ * @detailed Also, you can use {@link anychart.core.utils.Margin#bottom}, {@link anychart.core.utils.Margin#left},
+ * {@link anychart.core.utils.Margin#right}, {@link anychart.core.utils.Margin#top} methods to setting paddings.
+ * @example anychart.charts.Resource.margin_get
+ * @return {!anychart.core.utils.Margin} Chart margin.
+ */
 anychart.charts.Resource.prototype.margin;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart margin in pixels using a single complex object.
+ * @listing Example.
+ * // all margins 15px
+ * chart.margin(15);
+ * // all margins 15px
+ * chart.margin('15px');
+ * // top and bottom 5px, right and left 15px
+ * chart.margin(anychart.utils.margin(5, 15));
+ * @example anychart.charts.Resource.margin_set_asSingle
+ * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=}
+ * opt_margin [{top: 0, right: 0, bottom: 0, left: 0}] Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.margin;
+
+/**
+ * Setter for the chart margin in pixels using several simple values.
+ * @listing Example.
+ * // 1) all 10px
+ * chart.margin(10);
+ * // 2) top and bottom 10px, left and right 15px
+ * chart.margin(10, '15px');
+ * // 3) top 10px, left and right 15px, bottom 5px
+ * chart.margin(10, '15px', 5);
+ * // 4) top 10px, right 15px, bottom 5px, left 12px
+ * chart.margin(10, '15px', '5px', 12);
+ * @example anychart.charts.Resource.margin_set_asSeveral
+ * @param {(string|number)=} opt_value1 [0] Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 [0] Right or right-left space.
+ * @param {(string|number)=} opt_value3 [0] Bottom space.
+ * @param {(string|number)=} opt_value4 [0] Left space.
+ */
+anychart.charts.Resource.prototype.margin;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.padding
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart padding.<br/>
+ * <img src='/anychart.core.Chart.prototype.padding.png' width='352' height='351'/>
+ * @shortDescription Padding settings.
+ * @category Size and Position
+ * @detailed Also, you can use {@link anychart.core.utils.Padding#bottom}, {@link anychart.core.utils.Padding#left},
+ * {@link anychart.core.utils.Padding#right}, {@link anychart.core.utils.Padding#top} methods to setting paddings.
+ * @example anychart.charts.Resource.padding_get
+ * @return {!anychart.core.utils.Padding} Chart padding.
+ */
 anychart.charts.Resource.prototype.padding;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart paddings in pixels using a single value.
+ * @listing See listing.
+ * chart.padding([5, 15]);
+ * or
+ * chart.padding({left: 10, top: 20, bottom: 30, right: "40%"}});
+ * @example anychart.charts.Resource.padding_set_asSingle
+ * @param {(Array.<number|string>|{top:(number|string),left:(number|string),bottom:(number|string),right:(number|string)})=}
+ * opt_padding [{top: 0, right: 0, bottom: 0, left: 0}] Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.padding;
+
+/**
+ * Setter for the chart paddings in pixels using several numbers.
+ * @listing Example.
+ * // 1) all 10px
+ * chart.padding(10);
+ * // 2) top and bottom 10px, left and right 15px
+ * chart.padding(10, '15px');
+ * // 3) top 10px, left and right 15px, bottom 5px
+ * chart.padding(10, '15px', 5);
+ * // 4) top 10px, right 15%, bottom 5px, left 12px
+ * chart.padding(10, '15%', '5px', 12);
+ * @example anychart.charts.Resource.padding_set_asSeveral
+ * @param {(string|number)=} opt_value1 [0] Top or top-bottom space.
+ * @param {(string|number)=} opt_value2 [0] Right or right-left space.
+ * @param {(string|number)=} opt_value3 [0] Bottom space.
+ * @param {(string|number)=} opt_value4 [0] Left space.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.padding;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.background
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart background.
+ * @shortDescription Background settings.
+ * @category Coloring
+ * @example anychart.charts.Resource.background_get
+ * @return {!anychart.core.ui.Background} Chart background.
+ */
 anychart.charts.Resource.prototype.background;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart background settings.
+ * @detailed Sets chart background settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart background.</li>
+ *   <li><b>object</b> - sets chart background settings.</li>
+ *   <li><b>string</b> - sets chart background color.</li>
+ * </ul>
+ * @example anychart.charts.Resource.background_set_asBool Disable/Enable background
+ * @example anychart.charts.Resource.background_set_asObj Using object
+ * @example anychart.charts.Resource.background_set_asString Using string
+ * @param {(string|Object|null|boolean)=} opt_settings Background settings to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.background;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.title
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart title.
+ * @shortDescription Title settings.
+ * @category Chart Controls
+ * @example anychart.charts.Resource.title_get
+ * @return {!anychart.core.ui.Title} Chart title.
+ */
 anychart.charts.Resource.prototype.title;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart title.
+ * @detailed Sets chart title settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart title.</li>
+ *   <li><b>string</b> - sets chart title text value.</li>
+ *   <li><b>object</b> - sets chart title settings.</li>
+ * </ul>
+ * @example anychart.charts.Resource.title_set_asBool Disable/Enable title
+ * @example anychart.charts.Resource.title_set_asObj Using object
+ * @example anychart.charts.Resource.title_set_asString Using string
+ * @param {(null|boolean|Object|string)=} opt_settings [false] Chart title text or title instance for copy settings from.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.title;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.label
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart label.
+ * @shortDescription Label settings.
+ * @category Chart Controls
+ * @example anychart.charts.Resource.label_get
+ * @param {(string|number)=} opt_index [0] Index of instance.
+ * @return {anychart.core.ui.Label} Label instance.
+ */
 anychart.charts.Resource.prototype.label;
 
-/** @inheritDoc */
+/**
+ * Setter for the chart label.
+ * @detailed Sets chart label settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart label.</li>
+ *   <li><b>string</b> - sets chart label text value.</li>
+ *   <li><b>object</b> - sets chart label settings.</li>
+ * </ul>
+ * @example anychart.charts.Resource.label_set_asBool Disable/Enable label
+ * @example anychart.charts.Resource.label_set_asObj Using object
+ * @example anychart.charts.Resource.label_set_asString Using string
+ * @param {(null|boolean|Object|string)=} opt_settings [false] Chart label instance to add by index 0.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.label;
+
+/**
+ * Setter for chart label using index.
+ * @detailed Sets chart label settings by index depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart label.</li>
+ *   <li><b>string</b> - sets chart label text value.</li>
+ *   <li><b>object</b> - sets chart label settings.</li>
+ * </ul>
+ * @example anychart.charts.Resource.label_set_asIndexBool Disable/Enable label by index
+ * @example anychart.charts.Resource.label_set_asIndexObj Using object
+ * @example anychart.charts.Resource.label_set_asIndexString Using string
+ * @param {(string|number)=} opt_index [0] Label index.
+ * @param {(null|boolean|Object|string)=} opt_settings [false] Chart label settings.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.label;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.tooltip
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for tooltip settings.
+ * @shortDescription Tooltip settings.
+ * @category Interactivity
+ * @example anychart.charts.Resource.tooltip_get
+ * @return {anychart.core.ui.Tooltip} Tooltip instance.
+ */
 anychart.charts.Resource.prototype.tooltip;
 
-/** @inheritDoc */
-anychart.charts.Resource.prototype.animation;
+/**
+ * Setter for tooltip settings.
+ * @detailed Sets chart data tooltip settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart data tooltip.</li>
+ *   <li><b>object</b> - sets chart data tooltip settings.</li>
+ * </ul>
+ * @example anychart.charts.Resource.tooltip_set_asBool Disable/Enable tooltip
+ * @example anychart.charts.Resource.tooltip_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_settings [true] Tooltip settings.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.tooltip;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.draw
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Starts the rendering of the chart into the container.
+ * @shortDescription Chart drawing.
+ * @example anychart.charts.Resource.draw
+ * @param {boolean=} opt_async Whether do draw asynchronously. If set to <b>true</b>, the chart will be drawn asynchronously.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.draw;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.bounds
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart bounds settings.
+ * @shortDescription Bounds settings.
+ * @category Size and Position
+ * @listing See listing
+ * var bounds = chart.bounds();
+ * @return {!anychart.core.utils.Bounds} Bounds of the element.
+ */
+anychart.charts.Resource.prototype.bounds;
+
+/**
+ * Setter for the chart bounds using one parameter.
+ * @example anychart.charts.Resource.bounds_set_asSingle
+ * @param {(anychart.utils.RectObj|anychart.math.Rect|anychart.core.utils.Bounds)=} opt_bounds Bounds of teh chart.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.bounds;
+
+/**
+ * Setter for the chart bounds settings.
+ * @example anychart.charts.Resource.bounds_set_asSeveral
+ * @param {(number|string)=} opt_x [null] X-coordinate.
+ * @param {(number|string)=} opt_y [null] Y-coordinate.
+ * @param {(number|string)=} opt_width [null] Width.
+ * @param {(number|string)=} opt_height [null] Height.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.bounds;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.left
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's left bound setting.
+ * @shortDescription Left bound setting.
+ * @category Size and Position
+ * @listing See listing
+ * var left = chart.left();
+ * @return {number|string|undefined} Chart's left bound setting.
+ */
+anychart.charts.Resource.prototype.left;
+
+/**
+ * Setter for the chart's left bound setting.
+ * @example anychart.charts.Resource.left_right_top_bottom
+ * @param {(number|string|null)=} opt_value [null] Left bound setting for the chart.
+ * @return {!anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.left;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.right
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's right bound setting.
+ * @shortDescription Right bound settings.
+ * @category Size and Position
+ * @listing See listing
+ * var right = chart.right();
+ * @return {number|string|undefined} Chart's right bound setting.
+ */
+anychart.charts.Resource.prototype.right;
+
+/**
+ * Setter for the chart's right bound setting.
+ * @example anychart.charts.Resource.left_right_top_bottom
+ * @param {(number|string|null)=} opt_right Right bound for the chart.
+ * @return {!anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.right;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.top
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's top bound setting.
+ * @shortDescription Top bound settings.
+ * @category Size and Position
+ * @listing See listing
+ * var top = chart.top();
+ * @return {number|string|undefined} Chart's top bound settings.
+ */
+anychart.charts.Resource.prototype.top;
+
+/**
+ * Setter for the chart's top bound setting.
+ * @example anychart.charts.Resource.left_right_top_bottom
+ * @param {(number|string|null)=} opt_top Top bound for the chart.
+ * @return {!anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.top;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.bottom
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's bottom bound setting.
+ * @shortDescription Bottom bound settings.
+ * @category Size and Position
+ * @listing See listing
+ * var bottom = chart.bottom();
+ * @return {number|string|undefined} Chart's bottom bound settings.
+ */
+anychart.charts.Resource.prototype.bottom;
+
+/**
+ * Setter for the chart's top bound setting.
+ * @example anychart.charts.Resource.left_right_top_bottom
+ * @param {(number|string|null)=} opt_bottom Bottom bound for the chart.
+ * @return {!anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.bottom;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.width
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's width setting.
+ * @shortDescription Width setting.
+ * @category Size and Position
+ * @listing See listing
+ * var width = chart.width();
+ * @return {number|string|undefined} Chart's width setting.
+ */
+anychart.charts.Resource.prototype.width;
+
+/**
+ * Setter for the chart's width setting.
+ * @example anychart.charts.Resource.width_height
+ * @param {(number|string|null)=} opt_width [null] Width settings for the chart.
+ * @return {!anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.width;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.height
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's height setting.
+ * @shortDescription Height setting.
+ * @category Size and Position
+ * @listing See listing
+ * var height = chart.height();
+ * @return {number|string|undefined} Chart's height setting.
+ */
+anychart.charts.Resource.prototype.height;
+
+/**
+ * Setter for the chart's height setting.
+ * @example anychart.charts.Resource.width_height
+ * @param {(number|string|null)=} opt_height [null] Height settings for the chart.
+ * @return {!anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.height;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.minWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's minimum width.
+ * @shortDescription Minimum width setting.
+ * @category Size and Position
+ * @listing See listing
+ * var minWidth = chart.minWidth();
+ * @return {(number|string|null)} Chart's minimum width.
+ */
+anychart.charts.Resource.prototype.minWidth;
+
+/**
+ * Setter for the chart's minimum width.
+ * @detailed The method sets a minimum width of elements, that will be to remain after a resize of element.
+ * @example anychart.charts.Resource.minWidth
+ * @param {(number|string|null)=} opt_minWidth [null] Minimum width to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.minWidth;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.minHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's minimum height.
+ * @shortDescription Minimum height setting.
+ * @category Size and Position
+ * @listing See listing
+ * var minHeight = chart.minHeight();
+ * @return {(number|string|null)} Chart's minimum height.
+ */
+anychart.charts.Resource.prototype.minHeight;
+
+/**
+ * Setter for the chart's minimum height.
+ * @detailed The method sets a minimum height of elements, that will be to remain after a resize of element.
+ * @example anychart.charts.Resource.minHeight
+ * @param {(number|string|null)=} opt_minHeight [null] Minimum height to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.minHeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.maxWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's maximum width.
+ * @shortDescription Maximum width setting.
+ * @category Size and Position
+ * @listing See listing
+ * var maxWidth = chart.maxWidth();
+ * @return {(number|string|null)} Chart's maximum width.
+ */
+anychart.charts.Resource.prototype.maxWidth;
+
+/**
+ * Setter for the chart's maximum width.
+ * @example anychart.charts.Resource.maxWidth_set
+ * @param {(number|string|null)=} opt_value [null] Value to set.
+ * @return {!anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.maxWidth;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.maxHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart's maximum height.
+ * @shortDescription Maximum height setting.
+ * @category Size and Position
+ * @listing See listing
+ * var maxHeight = chart.maxHeight();
+ * @return {(number|string|null)} Chart's maximum height.
+ */
+anychart.charts.Resource.prototype.maxHeight;
+
+/**
+ * Setter for the chart's maximum height.
+ * @example anychart.charts.Resource.maxHeight
+ * @param {(number|string|null)=} opt_maxHeight [null] Maximum height to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.maxHeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.getPixelBounds
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns pixel bounds of the chart.<br/>
+ * Returns pixel bounds of the chart due to parent bounds and self bounds settings.
+ * @category Size and Position
+ * @example anychart.charts.Resource.getPixelBounds
+ * @return {!anychart.math.Rect} Pixel bounds of the chart.
+ */
+anychart.charts.Resource.prototype.getPixelBounds;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.container
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the chart container.
+ * @shortDescription Chart container
+ * @return {anychart.graphics.vector.Layer|anychart.graphics.vector.Stage} Chart container.
+ */
+anychart.charts.Resource.prototype.container;
+
+/**
+ * Setter for the chart container.
+ * @example anychart.charts.Resource.container
+ * @param {(anychart.graphics.vector.Layer|anychart.graphics.vector.Stage|string|Element)=} opt_element The value to set.
+ * @return {!anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.container;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.zIndex
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the Z-index of the chart.
+ * @shortDescription Z-index of the chart.
+ * @category Size and Position
+ * @listing See listing
+ * var zIndex = chart.zIndex();
+ * @return {number} Chart Z-index.
+ */
+anychart.charts.Resource.prototype.zIndex;
+
+/**
+ * Setter for the Z-index of the chart.
+ * @detailed The bigger the index - the higher the element position is.
+ * @example anychart.charts.Resource.zIndex
+ * @param {number=} opt_zIndex [0] Z-index to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.zIndex;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.saveAsPng
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves the chart as PNG image.
+ * @category Export
+ * @example anychart.charts.Resource.saveAsPng
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ */
+anychart.charts.Resource.prototype.saveAsPng;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.saveAsJpg
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves the chart as JPEG image.
+ * @category Export
+ * @example anychart.charts.Resource.saveAsJpg
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ * @param {boolean=} opt_forceTransparentWhite Define, should we force transparent to white background.
+ */
+anychart.charts.Resource.prototype.saveAsJpg;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.saveAsPdf
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves the chart as PDF image.
+ * @category Export
+ * @example anychart.charts.Resource.saveAsPdf
+ * @param {string=} opt_paperSize Any paper format like 'a0', 'tabloid', 'b4', etc.
+ * @param {boolean=} opt_landscape Define, is landscape.
+ * @param {number=} opt_x Offset X.
+ * @param {number=} opt_y Offset Y.
+ */
+anychart.charts.Resource.prototype.saveAsPdf;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.saveAsSvg
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves the chart as SVG image using paper size and landscape.
+ * @shortDescription Saves the chart as SVG image.
+ * @category Export
+ * @example anychart.charts.Resource.saveAsSvg_set_asPaperSizeLandscape
+ * @param {string=} opt_paperSize Paper Size.
+ * @param {boolean=} opt_landscape Landscape.
+ */
+anychart.charts.Resource.prototype.saveAsSvg;
+
+/**
+ * Saves the stage as SVG image using width and height.
+ * @example anychart.charts.Resource.saveAsSvg_set_asWidthHeight
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ */
+anychart.charts.Resource.prototype.saveAsSvg;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.toSvg
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns SVG string using paper size and landscape.
+ * @detailed Returns SVG string if type of content is SVG otherwise returns empty string.
+ * @shortDescription Returns SVG string.
+ * @category Export
+ * @example anychart.charts.Resource.toSvg_set_asPaperSizeLandscape
+ * @param {string=} opt_paperSize Paper Size.
+ * @param {boolean=} opt_landscape Landscape.
+ * @return {string} SVG content or empty string.
+ */
+anychart.charts.Resource.prototype.toSvg;
+
+/**
+ * Returns SVG string using width and height.
+ * @detailed Returns SVG string if type of content is SVG otherwise returns empty string.
+ * @example anychart.charts.Resource.toSvg_set_asWidthHeight
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @return {string} SVG content or empty string.
+ */
+anychart.charts.Resource.prototype.toSvg;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.print
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Prints chart.
+ * @shortDescription Prints chart.
+ * @category Export
+ * @example anychart.charts.Resource.print
+ * @param {anychart.graphics.vector.PaperSize=} opt_paperSize Paper size.
+ * @param {boolean=} opt_landscape [false] Flag of landscape.
+ */
+anychart.charts.Resource.prototype.print;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.listen
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds an event listener to an implementing object.
+ * @detailed The listener can be added to an object once, and if it is added one more time, its key will be returned.<br/>
+ * <b>Note</b>: Notice that if the existing listener is one-off (added using listenOnce),
+ * it will cease to be such after calling the listen() method.
+ * @shortDescription Adds an event listener.
+ * @category Events
+ * @example anychart.charts.Resource.listen
+ * @param {string} type The event type id.
+ * @param {ListenCallback} listener Callback method.
+ * Function that looks like: <pre>function(event){
+ *    // event.actualTarget - actual event target
+ *    // event.currentTarget - current event target
+ *    // event.iterator - event iterator
+ *    // event.originalEvent - original event
+ *    // event.point - event point
+ *    // event.pointIndex - event point index
+ * }</pre>
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about capturing {@link https://javascript.info/bubbling-and-capturing}
+ * @param {Object=} opt_listenerScope Object in whose scope to call the listener.
+ * @return {{key: number}} Unique key for the listener.
+ */
+anychart.charts.Resource.prototype.listen;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.listenOnce
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds an event listener to an implementing object.
+ * @detailed <b>After the event is called, its handler will be deleted.</b><br>
+ * If the event handler being added already exists, listenOnce will do nothing. <br/>
+ * <b>Note</b>: In particular, if the handler is already registered using listen(), listenOnce()
+ * <b>will not</b> make it one-off. Similarly, if a one-off listener already exists, listenOnce will not change it
+ * (it wil remain one-off).
+ * @shortDescription Adds a single time event listener
+ * @category Events
+ * @example anychart.charts.Resource.listenOnce
+ * @param {string} type The event type id.
+ * @param {ListenCallback} listener Callback method.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about capturing {@link https://javascript.info/bubbling-and-capturing}
+ * @param {Object=} opt_listenerScope Object in whose scope to call the listener.
+ * @return {{key: number}} Unique key for the listener.
+ */
+anychart.charts.Resource.prototype.listenOnce;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.unlisten
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes a listener added using listen() or listenOnce() methods.
+ * @shortDescription Removes the listener
+ * @category Events
+ * @example anychart.charts.Resource.unlisten
+ * @param {string} type The event type id.
+ * @param {ListenCallback} listener Callback method.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about capturing {@link https://javascript.info/bubbling-and-capturing}
+ * @param {Object=} opt_listenerScope Object in whose scope to call the listener.
+ * @return {boolean} Whether any listener was removed.
+ */
+anychart.charts.Resource.prototype.unlisten;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.unlistenByKey
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
+ * @shortDescription Removes the listener by the key.
+ * @category Events
+ * @example anychart.charts.Resource.unlistenByKey
+ * @param {{key: number}} key The key returned by listen() or listenOnce().
+ * @return {boolean} Whether any listener was removed.
+ */
+anychart.charts.Resource.prototype.unlistenByKey;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.removeAllListeners
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
+ * @shortDescription Removes all listeners.
+ * @category Events
+ * @example anychart.charts.Resource.removeAllListeners
+ * @param {string=} opt_type Type of event to remove, default is to remove all types.
+ * @return {number} Number of listeners removed.
+ */
+anychart.charts.Resource.prototype.removeAllListeners;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.localToGlobal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Converts the local coordinates to global coordinates.
+ * <b>Note:</b> Works only after {@link anychart.charts.Resource#draw} is called.
+ * @category Specific settings
+ * @detailed Converts local coordinates of the container or stage into global coordinates of the global document.<br/>
+ * On image below, the red point is a starting coordinate point of the chart bounds.
+ * Local coordinates work only in area of the stage (container).<br/>
+ * <img src='/anychart.core.Chart.localToGlobal.png' height='310' width='530'/><br/>
+ * @example anychart.charts.Resource.localToGlobal
+ * @param {number} xCoord Local X coordinate.
+ * @param {number} yCoord Local Y coordinate.
+ * @return {Object.<string, number>} Object with XY coordinates.
+ */
+anychart.charts.Resource.prototype.localToGlobal;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.globalToLocal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Converts the global coordinates to local coordinates.
+ * <b>Note:</b> Works only after {@link anychart.charts.Resource#draw} is called.
+ * @category Specific settings
+ * @detailed Converts global coordinates of the global document into local coordinates of the container or stage.<br/>
+ * On image below, the red point is a starting coordinate point of the chart bounds. Local coordinates work only in area of the stage (container).<br/>
+ * <img src='/anychart.core.Chart.localToGlobal.png' height='310' width='530'/>
+ * @example anychart.charts.Resource.globalToLocal
+ * @param {number} xCoord Global X coordinate.
+ * @param {number} yCoord Global Y coordinate.
+ * @return {Object.<string, number>} Object with XY coordinates.
+ */
+anychart.charts.Resource.prototype.globalToLocal;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.contextMenu
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the context menu.
+ * @shortDescription Context menu settings.
+ * @category Chart Controls
+ * @example anychart.charts.Resource.contextMenu_get
+ * @return {anychart.ui.ContextMenu} Context menu.
+ */
+anychart.charts.Resource.prototype.contextMenu;
+
+/**
+ * Setter for the context menu.
+ * @detailed Sets context menu settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable context menu.</li>
+ *   <li><b>object</b> - sets context menu settings.</li>
+ * </ul>
+ * @example anychart.charts.Resource.contextMenu_set_asBool Enable/disable context menu
+ * @example anychart.charts.Resource.contextMenu_set_asObj Using object
+ * @param {(Object|boolean|null)=} opt_settings Context menu settings
+ * @return {!anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.contextMenu;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.saveAsXml
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves chart config as XML document.
+ * @category Export
+ * @example anychart.charts.Resource.saveAsXml
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Resource.prototype.saveAsXml;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.saveAsJson
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves chart config as JSON document.
+ * @category Export
+ * @example anychart.charts.Resource.saveAsJson
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Resource.prototype.saveAsJson;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.saveAsCsv
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves chart data as a CSV file.
+ * @category Export
+ * @example anychart.charts.Resource.saveAsCsv
+ * @param {(anychart.enums.ChartDataExportMode|string)=} opt_chartDataExportMode Data export mode.
+ * @param {Object.<string, (string|boolean|undefined|csvSettingsFunction)>=} opt_csvSettings CSV settings.<br/>
+ * <b>CSV settings object</b>:<br/>
+ *  <b>rowsSeparator</b> - string or undefined (default is '\n')<br/>
+ *  <b>columnsSeparator</b>  - string or undefined (default is ',')<br/>
+ *  <b>ignoreFirstRow</b>  - boolean or undefined (default is 'false')<br/>
+ *  <b>formats</b>  - <br/>
+ *  1) a function with two arguments such as the field name and value, that returns the formatted value<br/>
+ *  or <br/>
+ *  2) the object with the key as the field name, and the value as a format function. <br/>
+ *  (default is 'undefined').
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Resource.prototype.saveAsCsv;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.saveAsXlsx
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves chart data as an Excel document.
+ * @category Export
+ * @example anychart.charts.Resource.saveAsXlsx
+ * @param {(anychart.enums.ChartDataExportMode|string)=} opt_chartDataExportMode Data export mode.
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Resource.prototype.saveAsXlsx;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.credits
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for chart credits.
+ * @shortDescription Credits settings
+ * @category Chart Controls
+ * @example anychart.charts.Resource.credits_get
+ * @return {anychart.core.ui.ChartCredits} Chart credits.
+ */
+anychart.charts.Resource.prototype.credits;
+
+/**
+ * Setter for chart credits.
+ * {docs:Quick_Start/Credits}Learn more about credits settings.{docs}
+ * @detailed <b>Note:</b> You can't customize credits without <u>your licence key</u>. To buy licence key go to
+ * <a href="https://www.anychart.com/buy/">Buy page</a>.<br/>
+ * Sets chart credits settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart credits.</li>
+ *   <li><b>object</b> - sets chart credits settings.</li>
+ * </ul>
+ * @example anychart.charts.Resource.credits_set_asBool Disable/Enable credits
+ * @example anychart.charts.Resource.credits_set_asObj Using object
+ * @param {(Object|boolean|null)=} opt_settings [true] Credits settings
+ * @return {!anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.credits;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.exports
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the export charts.
+ * @shortDescription Exports settings
+ * @category Export
+ * @listing See listing
+ * var exports = chart.exports();
+ * @return {anychart.core.utils.Exports} Exports settings.
+ */
+anychart.charts.Resource.prototype.exports;
+
+/**
+ * Setter for the export charts.
+ * @example anychart.charts.Resource.exports
+ * @detailed To work with exports you need to reference the exports module from AnyChart CDN
+ * (http://cdn.anychart.com/js/latest/anychart-exports.min.js for latest or http://cdn.anychart.com/js/{{branch-name}}/anychart-exports.min.js for the versioned file)
+ * @param {Object=} opt_settings Export settings.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.exports;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.noData
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for noData settings.
+ * @shortDescription NoData settings.
+ * @category Data
+ * @example anychart.charts.Resource.noData_get
+ * @return {anychart.core.NoDataSettings} NoData settings.
+ */
+anychart.charts.Resource.prototype.noData;
+
+/**
+ * Setter for noData settings.<br/>
+ * {docs:Working_with_Data/No_Data_Label} Learn more about "No data" feature {docs}
+ * @example anychart.charts.Resource.noData_set
+ * @param {Object=} opt_settings NoData settings.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.noData;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.autoRedraw
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the autoRedraw flag. <br/>
+ * Flag whether to automatically call chart.draw() on any changes or not.
+ * @shortDescription Redraw chart after changes or not.
+ * @listing See listing
+ * var autoRedraw = chart.autoRedraw();
+ * @return {boolean} AutoRedraw flag.
+ */
+anychart.charts.Resource.prototype.autoRedraw;
+
+/**
+ * Setter for the autoRedraw flag.<br/>
+ * Flag whether to automatically call chart.draw() on any changes or not.
+ * @example anychart.charts.Resource.autoRedraw
+ * @param {boolean=} opt_enabled [true] Value to set.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.autoRedraw;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.fullScreen
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the fullscreen mode.
+ * @shortDescription Fullscreen mode.
+ * @listing See listing
+ * var fullScreen = chart.fullScreen();
+ * @return {boolean} Full screen state (enabled/disabled).
+ */
+anychart.charts.Resource.prototype.fullScreen;
+
+/**
+ * Setter for the fullscreen mode.
+ * @example anychart.charts.Resource.fullScreen
+ * @param {boolean=} opt_enabled [false] Enable/Disable fullscreen mode.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.fullScreen;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.isFullScreenAvailable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Whether the fullscreen mode available in the browser or not.
+ * @example anychart.charts.Resource.isFullScreenAvailable
+ * @return {boolean} isFullScreenAvailable state.
+ */
+anychart.charts.Resource.prototype.isFullScreenAvailable;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.id
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for chart id.
+ * @shortDescription Chart id.
+ * @example anychart.charts.Resource.id_get_set
+ * @return {string} Return chart id.
+ */
+anychart.charts.Resource.prototype.id;
+
+/**
+ * Setter for chart id.
+ * @example anychart.charts.Resource.id_get_set
+ * @param {string=} opt_id Chart id.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.id;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.a11y
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the accessibility settings.
+ * @shortDescription Accessibility setting.
+ * @category Specific settings
+ * @listing See listing.
+ * var stateOfAccsessibility = chart.a11y();
+ * @return {anychart.core.utils.ChartA11y} Accessibility settings object.
+ */
+anychart.charts.Resource.prototype.a11y;
+
+/**
+ * Setter for the accessibility settings.
+ * @detailed If you want to enable accessibility you need to turn it on using {@link anychart.charts.Resource#a11y} method.<br/>
+ * Sets accessibility setting depending on parameter type:
+ * <ul>
+ *   <li><b>boolean</b> - disable or enable accessibility.</li>
+ *   <li><b>object</b> - sets accessibility settings.</li>
+ * </ul>
+ * @example anychart.charts.Resource.a11y_set_asObj Using object
+ * @example anychart.charts.Resource.a11y_set_asBool Enable/disable accessibility
+ * @param {(boolean|Object)=} opt_settings Whether to enable accessibility or object with settings.
+ * @return {anychart.charts.Resource} Self instance for method chaining.
+ */
+anychart.charts.Resource.prototype.a11y;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.shareWithFacebook
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens Facebook sharing dialog.
+ * @category Export
+ * @example anychart.charts.Resource.shareWithFacebook
+ * @param {(string|Object)=} opt_captionOrOptions Caption for the main link or object with options.
+ * @param {string=} opt_link The URL is attached to the publication.
+ * @param {string=} opt_name The title for the attached link.
+ * @param {string=} opt_description Description for the attached link.
+ */
+anychart.charts.Resource.prototype.shareWithFacebook;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.shareWithLinkedIn
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens LinkedIn sharing dialog.
+ * @category Export
+ * @example anychart.charts.Resource.shareWithLinkedIn
+ * @param {(string|Object)=} opt_captionOrOptions Caption for publication or object with options. If not set 'AnyChart' will be used.
+ * @param {string=} opt_description Description.
+ */
+anychart.charts.Resource.prototype.shareWithLinkedIn;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.shareWithPinterest
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens Pinterest sharing dialog.
+ * @category Export
+ * @example anychart.charts.Resource.shareWithPinterest
+ * @param {(string|Object)=} opt_linkOrOptions Attached link or object with options. If not set, the image URL will be used.
+ * @param {string=} opt_description Description.
+ */
+anychart.charts.Resource.prototype.shareWithPinterest;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.shareWithTwitter
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Opens Twitter sharing dialog.
+ * @category Export
+ * @example anychart.charts.Resource.shareWithTwitter
+ */
+anychart.charts.Resource.prototype.shareWithTwitter = function () {};
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.getJpgBase64String
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns JPG as base64 string.
+ * @category Export
+ * @example anychart.charts.Resource.getJpgBase64String
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ * @param {boolean=} opt_forceTransparentWhite Force transparent to white or not.
+ */
+anychart.charts.Resource.prototype.getJpgBase64String;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.getPdfBase64String
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns PDF as base64 string.
+ * @category Export
+ * @example anychart.charts.Resource.getPdfBase64String
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {(number|string)=} opt_paperSizeOrWidth Any paper format like 'a0', 'tabloid', 'b4', etc.
+ * @param {(number|boolean)=} opt_landscapeOrWidth Define, is landscape.
+ * @param {number=} opt_x Offset X.
+ * @param {number=} opt_y Offset Y.
+ */
+anychart.charts.Resource.prototype.getPdfBase64String;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.getPngBase64String
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns PNG as base64 string.
+ * @category Export
+ * @example anychart.charts.Resource.getPngBase64String
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ */
+anychart.charts.Resource.prototype.getPngBase64String;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.getSvgBase64String
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns SVG as base64 string.
+ * @category Export
+ * @example anychart.charts.Resource.getSvgBase64String
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {(string|number)=} opt_paperSizeOrWidth Paper Size or width.
+ * @param {(boolean|string)=} opt_landscapeOrHeight Landscape or height.
+ */
+anychart.charts.Resource.prototype.getSvgBase64String;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.shareAsJpg
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shares a chart as a JPG file and returns a link to the shared image.
+ * @category Export
+ * @example anychart.charts.Resource.shareAsJpg
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {boolean=} opt_asBase64 Share as base64 file.
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ * @param {boolean=} opt_forceTransparentWhite Force transparent to white or not.
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Resource.prototype.shareAsJpg;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.shareAsPdf
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shares a chart as a PDF file and returns a link to the shared image.
+ * @category Export
+ * @example anychart.charts.Resource.shareAsPdf
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {boolean=} opt_asBase64 Share as base64 file.
+ * @param {(number|string)=} opt_paperSizeOrWidth Any paper format like 'a0', 'tabloid', 'b4', etc.
+ * @param {(number|boolean)=} opt_landscapeOrWidth Define, is landscape.
+ * @param {number=} opt_x Offset X.
+ * @param {number=} opt_y Offset Y.
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Resource.prototype.shareAsPdf;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.shareAsPng
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shares a chart as a PNG file and returns a link to the shared image.
+ * @category Export
+ * @example anychart.charts.Resource.shareAsPng
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {boolean=} opt_asBase64 Share as base64 file.
+ * @param {number=} opt_width Image width.
+ * @param {number=} opt_height Image height.
+ * @param {number=} opt_quality Image quality in ratio 0-1.
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Resource.prototype.shareAsPng;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.shareAsSvg
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shares a chart as a SVG file and returns a link to the shared image.
+ * @category Export
+ * @example anychart.charts.Resource.shareAsSvg
+ * @param {(OnSuccess|Object)} onSuccessOrOptions Function that is called when sharing is complete or object with options.
+ * @param {OnError=} opt_onError Function that is called if sharing fails.
+ * @param {boolean=} opt_asBase64 Share as base64 file.
+ * @param {(string|number)=} opt_paperSizeOrWidth Paper Size or width.
+ * @param {(boolean|string)=} opt_landscapeOrHeight Landscape or height.
+ * @param {string=} opt_filename File name to save.
+ */
+anychart.charts.Resource.prototype.shareAsSvg;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.toA11yTable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns the chart represented as an invisible HTML table.
+ * @detailed This method generates an invisible HTML table for accessibility purposes. The table is only available for Screen Readers.
+ * @category Specific settings
+ * @example anychart.charts.Resource.toA11yTable
+ * @param {string=} opt_title Title to set.
+ * @param {boolean=} opt_asString Defines output: HTML string if True, DOM element if False.
+ * @return {Element|string|null} HTML table instance with a11y style (invisible), HTML string or null if parsing chart to table fails.
+ */
+anychart.charts.Resource.prototype.toA11yTable;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Resource.prototype.toHtmlTable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates and returns a chart as HTML table.
+ * @detailed This method generates an HTML table which contains chart data.
+ * @category Specific settings
+ * @example anychart.charts.Resource.toHtmlTable
+ * @param {string=} opt_title Title to set.
+ * @param {boolean=} opt_asString Defines output: HTML string if True, DOM element if False.
+ * @return {Element|string|null} HTML table instance, HTML string or null if parsing chart to table fails.
+ */
+anychart.charts.Resource.prototype.toHtmlTable;
 
 /** @inheritDoc */
-anychart.charts.Resource.prototype.draw;
+anychart.charts.Resource.prototype.getSelectedPoints;
 
 /** @inheritDoc */
 anychart.charts.Resource.prototype.toJson;
@@ -826,157 +2209,13 @@ anychart.charts.Resource.prototype.toJson;
 anychart.charts.Resource.prototype.toXml;
 
 /** @inheritDoc */
-anychart.charts.Resource.prototype.bounds;
+anychart.charts.Resource.prototype.toCsv;
 
-/** @inheritDoc */
-anychart.charts.Resource.prototype.left;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.right;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.top;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.bottom;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.width;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.height;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.minWidth;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.minHeight;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.maxWidth;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.maxHeight;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.getPixelBounds;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.container;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.zIndex;
-
-/** @inheritDoc */
+/** 
+ * @inheritDoc 
+ * @ignoreDoc
+ */
 anychart.charts.Resource.prototype.enabled;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.saveAsPng;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.saveAsJpg;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.saveAsPdf;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.saveAsSvg;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.toSvg;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.print;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.listen;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.listenOnce;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.unlisten;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.unlistenByKey;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.removeAllListeners;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.localToGlobal;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.globalToLocal;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.contextMenu;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.getSelectedPoints;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.toCsv;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.saveAsXml;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.saveAsJson;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.saveAsCsv;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.saveAsXlsx;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.contextMenu;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.getSelectedPoints;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.toCsv;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.saveAsXml;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.saveAsJson;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.saveAsCsv;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.saveAsXlsx;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.startSelectMarquee;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.selectMarqueeFill;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.selectMarqueeStroke;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.inMarquee;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.cancelMarquee;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.credits;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.exports;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.noData;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.autoRedraw;
 
 /**
  * @inheritDoc
@@ -984,59 +2223,38 @@ anychart.charts.Resource.prototype.autoRedraw;
  */
 anychart.charts.Resource.prototype.dispose;
 
-/** @inheritDoc */
-anychart.charts.Resource.prototype.fullScreen;
+/**
+ * @inheritDoc
+ * @ignoreDoc
+ */
+anychart.charts.Resource.prototype.startSelectMarquee;
 
-/** @inheritDoc */
-anychart.charts.Resource.prototype.isFullScreenAvailable;
+/**
+ * @inheritDoc
+ * @ignoreDoc
+ */
+anychart.charts.Resource.prototype.selectMarqueeFill;
 
-/** @inheritDoc */
-anychart.charts.Resource.prototype.id;
+/**
+ * @inheritDoc
+ * @ignoreDoc
+ */
+anychart.charts.Resource.prototype.selectMarqueeStroke;
 
-/** @inheritDoc */
-anychart.charts.Resource.prototype.a11y;
+/**
+ * @inheritDoc
+ * @ignoreDoc
+ */
+anychart.charts.Resource.prototype.inMarquee;
 
-/** @inheritDoc */
-anychart.charts.Resource.prototype.shareWithFacebook;
+/**
+ * @inheritDoc
+ * @ignoreDoc
+ */
+anychart.charts.Resource.prototype.cancelMarquee;
 
-/** @inheritDoc */
-anychart.charts.Resource.prototype.shareWithLinkedIn;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.shareWithPinterest;
-
-/** @inheritDoc */
-anychart.charts.Resource.prototype.shareWithTwitter;
-
-/** @inheritDoc */
+/**
+ * @inheritDoc
+ * @ignoreDoc
+ */
 anychart.charts.Resource.prototype.getStat;
-
-/** @inheritDoc */
-anychart.charts.Pert.prototype.getJpgBase64String;
-
-/** @inheritDoc */
-anychart.charts.Pert.prototype.getPdfBase64String;
-
-/** @inheritDoc */
-anychart.charts.Pert.prototype.getPngBase64String;
-
-/** @inheritDoc */
-anychart.charts.Pert.prototype.getSvgBase64String;
-
-/** @inheritDoc */
-anychart.charts.Pert.prototype.shareAsJpg;
-
-/** @inheritDoc */
-anychart.charts.Pert.prototype.shareAsPdf;
-
-/** @inheritDoc */
-anychart.charts.Pert.prototype.shareAsPng;
-
-/** @inheritDoc */
-anychart.charts.Pert.prototype.shareAsSvg;
-
-/** @inheritDoc */
-anychart.charts.Pert.prototype.toA11yTable;
-
-/** @inheritDoc */
-anychart.charts.Pert.prototype.toHtmlTable;

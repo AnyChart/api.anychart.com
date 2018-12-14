@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Polar.shareWithLinkedIn"/>
+    <meta name="ac:name" content="anychart.charts.Resource.noData get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-polar.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-resource.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -20,30 +20,20 @@
     </style>
 </head>
 <body>
-<button onclick="shareWithLinkedIn();">Get the sharing dialog</button>
 <div id="container"></div>
 <script>
-    var chart;
     anychart.onDocumentReady(function () {
-        chart = anychart.polar([
-            {x: 1, value: 4},
-            {x: 2, value: 2},
-            {x: 3, value: 8},
-            {x: 4, value: 5},
-            {x: 5, value: 3},
-            {x: 6, value: 9}
-        ]);
+        var chart = anychart.resource();
 
-        chart.title('Share with LinkedIn');
+        // Get noData.
+        var noData = chart.noData();
+
+        noData.label({text: 'Chart has no data'});
+
+        chart.title('Get and modify noData object');
         chart.container('container');
         chart.draw();
     });
-
-    function shareWithLinkedIn() {
-
-        // Share chart with LinkedIn.
-        chart.shareWithLinkedIn('ANYCHART.COM', 'Polar chart');
-    }
 </script>
 </body>
 </html>
