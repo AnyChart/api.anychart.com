@@ -23,8 +23,7 @@
 <script>
     anychart.onDocumentReady(function () {
         var chart = anychart.scatter();
-
-        var lineSeries = chart.line([
+        chart.line([
             {x: 0, value: 10},
             {x: 1, value: 5},
             {x: 5, value: 37},
@@ -32,7 +31,7 @@
             {x: 9, value: 16}
         ]);
 
-        var markerSeries = chart.marker([
+        var series = chart.marker([
             {x: 5, value: 20},
             {x: 1, value: 50},
             {x: 2, value: 30},
@@ -42,9 +41,10 @@
 
         // Create custom scale.
         var scale = anychart.scales.linear();
+
         scale.maximum(95);
 
-        markerSeries.yScale(scale);
+        series.yScale(scale);
 
         chart.yAxis(1).orientation('right').scale(scale);
         chart.title('Get and use Y scales');

@@ -19,23 +19,37 @@
     </style>
 </head>
 <body>
+<button onclick="vertical();">Vertical</button>
+<button onclick="horizontal();">Horizontal</button>
 <div id="container"></div>
 <script>
-    anychart.onDocumentReady(function () {
-        var chart = anychart.scatter();
+    var chart;
 
-        chart.line([
-            {x: 1, value: 27},
-            {x: 2, value: 26},
-            {x: 3, value: 12},
-            {x: 4, value: 41},
-            {x: 5, value: 34}
-        ]);
-
+    function vertical() {
         // Enable vertical layout.
         chart.isVertical(true);
+    }
 
-        chart.title('Enable chart vertical layout');
+    function horizontal() {
+
+        // Disable vertical layout.
+        chart.isVertical(false);
+    }
+    anychart.onDocumentReady(function () {
+        chart = anychart.scatter();
+        chart.line([
+            {x: 1, value: 0},
+            {x: 2, value: 20},
+            {x: 3, value: 10},
+            {x: 4, value: 30},
+            {x: 5, value: 20},
+            {x: 6, value: 40},
+            {x: 7, value: 30},
+            {x: 8, value: 50},
+            {x: 9, value: 40},
+            {x: 1, value: 0}
+        ]);
+        chart.title('Enable/Disable chart vertical layout');
         chart.container('container');
         chart.draw();
     });
