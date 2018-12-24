@@ -22,9 +22,7 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.financial();
-
-        chart.ohlc([
+        var chart = anychart.ohlc([
             [new Date('28-Aug-07'), 511.53, 514.98, 505.79, 506.40],
             [new Date('29-Aug-07'), 507.84, 513.30, 507.23, 512.88],
             [new Date('30-Aug-07'), 512.36, 515.40, 510.58, 511.40],
@@ -39,6 +37,8 @@
 
         // Set ticks.
         xScale.ticks([new Date('28-Aug-07'), new Date('30-Aug-07'), new Date('01-Sep-07')]);
+
+        xScale.minimum(Date.UTC(2007, 7, 27)).maximum(Date.UTC(2007, 8, 1));
 
         chart.title('Set ticks');
         chart.container('container');

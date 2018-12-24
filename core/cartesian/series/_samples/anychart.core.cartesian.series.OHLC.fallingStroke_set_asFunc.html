@@ -22,7 +22,7 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.cartesian();
+        var chart = anychart.ohlc();
 
         var series = chart.ohlc([
             {x: Date.UTC(2017, 2, 25), open: 511.53, high: 514.98, low: 505.79, close: 506.40},
@@ -36,6 +36,7 @@
             return anychart.color.setThickness(this.sourceColor, 2);
         });
 
+        chart.xScale().minimum(Date.UTC(2017, 2, 24)).maximum(Date.UTC(2017, 2, 29));
         chart.title('Set hover falling stroke parameter as a function');
         chart.container('container');
         chart.draw();

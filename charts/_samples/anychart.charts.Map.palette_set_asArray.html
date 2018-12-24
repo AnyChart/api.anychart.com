@@ -28,22 +28,19 @@
         // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
         // See https://docs.anychart.com/Maps/Map_Projections to learn more.
 
-        var firstDataSet = anychart.data.set([
+        var data1 = [
             {id: 'AU.CT', value: 15, title: 'Australian Capital Territory'},
             {id: 'AU.VI', value: 23, title: 'Victoria'},
             {id: 'AU.NT', value: 64, title: 'Northern Territory'},
             {id: 'AU.TS', value: 28, title: 'Tasmania'},
             {id: 'AU.SA', value: 45, title: 'South Australian'}
-        ]);
+        ];
 
-        var secondDataSet = anychart.data.set([
+        var data2 = [
             {id: 'AU.WA', value: 86, title: 'Western Australia'},
             {id: 'AU.QL', value: 16, title: 'Queensland'},
             {id: 'AU.NS', value: 32, title: 'New South Wales'}
-        ]);
-
-        var firstDataSetForSeries = firstDataSet.mapAs({id: 'id'});
-        var secondDataSetForSeries = secondDataSet.mapAs({id: 'id'});
+        ];
 
         var australiaMap = anychart.map();
         australiaMap.geoData(anychart.maps.australia);
@@ -51,9 +48,8 @@
         // Set palette.
         australiaMap.palette(['#ffa726', '#fb8c00']);
 
-        australiaMap.choropleth(firstDataSetForSeries);
-        australiaMap.choropleth(secondDataSetForSeries);
-
+        australiaMap.choropleth(data1);
+        australiaMap.choropleth(data2);
         australiaMap.title('Set map palette parameter as an array');
         australiaMap.container('container');
         australiaMap.draw();

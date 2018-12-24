@@ -25,7 +25,7 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create('container');
 
-        var pyramidChart = anychart.pyramid([
+        var chart1 = anychart.pyramid([
             {x: 'Physical', value: 125},
             {x: 'Data Link', value: 125},
             {x: 'Network', value: 125},
@@ -35,27 +35,26 @@
             {x: 'Application', value: 290, label: {anchor: 'center-top'}}
         ]);
 
-        pyramidChart.markers(true);
-        pyramidChart.labels(false);
-        pyramidChart.bounds(0, 20, '50%', '100%');
-        pyramidChart.markers({position: 'left-top', size: 10});
-        pyramidChart.markerPalette(['diamond', 'star4', 'star7', 'diagonal-cross', 'trapezium', 'pentagon']);
-        pyramidChart.container(stage);
-        pyramidChart.draw();
+        chart1.markers(true);
+        chart1.labels(false);
+        chart1.bounds(0, 20, '50%', '100%');
+        chart1.markers({position: 'left-top', size: 10});
+        chart1.markerPalette(['diamond', 'star4', 'star7', 'diagonal-cross', 'trapezium', 'pentagon']);
+        chart1.container(stage);
+        chart1.draw();
 
-        var markerChart = anychart.column();
-        markerChart.marker([5, 40, 6, 37, 15]);
-        markerChart.marker([7, 23, 9, 18, 28]);
-        markerChart.marker([11, 17, 12, 34, 19]);
-        markerChart.marker([13, 7, 22, 14, 39]);
-        markerChart.bounds('50%', 20, '50%', '100%');
+        var chart2 = anychart.scatter();
+        chart2.defaultSeriesType('marker');
+        chart2.addSeries([5, 40, 6, 37, 15], [7, 23, 9, 18, 28], [11, 17, 12, 34, 19], [13, 7, 22, 14, 39]);
+        chart2.xScale().minimum(-1);
+        chart2.bounds('50%', 20, '50%', '100%');
 
-        // Get marker palette of the funnel chart.
-        var pyramidChartMarkerPalette = pyramidChart.markerPalette();
+        // Get marker palette of the pyramid chart.
+        var markerPalette = chart1.markerPalette();
 
-        markerChart.markerPalette(pyramidChartMarkerPalette);
-        markerChart.container(stage);
-        markerChart.draw();
+        chart2.markerPalette(markerPalette);
+        chart2.container(stage);
+        chart2.draw();
 
         var customTitle = anychart.standalones.title();
         customTitle.text('Get and use chart marker palette');

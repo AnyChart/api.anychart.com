@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Cartesian.categorizedBySeries"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            position: absolute;
+            width: 100%;
+            top: 55px;
+            bottom: 0;
+        }
+        fieldset {
+            font-family: Verdana;
+            font-size: 13px;
+            border: none;
+        }
+        input, label {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<fieldset>
+    <legend>Distribute series by</legend>
+    <label><input onclick="chart.categorizedBySeries(true)" type="radio" name="mode" checked/>Series Names</label>
+    <label><input onclick="chart.categorizedBySeries(false)" type="radio" name="mode"/>Point Names</label>
+</fieldset>
+<div id="container"></div>
+<script>
+    var chart;
+    anychart.onDocumentReady(function() {
+        chart = anychart.column();
+        chart.data({
+            header: ['#', 'Oil', 'Gas', 'Gasoline', 'Diesel fuel'],
+            rows: [
+                ['2013', 21, 99, 19, 72],
+                ['2014', 41, 7, 71, 10],
+                ['2015', 9, 15, 77, 58],
+                ['2016', 71, 34, 40, 21],
+                ['2017', 6, 29, 11, 46]
+            ]
+        });
+
+        // Distribute series by series names or point names
+        // true: by series names
+        // false: by point names
+        chart.categorizedBySeries(true);
+
+        chart.legend().enabled(true).position('bottom');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>

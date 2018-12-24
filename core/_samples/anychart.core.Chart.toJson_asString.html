@@ -40,16 +40,12 @@
         chart.container(stage);
         chart.draw();
 
-        chart.listen('chartDraw', function () {
-            // Returns chart in JSON string.
-            var json = chart.toJson(true);
+        // Returns chart in JSON string.
+        var json = chart.toJson(true);
 
-            chart.dispose();
-
-            var chartFromJson = anychart.fromJson(json);
-            chartFromJson.container(stage);
-            chartFromJson.draw();
-        });
+        var chartFromJson = anychart.fromJson(json);
+        chartFromJson.container(stage);
+        chartFromJson.draw();
     });
 </script>
 </body>

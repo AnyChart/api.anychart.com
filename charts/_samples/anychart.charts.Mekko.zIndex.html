@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Mekko.zIndex"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-mekko.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-annotations.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create('container');
+
+        var overChart = anychart.mekko();
+        overChart.data({
+            rows: [
+                ['Apples', 1, 2, 3, 4],
+                ['Pears', 2, 3, 4, 1],
+                ['Bananas', 3, 4, 1, 2],
+                ['Grapes', 4, 1, 2, 3]
+            ]
+        });
+        overChart.bounds('10%', '3%', '40%', '35%');
+
+        // Set zIndex.
+        overChart.zIndex(1);
+
+        overChart.title('Set chart zIndex');
+        overChart.container(stage);
+        overChart.draw();
+
+        var chart = anychart.line();
+        chart.data(overChart.data());
+        chart.yScale().maximum(7);
+        chart.bounds('0%', '0%', '100%', '100%');
+        chart.background('#E0E0E0 0.5');
+        chart.container(stage);
+        chart.draw();
+    });
+</script>
+</body>
+</html>

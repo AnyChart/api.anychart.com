@@ -25,7 +25,7 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create('container');
 
-        var pyramidChart = anychart.pyramid([
+        var chart1 = anychart.pyramid([
             {x: 'Physical', value: 125},
             {x: 'Data Link', value: 125},
             {x: 'Network', value: 125},
@@ -34,24 +34,23 @@
             {x: 'Presentation', value: 125},
             {x: 'Application', value: 390, label: {anchor: 'center-top'}}
         ]);
-        pyramidChart.labels({position: 'inside'});
-        pyramidChart.bounds(0, 20, '50%', '100%');
-        pyramidChart.legend(false);
-        pyramidChart.hatchFill('zig-zag', '#424242', 0.5, 25);
-        pyramidChart.container(stage);
-        pyramidChart.draw();
+        chart1.labels({position: 'inside'});
+        chart1.bounds(0, 20, '50%', '100%');
+        chart1.legend(false);
+        chart1.hatchFill('zig-zag', '#424242', 0.5, 25);
+        chart1.container(stage);
+        chart1.draw();
 
-        var funnelChart = anychart.funnel([10, 3, 7, 10]);
-        funnelChart.bounds('50%', 20, '50%', '100%');
-        funnelChart.legend(false);
-        funnelChart.labels({position: 'inside'});
+        // Get hatch fill.
+        var hatchFill = chart1.hatchFill();
 
-        // Get hatchFill.
-        var pieChartHatchFill = pyramidChart.hatchFill();
-
-        funnelChart.hatchFill(pieChartHatchFill);
-        funnelChart.container(stage);
-        funnelChart.draw();
+        var chart2 = anychart.funnel([10, 3, 7, 10]);
+        chart2.bounds('50%', 20, '50%', '100%');
+        chart2.legend(false);
+        chart2.labels({position: 'inside'});
+        chart2.hatchFill(hatchFill);
+        chart2.container(stage);
+        chart2.draw();
 
         var customTitle = anychart.standalones.title();
         customTitle.text('Get and use chart hatchFill');

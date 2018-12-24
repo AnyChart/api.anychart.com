@@ -25,27 +25,28 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create('container');
 
-        var pieChart = anychart.pie([
+        var chart1 = anychart.pie([
             {x: 'Cycling', value: 5},
             {x: 'Swimming', value: 2},
             {x: 'Run', value: 1},
             {x: 'Hiking', value: 3},
             {x: 'Alpinism', value: 1}
         ]);
-        pieChart.bounds(0, 0, '50%', '100%');
-        pieChart.hatchFill('diagonal-brick', '#424242', 0.5, 25);
-        pieChart.container(stage);
-        pieChart.draw();
+        chart1.bounds(0, 0, '50%', '100%');
+        chart1.hatchFill('diagonal-brick', '#424242', 0.5, 25);
+        chart1.container(stage);
+        chart1.draw();
 
-        var funnelChart = anychart.funnel([10, 3, 7, 10]);
-        funnelChart.bounds('50%', 0, '50%', '100%');
+        var chart2 = anychart.funnel([10, 3, 7, 10]);
+        chart2.bounds('50%', 0, '50%', '100%');
 
         // Get hatchFill.
-        var pieChartHatchFill = pieChart.hatchFill();
+        var pieChartHatchFill = chart1.hatchFill();
 
-        funnelChart.hatchFill(pieChartHatchFill);
-        funnelChart.container(stage);
-        funnelChart.draw();
+        chart2.hatchFill(pieChartHatchFill);
+        chart2.top(10);
+        chart2.container(stage);
+        chart2.draw();
 
         var customTitle = anychart.standalones.title();
         customTitle.text('Get and use chart hatchFill');

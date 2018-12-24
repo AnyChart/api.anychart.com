@@ -23,7 +23,7 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = [
+        var chart = anychart.pyramid([
             {x: 'Physical', value: 125},
             {x: 'Data Link', value: 125},
             {x: 'Network', value: 125},
@@ -31,15 +31,13 @@
             {x: 'Session', value: 125},
             {x: 'Presentation', value: 125},
             {x: 'Application', value: 290, label: {anchor: 'center-top'}}
-        ];
-
-        var chart = anychart.pyramid(data);
-        chart.labels({position: 'inside'});
+        ]);
 
         // Set palette.
         chart.palette({items: ['#B2DFDB', '#00796B'], count: 7, type: 'range'});
 
         chart.title('Set color palette parameters as an object');
+        chart.labels({position: 'inside'});
         chart.container('container');
         chart.draw();
     });

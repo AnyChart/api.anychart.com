@@ -28,35 +28,27 @@
         // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
         // See https://docs.anychart.com/Maps/Map_Projections to learn more.
 
-        var firstDataSet = anychart.data.set([
+        var data1 = [
             {id: 'AU.CT', value: 15, title: 'Australian Capital Territory'},
             {id: 'AU.VI', value: 23, title: 'Victoria'},
             {id: 'AU.WA', value: 86, title: 'Western Australia'}
-        ]);
-        var secondDataSet = anychart.data.set([
+        ];
+        var data2 = [
             {id: 'AU.QL', value: 16, title: 'Queensland', size: 40},
             {id: 'AU.NS', value: 32, title: 'New South Wales', size: 40},
             {id: 'AU.NT', value: 64, title: 'Northern Territory', size: 40}
-        ]);
-        var thirdDataSet = anychart.data.set([
+        ];
+        var data3 = [
             {id: 'AU.TS', value: 28, title: 'Tasmania'},
             {id: 'AU.SA', value: 45, title: 'South Australian'},
             {id: 'AU.TS', size: 28},
             {id: 'AU.SA', size: 45}
-        ]);
-
-        var data1 = firstDataSet.mapAs({id: 'id'});
-        var data2 = secondDataSet.mapAs({id: 'id'});
-        var data3 = thirdDataSet.mapAs({id: 'id'});
+        ];
 
         var australiaMap = anychart.map();
         australiaMap.geoData(anychart.maps.australia);
         australiaMap.defaultSeriesType('choropleth');
         australiaMap.addSeries(data1, data2, data3);
-
-        australiaMap.getSeries(0);
-        australiaMap.getSeries(1);
-        australiaMap.getSeries(2);
 
         // Remove the series by index.
         australiaMap.removeSeriesAt(2);

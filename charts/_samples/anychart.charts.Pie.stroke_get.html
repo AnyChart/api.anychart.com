@@ -25,33 +25,33 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create('container');
 
-        var pieChart = anychart.pie([
+        var chart1 = anychart.pie([
             {x: 'Cycling', value: 12},
             {x: 'Swimming', value: 14},
             {x: 'Run', value: 8},
             {x: 'Hiking', value: 12},
             {x: 'Alpinism', value: 20}
         ]);
-        pieChart.bounds(0, 0, '50%', '100%');
-        pieChart.stroke('#90A4AE', 3);
-        pieChart.container(stage);
-        pieChart.draw();
+        chart1.bounds(0, 0, '50%', '100%');
+        chart1.stroke('#90A4AE', 3);
+        chart1.container(stage);
+        chart1.draw();
 
-        var funnelChart = anychart.funnel([
+        var chart2 = anychart.funnel([
             {x: 'Cycling', value: 12},
             {x: 'Swimming', value: 14},
             {x: 'Run', value: 8},
             {x: 'Hiking', value: 12},
             {x: 'Alpinism', value: 20}
         ]);
-        funnelChart.bounds('50%', 0, '50%', '100%');
+        chart2.bounds('50%', 15, '50%', '100%');
 
         // Get stroke.
-        var pieChartStroke = pieChart.stroke();
+        var stroke = chart1.stroke();
 
-        funnelChart.stroke(pieChartStroke);
-        funnelChart.container(stage);
-        funnelChart.draw();
+        chart2.stroke(stroke);
+        chart2.container(stage);
+        chart2.draw();
 
         var customTitle = anychart.standalones.title();
         customTitle.text('Get and use chart stroke');

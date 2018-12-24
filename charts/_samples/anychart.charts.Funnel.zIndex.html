@@ -25,14 +25,16 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create('container');
 
-        var overChart = anychart.funnel([
-            {name: 'January', value: 169},
-            {name: 'February', value: 72},
-            {name: 'March', value: 200},
-            {name: 'April', value: 230},
-            {name: 'May', value: 85},
-            {name: 'June', value: 300}
-        ]);
+        var data = [
+            {x: 'January', value: 169},
+            {x: 'February', value: 72},
+            {x: 'March', value: 200},
+            {x: 'April', value: 230},
+            {x: 'May', value: 85},
+            {x: 'June', value: 390}
+        ];
+
+        var overChart = anychart.funnel(data);
 
         // Set zIndex.
         overChart.zIndex(1);
@@ -43,14 +45,7 @@
         overChart.container(stage);
         overChart.draw();
 
-        var chart = anychart.line([
-            {x: 'January', value: 169},
-            {x: 'February', value: 72},
-            {x: 'March', value: 200},
-            {x: 'April', value: 230},
-            {x: 'May', value: 85},
-            {x: 'June', value: 390}
-        ]);
+        var chart = anychart.line(data);
         chart.bounds('0%', '0%', '100%', '100%');
         chart.background('#E0E0E0 0.5');
         chart.container(stage);

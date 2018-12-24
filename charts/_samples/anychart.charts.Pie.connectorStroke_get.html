@@ -25,40 +25,38 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create('container');
 
-        var pieChart = anychart.pie([
-            {x: 'Cycling', value: 10},
-            {x: 'Swimming', value: 12},
-            {x: 'Run', value: 18},
-            {x: 'Hiking', value: 11},
-            {x: 'Alpinism', value: 9}
-        ]);
-        pieChart.labels({fontColor: '#000000', position: 'outside'});
-        pieChart.bounds(0, 0, '50%', '100%');
-        pieChart.connectorStroke('#607D8B', 2, '5 2', 'round');
-        pieChart.container(stage);
-        pieChart.draw();
+        var chart1 = anychart.pie(getData());
+        chart1.labels({fontColor: '#000000', position: 'outside'});
+        chart1.bounds(0, 0, '50%', '100%');
+        chart1.connectorStroke('#607D8B', 2, '5 2', 'round');
+        chart1.container(stage);
+        chart1.draw();
 
-        var funnelChart = anychart.funnel([
-            {x: 'Cycling', value: 10},
-            {x: 'Swimming', value: 12},
-            {x: 'Run', value: 18},
-            {x: 'Hiking', value: 11},
-            {x: 'Alpinism', value: 9}
-        ]);
-        funnelChart.bounds('50%', 0, '50%', '100%');
+        var chart2 = anychart.funnel(getData());
+        chart2.bounds('50%', 10, '50%', '100%');
 
         // Get connector stroke.
-        var pieConnectorStroke = pieChart.connectorStroke();
+        var pieConnectorStroke = chart1.connectorStroke();
 
-        funnelChart.connectorStroke(pieConnectorStroke);
-        funnelChart.container(stage);
-        funnelChart.draw();
+        chart2.connectorStroke(pieConnectorStroke);
+        chart2.container(stage);
+        chart2.draw();
 
         var customTitle = anychart.standalones.title();
         customTitle.text('Get and use chart stroke');
         customTitle.container(stage);
         customTitle.draw();
     });
+
+    function getData() {
+        return [
+            {x: 'Cycling', value: 10},
+            {x: 'Swimming', value: 12},
+            {x: 'Run', value: 18},
+            {x: 'Hiking', value: 11},
+            {x: 'Alpinism', value: 9}
+        ]
+    }
 </script>
 </body>
 </html>

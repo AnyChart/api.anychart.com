@@ -22,18 +22,23 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
+        var data1 = [10000, 12000, 13000, 10000, 9000];
+        var data2 = [12500, 15000, 16500, 13000, 11000];
+        var data3 = [13000, 16000, 13500, 15000, 12000];
+
         // Creates chart.
         var chart = anychart.cartesian();
 
-        chart.line([
-            {x: 'Meat', value: 10},
-            {x: 'Fruit', value: 12},
-            {x: 'Nuts', value: 18},
-            {x: 'Milk', value: 11},
-            {x: 'Fish', value: 9}
-        ]);
+        // To create a Cartesian chart, use the defaultSeriesType() method
+        // to set a series type and add the series using the addSeries() method.
+        chart.defaultSeriesType('column');
+        chart.addSeries(data1);
+        chart.addSeries(data2);
 
-        chart.title('Create a blank cartesian chart');
+        // Also, you can use other series types using the appropriate methods like here.
+        chart.line(data3);
+
+        chart.title('Create a Cartesian chart');
         chart.container('container');
         chart.draw();
     });

@@ -24,8 +24,7 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.scatter();
         chart.xScale().minimum(-1);
-
-        var lineSeries = chart.line([
+        chart.line([
             {x: 0, value: 10},
             {x: 1, value: 5},
             {x: 5, value: 37},
@@ -33,7 +32,7 @@
             {x: 9, value: 16}
         ]);
 
-        var markerSeries = chart.marker([
+        var series = chart.marker([
             {x: 5, value: 20},
             {x: 1, value: 50},
             {x: 2, value: 30},
@@ -43,9 +42,10 @@
 
         // Create custom scale.
         var scale = anychart.scales.linear();
+
         scale.maximum(12);
 
-        markerSeries.xScale(scale);
+        series.xScale(scale);
 
         chart.xAxis(1).orientation('top').scale(scale);
         chart.title('Get and use X scales');

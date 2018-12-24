@@ -169,10 +169,57 @@ anychart.scales.Ordinal.prototype.weights;
  * Each element of the array is the weight of the series point with the corresponding element index.
  * @example anychart.scales.Ordinal.weights
  * @param {Array.<number>=} opt_weights An array of weights.
- * @return {anychart.scales.Ordinal} Scale weights or self for chaining.
+ * @return {anychart.scales.Ordinal} Self instance for method chaining.
  * @since 7.14.0
  */
 anychart.scales.Ordinal.prototype.weights;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.scales.Ordinal.prototype.mode
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the scale mode.
+ * @shortDescription Scale mode.
+ * @category Specific settings
+ * @listing See listing
+ * var mode = scale.mode();
+ * @return {anychart.enums.OrdinalScaleMode|string} Returns the scale mode.
+ * @since 8.5.0
+ */
+anychart.scales.Ordinal.prototype.mode;
+
+/**
+ * Setter for the scale mode.
+ * @detailed
+ * The mode() method is used to expand the ordinal scale when a continuous series should be drawn visually from the start of the chart to its end.<br/>
+ * <br/>
+ * Let's consider the work of this method on the example of three categories.<br/>
+ * <br/>
+ * If the mode is set to 'discrete' (default value) then drawing representation will be shown as in the image below:<br/>
+ * <br/>
+ * <img src='/anychart.scales.Ordinal.mode_discrete.png' width='490' height='174'/>
+ * <br/>
+ * This is suitable for drawing discrete series (column, box).<br/>
+ * <br/>
+ * Otherwise (continuous mode) it will be displayed as:<br/>
+ * <br/>
+ * <img src='/anychart.scales.Ordinal.mode_continuous.png' width='492' height='175'/>
+ * <br/>
+ * This is suitable for drawing continuous series (line, area).<br/>
+ * <br/>
+ * Scale transforms values according to a formula which takes into account that:<br/>
+ * scale.transform('A', 0.5) should be displayed as 0<br/>
+ * scale.transform('F', 0.5) should be 1<br/>
+ * See {@link anychart.scales.Ordinal#transform} to learn more.
+ * @example anychart.scales.Ordinal.mode
+ * @param {(anychart.enums.OrdinalScaleMode|string)=} opt_mode ['discrete'] Scale mode to set.
+ * @return {anychart.scales.Ordinal} Self instance for method chaining.
+ * @since 8.5.0
+ */
+anychart.scales.Ordinal.prototype.mode;
 
 /** @inheritDoc */
 anychart.scales.Ordinal.prototype.inverted;
@@ -182,21 +229,6 @@ anychart.scales.Ordinal.prototype.startAutoCalc;
 
 /** @inheritDoc */
 anychart.scales.Ordinal.prototype.finishAutoCalc;
-
-/** @inheritDoc */
-anychart.scales.Ordinal.prototype.listen;
-
-/** @inheritDoc */
-anychart.scales.Ordinal.prototype.listenOnce;
-
-/** @inheritDoc */
-anychart.scales.Ordinal.prototype.unlisten;
-
-/** @inheritDoc */
-anychart.scales.Ordinal.prototype.unlistenByKey;
-
-/** @inheritDoc */
-anychart.scales.Ordinal.prototype.removeAllListeners;
 
 /** @inheritDoc */
 anychart.scales.Ordinal.prototype.getType;

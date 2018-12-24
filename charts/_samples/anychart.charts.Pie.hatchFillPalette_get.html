@@ -25,41 +25,39 @@
     anychart.onDocumentReady(function () {
         var stage = anychart.graphics.create('container');
 
-        var pieChart = anychart.pie([
-            {x: 'Cycling', value: 7},
-            {x: 'Swimming', value: 7},
-            {x: 'Run', value: 7},
-            {x: 'Hiking', value: 7},
-            {x: 'Alpinism', value: 7}
-        ]);
-        pieChart.hatchFill(true);
-        pieChart.bounds(0, 0, '50%', '100%');
-        pieChart.hatchFillPalette(['divot', 'grid', 'vertical', 'horizontal']);
-        pieChart.container(stage);
-        pieChart.draw();
+        var chart1 = anychart.pie(getData());
+        chart1.hatchFill(true);
+        chart1.bounds(0, 0, '50%', '100%');
+        chart1.hatchFillPalette(['divot', 'grid', 'vertical', 'horizontal']);
+        chart1.container(stage);
+        chart1.draw();
 
-        var funnelChart = anychart.funnel([
-            {x: 'Cycling', value: 7},
-            {x: 'Swimming', value: 7},
-            {x: 'Run', value: 7},
-            {x: 'Hiking', value: 7},
-            {x: 'Alpinism', value: 7}
-        ]);
-        funnelChart.bounds('50%', 0, '50%', '100%');
-        funnelChart.hatchFill(true);
+        var chart2 = anychart.funnel(getData());
+        chart2.bounds('50%', 10, '50%', '100%');
+        chart2.hatchFill(true);
 
         // Gets hatch fill palette.
-        var pieChartHatchFillPalette = pieChart.hatchFillPalette();
+        var pieChartHatchFillPalette = chart1.hatchFillPalette();
 
-        funnelChart.hatchFillPalette(pieChartHatchFillPalette);
-        funnelChart.container(stage);
-        funnelChart.draw();
+        chart2.hatchFillPalette(pieChartHatchFillPalette);
+        chart2.container(stage);
+        chart2.draw();
 
         var customTitle = anychart.standalones.title();
         customTitle.text('Get and use chart hatchFillPalette');
         customTitle.container(stage);
         customTitle.draw();
     });
+
+    function getData() {
+        return [
+            {x: 'Cycling', value: 7},
+            {x: 'Swimming', value: 7},
+            {x: 'Run', value: 7},
+            {x: 'Hiking', value: 7},
+            {x: 'Alpinism', value: 7}
+        ]
+    }
 </script>
 </body>
 </html>

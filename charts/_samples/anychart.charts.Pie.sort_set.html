@@ -22,21 +22,39 @@
     </style>
 </head>
 <body>
+<button onclick="asc();">Ascending Order</button>
+<button onclick="desc();">Descending Order</button>
+<button onclick="none();">No Sorting</button>
 <div id="container"></div>
 <script>
+    var chart;
+
+    function asc() {
+
+        // Set sorting.
+        chart.sort('asc');
+    }
+
+    function desc() {
+
+        // Set sorting.
+        chart.sort('desc');
+    }
+
+    function none() {
+
+        // Disable sorting.
+        chart.sort('none');
+    }
     anychart.onDocumentReady(function () {
-        var chart = anychart.pie([
+        chart = anychart.pie([
             {x: 'Cycling', value: 3},
             {x: 'Swimming', value: 10},
             {x: 'Run', value: 6},
             {x: 'Hiking', value: 7},
             {x: 'Alpinism', value: 20}
         ]);
-
-        // Set sorting.
-        chart.sort('asc');
-
-        chart.title('Set sorting');
+        chart.title('Set the sorting mode');
         chart.container('container');
         chart.draw();
     });

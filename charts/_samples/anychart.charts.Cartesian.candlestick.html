@@ -22,7 +22,9 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.financial();
+        anychart.format.outputDateTimeFormat('dd MMMM yyyy');
+
+        var chart = anychart.candlestick();
 
         // Adds candlestick series.
         chart.candlestick([
@@ -32,6 +34,14 @@
             {x: Date.UTC(2007, 7, 31), open: 511.40, high: 516.50, low: 509.47, close: 514.25}
         ]);
 
+        var axis = chart.xAxis();
+
+        var labels = axis.labels();
+        labels.format(function() {
+            return anychart.format.dateTime(this.value);
+        });
+
+        chart.xScale().minimum(Date.UTC(2007, 7, 27)).maximum(Date.UTC(2007, 8, 1));
         chart.title('Add Candlestick series to a chart');
         chart.container('container');
         chart.draw();

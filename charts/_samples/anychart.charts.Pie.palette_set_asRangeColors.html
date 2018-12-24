@@ -22,22 +22,19 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = [
+        var chart = anychart.pie([
             {x: 'Cycling', value: 7},
             {x: 'Swimming', value: 7},
             {x: 'Run', value: 7},
             {x: 'Hiking', value: 7},
             {x: 'Alpinism', value: 7}
-        ];
-
-        var chart = anychart.pie(data);
-        chart.labels(null);
-        chart.legend(null);
+        ]);
+        chart.labels(null).legend(null);
 
         // Create palette.
         var palette = anychart.palettes.rangeColors();
         palette.items(['#90caf9', '#42a5f5']);
-        palette.count(data.length);
+        palette.count(chart.data().length);
 
         // Set palette.
         chart.palette(palette);

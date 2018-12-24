@@ -22,7 +22,9 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.cartesian();
+        anychart.format.outputDateTimeFormat('dd MMMM yyyy');
+
+        var chart = anychart.candlestick();
 
         var series = chart.candlestick([
             {x: Date.UTC(2017, 2, 25), open: 511.53, high: 514.98, low: 505.79, close: 506.40},
@@ -34,6 +36,14 @@
         // Set falling fill.
         series.fallingFill({color: '#DCE35B', opacity: 0.6});
 
+        var axis = chart.xAxis();
+
+        var labels = axis.labels();
+        labels.format(function() {
+            return anychart.format.dateTime(this.value);
+        });
+
+        chart.xScale().minimum(Date.UTC(2017, 2, 24)).maximum(Date.UTC(2017, 2, 29));
         chart.title('Set falling fill parameter as an object');
         chart.container('container');
         chart.draw();
