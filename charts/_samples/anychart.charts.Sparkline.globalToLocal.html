@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Sparkline.globalToLocal"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/DVF-4130_sparkline_inherited_methods/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/DVF-4130_sparkline_inherited_methods/js/anychart-sparkline.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/DVF-4130_sparkline_inherited_methods/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/DVF-4130_sparkline_inherited_methods/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/DVF-4130_sparkline_inherited_methods/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create('container');
+
+        var chart = anychart.sparkline([1.3, 2, 1.4, 4, 2.3, 6]);
+        chart.title({text: 'Convert the global coordinates to local coordinates', orientation: 'top'});
+        chart.padding('7%');
+        chart.container(stage);
+        chart.draw();
+
+        // Converts the global coordinates to local coordinates.
+        var localCoordinates = chart.globalToLocal(8, 8);
+
+        var rectangle = stage.rect(0, 0, 170, 30);
+        rectangle.fill({opacity: 0.1});
+
+        rectangle.setX(localCoordinates.x);
+        rectangle.setY(localCoordinates.y);
+
+        var customText = anychart.graphics.text(localCoordinates.x, localCoordinates.y, "");
+        customText.htmlText("Local coordinates [x: "
+            + localCoordinates.x + ", y: " + localCoordinates.y + "]<br>Global coordinates [x: 8, y: 8]");
+        customText.parent(stage);
+
+        // Visualises local bounds.
+        var localBounds = stage.rect();
+        localBounds.setBounds(stage.getBounds());
+    });
+</script>
+</body>
+</html>
