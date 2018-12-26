@@ -2,13 +2,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Pareto.toSvg set asPaperSizeLandscape"/>
+    <meta name="ac:name" content="anychart.charts.Stock.toHtmlTable"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pareto.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
     <style>
         html, body, #container {
@@ -23,25 +24,27 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.pareto();
-        chart.data([
-            {x: 'Nail polish', value: 14814},
-            {x: 'Eyebrow pencil', value: 13012},
-            {x: 'Rouge', value: 16624},
-            {x: 'Lipstick', value: 8814},
-            {x: 'Eyeshadows', value: 12998},
-            {x: 'Eyeliner', value: 17321},
-            {x: 'Foundation', value: 10342},
-            {x: 'Lip gloss', value: 22998},
-            {x: 'Mascara', value: 19261}
-        ]);
-        chart.title('Get chart as SVG with predefined paper size and orientation');
+        var dataTable = anychart.data.table();
+        dataTable.addData(get_dji_daily_short_data());
+
+        var mapping = dataTable.mapAs({value: 1});
+
+        var chart = anychart.stock();
+
+        var plot = chart.plot();
+        plot.line(mapping);
+
+        // Get chart as an HTML table
+        var htmlTable = chart.toHtmlTable('Chart table');
+
+        chart.title('Get chart as an HTML table');
         chart.container('container');
         chart.draw();
 
-        // Get chart as SVG with parameters.
-        var SVGstring = chart.toSvg('a4', true);
-        // Now you can do something with this string, send it to the server and etc.
+        var tableDiv = document.getElementById('container');
+
+        // Add an HTML table below the chart.
+        tableDiv.appendChild(htmlTable);
     });
 </script>
 </body>
