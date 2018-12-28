@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Pyramid.getPngBase64String"/>
+    <meta name="ac:name" content="anychart.charts.TagCloud.getSvgBase64String"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pyramid-funnel.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-tag-cloud.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -28,28 +28,41 @@
 <script>
     var chart;
     anychart.onDocumentReady(function () {
-        chart = anychart.pyramid([
-            {x: 'Physical', value: 125},
-            {x: 'Data Link', value: 125},
-            {x: 'Network', value: 125},
-            {x: 'Transport', value: 125},
-            {x: 'Session', value: 125},
-            {x: 'Presentation', value: 125},
-            {x: 'Application', value: 290}
-        ]);
-        chart.labels(false).margin([0, '45%', 0, 0]);
-        chart.title('Returns PNG as base64 string');
+        var data = getData();
+
+        chart = anychart.tagCloud(data);
+        chart.margin([0, '25%', 0, 0]);
+        chart.title('Returns SVG as base64 string');
         chart.container('container');
         chart.draw();
     });
 
     function getPngBase64String() {
 
-        // Get PDF as base64 string.
+        // Get JPG as base64 string.
         chart.getPngBase64String(function (response) {
             var base64String = document.getElementById('getPngBase64String');
             base64String.innerHTML = response;
-        })
+        });
+    }
+
+    function getData() {
+        return [
+            {x: 'learning', value: 80},
+            {x: 'lists', value: 44},
+            {x: 'meaning', value: 40},
+            {x: 'useful', value: 36},
+            {x: 'different', value: 32},
+            {x: 'grammar', value: 28},
+            {x: 'teaching', value: 24},
+            {x: 'example', value: 20},
+            {x: 'includes', value: 56},
+            {x: 'thing', value: 12},
+            {x: 'vocabulary', value: 10},
+            {x: 'frequency', value: 10},
+            {x: 'phrases', value: 15},
+            {x: 'content', value: 27}
+        ]
     }
 </script>
 </body>

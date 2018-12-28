@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Pyramid.shareWithPinterest"/>
+    <meta name="ac:name" content="anychart.charts.TagCloud.noData get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-pyramid-funnel.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-tag-cloud.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -20,31 +20,20 @@
     </style>
 </head>
 <body>
-<button onclick="shareWithPinterest();">Get the sharing dialog</button>
 <div id="container"></div>
 <script>
-    var chart;
     anychart.onDocumentReady(function () {
-        chart = anychart.pyramid([
-            {x: 'Physical', value: 125},
-            {x: 'Data Link', value: 125},
-            {x: 'Network', value: 125},
-            {x: 'Transport', value: 125},
-            {x: 'Session', value: 125},
-            {x: 'Presentation', value: 125},
-            {x: 'Application', value: 290}
-        ]);
-        chart.labels(false);
-        chart.title('Share with Pinterest');
+        var chart = anychart.tagCloud();
+
+        // Get noData.
+        var noData = chart.noData();
+
+        noData.label({text: 'Chart has no data'});
+
+        chart.title('Get and modify noData object');
         chart.container('container');
         chart.draw();
     });
-
-    function shareWithPinterest() {
-
-        // Share chart with Pinterest.
-        chart.shareWithPinterest('ANYCHART.COM', 'Pyramid chart');
-    }
 </script>
 </body>
 </html>
