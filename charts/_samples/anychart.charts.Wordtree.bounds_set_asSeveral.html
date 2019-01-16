@@ -2,11 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.TagCloud.id get set"/>
+    <meta name="ac:name" content="anychart.charts.Wordtree.bounds set asSeveral"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-tag-cloud.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-wordtree.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -23,37 +23,32 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var data = getData();
+        var chart = anychart.wordtree(getData());
 
-        var chart = anychart.tagCloud(data);
+        // Set chart bounds.
+        chart.bounds(0, 0, 500, 500);
 
-        // Set chart id.
-        chart.id('TagCloud');
-
-        // Get chart id.
-        var id = chart.id();
-
-        chart.title('Chart id is ' + id);
+        chart.title('Set chart bounds parameters');
         chart.container('container');
         chart.draw();
     });
 
     function getData() {
         return [
-            {x: 'learning', value: 80},
-            {x: 'lists', value: 44},
-            {x: 'meaning', value: 40},
-            {x: 'useful', value: 36},
-            {x: 'different', value: 32},
-            {x: 'grammar', value: 28},
-            {x: 'teaching', value: 24},
-            {x: 'example', value: 20},
-            {x: 'includes', value: 56},
-            {x: 'thing', value: 12},
-            {x: 'vocabulary', value: 10},
-            {x: 'frequency', value: 10},
-            {x: 'phrases', value: 15},
-            {x: 'content', value: 27}
+            'Earth is round',
+            'Earth is the third planet from the Sun',
+            'Earth goes around the Sun',
+            'Earth has one satellite',
+            'Earth has a radius of 6 371 km',
+            'Earth is less than the Sun',
+            'Earth is less than the Jupiter',
+            'Earth is less than the Saturn',
+            'Earth is less than the Uranus',
+            'Earth is less than the Neptune',
+            'Earth is bigger than the Venus',
+            'Earth is bigger than the Mars',
+            'Earth is bigger than the Mercury',
+            'Earth has a powerful magnetic field'
         ]
     }
 </script>
