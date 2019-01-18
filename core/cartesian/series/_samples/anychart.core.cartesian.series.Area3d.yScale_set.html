@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.cartesian.series.Area.seriesType get"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Area3d.yScale set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-cartesian-3d.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -22,20 +23,35 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.cartesian();
+        var chart = anychart.area3d();
 
-        var series = chart.area([
+        var scale = anychart.scales.linear();
+        scale.maximum(10);
+        scale.ticks({interval: 2});
+
+        var leftAxis = chart.yAxis(1);
+        leftAxis.scale(scale);
+
+        chart.yAxis(1, {orientation: 'right'});
+
+        var series1 = chart.area([
             {x: 'January', value: 2},
             {x: 'February', value: 5},
-            {x: 'March', value: 3},
-            {x: 'April', value: 9},
-            {x: 'May', value: 4}
+            {x: 'March', value: 1},
+            {x: 'April', value: 3}
         ]);
 
-        // Get the series type to switch.
-        var seriesType = series.seriesType();
+        var series2 = chart.area([
+            {x: 'January', value: 5},
+            {x: 'February', value: 2},
+            {x: 'March', value: 4},
+            {x: 'April', value: 1}
+        ]);
 
-        chart.title('Series type is ' + seriesType);
+        // Set Y scale.
+        series2.yScale(scale);
+
+        chart.title('Set series Y scale');
         chart.container('container');
         chart.draw();
     });

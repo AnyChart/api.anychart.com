@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.cartesian.series.Area3d.hatchFill"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Area3d.id get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -25,18 +25,34 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.area3d();
 
-        var series = chart.area([
-            {x: 'January', value: 2},
-            {x: 'February', value: 5},
-            {x: 'March', value: 3},
-            {x: 'April', value: 9},
-            {x: 'May', value: 4}
+        var series1 = chart.area([
+            {x: 0, value: 16},
+            {x: 1, value: 30},
+            {x: 2, value: 45},
+            {x: 3, value: 12},
+            {x: 4, value: 5}
         ]);
 
-        // Set hatch fill.
-        series.hatchFill('horizontal', '#616161', 1, 5);
+        var series2 = chart.area([
+            {x: 0, value: 1},
+            {x: 1, value: 51},
+            {x: 2, value: 23},
+            {x: 3, value: 64},
+            {x: 4, value: 12}
+        ]);
 
-        chart.title('Set series hatch fill');
+        var series3 = chart.area([
+            {x: 0, value: 18},
+            {x: 1, value: 25},
+            {x: 2, value: 10},
+            {x: 3, value: 20},
+            {x: 4, value: 35}
+        ]);
+
+        // Gets the id for the third series.
+        var id = series3.id();
+
+        chart.title('The third series id is ' + id);
         chart.container('container');
         chart.draw();
     });

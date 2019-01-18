@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.cartesian.series.Area.seriesType get"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Area3d.zIndex"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-cartesian-3d.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -22,20 +23,28 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.cartesian();
+        var chart = anychart.area3d();
 
-        var series = chart.area([
+        var series1 = chart.area([
             {x: 'January', value: 2},
             {x: 'February', value: 5},
             {x: 'March', value: 3},
             {x: 'April', value: 9},
             {x: 'May', value: 4}
+        ]).fill('#ff7f24 0.7');
+
+        var series2 = chart.area([
+            {x: 'January', value: 4},
+            {x: 'February', value: 9},
+            {x: 'March', value: 3},
+            {x: 'April', value: 5},
+            {x: 'May', value: 2}
         ]);
 
-        // Get the series type to switch.
-        var seriesType = series.seriesType();
+        // Set zIndex
+        series1.zIndex(31);
 
-        chart.title('Series type is ' + seriesType);
+        chart.title('Set series zIndex');
         chart.container('container');
         chart.draw();
     });

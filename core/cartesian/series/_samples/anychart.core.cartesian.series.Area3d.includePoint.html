@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.cartesian.series.Area.seriesType get"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Area3d.includePoint"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-cartesian-3d.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -22,20 +23,21 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.cartesian();
+        var chart = anychart.area3d();
 
         var series = chart.area([
-            {x: 'January', value: 2},
+            {x: 'January', value: 1},
             {x: 'February', value: 5},
-            {x: 'March', value: 3},
+            {x: 'March', value: 1},
             {x: 'April', value: 9},
             {x: 'May', value: 4}
         ]);
+        series.excludePoint([0, 4]);
 
-        // Get the series type to switch.
-        var seriesType = series.seriesType();
+        // Include excluded the points.
+        series.includePoint(4);
 
-        chart.title('Series type is ' + seriesType);
+        chart.title('Include excluded the points by indexes');
         chart.container('container');
         chart.draw();
     });

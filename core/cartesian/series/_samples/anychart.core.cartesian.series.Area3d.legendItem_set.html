@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.cartesian.series.Area.seriesType get"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Area3d.legendItem set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-cartesian-3d.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -22,9 +23,10 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.cartesian();
+        var chart = anychart.area3d();
+        chart.legend(true);
 
-        var series = chart.area([
+        var series1 = chart.area([
             {x: 'January', value: 2},
             {x: 'February', value: 5},
             {x: 'March', value: 3},
@@ -32,10 +34,22 @@
             {x: 'May', value: 4}
         ]);
 
-        // Get the series type to switch.
-        var seriesType = series.seriesType();
+        var series2 = chart.area([
+            {x: 'January', value: 4},
+            {x: 'February', value: 9},
+            {x: 'March', value: 3},
+            {x: 'April', value: 5},
+            {x: 'May', value: 2}
+        ]);
+        series2.fill('#ff7f24 0.6');
 
-        chart.title('Series type is ' + seriesType);
+        // Set legend item.
+        series1.legendItem({text: 'Blue area', iconType: 'area', iconFill: '#03A9F4'});
+
+        // Set legend item.
+        series2.legendItem({text: 'Orange area', iconType: 'range-area', iconFill: '#FF9800'});
+
+        chart.title('Set legend item settings');
         chart.container('container');
         chart.draw();
     });

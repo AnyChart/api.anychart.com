@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.cartesian.series.Area.seriesType get"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Area3d.hovered set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-cartesian-3d.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -22,7 +23,7 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.cartesian();
+        var chart = anychart.area3d();
 
         var series = chart.area([
             {x: 'January', value: 2},
@@ -32,12 +33,14 @@
             {x: 'May', value: 4}
         ]);
 
-        // Get the series type to switch.
-        var seriesType = series.seriesType();
+        // Get state.
+        series.hovered({fill: '#4CAF50'});
 
-        chart.title('Series type is ' + seriesType);
+        chart.title('Get and modify hovered state');
         chart.container('container');
         chart.draw();
+
+        series.hover();
     });
 </script>
 </body>

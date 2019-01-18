@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.cartesian.series.Area3d.hatchFill"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Area3d.getStat"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -23,20 +23,32 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.area3d();
-
-        var series = chart.area([
-            {x: 'January', value: 2},
-            {x: 'February', value: 5},
-            {x: 'March', value: 3},
-            {x: 'April', value: 9},
-            {x: 'May', value: 4}
+        var dataSet = anychart.data.set([
+            ['1986', 41, 36, 31],
+            ['1987', 37, 34, 29],
+            ['1988', 48, 47, 40],
+            ['1989', 41, 39, 33],
+            ['1990', 39, 36, 31],
+            ['1991', 34, 31, 27],
+            ['1992', 38, 35, 30],
+            ['1993', 29, 28, 24],
+            ['1994', 33, 32, 27]
         ]);
 
-        // Set hatch fill.
-        series.hatchFill('horizontal', '#616161', 1, 5);
+        var chart = anychart.area3d();
 
-        chart.title('Set series hatch fill');
+        var blueSeries = chart.area(dataSet.mapAs({x: 0, value: 1}));
+
+        var accessibility = blueSeries.a11y();
+        accessibility.titleFormat('Custom title');
+
+        chart.area(dataSet.mapAs({x: 0, value: 2}));
+        chart.area(dataSet.mapAs({x: 0, value: 3}));
+
+        // Disable accessibility.
+        blueSeries.a11y(false);
+
+        chart.title('Disable accessibility');
         chart.container('container');
         chart.draw();
     });
