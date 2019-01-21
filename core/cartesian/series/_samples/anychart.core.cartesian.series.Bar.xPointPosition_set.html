@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.cartesian.series.Area.minLabels get"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Bar.xPointPosition set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -22,31 +22,40 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.cartesian();
+        var chart = anychart.bar();
 
-        var series1 = chart.area([
-            {x: 'January', value: 10},
-            {x: 'February', value: 4},
-            {x: 'March', value: 17},
-            {x: 'April', value: 20}
+        var series1 = chart.column([
+            {x: 'Cycling', value: 6},
+            {x: 'Swimming', value: 4},
+            {x: 'Swimming', value: 3}
+        ]);
+        series1.name('Apples');
+
+        // Set point position.
+        series1.xPointPosition(0.3);
+
+        var series2 = chart.column([
+            {x: 'Cycling', value: 2},
+            {x: 'Swimming', value: 5},
+            {x: 'Swimming', value: 1}
+        ]);
+        series2.name('Pineapples');
+
+        // Set point position.
+        series2.xPointPosition(0.5);
+
+        var series3 = chart.column([
+            {x: 'Cycling', value: 3},
+            {x: 'Swimming', value: 7},
+            {x: 'Swimming', value: 3}
         ]);
 
-        var series2 = chart.area([
-            {x: 'January', value: 16},
-            {x: 'February', value: 35},
-            {x: 'March', value: 6},
-            {x: 'April', value: 15}
-        ]);
+        series3.name('Bananas');
 
-        // Get minimum labels.
-        var minLabels = series2.minLabels();
+        // Set point position.
+        series3.xPointPosition(0.7);
 
-        minLabels.enabled(true);
-        minLabels.fontColor('#F44336');
-        minLabels.fontSize(16);
-        minLabels.fontWeight('bold');
-
-        chart.title('Get and modify minimum labels');
+        chart.title('Set point position');
         chart.container('container');
         chart.draw();
     });

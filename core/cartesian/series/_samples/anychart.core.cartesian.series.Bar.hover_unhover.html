@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.cartesian.series.Area.minLabels get"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Bar.hover unhover"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -19,34 +19,34 @@
     </style>
 </head>
 <body>
+<button onclick="unhover();">Disable series hover</button>
+<button onclick="hover();">Hover the series</button>
 <div id="container"></div>
 <script>
+    var series;
+
+    function hover() {
+        // Hovers series
+        series.hover();
+    }
+
+    function unhover() {
+        // Disable hover
+        series.unhover();
+    }
     anychart.onDocumentReady(function () {
         var chart = anychart.cartesian();
 
-        var series1 = chart.area([
-            {x: 'January', value: 10},
-            {x: 'February', value: 4},
-            {x: 'March', value: 17},
-            {x: 'April', value: 20}
+        series = chart.bar([
+            {x: 'Cycling', value: 2},
+            {x: 'Running', value: 5},
+            {x: 'Swimming', value: 3},
+            {x: 'Triathlon', value: 9},
+            {x: 'Outdoor', value: 4}
         ]);
+        series.hovered().fill('#ffb90f');
 
-        var series2 = chart.area([
-            {x: 'January', value: 16},
-            {x: 'February', value: 35},
-            {x: 'March', value: 6},
-            {x: 'April', value: 15}
-        ]);
-
-        // Get minimum labels.
-        var minLabels = series2.minLabels();
-
-        minLabels.enabled(true);
-        minLabels.fontColor('#F44336');
-        minLabels.fontSize(16);
-        minLabels.fontWeight('bold');
-
-        chart.title('Get and modify minimum labels');
+        chart.title('Enable/Disable series hover');
         chart.container('container');
         chart.draw();
     });

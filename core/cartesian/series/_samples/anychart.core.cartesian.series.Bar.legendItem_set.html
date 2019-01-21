@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.cartesian.series.Area.enabled set"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Bar.legendItem set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -19,37 +19,39 @@
     </style>
 </head>
 <body>
-<button onclick="disableSeries();">Disable series</button>
-<button onclick="series2.enabled(true)">Enable series</button>
 <div id="container"></div>
 <script>
-    var series2;
-
-    function disableSeries() {
-
-        // Disables the second series.
-        series2.enabled(false);
-    }
     anychart.onDocumentReady(function () {
-        var chart = anychart.cartesian();
+        var chart = anychart.bar();
+        chart.legend(true);
 
-        var series1 = chart.area([
-            {x: 'January', value: 2},
-            {x: 'February', value: 5},
-            {x: 'March', value: 3},
-            {x: 'April', value: 9},
-            {x: 'May', value: 4}
+        var series1 = chart.bar([
+            {x: 'January', value: 35},
+            {x: 'February', value: 15},
+            {x: 'March', value: 20},
+            {x: 'April', value: 19},
+            {x: 'May', value: 40},
+            {x: 'June', value: 10},
+            {x: 'Jule', value: 23}
         ]);
 
-        series2 = chart.area([
+        // Set legend item.
+        series1.legendItem({text: 'Light blue series', iconType: 'square', iconFill: '#81D4FA'});
+
+        var series2 = chart.bar([
             {x: 'January', value: 4},
-            {x: 'February', value: 9},
-            {x: 'March', value: 3},
-            {x: 'April', value: 5},
-            {x: 'May', value: 2}
+            {x: 'February', value: 6},
+            {x: 'March', value: 4},
+            {x: 'April', value: 9},
+            {x: 'May', value: 20},
+            {x: 'June', value: 30},
+            {x: 'Jule', value: 43}
         ]);
 
-        chart.title('Disable/Enable the second series');
+        // Set legend item.
+        series2.legendItem({text: 'Blue series', iconType: 'bar', iconFill: '#90CAF9'});
+
+        chart.title('Set legend item');
         chart.container('container');
         chart.draw();
     });

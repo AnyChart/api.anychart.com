@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.cartesian.series.Area.minLabels get"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Bar.transformY"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -22,33 +22,22 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.cartesian();
+        var chart = anychart.bar();
 
-        var series1 = chart.area([
-            {x: 'January', value: 10},
-            {x: 'February', value: 4},
-            {x: 'March', value: 17},
-            {x: 'April', value: 20}
+        var series = chart.bar([
+            {x: 'Cycling', value: 1},
+            {x: 'Running', value: 5},
+            {x: 'Swimming', value: 1},
+            {x: 'Triathlon', value: 9},
+            {x: 'Outdoor', value: 4}
         ]);
-
-        var series2 = chart.area([
-            {x: 'January', value: 16},
-            {x: 'February', value: 35},
-            {x: 'March', value: 6},
-            {x: 'April', value: 15}
-        ]);
-
-        // Get minimum labels.
-        var minLabels = series2.minLabels();
-
-        minLabels.enabled(true);
-        minLabels.fontColor('#F44336');
-        minLabels.fontSize(16);
-        minLabels.fontWeight('bold');
-
-        chart.title('Get and modify minimum labels');
         chart.container('container');
         chart.draw();
+
+        // Transforms to pixel coordinates.
+        var transformY = series.transformY(2, 0.5);
+
+        chart.title('Transform Y value (2, 0.5) to pixel coordinates (' + transformY.toFixed() + ')');
     });
 </script>
 </body>

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.cartesian.series.Area.minLabels get"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Bar.id set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -24,29 +24,34 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.cartesian();
 
-        var series1 = chart.area([
-            {x: 'January', value: 10},
-            {x: 'February', value: 4},
-            {x: 'March', value: 17},
-            {x: 'April', value: 20}
+        var series1 = chart.bar([
+            {x: 'Cycling',  value: 16},
+            {x: 'Running',  value: 30},
+            {x: 'Swimming', value: 45},
+            {x: 'Triathlon', value: 12},
+            {x: 'Outdoor',  value: 5}
         ]);
 
-        var series2 = chart.area([
-            {x: 'January', value: 16},
-            {x: 'February', value: 35},
-            {x: 'March', value: 6},
-            {x: 'April', value: 15}
+        var series2 = chart.bar([
+            {x: 'Cycling',  value: 1},
+            {x: 'Running',  value: 51},
+            {x: 'Swimming', value: 23},
+            {x: 'Triathlon', value: 64},
+            {x: 'Outdoor',  value: 12}
         ]);
 
-        // Get minimum labels.
-        var minLabels = series2.minLabels();
+        var series3 = chart.bar([
+            {x: 'Cycling',  value: 18},
+            {x: 'Running',  value: 25},
+            {x: 'Swimming', value: 10},
+            {x: 'Triathlon', value: 20},
+            {x: 'Outdoor',  value: 35}
+        ]);
 
-        minLabels.enabled(true);
-        minLabels.fontColor('#F44336');
-        minLabels.fontSize(16);
-        minLabels.fontWeight('bold');
+        // Set an id for the series.
+        series3.id('Internet sales');
 
-        chart.title('Get and modify minimum labels');
+        chart.title('Set an id for the series');
         chart.container('container');
         chart.draw();
     });

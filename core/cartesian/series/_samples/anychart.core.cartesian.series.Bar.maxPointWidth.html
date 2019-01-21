@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.cartesian.series.Area.minLabels get"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Bar.maxPointWidth"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -22,33 +22,33 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.cartesian();
+        var stage = anychart.graphics.create('container');
 
-        var series1 = chart.area([
-            {x: 'January', value: 10},
-            {x: 'February', value: 4},
-            {x: 'March', value: 17},
-            {x: 'April', value: 20}
-        ]);
+        var data = [
+            {x: 'Apple', value: 17},
+            {x: 'Pineapple', value: 17},
+        ];
 
-        var series2 = chart.area([
-            {x: 'January', value: 16},
-            {x: 'February', value: 35},
-            {x: 'March', value: 6},
-            {x: 'April', value: 15}
-        ]);
+        var chart1 = anychart.bar();
+        chart1.title('maxPointWidth = 10');
 
-        // Get minimum labels.
-        var minLabels = series2.minLabels();
+        var series1 = chart1.bar(data);
 
-        minLabels.enabled(true);
-        minLabels.fontColor('#F44336');
-        minLabels.fontSize(16);
-        minLabels.fontWeight('bold');
+        // Set maximum point width.
+        series1.maxPointWidth(10);
 
-        chart.title('Get and modify minimum labels');
-        chart.container('container');
-        chart.draw();
+        chart1.bounds(0, 0, '50%', '100%');
+        chart1.container(stage);
+        chart1.draw();
+
+        var chart2 = anychart.bar();
+
+        var series2 = chart2.bar(data);
+
+        chart2.title('maxPointWidth not set');
+        chart2.bounds('50%', 0, '50%', '100%');
+        chart2.container(stage);
+        chart2.draw();
     });
 </script>
 </body>

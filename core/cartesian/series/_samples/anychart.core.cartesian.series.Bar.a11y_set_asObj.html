@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.cartesian.series.Bar.a11y set asObj"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.cartesian();
+
+        var series1 = chart.bar([
+            {x: 'Cycling',  value: 16},
+            {x: 'Running',  value: 30},
+            {x: 'Swimming', value: 45},
+            {x: 'Triathlon', value: 12},
+            {x: 'Outdoor',  value: 5}
+        ]);
+
+        var series2 = chart.bar([
+            {x: 'Cycling',  value: 1},
+            {x: 'Running',  value: 51},
+            {x: 'Swimming', value: 23},
+            {x: 'Triathlon', value: 64},
+            {x: 'Outdoor',  value: 12}
+        ]);
+
+        var series3 = chart.bar([
+            {x: 'Cycling',  value: 18},
+            {x: 'Running',  value: 25},
+            {x: 'Swimming', value: 10},
+            {x: 'Triathlon', value: 20},
+            {x: 'Outdoor',  value: 35}
+        ]);
+
+        var accessibility = series1.a11y();
+        accessibility.titleFormat('Custom title');
+
+        // Set accessibility settings.
+        series1.a11y({enabled: false});
+
+        chart.title('Set accessibility parameter as an object');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
