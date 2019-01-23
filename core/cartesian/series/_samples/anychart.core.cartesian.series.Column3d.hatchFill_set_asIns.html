@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.cartesian.series.Area3d.hatchFill set asPattern"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Column3d.hatchFill set asIns"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -23,14 +23,9 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create('container');
+        var chart = anychart.column3d();
 
-        var pattern = stage.pattern(new anychart.graphics.math.Rect(0, 0, 20, 20));
-        pattern.star5(11, 7, 8).stroke('#ffffff');
-
-        var chart = anychart.area3d();
-
-        var series = chart.area([
+        var series = chart.column([
             {x: 'January', value: 2},
             {x: 'February', value: 5},
             {x: 'March', value: 3},
@@ -38,11 +33,13 @@
             {x: 'May', value: 4}
         ]);
 
-        // Set hatch fill.
-        series.hatchFill(pattern);
+        var customHatchFill = anychart.graphics.hatchFill('divot', '#ffffff', 0.9, 20);
 
-        chart.title('Set series hatch fill as a pattern');
-        chart.container(stage);
+        // Set hatch fill.
+        series.hatchFill(customHatchFill);
+
+        chart.title('Set series hatch fill parameter as an instance');
+        chart.container('container');
         chart.draw();
     });
 </script>
