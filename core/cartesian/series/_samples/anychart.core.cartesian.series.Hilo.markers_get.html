@@ -2,11 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.ui.table.Cell.fontSize"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.Hilo.markers get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-table.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -23,22 +22,26 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create('container');
+        var chart = anychart.hilo();
 
-        var table = anychart.standalones.table();
-        table.contents([
-            ['First cell', 2, 3],
-            [4, 'Fifth cell', 6],
-            [7, 8, 'Ninth cell']
+        var series = chart.hilo([
+            {x: 'January', high: 3, low: 1},
+            {x: 'February', high: 5, low: 2},
+            {x: 'March', high: 4, low: 3},
+            {x: 'April', high: 9, low: 5},
+            {x: 'May', high: 4, low: 1}
         ]);
 
-        var cell = table.getCell(1, 1);
+        // Get markers.
+        var markers = series.markers();
 
-        // Set font size.
-        cell.fontSize(20);
+        markers.enabled(true);
+        markers.size(10);
+        markers.type('star5');
 
-        table.container(stage);
-        table.draw();
+        chart.title('Get and modify markers');
+        chart.container('container');
+        chart.draw();
     });
 </script>
 </body>

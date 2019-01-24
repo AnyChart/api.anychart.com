@@ -2,11 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.ui.table.Cell.fontSize"/>
+    <meta name="ac:name" content="anychart.core.cartesian.series.RangeSplineArea.lowFill set asRadial"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-table.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -23,22 +22,22 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create('container');
+        var chart = anychart.area();
 
-        var table = anychart.standalones.table();
-        table.contents([
-            ['First cell', 2, 3],
-            [4, 'Fifth cell', 6],
-            [7, 8, 'Ninth cell']
+        var series = chart.rangeSplineArea([
+            {x: 'Meat', high: 12, low: -10},
+            {x: 'Fruit', high: 2, low: 11},
+            {x: 'Nuts', high: 20, low: -10},
+            {x: 'Milk', high: 2, low: 11},
+            {x: 'Fish', high: 11, low: -9}
         ]);
 
-        var cell = table.getCell(1, 1);
+        // Set low fill.
+        series.lowFill(['#FEFEFE', '#424242'], 0.5, 0.5, null, 0.8, 0.5, 0.5);
 
-        // Set font size.
-        cell.fontSize(20);
-
-        table.container(stage);
-        table.draw();
+        chart.title('Set low fill as a radial gradient');
+        chart.container('container');
+        chart.draw();
     });
 </script>
 </body>

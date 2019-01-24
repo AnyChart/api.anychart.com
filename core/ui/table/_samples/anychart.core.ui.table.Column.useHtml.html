@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.ui.table.Cell.fontSize"/>
+    <meta name="ac:name" content="anychart.core.ui.table.Column.useHtml"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -28,14 +28,15 @@
         var table = anychart.standalones.table();
         table.contents([
             ['First cell', 2, 3],
-            [4, 'Fifth cell', 6],
+            [4, '<i> Fifth cell </i>', 6],
             [7, 8, 'Ninth cell']
         ]);
 
         var cell = table.getCell(1, 1);
-
-        // Set font size.
         cell.fontSize(20);
+
+        // Allows to use HTML.
+        cell.useHtml(true);
 
         table.container(stage);
         table.draw();
