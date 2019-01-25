@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.gauge.pointers.Base.fill set asImg"/>
+    <meta name="ac:name" content="anychart.core.gauge.pointers.Marker.stroke set asObj"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -23,19 +23,16 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.gauges.circular([{value: 7}]);
+        var chart = anychart.gauges.circular([{value: 7.5}]);
         chart.axis();
 
-        var knob = chart.knob();
+        var marker = chart.marker();
+        marker.size(10);
 
-        // Set fill.
-        knob.fill({
-            src: 'https://static.anychart.com/images/oceanic-airlines.png',
-            mode: 'stretch',
-            opacity: 0.5
-        });
+        // Set stroke.
+        marker.stroke({color: '#F44336', thickness: 2, dash: '5 2'});
 
-        chart.title('Set fill as an image');
+        chart.title('Set stroke parameter as an object');
         chart.container('container');
         chart.draw();
     });
