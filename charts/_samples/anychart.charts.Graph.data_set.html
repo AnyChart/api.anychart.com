@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Graph.data_set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-graph.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  var chart1, chart2, chart3, chart4;
+  anychart.onDocumentLoad(function() {
+    var stage = acgraph.create('container');
+    // Chart 1
+    chart1 = anychart.graph();
+    chart1.data(rawData1);
+    chart1.title().enabled(true).text('Chart 1. Raw data');
+    chart1.bounds(0, 0, '50%', '50%');
+    chart1.container(stage).draw();
+
+    // Chart 2
+    chart2 = anychart.graph({
+      'nodes': anychart.data.set(rawData1['nodes']),
+      'edges': anychart.data.set(rawData1['edges'])
+    });
+    chart2.title().enabled(true).text('Chart 2. DataSets');
+    chart2.bounds('50%', 0, '50%', '50%');
+    chart2.container(stage).draw();
+
+    // Chart 3
+    chart3 = anychart.graph();
+    var dataSet3Nodes = anychart.data.set(rawData2['nodes']);
+    var dataSet3Edges = anychart.data.set(rawData2['edges']);
+    chart3.data({
+      'nodes': dataSet3Nodes.mapAs({'id': 0}),
+      'edges': dataSet3Edges.mapAs({'from': 0, 'to': 1})
+    });
+    chart3.title().enabled(true).text('Chart 3. DataSets from array of arrays');
+    chart3.bounds(0, '50%', '50%', '50%');
+    chart3.container(stage).draw();
+
+    // Chart 4
+    chart4 = anychart.graph();
+    var dataSet4Nodes = anychart.data.set(rawData3['nodes']);
+    var dataSet4Edges = anychart.data.set(rawData3['edges']);
+    chart4.data({
+      'nodes': dataSet4Nodes.mapAs({'id': 'node'}),
+      'edges': dataSet4Edges.mapAs({'from': 'fromNode'})
+    });
+    chart4.title().enabled(true).text('Chart 4. DataSets from array of objects');
+    chart4.bounds('50%', '50%', '50%', '50%');
+    chart4.container(stage).draw();
+  });
+
+  var rawData1 = {
+    'nodes': [
+      {'id': 'A'},
+      {'id': 'B'},
+      {'id': 'C'},
+      {'id': 'D'},
+      {'id': 'E'}
+    ],
+    'edges': [
+      {'from': 'A', 'to': 'B'},
+      {'from': 'A', 'to': 'C'},
+      {'from': 'A', 'to': 'D'},
+      {'from': 'D', 'to': 'C'},
+      {'from': 'E', 'to': 'D'}
+    ]
+  };
+
+  var rawData2 = {
+    'nodes': [['A'], ['B'], ['C'], ['D'], ['E']],
+    'edges': [
+      ['A', 'B'],
+      ['A', 'C'],
+      ['A', 'D'],
+      ['D', 'C'],
+      ['E', 'D']
+    ]
+  };
+
+  var rawData3 = {
+    'nodes': [{'node': 'A'}, {'node': 'B'}, {'node': 'C'}, {'node': 'D'}, {'node': 'E'}],
+    'edges': [
+      {'fromNode': 'A', 'to': 'B'},
+      {'fromNode': 'A', 'to': 'C'},
+      {'fromNode': 'A', 'to': 'D'},
+      {'fromNode': 'D', 'to': 'C'},
+      {'fromNode': 'E', 'to': 'D'}
+    ]
+  };
+
+</script>
+</body>
+</html>

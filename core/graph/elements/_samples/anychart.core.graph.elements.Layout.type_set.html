@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.graph.elements.Layout.type_set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-graph.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  anychart.onDocumentLoad(function() {
+    var stage = acgraph.create('container');
+    var chart1 = anychart.graph();
+    chart1.data(data);
+    chart1.title().enabled(true).text('Coordinates from data');
+    chart1.layout().type('fixed');
+    chart1.bounds(0, 0, '50%', '100%');
+
+    var chart2 = anychart.graph(data);
+    chart2.bounds('50%', 0, '50%', '100%');
+    chart2.layout().type('force');
+    chart2.title().enabled(true).text('Node is automatically placed');
+
+    chart1.container(stage).draw();
+    chart2.container(stage).draw();
+  });
+  var data = {
+    nodes: [
+      {"id": "a", "x": 96, "y": 30},
+      {"id": "a1", "x": 25, "y": 137},
+      {"id": "a2", "x": 63, "y": 79},
+      {"id": "a3", "x": 154, "y": 100},
+      {"id": "a4", "x": 81, "y": 129},
+      {"id": "a5", "x": 134, "y": 121},
+      {"id": "a6", "x": 30, "y": 16},
+      {"id": "b", "x": 14, "y": 110},
+      {"id": "b1", "x": 178, "y": 156},
+      {"id": "b2", "x": 105, "y": 120},
+      {"id": "b3", "x": 178, "y": 111},
+      {"id": "b4", "x": 124, "y": 90},
+      {"id": "b5", "x": 192, "y": 25},
+      {"id": "b6", "x": 177, "y": 63}
+    ],
+    edges: [
+      {from: 'a', to: 'b'},
+      {from: 'a', to: 'a1'},
+      {from: 'a', to: 'a2'},
+      {from: 'a', to: 'a3'},
+      {from: 'a', to: 'a4'},
+      {from: 'a', to: 'a5'},
+      {from: 'a', to: 'a6'},
+      {from: 'b', to: 'b1'},
+      {from: 'b', to: 'b2'},
+      {from: 'b', to: 'b3'},
+      {from: 'b', to: 'b4'},
+      {from: 'b', to: 'b5'},
+      {from: 'b', to: 'b6'},
+    ]
+  };
+</script>
+</body>
+</html>

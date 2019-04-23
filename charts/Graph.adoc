@@ -1,0 +1,205 @@
+/**
+ * Graph chart class.
+ * {docs:Graph_Chart/Quick_Start}Learn more about Graph chart{docs}
+ * @constructor
+ * @extends {anychart.core.Chart}
+ */
+anychart.charts.Graph;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  Specific settings.
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Graph chart edges settings getter.
+ * @example anychart.charts.Graph.edges_get
+ * @category Specific settings
+ * @return {anychart.core.graph.elements.Edge} Edges settings instance for method chaining.
+ */
+anychart.charts.Graph.prototype.edges;
+
+/**
+ * Graph chart edges settings setter.
+ * @example anychart.charts.Graph.edges_set
+ * @category Specific settings
+ * @param {Object=} opt_value Settings object.
+ * @return {anychart.charts.Graph} Self instance for method chaining.
+ */
+anychart.charts.Graph.prototype.edges;
+
+/**
+ * Graph chart nodes settings getter.
+ * @example anychart.charts.Graph.nodes_get
+ * @category Specific settings
+ * @return {anychart.core.graph.elements.Node} Nodes settings instance for method chaining.
+ */
+anychart.charts.Graph.prototype.nodes;
+
+/**
+ * Graph chart nodes settings setter.
+ * @example anychart.charts.Graph.nodes_set
+ * @category Specific settings
+ * @param {Object=} opt_value Settings object.
+ * @return {anychart.charts.Graph} Self instance for method chaining.
+ */
+anychart.charts.Graph.prototype.nodes;
+
+/**
+ * Returns chart back to initial view. Reset zoom and translation.
+ * @example anychart.charts.Graph.fit_set
+ * @category Specific settings
+ * @return {anychart.charts.Graph} Self instance for method chaining.
+ */
+anychart.charts.Graph.prototype.fit;
+
+/**
+ * Getter for current zoom factor.
+ * @example anychart.charts.Graph.zoom_get
+ * @category Specific settings
+ * @return {number} Current zoom factor.
+ */
+ anychart.charts.Graph.prototype.zoom;
+
+ /**
+ * Setter for current zoom factor.
+ * @category Specific settings
+ * @example anychart.charts.Graph.zoom_set
+ * @param {number} value Zoom factor.
+ * @param {number=} opt_cx Scaling point x.
+ * @param {number=} opt_cy Scaling point y.
+ * @return {anychart.charts.Graph} Self instance for method chaining.
+ */
+anychart.charts.Graph.prototype.zoom;
+
+/**
+ * Getter for current chart translation.
+ * @example anychart.charts.Graph.nodes_get
+ * @category Specific settings
+ * @return {Array.<number>} Array with two elements: x and y pixel values of current translation.
+ */
+anychart.charts.Graph.prototype.move;
+
+/**
+ * Sets chart pixel translation by x and y coordinates.
+ * @example anychart.charts.Graph.move_set
+ * @param {?number} opt_dx X-coordinate translation. If is null, returns the chart to its initial position.
+ * @param {?number=} opt_dy Y-coordinate translation. Default is 0.
+ * @return {anychart.charts.Graph} Self instance for method chaining.
+ */
+anychart.charts.Graph.prototype.move;
+
+/**
+ * Getter for chart groups by group id.
+ * @example anychart.charts.Graph.group_get
+ * @category Specific settings
+ * @param {string} id Id of group.
+ * @return {anychart.core.graph.elements.Group|undefined} Group with id set or undefined if group is not found.
+ */
+anychart.charts.Graph.prototype.group;
+
+/**
+ * Configures group by id.
+ * @category Specific settings
+ * @example anychart.charts.Graph.group_set
+ * @param {string} id Id of group.
+ * @param {Object} value Group configuration object.
+ * @return {anychart.charts.Graph} Self instance for method chaining.
+ */
+anychart.charts.Graph.prototype.group;
+
+/**
+ * Getter for graph chart rotation angle.
+ * @category Specific settings
+ * @example anychart.charts.Graph.rotation_get
+ * @return {number} Rotation angle, degrees.
+ */
+anychart.charts.Graph.prototype.rotation;
+
+/**
+ * Setter for graph chart rotation angle.
+ * @example anychart.charts.Graph.rotation_set
+ * @param {number} degree Rotation angle.
+ * @category Specific settings
+ * @return {anychart.charts.Graph} Self instance for method chaining.
+ */
+anychart.charts.Graph.prototype.rotation;
+
+/**
+ * Getter for graph chart layout.
+ * @category Specific settings
+ * @example anychart.charts.Graph.layout_get
+ * @return {anychart.core.graph.elements.Layout} Graph chart layout settings.
+ */
+anychart.charts.Graph.prototype.layout;
+
+/**
+ * Setter for graph chart layout.
+ * @category Specific settings
+ * @example anychart.charts.Graph.layout_set
+ * @param {Object|string} value In object case is chart layout settings, in string case is layout type.
+ * @return {anychart.charts.Graph} Self instance for method chaining.
+ */
+anychart.charts.Graph.prototype.layout;
+
+/**
+ * Getter for graph chart interactivity settings.
+ * @example anychart.charts.Graph.interactivity_get
+ * @category Specific settings
+ * @return {anychart.core.graph.elements.Interactivity} Graph chart interactivity instance for method chaining.
+ */
+anychart.charts.Graph.prototype.interactivity;
+
+/**
+ * Setter for graph chart interactivity.
+ * @category Specific settings
+ * @example anychart.charts.Graph.interactivity_set
+ * @param {Object} value Graph chart interactivity settings.
+ * @return {anychart.charts.Graph} Self instance for method chaining.
+ */
+anychart.charts.Graph.prototype.interactivity;
+
+/**
+ * Getter for the data.
+ * @category Data
+ * @example anychart.charts.Graph.data_get
+ * @listing See listing
+ * @shortDescription Data settings.
+ * var data = chart.data();
+ * @return {{nodes: !anychart.data.View, edges: !anychart.data.View}} Return data object with nodes and edges fields
+ */
+anychart.charts.Graph.prototype.data;
+
+/**
+ * Setter for the data. {docs:Basic_Charts/Graph#data}Learn more about data{docs}
+ * @detailed Data for graph chart is object that must contain two field.<br>
+ * @example anychart.charts.Graph.data_set Example with different type of data set.
+ * @param {?Object} opt_data <b>Data is object with two required fields 'edges' and 'nodes'</b>.<br>
+ *   <ol>
+ *     <li>
+ *       <b>nodes is one of</b>
+ *        <ul>
+ *          <li>Array where each element is object</li>
+ *          <li>anychart.data.View</li>
+ *          <li>anychart.data.Set</li>
+ *          <li>anychart.data.Set</li>
+ *        </ul>
+ *     <li>
+ *       <b>edges is one of</b>
+ *        <ul>
+ *          <li>Array where each element is object</li>
+ *          <li>anychart.data.View</li>
+ *          <li>anychart.data.Set</li>
+ *          <li>anychart.data.Set</li>
+ *        </ul>
+ *     </li>
+ *   </ol>
+ *   <br>
+ * <ul>
+ *   <li>nodes must contain required 'id' field</li>
+ *   <li>edges must contain required 'from' and 'to' fiels</li>
+ *   </ul>
+ * @return {anychart.charts.Graph} Self instance for method chaining.
+ */
+anychart.charts.Graph.prototype.data;
