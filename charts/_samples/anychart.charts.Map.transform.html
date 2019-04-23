@@ -24,40 +24,45 @@
 <body>
 <div id="container"></div>
 <script>
+    var map;
     anychart.onDocumentReady(function () {
         // This sample uses 3rd party Proj4js JavaScript library to transform coordinates
         // See https://docs.anychart.com/Maps/Map_Projections to learn more.
 
         var data = [
-            {size: 928, lat: 48.04677871103531, long: -2.12443548026414},
-            {size: 192, lat: 45.85025102963345, long: -0.05555902937648371},
-            {size: 963, lat: 44.13282017031969, long: -0.6331316557379023},
-            {size: 266, lat: 48.91155589239087, long: -0.2614383795630683},
-            {size: 518, lat: 45.36178266437175, long: 3.1661777399148257},
-            {size: 324, lat: 47.3951601027151, long: 4.075436176363208},
-            {size: 767, lat: 50.55433223847086, long: 2.5190009490829643},
-            {size: 478, lat: 49.83217874244316, long: 2.0566302263277305},
-            {size: 456, lat: 41.9617928275597, long: 9.042687600355316},
-            {size: 477, lat: 4.346042402087561, long: -53.23436574621244},
-            {size: 200, lat: 48.741317232748585, long: 7.532229957512638},
-            {size: 945, lat: 45.53208569742555, long: 5.531768794196096},
-            {size: 351, lat: 43.93420056617674, long: 6.207894450015418}
+            {lat: 48.04677871103531, long: -2.12443548026414},
+            {lat: 41.9617928275597, long: 9.042687600355316}
         ];
 
-        var franceMap = anychart.map();
-        franceMap.geoData(anychart.maps.france);
-        franceMap.geoIdField('insee_cl');
-        franceMap.bubble(data);
-        franceMap.maxBubbleSize('5%');
-        franceMap.minBubbleSize('3%');
-        franceMap.container('container');
-        franceMap.draw();
+        map = anychart.map();
+        map.geoData(anychart.maps.france);
+        map.geoIdField('insee_cl');
+        map.marker(data);
+        map.labels(false);
+        map.title('Get and use coordinate at pixel values');
+        map.container('container');
+        map.draw();
 
         // Trying to get coordinate at pixel values.
-        var pixelValues = franceMap.transform(0, 10);
+        var pixelValues1 = map.transform(-2.12443548026414, 48.04677871103531);
 
-        franceMap.title('Get pixel values - \n x: ' + pixelValues.x + '\n y: ' + pixelValues.y);
+        // Trying to get coordinate at pixel values.
+        var pixelValues2 = map.transform(9.042687600355316, 41.9617928275597);
+
+        createLabel(0, pixelValues1);
+        createLabel(1, pixelValues2);
     });
+    
+    function createLabel(index, pixelValues) {
+        var label =  map.label(index);
+        label.text(pixelValues.x.toFixed(2) + "," + pixelValues.y.toFixed(2));
+        label.position('left-top');
+        label.background({fill: '#c1cdcd 0.5'});
+        label.anchor('left-top');
+        label.offsetY(pixelValues.y);
+        label.offsetX(pixelValues.x);
+
+    }
 </script>
 </body>
 </html>

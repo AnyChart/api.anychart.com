@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.cartesian.series.Bar.legendItem set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.bar();
+        chart.legend(true);
+
+        var series1 = chart.bar([
+            {x: 'January', value: 35},
+            {x: 'February', value: 15},
+            {x: 'March', value: 20},
+            {x: 'April', value: 19},
+            {x: 'May', value: 40},
+            {x: 'June', value: 10},
+            {x: 'Jule', value: 23}
+        ]);
+
+        // Set legend item.
+        series1.legendItem({text: 'Light blue series', iconType: 'square', iconFill: '#81D4FA'});
+
+        var series2 = chart.bar([
+            {x: 'January', value: 4},
+            {x: 'February', value: 6},
+            {x: 'March', value: 4},
+            {x: 'April', value: 9},
+            {x: 'May', value: 20},
+            {x: 'June', value: 30},
+            {x: 'Jule', value: 43}
+        ]);
+
+        // Set legend item.
+        series2.legendItem({text: 'Blue series', iconType: 'bar', iconFill: '#90CAF9'});
+
+        chart.title('Set legend item');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>

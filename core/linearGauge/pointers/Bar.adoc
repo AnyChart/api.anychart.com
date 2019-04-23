@@ -7,23 +7,351 @@
  */
 anychart.core.linearGauge.pointers.Bar;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.pointers.Bar.prototype.name
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the series name.
+ * @shortDescription Series name settings.
+ * @category Data
+ * @detailed This method can be used as getter only if the value has been previously set.
+ * @example anychart.core.linearGauge.pointers.Bar.name_get
+ * @return {string|undefined} Series name.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.name;
+
+/**
+ * Setter for the series name.
+ * @detailed Basically, name of series is used in Legend displaying, but it can be used in tooltips.
+ * @example anychart.core.linearGauge.pointers.Bar.name_set
+ * @param {string=} opt_name Series name to set.
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.name;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.pointers.Bar.prototype.width
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the bar pointer width.
+ * @shortDescription Width settings
+ * @category Size and Position
+ * @example anychart.core.linearGauge.pointers.Bar.width_get
+ * @return {string} The pointer width.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.width;
+
+/**
+ * Setter for the bar pointer width.
+ * @example anychart.core.linearGauge.pointers.Bar.width_set
+ * @param {string=} opt_width Pointer width
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.width;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.pointers.Bar.prototype.offset
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the bar pointer offset.
+ * @shortDescription Offset settings.
+ * @category Size and Position
+ * @example anychart.core.linearGauge.pointers.Bar.offset_get
+ * @return {string} The pointer offset in percent.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.offset;
+
+/**
+ * Setter for the bar pointer offset.
+ * @example anychart.core.linearGauge.pointers.Bar.offset_set
+ * @param {(string|number)=} opt_offset ['0%'] Pointer offset to set.
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.offset;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.pointers.Bar.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the pointer fill color.
+ * @shortDescription Fill settings.
+ * @category Coloring
+ * @example anychart.core.linearGauge.pointers.Bar.fill_get
+ * @return {anychart.graphics.vector.Fill|Function} Pointer fill color.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.fill;
+
+/**
+ * Setter for fill settings using an array, an object or a string.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.linearGauge.pointers.Bar.fill_set_asString Using string
+ * @example anychart.core.linearGauge.pointers.Bar.fill_set_asArray Using array
+ * @example anychart.core.linearGauge.pointers.Bar.fill_set_asObj Using object
+ * @param {anychart.graphics.vector.Fill|Array.<(anychart.graphics.vector.GradientKey|string)>} color Color as an object, an array or a string.
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.fill;
+
+
+/**
+ * Setter for fill settings using function.
+ * @example anychart.core.linearGauge.pointers.Bar.fill_set_asFunc
+ * @param {FillFunction=} opt_fillFunction [function() {
+ *  return anychart.color.darken(this.sourceColor);
+ * }] Function that looks like: <pre>function(){
+ *    // this.index - pointer index
+ *    // this.sourceColor - color returned by fill() getter
+ *    // this.isVertical - layout direction of the bar
+ *    return fillValue; // type anychart.graphics.vector.Fill
+ * }</pre>
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.fill;
+
+/**
+ * Fill color with opacity. Fill as a string or an object.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>color</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @example anychart.core.linearGauge.pointers.Bar.fill_set_asOpacity
+ * @param {string} color Color as a string.
+ * @param {number=} opt_opacity Color opacity.
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.fill;
+
+/**
+ * Linear gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.linearGauge.pointers.Bar.fill_set_asLinear
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.fill;
+
+/**
+ * Radial gradient fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.linearGauge.pointers.Bar.fill_set_asRadial
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.fill;
+
+/**
+ * Image fill.
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.linearGauge.pointers.Bar.fill_set_asImg
+ * @param {!anychart.graphics.vector.Fill} imageSettings Object with settings.
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.fill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.pointers.Bar.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the pointer stroke.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @example anychart.core.linearGauge.pointers.Bar.stroke_get
+ * @return {(anychart.graphics.vector.Stroke|StrokeFunction)} The pointer stroke.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.stroke;
+
+/**
+ * Setter for the pointer stroke using function.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.linearGauge.pointers.Bar.stroke_set_asFunc
+ * @param {(StrokeFunction)=} opt_strokeFunction [// return stroke from the default palette.
+ * function() {
+ *   return anychart.color.darken(this.sourceColor);
+ * };] or Stroke, or stroke-function, which should look like:<pre>function() {
+ *  //  this: {
+ *  //  index : number  - the index of the current point
+ *  //  sourceColor : anychart.graphics.vector.Stroke - stroke of the current point
+ *  // }
+ *  return myStroke; //anychart.graphics.vector.Stroke
+ * };</pre>
+ * @return {!anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.stroke;
+
+/**
+ * Setter for the pointer stroke using several parameters.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @example anychart.core.linearGauge.pointers.Bar.stroke_set
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_color Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
+ * @param {(string|anychart.graphics.vector.StrokeLineCap)=} opt_lineCap Line cap style.
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.stroke;
+
+/**
+ * Setter for the pointer stroke using an object.
+ * @example anychart.core.linearGauge.pointers.Bar.stroke_set_asObj
+ * @param {(Object)=} opt_settings Stroke settings from {@link anychart.graphics.vector.Stroke}.
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.stroke;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.pointers.Bar.prototype.scale
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the led pointer scale.
+ * @shortDescription Scale settings.
+ * @category Axes and Scales
+ * @example anychart.core.linearGauge.pointers.Bar.scale_get
+ * @return {anychart.scales.Base} Pointer scale.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.scale;
+
+/**
+ * Setter for the led pointer scale.
+ * @example anychart.core.linearGauge.pointers.Bar.scale_set
+ * @param {anychart.scales.Base=} opt_scale [{api:anychart.scales.Linear}anychart.scales.Linear{api}] Pointer scale.
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.scale;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.pointers.Bar.prototype.hovered
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for hovered state settings.
+ * @shortDescription Hovered state settings.
+ * @category Interactivity
+ * @example anychart.core.linearGauge.pointers.Bar.hovered_get
+ * @return {anychart.core.StateSettings} Hovered state settings
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.hovered;
+
+/**
+ * Setter for hovered state settings.
+ * @example anychart.core.linearGauge.pointers.Bar.hovered_set
+ * @param {!Object=} opt_settings State settings to set.
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.hovered;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.pointers.Bar.prototype.selected
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for selected state settings.
+ * @shortDescription Selected state settings.
+ * @category Interactivity
+ * @example anychart.core.linearGauge.pointers.Bar.selected_get
+ * @return {anychart.core.StateSettings} Selected state settings
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.selected;
+
+/**
+ * Setter for selected state settings.
+ * @example anychart.core.linearGauge.pointers.Bar.selected_set
+ * @param {!Object=} opt_settings State settings to set.
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.selected;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.pointers.Bar.prototype.color
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the pointer color.
+ * @shortDescription Color settings.
+ * @category Coloring
+ * @example anychart.core.linearGauge.pointers.Bar.color_get
+ * @return {string} The pointer color.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.color;
+
+/**
+ * Setter for the pointer color.
+ * @detailed <b>Note: </b> <u>color</u> methods sets <b>fill</b> and <b>stroke</b> settings, which means it is not wise to pass
+ * image fill here - stroke doesn't accept image fill.<br/>
+ * {docs:Graphics/Fill_Settings}Learn more about coloring.{docs}
+ * @example anychart.core.linearGauge.pointers.Bar.color_set
+ * @param {string} color Color as a string.
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.color;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.linearGauge.pointers.Bar.prototype.labels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the pointer labels.
+ * @shortDescription Labels settings.
+ * @category Specific settings
+ * @example anychart.core.linearGauge.pointers.Bar.labels_get
+ * @return {anychart.core.ui.LabelsFactory} Labels instance.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.labels;
+
+/**
+ * Setter for the pointer labels.
+ * @detailed Sets pointer label settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable pointer labels.</li>
+ *   <li><b>object</b> - sets pointer labels settings.</li>
+ * </ul>
+ * @example anychart.core.linearGauge.pointers.Bar.labels_set_asBool Disable/Enable labels
+ * @example anychart.core.linearGauge.pointers.Bar.labels_set_asObj Using object
+ * @param {(anychart.core.ui.LabelsFactory|Object|boolean)=} opt_settings Pointer labels settings.
+ * @return {anychart.core.linearGauge.pointers.Bar} Self instance for method chaining.
+ */
+anychart.core.linearGauge.pointers.Bar.prototype.labels;
+
+
+
 /** @inheritDoc */
 anychart.core.linearGauge.pointers.Bar.prototype.normal;
 
 /** @inheritDoc */
-anychart.core.linearGauge.pointers.Bar.prototype.hovered;
-
-/** @inheritDoc */
-anychart.core.linearGauge.pointers.Bar.prototype.selected;
-
-/** @inheritDoc */
-anychart.core.linearGauge.pointers.Bar.prototype.scale;
-
-/** @inheritDoc */
 anychart.core.linearGauge.pointers.Bar.prototype.legendItem;
-
-/** @inheritDoc */
-anychart.core.linearGauge.pointers.Bar.prototype.name;
 
 /** @inheritDoc */
 anychart.core.linearGauge.pointers.Bar.prototype.dataIndex;
@@ -32,25 +360,8 @@ anychart.core.linearGauge.pointers.Bar.prototype.dataIndex;
 anychart.core.linearGauge.pointers.Bar.prototype.getGauge;
 
 /** @inheritDoc */
-anychart.core.linearGauge.pointers.Bar.prototype.color;
-
-/** @inheritDoc */
-anychart.core.linearGauge.pointers.Bar.prototype.fill;
-
-/** @inheritDoc */
-anychart.core.linearGauge.pointers.Bar.prototype.stroke;
-
-/** @inheritDoc */
 anychart.core.linearGauge.pointers.Bar.prototype.hatchFill;
 
-/** @inheritDoc */
-anychart.core.linearGauge.pointers.Bar.prototype.labels;
-
-/** @inheritDoc */
-anychart.core.linearGauge.pointers.Bar.prototype.width;
-
-/** @inheritDoc */
-anychart.core.linearGauge.pointers.Bar.prototype.offset;
 
 /** @inheritDoc */
 anychart.core.linearGauge.pointers.Bar.prototype.hover;

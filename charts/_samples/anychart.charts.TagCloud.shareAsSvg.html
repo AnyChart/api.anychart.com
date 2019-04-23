@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.TagCloud.shareAsSvg"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-tag-cloud.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="shareAsSvg();">Get the link to SVG image</button>
+<div id="container"></div>
+</div>
+<script>
+    var chart;
+    anychart.onDocumentReady(function () {
+        var data = getData();
+
+        chart = anychart.tagCloud(data);
+        chart.title('Share chart as SVG image');
+        chart.container('container');
+        chart.draw();
+    });
+
+    function shareAsSvg() {
+
+        // Share chart as SVG image.
+        chart.shareAsSvg(function (response) {
+            alert(response);
+        });
+    }
+
+    function getData() {
+        return [
+            {x: 'learning', value: 80},
+            {x: 'lists', value: 44},
+            {x: 'meaning', value: 40},
+            {x: 'useful', value: 36},
+            {x: 'different', value: 32},
+            {x: 'grammar', value: 28},
+            {x: 'teaching', value: 24},
+            {x: 'example', value: 20},
+            {x: 'includes', value: 56},
+            {x: 'thing', value: 12},
+            {x: 'vocabulary', value: 10},
+            {x: 'frequency', value: 10},
+            {x: 'phrases', value: 15},
+            {x: 'content', value: 27}
+        ]
+    }
+</script>
+</body>
+</html>

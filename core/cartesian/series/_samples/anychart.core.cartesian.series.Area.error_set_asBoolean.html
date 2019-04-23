@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.cartesian.series.Area.error set asBoolean"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.cartesian();
+        chart.xScale('linear');
+
+        var series = chart.area([
+            {x: 1, value: 2},
+            {x: 2, value: 5},
+            {x: 3, value: 3},
+            {x: 4, value: 9},
+            {x: 5, value: 4}
+        ]);
+
+        // Enable error for mode both.
+        series.error(true);
+
+        var error = series.error();
+        error.xError(1);
+        error.valueError(1);
+
+        chart.title('Enable error for \'both\' mode');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>

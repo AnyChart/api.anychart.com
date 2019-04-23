@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.ui.Label.enabled"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="enableLabel()">Enable label</button>
+<button onclick="disableLabel();">Disable label</button>
+<div id="container"></div>
+<script>
+    var chart;
+
+    function disableLabel() {
+
+        // Disable label.
+        chart.label(false);
+    }
+
+    function enableLabel() {
+
+        // Enable label.
+        chart.label(true);
+    }
+    anychart.onDocumentReady(function () {
+        chart = anychart.column([
+            {x: 'January', value: 2},
+            {x: 'February', value: 5},
+            {x: 'March', value: 3},
+            {x: 'April', value: 9},
+            {x: 'May', value: 4}
+        ]);
+
+        var label = chart.label();
+        label.enabled(true);
+        label.text('Chart label');
+        label.fontColor('#fff');
+        label.padding(5);
+        label.position('left-top');
+        label.offsetX('50%');
+        label.offsetY('25%');
+        label.background('#76eec6');
+
+        chart.title('Enable/Disable chart label');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>

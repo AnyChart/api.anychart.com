@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.TreeMap.exports"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-treemap.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="chart.shareWithFacebook();">Share with Facebook</button>
+<div id="container"></div>
+<script>
+    var chart;
+    anychart.onDocumentReady(function () {
+        var data = getData();
+
+        chart = anychart.treeMap(data);
+
+        // To work with exports you need to reference the exports module from AnyChart CDN
+        // (http://cdn.anychart.com/js/{{branch-name}}/anychart-exports.min.js for latest or http://cdn.anychart.com/js/{{branch-name}}/anychart-exports.min.js for the versioned file)
+
+        // Set exports settings.
+        chart.exports({facebook: {caption: 'ANYCHART.COM', description: 'TreeMap chart'}});
+
+        chart.title('Set exports settings');
+        chart.container('container');
+        chart.draw();
+    });
+
+    function getData() {
+        return [
+            {
+                name: 'Eurasia',
+                children: [
+                    {
+                        name: 'Asia', children: [
+                        {
+                            name: 'Eastern Asia', children: [
+                            {name: 'Mongolia', value: 1564116, capital: 'Ulan-Bator'},
+                            {name: 'China', value: 1564116, capital: 'Beijing'},
+                            {name: 'Southern Korea', value: 1564116, capital: 'Seoul'},
+                            {name: 'Northern Korea', value: 120540, capital: 'Pyongyang'},
+                            {name: 'Japan', value: 1564116, capital: 'Tokio'}
+                        ]
+                        }
+                    ]
+                    },
+                    {
+                        name: 'Europe', children: [
+                        {
+                            name: 'Northern Europe', children: [
+                            {name: 'Finland', value: 338424, capital: 'Helsinki'},
+                            {name: 'Great Britain', value: 209331, capital: 'London'},
+                            {name: 'Ireland', value: 84421, capital: 'Dublin'},
+                            {name: 'Scandinavia', value: 928057}
+                        ]
+                        }
+                    ]
+                    }
+                ]
+            }
+        ];
+    }
+</script>
+</body>
+</html>

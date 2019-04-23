@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.cartesian.series.RangeColumn.minLabels set asObj"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.cartesian();
+
+        var series = chart.rangeColumn([
+            {x: 'January', low: 3093, high: 19522},
+            {x: 'February', low: 4205, high: 32622},
+            {x: 'March', low: 4019, high: 41612},
+            {x: 'April', low: 4920, high: 53752},
+            {x: 'May', low: 12684, high: 31917},
+            {x: 'June', low: 14924, high: 42052},
+            {x: 'July', low: 7933, high: 69812},
+            {x: 'August', low: 15573, high: 59922}
+        ]);
+
+        // Set minimum labels
+        series.minLabels({fontColor: '#F44336'});
+
+        chart.title('Set minimum labels settings');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
