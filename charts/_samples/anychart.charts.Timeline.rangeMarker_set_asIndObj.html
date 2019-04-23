@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.timeline"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-timeline.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  anychart.onDocumentReady(function () {
+    var eventsRawData1 = [
+      ['2004/10/15', 'Meteor fall'],
+      ['2005/01/13', 'Star fall'],
+      ['2007/03/17', 'Sky fall'],
+      ['2009/08/02', 'Airborne forces fall']
+    ];
+
+    var eventsRawData2 = [
+      ['2003/09/20', 'Leaf fall'],
+      ['2004/01/10', 'Squirrel fall'],
+      ['2006/10/29', 'Rain fall']
+    ];
+    var chart = anychart.timeline(eventsRawData1, eventsRawData2);
+
+    var rangesRawData = [
+      ['Apple', '2001/02/10', '2002/10/25'],
+      ['Google', '2002/11/01', '2004/05/12'],
+      ['Unemployed', '2004/05/13']
+    ];
+
+    var rangesSeries1 = chart.range(rangesRawData);
+    rangesSeries1.name('Work');
+
+    var rangeMarker1 = chart.rangeMarker(0, {from: '2003/05/01', to: '2004/01/12', fill: 'red 0.5'});
+    var rangeMarker2 = chart.rangeMarker(1, {from: '2005/05/01', to: '2006/08/12', fill: 'green 0.5'});
+
+    chart.container('container').draw();
+  });
+</script>
+</body>
+</html>
