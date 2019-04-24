@@ -24,6 +24,46 @@
 <div id="container"></div>
 <script>
   var chart1, chart2, chart3, chart4;
+
+  var rawData1 = {
+    'nodes': [
+      {'id': 'A'},
+      {'id': 'B'},
+      {'id': 'C'},
+      {'id': 'D'},
+      {'id': 'E'}
+    ],
+    'edges': [
+      {'from': 'A', 'to': 'B'},
+      {'from': 'A', 'to': 'C'},
+      {'from': 'A', 'to': 'D'},
+      {'from': 'D', 'to': 'C'},
+      {'from': 'E', 'to': 'D'}
+    ]
+  };
+
+  var rawData2 = {
+    'nodes': [['A'], ['B'], ['C'], ['D'], ['E']],
+    'edges': [
+      ['A', 'B'],
+      ['A', 'C'],
+      ['A', 'D'],
+      ['D', 'C'],
+      ['E', 'D']
+    ]
+  };
+
+  var rawData3 = {
+    'nodes': [{'node': 'A'}, {'node': 'B'}, {'node': 'C'}, {'node': 'D'}, {'node': 'E'}],
+    'edges': [
+      {'fromNode': 'A', 'to': 'B'},
+      {'fromNode': 'A', 'to': 'C'},
+      {'fromNode': 'A', 'to': 'D'},
+      {'fromNode': 'D', 'to': 'C'},
+      {'fromNode': 'E', 'to': 'D'}
+    ]
+  };
+
   anychart.onDocumentLoad(function() {
     var stage = acgraph.create('container');
     // Chart 1
@@ -66,46 +106,6 @@
     chart4.bounds('50%', '50%', '50%', '50%');
     chart4.container(stage).draw();
   });
-
-  var rawData1 = {
-    'nodes': [
-      {'id': 'A'},
-      {'id': 'B'},
-      {'id': 'C'},
-      {'id': 'D'},
-      {'id': 'E'}
-    ],
-    'edges': [
-      {'from': 'A', 'to': 'B'},
-      {'from': 'A', 'to': 'C'},
-      {'from': 'A', 'to': 'D'},
-      {'from': 'D', 'to': 'C'},
-      {'from': 'E', 'to': 'D'}
-    ]
-  };
-
-  var rawData2 = {
-    'nodes': [['A'], ['B'], ['C'], ['D'], ['E']],
-    'edges': [
-      ['A', 'B'],
-      ['A', 'C'],
-      ['A', 'D'],
-      ['D', 'C'],
-      ['E', 'D']
-    ]
-  };
-
-  var rawData3 = {
-    'nodes': [{'node': 'A'}, {'node': 'B'}, {'node': 'C'}, {'node': 'D'}, {'node': 'E'}],
-    'edges': [
-      {'fromNode': 'A', 'to': 'B'},
-      {'fromNode': 'A', 'to': 'C'},
-      {'fromNode': 'A', 'to': 'D'},
-      {'fromNode': 'D', 'to': 'C'},
-      {'fromNode': 'E', 'to': 'D'}
-    ]
-  };
-
 </script>
 </body>
 </html>
