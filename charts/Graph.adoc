@@ -6,16 +6,9 @@
  */
 anychart.charts.Graph;
 
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  Specific settings.
-//
-//----------------------------------------------------------------------------------------------------------------------
 /**
  * Graph chart edges settings getter.
  * @example anychart.charts.Graph.edges_get
- * @category Specific settings
  * @listing See listing
  * var edges = chart.edges();
  * edges.stroke('1 blue') //set stroke for all edges.
@@ -89,7 +82,7 @@ anychart.charts.Graph.prototype.zoom;
  * @example anychart.charts.Graph.nodes_get
  * @category Interactivity
  * @listing See listing
- * var offset = chart.zoom(2);
+ * var offset = chart.move();
  * var offsetX = offset[0];
  * var offsetY = offset[1];
  * @return {Array.<number>} Array with two elements: x and y pixel values of current translation.
@@ -101,6 +94,8 @@ anychart.charts.Graph.prototype.move;
  * @example anychart.charts.Graph.move_set
  * @param {?number} opt_dx [0] X-coordinate translation. If is null, returns the chart to its initial position.
  * @param {?number=} opt_dy [0] Y-coordinate translation. Default is 0.
+ * @listing See listing
+ * chart.move(100,50);
  * @return {anychart.charts.Graph} Self instance for method chaining.
  */
 anychart.charts.Graph.prototype.move;
@@ -119,7 +114,6 @@ anychart.charts.Graph.prototype.group;
 
 /**
  * Configures group by id.
- * @category Specific settings
  * @example anychart.charts.Graph.group_set
  * @param {string} id Id of group.
  * @param {Object} value Group configuration object.
@@ -139,8 +133,15 @@ anychart.charts.Graph.prototype.rotation;
 
 /**
  * Setter for graph chart rotation angle.
+ * @detailed It rotate chart from 0 degree not from previous passed.
  * @example anychart.charts.Graph.rotation_set
- * @param {number} degree [0] Rotation angle.;
+ * @param {number} degree [0] Rotation angle.
+ * @listing See listing
+ * chart.rotation(45);
+ * //if you want rotate it on 45 degree more you need pass final angle.
+ * chart.rotation(45); // it do nothing
+ * chart.rotation(90); // id do what you want
+ *
  * @return {anychart.charts.Graph} Self instance for method chaining.
  */
 anychart.charts.Graph.prototype.rotation;
@@ -157,12 +158,32 @@ anychart.charts.Graph.prototype.layout;
 
 /**
  * Setter for graph chart layout.
- * @category Specific settings
  * @example anychart.charts.Graph.layout_set
  * @param {Object|string} value In object case is chart layout settings, in string case is layout type.
  * @return {anychart.charts.Graph} Self instance for method chaining.
  */
 anychart.charts.Graph.prototype.layout;
+
+
+/**
+ * Getter for graph chart labels.
+ * @detailed <b>Note</b> Instance of chart labels has lower priority then nodes, edges, and groups labels.<br>
+ * If you disable chart labels but enable nodes labels, nodes for nodes will shown.
+ * @category Specific settings
+ * @example anychart.charts.Graph.labels_get
+ * @listing See listing
+ * @return {!anychart.core.ui.LabelsFactory} LabelsSettings instance.
+ */
+anychart.charts.Graph.prototype.labels;
+
+/**
+ * Setter for graph chart labels.
+ * @example anychart.charts.Graph.labels_get
+ * @param {Object|string} value config object for labels.
+ * @return {anychart.charts.Graph} Self instance for method chaining.
+ */
+anychart.charts.Graph.prototype.labels;
+
 
 /**
  * Getter for graph chart interactivity settings.
@@ -177,7 +198,7 @@ anychart.charts.Graph.prototype.interactivity;
 
 /**
  * Setter for graph chart interactivity.
- * @category Specific settings
+ * @category Interactivity
  * @example anychart.charts.Graph.interactivity_set
  * @param {Object} value Graph chart interactivity settings.
  * @return {anychart.charts.Graph} Self instance for method chaining.
@@ -193,7 +214,7 @@ anychart.charts.Graph.prototype.interactivity;
  * var nodesData = data.nodes;
  * var edgesData = data.edges;
  * edgesData.set(0, 'stroke', '1 blue'); //Set edge stroke for first edge in dataset
- * nodesData.nodes(0, 'shape', 'star5'); //Set shape for first node in dataset
+ * nodesData.set(0, 'shape', 'star5'); //Set shape for first node in dataset
  * @shortDescription Data settings.
  * @return {{nodes: !anychart.data.View, edges: !anychart.data.View}} Return data object with nodes and edges fields
  */
@@ -221,10 +242,16 @@ anychart.charts.Graph.prototype.data;
  *     </li>
  *   </ol>
  *   <br>
+ * <b>Requires for node data object</b>:
  * <ul>
- *   <li><b>node object must contain required 'id' field</b></li>
- *   <li><b>edge object must contain required 'from' and 'to' fields</b></li>
- *   </ul>
+ *   <li>Data object must contain required <b>'id'</b> field.</li>
+ *   <li>For fixed layout data must contain <b>'x'</b> and <b>'y'</b> fields otherwise it will be placed at (0:0) coordinate.</li>
+ * </ul>
+ * <b>Requires for edge data object</b>:
+ * <ul>
+ *    <li>edge object must contain required <b>'from'</b> and <b>'to'</b> fields</b></li>
+ *    <li><b>id</b> field is not required but if you want have access to it you need pass it too</li>
+ * </ul>
  * @return {anychart.charts.Graph} Self instance for method chaining.
  */
 anychart.charts.Graph.prototype.data;

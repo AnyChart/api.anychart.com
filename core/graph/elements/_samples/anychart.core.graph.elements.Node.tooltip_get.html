@@ -26,12 +26,14 @@
   anychart.onDocumentLoad(function() {
     var chart = anychart.graph();
     chart.data(data);
-    chart.title().enabled(true).text('Coordinates from data');
+    chart.title().enabled(true).text('Tooltip get');
 
     var nodes = chart.nodes();
+    var tooltip = nodes.tooltip();
 
-    nodes.shape('square');
-    nodes.height(30);
+    tooltip.enabled(true);
+    tooltip.format('Node');
+    tooltip.background({fill: '#EF9A9A', stroke: '#1B5E20'});
 
     chart.container('container').draw();
   });

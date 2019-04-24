@@ -27,12 +27,10 @@
   anychart.onDocumentLoad(function() {
     var chart = anychart.graph();
     chart.data(data);
-    chart.title().enabled(true).text('Coordinates from data');
+    chart.title().enabled(true).text('Tooltip config setup');
 
-    var nodes = chart.nodes();
-
-    nodes.shape('square');
-    nodes.height(30);
+    var config = {enabled: true, format: 'Node', background: {fill: '#EF9A9A', stroke: '#1B5E20'}};
+    chart.nodes().tooltip(config);
 
     chart.container('container').draw();
   });
