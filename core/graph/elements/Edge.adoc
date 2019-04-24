@@ -7,9 +7,13 @@ anychart.core.graph.elements.Edge;
 
 /**
  * Getter for normal state settings.
+ * @detailed Call chart.edges().normal().fill() same as chart.edges().fill()
  * @example anychart.core.graph.elements.Edge.states_get
  * @category State settings
  * @shortDescription Normal state settings.
+ * @listing See listing
+ * var edgesNormal = chart.edges().normal();
+ * edgesNormal.stroke('3 blue') //Set stroke for edges that has normal state.
  * @return {anychart.core.StateSettings} Normal state settings.
  */
 anychart.core.graph.elements.Edge.prototype.normal;
@@ -27,6 +31,11 @@ anychart.core.graph.elements.Edge.prototype.normal;
  * @example anychart.core.graph.elements.Edge.states_get
  * @shortDescription Hovered state settings.
  * @category State settings
+ * @listing See listing
+ * var edgesHovered = chart.edges().hovered();
+ * var labels = edgesHovered.stroke().labels();
+ * labels.enabled(true); //Enabled labels for hovered edges
+ * labels.fontColor('#555F5E'); //and set font color
  * @return {anychart.core.StateSettings} Hovered state settings
  */
 anychart.core.graph.elements.Edge.prototype.hovered;
@@ -44,6 +53,9 @@ anychart.core.graph.elements.Edge.prototype.hovered;
  * @category State settings
  * @example anychart.core.graph.elements.Edge.states_get
  * @shortDescription Selected state settings.
+ * @listing See listing
+ * var edgesSelected = chart.edges().selected();
+ * edgeSelected.stroke('2 red 0.5'); //Set stroke with opacity for selected edges.
  * @return {anychart.core.StateSettings} Selected state settings
  */
 anychart.core.graph.elements.Edge.prototype.selected;
@@ -108,7 +120,12 @@ anychart.core.graph.elements.Edge.prototype.stroke;
 
 /**
  * Labels getter
+ * @detailed <b>Node:</b> Labels for edges has disabled state by default.
  * @example anychart.core.graph.elements.Edge.labels_set
+ * @listing See listing
+ * var labels = chart.edges().labels();
+ * labels.enabled(true);
+ * labels.fontSize(8);
  * @return {!anychart.core.ui.LabelsFactory} LabelsSettings instance.
  */
 anychart.core.graph.elements.Edge.prototype.labels;
@@ -124,6 +141,9 @@ anychart.core.graph.elements.Edge.prototype.labels;
 /**
  * Tooltip getter
  * @example anychart.core.graph.elements.Edge.tooltip_get
+ * @listing See listing
+ * var edgesTooltip = chart.edges().tooltip();
+ * edgesTooltip.enabled(false); //Disable tooltip for edges.
  * @return {!anychart.core.ui.Tooltip} Tooltip instance.
  */
 anychart.core.graph.elements.Edge.prototype.tooltip;
