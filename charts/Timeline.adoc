@@ -103,7 +103,7 @@ anychart.charts.Timeline.prototype.fitAll;
  * @param {string|number|Date} endDate End date.
  * @example anychart.charts.Timeline.zoomTo
  * @category Specific settings
- * @return {anychart.timelineModule.Chart} Self instance for method chaining.
+ * @return {anychart.charts.Timeline} Self instance for method chaining.
  */
 anychart.charts.Timeline.prototype.zoomTo;
 
@@ -524,3 +524,113 @@ anychart.charts.Timeline.prototype.range;
  * @shortDescription Chart interactivity settings.
  */
 anychart.charts.Timeline.prototype.interactivity;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Timeline.prototype.listen
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds an event listener to an implementing object.
+ * @detailed The listener can be added to an object once, and if it is added one more time, its key will be returned.<br/>
+ * <b>Note</b>: Notice that if the existing listener is one-off (added using listenOnce),
+ * it will cease to be such after calling the listen() method.
+ * @shortDescription Adds an event listener.
+ * @category Events
+ * @example anychart.charts.Timeline.listen
+ * @param {string} type The event type id.
+ * @param {ListenCallback} listener Callback method.
+ * Function that looks like: <pre>function(event){
+ *    // event.actualTarget - actual event target
+ *    // event.currentTarget - current event target
+ *    // event.iterator - event iterator
+ *    // event.originalEvent - original event
+ *    // event.point - event point
+ *    // event.pointIndex - event point index
+ * }</pre>
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about capturing {@link https://javascript.info/bubbling-and-capturing}
+ * @param {Object=} opt_listenerScope Object in whose scope to call the listener.
+ * @return {{key: number}} Unique key for the listener.
+ */
+anychart.charts.Timeline.prototype.listen;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Timeline.prototype.listenOnce
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds an event listener to an implementing object.
+ * @detailed <b>After the event is called, its handler will be deleted.</b><br>
+ * If the event handler being added already exists, listenOnce will do nothing. <br/>
+ * <b>Note</b>: In particular, if the handler is already registered using listen(), listenOnce()
+ * <b>will not</b> make it one-off. Similarly, if a one-off listener already exists, listenOnce will not change it
+ * (it wil remain one-off).
+ * @shortDescription Adds a single time event listener
+ * @category Events
+ * @example anychart.charts.Timeline.listenOnce
+ * @param {string} type The event type id.
+ * @param {ListenCallback} listener Callback method.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about capturing {@link https://javascript.info/bubbling-and-capturing}
+ * @param {Object=} opt_listenerScope Object in whose scope to call the listener.
+ * @return {{key: number}} Unique key for the listener.
+ */
+anychart.charts.Timeline.prototype.listenOnce;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Timeline.prototype.unlisten
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes a listener added using listen() or listenOnce() methods.
+ * @shortDescription Removes the listener
+ * @category Events
+ * @example anychart.charts.Timeline.unlisten
+ * @param {string} type The event type id.
+ * @param {ListenCallback} listener Callback method.
+ * @param {boolean=} opt_useCapture [false] Whether to fire in capture phase. Learn more about capturing {@link https://javascript.info/bubbling-and-capturing}
+ * @param {Object=} opt_listenerScope Object in whose scope to call the listener.
+ * @return {boolean} Whether any listener was removed.
+ */
+anychart.charts.Timeline.prototype.unlisten;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Timeline.prototype.unlistenByKey
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes an event listener which was added with listen() by the key returned by listen() or listenOnce().
+ * @shortDescription Removes the listener by the key.
+ * @category Events
+ * @example anychart.charts.Timeline.unlistenByKey
+ * @param {{key: number}} key The key returned by listen() or listenOnce().
+ * @return {boolean} Whether any listener was removed.
+ */
+anychart.charts.Timeline.prototype.unlistenByKey;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Timeline.prototype.removeAllListeners
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes all listeners from an object. You can also optionally remove listeners of some particular type.
+ * @shortDescription Removes all listeners.
+ * @category Events
+ * @example anychart.charts.Timeline.removeAllListeners
+ * @param {string=} opt_type Type of event to remove, default is to remove all types.
+ * @return {number} Number of listeners removed.
+ */
+anychart.charts.Timeline.prototype.removeAllListeners;
