@@ -21,6 +21,9 @@ anychart.charts.Graph.prototype.edges;
  * @example anychart.charts.Graph.edges_set
  * @category Elements
  * @param {Object=} opt_value Settings object.
+ * @listing See listing
+ * var edgesConfig = {stroke: {thickness: 2, color:'pink, dash: '4 1'}};
+ * chart.edges(edgeConfig); //set stroke for all edges.
  * @return {anychart.charts.Graph} Self instance for method chaining.
  */
 anychart.charts.Graph.prototype.edges;
@@ -40,6 +43,9 @@ anychart.charts.Graph.prototype.nodes;
  * @example anychart.charts.Graph.nodes_set
  * @category Elements
  * @param {Object=} opt_value Settings object.
+ * @listing See listing
+ * var config = {shape: 'star5, height:25};
+ * chart.nodes(config);
  * @return {anychart.charts.Graph} Self instance for method chaining.
  */
 anychart.charts.Graph.prototype.nodes;
@@ -104,7 +110,7 @@ anychart.charts.Graph.prototype.move;
  * Getter for chart groups by group id.
  * @detailed Use this method you can access only for nodes you pass in data.<br>
  * You can't access group for nodes other way.
- * Use group method you change almost all available settings you can change in <a href="./anychart.core.graph.elements.Node">anychart.core.graph.elements.Node</a> class, but only for elements for of this group.
+ * Use group method you change almost all available settings you can change in <a href="./anychart.core.graph.elements.Node">anychart.core.graph.elements.Node</a> class, but only for elements of this group.
  * @example anychart.charts.Graph.group_get
  * @category Elements
  * @param {string} id Id of group.
@@ -128,6 +134,14 @@ anychart.charts.Graph.prototype.group;
  * @example anychart.charts.Graph.group_set
  * @param {string} id Id of group.
  * @param {Object} value Group configuration object.
+ * var data = {
+ *     nodes: [{ id: 1, group: 'numbers' }, { id: 2, group: 'numbers' }, { id: 'a', group: 'letters' }], //pass groups for nodes
+ *     edges: [{ from: 1, to: 2 }]
+ *   }
+ * var chart = anychart.graph(data);
+ * chart.group('numbers', {fill: 'green', height: 15, shape: 'rectangle', width: 30, height: 15});
+ * chart.group('letters', {fill: 'yellow', height: 10, shape: 'circle', height: 16});
+ * chart.container('container').draw();
  * @return {anychart.charts.Graph} Self instance for method chaining.
  */
 anychart.charts.Graph.prototype.group;
@@ -151,7 +165,7 @@ anychart.charts.Graph.prototype.rotation;
  * chart.rotation(45);
  * //if you want rotate it on 45 degree more you need pass final angle.
  * chart.rotation(45); // it do nothing
- * chart.rotation(90); // id do what you want
+ * chart.rotation(90); // it do what you want
  *
  * @return {anychart.charts.Graph} Self instance for method chaining.
  */
@@ -171,6 +185,13 @@ anychart.charts.Graph.prototype.layout;
  * Setter for graph chart layout.
  * @example anychart.charts.Graph.layout_set
  * @param {Object|string} value In object case is chart layout settings, in string case is layout type.
+ * var data = {
+ *     nodes: [{ id: 1, x:0, y:0}, {id: 2, x:0, y:50}, { id: 3, x:50, y:25}],
+ *     edges: [{ from: 1, to: 2 },  { from: 2, to: 3}, { from: 3, to: 1}]
+ *   }
+ * var chart = anychart.graph(data);
+ * chart.layout('fixed'); // chart.layout({type: 'fixed"}) this two function call has same result.
+ * chart.container('container').draw();
  * @return {anychart.charts.Graph} Self instance for method chaining.
  */
 anychart.charts.Graph.prototype.layout;
@@ -183,12 +204,20 @@ anychart.charts.Graph.prototype.layout;
  * @category Specific settings
  * @example anychart.charts.Graph.labels_get
  * @listing See listing
+ * var labels = chart.labels(); //Change labels settings of all chart elements
+ * labels.fontColor('purple');
+ * labels.fontSize(10);
+ * var nodesLabels = chart.nodes().labels();
+ * nodesLabels.fontColor(12); //override chart fontSize. Nodes labels has purple fontColor from chart and own fontSize setting.
  * @return {!anychart.core.ui.LabelsFactory} LabelsSettings instance.
  */
 anychart.charts.Graph.prototype.labels;
 
 /**
  * Setter for graph chart labels.
+ * @listing See listing
+ * var labelsConfig = {fontFamily: 'Arial', fontSize:14, fontColor: '#000'};
+ * chart.labels(labelsConfig};
  * @example anychart.charts.Graph.labels_get
  * @param {Object|string} value config object for labels.
  * @return {anychart.charts.Graph} Self instance for method chaining.
@@ -201,7 +230,7 @@ anychart.charts.Graph.prototype.labels;
  * @example anychart.charts.Graph.interactivity_get
  * @listing See listing
  * var interactivity = chart.interactivity();
- * interactivity.nodes(false); //forbid node drag
+ * interactivity.nodes(false); //forbid node drag.
  * interactivity.edges(false); //forbid all edges interactivity.
  * @return {anychart.core.graph.elements.Interactivity} Graph chart interactivity instance for method chaining.
  */
@@ -209,6 +238,9 @@ anychart.charts.Graph.prototype.interactivity;
 
 /**
  * Setter for graph chart interactivity.
+ * @listing See listing
+ * var interactivityConfig = {enabled:false, nodes:false, edges:false};
+ * chart.interactivity(interactivityConfig); //disable all interactivity.
  * @category Interactivity
  * @example anychart.charts.Graph.interactivity_set
  * @param {Object} value Graph chart interactivity settings.
@@ -261,7 +293,7 @@ anychart.charts.Graph.prototype.data;
  * </ul>
  * <b>Requires for edge data object</b>:
  * <ul>
- *    <li>edge object must contain required <b>'from'</b> and <b>'to'</b> fields</b></li>
+ *    <li>edge object must contain required <b>'from'</b> and <b>'to'</b> fields</b>, this fields is ids of nodes that mean nodes dataset must contain nodes with this ids</li>
  *    <li><b>id</b> field is not required but if you want have access to it you need pass it too</li>
  * </ul>
  * You can pass with data all settings you can setup though methods of this element, fill, stoke and etc.
