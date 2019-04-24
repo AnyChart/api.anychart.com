@@ -102,12 +102,23 @@ anychart.charts.Graph.prototype.move;
 
 /**
  * Getter for chart groups by group id.
+ * @detailed Use this method you can access only for nodes you pass in data.<br>
+ * You can't access group for nodes other way.
+ * Use group method you change almost all available settings you can change in <a href="./anychart.core.graph.elements.Node">anychart.core.graph.elements.Node</a> class, but only for elements for of this group.
  * @example anychart.charts.Graph.group_get
  * @category Elements
  * @param {string} id Id of group.
  * @listing See listing
- * var group1 = chart.group('group1');
- * group1.shape('square') //Set square as shape for all nodes of this group.
+ * var data = {
+ *      nodes: [{ id: 1, group: 'numbers' }, { id: 2, group: 'numbers' }, { id: 'a', group: 'letters' }], //pass groups for nodes
+ *      edges: [{ from: 1, to: 2 }]
+ *    }
+ * var chart = anychart.graph(data);
+ * var numbers = chart.group('numbers');
+ * var letters = chart.group('letters');
+ * numbers.shape('square') //Set square as shape for all nodes of this group.
+ * letters.stroke('1 yellow');
+ * chart.container('container').draw();
  * @return {anychart.core.graph.elements.Group|undefined} Group with id set or undefined if group is not found.
  */
 anychart.charts.Graph.prototype.group;
@@ -246,12 +257,14 @@ anychart.charts.Graph.prototype.data;
  * <ul>
  *   <li>Data object must contain required <b>'id'</b> field.</li>
  *   <li>For fixed layout data must contain <b>'x'</b> and <b>'y'</b> fields otherwise it will be placed at (0:0) coordinate.</li>
+ *   <li>Define <b>group</b> field, if you want group nodes, nodes of same group must has equal group id</li>
  * </ul>
  * <b>Requires for edge data object</b>:
  * <ul>
  *    <li>edge object must contain required <b>'from'</b> and <b>'to'</b> fields</b></li>
  *    <li><b>id</b> field is not required but if you want have access to it you need pass it too</li>
  * </ul>
+ * You can pass with data all settings you can setup though methods of this element, fill, stoke and etc.
  * @return {anychart.charts.Graph} Self instance for method chaining.
  */
 anychart.charts.Graph.prototype.data;
