@@ -57,12 +57,19 @@
     var oppyMomentsSeries = chart.moment(oppyMoments).name('Opportunity rover');
     var curiosityMomentsSeries = chart.moment(curiosityMoments).name('Curiosity rover');
 
-    var lineMarker = chart.lineMarker({value: '2005/06/14', stroke: '#880000 1'});
+    //configure text marker using object
+    var textMarkerGlobalSandStorm = chart.textMarker(0, {value: Date.UTC(2018, 5, 10), text: 'Global sand storm'});
+    var textMarkerLocalSandStorm = chart.textMarker(1, {value: Date.UTC(2018, 4, 24), text: 'Local sand storm'});
 
-    //disable line marker
-    chart.lineMarker(false);
+    //disable local sand storm text marker
+    chart.textMarker(1, false);
+
+    var rangeMarkerGlobalSandStorm = chart.rangeMarker(0, {from: Date.UTC(2018, 5, 1), to: Date.UTC(2018, 5, 22), fill: 'red 0.5'});
+    var rangeMarkerLocalSandStorm = chart.rangeMarker(1, {from: Date.UTC(2018, 4, 20), to: Date.UTC(2018, 5, 1), fill: 'green 0.5'});
 
     chart.container('container').draw();
+
+    chart.zoomTo(Date.UTC(2018, 4, 1), Date.UTC(2018, 6, 20));
   });
 </script>
 </body>
