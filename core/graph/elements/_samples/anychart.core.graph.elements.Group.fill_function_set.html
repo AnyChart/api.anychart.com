@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.graph.elements.Group.fill_get.html"/>
+    <meta name="ac:name" content="anychart.core.graph.elements.Group.fill_function_set.html"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -31,10 +31,33 @@
 
     chart.nodes().height(25);
 
-    group1.fill('#F0402E');
-    group2.fill('#1976D2');
+    group1.fill(function() {
+      var index = this.index;
 
-    chart.title('Different fill for groups');
+      var color = 'red';
+
+      if ((index % 2) == 0) {
+        color = anychart.color.darken(color);
+      } else {
+        color = anychart.color.lighten(color);
+      }
+      return color;
+    });
+
+    group2.fill(function() {
+      var index = this.index;
+
+      var color = 'black';
+
+      if ((index % 2) == 0) {
+        color = anychart.color.darken(color);
+      } else {
+        color = anychart.color.lighten(color);
+      }
+      return color;
+    });
+
+    chart.title('Function fill for groups');
     chart.container('container').draw();
   });
   var data = {

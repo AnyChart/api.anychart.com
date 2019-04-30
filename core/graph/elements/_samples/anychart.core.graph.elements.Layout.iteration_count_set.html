@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.graph.elements.Group.fill_get.html"/>
+    <meta name="ac:name" content="anychart.core.graph.elements.Layout.iteration_count_set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -24,35 +24,36 @@
 <div id="container"></div>
 <script>
   anychart.onDocumentLoad(function() {
-    var chart = anychart.graph(data);
+    var stage = acgraph.create('container');
+    var chart1 = anychart.graph();
+    chart1.data(data);
+    chart1.title('Iteration count: 0');
+    chart1.layout().iterationCount(0);
+    chart1.bounds(0, 0, '50%', '100%');
 
-    var group1 = chart.group('group1');
-    var group2 = chart.group('group2');
-
-    chart.nodes().height(25);
-
-    group1.fill('#F0402E');
-    group2.fill('#1976D2');
-
-    chart.title('Different fill for groups');
-    chart.container('container').draw();
+    var chart2 = anychart.graph(data);
+    chart2.bounds('50%', 0, '50%', '100%');
+    chart2.title('Default iteration count');
+    chart1.container(stage).draw();
+    chart2.container(stage).draw();
   });
+
   var data = {
     nodes: [
-      {id: 'a', 'group': 'group1', 'height': 35},
-      {id: 'a1', 'group': 'group1'},
-      {id: 'a2', 'group': 'group1'},
-      {id: 'a3', 'group': 'group1'},
-      {id: 'a4', 'group': 'group1'},
-      {id: 'a5', 'group': 'group1'},
-      {id: 'a6', 'group': 'group1'},
-      {id: 'b', 'group': 'group2', 'height': 35},
-      {id: 'b1', 'group': 'group2'},
-      {id: 'b2', 'group': 'group2'},
-      {id: 'b3', 'group': 'group2'},
-      {id: 'b4', 'group': 'group2'},
-      {id: 'b5', 'group': 'group2'},
-      {id: 'b6', 'group': 'group2'}
+      {id: 'a'},
+      {id: 'a1'},
+      {id: 'a2'},
+      {id: 'a3'},
+      {id: 'a4'},
+      {id: 'a5'},
+      {id: 'a6'},
+      {id: 'b'},
+      {id: 'b1'},
+      {id: 'b2'},
+      {id: 'b3'},
+      {id: 'b4'},
+      {id: 'b5'},
+      {id: 'b6'}
     ],
     edges: [
       {from: 'a', to: 'b'},
@@ -67,7 +68,7 @@
       {from: 'b', to: 'b3'},
       {from: 'b', to: 'b4'},
       {from: 'b', to: 'b5'},
-      {from: 'b', to: 'b6'}
+      {from: 'b', to: 'b6'},
     ]
   };
 </script>
