@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.cartesian.series.StepLine.data get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.cartesian();
+
+        var series = chart.stepLine([
+            {x: 'Point 1', value: 4},
+            {x: 'Point 2', value: 2},
+            {x: 'Point 3', value: 7},
+            {x: 'Point 4', value: 10},
+            {x: 'Point 5', value: 6},
+            {x: 'Point 6', value: 8},
+            {x: 'Point 7', value: 4},
+            {x: 'Point 8', value: 6}
+        ]);
+
+        // Get data.
+        var data = series.data();
+
+        var newData = data.filter('value', function (value) {
+            return value > 5;
+        });
+
+        series.data(newData);
+
+        chart.title('Get and modify data');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>

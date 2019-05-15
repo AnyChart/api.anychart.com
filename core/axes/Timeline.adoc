@@ -1,0 +1,203 @@
+/**
+ * Timeline chart axis.
+ * @extends {anychart.core.VisualBase}
+ * @constructor
+ */
+anychart.core.axes.Timeline;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.axes.Timeline.prototype.ticks
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Axis ticks getter.
+ * @shortDescription Ticks settings.
+ * @example anychart.core.axes.Timeline.ticks_get
+ * @return {anychart.core.axes.TimelineTicks} Ticks settings.
+ */
+anychart.core.axes.Timeline.prototype.ticks;
+
+/**
+ * Axis ticks setter.
+ * @example anychart.core.axes.Timeline.ticks_set
+ * @param {Object} opt_config Axis ticks settings.
+ * @return {anychart.core.axes.Timeline} Self instance for method chaining.
+ */
+anychart.core.axes.Timeline.prototype.ticks;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.axes.Timeline.prototype.labels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Axis labels settings getter.
+ * @shortDescription Labels settings.
+ * @example anychart.core.axes.Timeline.labels_get
+ * @return {anychart.core.ui.LabelsFactory} Labels settings.
+ */
+anychart.core.axes.Timeline.prototype.labels;
+
+/**
+ * Axis labels settings setter.
+ * @example anychart.core.axes.Timeline.labels_set
+ * @param {Object} opt_config Labels settings.
+ * @return {anychart.core.axes.Timeline} Self instance for method chaining.
+ */
+anychart.core.axes.Timeline.prototype.labels;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.axes.Timeline.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for axis stroke settings.
+ * @shortDescription Stroke settings.
+ * @category Coloring
+ * @return {!anychart.graphics.vector.Stroke} Axis stroke settings.
+ */
+anychart.core.axes.Timeline.prototype.stroke;
+
+
+/**
+ * Setter for axis stroke settings.
+ * {docs:Graphics/Stroke_Settings}Learn more about stroke settings.{docs}
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|Function|null)=} opt_color ['#CECECE']
+ * Stroke settings.
+ * @param {number=} opt_thickness [1] Line thickness.
+ * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
+ * @param {(string|anychart.graphics.vector.StrokeLineJoin)=} opt_lineJoin Line join style.
+ * @param {(string|anychart.graphics.vector.StrokeLineCap)=} opt_lineCap Line cap style.
+ * @return {anychart.core.axes.Timeline} Self instance for method chaining.
+ */
+anychart.core.axes.Timeline.prototype.stroke;
+
+/**
+ * Setter for axis stroke settings using an object.
+ * @param {Object=} opt_settings Object with stroke settings from {@link anychart.graphics.vector.Stroke}
+ * @return {anychart.core.axes.Timeline} Self instance for method chaining.
+ */
+anychart.core.axes.Timeline.prototype.stroke;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.axes.Timeline.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the background fill.
+ * @shortDescription Fill settings.
+ * @category Coloring
+ * @return {!anychart.graphics.vector.Fill} Fill settings (empty fill is always 'none').
+ */
+anychart.core.axes.Timeline.prototype.fill;
+
+/**
+ * Setter for fill settings using an object, an array or a string.<br/>
+ * Accepts:
+ * <ul>
+ * <li>{@link anychart.graphics.vector.LinearGradientFill}</li>
+ * <li>{@link anychart.graphics.vector.RadialGradientFill}</li>
+ * <li>{@link anychart.graphics.vector.Fill}</li>
+ * <li>{@link anychart.graphics.vector.ImageFill}</li>
+ * </ul>
+ * or a color as a string, along with opacity, if needed, format is "<b>Color Opacity</b>",
+ * e.g. "red 0.5".
+ * @param {anychart.graphics.vector.Fill|Array.<(anychart.graphics.vector.GradientKey|string)>} color Fill as an object, an array or a string.
+ * @return {anychart.core.axes.Timeline} Self instance for method chaining.
+ * */
+anychart.core.axes.Timeline.prototype.fill;
+
+/**
+ * Fill as a color with opacity.
+ * @detailed <b>Note:</b> If color is set as a string (e.g. 'red .5') it has a priority over opt_opacity, which
+ * means: <b>fill</b> set like this <b>rect.fill('red 0.3', 0.7)</b> will have 0.3 opacity.
+ * @param {string} color Fill color as a string.
+ * @param {number=} opt_opacity Fill opacity.
+ * @return {anychart.core.axes.Timeline} Self instance for method chaining.
+ */
+anychart.core.axes.Timeline.prototype.fill;
+
+/**
+ * Linear gradient fill.
+ * @detailed There are three modes:
+ * <ul>
+ *  <li>ObjectBoundingBox preserving an angle</li>
+ *  <li>ObjectBoundingBox no angle preservation</li>
+ *  <li>UserSpaceOnUse</li>
+ * </ul>
+ * <h4>Modes:</h4>
+ * <p><b>ObjectBoundingBox preserving an angle</b><br/>
+ * If boolean is passed it says how gradient behaves, specificaly
+ * how gradient line angle behaves. If true - it is ObjectBoundingBox
+ * with angle preservation. If angle is preserved, in any shape angle looks as one expects it to see.<br/>
+ * <b>Note:</b> By default gradient vector for any shape, which sides are not in 1:1 proportions, will not
+ * look as expected, because browser transforms this angle.</p>
+ * <p><b>ObjectBoundingBox no angle preservation</b><br/>
+ * If false is passed - that's ObjectBoundingBox no angle preservation. In this case default
+ * behaviour comes up - gradient vector is calculated for a shape with 1:1 side proportions.</p>
+ * <p><b>UserSpaceOnUse</b><br/>
+ * If anychart.graphics.math.Rect is passed - that'sUserSpaceOnUse mode.
+ * In this mode gradient gets its own size and coordinates. Shapes with such gradient will be colored
+ * only in those parts, which are covered by this custom gradient. Read more about this mode at
+ * <a href='https://www.w3.org/TR/SVG/pservers.html#LinearGradientElementGradientUnitsAttribute'>
+ * gradientUnits</a>. Angle is always preserved in this mode.</p><br/>
+ * <img src='/anychart.core.ui.Background.fill.png' height='281' width='548'/><br/>
+ * Description:
+ *  a) ObjectBoundingBox no angle preservation.<br/>
+ *  b) ObjectBoundingBox preserving an angle.<br/>
+ *  c) UserSpaceOnUse.<br/>
+ *  d) Three step gradients.
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Gradient keys.
+ * @param {number=} opt_angle Gradient angle.
+ * @param {(boolean|!anychart.graphics.vector.Rect|!{left:number,top:number,width:number,height:number})=} opt_mode Gradient mode.
+ * @param {number=} opt_opacity Gradient opacity.
+ * @return {anychart.core.axes.Timeline} Self instance for method chaining.
+ */
+anychart.core.axes.Timeline.prototype.fill;
+
+/**
+ * Radial gradient fill.
+ * @param {!Array.<(anychart.graphics.vector.GradientKey|string)>} keys Color-stop gradient keys.
+ * @param {number} cx X ratio of center radial gradient.
+ * @param {number} cy Y ratio of center radial gradient.
+ * @param {anychart.graphics.math.Rect=} opt_mode If defined then userSpaceOnUse mode, else objectBoundingBox.
+ * @param {number=} opt_opacity Opacity of the gradient.
+ * @param {number=} opt_fx X ratio of focal point.
+ * @param {number=} opt_fy Y ratio of focal point.
+ * @return {anychart.core.axes.Timeline} Self instance for method chaining.
+ */
+anychart.core.axes.Timeline.prototype.fill;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.axes.Timeline.prototype.height
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the height.
+ * @shortDescription Height settings.
+ * @example anychart.core.axes.Timeline.height_get
+ * @return {number} Axis height
+ */
+anychart.core.axes.Timeline.prototype.height;
+
+/**
+ * Setter for the height.
+ * @param {number} height Height value.
+ * @example anychart.core.axes.Timeline.height_set
+ * @return {anychart.core.axes.Timeline} Self instance for method chaining.
+ */
+anychart.core.axes.Timeline.prototype.height;

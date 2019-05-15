@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.cartesian.series.Bar.enabled set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="disableSeries();">Disable series</button>
+<button onclick="series2.enabled(true)">Enable series</button>
+<div id="container"></div>
+<script>
+    var series2;
+
+    function disableSeries() {
+
+        // Disables the second series.
+        series2.enabled(false);
+    }
+
+    anychart.onDocumentReady(function () {
+        var chart = anychart.bar();
+
+        var series1 = chart.bar([
+            {x: 'Cycling', value: 2},
+            {x: 'Running', value: 5},
+            {x: 'Swimming', value: 3},
+            {x: 'Triathlon', value: 9},
+            {x: 'Outdoor', value: 4}
+        ]);
+
+        series2 = chart.bar([
+            {x: 'Cycling', value: 4},
+            {x: 'Running', value: 9},
+            {x: 'Swimming', value: 3},
+            {x: 'Triathlon', value: 5},
+            {x: 'Outdoor', value: 2}
+        ]);
+
+        chart.title('Disable/Enable the second series');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.graph.elements.Group.height_set.html"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-graph.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  anychart.onDocumentLoad(function() {
+    var chart = anychart.graph(data);
+    chart.title('Set different height for groups.');
+
+    chart.group('stars', {height: 15});
+    chart.group('squares', {height: 25});
+
+    chart.container('container').draw();
+  });
+
+  var data = {
+    nodes: [
+      {id: 'a', 'group': 'stars', 'height': 35},
+      {id: 'a1', 'group': 'stars'},
+      {id: 'a2', 'group': 'stars'},
+      {id: 'a3', 'group': 'stars'},
+      {id: 'a4', 'group': 'stars'},
+      {id: 'a5', 'group': 'stars'},
+      {id: 'a6', 'group': 'stars'},
+      {id: 'b', 'group': 'squares', 'height': 35},
+      {id: 'b1', 'group': 'squares'},
+      {id: 'b2', 'group': 'squares'},
+      {id: 'b3', 'group': 'squares'},
+      {id: 'b4', 'group': 'squares'},
+      {id: 'b5', 'group': 'squares'},
+      {id: 'b6', 'group': 'squares'}
+    ],
+    edges: [
+      {from: 'a', to: 'b'},
+      {from: 'a', to: 'a1'},
+      {from: 'a', to: 'a2'},
+      {from: 'a', to: 'a3'},
+      {from: 'a', to: 'a4'},
+      {from: 'a', to: 'a5'},
+      {from: 'a', to: 'a6'},
+      {from: 'b', to: 'b1'},
+      {from: 'b', to: 'b2'},
+      {from: 'b', to: 'b3'},
+      {from: 'b', to: 'b4'},
+      {from: 'b', to: 'b5'},
+      {from: 'b', to: 'b6'}
+    ]
+  };
+</script>
+</body>
+</html>

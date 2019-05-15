@@ -88,7 +88,7 @@ do
                     fileext=${filename:${#filename}-4}
 
                     if [[ "$fileext" = "html" ]]; then
-                        pglink="http://playground.anychart.stg/api/$CURRENT_BRANCH/${filename:0:${#filename}-5}\n\t"
+                        pglink="https://playground.anychart.stg/api/$CURRENT_BRANCH/${filename:0:${#filename}-5}\n\t"
                     fi
 
                     printf "\n*$filename*\n\t${pglink}https://github.com/AnyChart/api.anychart.com/blob/$CURRENT_BRANCH/$filename\n"

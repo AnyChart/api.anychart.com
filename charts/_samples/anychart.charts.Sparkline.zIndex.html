@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Sparkline.zIndex"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-sparkline.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var stage = anychart.graphics.create('container');
+
+        var overChart = anychart.sparkline([1.3, 2, 1.4, 4, 2.3, 6]);
+        overChart.bounds('8%', '10%', '30%', '20%');
+
+        // Set zIndex.
+        overChart.zIndex(1);
+
+        overChart.title({text: 'Sparkline chart \n Set chart zIndex', orientation: 'top'});
+        overChart.container(stage);
+        overChart.draw();
+
+        var chart = anychart.line(overChart.data());
+        chart.bounds('0%', '0%', '100%', '100%');
+        chart.background('#E0E0E0 0.5').title('Cartesian chart');
+        chart.container(stage);
+        chart.draw();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.graph.elementsInteractivity.zoomAndScroll_set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-graph.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  anychart.onDocumentLoad(function() {
+    var stage = acgraph.create('container');
+
+    var chart1 = anychart.graph();
+    chart1.data(data);
+    chart1.title().enabled(true).text('Zoom on mousewheel');
+    chart1.bounds(0, 0, '50%', '100%');
+    chart1.interactivity().zoomOnMouseWheel(true);
+
+    var chart2 = anychart.graph(data);
+    chart2.title().enabled(true).text('Scroll on mousewheel');
+    chart2.bounds('50%', 0, '50%', '100%');
+    chart2.interactivity().scrollOnMouseWheel(true);
+
+    chart1.container(stage).draw();
+    chart2.container(stage).draw();
+  });
+  var data = {
+    nodes: [
+      {"id": "a"},
+      {"id": "a1"},
+      {"id": "a2"},
+      {"id": "a3"},
+      {"id": "a4"},
+      {"id": "a5"},
+      {"id": "a6"},
+      {"id": "b"},
+      {"id": "b1"},
+      {"id": "b2"},
+      {"id": "b3"},
+      {"id": "b4"},
+      {"id": "b5"},
+      {"id": "b6"}
+    ],
+    edges: [
+      {from: 'a', to: 'b'},
+      {from: 'a', to: 'a1'},
+      {from: 'a', to: 'a2'},
+      {from: 'a', to: 'a3'},
+      {from: 'a', to: 'a4'},
+      {from: 'a', to: 'a5'},
+      {from: 'a', to: 'a6'},
+      {from: 'b', to: 'b1'},
+      {from: 'b', to: 'b2'},
+      {from: 'b', to: 'b3'},
+      {from: 'b', to: 'b4'},
+      {from: 'b', to: 'b5'},
+      {from: 'b', to: 'b6'},
+    ]
+  };
+</script>
+</body>
+</html>

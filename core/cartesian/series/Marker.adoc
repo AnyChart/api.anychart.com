@@ -31,8 +31,7 @@ anychart.core.cartesian.series.Marker.prototype.type;
  * Setter for marker type settings.
  * @example anychart.core.cartesian.series.Marker.type_set_asString Using string
  * @example anychart.core.cartesian.series.Marker.type_set_asFunc Using function
- * @param {(anychart.enums.MarkerType|string|
- *  function(anychart.graphics.vector.Path, number, number, number):anychart.graphics.vector.Path)=} opt_type
+ * @param {(anychart.enums.MarkerType|string|MarkerTypeFunction)=} opt_type
  *  ['circle'] Type or custom drawer. Function for a custom
  *  marker should look like this: <pre>function(path, x, y, size){
  *    // path - anychart.graphics.vector.Path
@@ -317,14 +316,114 @@ anychart.core.cartesian.series.Marker.prototype.xMode;
  */
 anychart.core.cartesian.series.Marker.prototype.xMode;
 
-/** @inheritDoc */
-anychart.core.cartesian.series.Marker.prototype.normal;
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Marker.prototype.hovered
+//
+//----------------------------------------------------------------------------------------------------------------------
 
-/** @inheritDoc */
+/**
+ * Getter for hovered state settings.
+ * @shortDescription Hovered state settings.
+ * @category Interactivity
+ * @example anychart.core.cartesian.series.Marker.hovered_get
+ * @return {anychart.core.StateSettings} Hovered state settings
+ */
 anychart.core.cartesian.series.Marker.prototype.hovered;
 
-/** @inheritDoc */
+/**
+ * Setter for hovered state settings.
+ * @example anychart.core.cartesian.series.Marker.hovered_set
+ * @param {!Object=} opt_settings State settings to set.
+ * @return {anychart.core.cartesian.series.Marker} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Marker.prototype.hovered;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Marker.prototype.labels
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for series data labels.
+ * @shortDescription Labels settings.
+ * @category Point Elements
+ * @example anychart.core.cartesian.series.Marker.labels_get
+ * @return {!anychart.core.ui.LabelsFactory} Labels instance.
+ */
+anychart.core.cartesian.series.Marker.prototype.labels;
+
+/**
+ * Setter for series data labels.
+ * @detailed Sets series labels settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart labels.</li>
+ *   <li><b>object</b> - sets chart labels settings.</li>
+ * </ul>
+ * @example anychart.core.cartesian.series.Marker.labels_set_asBool Disable/Enable labels
+ * @example anychart.core.cartesian.series.Marker.labels_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_settings [false] Series data labels settings.
+ * @return {anychart.core.cartesian.series.Marker} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Marker.prototype.labels;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Line.prototype.selected
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for selected state settings.
+ * @shortDescription Selected state settings.
+ * @category Interactivity
+ * @example anychart.core.cartesian.series.Marker.selected_get
+ * @return {anychart.core.StateSettings} Selected state settings
+ */
 anychart.core.cartesian.series.Marker.prototype.selected;
+
+/**
+ * Setter for selected state settings.
+ * @example anychart.core.cartesian.series.Marker.selected_set
+ * @param {!Object=} opt_settings State settings to set.
+ * @return {anychart.core.cartesian.series.Marker} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Marker.prototype.selected;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.cartesian.series.Marker.prototype.tooltip
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for series data tooltip.
+ * @shortDescription Tooltip settings.
+ * @category Interactivity
+ * @example anychart.core.cartesian.series.Marker.tooltip_get
+ * @return {!anychart.core.ui.Tooltip} Tooltip instance.
+ */
+anychart.core.cartesian.series.Marker.prototype.tooltip;
+
+/**
+ * Setter for series data tooltip.
+ * @detailed Sets series tooltip settings depending on parameter type:
+ * <ul>
+ *   <li><b>null/boolean</b> - disable or enable chart tooltip.</li>
+ *   <li><b>object</b> - sets chart tooltip settings.</li>
+ * </ul>
+ * @example anychart.core.cartesian.series.Marker.tooltip_set_asBool Disable/Enable tooltip
+ * @example anychart.core.cartesian.series.Marker.tooltip_set_asObject Using object
+ * @param {(Object|boolean|null)=} opt_value [true] Tooltip settings.
+ * @return {anychart.core.cartesian.series.Marker} Self instance for method chaining.
+ */
+anychart.core.cartesian.series.Marker.prototype.tooltip;
+
+
+
+/** @inheritDoc */
+anychart.core.cartesian.series.Marker.prototype.normal;
 
 /** @inheritDoc */
 anychart.core.cartesian.series.Marker.prototype.xPointPosition;
@@ -351,16 +450,10 @@ anychart.core.cartesian.series.Marker.prototype.meta;
 anychart.core.cartesian.series.Marker.prototype.name;
 
 /** @inheritDoc */
-anychart.core.cartesian.series.Marker.prototype.tooltip;
-
-/** @inheritDoc */
 anychart.core.cartesian.series.Marker.prototype.legendItem;
 
 /** @inheritDoc */
 anychart.core.cartesian.series.Marker.prototype.color;
-
-/** @inheritDoc */
-anychart.core.cartesian.series.Marker.prototype.labels;
 
 /** @inheritDoc */
 anychart.core.cartesian.series.Marker.prototype.hover;
@@ -373,9 +466,6 @@ anychart.core.cartesian.series.Marker.prototype.unselect;
 
 /** @inheritDoc */
 anychart.core.cartesian.series.Marker.prototype.selectionMode;
-
-/** @inheritDoc */
-anychart.core.cartesian.series.Marker.prototype.allowPointsSelect;
 
 /** @inheritDoc */
 anychart.core.cartesian.series.Marker.prototype.bounds;

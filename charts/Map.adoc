@@ -575,6 +575,30 @@ anychart.charts.Map.prototype.featureTranslation;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//  anychart.charts.Map.prototype.interactivity
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the interactivity settings.
+ * @shortDescription Interactivity settings.
+ * @category Interactivity
+ * @example anychart.charts.Map.interactivity_get
+ * @return {anychart.core.utils.MapInteractivity} Interactivity settings.
+ */
+anychart.charts.Map.prototype.interactivity;
+
+/**
+ * Setter for the interactivity settings.
+ * @example anychart.charts.Map.interactivity_set
+ * @param {(Object|anychart.enums.HoverMode|string)=} opt_settings Settings object or boolean value like enabled state.
+ * @return {anychart.charts.Map} Self instance for method chaining.
+ */
+anychart.charts.Map.prototype.interactivity;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //  anychart.charts.Map.prototype.featureScaleFactor
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -773,7 +797,8 @@ anychart.charts.Map.prototype.marker;
  * Returns coordinate at given latitude and longitude as pixel values relative to a map bounds.<br/>
  * <b>Note:</b> Returns correct values only after {@link anychart.charts.Map#draw} is called.
  * @category Specific settings
- * @detailed Use {@link anychart.charts.Map#localToGlobal} to convert returned coordinates to global coordinates.
+ * @detailed Use {@link anychart.charts.Map#localToGlobal} to convert returned coordinates to global coordinates.<br/>
+ * <b>Note that the longitude and latitude are set as parameters for the transform() method.</b>
  * @example anychart.charts.Map.transform
  * @param {number} xLong Longitude in degrees.
  * @param {number} yLat Latitude in degrees.
@@ -2033,6 +2058,7 @@ anychart.charts.Map.prototype.zIndex;
  * @param {number=} opt_width Image width.
  * @param {number=} opt_height Image height.
  * @param {number=} opt_quality Image quality in ratio 0-1.
+ * @param {string=} opt_filename File name to save.
  */
 anychart.charts.Map.prototype.saveAsPng;
 
@@ -2050,6 +2076,7 @@ anychart.charts.Map.prototype.saveAsPng;
  * @param {number=} opt_height Image height.
  * @param {number=} opt_quality Image quality in ratio 0-1.
  * @param {boolean=} opt_forceTransparentWhite Define, should we force transparent to white background.
+ * @param {string=} opt_filename File name to save.
  */
 anychart.charts.Map.prototype.saveAsJpg;
 
@@ -2067,6 +2094,7 @@ anychart.charts.Map.prototype.saveAsJpg;
  * @param {boolean=} opt_landscape Define, is landscape.
  * @param {number=} opt_x Offset X.
  * @param {number=} opt_y Offset Y.
+ * @param {string=} opt_filename File name to save.
  */
 anychart.charts.Map.prototype.saveAsPdf;
 
@@ -2083,6 +2111,7 @@ anychart.charts.Map.prototype.saveAsPdf;
  * @example anychart.charts.Map.saveAsSvg_set_asPaperSizeLandscape
  * @param {string=} opt_paperSize Paper Size.
  * @param {boolean=} opt_landscape Landscape.
+ * @param {string=} opt_filename File name to save.
  */
 anychart.charts.Map.prototype.saveAsSvg;
 
@@ -2537,7 +2566,7 @@ anychart.charts.Map.prototype.exports;
  * Setter for the export charts.
  * @example anychart.charts.Map.exports
  * @detailed To work with exports you need to reference the exports module from AnyChart CDN
- * (http://cdn.anychart.com/js/latest/anychart-exports.min.js for latest or http://cdn.anychart.com/js/{{branch-name}}/anychart-exports.min.js for the versioned file)
+ * (https://cdn.anychart.com/js/latest/anychart-exports.min.js for latest or https://cdn.anychart.com/js/{{branch-name}}/anychart-exports.min.js for the versioned file)
  * @param {Object=} opt_settings Export settings.
  * @return {anychart.charts.Map} Self instance for method chaining.
  */
@@ -2659,7 +2688,7 @@ anychart.charts.Map.prototype.id;
 
 /**
  * Getter for the accessibility settings.
- * @shortDescription Accessibility setting.
+ * @shortDescription Accessibility settings.
  * @category Specific settings
  * @listing See listing.
  * var stateOfAccsessibility = chart.a11y();

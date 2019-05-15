@@ -23,8 +23,6 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create('container');
-
         var chart = anychart.radar();
         chart.line([
             {x: 0, value: 2},
@@ -34,21 +32,13 @@
             {x: 4, value: 2},
             {x: 5, value: 5}
         ]);
-        chart.title('Serialize chart string to JSON');
-        chart.labels(false);
-        chart.bounds(0, 0, '50%', '100%');
-        chart.container(stage);
+        chart.title('Get chart as SVG with predefined paper size and orientation');
+        chart.container('container');
         chart.draw();
 
-        // Returns chart config as JSON string
-        var json = chart.toJson(true);
-
-        var chartFromJson = anychart.fromJson(json);
-        chartFromJson.bounds('50%', 0, '50%', '100%');
-        chart.padding(20);
-        chartFromJson.title({text: 'Creates chart from JSON string', orientation: 'top'});
-        chartFromJson.container(stage);
-        chartFromJson.draw();
+        // Get chart as SVG with parameters.
+        var SVGstring = chart.toSvg('a4', true);
+        // Now you can do something with this string, send it to the server and etc.
     });
 </script>
 </body>

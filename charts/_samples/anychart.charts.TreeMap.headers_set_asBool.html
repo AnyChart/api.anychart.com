@@ -20,17 +20,29 @@
     </style>
 </head>
 <body>
+<button onclick="enableHeaders()">Enable headers</button>
+<button onclick="disableHeaders();">Disable headers</button>
 <div id="container"></div>
 <script>
+    var chart;
+
+    function disableHeaders() {
+
+        // Disable headers.
+        chart.headers(false);
+    }
+
+    function enableHeaders() {
+
+        // Enable headers.
+        chart.headers(true);
+    }
     anychart.onDocumentReady(function () {
         var data = getData();
 
-        var chart = anychart.treeMap(data);
-
-        // Disable header labels.
-        chart.headers(false);
-
-        chart.title('Disable header labels');
+        chart = anychart.treeMap(data);
+        chart.maxDepth(2);
+        chart.title('Disable/Enable header labels');
         chart.container('container');
         chart.draw();
 

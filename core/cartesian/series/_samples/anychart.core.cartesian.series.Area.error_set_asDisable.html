@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.cartesian.series.Area.error set asDisable"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="enableError()">Enable error</button>
+<button onclick="disableError();">Disable error</button>
+<div id="container"></div>
+<script>
+    var series;
+
+    function disableError() {
+
+        // Disable error
+        series.error(null);
+    }
+
+    function enableError() {
+
+        // Enable error
+        series.error('10%');
+    }
+    anychart.onDocumentReady(function () {
+        var chart = anychart.cartesian();
+        chart.yScale().maximum(12);
+
+        series = chart.area([
+            {x: 1, value: 2},
+            {x: 2, value: 5},
+            {x: 3, value: 3},
+            {x: 4, value: 9},
+            {x: 5, value: 4}
+        ]);
+
+        chart.title('Disable/Enable series error');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
