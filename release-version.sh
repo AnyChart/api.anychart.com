@@ -61,7 +61,7 @@ for filename in ${FILESLIST}; do
     (( ++nr ))
     # in diff mode file may be marked as deleted
     if [ -f $filename ];then 
-        echo -ne "${nr} / ${FILESLIST_COUNT} > ${filename}                                              \r"
+        # echo -ne "${nr} / ${FILESLIST_COUNT} > ${filename}                                              \r"
         perl -pi -e "s,(releases)/({{branch-name}})+/,\1/$ANYCHART_VERSION/,g" ${filename}
         perl -pi -e "s,(geodata)/([0-9]+\.[0-9]+\.[0-9]+)/,\1/$GEODATA_VERSION/,g" ${filename}
         perl -pi -e "s,(locale)/([0-9]+\.[0-9]+\.[0-9]+)/,\1/$LOCALES_VERSION/,g" ${filename}
