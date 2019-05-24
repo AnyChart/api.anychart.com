@@ -11,7 +11,7 @@ If you have any suggestions how to improve this documentation, feel free to use 
 * [Fork](https://github.com/anychart/api-reference/fork) this repo, fix whatever you think needs fixing, and send us a pull request. Learn more about [github collaboration model](https://help.github.com/articles/using-pull-requests/).
 
 ### Documentation format
-We use [JSDoc](http://usejsdoc.org/)-like formatting in [AnyChart API Reference](//api.anychart.com) pages, so the simple method doclet looks like this:
+We use __JSDoc__(http://usejsdoc.org/)-like formatting in [AnyChart API Reference](//api.anychart.com) pages, so the simple method doclet looks like this:
 ```
 /**
  * Add callback for document ready event.<br/>
