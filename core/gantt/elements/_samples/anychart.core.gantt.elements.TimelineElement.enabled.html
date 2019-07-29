@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.gantt.elements.TimelineElement.enabled get" />
+    <meta name="ac:short-desc" content="" />
+    <meta name="ac:desc" content="" />
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html,
+        body,
+        #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script>
+        anychart.onDocumentReady(function () {
+            var data = getData();
+            var chart = anychart.ganttProject();
+            chart.data(data, 'as-table');
+            chart.defaultRowHeight(50);
+            var timeline = chart.getTimeline();
+            var elements = timeline.elements();
+            chart.title('Timeline elements are enabled');
+            chart.container('container');
+            chart.draw();
+            chart.fitAll();
+
+            setInterval(function () {
+                //Getting current enabled-state.
+                var state = elements.enabled();
+                var enabledMsg = state ? 'disabled' : 'enabled';
+
+                //Settings title message and changing enabled-state.
+                chart.title('Timeline elements are ' + enabledMsg);
+                elements.enabled(!state);
+            }, 1000);
+        });
+
+        function getData() {
+            return [
+                {
+                    id: 1,
+                    name: 'Grouping Task'
+                },
+                {
+                    id: 2,
+                    name: 'Child Task With Progress',
+                    actualStart: Date.UTC(2019, 2, 14),
+                    actualEnd: Date.UTC(2019, 2, 20),
+                    progressValue: 0.46,
+                    parent: 1,
+                    connector: [
+                        { 
+                            connectTo: 3 
+                        }
+                    ]
+                },
+                { 
+                    id: 3, 
+                    name: 'Milestone', 
+                    actualStart: Date.UTC(2019, 2, 15), 
+                    parent: 1
+                },
+                { 
+                    id: 4, 
+                    name: 'Task With Baseline', 
+                    actualStart: Date.UTC(2019, 2, 24), 
+                    actualEnd: Date.UTC(2019, 3, 2), 
+                    baselineStart: Date.UTC(2019, 2, 22), 
+                    baselineEnd: Date.UTC(2019, 3, 1), 
+                    progressValue: 0.3, 
+                    parent: 1 
+                }
+            ];
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.ui.ganttToolbar"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/fonts/css/anychart-font.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Toolbar itself. */
+        .anychart-toolbar {
+            background-color: #fff;
+            border: 1px solid #d5d5d5;
+        }
+
+        /* Icon settings. */
+        .anychart-toolbar-item-icon {
+            color: #000;/*icon color*/
+        }
+        /* buttons default state. */
+        .anychart-toolbar-menu-button, .anychart-toolbar-button {
+            color: #000;/* toolbar buttons text color */
+        }
+
+        .anychart-toolbar-menu-button-hover, .anychart-toolbar-button-hover {
+            background-color: #eee;/* Background color on hover */
+        }
+
+        /* Active states, on press, when menu is open, override hover. */
+        .anychart-toolbar-menu-button-active,
+        .anychart-toolbar-menu-button-open,
+        .anychart-toolbar-button-active,
+        .anychart-toolbar-button-checked,
+        .anychart-toolbar-button-selected {
+            background-color: #ddd !important;
+        }
+
+        /* Dropdown arrow on buttons */
+        .anychart-toolbar-menu-button-dropdown {
+            border-top: 4px solid #7c868e;/* Arrow color */
+        }
+
+        /* On hover and open state. */
+        .anychart-toolbar-menu-button-hover .anychart-toolbar-menu-button-dropdown,
+        .anychart-toolbar-menu-button-open .anychart-toolbar-menu-button-dropdown {
+            border-top: 4px solid #000;
+            transition: border-top 0.218s;
+        }
+
+        /* Toolbar dropdown menu */
+        .anychart-toolbar-menu {
+            background-color: #fff;
+        }
+
+        /* Toolbar dropdown menu items */
+        .anychart-toolbar-menu .anychart-menuitem {
+            color: #000;
+        }
+
+        /* Toolbar dropdown menu items on hover */
+        .anychart-toolbar-menu .anychart-menuitem-highlight {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        // To change the way how gantt toolbar looks you need to change CSS.
+        // By default CSS from AnyChart CDN is used: https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css
+        // Download it, alter, upload to your server and link from your pages to change the look.
+        // You can look up css panel in this example to get a grasp on how to change toolbar appearance.
+
+        var data = [
+            {id: 1, name: 'Phase 1 - Strategic Plan', progressValue: 0.14, actualStart: '2000-02-24', actualEnd: '2000-02-27'},
+            {id: 2, name: 'Self-Assessment', parent: 1, progressValue: 0.25, actualStart: '2000-02-24', actualEnd: '2000-02-29'},
+            {id: 3, name: 'Define business vision', parent: 2, progressValue: 0, actualStart: '2000-02-24T24:00', actualEnd: '2000-02-25T09:00', connectTo: 4, connectorType: 'finish-start'},
+            {id: 4, name: 'Identify available skills, information and support', parent: 2, progressValue: 0, actualStart: '2000-02-26T00:00', actualEnd: '2000-02-26T09:00', connectTo: 5, connectorType: 'finish-start'},
+            {id: 5, name: 'Decide whether to proceed', parent: 2, progressValue: 0, actualStart: '2000-02-27', actualEnd: '2000-02-28T08:00', connectTo: 6, connectorType: 'finish-start'},
+            {id: 6, name: 'Define the Opportunity', parent: 1, progressValue: 0.27, actualStart: '2000-02-28T08:00', actualEnd: '2000-02-29'}
+        ];
+
+        var chart = anychart.ganttProject();
+
+        var toolbar = anychart.ui.ganttToolbar();
+        toolbar.container('container');
+        toolbar.target(chart);
+        toolbar.printPaperSizes(['A0', 'A4']);
+
+        // Draw gantt toolbar.
+        toolbar.draw();
+
+        chart.title('Toolbar custom style');
+
+        chart.data(data, 'as-table');
+
+        chart.container('container');
+        chart.draw();
+        chart.fitAll();
+    });
+</script>
+</body>
+</html>
