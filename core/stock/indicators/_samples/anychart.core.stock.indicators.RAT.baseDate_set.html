@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.stock.indicators.RAT.baseDate set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/8.7.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.0/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.0/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/ixic-daily-short.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.7.0/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  anychart.onDocumentReady(function () {
+    // preprocess data
+
+    // The data used in this sample can be obtained from the CDN
+    // https://cdn.anychart.com/csv-data/dji-daily-short.js
+    // https://cdn.anychart.com/csv-data/ixic-daily-short.js
+    var data1 = get_dji_daily_short_data();
+    var data2 = get_ixic_daily_short_data();
+    var data = [];
+
+    for (var i = 0; i < data1.length; i++) {
+      var row = [];
+      row.push(data1[i][0]);
+
+      row.push(data1[i][1]);
+      row.push(data1[i][2]);
+      row.push(data1[i][3]);
+      row.push(data1[i][4]);
+
+      row.push(data2[i][1]);
+      row.push(data2[i][2]);
+      row.push(data2[i][3]);
+      row.push(data2[i][4]);
+      data.push(row);
+    }
+
+    var chart = anychart.stock();
+
+    // create 1st series
+    var dataTable = anychart.data.table();
+    dataTable.addData(data);
+
+    var mapping1 = dataTable.mapAs();
+    mapping1.addField('open', 1, "first");
+    mapping1.addField('high', 2, 'max');
+    mapping1.addField('low', 3, 'min');
+    mapping1.addField('close', 4, 'last');
+
+    var plot0 = chart.plot(0);
+    plot0.ohlc(mapping1);
+
+    // create 2nd series
+    var mapping2 = dataTable.mapAs();
+    mapping2.addField('open', 5, "first");
+    mapping2.addField('high', 6, 'max');
+    mapping2.addField('low', 7, 'min');
+    mapping2.addField('close', 8, 'last');
+
+    var plot1 = chart.plot(1);
+    plot1.ohlc(mapping2);
+
+    // create indicator
+    var indicatorMapping = dataTable.mapAs();
+    indicatorMapping.addField('priceA', 4);
+    indicatorMapping.addField('priceB', 8);
+
+    var rat = chart.plot(2).rat(indicatorMapping);
+    rat.baseDate('2004-03-14');
+
+    chart.title('Set baseDate');
+    chart.container('container');
+    chart.draw();
+  });
+</script>
+</body>
+</html>
