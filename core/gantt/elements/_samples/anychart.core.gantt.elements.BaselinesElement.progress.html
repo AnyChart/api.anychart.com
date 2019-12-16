@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.gantt.elements.BaselinesElement.progress"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.7.1/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  anychart.onDocumentReady(function () {
+    var data = getData();
+
+    var chart = anychart.ganttProject();
+    chart.data(data, 'as-table');
+    chart.xScale().minimumGap(0.3);
+    chart.xScale().maximumGap(0.3);
+    chart.defaultRowHeight(30);
+
+    var baselines = chart.getTimeline().baselines();
+    var blProgress = baselines.progress();
+    blProgress.fill('pink');
+    blProgress.labels().fontStyle('italic').fontColor('purple');
+    blProgress.height('70%');
+
+    chart.title('Complex demo of baseline progress features');
+    chart.container('container');
+    chart.draw();
+    chart.fitAll();
+  });
+
+  function getData() {
+    return [
+      {
+        id: 0,
+        name: 'with BL-progress',
+        actualStart: 1263715200000,
+        actualEnd: 1265392800000,
+        progressValue: 0.17,
+        baselineStart: 1263110400000,
+        baselineEnd: 1265270400000,
+        baselineProgressValue: 0.35
+      }, {
+        id: 1,
+        name: 'with BL-progress, w/o BL',
+        parent: 0,
+        actualStart: 1263715200000,
+        actualEnd: 1264420800000,
+        baselineProgressValue: 0.5,
+        progressValue: 0.15
+      },
+      {
+        id: 2,
+        name: 'BL-progress not set, w/o BL',
+        actualStart: 1263715200000,
+        actualEnd: 1264420800000,
+        progressValue: 0.75
+      },
+      {
+        id: 3,
+        name: 'BL-progress set to 0',
+        actualStart: 1263715200000,
+        actualEnd: 1265392800000,
+        progressValue: 0.17,
+        baselineStart: 1263110400000,
+        baselineEnd: 1265270400000,
+        baselineProgressValue: 0
+      },
+      {
+        id: 4,
+        name: 'BL-progress not set',
+        parent: 3,
+        actualStart: 1263715200000,
+        actualEnd: 1265392800000,
+        progressValue: 0.17,
+        baselineStart: 1263110400000,
+        baselineEnd: 1265270400000,
+      },
+      {
+        id: 5,
+        name: 'No BL, No Actual, BL-progress is set',
+        progressValue: 0.17,
+        baselineProgressValue: 0.5
+      },
+      {
+        id: 6,
+        name: 'Point settings coloring',
+        actualStart: 1263715200000,
+        actualEnd: 1265392800000,
+        progressValue: 0.17,
+        baselineStart: 1263110400000,
+        baselineEnd: 1265270400000,
+        baselineProgressValue: 0.35,
+        baselineProgress: {
+          fill: 'yellow',
+          label: {
+            enabled: true,
+            fontColor: 'navy',
+            format: 'Planned Progress: [{%baselineProgress}]'
+          }
+        }
+      }];
+  }
+</script>
+</body>
+</html>

@@ -5,7 +5,7 @@ clear
 function run(){
     echo ">$*"
     if eval "$@"; then
-        echo [success]        
+        echo [success]
     else
         echo [FAILED]
         exit 1
@@ -31,18 +31,18 @@ function parse_config_file(){
         else
            val=$(echo $val | tr -d '=' | tr -d '"' | tr -d ' ')
         fi
-        case "$key" in 
+        case "$key" in
             anychart-version)
                 ANYCHART_VERSION=${val};;
 
             locales-version)
                 LOCALES_VERSION=${val};;
-            
+
             geodata-version)
                 GEODATA_VERSION=${val};;
-            
+
             themes-version)
-                THEMES_VERSION=${val};;            
+                THEMES_VERSION=${val};;
         esac
     done
 }
@@ -60,13 +60,13 @@ nr=0
 for filename in ${FILESLIST}; do
     (( ++nr ))
     # in diff mode file may be marked as deleted
-    if [ -f $filename ];then 
+    if [ -f $filename ];then
         # echo -ne "${nr} / ${FILESLIST_COUNT} > ${filename}                                              \r"
         perl -pi -e "s,(releases)/({{branch-name}})+/,\1/$ANYCHART_VERSION/,g" ${filename}
         perl -pi -e "s,(geodata)/([0-9]+\.[0-9]+\.[0-9]+)/,\1/$GEODATA_VERSION/,g" ${filename}
         perl -pi -e "s,(locale)/([0-9]+\.[0-9]+\.[0-9]+)/,\1/$LOCALES_VERSION/,g" ${filename}
         perl -pi -e "s,(themes)/([0-9]+\.[0-9]+\.[0-9]+)/,\1/$THEMES_VERSION/,g" ${filename}
-        
+
     fi
 done
 
