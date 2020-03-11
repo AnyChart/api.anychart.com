@@ -64,7 +64,7 @@ for filename in ${FILESLIST}; do
         # echo -ne "${nr} / ${FILESLIST_COUNT} > ${filename}                                              \r"
         perl -pi -e "s,(releases)/({{branch-name}})+/,\1/$ANYCHART_VERSION/,g" ${filename}
         perl -pi -e "s,(geodata)/([0-9]+\.[0-9]+\.[0-9]+)/,\1/$GEODATA_VERSION/,g" ${filename}
-        perl -pi -e "s,(locale)/([0-9]+\.[0-9]+\.[0-9]+)/,\1/$LOCALES_VERSION/,g" ${filename}
+        perl -pi -e "s,(locales)/([0-9]+\.[0-9]+\.[0-9]+)/,\1/$LOCALES_VERSION/,g" ${filename}
         perl -pi -e "s,(themes)/([0-9]+\.[0-9]+\.[0-9]+)/,\1/$THEMES_VERSION/,g" ${filename}
 
     fi
