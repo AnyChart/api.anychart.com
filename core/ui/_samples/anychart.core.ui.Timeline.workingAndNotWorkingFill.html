@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.gantt.Calendar.workingAndNotWorkingFill"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  anychart.onDocumentReady(function () {
+    var data = getData();
+
+    var chart = anychart.ganttResource();
+    chart.data(data, 'as-table');
+
+    chart.title('Working and not working periods are visible because zoomed to hours.');
+
+    // Getting the scale.
+    var scale = chart.xScale();
+    scale.minimum(Date.UTC(2020, 2, 2));
+    scale.maximum(Date.UTC(2020, 2, 3));
+
+    // Getting the calendar.
+    var calendar = scale.calendar();
+
+    // Setting the working schedule. Sun and Sat are weekends.
+    calendar.schedule([
+      /* Sun */ null,
+      /* Mon */ { from: 10, to: 18 },
+      /* Tue */ { from: 10, to: 18 },
+      /* Wed */ { from: 10, to: 18 },
+      /* Thu */ { from: 10, to: 18 },
+      /* Fri */ { from: 10, to: 18 },
+      /* Sat */ null
+    ]);
+
+    // Coloring working and not working hours.
+    var timeline = chart.getTimeline();
+    timeline.workingFill('lightgreen 0.5');
+    timeline.notWorkingFill('yellow 0.3');
+
+    var legend = chart.legend();
+    legend.enabled(true);
+    legend.items([
+      {index: 0, text: 'Not working hours', iconFill: 'yellow 0.3'},
+      {index: 1, text: 'Working hours', iconFill: 'lightgreen 0.5'}
+    ]);
+
+    chart.container('container');
+    chart.draw();
+    chart.fitAll();
+  });
+
+  function getData() {
+    return [
+      {id: 1, name: 'Mike Johnson', periods:[
+        {id: 4, start: Date.UTC(2020, 2, 2, 8, 15), end: Date.UTC(2020, 2, 2, 15)},
+        {id: 5, start: Date.UTC(2020, 2, 2, 16, 10), end: Date.UTC(2020, 2, 2, 18, 30)}
+      ]},
+      {id: 2, name: 'Olivia Taylor', periods: [
+        {id: 6, start: Date.UTC(2020, 2, 2, 9), end: Date.UTC(2020, 2, 2, 14)},
+        {id: 7, start: Date.UTC(2020, 2, 2, 16), end: Date.UTC(2020, 2, 2, 19)}
+      ]},
+      {id: 3, name: 'Daniel Wilson', periods: [
+        {id: 8, start: Date.UTC(2020, 2, 2, 10, 30), end: Date.UTC(2020, 2, 2, 12)},
+        {id: 9, start: Date.UTC(2020, 2, 2, 12, 30), end: Date.UTC(2020, 2, 2, 15)},
+        {id: 10, start: Date.UTC(2020, 2, 2, 15, 40), end: Date.UTC(2020, 2, 2, 19)}
+      ]}
+    ];
+  }
+</script>
+</body>
+</html>

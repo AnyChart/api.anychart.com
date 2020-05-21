@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.ui.Timeline.zoomOnMouseWheel set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  anychart.onDocumentReady(function () {
+    var data = getData();
+
+    var chart = anychart.ganttProject();
+    chart.data(data, 'as-table');
+    chart.fitAll();
+
+    chart.getTimeline().zoomOnMouseWheel(true);
+
+    chart.container('container');
+    chart.draw();
+  });
+
+  function getData() {
+    return [
+      {id: 1, name: 'Phase 1 - Strategic Plan', progressValue: 0.14, actualStart: '2000-02-24T08:00', actualEnd: '2000-03-28T09:00'},
+      {id: 2, name: 'Self-Assessment', parent: 1, progressValue: 0.25, actualStart: '2000-02-24T08:00', actualEnd: '2000-03-02T08:00'},
+      {id: 3, name: 'Define business vision', parent: 2, progressValue: 0, actualStart: '2000-02-25T00:00', actualEnd: '2000-02-25T09:00', connectTo: 4, connectorType: 'finish-start'},
+      {id: 4, name: 'Identify available skills, information and support', parent: 2, progressValue: 0, actualStart: '2000-02-26T00:00', actualEnd: '2000-02-26T09:00', connectTo: 5, connectorType: 'finish-start'},
+      {id: 5, name: 'Decide whether to proceed', parent: 2, progressValue: 0, actualStart: '2000-02-29T00:00', actualEnd: '2000-02-29T09:00', connectTo: 7, connectorType: 'finish-start'},
+      {id: 6, name: 'Define the Opportunity', parent: 1, progressValue: 0.27, actualStart: '2000-02-29T08:00', actualEnd: '2000-03-14T08:00'},
+      {id: 7, name: 'Research the market and competition', parent: 6, progressValue: 0, actualStart: '2000-03-01T00:00', actualEnd: '2000-03-01T09:00', connectTo: 8, connectorType: 'finish-start'},
+      {id: 8, name: 'Interview owners of similar businesses', parent: 6, progressValue: 0.6, actualStart: '2000-03-01T08:00', actualEnd: '2000-03-08T08:00', connectTo: 9, connectorType: 'finish-start'},
+      {id: 9, name: 'Identify needed resources', parent: 6, progressValue: 0, actualStart: '2000-03-09T00:00', actualEnd: '2000-03-10T09:00', connectTo: 10, connectorType: 'finish-start'},
+      {id: 10, name: 'Identify operating cost elements', parent: 6, progressValue: 0, actualStart: '2000-03-11T00:00', actualEnd: '2000-03-14T09:00', connectTo: 12, connectorType: 'finish-start'},
+      {id: 11, name: 'Evaluate Business Approach', parent: 1, progressValue: 0, actualStart: '2000-03-15T00:00', actualEnd: '2000-03-18T09:00'},
+      {id: 12, name: 'Define new entity requirements', parent: 11, progressValue: 0, actualStart: '2000-03-15T00:00', actualEnd: '2000-03-15T09:00', connectTo: 17, connectorType: 'finish-start'},
+      {id: 13, name: 'Identify on-going business purchase opportunities', parent: 11, progressValue: 0, actualStart: '2000-03-16T00:00', actualEnd: '2000-03-16T09:00', connectTo: 14, connectorType: 'finish-start'},
+      {id: 14, name: 'Research franchise possibilities', parent: 11, progressValue: 0, actualStart: '2000-03-17T00:00', actualEnd: '2000-03-17T09:00', connectTo: 15, connectorType: 'finish-start'},
+      {id: 15, name: 'Summarize business approach', parent: 11, progressValue: 0, actualStart: '2000-03-18T00:00', actualEnd: '2000-03-18T09:00', connectTo: 21, connectorType: 'finish-start'},
+      {id: 16, name: 'Evaluate Potential Risks and Rewards', parent: 1, progressValue: 0, actualStart: '2000-03-16T00:00', actualEnd: '2000-03-25T09:00'},
+      {id: 17, name: 'Assess market size and stability', parent: 16, progressValue: 0, actualStart: '2000-03-16T00:00', actualEnd: '2000-03-17T09:00', connectTo: 18, connectorType: 'finish-start'},
+      {id: 18, name: 'Estimate the competition', parent: 16, progressValue: 0, actualStart: '2000-03-18T00:00', actualEnd: '2000-03-18T09:00', connectTo: 19, connectorType: 'finish-start'},
+      {id: 19, name: 'Assess needed resource availability', parent: 16, progressValue: 0, actualStart: '2000-03-23T00:00', actualEnd: '2000-03-24T09:00', connectTo: 20, connectorType: 'finish-start'},
+      {id: 20, name: 'Evaluate realistic initial market share', parent: 16, progressValue: 0, actualStart: '2000-03-25T00:00', actualEnd: '2000-03-25T09:00'},
+      {id: 21, name: 'Determine financial requirements', parent: 16, progressValue: 0, actualStart: '2000-03-21T00:00', actualEnd: '2000-03-22T09:00', connectTo: 22, connectorType: 'finish-start'},
+      {id: 22, name: 'Review personal suitability', parent: 16, progressValue: 0, actualStart: '2000-03-23T00:00', actualEnd: '2000-03-23T09:00', connectTo: 23, connectorType: 'finish-start'},
+      {id: 23, name: 'Evaluate initial profitability', parent: 16, progressValue: 0, actualStart: '2000-03-24T00:00', actualEnd: '2000-03-24T09:00', connectTo: 24, connectorType: 'finish-start'},
+      {id: 24, name: 'Review and modify the strategic plan', parent: 1, progressValue: 0, actualStart: '2000-03-25T00:00', actualEnd: '2000-03-28T11:00', connectTo: 25, connectorType: 'finish-start'},
+      {id: 25, name: 'Confirm decision to proceed', parent: 1, progressValue: 0, actualStart: '2000-03-28T11:00', actualEnd: '2000-03-28T11:00', connectTo: 28, connectorType: 'finish-start'},
+      {id: 26, name: 'Phase 2 - Define the Business Opportunity', progressValue: 0.19, actualStart: '2000-03-28T09:00', actualEnd: '2000-05-03T09:00'},
+      {id: 27, name: 'Define the Market', parent: 26, progressValue: 0.28, actualStart: '2000-03-28T09:00', actualEnd: '2000-04-14T09:00'},
+      {id: 28, name: 'Access available information', parent: 27, progressValue: 0, actualStart: '2000-03-29T02:00', actualEnd: '2000-03-29T11:00', connectTo: 35, connectorType: 'start-start'},
+      {id: 29, name: 'Create market analysis plan', parent: 27, progressValue: 0, actualStart: '2000-03-30T02:00', actualEnd: '2000-03-31T11:00'},
+      {id: 30, name: 'Implement market analysis plan', parent: 27, progressValue: 0.4, actualStart: '2000-03-31T09:00', actualEnd: '2000-04-07T09:00', connectTo: 31, connectorType: 'finish-start'},
+      {id: 31, name: 'Identify competition', parent: 27, progressValue: 0.6, actualStart: '2000-04-07T09:00', actualEnd: '2000-04-11T09:00', connectTo: 32, connectorType: 'finish-start'},
+      {id: 32, name: 'Summarize the market', parent: 27, progressValue: 0, actualStart: '2000-04-12T02:00', actualEnd: '2000-04-13T11:00', connectTo: 33, connectorType: 'finish-start'},
+      {id: 33, name: 'Identify target market niche', parent: 27, progressValue: 0, actualStart: '2000-04-14T02:00', actualEnd: '2000-04-14T11:00', connectTo: 35, connectorType: 'start-start'},
+      {id: 34, name: 'Identify Needed Materials and Supplies', parent: 26, progressValue: 0, actualStart: '2000-04-14T02:00', actualEnd: '2000-04-22T11:00'},
+      {id: 35, name: 'Select a business approach (from \'Evaluate Business Approach\' above)', parent: 34, progressValue: 0, actualStart: '2000-04-14T02:00', actualEnd: '2000-04-15T11:00', connectTo: 36, connectorType: 'finish-start'},
+      {id: 36, name: 'Identify management staff resources', parent: 34, progressValue: 0, actualStart: '2000-04-18T02:00', actualEnd: '2000-04-18T11:00', connectTo: 37, connectorType: 'finish-start'},
+      {id: 37, name: 'Identify staffing requirements', parent: 34, progressValue: 0, actualStart: '2000-04-19T02:00', actualEnd: '2000-04-19T11:00', connectTo: 38, connectorType: 'finish-start'},
+      {id: 38, name: 'Identify needed raw materials', parent: 34, progressValue: 0, actualStart: '2000-04-20T02:00', actualEnd: '2000-04-20T11:00', connectTo: 39, connectorType: 'finish-start'},
+      {id: 39, name: 'Identify needed utilities', parent: 34, progressValue: 0, actualStart: '2000-04-21T02:00', actualEnd: '2000-04-21T11:00', connectTo: 40, connectorType: 'finish-start'},
+      {id: 40, name: 'Summarize operating expenses and financial projections', parent: 34, progressValue: 0, actualStart: '2000-04-22T02:00', actualEnd: '2000-04-22T11:00', connectTo: 42, connectorType: 'finish-start'},
+      {id: 41, name: 'Evaluate Potential Risks and Rewards', parent: 26, progressValue: 0.17, actualStart: '2000-04-24T09:00', actualEnd: '2000-05-02T09:00'},
+      {id: 42, name: 'Assess market size and stability', parent: 41, progressValue: 0.5, actualStart: '2000-04-24T09:00', actualEnd: '2000-04-26T09:00', connectTo: 43, connectorType: 'finish-start'},
+    ]
+  }
+</script>
+</body>
+</html>

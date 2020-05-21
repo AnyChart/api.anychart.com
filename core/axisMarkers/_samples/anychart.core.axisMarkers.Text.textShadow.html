@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.axisMarkers.Text.textShadow"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.line([
+            {x: 0, value: 5},
+            {x: 1, value: 9},
+            {x: 2, value: 2},
+            {x: 3, value: 6}
+        ]);
+
+        var textMarker = chart.textMarker();
+        textMarker.value(9);
+        textMarker.axis(chart.yAxis());
+        textMarker.padding(5);
+
+        // Set text marker font color
+        textMarker.textShadow('3px 3px 2px black');
+
+        chart.title('Set text marker font color');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>

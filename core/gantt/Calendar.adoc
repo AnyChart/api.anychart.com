@@ -1,0 +1,179 @@
+/**
+ * Gantt calendar class.<br/>
+ * Used to take a working time, weekends and holidays settings and make necessary calculations
+ * to provide it to user and to Gantt Chart to be displayed visually.
+ * @constructor
+ * @extends {anychart.core.Base}
+ */
+anychart.core.gantt.Calendar;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.Calendar.DailyWorkingSchedule
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Type definition to represent working interval of a single day.<br/>
+ * @listing See example.
+ * { from: 10, to: 18 } // Defining these values means that working time starts at 10 a.m. and ends at 6 p.m.
+ * @typedef {Object} anychart.core.gantt.Calendar.DailyWorkingSchedule
+ * @property {number} from 'From' working hour. See code example.
+ * @property {number} to 'To' working hour. See code example.
+ * @since 8.8.0
+ */
+anychart.core.gantt.Calendar.DailyWorkingSchedule;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.Calendar.Holiday
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Holiday info type definition.<br/>
+ * '<b>day</b>'-field is a day of month, '<b>month</b>' is a number of month in year (see fields description below).<br/>
+ * If '<b>year</b>'-field is defined, it means exact-date holiday.<br/>
+ * If '<b>year</b>'-field is not set, it means yearly holiday.<br/>
+ * @typedef {Object} anychart.core.gantt.Calendar.Holiday
+ * @property {number} day Number of day in month.
+ * @property {number} month Number of month in year. By UTC-specification, 0 is January, 11 is December.
+ * @property {(number|undefined)} year Number of year. See typedef description.
+ * @property {(string|undefined)} label Custom label for holiday. Is optional and is not used in any visual
+ * appearance in current implementation.
+ * @since 8.8.0
+ */
+anychart.core.gantt.Calendar.Holiday;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.Calendar.DailyScheduleData
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Type definition to represent full working daily info.<br/>
+ * Actually is used to provide daily working/not working data with {@link anychart.core.gantt.Calendar#getWorkingSchedule}
+ * method.
+ * @typedef {Object} anychart.core.gantt.Calendar.DailyScheduleData
+ * @property {boolean} isWeekend Whether the day described with {@link anychart.core.gantt.Calendar.DailyScheduleData}
+ * is weekend. By default, weekend has no any working time.
+ * @property {boolean} isHoliday Whether the day described with {@link anychart.core.gantt.Calendar.DailyScheduleData}
+ * is holiday. Holiday might have working time set.
+ * @property {Array.<anychart.core.gantt.Calendar.DailyWorkingSchedule>} workingIntervals Array of objects
+ * with 'from' and 'to' fields that contain timestamps representing start and end of working time on day. Actually
+ * is an array of working intervals set by {@link anychart.core.gantt.Calendar#schedule}.
+ * @property {Array.<anychart.core.gantt.Calendar.DailyWorkingSchedule>} notWorkingIntervals Array of objects
+ * with 'from' and 'to' fields that contain timestamps representing start and end of not working time on day. Actually
+ * is an array of not working intervals set by {@link anychart.core.gantt.Calendar#schedule}.
+ * @property {number} start Timestamp of the beginning of the day.
+ * @property {number} end Timestamp of the end of the day.
+ * @since 8.8.0
+ */
+anychart.core.gantt.Calendar.DailyScheduleData;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.rendering.Settings.prototype.schedule
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter for user defined daily schedule.
+ * @category Specific settings
+ * @listing See listing
+ * var scale = ganttChart.xScale();
+ * var calendar = scale.calendar();
+ * var schedule = calendar.schedule();
+ * @return {Array.<(anychart.core.gantt.Calendar.DailyWorkingSchedule|null)>|null} Current daily schedule or null
+ * if schedule is not specified.
+ * @since 8.8.0
+ */
+anychart.core.gantt.Calendar.prototype.schedule;
+
+/**
+ * Setter for user defined daily working schedule. This method sets weekly working days, weekends and working time.<br/>
+ * Must be an array of 7 objects defined as {@link anychart.core.gantt.Calendar.DailyWorkingSchedule} or null-values.<br/>
+ * null-value in this case means a weekend-day. <br/>
+ * First element of this array as Sunday, last one is Saturday.<br/>
+ * <br/>
+ * NOTE:<br/>
+ * - Weekends will be visible (see {@link anychart.core.ui.Timeline#weekendsFill}) only if gantt timeline is
+ * zoomed to days or below.<br/>
+ * - Working hours ({@link anychart.core.ui.Timeline#workingFill}) and not working hours
+ * ({@link anychart.core.ui.Timeline#notWorkingFill}) will be visible if gantt timeline is
+ * zoomed to hours or below.<br/>
+ * @listing See listing
+ * var scale = ganttChart.xScale();
+ * var calendar = scale.calendar();
+ * // 0-element (Sun) is a weekend, 6-element (Sat) is weekend as well. All another days are working
+ * // from 10 a.m. to 6 p.m.
+ * calendar.schedule([
+ *   null,                 // Sun
+ *   { from: 10, to: 18 }, // Mon
+ *   { from: 10, to: 18 }, // Tue
+ *   { from: 10, to: 18 }, // Wed
+ *   { from: 10, to: 18 }, // Thu
+ *   { from: 10, to: 18 }, // Fri
+ *   null                  // Sat
+ * ]);
+ * @example anychart.core.ui.Timeline.workingAndNotWorkingFill
+ * @param {Array.<(anychart.core.gantt.Calendar.DailyWorkingSchedule|null)>} schedule - User defined working schedule.
+ * @return {anychart.core.gantt.Calendar} Self instance for method chaining.
+ * @since 8.8.0
+ */
+anychart.core.gantt.Calendar.prototype.schedule;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.rendering.Settings.prototype.holidays
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Getter for user defined holidays.
+ * @category Specific settings
+ * @listing See listing
+ * var scale = ganttChart.xScale();
+ * var calendar = scale.calendar();
+ * var schedule = calendar.holidays();
+ * @return {Array.<(anychart.core.gantt.Calendar.Holiday|null)>|null} Current holidays or null
+ * if holidays is not specified.
+ * @since 8.8.0
+ */
+anychart.core.gantt.Calendar.prototype.holidays;
+
+/**
+ * Setter for user defined holidays. This method sets exact-date or yearly holidays.<br/>
+ * Must be an array of objects defined as {@link anychart.core.gantt.Calendar.Holiday}.<br/>
+ * See {@link anychart.core.gantt.Calendar.Holiday} type definition description and code example below.<br/>
+ * <br/>
+ * NOTE:<br/>
+ * - Holidays will be visible (see {@link anychart.core.ui.Timeline#holidaysFill}) only if gantt timeline is
+ * zoomed to days.<br/>
+ * - Also, if holiday is visible and overlaps the weekend, holiday drawing is preferred.<br/>
+ * - Holiday ({@link anychart.core.ui.Timeline#holidaysFill}) will not be visible if gantt timeline is zoomed
+ * to hours or below. Working hours ({@link anychart.core.ui.Timeline#workingFill}) and not working hours
+ * ({@link anychart.core.ui.Timeline#notWorkingFill}) will be visible instead, because holiday can contain
+ * working hours.<br/>
+ * @listing See listing
+ * var scale = ganttChart.xScale();
+ * var calendar = scale.calendar();
+ * calendar.holidays([
+ *   { day: 4, month: 6, label: 'Yearly holiday (year is not specified)'}, // 4th of July, yearly.
+ *   { day: 12, month: 3, year: 2020, label: 'Easter (year is specified)'} // 20th of April, 2020.
+ * ]);
+ * @example anychart.core.ui.Timeline.holidaysAndWeekendsFill
+ * @param {Array.<(anychart.core.gantt.Calendar.Holiday)>} holidays - User defined holidays.
+ * @return {anychart.core.gantt.Calendar} Self instance for method chaining.
+ * @since 8.8.0
+ */
+anychart.core.gantt.Calendar.prototype.holidays;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.gantt.rendering.Settings.prototype.getWorkingSchedule
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Gets detailed calculated working schedule considering parameters passed and current schedule and holidays settings.</br>
+ * @return {Array.<anychart.core.gantt.Calendar.DailyScheduleData>} Array of objects containing daily schedule data (see
+ * {@link anychart.core.gantt.Calendar.DailyScheduleData} fields description).
+ *
+ */
+anychart.core.gantt.Calendar.prototype.getWorkingSchedule;

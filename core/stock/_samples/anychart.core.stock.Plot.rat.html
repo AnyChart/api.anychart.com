@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.stock.Plot.psy"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  anychart.onDocumentReady(function() {
+    var dataTable = anychart.data.table();
+    dataTable.addData([
+      ['2015-12-24', 511.53, 514.98],
+      ['2015-12-25', 512.53, 514.88],
+      ['2015-12-26', 511.83, 514.98],
+      ['2015-12-27', 511.22, 515.30],
+      ['2015-12-28', 511.53, 514.98],
+      ['2015-12-29', 512.53, 513.88],
+      ['2015-12-30', 511.83, 512.98],
+      ['2015-12-31', 511.22, 515.30],
+      ['2016-01-01', 510.35, 515.72]
+    ]);
+
+
+    var mapping_1 = dataTable.mapAs({"value": 1});
+    var mapping_2 = dataTable.mapAs({"value": 2});
+    var rat_mapping = dataTable.mapAs({"priceA": 1, "priceB": 2});
+
+    var chart = anychart.stock();
+
+
+    var plot_0 = chart.plot(0);
+
+    plot_0.line(mapping_1).name('Stock 1');
+    plot_0.line(mapping_2).name('Stock 2');
+
+    var plot_1 = chart.plot(1);
+
+    var rat = plot_1.rat(rat_mapping, '2015-12-27', 'spline');
+
+    chart.title('Create the Ratiocator indicator');
+
+    chart.container('container');
+    chart.draw();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.ui.Timeline.milestones get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  anychart.onDocumentReady(function () {
+    var data = getData();
+
+    chart = anychart.ganttResource();
+    chart.data(data, 'as-table');
+    chart.xScale().minimumGap(0.1);
+    chart.xScale().maximumGap(0.4);
+    chart.defaultRowHeight(50);
+    var timeline = chart.getTimeline();
+    timeline.elements().labels()
+    .enabled(true)
+    .textShadow('0 0 2px #eee')
+    .anchor('left-bottom')
+    .position('right-bottom');
+
+
+    // Get milestones.
+    var milestones = timeline.milestones();
+    milestones.fill('#4CAF50');
+
+    chart.title('Get and modify milestones');
+    chart.container('container');
+    chart.draw();
+    chart.fitAll();
+  });
+
+  function getData() {
+    return [
+      {
+        id: 1,
+        name: 'Anna Anderson',
+        periods: [
+          {
+            id: 11,
+            name: 'Analyzing',
+            start: Date.UTC(2019, 1, 25),
+            end: Date.UTC(2019, 1, 27),
+            connector: [ { connectTo: 12 } ]
+          },
+          {
+            id: 12,
+            name: 'Sending report',
+            start: Date.UTC(2019, 3, 1),
+            connector: [ { connectTo: 13 } ]
+          },
+          {
+            id: 13,
+            name: 'Fixing',
+            start: Date.UTC(2019, 3, 27),
+            end: Date.UTC(2019, 3, 30)
+          }
+        ]
+      },
+      {
+        id: 2,
+        name: 'Peter Goldberg',
+        periods: [
+          {
+            id: 21,
+            name: 'Constructing',
+            start: Date.UTC(2019, 2, 12),
+            end: Date.UTC(2019, 2, 15),
+            connector: [ { connectTo: 22 } ]
+          },
+          {
+            id: 22,
+            name: 'Testing',
+            start: Date.UTC(2019, 3, 10),
+            end: Date.UTC(2019, 3, 13),
+            connector: [ { connectTo: 23 } ]
+          },
+          {
+            id: 23,
+            name: 'Sending report',
+            start: Date.UTC(2019, 4, 1)
+          }
+        ]
+      }
+    ];
+  }
+</script>
+</body>
+</html>

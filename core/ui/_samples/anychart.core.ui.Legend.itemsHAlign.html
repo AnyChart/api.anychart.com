@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.ui.Legend.itemsLayout get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  anychart.onDocumentReady(function () {
+    var chart = anychart.line();
+    chart.data({
+      header: ['#', 'Florida', 'Texas', 'Arizona', 'Nevada'],
+      rows: [
+        ['Apples', 1, 2, 3, 4],
+        ['Pears', 2, 3, 4, 1],
+        ['Bananas', 3, 4, 1, 2],
+        ['Grapes', 4, 1, 2, 3]
+      ]
+    });
+
+    // Settings legend up.
+    var legend = chart.legend();
+    legend.enabled(true);
+    legend.position('top');
+    legend.width('100%');
+
+    // Making legend background visible.
+    legend.background().enabled(true);
+    legend.background().fill('lightblue 0.5');
+
+    // Making items to be aligned right.
+    legend.itemsHAlign('right');
+
+    chart.title('Legend items hAlign is ' + legend.itemsHAlign());
+    chart.container('container');
+    chart.draw();
+  });
+</script>
+</body>
+</html>

@@ -47,7 +47,7 @@ def __search_unused_sample(dirpath, sampleName):
                     isFounded += 1
 
     if isFounded == 0:
-        print 'Not found usage sample '+sampleName
+        print 'Not found usage sample: %s (path %s)' % (sampleName, dirpath)
 
 
 def __unused_samples():

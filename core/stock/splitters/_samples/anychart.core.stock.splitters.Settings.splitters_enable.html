@@ -2,17 +2,17 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Stock.splitters enable"/>
+    <meta name="ac:name" content="anychart.charts.Stock.splitters"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-base.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-stock.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-exports.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
     <script src="https://cdn.anychart.com/csv-data/msft-daily-short.js"></script>
     <script src="https://cdn.anychart.com/csv-data/orcl-daily-short.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.7.1/css/anychart-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
     <style>
         html, body, #container {
             width: 100%;
@@ -42,21 +42,31 @@
     var plot3 = chart.plot(2);
     plot3.line(dataTable3.mapAs({value: 1}));
 
-    chart.title('Splitters are enabled');
+    chart.title('Hover and drag splitters between plots to see the splitters decoration.');
 
-    // Paying attention on splitters position.
-    chart.splitters().stroke('5 red');
+    chart.splitters().normal().stroke({
+      color: 'red',
+      dash: '3 4',
+      thickness: 2,
+      opacity: 0.9
+    });
+
+    chart.splitters().hovered().stroke({
+      color: 'blue',
+      dash: '3 4',
+      thickness: 2,
+      opacity: 0.9
+    });
+
+    chart.splitters().preview().fill({
+      color: 'green',
+      opacity: 0.5
+    });
+
+
 
     chart.container('container');
     chart.draw();
-
-    setInterval(function() {
-      var enabledState = chart.splitters().enabled();
-      chart.splitters().enabled(!enabledState);
-
-      var titleText = 'Splitters are ' + (enabledState ? 'disabled' : 'enabled');
-      chart.title(titleText);
-    }, 500)
   });
 </script>
 </body>
