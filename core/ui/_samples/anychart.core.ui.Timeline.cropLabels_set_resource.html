@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.ui.Timeline.cropLabels set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-gantt.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  anychart.onDocumentReady(function () {
+    var data = getData();
+    // create data tree on raw data
+    var treeData = anychart.data.tree(data, 'as-table');
+
+    // create resource gantt chart
+    chart = anychart.ganttResource();
+
+    chart.title('External events');
+
+    // set data for the chart
+    chart.data(treeData);
+
+    // set pixel position of the main splitter
+    chart.splitterPosition(120);
+
+    // getting chart's data grid
+    var dataGrid = chart.dataGrid();
+
+    // disabling default 0-column
+    dataGrid.column(0, false);
+
+    // set container id for the chart
+    chart.container('container');
+
+
+    // enable elements labels
+    chart.getTimeline().elements().labels(true);
+
+    // enable labels crop
+    chart.getTimeline().cropLabels(true);
+
+    // widen scale a bit
+    chart.xScale().minimum(Date.UTC(2014, 3, 1))
+    chart.xScale().maximum(Date.UTC(2014, 4, 1))
+
+    // initiate chart drawing
+    chart.draw();
+
+    // zoom chart all dates range
+    chart.fitAll();
+  });
+
+  function getData() {
+      return [{
+        "id": 0,
+        "name": "Dev Team"
+        }, {
+        "id": 1,
+        "name": "Mya Leilah",
+        "periods": [{
+        "id": 100,
+        "start": 1397088000000,
+        "end": 1397260800000,
+        "name": "Development task 1"
+        }, {
+        "id": 101,
+        "start": 1397347200000,
+        "name": "Meeting 2"
+        }, {
+        "id": 102,
+        "start": 1397692800000,
+        "end": 1397952000000,
+        "name": "Development task 2"
+        }, {
+        "id": 103,
+        "start": 1398038400000,
+        "name": "Meeting 3"
+        }],
+        "parent": 0
+        }, {
+        "id": 2,
+        "name": "Henry Lavina",
+        "periods": [{
+        "id": 104,
+        "start": 1397088000000,
+        "end": 1397174400000,
+        "name": "Development task 3"
+        }, {
+        "id": 108,
+        "start": 1397304000000,
+        "name": "Meeting 1"
+        }, {
+        "id": 105,
+        "start": 1397433600000,
+        "end": 1397692800000,
+        "name": "Development task 4"
+        }, {
+        "id": 106,
+        "start": 1397779200000,
+        "end": 1398211200000,
+        "name": "Development task 5"
+        }, {
+        "id": 107,
+        "start": 1398297600000,
+        "end": 1398384000000,
+        "name": "Development task 6"
+        }],
+        "parent": 0
+        }];
+  }
+</script>
+</body>
+</html>
