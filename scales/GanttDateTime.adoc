@@ -137,6 +137,26 @@ anychart.scales.GanttDateTime.prototype.fiscalYearStartMonth;
  */
 anychart.scales.GanttDateTime.prototype.fiscalYearStartMonth;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.scales.GanttDateTime.Gap
+//
+//----------------------------------------------------------------------------------------------------------------------
+/**
+ * Gantt scale gap type definition.<br/>
+ * '<b>value</b>'-field is a value to be applied.<br/>
+ * If <b>isPixels</b>-flag is set to 'false', value must be 0..1 ratio, the percent of total scale data range.<br/>
+ * If <b>isPixels</b>-flag is set to 'true', value must be valid numeric value of pixel gap with.<br/>
+ * <br/>
+ * '<b>isPixels</b>' is a boolean flag, whether <b>value</b> should be treated as pixels, not ratio.<br/>
+ * @typedef {Object} anychart.scales.GanttDateTime.Gap
+ * @property {number} value Ratio of pixel value.
+ * @property {boolean} isPixels Whether to treat numeric value as pixels, not ratio.
+ * @since 8.8.0
+ */
+anychart.scales.GanttDateTime.Gap;
+
 //----------------------------------------------------------------------------------------------------------------------
 //
 //  anychart.scales.GanttDateTime.prototype.minimumGap
@@ -144,20 +164,24 @@ anychart.scales.GanttDateTime.prototype.fiscalYearStartMonth;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the minimum gap.
- * @shortDescription Minimum gap settings.
+ * Getter for the minimum gap.<br>
+ * <b>NOTE:</b> For backward compatibility:<br/>
+ * - if the gap was set as 'pixel gap', method returns an object defined as {@link anychart.scales.GanttDateTime.Gap}.<br/>
+ * - if the gap was set as 'percent gap', method returns a number representing a ratio-gap as it was before feature implementation.<br/>
  * @category Specific settings
- * @return {number} The minimum gap value.
- * @since 7.12.0
+ * @return {number|anychart.scales.GanttDateTime.Gap} The minimum gap value.
+ * @since 8.8.0
  */
 anychart.scales.GanttDateTime.prototype.minimumGap;
 
 /**
  * Setter for the minimum gap.
- * @example anychart.scales.GanttDateTime.minimumMaximumGap
- * @param {number=} opt_gap Gap value to be set.
+ * @example anychart.scales.GanttDateTime.minimumMaximumGap Ratio gap example
+ * @example anychart.scales.GanttDateTime.minimumMaximumGap_pixels Pixel gap example
+ * @param {(number|anychart.scales.GanttDateTime.Gap)=} opt_gap Gap value to be set. Can take numeric value or an object defined as {@link anychart.scales.GanttDateTime.Gap}.
+ * @param {boolean=} opt_treatAsPixels Whether to treat first parameter numeric value as pixels.
  * @return {anychart.scales.GanttDateTime} Self instance for method chaining.
- * @since 7.12.0
+ * @since 8.8.0
  */
 anychart.scales.GanttDateTime.prototype.minimumGap;
 
@@ -169,19 +193,23 @@ anychart.scales.GanttDateTime.prototype.minimumGap;
 
 /**
  * Getter for the maximum gap.
- * @shortDescription Maximum gap settings.
+ * <b>NOTE:</b> For backward compatibility:<br/>
+ * - if the gap was set as 'pixel gap', method returns an object defined as {@link anychart.scales.GanttDateTime.Gap}.<br/>
+ * - if the gap was set as 'percent gap', method returns a number representing a ratio-gap as it was before feature implementation.<br/>
  * @category Specific settings
- * @return {number} The maximum gap value.
- * @since 7.12.0
+ * @return {number|anychart.scales.GanttDateTime.Gap} The minimum gap value.
+ * @since 8.8.0
  */
 anychart.scales.GanttDateTime.prototype.maximumGap;
 
 /**
  * Setter for the maximum gap.
- * @example anychart.scales.GanttDateTime.minimumMaximumGap
- * @param {number=} opt_gap Gap value to be set.
+ * @example anychart.scales.GanttDateTime.minimumMaximumGap Ratio gap example
+ * @example anychart.scales.GanttDateTime.minimumMaximumGap_pixels Pixel gap example
+ * @param {(number|anychart.scales.GanttDateTime.Gap)=} opt_gap Gap value to be set. Can take numeric value or an object defined as {@link anychart.scales.GanttDateTime.Gap}.
+ * @param {boolean=} opt_treatAsPixels Whether to treat first parameter numeric value as pixels.
  * @return {anychart.scales.GanttDateTime} Self instance for method chaining.
- * @since 7.12.0
+ * @since 8.8.0
  */
 anychart.scales.GanttDateTime.prototype.maximumGap;
 
