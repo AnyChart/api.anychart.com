@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.Polar.maxWidth set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-polar.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div>Spread value</div>
+    <button id='none'>none</button>
+    <button id='equal'>valueEqual</button>
+    <button id='val50'>value50</button>
+</div>
+<hr>
+
+<div>
+    <div>YScale</div>
+    <button id='linear'>linear</button>
+    <button id='ordinal'>ordinal</button>
+</div>
+
+<hr>
+<div>
+    <div>Series count</div>
+    <button id='s1'>1</button>
+    <button id='s2'>2</button>
+</div>
+<hr>
+<div>
+    <input type='text'>
+    <button id='ticks'>Set ticks(space separator)</button>
+</div>
+<div id="container"></div>
+<script>
+    data = {
+        "series1": [
+            {"x": "dim_0", "value": 3},
+            {"x": "dim_0", "value": 2},
+            {"x": "dim_0", "value": 5},
+            {"x": "dim_0", "value": 2},
+            {"x": "dim_0", "value": 6},
+            {"x": "dim_0", "value": 5},
+            {"x": "dim_1", "value": 4},
+            {"x": "dim_1", "value": 6},
+            {"x": "dim_1", "value": 1},
+            {"x": "dim_1", "value": 2},
+            {"x": "dim_1", "value": 4},
+            {"x": "dim_1", "value": 2},
+            {"x": "dim_2", "value": 2},
+            {"x": "dim_2", "value": 3},
+            {"x": "dim_2", "value": 6},
+            {"x": "dim_2", "value": 1},
+            {"x": "dim_2", "value": 4},
+            {"x": "dim_2", "value": 5},
+            {"x": "dim_3", "value": 1},
+            {"x": "dim_3", "value": 3},
+            {"x": "dim_3", "value": 2},
+            {"x": "dim_3", "value": 2},
+            {"x": "dim_3", "value": 1},
+            {"x": "dim_3", "value": 2},
+            {"x": "dim_4", "value": 3},
+            {"x": "dim_4", "value": 2},
+            {"x": "dim_4", "value": 4},
+            {"x": "dim_4", "value": 4},
+            {"x": "dim_4", "value": 2},
+            {"x": "dim_4", "value": 1}
+        ],
+        "series2": [
+            {"x": "dim_0", "value": 2},
+            {"x": "dim_0", "value": 5},
+            {"x": "dim_0", "value": 4},
+            {"x": "dim_0", "value": 2},
+            {"x": "dim_0", "value": 3},
+            {"x": "dim_0", "value": 3},
+            {"x": "dim_1", "value": 6},
+            {"x": "dim_1", "value": 4},
+            {"x": "dim_1", "value": 2},
+            {"x": "dim_1", "value": 6},
+            {"x": "dim_1", "value": 5},
+            {"x": "dim_1", "value": 5},
+            {"x": "dim_2", "value": 2},
+            {"x": "dim_2", "value": 5},
+            {"x": "dim_2", "value": 1},
+            {"x": "dim_2", "value": 3},
+            {"x": "dim_2", "value": 6},
+            {"x": "dim_2", "value": 3},
+            {"x": "dim_3", "value": 6},
+            {"x": "dim_3", "value": 6},
+            {"x": "dim_3", "value": 1},
+            {"x": "dim_3", "value": 4},
+            {"x": "dim_3", "value": 3},
+            {"x": "dim_3", "value": 4},
+            {"x": "dim_4", "value": 1},
+            {"x": "dim_4", "value": 5},
+            {"x": "dim_4", "value": 3},
+            {"x": "dim_4", "value": 2},
+            {"x": "dim_4", "value": 4},
+            {"x": "dim_4", "value": 3}
+        ]
+    };
+
+    anychart.onDocumentReady(function () {
+        chart = anychart.polar(data.series1);
+        chart.xScale('ordinal');
+        chart.container('container');
+        chart.draw();
+    });
+
+
+    document.querySelector('#linear').addEventListener('click', function () {
+        chart.yScale('linear');
+    });
+
+    document.querySelector('#ordinal').addEventListener('click', function () {
+        chart.yScale('ordinal');
+    });
+
+    document.querySelector('#none').addEventListener('click', function () {
+        chart.spreadValues('none');
+    });
+
+    document.querySelector('#equal').addEventListener('click', function () {
+        chart.spreadValues('valueEqual');
+    });
+
+    document.querySelector('#val50').addEventListener('click', function () {
+        chart.spreadValues('value50');
+    });
+
+    document.querySelector('#s1').addEventListener('click', function () {
+        chart.removeAllSeries();
+        chart.marker(data.series1);
+    });
+
+    document.querySelector('#s2').addEventListener('click', function () {
+        chart.removeAllSeries();
+        chart.marker(data.series1);
+        chart.marker(data.series2);
+    });
+
+    document.querySelector('#ticks').addEventListener('click', function () {
+        const val = document.querySelector('input').value.trim().split(' ').map(Number)
+
+        chart.yScale().ticks().set(val);
+    });
+</script>
+</body>
+</html>
+
