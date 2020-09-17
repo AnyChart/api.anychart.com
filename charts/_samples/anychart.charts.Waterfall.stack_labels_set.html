@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Waterfall.yAxis get"/>
+    <meta name="ac:name" content="anychart.charts.Waterfall.stack_labels set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -23,8 +23,6 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-
-        // create a data set
         var data = anychart.data.set([
             ["Start", 23, 30, 21],
             ["Jan", 22, 22, 54],
@@ -48,31 +46,21 @@
         var seriesData_3 = data.mapAs({ x: 0, value: 3 });
 
         // create a waterfall chart
-        chart = anychart.waterfall();
+        var chart = anychart.waterfall();
 
-        // create the first series and set the data
-        var series1 = chart.waterfall(seriesData_1);
+        chart.title("Waterfall: enable stack labels");
 
-        // create the second series and set the data
-        var series2 = chart.waterfall(seriesData_2);
+        chart.waterfall(seriesData_1);
+        chart.waterfall(seriesData_2);
+        chart.waterfall(seriesData_3);
 
-        // create the third series and set the data
-        var series3 = chart.waterfall(seriesData_3);
-
-        // configure labels
         chart.labels().position("center");
         chart.labels().fontColor("white");
 
         // Configure stack labels.
         chart.stackLabels().enable(true);
-        // set the chart title
-        chart.title("Waterfall Chart: Multiple Series");
 
-        // set the container id
-        chart.container("container");
-
-        // initiate drawing the chart
-        chart.draw();
+        chart.container("container").draw();
     });
 </script>
 </body>
