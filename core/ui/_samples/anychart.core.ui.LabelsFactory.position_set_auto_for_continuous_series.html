@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.ui.LabelsFactory.position set asColumn"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var dataSet = anychart.data.set(getData());
+        var mapping = dataSet.mapAs({'x': 0, 'value': 1});
+
+        var chart = anychart.line();
+
+        var series_1 = chart.line(mapping);
+
+        series_1.labels().enabled(true);
+        series_1.labels().format(function(){
+            return 'X: ' + this.x + ', value: ' + this.value;
+        });
+
+        series_1.labels().position('auto');
+
+        var scroller = chart.xScroller();
+        scroller.enabled(true);
+        scroller.position('before-axes');
+
+        chart.container('container').draw();
+    });
+
+    function getData() {
+        return [
+            ['1986', 3.6],
+            ['1987', 7.1],
+            ['1988', 8.5],
+            ['1989', 9.2],
+            ['1990', 10.1],
+            ['1991', 11.6],
+            ['1992', 16.4],
+            ['1993', 18.0],
+            ['1994', 13.2],
+            ['1995', 12.0],
+            ['1996', 3.2],
+            ['1997', 4.1],
+            ['1998', 6.3],
+            ['1999', 9.4],
+            ['2000', 11.5],
+            ['2001', 13.5],
+            ['2002', 14.8],
+            ['2003', 16.6],
+            ['2004', 18.1],
+            ['2005', 17.0],
+            ['2006', 16.6],
+            ['2007', 14.1],
+            ['2008', 15.7],
+            ['2009', 12.0]
+        ]
+    }
+</script>
+</body>
+</html>
