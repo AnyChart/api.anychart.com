@@ -1218,18 +1218,23 @@ anychart.charts.Pert.prototype.saveAsJson;
  * Saves chart data as a CSV file.
  * @category Export
  * @example anychart.charts.Pert.saveAsCsv
- * @param {(anychart.enums.ChartDataExportMode|string)=} opt_chartDataExportMode Data export mode.
- * @param {Object.<string, (string|boolean|undefined|csvSettingsFunction)>=} opt_csvSettings CSV settings.<br/>
+ * @param {Object.<string, (string|boolean|undefined|csvSettingsFunction)>=} opt_csvSettings <br/>
  * <b>CSV settings object</b>:<br/>
- *  <b>rowsSeparator</b> - string or undefined (default is '\n')<br/>
- *  <b>columnsSeparator</b> - string or undefined (default is ',')<br/>
- *  <b>ignoreFirstRow</b> - boolean or undefined (default is 'false')<br/>
- *  <b>formats</b> - <br/>
- *  1) a function with two arguments such as the field name and value, that returns the formatted value<br/>
- *  or <br/>
- *  2) the object with the key as the field name, and the value as a format function. <br/>
- *  (default is 'undefined').
- * @param {string=} opt_filename File name to save.
+ * <ul>
+ *      <li><b>rowsSeparator</b> - string or undefined (default is '\n')</li>
+ *      <li><b>columnsSeparator</b>  - string or undefined (default is ',')</li>
+ *      <li><b>ignoreFirstRow</b>  - boolean or undefined (default is 'false')</li>
+ *      <li><b>formats</b> - Values formatter</li>
+ *      <li><b>headers</b> - Headers formatter</li>
+ * </ul>
+ *
+ * <br>
+ *
+ * Formatters must be represented as one of:
+ * <ol>
+ *     <li>A function with two arguments such as the field name and value, that returns the formatted value.</li>
+ *     <li>The object with the key as the field name, and the value as a format function.</li>
+ * </ol>
  */
 anychart.charts.Pert.prototype.saveAsCsv;
 
@@ -1245,6 +1250,19 @@ anychart.charts.Pert.prototype.saveAsCsv;
  * @example anychart.charts.Pert.saveAsXlsx
  * @param {(anychart.enums.ChartDataExportMode|string)=} opt_chartDataExportMode Data export mode.
  * @param {string=} opt_filename File name to save.
+ * @param {Object.<string, (csvSettingsFunction)>=} opt_exportOptions <br/>
+ * <b>Export options</b>:<br/>
+ * <ul>
+ *      <li><b>headers</b> - Headers formatter</li>
+ * </ul>
+ *
+ * <br>
+ *
+ * Formatter must be represented as one of:
+ * <ol>
+ *     <li>A function with two arguments such as the field name and value, that returns the formatted value.</li>
+ *     <li>The object with the key as the field name, and the value as a format function.</li>
+ * </ol>
  */
 anychart.charts.Pert.prototype.saveAsXlsx;
 
