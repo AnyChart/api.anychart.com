@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.ui.Legend.textShadow get"/>
+    <meta name="ac:name" content="anychart.core.annotations.FiniteTrendChannel.hatchFill set asBool"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-annotations.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
@@ -22,22 +23,29 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.pie([
-            {x: 'Cycling', value: 10},
-            {x: 'Swimming', value: 12},
-            {x: 'Run', value: 18},
-            {x: 'Hiking', value: 11},
-            {x: 'Alpinism', value: 9}
+        var chart = anychart.line([
+            {x: 0, value: 6},
+            {x: 1, value: 10},
+            {x: 2, value: 18},
+            {x: 3, value: 11},
+            {x: 4, value: 9}
         ]);
+        chart.yScale().minimum(0);
+        chart.xScale('linear');
 
-        var legend = chart.legend();
-        legend.textShadow('3px 3px 2px black');
+        var controller = chart.annotations();
 
-        // Get font color
-        var textShadow = legend.textShadow();
+        var annotation = controller.finiteTrendChannel();
+        annotation.xAnchor(1.3);
+        annotation.valueAnchor(13.5);
+        annotation.secondXAnchor(2);
+        annotation.secondValueAnchor(19);
+        annotation.channelWidth(-2);
 
-        chart.labels().textShadow('3px 3px 2px black');
-        chart.title('Get and use legend font color');
+        // Enable hatch fill.
+        annotation.hatchFill(true);
+
+        chart.title('Enable hatch fill');
         chart.container('container');
         chart.draw();
     });
