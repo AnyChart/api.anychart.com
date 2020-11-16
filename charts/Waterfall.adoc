@@ -1043,8 +1043,20 @@ anychart.charts.Waterfall.prototype.stackLabels;
 
 /**
  * Setter for chart stack labels.<br>
- * @detailed Sets chart stack labels that displays sum of absolute values of all chart series. <br>
- *   <b>Note:</b> Labels will be visible only when chart has more then one series.
+ * @detailed Sets chart stack labels that displays the sum of absolute values of all chart series. <br>
+ * <b>Note:</b> Labels will be visible only when a chart has more than one series.<br>
+ * Stack labels formatter (<code>waterfall.stackLabels().format()</code>) can take a function with
+ * the following context:
+ * <pre>function(){
+ *      // Context:
+ *      // this.index - Index of current category.
+ *      // this.total - Calculated total value based on the sum of values in current and previous stacks.
+ *      // this.stack - Calculated sum of point values in current stack.
+ *    return this.total; // Default format value.
+ * }</pre><br>
+ * These values can also be used as string tokens for labels formatting.
+ * {docs:Common_Settings/Text_Formatters}Learn more about text formatting.{docs}<br>
+ * <code>waterfall.stackLabels().format('Total: {%total}\nStack: {%stack}')</code>
  * @example anychart.charts.Waterfall.stack_labels_set Enable stack labels.
  * @example anychart.charts.Waterfall.stack_labels_position_set Change position of stack labels.
  * @param {(Object|boolean|null)=} opt_settings [false] Stack labels config or enable flag.
