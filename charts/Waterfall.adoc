@@ -17,8 +17,10 @@ anychart.charts.Waterfall;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
+ * @ignoreDoc
  * Getter for the connector stroke.
  * @shortDescription Stroke settings.
+ * @deprecated DVF-4496 Use connectors().stroke() instead.
  * @category Coloring
  * @listing See listing
  * var connectorStroke = chart.connectorStroke();
@@ -28,8 +30,10 @@ anychart.charts.Waterfall;
 anychart.charts.Waterfall.prototype.connectorStroke;
 
 /**
+ * @ignoreDoc
  * Setter for the connector stroke. {docs:Basic_Charts/Waterfall_Chart#connectors}Learn more about connector stroke{docs}
  * @example anychart.charts.Waterfall.connectorStroke
+ * @deprecated DVF-4496 Use connectors().stroke() instead.
  * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_color Stroke settings.
  * @param {number=} opt_thickness [1] Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
@@ -41,8 +45,10 @@ anychart.charts.Waterfall.prototype.connectorStroke;
 anychart.charts.Waterfall.prototype.connectorStroke;
 
 /**
+ * @ignoreDoc
  * Setter for connector stroke using an object. {docs:Basic_Charts/Waterfall_Chart#connectors}Learn more about connector stroke{docs}
  * @example anychart.charts.Waterfall.connectorStroke_set_asObj
+ * @deprecated DVF-4496 Use connectors().stroke() instead.
  * @param {(Object)=} opt_settings Stroke settings from {@link anychart.graphics.vector.Stroke}.
  * @return {anychart.charts.Waterfall} Self instance for method chaining.
  * @since 7.14.0
@@ -1043,8 +1049,20 @@ anychart.charts.Waterfall.prototype.stackLabels;
 
 /**
  * Setter for chart stack labels.<br>
- * @detailed Sets chart stack labels that displays sum of absolute values of all chart series. <br>
- *   <b>Note:</b> Labels will be visible only when chart has more then one series.
+ * @detailed Sets chart stack labels that displays the sum of absolute values of all chart series. <br>
+ * <b>Note:</b> Labels will be visible only when a chart has more than one series.<br>
+ * Stack labels formatter (<code>waterfall.stackLabels().format()</code>) can take a function with
+ * the following context:
+ * <pre>function(){
+ *      // Context:
+ *      // this.index - Index of current category.
+ *      // this.total - Calculated total value based on the sum of values in current and previous stacks.
+ *      // this.stack - Calculated sum of point values in current stack.
+ *    return this.total; // Default format value.
+ * }</pre><br>
+ * These values can also be used as string tokens for labels formatting.
+ * {docs:Common_Settings/Text_Formatters}Learn more about text formatting.{docs}<br>
+ * <code>waterfall.stackLabels().format('Total: {%total}\nStack: {%stack}')</code>
  * @example anychart.charts.Waterfall.stack_labels_set Enable stack labels.
  * @example anychart.charts.Waterfall.stack_labels_position_set Change position of stack labels.
  * @param {(Object|boolean|null)=} opt_settings [false] Stack labels config or enable flag.
@@ -3110,6 +3128,105 @@ anychart.charts.Waterfall.prototype.toA11yTable;
  * @return {Element|string|null} HTML table instance, HTML string or null if parsing chart to table fails.
  */
 anychart.charts.Waterfall.prototype.toHtmlTable;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Waterfall.prototype.connectors
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Connectors settings getter.
+ * @category Specific settings
+ * @example anychart.charts.Waterfall.connectors_get Get connectors settings.
+ * @return {anychart.core.waterfall.Connectors} Connectors settings.
+ * @since 8.9.1
+ */
+anychart.charts.Waterfall.prototype.connectors;
+
+/**
+ * Connectors settings setter.
+ * @param {Object=} opt_settings Connectors settings.
+ * @example anychart.charts.Waterfall.connectors_set Set connectors settings.
+ * @return {anychart.charts.Waterfall} Self instance for method chaining.
+ * @since 8.9.1
+ */
+anychart.charts.Waterfall.prototype.connectors;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Waterfall.prototype.addArrow
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Creates new arrow.
+ * @category Arrow settings
+ * @example anychart.charts.Waterfall.connectors_addArrow
+ * @param {Object} opt_settings Arrow settings.
+ * @return {anychart.core.waterfall.Arrow} Arrow instance.
+ */
+anychart.charts.Waterfall.prototype.addArrow;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Waterfall.prototype.getArrow
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns arrow instance at give index.
+ * @category Arrow settings
+ * @example anychart.charts.Waterfall.getArrow
+ * @param {number} opt_settings Arrow index.
+ * @return {anychart.core.waterfall.Arrow} Arrow instance.
+ */
+anychart.charts.Waterfall.prototype.getArrow;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Waterfall.prototype.removeArrow
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes arrow instance.
+ * @category Arrow settings
+ * @example anychart.charts.Waterfall.removeArrow
+ * @param {anychart.core.waterfall.Arrow} Arrow instance.
+ * @return {boolean} Whether arrow was successfuly deleted or not.
+ */
+anychart.charts.Waterfall.prototype.removeArrow;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Waterfall.prototype.removeArrowAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes arrow at given index.
+ * @category Arrow settings
+ * @example anychart.charts.Waterfall.removeArrowAt
+ * @param {number} Arrow index.
+ * @return {boolean} Whether arrow was successfuly deleted or not.
+ */
+anychart.charts.Waterfall.prototype.removeArrowAt;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Waterfall.prototype.getAllArrows
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns array with all arrow instances.
+ * @example anychart.charts.Waterfall.getAllArrows
+ * @category Arrow settings
+ * @return {Array.<anychart.core.waterfall.Arrow>} Array of all arrow instances.
+ */
+anychart.charts.Waterfall.prototype.getAllArrows;
 
 /**
  * @inheritDoc

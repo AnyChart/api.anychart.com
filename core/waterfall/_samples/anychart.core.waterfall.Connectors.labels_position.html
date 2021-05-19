@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.waterfall.Connectors.labels"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-waterfall.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.9.0/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #controls {
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          z-index: 999;
+        }
+    </style>
+</head>
+<body>
+<div id="controls">
+    Anchor:
+    <select onchange="setAnchor(this)">
+        <option>auto</option>
+        <option>center</option>
+        <option>center-bottom</option>
+        <option>center-top</option>
+        <option>left-bottom</option>
+        <option>left-center</option>
+        <option>left-top</option>
+        <option>right-bottom</option>
+        <option>right-center</option>
+        <option>right-top</option>
+    </select>
+    Position:
+    <select onchange="setPosition(this)">
+        <option>auto</option>
+        <option>center</option>
+        <option>center-bottom</option>
+        <option>center-top</option>
+        <option>left-bottom</option>
+        <option>left-center</option>
+        <option>left-top</option>
+        <option>right-bottom</option>
+        <option>right-center</option>
+        <option>right-top</option>
+    </select>
+</div>
+<div id="container"></div>
+<script>
+function setAnchor(element) {
+  chart.connectors().labels().anchor(element.value);
+}
+
+function setPosition(element) {
+  chart.connectors().labels().position(element.value);
+}
+
+anychart.onDocumentReady(function () {
+    var data = anychart.data.set([
+        ["Start", 23],
+        ["Jan", 22],
+        ["Feb", -55],
+        ["Subtotal", { isTotal: true }],
+        ["Mar", -90],
+        ["Apr", 37],
+        ["May", -24],
+        ["End", { isTotal: true }],
+    ]);
+
+    // map the data
+    var seriesData_1 = data.mapAs({ x: 0, value: 1 });
+
+    // create a waterfall chart
+    chart = anychart.waterfall();
+    
+    chart.lineMarker(0).stroke({color: 'red', thickness: 1, opacity: 0.3});
+    chart.title("Waterfall: stack labels positioning");
+
+    chart.waterfall(seriesData_1);
+
+    chart.labels().position("center");
+    chart.labels().fontColor("white");
+    chart.labels().format('{%absolute}');
+
+    chart.connectors().labels(true);
+    /*
+      Show next stack raw contribution,
+      contribution percent relative to previous stack absolute value
+      and contribution relative to previous stack contribution.
+     */
+    chart.connectors().labels().format('V:{%value}\nA:{%total}\nR:{%stack}');
+    chart.connectors().labels().background().enabled(true);
+    chart.connectors().labels().background().fill({color: 'white', opacity: 0.5});
+
+    chart.stackLabels().enabled(true);
+
+    chart.container("container").draw();
+});
+</script>
+</body>
+</html>

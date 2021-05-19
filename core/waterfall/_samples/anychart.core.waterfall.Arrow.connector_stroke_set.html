@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.waterfall.Arrow.connector_stroke_set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-waterfall.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/8.9.0/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.waterfall([
+            {x: 'Net Sales', value: 5085000},
+            {x: 'Cost of Sales', value: -1250450},
+            {x: 'Gross Income', isTotal: true},
+            {x: 'Operating Expenses', value: -2350050},
+            {x: 'Operating Income', isTotal: true},
+            {x: 'Other Income', value: 750000},
+            {x: 'Extraordinary Gain', value: -230050}
+        ]);
+
+        var arrow = chart.addArrow();
+        arrow.from('Other Income');
+        arrow.to('Operating Expenses');
+
+        // Get arrow connector.
+        var arrowConnector = arrow.connector();
+
+        // Set arrow connector stroke.
+        arrowConnector.stroke('#86ce00', 2, '5 2');
+
+        chart.title('Set arrow connector stroke');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
