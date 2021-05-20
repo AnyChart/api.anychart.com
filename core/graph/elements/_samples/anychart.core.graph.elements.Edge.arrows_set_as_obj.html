@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.graph.elements.Edge.stroke_set_multiple_args"/>
+    <meta name="ac:name" content="anychart.core.graph.elements.Edge.arrows_set_as_obj"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-base.min.js"></script>
@@ -26,9 +26,13 @@
   anychart.onDocumentLoad(function () {
     var chart = anychart.graph();
     chart.data(data);
+    chart.title().enabled(true).text('Setup arrows via config.');
 
-    var arrowsController = chart.edges().arrows();
-    arrowsController.enabled(true);
+    chart.edges().arrows({
+      enabled: true,
+      size: 15,
+      position: '50%'
+    });
 
     chart.container('container').draw();
   });
