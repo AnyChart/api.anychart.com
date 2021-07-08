@@ -9,6 +9,132 @@
  */
 anychart.charts.Waterfall;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Waterfall.prototype.addTotal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Add total for the chart.
+ * @shortDescription Add total for the chart.
+ * @example anychart.charts.Waterfall.addTotal
+ *
+ * @category Total settings
+ * @listing See listing
+ * var total = chart.addTotal({ x: 'May', name: 'Subtotal' });
+ *
+ * @param {anychart.core.waterfall.TotalConfig} config - Total config.
+ *
+ * @return {anychart.core.waterfall.Total} Total instance.
+ * @since 8.10.0
+ */
+anychart.charts.Waterfall.prototype.addTotal;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Waterfall.prototype.removeTotal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes total from the chart by total instance.
+ * @shortDescription Removes total by instance.
+ * @category Total settings
+ * @example anychart.charts.Waterfall.removeTotal
+ * @listing See listing
+ * var total = chart.addTotal({ x: 'May', name: 'Subtotal' });
+ * // Now chart has total after 'May' category.
+ * chart.removeTotal(total);
+ * // Now it not.
+ *
+ * @param {anychart.core.waterfall.Total} total - Total instance to remove.
+ *
+ * @return {anychart.charts.Waterfall} Chart instance.
+ * @since 8.10.0
+ */
+anychart.charts.Waterfall.prototype.removeTotal;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Waterfall.prototype.removeTotalAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Remove total from the chart by index.
+ * @shortDescription Remove total by index.
+ * @category Total settings
+ * @example anychart.charts.Waterfall.removeTotalAt
+ * @listing See listing
+ * chart.addTotal({ x: 'May', name: 'Subtotal' });
+ * chart.addTotal({ x: 'Dec', name: 'Total' });
+ * // Chart has two total.
+ *
+ * chart.removeTotal(1);
+ * // Last created total removed.
+ *
+ * @param {number} index - Index of total to remove.
+ * @return {anychart.charts.Waterfall} Chart instance.
+ * @since 8.10.0
+ */
+anychart.charts.Waterfall.prototype.removeTotalAt;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Waterfall.prototype.getTotalAt
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Return total by passed index.
+ * @shortDescription Return total by index.
+ * @category Total settings
+ * @example anychart.charts.Waterfall.getTotalAt
+ * @listing See listing
+ * chart.addTotal({ x: 'May', name: 'Subtotal' });
+ * chart.addTotal({ x: 'Dec', name: 'Total' });
+ * // Chart has two total.
+ *
+ * var decemberTotal = chart.getTotalAt(1);
+ * var mayTotal = chart.getTotalAt(0);
+ *
+ * // Update totals colors.
+ * decemberTotal.fill('#64b5f6');
+ * mayTotal.fill('#1976d2');
+ *
+ * @param {number} index - Index of total to remove.
+ * @return {anychart.charts.Waterfall} Chart instance.
+ * @since 8.10.0
+ */
+anychart.charts.Waterfall.prototype.getTotalAt;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Waterfall.prototype.getAllTotals
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns array of all created totals.
+ * @shortDescription Returns array of all created totals.
+ * @example anychart.charts.Waterfall.getTotalAt
+ * @category Total settings
+ * @listing See listing
+ * chart.addTotal({ x: 'May', name: 'Subtotal' });
+ * chart.addTotal({ x: 'Dec', name: 'Total' });
+ * // Chart has two total.
+ *
+ * var totals = chart.getAllTotals();
+ * // [mayTotal, decemberTotal]
+ *
+ * var totalsCategories = totals.map(total => total.x());
+ * // ['May', 'Dec']
+ *
+ * @return {Array.<anychart.core.waterfall.Total>} Array of totals.
+ * @since 8.10.0
+ */
+anychart.charts.Waterfall.prototype.getAllTotals;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -3175,7 +3301,7 @@ anychart.charts.Waterfall.prototype.addArrow;
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Returns arrow instance at give index.
+ * Returns arrow instance at given index.
  * @category Arrow settings
  * @example anychart.charts.Waterfall.getArrow
  * @param {number} opt_settings Arrow index.
