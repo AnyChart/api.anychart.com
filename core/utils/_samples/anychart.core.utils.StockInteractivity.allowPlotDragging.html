@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.utils.StockInteractivity.allowPlotDrag"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/csv-data/dji-daily-short.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        #container1 {
+            height: 50%;
+        }
+
+        #container2 {
+            height: 50%;
+        }
+    </style>
+</head>
+<body>
+<div id="container1"></div>
+<div id="container2"></div>
+</body>
+<script>
+  anychart.onDocumentReady(function () {
+    var dataTable = anychart.data.table();
+    dataTable.addData(get_dji_daily_short_data());
+
+    var mapping = dataTable.mapAs({value: 1});
+
+    var chart1 = anychart.stock();
+    var chart2 = anychart.stock();
+
+    chart1.plot().line(mapping);
+    chart2.plot().line(mapping);
+
+    chart1.selectRange(new Date(2006, 0), new Date(2009, 0));
+    chart2.selectRange(new Date(2006, 0), new Date(2009, 0));
+
+    chart1.title('Chart with enabled plot drag.');
+    chart2.title('Chart with disabled plot drag.');
+
+    chart2.interactivity().allowPlotDrag(false);
+
+    chart1.container('container1').draw();
+    chart2.container('container2').draw();
+  });
+</script>
+</html>
