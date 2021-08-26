@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="ac:name" content="anychart.core.stock.Plot.palette set" />
+  <meta name="ac:short-desc" content="" />
+  <meta name="ac:desc" content="" />
+  <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-stock.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+  <script src="https://cdn.anychart.com/csv-data/csco-daily.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css" />
+  <style>
+    html,
+    body,
+    #container {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <button onclick="movePlotUp()">Move orange plot up</button>
+  <button onclick="movePlotDown()">Move orange plot down</button>
+  <button onclick="toggleExpansion()">Toggle orange plot expansion</button>
+  <div id="container"></div>
+  <script>
+    var chart, plot0, orangePlot, plot2;
+    anychart.onDocumentReady(function () {
+      // The data that used in this sample can be obtained from the CDN
+      // https://cdn.anychart.com/csv-data/csco-daily.js
+
+      // create data table on loaded data
+      var dataTable = anychart.data.table();
+      dataTable.addData(get_csco_daily_data());
+
+      // map loaded data for the ohlc series
+      var mapping = dataTable.mapAs();
+      mapping.addField('open', 1, 'first');
+      mapping.addField('high', 2, 'max');
+      mapping.addField('low', 3, 'min');
+      mapping.addField('close', 4, 'last');
+      mapping.addField('value', 4, 'close');
+
+      // create stock chart
+      chart = anychart.stock();
+
+      // create first plot on the chart
+      plot0 = chart.plot(0);
+
+      // create ohlc series
+      var ohlcSeries = plot0.ohlc(mapping);
+      ohlcSeries.name('CSCO');
+
+      // create second plot on the chart
+      orangePlot = chart.plot(1);
+      orangePlot.height('25%');
+
+      orangePlot.background().enabled(true).fill('orange');
+
+      // create ROC indicator with period 14 and display as line on the second plot
+      var roc14 = orangePlot.roc(mapping, 14, 'line').series();
+      roc14.stroke('#64b5f6');
+
+      // create third plot on the chart
+      plot2 = chart.plot(2);
+      plot2.height('25%');
+
+      // create ROC indicator with period 30 and display as column on the third plot
+      var roc30 = plot2.roc(mapping, 30, 'column').series();
+      roc30.fill('#64b5f6');
+
+      // create scroller series with mapped data
+      chart.scroller().line(mapping);
+
+
+      // set container id for the chart
+      chart.container('container');
+
+      // initiate chart drawing
+      chart.draw();
+    });
+
+    function movePlotUp() {
+      orangePlot.moveUp();
+    }
+
+    function movePlotDown() {
+      orangePlot.moveDown();
+    }
+
+    function toggleExpansion() {
+      orangePlot.toggleExpandedState();
+    }
+  </script>
+</body>
+
+</html>
