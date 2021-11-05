@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.axes.Linear.valueTarget set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  anychart.onDocumentReady(function () {
+    // Data for line series.
+    var data1 = [
+      {x: 2.3, value: 50},
+      {x: 2.7, value: 64},
+      {x: 4, value: 71},
+      {x: 4.5, value: 74},
+      {x: 4.9, value: 83}
+    ];
+
+    // Data for marker series.
+    var data2 = [
+      {x: 2.3, value: 5},
+      {x: 2.7, value: 6.4},
+      {x: 4, value: 7.1},
+      {x: 4.5, value: 7.4},
+      {x: 4.9, value: 8.3}
+    ];
+
+    // create a chart
+    var chart = anychart.scatter();
+
+    // create series and set the data
+    var lineSeries = chart.line(data1);
+    var markerSeries = chart.marker(data2);
+
+    var yScale = chart.yScale();
+    yScale.minimum(30);
+    yScale.maximum(100);
+
+    var customScale = anychart.scales.linear();
+    customScale.minimum(0);
+    customScale.maximum(10);
+    markerSeries.yScale(customScale);
+
+    var secondYAxis = chart.yAxis(1);
+    secondYAxis.scale(customScale);
+
+    // Position x axis over second y axis.
+    chart.xAxis().valueTarget(secondYAxis);
+    chart.xAxis().value(5);
+
+    // set the container id
+    chart.container("container");
+
+    // initiate drawing the chart
+    chart.draw();
+  });
+</script>
+</body>
+</html>
