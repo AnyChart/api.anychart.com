@@ -13,21 +13,21 @@
     <link rel="stylesheet" type="text/css"
           href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
     <style>
-        #container1 {
-            height: 50%;
-        }
-
-        #container2 {
-            height: 50%;
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
     </style>
 </head>
 <body>
-<div id="container1"></div>
-<div id="container2"></div>
+<div id="container"></div>
 </body>
 <script>
   anychart.onDocumentReady(function () {
+    var stage = anychart.graphics.create('container');
+
     var dataTable = anychart.data.table();
     dataTable.addData(get_dji_daily_short_data());
 
@@ -47,8 +47,14 @@
 
     chart2.interactivity().allowPlotDrag(false);
 
-    chart1.container('container1').draw();
-    chart2.container('container2').draw();
+    chart1.bounds(0, 0, '50%', '100%');
+    chart2.bounds('50%', 0, '50%', '100%');
+
+    chart1.container(stage);
+    chart2.container(stage);
+
+    chart1.draw();
+    chart2.draw();
   });
 </script>
 </html>
