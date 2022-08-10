@@ -10,14 +10,9 @@ anychart.math.coppockCurve;
 /**
  * Type definition for the context.
  * @typedef {Object} anychart.math.coppockCurve.Context
- * @property {number} wmaPeriod WMA calculation period.
  * @property {anychart.math.wma.Context} wmaContext WMA calculation context.
- * @property {Function} wmaCalculate WMA calculation function.
- * @property {Function} wmaStartFunction Function initiates WMA calculation.
  * @property {anychart.math.roc.Context} firstRocContext The first RoC calculation context.
  * @property {anychart.math.roc.Context} secondRocContext The second RoC calculation context.
- * @property {Function} rocCalculate RoC calculation function.
- * @property {Function} rocStartFunction Function initiates RoC calculation.
  * @property {Function} dispose Dispose function.
  */
 anychart.math.coppockCurve.Context;
@@ -33,7 +28,7 @@ anychart.math.coppockCurve.Context;
  * @example anychart.math.coppockCurve
  * @param {number=} opt_wmaPeriod [10] WMA calculation period.
  * @param {number=} opt_firstRocPeriod [11] The first RoC calculation period.
- * @param {number=} opt_secondRocPeriod [12] The second RoC calculation period.
+ * @param {number=} opt_secondRocPeriod [14] The second RoC calculation period.
  * @return {anychart.math.coppockCurve.Context} Context.
  * @since 8.11.1
  */
@@ -55,12 +50,28 @@ anychart.math.coppockCurve.startFunction;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.math.coppockCurve.calculationFunction
+//  anychart.math.coppockCurve.calculate
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Calculates Coppock Curve.
+ * @example anychart.math.coppockCurve
+ * @param {anychart.math.coppockCurve.Context} context Context.
+ * @param {number} value Value.
+ * @return {number} Calculated value for indicator.
+ * @since 8.11.1
+ */
+anychart.math.coppockCurve.calculate;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.math.coppockCurve.calculationFunction
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Organizes Coppock Curve calculation.
  * @example anychart.math.coppockCurve
  * @param {anychart.data.TableComputer.RowProxy} row Row proxy.
  * @param {anychart.math.coppockCurve.Context} context Context.
@@ -78,9 +89,9 @@ anychart.math.coppockCurve.calculationFunction;
  * Creates a Coppock Curve computer for the given table mapping.
  * @example anychart.math.coppockCurve
  * @param {anychart.data.TableMapping} mapping Data mapping.
- * @param {number=} opt_wmaPeriod WMA calculation period.
- * @param {number=} opt_firstRocPeriod The first RoC calculation period.
- * @param {number=} opt_secondRocPeriod The second RoC calculation period.
+ * @param {number=} opt_wmaPeriod [10] WMA calculation period.
+ * @param {number=} opt_firstRocPeriod [11] The first RoC calculation period.
+ * @param {number=} opt_secondRocPeriod [14] The second RoC calculation period.
  * @return {anychart.data.TableComputer} Table computer.
  * @since 8.11.1
  */
