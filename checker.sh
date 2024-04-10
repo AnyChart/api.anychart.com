@@ -27,7 +27,7 @@ CURRENT_BRANCH=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* 
 
 # IGNORE files
 declare -a IGNOREFILES=(
-    "./format/_samples/anychart.format.locales_custom.html" 
+    "./format/_samples/anychart.format.locales_custom.html"
     "./format/_samples/anychart.format.getMessage.html"
     )
 
@@ -77,7 +77,7 @@ for ARGUMENT in "$@"
 do
     case "$ARGUMENT" in
             replace|r|"-r")    FILE_MODIFYER="broke_file" ;;
-            all|a|"-a")        FILESLIST=$(find . -type f -name "*.html") ;;
+            all|a|"-a")        FILESLIST=$(find . -type f | grep -e .html -e .adoc -e .md) ;;
             "-h"|"--help"|help|h|"-help")  printf "parameters: \
                 \n 'replace (-r)' - to rename all {{branch-name}} to current branch\
                 \n 'all (-a)' - modify all files (by default False, modify only diff with origin/develop)\
