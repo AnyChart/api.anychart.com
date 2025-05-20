@@ -50,11 +50,11 @@
   <div class="layout">
     <div class="controls">
       <label for="weeksEndWithYear">weeksEndWithYear: </label>
-      <input type="checkbox" id="weeksEndWithYear" onclick="weeksEndWithYear()" value="true">
+      <input type="checkbox" id="weeksEndWithYear" onclick="weeksEndWithYear(this)" value="true">
       <label for="weeksCycleMonthly">weeksCycleMonthly: </label>
-      <input type="checkbox" id="weeksCycleMonthly" onclick="weeksCycleMonthly()" value="true">
+      <input type="checkbox" id="weeksCycleMonthly" onclick="weeksCycleMonthly(this)" value="true">
       <label for="fiscalYearStartMonth">fiscalYearStartMonth: </label>
-      <select id="fiscalYearStartMonth" onchange="fiscalYearStartMonth()">
+      <select id="fiscalYearStartMonth" onchange="fiscalYearStartMonth(this)">
         <option value="1" selected>Jan</option>
         <option value="2">Feb</option>
         <option value="3">Mar</option>
@@ -69,7 +69,7 @@
         <option value="12">Dec</option>
       </select>
       <label for="dropdownSwitchFormatter">dropdownSwitchFormatter: </label>
-      <select id="dropdownSwitchFormatter" onchange="dropdownSwitchFormatter()">
+      <select id="dropdownSwitchFormatter" onchange="dropdownSwitchFormatter(this)">
         <option value="default" selected>default</option>
         <option value="weeksCalendarYear_formatter">weeksCalendarYear_formatter</option>
         <option value="weeksFiscalYear_formatter">weeksFiscalYear_formatter</option>
@@ -209,8 +209,8 @@ var chart, timeline, scale;
   }
   
   // Handles dropdown selection to switch between different formatters.
-  function dropdownSwitchFormatter() {
-    var value = document.getElementById("dropdownSwitchFormatter").value;
+  function dropdownSwitchFormatter(element) {
+    var value = element.value;
     var timeline = chart.getTimeline();
     var header = timeline.header();
     var level = header.level(0);
@@ -281,8 +281,8 @@ var chart, timeline, scale;
   }
   
   // Updates the fiscal year start month based on input value.
-  function fiscalYearStartMonth() {
-    scale.fiscalYearStartMonth(document.getElementById("fiscalYearStartMonth").value);
+  function fiscalYearStartMonth(element) {
+    scale.fiscalYearStartMonth(element.value);
   }
   
   // Zooms chart view to fiscal start month period.
@@ -307,16 +307,16 @@ var chart, timeline, scale;
   }
   
   // Toggles monthly cycle for weeks.
-  function weeksCycleMonthly() {
-    var checkbox = document.getElementById("weeksCycleMonthly");
+  function weeksCycleMonthly(element) {
+    var checkbox = element;
     var isCheckboxValueTrue = checkbox.value === "true";
     scale.weeksCycleMonthly(isCheckboxValueTrue);
     checkbox.value = !isCheckboxValueTrue;
   }
   
   // Toggles whether weeks end with year.
-  function weeksEndWithYear() {
-    var checkbox = document.getElementById("weeksEndWithYear");
+  function weeksEndWithYear(element) {
+    var checkbox = element;
     var isCheckboxValueTrue = checkbox.value === "true";
     scale.weeksEndWithYear(isCheckboxValueTrue);
     checkbox.value = !isCheckboxValueTrue;
