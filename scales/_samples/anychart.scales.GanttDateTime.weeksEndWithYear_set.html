@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.scales.GanttDateTime.weeksEndWithYear set"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-timeline.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    
+    button {
+      margin: 10px 0 0 10px;
+    }
+    
+    label {
+      display: inline-block;
+      margin: 10px 0 0 10px;
+    }
+    
+    #container {
+      width: 100%;
+      height: 100%;
+      flex-grow: 1;
+    }
+    
+    .layout {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .controls {
+      padding: 1rem;
+      background-color: #f5f5f5;
+      border-bottom: 1px solid #ddd;
+    }
+    </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="controls">
+      <label for="weeksEndWithYear">weeksEndWithYear: </label>
+      <input type="checkbox" id="weeksEndWithYear" onclick="weeksEndWithYear(this)" value="true">
+      <label for="weeksCycleMonthly">weeksCycleMonthly: </label>
+      <input type="checkbox" id="weeksCycleMonthly" onclick="weeksCycleMonthly(this)" value="true">
+      <label for="fiscalYearStartMonth">fiscalYearStartMonth: </label>
+      <select id="fiscalYearStartMonth" onchange="fiscalYearStartMonth(this)">
+        <option value="1" selected>Jan</option>
+        <option value="2">Feb</option>
+        <option value="3">Mar</option>
+        <option value="4">Apr</option>
+        <option value="5">May</option>
+        <option value="6">Jun</option>
+        <option value="7">Jul</option>
+        <option value="8">Aug</option>
+        <option value="9">Sep</option>
+        <option value="10">Oct</option>
+        <option value="11">Nov</option>
+        <option value="12">Dec</option>
+      </select>
+      <label for="dropdownSwitchFormatter">dropdownSwitchFormatter: </label>
+      <select id="dropdownSwitchFormatter" onchange="dropdownSwitchFormatter(this)">
+        <option value="default" selected>default</option>
+        <option value="weeksCalendarYear_formatter">weeksCalendarYear_formatter</option>
+        <option value="weeksFiscalYear_formatter">weeksFiscalYear_formatter</option>
+        <option value="weeksEveryMonth_formatter">weeksEveryMonth_formatter</option>
+        <option value="weeksMonthNumberingCalendarYear_formatter">weeksMonthNumberingCalendarYear_formatter</option>
+        <option value="weeksMonthNumberingFiscalYear_formatter">weeksMonthNumberingFiscalYear_formatter</option>
+      </select>
+      <button id="zoomToFiscalStartMonthButton" onclick="zoomToFiscalStartMonth()">Zoom To Start Month</button>
+      <button id="zoomOutButton" onclick="zoomOut()">Zoom out</button>
+    </div>
+  
+    <div id="container"></div>
+  </div>  
+<script>
+var chart, timeline, scale;
+  var WEEK_MS = 604800000;
+  anychart.onDocumentReady(function () {
+    chart = anychart.ganttProject();
+    var timeline = chart.getTimeline();
+    var timelineScale = timeline.scale();
+    timelineScale.zoomLevels([
+      [
+        {unit: "week", count: 1},
+        {unit: "month", count: 1},
+        {unit: "year", count: 1},
+      ]
+    ]);
+  
+    // Built-in formatter may behave differently with weeksEndWithYear or weeksCycleMonthly enabled.
+    var timelineHeader = timeline.header();
+    var headerLevel = timelineHeader.level(0);
+    headerLevel.format("{%tickValue}{dateTimeFormat:w}");
+  
+    timeline = chart.getTimeline();
+    scale = timeline.scale();
+  
+    var treeData = anychart.data.tree(getData(), "as-tree");
+    chart.data(treeData);
+    chart.container("container");
+    chart.draw();
+    chart.fitAll();
+  });
+  
+  // Monthly formatter - displays Week 1-5 for each month with weeksCycleMonthly enabled.
+  function weeksEveryMonth_formatter(){
+    var date = new Date(this.tickValue);
+    var startOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+    var weekNumber = date - startOfMonth;
+    return Math.round(weekNumber / WEEK_MS) + 1;
+  }
+  
+  // Calendar year formatter with monthly cycles (59/60 weeks per year) with weeksCycleMonthly enabled.
+  function weeksMonthNumberingCalendarYear_formatter(){
+    var date = new Date(this.tickValue);
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    var startOfMonth = new Date(year, month, 1);
+    // The below is equal to 1 on regular year and 29 on a leap year.
+    var isRegularYear = new Date(year, 1, 29).getDate() === 1; // true or false
+    var isPastFebruary = month > 1;
+    /* 
+      Since we are using 5 as a standard amount of weeks per month,
+      we need to make a correction for non-leap year February (isRegularYear).
+      This correction should be applied to all months after February (isPastFebruary). 
+    */
+    var febCorrection = isPastFebruary && isRegularYear ? 1 : 0;
+  
+    var weekNumber = (date - startOfMonth) / WEEK_MS + month * 5 - febCorrection;
+    return Math.round(weekNumber) + 1;
+  }
+  
+  // Fiscal year formatter with monthly cycles (59/60 weeks per year) with weeksCycleMonthly enabled.
+  function weeksMonthNumberingFiscalYear_formatter(){
+    var date = new Date(this.tickValue);
+    var year = date.getFullYear();
+    var month = date.getMonth();
+    var startOfMonth = new Date(year, month, 1);
+    // The below is equal to 1 on regular year and 29 on a leap year.
+    var isRegularYear = new Date(year, 1, 29).getDate() === 1; // true or false
+    var isPastFebruary = month > 1;
+    /* 
+      Since we are using 5 as a standard amount of weeks per month,
+      we need to make a correction for non-leap year February (isRegularYear).
+      This correction should be applied to all months after February (isPastFebruary). 
+    */
+    var febCorrection = isPastFebruary && isRegularYear ? 1 : 0;
+  
+    /*
+      The below is a correction for the fiscal year start month.
+      If the current date is before the start of fiscal and after the start of calendar year, the correction is applied.
+     */
+    var fiscalYearCorrection = 0;
+    var fiscalYearStartMonth = scale.fiscalYearStartMonth() - 1;
+  
+    /*
+      For months from the start of calendar to the start of the fiscal year, positive correction must be applied based on
+      the amount of months passed since the start of the last fiscal year. 
+     */
+    if (fiscalYearStartMonth > 0) {
+      fiscalYearCorrection = fiscalYearStartMonth * 5 - febCorrection;
+    }
+  
+    /*
+      For months after the start of the fiscal year, negative correction must be applied based on the ordinal number of the
+      start of the fiscal year month and a correction for the amount of weeks in February.
+     */
+    var startOfFiscalYear = new Date(date.getFullYear(), fiscalYearStartMonth, 1);
+    if (date <= startOfFiscalYear) {
+      fiscalYearCorrection = (fiscalYearStartMonth - 12) * 5;
+    }
+  
+  
+    var weekNumber = (date - startOfMonth) / WEEK_MS + (month * 5) - febCorrection - fiscalYearCorrection;
+    return Math.round(weekNumber) + 1;
+  }
+  
+  // Calendar year formatter - displays Week 1-53 for each year with weeksEndWithYear enabled.
+  function weeksCalendarYear_formatter(){
+    var date = new Date(this.tickValue);
+    var startOfYear = new Date(date.getFullYear(), 0, 1);
+    var weekNumber = (date - startOfYear);
+  
+    return Math.round(weekNumber / WEEK_MS) + 1;
+  }
+  
+  // Fiscal year formatter - week numbering starts with fiscal year.
+  function weeksFiscalYear_formatter(){
+    var date = new Date(this.tickValue);
+    var fiscalYearStartMonth = scale.fiscalYearStartMonth() - 1;
+    var startOfFiscalYear = new Date(date.getFullYear(), fiscalYearStartMonth, 1);
+    if (date <= startOfFiscalYear) {
+      startOfFiscalYear = new Date(startOfFiscalYear.getFullYear() - 1, fiscalYearStartMonth, 1);
+    }
+    var weekNumber = (date - startOfFiscalYear);
+  
+    return Math.round(weekNumber / WEEK_MS) + 1;
+  }
+  
+  // Handles dropdown selection to switch between different formatters.
+  function dropdownSwitchFormatter(element) {
+    var value = element.value;
+    var timeline = chart.getTimeline();
+    var header = timeline.header();
+    var level = header.level(0);
+  
+    switch (value){
+      case "weeksCalendarYear_formatter":
+        level.format(weeksCalendarYear_formatter);
+        break;
+      case "weeksEveryMonth_formatter":
+        level.format(weeksEveryMonth_formatter);
+        break;
+      case "weeksMonthNumberingCalendarYear_formatter":
+        level.format(weeksMonthNumberingCalendarYear_formatter);
+        break;
+      case "weeksMonthNumberingFiscalYear_formatter":
+        level.format(weeksMonthNumberingFiscalYear_formatter);
+        break;
+      case "weeksFiscalYear_formatter":
+        level.format(weeksFiscalYear_formatter);
+        break;
+      case "default":
+      default:
+        level.format("{%tickValue}{dateTimeFormat:w}");
+    }
+  }
+  
+  // Returns sample data for the Gantt chart.
+  function getData() {
+    return [
+      {
+        id: "1",
+        name: "Development",
+        actualStart: "2019-01-15",
+        actualEnd: "2020-05-15",
+        children: [
+          {
+            id: "1_1",
+            name: "Analysis",
+            actualStart: "2019-01-15",
+            actualEnd: "2020-05-15"
+          },
+          {
+            id: "1_2",
+            name: "Design",
+            actualStart: "2019-08-20",
+            actualEnd: "2019-09-04"
+          },
+          {
+            id: "1_3",
+            name: "Meeting",
+            actualStart: "2019-09-05",
+            actualEnd: "2019-09-05"
+          },
+          {
+            id: "1_4",
+            name: "Implementation",
+            actualStart: "2019-09-05",
+            actualEnd: "2020-02-24"
+          },
+          {
+            id: "1_5",
+            name: "Testing",
+            actualStart: "2020-02-25",
+            actualEnd: "2020-03-10"
+          }
+        ]}
+    ];
+  }
+  
+  // Updates the fiscal year start month based on input value.
+  function fiscalYearStartMonth(element) {
+    scale.fiscalYearStartMonth(element.value);
+  }
+  
+  // Zooms chart view to fiscal start month period.
+  function zoomToFiscalStartMonth() {
+    var endYear, startMonth;
+    var fiscalStartMonth = scale.fiscalYearStartMonth() - 1;
+    var startYear = 2019;
+    var endMonth = fiscalStartMonth;
+    if (fiscalStartMonth < 1) {
+      startMonth = 11;
+      endYear = 2020;
+    } else {
+      startMonth = fiscalStartMonth - 1;
+      endYear = 2019;
+    }
+    chart.zoomTo(Date.UTC(startYear, startMonth - 2, 15), Date.UTC(endYear, endMonth + 2, 15));
+  }
+  
+  // Zooms out to show the entire chart.
+  function zoomOut() {
+    chart.fitAll();
+  }
+  
+  // Toggles monthly cycle for weeks.
+  function weeksCycleMonthly(element) {
+    var checkbox = element;
+    var isCheckboxValueTrue = checkbox.value === "true";
+    scale.weeksCycleMonthly(isCheckboxValueTrue);
+    checkbox.value = !isCheckboxValueTrue;
+  }
+  
+  // Toggles whether weeks end with year.
+  function weeksEndWithYear(element) {
+    var checkbox = element;
+    var isCheckboxValueTrue = checkbox.value === "true";
+    scale.weeksEndWithYear(isCheckboxValueTrue);
+    checkbox.value = !isCheckboxValueTrue;
+  }
+</script>
+</body>
+</html>
