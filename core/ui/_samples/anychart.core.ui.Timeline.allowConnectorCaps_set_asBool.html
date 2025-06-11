@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.ui.Timeline.allowConnectorCaps set asBool"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-timeline.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+  anychart.onDocumentReady(function () {
+    
+    // create data
+    var data = [
+      {
+        id: "1",
+        name: "Tasks",
+        actualStart: "2018-02-02",
+        actualEnd: "2018-02-25",
+        children: [
+          {
+            id: "1_1",
+            name: "Task 1",
+            actualStart: "2018-02-02",
+            actualEnd: "2018-02-07",
+            connectTo: "1_2",
+            connectorType: "finish-start"
+          },
+          {
+            id: "1_2",
+            name: "Task 2",
+            actualStart: "2018-02-09",
+            actualEnd: "2018-02-09",
+            connectTo: "1_5",
+            connectorType: "start-start"
+          },
+          {
+            id: "1_3",
+            name: "Task 3",
+            actualStart: "2018-02-11",
+            actualEnd: "2018-02-23",
+            connectTo: "1_4",
+            connectorType: "finish-finish"
+          },
+          {
+            id: "1_4",
+            name: "Task 4",
+            actualStart: "2018-02-18",
+            actualEnd: "2018-02-25",
+            connectTo: "1_5",
+            connectorType: "start-finish"
+          },
+          {
+            id: "1_5",
+            name: "Task 5",
+            actualStart: "2018-02-15",
+            actualEnd: "2018-02-21"
+          }
+      ]}
+    ];
+
+    // create a data tree
+    var treeData = anychart.data.tree(data, "as-tree");
+    
+    // create a chart
+    var chart = anychart.ganttProject();
+    
+    // set the data
+    chart.data(treeData);
+
+    // configure the scale
+    chart.getTimeline().scale().maximum("2018-02-27");
+
+    // set the connector caps setting
+    chart.getTimeline().allowConnectorCaps(false);
+
+    // get the connector caps setting
+    var isConnectorCapsAllowed = chart.getTimeline().allowConnectorCaps();
+    
+    // set title text
+    var text = " The connector caps allowed is " + isConnectorCapsAllowed;
+    
+    // set the title up 
+    var title = chart.title();
+    title.enabled(true);
+    title.text(text);
+
+    // set the container id
+    chart.container("container");
+
+    // initiate drawing the chart
+    chart.draw();
+
+    // fit elements to the width of the timeline
+    chart.fitAll();
+
+  });
+</script>
+</body>
+</html>
