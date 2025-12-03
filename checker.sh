@@ -8,7 +8,9 @@ clear
 #
 ########################################################################################################################
 
-# install pre-push hook if it not exists
+# Install a pre-push Git hook if it doesn't already exist.
+# This hook ensures that checker.sh runs automatically before every push to the "develop" branch,
+# unless the commit message contains "#without-check".
 hook='.git/hooks/pre-push'
 if [ ! -f ${hook} ]; then
    echo 'Install pre-push hook'
@@ -23,31 +25,44 @@ fi
 ########################################################################################################################
 #   Define default variables
 ########################################################################################################################
+# Determine the current Git branch name by parsing the output of `git branch`.
 CURRENT_BRANCH=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/');
 
-# IGNORE files
+# List of files to ignore during non-ASCII checks.
+# These files are known to contain intentional non-ASCII characters.
 declare -a IGNOREFILES=(
     "./format/_samples/anychart.format.locales_custom.html"
     "./format/_samples/anychart.format.getMessage.html"
     )
 
-# filter only files that diff with origin/develop
+# Build a list of files that differ from origin/develop and have .html or .adoc extensions.
+# This is the default set of files to process.
 FILESLIST=$(git diff --name-only origin/develop | grep -e .html -e .adoc )
 
-# function for "fix" file.
-function heal_file(){
+# Function to "fix_production_issues" (fix) a file:
+# 1. Replace ".stg" domains with ".com" to ensure production URLs.
+# 2. Normalize release paths to use the placeholder "{{branch-name}}".
+# 3. Check for unexpected non-ASCII characters unless the file is in IGNOREFILES.
+function fix_production_issues(){
     filename=$1
-    # replace all STG url on COM and  non-{{branch-name}}
+    # Replace staging URLs with production ones.
     perl -pi -e 's/\.stg/\.com/g' ${filename}
+    # Normalize release paths to use the placeholder.
     perl -pi -e 's,(releases)/([^/])+/,\1/{{branch-name}}/,g' ${filename}
 
+    # Skip non-ASCII checks for explicitly ignored files.
     if [[ ! " ${IGNOREFILES[*]} " == *"$filename"* ]]; then
-        # match all non-ascii symbols
-        # Search charcode by symbol here  https://www.compart.com/en/unicode/search?q=
-        # Search symbol by hex code here https://utf8-chartable.de/unicode-utf8-table.pl?start=8192&number=128&utf8=string-literal
+        # Strip known safe characters and detect any remaining non-ASCII bytes.
+        # tr -d '\r' : remove Windows carriage returns.
+        # tr -d '\n' : remove newlines to treat file as one long line.
+        # sed 's/\xC2\xA0/+/g' : replace non-breaking spaces with a safe placeholder.
+        # sed -e "s/'//g;s/[\s\t]/ /g" : remove single quotes and collapse whitespace.
+        # sed -e 's/[0-9A-z"*+-=()/&!?.,:;$<>#{}%~|@ ]//g' : strip all expected ASCII characters.
+        # awk '{$1=$1}1' : trim leading/trailing spaces.
         match=$(cat ${filename} | tr -d '\r' | tr -d '\n' | sed 's/\xC2\xA0/+/g' | \
             sed -e "s/'//g;s/[\s\t]/ /g" | sed -e 's/[0-9A-z"*+-=()/&!?.,:;$<>#{}%~|@ ]//g' | \
             awk '{$1=$1}1' )
+        # If any unexpected characters remain, report them with hex codes.
         if [ ! ${#match} -eq 0 ]; then
             res=""
             for i in $(seq 1 ${#match});do
@@ -59,10 +74,12 @@ function heal_file(){
         fi
     fi
 }
-# default mode
-FILE_MODIFYER="heal_file"
 
-# sugar function
+# Default modifier function: fix_production_issues.
+FILE_MODIFIER="fix_production_issues"
+
+# "Sugar" function to intentionally "break" files for local testing:
+# Replaces the placeholder "{{branch-name}}" with the actual current branch name.
 function broke_file(){
     FILENAME=$1
     perl -pi -e "s,(releases)/({{branch-name}})+/,\1/$CURRENT_BRANCH/,g" ${FILENAME}
@@ -72,17 +89,21 @@ function broke_file(){
 #   Main functionality
 ########################################################################################################################
 
-# read command arguments
+# Parse command-line arguments to override defaults.
 for ARGUMENT in "$@"
 do
     case "$ARGUMENT" in
-            replace|r|"-r")    FILE_MODIFYER="broke_file" ;;
+            # Switch to "broke" mode for local testing.
+            replace|r|"-r")    FILE_MODIFIER="broke_file" ;;
+            # Process all relevant files instead of just the diff.
             all|a|"-a")        FILESLIST=$(find . -type f | grep -e .html -e .adoc -e .md) ;;
+            # Display help text and exit.
             "-h"|"--help"|help|h|"-help")  printf "parameters: \
                 \n 'replace (-r)' - to rename all {{branch-name}} to current branch\
                 \n 'all (-a)' - modify all files (by default False, modify only diff with origin/develop)\
                 \n 'links (-l)' - get links to pg and github.com for changed samples\
                 \n" && exit 1 ;;
+            # Print playground and GitHub links for changed HTML samples.
             links|link|l|"-l")
                 for filename in ${FILESLIST}; do
                     fileext=${filename:${#filename}-4}
@@ -101,18 +122,19 @@ done
 
 echo 'Start checking....'
 
-printf "Items for check: \n$FILESLIST\n\nModifier: ${FILE_MODIFYER}\n"
+printf "Items for check: \n$FILESLIST\n\nModifier: ${FILE_MODIFIER}\n"
 
-# for each files in tree of folders do (like python walk)
+# Apply the chosen modifier to each file in the list.
 for filename in ${FILESLIST}; do
     # in diff mode file may be marked as deleted
-    if [ -f $filename ];then ${FILE_MODIFYER} ${filename} ; fi
+    if [ -f $filename ];then ${FILE_MODIFIER} ${filename} ; fi
 done
 
+# If any files were modified (autofixed) in fix_production_issues mode, abort and prompt the user to review changes.
 CHANGES=$(git diff --name-only)
-if [ "$CHANGES" ] && [[ "${FILE_MODIFYER}"=~"heal_file" ]]; then
+if [ "$CHANGES" ] && [[ "${FILE_MODIFIER}"=~"fix_production_issues" ]]; then
     echo
-    echo 'ABORTED! Files was modified (autofixed). Check them pleaze.'
+    echo 'ABORTED! Files were modified (autofixed). Check them please.'
     echo '   git status'
     exit 1
 fi
