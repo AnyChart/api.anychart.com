@@ -1,117 +1,179 @@
 #!/usr/bin/env bash
-clear
 
-# Start timer.
+# release-version.sh
+# Portably manage version replacements in AnyChart API Reference documentation.
+# Compatible with macOS, Linux, and Windows (Git Bash).
+
+set -eo pipefail # Exit on error, pipe failure
+
+# --- Helper Functions ---
+
+log() {
+    printf "%b\n" "$*"
+}
+
+error() {
+    log "\n\033[0;31m[ERROR]\033[0m $*" >&2
+    exit 1
+}
+
+get_cores() {
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        sysctl -n hw.ncpu
+    elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
+        echo "$NUMBER_OF_PROCESSORS"
+    else
+        command -v nproc >/dev/null && nproc || echo 4
+    fi
+}
+
+# --- Initialization ---
+
 start_time=$(date +%s)
-
-# Parse command-line options with getopt and build sed expressions based on mode.
-OPTS=$(getopt -o bsavr --long branch,sources,all,verbose,reverse -n "$0" -- "$@") || exit 1
-eval set -- "$OPTS"
-VERBOSE_FLAG=""
+VERBOSE_FLAG=false
+DRY_RUN=false
 BRANCH_MODE=false
 REVERSE_MODE=false
 SOURCES_MODE=false
 ALL_MODE=false
-sed_exprs=()
-while true; do
+
+# --- Argument Parsing (Manual loop for portability) ---
+
+while [[ $# -gt 0 ]]; do
     case "$1" in
-        --branch | -b) BRANCH_MODE=true; shift ;;
-        --sources | -s) SOURCES_MODE=true; shift ;;
-        --all | -a) ALL_MODE=true; shift ;;
-        --verbose | -v) VERBOSE_FLAG="-t"; shift ;;
-        --reverse | -r) REVERSE_MODE=true; shift ;;
+        -b|--branch)   BRANCH_MODE=true; shift ;;
+        -s|--sources)  SOURCES_MODE=true; shift ;;
+        -a|--all)      ALL_MODE=true; shift ;;
+        -v|--verbose)  VERBOSE_FLAG=true; shift ;;
+        -r|--reverse)  REVERSE_MODE=true; shift ;;
+        -d|--dry-run)  DRY_RUN=true; shift ;;
+        -h|--help)
+            echo "Usage: $0 [options]"
+            echo "Options:"
+            echo "  -b, --branch    Replace branch placeholder"
+            echo "  -s, --sources   Replace source versions"
+            echo "  -a, --all       Replace both branch and sources"
+            echo "  -r, --reverse   Revert branch replacements"
+            echo "  -v, --verbose   Show verbose output"
+            echo "  -d, --dry-run   Show changes without applying them"
+            exit 0
+            ;;
         --) shift; break ;;
-        *) echo "Invalid option: $1"; exit 1 ;;
+        *) error "Invalid option: $1" ;;
     esac
 done
 
-# Count release versions in adoc and html files and exit if the wrong mode is chosen.
-NUMERIC_VERSION_COUNT=$(grep -ro 'releases/[0-9]\+\.[0-9]\+\.[0-9]\+' --include=*.{adoc,html} . | wc -l)
-if [[ ($NUMERIC_VERSION_COUNT -ne 0) && ($BRANCH_MODE == true || $ALL_MODE == true) ]] then
-    printf "Error: There are release versions present.\n";
-    exit 1;
+# --- Validation & Configuration ---
+
+[[ -f config.toml ]] || error "config.toml not found in current directory."
+
+# Parse config.toml into environment variables portably
+eval "$(awk -F '[ ="]+' '/-version/ {
+    key=$1; 
+    value=$2; 
+    if (key == "") { key=$2; value=$3; } # Handle leading space if any
+    gsub("-","_",key); 
+    print toupper(key) "=\"" value "\""
+}' config.toml)"
+
+# Guard against missing version strings in config.toml
+: "${ANYCHART_VERSION:?Missing anychart-version in config.toml}"
+: "${GEODATA_VERSION:?Missing geodata-version in config.toml}"
+: "${LOCALES_VERSION:?Missing locales-version in config.toml}"
+: "${THEMES_VERSION:?Missing themes-version in config.toml}"
+
+# Strict Version Validation (Upgrade #4)
+# Check if existing hardcoded versions in files match the config.toml intended for replacement
+if [[ $REVERSE_MODE == true ]]; then
+    log "Performing Strict Validation for Reverse Mode..."
+    MISMATCHED=$(find . -maxdepth 3 -type f \( -name "*.adoc" -o -name "*.html" \) -exec grep -oE 'releases/[0-9]+\.[0-9]+\.[0-9]+' {} + | grep -v "$ANYCHART_VERSION" || true)
+    if [[ -n "$MISMATCHED" ]]; then
+        log "\033[0;33m[WARNING]\033[0m Found versions that do not match ANYCHART_VERSION ($ANYCHART_VERSION):"
+        echo "$MISMATCHED" | head -n 5
+        log "... (showing first 5 matches)"
+    fi
+fi
+
+# Count release versions portably.
+# We turn off pipefail for this specific check because grep returns 1 if no matches are found, 
+# which would normally kill the script under 'set -e'.
+NUMERIC_VERSION_COUNT=$(grep -rE 'releases/[0-9]+\.[0-9]+\.[0-9]+' --include='*.adoc' --include='*.html' . | wc -l | xargs || true)
+
+if [[ $NUMERIC_VERSION_COUNT -ne 0 ]] && [[ $BRANCH_MODE == true || $ALL_MODE == true ]]; then
+    error "There are release versions already present. Cannot apply branch/all mode."
 elif [[ $REVERSE_MODE == true && $NUMERIC_VERSION_COUNT -eq 0 ]]; then
-    printf "Error: There are no release versions present.\n";
-    exit 1;
+    error "No release versions found to reverse."
 fi
 
-# Parse config.toml for version numbers.
-awk -F'[ ="]+' '$1~/^(anychart|locales|geodata|themes)-version/{
-    gsub("-","_",$1); gsub("-","_",$2); print toupper($1)"="$2
-}' config.toml > /tmp/vars && source /tmp/vars && rm /tmp/vars
-
-# Merge --branch + --sources into --all and forbid conflicting flags.
+# Conflict resolution
 if [[ $BRANCH_MODE == true && $SOURCES_MODE == true ]]; then
-    ALL_MODE=true
-    BRANCH_MODE=false
-    SOURCES_MODE=false
+    ALL_MODE=true; BRANCH_MODE=false; SOURCES_MODE=false
 fi
+
 if [[ ($BRANCH_MODE == true || $SOURCES_MODE == true) && $ALL_MODE == true ]]; then
-    printf "\nError: --branch or --sources cannot be used with --all.\n"
-    exit 1
-elif [[ ($BRANCH_MODE == true || $SOURCES_MODE == true || $ALL_MODE == true) && $REVERSE_MODE == true ]]; then
-    printf "\nError: --reverse cannot be used with --branch, --sources, or --all.\n"
-    exit 1
+    error "--branch or --sources cannot be used with --all."
+fi
+if [[ ($BRANCH_MODE == true || $SOURCES_MODE == true || $ALL_MODE == true) && $REVERSE_MODE == true ]]; then
+    error "--reverse cannot be used with modification flags."
 fi
 
-# Build sed expressions according to the chosen mode.
+# --- Build SED Expressions ---
+
+sed_exprs=()
 if [[ $ALL_MODE == true ]]; then
-    # Mode 3: branch + sources combined.
-    sed_exprs=(
-        -e "s|\(releases\)/\({{branch-name}}\)/|\1/$ANYCHART_VERSION/|g"
-        -e "s|\(geodata\)/[0-9]\+\.[0-9]\+\.[0-9]\+/|\1/$GEODATA_VERSION/|g"
-        -e "s|\(locales\)/[0-9]\+\.[0-9]\+\.[0-9]\+/|\1/$LOCALES_VERSION/|g"
-        -e "s|\(themes\)/[0-9]\+\.[0-9]\+\.[0-9]\+/|\1/$THEMES_VERSION/|g"
-    )
+    sed_exprs+=("-e" "s|\(releases\)/\({{branch-name}}\)/|\1/$ANYCHART_VERSION/|g")
+    sed_exprs+=("-e" "s|\(geodata\)/[0-9]\+\.[0-9]\+\.[0-9]\+/|\1/$GEODATA_VERSION/|g")
+    sed_exprs+=("-e" "s|\(locales\)/[0-9]\+\.[0-9]\+\.[0-9]\+/|\1/$LOCALES_VERSION/|g")
+    sed_exprs+=("-e" "s|\(themes\)/[0-9]\+\.[0-9]\+\.[0-9]\+/|\1/$THEMES_VERSION/|g")
 elif [[ $BRANCH_MODE == true ]]; then
-    # Mode 1: branch-name placeholder only.
-    sed_exprs=(-e "s|\(releases\)/\({{branch-name}}\)/|\1/$ANYCHART_VERSION/|g")
+    sed_exprs+=("-e" "s|\(releases\)/\({{branch-name}}\)/|\1/$ANYCHART_VERSION/|g")
 elif [[ $SOURCES_MODE == true ]]; then
-    # Mode 2: version numbers in source paths only.
-    sed_exprs=(
-        -e "s|\(geodata\)/[0-9]\+\.[0-9]\+\.[0-9]\+/|\1/$GEODATA_VERSION/|g"
-        -e "s|\(locales\)/[0-9]\+\.[0-9]\+\.[0-9]\+/|\1/$LOCALES_VERSION/|g"
-        -e "s|\(themes\)/[0-9]\+\.[0-9]\+\.[0-9]\+/|\1/$THEMES_VERSION/|g"
-    )
+    sed_exprs+=("-e" "s|\(geodata\)/[0-9]\+\.[0-9]\+\.[0-9]\+/|\1/$GEODATA_VERSION/|g")
+    sed_exprs+=("-e" "s|\(locales\)/[0-9]\+\.[0-9]\+\.[0-9]\+/|\1/$LOCALES_VERSION/|g")
+    sed_exprs+=("-e" "s|\(themes\)/[0-9]\+\.[0-9]\+\.[0-9]\+/|\1/$THEMES_VERSION/|g")
 elif [[ $REVERSE_MODE == true ]]; then
-    # Mode 4: reverse branch-name replacements.
-    sed_exprs=(
-        -e "s|\.stg|\.com|g"
-        -e "s|\(releases\)/[^/][^/]*/|\1/{{branch-name}}/|g"
-    )
+    sed_exprs+=("-e" "s|\.stg|\.com|g")
+    sed_exprs+=("-e" "s|\(releases\)/[^/][^/]*/|\1/{{branch-name}}/|g")
 else
-    # Exit with error if no sed expressions were built.
-    printf "\nError: no replacement mode selected. Use --branch, --sources, --all or --reverse.\n"
-    exit 1
+    error "No mode selected. Use --branch, --sources, --all or --reverse."
 fi
 
-printf "ANYCHART_VERSION : '${ANYCHART_VERSION}'
-LOCALES_VERSION  : '${LOCALES_VERSION}'
-GEODATA_VERSION  : '${GEODATA_VERSION}'
-THEMES_VERSION   : '${THEMES_VERSION}'\n"
+# --- Execution ---
 
-# Setup parallelization parameters. Defaults to 4 cores if nproc unavailable.
-CORES=$(nproc 2>/dev/null || echo 4)
-# Files per sed process for optimal throughput on 32 cores 4Ghz processor.
+log "VERSIONS: AnyChart:$ANYCHART_VERSION, Geodata:$GEODATA_VERSION, Locales:$LOCALES_VERSION, Themes:$THEMES_VERSION"
+
+CORES=$(get_cores)
 BATCH_SIZE=200
 
-printf "\nStrategy: ${CORES} parallel streams, ${BATCH_SIZE} files per sed process.\n"
-
-# Apply sed replacements in parallel to all *.adoc and *.html files.
-find . -type f \( -iname '*.adoc' -o -iname '*.html' \) -print0 | \
-    xargs -0 -P "$CORES" -n "$BATCH_SIZE" $VERBOSE_FLAG \
-    sed -i "${sed_exprs[@]}"
-
-# Abort if any sed process failed.
-if [[ $? -ne 0 ]]; then
-    printf "\n[FAILED] Some files could not be processed."
-    exit 1
+# Detect if we're using GNU sed or BSD sed
+if sed --version >/dev/null 2>&1; then
+    SED_CMD=("sed" "-i") # GNU
+else
+    SED_CMD=("sed" "-i" "") # BSD (macOS)
 fi
 
-# Sometimes sed leaves some temporary files behind, so we clean them up here.
+# Dry Run Logic (Upgrade #1)
+if [[ $DRY_RUN == true ]]; then
+    log "\n\033[0;35m[DRY RUN]\033[0m No files will be modified."
+    SED_CMD=("sed") 
+fi
+
+log "Strategy: ${CORES} parallel streams via xargs, using ${SED_CMD[*]}"
+
+FILE_COUNT=$(find . -type f \( -iname '*.adoc' -o -iname '*.html' \) | wc -l | xargs)
+
+
+# Find and process files
+# We use a temporary trap just in case sed leaves artifacts (mostly for GNU sed -i)
 trap "find . -type f -name 'sed??????' -exec rm -f {} \; 2>/dev/null" EXIT INT TERM
 
-# Stop timer and report elapsed time.
+xargs_verbose=""
+[[ $VERBOSE_FLAG == true ]] && xargs_verbose="-t"
+
+# Execute replacements
+find . -type f \( -iname '*.adoc' -o -iname '*.html' \) -print0 | \
+    xargs -0 -P "$CORES" -n "$BATCH_SIZE" $xargs_verbose "${SED_CMD[@]}" "${sed_exprs[@]}"
+
+# Completion
 end_time=$(date +%s)
-elapsed=$((end_time - start_time))
-printf "\nFinished in ${elapsed}s"
+log "\n\033[0;32m[SUCCESS]\033[0m Finished in $((end_time - start_time))s. Processed ${FILE_COUNT} files."
