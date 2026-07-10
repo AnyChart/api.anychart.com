@@ -22,36 +22,20 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var dataSet = anychart.data.set([
-            ['1986', 41, 36, 31],
-            ['1987', 37, 34, 29],
-            ['1988', 48, 47, 40],
-            ['1989', 41, 39, 33],
-            ['1990', 39, 36, 31],
-            ['1991', 34, 31, 27],
-            ['1992', 38, 35, 30],
-            ['1993', 29, 28, 24],
-            ['1994', 33, 32, 27]
-        ]);
-
-        var data1 = dataSet.mapAs({x: 0, value: 1});
-        var data2 = dataSet.mapAs({x: 0, value: 2});
-        var data3 = dataSet.mapAs({x: 0, value: 3});
-
         var chart = anychart.dumbbell();
 
-        var blueSeries = chart.line(data1);
+        var series = chart.dumbbell([
+            {x: 'January', low: 3, high: 12},
+            {x: 'February', low: 4, high: 15},
+            {x: 'March', low: 5, high: 11},
+            {x: 'April', low: 6, high: 17},
+            {x: 'May', low: 4, high: 10}
+        ]);
 
-        var accessibility = blueSeries.a11y();
-        accessibility.titleFormat('Custom title');
+        // Disable accessibility for the series.
+        series.a11y(false);
 
-        chart.line(data2);
-        chart.line(data3);
-
-        // Disable accessibility.
-        blueSeries.a11y(false);
-
-        chart.title('Disable accessibility');
+        chart.title('Set accessibility parameter as a boolean');
         chart.container('container');
         chart.draw();
     });
