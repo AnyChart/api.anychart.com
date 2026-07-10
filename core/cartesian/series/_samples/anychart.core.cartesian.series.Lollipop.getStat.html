@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.core.cartesian.series.Lollipop.getStat"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/staging/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/staging/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/staging/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/staging/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var formatterFunction = function () {
+            // Get statistic.
+            return 'Series Y sum: ' + this.series.getStat('seriesYSum') + '\n' +
+                'Series Y minimum: ' + this.series.getStat('seriesYMin') + '\n' +
+                'Series Y maximum: ' + this.series.getStat('seriesYMax');
+        };
+
+        var chart = anychart.lollipop();
+
+        var series1 = chart.lollipop([
+            {x: 'January', value: 12},
+            {x: 'February', value: 15},
+            {x: 'March', value: 11},
+            {x: 'April', value: 17},
+            {x: 'May', value: 10}
+        ]);
+
+        var series2 = chart.lollipop([
+            {x: 'January', value: 12},
+            {x: 'February', value: 15},
+            {x: 'March', value: 11},
+            {x: 'April', value: 17},
+            {x: 'May', value: 10}
+        ]);
+
+        // Also, you can get statistic using string tokens.
+        // For example,
+        // firstTooltip.format('Series Y sum: {%seriesYSum}' + '\n'
+        // + 'Series Y minimum: {%seriesYMin}' + '\n'
+        // + 'Series Y maximum: {%seriesYMax}');
+
+        var tooltip1 = series1.tooltip();
+        tooltip1.format(formatterFunction);
+
+        var tooltip2 = series2.tooltip();
+        tooltip2.format(formatterFunction);
+
+        chart.title('Get the statistics and use the tooltip');
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
