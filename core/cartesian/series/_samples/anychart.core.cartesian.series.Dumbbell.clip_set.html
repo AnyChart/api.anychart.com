@@ -24,9 +24,6 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.dumbbell();
 
-        var yScale = chart.yScale();
-        yScale.minimum(2);
-
         var series = chart.dumbbell([
             {x: 'January', low: 3, high: 12},
             {x: 'February', low: 4, high: 15},
@@ -35,7 +32,10 @@
             {x: 'May', low: 4, high: 10}
         ]);
 
-        // Disable clip.
+        // Limit the Y scale so the top points fall outside the plot area.
+        chart.yScale().maximum(12);
+
+        // Disable clip: points above the maximum are drawn outside the bounds.
         series.clip(false);
 
         chart.title('Disable series clip');

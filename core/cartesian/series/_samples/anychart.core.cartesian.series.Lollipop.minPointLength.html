@@ -22,33 +22,22 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var stage = anychart.graphics.create('container');
+        var chart = anychart.lollipop();
 
-        var data = [
-            {x: 'Apple', value: 0},
-            {x: 'Pineapple', value: 17},
-        ];
+        var series = chart.lollipop([
+            {x: 'January', value: 0},
+            {x: 'February', value: 15},
+            {x: 'March', value: 0},
+            {x: 'April', value: 17},
+            {x: 'May', value: 2}
+        ]);
 
-        var chart1 = anychart.lollipop();
-        chart1.title('minPointLength = 50');
+        // Set the minimum point length so even zero and tiny values show a visible stick.
+        series.minPointLength(40);
 
-        var series1 = chart1.column(data);
-
-        // Set minimum point length.
-        series1.minPointLength(50);
-
-        chart1.bounds(0, 0, '50%', '100%');
-        chart1.container(stage);
-        chart1.draw();
-
-        var chart2 = anychart.column();
-
-        var series2 = chart2.column(data);
-
-        chart2.title('minPointLength not set');
-        chart2.bounds('50%', 0, '50%', '100%');
-        chart2.container(stage);
-        chart2.draw();
+        chart.title('Minimum point length = 40');
+        chart.container('container');
+        chart.draw();
     });
 </script>
 </body>

@@ -24,8 +24,8 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.lollipop();
 
-        var yScale = chart.yScale();
-        yScale.minimum(2);
+        // Raise the scale minimum so the lowest point falls below the plot area.
+        chart.yScale().minimum(11);
 
         var series = chart.lollipop([
             {x: 'January', value: 12},
@@ -35,10 +35,10 @@
             {x: 'May', value: 10}
         ]);
 
-        // Disable clip.
+        // Disable clip so the May point (below the minimum) stays visible.
         series.clip(false);
 
-        chart.title('Disable series clip');
+        chart.title('Clip disabled: point below the axis stays visible');
         chart.container('container');
         chart.draw();
     });

@@ -32,10 +32,14 @@
             {x: 'May', value: 10}
         ]);
 
-        // Set multi selection mode.
+        // Set the selection mode.
         series.selectionMode('single-select');
 
-        chart.title('Set multi selection mode');
+        // Make selection visible, then select a point to demonstrate the mode.
+        series.selected().fill('#ff6600');
+        series.select(2);
+
+        chart.title('Selection mode: ' + series.selectionMode());
         chart.container('container');
         chart.draw();
     });

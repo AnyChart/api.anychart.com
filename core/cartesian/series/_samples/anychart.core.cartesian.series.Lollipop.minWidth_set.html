@@ -22,7 +22,9 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.lollipop([
+        var chart = anychart.lollipop();
+
+        var series = chart.lollipop([
             {x: 'January', value: 12},
             {x: 'February', value: 15},
             {x: 'March', value: 11},
@@ -30,10 +32,10 @@
             {x: 'May', value: 10}
         ]);
 
-        // Set minimum width.
-        chart.minWidth(1000);
+        // Set the minimum width of the series points.
+        series.minWidth(20);
 
-        chart.title('Set minimum width');
+        chart.title('Series minimum width: ' + series.minWidth());
         chart.container('container');
         chart.draw();
     });

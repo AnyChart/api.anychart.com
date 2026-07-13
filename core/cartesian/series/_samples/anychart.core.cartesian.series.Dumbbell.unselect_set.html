@@ -24,19 +24,35 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.dumbbell();
 
-        var series = chart.dumbbell([
+        // This series keeps its selection - its points stay highlighted.
+        var keptSeries = chart.dumbbell([
             {x: 'January', low: 3, high: 12},
             {x: 'February', low: 4, high: 15},
             {x: 'March', low: 5, high: 11},
             {x: 'April', low: 6, high: 17},
             {x: 'May', low: 4, high: 10}
         ]);
-        series.select([1, 3, 4]);
+        keptSeries.name('Selection kept');
+        keptSeries.xPointPosition(0.35);
+        keptSeries.selected().markers().enabled(true).size(14).type('star5').fill('#ff6600');
+        keptSeries.select([0, 1, 2, 3, 4]);
 
-        // Deselects all selected points.
-        series.unselect();
+        // This series is fully deselected with unselect().
+        var clearedSeries = chart.dumbbell([
+            {x: 'January', low: 3, high: 12},
+            {x: 'February', low: 4, high: 15},
+            {x: 'March', low: 5, high: 11},
+            {x: 'April', low: 6, high: 17},
+            {x: 'May', low: 4, high: 10}
+        ]);
+        clearedSeries.name('Cleared with unselect()');
+        clearedSeries.xPointPosition(0.65);
+        clearedSeries.selected().markers().enabled(true).size(14).type('star5').fill('#ff6600');
+        clearedSeries.select([0, 1, 2, 3, 4]);
+        clearedSeries.unselect();
 
-        chart.title('Deselects all selected points');
+        chart.legend(true);
+        chart.title('unselect() cleared the highlighted selection');
         chart.container('container');
         chart.draw();
     });

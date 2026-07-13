@@ -31,14 +31,13 @@
             {x: 'April', low: 6, high: 17},
             {x: 'May', low: 4, high: 10}
         ]);
-        series.name('Sales');
 
         chart.container('container');
         chart.draw();
 
-        // Transforms to pixel coordinates.
-        series.transformX('February', 0.5);
-        // Returns 463.30000000000007
+        // Transform the 'February' point to a pixel X coordinate.
+        var pixelX = series.transformX('February', 0.5);
+        chart.title('Pixel X of February: ' + Math.round(pixelX));
     });
 </script>
 </body>

@@ -31,12 +31,17 @@
             {x: 'April', value: 17},
             {x: 'May', value: 10}
         ]);
-        series.select([1, 3, 4]);
 
-        // Deselects all selected points.
-        series.unselect();
+        // Make the selected state clearly visible.
+        series.selected({fill: '#F44336'});
 
-        chart.title('Deselects all selected points');
+        // Select all points.
+        series.select();
+
+        // Deselect the points at indexes 1 and 3.
+        series.unselect([1, 3]);
+
+        chart.title('Deselect the points at indexes 1 and 3');
         chart.container('container');
         chart.draw();
     });

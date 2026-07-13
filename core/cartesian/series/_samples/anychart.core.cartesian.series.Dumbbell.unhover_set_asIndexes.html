@@ -31,15 +31,15 @@
             {x: 'April', low: 6, high: 17},
             {x: 'May', low: 4, high: 10}
         ]);
-        series.hovered({fill: '#F44336'});
+        // Make the hovered state clearly visible.
+        series.hovered().markers().enabled(true).size(14).type('star5').fill('#F44336');
 
-        chart.title('Disable hover by array of indexes');
+        chart.title('Point 3 stays hovered after unhover([2, 4])');
         chart.container('container');
         chart.draw();
 
+        // Hover points 2, 3 and 4, then remove hover from 2 and 4.
         series.hover([2, 3, 4]);
-
-        // Disable hover by indexes 2 and 4.
         series.unhover([2, 4]);
     });
 </script>

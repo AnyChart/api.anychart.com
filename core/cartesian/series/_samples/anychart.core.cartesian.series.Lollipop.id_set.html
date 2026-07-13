@@ -24,7 +24,7 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.lollipop();
 
-        var series1 = chart.lollipop([
+        var series = chart.lollipop([
             {x: 'January', value: 12},
             {x: 'February', value: 15},
             {x: 'March', value: 11},
@@ -32,25 +32,15 @@
             {x: 'May', value: 10}
         ]);
 
-        var series2 = chart.lollipop([
-            {x: 'January', value: 12},
-            {x: 'February', value: 15},
-            {x: 'March', value: 11},
-            {x: 'April', value: 17},
-            {x: 'May', value: 10}
-        ]);
-
-        var series3 = chart.lollipop([
-            {x: 'January', value: 12},
-            {x: 'February', value: 15},
-            {x: 'March', value: 11},
-            {x: 'April', value: 17},
-            {x: 'May', value: 10}
-        ]);
         // Set an id for the series.
-        series3.id('Speed');
+        series.id('mySeries');
 
-        chart.title('Set an id for the series');
+        // Access the series by its id and color it orange.
+        var found = chart.getSeries('mySeries');
+        found.normal().fill('#ff6600');
+        found.normal().stroke('#ff6600', 2);
+
+        chart.title('Series accessed by id "mySeries" and colored orange');
         chart.container('container');
         chart.draw();
     });

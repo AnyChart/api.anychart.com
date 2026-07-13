@@ -31,12 +31,14 @@
             {x: 'April', low: 6, high: 17},
             {x: 'May', low: 4, high: 10}
         ]);
-        series.excludePoint([0, 4, 9]);
 
-        // Include all points.
-        series.includeAllPoints(true);
+        // Exclude two points.
+        series.excludePoint([0, 4]);
 
-        chart.title('Include excluded the points by indexes');
+        // Include all excluded points back.
+        var included = series.includeAllPoints();
+
+        chart.title('All points included: ' + included);
         chart.container('container');
         chart.draw();
     });

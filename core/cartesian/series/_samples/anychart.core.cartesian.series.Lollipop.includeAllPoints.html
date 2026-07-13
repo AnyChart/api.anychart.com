@@ -31,12 +31,16 @@
             {x: 'April', value: 17},
             {x: 'May', value: 10}
         ]);
-        series.excludePoint([0, 4, 9]);
 
-        // Include all points.
-        series.includeAllPoints(true);
+        // Exclude two points.
+        series.excludePoint([0, 4]);
+        var before = series.getExcludedPoints().length;
 
-        chart.title('Include excluded the points by indexes');
+        // Include all excluded points back.
+        series.includeAllPoints();
+        var after = series.getExcludedPoints().length;
+
+        chart.title('Excluded points: ' + before + ' -> ' + after + ' (all points included)');
         chart.container('container');
         chart.draw();
     });

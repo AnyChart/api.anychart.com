@@ -24,7 +24,7 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.dumbbell();
 
-        var series1 = chart.dumbbell([
+        var series = chart.dumbbell([
             {x: 'January', low: 3, high: 12},
             {x: 'February', low: 4, high: 15},
             {x: 'March', low: 5, high: 11},
@@ -32,25 +32,13 @@
             {x: 'May', low: 4, high: 10}
         ]);
 
-        var series2 = chart.dumbbell([
-            {x: 'January', low: 3, high: 12},
-            {x: 'February', low: 4, high: 15},
-            {x: 'March', low: 5, high: 11},
-            {x: 'April', low: 6, high: 17},
-            {x: 'May', low: 4, high: 10}
-        ]);
-
-        var series3 = chart.dumbbell([
-            {x: 'January', low: 3, high: 12},
-            {x: 'February', low: 4, high: 15},
-            {x: 'March', low: 5, high: 11},
-            {x: 'April', low: 6, high: 17},
-            {x: 'May', low: 4, high: 10}
-        ]);
         // Set an id for the series.
-        series3.id('Speed');
+        series.id('Speed');
 
-        chart.title('Set an id for the series');
+        // Access the series by its id and color it.
+        chart.getSeries('Speed').normal().fill('#ff6600');
+
+        chart.title('Series accessed by id "Speed"');
         chart.container('container');
         chart.draw();
     });

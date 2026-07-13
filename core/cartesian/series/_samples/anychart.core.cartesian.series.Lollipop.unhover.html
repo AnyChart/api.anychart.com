@@ -31,12 +31,17 @@
             {x: 'April', value: 17},
             {x: 'May', value: 10}
         ]);
-        series.hover([1, 3, 4]);
 
-        // Removes all hovered points.
-        series.unhover();
+        // Make the hovered state clearly visible.
+        series.hovered({fill: '#F44336'});
 
-        chart.title('Remove all hovered points');
+        // Hover all points.
+        series.hover();
+
+        // Remove the hovered state from the points at indexes 1 and 3.
+        series.unhover([1, 3]);
+
+        chart.title('Unhover the points at indexes 1 and 3');
         chart.container('container');
         chart.draw();
     });

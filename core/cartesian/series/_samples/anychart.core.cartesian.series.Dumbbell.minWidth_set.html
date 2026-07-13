@@ -22,7 +22,9 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var chart = anychart.dumbbell([
+        var chart = anychart.dumbbell();
+
+        var series = chart.dumbbell([
             {x: 'January', low: 3, high: 12},
             {x: 'February', low: 4, high: 15},
             {x: 'March', low: 5, high: 11},
@@ -30,10 +32,11 @@
             {x: 'May', low: 4, high: 10}
         ]);
 
-        // Set minimum width.
-        chart.minWidth(1000);
+        // Set the series minimum width.
+        series.minWidth('50%');
 
-        chart.title('Set minimum width');
+        // Show the value that was set.
+        chart.title('Series min width: ' + series.minWidth());
         chart.container('container');
         chart.draw();
     });

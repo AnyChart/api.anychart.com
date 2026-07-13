@@ -35,7 +35,13 @@
         // Get data.
         var data = series.data();
 
-        chart.title('Get data');
+        // Modify the obtained data and apply it back to the series.
+        var newData = data.filter('value', function (value) {
+            return value > 11;
+        });
+        series.data(newData);
+
+        chart.title('Get and modify data');
         chart.container('container');
         chart.draw();
     });

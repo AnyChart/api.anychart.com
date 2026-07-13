@@ -24,32 +24,19 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.lollipop();
 
-        var blueArea = chart.lollipop([
+        var series = chart.lollipop([
             {x: 'January', value: 12},
             {x: 'February', value: 15},
             {x: 'March', value: 11},
             {x: 'April', value: 17},
             {x: 'May', value: 10}
         ]);
-        var orangeArea = chart.lollipop([
-            {x: 'January', value: 12},
-            {x: 'February', value: 15},
-            {x: 'March', value: 11},
-            {x: 'April', value: 17},
-            {x: 'May', value: 10}
-        ]);
-        var greenArea = chart.lollipop([
-            {x: 'January', value: 12},
-            {x: 'February', value: 15},
-            {x: 'March', value: 11},
-            {x: 'April', value: 17},
-            {x: 'May', value: 10}
-        ]);
+        series.normal().fill('#ff6600').stroke('#ff6600');
 
-        // Set Z-Index of the orange area series.
-        orangeArea.zIndex(30.0001);
+        // Set the Z-Index of the series.
+        series.zIndex(100);
 
-        chart.title('Set Z-Index of the orange area series');
+        chart.title('Series zIndex: ' + series.zIndex());
         chart.container('container');
         chart.draw();
     });
