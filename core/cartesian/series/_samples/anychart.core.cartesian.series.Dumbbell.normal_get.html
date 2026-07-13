@@ -32,11 +32,14 @@
             {x: 'May', low: 4, high: 10}
         ]);
 
-        // Get the normal state and modify it visibly.
+        // Get the normal state and style the two endpoints separately.
         var normal = series.normal();
-        normal.markers().enabled(true).size(14).type('star5').fill('#ff6600');
+        normal.highFill('#e53935');    // high endpoint fill
+        normal.lowFill('#43a047');     // low endpoint fill
+        normal.highStroke('2 #000');   // high endpoint outline
+        normal.lowStroke('2 green');   // low endpoint outline
 
-        chart.title('Get and modify normal state');
+        chart.title('Style the high/low endpoints via the normal state');
         chart.container('container');
         chart.draw();
     });
