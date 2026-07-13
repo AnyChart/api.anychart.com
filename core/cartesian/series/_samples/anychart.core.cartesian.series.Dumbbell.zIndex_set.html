@@ -24,7 +24,7 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.dumbbell();
 
-        // Blue series is drawn first, so it sits at the bottom by default.
+        // Two series with the same data are placed at the same position so they fully overlap.
         var blue = chart.dumbbell([
             {x: 'January', low: 3, high: 12},
             {x: 'February', low: 4, high: 15},
@@ -32,7 +32,9 @@
             {x: 'April', low: 6, high: 17},
             {x: 'May', low: 4, high: 10}
         ]);
-        blue.normal().stroke('#1976d2', 4);
+        blue.normal().stroke('#1976d2', 3);
+        blue.markers().enabled(true).size(13).fill('#1976d2');
+        blue.xPointPosition(0.5);
 
         var orange = chart.dumbbell([
             {x: 'January', low: 3, high: 12},
@@ -41,12 +43,15 @@
             {x: 'April', low: 6, high: 17},
             {x: 'May', low: 4, high: 10}
         ]);
-        orange.normal().stroke('#ff6600', 4);
+        orange.normal().stroke('#ff6600', 3);
+        orange.markers().enabled(true).size(13).fill('#ff6600');
+        orange.xPointPosition(0.5);
 
-        // Raise the orange series above the blue one.
-        orange.zIndex(100);
+        // Orange is drawn second, so by default it covers blue.
+        // Raising the blue series' zIndex brings it in front instead.
+        blue.zIndex(100);
 
-        chart.title('Orange series raised above blue via zIndex');
+        chart.title('Blue series raised above orange via zIndex');
         chart.container('container');
         chart.draw();
     });

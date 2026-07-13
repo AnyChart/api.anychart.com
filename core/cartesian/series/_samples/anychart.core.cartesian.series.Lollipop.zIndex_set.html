@@ -24,19 +24,34 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.lollipop();
 
-        var series = chart.lollipop([
+        // Two series with the same data are placed at the same position so they fully overlap.
+        var blue = chart.lollipop([
             {x: 'January', value: 12},
             {x: 'February', value: 15},
             {x: 'March', value: 11},
             {x: 'April', value: 17},
             {x: 'May', value: 10}
         ]);
-        series.normal().fill('#ff6600').stroke('#ff6600');
+        blue.normal().stroke('#1976d2', 3);
+        blue.markers().enabled(true).size(13).fill('#1976d2');
+        blue.xPointPosition(0.5);
 
-        // Set the Z-Index of the series.
-        series.zIndex(100);
+        var orange = chart.lollipop([
+            {x: 'January', value: 12},
+            {x: 'February', value: 15},
+            {x: 'March', value: 11},
+            {x: 'April', value: 17},
+            {x: 'May', value: 10}
+        ]);
+        orange.normal().stroke('#ff6600', 3);
+        orange.markers().enabled(true).size(13).fill('#ff6600');
+        orange.xPointPosition(0.5);
 
-        chart.title('Series zIndex: ' + series.zIndex());
+        // Orange is drawn second, so by default it covers blue.
+        // Raising the blue series' zIndex brings it in front instead.
+        blue.zIndex(100);
+
+        chart.title('Blue series raised above orange via zIndex');
         chart.container('container');
         chart.draw();
     });
