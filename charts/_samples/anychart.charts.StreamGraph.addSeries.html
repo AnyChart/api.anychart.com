@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.StreamGraph.addSeries"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/staging/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/staging/js/anychart-stream-graph.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/staging/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/staging/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/staging/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.streamGraph(
+            [{x: 'Jan', value: 10}, {x: 'Feb', value: 14}, {x: 'Mar', value: 9}, {x: 'Apr', value: 16}, {x: 'May', value: 12}],
+            [{x: 'Jan', value: 6}, {x: 'Feb', value: 9}, {x: 'Mar', value: 12}, {x: 'Apr', value: 8}, {x: 'May', value: 15}],
+            [{x: 'Jan', value: 14}, {x: 'Feb', value: 11}, {x: 'Mar', value: 8}, {x: 'Apr', value: 13}, {x: 'May', value: 9}]
+        );
+
+        // Add two more series at once; addSeries() returns an array of the created series.
+        var newSeries = chart.addSeries(
+            [{x: 'Jan', value: 7}, {x: 'Feb', value: 5}, {x: 'Mar', value: 9}, {x: 'Apr', value: 6}, {x: 'May', value: 8}],
+            [{x: 'Jan', value: 4}, {x: 'Feb', value: 8}, {x: 'Mar', value: 6}, {x: 'Apr', value: 10}, {x: 'May', value: 5}]
+        );
+        newSeries[0].fill('#ff0000', 0.7);
+        newSeries[0].stroke('#ff0000');
+        newSeries[1].fill('#00e676', 0.7);
+        newSeries[1].stroke('#00e676');
+
+        chart.title('Series count: ' + chart.getSeriesCount());
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
