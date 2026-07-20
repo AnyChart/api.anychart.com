@@ -29,16 +29,17 @@
             {id: 3, parent: 1, name: 'CFO'},
             {id: 4, parent: 2, name: 'Lead Engineer'},
             {id: 5, parent: 2, name: 'QA Lead'}
-        ]);
+        ], 'as-table');
 
         chart.container('container');
         chart.draw();
 
-        // Spread the tree out far beyond the visible area.
-        chart.levelSpacing(400);
-        chart.siblingSpacing(200);
+        // Zoom in three steps (each step scales the tree up).
+        chart.zoomIn();
+        chart.zoomIn();
+        chart.zoomIn();
 
-        // Reset zoom and pan so the whole (now much bigger) tree fits the chart bounds again.
+        // Reset the zoom and pan so the whole tree fits the chart bounds again.
         chart.fit();
     });
 </script>

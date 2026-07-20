@@ -162,7 +162,7 @@ anychart.charts.ArcDiagram.prototype.tooltip;
  * Selects the nodes by name.
  * @shortDescription Selects the nodes.
  * @category Interactivity
- * @detailed Applies to nodes: pass a node name or an array of node names to select them.
+ * @detailed Applies to nodes: pass a node name or an array of node names to select them, or call without arguments to select all of the nodes.
  * @example anychart.charts.ArcDiagram.select
  * @param {(string|Array.<string>)=} opt_ids Node name or array of node names.
  * @return {anychart.charts.ArcDiagram} Self instance for method chaining.
@@ -199,16 +199,17 @@ anychart.charts.ArcDiagram.prototype.unselect;
  * @shortDescription Node width.
  * @category Size and Position
  * @example anychart.charts.ArcDiagram.nodeWidth_get
- * @return {number|string} The node width.
+ * @return {number} The node width.
  * @since 9.0.0
  */
 anychart.charts.ArcDiagram.prototype.nodeWidth;
 
 /**
  * Setter for the node width.<br/>
- * The node width is the thickness of the node bar.
+ * The node width sets the thickness of the node bar and the base size of the node along the node line;
+ * each node's size along the line is additionally scaled by its share of the largest node weight (with a 30% floor).
  * @example anychart.charts.ArcDiagram.nodeWidth_set
- * @param {(number|string)=} opt_width [20] Node width to set in pixels or percent.
+ * @param {number=} opt_width [20] Node width to set in pixels.
  * @return {anychart.charts.ArcDiagram} Self instance for method chaining.
  * @since 9.0.0
  */
@@ -384,7 +385,7 @@ anychart.charts.ArcDiagram.prototype.arcDirection;
  *   <li><b>'right'</b> or <b>'left'</b> - for the vertical orientation.</li>
  * </ul>
  * @example anychart.charts.ArcDiagram.arcDirection_set
- * @param {string=} opt_direction ['up'] Arc direction to set.
+ * @param {string=} opt_direction ['up'] Arc direction to set. The default bow direction is 'up' for the horizontal orientation and 'right' for the vertical one.
  * @return {anychart.charts.ArcDiagram} Self instance for method chaining.
  * @since 9.0.0
  */
@@ -1896,24 +1897,6 @@ anychart.charts.ArcDiagram.prototype.fullScreen;
  * @return {anychart.charts.ArcDiagram} Self instance for method chaining.
  */
 anychart.charts.ArcDiagram.prototype.fullScreen;
-
-/**
- * @inheritDoc
- * @ignoreDoc
- */
-anychart.charts.ArcDiagram.prototype.getSelectedPoints;
-
-/**
- * @inheritDoc
- * @ignoreDoc
- */
-anychart.charts.ArcDiagram.prototype.dispose;
-
-/**
- * @inheritDoc
- * @ignoreDoc
- */
-anychart.charts.ArcDiagram.prototype.enabled;
 
 /**
  * @inheritDoc
