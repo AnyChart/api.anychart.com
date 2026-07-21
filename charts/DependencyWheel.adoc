@@ -26,7 +26,9 @@ anychart.charts.DependencyWheel.prototype.data;
 
 /**
  * Setter for the chart data.<br/>
- * Data points use the <b>from</b>, <b>to</b>, and <b>weight</b> fields.
+ * Data points use the <b>from</b>, <b>to</b>, and <b>weight</b> fields, all of which are required.
+ * A row is silently skipped when <b>from</b> or <b>to</b> is empty, when <b>weight</b> is not a
+ * positive number, or when <b>from</b> equals <b>to</b> (self-links are not drawn).
  * @example anychart.charts.DependencyWheel.data_set_asArray
  * @param {?(anychart.data.View|anychart.data.Set|Array)=} opt_data Data to set.
  * @return {anychart.charts.DependencyWheel} Self instance for method chaining.

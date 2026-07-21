@@ -28,6 +28,9 @@ anychart.charts.Waffle.prototype.data;
  * Setter for the chart data.
  * @example anychart.charts.Waffle.data_set_asArray
  * @param {?(anychart.data.View|anychart.data.Set|Array)=} opt_data Data to set.
+ * Only rows whose <b>value</b> is a positive number are charted: rows with a zero,
+ * negative or non-numeric value are silently skipped and take no cells, no legend item
+ * and no share of the total.
  * @return {anychart.charts.Waffle} Self instance for method chaining.
  * @since 9.0.0
  */
@@ -186,7 +189,7 @@ anychart.charts.Waffle.prototype.cellCornerRadius;
  * @shortDescription Cell size.
  * @category Size and Position
  * @example anychart.charts.Waffle.cellSize_get
- * @return {number} The cell size.
+ * @return {number} The cell height in pixels, or 0 when the size is auto-fitted.
  * @since 9.0.0
  */
 anychart.charts.Waffle.prototype.cellSize;
@@ -195,7 +198,9 @@ anychart.charts.Waffle.prototype.cellSize;
  * Setter for the cell size.<br/>
  * By default the cell size is calculated automatically to fit the chart bounds.
  * @example anychart.charts.Waffle.cellSize_set
- * @param {number=} opt_size [0] Cell size in pixels to set. 0 means auto-fit.
+ * @param {number=} opt_size [0] Cell height in pixels to set. 0 means auto-fit.
+ * The cell width is derived as this value multiplied by the cell aspect ratio,
+ * so the two coincide only at the default aspect ratio of 1.
  * @return {anychart.charts.Waffle} Self instance for method chaining.
  * @since 9.0.0
  */
@@ -441,7 +446,9 @@ anychart.charts.Waffle.prototype.labels;
  *   <li><b>object</b> - sets labels settings.</li>
  * </ul>
  * @example anychart.charts.Waffle.labels_set
- * @param {(Object|boolean|null)=} opt_settings Labels settings.
+ * @param {(Object|boolean|null)=} opt_settings [false] Labels settings.
+ * Labels are disabled by default: passing a settings object alone does not show them,
+ * the object must also set <b>enabled</b> to <b>true</b> (or call labels(true) first).
  * @return {anychart.charts.Waffle} Self instance for method chaining.
  * @since 9.0.0
  */
