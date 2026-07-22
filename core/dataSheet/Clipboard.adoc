@@ -1,0 +1,175 @@
+/**
+ * DataSheet Clipboard controller.<br/>
+ * Governs copy, cut and paste operations over the current row selection: it serializes the selected rows to TSV and to
+ * Excel XML Spreadsheet markup, writes both flavors to the system clipboard, and applies incoming TSV text into the
+ * editable cells starting from the focused cell.
+ * <b>Note:</b> Use {@link anychart.charts.DataSheet#clipboard} method to get this controller.<br/>
+ * @constructor
+ * @name anychart.core.dataSheet.Clipboard
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Clipboard;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Clipboard.prototype.enabled
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the clipboard controller enabled state.
+ * @shortDescription Enabled state.
+ * @category Specific settings
+ * @listing See listing
+ * var clipboard = grid.clipboard();
+ * var enabled = clipboard.enabled();
+ * @return {boolean} Whether the clipboard controller is enabled.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Clipboard.prototype.enabled;
+
+/**
+ * Setter for the clipboard controller enabled state.<br/>
+ * When disabled, the <b>copy()</b>, <b>cut()</b> and <b>paste()</b> methods return immediately and the
+ * Ctrl+C / Ctrl+X / Ctrl+V keyboard shortcuts of the grid do nothing.
+ * @listing See listing
+ * var clipboard = grid.clipboard();
+ * clipboard.enabled(false);
+ * @param {boolean=} opt_value [true] Whether to enable the clipboard controller.
+ * @return {anychart.core.dataSheet.Clipboard} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Clipboard.prototype.enabled;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Clipboard.prototype.includeHeaders
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the include headers setting.
+ * @shortDescription Include headers setting.
+ * @category Export
+ * @listing See listing
+ * var clipboard = grid.clipboard();
+ * var includeHeaders = clipboard.includeHeaders();
+ * @return {boolean} Whether a header row is prepended to the produced clipboard content.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Clipboard.prototype.includeHeaders;
+
+/**
+ * Setter for the include headers setting.<br/>
+ * When enabled, both <b>buildTSV()</b> and <b>buildExcelXML()</b> prepend a header row built from the column titles,
+ * falling back to the column field name when a column has no title.<br/>
+ * <b>Note:</b> this setting is turned <b>off</b> by default, so copied content contains data rows only.
+ * @listing See listing
+ * var clipboard = grid.clipboard();
+ * clipboard.includeHeaders(true);
+ * @param {boolean=} opt_value [false] Whether to prepend a header row.
+ * @return {anychart.core.dataSheet.Clipboard} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Clipboard.prototype.includeHeaders;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Clipboard.prototype.copy
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Copies the currently selected rows to the system clipboard.<br/>
+ * The content is written in two flavors at once: TSV as <b>text/plain</b> and Excel XML Spreadsheet markup as
+ * <b>text/html</b>, so that a paste into a plain text editor and a paste into a spreadsheet application both work.
+ * Does nothing when the controller is disabled or when nothing is selected.
+ * @shortDescription Copy the selection.
+ * @category Interactivity
+ * @listing See listing
+ * var clipboard = grid.clipboard();
+ * clipboard.copy();
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Clipboard.prototype.copy;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Clipboard.prototype.cut
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Copies the currently selected rows to the system clipboard and then clears them.<br/>
+ * Only editable columns are cleared: the value of every editable cell of every selected row is replaced with an empty
+ * string, and the grid is redrawn. Does nothing when the controller is disabled.
+ * @shortDescription Cut the selection.
+ * @category Interactivity
+ * @listing See listing
+ * var clipboard = grid.clipboard();
+ * clipboard.cut();
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Clipboard.prototype.cut;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Clipboard.prototype.paste
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Reads TSV text from the system clipboard and applies it to the grid starting from the focused cell.<br/>
+ * Lines are mapped to consecutive rows and tab-separated fields to consecutive columns. Non-editable columns are
+ * skipped, and a value that fails the column validator is discarded. Does nothing when the controller is disabled or
+ * when there is no focused cell. The read is asynchronous, so the grid updates once the clipboard content arrives.
+ * @shortDescription Paste into the grid.
+ * @category Interactivity
+ * @listing See listing
+ * var clipboard = grid.clipboard();
+ * clipboard.paste();
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Clipboard.prototype.paste;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Clipboard.prototype.buildTSV
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Builds a tab-separated values string out of the currently selected rows.<br/>
+ * Rows are separated by a line feed and cells by a tab character. Every cell is sanitized against spreadsheet formula
+ * injection before being written. Returns an empty string when nothing is selected.
+ * @shortDescription Build a TSV string.
+ * @category Export
+ * @listing See listing
+ * var clipboard = grid.clipboard();
+ * var tsv = clipboard.buildTSV();
+ * @return {string} TSV representation of the selected rows.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Clipboard.prototype.buildTSV;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Clipboard.prototype.buildExcelXML
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Builds an Excel XML Spreadsheet document out of the currently selected rows.<br/>
+ * The result is a single worksheet named <b>Sheet1</b>. A cell is written with the <b>Number</b> type only when the
+ * column data type is <b>number</b> and the sanitized value is genuinely numeric, otherwise it is written as
+ * <b>String</b>. Every cell is sanitized against spreadsheet formula injection and XML-escaped. Returns an empty
+ * string when nothing is selected.
+ * @shortDescription Build an Excel XML string.
+ * @category Export
+ * @listing See listing
+ * var clipboard = grid.clipboard();
+ * var xml = clipboard.buildExcelXML();
+ * @return {string} Excel XML Spreadsheet representation of the selected rows.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Clipboard.prototype.buildExcelXML;

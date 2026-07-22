@@ -1,0 +1,114 @@
+/**
+ * DataSheet context menu controller.<br/>
+ * Governs the right-click menu of the grid: whether it is shown at all, which items it contains and
+ * where it pops up. By default the menu offers sorting, column pinning, CSV/JSON export, printing and,
+ * on a header cell, grouping by the clicked field.
+ * <b>Note:</b> Use {@link anychart.charts.DataSheet#contextMenu} method to get this controller.<br/>
+ * @constructor
+ * @name anychart.core.dataSheet.ContextMenu
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.ContextMenu;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.ContextMenu.prototype.enabled
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the context menu state.
+ * @shortDescription Context menu state.
+ * @category Interactivity
+ * @listing See listing
+ * var contextMenu = grid.contextMenu();
+ * var enabled = contextMenu.enabled();
+ * @return {boolean} Whether the context menu is enabled.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.ContextMenu.prototype.enabled;
+
+/**
+ * Setter for the context menu state.<br/>
+ * When disabled, {@link anychart.core.dataSheet.ContextMenu#show} does nothing and the right-click
+ * gesture falls through to the browser menu.
+ * @listing See listing
+ * var contextMenu = grid.contextMenu();
+ * contextMenu.enabled(false);
+ * @param {boolean=} opt_value [true] Whether to enable the context menu.
+ * @return {anychart.core.dataSheet.ContextMenu} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.ContextMenu.prototype.enabled;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.ContextMenu.prototype.items
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Sets custom menu items, replacing the default set.<br/>
+ * Each item is either an action item <b>{text: string, action: (string|Function), icon: string}</b> or a
+ * divider <b>{separator: true}</b>. A string action refers to a built-in command (<b>sortAsc</b>,
+ * <b>sortDesc</b>, <b>pinLeft</b>, <b>unpin</b>, <b>exportCsv</b>, <b>exportJson</b>, <b>print</b>), while a
+ * function action is called with the click context object holding <b>rowIndex</b>, <b>colIndex</b>,
+ * <b>dataIndex</b> and <b>field</b>.<br/>
+ * Pass <b>null</b> to restore the default items.
+ * @shortDescription Custom menu items.
+ * @category Interactivity
+ * @listing See listing
+ * var contextMenu = grid.contextMenu();
+ * contextMenu.items([
+ *   {text: 'Sort Ascending', action: 'sortAsc'},
+ *   {separator: true},
+ *   {text: 'Log row', action: function(context) {
+ *     console.log(context.rowIndex, context.field);
+ *   }}
+ * ]);
+ * @param {?Array} items Menu items to set, or null to restore the defaults.
+ * @return {anychart.core.dataSheet.ContextMenu} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.ContextMenu.prototype.items;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.ContextMenu.prototype.show
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shows the context menu at the given viewport position.<br/>
+ * Any menu that is already open is hidden first. Does nothing if the controller is disabled or if the
+ * resolved item list is empty. Coordinates are treated as fixed-position page coordinates.
+ * @shortDescription Show the menu.
+ * @category Interactivity
+ * @listing See listing
+ * var contextMenu = grid.contextMenu();
+ * contextMenu.show(120, 240, {rowIndex: 2, colIndex: 1, dataIndex: 2, field: 'name'});
+ * @param {number} x Page X coordinate.
+ * @param {number} y Page Y coordinate.
+ * @param {Object} context Click context with <b>rowIndex</b>, <b>colIndex</b>, <b>dataIndex</b> and <b>field</b> fields.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.ContextMenu.prototype.show;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.ContextMenu.prototype.hide
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Hides the context menu and detaches its dismiss listeners.<br/>
+ * The menu also hides itself on a click outside of it, on the Escape key and after an item is picked,
+ * so an explicit call is only needed to close the menu programmatically.
+ * @shortDescription Hide the menu.
+ * @category Interactivity
+ * @listing See listing
+ * var contextMenu = grid.contextMenu();
+ * contextMenu.hide();
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.ContextMenu.prototype.hide;

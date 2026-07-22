@@ -1,0 +1,187 @@
+/**
+ * DataSheet sorting controller.<br/>
+ * Governs how grid rows are ordered: which column is sorted, in which direction, and, through the multi-column sort
+ * stack, how several columns are combined into a single ordering.<br/>
+ * <b>Note:</b> Use {@link anychart.charts.DataSheet#sorting} method to get this controller.<br/>
+ * @constructor
+ * @name anychart.core.dataSheet.Sorting
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Sorting;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Sorting.prototype.addSort
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds a column to the sort stack to build a multi-column sort.<br/>
+ * If the field is already present in the stack, its previous entry is removed first, so the field always ends up as the
+ * last (least significant) level. The <b>column</b> and <b>order</b> values are kept in sync with the entry added last.
+ * @shortDescription Adds a sort level.
+ * @category Data
+ * @listing See listing
+ * var sorting = grid.sorting();
+ * sorting.addSort('department', 'asc');
+ * sorting.addSort('salary', 'desc');
+ * @param {string} field Data field to sort by.
+ * @param {string} order Sort direction: 'asc' or 'desc'. Any other value falls back to 'asc'.
+ * @return {anychart.core.dataSheet.Sorting} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Sorting.prototype.addSort;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Sorting.prototype.clearSort
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Clears all sort levels.<br/>
+ * Empties the sort stack, resets the sorted column to an empty string and the order to 'none', which restores the
+ * original data order.
+ * @shortDescription Clears all sort levels.
+ * @category Data
+ * @listing See listing
+ * var sorting = grid.sorting();
+ * sorting.clearSort();
+ * @return {anychart.core.dataSheet.Sorting} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Sorting.prototype.clearSort;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Sorting.prototype.column
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the sorted column field.<br/>
+ * Returns the field of the column the grid is currently sorted by. Initially an empty string, which means no column is
+ * sorted. When a multi-column sort is used, this reflects the field of the sort level added last.
+ * @shortDescription Sorted column field.
+ * @category Data
+ * @listing See listing
+ * var sorting = grid.sorting();
+ * var column = sorting.column();
+ * @return {string} Field of the currently sorted column.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Sorting.prototype.column;
+
+/**
+ * Setter for the sorted column field.
+ * @listing See listing
+ * var sorting = grid.sorting();
+ * sorting.column('salary');
+ * @param {string=} opt_value Data field to sort by. The value is cast to a string.
+ * @return {anychart.core.dataSheet.Sorting} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Sorting.prototype.column;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Sorting.prototype.enabled
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the sorting state.<br/>
+ * When disabled, clicks on the column headers no longer change the row order.
+ * @shortDescription Sorting state.
+ * @category Specific settings
+ * @listing See listing
+ * var sorting = grid.sorting();
+ * var enabled = sorting.enabled();
+ * @return {boolean} Whether sorting is enabled.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Sorting.prototype.enabled;
+
+/**
+ * Setter for the sorting state.
+ * @listing See listing
+ * var sorting = grid.sorting();
+ * sorting.enabled(false);
+ * @param {boolean=} opt_value [true] Whether to enable sorting.
+ * @return {anychart.core.dataSheet.Sorting} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Sorting.prototype.enabled;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Sorting.prototype.getSorts
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns all sort levels.<br/>
+ * Returns a copy of the sort stack, so modifying the returned array does not affect the controller. Each entry is an
+ * object with the <b>field</b> and <b>order</b> keys, listed from the most to the least significant level.
+ * @shortDescription Returns all sort levels.
+ * @category Data
+ * @listing See listing
+ * var sorting = grid.sorting();
+ * var sorts = sorting.getSorts();
+ * @return {!Array.<{field: string, order: string}>} Copy of the sort stack.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Sorting.prototype.getSorts;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Sorting.prototype.order
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the sort direction.<br/>
+ * Returns 'asc', 'desc' or 'none'. Initially 'none', which means the rows keep their original order.
+ * @shortDescription Sort direction.
+ * @category Data
+ * @listing See listing
+ * var sorting = grid.sorting();
+ * var order = sorting.order();
+ * @return {string} Current sort direction.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Sorting.prototype.order;
+
+/**
+ * Setter for the sort direction.<br/>
+ * The value is lowercased; anything other than 'asc' or 'desc' is treated as 'none'.
+ * @listing See listing
+ * var sorting = grid.sorting();
+ * sorting.order('desc');
+ * @param {string=} opt_value Sort direction: 'asc', 'desc' or 'none'.
+ * @return {anychart.core.dataSheet.Sorting} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Sorting.prototype.order;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Sorting.prototype.sortBy
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Sets a single sort, replacing the whole sort stack.<br/>
+ * A convenience shortcut for single-column sorting: it discards every existing sort level and sets the given field and
+ * direction as the only one, updating the <b>column</b> and <b>order</b> values accordingly.
+ * @shortDescription Sets a single sort.
+ * @category Data
+ * @listing See listing
+ * var sorting = grid.sorting();
+ * sorting.sortBy('salary', 'desc');
+ * @param {string} field Data field to sort by.
+ * @param {string} order Sort direction: 'asc' or 'desc'. Any other value falls back to 'asc'.
+ * @return {anychart.core.dataSheet.Sorting} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Sorting.prototype.sortBy;

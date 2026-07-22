@@ -1,0 +1,268 @@
+/**
+ * DataSheet Hierarchy controller.<br/>
+ * Turns the filtered rows into a tree and flattens that tree into the display list the grid renders.
+ * The tree comes either from an explicit grouping set with {@link anychart.core.dataSheet.Hierarchy#setGrouping}
+ * or from tree-shaped data detected automatically - both the nested <b>children</b> format and the
+ * <b>id</b>/<b>parent</b> format are recognized. The controller also owns the per-node expanded state.
+ * <b>Note:</b> Use {@link anychart.charts.DataSheet#hierarchy} method to get this controller.<br/>
+ * @constructor
+ * @name anychart.core.dataSheet.Hierarchy
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Hierarchy;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Hierarchy.prototype.build
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Builds the hierarchy from the given data and the list of filtered row indices, and returns the
+ * resulting flat display list.<br/>
+ * If grouping fields are set, the rows are bucketed by those fields; otherwise the data is probed for a
+ * tree shape and, when none is found, every index is wrapped as a flat leaf node and the hierarchy stays
+ * inactive. The grid calls this itself on every redraw - call it directly only when you drive the
+ * controller manually.
+ * @shortDescription Builds the hierarchy.
+ * @category Data
+ * @listing See listing
+ * var hierarchy = grid.hierarchy();
+ * var displayList = hierarchy.build(data, [0, 1, 2, 3]);
+ * @param {!Array.<Object>} data Resolved data as a flat array of row objects.
+ * @param {!Array.<number>} indices Indices of the rows that passed filtering.
+ * @return {!Array.<Object>} Flat display list of hierarchy nodes.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Hierarchy.prototype.build;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Hierarchy.prototype.collapse
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Collapses a group or tree node by its key.<br/>
+ * The key is a group key for group nodes and the row data index, as a string, for tree nodes. The state is
+ * remembered, the display list is rebuilt without the node's children and the grid is redrawn.
+ * @shortDescription Collapses a node.
+ * @category Interactivity
+ * @listing See listing
+ * var hierarchy = grid.hierarchy();
+ * hierarchy.collapse('category=Furniture');
+ * @param {string} key Group key or row id.
+ * @return {undefined}
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Hierarchy.prototype.collapse;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Hierarchy.prototype.collapseAll
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Collapses every group and tree node.<br/>
+ * Also switches the default state for nodes that have never been touched to collapsed, so groups created by
+ * a later rebuild come up collapsed as well.
+ * @shortDescription Collapses all nodes.
+ * @category Interactivity
+ * @listing See listing
+ * var hierarchy = grid.hierarchy();
+ * hierarchy.collapseAll();
+ * @return {undefined}
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Hierarchy.prototype.collapseAll;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Hierarchy.prototype.expand
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Expands a group or tree node by its key.<br/>
+ * The key is a group key for group nodes and the row data index, as a string, for tree nodes. The state is
+ * remembered, the display list is rebuilt with the node's children included and the grid is redrawn.
+ * @shortDescription Expands a node.
+ * @category Interactivity
+ * @listing See listing
+ * var hierarchy = grid.hierarchy();
+ * hierarchy.expand('category=Furniture');
+ * @param {string} key Group key or row id.
+ * @return {undefined}
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Hierarchy.prototype.expand;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Hierarchy.prototype.expandAll
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Expands every group and tree node.<br/>
+ * Drops all remembered per-node states and restores the default state to expanded, so groups created by a
+ * later rebuild come up expanded as well.
+ * @shortDescription Expands all nodes.
+ * @category Interactivity
+ * @listing See listing
+ * var hierarchy = grid.hierarchy();
+ * hierarchy.expandAll();
+ * @return {undefined}
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Hierarchy.prototype.expandAll;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Hierarchy.prototype.getDisplayList
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns the current flat display list.<br/>
+ * The list holds the nodes in render order and skips the children of collapsed nodes. Each node carries its
+ * type, data index, depth, expanded flag, group key and value, children and computed aggregates.
+ * @shortDescription Current display list.
+ * @category Data
+ * @listing See listing
+ * var hierarchy = grid.hierarchy();
+ * var displayList = hierarchy.getDisplayList();
+ * @return {!Array.<Object>} Flat display list of hierarchy nodes.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Hierarchy.prototype.getDisplayList;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Hierarchy.prototype.getGroupFields
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns the fields the rows are currently grouped by.<br/>
+ * Returns <b>null</b> when no grouping is set, which is the case for plain tree data and for flat data.
+ * @shortDescription Current group fields.
+ * @category Specific settings
+ * @listing See listing
+ * var hierarchy = grid.hierarchy();
+ * var fields = hierarchy.getGroupFields();
+ * @return {?(string|Array.<string>)} Group field name, array of field names, or <b>null</b>.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Hierarchy.prototype.getGroupFields;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Hierarchy.prototype.isActive
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Checks whether the hierarchy is active.<br/>
+ * It is active when grouping fields are set or when the last build detected tree-shaped data. Flat data
+ * leaves it inactive, so the grid keeps using ordinary column sorting instead of the display list order.
+ * @shortDescription Whether the hierarchy is active.
+ * @category Specific settings
+ * @listing See listing
+ * var hierarchy = grid.hierarchy();
+ * if (hierarchy.isActive()) {
+ *   hierarchy.collapseAll();
+ * }
+ * @return {boolean} <b>True</b> if grouping is set or tree data was detected.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Hierarchy.prototype.isActive;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Hierarchy.prototype.isExpanded
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Checks whether a node is expanded.<br/>
+ * Falls back to the current default state when the key has no remembered state of its own, so it reports
+ * the effective state after expandAll() or collapseAll() as well.
+ * @shortDescription Whether a node is expanded.
+ * @category Interactivity
+ * @listing See listing
+ * var hierarchy = grid.hierarchy();
+ * var expanded = hierarchy.isExpanded('category=Furniture');
+ * @param {string} key Group key or row id.
+ * @return {boolean} <b>True</b> if the node is expanded.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Hierarchy.prototype.isExpanded;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Hierarchy.prototype.serialize
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Serializes the hierarchy state into a JSON object.<br/>
+ * The result always carries the <b>expandedState</b> map and adds <b>groupFields</b> and <b>aggregates</b>
+ * only when they are set.
+ * @shortDescription Serializes the hierarchy state.
+ * @category Specific settings
+ * @listing See listing
+ * var hierarchy = grid.hierarchy();
+ * var json = hierarchy.serialize();
+ * @return {!Object} Serialized hierarchy state.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Hierarchy.prototype.serialize;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Hierarchy.prototype.setGrouping
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Sets the fields to group the rows by, plus an optional aggregation config.<br/>
+ * Pass <b>null</b> to clear the grouping. With several fields the groups are nested in the order given. The
+ * optional config is read for its <b>aggregates</b> key, which maps a field name to an aggregation - one of
+ * <b>count</b>, <b>sum</b>, <b>avg</b>, <b>min</b>, <b>max</b>, <b>median</b>, <b>first</b>, <b>last</b>, or
+ * a custom function taking the array of leaf values. Omitting the config clears the previous aggregation.
+ * @shortDescription Sets the grouping fields.
+ * @category Data
+ * @listing See listing
+ * var hierarchy = grid.hierarchy();
+ * hierarchy.setGrouping(['category', 'region'], {aggregates: {value: 'sum'}});
+ * @param {?(string|Array.<string>)} fields Field name(s) to group by, or <b>null</b> to clear grouping.
+ * @param {Object=} opt_config Optional config with an <b>aggregates</b> key describing group-level aggregation.
+ * @return {undefined}
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Hierarchy.prototype.setGrouping;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Hierarchy.prototype.toggle
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Toggles a group or tree node between expanded and collapsed.<br/>
+ * The decision is made from the effective state reported by
+ * {@link anychart.core.dataSheet.Hierarchy#isExpanded}, so the first click after expandAll() or
+ * collapseAll() moves the node the way the user expects. This is what the grid calls when an expander icon
+ * is clicked.
+ * @shortDescription Toggles a node.
+ * @category Interactivity
+ * @listing See listing
+ * var hierarchy = grid.hierarchy();
+ * hierarchy.toggle('category=Furniture');
+ * @param {string} key Group key or row id.
+ * @return {undefined}
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Hierarchy.prototype.toggle;

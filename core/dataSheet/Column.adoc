@@ -1,0 +1,394 @@
+/**
+ * DataSheet Column controller.<br/>
+ * Defines a single grid column: which data field it reads, how the value is typed and formatted, how the column is
+ * sized and pinned, and whether its cells can be edited and validated.<br/>
+ * <b>Note:</b> Use {@link anychart.charts.DataSheet#column} method to get this controller.<br/>
+ * @constructor
+ * @name anychart.core.dataSheet.Column
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Column.prototype.field
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the data field name the column reads from each row object.
+ * @shortDescription Data field name.
+ * @category Data
+ * @listing See listing
+ * var column = grid.column(0);
+ * var field = column.field();
+ * @return {string} Data field name.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.field;
+
+/**
+ * Setter for the data field name the column reads from each row object.<br/>
+ * The passed value is cast to string.
+ * @listing See listing
+ * var column = grid.column(0);
+ * column.field('name');
+ * @param {string=} opt_value [''] Data field name.
+ * @return {anychart.core.dataSheet.Column} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.field;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Column.prototype.title
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the column title displayed in the grid header.
+ * @shortDescription Column title text.
+ * @category Specific settings
+ * @listing See listing
+ * var column = grid.column(0);
+ * var title = column.title();
+ * @return {string} Column title text.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.title;
+
+/**
+ * Setter for the column title displayed in the grid header.<br/>
+ * The passed value is cast to string.
+ * @listing See listing
+ * var column = grid.column(0);
+ * column.title('Task name');
+ * @param {string=} opt_value [''] Column title text.
+ * @return {anychart.core.dataSheet.Column} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.title;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Column.prototype.dataType
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the column data type.<br/>
+ * Possible values are 'string', 'number', 'date' and 'boolean'. The type drives value comparison, formatting and the
+ * cell editor used for the column.
+ * @shortDescription Column data type.
+ * @category Data
+ * @listing See listing
+ * var column = grid.column(1);
+ * var dataType = column.dataType();
+ * @return {string} Column data type.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.dataType;
+
+/**
+ * Setter for the column data type.<br/>
+ * The passed value is cast to string and lowercased. When the type is not set explicitly, the grid auto-detects it
+ * from the first rows of the data.
+ * @listing See listing
+ * var column = grid.column(1);
+ * column.dataType('number');
+ * @param {string=} opt_value ['string'] Column data type: 'string', 'number', 'date' or 'boolean'.
+ * @return {anychart.core.dataSheet.Column} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.dataType;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Column.prototype.format
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the column value format.<br/>
+ * The format is either a format string or a formatting function applied to the cell value before it is displayed.
+ * @shortDescription Column value format.
+ * @category Specific settings
+ * @listing See listing
+ * var column = grid.column(1);
+ * var format = column.format();
+ * @return {?(string|Function)} Column format string or function, or null if no format is set.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.format;
+
+/**
+ * Setter for the column value format.<br/>
+ * Accepts a format string or a formatting function. Pass null to display raw values.
+ * @listing See listing
+ * var column = grid.column(1);
+ * column.format(function(value) {
+ *   return '$' + value.toFixed(2);
+ * });
+ * @param {(string|Function|null)=} opt_value [null] Format string or function.
+ * @return {anychart.core.dataSheet.Column} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.format;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Column.prototype.width
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the column width in pixels.
+ * @shortDescription Column width.
+ * @category Size and Position
+ * @listing See listing
+ * var column = grid.column(0);
+ * var width = column.width();
+ * @return {number} Column width in pixels.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.width;
+
+/**
+ * Setter for the column width in pixels.<br/>
+ * The passed value is cast to number; a zero or non-numeric value falls back to 150.
+ * @listing See listing
+ * var column = grid.column(0);
+ * column.width(220);
+ * @param {number=} opt_value [150] Column width in pixels.
+ * @return {anychart.core.dataSheet.Column} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.width;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Column.prototype.minWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the minimum column width in pixels.<br/>
+ * The minimum width bounds interactive resizing and auto/flex sizing.
+ * @shortDescription Minimum column width.
+ * @category Size and Position
+ * @listing See listing
+ * var column = grid.column(0);
+ * var minWidth = column.minWidth();
+ * @return {number} Minimum column width in pixels.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.minWidth;
+
+/**
+ * Setter for the minimum column width in pixels.<br/>
+ * The passed value is cast to number; a zero or non-numeric value falls back to 50.
+ * @listing See listing
+ * var column = grid.column(0);
+ * column.minWidth(80);
+ * @param {number=} opt_value [50] Minimum column width in pixels.
+ * @return {anychart.core.dataSheet.Column} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.minWidth;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Column.prototype.maxWidth
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the maximum column width in pixels.<br/>
+ * Returns Infinity when the column width is not capped.
+ * @shortDescription Maximum column width.
+ * @category Size and Position
+ * @listing See listing
+ * var column = grid.column(0);
+ * var maxWidth = column.maxWidth();
+ * @return {number} Maximum column width in pixels.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.maxWidth;
+
+/**
+ * Setter for the maximum column width in pixels.<br/>
+ * The passed value is cast to number; a non-numeric or non-positive value removes the cap by setting Infinity.
+ * @listing See listing
+ * var column = grid.column(0);
+ * column.maxWidth(400);
+ * @param {number=} opt_value [Infinity] Maximum column width in pixels.
+ * @return {anychart.core.dataSheet.Column} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.maxWidth;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Column.prototype.sizing
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the column sizing mode.<br/>
+ * Possible values are 'fixed' (the column keeps its width), 'auto' (the width is measured from the content) and
+ * 'flex' (the column shares free space according to its flex weight).
+ * @shortDescription Column sizing mode.
+ * @category Size and Position
+ * @listing See listing
+ * var column = grid.column(0);
+ * var sizing = column.sizing();
+ * @return {string} Column sizing mode.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.sizing;
+
+/**
+ * Setter for the column sizing mode.<br/>
+ * The passed value is cast to string and lowercased; any value other than 'fixed', 'auto' or 'flex' falls back
+ * to 'fixed'.
+ * @listing See listing
+ * var column = grid.column(0);
+ * column.sizing('flex');
+ * @param {string=} opt_value ['fixed'] Column sizing mode: 'fixed', 'auto' or 'flex'.
+ * @return {anychart.core.dataSheet.Column} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.sizing;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Column.prototype.flex
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the column flex weight.<br/>
+ * The weight is only taken into account when the column sizing mode is 'flex'.
+ * @shortDescription Column flex weight.
+ * @category Size and Position
+ * @listing See listing
+ * var column = grid.column(0);
+ * var flex = column.flex();
+ * @return {number} Column flex weight.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.flex;
+
+/**
+ * Setter for the column flex weight.<br/>
+ * The passed value is cast to number, a zero or non-numeric value falls back to 1, and negative values are clamped
+ * to 0.
+ * @listing See listing
+ * var column = grid.column(0);
+ * column.sizing('flex');
+ * column.flex(2);
+ * @param {number=} opt_value [1] Column flex weight.
+ * @return {anychart.core.dataSheet.Column} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.flex;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Column.prototype.pinned
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the column pin state.<br/>
+ * A pinned column is frozen at the left or the right edge of the grid and is excluded from drag reordering.
+ * @shortDescription Column pin state.
+ * @category Size and Position
+ * @listing See listing
+ * var column = grid.column(0);
+ * var pinned = column.pinned();
+ * @return {string|boolean} Column pin state: 'left', 'right' or false.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.pinned;
+
+/**
+ * Setter for the column pin state.<br/>
+ * Only 'left' and 'right' pin the column; any other value unpins it by setting false.
+ * @listing See listing
+ * var column = grid.column(0);
+ * column.pinned('left');
+ * @param {(string|boolean)=} opt_value [false] Column pin state: 'left', 'right' or false.
+ * @return {anychart.core.dataSheet.Column} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.pinned;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Column.prototype.editable
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the column editable state.<br/>
+ * Cells are not editable by default, so a column has to be marked editable explicitly to let the cell editor open
+ * on it.
+ * @shortDescription Column editable state.
+ * @category Interactivity
+ * @listing See listing
+ * var column = grid.column(1);
+ * var editable = column.editable();
+ * @return {boolean} Column editable state.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.editable;
+
+/**
+ * Setter for the column editable state.<br/>
+ * The passed value is cast to boolean. Editing is off by default, both for the column and for the grid cell editor,
+ * so both have to be turned on for cell editing to work.
+ * @listing See listing
+ * var column = grid.column(1);
+ * column.editable(true);
+ * @param {boolean=} opt_value [false] Whether the column cells can be edited.
+ * @return {anychart.core.dataSheet.Column} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.editable;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Column.prototype.validator
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the column validator function.<br/>
+ * The validator is invoked with the edited value and the row data object, and returns true for a valid value or an
+ * error message string for an invalid one.
+ * @shortDescription Column validator function.
+ * @category Interactivity
+ * @listing See listing
+ * var column = grid.column(1);
+ * var validator = column.validator();
+ * @return {?Function} Column validator function, or null if no validator is set.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.validator;
+
+/**
+ * Setter for the column validator function.<br/>
+ * The validator receives (value, rowData) and returns true or an error message string. Any non-function value
+ * clears the validator.
+ * @listing See listing
+ * var column = grid.column(1);
+ * column.editable(true);
+ * column.validator(function(value, rowData) {
+ *   return value > 0 ? true : 'Value must be positive';
+ * });
+ * @param {Function=} opt_value [null] Validator function.
+ * @return {anychart.core.dataSheet.Column} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Column.prototype.validator;

@@ -1,0 +1,169 @@
+/**
+ * DataSheet filter controller.<br/>
+ * Manages per-column filtering of the grid data. Each filter is stored under a data field name and is described by a
+ * plain configuration object of one of three types: text (with 'contains', 'startsWith' or 'exact' matching mode),
+ * number (with 'min' and/or 'max' bounds) or boolean. A row is displayed only if it passes every active filter.
+ * <b>Note:</b> Use {@link anychart.charts.DataSheet#filter} method to get this controller.<br/>
+ * @constructor
+ * @name anychart.core.dataSheet.Filter
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Filter;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Filter.prototype.enabled
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the filtering enabled state.
+ * @shortDescription Filtering enabled state.
+ * @category Interactivity
+ * @listing See listing
+ * var filter = grid.filter();
+ * var enabled = filter.enabled();
+ * @return {boolean} Whether filtering is enabled.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Filter.prototype.enabled;
+
+/**
+ * Setter for the filtering enabled state.<br/>
+ * When disabled, all rows pass through regardless of the configured filters — the filter configs themselves are kept
+ * and take effect again as soon as filtering is switched back on.
+ * @listing See listing
+ * var filter = grid.filter();
+ * filter.enabled(false);
+ * @param {boolean=} opt_value [true] Whether to enable filtering.
+ * @return {anychart.core.dataSheet.Filter} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Filter.prototype.enabled;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Filter.prototype.filterBy
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Sets a filter on the given data field.<br/>
+ * The configuration object shape depends on its 'type' key:<br/>
+ * <ul>
+ *   <li><b>text</b> — {type: 'text', mode: 'contains'|'startsWith'|'exact', value: string}, matching is
+ *   case-insensitive and 'contains' is used when the mode is omitted; an empty value matches everything.</li>
+ *   <li><b>number</b> — {type: 'number', min: number, max: number}, both bounds are inclusive and optional;
+ *   non-numeric values never pass.</li>
+ *   <li><b>boolean</b> — {type: 'boolean', value: boolean}, the cell value is compared by truthiness.</li>
+ * </ul>
+ * Setting a filter on a field that already has one replaces it. Only one filter per field is kept.
+ * @shortDescription Sets a filter on a field.
+ * @category Data
+ * @listing See listing
+ * var filter = grid.filter();
+ * filter.filterBy('name', {type: 'text', mode: 'startsWith', value: 'Task'});
+ * filter.filterBy('value', {type: 'number', min: 10, max: 50});
+ * @param {string} field Data field name.
+ * @param {Object} config Filter configuration.
+ * @return {anychart.core.dataSheet.Filter} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Filter.prototype.filterBy;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Filter.prototype.clearFilter
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Clears the filter set on the given data field.<br/>
+ * Filters on other fields are left intact. Does nothing if the field has no filter.
+ * @shortDescription Clears the filter on a field.
+ * @category Data
+ * @listing See listing
+ * var filter = grid.filter();
+ * filter.clearFilter('name');
+ * @param {string} field Data field name.
+ * @return {anychart.core.dataSheet.Filter} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Filter.prototype.clearFilter;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Filter.prototype.clearFilters
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Clears all filters at once, so that every row passes again.<br/>
+ * Does nothing if no filter is currently set.
+ * @shortDescription Clears all filters.
+ * @category Data
+ * @listing See listing
+ * var filter = grid.filter();
+ * filter.clearFilters();
+ * @return {anychart.core.dataSheet.Filter} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Filter.prototype.clearFilters;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Filter.prototype.getFilter
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns the filter configuration set on the given data field.
+ * @shortDescription Filter configuration of a field.
+ * @category Data
+ * @listing See listing
+ * var filter = grid.filter();
+ * var config = filter.getFilter('name');
+ * @param {string} field Data field name.
+ * @return {Object|undefined} Filter configuration of the field, or undefined if the field has no filter.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Filter.prototype.getFilter;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Filter.prototype.getFilters
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns all active filters as a copy of the internal map keyed by data field name.<br/>
+ * Modifying the returned object does not affect the controller.
+ * @shortDescription All active filters.
+ * @category Data
+ * @listing See listing
+ * var filter = grid.filter();
+ * var all = filter.getFilters();
+ * @return {!Object} Map of the data field name to its filter configuration.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Filter.prototype.getFilters;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Filter.prototype.applyFilters
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Applies all active filters to the passed data array and returns the indices of the rows that pass every filter.<br/>
+ * If filtering is disabled or no filter is set, the indices of all rows are returned.
+ * @shortDescription Applies all filters to a data array.
+ * @category Data
+ * @listing See listing
+ * var filter = grid.filter();
+ * var indices = filter.applyFilters(grid.data());
+ * @param {Array} data The resolved data array.
+ * @return {!Array} Indices of the rows that pass all filters.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Filter.prototype.applyFilters;

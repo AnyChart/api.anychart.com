@@ -1,0 +1,178 @@
+/**
+ * DataSheet cell editor controller.<br/>
+ * Manages inline editing of cell values: opens an in-place editor over a cell, validates and commits
+ * the typed value back into the data, and keeps an undo stack of the last 20 committed cell changes.<br/>
+ * <b>Note</b>: cell editing is disabled by default - enable it via <b>enabled(true)</b> before any cell
+ * can be edited.
+ * <b>Note:</b> Use {@link anychart.charts.DataSheet#cellEditor} method to get this controller.<br/>
+ * @constructor
+ * @name anychart.core.dataSheet.CellEditor
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.CellEditor;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.CellEditor.prototype.cancelEdit
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Cancels the currently active edit.<br/>
+ * The editor is removed and the cell is restored to its underlying data value, so the typed value is
+ * discarded. Does nothing if no edit is active. This is what the <b>Esc</b> key triggers.
+ * @shortDescription Cancel the active edit.
+ * @category Interactivity
+ * @listing See listing
+ * var cellEditor = grid.cellEditor();
+ * cellEditor.cancelEdit();
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.CellEditor.prototype.cancelEdit;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.CellEditor.prototype.commitEdit
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Commits the currently active edit.<br/>
+ * The raw editor value is parsed according to the column's <b>dataType</b> and, if the column has a
+ * validator, passed to it. When validation fails the editor stays open with an error message shown and
+ * the method returns <b>false</b>. On success the value is written into the data, pushed onto the undo
+ * stack when it actually changed and the grid is redrawn. This is what the <b>Enter</b> key and losing
+ * focus trigger.
+ * @shortDescription Commit the active edit.
+ * @category Interactivity
+ * @listing See listing
+ * var cellEditor = grid.cellEditor();
+ * var committed = cellEditor.commitEdit();
+ * @return {boolean} True if the edit was committed.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.CellEditor.prototype.commitEdit;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.CellEditor.prototype.enabled
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the cell editor state.<br/>
+ * When disabled, <b>startEdit()</b> always refuses to open an editor.
+ * @shortDescription Cell editor state.
+ * @category Interactivity
+ * @listing See listing
+ * var cellEditor = grid.cellEditor();
+ * var enabled = cellEditor.enabled();
+ * @return {boolean} Whether cell editing is enabled.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.CellEditor.prototype.enabled;
+
+/**
+ * Setter for the cell editor state.<br/>
+ * Cell editing is switched off by default, so this has to be called explicitly to make cells editable.
+ * @listing See listing
+ * var cellEditor = grid.cellEditor();
+ * cellEditor.enabled(true);
+ * @param {boolean=} opt_value [false] Whether to enable cell editing.
+ * @return {anychart.core.dataSheet.CellEditor} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.CellEditor.prototype.enabled;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.CellEditor.prototype.isEditing
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Whether an edit is currently active.<br/>
+ * Returns <b>true</b> between a successful <b>startEdit()</b> and the commit or cancel that closes it.
+ * @shortDescription Active edit check.
+ * @category Interactivity
+ * @listing See listing
+ * var cellEditor = grid.cellEditor();
+ * if (cellEditor.isEditing())
+ *   cellEditor.cancelEdit();
+ * @return {boolean} True if a cell is being edited right now.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.CellEditor.prototype.isEditing;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.CellEditor.prototype.moveToNextCell
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Commits the active edit and opens the editor on the next editable cell.<br/>
+ * Columns that are not editable are skipped, and the search wraps from the last column of a row to the
+ * first column of the next one; it stops at the first or last data row. Does nothing if no edit is active,
+ * or if the commit failed validation. This is what the <b>Tab</b> key triggers.
+ * @shortDescription Move editing to the next cell.
+ * @category Interactivity
+ * @listing See listing
+ * var cellEditor = grid.cellEditor();
+ * cellEditor.moveToNextCell(false);
+ * @param {boolean} reverse True to move backwards, as Shift+Tab does.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.CellEditor.prototype.moveToNextCell;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.CellEditor.prototype.startEdit
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Starts editing the given cell.<br/>
+ * Any active edit is cancelled first. The editor element created depends on the column's data type:
+ * a <b>select</b> with true/false options for <b>boolean</b>, a number input for <b>number</b>,
+ * a date input for <b>date</b> and a text input otherwise. Returns <b>false</b> and opens nothing if the
+ * controller is disabled or if the cancellable cell edit start event was prevented.
+ * @shortDescription Start editing a cell.
+ * @category Interactivity
+ * @listing See listing
+ * var cellEditor = grid.cellEditor();
+ * cellEditor.enabled(true);
+ * var cellEl = document.querySelector('.anychart-ds-cell[data-row="0"][data-col="1"]');
+ * cellEditor.startEdit(0, 0, 1, 'value', 'number', 45, cellEl);
+ * @param {number} rowIndex Row index in the sorted row order.
+ * @param {number} dataIndex Index of the row in the resolved data.
+ * @param {number} colIndex Column index.
+ * @param {string} field Data field name of the column.
+ * @param {string} dataType Column data type: 'string', 'number', 'boolean' or 'date'.
+ * @param {*} currentValue Current cell value.
+ * @param {Element} cellEl Cell DOM element to place the editor into.
+ * @return {boolean} True if editing started.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.CellEditor.prototype.startEdit;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.CellEditor.prototype.undo
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Reverts the last committed cell edit.<br/>
+ * Pops the most recent entry off the undo stack, writes the old value back into the data and redraws the
+ * grid. The stack holds up to 20 entries and only records commits that actually changed the value.
+ * Returns <b>false</b> when there is nothing left to undo.
+ * @shortDescription Undo the last cell edit.
+ * @category Interactivity
+ * @listing See listing
+ * var cellEditor = grid.cellEditor();
+ * cellEditor.undo();
+ * @return {boolean} True if an edit was undone.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.CellEditor.prototype.undo;

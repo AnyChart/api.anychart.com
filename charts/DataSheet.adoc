@@ -1,17 +1,20 @@
 /**
- * DataGrid chart class.<br/>
+ * DataSheet chart class.<br/>
  * A DOM-based interactive data grid with virtual scrolling, column sorting, filtering, cell editing, row selection,
  * grouping/hierarchy and clipboard support.<br/>
- * <b>Note:</b> Use {@link anychart.dataGrid} method to get this chart.<br/>
+ * Unlike the other chart types, DataSheet renders as HTML rather than on a stage and extends
+ * {@link anychart.core.VisualBaseWithBounds} directly, so the common chart members - title(), legend(),
+ * tooltip(), credits(), animation(), background() - are intentionally not provided.<br/>
+ * <b>Note:</b> Use {@link anychart.dataSheet} method to get this chart.<br/>
  * @constructor
  * @extends {anychart.core.VisualBaseWithBounds}
  * @since 9.0.0
  */
-anychart.charts.DataGrid;
+anychart.charts.DataSheet;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.data
+//  anychart.charts.DataSheet.prototype.data
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -24,7 +27,7 @@ anychart.charts.DataGrid;
  * @return {!Array} Resolved data as a flat array of row objects.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.data;
+anychart.charts.DataSheet.prototype.data;
 
 /**
  * Setter for the grid data.
@@ -35,14 +38,14 @@ anychart.charts.DataGrid.prototype.data;
  *   {name: 'Task 3', value: 25}
  * ]);
  * @param {(Array|anychart.data.Set|anychart.data.View)=} opt_value Data to set.
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.data;
+anychart.charts.DataSheet.prototype.data;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.column
+//  anychart.charts.DataSheet.prototype.column
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -54,10 +57,10 @@ anychart.charts.DataGrid.prototype.data;
  * @listing See listing
  * var column = grid.column(0);
  * @param {number} index Column index.
- * @return {anychart.dataGridModule.Column} Column by index.
+ * @return {anychart.core.dataSheet.Column} Column by index.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.column;
+anychart.charts.DataSheet.prototype.column;
 
 /**
  * Setter for the column by index.
@@ -69,14 +72,14 @@ anychart.charts.DataGrid.prototype.column;
  * });
  * @param {number} index Column index.
  * @param {Object=} opt_value Column settings to set.
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.column;
+anychart.charts.DataSheet.prototype.column;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.columnCount
+//  anychart.charts.DataSheet.prototype.columnCount
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -89,27 +92,31 @@ anychart.charts.DataGrid.prototype.column;
  * @return {number} Column count.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.columnCount;
+anychart.charts.DataSheet.prototype.columnCount;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.autoSizeColumns
+//  anychart.charts.DataSheet.prototype.autoSizeColumns
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Auto-sizes all columns with <b>auto</b> sizing mode by measuring header and cell content.
+ * Auto-sizes all columns with <b>auto</b> sizing mode by measuring header and cell content.<br/>
+ * Only columns whose width is set to <b>auto</b> are affected; a column with an explicit
+ * width keeps it.
  * @shortDescription Auto-size columns.
  * @category Specific settings
  * @listing See listing
+ * grid.column(0).width('auto');
+ * grid.column(1).width('auto');
  * grid.autoSizeColumns();
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.autoSizeColumns;
+anychart.charts.DataSheet.prototype.autoSizeColumns;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.reorderColumn
+//  anychart.charts.DataSheet.prototype.reorderColumn
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -122,14 +129,14 @@ anychart.charts.DataGrid.prototype.autoSizeColumns;
  * grid.reorderColumn(0, 2);
  * @param {number} fromIndex Index of the column to move.
  * @param {number} toIndex Target index.
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.reorderColumn;
+anychart.charts.DataSheet.prototype.reorderColumn;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.sorting
+//  anychart.charts.DataSheet.prototype.sorting
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -139,10 +146,10 @@ anychart.charts.DataGrid.prototype.reorderColumn;
  * @category Specific settings
  * @listing See listing
  * var sorting = grid.sorting();
- * @return {anychart.dataGridModule.Sorting} Sorting settings.
+ * @return {anychart.core.dataSheet.Sorting} Sorting settings.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.sorting;
+anychart.charts.DataSheet.prototype.sorting;
 
 /**
  * Setter for the sorting controller.
@@ -151,14 +158,14 @@ anychart.charts.DataGrid.prototype.sorting;
  *   enabled: true
  * });
  * @param {Object=} opt_value Sorting settings.
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.sorting;
+anychart.charts.DataSheet.prototype.sorting;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.header
+//  anychart.charts.DataSheet.prototype.header
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -168,10 +175,10 @@ anychart.charts.DataGrid.prototype.sorting;
  * @category Specific settings
  * @listing See listing
  * var header = grid.header();
- * @return {anychart.dataGridModule.Header} Header settings.
+ * @return {anychart.core.dataSheet.Header} Header settings.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.header;
+anychart.charts.DataSheet.prototype.header;
 
 /**
  * Setter for the header settings.
@@ -180,14 +187,14 @@ anychart.charts.DataGrid.prototype.header;
  *   height: 32
  * });
  * @param {Object=} opt_value Header settings.
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.header;
+anychart.charts.DataSheet.prototype.header;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.headerGroup
+//  anychart.charts.DataSheet.prototype.headerGroup
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -202,11 +209,11 @@ anychart.charts.DataGrid.prototype.header;
  * @param {Array.<number>} columns Indices of the columns to group under this title.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.headerGroup;
+anychart.charts.DataSheet.prototype.headerGroup;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.removeHeaderGroup
+//  anychart.charts.DataSheet.prototype.removeHeaderGroup
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -219,11 +226,11 @@ anychart.charts.DataGrid.prototype.headerGroup;
  * @param {string} title Group title.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.removeHeaderGroup;
+anychart.charts.DataSheet.prototype.removeHeaderGroup;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.headerGroups
+//  anychart.charts.DataSheet.prototype.headerGroups
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -236,11 +243,11 @@ anychart.charts.DataGrid.prototype.removeHeaderGroup;
  * @return {!Array} Header groups as an array of {title, columns} objects.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.headerGroups;
+anychart.charts.DataSheet.prototype.headerGroups;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.virtualScroll
+//  anychart.charts.DataSheet.prototype.virtualScroll
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -250,10 +257,10 @@ anychart.charts.DataGrid.prototype.headerGroups;
  * @category Specific settings
  * @listing See listing
  * var virtualScroll = grid.virtualScroll();
- * @return {anychart.dataGridModule.VirtualScroll} Virtual scroll settings.
+ * @return {anychart.core.dataSheet.VirtualScroll} Virtual scroll settings.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.virtualScroll;
+anychart.charts.DataSheet.prototype.virtualScroll;
 
 /**
  * Setter for the virtual scroll controller.
@@ -263,14 +270,14 @@ anychart.charts.DataGrid.prototype.virtualScroll;
  *   bufferSize: 10
  * });
  * @param {Object=} opt_value Virtual scroll settings.
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.virtualScroll;
+anychart.charts.DataSheet.prototype.virtualScroll;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.selection
+//  anychart.charts.DataSheet.prototype.selection
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -280,10 +287,10 @@ anychart.charts.DataGrid.prototype.virtualScroll;
  * @category Interactivity
  * @listing See listing
  * var selection = grid.selection();
- * @return {anychart.dataGridModule.Selection} Selection settings.
+ * @return {anychart.core.dataSheet.Selection} Selection settings.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.selection;
+anychart.charts.DataSheet.prototype.selection;
 
 /**
  * Setter for the row selection controller.
@@ -293,14 +300,14 @@ anychart.charts.DataGrid.prototype.selection;
  *   mode: 'multi'
  * });
  * @param {Object=} opt_value Selection settings.
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.selection;
+anychart.charts.DataSheet.prototype.selection;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.filter
+//  anychart.charts.DataSheet.prototype.filter
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -310,10 +317,10 @@ anychart.charts.DataGrid.prototype.selection;
  * @category Specific settings
  * @listing See listing
  * var filter = grid.filter();
- * @return {anychart.dataGridModule.Filter} Filter settings.
+ * @return {anychart.core.dataSheet.Filter} Filter settings.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.filter;
+anychart.charts.DataSheet.prototype.filter;
 
 /**
  * Setter for the filter controller.
@@ -322,14 +329,14 @@ anychart.charts.DataGrid.prototype.filter;
  *   enabled: true
  * });
  * @param {Object=} opt_value Filter settings.
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.filter;
+anychart.charts.DataSheet.prototype.filter;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.cellEditor
+//  anychart.charts.DataSheet.prototype.cellEditor
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -339,10 +346,10 @@ anychart.charts.DataGrid.prototype.filter;
  * @category Interactivity
  * @listing See listing
  * var cellEditor = grid.cellEditor();
- * @return {anychart.dataGridModule.CellEditor} Cell editor settings.
+ * @return {anychart.core.dataSheet.CellEditor} Cell editor settings.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.cellEditor;
+anychart.charts.DataSheet.prototype.cellEditor;
 
 /**
  * Setter for the cell editor controller.
@@ -351,32 +358,35 @@ anychart.charts.DataGrid.prototype.cellEditor;
  *   enabled: true
  * });
  * @param {Object=} opt_value Cell editor settings.
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.cellEditor;
+anychart.charts.DataSheet.prototype.cellEditor;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.export
+//  anychart.charts.DataSheet.prototype.export
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Getter for the export controller.<br/>
- * Provides CSV and JSON export of the grid's current (sorted/filtered) data.
+ * Provides CSV and JSON export of the grid's current (sorted/filtered) data.<br/>
+ * <b>Note</b>: csv() and json() do not only return a string - they also trigger a browser
+ * file download as a side effect. Both accept an optional settings object
+ * (<b>separator</b>, <b>includeHeaders</b>, <b>filename</b>, <b>filteredOnly</b>).
  * @shortDescription Export settings.
  * @category Export
  * @listing See listing
  * var csv = grid.export().csv();
- * @return {anychart.dataGridModule.Export} Export settings.
+ * @return {anychart.core.dataSheet.Export} Export settings.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.export;
+anychart.charts.DataSheet.prototype.export;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.state
+//  anychart.charts.DataSheet.prototype.state
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -387,14 +397,14 @@ anychart.charts.DataGrid.prototype.export;
  * @category Specific settings
  * @listing See listing
  * grid.state().save();
- * @return {anychart.dataGridModule.State} State persistence settings.
+ * @return {anychart.core.dataSheet.State} State persistence settings.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.state;
+anychart.charts.DataSheet.prototype.state;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.contextMenu
+//  anychart.charts.DataSheet.prototype.contextMenu
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -404,10 +414,10 @@ anychart.charts.DataGrid.prototype.state;
  * @category Chart Controls
  * @listing See listing
  * var contextMenu = grid.contextMenu();
- * @return {anychart.dataGridModule.ContextMenu} Context menu settings.
+ * @return {anychart.core.dataSheet.ContextMenu} Context menu settings.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.contextMenu;
+anychart.charts.DataSheet.prototype.contextMenu;
 
 /**
  * Setter for the context menu settings.
@@ -416,14 +426,14 @@ anychart.charts.DataGrid.prototype.contextMenu;
  *   enabled: true
  * });
  * @param {Object=} opt_value Context menu settings.
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.contextMenu;
+anychart.charts.DataSheet.prototype.contextMenu;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.hierarchy
+//  anychart.charts.DataSheet.prototype.hierarchy
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -433,34 +443,37 @@ anychart.charts.DataGrid.prototype.contextMenu;
  * @category Specific settings
  * @listing See listing
  * var hierarchy = grid.hierarchy();
- * @return {!anychart.dataGridModule.Hierarchy} Hierarchy settings.
+ * @return {!anychart.core.dataSheet.Hierarchy} Hierarchy settings.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.hierarchy;
+anychart.charts.DataSheet.prototype.hierarchy;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.groupBy
+//  anychart.charts.DataSheet.prototype.groupBy
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
  * Groups rows by one or more data fields.<br/>
- * Pass <b>null</b> to clear grouping.
+ * Pass <b>null</b> to clear grouping.<br/>
+ * <b>Note</b>: grouping by a field also switches the group zone on if it was off, so the
+ * drop area appears without an explicit groupZone(true) call. Clearing the grouping with
+ * <b>null</b> does not switch it back off - call groupZone(false) for that.
  * @shortDescription Group rows by fields.
  * @category Specific settings
  * @listing See listing
  * grid.groupBy('category');
  * @param {?(string|Array.<string>)} fields Field name(s) to group by, or <b>null</b> to clear grouping.
  * @param {Object=} opt_config Optional config with an <b>aggregates</b> key describing group-level aggregation.
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.groupBy;
+anychart.charts.DataSheet.prototype.groupBy;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.groupZone
+//  anychart.charts.DataSheet.prototype.groupZone
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -470,24 +483,24 @@ anychart.charts.DataGrid.prototype.groupBy;
  * @category Specific settings
  * @listing See listing
  * var enabled = grid.groupZone();
- * @return {boolean} Whether the group zone is enabled.
+ * @return {boolean} [false] Whether the group zone is enabled.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.groupZone;
+anychart.charts.DataSheet.prototype.groupZone;
 
 /**
  * Setter for the group zone (column drop area) visibility.
  * @listing See listing
  * grid.groupZone(true);
  * @param {boolean=} opt_value Whether to enable the group zone.
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.groupZone;
+anychart.charts.DataSheet.prototype.groupZone;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.clipboard
+//  anychart.charts.DataSheet.prototype.clipboard
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -497,14 +510,14 @@ anychart.charts.DataGrid.prototype.groupZone;
  * @category Interactivity
  * @listing See listing
  * var clipboard = grid.clipboard();
- * @return {anychart.dataGridModule.Clipboard} Clipboard settings.
+ * @return {anychart.core.dataSheet.Clipboard} Clipboard settings.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.clipboard;
+anychart.charts.DataSheet.prototype.clipboard;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.search
+//  anychart.charts.DataSheet.prototype.search
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -514,14 +527,14 @@ anychart.charts.DataGrid.prototype.clipboard;
  * @category Interactivity
  * @listing See listing
  * var search = grid.search();
- * @return {anychart.dataGridModule.Search} Search settings.
+ * @return {anychart.core.dataSheet.Search} Search settings.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.search;
+anychart.charts.DataSheet.prototype.search;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.dataSource
+//  anychart.charts.DataSheet.prototype.dataSource
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -531,10 +544,10 @@ anychart.charts.DataGrid.prototype.search;
  * @category Data
  * @listing See listing
  * var dataSource = grid.dataSource();
- * @return {anychart.dataGridModule.DataSource} Data source settings.
+ * @return {anychart.core.dataSheet.DataSource} Data source settings.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.dataSource;
+anychart.charts.DataSheet.prototype.dataSource;
 
 /**
  * Setter for the remote data source, either as a fetch-like adapter function or as a config object.
@@ -543,14 +556,14 @@ anychart.charts.DataGrid.prototype.dataSource;
  *   pageSize: 100
  * });
  * @param {(Function|Object)=} opt_value Data source adapter function or config object.
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.dataSource;
+anychart.charts.DataSheet.prototype.dataSource;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.detailRow
+//  anychart.charts.DataSheet.prototype.detailRow
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -563,7 +576,7 @@ anychart.charts.DataGrid.prototype.dataSource;
  * @return {?Function} Detail row renderer function, or <b>null</b> if not set.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.detailRow;
+anychart.charts.DataSheet.prototype.detailRow;
 
 /**
  * Setter for the detail row renderer function.<br/>
@@ -573,14 +586,14 @@ anychart.charts.DataGrid.prototype.detailRow;
  *   return 'Details for ' + rowData.name;
  * });
  * @param {Function=} opt_value Detail row renderer function.
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.detailRow;
+anychart.charts.DataSheet.prototype.detailRow;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.expandDetail
+//  anychart.charts.DataSheet.prototype.expandDetail
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -593,11 +606,11 @@ anychart.charts.DataGrid.prototype.detailRow;
  * @param {number} dataIndex Data row index.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.expandDetail;
+anychart.charts.DataSheet.prototype.expandDetail;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.collapseDetail
+//  anychart.charts.DataSheet.prototype.collapseDetail
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -610,11 +623,11 @@ anychart.charts.DataGrid.prototype.expandDetail;
  * @param {number} dataIndex Data row index.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.collapseDetail;
+anychart.charts.DataSheet.prototype.collapseDetail;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.toggleDetail
+//  anychart.charts.DataSheet.prototype.toggleDetail
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -627,11 +640,11 @@ anychart.charts.DataGrid.prototype.collapseDetail;
  * @param {number} dataIndex Data row index.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.toggleDetail;
+anychart.charts.DataSheet.prototype.toggleDetail;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.collapseAllDetails
+//  anychart.charts.DataSheet.prototype.collapseAllDetails
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -643,11 +656,11 @@ anychart.charts.DataGrid.prototype.toggleDetail;
  * grid.collapseAllDetails();
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.collapseAllDetails;
+anychart.charts.DataSheet.prototype.collapseAllDetails;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.print
+//  anychart.charts.DataSheet.prototype.print
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -660,14 +673,21 @@ anychart.charts.DataGrid.prototype.collapseAllDetails;
  *   orientation: 'landscape',
  *   title: 'My Data Grid'
  * });
- * @param {Object=} opt_options Print options: <b>orientation</b>, <b>title</b>, <b>pageSize</b>, <b>includeFiltered</b>.
+ * @param {Object=} opt_options Print options:
+ * <ul>
+ *   <li><b>orientation</b> {string} - 'landscape' switches the page to landscape; any other value prints portrait.</li>
+ *   <li><b>title</b> {string} - heading printed above the grid.</li>
+ *   <li><b>pageSize</b> {string} - CSS page size, for example 'A4' or 'Letter'; an invalid value falls back to 'A4'.</li>
+ *   <li><b>includeFiltered</b> {boolean} - when <b>true</b>, prints every row of the source data in its original order,
+ *   ignoring the current filter <i>and</i> the current sorting. When omitted or <b>false</b>, prints the visible filtered and sorted view.</li>
+ * </ul>
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.print;
+anychart.charts.DataSheet.prototype.print;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.draw
+//  anychart.charts.DataSheet.prototype.draw
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -676,14 +696,14 @@ anychart.charts.DataGrid.prototype.print;
  * @shortDescription Grid drawing.
  * @listing See listing
  * grid.draw();
- * @return {anychart.charts.DataGrid} Self instance for method chaining.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.draw;
+anychart.charts.DataSheet.prototype.draw;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.toJson
+//  anychart.charts.DataSheet.prototype.toJson
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -697,11 +717,254 @@ anychart.charts.DataGrid.prototype.draw;
  * @return {Object|string} Grid configuration.
  * @since 9.0.0
  */
-anychart.charts.DataGrid.prototype.toJson;
+anychart.charts.DataSheet.prototype.toJson;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.DataGrid.prototype.dispose
+//  anychart.charts.DataSheet.prototype.rowHeight
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the data row height.
+ * @shortDescription Row height.
+ * @category Size and Position
+ * @listing See listing
+ * var value = grid.rowHeight();
+ * @return {number} The current value.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.rowHeight;
+
+/**
+ * Setter for the data row height, in pixels. Does not affect the header, whose height is set through header().height().
+ * @listing See listing
+ * grid.rowHeight(40);
+ * @param {number=} opt_value [32] Value to set.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.rowHeight;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.DataSheet.prototype.cellPadding
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the cell padding.
+ * @shortDescription Cell padding.
+ * @category Size and Position
+ * @listing See listing
+ * var value = grid.cellPadding();
+ * @return {number} The current value.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.cellPadding;
+
+/**
+ * Setter for the inner padding of every cell, in pixels.
+ * @listing See listing
+ * grid.cellPadding(12);
+ * @param {number=} opt_value [8] Value to set.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.cellPadding;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.DataSheet.prototype.rowEvenFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the fill of even data rows.
+ * @shortDescription Even row fill.
+ * @category Coloring
+ * @listing See listing
+ * var value = grid.rowEvenFill();
+ * @return {string} The current value.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.rowEvenFill;
+
+/**
+ * Setter for the fill of even data rows. Together with rowOddFill() this produces the zebra striping.
+ * @listing See listing
+ * grid.rowEvenFill('#fafafa');
+ * @param {string=} opt_value ['#ffffff'] Value to set.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.rowEvenFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.DataSheet.prototype.rowOddFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the fill of odd data rows.
+ * @shortDescription Odd row fill.
+ * @category Coloring
+ * @listing See listing
+ * var value = grid.rowOddFill();
+ * @return {string} The current value.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.rowOddFill;
+
+/**
+ * Setter for the fill of odd data rows.
+ * @listing See listing
+ * grid.rowOddFill('#eef3fb');
+ * @param {string=} opt_value ['#f8f8f8'] Value to set.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.rowOddFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.DataSheet.prototype.rowHoverFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the fill of the hovered data row.
+ * @shortDescription Hovered row fill.
+ * @category Coloring
+ * @listing See listing
+ * var value = grid.rowHoverFill();
+ * @return {string} The current value.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.rowHoverFill;
+
+/**
+ * Setter for the fill applied to a data row while the pointer is over it.
+ * @listing See listing
+ * grid.rowHoverFill('#fff3cd');
+ * @param {string=} opt_value ['#e8f0fe'] Value to set.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.rowHoverFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.DataSheet.prototype.rowSelectedFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the fill of selected data rows.
+ * @shortDescription Selected row fill.
+ * @category Coloring
+ * @listing See listing
+ * var value = grid.rowSelectedFill();
+ * @return {string} The current value.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.rowSelectedFill;
+
+/**
+ * Setter for the fill applied to selected data rows. Selection itself is configured through selection().
+ * @listing See listing
+ * grid.rowSelectedFill('#b6d7a8');
+ * @param {string=} opt_value ['#d2e3fc'] Value to set.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.rowSelectedFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.DataSheet.prototype.headerFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the header fill.
+ * @shortDescription Header fill.
+ * @category Coloring
+ * @listing See listing
+ * var value = grid.headerFill();
+ * @return {string} The current value.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.headerFill;
+
+/**
+ * Setter for the fill of the header row.
+ * @listing See listing
+ * grid.headerFill('#e0e0e0');
+ * @param {string=} opt_value ['#f5f5f5'] Value to set.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.headerFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.DataSheet.prototype.cellBorder
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the cell border.
+ * @shortDescription Cell border.
+ * @category Coloring
+ * @listing See listing
+ * var value = grid.cellBorder();
+ * @return {string} The current value.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.cellBorder;
+
+/**
+ * Setter for the border drawn around every cell. Accepts CSS border shorthand, for example <b>1px #e0e0e0</b>.
+ * @listing See listing
+ * grid.cellBorder('2px #90a4ae');
+ * @param {string=} opt_value ['1px #e0e0e0'] Value to set.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.cellBorder;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.DataSheet.prototype.noDataText
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the message shown when there is nothing to render.
+ * @shortDescription No-data message.
+ * @category Specific settings
+ * @listing See listing
+ * var value = grid.noDataText();
+ * @return {string} The current value.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.noDataText;
+
+/**
+ * Setter for the message shown when the grid has no rows to display, either because the data is empty or because a filter matched nothing.
+ * @listing See listing
+ * grid.noDataText('Nothing matches your filter');
+ * @param {string=} opt_value Value to set.
+ * @return {anychart.charts.DataSheet} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.DataSheet.prototype.noDataText;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.DataSheet.prototype.dispose
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -709,4 +972,4 @@ anychart.charts.DataGrid.prototype.toJson;
  * @inheritDoc
  * @ignoreDoc
  */
-anychart.charts.DataGrid.prototype.dispose;
+anychart.charts.DataSheet.prototype.dispose;

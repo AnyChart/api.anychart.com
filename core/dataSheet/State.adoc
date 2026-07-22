@@ -1,0 +1,107 @@
+/**
+ * DataSheet state persistence controller.<br/>
+ * Serializes the grid's current layout and interaction state - column widths, pinned flags and column order,
+ * sorting, filtering, selection mode and hierarchy state - into the browser's <code>localStorage</code>
+ * under the key <code>'anychart-datasheet-' + key</code>, and restores it back on demand.<br/>
+ * <b>Note</b>: the <b>save</b>, <b>restore</b> and <b>clear</b> methods are no-ops in environments where <code>localStorage</code> is unavailable.<br/>
+ * <b>Note:</b> Use {@link anychart.charts.DataSheet#state} method to get this controller.<br/>
+ * @constructor
+ * @name anychart.core.dataSheet.State
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.State;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.State.prototype.save
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Saves the current grid state under the given storage key.<br/>
+ * The snapshot contains column widths, pinned flags and column order, plus the serialized sorting,
+ * filter, selection mode and - if hierarchy is active - hierarchy state.<br/>
+ * <b>Note</b>: the key is namespaced internally, the actual <code>localStorage</code> entry is
+ * <code>'anychart-datasheet-' + key</code>. Storage failures (quota exceeded, storage disabled)
+ * are swallowed silently.
+ * @shortDescription Saves the current grid state.
+ * @category Specific settings
+ * @listing See listing
+ * var state = grid.state();
+ * state.save('my-grid');
+ * @param {string} key Storage key.
+ * @return {anychart.core.dataSheet.State} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.State.prototype.save;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.State.prototype.restore
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Restores a previously saved grid state from the given storage key.<br/>
+ * Re-applies column widths and pinned flags, reorders columns to the stored field order, and
+ * re-applies sorting, filter, selection mode and hierarchy state.<br/>
+ * <b>Note</b>: if nothing is stored under the key, or the stored value cannot be parsed,
+ * the call does nothing.
+ * @shortDescription Restores a saved grid state.
+ * @category Specific settings
+ * @listing See listing
+ * var state = grid.state();
+ * state.restore('my-grid');
+ * @param {string} key Storage key.
+ * @return {anychart.core.dataSheet.State} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.State.prototype.restore;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.State.prototype.clear
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Removes the state saved under the given storage key.<br/>
+ * Only the entry for that key is removed, states saved under other keys are left untouched.
+ * The current appearance of the grid is not changed.
+ * @shortDescription Removes a saved grid state.
+ * @category Specific settings
+ * @listing See listing
+ * var state = grid.state();
+ * state.clear('my-grid');
+ * @param {string} key Storage key.
+ * @return {anychart.core.dataSheet.State} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.State.prototype.clear;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.State.prototype.autoSave
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Enables or disables automatic saving of the grid state under the given storage key.<br/>
+ * When enabled, the state is re-saved by the chart after every state-changing operation
+ * such as sorting, filtering or column resizing. Auto-save is off until this method is called.<br/>
+ * <b>Note</b>: passing <b>false</b> as the second argument disables auto-save and discards the
+ * remembered key; any value other than <b>false</b> (including omitting the argument) enables it.
+ * Disabling auto-save does not remove already saved data - use
+ * {@link anychart.core.dataSheet.State#clear} for that.
+ * @shortDescription Enables automatic state saving.
+ * @category Specific settings
+ * @listing See listing
+ * var state = grid.state();
+ * state.autoSave('my-grid');
+ * state.autoSave('my-grid', false);
+ * @param {string} key Storage key.
+ * @param {boolean=} opt_enabled Whether auto-save is enabled.
+ * @return {anychart.core.dataSheet.State} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.State.prototype.autoSave;

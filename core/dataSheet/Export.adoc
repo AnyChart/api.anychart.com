@@ -1,0 +1,77 @@
+/**
+ * DataSheet export controller.<br/>
+ * Serializes the grid's data to CSV or JSON and triggers a browser file download for the result.
+ * Both exporters read the columns currently configured on the chart and, by default, only the rows
+ * left after sorting and filtering.
+ * <b>Note:</b> Use {@link anychart.charts.DataSheet#export} method to get this controller.<br/>
+ * @constructor
+ * @name anychart.core.dataSheet.Export
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Export;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Export.prototype.csv
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Exports the grid data as a CSV file and returns the generated CSV text.<br/>
+ * The settings object accepts <b>separator</b> (defaults to <code>","</code>), <b>includeHeaders</b>
+ * (defaults to <code>true</code>, uses the column title and falls back to the column field),
+ * <b>filename</b> (defaults to <code>"data-sheet-export"</code>, the <code>.csv</code> extension is
+ * appended automatically) and <b>filteredOnly</b> (defaults to <code>true</code> - only the rows
+ * left after the current sorting and filtering are written).<br/>
+ * <b>Note</b>: the method both returns the CSV string and, as a side effect, triggers a browser file
+ * download. In environments without <code>Blob</code>/<code>URL.createObjectURL</code> the download is
+ * skipped silently and only the string is returned.<br/>
+ * Fields containing the separator, a double quote or a line break are quoted and escaped, and values
+ * that could be interpreted as spreadsheet formulas are neutralized before writing.
+ * @shortDescription Exports data as CSV.
+ * @category Export
+ * @listing See listing
+ * var exporter = grid.export();
+ * var csv = exporter.csv({
+ *   separator: ';',
+ *   includeHeaders: true,
+ *   filename: 'my-grid',
+ *   filteredOnly: true
+ * });
+ * @param {Object=} opt_options Export settings: separator, includeHeaders, filename, filteredOnly.
+ * @return {string} The generated CSV content.
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Export.prototype.csv;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Export.prototype.json
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Exports the grid data as a JSON file.<br/>
+ * Each exported row is an object built from the fields of the currently configured columns, so
+ * properties of the source data that are not bound to a column are omitted.<br/>
+ * The settings object accepts <b>filename</b> (defaults to <code>"data-sheet-export"</code>, the
+ * <code>.json</code> extension is appended automatically), <b>filteredOnly</b> (defaults to
+ * <code>true</code> - only the rows left after the current sorting and filtering are written) and
+ * <b>pretty</b> (defaults to <code>true</code> - the JSON is indented with two spaces; pass
+ * <code>false</code> for a compact single-line output).<br/>
+ * <b>Note</b>: the method returns nothing, it only triggers a browser file download. In environments
+ * without <code>Blob</code>/<code>URL.createObjectURL</code> the call is a no-op.
+ * @shortDescription Exports data as JSON.
+ * @category Export
+ * @listing See listing
+ * var exporter = grid.export();
+ * exporter.json({
+ *   filename: 'my-grid',
+ *   filteredOnly: true,
+ *   pretty: false
+ * });
+ * @param {Object=} opt_options Export settings: filename, filteredOnly, pretty.
+ * @return {undefined}
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Export.prototype.json;
