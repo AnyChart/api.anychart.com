@@ -23,9 +23,7 @@ anychart.core.dataSheet.CellEditor;
  * discarded. Does nothing if no edit is active. This is what the <b>Esc</b> key triggers.
  * @shortDescription Cancel the active edit.
  * @category Interactivity
- * @listing See listing
- * var cellEditor = grid.cellEditor();
- * cellEditor.cancelEdit();
+ * @example anychart.core.dataSheet.CellEditor.cancelEdit
  * @since 9.0.0
  */
 anychart.core.dataSheet.CellEditor.prototype.cancelEdit;
@@ -45,9 +43,7 @@ anychart.core.dataSheet.CellEditor.prototype.cancelEdit;
  * focus trigger.
  * @shortDescription Commit the active edit.
  * @category Interactivity
- * @listing See listing
- * var cellEditor = grid.cellEditor();
- * var committed = cellEditor.commitEdit();
+ * @example anychart.core.dataSheet.CellEditor.commitEdit
  * @return {boolean} True if the edit was committed.
  * @since 9.0.0
  */
@@ -64,9 +60,7 @@ anychart.core.dataSheet.CellEditor.prototype.commitEdit;
  * When disabled, <b>startEdit()</b> always refuses to open an editor.
  * @shortDescription Cell editor state.
  * @category Interactivity
- * @listing See listing
- * var cellEditor = grid.cellEditor();
- * var enabled = cellEditor.enabled();
+ * @example anychart.core.dataSheet.CellEditor.enabled_get
  * @return {boolean} Whether cell editing is enabled.
  * @since 9.0.0
  */
@@ -75,9 +69,7 @@ anychart.core.dataSheet.CellEditor.prototype.enabled;
 /**
  * Setter for the cell editor state.<br/>
  * Cell editing is switched off by default, so this has to be called explicitly to make cells editable.
- * @listing See listing
- * var cellEditor = grid.cellEditor();
- * cellEditor.enabled(true);
+ * @example anychart.core.dataSheet.CellEditor.enabled_set
  * @param {boolean=} opt_value [false] Whether to enable cell editing.
  * @return {anychart.core.dataSheet.CellEditor} Self instance for method chaining.
  * @since 9.0.0
@@ -95,10 +87,7 @@ anychart.core.dataSheet.CellEditor.prototype.enabled;
  * Returns <b>true</b> between a successful <b>startEdit()</b> and the commit or cancel that closes it.
  * @shortDescription Active edit check.
  * @category Interactivity
- * @listing See listing
- * var cellEditor = grid.cellEditor();
- * if (cellEditor.isEditing())
- *   cellEditor.cancelEdit();
+ * @example anychart.core.dataSheet.CellEditor.isEditing
  * @return {boolean} True if a cell is being edited right now.
  * @since 9.0.0
  */
@@ -117,9 +106,7 @@ anychart.core.dataSheet.CellEditor.prototype.isEditing;
  * or if the commit failed validation. This is what the <b>Tab</b> key triggers.
  * @shortDescription Move editing to the next cell.
  * @category Interactivity
- * @listing See listing
- * var cellEditor = grid.cellEditor();
- * cellEditor.moveToNextCell(false);
+ * @example anychart.core.dataSheet.CellEditor.moveToNextCell
  * @param {boolean} reverse True to move backwards, as Shift+Tab does.
  * @since 9.0.0
  */
@@ -142,6 +129,7 @@ anychart.core.dataSheet.CellEditor.prototype.moveToNextCell;
  * @listing See listing
  * var cellEditor = grid.cellEditor();
  * cellEditor.enabled(true);
+ * // dataIndex/colIndex/field/dataType/currentValue identify the cell; cellEl is its DOM node
  * var cellEl = document.querySelector('.anychart-ds-cell[data-row="0"][data-col="1"]');
  * cellEditor.startEdit(0, 0, 1, 'value', 'number', 45, cellEl);
  * @param {number} rowIndex Row index in the sorted row order.
@@ -169,9 +157,7 @@ anychart.core.dataSheet.CellEditor.prototype.startEdit;
  * Returns <b>false</b> when there is nothing left to undo.
  * @shortDescription Undo the last cell edit.
  * @category Interactivity
- * @listing See listing
- * var cellEditor = grid.cellEditor();
- * cellEditor.undo();
+ * @example anychart.core.dataSheet.CellEditor.undo
  * @return {boolean} True if an edit was undone.
  * @since 9.0.0
  */

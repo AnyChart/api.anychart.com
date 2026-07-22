@@ -20,9 +20,7 @@ anychart.core.dataSheet.Selection;
  * If the index is not currently selected, nothing happens and the grid is not redrawn.
  * @shortDescription Deselect a row.
  * @category Interactivity
- * @listing See listing
- * var selection = grid.selection();
- * selection.deselect(2);
+ * @example anychart.core.dataSheet.Selection.deselect
  * @param {number} index Data index of the row to deselect.
  * @since 9.0.0
  */
@@ -39,9 +37,7 @@ anychart.core.dataSheet.Selection.prototype.deselect;
  * If nothing is selected, the call is a no-op and the grid is not redrawn.
  * @shortDescription Deselect all rows.
  * @category Interactivity
- * @listing See listing
- * var selection = grid.selection();
- * selection.deselectAll();
+ * @example anychart.core.dataSheet.Selection.deselectAll
  * @since 9.0.0
  */
 anychart.core.dataSheet.Selection.prototype.deselectAll;
@@ -56,9 +52,7 @@ anychart.core.dataSheet.Selection.prototype.deselectAll;
  * Getter for the selection enabled state.
  * @shortDescription Selection enabled state.
  * @category Interactivity
- * @listing See listing
- * var selection = grid.selection();
- * var enabled = selection.enabled();
+ * @example anychart.core.dataSheet.Selection.enabled_get
  * @return {boolean} Whether the selection is enabled.
  * @since 9.0.0
  */
@@ -69,9 +63,7 @@ anychart.core.dataSheet.Selection.prototype.enabled;
  * Disabling the selection also clears all currently selected rows, and {@link anychart.core.dataSheet.Selection#select},
  * {@link anychart.core.dataSheet.Selection#toggle} and {@link anychart.core.dataSheet.Selection#handleClick} stop
  * having any effect while it is off.
- * @listing See listing
- * var selection = grid.selection();
- * selection.enabled(false);
+ * @example anychart.core.dataSheet.Selection.enabled_set
  * @param {boolean=} opt_value [true] Whether to enable the selection.
  * @return {anychart.core.dataSheet.Selection} Self instance for method chaining.
  * @since 9.0.0
@@ -92,10 +84,7 @@ anychart.core.dataSheet.Selection.prototype.enabled;
  * The call does nothing while the selection is disabled.
  * @shortDescription Handle a row click.
  * @category Interactivity
- * @listing See listing
- * var selection = grid.selection();
- * selection.mode('multi');
- * selection.handleClick(3, true);
+ * @example anychart.core.dataSheet.Selection.handleClick
  * @param {number} index Data index of the clicked row.
  * @param {boolean} ctrlKey Whether the Ctrl/Cmd key was held during the click.
  * @since 9.0.0
@@ -112,11 +101,7 @@ anychart.core.dataSheet.Selection.prototype.handleClick;
  * Checks whether the row with the given data index is currently selected.
  * @shortDescription Selection state of a row.
  * @category Interactivity
- * @listing See listing
- * var selection = grid.selection();
- * if (selection.isSelected(0)) {
- *   selection.deselect(0);
- * }
+ * @example anychart.core.dataSheet.Selection.isSelected
  * @param {number} index Data index of the row to check.
  * @return {boolean} Whether the row is selected.
  * @since 9.0.0
@@ -133,9 +118,7 @@ anychart.core.dataSheet.Selection.prototype.isSelected;
  * Getter for the selection mode.
  * @shortDescription Selection mode.
  * @category Interactivity
- * @listing See listing
- * var selection = grid.selection();
- * var mode = selection.mode();
+ * @example anychart.core.dataSheet.Selection.mode_get
  * @return {string} Current selection mode.
  * @since 9.0.0
  */
@@ -146,9 +129,7 @@ anychart.core.dataSheet.Selection.prototype.mode;
  * Accepts <b>single</b>, <b>multi</b> or <b>checkbox</b>; the value is lowercased, and any other value falls back
  * to <b>single</b>. In <b>checkbox</b> mode the grid renders an extra leading checkbox column.<br/>
  * <b>Note:</b> Changing the mode clears the current selection.
- * @listing See listing
- * var selection = grid.selection();
- * selection.mode('checkbox');
+ * @example anychart.core.dataSheet.Selection.mode_set
  * @param {string=} opt_value ["single"] Selection mode to set.
  * @return {anychart.core.dataSheet.Selection} Self instance for method chaining.
  * @since 9.0.0
@@ -168,11 +149,7 @@ anychart.core.dataSheet.Selection.prototype.mode;
  * The call does nothing while the selection is disabled.
  * @shortDescription Select a row.
  * @category Interactivity
- * @listing See listing
- * var selection = grid.selection();
- * selection.mode('multi');
- * selection.select(0);
- * selection.select(1);
+ * @example anychart.core.dataSheet.Selection.select
  * @param {number} index Data index of the row to select.
  * @since 9.0.0
  */
@@ -189,9 +166,7 @@ anychart.core.dataSheet.Selection.prototype.select;
  * Returns a copy of the internal array, so modifying the returned array does not change the selection.
  * @shortDescription Selected data indices.
  * @category Interactivity
- * @listing See listing
- * var selection = grid.selection();
- * var indices = selection.selectedIndices();
+ * @example anychart.core.dataSheet.Selection.selectedIndices_get
  * @return {!Array.<number>} Data indices of the selected rows.
  * @since 9.0.0
  */
@@ -201,10 +176,7 @@ anychart.core.dataSheet.Selection.prototype.selectedIndices;
  * Setter for the selected data indices.<br/>
  * Replaces the whole selection with a copy of the passed array. The value is applied as is: it is not filtered
  * against the current mode, so passing several indices in <b>single</b> mode selects all of them.
- * @listing See listing
- * var selection = grid.selection();
- * selection.mode('multi');
- * selection.selectedIndices([0, 2, 5]);
+ * @example anychart.core.dataSheet.Selection.selectedIndices_set
  * @param {Array.<number>=} opt_value Data indices of the rows to select.
  * @return {anychart.core.dataSheet.Selection} Self instance for method chaining.
  * @since 9.0.0
@@ -224,10 +196,7 @@ anychart.core.dataSheet.Selection.prototype.selectedIndices;
  * The call does nothing while the selection is disabled.
  * @shortDescription Toggle a row.
  * @category Interactivity
- * @listing See listing
- * var selection = grid.selection();
- * selection.mode('checkbox');
- * selection.toggle(1);
+ * @example anychart.core.dataSheet.Selection.toggle
  * @param {number} index Data index of the row to toggle.
  * @since 9.0.0
  */

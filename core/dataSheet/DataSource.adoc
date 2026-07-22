@@ -27,9 +27,11 @@ anychart.core.dataSheet.DataSource;
  * @category Data
  * @listing See listing
  * var dataSource = grid.dataSource();
- * dataSource.setAdapter(function(params, callback) {
- *   var from = params.page * params.pageSize;
- *   callback({data: rows.slice(from, from + params.pageSize), total: rows.length});
+ * dataSource.setAdapter(function (params, callback) {
+ *   // fetch one page from your backend, then hand rows + total back
+ *   fetchRows(params.page, params.pageSize).then(function (res) {
+ *     callback({data: res.rows, total: res.total});
+ *   });
  * });
  * @param {Function} adapter Function that receives request params and a callback.
  * @since 9.0.0
@@ -76,9 +78,7 @@ anychart.core.dataSheet.DataSource.prototype.setConfig;
  * Getter for the number of rows requested per page.
  * @shortDescription Rows per page.
  * @category Data
- * @listing See listing
- * var dataSource = grid.dataSource();
- * var pageSize = dataSource.pageSize();
+ * @example anychart.core.dataSheet.DataSource.pageSize_get
  * @return {number} The current page size.
  * @since 9.0.0
  */
@@ -89,9 +89,7 @@ anychart.core.dataSheet.DataSource.prototype.pageSize;
  * The value is coerced to a number and clamped to a minimum of 1; a non-numeric value falls back to 50,
  * which is also the initial page size. Changing the page size clears the page cache, so the next
  * draw refetches the visible rows.
- * @listing See listing
- * var dataSource = grid.dataSource();
- * dataSource.pageSize(100);
+ * @example anychart.core.dataSheet.DataSource.pageSize_set
  * @param {number=} opt_value Number of rows per page.
  * @return {anychart.core.dataSheet.DataSource} Self instance for method chaining.
  * @since 9.0.0
@@ -108,9 +106,7 @@ anychart.core.dataSheet.DataSource.prototype.pageSize;
  * Getter for the maximum number of pages kept in the cache.
  * @shortDescription Cached pages limit.
  * @category Specific settings
- * @listing See listing
- * var dataSource = grid.dataSource();
- * var cacheSize = dataSource.cacheSize();
+ * @example anychart.core.dataSheet.DataSource.cacheSize_get
  * @return {number} The current cache size, in pages.
  * @since 9.0.0
  */
@@ -122,9 +118,7 @@ anychart.core.dataSheet.DataSource.prototype.cacheSize;
  * a number and clamped to a minimum of 1; a non-numeric value falls back to 10, which is also the
  * initial cache size. Unlike {@link anychart.core.dataSheet.DataSource#pageSize}, changing the cache
  * size does not clear already cached pages.
- * @listing See listing
- * var dataSource = grid.dataSource();
- * dataSource.cacheSize(25);
+ * @example anychart.core.dataSheet.DataSource.cacheSize_set
  * @param {number=} opt_value Maximum number of cached pages.
  * @return {anychart.core.dataSheet.DataSource} Self instance for method chaining.
  * @since 9.0.0
@@ -143,9 +137,7 @@ anychart.core.dataSheet.DataSource.prototype.cacheSize;
  * first page has been loaded. Clearing the cache resets it back to 0.
  * @shortDescription Total row count.
  * @category Data
- * @listing See listing
- * var dataSource = grid.dataSource();
- * var totalRows = dataSource.totalRows();
+ * @example anychart.core.dataSheet.DataSource.totalRows
  * @return {number} Total number of rows available on the server.
  * @since 9.0.0
  */
@@ -163,11 +155,7 @@ anychart.core.dataSheet.DataSource.prototype.totalRows;
  * renders from its own local data.
  * @shortDescription Whether the source is configured.
  * @category Data
- * @listing See listing
- * var dataSource = grid.dataSource();
- * if (dataSource.isActive()) {
- *   dataSource.refresh();
- * }
+ * @example anychart.core.dataSheet.DataSource.isActive
  * @return {boolean} True if an adapter or a config is set.
  * @since 9.0.0
  */
@@ -184,9 +172,7 @@ anychart.core.dataSheet.DataSource.prototype.isActive;
  * The flag is raised when a fetch starts and lowered when the last pending request completes.
  * @shortDescription Whether a request is in flight.
  * @category Data
- * @listing See listing
- * var dataSource = grid.dataSource();
- * var loading = dataSource.isLoading();
+ * @example anychart.core.dataSheet.DataSource.isLoading
  * @return {boolean} True while data is being loaded.
  * @since 9.0.0
  */
@@ -205,9 +191,7 @@ anychart.core.dataSheet.DataSource.prototype.isLoading;
  * error is pending, and it is reset when a new fetch starts or the cache is cleared.
  * @shortDescription Last error message.
  * @category Data
- * @listing See listing
- * var dataSource = grid.dataSource();
- * var error = dataSource.getError();
+ * @example anychart.core.dataSheet.DataSource.getError
  * @return {?string} The last error message, or null if there is none.
  * @since 9.0.0
  */
@@ -226,9 +210,7 @@ anychart.core.dataSheet.DataSource.prototype.getError;
  * arrives. The end index is exclusive.
  * @shortDescription Rows of a range.
  * @category Data
- * @listing See listing
- * var dataSource = grid.dataSource();
- * var rows = dataSource.getRows(0, 50, {sort: {field: 'name', direction: 'asc'}});
+ * @example anychart.core.dataSheet.DataSource.getRows
  * @param {number} startRow Absolute index of the first row.
  * @param {number} endRow Absolute index after the last row.
  * @param {Object=} opt_params Optional request params: sort, filter and search.
@@ -251,9 +233,7 @@ anychart.core.dataSheet.DataSource.prototype.getRows;
  * Either way the grid is invalidated and redrawn.
  * @shortDescription Requests a page.
  * @category Data
- * @listing See listing
- * var dataSource = grid.dataSource();
- * dataSource.fetchPage(0);
+ * @example anychart.core.dataSheet.DataSource.fetchPage
  * @param {number} page Zero-based page number.
  * @param {Object=} opt_params Optional request params: sort, filter and search.
  * @since 9.0.0
@@ -274,9 +254,7 @@ anychart.core.dataSheet.DataSource.prototype.fetchPage;
  * not ask the grid to redraw.
  * @shortDescription Clears the page cache.
  * @category Specific settings
- * @listing See listing
- * var dataSource = grid.dataSource();
- * dataSource.clearCache();
+ * @example anychart.core.dataSheet.DataSource.clearCache
  * @since 9.0.0
  */
 anychart.core.dataSheet.DataSource.prototype.clearCache;
@@ -293,9 +271,7 @@ anychart.core.dataSheet.DataSource.prototype.clearCache;
  * requests a redraw, so the pages covering the current viewport are fetched again from the server.
  * @shortDescription Reloads the data.
  * @category Data
- * @listing See listing
- * var dataSource = grid.dataSource();
- * dataSource.refresh();
+ * @example anychart.core.dataSheet.DataSource.refresh
  * @since 9.0.0
  */
 anychart.core.dataSheet.DataSource.prototype.refresh;
