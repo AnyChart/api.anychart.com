@@ -53,6 +53,9 @@
         // The grid.column() call works only after the first draw.
         var column = grid.column(1);
         column.width(320);
+        // The rows use a flex layout that squeezes wide columns back - matching
+        // minWidth keeps the full 320px (see the Data Sheet article on pinning).
+        column.minWidth(320);
         grid.draw();
         document.getElementById('title').innerHTML = 'Second column widened to 320px';
     });

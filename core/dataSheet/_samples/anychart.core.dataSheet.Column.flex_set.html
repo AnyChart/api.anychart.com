@@ -49,7 +49,15 @@
         grid.container('container');
         grid.draw();
 
-        // The grid.column() call works only after the first draw.
+        // Flex shares split the spare width, so keep the grid to three columns -
+        // with six, a narrow container leaves no spare width to split.
+        grid.data([
+            {id: 1, product: 'Laptop', category: 'Tech'},
+            {id: 2, product: 'Chair', category: 'Office'},
+            {id: 3, product: 'Monitor', category: 'Tech'}
+        ]);
+        grid.draw();
+
         // Only columns sized 'flex' join the flex pool, so switch two of them over -
         // Product gets 3 shares, Category 1, so Product ends up three times wider.
         grid.column(1).sizing('flex').flex(3);

@@ -56,6 +56,9 @@
         // just fit its content - only auto-sized columns take part.
         column.sizing('auto');
         grid.autoSizeColumns();
+
+        // A matching minWidth stops the flex row layout from squeezing it further.
+        column.minWidth(column.width());
         grid.draw();
         document.getElementById('title').innerHTML = 'Second column switched to auto sizing - autoSizeColumns() shrank it to ' + column.width() + 'px, just enough for its content';
     });
