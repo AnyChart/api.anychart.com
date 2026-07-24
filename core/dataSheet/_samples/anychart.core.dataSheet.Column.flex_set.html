@@ -49,12 +49,17 @@
         grid.container('container');
         grid.draw();
 
-        // Second column takes 3 shares of the spare width, every other column takes 1
-        var column = grid.column(1);
-        column.sizing('flex');
-        column.flex(3);
+        // The grid.column() call works only after the first draw.
+        // Only columns sized 'flex' join the flex pool, so switch two of them over -
+        // Product gets 3 shares, Category 1, so Product ends up three times wider.
+        grid.column(1).sizing('flex').flex(3);
+        grid.column(2).sizing('flex').flex(1);
+
+        // The flex widths are computed in the bounds pass, so reset the bounds to apply them.
+        grid.bounds(0, 0, '100%', '100%');
         grid.draw();
-        document.getElementById('title').innerHTML = 'Second column takes 3 shares of the spare width, every other column takes 1';
+        var cells = document.querySelectorAll('.anychart-ds-header-cell');
+        document.getElementById('title').innerHTML = 'Product has 3 flex shares, Category 1 - on screen they are ' + Math.round(cells[1].getBoundingClientRect().width) + 'px and ' + Math.round(cells[2].getBoundingClientRect().width) + 'px wide';
     });
 </script>
 </body>

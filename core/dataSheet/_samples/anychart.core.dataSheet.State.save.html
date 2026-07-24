@@ -49,13 +49,14 @@
         grid.container('container');
         grid.draw();
 
-        // Change the grid, then store the layout under a key.
+        // Change the grid, then store the layout under a key. In localStorage the key
+        // gets the 'anychart-data-sheet-' prefix.
         var state = grid.state();
         grid.sorting().sortBy('price', 'desc');
         grid.column(1).width(280);
         grid.draw();
         state.save('my-grid');
-        document.getElementById('title').innerHTML = 'Layout saved under \'my-grid\': ' + (window.localStorage.getItem('my-grid') || '').slice(0, 90) + '...';
+        document.getElementById('title').innerHTML = 'Layout saved under \'my-grid\': ' + (window.localStorage.getItem('anychart-data-sheet-my-grid') || '').slice(0, 90) + '...';
     });
 </script>
 </body>

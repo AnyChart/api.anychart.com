@@ -51,9 +51,10 @@
 
         grid.groupBy('category');
         grid.draw();
-        // The display list is what is actually on screen: group headers and rows.
+        // The display list is what is actually on screen. Each node carries a type,
+        // 'group' for a group header and 'data' for a plain row.
         var displayList = grid.hierarchy().getDisplayList();
-        document.getElementById('title').innerHTML = 'getDisplayList() returned ' + displayList.length + ' entries, of which ' + displayList.filter(function (n) { return n['isGroup']; }).length + ' are group headers';
+        document.getElementById('title').innerHTML = 'getDisplayList() returned ' + displayList.length + ' entries, of which ' + displayList.filter(function (n) { return n['type'] === 'group'; }).length + ' are group headers';
     });
 </script>
 </body>

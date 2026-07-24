@@ -53,11 +53,12 @@
         grid.sorting().sortBy('price', 'desc');
         grid.draw();
         state.save('my-grid');
-        var saved = window.localStorage.getItem('my-grid') !== null;
+        // In localStorage the key gets the 'anychart-data-sheet-' prefix.
+        var saved = window.localStorage.getItem('anychart-data-sheet-my-grid') !== null;
 
         // Throw the stored layout away.
         state.clear('my-grid');
-        document.getElementById('title').innerHTML = 'Stored after save(): ' + saved + ', after clear(): ' + (window.localStorage.getItem('my-grid') !== null);
+        document.getElementById('title').innerHTML = 'Stored after save(): ' + saved + ', after clear(): ' + (window.localStorage.getItem('anychart-data-sheet-my-grid') !== null);
     });
 </script>
 </body>

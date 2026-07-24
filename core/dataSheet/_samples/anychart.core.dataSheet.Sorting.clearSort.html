@@ -49,15 +49,17 @@
         grid.container('container');
         grid.draw();
 
+        // Sort ascending - the cheapest row (Lamp) comes up first.
         var sorting = grid.sorting();
-        sorting.sortBy('price', 'desc');
+        sorting.sortBy('price', 'asc');
         grid.draw();
-        var sorted = document.querySelector('.anychart-ds-cell').parentNode.textContent;
+        var sortedFirst = document.querySelectorAll('.anychart-ds-cell')[1].textContent;
 
-        // Drop the sort and go back to the data order.
+        // Drop the sort - the grid goes back to the data order.
         sorting.clearSort();
         grid.draw();
-        document.getElementById('title').innerHTML = 'Sorted by price the first row was Laptop; after clearSort() it is ' + grid.data()[0]['product'] + ' again';
+        var restoredFirst = document.querySelectorAll('.anychart-ds-cell')[1].textContent;
+        document.getElementById('title').innerHTML = 'Sorted, the first row was ' + sortedFirst + '; clearSort() restored the data order and it is ' + restoredFirst + ' again';
     });
 </script>
 </body>

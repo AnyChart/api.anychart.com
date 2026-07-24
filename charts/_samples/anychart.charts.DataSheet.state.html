@@ -49,11 +49,12 @@
         grid.container('container');
         grid.draw();
 
-        // state() returns the controller that stores and restores the layout.
+        // The state() call returns the controller that stores and restores the layout.
+        // In localStorage the key gets the 'anychart-data-sheet-' prefix.
         grid.sorting().sortBy('price', 'desc');
         grid.draw();
         grid.state().save('my-grid');
-        document.getElementById('title').innerHTML = 'state() returned the controller; save() stored ' + (window.localStorage.getItem('my-grid') || '').length + ' characters under \'my-grid\'';
+        document.getElementById('title').innerHTML = 'state() returned the controller; save() stored ' + (window.localStorage.getItem('anychart-data-sheet-my-grid') || '').length + ' characters under \'my-grid\'';
     });
 </script>
 </body>

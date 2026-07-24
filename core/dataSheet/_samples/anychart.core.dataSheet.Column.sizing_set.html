@@ -49,11 +49,15 @@
         grid.container('container');
         grid.draw();
 
-        // Second column switched to flex sizing - it now shares the spare width
+        // The grid.column() call works only after the first draw.
         var column = grid.column(1);
-        column.sizing('flex');
+
+        // Switch the column to 'auto' sizing and let autoSizeColumns() shrink it to
+        // just fit its content - only auto-sized columns take part.
+        column.sizing('auto');
+        grid.autoSizeColumns();
         grid.draw();
-        document.getElementById('title').innerHTML = 'Second column switched to flex sizing - it now shares the spare width';
+        document.getElementById('title').innerHTML = 'Second column switched to auto sizing - autoSizeColumns() shrank it to ' + column.width() + 'px, just enough for its content';
     });
 </script>
 </body>

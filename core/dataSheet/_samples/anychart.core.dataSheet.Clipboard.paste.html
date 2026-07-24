@@ -49,14 +49,21 @@
         grid.container('container');
         grid.draw();
 
-        // paste() reads the system clipboard, which the browser only permits
-        // from a user gesture, so use a button.
-        document.getElementById('title').innerHTML = 'Copy some cells, select a target cell, then:'
+        // Pasting writes only into editable cells, so make every column editable.
+        // Columns are touched after the first draw on purpose.
+        for (var i = 0; i < grid.columnCount(); i++) {
+            grid.column(i).editable(true);
+        }
+        grid.draw();
+
+        // The paste() call reads the system clipboard, which the browser only permits
+        // from a user gesture, so use a button. It writes at the keyboard focus cell -
+        // a mouse click only selects the row, the target cell is picked with the arrow keys.
+        document.getElementById('title').innerHTML = 'Copy some cells, click the grid, pick the target cell with the arrow keys, then:'
             + ' <button id=\'go\'>paste()</button>';
         document.getElementById('go').onclick = function () {
             grid.clipboard().paste();
-            grid.draw();
-            document.getElementById('title').innerHTML = 'paste() called - the clipboard text was written into the grid.';
+            document.getElementById('title').innerHTML = 'paste() called - the clipboard text goes into the editable cells at the focus cell.';
         };
     });
 </script>

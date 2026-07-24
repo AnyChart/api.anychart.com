@@ -51,9 +51,11 @@
 
         grid.groupBy('category');
         grid.draw();
-        grid.hierarchy().collapseAll();
+        // Fold one group, so there is an open/closed state to capture.
+        grid.hierarchy().collapse('category=Tech');
+        grid.draw();
 
-        // serialize() captures the grouping and which groups are open.
+        // The serialize() call captures the grouping and which groups are open.
         var json = grid.hierarchy().serialize();
         document.getElementById('title').innerHTML = 'serialize() returned: ' + JSON.stringify(json);
     });

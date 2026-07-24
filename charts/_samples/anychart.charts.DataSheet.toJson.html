@@ -49,9 +49,9 @@
         grid.container('container');
         grid.draw();
 
-        // toJson() captures the whole grid setup: columns, sorting, filters, grouping.
+        // The toJson() call captures the grid setup: appearance, sorting, filters,
+        // grouping and the other controllers. Column layout is not part of it.
         grid.sorting().sortBy('price', 'desc');
-        grid.column(1).width(240);
         grid.draw();
         var json = grid.toJson();
         document.getElementById('title').innerHTML = 'toJson() returned the grid config under json.chart. Its keys: ' + Object.keys(json.chart).slice(0, 12).join(", ") + ", ...";

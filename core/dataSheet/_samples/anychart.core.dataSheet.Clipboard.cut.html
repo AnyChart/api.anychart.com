@@ -49,14 +49,21 @@
         grid.container('container');
         grid.draw();
 
-        // cut() copies the selection and clears the cut cells.
+        // Cutting clears only editable cells, so allow a multi-row selection and make
+        // every column editable. Columns are touched after the first draw on purpose.
+        grid.selection().mode('multi');
+        for (var i = 0; i < grid.columnCount(); i++) {
+            grid.column(i).editable(true);
+        }
+        grid.draw();
+
         // The browser only allows clipboard writes from a user gesture, so use a button.
         document.getElementById('title').innerHTML = 'Select rows, then press the button:'
             + ' <button id=\'go\'>cut()</button>';
         document.getElementById('go').onclick = function () {
             grid.clipboard().cut();
             grid.draw();
-            document.getElementById('title').innerHTML = 'cut() called - the cut cells are now empty.';
+            document.getElementById('title').innerHTML = 'cut() called - the cut rows were copied and their cells are now empty.';
         };
     });
 </script>

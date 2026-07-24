@@ -49,11 +49,13 @@
         grid.container('container');
         grid.draw();
 
-        // Price column typed as a number - values align right and sort numerically
-        var column = grid.column(3);
-        column.dataType('number');
+        // The grid.column() call works only after the first draw.
+        // Numeric fields are auto-detected as numbers, so re-typing the price column
+        // would change nothing - re-type the Id column to a string instead.
+        var column = grid.column(0);
+        column.dataType('string');
         grid.draw();
-        document.getElementById('title').innerHTML = 'Price column typed as a number - values align right and sort numerically';
+        document.getElementById('title').innerHTML = 'Id column re-typed as a string - the values lose the numeric right alignment';
     });
 </script>
 </body>

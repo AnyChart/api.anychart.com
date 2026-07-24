@@ -49,11 +49,12 @@
         grid.container('container');
         grid.draw();
 
-        // draw() renders the grid, and re-renders it after a change.
+        // The draw() call renders the grid, and re-renders it after a change.
         var rowsFirst = document.querySelectorAll('.anychart-ds-row').length;
         grid.filter().filterBy('category', {type: 'text', mode: 'exact', value: 'Tech'});
 
-        // Without this second draw() the filter would not reach the screen.
+        // A change schedules its own repaint; calling draw() applies it at once, so the
+        // caption can count the rows synchronously.
         grid.draw();
         document.getElementById('title').innerHTML = 'After the first draw(): ' + rowsFirst + ' rows. After changing the filter and calling draw() again: ' + document.querySelectorAll('.anychart-ds-row').length;
     });

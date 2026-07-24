@@ -49,7 +49,11 @@
         grid.container('container');
         grid.draw();
 
-        // copy() puts the selected rows on the system clipboard.
+        // Allow more than one row to be picked up.
+        grid.selection().mode('multi');
+        grid.draw();
+
+        // The copy() call puts the selected rows on the system clipboard.
         // The browser only allows that from a user gesture, so use a button.
         document.getElementById('title').innerHTML = 'Select rows, then press the button:'
             + ' <button id=\'go\'>copy()</button>';

@@ -50,12 +50,13 @@
         grid.draw();
 
         // With autoSave on, every layout change is stored without calling save().
+        // In localStorage the key gets the 'anychart-data-sheet-' prefix.
         var state = grid.state();
         state.clear('my-grid');
         state.autoSave('my-grid');
         grid.sorting().sortBy('price', 'desc');
         grid.draw();
-        document.getElementById('title').innerHTML = 'autoSave stored the sort by itself: ' + (window.localStorage.getItem('my-grid') !== null);
+        document.getElementById('title').innerHTML = 'autoSave stored the sort by itself: ' + (window.localStorage.getItem('anychart-data-sheet-my-grid') !== null);
     });
 </script>
 </body>

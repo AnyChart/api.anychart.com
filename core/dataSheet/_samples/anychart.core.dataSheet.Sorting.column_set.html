@@ -49,11 +49,14 @@
         grid.container('container');
         grid.draw();
 
-        // column() and order() are the single-column form of sortBy().
+        // The column() and order() pair is the single-column form of sortBy().
+        // The order starts out as 'none', so the sort only kicks in once a
+        // direction is set as well.
         var sorting = grid.sorting();
         sorting.column('price');
+        sorting.order('desc');
         grid.draw();
-        document.getElementById('title').innerHTML = 'Sort column set to "price" - the grid is now ordered by price';
+        document.getElementById('title').innerHTML = 'Sort column set to "price" - with a direction set, the grid is ordered by price';
     });
 </script>
 </body>

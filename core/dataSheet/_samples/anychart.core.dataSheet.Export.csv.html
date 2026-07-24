@@ -49,8 +49,9 @@
         grid.container('container');
         grid.draw();
 
-        // csv() also downloads a .csv file, which the browser only allows from a user
-        // gesture, so run it from a button. It returns the same text it downloads.
+        // The csv() call downloads a .csv file as a side effect, so run it from a
+        // button - a download firing on page load would be unwanted. It also returns
+        // the same text it downloads.
         document.getElementById('title').innerHTML = 'Export the grid as CSV:'
             + ' <button id=\'go\'>csv()</button>';
         document.getElementById('go').onclick = function () {
