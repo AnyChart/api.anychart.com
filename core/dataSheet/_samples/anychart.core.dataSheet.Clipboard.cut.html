@@ -5,37 +5,59 @@
     <meta name="ac:name" content="anychart.core.dataSheet.Clipboard.cut"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
-    <script src="https://cdn.anychart.com/releases/staging/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/staging/js/anychart-core.min.js"></script>
     <script src="https://cdn.anychart.com/releases/staging/js/anychart-data-sheet.min.js"></script>
     <script src="https://cdn.anychart.com/releases/staging/js/anychart-exports.min.js"></script>
     <script src="https://cdn.anychart.com/releases/staging/js/anychart-ui.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/staging/css/anychart-ui.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/staging/css/data-sheet.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/staging/css/anychart-ui.min.css"/>
     <style>
-        html, body, #container {
+        html, body {
             width: 100%;
             height: 100%;
             margin: 0;
             padding: 0;
         }
+        #title {
+            font: 13px/1.4 Verdana, Helvetica, Arial, sans-serif;
+            color: #212121;
+            padding: 10px 12px 8px;
+            box-sizing: border-box;
+        }
+        #container {
+            width: 100%;
+            height: calc(100% - 40px);
+        }
     </style>
 </head>
 <body>
+<div id="title"></div>
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
-        var grid = anychart.dataSheet([
-            {id: 1, name: 'Phase 1', value: 45, status: 'open'},
-            {id: 2, name: 'Task A', parent: 1, value: 30, status: 'done'},
-            {id: 3, name: 'Task B', parent: 1, value: 25, status: 'open'},
-            {id: 4, name: 'Phase 2', value: 60, status: 'open'}
-        ]);
+        var data = [
+            {id: 1, product: 'Laptop', category: 'Tech', price: 1200, stock: 34, status: 'In stock'},
+            {id: 2, product: 'Chair', category: 'Office', price: 150, stock: 120, status: 'In stock'},
+            {id: 3, product: 'Monitor', category: 'Tech', price: 300, stock: 58, status: 'In stock'},
+            {id: 4, product: 'Desk', category: 'Office', price: 450, stock: 12, status: 'Low'},
+            {id: 5, product: 'Keyboard', category: 'Tech', price: 80, stock: 240, status: 'In stock'},
+            {id: 6, product: 'Lamp', category: 'Office', price: 45, stock: 0, status: 'Out of stock'}
+        ];
 
-        var clipboard = grid.clipboard();
-        clipboard.cut();
+        var grid = anychart.dataSheet(data);
 
         grid.container('container');
         grid.draw();
+
+        // cut() copies the selection and clears the cut cells.
+        // The browser only allows clipboard writes from a user gesture, so use a button.
+        document.getElementById('title').innerHTML = 'Select rows, then press the button:'
+            + ' <button id=\'go\'>cut()</button>';
+        document.getElementById('go').onclick = function () {
+            grid.clipboard().cut();
+            grid.draw();
+            document.getElementById('title').innerHTML = 'cut() called - the cut cells are now empty.';
+        };
     });
 </script>
 </body>
