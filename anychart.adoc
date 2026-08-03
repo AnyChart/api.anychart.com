@@ -211,3 +211,46 @@ anychart.editor;
  */
 anychart.getChartById;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.loadModule
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Loads an optional module by name, without a script tag.
+ * @detailed The returned Promise resolves once the script has loaded <b>and</b> the module has registered itself, so anything the module provides is ready to use inside <b>then</b>. A module that is already loaded resolves immediately, and a failed load can be retried.<br/>Modules are resolved through the release manifest, so the name is the one in the file name without the <b>anychart-</b> prefix and the <b>.min.js</b> suffix.
+ * @shortDescription Loads an optional module by name.
+ * @category Modules
+ * @listing Sample
+ * anychart.loadModule('boost-webgl').then(function () {
+ *   chart.boostEnabled(true);
+ *   chart.draw();
+ * });
+ * {docs:Quick_Start/Modules}Learn more about modules.{docs}
+ * @param {string} name Module name, for example <b>'boost-webgl'</b>, <b>'data-sheet'</b> or <b>'theme-coffee'</b>.
+ * @param {Object=} opt_options Loader options: <b>cdnBase</b> to load from somewhere other than the default CDN, <b>sri</b> to pin an integrity hash, <b>unsafe</b> to skip the integrity check.
+ * @return {!Promise} Promise resolved when the module is loaded and registered.
+ * @since 9.0.0
+ */
+anychart.loadModule;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.preload
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Starts loading an optional module without waiting for the result.
+ * @detailed Same as {@link anychart.loadModule}, but fire-and-forget: nothing is returned and a failure is only reported to the console. Use it to warm a module up ahead of the moment it is needed.
+ * @shortDescription Warms up an optional module.
+ * @category Modules
+ * @listing Sample
+ * anychart.preload('boost-webgl');
+ * @param {string} name Module name, for example <b>'boost-webgl'</b>.
+ * @param {Object=} opt_options Loader options, as in {@link anychart.loadModule}.
+ * @since 9.0.0
+ */
+anychart.preload;
+
