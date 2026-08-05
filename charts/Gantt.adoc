@@ -2178,18 +2178,6 @@ anychart.charts.Gantt.prototype.toA11yTable;
  */
 anychart.charts.Gantt.prototype.toHtmlTable;
 
-/**
- * @inheritDoc
- * @ignoreDoc
- */
-anychart.charts.Gantt.prototype.enabled;
-
-/**
- * @inheritDoc
- * @ignoreDoc
- */
-anychart.charts.Gantt.prototype.dispose;
-
 //----------------------------------------------------------------------------------------------------------------------
 //
 //  anychart.charts.Gantt.prototype.boostEnabled
@@ -2200,6 +2188,7 @@ anychart.charts.Gantt.prototype.dispose;
  * Getter for the boost rendering state.
  * @shortDescription Boost rendering state.
  * @category Specific settings
+ * @example anychart.charts.Gantt.boostEnabled_get
  * @return {boolean|null} The current value.
  * @since 9.0.0
  */
@@ -2208,6 +2197,7 @@ anychart.charts.Gantt.prototype.boostEnabled;
 /**
  * Setter for the boost rendering state of the timeline.<br/><b>null</b> (default) turns boost on automatically as soon as the number of visible rows passes {@link anychart.charts.Gantt#boostThreshold}. <b>true</b> boosts unconditionally, bypassing that check. <b>false</b> never boosts.<br/><b>Note</b>: Boost is skipped while live editing is active, because dragging is not supported on the boosted layer. The Gantt timeline boosts onto a Canvas layer only, so no extra module is involved.
  * {docs:Common_Settings/Performance_Boost}Learn more about boost and decimation.{docs}
+ * @example anychart.charts.Gantt.boostEnabled_set
  * @param {(boolean|null)=} opt_value [null] Value to set.
  * @return {anychart.charts.Gantt} Self instance for method chaining.
  * @since 9.0.0
@@ -2224,15 +2214,29 @@ anychart.charts.Gantt.prototype.boostEnabled;
  * Getter for the boost row threshold.
  * @shortDescription Boost row threshold.
  * @category Specific settings
+ * @example anychart.charts.Gantt.boostThreshold_get
  * @return {number} The current value.
  * @since 9.0.0
  */
 anychart.charts.Gantt.prototype.boostThreshold;
 
 /**
- * Setter for the number of visible rows above which boost switches on automatically.<br/>Only consulted while {@link anychart.charts.Gantt#boostEnabled} is <b>null</b>; an explicit <b>true</b> or <b>false</b> ignores this value.
+ * Setter for the number of visible rows above which boost switches on automatically.<br/>Only consulted while {@link anychart.charts.Gantt#boostEnabled} is <b>null</b>; an explicit <b>true</b> or <b>false</b> ignores this value.<br/><b>Note</b>: the count is of the rows currently in view, not of the whole tree, so the built-in <b>500</b> only fires on a very tall timeline. No theme carries this option either, so the getter returns <b>undefined</b> until it is set - <b>500</b> is the fallback the timeline applies internally, not a theme default.
+ * @example anychart.charts.Gantt.boostThreshold_set
  * @param {(number)=} opt_value [500] Value to set.
  * @return {anychart.charts.Gantt} Self instance for method chaining.
  * @since 9.0.0
  */
 anychart.charts.Gantt.prototype.boostThreshold;
+
+/**
+ * @inheritDoc
+ * @ignoreDoc
+ */
+anychart.charts.Gantt.prototype.enabled;
+
+/**
+ * @inheritDoc
+ * @ignoreDoc
+ */
+anychart.charts.Gantt.prototype.dispose;

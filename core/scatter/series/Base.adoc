@@ -573,15 +573,6 @@ anychart.core.scatter.series.Base.prototype.includeAllPoints;
  */
 anychart.core.scatter.series.Base.prototype.getExcludedPoints;
 
-/** @inheritDoc */
-anychart.core.scatter.series.Base.prototype.getPoint;
-
-/** @inheritDoc */
-anychart.core.scatter.series.Base.prototype.getStat;
-
-/** @inheritDoc */
-anychart.core.scatter.series.Base.prototype.a11y;
-
 //----------------------------------------------------------------------------------------------------------------------
 //
 //  anychart.core.scatter.series.Base.prototype.boostEnabled
@@ -592,6 +583,7 @@ anychart.core.scatter.series.Base.prototype.a11y;
  * Getter for the boost rendering state.
  * @shortDescription Boost rendering state.
  * @category Specific settings
+ * @example anychart.core.scatter.series.Base.boostEnabled_get
  * @return {boolean|null} The current value.
  * @since 9.0.0
  */
@@ -600,6 +592,7 @@ anychart.core.scatter.series.Base.prototype.boostEnabled;
 /**
  * Setter for the boost rendering state.<br/><b>null</b> (default) turns boost on automatically, but only when the series has more points than {@link anychart.core.scatter.series.Base#boostThreshold} <b>and</b> it is the only enabled series on the plot. <b>true</b> boosts unconditionally, bypassing both of those checks. <b>false</b> never boosts.<br/><b>Note</b>: Boost never applies to stacked, 3D, OHLC or range-based series, whatever this option is set to. Boost draws on a Canvas layer; the WebGL renderer is an optional module loaded with anychart.loadModule('boost-webgl') and falls back to Canvas when it is not present.
  * {docs:Common_Settings/Performance_Boost}Learn more about boost and decimation.{docs}
+ * @example anychart.core.scatter.series.Base.boostEnabled_set
  * @param {(boolean|null)=} opt_value [null] Value to set.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
  * @since 9.0.0
@@ -616,6 +609,7 @@ anychart.core.scatter.series.Base.prototype.boostEnabled;
  * Getter for the boost point threshold.
  * @shortDescription Boost point threshold.
  * @category Specific settings
+ * @example anychart.core.scatter.series.Base.boostThreshold_get
  * @return {number} The current value.
  * @since 9.0.0
  */
@@ -623,6 +617,7 @@ anychart.core.scatter.series.Base.prototype.boostThreshold;
 
 /**
  * Setter for the number of points above which boost switches on automatically.<br/>Only consulted while {@link anychart.core.scatter.series.Base#boostEnabled} is <b>null</b>; an explicit <b>true</b> or <b>false</b> ignores this value.
+ * @example anychart.core.scatter.series.Base.boostThreshold_set
  * @param {(number)=} opt_value [5000] Value to set.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
  * @since 9.0.0
@@ -639,6 +634,7 @@ anychart.core.scatter.series.Base.prototype.boostThreshold;
  * Getter for the decimation point limit.
  * @shortDescription Decimation point limit.
  * @category Specific settings
+ * @example anychart.core.scatter.series.Base.maxPointsRendered_get
  * @return {number} The current value.
  * @since 9.0.0
  */
@@ -646,6 +642,7 @@ anychart.core.scatter.series.Base.prototype.maxPointsRendered;
 
 /**
  * Setter for the largest number of points drawn per series; above it the series is decimated for display, which does not change the underlying data.<br/>Set <b>0</b> to switch decimation off entirely. Decimation is also skipped for stacked series, for size-encoded series such as bubble, and whenever boost draws the points instead.
+ * @example anychart.core.scatter.series.Base.maxPointsRendered_set
  * @param {(number)=} opt_value [1500] Value to set.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
  * @since 9.0.0
@@ -662,6 +659,7 @@ anychart.core.scatter.series.Base.prototype.maxPointsRendered;
  * Getter for the decimation algorithm.
  * @shortDescription Decimation algorithm.
  * @category Specific settings
+ * @example anychart.core.scatter.series.Base.decimationAlgorithm_get
  * @return {string} The current value.
  * @since 9.0.0
  */
@@ -674,8 +672,18 @@ anychart.core.scatter.series.Base.prototype.decimationAlgorithm;
  *   <li><b>'lttb'</b> - Largest-Triangle-Three-Buckets; keeps the visual shape of the curve.</li>
  *   <li><b>'min-max'</b> - keeps the extremes of every bucket, so peaks and troughs survive.</li>
  * </ul>
+ * @example anychart.core.scatter.series.Base.decimationAlgorithm_set
  * @param {(string)=} opt_value ['auto'] Value to set.
  * @return {anychart.core.scatter.series.Base} Self instance for method chaining.
  * @since 9.0.0
  */
 anychart.core.scatter.series.Base.prototype.decimationAlgorithm;
+
+/** @inheritDoc */
+anychart.core.scatter.series.Base.prototype.getPoint;
+
+/** @inheritDoc */
+anychart.core.scatter.series.Base.prototype.getStat;
+
+/** @inheritDoc */
+anychart.core.scatter.series.Base.prototype.a11y;
