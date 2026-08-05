@@ -3005,6 +3005,7 @@ anychart.charts.Scatter.prototype.boostEnabled;
 
 /**
  * Setter for the boost rendering state.<br/><b>null</b> (default) turns boost on automatically, but only when the series has more points than {@link anychart.charts.Scatter#boostThreshold} <b>and</b> it is the only enabled series on the plot. <b>true</b> boosts unconditionally, bypassing both of those checks. <b>false</b> never boosts.<br/><b>Note</b>: Boost never applies to stacked, 3D, OHLC or range-based series, whatever this option is set to. Boost draws on a Canvas layer; the WebGL renderer is an optional module loaded with anychart.loadModule('boost-webgl') and falls back to Canvas when it is not present.
+ * {docs:Common_Settings/Performance_Boost}Learn more about boost and decimation.{docs}
  * @example anychart.charts.Scatter.boostEnabled_set
  * @param {(boolean|null)=} opt_value [null] Value to set.
  * @return {anychart.charts.Scatter} Self instance for method chaining.
@@ -3081,7 +3082,7 @@ anychart.charts.Scatter.prototype.decimationAlgorithm;
 /**
  * Setter for the algorithm used to thin the series out:
  * <ul>
- *   <li><b>'auto'</b> - picks <b>'min-max'</b> for discrete series (bar, column) and <b>'lttb'</b> for continuous ones (line, area).</li>
+ *   <li><b>'auto'</b> - picks <b>'min-max'</b> for discrete series, the ones that draw a separate mark per point, and <b>'lttb'</b> for continuous ones (line, area).</li>
  *   <li><b>'lttb'</b> - Largest-Triangle-Three-Buckets; keeps the visual shape of the curve.</li>
  *   <li><b>'min-max'</b> - keeps the extremes of every bucket, so peaks and troughs survive.</li>
  * </ul>

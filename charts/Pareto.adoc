@@ -2808,3 +2808,101 @@ anychart.charts.Pareto.prototype.stepArea;
 
 /** @ignoreDoc **/
 anychart.charts.Pareto.prototype.stepLine;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Pareto.prototype.boostEnabled
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the boost rendering state.
+ * @shortDescription Boost rendering state.
+ * @category Specific settings
+ * @return {boolean|null} The current value.
+ * @since 9.0.0
+ */
+anychart.charts.Pareto.prototype.boostEnabled;
+
+/**
+ * Setter for the boost rendering state.<br/><b>null</b> (default) turns boost on automatically, but only when the series has more points than {@link anychart.charts.Pareto#boostThreshold} <b>and</b> it is the only enabled series on the plot. <b>true</b> boosts unconditionally, bypassing both of those checks. <b>false</b> never boosts.<br/><b>Note</b>: Boost never applies to stacked, 3D, OHLC or range-based series, whatever this option is set to. Boost draws on a Canvas layer; the WebGL renderer is an optional module loaded with anychart.loadModule('boost-webgl') and falls back to Canvas when it is not present.
+ * {docs:Common_Settings/Performance_Boost}Learn more about boost and decimation.{docs}
+ * @param {(boolean|null)=} opt_value [null] Value to set.
+ * @return {anychart.charts.Pareto} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.Pareto.prototype.boostEnabled;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Pareto.prototype.boostThreshold
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the boost point threshold.
+ * @shortDescription Boost point threshold.
+ * @category Specific settings
+ * @return {number} The current value.
+ * @since 9.0.0
+ */
+anychart.charts.Pareto.prototype.boostThreshold;
+
+/**
+ * Setter for the number of points above which boost switches on automatically.<br/>Only consulted while {@link anychart.charts.Pareto#boostEnabled} is <b>null</b>; an explicit <b>true</b> or <b>false</b> ignores this value.
+ * @param {(number)=} opt_value [5000] Value to set.
+ * @return {anychart.charts.Pareto} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.Pareto.prototype.boostThreshold;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Pareto.prototype.maxPointsRendered
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the decimation point limit.
+ * @shortDescription Decimation point limit.
+ * @category Specific settings
+ * @return {number} The current value.
+ * @since 9.0.0
+ */
+anychart.charts.Pareto.prototype.maxPointsRendered;
+
+/**
+ * Setter for the largest number of points drawn per series; above it the series is decimated for display, which does not change the underlying data.<br/>Set <b>0</b> to switch decimation off entirely. Decimation is also skipped for stacked series, for size-encoded series such as bubble, and whenever boost draws the points instead.
+ * @param {(number)=} opt_value [1500] Value to set.
+ * @return {anychart.charts.Pareto} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.Pareto.prototype.maxPointsRendered;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Pareto.prototype.decimationAlgorithm
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the decimation algorithm.
+ * @shortDescription Decimation algorithm.
+ * @category Specific settings
+ * @return {string} The current value.
+ * @since 9.0.0
+ */
+anychart.charts.Pareto.prototype.decimationAlgorithm;
+
+/**
+ * Setter for the algorithm used to thin the series out:
+ * <ul>
+ *   <li><b>'auto'</b> - picks <b>'min-max'</b> for discrete series, the ones that draw a separate mark per point, and <b>'lttb'</b> for continuous ones (line, area).</li>
+ *   <li><b>'lttb'</b> - Largest-Triangle-Three-Buckets; keeps the visual shape of the curve.</li>
+ *   <li><b>'min-max'</b> - keeps the extremes of every bucket, so peaks and troughs survive.</li>
+ * </ul>
+ * @param {(string)=} opt_value ['auto'] Value to set.
+ * @return {anychart.charts.Pareto} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.Pareto.prototype.decimationAlgorithm;
