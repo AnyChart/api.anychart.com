@@ -92,7 +92,8 @@ anychart.core.cartesian.series.Lollipop.prototype.hatchFill;
  * Getter for series fill color.
  * @shortDescription Fill settings.
  * @category Coloring
- * @detailed This method can be used as getter only if the value has been previously set. The lollipop head circle is painted with this fill (the default is the opaque series sourceColor, and the head has no outline). The head radius is controlled by markers().size(), set before the first draw - see {@link anychart.core.cartesian.series.Lollipop#markers}.
+ * @detailed This method can be used as getter only if the value has been previously set. The lollipop head circle is painted with this fill (the default is the opaque series sourceColor, and the head has no outline). The head radius is controlled by markers().size(), set before the first draw.
+ * See {@link anychart.core.cartesian.series.Lollipop#markers} for the markers factory.
  * @example anychart.core.cartesian.series.Lollipop.fill_get
  * @return {!anychart.graphics.vector.Fill} The fill color.
  * @since 9.0.0
@@ -260,7 +261,13 @@ anychart.core.cartesian.series.Lollipop.prototype.data;
  * Getter for the point markers.
  * @shortDescription Markers settings.
  * @category Point Elements
- * @detailed Optional point markers factory, disabled by default. The markers factory does not draw or color the lollipop head - the head is painted by the series fill(), see {@link anychart.core.cartesian.series.Lollipop#fill}. The drawer does read one setting from this factory even while it is disabled: markers().size() is the radius of the head, 4 px by default - series.markers().size(10) sets the head radius when called before the chart is drawn (changing the size after the first draw does not resize the heads). When markers are enabled, an additional marker glyph is drawn on top of the head.
+ * @detailed Optional point markers factory, disabled by default.
+ * <ul>
+ *   <li><b>Not the head:</b> the markers factory does not draw or color the lollipop head - the head is painted by the series fill().</li>
+ *   <li><b>Head radius:</b> the drawer reads markers().size() as the head radius even while markers are disabled, 4 px by default. series.markers().size(10) sets the head radius when called before the chart is drawn; changing the size after the first draw does not resize the heads.</li>
+ *   <li><b>When enabled:</b> an additional marker glyph is drawn on top of the head.</li>
+ * </ul>
+ * See {@link anychart.core.cartesian.series.Lollipop#fill} for head coloring.
  * @example anychart.core.cartesian.series.Lollipop.markers_get
  * @return {!anychart.core.ui.MarkersFactory} Markers instance.
  * @since 9.0.0
