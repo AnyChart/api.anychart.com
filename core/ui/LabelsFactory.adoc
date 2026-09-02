@@ -417,6 +417,13 @@ anychart.core.ui.LabelsFactory.prototype.position;
  * </td>
  * </tr>
  * </table>
+ * Series labels take one more value on top of the table above:
+ * <ul>
+ *   <li><b>'rangeMode'</b> - the point is labeled at both of its ends instead of at one end alone: two labels are drawn, one at the high end and one at the low end. It is meant for the series whose point spans two values - rangeColumn, rangeBar, rangeArea, rangeSplineArea, rangeStepArea, hilo, dumbbell, candlestick, ohlc and box. On a single-value series both ends resolve to the same point, so the two labels print the same value and sit adjacent to each other - one above and one below on column-like series, side by side on bar.</li>
+ * </ul>
+ * In 'rangeMode' a format function is called once per label of the pair and reads the end it is rendering from this['rangeEnd'], which is 'low' on the low-end label and undefined on the high-end one; a format string cannot tell the two apart.<br/>
+ * The default label text follows the end it belongs to on rangeColumn, rangeBar, rangeArea, rangeSplineArea, rangeStepArea, hilo and dumbbell; a series that brings a default label format of its own (candlestick, ohlc, box) prints that same text at both ends.
+ * {@link anychart.format.Context}
  * @example anychart.core.ui.LabelsFactory.position_set_asColumn Sample on the column chart
  * @example anychart.core.ui.LabelsFactory.position_set_asPie Sample on the pie chart
  * @example anychart.core.ui.LabelsFactory.position_set_asPolar Sample on the polar axis

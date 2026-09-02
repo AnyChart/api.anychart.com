@@ -1,5 +1,17 @@
 /**
  * The Context class contains methods to show some information from extra fields in the format function context.
+ * @detailed A point drawn with labels in the 'rangeMode' position is labeled twice, and the context of such a label carries one extra field:
+ * <ul>
+ *   <li><b>this['rangeEnd']</b> - <b>'low'</b> in the format function call that renders the label at the low end of the point, <b>undefined</b> in the call that renders the label at its high end and in every call outside 'rangeMode'.</li>
+ * </ul>
+ * The point fields ('low', 'high' and the rest) read the same on both labels of a pair, so a format function branches on this['rangeEnd'] to print the value of the end it is rendering.<br/>
+ * On the low-end label the context is a delegate object: 'rangeEnd' is its only own field, and the point fields are inherited from the context of the pair. Two consequences:
+ * <ul>
+ *   <li>Reading a field behaves exactly as on the high-end label - <code>this['high']</code>, destructuring, <code>for...in</code>, <code>getData()</code> and <code>getStat()</code> all resolve through the delegate.</li>
+ *   <li>Snapshotting the context's own keys does not - <code>Object.keys(this)</code>, <code>{...this}</code>, <code>Object.assign({}, this)</code> and <code>this.hasOwnProperty('high')</code> see 'rangeEnd' alone on that label.</li>
+ * </ul>
+ * The field reaches format functions only: the <code>{%rangeEnd}</code> token prints nothing on either label of the pair.
+ * {@link anychart.core.ui.LabelsFactory#position}
  * @constructor
  */
 anychart.format.Context;
