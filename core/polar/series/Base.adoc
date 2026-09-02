@@ -676,7 +676,7 @@ anychart.core.polar.series.Base.prototype.maxLabels;
 anychart.core.polar.series.Base.prototype.boostEnabled;
 
 /**
- * Setter for the boost rendering state.<br/><b>null</b> (default) turns boost on automatically, but only when the series has more points than {@link anychart.core.polar.series.Base#boostThreshold} <b>and</b> it is the only enabled series on the plot. <b>true</b> boosts unconditionally, bypassing both of those checks. <b>false</b> never boosts.<br/><b>Note</b>: Boost never applies to stacked, 3D, OHLC or range-based series, whatever this option is set to. Boost draws on a Canvas layer; the WebGL renderer is an optional module loaded with anychart.loadModule('boost-webgl') and falls back to Canvas when it is not present.
+ * Setter for the boost rendering state.<br/><b>null</b> (default) turns boost on automatically, but only when the series has more points than {@link anychart.core.polar.series.Base#boostThreshold} <b>and</b> it is the only enabled series on the plot. <b>true</b> bypasses both of those checks, but not the exclusions in the note below. <b>false</b> never boosts.<br/><b>Note</b>: Boost never applies to stacked, 3D, OHLC or range-based series, whatever this option is set to. Boost is also refused to a series whose drawer has no boost renderer of its own: area, spline area, step area, jump line, stick, box, heat map, timeline moment, timeline range and the polar flavor of column. Such a series never gets a boost canvas and draws through SVG; setting this to <b>true</b> on one of them only prints a console warning naming the series type. Boost draws on a Canvas layer; the WebGL renderer is an optional module loaded with anychart.loadModule('boost-webgl') and falls back to Canvas when it is not present.
  * {docs:Common_Settings/Performance_Boost}Learn more about boost and decimation.{docs}
  * @example anychart.core.polar.series.Base.boostEnabled_set
  * @param {(boolean|null)=} opt_value [null] Value to set.
@@ -727,7 +727,7 @@ anychart.core.polar.series.Base.prototype.boostThreshold;
 anychart.core.polar.series.Base.prototype.maxPointsRendered;
 
 /**
- * Setter for the largest number of points drawn per series; above it the series is decimated for display, which does not change the underlying data.<br/>Set <b>0</b> to switch decimation off entirely. Decimation is also skipped for stacked series, for size-encoded series such as bubble, and whenever boost draws the points instead.
+ * Setter for the largest number of points drawn per series; above it the series is decimated for display, which does not change the underlying data.<br/>Set <b>0</b> to switch decimation off entirely. Decimation is also skipped for stacked series, for size-encoded series such as bubble, for heat map series always - thinning selects points along one ordered axis, and a categorical matrix has no midpoint to collapse neighboring cells into - and whenever boost draws the points instead.
  * @example anychart.core.polar.series.Base.maxPointsRendered_set
  * @param {(number)=} opt_value [1500] Value to set.
  * @return {anychart.core.polar.series.Base} Self instance for method chaining.
