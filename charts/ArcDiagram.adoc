@@ -301,34 +301,36 @@ anychart.charts.ArcDiagram.prototype.sortOrder;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.ArcDiagram.prototype.orientation
+//  anychart.charts.ArcDiagram.prototype.layout
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the chart orientation.
- * @shortDescription Chart orientation.
+ * Getter for the chart layout.
+ * @shortDescription Chart layout.
  * @category Size and Position
- * @example anychart.charts.ArcDiagram.orientation_get
- * @return {string} The chart orientation.
+ * @example anychart.charts.ArcDiagram.layout_get
+ * @return {string} The chart layout.
  * @since 9.0.0
  */
-anychart.charts.ArcDiagram.prototype.orientation;
+anychart.charts.ArcDiagram.prototype.layout;
 
 /**
- * Setter for the chart orientation.<br/>
+ * Setter for the chart layout.<br/>
  * Defines the placement of the node line.
  * @detailed Supported values:
  * <ul>
  *   <li><b>'horizontal'</b> - nodes are placed on a horizontal line.</li>
  *   <li><b>'vertical'</b> - nodes are placed on a vertical line.</li>
  * </ul>
- * @example anychart.charts.ArcDiagram.orientation_set
- * @param {string=} opt_orientation ['horizontal'] Orientation to set.
+ * An unsupported value is discarded silently instead of raising an error, and the chart falls back to 'horizontal'.
+ * Learn more about permitted values at {@link anychart.enums.Layout}
+ * @example anychart.charts.ArcDiagram.layout_set
+ * @param {(anychart.enums.Layout|string)=} opt_layout ['horizontal'] Layout to set.
  * @return {anychart.charts.ArcDiagram} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.ArcDiagram.prototype.orientation;
+anychart.charts.ArcDiagram.prototype.layout;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -363,33 +365,35 @@ anychart.charts.ArcDiagram.prototype.colorMode;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.ArcDiagram.prototype.arcDirection
+//  anychart.charts.ArcDiagram.prototype.reverseArcs
 //
 //----------------------------------------------------------------------------------------------------------------------
 
 /**
- * Getter for the arc direction.
- * @shortDescription Arc direction.
+ * Getter for the reverse arcs flag.
+ * @shortDescription Reverse arcs flag.
  * @category Specific settings
- * @example anychart.charts.ArcDiagram.arcDirection_get
- * @return {string} The arc direction.
+ * @example anychart.charts.ArcDiagram.reverseArcs_get
+ * @return {boolean} The reverse arcs flag.
  * @since 9.0.0
  */
-anychart.charts.ArcDiagram.prototype.arcDirection;
+anychart.charts.ArcDiagram.prototype.reverseArcs;
 
 /**
- * Setter for the arc direction.
- * @detailed Supported values:
+ * Setter for the reverse arcs flag.<br/>
+ * Draws the arcs on the other side of the node line.
+ * @detailed
  * <ul>
- *   <li><b>'up'</b> or <b>'down'</b> - for the horizontal orientation.</li>
- *   <li><b>'right'</b> or <b>'left'</b> - for the vertical orientation.</li>
+ *   <li><b>false</b> - the arcs bow up from a horizontal node line and to the right of a vertical one.</li>
+ *   <li><b>true</b> - the arcs bow down from a horizontal node line and to the left of a vertical one.</li>
  * </ul>
- * @example anychart.charts.ArcDiagram.arcDirection_set
- * @param {string=} opt_direction ['up'] Arc direction to set. The default bow direction is 'up' for the horizontal orientation and 'right' for the vertical one.
+ * The argument is a boolean, and every non-empty string is truthy: passing one of the direction strings this method replaced reverses the arcs whichever string it is, so such a value has to be translated to true for 'down' and 'left' and to false otherwise.
+ * @example anychart.charts.ArcDiagram.reverseArcs_set
+ * @param {boolean=} opt_reverse [false] Whether to draw the arcs on the other side of the node line.
  * @return {anychart.charts.ArcDiagram} Self instance for method chaining.
  * @since 9.0.0
  */
-anychart.charts.ArcDiagram.prototype.arcDirection;
+anychart.charts.ArcDiagram.prototype.reverseArcs;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

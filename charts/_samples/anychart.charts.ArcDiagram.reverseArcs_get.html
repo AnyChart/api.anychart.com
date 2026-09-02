@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.ArcDiagram.arcDirection set"/>
+    <meta name="ac:name" content="anychart.charts.ArcDiagram.reverseArcs get"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/staging/js/anychart-base.min.js"></script>
@@ -30,10 +30,13 @@
             {from: 'C', to: 'D', weight: 2}
         ]);
 
-        // Set arc direction to "down" - arcs are drawn below the node line instead of above it (the default "up").
-        chart.arcDirection('down');
+        // Set the reverse arcs flag.
+        chart.reverseArcs(true);
 
-        chart.title('Arc direction: down');
+        // Get the reverse arcs flag.
+        var reverseArcs = chart.reverseArcs();
+
+        chart.title('Reverse arcs: ' + reverseArcs);
         chart.container('container');
         chart.draw();
     });
