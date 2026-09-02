@@ -163,3 +163,75 @@ anychart.charts.Calendar.prototype.years;
  */
 anychart.charts.Calendar.prototype.years;
 // endregion
+
+// region anychart.charts.Calendar.prototype.autoHeight
+/**
+ * Getter for the autoHeight flag.<br/>
+ * Flag whether the chart resizes its own container to the height it needs.
+ * @shortDescription Resize the container to the needed height or not.
+ * @category Size and Position
+ * @listing See listing.
+ * var autoHeight = chart.autoHeight();
+ * @return {boolean} AutoHeight flag.
+ * @since 9.0.0
+ */
+anychart.charts.Calendar.prototype.autoHeight;
+
+/**
+ * Setter for the autoHeight flag.<br/>
+ * Flag whether the chart resizes its own container to the height it needs.
+ * @detailed Auto height is disabled by default. When enabled:
+ * <ul>
+ *   <li>the chart measures the height it needs and writes it onto its own container element;</li>
+ *   <li>the container is only ever grown, never shrunk;</li>
+ *   <li>growth is capped at a fixed number of steps per update episode, after which the chart stops and reports a single warning naming the cause. A percent-normalized padding() or margin() is the usual cause, because it is resolved against the container height the chart is writing;</li>
+ *   <li>a chart that does not own its stage cannot resize a shared container: the setting is stored, nothing is written, and the chart reports one warning per instance.</li>
+ * </ul>
+ * @listing See listing.
+ * chart.autoHeight(true);
+ * @param {boolean=} opt_enabled [false] Value to set.
+ * @return {anychart.charts.Calendar} Self instance for method chaining.
+ * @since 9.0.0
+ * {docs:Basic_Charts/Calendar_Chart#auto_height}Learn more about Auto Height{docs}
+ */
+anychart.charts.Calendar.prototype.autoHeight;
+// endregion
+
+// region anychart.charts.Calendar.prototype.resetAutoHeight
+/**
+ * Starts a new auto height growth episode.
+ * @shortDescription Start a new auto height growth episode.
+ * @category Size and Position
+ * @detailed Drops the growth state accumulated by autoHeight():
+ * <ul>
+ *   <li>the next draw measures from the container's current height and gets the full step budget;</li>
+ *   <li>the autoHeight() flag itself is not changed;</li>
+ *   <li>an explicit draw() call opens a new episode as well, so this method is the way to ask for a fresh start without redrawing.</li>
+ * </ul>
+ * @listing See listing.
+ * chart.resetAutoHeight();
+ * @return {anychart.charts.Calendar} Self instance for method chaining.
+ * @since 9.0.0
+ * {docs:Basic_Charts/Calendar_Chart#auto_height}Learn more about Auto Height{docs}
+ */
+anychart.charts.Calendar.prototype.resetAutoHeight;
+// endregion
+
+// region anychart.charts.Calendar.prototype.getActualHeight
+/**
+ * Returns the height the chart needs, in pixels.
+ * @shortDescription The height the chart needs, in pixels.
+ * @category Size and Position
+ * @detailed The measurement behind autoHeight():
+ * <ul>
+ *   <li>it answers whether or not auto height is enabled, so a chart squeezed into a short container still reports the height it would need;</li>
+ *   <li>space below the plots counts the same as space above them, so a bottom color range, legend, title or padding adds as much as the same element placed on top.</li>
+ * </ul>
+ * @listing See listing.
+ * var height = chart.getActualHeight();
+ * @return {number} Calculated chart height.
+ * @since 9.0.0
+ * {docs:Basic_Charts/Calendar_Chart#auto_height}Learn more about Auto Height{docs}
+ */
+anychart.charts.Calendar.prototype.getActualHeight;
+// endregion
