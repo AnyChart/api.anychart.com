@@ -224,12 +224,13 @@ anychart.charts.DependencyWheel.prototype.sortOrder;
  * Defines the order of the nodes around the wheel.
  * @detailed Supported values:
  * <ul>
- *   <li><b>'none'</b> - keep the order the nodes appear in the data. Set this value before the first draw: on a chart that is already drawn it keeps the order of the previous sorting.</li>
- *   <li><b>'asc'</b> - sort the nodes in ascending order.</li>
- *   <li><b>'desc'</b> - sort the nodes in descending order.</li>
+ *   <li><b>'none'</b> - keep the order the nodes appear in the data.</li>
+ *   <li><b>'asc'</b> - sort the nodes by weight, from smallest to largest.</li>
+ *   <li><b>'desc'</b> - sort the nodes by weight, from largest to smallest.</li>
  *   <li><b>Function</b> - custom comparator function, called with two nodes like the callback of Array.sort.</li>
  * </ul>
- * The 'asc' and 'desc' values and a comparator function all take effect on a chart that is already drawn. A comparator built from the positions of the nodes in the data restores the order of the data on a live chart.
+ * All four forms take effect on a chart that is already drawn: 'none' returns the nodes to the order of the data.<br/>
+ * A comparator reads the fields a node exposes - id and weight, the total flow through the node; there is no totalFlow field.
  * @example anychart.charts.DependencyWheel.sortOrder_set
  * @param {(string|Function)=} opt_order ['desc'] Sort order to set.
  * @return {anychart.charts.DependencyWheel} Self instance for method chaining.
