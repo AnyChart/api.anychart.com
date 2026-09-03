@@ -190,6 +190,43 @@ anychart.charts.ArcDiagram.prototype.unselect;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//  anychart.charts.ArcDiagram.prototype.nodesSpan
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the nodes span.
+ * @shortDescription Nodes span.
+ * @category Size and Position
+ * @example anychart.charts.ArcDiagram.nodesSpan_get
+ * @return {(string|number)} The nodes span.
+ * @since 9.0.0
+ */
+anychart.charts.ArcDiagram.prototype.nodesSpan;
+
+/**
+ * Setter for the nodes span.<br/>
+ * The nodes span is how much of the node line the whole row of nodes takes up.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> '85%', so the row of nodes takes up 85% of the node line.</li>
+ *   <li><b>Value types:</b> a percent string is a share of the node line, a number is a length in pixels, and a numeric string is read as pixels.</li>
+ *   <li><b>Ceiling:</b> a share above 100% is clamped to the full node line.</li>
+ *   <li><b>Node gaps:</b> whatever is left over becomes the gaps between the nodes, so this is the method that decides how far apart they sit.</li>
+ *   <li><b>Invalid values:</b> a string that is not a number and a value of another type are ignored and the previous value is kept.</li>
+ *   <li><b>Null:</b> null is stored as given, and the chart is drawn with the default span.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * See {@link anychart.charts.ArcDiagram#nodeSpacing} for the smallest gap allowed between two neighboring nodes.
+ * @example anychart.charts.ArcDiagram.nodesSpan_set
+ * @param {(string|number)=} opt_span ['85%'] Nodes span to set.
+ * @return {anychart.charts.ArcDiagram} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.ArcDiagram.prototype.nodesSpan;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //  anychart.charts.ArcDiagram.prototype.nodeWidth
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -206,8 +243,18 @@ anychart.charts.ArcDiagram.prototype.nodeWidth;
 
 /**
  * Setter for the node width.<br/>
- * The node width sets the thickness of the node bar and the base size of the node along the node line;
- * each node's size along the line is additionally scaled by its share of the largest node weight (with a 30% floor).
+ * The node width sets the thickness of the node bar and the base size of the node along the node line.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> 20, so every node bar is 20 pixels thick.</li>
+ *   <li><b>Across the node line:</b> the thickness of the bar is exactly the value set, the same for every node.</li>
+ *   <li><b>Along the node line:</b> the size of the bar is the value set scaled by the share the node weight is of the largest node weight, so only the heaviest node measures the value set and every lighter node is drawn narrower.</li>
+ *   <li><b>Floor:</b> the size along the node line never falls below 30% of the value set, so a node light enough to fall under that share is drawn wider than its weight asks for.</li>
+ *   <li><b>Fitting:</b> a width that does not fit the nodes span is scaled down, both across and along the node line, without a warning.</li>
+ *   <li><b>Value types:</b> the value is a number of pixels; a percent string is not supported and is discarded, leaving the chart drawn with the default.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * See {@link anychart.charts.ArcDiagram#nodesSpan} for how much of the node line the row of nodes takes up.
  * @example anychart.charts.ArcDiagram.nodeWidth_set
  * @param {number=} opt_width [20] Node width to set in pixels.
  * @return {anychart.charts.ArcDiagram} Self instance for method chaining.
@@ -420,6 +467,97 @@ anychart.charts.ArcDiagram.prototype.reverseGradient;
  * @since 9.0.0
  */
 anychart.charts.ArcDiagram.prototype.reverseGradient;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.ArcDiagram.prototype.maxLinksRendered
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the maximum number of rendered links.
+ * @shortDescription Maximum number of rendered links.
+ * @category Specific settings
+ * @example anychart.charts.ArcDiagram.maxLinksRendered_get
+ * @return {number} The maximum number of rendered links.
+ * @since 9.0.0
+ */
+anychart.charts.ArcDiagram.prototype.maxLinksRendered;
+
+/**
+ * Setter for the maximum number of rendered links.<br/>
+ * A diagram that holds more links than this is drawn in a simplified form: the chart draws the heaviest links and leaves the rest out.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> 1000, so a diagram of 1000 links or fewer is drawn in full.</li>
+ *   <li><b>Trigger:</b> the chart is simplified only when the data holds strictly more links than this value.</li>
+ *   <li><b>Not a hard ceiling:</b> every node keeps at least one of its links and a link that is already selected is never left out, so the chart can draw more links than this value asks for. Read the number actually drawn back with getRenderedLinksCount().</li>
+ *   <li><b>Drawing only:</b> the data and the node weights are untouched; only the set of links drawn changes.</li>
+ *   <li><b>Silent:</b> nothing is reported in the console when the chart is simplified.</li>
+ *   <li><b>Zero:</b> 0 turns the limit off and every link is drawn.</li>
+ *   <li><b>Value types:</b> the value is read as a number and rounded to a whole number; a negative value, null and a non-numeric value are discarded.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * See {@link anychart.charts.ArcDiagram#isSimplified} for whether the chart was simplified.
+ * See {@link anychart.charts.ArcDiagram#getRenderedLinksCount} for the number of links actually drawn.
+ * {docs:Basic_Charts/Arc_Diagram#data_volume}Learn more about data volume{docs}
+ * @example anychart.charts.ArcDiagram.maxLinksRendered_set
+ * @param {number=} opt_count [1000] Maximum number of rendered links to set.
+ * @return {anychart.charts.ArcDiagram} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.ArcDiagram.prototype.maxLinksRendered;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.ArcDiagram.prototype.isSimplified
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns whether the chart is drawn in a simplified form.
+ * @shortDescription Whether the chart is simplified.
+ * @category Specific settings
+ * @detailed
+ * <ul>
+ *   <li><b>Read-only:</b> an argument passed to this method is ignored and the returned value is always the flag, never the chart.</li>
+ *   <li><b>Before the first draw:</b> the method returns false.</li>
+ *   <li><b>When it is true:</b> the data holds strictly more links than maxLinksRendered() allows.</li>
+ *   <li><b>Format token:</b> the same flag is available to link labels and link tooltips as the {%IsSimplified} token, spelled with a capital I, which renders as the text 'true' or 'false'. Node and chart surfaces do not support it.</li>
+ *   <li><b>Format function:</b> inside a link format function the flag is available as this.isSimplified.</li>
+ * </ul>
+ * See {@link anychart.charts.ArcDiagram#maxLinksRendered} for the limit that triggers the simplified form.
+ * {docs:Basic_Charts/Arc_Diagram#data_volume}Learn more about data volume{docs}
+ * @example anychart.charts.ArcDiagram.isSimplified
+ * @return {boolean} Whether the chart is drawn in a simplified form.
+ * @since 9.0.0
+ */
+anychart.charts.ArcDiagram.prototype.isSimplified;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.ArcDiagram.prototype.getRenderedLinksCount
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns the number of links the chart has drawn.
+ * @shortDescription Number of rendered links.
+ * @category Specific settings
+ * @detailed
+ * <ul>
+ *   <li><b>Read-only:</b> an argument passed to this method is ignored and the returned value is always the count, never the chart.</li>
+ *   <li><b>Before the first draw:</b> the method returns 0.</li>
+ *   <li><b>Above the limit:</b> the count can be greater than maxLinksRendered(), because every node keeps at least one of its links.</li>
+ * </ul>
+ * See {@link anychart.charts.ArcDiagram#maxLinksRendered} for the limit the chart aims at.
+ * See {@link anychart.charts.ArcDiagram#isSimplified} for whether the chart was simplified.
+ * {docs:Basic_Charts/Arc_Diagram#data_volume}Learn more about data volume{docs}
+ * @example anychart.charts.ArcDiagram.getRenderedLinksCount
+ * @return {number} The number of rendered links.
+ * @since 9.0.0
+ */
+anychart.charts.ArcDiagram.prototype.getRenderedLinksCount;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -821,6 +959,39 @@ anychart.charts.ArcDiagram.prototype.height;
  * @return {!anychart.charts.ArcDiagram} Self instance for method chaining.
  */
 anychart.charts.ArcDiagram.prototype.height;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.ArcDiagram.prototype.interactivity
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the interactivity settings.
+ * @shortDescription Interactivity settings.
+ * @category Interactivity
+ * @example anychart.charts.ArcDiagram.interactivity_get
+ * @return {anychart.core.utils.Interactivity} Interactivity settings.
+ * @since 9.0.0
+ */
+anychart.charts.ArcDiagram.prototype.interactivity;
+
+/**
+ * Setter for the interactivity settings.<br/>
+ * The interactivity settings hold the gestures that hover and select the nodes and the links.
+ * @detailed
+ * <ul>
+ *   <li><b>Hover mode:</b> 'single' by default, so pointing at a node or a link highlights that element alone.</li>
+ *   <li><b>Selection mode:</b> 'multi-select' by default, so Ctrl/Cmd + click and Shift + click add elements to the selection, and the same gesture on a selected element takes it back out.</li>
+ *   <li><b>Selected links:</b> a link that is selected is always drawn, even on a chart that is drawn in a simplified form.</li>
+ * </ul>
+ * See {@link anychart.core.utils.Interactivity} for the settings the returned object exposes.
+ * @example anychart.charts.ArcDiagram.interactivity_set
+ * @param {(Object|anychart.enums.HoverMode|string)=} opt_settings Settings object or boolean value like enabled state.
+ * @return {anychart.charts.ArcDiagram} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.ArcDiagram.prototype.interactivity;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
