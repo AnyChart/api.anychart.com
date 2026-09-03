@@ -143,13 +143,92 @@ anychart.charts.DependencyWheel.prototype.padAngle;
 
 /**
  * Setter for the pad angle.<br/>
- * The pad angle is the angular gap between neighboring nodes.
+ * The pad angle is the angular gap between neighboring nodes, in degrees.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> 1, so neighboring node arcs are separated by a gap of 1 degree.</li>
+ *   <li><b>Ceiling:</b> each gap is capped at 180 degrees divided by the number of node arcs, so the gaps never take up more than half of the ring.</li>
+ *   <li><b>Negative values:</b> a negative value is read as 0, which draws the node arcs with no gap between them.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * See {@link anychart.charts.DependencyWheel#minAngle} for the smallest size of a node arc.
  * @example anychart.charts.DependencyWheel.padAngle_set
- * @param {number=} opt_angle [0.02] Pad angle in radians to set.
+ * @param {number=} opt_angle [1] Pad angle in degrees to set.
  * @return {anychart.charts.DependencyWheel} Self instance for method chaining.
  * @since 9.0.0
  */
 anychart.charts.DependencyWheel.prototype.padAngle;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.DependencyWheel.prototype.minAngle
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the minimal node angle.
+ * @shortDescription Minimal node angle.
+ * @category Size and Position
+ * @example anychart.charts.DependencyWheel.minAngle_get
+ * @return {number} The minimal node angle.
+ * @since 9.0.0
+ */
+anychart.charts.DependencyWheel.prototype.minAngle;
+
+/**
+ * Setter for the minimal node angle.<br/>
+ * The minimal node angle is the smallest angular size of a node arc, in degrees.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> 0, so every node arc is sized in proportion to the flow through its node.</li>
+ *   <li><b>How it is applied:</b> every node arc first gets the minimal angle, and the angle left over is shared out in proportion to the node flow, so no arc falls below the minimum.</li>
+ *   <li><b>Ceiling:</b> when the minimal angles do not all fit, they are scaled down together and every node arc gets an equal share of the ring, so the arcs never overlap.</li>
+ *   <li><b>Value types:</b> a numeric string is read as a number of degrees, and a negative value is read as 0.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * See {@link anychart.charts.DependencyWheel#padAngle} for the gap between neighboring node arcs.
+ * @example anychart.charts.DependencyWheel.minAngle_set
+ * @param {number=} opt_angle [0] Minimal node angle in degrees to set.
+ * @return {anychart.charts.DependencyWheel} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.DependencyWheel.prototype.minAngle;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.DependencyWheel.prototype.radius
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the outer radius.
+ * @shortDescription Outer radius.
+ * @category Size and Position
+ * @example anychart.charts.DependencyWheel.radius_get
+ * @return {(string|number)} The outer radius.
+ * @since 9.0.0
+ */
+anychart.charts.DependencyWheel.prototype.radius;
+
+/**
+ * Setter for the outer radius.<br/>
+ * The outer radius is the radius of the ring the node arcs are drawn on.
+ * @detailed
+ * <ul>
+ *   <li><b>Value types:</b> a number is a size in pixels, a percent string is a share of the smaller side of the chart drawing area, and a numeric string is read as pixels.</li>
+ *   <li><b>Default:</b> '50%', which is also the largest ring the chart draws, so larger values render the same ring; use this method to make the ring smaller and leave room for long labels or a title.</li>
+ *   <li><b>Ring thickness:</b> the thickness of the node ring stays the same at any radius, 15 pixels by default.</li>
+ *   <li><b>Invalid values:</b> a string that is not a number is ignored and the previous value is kept.</li>
+ *   <li><b>Degenerate values:</b> 0, a negative number and null are stored as given, but no node arcs are drawn at all.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * See {@link anychart.charts.DependencyWheel#nodeWidth} for the thickness of the node ring.
+ * @example anychart.charts.DependencyWheel.radius_set
+ * @param {(string|number)=} opt_radius ['50%'] Outer radius to set.
+ * @return {anychart.charts.DependencyWheel} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.DependencyWheel.prototype.radius;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -176,6 +255,40 @@ anychart.charts.DependencyWheel.prototype.startAngle;
  * @since 9.0.0
  */
 anychart.charts.DependencyWheel.prototype.startAngle;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.DependencyWheel.prototype.clockwise
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the layout direction.
+ * @shortDescription Layout direction.
+ * @category Size and Position
+ * @example anychart.charts.DependencyWheel.clockwise_get
+ * @return {boolean} The layout direction state.
+ * @since 9.0.0
+ */
+anychart.charts.DependencyWheel.prototype.clockwise;
+
+/**
+ * Setter for the layout direction.<br/>
+ * The layout direction is the direction the node arcs are placed in, starting from the start angle.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> true, so the node arcs are placed clockwise from the start angle.</li>
+ *   <li><b>Mirrored layout:</b> false mirrors the wheel across the start angle - the same arcs in the same sizes and with the same gaps, placed the other way round.</li>
+ *   <li><b>Value types:</b> any value is read as a boolean by its truthiness, and the getter always returns a boolean.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * See {@link anychart.charts.DependencyWheel#startAngle} for the angle the layout starts from.
+ * @example anychart.charts.DependencyWheel.clockwise_set
+ * @param {boolean=} opt_enabled [true] Layout direction to set.
+ * @return {anychart.charts.DependencyWheel} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.DependencyWheel.prototype.clockwise;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

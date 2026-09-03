@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.DependencyWheel.padAngle set"/>
+    <meta name="ac:name" content="anychart.charts.DependencyWheel.minAngle set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/staging/js/anychart-base.min.js"></script>
@@ -23,17 +23,18 @@
 <div id="container"></div>
 <script>
     anychart.onDocumentReady(function () {
+        // One heavy edge makes two big nodes, the rest of the nodes get tiny arcs.
         var chart = anychart.dependencyWheel([
-            {from: 'A', to: 'B', weight: 5},
-            {from: 'A', to: 'C', weight: 3},
-            {from: 'B', to: 'D', weight: 4},
-            {from: 'C', to: 'D', weight: 2}
+            {from: 'A', to: 'B', weight: 100},
+            {from: 'A', to: 'C', weight: 1},
+            {from: 'A', to: 'D', weight: 1},
+            {from: 'A', to: 'E', weight: 1}
         ]);
 
-        // Set a large pad angle to create a wide, visible gap between node segments.
-        chart.padAngle(5);
+        // Give the smallest node arcs a floor of 20 degrees.
+        chart.minAngle(20);
 
-        chart.title('padAngle: 5 (wide gaps between nodes)');
+        chart.title('minAngle: 20 (a floor under the smallest node arcs)');
         chart.container('container');
         chart.draw();
     });
