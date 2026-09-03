@@ -43,6 +43,46 @@ anychart.charts.StreamGraph.prototype.offset;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//  anychart.charts.StreamGraph.prototype.sortOrder
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the layer sort order.
+ * @shortDescription Layer sort order.
+ * @category Specific settings
+ * @example anychart.charts.StreamGraph.sortOrder_get
+ * @return {string|Function} The layer sort order.
+ * @since 9.0.0
+ */
+anychart.charts.StreamGraph.prototype.sortOrder;
+
+/**
+ * Setter for the layer sort order.<br/>
+ * The sort order defines the order the layers are stacked in, which decides the layers that end up in the middle of the stream, where a band bends the least and reads the best.
+ * @detailed Supported values:
+ * <ul>
+ *   <li><b>'none'</b> - the layers keep the order they were added in, the first one on top.</li>
+ *   <li><b>'asc'</b> - the layers are ranked by size, the total of their values with negative ones counted as positive, and the smallest one goes to the bottom.</li>
+ *   <li><b>'desc'</b> - the same ranking upside down: the largest layer goes to the bottom.</li>
+ *   <li><b>'inside-out'</b> - the layers are arranged so that the stream bends as little as possible, the order that goes with the 'wiggle' offset.</li>
+ *   <li><b>function(a, b)</b> - a comparator function. It gets two layers and works like the comparator of Array.prototype.sort(), and the layer it sorts first goes to the bottom.</li>
+ * </ul>
+ * <ul>
+ *   <li><b>Unsupported value:</b> discarded silently instead of raising an error, and the chart falls back to 'none'.</li>
+ *   <li><b>Comparator that throws:</b> the layers keep the order they were added in and the error is reported in the console.</li>
+ *   <li><b>Not the legend:</b> the method restacks the bands only, the legend goes on listing the layers in the order they were added.</li>
+ * </ul>
+ * See {@link anychart.charts.StreamGraph#offset} for the baseline the 'inside-out' order goes with.
+ * @example anychart.charts.StreamGraph.sortOrder_set
+ * @param {(string|Function)=} opt_order ['none'] Sort order to set.
+ * @return {anychart.charts.StreamGraph} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.StreamGraph.prototype.sortOrder;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //  anychart.charts.StreamGraph.prototype.area
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -91,6 +131,29 @@ anychart.charts.StreamGraph.prototype.splineArea;
  * @since 9.0.0
  */
 anychart.charts.StreamGraph.prototype.stepArea;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.StreamGraph.prototype.line
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Adds Line series.
+ * @shortDescription Adds Line series.
+ * @category Series
+ * @detailed A Line series is not one of the layers of the stream: use it for a threshold or an average drawn over them.
+ * <ul>
+ *   <li><b>Not stacked:</b> the series keeps its own values instead of joining the stack.</li>
+ *   <li><b>Not for the 'expand' offset:</b> that offset replaces the values of the layers with shares of the total, so a series that keeps its own values is drawn far outside the plot. The 'wiggle', 'silhouette', and 'zero' offsets cover it with the Y scale and it lands inside the plot.</li>
+ * </ul>
+ * See {@link anychart.charts.StreamGraph#offset} for the offsets.
+ * @example anychart.charts.StreamGraph.line
+ * @param {!(anychart.data.View|anychart.data.Set|Array|string)} data Data for the series.
+ * @return {anychart.core.cartesian.series.Line} An instance of the created series.
+ * @since 9.0.0
+ */
+anychart.charts.StreamGraph.prototype.line;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
