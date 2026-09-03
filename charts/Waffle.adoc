@@ -267,61 +267,6 @@ anychart.charts.Waffle.prototype.fillDirection;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.charts.Waffle.prototype.emptyFill
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Getter for the fill of the empty cells.
- * @shortDescription Empty cells fill settings.
- * @category Coloring
- * @example anychart.charts.Waffle.emptyFill_get
- * @return {anychart.graphics.vector.Fill} The empty cells fill.
- * @since 9.0.0
- */
-anychart.charts.Waffle.prototype.emptyFill;
-
-/**
- * Setter for the fill of the empty cells.<br/>
- * Empty cells are the cells not covered by any of the data categories.
- * @example anychart.charts.Waffle.emptyFill_set
- * @param {(anychart.graphics.vector.Fill|Array.<(anychart.graphics.vector.GradientKey|string)>)=} opt_fill ['#f5f5f5'] Fill to set.
- * @return {anychart.charts.Waffle} Self instance for method chaining.
- * @since 9.0.0
- */
-anychart.charts.Waffle.prototype.emptyFill;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.charts.Waffle.prototype.emptyStroke
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Getter for the stroke of the empty cells.
- * @shortDescription Empty cells stroke settings.
- * @category Coloring
- * @example anychart.charts.Waffle.emptyStroke_get
- * @return {anychart.graphics.vector.Stroke} The empty cells stroke.
- * @since 9.0.0
- */
-anychart.charts.Waffle.prototype.emptyStroke;
-
-/**
- * Setter for the stroke of the empty cells.
- * @example anychart.charts.Waffle.emptyStroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null)=} opt_stroke ['#e0e0e0'] Stroke to set.
- * @param {number=} opt_thickness Line thickness.
- * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
- * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
- * @param {anychart.graphics.vector.StrokeLineCap=} opt_lineCap Line cap style.
- * @return {anychart.charts.Waffle} Self instance for method chaining.
- * @since 9.0.0
- */
-anychart.charts.Waffle.prototype.emptyStroke;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
 //  anychart.charts.Waffle.prototype.palette
 //
 //----------------------------------------------------------------------------------------------------------------------
@@ -365,6 +310,14 @@ anychart.charts.Waffle.prototype.normal;
 
 /**
  * Setter for normal state settings.
+ * @detailed The appearance of the cells in the normal state:
+ * <ul>
+ *   <li><b>Settings:</b> the fill, the stroke and the hatch fill of the cells are all set here.</li>
+ *   <li><b>Hatching is off:</b> a freshly drawn chart reads normal().hatchFill() back as boolean false.</li>
+ *   <li><b>Turning hatching off:</b> hatchFill(false), hatchFill(null) and hatchFill('none') all disable it, and the getter then returns null instead of false.</li>
+ *   <li><b>Unknown hatch type:</b> a misspelled hatch type name does not throw and does not disable hatching, it silently falls back to 'backward-diagonal'.</li>
+ * </ul>
+ * See {@link anychart.core.StateSettings#hatchFill} for the hatch fill settings.
  * @example anychart.charts.Waffle.normal_set
  * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.charts.Waffle} Self instance for method chaining.
@@ -390,6 +343,12 @@ anychart.charts.Waffle.prototype.hovered;
 
 /**
  * Setter for hovered state settings.
+ * @detailed The hatch fill of this state behaves differently from its fill and stroke:
+ * <ul>
+ *   <li><b>No default:</b> hovered().hatchFill() has no theme value and returns undefined until it is set.</li>
+ *   <li><b>Never painted:</b> a value set here is stored and read back, but it is never drawn - a waffle chart paints hatching in the normal state only.</li>
+ * </ul>
+ * See {@link anychart.core.StateSettings#hatchFill} for the hatch fill settings.
  * @example anychart.charts.Waffle.hovered_set
  * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.charts.Waffle} Self instance for method chaining.
@@ -415,6 +374,12 @@ anychart.charts.Waffle.prototype.selected;
 
 /**
  * Setter for selected state settings.
+ * @detailed The hatch fill of this state behaves differently from its fill and stroke:
+ * <ul>
+ *   <li><b>No default:</b> selected().hatchFill() has no theme value and returns undefined until it is set.</li>
+ *   <li><b>Never painted:</b> a value set here is stored and read back, but it is never drawn - a waffle chart paints hatching in the normal state only.</li>
+ * </ul>
+ * See {@link anychart.core.StateSettings#hatchFill} for the hatch fill settings.
  * @example anychart.charts.Waffle.selected_set
  * @param {!Object=} opt_settings State settings to set.
  * @return {anychart.charts.Waffle} Self instance for method chaining.
@@ -566,6 +531,45 @@ anychart.charts.Waffle.prototype.select;
  * @since 9.0.0
  */
 anychart.charts.Waffle.prototype.unselect;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Waffle.prototype.selectionMode
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the selection mode.
+ * @shortDescription Selection mode.
+ * @category Interactivity
+ * @example anychart.charts.Waffle.selectionMode_get
+ * @return {anychart.enums.SelectionMode|string} The selection mode.
+ * @since 9.0.0
+ */
+anychart.charts.Waffle.prototype.selectionMode;
+
+/**
+ * Setter for the selection mode.<br/>
+ * Defines how mouse clicks select the categories of the chart.
+ * @detailed Supported modes:
+ * <ul>
+ *   <li><b>'none'</b> - clicks select nothing, the chart is never repainted in the selected state.</li>
+ *   <li><b>'single-select'</b> - a click replaces the selection, so at most one category is selected at a time.</li>
+ *   <li><b>'multi-select'</b> - the default mode, more than one category can be in the selected state at a time.</li>
+ *   <li><b>'drill-down'</b> - accepted, but a waffle chart has no drill-down action and the mode behaves as 'single-select'.</li>
+ * </ul>
+ * <b>Note</b>: an unrecognized value does not throw, it silently falls back to 'none' and thus disables selection.
+ * The camelCase aliases 'singleSelect' and 'multiSelect' are recognized and normalize to the hyphenated forms.<br/>
+ * <b>Note</b>: the mode gates mouse gestures only. The select() and unselect() methods keep working in any mode, 'none' included.<br/>
+ * <b>Note</b>: this method is a shortcut to the selection mode of the chart interactivity settings, so it returns the
+ * interactivity settings object and not the chart. It cannot be used as a link in a chart method chain.
+ * See {@link anychart.core.utils.Interactivity#selectionMode} for the same setting on the interactivity object.
+ * @example anychart.charts.Waffle.selectionMode_set
+ * @param {(anychart.enums.SelectionMode|string)=} opt_mode ['multi-select'] Selection mode to set.
+ * @return {anychart.core.utils.Interactivity} Chart interactivity settings.
+ * @since 9.0.0
+ */
+anychart.charts.Waffle.prototype.selectionMode;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
