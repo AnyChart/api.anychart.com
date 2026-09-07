@@ -108,7 +108,8 @@ anychart.charts.OrgChart.prototype.expandAll;
 
 /**
  * Zooms the chart view in by one step.<br/>
- * The zoom is not bounded - each call multiplies the current scale by 1.2.
+ * Each call multiplies the current scale by 1.2 and stops at the maximum zoom level.<br/>
+ * See {@link anychart.charts.OrgChart#maxZoom} for the upper limit.
  * @shortDescription Zooms the chart in.
  * @category Interactivity
  * @example anychart.charts.OrgChart.zoomIn
@@ -125,7 +126,8 @@ anychart.charts.OrgChart.prototype.zoomIn;
 
 /**
  * Zooms the chart view out by one step.<br/>
- * The zoom is not bounded - each call multiplies the current scale by 0.8.
+ * Each call divides the current scale by 1.2 and stops at the minimum zoom level.<br/>
+ * See {@link anychart.charts.OrgChart#minZoom} for the lower limit.
  * @shortDescription Zooms the chart out.
  * @category Interactivity
  * @example anychart.charts.OrgChart.zoomOut
@@ -149,6 +151,142 @@ anychart.charts.OrgChart.prototype.zoomOut;
  * @since 9.0.0
  */
 anychart.charts.OrgChart.prototype.fit;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.OrgChart.prototype.minZoom
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the minimum zoom level.
+ * @shortDescription Minimum zoom level.
+ * @category Interactivity
+ * @detailed The zoom level is a multiple of the layout scale that fits the whole tree into the chart area, so 1 means the tree is scaled to fit.
+ * <ul>
+ *   <li><b>Default:</b> 0.8.</li>
+ *   <li><b>Applies to:</b> the mouse wheel, pinch gestures, zoomIn() and zoomOut() calls, and a restored transformation matrix.</li>
+ * </ul>
+ * @listing See listing
+ * var minZoom = chart.minZoom();
+ * @example anychart.charts.OrgChart.zoomLimits_get
+ * @return {number} The minimum zoom level.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.minZoom;
+
+/**
+ * Setter for the minimum zoom level.
+ * @detailed <ul>
+ *   <li><b>Value:</b> a finite number greater than 0.</li>
+ *   <li><b>Ignored:</b> a value that is not a finite number greater than 0, and a value that is above an explicitly set maximum zoom level; an ignored call writes a warning to the console once and keeps the current level.</li>
+ *   <li><b>Accepted:</b> a value above the maximum zoom level, when the maximum has not been set explicitly.</li>
+ *   <li><b>Serialization:</b> the option is written to JSON only when it is set explicitly.</li>
+ * </ul>
+ * See {@link anychart.charts.OrgChart#maxZoom} for the upper limit.
+ * @listing See listing
+ * chart.minZoom(0.5);
+ * @example anychart.charts.OrgChart.zoomLimits_set
+ * @param {number} value [0.8] The minimum zoom level.
+ * @return {anychart.charts.OrgChart} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.minZoom;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.OrgChart.prototype.maxZoom
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the maximum zoom level.
+ * @shortDescription Maximum zoom level.
+ * @category Interactivity
+ * @detailed The zoom level is a multiple of the layout scale that fits the whole tree into the chart area, so 1 means the tree is scaled to fit.
+ * <ul>
+ *   <li><b>Default:</b> 7.</li>
+ *   <li><b>Applies to:</b> the mouse wheel, pinch gestures, zoomIn() and zoomOut() calls, and a restored transformation matrix.</li>
+ * </ul>
+ * @listing See listing
+ * var maxZoom = chart.maxZoom();
+ * @example anychart.charts.OrgChart.zoomLimits_get
+ * @return {number} The maximum zoom level.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.maxZoom;
+
+/**
+ * Setter for the maximum zoom level.
+ * @detailed <ul>
+ *   <li><b>Value:</b> a finite number greater than 0.</li>
+ *   <li><b>Ignored:</b> a value that is not a finite number greater than 0, and a value that is below an explicitly set minimum zoom level; an ignored call writes a warning to the console once and keeps the current level.</li>
+ *   <li><b>Accepted:</b> a value below the minimum zoom level, when the minimum has not been set explicitly.</li>
+ *   <li><b>Serialization:</b> the option is written to JSON only when it is set explicitly.</li>
+ * </ul>
+ * See {@link anychart.charts.OrgChart#minZoom} for the lower limit.
+ * @listing See listing
+ * chart.maxZoom(3);
+ * @example anychart.charts.OrgChart.zoomLimits_set
+ * @param {number} value [7] The maximum zoom level.
+ * @return {anychart.charts.OrgChart} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.maxZoom;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.OrgChart.prototype.getZoomLevel
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the current zoom level.
+ * @shortDescription Current zoom level.
+ * @category Interactivity
+ * @detailed <ul>
+ *   <li><b>Unit:</b> a multiple of the layout scale that fits the whole tree into the chart area, not a multiple of the node box size.</li>
+ *   <li><b>Value 1:</b> returned right after draw() and after every fit() call.</li>
+ *   <li><b>Range:</b> the value stays between the minimum and the maximum zoom levels.</li>
+ * </ul>
+ * See {@link anychart.charts.OrgChart#minZoom} and {@link anychart.charts.OrgChart#maxZoom} for the limits.
+ * @listing See listing
+ * var zoomLevel = chart.getZoomLevel();
+ * @example anychart.charts.OrgChart.getZoomLevel
+ * @return {number} The current zoom level.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.getZoomLevel;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.OrgChart.prototype.interactivity
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the interactivity settings.
+ * @shortDescription Interactivity settings.
+ * @category Interactivity
+ * @listing See listing
+ * var interactivity = chart.interactivity();
+ * interactivity.drag(false); // Forbid panning.
+ * @example anychart.charts.OrgChart.interactivity_get
+ * @return {anychart.core.orgChart.Interactivity} The interactivity settings.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.interactivity;
+
+/**
+ * Setter for the interactivity settings.
+ * @listing See listing
+ * chart.interactivity({drag: false, zoomOnMouseWheel: false});
+ * @example anychart.charts.OrgChart.interactivity_set
+ * @param {Object} value The interactivity settings.
+ * @return {anychart.charts.OrgChart} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.interactivity;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
@@ -507,58 +645,6 @@ anychart.charts.OrgChart.prototype.connectorStroke;
  * @since 9.0.0
  */
 anychart.charts.OrgChart.prototype.connectorStroke;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.charts.OrgChart.prototype.zoomEnabled
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Getter for the zoom enabled state.
- * @shortDescription Zoom enabled state.
- * @category Interactivity
- * @example anychart.charts.OrgChart.zoomEnabled_get
- * @return {boolean} The zoom enabled state.
- * @since 9.0.0
- */
-anychart.charts.OrgChart.prototype.zoomEnabled;
-
-/**
- * Setter for the zoom enabled state.<br/>
- * Enables or disables zooming the chart with the mouse wheel.
- * @example anychart.charts.OrgChart.zoomEnabled_set
- * @param {boolean=} opt_enabled [true] Enable/disable zoom.
- * @return {anychart.charts.OrgChart} Self instance for method chaining.
- * @since 9.0.0
- */
-anychart.charts.OrgChart.prototype.zoomEnabled;
-
-//----------------------------------------------------------------------------------------------------------------------
-//
-//  anychart.charts.OrgChart.prototype.panEnabled
-//
-//----------------------------------------------------------------------------------------------------------------------
-
-/**
- * Getter for the pan enabled state.
- * @shortDescription Pan enabled state.
- * @category Interactivity
- * @example anychart.charts.OrgChart.panEnabled_get
- * @return {boolean} The pan enabled state.
- * @since 9.0.0
- */
-anychart.charts.OrgChart.prototype.panEnabled;
-
-/**
- * Setter for the pan enabled state.<br/>
- * Enables or disables panning the chart by dragging.
- * @example anychart.charts.OrgChart.panEnabled_set
- * @param {boolean=} opt_enabled [true] Enable/disable panning.
- * @return {anychart.charts.OrgChart} Self instance for method chaining.
- * @since 9.0.0
- */
-anychart.charts.OrgChart.prototype.panEnabled;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
