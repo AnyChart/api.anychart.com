@@ -163,6 +163,47 @@ anychart.appendTheme;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
+//  anychart.a11yHighContrast
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the state of the high-contrast mode.
+ * {docs:Common_Settings/Accessibility/Settings#high_contrast}Learn more about the high-contrast mode.{docs}
+ * @shortDescription High-contrast mode of the page.
+ * @since 9.0.0
+ * @example anychart.a11yHighContrast
+ * @listing See listing
+ * var enabled = anychart.a11yHighContrast();
+ * @return {boolean} Whether the high-contrast mode is on.
+ */
+anychart.a11yHighContrast;
+
+/**
+ * Setter for the high-contrast mode.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> off.</li>
+ *   <li><b>Switching on</b> applies the built-in <b>contrast</b> theme: the default theme with its palette darkened so that every series color reaches a contrast ratio of at least 3:1 against the white background. The theme file is loaded on demand, so the call returns a Promise that resolves to <b>true</b> when the theme is applied, and rejects (leaving the mode off) if the file cannot be loaded.</li>
+ *   <li><b>Switching off</b> restores the theme that was active before the mode was switched on. It is immediate and returns <b>false</b>.</li>
+ *   <li><b>Scope:</b> like any theme, the high-contrast palette is used by the charts created after the switch; a chart drawn earlier keeps its colors until it is created again.</li>
+ *   <li><b>Repeated calls:</b> passing the state the mode already has changes nothing.</li>
+ * </ul>
+ * See {@link anychart.theme} for the theme that is restored.
+ * @since 9.0.0
+ * @example anychart.a11yHighContrast
+ * @param {boolean} enable Whether to switch the high-contrast mode on.
+ * @listing See listing
+ * anychart.a11yHighContrast(true).then(function () {
+ *   // create the chart here
+ * });
+ * @return {(boolean|Promise<boolean>)} <b>false</b> when switching off; a Promise resolving to <b>true</b> when switching on.
+ */
+anychart.a11yHighContrast;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
 //  anychart.PERFORMANCE_MONITORING
 //
 //----------------------------------------------------------------------------------------------------------------------
