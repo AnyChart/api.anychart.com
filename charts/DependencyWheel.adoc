@@ -216,8 +216,10 @@ anychart.charts.DependencyWheel.prototype.radius;
  * @detailed
  * <ul>
  *   <li><b>Value types:</b> a number is a size in pixels, a percent string is a share of the smaller side of the chart drawing area, and a numeric string is read as pixels.</li>
+ *   <li><b>Percent base:</b> the drawing area is the container less the chart margin, padding, title and legend, so a percent value resolves against less than the full container size.</li>
+ *   <li><b>Ceiling:</b> the resolved radius is capped at half the smaller side of the drawing area, so the ring never leaves the chart.</li>
  *   <li><b>Default:</b> '50%', which is also the largest ring the chart draws, so larger values render the same ring; use this method to make the ring smaller and leave room for long labels or a title.</li>
- *   <li><b>Ring thickness:</b> the thickness of the node ring stays the same at any radius, 15 pixels by default.</li>
+ *   <li><b>Ring thickness:</b> the thickness of the node ring stays the same at any radius, 15 pixels by default; the inner edge is the radius minus that thickness and is kept clear of the center.</li>
  *   <li><b>Invalid values:</b> a string that is not a number is ignored and the previous value is kept.</li>
  *   <li><b>Degenerate values:</b> 0, a negative number and null are stored as given, but no node arcs are drawn at all.</li>
  *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
