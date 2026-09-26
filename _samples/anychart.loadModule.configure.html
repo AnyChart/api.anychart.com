@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.loadModule.configure"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
+        body { display: flex; flex-direction: column; }
+        #controls { padding: 8px; display: flex; justify-content: center; }
+        #container { flex: 1; }
+    </style>
+</head>
+<body>
+<div id="controls">
+    <button onclick="enableBoost()">Enable WebGL boost</button>
+</div>
+<div id="container"></div>
+<script>
+    var chart;
+
+    anychart.onDocumentReady(function () {
+        chart = anychart.column([21.2, 32.5, 21.3, 44.5, 21, 35.2, 67.7]);
+        chart.container('container');
+        chart.draw();
+    });
+
+    function enableBoost() {
+        // point the loader at a mirror of the release CDN before loading any module
+        anychart.loadModule.configure({cdnBase: 'https://cdn.anychart.com/releases/{{branch-name}}/'});
+
+        anychart.loadModule('boost-webgl').then(function () {
+            chart.boostEnabled(true);
+            chart.draw();
+        });
+    }
+</script>
+</body>
+</html>

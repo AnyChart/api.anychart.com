@@ -145,6 +145,48 @@ anychart.DEFAULT_THEME;
  */
 anychart.theme;
 
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.theme.load
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Lazy-loads a named theme module and applies it.
+ * @shortDescription Lazy-loads and applies a named theme.
+ * @detailed
+ * <ul>
+ *   <li>Looks up <b>theme-&lt;name&gt;</b> in the release manifest and fetches it through {@link anychart.loadModule}.</li>
+ *   <li>Once the module registers, the theme is applied via {@link anychart.theme}.</li>
+ *   <li>A name without the <b>theme-</b> prefix is normalized, so <b>'coffee'</b> and <b>'theme-coffee'</b> resolve to the same module.</li>
+ *   <li>If the module loads but does not register <b>anychart.themes.&lt;name&gt;</b>, the returned promise rejects with an Error.</li>
+ * </ul>
+ * @example anychart.theme.load
+ * @param {string} name Theme name, for example <b>'coffee'</b> or <b>'dark-glamour'</b>.
+ * @param {Object=} opt_options Loader options, as in {@link anychart.loadModule}.
+ * @return {!Promise} Promise resolved once the theme module is loaded and applied.
+ * @since 9.0.0
+ */
+anychart.theme.load;
+
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.theme.preset
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Applies a theme object synchronously, without loading anything.
+ * @shortDescription Applies a theme object without a network round-trip.
+ * @detailed Same effect as {@link anychart.theme}, but for a theme object already in hand, for example one inlined by a server-side render, so nothing is fetched. Passing a falsy value changes nothing.
+ * @example anychart.theme.preset
+ * @param {Object} themeObj A theme object, structured like one of the modules {@link anychart.theme#load} applies.
+ * @since 9.0.0
+ */
+anychart.theme.preset;
+
 //----------------------------------------------------------------------------------------------------------------------
 //
 //  anychart.appendTheme
@@ -275,6 +317,22 @@ anychart.getChartById;
  * @since 9.0.0
  */
 anychart.loadModule;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.loadModule.configure
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Configures the loader's default options for every subsequent {@link anychart.loadModule} / {@link anychart.preload} call.
+ * @shortDescription Sets the loader's default CDN base and other options.
+ * @detailed Changing <b>cdnBase</b> clears the cached manifest and the per-module load cache, so the next {@link anychart.loadModule} call fetches the manifest again from the new base. Passing an options object without a <b>cdnBase</b> string changes nothing.
+ * @example anychart.loadModule.configure
+ * @param {{cdnBase: (string|undefined)}} options Loader options.
+ * @since 9.0.0
+ */
+anychart.loadModule.configure;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
