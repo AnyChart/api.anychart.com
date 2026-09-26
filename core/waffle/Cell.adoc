@@ -1,0 +1,347 @@
+/**
+ * Waffle chart cell settings object.<br/>
+ * Holds the grid geometry (padding, aspect ratio, size) and, per state, the appearance of the cells
+ * (fill, stroke, hatch fill, shape, corner radius). Get it with {@link anychart.charts.Waffle#cell}.
+ * @constructor
+ * @extends {anychart.core.Base}
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.waffle.Cell.prototype.aspectRatio
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the cell aspect ratio.
+ * @shortDescription Cell aspect ratio.
+ * @category Size and Position
+ * @example anychart.core.waffle.Cell.aspectRatio_get
+ * @return {number} The cell aspect ratio.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.aspectRatio;
+
+/**
+ * Setter for the cell aspect ratio.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> 1 (square cells).</li>
+ *   <li><b>Meaning:</b> the cell's width-to-height ratio; the cell width is {@link anychart.core.waffle.Cell#size} multiplied by this ratio, so it only affects a fixed-size grid.</li>
+ * </ul>
+ * @example anychart.core.waffle.Cell.aspectRatio_set
+ * @param {number=} opt_ratio [1] Cell aspect ratio to set.
+ * @return {anychart.core.waffle.Cell} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.aspectRatio;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.waffle.Cell.prototype.cornerRadius
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the cell corner radius.
+ * @shortDescription Cell corner radius.
+ * @category Specific settings
+ * @example anychart.core.waffle.Cell.cornerRadius_get
+ * @return {number} The cell corner radius.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.cornerRadius;
+
+/**
+ * Setter for the cell corner radius.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> 0.</li>
+ *   <li><b>Applies to:</b> square cells only ({@link anychart.core.waffle.Cell#shape} 'square'); every other shape ignores it.</li>
+ *   <li><b>Shortcut:</b> cornerRadius() is a shortcut to normal().cornerRadius(); it also accepts a function, called per cell with <code>this.cellIndex</code>, <code>this.row</code>, <code>this.column</code> and <code>this.state</code>.</li>
+ * </ul>
+ * @example anychart.core.waffle.Cell.cornerRadius_set
+ * @param {(number|Function)=} opt_radius [0] Corner radius in pixels to set, or a function returning it per cell.
+ * @return {anychart.core.waffle.Cell} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.cornerRadius;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.waffle.Cell.prototype.fill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the cell fill.
+ * @shortDescription Cell fill.
+ * @category Coloring
+ * @example anychart.core.waffle.Cell.fill_get
+ * @return {(anychart.graphics.vector.Fill|FillFunction)} Fill settings.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.fill;
+
+/**
+ * Setter for the cell fill.
+ * @detailed
+ * <ul>
+ *   <li><b>Shortcut:</b> fill() is a shortcut to normal().fill(); accepts every form {@link anychart.core.StateSettings#fill} does (color string, object, function, gradient).</li>
+ *   <li><b>Function form:</b> called per cell with <code>this.cellIndex</code>, <code>this.row</code>, <code>this.column</code>, <code>this.state</code> and <code>this.sourceColor</code>, the palette color of the cell's category.</li>
+ *   <li><b>No theme default:</b> a freshly drawn chart reads cell().fill() back as undefined; the visible color comes from the chart-level {@link anychart.charts.Waffle#normal} fill until this is set.</li>
+ * </ul>
+ * See {@link anychart.core.StateSettings#fill} for the full set of accepted forms.
+ * @example anychart.core.waffle.Cell.fill_set
+ * @param {(anychart.graphics.vector.Fill|FillFunction)=} opt_fill Fill settings to set.
+ * @return {anychart.core.waffle.Cell} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.fill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.waffle.Cell.prototype.hatchFill
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the cell hatch fill.
+ * @shortDescription Cell hatch fill.
+ * @category Coloring
+ * @example anychart.core.waffle.Cell.hatchFill_get
+ * @return {anychart.graphics.vector.PatternFill|anychart.graphics.vector.HatchFill|Function} Hatch fill settings.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.hatchFill;
+
+/**
+ * Setter for the cell hatch fill.
+ * @detailed
+ * <ul>
+ *   <li><b>Shortcut:</b> hatchFill() is a shortcut to normal().hatchFill(); accepts every form {@link anychart.core.StateSettings#hatchFill} does (pattern name, boolean, object).</li>
+ *   <li><b>No theme default:</b> a freshly drawn chart reads cell().hatchFill() back as undefined until it is set.</li>
+ * </ul>
+ * See {@link anychart.core.StateSettings#hatchFill} for the full set of accepted forms.
+ * @example anychart.core.waffle.Cell.hatchFill_set
+ * @param {(anychart.graphics.vector.HatchFill.HatchFillType|string|boolean|null)=} opt_type Type of hatch fill, or a boolean to enable/disable it.
+ * @return {anychart.core.waffle.Cell} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.hatchFill;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.waffle.Cell.prototype.hovered
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for hovered cell state settings.
+ * @shortDescription Hovered cell state settings.
+ * @category Interactivity
+ * @example anychart.core.waffle.Cell.hovered_get
+ * @return {anychart.core.StateSettings} Hovered cell state settings.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.hovered;
+
+/**
+ * Setter for hovered cell state settings.
+ * @detailed
+ * <ul>
+ *   <li><b>Settings:</b> fill, stroke, hatch fill, shape and corner radius of the cells of a hovered category, overriding the same settings of the chart-level {@link anychart.charts.Waffle#hovered}.</li>
+ *   <li><b>No theme default:</b> every option here reads back as undefined until it is set.</li>
+ * </ul>
+ * @example anychart.core.waffle.Cell.hovered_set
+ * @param {!Object=} opt_settings State settings to set.
+ * @return {anychart.core.waffle.Cell} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.hovered;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.waffle.Cell.prototype.normal
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for normal cell state settings.
+ * @shortDescription Normal cell state settings.
+ * @category Interactivity
+ * @example anychart.core.waffle.Cell.normal_get
+ * @return {anychart.core.StateSettings} Normal cell state settings.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.normal;
+
+/**
+ * Setter for normal cell state settings.
+ * @detailed
+ * <ul>
+ *   <li><b>Settings:</b> fill, stroke, hatch fill, shape and corner radius of the cells in the normal state, overriding the same settings of the chart-level {@link anychart.charts.Waffle#normal}.</li>
+ *   <li><b>Shortcuts:</b> {@link anychart.core.waffle.Cell#fill}, {@link anychart.core.waffle.Cell#stroke}, {@link anychart.core.waffle.Cell#hatchFill}, {@link anychart.core.waffle.Cell#shape} and {@link anychart.core.waffle.Cell#cornerRadius} read and write this same state.</li>
+ * </ul>
+ * @example anychart.core.waffle.Cell.normal_set
+ * @param {!Object=} opt_settings State settings to set.
+ * @return {anychart.core.waffle.Cell} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.normal;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.waffle.Cell.prototype.padding
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the cell padding.
+ * @shortDescription Cell padding.
+ * @category Size and Position
+ * @example anychart.core.waffle.Cell.padding_get
+ * @return {number} The cell padding in pixels.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.padding;
+
+/**
+ * Setter for the cell padding.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> 2.</li>
+ *   <li><b>Meaning:</b> the gap, in pixels, between neighboring cells of the grid.</li>
+ * </ul>
+ * @example anychart.core.waffle.Cell.padding_set
+ * @param {number=} opt_padding [2] Cell padding in pixels to set.
+ * @return {anychart.core.waffle.Cell} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.padding;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.waffle.Cell.prototype.selected
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for selected cell state settings.
+ * @shortDescription Selected cell state settings.
+ * @category Interactivity
+ * @example anychart.core.waffle.Cell.selected_get
+ * @return {anychart.core.StateSettings} Selected cell state settings.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.selected;
+
+/**
+ * Setter for selected cell state settings.
+ * @detailed
+ * <ul>
+ *   <li><b>Settings:</b> fill, stroke, hatch fill, shape and corner radius of the cells of a selected category, overriding the same settings of the chart-level {@link anychart.charts.Waffle#selected}.</li>
+ *   <li><b>No theme default:</b> every option here reads back as undefined until it is set.</li>
+ * </ul>
+ * @example anychart.core.waffle.Cell.selected_set
+ * @param {!Object=} opt_settings State settings to set.
+ * @return {anychart.core.waffle.Cell} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.selected;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.waffle.Cell.prototype.shape
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the cell shape.
+ * @shortDescription Cell shape.
+ * @category Specific settings
+ * @example anychart.core.waffle.Cell.shape_get
+ * @return {anychart.enums.WaffleCellShape|string} The cell shape.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.shape;
+
+/**
+ * Setter for the cell shape.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> 'square'.</li>
+ *   <li><b>Accepted values:</b> the {@link anychart.enums.WaffleCellShape} members - every marker shape except the two line shapes.</li>
+ *   <li><b>Case:</b> matched without regard to case.</li>
+ *   <li><b>Invalid input:</b> an unrecognized value does not throw, it silently falls back to 'square', not to the previously set shape.</li>
+ *   <li><b>Shortcut:</b> shape() is a shortcut to normal().shape(); it also accepts a function, called per cell with <code>this.cellIndex</code>, <code>this.row</code>, <code>this.column</code> and <code>this.state</code>. Use {@link anychart.core.waffle.Cell#cornerRadius} to round the corners of square cells.</li>
+ * </ul>
+ * @example anychart.core.waffle.Cell.shape_set
+ * @param {(anychart.enums.WaffleCellShape|string|Function)=} opt_shape ['square'] Cell shape to set, or a function returning it per cell.
+ * @return {anychart.core.waffle.Cell} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.shape;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.waffle.Cell.prototype.size
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the cell size.
+ * @shortDescription Cell size.
+ * @category Size and Position
+ * @example anychart.core.waffle.Cell.size_get
+ * @return {number} The cell height in pixels, or 0 when the size is auto-fitted.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.size;
+
+/**
+ * Setter for the cell size.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> 0, which auto-fits the grid to the chart bounds.</li>
+ *   <li><b>Fixed size:</b> any other value is the cell height in pixels; the cell width is this value multiplied by {@link anychart.core.waffle.Cell#aspectRatio}. A fixed-size grid does not shrink to fit - if it outgrows the chart area, it stays centered and its edges are cut off.</li>
+ * </ul>
+ * @example anychart.core.waffle.Cell.size_set
+ * @param {number=} opt_size [0] Cell height in pixels to set. 0 means auto-fit.
+ * @return {anychart.core.waffle.Cell} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.size;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.waffle.Cell.prototype.stroke
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the cell stroke.
+ * @shortDescription Cell stroke.
+ * @category Coloring
+ * @example anychart.core.waffle.Cell.stroke_get
+ * @return {!anychart.graphics.vector.Stroke} Stroke settings.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.stroke;
+
+/**
+ * Setter for the cell stroke.
+ * @detailed
+ * <ul>
+ *   <li><b>Shortcut:</b> stroke() is a shortcut to normal().stroke(); accepts every form {@link anychart.core.StateSettings#stroke} does (color string, object, function).</li>
+ *   <li><b>No theme default:</b> a freshly drawn chart reads cell().stroke() back as undefined; the visible stroke comes from the chart-level {@link anychart.charts.Waffle#normal} stroke until this is set.</li>
+ * </ul>
+ * See {@link anychart.core.StateSettings#stroke} for the full set of accepted forms.
+ * @example anychart.core.waffle.Cell.stroke_set
+ * @param {(anychart.graphics.vector.Stroke|StrokeFunction)=} opt_stroke Stroke settings to set.
+ * @return {anychart.core.waffle.Cell} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.waffle.Cell.prototype.stroke;

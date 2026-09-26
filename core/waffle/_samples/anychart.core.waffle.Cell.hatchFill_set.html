@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.Waffle.cellSize_get"/>
+    <meta name="ac:name" content="anychart.core.waffle.Cell.hatchFill set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -22,19 +22,18 @@
 <body>
 <div id="container"></div>
 <script>
-anychart.onDocumentReady(function () {
-    var chart = anychart.waffle([
-        {x: 'Product A', value: 45},
-        {x: 'Product B', value: 30},
-        {x: 'Product C', value: 25}
-    ]);
+    anychart.onDocumentReady(function () {
+        var chart = anychart.waffle([
+            {name: 'Product A', value: 45},
+            {name: 'Product B', value: 30},
+            {name: 'Product C', value: 25}
+        ]);
+        chart.container('container');
 
-    var size = chart.cellSize();
-    chart.title('cellSize: ' + size);
-
-    chart.container('container');
-    chart.draw();
-});
+        // Add the default backward-diagonal hatch pattern to the cells.
+        chart.cell().hatchFill(true);
+        chart.draw();
+    });
 </script>
 </body>
 </html>
