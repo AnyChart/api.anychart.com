@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.utils.ChartA11y.titleFormat set"/>
+    <meta name="ac:name" content="anychart.core.utils.ChartA11y.showFocusRing"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -45,15 +45,16 @@
         chart.line(data3);
 
         var a11y = chart.a11y();
+        a11y.enabled(true);
+        a11y.keyboardNavigation(true);
 
-        // Set title text.
-        // Title text is available for listening through VoiceOver.
-        // You can use inspect element tool to see the table.
-        a11y.titleFormat('Custom title text');
-
-        chart.title('Set title text');
         chart.container('container');
         chart.draw();
+
+        // Draw the focus ring around a fixed rectangle.
+        a11y.showFocusRing({left: 40, top: 40, width: 60, height: 30});
+
+        chart.title('Focus ring shown around a fixed rectangle');
     });
 </script>
 </body>

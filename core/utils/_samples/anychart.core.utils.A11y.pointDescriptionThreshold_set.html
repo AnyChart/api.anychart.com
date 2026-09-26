@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.core.utils.ChartA11y.titleFormat set"/>
+    <meta name="ac:name" content="anychart.core.utils.A11y.pointDescriptionThreshold set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -46,12 +46,10 @@
 
         var a11y = chart.a11y();
 
-        // Set title text.
-        // Title text is available for listening through VoiceOver.
-        // You can use inspect element tool to see the table.
-        a11y.titleFormat('Custom title text');
+        // Points beyond this count get no per-point aria-label.
+        a11y.pointDescriptionThreshold(2);
 
-        chart.title('Set title text');
+        chart.title('Point description threshold set to 2 points');
         chart.container('container');
         chart.draw();
     });
