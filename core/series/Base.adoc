@@ -254,3 +254,48 @@ anychart.core.series.Base.prototype.zIndex;
  * @ignoreDoc
  * @inheritDoc */
 anychart.core.series.Base.prototype.enabled;
+
+/**
+ * @ignoreDoc
+ * Appends new data rows to the series.
+ * @detailed
+ * <ul>
+ *   <li>If boost is active for the series, the new rows are rendered incrementally onto the existing boost canvas.</li>
+ *   <li>Otherwise (boost disabled, the series is below its threshold, or its drawer is permanently excluded from boost), the rows are appended the normal way: append, then a full redraw.</li>
+ *   <li>Area and spline series fall back to a full redraw even when boost is active.</li>
+ * </ul>
+ * @param {!Array} newRows Array of data rows in the same format as the series data (e.g. [x, y] pairs for line, [x, y, size] for bubble).
+ */
+anychart.core.series.Base.prototype.boostAppendData;
+
+/**
+ * @ignoreDoc
+ * Getter/setter for whether this series draws through Canvas/WebGL boost above its threshold. Undefined (default) has no own value; drawing then falls back internally to the chart's own boostEnabled(). An explicit true or false overrides the chart setting for this series only.
+ * @param {(boolean|null)=} opt_value Value to set.
+ * @return {(boolean|null|undefined|anychart.core.series.Base)} Boost state or self for chaining.
+ */
+anychart.core.series.Base.prototype.boostEnabled;
+
+/**
+ * @ignoreDoc
+ * Getter/setter for the point count above which boost auto-enables for this series. Undefined (default) has no own value; drawing then falls back internally to the chart's own boostThreshold().
+ * @param {number=} opt_value Value to set.
+ * @return {(number|undefined|anychart.core.series.Base)} Threshold or self for chaining.
+ */
+anychart.core.series.Base.prototype.boostThreshold;
+
+/**
+ * @ignoreDoc
+ * Getter/setter for the algorithm used to thin this series' points above maxPointsRendered(). Undefined (default) has no own value; drawing then falls back internally to the chart's own decimationAlgorithm().
+ * @param {(anychart.enums.DecimationAlgorithm|string)=} opt_value Value to set.
+ * @return {(anychart.enums.DecimationAlgorithm|string|undefined|anychart.core.series.Base)} Algorithm or self for chaining.
+ */
+anychart.core.series.Base.prototype.decimationAlgorithm;
+
+/**
+ * @ignoreDoc
+ * Getter/setter for the maximum number of points drawn for this series before decimation thins them. Undefined (default) has no own value; drawing then falls back internally to the chart's own maxPointsRendered().
+ * @param {number=} opt_value Value to set.
+ * @return {(number|undefined|anychart.core.series.Base)} Value or self for chaining.
+ */
+anychart.core.series.Base.prototype.maxPointsRendered;
