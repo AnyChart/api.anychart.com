@@ -21,8 +21,15 @@ anychart.core.dataSheet.Export;
  * The settings object accepts <b>separator</b> (defaults to <code>","</code>), <b>includeHeaders</b>
  * (defaults to <code>true</code>, uses the column title and falls back to the column field),
  * <b>filename</b> (defaults to <code>"data-sheet-export"</code>, the <code>.csv</code> extension is
- * appended automatically) and <b>filteredOnly</b> (defaults to <code>true</code> - only the rows
- * left after the current sorting and filtering are written).<br/>
+ * appended automatically), <b>filteredOnly</b> (defaults to <code>true</code> - only the rows
+ * left after the current sorting and filtering are written) and <b>values</b> (<code>"raw"</code> or
+ * <code>"display"</code>).<br/>
+ * <b>Note</b>: without <b>values</b>, a cell is written the way the grid paints it - <b>column.format()</b>
+ * applied - with one exception: a <b>boolean</b> column still writes <code>true</code>/<code>false</code>
+ * rather than the painted checkmark glyph, so the file stays readable by the grid's own importer.
+ * Passing <code>values: 'display'</code> writes the painted text for every column, checkmark glyph
+ * included; passing <code>values: 'raw'</code> writes the underlying model value unformatted, with a
+ * <b>date</b> column written as one ISO-8601 string regardless of how the value is stored.<br/>
  * <b>Note</b>: the method both returns the CSV string and, as a side effect, triggers a browser file
  * download. In environments without <code>Blob</code>/<code>URL.createObjectURL</code> the download is
  * skipped silently and only the string is returned.<br/>
@@ -31,7 +38,7 @@ anychart.core.dataSheet.Export;
  * @shortDescription Exports data as CSV.
  * @category Export
  * @example anychart.core.dataSheet.Export.csv
- * @param {Object=} opt_options Export settings: separator, includeHeaders, filename, filteredOnly.
+ * @param {Object=} opt_options Export settings: separator, includeHeaders, filename, filteredOnly, values.
  * @return {string} The generated CSV content.
  * @since 9.0.0
  */
@@ -49,16 +56,22 @@ anychart.core.dataSheet.Export.prototype.csv;
  * properties of the source data that are not bound to a column are omitted.<br/>
  * The settings object accepts <b>filename</b> (defaults to <code>"data-sheet-export"</code>, the
  * <code>.json</code> extension is appended automatically), <b>filteredOnly</b> (defaults to
- * <code>true</code> - only the rows left after the current sorting and filtering are written) and
+ * <code>true</code> - only the rows left after the current sorting and filtering are written),
  * <b>pretty</b> (defaults to <code>true</code> - the JSON is indented with two spaces; pass
- * <code>false</code> for a compact single-line output).<br/>
- * <b>Note</b>: the method returns nothing, it only triggers a browser file download. In environments
- * without <code>Blob</code>/<code>URL.createObjectURL</code> the call is a no-op.
+ * <code>false</code> for a compact single-line output) and <b>values</b> (<code>"raw"</code> or
+ * <code>"display"</code>).<br/>
+ * <b>Note</b>: without <b>values</b>, each value keeps its model type - <b>column.format()</b> is not
+ * applied - with a <b>date</b> column always written as one ISO-8601 string and a <b>boolean</b> column
+ * as a real boolean. Passing <code>values: 'display'</code> fills every field with the text the grid
+ * paints for it instead, checkmark glyph included for a boolean column.<br/>
+ * <b>Note</b>: the method returns the generated JSON text; as a side effect it also triggers a browser
+ * file download, which is skipped silently in environments without
+ * <code>Blob</code>/<code>URL.createObjectURL</code>.
  * @shortDescription Exports data as JSON.
  * @category Export
  * @example anychart.core.dataSheet.Export.json
- * @param {Object=} opt_options Export settings: filename, filteredOnly, pretty.
- * @return {undefined}
+ * @param {Object=} opt_options Export settings: filename, filteredOnly, pretty, values.
+ * @return {string} The generated JSON content.
  * @since 9.0.0
  */
 anychart.core.dataSheet.Export.prototype.json;
