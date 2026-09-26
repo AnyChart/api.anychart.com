@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.ArcDiagram.nodeWidth get"/>
+    <meta name="ac:name" content="anychart.charts.ArcDiagram.weightedNodes set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -25,14 +25,12 @@
     anychart.onDocumentReady(function () {
         var chart = anychart.arcDiagram([
             {from: 'A', to: 'B', weight: 5},
-            {from: 'A', to: 'C', weight: 3},
-            {from: 'B', to: 'D', weight: 4},
-            {from: 'C', to: 'D', weight: 2}
+            {from: 'A', to: 'C', weight: 1},
+            {from: 'B', to: 'D', weight: 8}
         ]);
 
-        // Get the default node width and show it in the title.
-        var nodeWidth = chart.nodeWidth();
-        chart.title('Node width: ' + String(nodeWidth));
+        // Turn weighted sizing off: every node is drawn at the same size.
+        chart.weightedNodes(false);
 
         chart.container('container');
         chart.draw();

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="ac:name" content="anychart.charts.ArcDiagram.nodeWidth set"/>
+    <meta name="ac:name" content="anychart.core.arcDiagram.elements.SingleNode.normal set"/>
     <meta name="ac:short-desc" content=""/>
     <meta name="ac:desc" content=""/>
     <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
@@ -26,13 +26,11 @@
         var chart = anychart.arcDiagram([
             {from: 'A', to: 'B', weight: 5},
             {from: 'A', to: 'C', weight: 3},
-            {from: 'B', to: 'D', weight: 4},
-            {from: 'C', to: 'D', weight: 2}
+            {from: 'B', to: 'D', weight: 4}
         ]);
 
-        // Make the node bars much thicker than the 20px default.
-        chart.nodeWidth(60);
-
+        // Set node A's own normal state fill and stroke together.
+        chart.node('A').normal({fill: '#8e24aa', stroke: '#4a148c'});
         chart.container('container');
         chart.draw();
     });

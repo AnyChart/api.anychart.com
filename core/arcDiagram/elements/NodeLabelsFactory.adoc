@@ -1,0 +1,122 @@
+/**
+ * Node labels factory settings, returned by {@link anychart.core.arcDiagram.elements.Node#labels}.<br/>
+ * Extends the common labels factory with one field arc diagram node labels need: connectorMaxLength(). The
+ * overflow() method that switches between the 'hide' and 'stack' layouts also lives here, but only the normal
+ * state's factory is read for layout; the hovered and selected states accept the same calls purely so chaining
+ * onto them does not throw.
+ * @param {boolean=} opt_noTheme Whether to skip theme defaults, for the hovered/selected labels factories.
+ * @constructor
+ * @extends {anychart.core.ui.LabelsFactory}
+ * @since 9.0.0
+ */
+anychart.core.arcDiagram.elements.NodeLabelsFactory;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.arcDiagram.elements.NodeLabelsFactory.prototype.connectorMaxLength
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the node labels' connector line max length.
+ * @shortDescription Node labels' connector line max length.
+ * @category Interactivity
+ * @example anychart.core.arcDiagram.elements.NodeLabelsFactory.connectorMaxLength_get
+ * @return {(number|string)} Connector line max length, in pixels or a percent string.
+ * @since 9.0.0
+ */
+anychart.core.arcDiagram.elements.NodeLabelsFactory.prototype.connectorMaxLength;
+
+/**
+ * Setter for the node labels' connector line max length.<br/>
+ * A label whose de-collided position needs a longer connector line back to its node than this is dropped instead
+ * of drawn with an over-length connector line; its text is then reported by {@link anychart.charts.ArcDiagram#getUnplacedNodeLabels}.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> '50%', a connector line up to half the chart's content-area height.</li>
+ *   <li><b>Value types:</b> a number of pixels, or a percent string (e.g. '30%') of the chart's content-area height.</li>
+ *   <li><b>Invalid values:</b> a negative number or an unparsable value is discarded and the previous value is kept.</li>
+ *   <li><b>Only 'hide' overflow:</b> only consulted when the node labels' overflow() mode is 'hide'; 'stack' never drops a label for its connector line length.</li>
+ *   <li><b>Read only off normal():</b> only the normal state's factory is consulted; setting it on the hovered or selected labels factory has no effect on layout.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * @example anychart.core.arcDiagram.elements.NodeLabelsFactory.connectorMaxLength_set
+ * @param {(number|string)=} opt_value ['50%'] Connector line max length to set.
+ * @return {anychart.core.arcDiagram.elements.NodeLabelsFactory} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.arcDiagram.elements.NodeLabelsFactory.prototype.connectorMaxLength;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.arcDiagram.elements.NodeLabelsFactory.prototype.overflow
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the node labels overflow mode.
+ * @shortDescription Node labels overflow mode.
+ * @category Interactivity
+ * @example anychart.core.arcDiagram.elements.NodeLabelsFactory.overflow_get
+ * @return {anychart.enums.ArcDiagramNodeLabelsOverflow|string} Node labels overflow mode.
+ * @since 9.0.0
+ */
+anychart.core.arcDiagram.elements.NodeLabelsFactory.prototype.overflow;
+
+/**
+ * Setter for the node labels overflow mode.<br/>
+ * Controls what happens to a node label that does not fit its own side of the node line.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> 'hide'.</li>
+ *   <li><b>'hide':</b> a label that does not fit its own side of the node line, or whose connector line would exceed connectorMaxLength(), is dropped instead of drawn; its text is then reported by {@link anychart.charts.ArcDiagram#getUnplacedNodeLabels}.</li>
+ *   <li><b>'stack':</b> every label that survives maxCount() selection is kept, growing the label band at the arcs' expense instead of dropping labels for lack of room; connectorMaxLength() is not consulted in this mode.</li>
+ *   <li><b>Invalid values:</b> a value other than 'hide' or 'stack' falls back to 'hide', even if a different mode was set before.</li>
+ *   <li><b>Read only off normal():</b> only the normal state's factory is consulted; setting it on the hovered or selected labels factory has no effect on layout.</li>
+ *   <li><b>maxCount():</b> the labels kept by maxCount() are selected before either mode lays them out, so a label cut by maxCount() never reaches this overflow handling.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * @example anychart.core.arcDiagram.elements.NodeLabelsFactory.overflow_set
+ * @param {(anychart.enums.ArcDiagramNodeLabelsOverflow|string)=} opt_value ['hide'] Overflow mode to set.
+ * @return {anychart.core.arcDiagram.elements.NodeLabelsFactory} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.arcDiagram.elements.NodeLabelsFactory.prototype.overflow;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.arcDiagram.elements.NodeLabelsFactory.prototype.maxCount
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the maximum number of node labels competing for a lane.
+ * @shortDescription Maximum number of node labels competing for a lane.
+ * @category Interactivity
+ * @example anychart.core.arcDiagram.elements.NodeLabelsFactory.maxCount_get
+ * @return {?number} Maximum number of node labels competing for a lane, or null for no limit.
+ * @since 9.0.0
+ */
+anychart.core.arcDiagram.elements.NodeLabelsFactory.prototype.maxCount;
+
+/**
+ * Setter for the maximum number of node labels competing for a lane.<br/>
+ * Before layout runs, in both overflow() modes, only the n heaviest labels (by node weight, then by label text)
+ * are kept; the rest are cut and their text is reported by {@link anychart.charts.ArcDiagram#getUnplacedNodeLabels},
+ * the same list overflow('hide') itself drops labels into.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> null, so every enabled node label competes for a lane.</li>
+ *   <li><b>Value types:</b> a finite number is floored to an integer before use; a numeric string is read the same way.</li>
+ *   <li><b>0:</b> a literal value meaning no node label is kept; every one of them is cut and reported by getUnplacedNodeLabels().</li>
+ *   <li><b>Negative:</b> a negative value becomes 0, same effect as an explicit 0.</li>
+ *   <li><b>Null or invalid:</b> null, undefined, or a value that is not a finite number all fall back to null, restoring the no-limit default.</li>
+ *   <li><b>Read only off normal():</b> only the normal state's factory is consulted; setting it on the hovered or selected labels factory has no effect on layout.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * @example anychart.core.arcDiagram.elements.NodeLabelsFactory.maxCount_set
+ * @param {(number|string|null)=} opt_value [null] Maximum number of node labels to keep.
+ * @return {anychart.core.arcDiagram.elements.NodeLabelsFactory} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.arcDiagram.elements.NodeLabelsFactory.prototype.maxCount;
