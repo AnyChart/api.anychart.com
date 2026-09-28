@@ -26,6 +26,7 @@ anychart.charts.OrgChart.prototype.data;
 
 /**
  * Setter for the data.
+ * @detailed A repeated id draws only its first occurrence; every later item sharing that id is skipped - not drawn and not positioned. With parent-pointer data ('as-table'), items whose parent is the repeated id attach under the first occurrence; with nested data ('as-tree'), the children of a skipped item are skipped as well.
  * @example anychart.charts.OrgChart.data_set
  * @param {(anychart.data.Tree|anychart.data.TreeView|Array.<Object>)=} opt_data Data tree or raw data.
  * @param {(anychart.enums.TreeFillingMethod|string)=} opt_fillMethod Fill method.
@@ -44,6 +45,7 @@ anychart.charts.OrgChart.prototype.data;
  * Collapses the subtree of a node.
  * @shortDescription Collapses a node.
  * @category Interactivity
+ * @detailed Dispatches a cancelable 'rowcollapseexpand' event before the node collapses, with 'id' (the node id), 'item' (the node) and 'collapsed' (true). Calling preventDefault() on the event leaves the node expanded. The event is dispatched on every call, also for a node that is already collapsed, and on a click on the collapse button.
  * @example anychart.charts.OrgChart.collapse
  * @param {(anychart.data.Tree.DataItem|string|number)} node Node instance or node id.
  * @return {anychart.charts.OrgChart} Self instance for method chaining.
@@ -61,6 +63,7 @@ anychart.charts.OrgChart.prototype.collapse;
  * Expands the subtree of a node.
  * @shortDescription Expands a node.
  * @category Interactivity
+ * @detailed Dispatches a cancelable 'rowcollapseexpand' event before the node expands, with 'id' (the node id), 'item' (the node) and 'collapsed' (false). Calling preventDefault() on the event leaves the node collapsed. The event is dispatched on every call, also for a node that is already expanded, and on a click on the collapse button.
  * @example anychart.charts.OrgChart.expand
  * @param {(anychart.data.Tree.DataItem|string|number)} node Node instance or node id.
  * @return {anychart.charts.OrgChart} Self instance for method chaining.
@@ -78,6 +81,7 @@ anychart.charts.OrgChart.prototype.expand;
  * Collapses all nodes of the chart.
  * @shortDescription Collapses all nodes.
  * @category Interactivity
+ * @detailed Dispatches one non-cancelable 'rowcollapseexpand' event (with 'id', 'item' and 'collapsed' = true) per parent node that was expanded and just collapsed.
  * @example anychart.charts.OrgChart.collapseAll
  * @return {anychart.charts.OrgChart} Self instance for method chaining.
  * @since 9.0.0
@@ -94,6 +98,7 @@ anychart.charts.OrgChart.prototype.collapseAll;
  * Expands all nodes of the chart.
  * @shortDescription Expands all nodes.
  * @category Interactivity
+ * @detailed Dispatches one non-cancelable 'rowcollapseexpand' event (with 'id', 'item' and 'collapsed' = false) per parent node that was collapsed and just expanded.
  * @example anychart.charts.OrgChart.expandAll
  * @return {anychart.charts.OrgChart} Self instance for method chaining.
  * @since 9.0.0
@@ -108,11 +113,16 @@ anychart.charts.OrgChart.prototype.expandAll;
 
 /**
  * Zooms the chart view in by one step.<br/>
- * Each call multiplies the current scale by 1.2 and stops at the maximum zoom level.<br/>
+ * With no argument, each call multiplies the current scale by interactivity().zoomStep() and stops at the maximum zoom level.
+ * @detailed <ul>
+ *   <li><b>opt_factor:</b> a finite number greater than 0 used as the multiplier for this one call only, instead of interactivity().zoomStep().</li>
+ *   <li><b>Invalid opt_factor:</b> a missing argument, NaN, Infinity, null, 0 or a negative number falls back to interactivity().zoomStep(), the same as calling zoomIn() with no argument.</li>
+ * </ul>
  * See {@link anychart.charts.OrgChart#maxZoom} for the upper limit.
  * @shortDescription Zooms the chart in.
  * @category Interactivity
  * @example anychart.charts.OrgChart.zoomIn
+ * @param {number=} opt_factor [interactivity().zoomStep()] Zoom-in multiplier for this call.
  * @return {anychart.charts.OrgChart} Self instance for method chaining.
  * @since 9.0.0
  */
@@ -126,11 +136,16 @@ anychart.charts.OrgChart.prototype.zoomIn;
 
 /**
  * Zooms the chart view out by one step.<br/>
- * Each call multiplies the current scale by 0.8 and stops at the minimum zoom level.<br/>
+ * With no argument, each call multiplies the current scale by 0.8 as long as interactivity().zoomStep() is left at its default; once zoomStep is set to a different value, the multiplier becomes 1 / interactivity().zoomStep(). The view stops at the minimum zoom level.
+ * @detailed <ul>
+ *   <li><b>opt_factor:</b> a finite number greater than 0 used as the multiplier for this one call only, instead of the default zoom-out multiplier.</li>
+ *   <li><b>Invalid opt_factor:</b> a missing argument, NaN, Infinity, null, 0 or a negative number falls back to the default zoom-out multiplier (0.8 while zoomStep is untouched, otherwise 1 / interactivity().zoomStep()), the same as calling zoomOut() with no argument.</li>
+ * </ul>
  * See {@link anychart.charts.OrgChart#minZoom} for the lower limit.
  * @shortDescription Zooms the chart out.
  * @category Interactivity
  * @example anychart.charts.OrgChart.zoomOut
+ * @param {number=} opt_factor [0.8] Zoom-out multiplier for this call.
  * @return {anychart.charts.OrgChart} Self instance for method chaining.
  * @since 9.0.0
  */
@@ -300,6 +315,8 @@ anychart.charts.OrgChart.prototype.interactivity;
  * Getter for normal state settings.
  * @shortDescription Normal state settings.
  * @category Interactivity
+ * @detailed Besides fill, stroke and labels, this state also accepts cornerRadius() for the node corner radius.
+ * See {@link anychart.charts.OrgChart#cornerRadius} for the chart-wide shortcut.
  * @example anychart.charts.OrgChart.normal_get
  * @return {anychart.core.StateSettings} Normal state settings.
  * @since 9.0.0
@@ -325,6 +342,8 @@ anychart.charts.OrgChart.prototype.normal;
  * Getter for hovered state settings.
  * @shortDescription Hovered state settings.
  * @category Interactivity
+ * @detailed Besides fill, stroke and labels, this state also accepts its own cornerRadius().
+ * See {@link anychart.charts.OrgChart#cornerRadius} for the chart-wide shortcut.
  * @example anychart.charts.OrgChart.hovered_get
  * @return {anychart.core.StateSettings} Hovered state settings.
  * @since 9.0.0
@@ -350,6 +369,8 @@ anychart.charts.OrgChart.prototype.hovered;
  * Getter for selected state settings.
  * @shortDescription Selected state settings.
  * @category Interactivity
+ * @detailed Besides fill, stroke and labels, this state also accepts its own cornerRadius().
+ * See {@link anychart.charts.OrgChart#cornerRadius} for the chart-wide shortcut.
  * @example anychart.charts.OrgChart.selected_get
  * @return {anychart.core.StateSettings} Selected state settings.
  * @since 9.0.0
@@ -387,6 +408,7 @@ anychart.charts.OrgChart.prototype.labels;
  * <ul>
  *   <li><b>null/boolean</b> - disable or enable labels.</li>
  *   <li><b>object</b> - sets labels settings.</li>
+ *   <li><b>Cascade:</b> a font setting owned by a data row's own labels beats the same setting owned by {@link anychart.charts.OrgChart#level}, which beats {@link anychart.charts.OrgChart#nodeTypes}, which beats this chart-wide setter; a setting none of them own falls back to the theme.</li>
  * </ul>
  * @example anychart.charts.OrgChart.labels_set
  * @param {(Object|boolean|null)=} opt_settings Labels settings.
@@ -565,6 +587,7 @@ anychart.charts.OrgChart.prototype.siblingSpacing;
  * Getter for the chart orientation.
  * @shortDescription Orientation settings.
  * @category Specific settings
+ * @detailed Returns the raw option - 'auto' comes back as 'auto', not as the direction it resolves to. See {@link anychart.charts.OrgChart#getEffectiveOrientation} for the resolved direction.
  * @example anychart.charts.OrgChart.orientation_get
  * @return {anychart.enums.OrgChartOrientation|string} The chart orientation.
  * @since 9.0.0
@@ -580,6 +603,8 @@ anychart.charts.OrgChart.prototype.orientation;
  *   <li><b>'bottom-to-top'</b> - the tree grows upwards from the root.</li>
  *   <li><b>'left-to-right'</b> - the tree grows to the right from the root.</li>
  *   <li><b>'right-to-left'</b> - the tree grows to the left from the root.</li>
+ *   <li><b>'auto'</b> - the chart picks a vertical or a horizontal growth direction by itself, whichever lets the tree fit its bounds at a bigger scale; ties keep 'top-to-bottom'. See {@link anychart.charts.OrgChart#getEffectiveOrientation} to read the resolved direction.</li>
+ *   <li><b>Invalid values:</b> a value other than the five above resets orientation to 'top-to-bottom' - it does not keep the value that was set before, and it writes no console warning.</li>
  * </ul>
  * @example anychart.charts.OrgChart.orientation_set
  * @param {(anychart.enums.OrgChartOrientation|string)=} opt_orientation ['top-to-bottom'] Orientation to set.
@@ -637,9 +662,12 @@ anychart.charts.OrgChart.prototype.connectorStroke;
 
 /**
  * Setter for the connector stroke.
- * @detailed <b>Function form:</b> a function is also accepted and called once per connector, with <code>this</code> exposing <code>node</code>/<code>item</code>/<code>data</code> (the connector's lower-endpoint node), <code>level</code>/<code>depth</code> (0 for the root), <code>state</code> and <code>sourceColor</code> (the theme stroke this connector would otherwise use); its return value goes through the same normalization as a literal stroke.
+ * @detailed <ul>
+ *   <li><b>Function form:</b> a function is also accepted and called once per connector, with <code>this</code> exposing <code>node</code>/<code>item</code>/<code>data</code> (the connector's lower-endpoint node), <code>level</code>/<code>depth</code> (0 for the root), <code>state</code> and <code>sourceColor</code> (the theme stroke this connector would otherwise use); its return value goes through the same normalization as a literal stroke.</li>
+ *   <li><b>Cascade:</b> this chart-wide value is the lowest-priority tier. A data row's own connectorStroke beats {@link anychart.charts.OrgChart#level}, which beats {@link anychart.charts.OrgChart#nodeTypes}, which beats this setter.</li>
+ * </ul>
  * @example anychart.charts.OrgChart.connectorStroke_set
- * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null|Function)=} opt_stroke ['1.5 #90a4ae'] Stroke, or a function returning one, to set.
+ * @param {(anychart.graphics.vector.Stroke|anychart.graphics.vector.ColoredFill|string|null|Function)=} opt_stroke ['1.5 #607d8b'] Stroke, or a function returning one, to set.
  * @param {number=} opt_thickness Line thickness.
  * @param {string=} opt_dashpattern Controls the pattern of dashes and gaps used to stroke paths.
  * @param {anychart.graphics.vector.StrokeLineJoin=} opt_lineJoin Line join style.
@@ -660,7 +688,7 @@ anychart.charts.OrgChart.prototype.connectorStroke;
  * @shortDescription Title font color.
  * @category Coloring
  * @example anychart.charts.OrgChart.titleFontColor_get
- * @return {string} The title font color.
+ * @return {(string|Function)} The title font color.
  * @since 9.0.0
  */
 anychart.charts.OrgChart.prototype.titleFontColor;
@@ -668,8 +696,13 @@ anychart.charts.OrgChart.prototype.titleFontColor;
 /**
  * Setter for the title font color.<br/>
  * Sets the font color of the node title text.
+ * @detailed <ul>
+ *   <li><b>Cascade:</b> this chart-wide value is the lowest-priority tier. A data row's own titleFontColor beats the level settings, which beat the node type settings, which beat this setter.</li>
+ *   <li><b>Function form:</b> a function is also accepted and called once per node, with the same context fill()'s function form receives; its return value is used as the color.</li>
+ * </ul>
+ * See {@link anychart.charts.OrgChart#level} and {@link anychart.charts.OrgChart#nodeTypes} for the level and node type tiers.
  * @example anychart.charts.OrgChart.titleFontColor_set
- * @param {string=} opt_color ['#666'] Font color to set.
+ * @param {(string|Function)=} opt_color ['#666'] Font color, or a function returning one, to set.
  * @return {anychart.charts.OrgChart} Self instance for method chaining.
  * @since 9.0.0
  */
@@ -704,6 +737,7 @@ anychart.charts.OrgChart.prototype.fill;
  * <ul>
  *   <li><b>Value:</b> a color string, an object, or an array of gradient keys.</li>
  *   <li><b>Function form:</b> a function is also accepted and called once per node, with <code>this</code> exposing <code>node</code>/<code>item</code>/<code>data</code>, <code>level</code>/<code>depth</code> (0 for a root node), <code>state</code> and <code>sourceColor</code> (the fill the node would otherwise use); its return value goes through the same normalization as a literal fill.</li>
+ *   <li><b>Cascade:</b> this chart-wide value is the lowest-priority tier. A data row's own fill (or its normal/hovered/selected sub-object) beats {@link anychart.charts.OrgChart#level}, which beats {@link anychart.charts.OrgChart#nodeTypes}, which beats this setter.</li>
  * </ul>
  * See {@link anychart.charts.OrgChart#normal} for the full normal-state settings and {@link anychart.core.StateSettings#fill} for the full list of accepted literal forms, including gradients, patterns and images.
  * @listing See listing
@@ -743,6 +777,7 @@ anychart.charts.OrgChart.prototype.stroke;
  * @detailed Shorthand for normal().stroke(value) - sets the normal-state node stroke; the hovered and the selected states have their own stroke.
  * <ul>
  *   <li><b>Function form:</b> a function is also accepted and called once per node, with the same context fill()'s function form receives (<code>node</code>/<code>item</code>/<code>data</code>, <code>level</code>/<code>depth</code>, <code>state</code>, <code>sourceColor</code>); its return value goes through the same normalization as a literal stroke.</li>
+ *   <li><b>Cascade:</b> this chart-wide value is the lowest-priority tier. A data row's own stroke (or its normal/hovered/selected sub-object) beats {@link anychart.charts.OrgChart#level}, which beats {@link anychart.charts.OrgChart#nodeTypes}, which beats this setter.</li>
  * </ul>
  * See {@link anychart.charts.OrgChart#normal} for the full normal-state settings and {@link anychart.charts.OrgChart#fill} for the function-form context.
  * @listing See listing
@@ -825,9 +860,9 @@ anychart.charts.OrgChart.prototype.selectionMode;
  * Controls what a click on a card does to the selection; select() and unselect() change the selection directly and ignore this setting.
  * @detailed <ul>
  *   <li><b>'none':</b> a click on a card does not select it.</li>
- *   <li><b>'single-select':</b> a click on a card replaces the current selection with that card.</li>
- *   <li><b>'multi-select':</b> a click on a card adds it to the selection; holding Ctrl, Cmd or Shift while clicking is the multi-select shortcut every other chart type uses too.</li>
- *   <li><b>Invalid values:</b> a value other than the three above resets the mode to 'none' - it does not keep the value that was set before, and it writes no console warning.</li>
+ *   <li><b>'single-select' and 'multi-select':</b> the two modes behave the same way. A plain click on a card replaces the current selection with that card; holding Ctrl, Cmd or Shift while clicking toggles that card in or out of the current selection instead of replacing it.</li>
+ *   <li><b>Aliases:</b> 'single' and 'multi' are accepted as short names for 'single-select' and 'multi-select'; every accepted value is matched case-insensitively, with or without the dash.</li>
+ *   <li><b>Invalid values:</b> a value other than the ones above is ignored and the mode already in effect is kept, read back unchanged; no console warning is written.</li>
  *   <li><b>Return value:</b> this setter forwards the call to Interactivity's selectionMode() setter and returns exactly what THAT setter returns - the interactivity settings object, not the chart, so it does not chain to other chart methods.</li>
  * </ul>
  * See {@link anychart.charts.OrgChart#select} and {@link anychart.charts.OrgChart#unselect} for the direct selection methods, and {@link anychart.core.utils.Interactivity#selectionMode} for the setter this one forwards to.
@@ -889,10 +924,11 @@ anychart.charts.OrgChart.prototype.unselect;
  * @category Interactivity
  * @detailed Levels are 1-based from the root (a root card is level 1).
  * <ul>
- *   <li><b>level 1:</b> only the root cards stay expanded, everything below them collapses.</li>
+ *   <li><b>level 1:</b> only the root cards are shown, each collapsed; level N shows the cards down to level N and collapses the cards at level N.</li>
  *   <li><b>A level at or past the tree's own depth:</b> the whole tree expands.</li>
- *   <li><b>0 or a negative level:</b> the tree collapses down to the root cards.</li>
+ *   <li><b>0 or a negative level:</b> same as level 1 - only the collapsed root cards are shown.</li>
  *   <li><b>Invalid values:</b> a value that is not a real number - a missing argument, NaN, a plain object, null - is ignored and the chart is left unchanged; it is not treated as 0 or as "no limit".</li>
+ *   <li><b>Events:</b> dispatches one non-cancelable 'rowcollapseexpand' event (with 'id', 'item' and 'collapsed') per parent node whose collapsed state actually changed.</li>
  * </ul>
  * @example anychart.charts.OrgChart.expandTo
  * @param {number} level The last level to keep expanded.
@@ -915,6 +951,203 @@ anychart.charts.OrgChart.prototype.expandTo;
  * @since 9.0.0
  */
 anychart.charts.OrgChart.prototype.getType;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.OrgChart.prototype.cornerRadius
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the node corner radius.
+ * @shortDescription Node corner radius.
+ * @category Coloring
+ * @detailed Shorthand for normal().cornerRadius() - reads the normal-state corner radius; the hovered and the selected states have their own corner radius.
+ * <ul>
+ *   <li><b>Default:</b> 4.</li>
+ * </ul>
+ * See {@link anychart.charts.OrgChart#normal} for the full normal-state settings.
+ * @listing See listing
+ * var cornerRadius = chart.cornerRadius();
+ * @example anychart.charts.OrgChart.cornerRadius_get
+ * @return {(number|Function)} The node corner radius.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.cornerRadius;
+
+/**
+ * Setter for the node corner radius.
+ * @detailed Shorthand for normal().cornerRadius(value) - sets the normal-state corner radius; the hovered and the selected states have their own corner radius.
+ * <ul>
+ *   <li><b>Value:</b> a number in pixels, or a function returning one.</li>
+ *   <li><b>Function form:</b> a function is also accepted and called once per node, with the same context fill()'s function form receives (<code>node</code>/<code>item</code>/<code>data</code>, <code>level</code>/<code>depth</code>, <code>state</code>, <code>sourceColor</code>); its return value goes through the same normalization as a literal number.</li>
+ *   <li><b>Clamping:</b> the resolved value is clamped to half of the smaller side of the node box at draw time - a bigger radius would make the rounded corners overlap themselves. The getter still returns whatever was set; only the drawn card is clamped.</li>
+ *   <li><b>Invalid values:</b> a non-numeric value (a string such as 'abc', an object) is stored and read back as NaN, and a NaN radius is drawn with 4, same as leaving the value unset. <code>null</code> normalizes to 0 and a numeric string to its number; a negative radius is stored as given and drawn as 0.</li>
+ *   <li><b>Cascade:</b> this chart-wide value is the lowest-priority tier. A data row's own cornerRadius beats {@link anychart.charts.OrgChart#level}, which beats {@link anychart.charts.OrgChart#nodeTypes}, which beats this setter.</li>
+ * </ul>
+ * See {@link anychart.charts.OrgChart#normal} for the full normal-state settings.
+ * @listing See listing
+ * chart.cornerRadius(8);
+ * @example anychart.charts.OrgChart.cornerRadius_set
+ * @param {(number|Function)=} opt_radius [4] Corner radius in pixels, or a function returning one, to set.
+ * @return {anychart.charts.OrgChart} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.cornerRadius;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.OrgChart.prototype.getEffectiveOrientation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns the growth direction the tree is actually drawn in.
+ * @shortDescription Resolved orientation.
+ * @category Specific settings
+ * @detailed Equal to orientation() for the four explicit directions. When orientation() is 'auto', it is whichever of 'top-to-bottom' or 'left-to-right' the last layout picked - 'top-to-bottom' before the first draw().
+ * @example anychart.charts.OrgChart.getEffectiveOrientation
+ * @return {string} One of 'top-to-bottom', 'bottom-to-top', 'left-to-right' or 'right-to-left'.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.getEffectiveOrientation;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.OrgChart.prototype.goToNode
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shows one node: expands every collapsed ancestor, zooms to a readable scale, centers the card and selects it.
+ * @shortDescription Shows a node.
+ * @category Interactivity
+ * @detailed <ul>
+ *   <li><b>Expand:</b> every collapsed ancestor of the node is expanded through the same path expand() uses, so whatever expand() dispatches is dispatched here too, once per ancestor.</li>
+ *   <li><b>Zoom:</b> the target zoom is the natural card size (1); if the card does not fit the plot at that zoom, the largest zoom at which it fits is used instead, but not below 0.67; the result is then clamped to minZoom()..maxZoom().</li>
+ *   <li><b>Selection:</b> the node becomes the only selected node, unless selectionMode() is 'none', in which case the expand and the zoom still happen but the selection does not change.</li>
+ *   <li><b>Unknown or empty id:</b> the call is ignored - no expand, no zoom, no selection change and no console warning.</li>
+ *   <li><b>Before the first draw():</b> the expand and the selection happen right away; the zoom and the centering are applied once the first draw() has laid the chart out.</li>
+ * </ul>
+ * See {@link anychart.charts.OrgChart#expand} and {@link anychart.charts.OrgChart#getZoomLevel}.
+ * @example anychart.charts.OrgChart.goToNode
+ * @param {(anychart.data.Tree.DataItem|string|number)} node Node instance or node id.
+ * @return {anychart.charts.OrgChart} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.goToNode;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.OrgChart.prototype.level
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for one hierarchy level's settings.
+ * @shortDescription Level settings.
+ * @category Specific settings
+ * @detailed Levels are 0-based tree depths - the root cards are level 0. A negative or a non-numeric index is ignored and returns the chart itself instead of a level, both for this getter and for the setter form below.
+ * @listing See listing
+ * var level0 = chart.level(0);
+ * @example anychart.charts.OrgChart.level_get
+ * @param {number} index Tree depth (root = 0).
+ * @return {(anychart.core.orgChart.Level|anychart.charts.OrgChart)} The level's settings, or the chart itself when the index is invalid.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.level;
+
+/**
+ * Setter for one hierarchy level's settings.
+ * @detailed Accepts an object with the same style keys as a node type (fill, stroke, cornerRadius, labels, connectorStroke, titleFontColor, normal, hovered, selected); the level tier sits between the node-type tier and the chart in the style cascade. Calling level() again with the same index returns the same settings instance; a fractional index is rounded down.
+ * See {@link anychart.charts.OrgChart#fill} for the full priority order.
+ * @listing See listing
+ * chart.level(0, {fill: '#e0f2f1'});
+ * @example anychart.charts.OrgChart.level_set
+ * @param {number} index Tree depth (root = 0).
+ * @param {Object=} opt_settings Level settings.
+ * @return {anychart.charts.OrgChart} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.level;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.OrgChart.prototype.nameMaxLines
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the maximum number of lines the node name wraps to.
+ * @shortDescription Name max lines.
+ * @category Chart Controls
+ * @detailed <ul>
+ *   <li><b>Default:</b> 2.</li>
+ * </ul>
+ * @listing See listing
+ * var nameMaxLines = chart.nameMaxLines();
+ * @example anychart.charts.OrgChart.nameMaxLines_get
+ * @return {number} The maximum number of lines.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.nameMaxLines;
+
+/**
+ * Setter for the maximum number of lines the node name wraps to.<br/>
+ * Past the limit, the name line ends in an ellipsis instead of wrapping further.
+ * @detailed <ul>
+ *   <li><b>Value:</b> a positive integer; a fractional value is rounded to the nearest integer.</li>
+ *   <li><b>Invalid values:</b> 0 is stored and read back exactly as given; a negative number or a value that is not a number is normalized to NaN and read back as NaN, not as the raw input. Rendering always falls back to 2 lines whenever the resolved value is not a positive integer.</li>
+ * </ul>
+ * @listing See listing
+ * chart.nameMaxLines(3);
+ * @example anychart.charts.OrgChart.nameMaxLines_set
+ * @param {number=} opt_lines [2] Maximum number of lines to set.
+ * @return {anychart.charts.OrgChart} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.nameMaxLines;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.OrgChart.prototype.nodeTypes
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the card slot bindings per node type.
+ * @shortDescription Node type bindings.
+ * @category Specific settings
+ * @detailed Binds each value of the data field 'type' to the card slots it fills (image, title, subtitle, details, badge, counter), plus the fill/stroke/cornerRadius/labels/connectorStroke/titleFontColor/normal/hovered/selected style keys that form the node-type tier of the style cascade.
+ * See {@link anychart.charts.OrgChart#fill} for the full priority order.
+ * <ul>
+ *   <li><b>Default:</b> {} (empty) - the built-in 'person', 'department' and 'agent' bindings already apply without appearing here; the getter returns only the bindings your own calls added or overrode.</li>
+ * </ul>
+ * @listing See listing
+ * var nodeTypes = chart.nodeTypes();
+ * @example anychart.charts.OrgChart.nodeTypes_get
+ * @return {!Object} The node type bindings.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.nodeTypes;
+
+/**
+ * Setter for the card slot bindings per node type.
+ * @detailed <ul>
+ *   <li><b>Value:</b> an object keyed by type name ('person', 'department', 'agent', or a custom name matched against a data item's own 'type' field). Each type's config gives, per slot, a data field name, a function, a settings object ({field, format, defaultValue, enabled, hideIfEmpty, label, maxLines, fontSize, fontColor, fontWeight, fontFamily, fontStyle, background}), or null to hide the slot; 'details' also accepts an array of those; 'order' lists the text slots top to bottom.</li>
+ *   <li><b>Merge:</b> a type's config replaces that type's own previous config and is merged slot by slot over the built-in bindings of 'person', 'department' and 'agent' - it does not need to repeat every slot.</li>
+ *   <li><b>Removing a type:</b> {type: null} removes that type's own bindings (a built-in type falls back to its built-in slots; a custom type falls back to the default title/subtitle binding).</li>
+ *   <li><b>Clearing everything:</b> nodeTypes(null) removes every type's own bindings.</li>
+ *   <li><b>Invalid values:</b> a value that is not a plain object (a string, an array, a function) is ignored and the bindings stay as they were; false, 0 or an empty string for one type removes that type the same way as null.</li>
+ * </ul>
+ * @listing See listing
+ * chart.nodeTypes({person: {badge: null}});
+ * @example anychart.charts.OrgChart.nodeTypes_set
+ * @param {Object=} opt_value Node type bindings, or null to clear them.
+ * @return {anychart.charts.OrgChart} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.nodeTypes;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="ac:name" content="anychart.charts.OrgChart.nodeTypes get"/>
+    <meta name="ac:short-desc" content=""/>
+    <meta name="ac:desc" content=""/>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-org-chart.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/{{branch-name}}/js/anychart-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.anychart.com/releases/{{branch-name}}/css/anychart-ui.min.css"/>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    anychart.onDocumentReady(function () {
+        var chart = anychart.orgChart([
+            {id: 1, type: 'person', name: 'Sarah Johnson', position: 'CEO'},
+            {id: 2, parent: 1, type: 'person', name: 'Michael Chen', position: 'CTO'}
+        ], 'as-table');
+
+        chart.nodeTypes({
+            person: {subtitle: 'position'}
+        });
+
+        // Read back the bindings this chart added on top of the built-in person/department/agent types.
+        var nodeTypes = chart.nodeTypes();
+
+        chart.title().enabled(true).text('Own node type bindings: ' + JSON.stringify(nodeTypes));
+        chart.container('container');
+        chart.draw();
+    });
+</script>
+</body>
+</html>
