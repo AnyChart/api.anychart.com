@@ -299,3 +299,39 @@ anychart.core.series.Base.prototype.decimationAlgorithm;
  * @return {(number|undefined|anychart.core.series.Base)} Value or self for chaining.
  */
 anychart.core.series.Base.prototype.maxPointsRendered;
+
+/**
+ * @ignoreDoc
+ * Getter/setter for the label settings of the high end of a range point drawn with labels().position('rangeMode').
+ * @detailed
+ * <ul>
+ *   <li>Applies to range series (rangeColumn, rangeBar, rangeArea, rangeSplineArea, rangeStepArea, hilo, dumbbell, lollipop) only when labels().position() is 'rangeMode'; with any other position it has no effect.</li>
+ *   <li>A setting made here overrides the same setting of labels() for the high-end label; every setting not made here is taken from labels().</li>
+ *   <li>Default: no own settings, enabled() reads null, so the high-end label looks like the low-end one.</li>
+ *   <li>false, null or an object with enabled: false hides the high-end labels; the low-end labels stay. true or an object turns them back on, but no end label is drawn while labels() is disabled.</li>
+ *   <li>An object without an enabled field is applied with enabled: true.</li>
+ *   <li>A string or a number is ignored: the settings already set are kept.</li>
+ *   <li>In a format function of labels(), this.rangeSide is 'high' on the high-end label and 'low' on the low-end label.</li>
+ * </ul>
+ * @param {(Object|boolean|null)=} opt_value High-end labels settings.
+ * @return {!(anychart.core.ui.LabelsFactory|anychart.core.series.Base)} Labels instance or itself for chaining call.
+ */
+anychart.core.series.Base.prototype.highLabels;
+
+/**
+ * @ignoreDoc
+ * Getter/setter for the label settings of the low end of a range point drawn with labels().position('rangeMode').
+ * @detailed
+ * <ul>
+ *   <li>Applies to range series (rangeColumn, rangeBar, rangeArea, rangeSplineArea, rangeStepArea, hilo, dumbbell, lollipop) only when labels().position() is 'rangeMode'; with any other position it has no effect.</li>
+ *   <li>A setting made here overrides the same setting of labels() for the low-end label; every setting not made here is taken from labels().</li>
+ *   <li>Default: no own settings, enabled() reads null, so the low-end label looks like the high-end one.</li>
+ *   <li>false, null or an object with enabled: false hides the low-end labels; the high-end labels stay. true or an object turns them back on, but no end label is drawn while labels() is disabled.</li>
+ *   <li>An object without an enabled field is applied with enabled: true.</li>
+ *   <li>A string or a number is ignored: the settings already set are kept.</li>
+ *   <li>In a format function of labels(), this.rangeSide is 'high' on the high-end label and 'low' on the low-end label.</li>
+ * </ul>
+ * @param {(Object|boolean|null)=} opt_value Low-end labels settings.
+ * @return {!(anychart.core.ui.LabelsFactory|anychart.core.series.Base)} Labels instance or itself for chaining call.
+ */
+anychart.core.series.Base.prototype.lowLabels;
