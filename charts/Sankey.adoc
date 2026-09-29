@@ -24,6 +24,10 @@ anychart.charts.Sankey.prototype.data;
 
 /**
  * Setter for the chart data.
+ * @detailed
+ * <ul>
+ *   <li><b>Cycles:</b> a row that would close a cycle in the flow graph, including a self-loop whose <b>from</b> equals its <b>to</b>, is dropped with a console warning; the other rows are drawn as usual.</li>
+ * </ul>
  * @example anychart.charts.Sankey.data_set_asArray Using array
  * @example anychart.charts.Sankey.data_set_asDataSet Using data set
  * @example anychart.charts.Sankey.data_asView Using data mapping and data view
@@ -265,6 +269,42 @@ anychart.charts.Sankey.prototype.tooltip;
  * @since 8.4.0
  */
 anychart.charts.Sankey.prototype.tooltip;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.Sankey.prototype.hatchFillPalette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the hatch fill palette.
+ * @shortDescription Hatch fill palette settings.
+ * @category Chart Coloring
+ * @example anychart.charts.Sankey.hatchFillPalette_get
+ * @return {anychart.palettes.HatchFills} Hatch fill palette.
+ * @since 9.0.0
+ */
+anychart.charts.Sankey.prototype.hatchFillPalette;
+
+/**
+ * Setter for the hatch fill palette.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> the 32 built-in hatch types, starting with 'backward-diagonal', 'forward-diagonal', 'horizontal' and 'vertical'.</li>
+ *   <li><b>Used by:</b> only nodes, flows and dropoffs whose hatch fill is set to true; with no hatch fill set, the chart draws no hatch patterns whatever the palette holds.</li>
+ *   <li><b>Order:</b> every node, flow and dropoff set to true takes the first item.</li>
+ *   <li><b>Accepted values:</b> an array of hatch type names, an object with an <b>items</b> array, or a palette instance whose items are copied.</li>
+ *   <li><b>Unknown names:</b> an unknown type name in the array becomes 'backward-diagonal'.</li>
+ *   <li><b>Invalid values:</b> a string, a number, null or an object without <b>items</b> changes nothing; the getter reads back the previous items.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * See {@link anychart.core.sankey.elements.VisualElement#hatchFill} for the setting that turns hatching on.
+ * @example anychart.charts.Sankey.hatchFillPalette_set
+ * @param {(anychart.palettes.HatchFills|Object|Array.<anychart.graphics.vector.HatchFill.HatchFillType|string>)=} opt_settings Hatch fill palette settings to set.
+ * @return {anychart.charts.Sankey} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.Sankey.prototype.hatchFillPalette;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
