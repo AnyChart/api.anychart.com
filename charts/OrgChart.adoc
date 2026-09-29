@@ -624,7 +624,7 @@ anychart.charts.OrgChart.prototype.orientation;
  * @shortDescription Connector type.
  * @category Specific settings
  * @example anychart.charts.OrgChart.connectorType_get
- * @return {anychart.enums.OrgChartConnectorType|string} The connector type.
+ * @return {(anychart.enums.OrgChartConnectorType|string|Function)} The connector type.
  * @since 9.0.0
  */
 anychart.charts.OrgChart.prototype.connectorType;
@@ -636,9 +636,12 @@ anychart.charts.OrgChart.prototype.connectorType;
  *   <li><b>'orthogonal'</b> - connectors are drawn as right-angled polylines.</li>
  *   <li><b>'straight'</b> - connectors are drawn as straight lines.</li>
  *   <li><b>'curved'</b> - connectors are drawn as curves.</li>
+ *   <li><b>Function form:</b> a function is also accepted and called once per connector; a return value other than the three types above draws the connector as 'orthogonal'.</li>
+ *   <li><b>Cascade:</b> this chart-wide value is the lowest-priority tier. A data row's own connectorType beats {@link anychart.charts.OrgChart#level}, which beats {@link anychart.charts.OrgChart#nodeTypes}, which beats this setter; each connector takes the type of its child card.</li>
+ *   <li><b>Invalid values:</b> the type names are case-insensitive; any other value, <code>null</code> included, resets the type to 'orthogonal' - it does not keep the value that was set before.</li>
  * </ul>
  * @example anychart.charts.OrgChart.connectorType_set
- * @param {(anychart.enums.OrgChartConnectorType|string)=} opt_type ['orthogonal'] Connector type to set.
+ * @param {(anychart.enums.OrgChartConnectorType|string|Function)=} opt_type ['orthogonal'] Connector type, or a function returning one, to set.
  * @return {anychart.charts.OrgChart} Self instance for method chaining.
  * @since 9.0.0
  */
@@ -1148,6 +1151,165 @@ anychart.charts.OrgChart.prototype.nodeTypes;
  * @since 9.0.0
  */
 anychart.charts.OrgChart.prototype.nodeTypes;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.OrgChart.prototype.connectorEndMarker
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the connector end marker.
+ * @shortDescription Connector end marker settings.
+ * @category Specific settings
+ * @detailed <ul>
+ *   <li><b>Default:</b> {enabled: false} - no end markers are drawn.</li>
+ * </ul>
+ * @example anychart.charts.OrgChart.connectorEndMarker_get
+ * @return {(Object|Function|null)} The end marker settings.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.connectorEndMarker;
+
+/**
+ * Setter for the connector end marker.
+ * @detailed <ul>
+ *   <li><b>Position:</b> the child end of each connector, its tip on the child card's outline; the connector line is shortened by the marker size.</li>
+ *   <li><b>Value:</b> an object with the fields <code>enabled</code> (false), <code>type</code> ('circle'), <code>size</code> (6 pixels), <code>fill</code> ('#666'), <code>stroke</code> (none) and <code>orientation</code> ('auto').</li>
+ *   <li><b>type:</b> a marker type name such as 'circle', 'arrowhead', 'square' or 'diamond', case-insensitive; an unknown name draws a 'star5' marker.</li>
+ *   <li><b>size:</b> a number of pixels; a zero, negative or non-numeric size falls back to 6.</li>
+ *   <li><b>orientation:</b> 'auto' turns the marker along the connector direction; a number is a fixed rotation angle in degrees.</li>
+ *   <li><b>Replacing:</b> a new object replaces the previous one as a whole - connectorEndMarker({size: 12}) after connectorEndMarker({enabled: true}) drops the <code>enabled</code> field.</li>
+ *   <li><b>Cascade:</b> the settings are merged field by field: a field set on the data row's own connectorEndMarker beats the same field set through {@link anychart.charts.OrgChart#level}, which beats the same field set here.</li>
+ *   <li><b>Function form:</b> a function is also accepted and called once per connector, with <code>this.node</code> set to the connector's child node; the object it returns is read the same way as a literal object.</li>
+ *   <li><b>Invalid values:</b> a string, a number, a boolean or <code>null</code> normalizes to null: the getter reads null back and the marker settings of the theme apply.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * @example anychart.charts.OrgChart.connectorEndMarker_set
+ * @param {(Object|Function|null)=} opt_settings [{enabled: false}] Marker settings, or a function returning them, to set.
+ * @return {anychart.charts.OrgChart} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.connectorEndMarker;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.OrgChart.prototype.connectorMiddleMarker
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the connector middle marker.
+ * @shortDescription Connector middle marker settings.
+ * @category Specific settings
+ * @detailed <ul>
+ *   <li><b>Default:</b> {enabled: false} - no middle markers are drawn.</li>
+ * </ul>
+ * @example anychart.charts.OrgChart.connectorMiddleMarker_get
+ * @return {(Object|Function|null)} The middle marker settings.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.connectorMiddleMarker;
+
+/**
+ * Setter for the connector middle marker.
+ * @detailed <ul>
+ *   <li><b>Position:</b> the middle of each connector, halfway along its drawn length; the connector line is not shortened.</li>
+ *   <li><b>Value:</b> an object with the fields <code>enabled</code> (false), <code>type</code> ('circle'), <code>size</code> (6 pixels), <code>fill</code> ('#666'), <code>stroke</code> (none) and <code>orientation</code> ('auto').</li>
+ *   <li><b>type:</b> a marker type name such as 'circle', 'arrowhead', 'square' or 'diamond', case-insensitive; an unknown name draws a 'star5' marker.</li>
+ *   <li><b>size:</b> a number of pixels; a zero, negative or non-numeric size falls back to 6.</li>
+ *   <li><b>orientation:</b> 'auto' turns the marker along the connector direction; a number is a fixed rotation angle in degrees.</li>
+ *   <li><b>Replacing:</b> a new object replaces the previous one as a whole - connectorMiddleMarker({size: 12}) after connectorMiddleMarker({enabled: true}) drops the <code>enabled</code> field.</li>
+ *   <li><b>Cascade:</b> the settings are merged field by field: a field set on the data row's own connectorMiddleMarker beats the same field set through {@link anychart.charts.OrgChart#level}, which beats the same field set here.</li>
+ *   <li><b>Function form:</b> a function is also accepted and called once per connector, with <code>this.node</code> set to the connector's child node; the object it returns is read the same way as a literal object.</li>
+ *   <li><b>Invalid values:</b> a string, a number, a boolean or <code>null</code> normalizes to null: the getter reads null back and the marker settings of the theme apply.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * @example anychart.charts.OrgChart.connectorMiddleMarker_set
+ * @param {(Object|Function|null)=} opt_settings [{enabled: false}] Marker settings, or a function returning them, to set.
+ * @return {anychart.charts.OrgChart} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.connectorMiddleMarker;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.OrgChart.prototype.connectorStartMarker
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the connector start marker.
+ * @shortDescription Connector start marker settings.
+ * @category Specific settings
+ * @detailed <ul>
+ *   <li><b>Default:</b> {enabled: false} - no start markers are drawn.</li>
+ * </ul>
+ * @example anychart.charts.OrgChart.connectorStartMarker_get
+ * @return {(Object|Function|null)} The start marker settings.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.connectorStartMarker;
+
+/**
+ * Setter for the connector start marker.
+ * @detailed <ul>
+ *   <li><b>Position:</b> the parent end of each connector, pushed out past the parent's collapse button when that button is shown; the connector line is shortened by the marker size.</li>
+ *   <li><b>Value:</b> an object with the fields <code>enabled</code> (false), <code>type</code> ('circle'), <code>size</code> (6 pixels), <code>fill</code> ('#666'), <code>stroke</code> (none) and <code>orientation</code> ('auto').</li>
+ *   <li><b>type:</b> a marker type name such as 'circle', 'arrowhead', 'square' or 'diamond', case-insensitive; an unknown name draws a 'star5' marker.</li>
+ *   <li><b>size:</b> a number of pixels; a zero, negative or non-numeric size falls back to 6.</li>
+ *   <li><b>orientation:</b> 'auto' turns the marker along the connector direction; a number is a fixed rotation angle in degrees.</li>
+ *   <li><b>Replacing:</b> a new object replaces the previous one as a whole - connectorStartMarker({size: 12}) after connectorStartMarker({enabled: true}) drops the <code>enabled</code> field.</li>
+ *   <li><b>Cascade:</b> the settings are merged field by field: a field set on the data row's own connectorStartMarker beats the same field set through {@link anychart.charts.OrgChart#level}, which beats the same field set here.</li>
+ *   <li><b>Function form:</b> a function is also accepted and called once per connector, with <code>this.node</code> set to the connector's child node; the object it returns is read the same way as a literal object.</li>
+ *   <li><b>Invalid values:</b> a string, a number, a boolean or <code>null</code> normalizes to null: the getter reads null back and the marker settings of the theme apply.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * @example anychart.charts.OrgChart.connectorStartMarker_set
+ * @param {(Object|Function|null)=} opt_settings [{enabled: false}] Marker settings, or a function returning them, to set.
+ * @return {anychart.charts.OrgChart} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.connectorStartMarker;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.OrgChart.prototype.shape
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the card shape.
+ * @shortDescription Card shape.
+ * @category Specific settings
+ * @detailed Shorthand for normal().shape() - reads the normal-state card shape; the hovered and the selected states have their own shape.
+ * <ul>
+ *   <li><b>Default:</b> undefined - the cards are drawn as 'rectangle'.</li>
+ * </ul>
+ * @example anychart.charts.OrgChart.shape_get
+ * @return {string} The card shape.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.shape;
+
+/**
+ * Setter for the card shape.
+ * @detailed Shorthand for normal().shape(value) - sets the normal-state card shape.
+ * <ul>
+ *   <li><b>'rectangle'</b> - the card fills its box; {@link anychart.charts.OrgChart#cornerRadius} rounds its corners.</li>
+ *   <li><b>'ellipse'</b> - the ellipse inscribed in the card box.</li>
+ *   <li><b>'circle'</b> - a circle as wide as the smaller side of the card box, centered in it.</li>
+ *   <li><b>States:</b> hovered and selected cards keep this shape unless hovered() or selected() sets a shape of its own.</li>
+ *   <li><b>Cascade:</b> this chart-wide value is the lowest-priority tier. A data row's own shape beats {@link anychart.charts.OrgChart#level}, which beats {@link anychart.charts.OrgChart#nodeTypes}, which beats this setter.</li>
+ *   <li><b>Invalid values:</b> any other value is stored as a string and read back as given ('ELLIPSE', '5'), and the card is drawn as 'rectangle'. <code>null</code> clears the value and the cards are drawn as 'rectangle'.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * @example anychart.charts.OrgChart.shape_set
+ * @param {string=} opt_shape [undefined] Card shape to set: 'rectangle', 'ellipse' or 'circle'.
+ * @return {anychart.charts.OrgChart} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.OrgChart.prototype.shape;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
