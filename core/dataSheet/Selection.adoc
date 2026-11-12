@@ -201,3 +201,27 @@ anychart.core.dataSheet.Selection.prototype.selectedIndices;
  * @since 9.0.0
  */
 anychart.core.dataSheet.Selection.prototype.toggle;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.dataSheet.Selection.prototype.selectAll
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Selects a whole set of rows in one call.<br/>
+ * With no argument, selects every row that passes the current filter, including rows scrolled out of
+ * view; group header rows are not selected. Passing an array selects exactly those data indices instead,
+ * replacing the current selection; passing an empty array clears the selection. Array entries are
+ * coerced with <b>Math.floor(Number(x))</b>, so a numeric string is accepted - a value that is not a
+ * number, or is negative, is dropped, and duplicates are dropped as well. In <b>single</b> mode at most
+ * one entry ends up selected: the first valid one in the array, or the first visible row for the bare
+ * call. Does nothing while the selection is disabled.
+ * @shortDescription Select every visible row, or a given set of rows.
+ * @category Interactivity
+ * @example anychart.core.dataSheet.Selection.selectAll
+ * @param {Array.<number>=} opt_indices Data indices to select. Defaults to every row that passes the current filter.
+ * @return {undefined}
+ * @since 9.0.0
+ */
+anychart.core.dataSheet.Selection.prototype.selectAll;

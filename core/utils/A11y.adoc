@@ -7,6 +7,43 @@
  */
 anychart.core.utils.A11y;
 
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.utils.A11y.prototype.pointDescriptionThreshold
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the point description threshold.
+ * @shortDescription Point description threshold.
+ * @category Specific settings
+ * @example anychart.core.utils.A11y.pointDescriptionThreshold_get
+ * @return {number} The point description threshold.
+ * @since 9.0.0
+ */
+anychart.core.utils.A11y.prototype.pointDescriptionThreshold;
+
+/**
+ * Setter for the point description threshold.<br/>
+ * Above this many points the chart stops writing an aria-label on every point shape, so a large dataset does not flood a screen reader with per-point announcements.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> 30 points; an org chart tree defaults to effectively no limit instead, so every node keeps its per-point description.</li>
+ *   <li><b>Trigger:</b> per-point descriptions are dropped only once the drawn point count is strictly greater than the threshold; a chart at or under the threshold keeps them.</li>
+ *   <li><b>Above the threshold:</b> any per-point description a previous draw wrote is cleared, not merely left unwritten.</li>
+ *   <li><b>Value types:</b> the value is read as a number and rounded to a whole number.</li>
+ *   <li><b>Zero:</b> 0 is accepted and opts every point out of a description, no matter how few points the chart draws.</li>
+ *   <li><b>Invalid values:</b> a negative number, a non-numeric string or an object is stored as NaN; reading the setting back afterwards then returns NaN, though the chart itself keeps drawing with the theme default until a valid value is set again. A numeric string is parsed and rounded like a number instead, so e.g. "5" is stored as 5.</li>
+ *   <li><b>Null:</b> null behaves like an invalid value: it is stored as NaN and the chart draws with the theme default.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * @example anychart.core.utils.A11y.pointDescriptionThreshold_set
+ * @param {number=} opt_threshold [30] Point description threshold to set.
+ * @return {anychart.core.utils.A11y} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.utils.A11y.prototype.pointDescriptionThreshold;
+
 /**
  * Anychart chart accessibility class.
  * @param {anychart.core.Chart} chart Related chart instance.
@@ -68,7 +105,7 @@ anychart.core.utils.ChartA11y.prototype.enabled;
 
 //----------------------------------------------------------------------------------------------------------------------
 //
-//  anychart.core.utils.ChartA11y.prototype.titleFormatter
+//  anychart.core.utils.ChartA11y.prototype.titleFormat
 //
 //----------------------------------------------------------------------------------------------------------------------
 
@@ -87,12 +124,97 @@ anychart.core.utils.ChartA11y.prototype.titleFormat;
 /**
  * Setter for the function to format title.<br/>
  * {docs:Common_Settings/Text_Formatters}Learn more about using titleFormat() method.{docs}
- * @example anychart.core.utils.ChartA11y.titleFormatter_set
+ * @example anychart.core.utils.ChartA11y.titleFormat_set
  * @param {(Function|string)=} opt_formatSettings Function or token to format content text.
  * @return {anychart.core.utils.ChartA11y} Self instance for method chaining.
  * @since 7.11.0
  */
 anychart.core.utils.ChartA11y.prototype.titleFormat;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.utils.ChartA11y.prototype.keyboardNavigation
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for whether keyboard navigation is on.
+ * @shortDescription Keyboard navigation state.
+ * @category Specific settings
+ * @example anychart.core.utils.ChartA11y.keyboardNavigation_get
+ * @return {boolean} Whether keyboard navigation is on.
+ * @since 9.0.0
+ */
+anychart.core.utils.ChartA11y.prototype.keyboardNavigation;
+
+/**
+ * Setter for keyboard navigation.<br/>
+ * Turns the chart's arrow-key point stepping, focus ring and live region announcements on or off.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> true, so a newly drawn chart already has keyboard navigation on.</li>
+ *   <li><b>Depends on enabled:</b> keyboard navigation only runs while accessibility itself is on; turning enabled off tears the focus ring, the live region and the arrow-key handling down along with it.</li>
+ *   <li><b>Both modes:</b> applies the same way whether mode is set to the chart-elements mode or the data-table mode.</li>
+ *   <li><b>Value types:</b> any value is coerced to a boolean, so a truthy value such as a non-empty string or an object turns navigation on and a falsy value such as 0 or an empty string turns it off.</li>
+ *   <li><b>Null:</b> null is falsy and turns keyboard navigation off.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * See {@link anychart.core.utils.ChartA11y#enabled} for the setting keyboard navigation depends on.
+ * See {@link anychart.core.utils.ChartA11y#mode} for the accessibility mode this setting applies under regardless.
+ * @example anychart.core.utils.ChartA11y.keyboardNavigation_set
+ * @param {boolean=} opt_enabled [true] Whether to turn keyboard navigation on.
+ * @return {anychart.core.utils.ChartA11y} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.core.utils.ChartA11y.prototype.keyboardNavigation;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.utils.ChartA11y.prototype.getLiveRegion
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns the live region the chart is currently using to post screen reader announcements, or null when none is installed.
+ * @category Specific settings
+ * @example anychart.core.utils.ChartA11y.getLiveRegion
+ * @return {Object} The live region instance, or null.
+ * @since 9.0.0
+ */
+anychart.core.utils.ChartA11y.prototype.getLiveRegion;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.utils.ChartA11y.prototype.showFocusRing
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Shows the focus ring around the given bounds.<br/>
+ * Does nothing if keyboard navigation has never been applied, since the ring layer does not exist yet.
+ * @category Specific settings
+ * @example anychart.core.utils.ChartA11y.showFocusRing
+ * @param {(anychart.math.Rect|{left:number,top:number,width:number,height:number})} bounds Bounds to draw the ring around.
+ * @return {undefined}
+ * @since 9.0.0
+ */
+anychart.core.utils.ChartA11y.prototype.showFocusRing;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.core.utils.ChartA11y.prototype.hideFocusRing
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Hides the focus ring.<br/>
+ * Does nothing if keyboard navigation has never been applied, since the ring layer does not exist yet.
+ * @category Specific settings
+ * @example anychart.core.utils.ChartA11y.hideFocusRing
+ * @return {undefined}
+ * @since 9.0.0
+ */
+anychart.core.utils.ChartA11y.prototype.hideFocusRing;
 
 
 
@@ -157,7 +279,7 @@ anychart.core.utils.SeriesA11y.prototype.titleFormat;
 /**
  * Setter for the function to format title.<br/>
  * {docs:Common_Settings/Text_Formatters}Learn more about using titleFormat() method.{docs}
- * @example anychart.core.utils.SeriesA11y.titleFormatter_set
+ * @example anychart.core.utils.SeriesA11y.titleFormat_set
  * @param {(Function|string)=} opt_formatSettings Function or token to format title.
  * @return {anychart.core.utils.SeriesA11y} Self instance for method chaining.
  * @since 7.11.0

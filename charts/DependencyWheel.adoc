@@ -220,7 +220,7 @@ anychart.charts.DependencyWheel.prototype.radius;
  *   <li><b>Ceiling:</b> the resolved radius is capped at half the smaller side of the drawing area, so the ring never leaves the chart.</li>
  *   <li><b>Default:</b> '50%', which is also the largest ring the chart draws, so larger values render the same ring; use this method to make the ring smaller and leave room for long labels or a title.</li>
  *   <li><b>Ring thickness:</b> the thickness of the node ring stays the same at any radius, 15 pixels by default; the inner edge is the radius minus that thickness and is kept clear of the center.</li>
- *   <li><b>Invalid values:</b> a string that is not a number is ignored and the previous value is kept.</li>
+ *   <li><b>Invalid values:</b> a string that is not a number clears the own value, and the chart reads back the default '50%'.</li>
  *   <li><b>Degenerate values:</b> 0, a negative number and null are stored as given, but no node arcs are drawn at all.</li>
  *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
  * </ul>
@@ -502,6 +502,57 @@ anychart.charts.DependencyWheel.prototype.select;
  * @since 9.0.0
  */
 anychart.charts.DependencyWheel.prototype.unselect;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.DependencyWheel.prototype.getType
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Returns chart type.
+ * @category Specific settings
+ * @example anychart.charts.DependencyWheel.getType
+ * @return {string} Chart type, 'dependency-wheel'.
+ * @since 9.0.0
+ */
+anychart.charts.DependencyWheel.prototype.getType;
+
+//----------------------------------------------------------------------------------------------------------------------
+//
+//  anychart.charts.DependencyWheel.prototype.hatchFillPalette
+//
+//----------------------------------------------------------------------------------------------------------------------
+
+/**
+ * Getter for the hatch fill palette.
+ * @shortDescription Hatch fill palette settings.
+ * @category Chart Coloring
+ * @example anychart.charts.DependencyWheel.hatchFillPalette_get
+ * @return {anychart.palettes.HatchFills} Hatch fill palette.
+ * @since 9.0.0
+ */
+anychart.charts.DependencyWheel.prototype.hatchFillPalette;
+
+/**
+ * Setter for the hatch fill palette.
+ * @detailed
+ * <ul>
+ *   <li><b>Default:</b> the 32 built-in hatch types, starting with 'backward-diagonal', 'forward-diagonal', 'horizontal' and 'vertical'.</li>
+ *   <li><b>Used by:</b> only nodes and links whose hatch fill is set to true; with no hatch fill set, the chart draws no hatch patterns whatever the palette holds.</li>
+ *   <li><b>Order:</b> nodes and links take the items in turn by their index.</li>
+ *   <li><b>Accepted values:</b> an array of hatch type names, an object with an <b>items</b> array, or a palette instance whose items are copied.</li>
+ *   <li><b>Unknown names:</b> an unknown type name in the array becomes 'backward-diagonal'.</li>
+ *   <li><b>Invalid values:</b> a string, a number, null or an object without <b>items</b> changes nothing; the getter reads back the previous items.</li>
+ *   <li><b>Redraw:</b> takes effect on a chart that is already drawn.</li>
+ * </ul>
+ * See {@link anychart.core.dependencyWheel.elements.Node#hatchFill} for the setting that turns hatching on.
+ * @example anychart.charts.DependencyWheel.hatchFillPalette_set
+ * @param {(anychart.palettes.HatchFills|Object|Array.<anychart.graphics.vector.HatchFill.HatchFillType|string>)=} opt_settings Hatch fill palette settings to set.
+ * @return {anychart.charts.DependencyWheel} Self instance for method chaining.
+ * @since 9.0.0
+ */
+anychart.charts.DependencyWheel.prototype.hatchFillPalette;
 
 //----------------------------------------------------------------------------------------------------------------------
 //

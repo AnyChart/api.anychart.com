@@ -18,7 +18,8 @@ anychart.core.dataSheet.Sorting;
 /**
  * Adds a column to the sort stack to build a multi-column sort.<br/>
  * If the field is already present in the stack, its previous entry is removed first, so the field always ends up as the
- * last (least significant) level. The <b>column</b> and <b>order</b> values are kept in sync with the entry added last.
+ * last (least significant) level. The <b>column</b> and <b>order</b> values track the primary (first, most significant)
+ * level of the stack, which is not necessarily the field just added.
  * @shortDescription Adds a sort level.
  * @category Data
  * @example anychart.core.dataSheet.Sorting.addSort
@@ -56,7 +57,8 @@ anychart.core.dataSheet.Sorting.prototype.clearSort;
 /**
  * Getter for the sorted column field.<br/>
  * Returns the field of the column the grid is currently sorted by. Initially an empty string, which means no column is
- * sorted. When a multi-column sort is used, this reflects the field of the sort level added last.
+ * sorted. When a multi-column sort is used, this reflects the field of the primary (first, most significant) level of
+ * the sort stack.
  * @shortDescription Sorted column field.
  * @category Data
  * @example anychart.core.dataSheet.Sorting.column_get

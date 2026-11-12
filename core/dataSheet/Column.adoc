@@ -289,8 +289,9 @@ anychart.core.dataSheet.Column.prototype.pinned;
 
 /**
  * Getter for the column editable state.<br/>
- * Cells are not editable by default, so a column has to be marked editable explicitly to let the cell editor open
- * on it.
+ * Off by default: the column has to be marked editable explicitly to let the cell editor open on it, even
+ * though the cell editor itself is enabled by default.<br/>
+ * See {@link anychart.core.dataSheet.CellEditor#enabled} for the chart-level gate.
  * @shortDescription Column editable state.
  * @category Interactivity
  * @example anychart.core.dataSheet.Column.editable_get
@@ -301,8 +302,9 @@ anychart.core.dataSheet.Column.prototype.editable;
 
 /**
  * Setter for the column editable state.<br/>
- * The passed value is cast to boolean. Editing is off by default, both for the column and for the grid cell editor,
- * so both have to be turned on for cell editing to work.
+ * The passed value is cast to boolean. The column flag is off by default; the cell editor is on by default,
+ * so turning this flag on is the only step needed for the column's cells to become editable.<br/>
+ * See {@link anychart.core.dataSheet.CellEditor#enabled} for the chart-level gate.
  * @example anychart.core.dataSheet.Column.editable_set
  * @param {boolean=} opt_value [false] Whether the column cells can be edited.
  * @return {anychart.core.dataSheet.Column} Self instance for method chaining.
