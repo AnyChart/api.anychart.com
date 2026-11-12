@@ -1,0 +1,188 @@
+# Promote: move master to a released version tag (A9-1056).
+#
+#   rule       a tag X.Y.Z that is on staging and not on master is promoted: master moves to the tag's commit as a
+#              fast-forward. Anything else is an info line (no tag, or the tag is already on master) or a refusal in one
+#              sentence; in both cases nothing is moved. Moving master publishes nothing: the reference engine builds a
+#              version from its tag name, so master is the record of what was released.
+#   start      by hand only (workflow_dispatch), on the branch staging, inputs `version` and `rehearsal`. The release
+#              manager (AnyChart/anychart-release-manager, surfaces/api/manifest.json) starts it the same way and sends
+#              `rehearsal` on every start. The default of `rehearsal` is true: a person who forgets the box moves nothing.
+#   rehearsal  every check runs and the move is worked out, then the token is proven on a throwaway branch
+#              promote-rehearsal-<run id>: created at master, moved to the tag's commit, deleted. Nothing is pushed to
+#              master. A test tag (any tag name) is accepted in a rehearsal; a real run needs X.Y.Z.
+#   token      the run's own token, no stored secret. GitHub never lets that token change workflow files: a push that
+#              changes anything under .github/workflows/ on a branch is refused, also when the commits already exist.
+#              That is why this file is on master, staging and develop from the start, identical, and why the run refuses
+#              a tag whose workflow files differ from master's.
+#   branches   develop: the default branch, GitHub starts a hand-started workflow only when its file is there.
+#              staging: the copy that runs. master: the same file, so a promotion changes no workflow file.
+#   changes    a change to this file is brought by hand, by pull requests merged as merge commits: into master first,
+#              then master into staging, then staging into develop. A tag cut after that promotes normally.
+#   public     this repository is public: the only trigger is the hand start (write access is needed for it), no secret
+#              is read, write permission is given to the one job that pushes, no third-party action is used, the inputs
+#              are checked before use and are never printed unchecked.
+name: Promote
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The tag on staging that master moves to: X.Y.Z (a test tag is accepted in a rehearsal only)'
+        type: string
+        required: true
+      rehearsal:
+        description: 'true (default): move nothing on master, prove the path on a throwaway branch. false: move master'
+        type: boolean
+        required: true
+        default: true
+
+run-name: ${{ inputs.rehearsal && 'Promote (rehearsal) ' || 'Promote ' }}${{ inputs.version }}
+
+permissions: {}
+
+concurrency:
+  group: promote
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    name: ${{ inputs.rehearsal && 'rehearsal' || 'promote' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    env:
+      VERSION: ${{ inputs.version }}
+      REHEARSAL: ${{ inputs.rehearsal }}
+      RUN_REF: ${{ github.ref }}
+      RUN_ID: ${{ github.run_id }}
+      SERVER: ${{ github.server_url }}
+      REMOTE: ${{ github.server_url }}/${{ github.repository }}.git
+      TOKEN: ${{ github.token }}
+    steps:
+      - name: Promote
+        shell: bash
+        run: |
+          set -euo pipefail
+          summary=${GITHUB_STEP_SUMMARY:-/dev/null}
+          work=$(mktemp -d); facts="$work/facts.md"; commits="$work/commits.md"; : > "$facts"; : > "$commits"
+          mode="for real"; if [ "${REHEARSAL:-}" = "true" ]; then mode="rehearsal"; fi
+          shown="the version given"
+          probe=""
+
+          # one ending for every case: a word, a sentence, the exit code; the same text goes to the log and to the summary
+          finish() {
+            printf '%s: %s\n' "$1" "$2"
+            { printf '## Promote %s (%s)\n\n**%s**: %s\n' "$shown" "$mode" "$1" "$2"
+              if [ -s "$facts" ]; then printf '\n'; cat "$facts"; fi
+              if [ -s "$commits" ]; then printf '\n'; cat "$commits"; fi; } >> "$summary"
+            exit "$3"
+          }
+          info()   { echo "::notice::$1"; finish "NOTHING TO PROMOTE" "$1" 0; }
+          refuse() { echo "::error::$1";  finish "REFUSED" "$1" 1; }
+          fact()   { printf -- '- %s\n' "$1" >> "$facts"; printf '  %s\n' "$1"; }
+          short()  { printf '%s' "$1" | cut -c1-10; }
+
+          # the inputs, before anything is read; an input that fails its check is never printed
+          if [ "${REHEARSAL:-}" != "true" ] && [ "${REHEARSAL:-}" != "false" ]; then
+            refuse "rehearsal is neither true nor false. Nothing is moved."
+          fi
+          xyz='^(0|[1-9][0-9]{0,8})[.](0|[1-9][0-9]{0,8})[.](0|[1-9][0-9]{0,8})$'
+          name='^[A-Za-z0-9][A-Za-z0-9.-]{0,63}$'
+          if ! [[ "${VERSION:-}" =~ $name ]] || [[ "${VERSION:-}" == *..* ]]; then
+            refuse "the version is not a tag name (letters, digits, dots and hyphens). Nothing is moved."
+          fi
+          shown="$VERSION"
+          if [ "$REHEARSAL" = "false" ] && ! [[ "$VERSION" =~ $xyz ]]; then
+            refuse "'$VERSION' is not a release version X.Y.Z. A test tag is accepted in a rehearsal only. Nothing is moved."
+          fi
+          if [ "${RUN_REF:-}" != "refs/heads/staging" ]; then
+            refuse "this run was started on '${RUN_REF:-}', not on the branch staging. Start it again and choose staging: that copy of the workflow is the one that runs. Nothing is moved."
+          fi
+
+          # the token, for git only; it is never written to disk and its encoded form is masked in the log
+          if [ -n "${TOKEN:-}" ]; then
+            basic=$(printf 'x-access-token:%s' "$TOKEN" | base64 -w0)
+            echo "::add-mask::$basic"
+            export GIT_CONFIG_COUNT=1
+            export GIT_CONFIG_KEY_0="http.${SERVER}/.extraheader"
+            export GIT_CONFIG_VALUE_0="AUTHORIZATION: basic $basic"
+          fi
+
+          # commits and trees only: no file content is needed to judge or to move a branch
+          git clone -q --bare --filter=blob:none "$REMOTE" "$work/repo"
+          g() { git -C "$work/repo" "$@"; }
+          master=$(g rev-parse -q --verify 'refs/heads/master^{commit}') || refuse "this repository has no branch master. Nothing is moved."
+          staging=$(g rev-parse -q --verify 'refs/heads/staging^{commit}') || refuse "this repository has no branch staging. Nothing is moved."
+
+          echo "the facts:"
+          fact "master is at \`$(short "$master")\`, staging is at \`$(short "$staging")\`"
+          if ! tag=$(g rev-parse -q --verify "refs/tags/$VERSION^{commit}"); then
+            fact "there is no tag \`$VERSION\`"
+            info "there is no tag $VERSION in this repository, so there is nothing to promote. A version is released when a person cuts its tag on staging."
+          fi
+          on_master=no;  if g merge-base --is-ancestor "$tag" "$master";  then on_master=yes;  fi
+          on_staging=no; if g merge-base --is-ancestor "$tag" "$staging"; then on_staging=yes; fi
+          fact "the tag \`$VERSION\` points at commit \`$(short "$tag")\`; on staging: $on_staging; on master: $on_master"
+
+          if [ "$on_master" = yes ]; then
+            info "the tag $VERSION is already on master, so there is nothing to promote."
+          fi
+          if [ "$on_staging" = no ]; then
+            refuse "the tag $VERSION ($(short "$tag")) is on neither staging nor master. A tag counts only when it is cut on staging. Nothing is moved."
+          fi
+          if ! g merge-base --is-ancestor "$master" "$staging"; then
+            refuse "master has commits that staging does not contain, so staging is not ahead of master in one line. Staging takes in master first (a pull request master into staging, merged as a merge commit). Nothing is moved."
+          fi
+          if ! g merge-base --is-ancestor "$master" "$tag"; then
+            refuse "the tag $VERSION was cut on a staging commit that does not contain master, so master cannot move to it as a fast-forward. The next tag is cut on a staging commit that contains master. Nothing is moved."
+          fi
+          # the files under .github/workflows as one tree id: equal ids are identical files
+          wf() { g rev-parse -q --verify "$1:.github/workflows" 2>/dev/null || echo none; }
+          if [ "$(wf "$tag")" != "$(wf "$master")" ]; then
+            refuse "the workflow files under .github/workflows at the tag $VERSION differ from those on master. GitHub refuses a run's own token that changes workflow files, so this tag cannot be promoted by this workflow. A change to a workflow file goes to master by hand first (pull requests: into master, then master into staging, then staging into develop); a tag cut after that promotes normally. Nothing is moved."
+          fi
+          if g rev-parse -q --verify refs/heads/develop > /dev/null && [ "$(wf refs/heads/develop)" != "$(wf refs/heads/staging)" ]; then
+            echo "::notice::the workflow files on develop differ from those on staging. The copy on staging is the one that runs; bring the two in line (staging into develop)."
+            fact "notice: the workflow files on develop differ from those on staging"
+          fi
+
+          count=$(g rev-list --count "$master..$tag")
+          fact "master would move from \`$(short "$master")\` to \`$(short "$tag")\`: $count commits"
+          { printf 'The commits (newest first, at most 30):\n\n'; g log --format='- `%h` %s' -n 30 "$master..$tag"; } >> "$commits"
+          g log --format='    %h %s' -n 30 "$master..$tag"
+
+          if [ "$REHEARSAL" = "true" ]; then
+            # the same move a real promotion makes, on a branch nobody uses: created at master, moved to the tag, deleted
+            probe="promote-rehearsal-${RUN_ID:-local}"
+            cleanup() { if [ -n "$probe" ]; then g push -q "$REMOTE" ":refs/heads/$probe" 2> /dev/null || true; fi; }
+            trap cleanup EXIT
+            if ! g push -q "$REMOTE" "$master:refs/heads/$probe"; then
+              probe=""
+              refuse "the throwaway branch could not be created with the run's own token (git's answer is above). A real promotion would not be able to push either. Nothing is moved."
+            fi
+            if ! g push -q "$REMOTE" "$tag:refs/heads/$probe"; then
+              refuse "the run's own token was refused when the throwaway branch moved from master to the tag's commit, the same move a real promotion makes on master (git's answer is above). A real promotion would stop here. Nothing is moved on master; the throwaway branch is deleted."
+            fi
+            if ! g push -q "$REMOTE" ":refs/heads/$probe"; then
+              left="$probe"; probe=""
+              refuse "the throwaway branch $left could not be deleted (git's answer is above). Delete it by hand. Nothing is moved on master."
+            fi
+            gone="$probe"; probe=""; trap - EXIT
+            if [ -n "$(g ls-remote --heads "$REMOTE" "$gone")" ]; then
+              refuse "the throwaway branch $gone is still there after its deletion. Delete it by hand. Nothing is moved on master."
+            fi
+            fact "the token was accepted for the same move on the throwaway branch \`$gone\`, which is deleted"
+            finish "WOULD PROMOTE" "rehearsal: master would move from $(short "$master") to $(short "$tag"), the commit of the tag $VERSION ($count commits). The token was accepted for this move on a throwaway branch. Nothing was pushed to master." 0
+          fi
+
+          # for real: an ordinary push, no force, so a master that moved in between refuses it
+          if ! g push -q "$REMOTE" "$tag:refs/heads/master"; then
+            refuse "the push to master was refused (git's answer is above). Nothing was moved. Usual causes: master moved since the checks (start the promotion again), or the token is not accepted for this move."
+          fi
+          got=$(g ls-remote "$REMOTE" refs/heads/master | cut -f1)
+          if [ "$got" != "$tag" ]; then
+            refuse "master on the repository is '$(short "${got:-unreadable}")', not the tag's commit $(short "$tag") that was pushed. Look at master before anything else is done."
+          fi
+          fact "master is now \`$(short "$tag")\`"
+          finish "PROMOTED" "master moved from $(short "$master") to $(short "$tag"), the commit of the tag $VERSION ($count commits)." 0
